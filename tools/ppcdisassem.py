@@ -30,6 +30,12 @@ def SignExtendedOffset16(offset):
     return hex(offset)
 
 
+def SignExtendedOffset12(offset):
+    if offset & 0x800:
+        return "-" + hex((offset ^ 0xfff)+1)
+    return hex(offset)
+
+
 def AbsSignExtendedOffset16(offset):
     if offset & 0x8000:
         return hex((offset ^ 0xffff)+1)
@@ -117,16 +123,21 @@ class SSEQCmd():
         self.par = par
 
 SSEQList = []
+AddressDict = {}
 
 def addSSEQCmd(offset, cmd, par=0):
     SSEQList.append(SSEQCmd(offset, cmd, par))
+    AddressDict[offset] = 1;
     return None
 
 def checkSSEQoffset(offset):
+    return AddressDict.has_key(offset)
+    """
     for item in SSEQList:
         if item.offset == offset:
             return 1
     return 0
+    """
     
 def getRegNames(reg):
     if reg == 1:
@@ -171,6 +182,11 @@ def getRc(Rc):
         return " "
     else:
         return "."
+
+def isBranchAlways(BO, LK):
+    if ((BO & 4) == 4) & ((BO & 16) == 16) & (LK == 0): # standard case - no decrement, branch always
+        return 1
+    return 0
         
 def getBC(BI, BO, bdisp, extension):
     string = ""
@@ -190,6 +206,37 @@ def getBC(BI, BO, bdisp, extension):
         #string += getBranchLabelOfAdr(target_adr, base_address) + "\n"
     return string
 
+# TBoidLeader::perform((unsigned long, JDrama::TGraphics *))
+#.globl perform__11TBoidLeaderFUlPQ26JDrama9TGraphics
+#            FuncName = InterpretFunctionName("perform__11TBoidLeaderFUlPQ26JDrama9TGraphics")
+# THauntLegManager::THauntLegManager((char const *))
+#.globl __ct__16THauntLegManagerFPCc
+# SMS_InitPacket_TwoTevColor__FP8J3DModelUs11_GXTevRegIDPC11_GXColorS1011_GXTevRegIDPC11_GXColorS10
+# SMS_InitPacket_TwoTevColor(J3DModel *,ushort,_GXTevRegID,_GXColorS10 const *,_GXTevRegID,_GXColorS10 const *)
+# https://docs.python.org/2/library/string.html
+def checkConstructor(name):
+    if name.find("__ct") == 0:
+        return (name.split("__",1)[2], 1)
+    return (name, 0)
+
+def checkDestructor(name):
+    if name.find("__dt") == 0:
+        return (name.split("__",1)[2], 1)
+    return (name, 0)
+
+def replaceCommon(name):
+    return name.replace("_f_", "<f>")
+
+def getFuncName(name):
+    if name.find("__") != 0:
+        return name.split("__",1)[1]
+    return name
+
+def InterpretFunctionName(name):
+    string = replaceCommon(name)
+    FuncName = getFuncName(name)
+    return FuncName
+
 def writeSSEQListToFile(filename_out, filename, base_address, filesize):
     SSEQList.sort(key=operator.attrgetter('offset'))
     output_sseq = ""
@@ -204,8 +251,10 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             old_offset = item.offset+4
             
         if getLabelType(item.offset) == "Function":
+            #FuncName = InterpretFunctionName("perform__11TBoidLeaderFUlPQ26JDrama9TGraphics")
+            #output_sseq += "\n/* " + InterpretFunctionName(getLabelOfAdr(item.offset, base_address)) + " */\n"
             output_sseq += "\n.globl " + getLabelOfAdr(item.offset, base_address) + "\n"
-            output_sseq += getLabelOfAdr(item.offset, base_address) + ": /* " + hex(item.offset) + " */\n"
+            output_sseq += getLabelOfAdr(item.offset, base_address) + ": # " + hex(item.offset) + "\n"
         elif getLabelType(item.offset) == "branch":
             output_sseq += getLabelOfAdr(item.offset, base_address) + ":\n"
         #output_sseq += hex(item.offset) + ": "
@@ -215,26 +264,46 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             AA = item.par[1]
             LK = item.par[2]
             if (AA == 0) & (LK == 0):
-                output_sseq += "b       " + getBranchLabelOfAdr(target_adr, base_address) + "\n"
+                output_sseq += "b       " + getBranchLabelOfAdr(target_adr, base_address) + "\n\n"
             elif (AA == 1) & (LK == 0):
-                output_sseq += "ba      " + getBranchLabelOfAdr(target_adr, base_address) + "\n"
+                output_sseq += "ba      " + getBranchLabelOfAdr(target_adr, base_address) + "\n\n"
             elif (AA == 0) & (LK == 1):
                 output_sseq += "bl      " + getBranchLabelOfAdr(target_adr, base_address) + "\n"
             elif (AA == 1) & (LK == 1):
                 output_sseq += "bla     " + getBranchLabelOfAdr(target_adr, base_address) + "\n"
+        elif item.cmd == "psq_lx":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            W = item.par[3]
+            I = item.par[4]
+            output_sseq += "psq_lx  " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(B) + ", " + str(W) + ", " + str(I) + "\n"
         elif item.cmd == "ps_sum0":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
             C = item.par[3]
             Rc = item.par[4]
-            output_sseq += "ps_sum0 f" + str(D) + ", f" + str(A) + ", f" + str(C) + ", f" + str(B) + "\n"
+            output_sseq += "ps_sum0 " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
+        elif item.cmd == "ps_sum1":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            C = item.par[3]
+            Rc = item.par[4]
+            output_sseq += "ps_sum1 f" + str(D) + ", f" + str(A) + ", f" + str(C) + ", f" + str(B) + "\n"
         elif item.cmd == "ps_muls0":
             D = item.par[0]
             A = item.par[1]
             C = item.par[2]
             Rc = item.par[3]
             output_sseq += "ps_muls0 f" + str(D) + ", f" + str(A) + ", f" + str(C) + "\n"
+        elif item.cmd == "ps_muls1":
+            D = item.par[0]
+            A = item.par[1]
+            C = item.par[2]
+            Rc = item.par[3]
+            output_sseq += "ps_muls1 f" + str(D) + ", f" + str(A) + ", f" + str(C) + "\n"
         elif item.cmd == "ps_madds0":
             D = item.par[0]
             A = item.par[1]
@@ -284,19 +353,19 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             A = item.par[1]
             B = item.par[2]
             Rc = item.par[3]
-            output_sseq += "ps_sub f" + str(D) + ", f" + str(A) + ", f" + str(B) + "\n"
+            output_sseq += "ps_sub  f" + str(D) + ", f" + str(A) + ", f" + str(B) + "\n"
         elif item.cmd == "ps_add":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
             Rc = item.par[3]
-            output_sseq += "ps_add f" + str(D) + ", f" + str(A) + ", f" + str(B) + "\n"
+            output_sseq += "ps_add  f" + str(D) + ", f" + str(A) + ", f" + str(B) + "\n"
         elif item.cmd == "ps_mul":
             D = item.par[0]
             A = item.par[1]
             C = item.par[2]
             Rc = item.par[3]
-            output_sseq += "ps_mul f" + str(D) + ", f" + str(A) + ", f" + str(C) + "\n"
+            output_sseq += "ps_mul  f" + str(D) + ", f" + str(A) + ", f" + str(C) + "\n"
         elif item.cmd == "ps_msub":
             D = item.par[0]
             A = item.par[1]
@@ -311,21 +380,49 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             C = item.par[3]
             Rc = item.par[4]
             output_sseq += "ps_madd f" + str(D) + ", f" + str(A) + ", f" + str(C) + ", f" + str(B) + "\n"
+        elif item.cmd == "ps_nmsub":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            C = item.par[3]
+            Rc = item.par[4]
+            output_sseq += "ps_nmsub f" + str(D) + ", f" + str(A) + ", f" + str(C) + ", f" + str(B) + "\n"
+        elif item.cmd == "ps_nmadd":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            C = item.par[3]
+            Rc = item.par[4]
+            output_sseq += "ps_nmadd f" + str(D) + ", f" + str(A) + ", f" + str(C) + ", f" + str(B) + "\n"
+        elif item.cmd == "ps_cmpo0":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            Rc = item.par[3]
+            Cmd = item.par[4]
+            if D == 0:
+                output_sseq += ".long " + hex(Cmd) + " # "
+            output_sseq += "ps_cmpo0 f" + str(D) + ", f" + str(A) + ", f" + str(B) + "\n"
         elif item.cmd == "ps_neg":
             D = item.par[0]
             B = item.par[1]
             Rc = item.par[2]
             output_sseq += "ps_neg  f" + str(D) + ", f" + str(B) + "\n"
+        elif item.cmd == "dcbz_l":
+            A = item.par[0]
+            B = item.par[1]
+            Rc = item.par[2]
+            output_sseq += "dcbz_l  " + getRegNames(A) + ", " + getRegNames(B) + "\n"
         elif item.cmd == "mulli":
             D = item.par[0]
             A = item.par[1]
             simm = item.par[2]
-            output_sseq += "mulli   " + getRegNames(D) + ", " + getRegNames(A) + ", " + hex(simm) + "\n"
+            output_sseq += "mulli   " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
         elif item.cmd == "subfic":
             D = item.par[0]
             A = item.par[1]
             simm = item.par[2]
-            output_sseq += "subfic  " + getRegNames(D) + ", " + getRegNames(A) + ", " + hex(simm) + "\n"
+            output_sseq += "subfic  " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
         elif item.cmd == "cmpli":
             crfD = item.par[0]
             L = item.par[1]
@@ -341,7 +438,6 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             L = item.par[1]
             A = item.par[2]
             simm = item.par[3]
-            #output_sseq += "cmpi    " + getCrNames(crfD) + ", " + str(L) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
             if crfD == 0:
                 output_sseq += "cmp" + getCmpName(L) + "i   " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
             else:
@@ -350,12 +446,18 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             D = item.par[0]
             A = item.par[1]
             simm = item.par[2]
-            output_sseq += "addic   " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
+            if (simm & 0x8000) == 0:
+                output_sseq += "addic   " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
+            else:
+                output_sseq += "subic   " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
         elif item.cmd == "addic.":
             D = item.par[0]
             A = item.par[1]
             simm = item.par[2]
-            output_sseq += "addic.  " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
+            if (simm & 0x8000) == 0:
+                output_sseq += "addic.  " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
+            else:
+                output_sseq += "subic.  " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
         elif item.cmd == "addi":
             d = item.par[0]
             a = item.par[1]
@@ -410,6 +512,8 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
                 extension = "la"
             output_sseq += getBC(BI, BO, bdisp, extension)
             output_sseq += getBranchLabelOfAdr(target_adr, base_address) + "\n"
+            if isBranchAlways(BO, LK):
+                output_sseq += "\n"
         elif item.cmd == "sc":
             output_sseq += "sc\n"
         elif item.cmd == "bclrx":
@@ -422,7 +526,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
                 output_sseq += "blrl\n"
             else:
                 if LK == 0:
-                    output_sseq += getBC(BI, BO, 0, "lr") + "\n"
+                    output_sseq += getBC(BI, BO, 0, "lr") + "\n\n"
                     #if (BO == 12) & (BI == 2):
                     #    output_sseq += "beqlr\n\n"
                     #else:
@@ -431,7 +535,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
                     output_sseq += getBC(BI, BO, 0, "lrl") + "\n"
                     #output_sseq += "bclrl   " + str(BO) + ", " + str(BI) + "\n"
         elif item.cmd == "rfi":
-            output_sseq += "rfi\n"
+            output_sseq += "rfi\n\n"
         elif item.cmd == "isync":
             output_sseq += "isync\n"
         elif item.cmd == "crxor":
@@ -439,6 +543,11 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             crbA = item.par[1]
             crbB = item.par[2]
             output_sseq += "crxor   " + getCrbNames(crbD) + ", " + getCrbNames(crbA) + ", " + getCrbNames(crbB) + "\n"
+        elif item.cmd == "creqv":
+            crbD = item.par[0]
+            crbA = item.par[1]
+            crbB = item.par[2]
+            output_sseq += "creqv   " + getCrbNames(crbD) + ", " + getCrbNames(crbA) + ", " + getCrbNames(crbB) + "\n"
         elif item.cmd == "cror":
             crbD = item.par[0]
             crbA = item.par[1]
@@ -485,9 +594,9 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             elif (SH == 0) & (ME == 31):
                 output_sseq += "clrlwi" + getRc(Rc) + " " + getRegNames(A) + ", " + getRegNames(S) + ", " + str(MB) + "\n"
             elif (ME == (31-SH)) & (MB == 0):
-                output_sseq += "slwi" + getRc(Rc) + " " + getRegNames(A) + ", " + getRegNames(S) + ", " + str(SH) + "\n"
+                output_sseq += "slwi" + getRc(Rc) + "   " + getRegNames(A) + ", " + getRegNames(S) + ", " + str(SH) + "\n"
             elif ((32-MB) == SH) & (ME == 31):
-                output_sseq += "srwi" + getRc(Rc) + " " + getRegNames(A) + ", " + getRegNames(S) + ", " + str(MB) + "\n"
+                output_sseq += "srwi" + getRc(Rc) + "   " + getRegNames(A) + ", " + getRegNames(S) + ", " + str(MB) + "\n"
             elif (SH == (-ME+31)) & (SH <= (MB+SH)) & (MB+SH < 32):
                 n = SH
                 b = MB+SH
@@ -506,6 +615,14 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
                 output_sseq += "extrwi" + getRc(Rc) + " " + getRegNames(A) + ", " + getRegNames(S) + ", " + str(n) + ", " + str(b) + "\n"
             else:
                 output_sseq += "rlwinm" + getRc(Rc) + " " + getRegNames(A) + ", " + getRegNames(S) + ", " + str(SH) + ", " + str(MB) + ", " + str(ME) + "\n"
+        elif item.cmd == "rlwnmx":
+            S = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            MB = item.par[3]
+            ME = item.par[4]
+            Rc = item.par[5]
+            output_sseq += "rlwnm" + getRc(Rc) + " " + getRegNames(A) + ", " + getRegNames(S) + ", " + getRegNames(B) + ", " + str(MB) + ", " + str(ME) + "\n"
         elif item.cmd == "ori":
             s = item.par[0]
             a = item.par[1]
@@ -525,7 +642,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             S = item.par[0]
             A = item.par[1]
             uimm = item.par[2]
-            output_sseq += "xoris    " + getRegNames(A) + ", " + getRegNames(S) + ", " + hex(uimm) + "\n"
+            output_sseq += "xoris   " + getRegNames(A) + ", " + getRegNames(S) + ", " + hex(uimm) + "\n"
         elif item.cmd == "andi.":
             S = item.par[0]
             A = item.par[1]
@@ -579,7 +696,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             else:
                 output_sseq += "mulhwu. r" + str(D) + ", r" + str(A) + ", r" + str(B) + "\n"
         elif item.cmd == "mfcr":
-            D = item.par
+            D = item.par[0]
             output_sseq += "mfcr    r" + str(D) + "\n"
         elif item.cmd == "lwzx":
             D = item.par[0]
@@ -659,7 +776,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             else:
                 output_sseq += "mulhw.  r" + str(D) + ", r" + str(A) + ", r" + str(B) + "\n"
         elif item.cmd == "mfmsr":
-            D = item.par
+            D = item.par[0]
             output_sseq += "mfmsr   r" + str(D) + "\n"
         elif item.cmd == "dcbf":
             A = item.par[0]
@@ -731,7 +848,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             CRM = item.par[1]
             output_sseq += "mtcrf   " + str(CRM) + ", r" + str(S) + "\n"
         elif item.cmd == "mtmsr":
-            S = item.par
+            S = item.par[0]
             output_sseq += "mtmsr   r" + str(S) + "\n"
         elif item.cmd == "stwx":
             S = item.par[0]
@@ -764,6 +881,10 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
                 output_sseq += "addzeo  r" + str(D) + ", r" + str(A) + "\n"
             elif (OE == 1) & (Rc == 1):
                 output_sseq += "addzeo. r" + str(D) + ", r" + str(A) + "\n"
+        elif item.cmd == "mtsr":
+            S = item.par[0]
+            SR = item.par[1]
+            output_sseq += "mtsr    " + str(SR) + ", " + getRegNames(S) + "\n"
         elif item.cmd == "stbx":
             S = item.par[0]
             A = item.par[1]
@@ -797,6 +918,10 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
                 output_sseq += "addo    " + getRegNames(D) + ", " + getRegNames(A) + ", " + getRegNames(B) + "\n"
             elif (OE == 1) & (Rc == 1):
                 output_sseq += "addo.   " + getRegNames(D) + ", " + getRegNames(A) + ", " + getRegNames(B) + "\n"
+        elif item.cmd == "dcbt":
+            A = item.par[0]
+            B = item.par[1]
+            output_sseq += "dcbt    " + getRegNames(A) + ", " + getRegNames(B) + "\n"
         elif item.cmd == "lhzx":
             D = item.par[0]
             A = item.par[1]
@@ -917,21 +1042,25 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             B = item.par[2]
             Rc = item.par[3]
             if Rc == 0:
-                output_sseq += "srw     r" + str(A) + ", r" + str(S) + ", r" + str(B) + "\n"
+                output_sseq += "srw     " + getRegNames(A) + ", " + getRegNames(S) + ", " + getRegNames(B) + "\n"
             else:
-                output_sseq += "srw.    r" + str(A) + ", r" + str(S) + ", r" + str(B) + "\n"
+                output_sseq += "srw.    " + getRegNames(A) + ", " + getRegNames(S) + ", " + getRegNames(B) + "\n"
+        elif item.cmd == "mfsr":
+            D = item.par[0]
+            SR = item.par[1]
+            output_sseq += "mfsr    " + getRegNames(D) + ", " + str(SR) + "\n"
         elif item.cmd == "lfdx":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
-            output_sseq += "lfdx    fr" + str(D) + ", r" + str(A) + ", r" + str(B) + "\n"
+            output_sseq += "lfdx    " + getFprNames(D) + ", " + getRegNames(A) + ", " + getRegNames(B) + "\n"
         elif item.cmd == "sync":
             output_sseq += "sync\n"
         elif item.cmd == "stfsx":
             S = item.par[0]
             A = item.par[1]
             B = item.par[2]
-            output_sseq += "stfsx   " + getFprNames(S) + ", r" + str(A) + ", r" + str(B) + "\n"
+            output_sseq += "stfsx   " + getFprNames(S) + ", " + getRegNames(A) + ", " + getRegNames(B) + "\n"
         elif item.cmd == "srawx":
             S = item.par[0]
             A = item.par[1]
@@ -1029,6 +1158,11 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             A = item.par[1]
             d = item.par[2]
             output_sseq += "lha     " + getRegNames(D) + ", " + SignExtendedOffset16(d) + "(" + getRegNames(A) + ")\n"
+        elif item.cmd == "lhau":
+            D = item.par[0]
+            A = item.par[1]
+            d = item.par[2]
+            output_sseq += "lhau    " + getRegNames(D) + ", " + SignExtendedOffset16(d) + "(" + getRegNames(A) + ")\n"
         elif item.cmd == "sth":
             S = item.par[0]
             A = item.par[1]
@@ -1043,6 +1177,9 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             D = item.par[0]
             A = item.par[1]
             d = item.par[2]
+            Cmd = item.par[3]
+            if D == 0: # is illegal (https://sourceware.org/bugzilla/show_bug.cgi?id=985)
+                output_sseq += ".long " + hex(Cmd) + " # "
             output_sseq += "lmw     " + getRegNames(D) + ", " + SignExtendedOffset16(d) + "(" + getRegNames(A) + ")\n"
         elif item.cmd == "stmw":
             S = item.par[0]
@@ -1085,7 +1222,14 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             W = item.par[2]
             I = item.par[3]
             d = item.par[4]
-            output_sseq += "psq_l   " + getFprNames(D) + ", " + str(d) + " (" + str(A) + "), " + str(W) + ", " + str(I) + "\n"
+            output_sseq += "psq_l   " + getFprNames(D) + ", " + SignExtendedOffset12(d) + "(" + str(A) + "), " + str(W) + ", " + str(I) + "\n"
+        elif item.cmd == "psq_lu":
+            D = item.par[0]
+            A = item.par[1]
+            W = item.par[2]
+            I = item.par[3]
+            d = item.par[4]
+            output_sseq += "psq_lu  " + getFprNames(D) + ", " + SignExtendedOffset12(d) + "(" + str(A) + "), " + str(W) + ", " + str(I) + "\n"
         elif item.cmd == "fdivs":
             D = item.par[0]
             A = item.par[1]
@@ -1136,40 +1280,28 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             B = item.par[2]
             C = item.par[3]
             Rc = item.par[4]
-            if Rc == 0:
-                output_sseq += "fmsubs  " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fmsubs. " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fmsubs" + getRc(Rc) + " " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fmaddsx":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
             C = item.par[3]
             Rc = item.par[4]
-            if Rc == 0:
-                output_sseq += "fmadds  " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fmadds. " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fmadds" + getRc(Rc) + " " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fnmsubsx":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
             C = item.par[3]
             Rc = item.par[4]
-            if Rc == 0:
-                output_sseq += "fnmsubs " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fnmsubs. " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fnmsubs" + getRc(Rc) + " " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fnmaddsx":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
             C = item.par[3]
             Rc = item.par[4]
-            if Rc == 0:
-                output_sseq += "fnmadds " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fnmadds. " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fnmadds" + getRc(Rc) + " " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "xsmaddasp":
             D = item.par[0]
             A = item.par[1]
@@ -1181,7 +1313,14 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             W = item.par[2]
             I = item.par[3]
             d = item.par[4]
-            output_sseq += "psq_st " + getFprNames(S) + ", " + str(d) + " (" + str(A) + "), " + str(W) + ", " + str(I) + "\n"
+            output_sseq += "psq_st  " + getFprNames(S) + ", " + SignExtendedOffset12(d) + "(" + str(A) + "), " + str(W) + ", " + str(I) + "\n"
+        elif item.cmd == "psq_stu":
+            S = item.par[0]
+            A = item.par[1]
+            W = item.par[2]
+            I = item.par[3]
+            d = item.par[4]
+            output_sseq += "psq_stu " + getFprNames(S) + ", " + SignExtendedOffset12(d) + "(" + str(A) + "), " + str(W) + ", " + str(I) + "\n"
         elif item.cmd == "fcmpu":
             crfD = item.par[0]
             A = item.par[1]
@@ -1191,33 +1330,30 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             D = item.par[0]
             B = item.par[1]
             Rc = item.par[2]
-            if Rc == 0:
-                output_sseq += "frsp    " + getFprNames(D) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "frsp.   " + getFprNames(D) + ", " + getFprNames(B) + "\n"
+            output_sseq += "frsp" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fctiwzx":
             D = item.par[0]
             B = item.par[1]
             Rc = item.par[2]
-            if Rc == 0:
-                output_sseq += "fctiwz  " + getFprNames(D) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fctiwz. " + getFprNames(D) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fctiwz" + getRc(Rc) + " " + getFprNames(D) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fdivx":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
             Rc = item.par[3]
-            if Rc == 0:
-                output_sseq += "fdiv    " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fdiv.   " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fdiv" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fsubx":
             D = item.par[0]
             A = item.par[1]
             B = item.par[2]
             Rc = item.par[3]
             output_sseq += "fsub" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(B) + "\n"
+        elif item.cmd == "faddx":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            Rc = item.par[3]
+            output_sseq += "fadd" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fselx":
             D = item.par[0]
             A = item.par[1]
@@ -1230,10 +1366,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             A = item.par[1]
             C = item.par[2]
             Rc = item.par[3]
-            if Rc == 0:
-                output_sseq += "fmul    " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + "\n"
-            else:
-                output_sseq += "fmul.   " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + "\n"
+            output_sseq += "fmul" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + "\n"
         elif item.cmd == "frsqrtex":
             D = item.par[0]
             B = item.par[1]
@@ -1242,6 +1375,20 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
                 output_sseq += "frsqrte " + getFprNames(D) + ", " + getFprNames(B) + "\n"
             else:
                 output_sseq += "frsqrte. " + getFprNames(D) + ", " + getFprNames(B) + "\n"
+        elif item.cmd == "fmsubx":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            C = item.par[3]
+            Rc = item.par[4]
+            output_sseq += "fmsub" + getRc(Rc) + "  " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
+        elif item.cmd == "fmaddx":
+            D = item.par[0]
+            A = item.par[1]
+            B = item.par[2]
+            C = item.par[3]
+            Rc = item.par[4]
+            output_sseq += "fmadd" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(A) + ", " + getFprNames(C) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fnmsubx":
             D = item.par[0]
             A = item.par[1]
@@ -1260,34 +1407,31 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
         elif item.cmd == "mtfsb1":
             crbD = item.par[0]
             Rc = item.par[1]
-            if Rc == 0:
-                output_sseq += "mtfsb1  " + str(crbD) + "\n"
-            else:
-                output_sseq += "mtfsb1. " + str(crbD) + "\n"
+            output_sseq += "mtfsb1" + getRc(Rc) + " " + str(crbD) + "\n"
         elif item.cmd == "fnegx":
             D = item.par[0]
             B = item.par[1]
             Rc = item.par[2]
-            if Rc == 0:
-                output_sseq += "fneg    " + getFprNames(D) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fneg.   " + getFprNames(D) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fneg" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fmrx":
             D = item.par[0]
             B = item.par[1]
             Rc = item.par[2]
-            if Rc == 0:
-                output_sseq += "fmr     " + getFprNames(D) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fmr.    " + getFprNames(D) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fmr" + getRc(Rc) + "    " + getFprNames(D) + ", " + getFprNames(B) + "\n"
         elif item.cmd == "fabsx":
             D = item.par[0]
             B = item.par[1]
             Rc = item.par[2]
-            if Rc == 0:
-                output_sseq += "fabs    " + getFprNames(D) + ", " + getFprNames(B) + "\n"
-            else:
-                output_sseq += "fabs.   " + getFprNames(D) + ", " + getFprNames(B) + "\n"
+            output_sseq += "fabs" + getRc(Rc) + "   " + getFprNames(D) + ", " + getFprNames(B) + "\n"
+        elif item.cmd == "mffs":
+            D = item.par[0]
+            Rc = item.par[1]
+            output_sseq += "mffs" + getRc(Rc) + "   " + getFprNames(D) + "\n"
+        elif item.cmd == "mtfsf":
+            FM = item.par[0]
+            B = item.par[1]
+            Rc = item.par[2]
+            output_sseq += "mtfsf" + getRc(Rc) + "  " + str(FM) + ", " + getFprNames(B) + "\n"
         else:
             output_sseq += item.cmd + " " + str(item.par) + "\n"
     
@@ -1297,6 +1441,329 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
     
     write_string_to_file(filename_out, output_sseq)
 
+
+RegD = 1<<0
+RegS = 1<<0
+RegCrbD = 1<<0
+RegBO = 1<<0
+RegA = 1<<1
+RegSpr = 1<<1
+RegTbr = 1<<1
+RegCrbA = 1<<1
+RegBI = 1<<1
+RegB = 1<<2
+RegTbr2 = 1<<2
+RegSH = 1<<2
+RegSpr2 = 1<<2
+RegCrbB = 1<<2
+RegC = 1<<3
+RegMB = 1<<3
+BitRc = 1<<4
+RegLK = 1<<4
+RegCrfD = 1<<5
+RegL = 1<<6
+RegOE = 1<<7
+RegCRM = 1<<9
+RegSR = 1<<10
+RegFM = 1<<17
+RegSimm = 1<<23
+RegUimm = 1<<23
+RegME = 1<<25
+RegW = 1<<26
+RegI = 1<<27
+RegW2 = 1<<28
+RegI2 = 1<<29
+RegUimm2 = 1<<30
+RegCmd = 1<<31
+# https://github.com/dolphin-emu/dolphin/blob/6f272b3a4c31a43f8d4fd8b7fd914112d4fd820b/Source/Core/Core/PowerPC/Interpreter/Interpreter_Tables.cpp
+CmdDict0 = {
+    7: ("mulli", RegD|RegA|RegSimm),
+    8: ("subfic", RegD|RegA|RegSimm),
+    10: ("cmpli", RegCrfD|RegL|RegA|RegUimm),
+    11: ("cmpi", RegCrfD|RegL|RegA|RegSimm),
+    12: ("addic", RegD|RegA|RegSimm),
+    13: ("addic.", RegD|RegA|RegSimm),
+    14: ("addi", RegD|RegA|RegSimm),
+    15: ("addis", RegD|RegA|RegSimm),
+    17: ("sc", 0),
+    20: ("rlwimix", RegS|RegA|RegSH|RegMB|RegME|BitRc),
+    21: ("rlwinmx", RegS|RegA|RegSH|RegMB|RegME|BitRc),
+    23: ("rlwnmx", RegS|RegA|RegB|RegMB|RegME|BitRc),
+    24: ("ori", RegS|RegA|RegUimm),
+    25: ("oris", RegS|RegA|RegUimm),
+    26: ("xori", RegS|RegA|RegUimm),
+    27: ("xoris", RegS|RegA|RegUimm),
+    28: ("andi.", RegS|RegA|RegUimm),
+    32: ("lwz", RegD|RegA|RegUimm),
+    33: ("lwzu", RegD|RegA|RegUimm),
+    34: ("lbz", RegD|RegA|RegUimm),
+    35: ("lbzu", RegD|RegA|RegUimm),
+    36: ("stw", RegS|RegA|RegUimm),
+    37: ("stwu", RegS|RegA|RegUimm),
+    38: ("stb", RegS|RegA|RegUimm),
+    39: ("stbu", RegS|RegA|RegUimm),
+    40: ("lhz", RegD|RegA|RegUimm),
+    41: ("lhzu", RegD|RegA|RegUimm),
+    42: ("lha", RegD|RegA|RegUimm),
+    43: ("lhau", RegD|RegA|RegUimm),
+    44: ("sth", RegS|RegA|RegUimm),
+    45: ("sthu", RegS|RegA|RegUimm),
+    46: ("lmw", RegD|RegA|RegUimm|RegCmd),
+    47: ("stmw", RegS|RegA|RegUimm),
+    48: ("lfs", RegD|RegA|RegUimm),
+    49: ("lfsu", RegD|RegA|RegUimm),
+    50: ("lfd", RegD|RegA|RegUimm),
+    52: ("stfs", RegS|RegA|RegUimm),
+    53: ("stfsu", RegS|RegA|RegUimm),
+    54: ("stfd", RegS|RegA|RegUimm),
+    56: ("psq_l", RegD|RegA|RegW|RegI|RegUimm2),
+    57: ("psq_lu", RegD|RegA|RegW|RegI|RegUimm2),
+    60: ("psq_st", RegS|RegA|RegW|RegI|RegUimm2),
+    61: ("psq_stu", RegS|RegA|RegW|RegI|RegUimm2),
+    }
+CmdDict4_1 = {
+    6: ("psq_lx", RegD|RegA|RegB|RegW2|RegI2),
+    10: ("ps_sum0", RegD|RegA|RegB|RegC|BitRc), # 10
+    11: ("ps_sum1", RegD|RegA|RegB|RegC|BitRc), # 11
+    12: ("ps_muls0", RegD|RegA|RegC|BitRc), # 12
+    13: ("ps_muls1", RegD|RegA|RegC|BitRc), # 13
+    14: ("ps_madds0", RegD|RegA|RegB|RegC|BitRc), # 14
+    15: ("ps_madds1", RegD|RegA|RegB|RegC|BitRc), # 15
+    #16: ("vmhaddshs", RegD|RegA|RegB|RegC), # 16
+    20: ("ps_sub", RegD|RegA|RegB|BitRc), # 20
+    21: ("ps_add", RegD|RegA|RegB|BitRc), # 21
+    25: ("ps_mul", RegD|RegA|RegC|BitRc), # 25
+    28: ("ps_msub", RegD|RegA|RegB|RegC|BitRc), # 28
+    29: ("ps_madd", RegD|RegA|RegB|RegC|BitRc), # 29
+    30: ("ps_nmsub", RegD|RegA|RegB|RegC|BitRc), # 30
+    31: ("ps_nmadd", RegD|RegA|RegB|RegC|BitRc), # 31
+    }
+CmdDict4_2 = {
+    32: ("ps_cmpo0", RegD|RegA|RegB|BitRc|RegCmd),
+    40: ("ps_neg", RegD|RegB|BitRc),
+    528: ("ps_merge00", RegD|RegA|RegB|BitRc),
+    560: ("ps_merge01", RegD|RegA|RegB|BitRc),
+    592: ("ps_merge10", RegD|RegA|RegB|BitRc),
+    624: ("ps_merge11", RegD|RegA|RegB|BitRc),
+    1014: ("dcbz_l", RegA|RegB|BitRc),
+    }
+CmdDict19 = {
+    150: ("isync", RegS),
+    193: ("crxor", RegCrbD|RegCrbA|RegCrbB),
+    289: ("creqv", RegCrbD|RegCrbA|RegCrbB),
+    449: ("cror", RegCrbD|RegCrbA|RegCrbB),
+    528: ("bcctrx", RegBO|RegBI|RegLK),
+    }
+CmdDict31 = {
+    0: ("cmp", RegCrfD|RegL|RegA|RegB),
+    8: ("subfcx", RegD|RegA|RegB|RegOE|BitRc),
+    10: ("addcx", RegD|RegA|RegB|RegOE|BitRc),
+    11: ("mulhwux", RegD|RegA|RegB|BitRc),
+    19: ("mfcr", RegD),
+    23: ("lwzx", RegD|RegA|RegB),
+    24: ("slwx", RegS|RegA|RegB|BitRc),
+    26: ("cntlzwx", RegS|RegA|BitRc),
+    28: ("andx", RegS|RegA|RegB|BitRc),
+    32: ("cmpl", RegCrfD|RegL|RegA|RegB),
+    40: ("subfx", RegD|RegA|RegB|RegOE|BitRc),
+    54: ("dcbst", RegA|RegB),
+    60: ("andcx", RegS|RegA|RegB|BitRc),
+    75: ("mulhwx", RegD|RegA|RegB|BitRc),
+    83: ("mfmsr", RegD), # todo
+    86: ("dcbf", RegA|RegB),
+    87: ("lbzx", RegD|RegA|RegB),
+    104: ("neg", RegD|RegA|RegOE|BitRc),
+    124: ("norx", RegS|RegA|RegB|BitRc),
+    136: ("subfe", RegD|RegA|RegB|RegOE|BitRc),
+    138: ("addex", RegD|RegA|RegB|RegOE|BitRc),
+    144: ("mtcrf", RegS|RegCRM),
+    146: ("mtmsr", RegS),
+    151: ("stwx", RegS|RegA|RegB),
+    200: ("subfzex", RegD|RegA|RegOE|BitRc),
+    202: ("addzex", RegD|RegA|RegOE|BitRc),
+    210: ("mtsr", RegS|RegSR),
+    215: ("stbx", RegS|RegA|RegB),
+    235: ("mullwx", RegD|RegA|RegB|RegOE|BitRc),
+    266: ("addx", RegD|RegA|RegB|RegOE|BitRc),
+    278: ("dcbt", RegA|RegB),
+    279: ("lhzx", RegD|RegA|RegB),
+    284: ("eqvx", RegS|RegA|RegB|BitRc),
+    316: ("xorx", RegS|RegA|RegB|BitRc),
+    339: ("mfspr", RegD|RegSpr|RegSpr2),
+    343: ("lhax", RegD|RegA|RegB),
+    371: ("mftb", RegD|RegTbr|RegTbr2),
+    407: ("sthx", RegS|RegA|RegB),
+    444: ("or", RegS|RegA|RegB|BitRc),
+    459: ("divwux", RegD|RegA|RegB|RegOE|BitRc),
+    467: ("mtspr", RegS|RegSpr|RegSpr2),
+    470: ("dcbi", RegA|RegB),
+    491: ("divwx", RegD|RegA|RegB|RegOE|BitRc),
+    535: ("lfsx", RegD|RegA|RegB),
+    536: ("srwx", RegS|RegA|RegB|BitRc),
+    595: ("mfsr", RegD|RegSR),
+    598: ("sync", RegS),
+    599: ("lfdx", RegD|RegA|RegB),
+    663: ("stfsx", RegS|RegA|RegB),
+    792: ("srawx", RegS|RegA|RegB|BitRc),
+    824: ("srawix", RegS|RegA|RegSH|BitRc),
+    922: ("extshx", RegS|RegA|BitRc),
+    954: ("extsbx", RegS|RegA|BitRc),
+    982: ("icbi", RegA|RegB),
+    1014: ("dcbz", RegA|RegB),
+    }
+CmdDict59 = {
+    18: ("fdivs", RegD|RegA|RegB|BitRc),
+    20: ("fsubs", RegD|RegA|RegB|BitRc),
+    21: ("faddsx", RegD|RegA|RegB|BitRc),
+    24: ("fresx", RegD|RegB|BitRc),
+    25: ("fmuls", RegD|RegA|RegC|BitRc),
+    28: ("fmsubsx", RegD|RegA|RegB|RegC|BitRc),
+    29: ("fmaddsx", RegD|RegA|RegB|RegC|BitRc),
+    30: ("fnmsubsx", RegD|RegA|RegB|RegC|BitRc),
+    31: ("fnmaddsx", RegD|RegA|RegB|RegC|BitRc),
+    }
+CmdDict63_1 = {
+    12: ("frspx", RegD|RegB|BitRc),
+    15: ("fctiwzx", RegD|RegB|BitRc),
+    18: ("fdivx", RegD|RegA|RegB|BitRc),
+    20: ("fsubx", RegD|RegA|RegB|BitRc),
+    21: ("faddx", RegD|RegA|RegB|BitRc),
+    23: ("fselx", RegD|RegA|RegB|RegC|BitRc),
+    25: ("fmulx", RegD|RegA|RegC|BitRc),
+    26: ("frsqrtex", RegD|RegB|BitRc),
+    28: ("fmsubx", RegD|RegA|RegB|RegC|BitRc),
+    29: ("fmaddx", RegD|RegA|RegB|RegC|BitRc),
+    30: ("fnmsubx", RegD|RegA|RegB|RegC|BitRc),
+    }
+CmdDict63_2 = {
+    0: ("fcmpu", RegCrfD|RegA|RegB),
+    32: ("fcmpo", RegCrfD|RegA|RegB),
+    38: ("mtfsb1", RegCrbD|BitRc),
+    40: ("fnegx", RegD|RegB|BitRc),
+    72: ("fmrx", RegD|RegB|BitRc),
+    264: ("fabsx", RegD|RegB|BitRc),
+    583: ("mffs", RegD|BitRc),
+    711: ("mtfsf", RegFM|RegB|BitRc),
+    }
+
+def interpretCmdDict(word, CmdNr, CmdDict, offset, i):
+    paras = ()
+    
+    CmdData = CmdDict.get(CmdNr)
+    if CmdData == None:
+        return 0
+    
+    if CmdData[1] & RegCrfD:
+        crfD = (word >> 23) & 0x7
+        paras = paras + (crfD,)
+    if CmdData[1] & RegL:
+        L = (word >> 21) & 0x1
+        paras = paras + (L,)
+    if CmdData[1] & RegD: # RegS, RegCrbD, RegBO
+        D = (word >> 21) & 0x1f
+        paras = paras + (D,)
+    if CmdData[1] & RegFM:
+        FM = (word >> 17) & 0xff
+        paras = paras + (FM,)
+    if CmdData[1] & RegA: # RegSpr, RegTbr, RegCrbA, RegBI
+        A = (word >> 16) & 0x1f
+        paras = paras + (A,)
+    if CmdData[1] & RegSR:
+        SR = (word >> 16) & 0xf
+        paras = paras + (SR,)
+    if CmdData[1] & RegW:
+        W = (word >> 15) & 0x1
+        paras = paras + (W,)
+    if CmdData[1] & RegCRM:
+        CRM = (word >> 12) & 0xff
+        paras = paras + (CRM,)
+    if CmdData[1] & RegI:
+        I = (word >> 12) & 0x7
+        paras = paras + (I,)
+    if CmdData[1] & RegB: # RegTbr2, RegSH, RegSpr2, RegCrbB
+        B = (word >> 11) & 0x1f
+        paras = paras + (B,)
+    if CmdData[1] & RegOE:
+        OE = (word >> 10) & 0x1
+        paras = paras + (OE,)
+    if CmdData[1] & RegW2:
+        W = (word >> 9) & 0x1
+        paras = paras + (W,)
+    if CmdData[1] & RegI2:
+        I = (word >> 6) & 0x7
+        paras = paras + (I,)
+    if CmdData[1] & RegC: # RegMB
+        C = (word >> 6) & 0x1f
+        paras = paras + (C,)
+    if CmdData[1] & RegME:
+        ME = (word >> 1) & 0x1f
+        paras = paras + (ME,)
+    if CmdData[1] & BitRc: # RegLK
+        Rc = (word >> 0) & 0x1
+        paras = paras + (Rc,)
+    if CmdData[1] & RegSimm:
+        simm = (word & 0xffff)
+        paras = paras + (simm,)
+    if CmdData[1] & RegUimm2:
+        uimm = (word & 0xfff)
+        paras = paras + (uimm,)
+    if CmdData[1] & RegCmd:
+        paras = paras + (word,)
+    addSSEQCmd(offset+i, CmdData[0], paras)
+    return 1
+
+def interpretCmdTable(word, CmdNr, CmdTable, TableNr, offset, i, base_address):
+    paras = ()
+    
+    if len(CmdTable) < TableNr:
+        raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(CmdNr) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
+    
+    if CmdTable[TableNr][2] & RegCrfD:
+        crfD = (word >> 23) & 0x7
+        paras = paras + (crfD,)
+    if CmdTable[TableNr][2] & RegL:
+        L = (word >> 21) & 0x1
+        paras = paras + (L,)
+    if CmdTable[TableNr][2] & RegD: # RegS, RegCrbD, RegBO
+        D = (word >> 21) & 0x1f
+        paras = paras + (D,)
+    if CmdTable[TableNr][2] & RegFM:
+        FM = (word >> 17) & 0xff
+        paras = paras + (FM,)
+    if CmdTable[TableNr][2] & RegA: # RegSpr, RegTbr, RegCrbA, RegBI
+        A = (word >> 16) & 0x1f
+        paras = paras + (A,)
+    if CmdTable[TableNr][2] & RegSR:
+        SR = (word >> 16) & 0xf
+        paras = paras + (SR,)
+    if CmdTable[TableNr][2] & RegW:
+        W = (word >> 15) & 0x1
+        paras = paras + (W,)
+    if CmdTable[TableNr][2] & RegCRM:
+        CRM = (word >> 12) & 0xff
+        paras = paras + (CRM,)
+    if CmdTable[TableNr][2] & RegI:
+        I = (word >> 12) & 0x7
+        paras = paras + (I,)
+    if CmdTable[TableNr][2] & RegB: # RegTbr2, RegSH, RegSpr2, RegCrbB
+        B = (word >> 11) & 0x1f
+        paras = paras + (B,)
+    if CmdTable[TableNr][2] & RegOE:
+        OE = (word >> 10) & 0x1
+        paras = paras + (OE,)
+    if CmdTable[TableNr][2] & RegC: # RegMB
+        C = (word >> 6) & 0x1f
+        paras = paras + (C,)
+    if CmdTable[TableNr][2] & RegME:
+        ME = (word >> 1) & 0x1f
+        paras = paras + (ME,)
+    if CmdTable[TableNr][2] & BitRc: # RegLK
+        Rc = (word >> 0) & 0x1
+        paras = paras + (Rc,)
+    if CmdTable[TableNr][2] & RegSimm:
+        simm = (word & 0xffff)
+        paras = paras + (simm,)
+    addSSEQCmd(offset+i, CmdTable[TableNr][1], paras)
 
 
 class Disassembler(object):
@@ -1386,7 +1853,7 @@ class Disassembler(object):
         addLabelAdr(0x800051ec, "Function_" + hex(0x800051ec), "Function")
         """
 
-        FunctionLength = 0x2000
+        FunctionLength = 0x10000
         offsetn = 0
         while offsetn < getNrOfLabelAddresses():
             offset = getNthAdr(offsetn)
@@ -1395,7 +1862,8 @@ class Disassembler(object):
             ending = 0
             while (checkSSEQoffset(offset+i) == 0) & self.is_adr_in_range(offset+i) & (i < FunctionLength) & (ending == 0):
                 word = self.get_word_from_rom(offset+i)
-                if (word >> 26) == 18: # bx
+                CmdNr = (word >> 26)
+                if (CmdNr == 18): # bx
                     LI = (word & 0x3fffffc)
                     AA = (word >> 1) & 0x1
                     LK = (word >> 0) & 0x1
@@ -1416,143 +1884,7 @@ class Disassembler(object):
                     addSSEQCmd(offset+i, "bx", (target_adr, AA, LK))
                     if LK == 0:
                         ending = 1
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 10): # ps_sum0
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_sum0", (D, A, B, C, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 12): # ps_muls0
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_muls0", (D, A, C, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 14): # ps_madds0
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_madds0", (D, A, B, C, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 15): # ps_madds1
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_madds1", (D, A, B, C, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x3ff) == 528): # ps_merge00
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_merge00", (D, A, B, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x3ff) == 560): # ps_merge01
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_merge01", (D, A, B, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x3ff) == 592): # ps_merge10
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_merge10", (D, A, B, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x3ff) == 624): # ps_merge11
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_merge11", (D, A, B, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 16): # vmhaddshs
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    addSSEQCmd(offset+i, "vmhaddshs", (D, A, B, C))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x3ff) == 20): # ps_sub
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_sub", (D, A, B, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x3ff) == 21): # ps_add
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_add", (D, A, B, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 25): # ps_mul
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_mul", (D, A, C, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 28): # ps_msub
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_msub", (D, A, B, C, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x1f) == 29): # ps_madd
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_madd", (D, A, B, C, Rc))
-                elif ((word >> 26) == 4) & (((word >> 1) & 0x3ff) == 40): # ps_neg
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "ps_neg", (D, B, Rc))
-                elif (word >> 26) == 7: # mulli
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    simm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "mulli", (D, A, simm))
-                elif (word >> 26) == 8: # subfic
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    simm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "subfic", (D, A, simm))
-                elif (word >> 26) == 10: # cmpli (cmplwi)
-                    crfD = (word >> 23) & 0x7
-                    L = (word >> 21) & 0x1
-                    A = (word >> 16) & 0x1f
-                    uimm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "cmpli", (crfD, L, A, uimm))
-                elif (word >> 26) == 11: # cmpi (cmpwi)
-                    crfD = (word >> 23) & 0x7
-                    L = (word >> 21) & 0x1
-                    A = (word >> 16) & 0x1f
-                    simm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "cmpi", (crfD, L, A, simm))
-                elif (word >> 26) == 12: # addic
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    simm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "addic", (D, A, simm))
-                elif (word >> 26) == 13: # addic.
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    simm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "addic.", (D, A, simm))
-                elif (word >> 26) == 14: # addi (li)
-                    d = (word >> 21) & 0x1f
-                    a = (word >> 16) & 0x1f
-                    imm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "addi", (d, a, imm))
-                elif (word >> 26) == 15: # addis (lis)
-                    d = (word >> 21) & 0x1f
-                    a = (word >> 16) & 0x1f
-                    simm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "addis", (d, a, simm))
-                elif (word >> 26) == 16: # bcx (beq)  - beq ADDRESS is really bc 12, 10 ADDRESS
+                elif CmdNr == 16: # bcx (beq)  - beq ADDRESS is really bc 12, 10 ADDRESS
                     # 01000 00110 10001 0 false
                     # 01000 00110 00001 0 right
                     BO = (word >> 21) & 0x1f
@@ -1571,613 +1903,66 @@ class Disassembler(object):
                     if self.is_adr_in_range(target_adr):
                         addLabelAdr(target_adr, "branch_" + hex(target_adr), "branch")
                     addSSEQCmd(offset+i, "bcx", (BO, BI, target_adr, AA, LK, bdisp))
-                elif ((word >> 26) == 17) & (((word >> 1) & 0x1) == 1): # sc
-                    d = 0
-                    addSSEQCmd(offset+i, "sc", d)
-                elif ((word >> 26) == 19) & (((word >> 11) & 0x1f) == 0) & (((word >> 1) & 0x3ff) == 16): # bclrx (blr)
+                    if isBranchAlways(BO, LK):
+                        ending = 1
+                elif (CmdNr == 19) & (((word >> 11) & 0x1f) == 0) & (((word >> 1) & 0x3ff) == 16): # bclrx (blr)
                     BO = (word >> 21) & 0x1f
                     BI = (word >> 16) & 0x1f
                     LK = (word >> 0) & 0x1
                     addSSEQCmd(offset+i, "bclrx", (BO, BI, LK))
                     if ((BO & 0b10100) == 0b10100) & (BI == 0) & (LK == 0):
                         ending = 1
-                elif ((word >> 26) == 19) & (((word >> 11) & 0x1f) == 0) & (((word >> 1) & 0x3ff) == 50): # rfi
+                elif (CmdNr == 19) & (((word >> 1) & 0x3ff) == 50): # rfi
                     S = 0
-                    addSSEQCmd(offset+i, "rfi", S)
-                elif ((word >> 26) == 19) & (((word >> 11) & 0x1f) == 0) & (((word >> 1) & 0x3ff) == 150): # isync
-                    S = 0
-                    addSSEQCmd(offset+i, "isync", S)
-                elif ((word >> 26) == 19) & (((word >> 1) & 0x3ff) == 193): # crxor
-                    crbD = (word >> 21) & 0x1f
-                    crbA = (word >> 16) & 0x1f
-                    crbB = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "crxor", (crbD, crbA, crbB))
-                elif ((word >> 26) == 19) & (((word >> 1) & 0x3ff) == 449): # cror
-                    crbD = (word >> 21) & 0x1f
-                    crbA = (word >> 16) & 0x1f
-                    crbB = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "cror", (crbD, crbA, crbB))
-                elif ((word >> 26) == 19) & (((word >> 11) & 0x1f) == 0) & (((word >> 1) & 0x3ff) == 528): # bcctrx
-                    BO = (word >> 21) & 0x1f
-                    BI = (word >> 16) & 0x1f
-                    LK = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "bcctrx", (BO, BI, LK))
-                elif (word >> 26) == 20: # rlwimix
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    SH = (word >> 11) & 0x1f
-                    MB = (word >> 6) & 0x1f
-                    ME = (word >> 1) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "rlwimix", (S, A, SH, MB, ME, Rc))
-                elif (word >> 26) == 21: # rlwinmx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    SH = (word >> 11) & 0x1f
-                    MB = (word >> 6) & 0x1f
-                    ME = (word >> 1) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "rlwinmx", (S, A, SH, MB, ME, Rc))
-                elif (word >> 26) == 24: # ori
-                    s = (word >> 21) & 0x1f
-                    a = (word >> 16) & 0x1f
-                    uimm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "ori", (s, a, uimm))
-                elif (word >> 26) == 25: # oris
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    uimm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "oris", (S, A, uimm))
-                elif (word >> 26) == 26: # xori
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    uimm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "xori", (S, A, uimm))
-                elif (word >> 26) == 27: # xoris
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    uimm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "xoris", (S, A, uimm))
-                elif (word >> 26) == 28: # andi.
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    uimm = (word & 0xffff)
-                    addSSEQCmd(offset+i, "andi.", (S, A, uimm))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 0): # cmp
-                    crfD = (word >> 23) & 0x7
-                    L = (word >> 21) & 0x1
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "cmp", (crfD, L, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 8): # subfcx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "subfcx", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 10): # addcx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "addcx", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 11): # mulhwux
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "mulhwux", (D, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 19): # mfcr
-                    D = (word >> 21) & 0x1f
-                    addSSEQCmd(offset+i, "mfcr", D)
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 23): # lwzx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "lwzx", (D, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 24): # slwx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "slwx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 26): # cntlzwx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "cntlzwx", (S, A, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 28): # andx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "andx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 32) & (((word >> 0) & 0x1) == 0): # cmpl
-                    crfD = (word >> 23) & 0x7
-                    L = (word >> 21) & 0x1
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "cmpl", (crfD, L, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 40): # subfx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "subfx", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 54) & (((word >> 0) & 0x1) == 0): # dcbst
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "dcbst", (A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 60): # andcx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "andcx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 75): # mulhwx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "mulhwx", (D, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 16) & 0x1f) == 0) & (((word >> 11) & 0x1f) == 0) & (((word >> 1) & 0x3ff) == 83) & (((word >> 0) & 0x1) == 0): # mfmsr
-                    D = (word >> 21) & 0x1f
-                    addSSEQCmd(offset+i, "mfmsr", D)
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 86): # dcbf
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "dcbf", (A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 87): # lbzx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "lbzx", (D, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 104): # neg
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "neg", (D, A, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 124): # norx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "norx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 136): # subfe
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "subfe", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 138): # addex
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "addex", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 144): # mtcrf
-                    S = (word >> 21) & 0x1f
-                    CRM = (word >> 12) & 0xff
-                    addSSEQCmd(offset+i, "mtcrf", (S, CRM))
-                elif ((word >> 26) == 31) & (((word >> 16) & 0x1f) == 0) & (((word >> 11) & 0x1f) == 0) & (((word >> 1) & 0x3ff) == 146) & (((word >> 0) & 0x1) == 0): # mtmsr
-                    S = (word >> 21) & 0x1f
-                    addSSEQCmd(offset+i, "mtmsr", S)
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 151): # stwx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "stwx", (S, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 200): # subfzex
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "subfzex", (D, A, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 202): # addzex
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "addzex", (D, A, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 215): # stbx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "stbx", (S, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 235): # mullwx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "mullwx", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 266): # addx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "addx", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 279): # lhzx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "lhzx", (D, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 284): # eqvx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "eqvx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 316): # xorx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "xorx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 339) & (((word >> 0) & 0x1) == 0): # mfspr
-                    D = (word >> 21) & 0x1f
-                    spr = (word >> 16) & 0x1f
-                    spr2 = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "mfspr", (D, spr, spr2))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 343): # lhax
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "lhax", (D, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 371): # mftb (mftbl)
-                    D = (word >> 21) & 0x1f
-                    tbr = (word >> 16) & 0x1f
-                    tbr2 = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "mftb", (D, tbr, tbr2))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 407): # sthx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "sthx", (S, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 444): # or (mr)
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "or", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 459): # divwux
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "divwux", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 467) & (((word >> 0) & 0x1) == 0): # mtspr (mtlr)
-                    S = (word >> 21) & 0x1f
-                    spr = (word >> 16) & 0x1f
-                    spr2 = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "mtspr", (S, spr, spr2))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 470): # dcbi
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "dcbi", (A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x1ff) == 491): # divwx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    OE = (word >> 10) & 0x1
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "divwx", (D, A, B, OE, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 535): # lfsx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "lfsx", (D, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 536): # srwx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "srwx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 599): # lfdx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "lfdx", (D, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 598) & (((word >> 0) & 0x1) == 0): # sync
-                    S = 0
-                    addSSEQCmd(offset+i, "sync", S)
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 663): # stfsx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "stfsx", (S, A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 792): # srawx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "srawx", (S, A, B, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 824): # srawix
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    SH = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "srawix", (S, A, SH, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 922): # extshx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "extshx", (S, A, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 954): # extsbx
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "extsbx", (S, A, Rc))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 982) & (((word >> 0) & 0x1) == 0): # icbi
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "icbi", (A, B))
-                elif ((word >> 26) == 31) & (((word >> 1) & 0x3ff) == 1014) & (((word >> 0) & 0x1) == 0): # dcbz
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "dcbz", (A, B))
-                elif (word >> 26) == 32: # lwz
-                    D = (word >> 21) & 0x1f
-                    a = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lwz", (D, a, d))
-                elif (word >> 26) == 33: # lwzu
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lwzu", (D, A, d))
-                elif (word >> 26) == 34: # lbz
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lbz", (D, A, d))
-                elif (word >> 26) == 35: # lbzu
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lbzu", (D, A, d))
-                elif (word >> 26) == 36: # stw
-                    s = (word >> 21) & 0x1f
-                    a = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stw", (s, a, d))
-                elif (word >> 26) == 37: # stwu
-                    s = (word >> 21) & 0x1f
-                    a = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stwu", (s, a, d))
-                elif (word >> 26) == 38: # stb
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stb", (S, A, d))
-                elif (word >> 26) == 39: # stbu
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stbu", (S, A, d))
-                elif (word >> 26) == 40: # lhz
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lhz", (D, A, d))
-                elif (word >> 26) == 41: # lhzu
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lhzu", (D, A, d))
-                elif (word >> 26) == 42: # lha
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lha", (D, A, d))
-                elif (word >> 26) == 44: # sth
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "sth", (S, A, d))
-                elif (word >> 26) == 45: # sthu
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "sthu", (S, A, d))
-                elif (word >> 26) == 46: # lmw
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lmw", (D, A, d))
-                elif (word >> 26) == 47: # stmw
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stmw", (S, A, d))
-                elif (word >> 26) == 48: # lfs
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lfs", (D, A, d))
-                elif (word >> 26) == 49: # lfsu
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lfsu", (D, A, d))
-                elif (word >> 26) == 50: # lfd
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "lfd", (D, A, d))
-                elif (word >> 26) == 52: # stfs
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stfs", (S, A, d))
-                elif (word >> 26) == 53: # stfsu
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stfsu", (S, A, d))
-                elif (word >> 26) == 54: # stfd
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    d = (word & 0xffff)
-                    addSSEQCmd(offset+i, "stfd", (S, A, d))
-                elif (word >> 26) == 56: # psq_l
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    W = (word >> 15) & 0x1
-                    I = (word >> 12) & 0x7
-                    d = (word & 0xfff)
-                    addSSEQCmd(offset+i, "psq_l", (D, A, W, I, d))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 18): # fdivs
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fdivs", (D, A, B, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 20): # fsubs
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fsubs", (D, A, B, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 21): # fadds
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "faddsx", (D, A, B, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 24): # fresx
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fresx", (D, B, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 25): # fmuls
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fmuls", (D, A, C, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 28): # fmsubsx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fmsubsx", (D, A, B, C, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 29): # fmaddsx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fmaddsx", (D, A, B, C, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 30): # fnmsubsx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fnmsubsx", (D, A, B, C, Rc))
-                elif ((word >> 26) == 59) & (((word >> 1) & 0x1f) == 31): # fnmaddsx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fnmaddsx", (D, A, B, C, Rc))
-                elif ((word >> 26) == 60): # psq_st
-                    S = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    W = (word >> 15) & 0x1
-                    I = (word >> 12) & 0x7
-                    d = (word >> 0) & 0xfff
-                    addSSEQCmd(offset+i, "psq_st", (S, A, W, I, d))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 0): # fcmpu
-                    crfD = (word >> 23) & 0x7
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "fcmpu", (crfD, A, B))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 12): # frspx
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "frspx", (D, B, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 15): # fctiwzx
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fctiwzx", (D, B, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 18): # fdivx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fdivx", (D, A, B, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 20): # fsubx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fsubx", (D, A, B, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x1f) == 23): # fselx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fselx", (D, A, B, C, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x1f) == 25): # fmulx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fmulx", (D, A, C, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x1f) == 26): # frsqrtex
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "frsqrtex", (D, B, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x1f) == 30): # fnmsubx
-                    D = (word >> 21) & 0x1f
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    C = (word >> 6) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fnmsubx", (D, A, B, C, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 32): # fcmpo
-                    crfD = (word >> 23) & 0x7
-                    A = (word >> 16) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    addSSEQCmd(offset+i, "fcmpo", (crfD, A, B))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 38): # mtfsb1
-                    crbD = (word >> 21) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "mtfsb1", (crbD, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 40): # fnegx
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fnegx", (D, B, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 72): # fmrx
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fmrx", (D, B, Rc))
-                elif ((word >> 26) == 63) & (((word >> 1) & 0x3ff) == 264): # fabsx
-                    D = (word >> 21) & 0x1f
-                    B = (word >> 11) & 0x1f
-                    Rc = (word >> 0) & 0x1
-                    addSSEQCmd(offset+i, "fabsx", (D, B, Rc))
+                    addSSEQCmd(offset+i, "rfi", (S))
+                    ending = 1
+                elif (CmdNr == 4):
+                    CmdDict = CmdDict4_1
+                    CmdNr2 = ((word >> 1) & 0x1f)
+                    if interpretCmdDict(word, CmdNr2, CmdDict, offset, i) == 0:
+                        CmdDict = CmdDict4_2
+                        CmdNr2 = ((word >> 1) & 0x3ff)
+                        if interpretCmdDict(word, CmdNr2, CmdDict, offset, i) == 0:
+                            raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(CmdNr) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
+                elif (CmdNr == 19):
+                    CmdDict = CmdDict19
+                    CmdNr2 = ((word >> 1) & 0x3ff)
+                    if interpretCmdDict(word, CmdNr2, CmdDict, offset, i) == 0:
+                        raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(CmdNr) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
+                elif (CmdNr == 31):
+                    CmdDict = CmdDict31
+                    CmdNr2 = ((word >> 1) & 0x3ff)
+                    if interpretCmdDict(word, CmdNr2, CmdDict, offset, i) == 0:
+                        raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(CmdNr) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
+                elif (CmdNr == 59):
+                    CmdDict = CmdDict59
+                    CmdNr2 = ((word >> 1) & 0x1f)
+                    if interpretCmdDict(word, CmdNr2, CmdDict, offset, i) == 0:
+                        raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(CmdNr) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
+                elif (CmdNr == 63):
+                    CmdDict = CmdDict63_1
+                    CmdNr2 = ((word >> 1) & 0x1f)
+                    if interpretCmdDict(word, CmdNr2, CmdDict, offset, i) == 0:
+                        CmdDict = CmdDict63_2
+                        CmdNr2 = ((word >> 1) & 0x3ff)
+                        if interpretCmdDict(word, CmdNr2, CmdDict, offset, i) == 0:
+                            raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(CmdNr) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
                 else:
-                    raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(word >> 26) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
+                    CmdDict = CmdDict0
+                    if interpretCmdDict(word, CmdNr, CmdDict, offset, i) == 0:
+                        raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(CmdNr) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
+                """
+                else:
+                    CmdTable = CmdTable0
+                    TableNr = 0
+                    for item in CmdTable:
+                        if item[0] == CmdNr:
+                            break
+                        TableNr += 1
+                    
+                    interpretCmdTable(word, CmdNr, CmdTable, TableNr, offset, i, base_address)
+                """
+                    #raise NameError('Unknown Cmd: ' + hex(word) + " " + hex(word >> 26) + ' at ' + hex(offset+i) + ' (' + hex(offset+i-base_address) + ")")
                 """
                 elif ((word >> 26) == 60) & (((word >> 1) & 0x3ff) == 4): # xsmaddasp
                     D = (word >> 21) & 0x1f
