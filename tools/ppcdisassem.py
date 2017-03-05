@@ -449,7 +449,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             if (simm & 0x8000) == 0:
                 output_sseq += "addic   " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
             else:
-                output_sseq += "subic   " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
+                output_sseq += "subic   " + getRegNames(D) + ", " + getRegNames(A) + ", " + AbsSignExtendedOffset16(simm) + "\n"
         elif item.cmd == "addic.":
             D = item.par[0]
             A = item.par[1]
@@ -457,7 +457,7 @@ def writeSSEQListToFile(filename_out, filename, base_address, filesize):
             if (simm & 0x8000) == 0:
                 output_sseq += "addic.  " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
             else:
-                output_sseq += "subic.  " + getRegNames(D) + ", " + getRegNames(A) + ", " + SignExtendedOffset16(simm) + "\n"
+                output_sseq += "subic.  " + getRegNames(D) + ", " + getRegNames(A) + ", " + AbsSignExtendedOffset16(simm) + "\n"
         elif item.cmd == "addi":
             d = item.par[0]
             a = item.par[1]
