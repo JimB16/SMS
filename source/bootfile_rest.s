@@ -1,12 +1,12 @@
 
-/* .incbin "./baserom/bootfile.dol", 0x2540, 0x3e78a0 - 0x2540 */
 
-/* .incbin "./baserom/Text_0x80005600.bin" */
-.incbin "./baserom/Data_0x80005540.bin"
-.incbin "./baserom/Data_0x800055a0.bin"
-.incbin "./baserom/Data_0x8036b2e0.bin"
-.incbin "./baserom/Data_0x8036b6a0.bin"
-.incbin "./baserom/Data_0x8036b6c0.bin"
-.incbin "./baserom/Data_0x803a39e0.bin"
-.incbin "./baserom/Data_0x80403960.bin"
-.incbin "./baserom/Data_0x80406280.bin"
+.include "./source/Data_0x80005540.s"
+.include "./source/Data_0x800055a0.s"
+
+.include "./source/Data_0x803730c0.s"
+.include "./source/Data_0x80373480.s"
+.include "./source/Data_0x803734a0.s"
+.include "./source/Data_0x803ab660.s"
+.include "./source/Data_0x8040c1c0.s"
+.include "./source/Data_0x8040eba0.s"
+
