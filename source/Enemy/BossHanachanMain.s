@@ -185,7 +185,7 @@ branch_0x800edb8c:
     stw     r3, 0x14(r4)
     mr      r3, r31
     bl      setAnmTimerWhenDead__13TBossHanachanFv
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     li      r4, 0x28e6
     lwz     r3, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -193,7 +193,7 @@ branch_0x800edb8c:
     stw     r0, 0x1b0(r31)
     lwz     r0, 0x8(r5)
     stw     r0, 0x1b4(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800edcc8
@@ -252,7 +252,7 @@ branch_0x800edc68:
     oris    r0, r0, 0x2
     stw     r0, 0xf0(r31)
     lwz     r0, 0x174(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     slwi    r0, r0, 2
     add     r5, r31, r0
     lwz     r5, 0x150(r5)
@@ -1004,7 +1004,7 @@ perform__13TBossHanachanFUlPQ26JDrama9TGraphics: # 0x800ee624
     lhz     r0, 0x0(r30)
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x800efda4
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x6010
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1017,7 +1017,7 @@ perform__13TBossHanachanFUlPQ26JDrama9TGraphics: # 0x800ee624
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800ee6e0:
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -1039,7 +1039,7 @@ branch_0x800ee71c:
     lwz     r0, 0xf0(r31)
     rlwinm. r0, r0, 0, 11, 11
     bne-    branch_0x800ee74c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1
     li      r5, 0x1
     lwz     r3, 0x9c(r3)
@@ -1057,7 +1057,7 @@ branch_0x800ee74c:
     lwz     r3, 0x1bc(r31)
     lfs     f1, 0x180(r31)
     lfs     f0, 0x20c(r3)
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x17c(r31)
     lfs     f3, 0x184(r31)
@@ -1067,7 +1067,7 @@ branch_0x800ee74c:
 branch_0x800ee78c:
     clrlwi. r0, r28, 31
     beq-    branch_0x800ef708
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -1144,7 +1144,7 @@ branch_0x800ee888:
     lwz     r4, 0x1b8(r31)
     cmpwi   r4, -0x1
     bne-    branch_0x800ee8bc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x800ee8bc
@@ -1165,7 +1165,7 @@ branch_0x800ee8bc:
     stw     r0, 0x1b8(r31)
     li      r4, 0x6
     li      r5, 0x1
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
 branch_0x800ee8f8:
@@ -1567,7 +1567,7 @@ branch_0x800eee64:
     lfs     f14, -0x59a8(rtoc)
 branch_0x800eeecc:
     addi    r0, r23, 0x150
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwzx    r25, r31, r0
     lfs     f0, 0x14(r25)
     addi    r4, r25, 0xc4
@@ -1728,12 +1728,12 @@ branch_0x800ef098:
     fneg    f27, f1
     fadds   f1, f1, f4
     fadds   f3, f3, f0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f27, f27, f4
     fadds   f30, f30, f0
     bl      checkGroundIgnoreWaterSurface__4TMapCFfffPPC12TBGCheckData
     fmr     f22, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmr     f1, f27
     addi    r4, sp, 0x43c
     fmr     f3, f30
@@ -2142,7 +2142,7 @@ branch_0x800ef654:
     bl      theNerve__22TNerveBossHanachanDeadFv
     cmplw   r29, r3
     bne-    branch_0x800ef6dc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x6010
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2158,7 +2158,7 @@ branch_0x800ef6bc:
     lwz     r0, 0xf0(r31)
     rlwinm. r0, r0, 0, 11, 11
     bne-    branch_0x800ef6dc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1
     li      r5, 0x1
     lwz     r3, 0x9c(r3)
@@ -2184,7 +2184,7 @@ branch_0x800ef708:
     li      r5, 0x1
     stb     r4, 0x14(r3)
     mr      r3, r5
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lbz     r0, 0x124(r6)
     cmplwi  r0, 0x1
     beq-    branch_0x800ef740
@@ -2435,7 +2435,7 @@ branch_0x800efa68:
     rlwinm  r0, r0, 0, 16, 14
     stw     r0, 0xf0(r31)
 branch_0x800efa98:
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -2528,7 +2528,7 @@ branch_0x800efb84:
     cmpwi   r25, 0x8
     addi    r24, r24, 0x4
     blt+    branch_0x800efb84
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -2858,7 +2858,7 @@ branch_0x800f000c:
     stfs    f0, 0x184(r31)
     lwz     r5, 0x17c(r31)
     lwz     r0, 0x180(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r5, 0x8c(sp)
     stw     r0, 0x90(sp)
     lwz     r0, 0x184(r31)
@@ -2924,7 +2924,7 @@ branch_0x800f0140:
     addi    r4, r31, 0x17c
     lfs     f0, 0xc0(r31)
     addi    r5, r31, 0x184
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f0
     lfs     f2, 0xbc(r31)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -3055,7 +3055,7 @@ throwMario___13TBossHanachanFP9THitActor: # 0x800f02fc
     mr      r31, r3
     addi    r3, sp, 0x68
     stw     r30, 0xc0(sp)
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lwz     r5, 0x0(r6)
     lwz     r0, 0x4(r6)
     stw     r5, 0x68(sp)
@@ -3275,10 +3275,10 @@ branch_0x800f0624:
     fmr     f31, f0
 branch_0x800f0630:
     lwz     r3, 0x170(r31)
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
     lwz     r3, 0x170(r31)
-    li      r4, 0x7
+    li      r4, MARIOMSG_THROW
     bl      SMS_SendMessageToMario__FP9THitActorUl
     addi    r3, sp, 0xa8
     fmr     f1, f31

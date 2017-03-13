@@ -1287,7 +1287,7 @@ branch_0x80235434:
     lwz     r5, 0x14(r31)
     cmplwi  r5, 0x0
     beq-    branch_0x80235504
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x34(sp)

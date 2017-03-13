@@ -203,7 +203,7 @@ branch_0x8017dcb0:
     bl      __ct__13J2DOrthoGraphFRC7JUTRect
     addi    r3, sp, 0xe8
     bl      setup2D__14J2DGrafContextFv
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     addi    r3, sp, 0x84
     li      r5, 0x0
     bl      __ct__8J2DPrintFP7JUTFonti
@@ -296,7 +296,7 @@ __ct__11TProgSelectFUcPCc: # 0x8017dd80
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x8017de3c
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     addi    r3, r29, 0x0
     subi    r5, r13, 0x7b28
     lwz     r4, 0x48(r4)
@@ -308,7 +308,7 @@ branch_0x8017de3c:
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x8017de68
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     addi    r3, r29, 0x0
     subi    r5, r13, 0x7b24
     lwz     r4, 0x48(r4)

@@ -181,7 +181,9 @@ branch_0x8033b7f0:
     slwi    r0, r24, 2
     lwzx    r0, r20, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8033b808:		# jumptable 8033B804 case 1
     clrlwi  r0, r18, 24
     add     r3, r25, r0
     lbz     r0, 0x0(r3)
@@ -227,8 +229,141 @@ branch_0x8033b89c:
     li      r24, 0x2
     b       branch_0x8033ba24
 
+branch_0x8033B8A4:		# jumptable 8033B804 case 2
+cmpwi	  r28, 0
+beq	  branch_0x8033B8B4
+cmpwi	  r28, 0x10
+bne	  branch_0x8033B8E4
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3362a4, 0x8033ba24 - 0x8033b8a4
+branch_0x8033B8B4:
+cmpwi	  r18, 0x30
+bne	  branch_0x8033B8E4
+addi	  r12, r29, 0
+mtlr	  r12
+addi	  r3, r30, 0
+li	  r24, 4
+li	  r4, 0
+li	  r5, 0
+addi	  r31, r31, 1
+blrl
+mr	  r18, r3
+b	  def_8033B804	# jumptable 8033B804 default case
+
+branch_0x8033B8E4:
+li	  r24, 8
+b	  def_8033B804	# jumptable 8033B804 default case
+
+branch_0x8033B8EC:		# jumptable 8033B804 case 4
+cmpwi	  r18, 0x58
+beq	  branch_0x8033B8FC
+cmpwi	  r18, 0x78
+bne	  branch_0x8033B928
+
+branch_0x8033B8FC:
+addi	  r12, r29, 0
+mtlr	  r12
+addi	  r3, r30, 0
+li	  r28, 0x10
+li	  r24, 8
+li	  r4, 0
+li	  r5, 0
+addi	  r31, r31, 1
+blrl
+mr	  r18, r3
+b	  def_8033B804	# jumptable 8033B804 default case
+
+branch_0x8033B928:
+cmpwi	  r28, 0
+bne	  branch_0x8033B934
+li	  r28, 8
+
+branch_0x8033B934:
+li	  r24, 0x10
+b	  def_8033B804	# jumptable 8033B804 default case
+
+branch_0x8033B93C:		# jumptable 8033B804 cases 8,16
+cmpwi	  r28, 0
+bne	  branch_0x8033B948
+li	  r28, 0xA
+
+branch_0x8033B948:
+cmplwi	  r26, 0
+bne	  branch_0x8033B958
+li	  r0, -1
+divwu	  r26, r0, r28
+
+branch_0x8033B958:
+clrlwi	  r0, r18, 24
+add	  r3, r25, r0
+lbz	  r3, 0(r3)
+rlwinm.	  r0, r3, 0,27,27
+beq	  branch_0x8033B994
+addi	  r18, r18, -0x30
+cmpw	  r18, r28
+blt	  branch_0x8033B9D4
+cmpwi	  r24, 0x10
+bne	  branch_0x8033B988
+li	  r24, 0x20
+b	  branch_0x8033B98C
+
+branch_0x8033B988:
+li	  r24, 0x40
+
+branch_0x8033B98C:
+addi	  r18, r18, 0x30
+b	  def_8033B804	# jumptable 8033B804 default case
+
+branch_0x8033B994:
+rlwinm.	  r0, r3, 0,24,25
+beq	  branch_0x8033B9B0
+mr	  r3, r18
+bl	  toupper
+addi	  r0, r3, -0x37
+cmpw	  r0, r28
+blt	  branch_0x8033B9C8
+
+branch_0x8033B9B0:
+cmpwi	  r24, 0x10
+bne	  branch_0x8033B9C0
+li	  r24, 0x20
+b	  def_8033B804	# jumptable 8033B804 default case
+
+branch_0x8033B9C0:
+li	  r24, 0x40
+b	  def_8033B804	# jumptable 8033B804 default case
+
+branch_0x8033B9C8:
+mr	  r3, r18
+bl	  toupper
+addi	  r18, r3, -0x37
+
+branch_0x8033B9D4:
+cmplw	  r27, r26
+ble	  branch_0x8033B9E4
+li	  r0, 1
+stw	  r0, 0(r23)
+
+branch_0x8033B9E4:
+mullw	  r27, r27, r28
+subfic	  r0, r27, -1
+cmplw	  r18, r0
+ble	  branch_0x8033B9FC
+li	  r0, 1
+stw	  r0, 0(r23)
+
+branch_0x8033B9FC:
+addi	  r12, r29, 0
+mtlr	  r12
+addi	  r3, r30, 0
+add	  r27, r27, r18
+li	  r24, 0x10
+li	  r4, 0
+li	  r5, 0
+addi	  r31, r31, 1
+blrl
+mr	  r18, r3
+
+def_8033B804:		# jumptable 8033B804 default case
 branch_0x8033ba24:
     cmpw    r31, r22
     bgt-    branch_0x8033ba3c

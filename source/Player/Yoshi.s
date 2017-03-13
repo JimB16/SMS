@@ -43,7 +43,7 @@ branch_0x8026e01c:
     bne-    branch_0x8026e028
     li      r5, 0x0
 branch_0x8026e028:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x8026e060
@@ -278,7 +278,9 @@ calcAnim__6TYoshiFv: # 0x8026e33c
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8026E37C:		# jumptable 8026E378 cases 2,3,6,7
     lha     r4, 0x70(r31)
     addi    r6, sp, 0x1c4
     lfs     f1, 0x20(r31)
@@ -289,8 +291,47 @@ calcAnim__6TYoshiFv: # 0x8026e33c
     bl      J3DGetTranslateRotateMtx__FsssfffPA4_f
     b       branch_0x8026e428
 
+branch_0x8026E3A0:		# jumptable 8026E378 case 8
+mr	  r3, r31
+bl	  thinkAnimation__6TYoshiFv # TYoshi::thinkAnimation((void))
+lwz	  r3, 0x10(r31)
+bl	  getTakenMtx__6TMarioFv # TMario::getTakenMtx((void))
+addi	  r4, r1, 0x210+var_4C
+bl	  PSMTXCopy
+b	  def_8026E378	# jumptable 8026E378 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x268da0, 0x8026e428 - 0x8026e3a0
+branch_0x8026E3BC:		# jumptable 8026E378 case 1
+lha	  r3, 2(r31)
+lis	  r0, 0x4330
+lfd	  f2, -0xB58(r2)
+addi	  r6, r1, 0x210+var_4C
+xoris	  r3, r3, 0x8000
+stw	  r3, 0x210+var_18+4(r1)
+li	  r3, 0
+lfs	  f4, -0xB5C(r2)
+li	  r5, 0
+stw	  r0, 0x210+var_18(r1)
+lfs	  f0, 0x24(r31)
+lfd	  f1, 0x210+var_18(r1)
+lha	  r4, 0x70(r31)
+fsubs	  f2, f1, f2
+lfs	  f1, 0x20(r31)
+lfs	  f3, 0x28(r31)
+fmadds	  f2, f4, f2, f0
+bl	  J3DGetTranslateRotateMtx__FsssfffPA4_f # J3DGetTranslateRotateMtx(short,short,short,float,float,float,float *[4])
+b	  def_8026E378	# jumptable 8026E378 default case
+
+branch_0x8026E408:		# jumptable 8026E378 case 5
+lha	  r4, 0x70(r31)
+addi	  r6, r1, 0x210+var_4C
+lfs	  f1, 0x20(r31)
+li	  r3, 0
+lfs	  f2, 0x24(r31)
+lfs	  f3, 0x28(r31)
+li	  r5, 0
+bl	  J3DGetTranslateRotateMtx__FsssfffPA4_f # J3DGetTranslateRotateMtx(short,short,short,float,float,float,float *[4])
+
+def_8026E378:		# jumptable 8026E378 default case
 branch_0x8026e428:
     lbz     r0, 0x0(r31)
     cmplwi  r0, 0x0
@@ -531,6 +572,31 @@ branch_0x8026e69c:
 
 .globl movement__6TYoshiFv
 movement__6TYoshiFv: # 0x8026e778
+
+.set var_118, -0x118
+.set var_114, -0x114
+.set var_110, -0x110
+.set var_B8, -0xB8
+.set var_AC, -0xAC
+.set var_9C, -0x9C
+.set var_98, -0x98
+.set var_94, -0x94
+.set var_90, -0x90
+.set var_8C, -0x8C
+.set var_88, -0x88
+.set var_48, -0x48
+.set var_44, -0x44
+.set var_40, -0x40
+.set var_38, -0x38
+.set var_30, -0x30
+.set var_28, -0x28
+.set var_1C, -0x1C
+.set var_18, -0x18
+.set var_14, -0x14
+.set var_10, -0x10
+.set var_8, -8
+.set arg_4,  4
+
     mflr    r0
     lis     r4, 0x803a
     stw     r0, 0x4(sp)
@@ -542,7 +608,7 @@ movement__6TYoshiFv: # 0x8026e778
     stw     r30, 0x228(sp)
     addi    r30, r3, 0x0
     stw     r29, 0x224(sp)
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lbz     r3, 0x124(r5)
     cmplwi  r3, 0x3
     beq-    branch_0x8026e814
@@ -603,7 +669,9 @@ branch_0x8026e85c:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8026E880:		# jumptable 8026E87C case 2
     lwz     r3, 0x34(r30)
     li      r4, 0x0
     li      r5, 0x0
@@ -637,15 +705,563 @@ branch_0x8026e8d8:
     lfs     f1, -0xb60(rtoc)
     bl      initAnmSound__9MAnmSoundFPvUlf
 branch_0x8026e8fc:
-    lwz     r3, -0x6044(r13)
-    li      r4, 0x7919
+    lwz     r3, gpMSound(r13)
+    li      r4, SOUND_7919
     li      r5, 0x1
     li      r6, 0x1
     bl      startMarioVoice__6MSoundFUlsUc
     b       branch_0x8026f020
 
+branch_0x8026E914:		# jumptable 8026E87C case 6
+lwz	  r3, 0x34(r30)
+li	  r4, 0
+li	  r5, 0
+bl	  curAnmEndsNext__6MActorFiPc #	MActor::curAnmEndsNext((int,char *))
+cmpwi	  r3, 0
+beq	  branch_0x8026E938
+lwz	  r3, 0x34(r30)
+li	  r4, 0x17
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x269314, 0x8026f020 - 0x8026e914
+branch_0x8026E938:
+lha	  r3, 0x70(r30)
+lis	  r0, 0x4330
+lfd	  f1, -0xB58(r2)
+addi	  r4, r30, 0x20
+xoris	  r3, r3, 0x8000
+stw	  r3, 0x240+var_28+4(r1)
+addi	  r5, r1, 0x240+var_40
+lfs	  f2, -0xB50(r2)
+stw	  r0, 0x240+var_28(r1)
+lfd	  f0, 0x240+var_28(r1)
+fsubs	  f0, f0, f1
+fmuls	  f0, f2, f0
+stfs	  f0, 0x240+var_40(r1)
+lwz	  r3, 0x94(r30)
+bl	  SMS_RideMoveByGroundActor__FP11TRidingInfoPQ29JGeometry8TVec3_f_Pf
+lfs	  f1, -0xB4C(r2)
+li	  r29, 0
+lfs	  f0, 0x240+var_40(r1)
+addi	  r4, r1, 0x240+var_44
+fmuls	  f0, f1, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x240+var_30(r1)
+lwz	  r0, 0x240+var_30+4(r1)
+sth	  r0, 0x70(r30)
+stw	  r29, 0x240+var_44(r1)
+lfs	  f1, -0xB48(r2)
+lfs	  f0, 0x24(r30)
+lwz	  r3, gpMap(r13)
+fadds	  f2, f1, f0
+lfs	  f1, 0x20(r30)
+lfs	  f3, 0x28(r30)
+bl	  checkGround__4TMapCFfffPPC12TBGCheckData # TMap::checkGround(const(float,float,float,TBGCheckData const **))
+lfs	  f31, -0xB44(r2)
+fmr	  f30, f1
+
+branch_0x8026E9C0:
+lwz	  r3, 0x240+var_44(r1)
+bl	  isMarioThrough__12TBGCheckDataCFv # TBGCheckData::isMarioThrough(const(void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8026EA08
+lwz	  r3, 0x240+var_44(r1)
+bl	  isWaterSurface__12TBGCheckDataCFv # TBGCheckData::isWaterSurface(const(void))
+clrlwi.	  r0, r3, 24
+bne	  branch_0x8026EA08
+fsubs	  f2, f30, f31
+lwz	  r3, gpMap(r13)
+lfs	  f1, 0x20(r30)
+addi	  r4, r1, 0x240+var_44
+lfs	  f3, 0x28(r30)
+bl	  checkGround__4TMapCFfffPPC12TBGCheckData # TMap::checkGround(const(float,float,float,TBGCheckData const **))
+addi	  r29, r29, 1
+fmr	  f30, f1
+cmpwi	  r29, 5
+blt	  branch_0x8026E9C0
+
+branch_0x8026EA08:
+lwz	  r3, 0x34(r30)
+addi	  r5, r30, 0x20
+lwz	  r4, 0x240+var_44(r1)
+bl	  setLightData__6MActorFPC12TBGCheckDataRCQ29JGeometry8TVec3_f_
+lwz	  r3, 0x10(r30)
+lfs	  f1, 0x2C(r30)
+lfs	  f0, 0xB18(r3)
+fsubs	  f0, f1, f0
+stfs	  f0, 0x2C(r30)
+lfs	  f1, 0x24(r30)
+lfs	  f0, 0x2C(r30)
+fadds	  f0, f1, f0
+stfs	  f0, 0x24(r30)
+lfs	  f0, 0x24(r30)
+fcmpo	  cr0, f30, f0
+ble	  branch_0x8026EBB0
+lwz	  r3, 0x240+var_44(r1)
+lhz	  r0, 4(r3)
+rlwinm.	  r0, r0, 0,27,27
+beq	  branch_0x8026EA60
+li	  r0, 1
+b	  branch_0x8026EA64
+
+branch_0x8026EA60:
+li	  r0, 0
+
+branch_0x8026EA64:
+clrlwi.	  r0, r0, 24
+bne	  branch_0x8026EAC8
+lhz	  r3, 0(r3)
+cmplwi	  r3, 0x100
+beq	  branch_0x8026EA98
+cmplwi	  r3, 0x101
+beq	  branch_0x8026EA98
+addi	  r0, r3, -0x102
+clrlwi	  r0, r0, 16
+cmplwi	  r0, 3
+ble	  branch_0x8026EA98
+cmplwi	  r3, 0x4104
+bne	  branch_0x8026EAA0
+
+branch_0x8026EA98:
+li	  r0, 1
+b	  branch_0x8026EAA4
+
+branch_0x8026EAA0:
+li	  r0, 0
+
+branch_0x8026EAA4:
+clrlwi.	  r0, r0, 24
+bne	  branch_0x8026EAC8
+cmplwi	  r3, 0x800
+bne	  branch_0x8026EABC
+li	  r0, 1
+b	  branch_0x8026EAC0
+
+branch_0x8026EABC:
+li	  r0, 0
+
+branch_0x8026EAC0:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8026EBA4
+
+branch_0x8026EAC8:
+lbz	  r3, 0(r30)
+cmplwi	  r3, 0
+bne	  branch_0x8026EADC
+li	  r0, 0
+b	  branch_0x8026EAE0
+
+branch_0x8026EADC:
+li	  r0, 1
+
+branch_0x8026EAE0:
+cmpwi	  r0, 0
+beq	  def_8026E87C	# jumptable 8026E87C default case
+cmplwi	  r3, 8
+bne	  branch_0x8026EAFC
+lwz	  r3, 0x10(r30)
+li	  r4, 1
+bl	  getOffYoshi__6TMarioFb # TMario::getOffYoshi((bool))
+
+branch_0x8026EAFC:
+lwz	  r3, 0x10(r30)
+lwz	  r0, 0x118(r3)
+rlwinm.	  r0, r0, 0,14,15
+beq	  branch_0x8026EB14
+li	  r0, 1
+b	  branch_0x8026EB18
+
+branch_0x8026EB14:
+li	  r0, 0
+
+branch_0x8026EB18:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8026EB88
+li	  r0, 3
+stb	  r0, 0(r30)
+li	  r4, 0
+lwz	  r3, 0x34(r30)
+bl	  getCurAnmIdx__6MActorCFi # MActor::getCurAnmIdx(const(int))
+cmpwi	  r3, 0x19
+beq	  branch_0x8026EB90
+lwz	  r29, 0x34(r30)
+li	  r4, 0x19
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026EB60
+addi	  r3, r29, 0
+li	  r4, 0x19
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026EB60:
+addi	  r3, r30, 0
+li	  r4, 0x19
+bl	  thinkBtp__6TYoshiFi #	TYoshi::thinkBtp((int))
+lwz	  r4, 0x11C(r30)
+li	  r5, 1
+lwz	  r3, 0x118(r30)
+lwz	  r4, 0x64(r4)
+lfs	  f1, -0xB60(r2)
+bl	  initAnmSound__9MAnmSoundFPvUlf # MAnmSound::initAnmSound((void *,ulong,float))
+b	  branch_0x8026EB90
+
+branch_0x8026EB88:
+li	  r0, 4
+stb	  r0, 0(r30)
+
+branch_0x8026EB90:
+li	  r0, 0
+stb	  r0, 0xD0(r30)
+li	  r0, 0x1E
+sth	  r0, 2(r30)
+b	  def_8026E87C	# jumptable 8026E87C default case
+
+branch_0x8026EBA4:
+stfs	  f30, 0x24(r30)
+lfs	  f0, -0xB60(r2)
+stfs	  f0, 0x2C(r30)
+
+branch_0x8026EBB0:
+mr	  r3, r30
+bl	  doSearch__6TYoshiFv #	TYoshi::doSearch((void))
+lwz	  r0, 0xC(r30)
+lwz	  r3, 0x10(r30)
+cmpwi	  r0, 0
+bgt	  def_8026E87C	# jumptable 8026E87C default case
+lbz	  r4, 0(r30)
+cmplwi	  r4, 0
+bne	  branch_0x8026EBDC
+li	  r0, 0
+b	  branch_0x8026EBE0
+
+branch_0x8026EBDC:
+li	  r0, 1
+
+branch_0x8026EBE0:
+cmpwi	  r0, 0
+beq	  def_8026E87C	# jumptable 8026E87C default case
+cmplwi	  r4, 8
+bne	  branch_0x8026EBF8
+li	  r4, 1
+bl	  getOffYoshi__6TMarioFb # TMario::getOffYoshi((bool))
+
+branch_0x8026EBF8:
+lwz	  r3, 0x10(r30)
+lwz	  r0, 0x118(r3)
+rlwinm.	  r0, r0, 0,14,15
+beq	  branch_0x8026EC10
+li	  r0, 1
+b	  branch_0x8026EC14
+
+branch_0x8026EC10:
+li	  r0, 0
+
+branch_0x8026EC14:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8026EC84
+li	  r0, 3
+stb	  r0, 0(r30)
+li	  r4, 0
+lwz	  r3, 0x34(r30)
+bl	  getCurAnmIdx__6MActorCFi # MActor::getCurAnmIdx(const(int))
+cmpwi	  r3, 0x19
+beq	  branch_0x8026EC8C
+lwz	  r29, 0x34(r30)
+li	  r4, 0x19
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026EC5C
+addi	  r3, r29, 0
+li	  r4, 0x19
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026EC5C:
+addi	  r3, r30, 0
+li	  r4, 0x19
+bl	  thinkBtp__6TYoshiFi #	TYoshi::thinkBtp((int))
+lwz	  r4, 0x11C(r30)
+li	  r5, 1
+lwz	  r3, 0x118(r30)
+lwz	  r4, 0x64(r4)
+lfs	  f1, -0xB60(r2)
+bl	  initAnmSound__9MAnmSoundFPvUlf # MAnmSound::initAnmSound((void *,ulong,float))
+b	  branch_0x8026EC8C
+
+branch_0x8026EC84:
+li	  r0, 4
+stb	  r0, 0(r30)
+
+branch_0x8026EC8C:
+li	  r0, 0
+stb	  r0, 0xD0(r30)
+li	  r0, 0x1E
+sth	  r0, 2(r30)
+b	  def_8026E87C	# jumptable 8026E87C default case
+
+branch_0x8026ECA0:		# jumptable 8026E87C case 7
+lwz	  r4, 0x10(r30)
+lis	  r3, 0x4330
+lha	  r5, 0x70(r30)
+lha	  r4, 0x96(r4)
+xoris	  r0, r5, 0x8000
+lfd	  f2, -0xB58(r2)
+subf	  r4, r5, r4
+stw	  r0, 0x240+var_28+4(r1)
+xoris	  r0, r4, 0x8000
+lfs	  f3, 0xE4(r30)
+stw	  r0, 0x240+var_30+4(r1)
+stw	  r3, 0x240+var_30(r1)
+stw	  r3, 0x240+var_28(r1)
+lfd	  f1, 0x240+var_30(r1)
+lfd	  f0, 0x240+var_28(r1)
+fsubs	  f1, f1, f2
+fsubs	  f0, f0, f2
+fmadds	  f0, f3, f1, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x240+var_38(r1)
+lwz	  r0, 0x240+var_38+4(r1)
+sth	  r0, 0x70(r30)
+b	  def_8026E87C	# jumptable 8026E87C default case
+
+branch_0x8026ECFC:		# jumptable 8026E87C case 8
+lwz	  r4, 0x10(r30)
+lwz	  r3, 0x10(r4)
+lwz	  r0, 0x14(r4)
+stw	  r3, 0x20(r30)
+stw	  r0, 0x24(r30)
+lwz	  r0, 0x18(r4)
+stw	  r0, 0x28(r30)
+lwz	  r3, 0x10(r30)
+lha	  r0, 0x96(r3)
+sth	  r0, 0x70(r30)
+lwz	  r3, 0x10(r30)
+lwz	  r3, 0x4FC(r3)
+lwz	  r0, 0xD4(r3)
+rlwinm.	  r0, r0, 0,23,23
+beq	  branch_0x8026EE0C
+addi	  r3, r30, 0
+addi	  r4, r1, 0x240+var_B8
+addi	  r5, r1, 0x240+var_AC
+bl	  getEmitPosDir__6TYoshiCFPQ29JGeometry8TVec3_f_PQ29JGeometry8TVec3_f_
+lwz	  r3, 0x10(r30)
+addi	  r6, r1, 0x240+var_9C
+lfsu	  f0, 0xA4(r3)
+addi	  r4, r1, 0x240+var_B8
+addi	  r5, r1, 0x240+var_AC
+stfs	  f0, 0x240+var_9C(r1)
+lfs	  f0, 4(r3)
+stfs	  f0, 0x240+var_98(r1)
+lfs	  f0, 8(r3)
+stfs	  f0, 0x240+var_94(r1)
+lwz	  r3, 0x38(r30)
+bl	  emit__12TYoshiTongueFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
+li	  r29, 0
+
+branch_0x8026ED7C:
+lwz	  r3, 0x38(r30)
+lwz	  r12, 0(r3)
+lwz	  r12, 0xB8(r12)
+mtlr	  r12
+blrl
+lwz	  r6, 0x38(r30)
+addi	  r3, r1, 0x240+var_118
+addi	  r4, r1, 0x240+var_B8
+lwz	  r5, 0xB8(r6)
+lwz	  r0, 0xBC(r6)
+stw	  r5, 0x240+var_118(r1)
+stw	  r0, 0x240+var_114(r1)
+lwz	  r0, 0xC0(r6)
+stw	  r0, 0x240+var_110(r1)
+bl	  sub__Q29JGeometry8TVec3_f_FRCQ29JGeometry8TVec3_f_
+lwz	  r0, 0x240+var_118(r1)
+lwz	  r3, 0x240+var_114(r1)
+stw	  r0, 0x240+var_90(r1)
+lwz	  r0, 0x240+var_110(r1)
+stw	  r3, 0x240+var_8C(r1)
+stw	  r0, 0x240+var_88(r1)
+lfs	  f1, 0x240+var_90(r1)
+lfs	  f0, 0x240+var_8C(r1)
+fmuls	  f1, f1, f1
+lfs	  f2, 0x240+var_88(r1)
+fmuls	  f0, f0, f0
+fmuls	  f2, f2, f2
+fadds	  f0, f1, f0
+fadds	  f1, f2, f0
+bl	  sqrt__Q29JGeometry8TUtil_f_Ff
+lfs	  f0, 0x90(r30)
+fcmpo	  cr0, f1, f0
+bgt	  branch_0x8026EE0C
+addi	  r29, r29, 1
+cmpwi	  r29, 0xA
+blt	  branch_0x8026ED7C
+
+branch_0x8026EE0C:
+lwz	  r0, 0xC(r30)
+cmpwi	  r0, 0
+bgt	  def_8026E87C	# jumptable 8026E87C default case
+lbz	  r3, 0(r30)
+cmplwi	  r3, 0
+bne	  branch_0x8026EE2C
+li	  r0, 0
+b	  branch_0x8026EE30
+
+branch_0x8026EE2C:
+li	  r0, 1
+
+branch_0x8026EE30:
+cmpwi	  r0, 0
+beq	  def_8026E87C	# jumptable 8026E87C default case
+cmplwi	  r3, 8
+bne	  branch_0x8026EE4C
+lwz	  r3, 0x10(r30)
+li	  r4, 1
+bl	  getOffYoshi__6TMarioFb # TMario::getOffYoshi((bool))
+
+branch_0x8026EE4C:
+lwz	  r3, 0x10(r30)
+lwz	  r0, 0x118(r3)
+rlwinm.	  r0, r0, 0,14,15
+beq	  branch_0x8026EE64
+li	  r0, 1
+b	  branch_0x8026EE68
+
+branch_0x8026EE64:
+li	  r0, 0
+
+branch_0x8026EE68:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8026EED8
+li	  r0, 3
+stb	  r0, 0(r30)
+li	  r4, 0
+lwz	  r3, 0x34(r30)
+bl	  getCurAnmIdx__6MActorCFi # MActor::getCurAnmIdx(const(int))
+cmpwi	  r3, 0x19
+beq	  branch_0x8026EEE0
+lwz	  r29, 0x34(r30)
+li	  r4, 0x19
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026EEB0
+addi	  r3, r29, 0
+li	  r4, 0x19
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026EEB0:
+addi	  r3, r30, 0
+li	  r4, 0x19
+bl	  thinkBtp__6TYoshiFi #	TYoshi::thinkBtp((int))
+lwz	  r4, 0x11C(r30)
+li	  r5, 1
+lwz	  r3, 0x118(r30)
+lwz	  r4, 0x64(r4)
+lfs	  f1, -0xB60(r2)
+bl	  initAnmSound__9MAnmSoundFPvUlf # MAnmSound::initAnmSound((void *,ulong,float))
+b	  branch_0x8026EEE0
+
+branch_0x8026EED8:
+li	  r0, 4
+stb	  r0, 0(r30)
+
+branch_0x8026EEE0:
+li	  r0, 0
+stb	  r0, 0xD0(r30)
+li	  r0, 0x1E
+sth	  r0, 2(r30)
+b	  def_8026E87C	# jumptable 8026E87C default case
+
+branch_0x8026EEF4:		# jumptable 8026E87C case 1
+lha	  r3, 2(r30)
+addi	  r0, r3, -1
+sth	  r0, 2(r30)
+lha	  r0, 2(r30)
+cmpwi	  r0, 0
+bgt	  def_8026E87C	# jumptable 8026E87C default case
+li	  r0, 6
+stb	  r0, 0(r30)
+li	  r4, 0
+lwz	  r3, 0x34(r30)
+bl	  getCurAnmIdx__6MActorCFi # MActor::getCurAnmIdx(const(int))
+cmpwi	  r3, 0x17
+beq	  branch_0x8026EF70
+lwz	  r29, 0x34(r30)
+li	  r4, 0x17
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026EF4C
+addi	  r3, r29, 0
+li	  r4, 0x17
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026EF4C:
+addi	  r3, r30, 0
+li	  r4, 0x17
+bl	  thinkBtp__6TYoshiFi #	TYoshi::thinkBtp((int))
+lwz	  r4, 0x11C(r30)
+li	  r5, 1
+lwz	  r3, 0x118(r30)
+lwz	  r4, 0x5C(r4)
+lfs	  f1, -0xB60(r2)
+bl	  initAnmSound__9MAnmSoundFPvUlf # MAnmSound::initAnmSound((void *,ulong,float))
+
+branch_0x8026EF70:
+lha	  r0, 4(r30)
+sth	  r0, 2(r30)
+b	  def_8026E87C	# jumptable 8026E87C default case
+
+branch_0x8026EF7C:		# jumptable 8026E87C case 3
+lwz	  r3, 0x34(r30)
+li	  r4, 0
+bl	  getFrameCtrl__6MActorFi # MActor::getFrameCtrl((int))
+lfs	  f1, -0xB40(r2)
+bl	  checkPass__12J3DFrameCtrlFf #	J3DFrameCtrl::checkPass((float))
+cmpwi	  r3, 0
+beq	  branch_0x8026EFB0
+lwz	  r3, gpMarioParticleManager(r13)
+addi	  r7, r30, 0
+addi	  r5, r30, 0x74
+li	  r4, 0x3F
+li	  r6, 0
+bl	  emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
+
+branch_0x8026EFB0:
+lwz	  r3, 0x34(r30)
+li	  r4, 0
+li	  r5, 0
+bl	  curAnmEndsNext__6MActorFiPc #	MActor::curAnmEndsNext((int,char *))
+cmpwi	  r3, 0
+beq	  def_8026E87C	# jumptable 8026E87C default case
+li	  r0, 5
+stb	  r0, 0(r30)
+li	  r0, 0x1E
+sth	  r0, 2(r30)
+b	  def_8026E87C	# jumptable 8026E87C default case
+
+branch_0x8026EFDC:		# jumptable 8026E87C case 4
+lwz	  r3, gpMarioParticleManager(r13)
+addi	  r7, r30, 0
+addi	  r5, r30, 0x74
+li	  r4, 0x3F
+li	  r6, 0
+bl	  emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
+li	  r0, 5
+stb	  r0, 0(r30)
+li	  r0, 0x1E
+sth	  r0, 2(r30)
+b	  def_8026E87C	# jumptable 8026E87C default case
+
+branch_0x8026F008:		# jumptable 8026E87C case 5
+li	  r0, 0
+stb	  r0, 0(r30)
+lwz	  r3, 0xF0(r30)
+cmplwi	  r3, 0
+beq	  def_8026E87C	# jumptable 8026E87C default case
+bl	  startFruit__9TEggYoshiFv # TEggYoshi::startFruit((void))
+
+def_8026E87C:		# jumptable 8026E87C default case
 branch_0x8026f020:
     lbz     r0, 0x0(r30)
     cmplwi  r0, 0x0
@@ -710,7 +1326,7 @@ branch_0x8026f038:
     lfs     f1, -0xb48(rtoc)
     addi    r4, sp, 0x1f8
     lfs     f0, 0x24(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x20(r30)
     lfs     f3, 0x28(r30)
@@ -728,7 +1344,7 @@ branch_0x8026f130:
     clrlwi. r0, r3, 24
     bne-    branch_0x8026f178
     fsubs   f2, f30, f31
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x20(r30)
     addi    r4, sp, 0x1f8
     lfs     f3, 0x28(r30)
@@ -959,7 +1575,7 @@ branch_0x8026f43c:
     cmpwi   r3, 0x0
     beq-    branch_0x8026f458
     lbz     r0, 0xd0(r30)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     stb     r0, 0x5d5f(r3)
 branch_0x8026f458:
     lwz     r3, 0x34(r30)
@@ -1026,7 +1642,7 @@ branch_0x8026f518:
     li      r4, 0x119
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1041,7 +1657,7 @@ branch_0x8026f518:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x8026f59c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x7926
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1139,7 +1755,7 @@ branch_0x8026f684:
     li      r4, 0x3d
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -1153,11 +1769,11 @@ branch_0x8026f684:
     li      r4, 0x3e
     li      r6, 0x0
     stw     r0, 0xc(r29)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r5, 0x38(r29)
     li      r4, 0x1947
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r31, r5, 0xb8
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2036,7 +2652,7 @@ branch_0x802702ac:
     lfs     f1, -0xb60(rtoc)
     bl      initAnmSound__9MAnmSoundFPvUlf
 branch_0x802702d0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x7918
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2082,7 +2698,7 @@ branch_0x80270350:
     lfs     f1, -0xb60(rtoc)
     bl      initAnmSound__9MAnmSoundFPvUlf
 branch_0x80270374:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x7924
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2098,7 +2714,7 @@ branch_0x802703a4:
     lwz     r3, 0x94(r30)
     addi    r4, r30, 0x20
     bl      SMS_RideMoveCalcLocalPos__FP11TRidingInfoRCQ29JGeometry8TVec3_f_
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     li      r0, 0x1
     li      r3, 0x0
     stb     r0, 0x88(r4)
@@ -2152,9 +2768,9 @@ branch_0x80270440:
 branch_0x80270464:
     lbz     r0, 0xd0(r30)
     li      r4, 0x7921
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     stb     r0, 0x5d5f(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x802704a0
@@ -2166,12 +2782,12 @@ branch_0x80270464:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x802704a0:
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     li      r0, 0x1
     li      r3, 0x1
     stb     r0, 0x88(r4)
     bl      setStageBgmYoshiPercussion__5MSBgmFb
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     mr      r4, r30
     bl      fireRideYoshi__12TMarDirectorFP6TYoshi
     lwz     r0, 0x3c(sp)
@@ -3148,7 +3764,7 @@ branch_0x8027124c:
     bl      __nw__FUl
     mr.     r28, r3
     beq-    branch_0x80271284
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r28
     bl      __ct__9MAnmSoundFP6MSound
     lis     r3, 0x803b
@@ -3165,7 +3781,7 @@ branch_0x80271284:
     bl      __nw__FUl
     mr.     r28, r3
     beq-    branch_0x802712c4
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r28
     bl      __ct__9MAnmSoundFP6MSound
     lis     r3, 0x803b

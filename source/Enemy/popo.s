@@ -96,7 +96,7 @@ execute__14TNervePopoWaitCFP24TSpineBase_10TLiveActor_: # 0x800e5ccc
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x5ba0(rtoc)
     stw     r3, 0x20(sp)
     cmplwi  r3, 0x0
@@ -229,15 +229,15 @@ branch_0x800e5e98:
     stfs    f0, 0x1c0(r31)
     stfs    f1, 0x1c4(r31)
     stfs    f2, 0x1c8(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x1c0
     li      r4, 0xa2
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x297f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -602,7 +602,7 @@ execute__16TNervePopoAttackCFP24TSpineBase_10TLiveActor_: # 0x800e63b8
     lwz     r31, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800e6458
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x5ba0(rtoc)
     stw     r3, 0x44(sp)
     cmplwi  r3, 0x0
@@ -655,7 +655,7 @@ branch_0x800e6470:
     b       branch_0x800e653c
 
 branch_0x800e6490:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x800e64a8
@@ -676,7 +676,7 @@ branch_0x800e64bc:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r4)
     lfs     f2, 0x130(r3)
@@ -1006,7 +1006,7 @@ branch_0x800e68e4:
     lfs     f0, -0x5b9c(rtoc)
     stfs    f0, 0x1b8(r31)
     stb     r0, 0x1b4(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800e6964
@@ -1109,7 +1109,7 @@ branch_0x800e6a88:
     stw     r0, 0x74(r4)
     lwz     r0, 0x84(sp)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x68(r6)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
     lwz     r0, 0x94(sp)
@@ -1219,10 +1219,10 @@ branch_0x800e6c20:
     stw     r0, 0x74(r4)
     lwz     r0, 0x4c(sp)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x64(r5)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x20ce
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1348,7 +1348,7 @@ isFindMario__5TPopoFf: # 0x800e6de4
     lwz     r0, 0x20(r3)
     cmpwi   r0, 0x64
     ble-    branch_0x800e6e98
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x800e6e28
@@ -1365,7 +1365,7 @@ branch_0x800e6e2c:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r4, sp, 0x40
     lfs     f2, 0x8(r5)
     lfs     f1, 0x4(r5)
@@ -1568,7 +1568,7 @@ branch_0x800e70f0:
     lfs     f1, 0x14(r29)
     addi    r4, r29, 0xc4
     lfs     f0, 0xc0(r29)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r29)
     lfs     f3, 0x18(r29)
@@ -1654,7 +1654,7 @@ branch_0x800e721c:
     fmuls   f1, f1, f0
     lfs     f3, 0x14(r29)
     lfs     f0, 0x10(r29)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stfs    f0, 0x94(sp)
     fmuls   f0, f2, f1
     stfs    f3, 0x98(sp)
@@ -1822,7 +1822,7 @@ branch_0x800e7458:
     rlwinm. r0, r3, 0, 27, 27
     beq-    branch_0x800e7480
 branch_0x800e7468:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      isInArea__4TMapCFff
@@ -2217,7 +2217,7 @@ branch_0x800e7930:
     stfs    f0, 0x21c(r31)
     lfs     f0, 0xd0(sp)
     stfs    f0, 0x22c(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x800e7a58
@@ -2392,7 +2392,7 @@ branch_0x800e7c68:
     stfs    f0, 0x80(sp)
     stfs    f0, 0x84(sp)
     stfs    f0, 0x88(sp)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f1, 0x10(r29)
     lfs     f0, 0x0(r5)
     lfs     f3, 0x14(r29)
@@ -2798,10 +2798,10 @@ behaveToFindMario__5TPopoFv: # 0x800e8250
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     mr      r31, r3
-    lwz     r4, -0x6094(r13)
+    lwz     r4, MarioFlags(r13)
     lwz     r3, 0x70(r3)
     lwz     r0, 0x0(r4)
-    rlwinm. r0, r0, 0, 16, 16
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x800e8280
     li      r0, 0x1
     b       branch_0x800e8284
@@ -2818,11 +2818,11 @@ branch_0x800e8284:
     lbz     r0, 0x1c84(r3)
     cmpwi   r0, 0x0
     bne-    branch_0x800e83f0
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     bne-    branch_0x800e83f0
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x5ba0(rtoc)
     stw     r3, 0x28(sp)
     cmplwi  r3, 0x0
@@ -3155,7 +3155,7 @@ branch_0x800e8744:
     addi    r3, sp, 0x78
     lwz     r0, 0xb0(r30)
     mr      r4, r3
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     stw     r5, 0x84(sp)
     lfs     f0, -0x5ba0(rtoc)
     stw     r0, 0x88(sp)
@@ -3253,7 +3253,7 @@ checkTrigger__5TPopoFv: # 0x800e8898
     addi    r30, r3, 0x0
     stw     r29, 0xb4(sp)
     stb     r0, 0x1bc(r3)
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     bne-    branch_0x800e88e4
@@ -3272,9 +3272,9 @@ branch_0x800e88e4:
 
 branch_0x800e8900:
     addi    r3, r30, 0x0
-    li      r4, 0x5
+    li      r4, MARIOMSG_ROCKET
     bl      SMS_SendMessageToMario__FP9THitActorUl
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r4, 0x194(r30)
     lwz     r3, 0x4fc(r3)
     lfs     f31, 0x404(r4)
@@ -3290,7 +3290,7 @@ branch_0x800e8900:
     li      r0, 0x1
     stb     r0, 0x1bc(r30)
     li      r4, 0x20c2
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f30, 0x198(r30)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3350,7 +3350,7 @@ branch_0x800e89fc:
     bl      getFrameCtrl__6MActorFi
     stfs    f30, 0x10(r3)
 branch_0x800e8a30:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x4fc(r3)
     lwz     r0, 0xd4(r3)
     rlwinm. r0, r0, 0, 21, 21
@@ -3402,7 +3402,7 @@ branch_0x800e8abc:
     fcmpo   cr0, f0, f1
     ble-    branch_0x800e8b3c
 branch_0x800e8ae8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28cd
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4175,7 +4175,7 @@ branch_0x800e95b8:
     li      r6, 0x1
     stfs    f4, 0x230(r3)
     lwz     r7, -0x6880(r13)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r7, 0x1d0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0

@@ -48,7 +48,7 @@ receiveMessage__22TBossHanachanPartsHeadFP9THitActorUl: # 0x800f3004
     addi    r30, r3, 0x0
     addi    r31, r5, 0x0
     addi    r3, r4, 0x0
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lbz     r0, 0x124(r6)
     cmplwi  r0, 0x1
     beq-    branch_0x800f3040
@@ -175,7 +175,7 @@ receiveMessage__22TBossHanachanPartsBodyFP9THitActorUl: # 0x800f319c
     addi    r29, r3, 0x0
     addi    r30, r5, 0x0
     addi    r3, r4, 0x0
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lbz     r0, 0x124(r6)
     cmplwi  r0, 0x1
     beq-    branch_0x800f31d8
@@ -291,7 +291,9 @@ branch_0x800f3314:
     slwi    r0, r5, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x800F3338:		# jumptable 800F3334 cases 2,3,5,13,16,17
     clrlwi. r0, r4, 24
     beq-    branch_0x800f3368
     mr      r3, r29
@@ -325,6 +327,8 @@ branch_0x800f3388:
     blrl
 branch_0x800f33a4:
     li      r31, 0x1
+
+def_800F3334:		# jumptable 800F3334 default case
 branch_0x800f33a8:
     clrlwi  r3, r31, 24
 branch_0x800f33ac:

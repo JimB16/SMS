@@ -314,7 +314,7 @@ perform__8TShimmerFUlPQ26JDrama9TGraphics: # 0x8019f83c
     addi    r30, r4, 0x0
     stw     r29, 0x18c(sp)
     addi    r29, r3, 0x0
-    lwz     r6, -0x60d8(r13)
+    lwz     r6, MarioActor(r13)
     lwz     r0, 0x118(r6)
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x8019f878
@@ -337,11 +337,11 @@ branch_0x8019f87c:
 branch_0x8019f8a4:
     rlwinm. r0, r30, 0, 29, 29
     beq-    branch_0x8019fa68
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      isWearingCap__6TMarioFv
     clrlwi. r0, r3, 24
     bne-    branch_0x8019f960
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0xe0(r3)
     lhz     r0, 0x0(r3)
     rlwinm. r0, r0, 0, 17, 17
@@ -465,11 +465,11 @@ branch_0x8019f970:
 branch_0x8019fa68:
     rlwinm. r0, r30, 0, 22, 22
     beq-    branch_0x8019faa8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     beq-    branch_0x8019fa94
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f0, -0x4150(rtoc)
     lfs     f1, 0x128(r3)
     fcmpo   cr0, f1, f0

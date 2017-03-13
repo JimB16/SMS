@@ -920,11 +920,11 @@ branch_0x80202f70:
 branch_0x80202f7c:
     lwz     r6, 0x228(r30)
     addi    r3, r30, 0x10
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     addi    r5, r30, 0x34
     lfs     f1, 0x2ac(r6)
     bl      SMS_GoRotate__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, -0x1da0(rtoc)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -1608,7 +1608,9 @@ branch_0x80203868:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80203894:		# jumptable 80203890 cases 0,6,15
     lwz     r3, 0x74(r30)
     li      r4, 0x0
     bl      isCurAnmAlreadyEnd__6MActorFi
@@ -1712,8 +1714,54 @@ branch_0x802039ec:
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
     b       branch_0x80204204
 
+branch_0x80203A00:		# jumptable 80203890 cases 2,22
+lwz	  r3, 0x74(r30)
+li	  r4, 0
+bl	  isCurAnmAlreadyEnd__6MActorFi	# MActor::isCurAnmAlreadyEnd((int))
+clrlwi.	  r0, r3, 24
+beq	  def_80203F38	# jumptable 80203890 default case
+lwz	  r0, 0xF0(r30)
+rlwinm	  r0, r0, 0,7,5
+stw	  r0, 0xF0(r30)
+lwz	  r0, 0xF0(r30)
+rlwinm	  r0, r0, 0,6,4
+stw	  r0, 0xF0(r30)
+lwz	  r4, 0x8C(r30)
+lwz	  r3, 8(r4)
+cmpwi	  r3, 0
+bne	  branch_0x80203A44
+li	  r29, 0
+b	  branch_0x80203A54
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1fe400, 0x80203a94 - 0x80203a00
+branch_0x80203A44:
+addi	  r0, r3, -1
+lwz	  r3, 0xC(r4)
+slwi	  r0, r0, 2
+lwzx	  r29, r3, r0
+
+branch_0x80203A54:		# TNerveNPCTalk::theNerve((void))
+bl	  theNerve__13TNerveNPCTalkFv
+cmplw	  r29, r3
+bne	  branch_0x80203A6C
+mr	  r3, r30
+bl	  requestTalkAnm___8TBaseNPCFv # TBaseNPC::requestTalkAnm_((void))
+b	  branch_0x80203A8C
+
+branch_0x80203A6C:
+lwz	  r3, 0x4C(r30)
+addis	  r0, r3, -0x400
+cmplwi	  r0, 6
+bne	  branch_0x80203A8C
+addi	  r3, r30, 0
+li	  r4, 4
+li	  r5, 1
+bl	  requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff # TBaseNPC::requestNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
+
+branch_0x80203A8C:
+li	  r31, 1
+b	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x80203A94:
 branch_0x80203a94:
     li      r29, 0x1
     addi    r28, r29, 0x0
@@ -2065,7 +2113,9 @@ branch_0x80203efc:
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80203F3C:		# jumptable 80203F38 case 0
     lwz     r4, 0x4c(r30)
     addi    r0, r29, 0x1e
     cmpw    r4, r0
@@ -2108,8 +2158,138 @@ branch_0x80203fac:
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
     b       branch_0x80204204
 
+branch_0x80203FC0:		# jumptable 80203F38 case 6
+lwz	  r4, 0x4C(r30)
+addi	  r0, r29, 0x1E	# 0x400001E
+cmpw	  r4, r0
+bge	  branch_0x80203FDC
+addi	  r0, r29, 0x1C	# 0x400001C
+cmpw	  r4, r0
+bge	  def_80203F38	# jumptable 80203890 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1fe9c0, 0x80204148 - 0x80203fc0
+branch_0x80203FDC:
+lwz	  r4, 0x18C(r30)
+lwz	  r0, 0x24(r4)
+cmpwi	  r0, 0
+ble	  branch_0x80203FF4
+li	  r0, 1
+b	  branch_0x80203FF8
+
+branch_0x80203FF4:
+li	  r0, 0
+
+branch_0x80203FF8:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x80204030
+cmpwi	  r3, 0xA
+bne	  branch_0x80204018
+lwz	  r3, 0x190(r30)
+li	  r0, -1
+stw	  r0, 0(r3)
+b	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x80204018:
+lwz	  r4, 0x190(r30)
+li	  r3, 0xA
+li	  r0, 1
+stw	  r3, 0(r4)
+stb	  r0, 4(r4)
+b	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x80204030:
+addi	  r3, r30, 0
+li	  r4, 0xA
+li	  r5, 1
+bl	  setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff #	TBaseNPC::setNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
+b	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x80204044:		# jumptable 80203F38 case 15
+lwz	  r4, 0x4C(r30)
+addi	  r0, r29, 0x1E	# 0x400001E
+cmpw	  r4, r0
+bge	  branch_0x80204060
+addi	  r0, r29, 0x1C	# 0x400001C
+cmpw	  r4, r0
+bge	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x80204060:
+lwz	  r4, 0x18C(r30)
+lwz	  r0, 0x24(r4)
+cmpwi	  r0, 0
+ble	  branch_0x80204078
+li	  r0, 1
+b	  branch_0x8020407C
+
+branch_0x80204078:
+li	  r0, 0
+
+branch_0x8020407C:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x802040B4
+cmpwi	  r3, 0x18
+bne	  branch_0x8020409C
+lwz	  r3, 0x190(r30)
+li	  r0, -1
+stw	  r0, 0(r3)
+b	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x8020409C:
+lwz	  r4, 0x190(r30)
+li	  r3, 0x18
+li	  r0, 1
+stw	  r3, 0(r4)
+stb	  r0, 4(r4)
+b	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x802040B4:
+addi	  r3, r30, 0
+li	  r4, 0x18
+li	  r5, 1
+bl	  setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff #	TBaseNPC::setNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
+b	  def_80203F38	# jumptable 80203890 default case
+
+branch_0x802040C8:		# jumptable 80203F38 cases 2,5,19
+lwz	  r0, 0xF0(r30)
+rlwinm	  r0, r0, 0,7,5
+stw	  r0, 0xF0(r30)
+lwz	  r0, 0xF0(r30)
+rlwinm	  r0, r0, 0,6,4
+stw	  r0, 0xF0(r30)
+lwz	  r4, 0x8C(r30)
+lwz	  r3, 8(r4)
+cmpwi	  r3, 0
+bne	  branch_0x802040F8
+li	  r29, 0
+b	  branch_0x80204108
+
+branch_0x802040F8:
+addi	  r0, r3, -1
+lwz	  r3, 0xC(r4)
+slwi	  r0, r0, 2
+lwzx	  r29, r3, r0
+
+branch_0x80204108:		# TNerveNPCTalk::theNerve((void))
+bl	  theNerve__13TNerveNPCTalkFv
+cmplw	  r29, r3
+bne	  branch_0x80204120
+mr	  r3, r30
+bl	  requestTalkAnm___8TBaseNPCFv # TBaseNPC::requestTalkAnm_((void))
+b	  branch_0x80204140
+
+branch_0x80204120:
+lwz	  r3, 0x4C(r30)
+addis	  r0, r3, -0x400
+cmplwi	  r0, 6
+bne	  branch_0x80204140
+addi	  r3, r30, 0
+li	  r4, 4
+li	  r5, 1
+bl	  requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff # TBaseNPC::requestNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
+
+branch_0x80204140:
+li	  r31, 1
+b	  def_80203F38	# jumptable 80203890 default case
+
 branch_0x80204148:
     lwz     r3, 0x74(r30)
     li      r4, 0x0
@@ -2126,7 +2306,9 @@ branch_0x80204148:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80204188:		# jumptable 80204184 cases 0,6,15,20
     lwz     r0, 0xf0(r30)
     rlwinm  r0, r0, 0, 7, 5
     stw     r0, 0xf0(r30)
@@ -2162,8 +2344,12 @@ branch_0x802041e0:
     li      r4, 0x4
     li      r5, 0x1
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
+
 branch_0x80204200:
     li      r31, 0x1
+
+def_80204184:
+def_80203F38:		# jumptable 80203890 default case
 branch_0x80204204:
     lwz     r0, 0x164(sp)
     mr      r3, r31
@@ -2787,7 +2973,7 @@ branch_0x80204a24:
     beq-    branch_0x80204a68
     lfs     f1, 0x144(r31)
     addi    r3, r31, 0x10
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     addi    r5, r31, 0x34
     bl      SMS_GoRotate__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
     lwz     r3, 0x124(r31)
@@ -3360,7 +3546,7 @@ branch_0x802051bc:
     bl      theNerve__18TNerveNPCGraphWaitFv
     cmplw   r29, r3
     bne-    branch_0x80205228
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -4099,7 +4285,7 @@ branch_0x80205b24:
     mr      r3, r31
     bl      emitHappyEffect___8TBaseNPCFv
     lis     r28, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r28, 0x77f8
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4260,12 +4446,21 @@ branch_0x80205d08:
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80205D44:		# jumptable 80205D40 case 4
     li      r26, 0x7
     b       branch_0x80205d84
 
+branch_0x80205D4C:		# jumptable 80205D40 case 11
+li	  r26, 0xE
+b	  branch_0x80205d84
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x20074c, 0x80205d5c - 0x80205d4c
+branch_0x80205D54:		# jumptable 80205D40 case 21
+li	  r26, 0xD
+b	  branch_0x80205d84
+
+def_80205D40:		# jumptable 80205D40 default case
 branch_0x80205d5c:
     clrlwi. r0, r26, 24
     beq-    branch_0x80205d6c

@@ -81,28 +81,36 @@ branch_0x803411ec:
 
 .globl TRK_copy_vector
 TRK_copy_vector: # 0x803411f0
+
+.set var_8, -8
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
-    stw     r0, 0x4(sp)
+    stw     r0, arg_4(sp)
     stwu    sp, -0x10(sp)
-    stw     r31, 0xc(sp)
-    stw     r30, 0x8(sp)
+    stw     r31, 0x10+var_4(sp)
+    stw     r30, 0x10+var_8(sp)
+
     mr      r30, r3
     mr      r3, r30
     bl      TRKTargetTranslate
-    lis     r4, 0x8000
-    addi    r0, r4, 0x3298
+    lis     r4, gTRKInterruptVectorTable@h
+    addi    r0, r4, gTRKInterruptVectorTable@l
     mr      r31, r3
     add     r4, r0, r30
     mr      r3, r31
     li      r5, 0x100
     bl      TRK_memcpy
+
     mr      r3, r31
     li      r4, 0x100
     bl      TRK_flush_cache
-    lwz     r31, 0xc(sp)
-    lwz     r30, 0x8(sp)
+
+    lwz     r31, 0x10+var_4(sp)
+    lwz     r30, 0x10+var_8(sp)
     addi    sp, sp, 0x10
-    lwz     r0, 0x4(sp)
+    lwz     r0, arg_4(sp)
     mtlr    r0
     blr
 
@@ -116,6 +124,7 @@ __TRK_copy_vectors: # 0x80341250
     stw     r30, 0x10(sp)
     stw     r29, 0xc(sp)
     stw     r28, 0x8(sp)
+
     li      r3, 0x44
     bl      TRKTargetTranslate
     li      r29, 0x0
@@ -145,6 +154,7 @@ branch_0x803412b4:
     addi    r29, r29, 0x1
     cmpwi   r29, 0xe
     ble+    branch_0x8034129c
+
     lwz     r31, 0x14(sp)
     lwz     r30, 0x10(sp)
     lwz     r29, 0xc(sp)

@@ -457,12 +457,283 @@ branch_0x80300fd4:
     slwi    r0, r0, 2
     lwzx    r0, r26, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80300FFC:		# jumptable 80300FF8 case 0
     li      r29, 0x0
     b       branch_0x803013b8
 
+branch_0x80301004:		# jumptable 80300FF8 case 1
+slwi	  r3, r30, 2
+addi	  r0, r3, 8
+lwzx	  r0, r6, r0
+cmplwi	  r0, 0
+beq	  branch_0x803010D0
+addi	  r30, r30, 1
+lwzx	  r3, r6, r3
+slwi	  r0, r30, 2
+lwzx	  r0, r6, r0
+add	  r4, r6, r3
+addi	  r3, r27, 0
+stw	  r0, 0xB0(r28)
+addi	  r30, r30, 1
+lwz	  r5, 0xB0(r28)
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x100(r28)
+addi	  r3, r30, 0
+addi	  r30, r30, 1
+lwz	  r5, 0x4C(r27)
+slwi	  r0, r30, 2
+slwi	  r3, r3, 2
+lwzx	  r4, r5, r3
+addi	  r3, r27, 0
+lwzx	  r0, r5, r0
+addi	  r30, r30, 1
+add	  r25, r5, r4
+stw	  r0, 0x34(r28)
+mr	  r4, r25
+lwz	  r5, 0x34(r28)
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x84(r28)
+mr	  r3, r30
+addi	  r30, r30, 1
+lwz	  r5, 0x4C(r27)
+slwi	  r3, r3, 2
+slwi	  r0, r30, 2
+lwzx	  r4, r5, r3
+addi	  r3, r27, 0
+addi	  r30, r30, 1
+add	  r4, r5, r4
+stw	  r4, 0x17C(r28)
+mr	  r4, r25
+lwz	  r5, 0x4C(r27)
+lwzx	  r0, r5, r0
+stw	  r0, 0x12C(r28)
+lwz	  r5, 0x12C(r28)
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x17C(r28)
+li	  r0, 1
+stb	  r0, 0x1B0(r28)
+b	  branch_0x803013b8
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2fba04, 0x803013a4 - 0x80301004
+branch_0x803010D0:
+addi	  r30, r30, 1
+lwzx	  r3, r6, r3
+slwi	  r0, r30, 2
+lwzx	  r0, r6, r0
+add	  r4, r6, r3
+addi	  r3, r27, 0
+stw	  r0, 0xB0(r28)
+addi	  r30, r30, 1
+lwz	  r5, 0xB0(r28)
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x100(r28)
+li	  r0, 0
+addi	  r30, r30, 1
+stb	  r0, 0x1B0(r28)
+b	  branch_0x803013b8
+
+branch_0x8030110C:		# jumptable 80300FF8 case 2
+slwi	  r0, r30, 2
+add	  r4, r6, r0
+li	  r25, 0
+li	  r3, 0
+b	  branch_0x80301124
+
+branch_0x80301120:
+addi	  r3, r3, 3
+
+branch_0x80301124:
+add	  r0, r30, r3
+slwi	  r0, r0, 2
+lwzx	  r0, r6, r0
+cmplwi	  r0, 0
+bne	  branch_0x80301120
+mulhwu	  r0, r31, r3
+srwi	  r0, r0, 1
+mulli	  r3, r0, 0xC
+addi	  r5, r3, 4
+addi	  r3, r27, 0
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x50(r27)
+slwi	  r3, r30, 2
+b	  branch_0x80301184
+
+branch_0x8030115C:
+clrlwi	  r0, r25, 24
+lwz	  r4, 0x50(r27)
+mulli	  r0, r0, 0xC
+add	  r4, r4, r0
+lwz	  r0, 0(r4)
+addi	  r3, r3, 0xC
+addi	  r25, r25, 1
+add	  r0, r5, r0
+stw	  r0, 0(r4)
+addi	  r30, r30, 3
+
+branch_0x80301184:
+lwz	  r5, 0x4C(r27)
+lwzx	  r0, r5, r3
+cmplwi	  r0, 0
+bne	  branch_0x8030115C
+addi	  r30, r30, 1
+b	  branch_0x803013b8
+
+branch_0x8030119C:		# jumptable 80300FF8 case 3
+slwi	  r0, r30, 2
+li	  r25, 0
+addi	  r3, r25, 0
+add	  r4, r6, r0
+b	  branch_0x803011B4
+
+branch_0x803011B0:
+addi	  r3, r3, 3
+
+branch_0x803011B4:
+add	  r0, r30, r3
+slwi	  r0, r0, 2
+lwzx	  r0, r6, r0
+cmplwi	  r0, 0
+bne	  branch_0x803011B0
+mulhwu	  r0, r31, r3
+srwi	  r0, r0, 1
+mulli	  r3, r0, 0xC
+addi	  r5, r3, 4
+addi	  r3, r27, 0
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x54(r27)
+slwi	  r3, r30, 2
+b	  branch_0x80301214
+
+branch_0x803011EC:
+clrlwi	  r0, r25, 24
+lwz	  r4, 0x54(r27)
+mulli	  r0, r0, 0xC
+add	  r4, r4, r0
+lwz	  r0, 0(r4)
+addi	  r3, r3, 0xC
+addi	  r25, r25, 1
+add	  r0, r5, r0
+stw	  r0, 0(r4)
+addi	  r30, r30, 3
+
+branch_0x80301214:
+lwz	  r5, 0x4C(r27)
+lwzx	  r0, r5, r3
+cmplwi	  r0, 0
+bne	  branch_0x803011EC
+clrlslwi  r25, r25, 24,2
+addi	  r3, r27, 0
+addi	  r4, r25, 0
+bl	  allocHeap__8JAIBasicFUl # JAIBasic::allocHeap((ulong))
+stw	  r3, 0x60(r27)
+addi	  r3, r27, 0
+addi	  r4, r25, 0
+bl	  allocHeap__8JAIBasicFUl # JAIBasic::allocHeap((ulong))
+stw	  r3, 0x64(r27)
+addi	  r30, r30, 1
+b	  branch_0x803013b8
+
+branch_0x80301250:		# jumptable 80300FF8 case 4
+slwi	  r25, r30, 2
+add	  r4, r6, r25
+addi	  r3, r27, 0
+li	  r5, 8
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x58(r27)
+mr	  r3, r27
+lwz	  r4, 0x4C(r27)
+add	  r5, r4, r25
+lwz	  r0, 0(r5)
+lwz	  r5, 4(r5)
+add	  r4, r4, r0
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+lwz	  r4, 0x58(r27)
+addi	  r30, r30, 3
+stw	  r3, 0(r4)
+b	  branch_0x803013b8
+
+branch_0x80301294:		# jumptable 80300FF8 case 5
+slwi	  r25, r30, 2
+add	  r4, r6, r25
+addi	  r3, r27, 0
+li	  r5, 8
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x5C(r27)
+mr	  r3, r27
+lwz	  r4, 0x4C(r27)
+add	  r5, r4, r25
+lwz	  r0, 0(r5)
+lwz	  r5, 4(r5)
+add	  r4, r4, r0
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+lwz	  r4, 0x5C(r27)
+addi	  r30, r30, 3
+stw	  r3, 0(r4)
+lwz	  r4, 0x5C(r27)
+lwz	  r3, 0(r27)
+lwz	  r0, 0(r4)
+stw	  r0, 0x1F8(r3)
+b	  branch_0x803013b8
+
+branch_0x803012E8:		# jumptable 80300FF8 case 6
+slwi	  r0, r30, 2
+add	  r4, r6, r0
+lwz	  r0, 0(r4)
+mr	  r3, r27
+lwz	  r5, 4(r4)
+add	  r4, r6, r0
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+lwz	  r4, 0(r3)
+addi	  r0, r3, 4
+li	  r6, 0
+stw	  r4, -0x74C8(r13)
+li	  r4, 0
+stw	  r0, 0x68(r27)
+b	  branch_0x80301338
+
+branch_0x80301320:
+lwz	  r5, 0x68(r27)
+addi	  r6, r6, 1
+lwzx	  r0, r5, r4
+add	  r0, r0, r3
+stwx	  r0, r5, r4
+addi	  r4, r4, 4
+
+branch_0x80301338:
+lwz	  r0, -0x74C8(r13)
+cmplw	  r6, r0
+blt	  branch_0x80301320
+addi	  r30, r30, 3
+b	  branch_0x803013b8
+
+branch_0x8030134C:		# jumptable 80300FF8 case 7
+slwi	  r0, r30, 2
+add	  r4, r6, r0
+lwz	  r0, 0(r4)
+mr	  r3, r27
+lwz	  r5, 4(r4)
+add	  r4, r6, r0
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x6C(r27)
+addi	  r30, r30, 3
+b	  branch_0x803013b8
+
+branch_0x80301374:		# jumptable 80300FF8 case 8
+slwi	  r0, r30, 2
+add	  r5, r6, r0
+lwz	  r0, 4(r5)
+mr	  r3, r27
+lwz	  r4, 0(r5)
+rlwinm	  r5, r0, 0,16,27
+add	  r4, r6, r4
+addi	  r5, r5, 0x10
+bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
+stw	  r3, 0x78(r27)
+addi	  r30, r30, 3
+b	  branch_0x803013b8
+
+def_80300FF8:		# jumptable 80300FF8 default case
 branch_0x803013a4:
     slwi    r0, r30, 2
     lwzx    r0, r6, r0

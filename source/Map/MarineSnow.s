@@ -38,7 +38,7 @@ perform__11TMarineSnowFUlPQ26JDrama9TGraphics: # 0x801a2e78
     rlwinm. r0, r4, 0, 30, 30
     stwu    sp, -0x8(sp)
     beq-    branch_0x801a2ec4
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r7, r3, 0x0
     addi    r5, r3, 0x10
     addi    r8, r4, 0x124
@@ -50,7 +50,7 @@ perform__11TMarineSnowFUlPQ26JDrama9TGraphics: # 0x801a2e78
     stfs    f0, 0x14(r3)
     lfs     f0, 0x8(r8)
     stfs    f0, 0x18(r3)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x801a2ec4:
     lwz     r0, 0xc(sp)

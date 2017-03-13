@@ -119,7 +119,7 @@ branch_0x80199a7c:
     addi    r30, r30, 0x1
     addi    r28, r28, 0x4
 branch_0x80199a9c:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -132,7 +132,7 @@ branch_0x80199a9c:
     b       branch_0x80199b18
 
 branch_0x80199ac8:
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     lwz     r3, 0x4(r6)
     lwz     r4, 0x14(r4)
     lwzx    r0, r3, r28
@@ -191,7 +191,7 @@ branch_0x80199b70:
     addi    r28, r28, 0x1
     addi    r27, r27, 0x4
 branch_0x80199b90:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -208,7 +208,7 @@ branch_0x80199bb8:
     b       branch_0x80199c14
 
 branch_0x80199bc4:
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     lwz     r3, 0x4(r6)
     lwz     r4, 0x14(r4)
     lwzx    r0, r3, r27

@@ -642,9 +642,8 @@ branch_0x802ce434:
     cmpwi   r27, 0x0
     bge-    branch_0x802ce4b8
     b       branch_0x802ce4dc
+    b	    branch_0x802ce4dc
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2c8e94, 0x802ce498 - 0x802ce494
 branch_0x802ce498:
     lfs     f0, 0x1c8(rtoc)
     fadds   f0, f0, f1
@@ -1346,7 +1345,9 @@ doCtrlCode__8J2DPrintFi: # 0x802cee3c
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802CEE64:		# jumptable 802CEE60 case 0
     lfs     f1, 0x24(r3)
     lfs     f0, 0x2c(r3)
     fsubs   f0, f1, f0
@@ -1355,8 +1356,95 @@ doCtrlCode__8J2DPrintFi: # 0x802cee3c
     stfs    f0, 0x2c(r3)
     b       branch_0x802cefa8
 
+branch_0x802CEE80:		# jumptable 802CEE60 case 1
+lwz	  r5, 0x30(r3)
+cmpwi	  r5, 0
+ble	  def_802CEE60	# jumptable 802CEE60 default case
+lfs	  f2, 0x24(r3)
+lis	  r0, 0x4330
+lfd	  f1, 0x1C0(r2)
+fctiwz	  f0, f2
+stfd	  f0, 0x20+var_8(r1)
+lwz	  r4, 0x20+var_8+4(r1)
+divw	  r4, r4, r5
+mullw	  r4, r5, r4
+add	  r4, r5, r4
+xoris	  r4, r4, 0x8000
+stw	  r4, 0x20+var_10+4(r1)
+stw	  r0, 0x20+var_10(r1)
+lfd	  f0, 0x20+var_10(r1)
+fsubs	  f0, f0, f1
+stfs	  f0, 0x24(r3)
+lfs	  f0, 0x24(r3)
+fsubs	  f0, f0, f2
+stfs	  f0, 0x2C(r3)
+b	  def_802CEE60	# jumptable 802CEE60 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2c9880, 0x802cefa8 - 0x802cee80
+branch_0x802CEED8:		# jumptable 802CEE60 case 2
+lfs	  f0, 0x1B8(r2)
+lis	  r4, 0x4330
+stfs	  f0, 0x2C(r3)
+lwz	  r0, 0x1C(r3)
+lfd	  f2, 0x1C0(r2)
+xoris	  r0, r0, 0x8000
+stw	  r0, 0x20+var_10+4(r1)
+stw	  r4, 0x20+var_10(r1)
+lfd	  f0, 0x20+var_10(r1)
+fsubs	  f0, f0, f2
+stfs	  f0, 0x24(r3)
+lwz	  r0, 0x14(r3)
+lfs	  f1, 0x28(r3)
+xoris	  r0, r0, 0x8000
+stw	  r0, 0x20+var_8+4(r1)
+stw	  r4, 0x20+var_8(r1)
+lfd	  f0, 0x20+var_8(r1)
+fsubs	  f0, f0, f2
+fadds	  f0, f1, f0
+stfs	  f0, 0x28(r3)
+b	  def_802CEE60	# jumptable 802CEE60 default case
+
+branch_0x802CEF2C:		# jumptable 802CEE60 case 5
+lfs	  f0, 0x1B8(r2)
+lis	  r0, 0x4330
+stfs	  f0, 0x2C(r3)
+lwz	  r4, 0x1C(r3)
+lfd	  f1, 0x1C0(r2)
+xoris	  r4, r4, 0x8000
+stw	  r4, 0x20+var_10+4(r1)
+stw	  r0, 0x20+var_10(r1)
+lfd	  f0, 0x20+var_10(r1)
+fsubs	  f0, f0, f1
+stfs	  f0, 0x24(r3)
+b	  def_802CEE60	# jumptable 802CEE60 default case
+
+branch_0x802CEF5C:		# jumptable 802CEE60 case 20
+lfs	  f1, 0x24(r3)
+lfs	  f0, 0x1D8(r2)
+fadds	  f0, f1, f0
+stfs	  f0, 0x24(r3)
+b	  def_802CEE60	# jumptable 802CEE60 default case
+
+branch_0x802CEF70:		# jumptable 802CEE60 case 21
+lfs	  f1, 0x24(r3)
+lfs	  f0, 0x1D8(r2)
+fsubs	  f0, f1, f0
+stfs	  f0, 0x24(r3)
+b	  def_802CEE60	# jumptable 802CEE60 default case
+
+branch_0x802CEF84:		# jumptable 802CEE60 case 22
+lfs	  f1, 0x28(r3)
+lfs	  f0, 0x1D8(r2)
+fsubs	  f0, f1, f0
+stfs	  f0, 0x28(r3)
+b	  def_802CEE60	# jumptable 802CEE60 default case
+
+branch_0x802CEF98:		# jumptable 802CEE60 case 23
+lfs	  f1, 0x28(r3)
+lfs	  f0, 0x1D8(r2)
+fadds	  f0, f1, f0
+stfs	  f0, 0x28(r3)
+
+def_802CEE60:		# jumptable 802CEE60 default case
 branch_0x802cefa8:
     addi    sp, sp, 0x20
     blr

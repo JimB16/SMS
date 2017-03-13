@@ -334,7 +334,7 @@ branch_0x8003a39c:
     lfs     f0, -0x7470(rtoc)
     fmuls   f3, f3, f1
     lfs     f1, 0x8c(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f3
     fmuls   f2, f0, f2
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -2069,7 +2069,7 @@ updateSquareToMario__11TSpineEnemyFv: # 0x8003bb34
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
     addi    r3, r31, 0x10
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     bl      PSVECSquareDistance
     stfs    f1, 0x134(r31)
     lwz     r0, 0x1c(sp)

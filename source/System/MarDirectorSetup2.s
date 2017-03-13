@@ -14,7 +14,7 @@ __dt__12TMarDirectorFv: # 0x8029c520
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x20
     stw     r0, 0xc(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      exitStage__6MSoundFv
     lis     r3, 0x803f
     subi    r3, r3, 0x6900
@@ -97,7 +97,7 @@ branch_0x8029c614:
     addic.  r0, r30, 0x88
     stw     r3, -0x5fdc(r13)
     stw     r3, -0x5db8(r13)
-    stw     r3, -0x6048(r13)
+    stw     r3, gpMarDirector(r13)
     beq-    branch_0x8029c698
     addi    r3, r30, 0x88
     li      r4, 0x0
@@ -377,7 +377,7 @@ branch_0x8029ca78:
     mtlr    r12
     blrl
     stw     r3, 0x254(r31)
-    lwz     r7, -0x7100(r13)
+    lwz     r7, gpSunManager(r13)
     cmplwi  r7, 0x0
     beq-    branch_0x8029cab8
     addi    r7, r7, 0x10
@@ -387,21 +387,21 @@ branch_0x8029cab8:
     li      r5, 0x7d
     li      r6, 0x7d
     bl      setCallback__16TDrawSyncManagerFUlUsUsP17TDrawSyncCallback
-    lwz     r6, -0x62f0(r13)
+    lwz     r6, gpPollution(r13)
     li      r4, 0x2
     lwz     r3, -0x5ff0(r13)
     li      r5, 0x7e
     addi    r7, r6, 0x70
     li      r6, 0x91
     bl      setCallback__16TDrawSyncManagerFUlUsUsP17TDrawSyncCallback
-    lwz     r6, -0x62f0(r13)
+    lwz     r6, gpPollution(r13)
     li      r4, 0x3
     lwz     r3, -0x5ff0(r13)
     li      r5, 0x92
     addi    r7, r6, 0x1ec
     li      r6, 0xa5
     bl      setCallback__16TDrawSyncManagerFUlUsUsP17TDrawSyncCallback
-    lwz     r7, -0x60d8(r13)
+    lwz     r7, MarioActor(r13)
     cmplwi  r7, 0x0
     beq-    branch_0x8029cb14
     addi    r7, r7, 0x70
@@ -411,9 +411,9 @@ branch_0x8029cb14:
     li      r5, 0x7c
     li      r6, 0x7c
     bl      setCallback__16TDrawSyncManagerFUlUsUsP17TDrawSyncCallback
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     li      r7, 0x0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r6, r4, 0x1ec
     addi    r5, r4, 0x13c
     addi    r4, r4, 0x124

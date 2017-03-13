@@ -2121,9 +2121,9 @@ loadResource__12TMarDirectorFv: # 0x802b5458
     addi    r4, r30, 0x13d4
     bl      __ct__21TMarioParticleManagerFPCc
 branch_0x802b5490:
-    stw     r28, -0x6070(r13)
+    stw     r28, gpMarioParticleManager(r13)
     li      r29, 0x3e8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r28, 0x100
     li      r4, 0x20
     lbz     r0, 0x7c(r3)
@@ -2201,7 +2201,7 @@ branch_0x802b555c:
 branch_0x802b5570:
     li      r29, 0x1388
 branch_0x802b5574:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      createEffectInfoAry__21TMarioParticleManagerFi
     li      r3, 0xc
     bl      __nw__FUl
@@ -2226,7 +2226,7 @@ branch_0x802b55a0:
     li      r8, 0x0
     bl      __ct__17JPAEmitterManagerFP18JPAResourceManagerlllP7JKRHeap
 branch_0x802b55d0:
-    lwz     r4, -0x6070(r13)
+    lwz     r4, gpMarioParticleManager(r13)
     li      r3, 0x148
     stw     r27, 0x3b8(r4)
     bl      __nw__FUl

@@ -441,12 +441,193 @@ getSceneNo__5MSBgmFUl: # 0x80016ac0
     slwi    r4, r4, 2
     lwzx    r0, r3, r4
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80016AE8:		# jumptable 80016AE4 case 0
     li      r3, 0x201
     blr
 
+branch_0x80016AF0:		# jumptable 80016AE4 case 1
+li	  r3, 0x202
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x114f0, 0x80016c58 - 0x80016af0
+branch_0x80016AF8:		# jumptable 80016AE4 case 2
+li	  r3, 0x203
+blr
+
+branch_0x80016B00:		# jumptable 80016AE4 case 3
+li	  r3, 0x204
+blr
+
+branch_0x80016B08:		# jumptable 80016AE4 case 4
+li	  r3, 0x204
+blr
+
+branch_0x80016B10:		# jumptable 80016AE4 case 5
+li	  r3, 0x205
+blr
+
+branch_0x80016B18:		# jumptable 80016AE4 case 6
+li	  r3, 0x206
+blr
+
+branch_0x80016B20:		# jumptable 80016AE4 case 7
+li	  r3, 0x207
+blr
+
+branch_0x80016B28:		# jumptable 80016AE4 case 8
+li	  r3, 0x208
+blr
+
+branch_0x80016B30:		# jumptable 80016AE4 case 9
+li	  r3, 0x210
+blr
+
+branch_0x80016B38:		# jumptable 80016AE4 case 10
+li	  r3, 0x210
+blr
+
+branch_0x80016B40:		# jumptable 80016AE4 case 11
+li	  r3, 0x210
+blr
+
+branch_0x80016B48:		# jumptable 80016AE4 case 12
+li	  r3, 0x210
+blr
+
+branch_0x80016B50:		# jumptable 80016AE4 case 13
+li	  r3, 0x20A
+blr
+
+branch_0x80016B58:		# jumptable 80016AE4 case 14
+li	  r3, 0x209
+blr
+
+branch_0x80016B60:		# jumptable 80016AE4 case 15
+li	  r3, 0x20A
+blr
+
+branch_0x80016B68:		# jumptable 80016AE4 case 16
+li	  r3, -1
+blr
+
+branch_0x80016B70:		# jumptable 80016AE4 case 17
+li	  r3, 0x20C
+blr
+
+branch_0x80016B78:		# jumptable 80016AE4 case 18
+li	  r3, 0x20D
+blr
+
+branch_0x80016B80:		# jumptable 80016AE4 case 19
+li	  r3, 0x20E
+blr
+
+branch_0x80016B88:		# jumptable 80016AE4 case 20
+li	  r3, 0x20F
+blr
+
+branch_0x80016B90:		# jumptable 80016AE4 case 21
+li	  r3, 0x210
+blr
+
+branch_0x80016B98:		# jumptable 80016AE4 case 22
+li	  r3, 0x210
+blr
+
+branch_0x80016BA0:		# jumptable 80016AE4 case 23
+li	  r3, 0x206
+blr
+
+branch_0x80016BA8:		# jumptable 80016AE4 case 24
+li	  r3, 0x211
+blr
+
+branch_0x80016BB0:		# jumptable 80016AE4 case 25
+li	  r3, 0x212
+blr
+
+branch_0x80016BB8:		# jumptable 80016AE4 case 26
+li	  r3, 0x210
+blr
+
+branch_0x80016BC0:		# jumptable 80016AE4 case 27
+li	  r3, 0x20A
+blr
+
+branch_0x80016BC8:		# jumptable 80016AE4 case 28
+li	  r3, 0x206
+blr
+
+branch_0x80016BD0:		# jumptable 80016AE4 case 29
+li	  r3, 0x20D
+blr
+
+branch_0x80016BD8:		# jumptable 80016AE4 case 30
+li	  r3, 0x210
+blr
+
+branch_0x80016BE0:		# jumptable 80016AE4 case 31
+li	  r3, 0x210
+blr
+
+branch_0x80016BE8:		# jumptable 80016AE4 case 32
+li	  r3, 0x214
+blr
+
+branch_0x80016BF0:		# jumptable 80016AE4 case 33
+li	  r3, 0x206
+blr
+
+branch_0x80016BF8:		# jumptable 80016AE4 case 34
+li	  r3, 0x204
+blr
+
+branch_0x80016C00:		# jumptable 80016AE4 case 35
+li	  r3, 0x210
+blr
+
+branch_0x80016C08:		# jumptable 80016AE4 case 36
+li	  r3, 0x20D
+blr
+
+branch_0x80016C10:		# jumptable 80016AE4 case 37
+li	  r3, 0x210
+blr
+
+branch_0x80016C18:		# jumptable 80016AE4 case 38
+li	  r3, 0x210
+blr
+
+branch_0x80016C20:		# jumptable 80016AE4 case 39
+li	  r3, 0x210
+blr
+
+branch_0x80016C28:		# jumptable 80016AE4 case 40
+li	  r3, 0x210
+blr
+
+branch_0x80016C30:		# jumptable 80016AE4 case 41
+li	  r3, 0x210
+blr
+
+branch_0x80016C38:		# jumptable 80016AE4 case 42
+li	  r3, 0x210
+blr
+
+branch_0x80016C40:		# jumptable 80016AE4 case 43
+li	  r3, 0x206
+blr
+
+branch_0x80016C48:		# jumptable 80016AE4 case 45
+li	  r3, 0x215
+blr
+
+branch_0x80016C50:		# jumptable 80016AE4 case 46
+li	  r3, 0x210
+blr
+
+def_80016AE4:		# jumptable 80016AE4 default case
 branch_0x80016c58:
     li      r3, -0x1
     blr

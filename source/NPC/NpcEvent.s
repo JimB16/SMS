@@ -42,7 +42,7 @@ branch_0x8020e7cc:
     lwz     r4, -0x6170(r13)
     mr      r9, r3
     li      r0, 0x0
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     subi    r4, r4, 0x1
     stw     r4, -0x6170(r13)
     lis     r3, 0x8021
@@ -70,7 +70,7 @@ branch_0x8020e7cc:
     addi    r4, r31, 0x13c
     lfs     f0, 0x4(r30)
     addi    r5, r31, 0x150
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r30)
     lfs     f3, 0x8(r30)
@@ -108,7 +108,7 @@ ReviveSunflowerCallBack__FUlUl: # 0x8020e8d8
     bne-    branch_0x8020e914
     li      r30, 0x4847
 branch_0x8020e914:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -406,7 +406,7 @@ evIsDemoMode__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8020ed08
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r5, 0x0
     li      r3, 0x1
     lbz     r0, 0x124(r4)
@@ -506,7 +506,7 @@ branch_0x8020ee70:
     subi    r0, rtoc, 0x1bd8
 branch_0x8020ee74:
     li      r30, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r30, 0x3c(sp)
     addi    r5, sp, 0x3c
     mr      r4, r0
@@ -1862,7 +1862,7 @@ branch_0x8020ffc8:
     li      r3, 0x1
     addi    r4, r3, 0x0
     stw     r0, 0x7c(sp)
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lbz     r0, 0x124(r5)
     cmplwi  r0, 0x1
     beq-    branch_0x8020fff4
@@ -1889,7 +1889,7 @@ branch_0x80210024:
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x802100a8
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x7c(r3)
     rlwinm. r0, r0, 0, 20, 20
     beq-    branch_0x80210050
@@ -1914,11 +1914,11 @@ branch_0x80210054:
     blrl
     cmplwi  r3, 0x0
     beq-    branch_0x802100a8
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r0, 0x1
     li      r30, 0x1
     stw     r3, 0xa0(r4)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     stb     r0, 0x126(r3)
 branch_0x802100a8:
     li      r0, 0x0
@@ -1970,7 +1970,7 @@ ev__ForceStartTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8021011c
     addi    r31, r4, 0x5a20
     li      r4, 0x1
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -2000,7 +2000,7 @@ branch_0x802101a8:
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x8021029c
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x7c(r3)
     rlwinm. r0, r0, 0, 20, 20
     beq-    branch_0x802101d4
@@ -2062,11 +2062,11 @@ branch_0x80210268:
 branch_0x8021027c:
     li      r4, 0x0
 branch_0x80210280:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x1
     li      r30, 0x1
     stw     r4, 0xa0(r3)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     stb     r0, 0x126(r3)
     b       branch_0x802102c0
 
@@ -2127,7 +2127,7 @@ evIsGameModeNormal__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80210330
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x0
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x0

@@ -46,7 +46,7 @@ calcPosAndAt__14TCameraMapToolCFPQ29JGeometry8TVec3_f_PQ29JGeometry8TVec3_f_: # 
     stfs    f0, 0x4(r4)
     lfs     f0, 0x14(r3)
     stfs    f0, 0x8(r4)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x24(r31)
     bl      isFixCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
@@ -71,7 +71,7 @@ calcPosAndAt__14TCameraMapToolCFPQ29JGeometry8TVec3_f_PQ29JGeometry8TVec3_f_: # 
 
 branch_0x80030214:
     addi    r3, sp, 0x14
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     bl      getUsualLookat__15CPolarSubCameraCFv
     lfs     f0, 0x14(sp)
     stfs    f0, 0x0(r30)

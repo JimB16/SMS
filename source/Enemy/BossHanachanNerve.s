@@ -120,7 +120,7 @@ execute__23TNerveBossHanachanSnortCFP24TSpineBase_10TLiveActor_: # 0x800f13a8
     b       branch_0x800f143c
 
 branch_0x800f1410:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     li      r5, 0x1
     lwz     r3, 0x9c(r3)
@@ -128,7 +128,7 @@ branch_0x800f1410:
     b       branch_0x800f143c
 
 branch_0x800f1428:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1
     li      r5, 0x1
     lwz     r3, 0x9c(r3)
@@ -689,7 +689,7 @@ branch_0x800f1b5c:
     bl      isTumbleCompletelyAllBody__13TBossHanachanCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x800f1c18
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x7
     li      r5, 0x1
     lwz     r3, 0x74(r3)

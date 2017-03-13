@@ -46,7 +46,7 @@ makeMtxForPrevTalk__15CPolarSubCameraFv: # 0x8002cf68
     bl      changeCamModeSpecifyFrame___15CPolarSubCameraFii
     lwz     r3, 0x120(r30)
     bl      onNeutralMarioKey__13TMarioGamePadFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     addi    r31, r3, 0x88
     lwz     r30, 0x8c(r3)
     b       branch_0x8002cfdc

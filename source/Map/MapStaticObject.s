@@ -179,7 +179,7 @@ branch_0x80195b88:
     addi    r4, sp, 0x88
     add     r3, r0, r27
     bl      getPoint__10TGraphNodeCFP3Vec
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r6, r31, 0x0
     addi    r3, sp, 0x70
     addi    r7, r4, 0x124
@@ -729,7 +729,7 @@ branch_0x80196330:
     addi    r5, r4, 0xb3c
     li      r4, 0x100
     bl      snprintf
-    lwz     r6, -0x6328(r13)
+    lwz     r6, gpMap(r13)
     mr      r5, r29
     lwz     r4, 0x68(r30)
     addi    r3, sp, 0x2c
@@ -771,7 +771,7 @@ initUnique__13TMapStaticObjFv: # 0x80196394
     b       branch_0x801963f8
 
 branch_0x801963d4:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x801963f0
@@ -862,7 +862,7 @@ branch_0x80196518:
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x80196548
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xd
     bne-    branch_0x801965d8
@@ -876,7 +876,7 @@ branch_0x80196548:
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x801965d8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmpwi   r0, 0x8
     beq-    branch_0x8019657c
@@ -894,13 +894,16 @@ branch_0x8019657c:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x801965A0:		# jumptable 8019659C cases 0,2,4,6
     li      r0, 0x5820
     stw     r0, 0x78(r31)
     li      r0, 0x0
     stw     r0, 0x7c(r31)
     b       branch_0x801965d8
 
+def_8019659C:		# jumptable 8019659C default case
 branch_0x801965b4:
     li      r0, 0x581b
     stw     r0, 0x78(r31)
@@ -951,7 +954,7 @@ perform__13TMapStaticObjFUlPQ26JDrama9TGraphics: # 0x80196614
     addis   r0, r31, 0x1
     cmplwi  r0, 0xffff
     bne-    branch_0x8019668c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r27
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -966,7 +969,7 @@ perform__13TMapStaticObjFUlPQ26JDrama9TGraphics: # 0x80196614
     b       branch_0x801966ac
 
 branch_0x8019668c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r27
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -980,7 +983,7 @@ branch_0x801966ac:
     lbz     r6, 0x3c(r4)
     cmplwi  r6, 0x1
     bne-    branch_0x801966d8
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r28, 0x0
     lwz     r4, 0x38(r4)
     addi    r5, r28, 0x10
@@ -990,7 +993,7 @@ branch_0x801966ac:
 branch_0x801966d8:
     cmplwi  r6, 0x3
     bne-    branch_0x801966f4
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r28, 0x0
     lwz     r4, 0x38(r4)
     addi    r5, r28, 0x10

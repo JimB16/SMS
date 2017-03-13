@@ -960,7 +960,7 @@ branch_0x8011d02c:
     b       branch_0x8011d198
 
 branch_0x8011d044:
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0x6c
     addi    r4, r29, 0x10
     lwz     r5, 0x0(r6)
@@ -1318,7 +1318,7 @@ execute__19TNerveKumokunSearchCFP24TSpineBase_10TLiveActor_: # 0x8011d4b8
     b       branch_0x8011d5f0
 
 branch_0x8011d510:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r4, r30, 0x0
     addi    r3, sp, 0xb4
     bl      rotateGoalDirToLocal__8TKumokunCFRCQ29JGeometry8TVec3_f_
@@ -2813,7 +2813,7 @@ branch_0x8011e930:
     fmadds  f1, f4, f3, f1
     fcmpo   cr0, f1, f0
     bge-    branch_0x8011e980
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f2, -0x51dc(rtoc)
     lfs     f1, 0x4(r3)
     lfs     f0, 0x14(r27)
@@ -3505,7 +3505,7 @@ branch_0x8011f2b0:
     fmadds  f1, f4, f3, f1
     fcmpo   cr0, f1, f0
     bge-    branch_0x8011f318
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f2, -0x51dc(rtoc)
     lfs     f1, 0x4(r3)
     lfs     f0, 0x14(r30)
@@ -3809,7 +3809,7 @@ branch_0x8011f718:
     mr      r3, r31
     bl      getModel__10TLiveActorCFv
     addi    r5, r3, 0x20
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x174
     li      r6, 0x1
@@ -4496,7 +4496,7 @@ control__8TKumokunFv: # 0x80120010
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      control__10TLiveActorFv
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0xc
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
@@ -4621,7 +4621,7 @@ bindOnFlying__8TKumokunFv: # 0x8012013c
     fadds   f0, f1, f0
     stfs    f0, 0x7c(sp)
     lfs     f31, 0xc0(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0x58(sp)
     lfs     f1, 0x74(sp)
     lfs     f30, 0x78(sp)
@@ -4658,7 +4658,7 @@ branch_0x80120230:
 branch_0x8012025c:
     lfs     f0, 0xc0(r30)
     li      r29, 0x0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x54
     stw     r29, 0x54(sp)
     lfs     f1, 0x74(sp)
@@ -4708,7 +4708,7 @@ branch_0x801202e8:
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8011c9a8
     stfs    f31, 0x30(sp)
     li      r0, 0x1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x24
     stw     r0, 0x34(sp)
     stw     r29, 0x3c(sp)
@@ -4913,7 +4913,7 @@ branch_0x80120580:
     stfs    f0, 0xb0(sp)
     lfs     f29, 0xac(sp)
     lfs     f0, 0xc0(r26)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fsubs   f2, f29, f0
     lfs     f1, 0xa8(sp)
     lfs     f3, 0xb0(sp)
@@ -4960,7 +4960,7 @@ branch_0x80120664:
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8011c9a8
     lfs     f0, -0x51d4(rtoc)
     li      r0, 0x1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x44
     stfs    f0, 0x50(sp)
     stw     r0, 0x54(sp)
@@ -5094,7 +5094,7 @@ checkOnMovingFloor__8TKumokunCFPQ29JGeometry8TVec3_f_PPC12TBGCheckDataRCQ29JGeom
     stfs    f0, 0x94(sp)
     lfs     f31, 0x90(sp)
     lfs     f0, 0xc0(r27)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f31, f0
     lfs     f1, 0x8c(sp)
     lfs     f3, 0x94(sp)
@@ -5148,7 +5148,7 @@ branch_0x80120928:
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8011c9a8
     lfs     f0, -0x51d4(rtoc)
     li      r0, 0x1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x3c
     stfs    f0, 0x48(sp)
     stw     r0, 0x4c(sp)
@@ -5270,7 +5270,7 @@ branch_0x80120a8c:
     stfs    f0, 0xcc(sp)
     lfs     f31, 0xc8(sp)
     lfs     f0, 0xc0(r28)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f31, f0
     lfs     f1, 0xc4(sp)
     lfs     f3, 0xcc(sp)
@@ -5334,7 +5334,7 @@ branch_0x80120ba8:
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8011c9a8
     lfs     f0, -0x51d4(rtoc)
     li      r0, 0x1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x54
     stfs    f0, 0x60(sp)
     stw     r0, 0x64(sp)
@@ -5955,7 +5955,7 @@ initAttachPlane__8TKumokunFv: # 0x80121490
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8011c9a8
     lfs     f0, -0x51d4(rtoc)
     li      r0, 0x1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0xd4
     stfs    f0, 0xe0(sp)
     stw     r0, 0xe4(sp)
@@ -6064,7 +6064,7 @@ branch_0x80121650:
     lfs     f3, 0x18(r31)
     lfs     f28, 0xc0(r31)
     fmr     f2, f27
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0xb8(sp)
     bl      checkRoof__4TMapCFfffPPC12TBGCheckData
     lfs     f2, -0x5228(rtoc)
@@ -6107,7 +6107,7 @@ branch_0x801216ec:
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
     fadds   f2, f27, f0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r30, 0xac(sp)
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
     lfs     f2, -0x5228(rtoc)
@@ -6374,7 +6374,7 @@ branch_0x80121ab0:
 branch_0x80121ab4:
     clrlwi. r0, r0, 24
     beq-    branch_0x80121ad4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x8
     bne-    branch_0x80121adc

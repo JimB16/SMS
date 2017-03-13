@@ -730,7 +730,7 @@ branch_0x801b86f4:
     clrlwi. r0, r0, 24
     beq-    branch_0x801b8714
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r4, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r31, r3
@@ -929,7 +929,7 @@ getCurrentHeight__14TMapObjLibWaveCFff: # 0x801b8994
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r3
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     bl      getWaveHeight__11TMapObjWaveCFff
     lfs     f0, 0x8(r31)
     lwz     r0, 0x24(sp)
@@ -967,7 +967,7 @@ emitAndScale__11TMapObjBaseCFlUcPCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_: 
     stw     r31, 0x24(sp)
     addi    r31, r7, 0x0
     addi    r7, r8, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x801b8a5c
@@ -1003,7 +1003,7 @@ emitAndBindScale__11TMapObjBaseCFlUcPCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_
     stw     r31, 0x24(sp)
     addi    r31, r7, 0x0
     addi    r7, r8, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x801b8ad8
@@ -1038,7 +1038,7 @@ emitAndScale__11TMapObjBaseCFlUcPCQ29JGeometry8TVec3_f_: # 0x801b8aec
     stw     r31, 0x1c(sp)
     mr      r31, r3
     addi    r7, r31, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x801b8b50
@@ -1074,7 +1074,7 @@ emitAndRotateScale__11TMapObjBaseCFlUcPCQ29JGeometry8TVec3_f_: # 0x801b8b64
     stw     r30, 0x48(sp)
     mr      r30, r3
     addi    r7, r30, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     mr.     r31, r3
     beq-    branch_0x801b8c3c
@@ -1142,7 +1142,7 @@ emitAndSRT__11TMapObjBaseFlUcPCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29
     stw     r29, 0x44(sp)
     addi    r29, r6, 0x0
     mr      r6, r0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     mr.     r31, r3
     beq-    branch_0x801b8d18
@@ -1229,7 +1229,7 @@ marioHipAttack__11TMapObjBaseCFv: # 0x801b8d88
     clrlwi. r0, r3, 24
     beq-    branch_0x801b8de0
     bl      SMS_GetMarioGrLevel__Fv
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, -0x60a0(r13)
     lfs     f2, 0x4(r4)
     lfs     f0, 0x0(r3)
@@ -1256,7 +1256,7 @@ marioHeadAttack__11TMapObjBaseCFv: # 0x801b8df8
     stwu    sp, -0x8(sp)
     lfs     f1, 0x14(r3)
     lfs     f0, 0x108(r3)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     fsubs   f0, f1, f0
     lfs     f1, 0x4(r3)
     fcmpo   cr0, f1, f0
@@ -1385,7 +1385,7 @@ branch_0x801b8f6c:
 .globl waterHitPlane__11TMapObjBaseFP9THitActor
 waterHitPlane__11TMapObjBaseFP9THitActor: # 0x801b8f8c
     lwz     r6, 0x68(r3)
-    lwz     r5, -0x6088(r13)
+    lwz     r5, gpModelWaterManager(r13)
     slwi    r0, r6, 2
     add     r3, r5, r0
     lwz     r4, 0x2914(r3)
@@ -1431,7 +1431,7 @@ branch_0x801b9010:
 .globl getWaterPos__11TMapObjBaseFP9THitActor
 getWaterPos__11TMapObjBaseFP9THitActor: # 0x801b9018
     lwz     r0, 0x68(r3)
-    lwz     r4, -0x6088(r13)
+    lwz     r4, gpModelWaterManager(r13)
     mulli   r3, r0, 0xc
     addi    r3, r3, 0x814
     add     r3, r4, r3
@@ -1441,7 +1441,7 @@ getWaterPos__11TMapObjBaseFP9THitActor: # 0x801b9018
 .globl getWaterSpeed__11TMapObjBaseFP9THitActor
 getWaterSpeed__11TMapObjBaseFP9THitActor: # 0x801b9030
     lwz     r0, 0x68(r3)
-    lwz     r4, -0x6088(r13)
+    lwz     r4, gpModelWaterManager(r13)
     mulli   r3, r0, 0xc
     addi    r3, r3, 0x1414
     add     r3, r4, r3
@@ -1451,7 +1451,7 @@ getWaterSpeed__11TMapObjBaseFP9THitActor: # 0x801b9030
 .globl getWaterPlane__11TMapObjBaseFP9THitActor
 getWaterPlane__11TMapObjBaseFP9THitActor: # 0x801b9048
     lwz     r0, 0x68(r3)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     slwi    r0, r0, 2
     add     r3, r3, r0
     lwz     r3, 0x2914(r3)
@@ -2797,7 +2797,7 @@ calcMap__11TMapObjBaseFv: # 0x801ba2c0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -2814,7 +2814,7 @@ calcMap__11TMapObjBaseFv: # 0x801ba2c0
 
 .globl getBuildingJointObj__11TMapObjBaseFi
 getBuildingJointObj__11TMapObjBaseFi: # 0x801ba300
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     clrlslwi  r0, r3, 16, 2
     lwz     r3, 0x14(r4)
     lwz     r3, 0x14(r3)
@@ -2828,7 +2828,7 @@ getBuildingJointObj__11TMapObjBaseFi: # 0x801ba300
 
 .globl getBuildingJoint__11TMapObjBaseFi
 getBuildingJoint__11TMapObjBaseFi: # 0x801ba328
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     clrlslwi  r0, r3, 16, 2
     lwz     r3, 0x14(r4)
     lwz     r3, 0x14(r3)
@@ -3438,7 +3438,7 @@ checkOnManhole__11TMapObjBaseFv: # 0x801bab04
     addi    r4, r31, 0xc4
     lfs     f0, 0x14(r3)
     lfs     f1, -0x2bf4(rtoc)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
@@ -3535,7 +3535,7 @@ branch_0x801bac40:
 
 .globl isDemo__11TMapObjBaseFv
 isDemo__11TMapObjBaseFv: # 0x801bac68
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x1
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x1

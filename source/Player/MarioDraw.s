@@ -1,4 +1,8 @@
 
+/*
+Input:
+r3: MarioActor
+*/
 .globl addDamageFog__6TMarioFPQ26JDrama9TGraphics
 addDamageFog__6TMarioFPQ26JDrama9TGraphics: # 0x80243d70
     mflr    r0
@@ -17,8 +21,8 @@ addDamageFog__6TMarioFPQ26JDrama9TGraphics: # 0x80243d70
     bne-    branch_0x80243dac
     li      r5, 0x0
 branch_0x80243dac:
-    lwz     r4, 0x118(r25)
-    rlwinm. r0, r4, 0, 25, 25
+    lwz     r4, MarioActor_Flags(r25)
+    rlwinm. r0, r4, 0, 25, 25 # MARIOFLAG_40
     beq-    branch_0x80243dc0
     li      r0, 0x1
     b       branch_0x80243dc4
@@ -28,12 +32,12 @@ branch_0x80243dc0:
 branch_0x80243dc4:
     clrlwi. r0, r0, 24
     beq-    branch_0x80243e10
-    lwz     r0, 0x350(r25)
+    lwz     r0, MarioActor_350(r25)
     cmpwi   r0, 0x2
     bne-    branch_0x80243e10
-    lhz     r3, 0x34e(r25)
+    lhz     r3, MarioActor_34e(r25)
     li      r5, 0x1
-    lha     r0, 0x278c(r25)
+    lha     r0, MarioActor_278c(r25)
     cmpw    r3, r0
     ble-    branch_0x80243e00
     lwz     r0, -0x1124(rtoc)
@@ -63,7 +67,7 @@ branch_0x80243e30:
     clrlwi  r0, r5, 24
     cmplwi  r0, 0x1
     bne-    branch_0x80243fd4
-    lwz     r3, 0x3a8(r25)
+    lwz     r3, MarioActor_3a8(r25)
     li      r22, 0x0
     lwz     r3, 0x8(r3)
     lwz     r23, 0x4(r3)
@@ -86,13 +90,13 @@ branch_0x80243e7c:
     clrlwi  r3, r22, 16
     cmplw   r3, r0
     blt+    branch_0x80243e50
-    lwz     r3, 0x3a8(r25)
+    lwz     r3, MarioActor_3a8(r25)
     addi    r5, r26, 0x0
-    addi    r4, r25, 0x10
+    addi    r4, r25, MarioActor_PositionX
     lwz     r3, 0x8(r3)
     lwz     r3, 0x4(r3)
     bl      SMS_AddDamageFogEffect__FP12J3DModelDataRCQ29JGeometry8TVec3_f_PQ26JDrama9TGraphics
-    lwz     r3, 0x3e0(r25)
+    lwz     r3, MarioActor_3e0(r25)
     cmplwi  r3, 0x0
     beq-    branch_0x80243f14
     lwz     r3, 0xc(r3)
@@ -117,14 +121,14 @@ branch_0x80243eec:
     clrlwi  r3, r22, 16
     cmplw   r3, r0
     blt+    branch_0x80243ec0
-    lwz     r3, 0x3e0(r25)
+    lwz     r3, MarioActor_3e0(r25)
     addi    r5, r26, 0x0
-    addi    r4, r25, 0x10
+    addi    r4, r25, MarioActor_PositionX
     lwz     r3, 0xc(r3)
     lwz     r3, 0x4(r3)
     bl      SMS_AddDamageFogEffect__FP12J3DModelDataRCQ29JGeometry8TVec3_f_PQ26JDrama9TGraphics
 branch_0x80243f14:
-    lwz     r0, 0x3b0(r25)
+    lwz     r0, MarioActor_3b0(r25)
     cmplwi  r0, 0x0
     beq-    branch_0x80244058
     li      r29, 0x0
@@ -160,7 +164,7 @@ branch_0x80243f78:
     blt+    branch_0x80243f4c
     lwz     r3, 0x0(r30)
     addi    r5, r26, 0x0
-    addi    r4, r25, 0x10
+    addi    r4, r25, MarioActor_PositionX
     lwz     r3, 0x4(r3)
     bl      SMS_AddDamageFogEffect__FP12J3DModelDataRCQ29JGeometry8TVec3_f_PQ26JDrama9TGraphics
     addi    r28, r28, 0x1
@@ -171,26 +175,26 @@ branch_0x80243f78:
     cmpwi   r29, 0x2
     addi    r24, r24, 0x8
     blt+    branch_0x80243f28
-    lwz     r3, 0x3c0(r25)
+    lwz     r3, MarioActor_3c0(r25)
     addi    r5, r26, 0x0
-    addi    r4, r25, 0x10
+    addi    r4, r25, MarioActor_PositionX
     lwz     r3, 0x4(r3)
     bl      SMS_AddDamageFogEffect__FP12J3DModelDataRCQ29JGeometry8TVec3_f_PQ26JDrama9TGraphics
     b       branch_0x80244058
 
 branch_0x80243fd4:
-    lwz     r3, 0x3a8(r25)
+    lwz     r3, MarioActor_3a8(r25)
     lwz     r3, 0x8(r3)
     lwz     r3, 0x4(r3)
     bl      SMS_ResetDamageFogEffect__FP12J3DModelData
-    lwz     r3, 0x3e0(r25)
+    lwz     r3, MarioActor_3e0(r25)
     cmplwi  r3, 0x0
     beq-    branch_0x80243ffc
     lwz     r3, 0xc(r3)
     lwz     r3, 0x4(r3)
     bl      SMS_ResetDamageFogEffect__FP12J3DModelData
 branch_0x80243ffc:
-    lwz     r0, 0x3b0(r25)
+    lwz     r0, MarioActor_3b0(r25)
     cmplwi  r0, 0x0
     beq-    branch_0x80244058
     li      r23, 0x0
@@ -212,7 +216,7 @@ branch_0x8024401c:
     cmpwi   r23, 0x2
     addi    r26, r26, 0x8
     blt+    branch_0x80244010
-    lwz     r3, 0x3c0(r25)
+    lwz     r3, MarioActor_3c0(r25)
     lwz     r3, 0x4(r3)
     bl      SMS_ResetDamageFogEffect__FP12J3DModelData
 branch_0x80244058:
@@ -223,6 +227,10 @@ branch_0x80244058:
     blr
 
 
+/*
+Input:
+r3: MarioActor
+*/
 .globl addDirty__6TMarioFv
 addDirty__6TMarioFv: # 0x8024406c
     mflr    r0
@@ -243,19 +251,19 @@ branch_0x80244088:
     lwz     r12, 0x40(r12)
     mtlr    r12
     blrl
-    lfs     f0, 0x134(r31)
+    lfs     f0, MarioActor_134(r31)
     addi    r26, r26, 0x1
     fctiwz  f0, f0
     stfd    f0, 0x48(sp)
     lwz     r0, 0x4c(sp)
     stb     r0, 0x3(r3)
 branch_0x802440c4:
-    lwz     r4, 0x3ac(r31)
+    lwz     r4, MarioActor_3ac(r31)
     clrlwi  r0, r26, 16
     lhz     r3, 0x24(r4)
     cmplw   r0, r3
     blt+    branch_0x80244088
-    lwz     r0, 0x3b0(r31)
+    lwz     r0, MarioActor_3b0(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80244178
     li      r25, 0x0
@@ -281,7 +289,7 @@ branch_0x8024410c:
     lwz     r12, 0x40(r12)
     mtlr    r12
     blrl
-    lfs     f0, 0x134(r31)
+    lfs     f0, MarioActor_134(r31)
     addi    r26, r26, 0x1
     fctiwz  f0, f0
     stfd    f0, 0x48(sp)
@@ -308,6 +316,10 @@ branch_0x80244178:
     blr
 
 
+/*
+Input:
+r3: MarioActor
+*/
 .globl boxDrawPrepare__6TMarioFPA4_f
 boxDrawPrepare__6TMarioFPA4_f: # 0x8024418c
     mflr    r0
@@ -323,18 +335,18 @@ boxDrawPrepare__6TMarioFPA4_f: # 0x8024418c
     bl      GXGetProjectionv
     addi    r3, sp, 0x58
     bl      GXGetViewportv
-    lwz     r4, 0x10(r30)
+    lwz     r4, MarioActor_PositionX(r30)
     mr      r3, r31
-    lwz     r0, 0x14(r30)
+    lwz     r0, MarioActor_PositionY(r30)
     addi    r5, sp, 0x58
     lfs     f0, -0x1114(rtoc)
     stw     r4, 0x4c(sp)
     addi    r4, sp, 0x70
-    addi    r6, r30, 0x450
+    addi    r6, r30, MarioActor_450
     stw     r0, 0x50(sp)
-    addi    r7, r30, 0x454
-    addi    r8, r30, 0x458
-    lwz     r0, 0x18(r30)
+    addi    r7, r30, MarioActor_454
+    addi    r8, r30, MarioActor_458
+    lwz     r0, MarioActor_PositionZ(r30)
     stw     r0, 0x54(sp)
     lfs     f1, 0x50(sp)
     fadds   f0, f1, f0
@@ -429,6 +441,7 @@ boxDrawPrepare__6TMarioFPA4_f: # 0x8024418c
     li      r6, 0x7
     li      r7, 0x0
     bl      GXSetAlphaCompare
+
     lwz     r0, 0xac(sp)
     lfd     f31, 0xa0(sp)
     lfd     f30, 0x98(sp)
@@ -439,6 +452,10 @@ boxDrawPrepare__6TMarioFPA4_f: # 0x8024418c
     blr
 
 
+/* TMario::drawLogic((void))
+Input:
+r3: MarioActor
+*/
 .globl drawLogic__6TMarioFv
 drawLogic__6TMarioFv: # 0x80244388
     mflr    r0
@@ -493,7 +510,7 @@ drawLogic__6TMarioFv: # 0x80244388
     li      r3, 0x0
     li      r4, 0x4
     bl      GXSetTevOp
-    lbz     r6, 0x4ed(r30)
+    lbz     r6, MarioActor_4ed(r30)
     li      r3, 0x2
     li      r4, 0x1
     li      r5, 0x0
@@ -514,15 +531,15 @@ drawLogic__6TMarioFv: # 0x80244388
     bl      GXSetColorUpdate
     li      r3, 0x0
     bl      GXSetAlphaUpdate
-    lwz     r3, 0x394(r30)
+    lwz     r3, MarioActor_394(r30)
     bl      draw__13J3DDrawBufferCFv
-    lwz     r3, 0x398(r30)
+    lwz     r3, MarioActor_398(r30)
     bl      draw__13J3DDrawBufferCFv
     li      r3, 0x1
     bl      GXSetColorUpdate
     li      r3, 0x0
     bl      GXSetAlphaUpdate
-    lhz     r0, 0x114(r30)
+    lhz     r0, MarioActor_114(r30)
     rlwinm. r0, r0, 0, 26, 26
     beq-    branch_0x802444e0
     li      r0, 0x1
@@ -533,9 +550,9 @@ branch_0x802444e0:
 branch_0x802444e4:
     clrlwi. r0, r0, 24
     beq-    branch_0x802444fc
-    lwz     r3, 0x394(r30)
+    lwz     r3, MarioActor_394(r30)
     bl      draw__13J3DDrawBufferCFv
-    lwz     r3, 0x398(r30)
+    lwz     r3, MarioActor_398(r30)
     bl      draw__13J3DDrawBufferCFv
 branch_0x802444fc:
     lwz     r0, 0x0(r31)
@@ -796,7 +813,7 @@ calcAnim__6TMarioFUlPQ26JDrama9TGraphics: # 0x80244800
     addi    r5, r31, 0x0
     bl      perform__8M3UModelFUlPQ26JDrama9TGraphics
     li      r4, 0x0
-    stw     r4, -0x60e0(r13)
+    stw     r4, OffsetR13_60e0(r13)
     lwz     r3, 0x3a8(r30)
     lbz     r0, 0x3cf(r30)
     lwz     r3, 0x8(r3)
@@ -1392,6 +1409,10 @@ setUpperDamageRun__6TMarioFv: # 0x80245028
     blr
 
 
+/*
+Input:
+r3: MarioActor
+*/
 .globl addCallBack__6TMarioFPQ26JDrama9TGraphics
 addCallBack__6TMarioFPQ26JDrama9TGraphics: # 0x802450c0
     mflr    r0
@@ -1402,14 +1423,14 @@ addCallBack__6TMarioFPQ26JDrama9TGraphics: # 0x802450c0
     mr      r30, r4
     stw     r29, 0x11c(sp)
     mr      r29, r3
-    stw     r29, -0x60e0(r13)
-    lwz     r4, 0x3a8(r29)
+    stw     r29, OffsetR13_60e0(r13)
+    lwz     r4, MarioActor_3a8(r29)
     lwz     r4, 0x8(r4)
     lwz     r31, 0x4(r4)
     bl      isMario__6TMarioFv
     cmpwi   r3, 0x0
     beq-    branch_0x80245118
-    lbz     r0, 0x3cf(r29)
+    lbz     r0, MarioActor_3cf(r29)
     lis     r4, 0x8025
     lwz     r3, 0x20(r31)
     subi    r4, r4, 0x74e8
@@ -1417,18 +1438,18 @@ addCallBack__6TMarioFPQ26JDrama9TGraphics: # 0x802450c0
     lwzx    r3, r3, r0
     stw     r4, 0x8(r3)
 branch_0x80245118:
-    lbz     r0, 0x3c6(r29)
+    lbz     r0, MarioActor_3c6(r29)
     lis     r4, 0x8025
     lwz     r3, 0x20(r31)
     subi    r4, r4, 0x775c
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     stw     r4, 0x8(r3)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x58(r3)
     cmpwi   r0, 0x4b0
     blt-    branch_0x8024516c
-    lwz     r4, 0x380(r29)
+    lwz     r4, MarioActor_380(r29)
     cmplwi  r4, 0x0
     beq-    branch_0x80245158
     cmplwi  r4, 0x1
@@ -1443,7 +1464,7 @@ branch_0x80245164:
     clrlwi. r0, r0, 24
     beq-    branch_0x802451fc
 branch_0x8024516c:
-    lwz     r6, 0x420(r29)
+    lwz     r6, MarioActor_420(r29)
     cmplwi  r6, 0x0
     beq-    branch_0x802451ac
     li      r5, 0x0
@@ -1463,8 +1484,8 @@ branch_0x802451a0:
     cmpw    r5, r0
     blt+    branch_0x80245184
 branch_0x802451ac:
-    lwz     r0, 0x118(r29)
-    rlwinm. r0, r0, 0, 16, 16
+    lwz     r0, MarioActor_Flags(r29)
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x802451c0
     li      r0, 0x1
     b       branch_0x802451c4
@@ -1474,7 +1495,7 @@ branch_0x802451c0:
 branch_0x802451c4:
     clrlwi. r0, r0, 24
     beq-    branch_0x802451e8
-    lwz     r3, 0x3e4(r29)
+    lwz     r3, MarioActor_WaterGun(r29)
     lwz     r3, 0x1cdc(r3)
     lwz     r3, 0x10(r3)
     lwz     r3, 0x4(r3)
@@ -1482,14 +1503,14 @@ branch_0x802451c4:
     clrrwi  r0, r0, 1
     sth     r0, 0x4(r3)
 branch_0x802451e8:
-    lwz     r3, 0x3e0(r29)
+    lwz     r3, MarioActor_3e0(r29)
     cmplwi  r3, 0x0
     beq-    branch_0x802452b8
     bl      mtxEffectHide__9TMarioCapFv
     b       branch_0x802452b8
 
 branch_0x802451fc:
-    lhz     r0, 0xfa(r29)
+    lhz     r0, MarioActor_fa(r29)
     lis     r3, 0x803e
     subi    r3, r3, 0x3a40
     slwi    r0, r0, 3
@@ -1499,7 +1520,7 @@ branch_0x802451fc:
     beq-    branch_0x80245268
     cmplwi  r4, 0x5
     bne-    branch_0x80245268
-    lwz     r6, 0x420(r29)
+    lwz     r6, MarioActor_420(r29)
     cmplwi  r6, 0x0
     beq-    branch_0x802452a8
     li      r5, 0x0
@@ -1521,7 +1542,7 @@ branch_0x80245258:
     b       branch_0x802452a8
 
 branch_0x80245268:
-    lwz     r6, 0x420(r29)
+    lwz     r6, MarioActor_420(r29)
     cmplwi  r6, 0x0
     beq-    branch_0x802452a8
     li      r5, 0x0
@@ -1541,12 +1562,12 @@ branch_0x8024529c:
     cmpw    r5, r0
     blt+    branch_0x80245280
 branch_0x802452a8:
-    lwz     r3, 0x3e0(r29)
+    lwz     r3, MarioActor_3e0(r29)
     cmplwi  r3, 0x0
     beq-    branch_0x802452b8
     bl      mtxEffectShow__9TMarioCapFv
 branch_0x802452b8:
-    lhz     r0, 0xfa(r29)
+    lhz     r0, MarioActor_fa(r29)
     lis     r3, 0x803e
     subi    r3, r3, 0x3a40
     slwi    r0, r0, 3
@@ -1554,11 +1575,11 @@ branch_0x802452b8:
     lbz     r0, 0x6(r3)
     rlwinm. r0, r0, 0, 29, 29
     beq-    branch_0x80245324
-    lwz     r0, 0x380(r29)
+    lwz     r0, MarioActor_380(r29)
     cmplwi  r0, 0x5
     bne-    branch_0x80245324
-    lwz     r0, 0x118(r29)
-    rlwinm. r0, r0, 0, 16, 16
+    lwz     r0, MarioActor_Flags(r29)
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x802452f8
     li      r0, 0x1
     b       branch_0x802452fc
@@ -1568,7 +1589,7 @@ branch_0x802452f8:
 branch_0x802452fc:
     clrlwi. r0, r0, 24
     beq-    branch_0x80245360
-    lwz     r3, 0x3e4(r29)
+    lwz     r3, MarioActor_WaterGun(r29)
     lwz     r3, 0x1cdc(r3)
     lwz     r3, 0x10(r3)
     lwz     r3, 0x4(r3)
@@ -1578,8 +1599,8 @@ branch_0x802452fc:
     b       branch_0x80245360
 
 branch_0x80245324:
-    lwz     r0, 0x118(r29)
-    rlwinm. r0, r0, 0, 16, 16
+    lwz     r0, MarioActor_Flags(r29)
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80245338
     li      r0, 0x1
     b       branch_0x8024533c
@@ -1589,7 +1610,7 @@ branch_0x80245338:
 branch_0x8024533c:
     clrlwi. r0, r0, 24
     beq-    branch_0x80245360
-    lwz     r3, 0x3e4(r29)
+    lwz     r3, MarioActor_WaterGun(r29)
     lwz     r3, 0x1cdc(r3)
     lwz     r3, 0x10(r3)
     lwz     r3, 0x4(r3)
@@ -1600,7 +1621,7 @@ branch_0x80245360:
     lhz     r0, 0x0(r30)
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x802453e0
-    lbz     r0, 0x3cb(r29)
+    lbz     r0, MarioActor_3cb(r29)
     lis     r4, 0x8025
     lwz     r3, 0x20(r31)
     lis     r5, 0x8025
@@ -1611,19 +1632,19 @@ branch_0x80245360:
     stw     r0, 0x8(r3)
     lis     r3, 0x8025
     subi    r7, r5, 0x7b24
-    lbz     r0, 0x3cc(r29)
+    lbz     r0, MarioActor_3cc(r29)
     subi    r5, r4, 0x7c5c
     lwz     r6, 0x20(r31)
     subi    r4, r3, 0x7eec
     slwi    r0, r0, 2
     lwzx    r3, r6, r0
     stw     r7, 0x8(r3)
-    lbz     r0, 0x3cd(r29)
+    lbz     r0, MarioActor_3cd(r29)
     lwz     r3, 0x20(r31)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     stw     r5, 0x8(r3)
-    lbz     r0, 0x3ce(r29)
+    lbz     r0, MarioActor_3ce(r29)
     lwz     r3, 0x20(r31)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
@@ -1631,27 +1652,28 @@ branch_0x80245360:
     b       branch_0x80245434
 
 branch_0x802453e0:
-    lbz     r0, 0x3cb(r29)
+    lbz     r0, MarioActor_3cb(r29)
     li      r4, 0x0
     lwz     r3, 0x20(r31)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     stw     r4, 0x8(r3)
-    lbz     r0, 0x3cc(r29)
+    lbz     r0, MarioActor_3cc(r29)
     lwz     r3, 0x20(r31)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     stw     r4, 0x8(r3)
-    lbz     r0, 0x3cd(r29)
+    lbz     r0, MarioActor_3cd(r29)
     lwz     r3, 0x20(r31)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     stw     r4, 0x8(r3)
-    lbz     r0, 0x3ce(r29)
+    lbz     r0, MarioActor_3ce(r29)
     lwz     r3, 0x20(r31)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     stw     r4, 0x8(r3)
+
 branch_0x80245434:
     lwz     r0, 0x12c(sp)
     lwz     r31, 0x124(sp)
@@ -1817,7 +1839,7 @@ branch_0x80245644:
     lfs     f0, 0x14(r30)
     stfs    f0, 0x184(sp)
     lfs     f0, 0x18(r30)
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     stfs    f0, 0x188(sp)
     lfs     f1, 0x10(r30)
     lfs     f2, 0xf0(r30)
@@ -2405,7 +2427,7 @@ branch_0x80245ee8:
     lfs     f1, -0x10e0(rtoc)
     addi    r4, sp, 0x1e0
     lfs     f0, 0x14(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r30)
     lfs     f3, 0x18(r30)
@@ -2431,7 +2453,7 @@ branch_0x80245f50:
 branch_0x80245f54:
     clrlwi. r0, r0, 24
     beq-    branch_0x80245f88
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     lfs     f1, 0x10(r30)
     lfs     f2, 0x14(r30)
     lfs     f3, 0x18(r30)
@@ -2468,6 +2490,10 @@ set_f___Q29JGeometry8TVec3_f_Ffff_80245fc0: # 0x80245fc0
     blr
 
 
+/*
+Input:
+r3: MarioActor
+*/
 .globl considerWaist__6TMarioFv
 considerWaist__6TMarioFv: # 0x80245fd0
     mflr    r0
@@ -2477,8 +2503,8 @@ considerWaist__6TMarioFv: # 0x80245fd0
     stw     r30, 0xa0(sp)
     mr      r30, r3
     stw     r29, 0x9c(sp)
-    lwz     r0, 0x7c(r3)
-    rlwinm. r0, r0, 0, 15, 15
+    lwz     r0, MarioActor_Status(r3)
+    rlwinm. r0, r0, 0, 15, 15 # MARIOSTATUS_10000
     beq-    branch_0x80246000
     li      r0, 0x1
     b       branch_0x80246004
@@ -2488,7 +2514,7 @@ branch_0x80246000:
 branch_0x80246004:
     clrlwi. r0, r0, 24
     beq-    branch_0x802460a8
-    lwz     r3, 0xe0(r30)
+    lwz     r3, MarioActor_GroundPlane(r30)
     lhz     r3, 0x0(r3)
     cmplwi  r3, 0x100
     beq-    branch_0x8024603c
@@ -2509,35 +2535,35 @@ branch_0x80246044:
 branch_0x80246048:
     clrlwi. r0, r0, 24
     beq-    branch_0x8024607c
-    lha     r3, 0x1700(r30)
+    lha     r3, MarioActor_1700(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f3, 0x16d8(r30)
+    lfs     f3, MarioActor_16d8(r30)
     stw     r3, 0x94(sp)
-    lfs     f2, 0x1778(r30)
+    lfs     f2, MarioActor_1778(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f1, f0, f1
     b       branch_0x8024615c
 
 branch_0x8024607c:
-    lha     r3, 0x18d4(r30)
+    lha     r3, MarioActor_18d4(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f3, 0x18ac(r30)
+    lfs     f3, MarioActor_18ac(r30)
     stw     r3, 0x94(sp)
-    lfs     f2, 0x194c(r30)
+    lfs     f2, MarioActor_194c(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f1, f0, f1
     b       branch_0x8024615c
 
 branch_0x802460a8:
-    lwz     r0, 0x118(r30)
+    lwz     r0, MarioActor_Flags(r30)
     li      r31, 0x0
-    rlwinm. r0, r0, 0, 16, 16
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x802460c0
     li      r0, 0x1
     b       branch_0x802460c4
@@ -2555,7 +2581,7 @@ branch_0x802460c4:
 branch_0x802460e0:
     clrlwi. r0, r31, 24
     bne-    branch_0x80246108
-    lwz     r0, 0x6c(r30)
+    lwz     r0, MarioActor_6c(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x802460fc
     li      r0, 0x1
@@ -2567,31 +2593,31 @@ branch_0x80246100:
     clrlwi. r0, r0, 24
     beq-    branch_0x80246134
 branch_0x80246108:
-    lha     r3, 0xa88(r30)
+    lha     r3, MarioActor_a88(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f3, 0xa60(r30)
+    lfs     f3, MarioActor_a60(r30)
     stw     r3, 0x94(sp)
-    lfs     f2, 0xa9c(r30)
+    lfs     f2, MarioActor_a9c(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f1, f0, f1
     b       branch_0x8024615c
 
 branch_0x80246134:
-    lha     r3, 0xa08(r30)
+    lha     r3, MarioActor_a08(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f3, 0x9e0(r30)
+    lfs     f3, MarioActor_9e0(r30)
     stw     r3, 0x94(sp)
-    lfs     f2, 0xa1c(r30)
+    lfs     f2, MarioActor_a1c(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f1, f0, f1
 branch_0x8024615c:
-    lfs     f0, 0xb0(r30)
+    lfs     f0, MarioActor_Velocity(r30)
     fmuls   f0, f3, f0
     fcmpo   cr0, f0, f1
     fmr     f3, f0
@@ -2603,14 +2629,14 @@ branch_0x80246174:
     bge-    branch_0x80246184
     fmr     f3, f0
 branch_0x80246184:
-    lfs     f1, 0x3dc(r30)
+    lfs     f1, MarioActor_3dc(r30)
     fsubs   f0, f3, f1
     fmadds  f0, f2, f0, f1
-    stfs    f0, 0x3dc(r30)
-    lwz     r0, 0x7c(r30)
-    lha     r4, 0x9c(r30)
-    lha     r3, 0x96(r30)
-    rlwinm. r0, r0, 0, 15, 15
+    stfs    f0, MarioActor_3dc(r30)
+    lwz     r0, MarioActor_Status(r30)
+    lha     r4, MarioActor_9c(r30)
+    lha     r3, MarioActor_AngleY(r30)
+    rlwinm. r0, r0, 0, 15, 15 # MARIOSTATUS_10000
     subf    r31, r4, r3
     beq-    branch_0x802461b4
     li      r0, 0x1
@@ -2621,7 +2647,7 @@ branch_0x802461b4:
 branch_0x802461b8:
     clrlwi. r0, r0, 24
     beq-    branch_0x8024625c
-    lwz     r3, 0xe0(r30)
+    lwz     r3, MarioActor_GroundPlane(r30)
     lhz     r3, 0x0(r3)
     cmplwi  r3, 0x100
     beq-    branch_0x802461f0
@@ -2642,35 +2668,35 @@ branch_0x802461f8:
 branch_0x802461fc:
     clrlwi. r0, r0, 24
     beq-    branch_0x80246230
-    lha     r3, 0x16ec(r30)
+    lha     r3, MarioActor_16ec(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f4, 0x16c4(r30)
+    lfs     f4, MarioActor_16c4(r30)
     stw     r3, 0x94(sp)
-    lfs     f3, 0x1778(r30)
+    lfs     f3, MarioActor_1778(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f5, f0, f1
     b       branch_0x802462f0
 
 branch_0x80246230:
-    lha     r3, 0x18c0(r30)
+    lha     r3, MarioActor_18c0(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f4, 0x1898(r30)
+    lfs     f4, MarioActor_1898(r30)
     stw     r3, 0x94(sp)
-    lfs     f3, 0x194c(r30)
+    lfs     f3, MarioActor_194c(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f5, f0, f1
     b       branch_0x802462f0
 
 branch_0x8024625c:
-    lwz     r0, 0x118(r30)
+    lwz     r0, MarioActor_Flags(r30)
     li      r29, 0x0
-    rlwinm. r0, r0, 0, 16, 16
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80246274
     li      r0, 0x1
     b       branch_0x80246278
@@ -2688,26 +2714,26 @@ branch_0x80246278:
 branch_0x80246294:
     clrlwi. r0, r29, 24
     beq-    branch_0x802462c8
-    lha     r3, 0xa74(r30)
+    lha     r3, MarioActor_a74(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f4, 0xa4c(r30)
+    lfs     f4, MarioActor_a4c(r30)
     stw     r3, 0x94(sp)
-    lfs     f3, 0xa9c(r30)
+    lfs     f3, MarioActor_a9c(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f5, f0, f1
     b       branch_0x802462f0
 
 branch_0x802462c8:
-    lha     r3, 0x9f4(r30)
+    lha     r3, MarioActor_9f4(r30)
     lis     r0, 0x4330
     lfd     f1, -0x10f0(rtoc)
     xoris   r3, r3, 0x8000
-    lfs     f4, 0x9cc(r30)
+    lfs     f4, MarioActor_9cc(r30)
     stw     r3, 0x94(sp)
-    lfs     f3, 0xa1c(r30)
+    lfs     f3, MarioActor_a1c(r30)
     stw     r0, 0x90(sp)
     lfd     f0, 0x90(sp)
     fsubs   f5, f0, f1
@@ -2715,7 +2741,7 @@ branch_0x802462f0:
     extsh   r0, r31
     lfd     f2, -0x10f0(rtoc)
     xoris   r0, r0, 0x8000
-    lfs     f0, 0xb0(r30)
+    lfs     f0, MarioActor_Velocity(r30)
     stw     r0, 0x94(sp)
     lis     r0, 0x4330
     stw     r0, 0x90(sp)
@@ -2733,10 +2759,11 @@ branch_0x8024632c:
     bge-    branch_0x8024633c
     fmr     f2, f0
 branch_0x8024633c:
-    lfs     f1, 0x3d8(r30)
+    lfs     f1, MarioActor_3d8(r30)
     fsubs   f0, f2, f1
     fmadds  f0, f3, f0, f1
-    stfs    f0, 0x3d8(r30)
+    stfs    f0, MarioActor_3d8(r30)
+
     lwz     r0, 0xac(sp)
     lwz     r31, 0xa4(sp)
     lwz     r30, 0xa0(sp)
@@ -2908,6 +2935,10 @@ branch_0x80246564:
     blr
 
 
+/*
+Input:
+r3: MarioActor
+*/
 .globl initModel__6TMarioFv
 initModel__6TMarioFv: # 0x80246578
     mflr    r0
@@ -2925,7 +2956,7 @@ initModel__6TMarioFv: # 0x80246578
     li      r4, 0x20
     bl      __ct__13J3DDrawBufferFUl
 branch_0x802465b0:
-    stw     r19, 0x394(r31)
+    stw     r19, MarioActor_394(r31)
     li      r3, 0x24
     bl      __nw__FUl
     mr.     r19, r3
@@ -2934,87 +2965,87 @@ branch_0x802465b0:
     li      r4, 0x20
     bl      __ct__13J3DDrawBufferFUl
 branch_0x802465d0:
-    stw     r19, 0x398(r31)
+    stw     r19, MarioActor_398(r31)
     li      r0, 0x0
     addi    r3, r30, 0xa7c
-    stw     r0, 0x39c(r31)
-    stw     r0, 0x3a0(r31)
+    stw     r0, MarioActor_39c(r31)
+    stw     r0, MarioActor_3a0(r31)
     bl      getGlbResource__13JKRFileLoaderFPCc
     lis     r4, 0x1010
     bl      load__22J3DModelLoaderDataBaseFPCvUl
-    stw     r3, 0x3ac(r31)
+    stw     r3, MarioActor_3ac(r31)
     subi    r4, rtoc, 0x10d4
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3c4(r31)
+    stb     r3, MarioActor_3c4(r31)
     addi    r4, r30, 0xa94
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3c6(r31)
+    stb     r3, MarioActor_3c6(r31)
     addi    r4, r30, 0xaa0
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3c5(r31)
+    stb     r3, MarioActor_3c5(r31)
     addi    r4, r30, 0xaac
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3c7(r31)
+    stb     r3, MarioActor_3c7(r31)
     addi    r4, r30, 0xab8
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3c8(r31)
+    stb     r3, MarioActor_3c8(r31)
     addi    r4, r30, 0xac4
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3c9(r31)
+    stb     r3, MarioActor_3c9(r31)
     addi    r4, r30, 0xad0
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3ca(r31)
+    stb     r3, MarioActor_3ca(r31)
     addi    r4, r30, 0xadc
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3cb(r31)
+    stb     r3, MarioActor_3cb(r31)
     addi    r4, r30, 0xae8
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3cc(r31)
+    stb     r3, MarioActor_3cc(r31)
     addi    r4, r30, 0xaf4
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3cd(r31)
+    stb     r3, MarioActor_3cd(r31)
     addi    r4, r30, 0xb00
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3ce(r31)
+    stb     r3, MarioActor_3ce(r31)
     addi    r4, r30, 0xb0c
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3cf(r31)
+    stb     r3, MarioActor_3cf(r31)
     subi    r4, rtoc, 0x10cc
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    stb     r3, 0x3d0(r31)
+    stb     r3, MarioActor_3d0(r31)
     addi    r3, r30, 0x6f0
     bl      getGlbResource__13JKRFileLoaderFPCc
-    stw     r3, 0x470(r31)
-    lwz     r5, 0x470(r31)
+    stw     r3, MarioActor_470(r31)
+    lwz     r5, MarioActor_470(r31)
     cmplwi  r5, 0x0
     beq-    branch_0x8024671c
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     addi    r4, r30, 0x714
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x8024671c:
@@ -3022,7 +3053,7 @@ branch_0x8024671c:
     bl      __nw__FUl
     mr.     r21, r3
     beq-    branch_0x80246740
-    lwz     r4, 0x3ac(r31)
+    lwz     r4, MarioActor_3ac(r31)
     addi    r3, r21, 0x0
     li      r5, 0x0
     li      r6, 0x1
@@ -3031,26 +3062,26 @@ branch_0x80246740:
     addi    r3, r30, 0xb18
     lis     r4, 0x1010
     bl      SMS_CreatePartsModel__FPcUl
-    stw     r3, 0x3b0(r31)
+    stw     r3, MarioActor_3b0(r31)
     addi    r3, r30, 0xb30
     lis     r4, 0x1010
     bl      SMS_CreatePartsModel__FPcUl
-    stw     r3, 0x3b4(r31)
+    stw     r3, MarioActor_3b4(r31)
     addi    r3, r30, 0xb48
     lis     r4, 0x1010
     bl      SMS_CreatePartsModel__FPcUl
-    stw     r3, 0x3b8(r31)
+    stw     r3, MarioActor_3b8(r31)
     addi    r3, r30, 0xb60
     lis     r4, 0x1010
     bl      SMS_CreatePartsModel__FPcUl
-    stw     r3, 0x3bc(r31)
+    stw     r3, MarioActor_3bc(r31)
     addi    r3, r30, 0xb78
     lis     r4, 0x1010
     bl      SMS_CreatePartsModel__FPcUl
-    stw     r3, 0x3c0(r31)
+    stw     r3, MarioActor_3c0(r31)
     li      r4, 0x20
-    lwz     r5, 0x3ac(r31)
-    lwz     r3, 0x3b0(r31)
+    lwz     r5, MarioActor_3ac(r31)
+    lwz     r3, MarioActor_3b0(r31)
     lwz     r5, 0xac(r5)
     lwz     r7, 0x4(r3)
     lwz     r6, 0x4(r5)
@@ -3085,9 +3116,9 @@ branch_0x80246740:
     lwz     r3, 0xac(r7)
     lwz     r3, 0x4(r3)
     bl      DCFlushRange
-    lwz     r5, 0x3ac(r31)
+    lwz     r5, MarioActor_3ac(r31)
     li      r4, 0x20
-    lwz     r3, 0x3b4(r31)
+    lwz     r3, MarioActor_3b4(r31)
     lwz     r5, 0xac(r5)
     lwz     r7, 0x4(r3)
     lwz     r6, 0x4(r5)
@@ -3122,9 +3153,9 @@ branch_0x80246740:
     lwz     r3, 0xac(r7)
     lwz     r3, 0x4(r3)
     bl      DCFlushRange
-    lwz     r5, 0x3ac(r31)
+    lwz     r5, MarioActor_3ac(r31)
     li      r4, 0x20
-    lwz     r3, 0x3b8(r31)
+    lwz     r3, MarioActor_3b8(r31)
     lwz     r5, 0xac(r5)
     lwz     r7, 0x4(r3)
     lwz     r6, 0x4(r5)
@@ -3159,9 +3190,9 @@ branch_0x80246740:
     lwz     r3, 0xac(r7)
     lwz     r3, 0x4(r3)
     bl      DCFlushRange
-    lwz     r5, 0x3ac(r31)
+    lwz     r5, MarioActor_3ac(r31)
     li      r4, 0x20
-    lwz     r3, 0x3bc(r31)
+    lwz     r3, MarioActor_3bc(r31)
     lwz     r5, 0xac(r5)
     lwz     r7, 0x4(r3)
     lwz     r6, 0x4(r5)
@@ -3196,9 +3227,9 @@ branch_0x80246740:
     lwz     r3, 0xac(r7)
     lwz     r3, 0x4(r3)
     bl      DCFlushRange
-    lwz     r5, 0x3ac(r31)
+    lwz     r5, MarioActor_3ac(r31)
     li      r4, 0x20
-    lwz     r3, 0x3c0(r31)
+    lwz     r3, MarioActor_3c0(r31)
     lwz     r5, 0xac(r5)
     lwz     r7, 0x4(r3)
     lwz     r6, 0x4(r5)
@@ -3233,13 +3264,13 @@ branch_0x80246740:
     lwz     r3, 0xac(r7)
     lwz     r3, 0x4(r3)
     bl      DCFlushRange
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0x30(r3)
     lwz     r3, 0x10(r3)
     lwz     r0, 0x8(r3)
     ori     r0, r0, 0x1
     stw     r0, 0x8(r3)
-    lwz     r0, 0x470(r31)
+    lwz     r0, MarioActor_470(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80246ae4
     li      r23, 0x0
@@ -3250,7 +3281,7 @@ branch_0x80246aa0:
     li      r22, 0x0
 branch_0x80246aac:
     addi    r0, r22, 0x3b0
-    lwz     r5, 0x470(r31)
+    lwz     r5, MarioActor_470(r31)
     lwzx    r3, r19, r0
     addi    r4, r30, 0x714
     lwz     r3, 0x4(r3)
@@ -3270,7 +3301,7 @@ branch_0x80246ae4:
     li      r3, 0x31c
     bl      __nwa__FUl
     lis     r4, 0x803e
-    stw     r3, 0x4e0(r31)
+    stw     r3, MarioActor_4e0(r31)
     subi    r25, r4, 0x4078
     li      r20, 0x0
     li      r23, 0x0
@@ -3298,7 +3329,7 @@ branch_0x80246b4c:
     crxor   6, 6, 6
     li      r4, 0xff
     bl      snprintf
-    lwz     r3, 0x4e0(r31)
+    lwz     r3, MarioActor_4e0(r31)
     addic.  r0, sp, 0x480
     add     r26, r3, r23
     beq-    branch_0x80246b84
@@ -3332,7 +3363,7 @@ branch_0x80246b8c:
     li      r27, 0x0
 branch_0x80246bd8:
     add     r3, r24, r27
-    lwz     r20, 0x3ac(r31)
+    lwz     r20, MarioActor_3ac(r31)
     lwz     r3, 0x0(r3)
     bl      getGlbResource__13JKRFileLoaderFPCc
     cmplwi  r3, 0x0
@@ -3428,15 +3459,15 @@ branch_0x80246d2c:
     stw     r20, 0x18(r24)
     stw     r29, 0x8(r24)
     stw     r28, 0xc(r24)
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0xb4(r3)
     bl      getIndex__10JUTNameTabCFPCc
-    lwz     r5, 0x3ac(r31)
+    lwz     r5, MarioActor_3ac(r31)
     clrlwi  r22, r3, 16
     addi    r4, r30, 0xbcc
     lwz     r3, 0xb4(r5)
     bl      getIndex__10JUTNameTabCFPCc
-    lwz     r4, 0x3ac(r31)
+    lwz     r4, MarioActor_3ac(r31)
     clrlwi  r25, r3, 16
     slwi    r19, r22, 2
     lwz     r3, 0x28(r4)
@@ -3452,12 +3483,12 @@ branch_0x80246d2c:
     mr      r3, r26
     bl      initialize__14J3DMaterialAnmFv
 branch_0x80246d9c:
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     slwi    r20, r25, 2
     lwz     r3, 0x28(r3)
     lwzx    r3, r3, r19
     stw     r26, 0x38(r3)
-    lwz     r3, 0x3ac(r31)
+    lwz     r3, MarioActor_3ac(r31)
     lwz     r3, 0x28(r3)
     lwzx    r3, r3, r20
     bl      change__11J3DMaterialFv
@@ -3471,13 +3502,13 @@ branch_0x80246d9c:
     mr      r3, r19
     bl      initialize__14J3DMaterialAnmFv
 branch_0x80246de4:
-    lwz     r4, 0x3ac(r31)
+    lwz     r4, MarioActor_3ac(r31)
     li      r3, 0x80
     lwz     r4, 0x28(r4)
     lwzx    r4, r4, r20
     stw     r19, 0x38(r4)
-    sth     r22, 0x3d4(r31)
-    sth     r25, 0x3d6(r31)
+    sth     r22, MarioActor_3d4(r31)
+    sth     r25, MarioActor_3d6(r31)
     bl      __nw__FUl
     mr.     r20, r3
     beq-    branch_0x80246e88
@@ -3540,7 +3571,7 @@ branch_0x80246e88:
     stw     r4, 0x3a8(sp)
     lhz     r4, 0xa4c(r30)
     sth     r4, 0x3ac(sp)
-    lbz     r4, 0x3c5(r31)
+    lbz     r4, MarioActor_3c5(r31)
     sth     r4, 0x3a4(sp)
     lwz     r5, 0x3a4(sp)
     lwz     r4, 0x3a8(sp)
@@ -3574,7 +3605,7 @@ branch_0x80246e88:
     stfs    f0, 0x20(r5)
     lwz     r5, 0x18(r24)
     stfs    f0, 0xbc(r5)
-    stw     r20, 0x3a8(r31)
+    stw     r20, MarioActor_3a8(r31)
     lfs     f1, -0x111c(rtoc)
     bl      setAnimation__6TMarioFif
     lfs     f1, -0x111c(rtoc)
@@ -3584,108 +3615,109 @@ branch_0x80246e88:
     fmr     f0, f1
     stfs    f1, 0x424(sp)
     stfs    f0, 0x428(sp)
-    lha     r0, 0x94(r31)
+    lha     r0, MarioActor_AngleX(r31)
     sth     r0, 0x42c(sp)
-    lha     r0, 0x9a(r31)
+    lha     r0, MarioActor_9a(r31)
     sth     r0, 0x42e(sp)
-    lha     r0, 0x98(r31)
+    lha     r0, MarioActor_AngleZ(r31)
     sth     r0, 0x430(sp)
-    lfs     f0, 0x10(r31)
+    lfs     f0, MarioActor_PositionX(r31)
     stfs    f0, 0x434(sp)
-    lfs     f0, 0x14(r31)
+    lfs     f0, MarioActor_PositionY(r31)
     stfs    f0, 0x438(sp)
-    lfs     f0, 0x18(r31)
+    lfs     f0, MarioActor_PositionZ(r31)
     stfs    f0, 0x43c(sp)
     bl      J3DGetTranslateRotateMtx__FRC16J3DTransformInfoPA4_f
-    lwz     r4, 0x3a8(r31)
+
+    lwz     r4, MarioActor_3a8(r31)
     addi    r3, sp, 0x440
     lwz     r4, 0x8(r4)
     addi    r4, r4, 0x20
     bl      PSMTXCopy
-    lwz     r3, 0x3a8(r31)
+    lwz     r3, MarioActor_3a8(r31)
     bl      updateInMotion__13M3UModelMarioFv
-    lwz     r3, 0x3a8(r31)
+    lwz     r3, MarioActor_3a8(r31)
     lwz     r3, 0x8(r3)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lwz     r4, 0x3b0(r31)
+    lwz     r4, MarioActor_3b0(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x8024712c
-    lwz     r3, 0x3a8(r31)
+    lwz     r3, MarioActor_3a8(r31)
     addi    r4, r4, 0x20
-    lbz     r0, 0x3c9(r31)
+    lbz     r0, MarioActor_3c9(r31)
     lwz     r3, 0x8(r3)
     mulli   r0, r0, 0x30
     lwz     r3, 0x58(r3)
     add     r3, r3, r0
     bl      PSMTXCopy
-    lwz     r3, 0x3a8(r31)
-    lbz     r0, 0x3ca(r31)
+    lwz     r3, MarioActor_3a8(r31)
+    lbz     r0, MarioActor_3ca(r31)
     lwz     r3, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r4, 0x3b4(r31)
+    lwz     r4, MarioActor_3b4(r31)
     lwz     r3, 0x58(r3)
     add     r3, r3, r0
     addi    r4, r4, 0x20
     bl      PSMTXCopy
-    lwz     r3, 0x3a8(r31)
-    lbz     r0, 0x3c9(r31)
+    lwz     r3, MarioActor_3a8(r31)
+    lbz     r0, MarioActor_3c9(r31)
     lwz     r3, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r4, 0x3b8(r31)
+    lwz     r4, MarioActor_3b8(r31)
     lwz     r3, 0x58(r3)
     add     r3, r3, r0
     addi    r4, r4, 0x20
     bl      PSMTXCopy
-    lwz     r3, 0x3a8(r31)
-    lbz     r0, 0x3ca(r31)
+    lwz     r3, MarioActor_3a8(r31)
+    lbz     r0, MarioActor_3ca(r31)
     lwz     r3, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r4, 0x3bc(r31)
+    lwz     r4, MarioActor_3bc(r31)
     lwz     r3, 0x58(r3)
     add     r3, r3, r0
     addi    r4, r4, 0x20
     bl      PSMTXCopy
-    lwz     r3, 0x3a8(r31)
-    lbz     r0, 0x3c9(r31)
+    lwz     r3, MarioActor_3a8(r31)
+    lbz     r0, MarioActor_3c9(r31)
     lwz     r3, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r4, 0x3c0(r31)
+    lwz     r4, MarioActor_3c0(r31)
     lwz     r3, 0x58(r3)
     add     r3, r3, r0
     addi    r4, r4, 0x20
     bl      PSMTXCopy
-    lwz     r3, 0x3b0(r31)
+    lwz     r3, MarioActor_3b0(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lwz     r3, 0x3b4(r31)
+    lwz     r3, MarioActor_3b4(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lwz     r3, 0x3b8(r31)
+    lwz     r3, MarioActor_3b8(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lwz     r3, 0x3bc(r31)
+    lwz     r3, MarioActor_3bc(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lwz     r3, 0x3c0(r31)
+    lwz     r3, MarioActor_3c0(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
 branch_0x8024712c:
     li      r0, 0x0
-    stw     r0, 0x3f4(r31)
-    lwz     r3, -0x6048(r13)
+    stw     r0, MarioActor_3f4(r31)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3a
     bne-    branch_0x80247434
@@ -3714,7 +3746,7 @@ branch_0x80247170:
     addi    r4, r19, 0x0
     bl      __ct__6MActorFP13MActorAnmData
 branch_0x8024719c:
-    stw     r20, 0x3f8(r31)
+    stw     r20, MarioActor_3f8(r31)
     addi    r3, r30, 0xbf0
     bl      getGlbResource__13JKRFileLoaderFPCc
     addi    r19, r3, 0x0
@@ -3731,16 +3763,16 @@ branch_0x8024719c:
     li      r6, 0x1
     bl      __ct__8J3DModelFP12J3DModelDataUlUl
 branch_0x802471dc:
-    lwz     r3, 0x3f8(r31)
+    lwz     r3, MarioActor_3f8(r31)
     addi    r4, r20, 0x0
     li      r5, 0x0
     bl      setModel__6MActorFP8J3DModelUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x802472ec
     li      r0, 0x0
-    sth     r0, 0x412(r31)
+    sth     r0, MarioActor_412(r31)
     li      r3, 0x4c
     bl      __nw__FUl
     mr.     r19, r3
@@ -3760,7 +3792,7 @@ branch_0x8024721c:
     addi    r4, r19, 0x0
     bl      __ct__6MActorFP13MActorAnmData
 branch_0x80247248:
-    stw     r20, 0x3fc(r31)
+    stw     r20, MarioActor_3fc(r31)
     addi    r3, r30, 0xc30
     bl      getGlbResource__13JKRFileLoaderFPCc
     addi    r19, r3, 0x0
@@ -3777,38 +3809,38 @@ branch_0x80247248:
     li      r6, 0x1
     bl      __ct__8J3DModelFP12J3DModelDataUlUl
 branch_0x80247288:
-    lwz     r3, 0x3fc(r31)
+    lwz     r3, MarioActor_3fc(r31)
     addi    r4, r20, 0x0
     li      r5, 0x0
     bl      setModel__6MActorFP8J3DModelUl
-    lwz     r3, 0x3fc(r31)
+    lwz     r3, MarioActor_3fc(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
     lfs     f0, -0x110c(rtoc)
     stfs    f0, 0xc(r3)
     addi    r3, sp, 0x3f0
     bl      PSMTXIdentity
-    lwz     r4, 0x3fc(r31)
+    lwz     r4, MarioActor_3fc(r31)
     addi    r3, sp, 0x3f0
     lwz     r4, 0x4(r4)
     addi    r4, r4, 0x20
     bl      PSMTXCopy
-    lwz     r3, 0x3fc(r31)
+    lwz     r3, MarioActor_3fc(r31)
     bl      calcAnm__6MActorFv
-    lwz     r4, 0x3fc(r31)
-    lwz     r3, 0x3f8(r31)
+    lwz     r4, MarioActor_3fc(r31)
+    lwz     r3, MarioActor_3f8(r31)
     lwz     r4, 0x4(r4)
     lwz     r5, 0x4(r3)
     lwz     r3, 0x58(r4)
     addi    r4, r5, 0x20
     bl      PSMTXCopy
 branch_0x802472ec:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x802473ec
     li      r0, 0x1
-    sth     r0, 0x412(r31)
+    sth     r0, MarioActor_412(r31)
     li      r3, 0x4c
     bl      __nw__FUl
     mr.     r19, r3
@@ -3828,7 +3860,7 @@ branch_0x8024731c:
     addi    r4, r19, 0x0
     bl      __ct__6MActorFP13MActorAnmData
 branch_0x80247348:
-    stw     r20, 0x400(r31)
+    stw     r20, MarioActor_400(r31)
     addi    r3, r30, 0xc78
     bl      getGlbResource__13JKRFileLoaderFPCc
     addi    r19, r3, 0x0
@@ -3845,72 +3877,72 @@ branch_0x80247348:
     li      r6, 0x1
     bl      __ct__8J3DModelFP12J3DModelDataUlUl
 branch_0x80247388:
-    lwz     r3, 0x400(r31)
+    lwz     r3, MarioActor_400(r31)
     addi    r4, r20, 0x0
     li      r5, 0x0
     bl      setModel__6MActorFP8J3DModelUl
-    lwz     r3, 0x400(r31)
+    lwz     r3, MarioActor_400(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
     lfs     f0, -0x110c(rtoc)
     stfs    f0, 0xc(r3)
     addi    r3, sp, 0x3c0
     bl      PSMTXIdentity
-    lwz     r4, 0x400(r31)
+    lwz     r4, MarioActor_400(r31)
     addi    r3, sp, 0x3c0
     lwz     r4, 0x4(r4)
     addi    r4, r4, 0x20
     bl      PSMTXCopy
-    lwz     r3, 0x400(r31)
+    lwz     r3, MarioActor_400(r31)
     bl      calcAnm__6MActorFv
-    lwz     r4, 0x400(r31)
-    lwz     r3, 0x3f8(r31)
+    lwz     r4, MarioActor_400(r31)
+    lwz     r3, MarioActor_3f8(r31)
     lwz     r4, 0x4(r4)
     lwz     r5, 0x4(r3)
     lwz     r3, 0x58(r4)
     addi    r4, r5, 0x20
     bl      PSMTXCopy
 branch_0x802473ec:
-    lwz     r0, 0x118(r31)
-    ori     r0, r0, 0x8000
-    stw     r0, 0x118(r31)
-    lwz     r3, 0x3f8(r31)
+    lwz     r0, MarioActor_Flags(r31)
+    ori     r0, r0, MARIOFLAG_8000
+    stw     r0, MarioActor_Flags(r31)
+    lwz     r3, MarioActor_3f8(r31)
     bl      calcAnm__6MActorFv
-    lwz     r3, 0x3f8(r31)
+    lwz     r3, MarioActor_3f8(r31)
     lwz     r3, 0x4(r3)
     lwz     r3, 0x58(r3)
     addi    r3, r3, 0x60
     lfs     f0, 0xc(r3)
-    stfs    f0, 0x10(r31)
+    stfs    f0, MarioActor_PositionX(r31)
     lfs     f0, 0x1c(r3)
-    stfs    f0, 0x14(r31)
+    stfs    f0, MarioActor_PositionY(r31)
     lfs     f0, 0x2c(r3)
-    stfs    f0, 0x18(r31)
-    lha     r0, 0x96(r31)
-    sth     r0, 0x410(r31)
+    stfs    f0, MarioActor_PositionZ(r31)
+    lha     r0, MarioActor_AngleY(r31)
+    sth     r0, MarioActor_410(r31)
     b       branch_0x80247444
 
 branch_0x80247434:
     li      r0, 0x0
-    stw     r0, 0x3f8(r31)
-    stw     r0, 0x3fc(r31)
-    stw     r0, 0x400(r31)
+    stw     r0, MarioActor_3f8(r31)
+    stw     r0, MarioActor_3fc(r31)
+    stw     r0, MarioActor_400(r31)
 branch_0x80247444:
     li      r3, 0x14
     bl      __nw__FUl
-    stw     r3, 0x420(r31)
+    stw     r3, MarioActor_420(r31)
     li      r0, 0x3
     li      r3, 0x6
-    lwz     r4, 0x420(r31)
+    lwz     r4, MarioActor_420(r31)
     sth     r0, 0x0(r4)
     bl      __nwa__FUl
-    lbz     r0, 0x3c5(r31)
+    lbz     r0, MarioActor_3c5(r31)
     sth     r0, 0x0(r3)
-    lbz     r0, 0x3c7(r31)
+    lbz     r0, MarioActor_3c7(r31)
     sth     r0, 0x2(r3)
-    lbz     r0, 0x3c8(r31)
+    lbz     r0, MarioActor_3c8(r31)
     sth     r0, 0x4(r3)
-    lwz     r4, 0x420(r31)
+    lwz     r4, MarioActor_420(r31)
     stw     r3, 0x8(r4)
     li      r3, 0x3
     bl      __nwa__FUl
@@ -3919,17 +3951,17 @@ branch_0x80247444:
     subi    r5, rtoc, 0x10c4
     stb     r0, 0x1(r3)
     stb     r0, 0x2(r3)
-    lwz     r4, 0x420(r31)
+    lwz     r4, MarioActor_420(r31)
     stw     r3, 0x4(r4)
-    lwz     r4, 0x3a8(r31)
-    lwz     r3, 0x420(r31)
+    lwz     r4, MarioActor_3a8(r31)
+    lwz     r3, MarioActor_420(r31)
     lwz     r4, 0x8(r4)
     bl      setup__15TMultiMtxEffectFP8J3DModelPCc
     li      r3, 0x40
     bl      __nw__FUl
-    stw     r3, 0x53c(r31)
-    lwz     r4, 0x3a8(r31)
-    lwz     r3, 0x53c(r31)
+    stw     r3, MarioActor_53c(r31)
+    lwz     r4, MarioActor_3a8(r31)
+    lwz     r3, MarioActor_53c(r31)
     lwz     r4, 0x8(r4)
     bl      init__19TTrembleModelEffectFP8J3DModel
     li      r3, 0x20
@@ -3937,10 +3969,10 @@ branch_0x80247444:
     mr.     r19, r3
     beq-    branch_0x802474f0
     mr      r3, r19
-    lwz     r4, 0x3ac(r31)
+    lwz     r4, MarioActor_3ac(r31)
     bl      __ct__19SampleCtrlModelDataFP12J3DModelData
 branch_0x802474f0:
-    stw     r19, 0x3a4(r31)
+    stw     r19, MarioActor_3a4(r31)
     lmw     r19, 0x58c(sp)
     lwz     r0, 0x5c4(sp)
     addi    sp, sp, 0x5c0
@@ -4057,6 +4089,10 @@ branch_0x8024764c:
     blr
 
 
+/*
+Input:
+r3: MarioActor
+*/
 .globl setAnimation__6TMarioFif
 setAnimation__6TMarioFif: # 0x80247670
     mflr    r0
@@ -4077,11 +4113,11 @@ setAnimation__6TMarioFif: # 0x80247670
     beq-    branch_0x802477dc
     cmpwi   r28, 0x5a
     bne-    branch_0x802476c4
-    lwz     r3, 0x3f0(r29)
+    lwz     r3, MarioActor_Yoshi(r29)
     li      r4, 0x12
     bl      changeAnimation__6TYoshiFi
 branch_0x802476c4:
-    lwz     r3, 0x3f0(r29)
+    lwz     r3, MarioActor_Yoshi(r29)
     li      r4, 0x0
     lwz     r3, 0x34(r3)
     bl      getCurAnmIdx__6MActorCFi
@@ -4092,18 +4128,83 @@ branch_0x802476c4:
     slwi    r0, r3, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802476F4:		# jumptable 802476F0 case 22
     li      r28, 0xb6
     b       branch_0x80247780
 
+branch_0x802476FC:		# jumptable 802476F0 case 24
+li	  r28, 0xB7
+b	  branch_0x80247780
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2420fc, 0x8024777c - 0x802476fc
+branch_0x80247704:		# jumptable 802476F0 case 15
+li	  r28, 0xB8
+b	  branch_0x80247780
+
+branch_0x8024770C:		# jumptable 802476F0 case 3
+li	  r28, 0xB9
+b	  branch_0x80247780
+
+branch_0x80247714:		# jumptable 802476F0 case 14
+li	  r28, 0xBF
+b	  branch_0x80247780
+
+branch_0x8024771C:		# jumptable 802476F0 case 4
+li	  r28, 0xBA
+b	  branch_0x80247780
+
+branch_0x80247724:		# jumptable 802476F0 case 10
+li	  r28, 0xBB
+b	  branch_0x80247780
+
+branch_0x8024772C:		# jumptable 802476F0 case 12
+li	  r28, 0xBC
+b	  branch_0x80247780
+
+branch_0x80247734:		# jumptable 802476F0 case 11
+li	  r28, 0xBD
+b	  branch_0x80247780
+
+branch_0x8024773C:		# jumptable 802476F0 case 9
+li	  r28, 0xBE
+b	  branch_0x80247780
+
+branch_0x80247744:		# jumptable 802476F0 cases 16,17
+li	  r28, 0xB8
+b	  branch_0x80247780
+
+branch_0x8024774C:		# jumptable 802476F0 case 8
+li	  r28, 0xC0
+b	  branch_0x80247780
+
+branch_0x80247754:		# jumptable 802476F0 case 7
+li	  r28, 0xC1
+b	  branch_0x80247780
+
+branch_0x8024775C:		# jumptable 802476F0 case 6
+li	  r28, 0xC2
+b	  branch_0x80247780
+
+branch_0x80247764:		# jumptable 802476F0 case 2
+li	  r28, 0xC4
+b	  branch_0x80247780
+
+branch_0x8024776C:		# jumptable 802476F0 case 19
+li	  r28, 0xC5
+b	  branch_0x80247780
+
+branch_0x80247774:		# jumptable 802476F0 case 18
+li	  r28, 0xC6
+b	  branch_0x80247780
+
+def_802476F0:		# jumptable 802476F0 default case
 branch_0x8024777c:
     li      r28, 0xb6
 branch_0x80247780:
-    lwz     r0, 0x118(r29)
+    lwz     r0, MarioActor_Flags(r29)
     li      r30, 0x0
-    rlwinm. r0, r0, 0, 16, 16
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80247798
     li      r0, 0x1
     b       branch_0x8024779c
@@ -4113,15 +4214,15 @@ branch_0x80247798:
 branch_0x8024779c:
     clrlwi. r0, r0, 24
     beq-    branch_0x802477b8
-    lwz     r3, 0x3e4(r29)
+    lwz     r3, MarioActor_WaterGun(r29)
     bl      isEmitting__9TWaterGunFv
     clrlwi. r0, r3, 24
     beq-    branch_0x802477b8
     li      r30, 0x1
 branch_0x802477b8:
-    lwz     r3, 0x7c(r29)
+    lwz     r3, MarioActor_Status(r29)
     addis   r0, r3, 0xf000
-    cmplwi  r0, 0x1308
+    cmplwi  r0, MARIOSTATUS_1308
     bne-    branch_0x802477cc
     li      r30, 0x1
 branch_0x802477cc:
@@ -4130,21 +4231,21 @@ branch_0x802477cc:
     bne-    branch_0x802477dc
     li      r28, 0xb8
 branch_0x802477dc:
-    lhz     r0, 0xfa(r29)
+    lhz     r0, MarioActor_fa(r29)
     cmpw    r28, r0
     beq-    branch_0x80247958
     clrlwi  r30, r28, 16
-    sth     r28, 0xfa(r29)
+    sth     r28, MarioActor_fa(r29)
     mr      r3, r29
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     beq-    branch_0x80247860
-    lwz     r3, 0x3a8(r29)
+    lwz     r3, MarioActor_3a8(r29)
     addi    r6, r30, 0x0
     li      r4, 0x0
     li      r5, 0x0
     bl      changeMtxCalcSIAnmBQAnmTransform__13M3UModelMarioFiiUs
-    lwz     r4, 0x3a8(r29)
+    lwz     r4, MarioActor_3a8(r29)
     slwi    r0, r28, 2
     lfs     f0, -0x1118(rtoc)
     mr      r3, r29
@@ -4152,7 +4253,7 @@ branch_0x802477dc:
     li      r4, 0x0
     lwz     r5, 0x18(r5)
     stfs    f0, 0x50(r5)
-    lwz     r5, 0x3a8(r29)
+    lwz     r5, MarioActor_3a8(r29)
     lwz     r6, 0x4(r5)
     lwz     r5, 0xc(r5)
     lwz     r6, 0x4(r6)
@@ -4160,25 +4261,25 @@ branch_0x802477dc:
     lbz     r0, 0x0(r6)
     stb     r0, 0x4(r5)
     bl      changeHand__6TMarioFi
-    lwz     r3, 0x4dc(r29)
+    lwz     r3, MarioActor_4dc(r29)
     bl      stop__13JAIAnimeSoundFv
     b       branch_0x80247958
 
 branch_0x80247860:
     slwi    r30, r28, 3
-    lwz     r3, 0x3a8(r29)
+    lwz     r3, MarioActor_3a8(r29)
     add     r28, r31, r30
     lhzu    r6, 0x670(r28)
     li      r4, 0x0
     li      r5, 0x0
     bl      changeMtxCalcSIAnmBQAnmTransform__13M3UModelMarioFiiUs
-    lwz     r4, 0x3a8(r29)
+    lwz     r4, MarioActor_3a8(r29)
     add     r3, r31, r30
     lfs     f0, -0x1118(rtoc)
     lwz     r4, 0x20(r4)
     lwz     r4, 0x18(r4)
     stfs    f0, 0x50(r4)
-    lwz     r4, 0x3a8(r29)
+    lwz     r4, MarioActor_3a8(r29)
     lhz     r0, 0x0(r28)
     lwz     r5, 0x4(r4)
     slwi    r0, r0, 2
@@ -4187,7 +4288,7 @@ branch_0x80247860:
     lwzx    r5, r5, r0
     lbz     r0, 0x0(r5)
     stb     r0, 0x4(r4)
-    lwz     r4, 0x53c(r29)
+    lwz     r4, MarioActor_53c(r29)
     lbz     r5, 0x674(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x802478ec
@@ -4206,7 +4307,7 @@ branch_0x802478e0:
 branch_0x802478ec:
     cmpwi   r5, 0x18
     bge-    branch_0x80247910
-    lwz     r3, 0x3a8(r29)
+    lwz     r3, MarioActor_3a8(r29)
     clrlwi  r5, r5, 24
     li      r4, 0x0
     lwz     r12, 0x0(r3)
@@ -4225,9 +4326,9 @@ branch_0x80247910:
 branch_0x8024792c:
     li      r5, -0x1
 branch_0x80247930:
-    lwz     r4, 0x4e0(r29)
+    lwz     r4, MarioActor_4e0(r29)
     slwi    r0, r0, 2
-    lwz     r3, 0x4dc(r29)
+    lwz     r3, MarioActor_4dc(r29)
     lwzx    r4, r4, r0
     lfs     f1, -0x1118(rtoc)
     bl      initAnmSound__9MAnmSoundFPvUlf
@@ -4237,16 +4338,17 @@ branch_0x80247930:
     bl      changeHand__6TMarioFi
 branch_0x80247958:
     lfs     f0, -0x110c(rtoc)
-    lwz     r3, 0x3a8(r29)
+    lwz     r3, MarioActor_3a8(r29)
     fmuls   f0, f0, f31
     lwz     r3, 0xc(r3)
     stfs    f0, 0xc(r3)
-    lwz     r3, 0x3a8(r29)
+    lwz     r3, MarioActor_3a8(r29)
     lwz     r3, 0xc(r3)
     stfs    f0, 0x34(r3)
-    lwz     r3, 0x3a8(r29)
+    lwz     r3, MarioActor_3a8(r29)
     lwz     r3, 0xc(r3)
     lfs     f1, 0x10(r3)
+
     lwz     r0, 0x10c(sp)
     lfd     f31, 0x100(sp)
     lwz     r31, 0xfc(sp)
@@ -4674,51 +4776,59 @@ branch_0x80247eac:
     blr
 
 
+/* TMario::setPositions((void))
+Input:
+r3: MarioActor
+*/
 .globl setPositions__6TMarioFv
 setPositions__6TMarioFv: # 0x80247eb4
-    lwz     r4, 0x3a8(r3)
+    lwz     r4, MarioActor_3a8(r3)
     lwz     r4, 0x8(r4)
     lwz     r4, 0x58(r4)
     addi    r4, r4, 0x30
     lfs     f0, 0xc(r4)
-    stfs    f0, 0x160(r3)
+    stfs    f0, MarioActor_160(r3)
     lfs     f0, 0x1c(r4)
-    stfs    f0, 0x164(r3)
+    stfs    f0, MarioActor_164(r3)
     lfs     f0, 0x2c(r4)
-    stfs    f0, 0x168(r3)
-    lfs     f0, 0x1cc(r3)
-    stfs    f0, 0x16c(r3)
-    lfs     f0, 0x1dc(r3)
-    stfs    f0, 0x170(r3)
-    lfs     f0, 0x1ec(r3)
-    stfs    f0, 0x174(r3)
-    lwz     r4, 0x3a8(r3)
-    lbz     r0, 0x3c4(r3)
+    stfs    f0, MarioActor_168(r3)
+    lfs     f0, MarioActor_1cc(r3)
+    stfs    f0, MarioActor_16c(r3)
+    lfs     f0, MarioActor_1dc(r3)
+    stfs    f0, MarioActor_170(r3)
+    lfs     f0, MarioActor_1ec(r3)
+    stfs    f0, MarioActor_174(r3)
+    lwz     r4, MarioActor_3a8(r3)
+    lbz     r0, MarioActor_3c4(r3)
     lwz     r4, 0x8(r4)
     mulli   r0, r0, 0x30
     lwz     r4, 0x58(r4)
     add     r4, r4, r0
     lfs     f0, 0xc(r4)
-    stfs    f0, 0x178(r3)
+    stfs    f0, MarioActor_178(r3)
     lfs     f0, 0x1c(r4)
-    stfs    f0, 0x17c(r3)
+    stfs    f0, MarioActor_17c(r3)
     lfs     f0, 0x2c(r4)
-    stfs    f0, 0x180(r3)
-    lwz     r4, 0x3a8(r3)
-    lbz     r0, 0x3c9(r3)
+    stfs    f0, MarioActor_180(r3)
+    lwz     r4, MarioActor_3a8(r3)
+    lbz     r0, MarioActor_3c9(r3)
     lwz     r4, 0x8(r4)
     mulli   r0, r0, 0x30
     lwz     r4, 0x58(r4)
     add     r4, r4, r0
     lfs     f0, 0xc(r4)
-    stfs    f0, 0x184(r3)
+    stfs    f0, MarioActor_184(r3)
     lfs     f0, 0x1c(r4)
-    stfs    f0, 0x188(r3)
+    stfs    f0, MarioActor_188(r3)
     lfs     f0, 0x2c(r4)
-    stfs    f0, 0x18c(r3)
+    stfs    f0, MarioActor_18c(r3)
     blr
 
 
+/* TMario::takeOffGlass((void))
+Input:
+r3: MarioActor
+*/
 .globl takeOffGlass__6TMarioFv
 takeOffGlass__6TMarioFv: # 0x80247f58
     mflr    r0
@@ -4726,15 +4836,17 @@ takeOffGlass__6TMarioFv: # 0x80247f58
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lwz     r0, 0x3e0(r3)
+    lwz     r0, MarioActor_3e0(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80247f90
+
     mr      r3, r31
     bl      emitGetEffect__6TMarioFv
-    lwz     r3, 0x3e0(r31)
-    lhz     r0, 0x4(r3)
-    rlwinm  r0, r0, 0, 30, 28
-    sth     r0, 0x4(r3)
+    lwz     r3, MarioActor_3e0(r31)
+    lhz     r0, MarioActor_3e0_4(r3)
+    rlwinm  r0, r0, 0, 30, 28 # MarioActor_3e0_4_WearingCap | MarioActor_3e0_4_WearingHelm | MarioActor_3e0_4_Glass
+    sth     r0, MarioActor_3e0_4(r3)
+
 branch_0x80247f90:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -4743,6 +4855,10 @@ branch_0x80247f90:
     blr
 
 
+/* TMario::wearGlass((void))
+Input:
+r3: MarioActor
+*/
 .globl wearGlass__6TMarioFv
 wearGlass__6TMarioFv: # 0x80247fa4
     mflr    r0
@@ -4750,15 +4866,17 @@ wearGlass__6TMarioFv: # 0x80247fa4
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lwz     r0, 0x3e0(r3)
+    lwz     r0, MarioActor_3e0(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80247fdc
+
     mr      r3, r31
     bl      emitGetEffect__6TMarioFv
-    lwz     r3, 0x3e0(r31)
-    lhz     r0, 0x4(r3)
-    ori     r0, r0, 0x4
-    sth     r0, 0x4(r3)
+    lwz     r3, MarioActor_3e0(r31)
+    lhz     r0, MarioActor_3e0_4(r3)
+    ori     r0, r0, MarioActor_3e0_4_Glass
+    sth     r0, MarioActor_3e0_4(r3)
+
 branch_0x80247fdc:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -4767,17 +4885,21 @@ branch_0x80247fdc:
     blr
 
 
+/* TMario::isWearingHelm((void))
+Input:
+r3: MarioActor
+*/
 .globl isWearingHelm__6TMarioFv
 isWearingHelm__6TMarioFv: # 0x80247ff0
-    lwz     r3, 0x3e0(r3)
+    lwz     r3, MarioActor_3e0(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x80248004
     li      r3, 0x0
     blr
 
 branch_0x80248004:
-    lhz     r0, 0x4(r3)
-    rlwinm. r0, r0, 0, 30, 30
+    lhz     r0, MarioActor_3e0_4(r3)
+    rlwinm. r0, r0, 0, 30, 30 # MarioActor_3e0_4_WearingHelm
     beq-    branch_0x80248018
     li      r3, 0x1
     blr
@@ -4787,17 +4909,21 @@ branch_0x80248018:
     blr
 
 
+/* TMario::isWearingCap((void))
+Input:
+r3: MarioActor
+*/
 .globl isWearingCap__6TMarioFv
 isWearingCap__6TMarioFv: # 0x80248020
-    lwz     r3, 0x3e0(r3)
+    lwz     r3, MarioActor_3e0(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x80248034
     li      r3, 0x1
     blr
 
 branch_0x80248034:
-    lhz     r0, 0x4(r3)
-    clrlwi. r0, r0, 31
+    lhz     r0, MarioActor_3e0_4(r3)
+    clrlwi. r0, r0, 31 # MarioActor_3e0_4_WearingCap
     beq-    branch_0x80248048
     li      r3, 0x1
     blr
@@ -4807,6 +4933,10 @@ branch_0x80248048:
     blr
 
 
+/* TMario::setDivHelm((void))
+Input:
+r3: MarioActor
+*/
 .globl setDivHelm__6TMarioFv
 setDivHelm__6TMarioFv: # 0x80248050
     mflr    r0
@@ -4814,18 +4944,20 @@ setDivHelm__6TMarioFv: # 0x80248050
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lwz     r0, 0x3e0(r3)
+    lwz     r0, MarioActor_3e0(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80248094
+
     mr      r3, r31
     bl      emitGetEffect__6TMarioFv
     addi    r3, r31, 0x0
     li      r4, 0x1968
     bl      startSoundActor__6TMarioFUl
-    lwz     r3, 0x3e0(r31)
-    lhz     r0, 0x4(r3)
-    ori     r0, r0, 0x2
-    sth     r0, 0x4(r3)
+    lwz     r3, MarioActor_3e0(r31)
+    lhz     r0, MarioActor_3e0_4(r3)
+    ori     r0, r0, MarioActor_3e0_4_WearingHelm
+    sth     r0, MarioActor_3e0_4(r3)
+
 branch_0x80248094:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -4888,7 +5020,7 @@ MarioFootDirLCtrl__FP7J3DNodei: # 0x80248114
     stw     r29, 0xfc(sp)
     stw     r28, 0xf8(sp)
     bne-    branch_0x80248380
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r4, 0x7c(r3)
     rlwinm. r0, r4, 0, 23, 25
     bne-    branch_0x80248198
@@ -4898,7 +5030,7 @@ MarioFootDirLCtrl__FP7J3DNodei: # 0x80248114
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     bne-    branch_0x80248198
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     li      r4, 0x1
     lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
@@ -4919,9 +5051,9 @@ branch_0x80248198:
 branch_0x8024819c:
     cmpwi   r0, 0x0
     beq-    branch_0x80248380
-    lwz     r6, -0x60e0(r13)
+    lwz     r6, OffsetR13_60e0(r13)
     addi    r4, sp, 0xf0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r5, 0x3a8(r6)
     lbz     r0, 0x3ce(r6)
     lwz     r5, 0x8(r5)
@@ -5061,7 +5193,7 @@ MarioFootPosLCtrl__FP7J3DNodei: # 0x802483a4
     stwu    sp, -0x60(sp)
     stw     r31, 0x5c(sp)
     bne-    branch_0x802484c4
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r4, 0x7c(r3)
     rlwinm. r0, r4, 0, 23, 25
     bne-    branch_0x8024841c
@@ -5071,7 +5203,7 @@ MarioFootPosLCtrl__FP7J3DNodei: # 0x802483a4
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     bne-    branch_0x8024841c
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     li      r4, 0x1
     lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
@@ -5092,9 +5224,9 @@ branch_0x8024841c:
 branch_0x80248420:
     cmpwi   r0, 0x0
     beq-    branch_0x802484c4
-    lwz     r6, -0x60e0(r13)
+    lwz     r6, OffsetR13_60e0(r13)
     addi    r4, sp, 0x54
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r5, 0x3a8(r6)
     lbz     r0, 0x3cd(r6)
     lwz     r5, 0x8(r5)
@@ -5156,7 +5288,7 @@ MarioFootDirRCtrl__FP7J3DNodei: # 0x802484dc
     stw     r29, 0xfc(sp)
     stw     r28, 0xf8(sp)
     bne-    branch_0x80248748
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r4, 0x7c(r3)
     rlwinm. r0, r4, 0, 23, 25
     bne-    branch_0x80248560
@@ -5166,7 +5298,7 @@ MarioFootDirRCtrl__FP7J3DNodei: # 0x802484dc
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     bne-    branch_0x80248560
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     li      r4, 0x1
     lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
@@ -5187,9 +5319,9 @@ branch_0x80248560:
 branch_0x80248564:
     cmpwi   r0, 0x0
     beq-    branch_0x80248748
-    lwz     r6, -0x60e0(r13)
+    lwz     r6, OffsetR13_60e0(r13)
     addi    r4, sp, 0xf0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r5, 0x3a8(r6)
     lbz     r0, 0x3cc(r6)
     lwz     r5, 0x8(r5)
@@ -5329,7 +5461,7 @@ MarioFootPosRCtrl__FP7J3DNodei: # 0x8024876c
     stwu    sp, -0x60(sp)
     stw     r31, 0x5c(sp)
     bne-    branch_0x8024888c
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r4, 0x7c(r3)
     rlwinm. r0, r4, 0, 23, 25
     bne-    branch_0x802487e4
@@ -5339,7 +5471,7 @@ MarioFootPosRCtrl__FP7J3DNodei: # 0x8024876c
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     bne-    branch_0x802487e4
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     li      r4, 0x1
     lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
@@ -5360,9 +5492,9 @@ branch_0x802487e4:
 branch_0x802487e8:
     cmpwi   r0, 0x0
     beq-    branch_0x8024888c
-    lwz     r6, -0x60e0(r13)
+    lwz     r6, OffsetR13_60e0(r13)
     addi    r4, sp, 0x54
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r5, 0x3a8(r6)
     lbz     r0, 0x3cb(r6)
     lwz     r5, 0x8(r5)
@@ -5421,22 +5553,22 @@ MarioWaistCtrl__FP7J3DNodei: # 0x802488a4
     stwu    sp, -0xe0(sp)
     stw     r31, 0xdc(sp)
     bne-    branch_0x80248b00
-    lwz     r3, -0x60e0(r13)
-    lwz     r0, -0x60d8(r13)
+    lwz     r3, OffsetR13_60e0(r13)
+    lwz     r0, MarioActor(r13)
     addi    r31, r3, 0xfc
     cmplw   r3, r0
     bne-    branch_0x80248980
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x50(r3)
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi  r0, r3, 24
     cmplwi  r0, 0x1
     bne-    branch_0x80248980
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     bl      canBendBody__6TMarioFv
     cmpwi   r3, 0x0
     beq-    branch_0x80248980
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lha     r3, 0xa4(r3)
     extsh.  r0, r3
     ble-    branch_0x80248980
@@ -5472,7 +5604,7 @@ MarioWaistCtrl__FP7J3DNodei: # 0x802488a4
     b       branch_0x80248b04
 
 branch_0x80248980:
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r0, 0x7c(r3)
     rlwinm. r0, r0, 0, 16, 16
     beq-    branch_0x80248998
@@ -5487,7 +5619,7 @@ branch_0x8024899c:
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     bne-    branch_0x80248a28
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r3, 0x3e4(r3)
     bl      getCurrentNozzle__9TWaterGunCFv
     lwz     r12, 0x364(r3)
@@ -5519,7 +5651,7 @@ branch_0x8024899c:
     b       branch_0x80248b04
 
 branch_0x80248a28:
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lhz     r0, 0xfa(r3)
     cmplwi  r0, 0x48
     beq-    branch_0x80248a48
@@ -5599,12 +5731,12 @@ MarioHeadCtrl__FP7J3DNodei: # 0x80248b18
     stw     r30, 0x180(sp)
     stw     r29, 0x17c(sp)
     bne-    branch_0x80248ef4
-    lwz     r4, -0x60e0(r13)
+    lwz     r4, OffsetR13_60e0(r13)
     lwz     r3, 0x7c(r4)
     addis   r0, r3, 0xf000
     cmplwi  r0, 0x1308
     bne-    branch_0x80248c98
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0xa0(r3)
     cmplwi  r0, 0x0
     mr      r4, r0
@@ -5618,7 +5750,7 @@ branch_0x80248b68:
     lwz     r12, 0xf0(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60e0(r13)
+    lwz     r6, OffsetR13_60e0(r13)
     addi    r3, sp, 0x7c
     lfs     f0, -0x10a8(rtoc)
     addi    r4, sp, 0x124
@@ -5699,7 +5831,7 @@ branch_0x80248c98:
     clrlwi  r0, r3, 24
     cmplwi  r0, 0x1
     bne-    branch_0x80248cf4
-    lwz     r4, -0x60e0(r13)
+    lwz     r4, OffsetR13_60e0(r13)
     lis     r0, 0x4330
     lfs     f1, -0x1118(rtoc)
     addi    r3, sp, 0x130
@@ -5717,7 +5849,7 @@ branch_0x80248c98:
     b       branch_0x80248ee0
 
 branch_0x80248cf4:
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r4, 0x7c(r3)
     addis   r0, r4, 0xf3c0
     cmplwi  r0, 0x201
@@ -5754,7 +5886,7 @@ branch_0x80248d68:
     bl      isWallInFront__6TMarioCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x80248db4
-    lwz     r4, -0x60e0(r13)
+    lwz     r4, OffsetR13_60e0(r13)
     lis     r0, 0x4330
     lfs     f1, -0x1118(rtoc)
     addi    r3, sp, 0x130
@@ -5772,7 +5904,7 @@ branch_0x80248d68:
     b       branch_0x80248ee0
 
 branch_0x80248db4:
-    lwz     r29, -0x60e0(r13)
+    lwz     r29, OffsetR13_60e0(r13)
     li      r30, 0x0
     lwz     r0, 0x118(r29)
     addi    r31, r29, 0xfc
@@ -5825,7 +5957,7 @@ branch_0x80248e08:
     fsubs   f0, f0, f2
     fmuls   f2, f4, f0
     bl      MsMtxSetRotRPH__FPA4_ffff
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     lwz     r3, 0x3e4(r3)
     bl      getCurrentNozzle__9TWaterGunCFv
     lwz     r12, 0x364(r3)

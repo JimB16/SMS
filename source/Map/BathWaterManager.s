@@ -827,9 +827,9 @@ branch_0x801a7848:
     li      r17, 0x0
     li      r18, 0x0
 branch_0x801a7874:
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 21, 21
+    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
     beq-    branch_0x801a788c
     li      r0, 0x1
     b       branch_0x801a7890
@@ -936,9 +936,10 @@ branch_0x801a79f4:
     cmpwi   r17, 0x2
     addi    r18, r18, 0x4
     blt+    branch_0x801a7874
-    lwz     r3, -0x6094(r13)
+
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 21, 21
+    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
     beq-    branch_0x801a7a1c
     li      r0, 0x1
     b       branch_0x801a7a20
@@ -1322,7 +1323,7 @@ branch_0x801a7f68:
     fmr     f16, f1
     ble-    branch_0x801a7fdc
     lis     r17, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r17, 0x7e63
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2344,7 +2345,7 @@ throwMario__17TBathWaterManagerFf: # 0x801a8d78
     stw     r31, 0x94(sp)
     lwz     r4, 0x24(r3)
     addi    r3, sp, 0x4c
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f0, 0x174(r4)
     addi    r31, r4, 0x170
     lfs     f1, 0x4(r5)
@@ -2454,7 +2455,7 @@ branch_0x801a8ef0:
     fmadds  f29, f1, f3, f4
     fadds   f30, f30, f0
     bl      SMS_GetMarioGravity__Fv
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     li      r3, 0x1
     lfs     f3, -0x3f08(rtoc)
     lfs     f4, 0x4(r4)
@@ -5652,7 +5653,7 @@ prerender__22TBathWaterMeshRendererFPQ26JDrama9TGraphicsRC12TBathtubDataPP10TBat
     fmsubs  f0, f29, f1, f0
     fnmsubs  f0, f27, f2, f0
     stfs    f0, 0x4c(r25)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r16, r4, 0x16c
     bl      drawInit__6J3DSysFv
     bl      SMSGetGameRenderHeight__Fv
@@ -6371,7 +6372,7 @@ render__22TBathWaterMeshRendererFPQ26JDrama9TGraphicsRC12TBathtubDataPP10TBathWa
     addi    r27, r6, 0x0
     addi    r21, r7, 0x0
     addi    r26, r8, 0x0
-    lwz     r9, -0x7118(r13)
+    lwz     r9, gpCamera(r13)
     addi    r0, r9, 0x1ec
     mr      r30, r0
     addi    r22, r9, 0x16c
@@ -6385,7 +6386,7 @@ render__22TBathWaterMeshRendererFPQ26JDrama9TGraphicsRC12TBathtubDataPP10TBathWa
     li      r6, 0x0
     li      r7, 0x0
     bl      clearEFB_alpha__9_unnamed_FssssUc
-    lwz     r18, -0x7118(r13)
+    lwz     r18, gpCamera(r13)
     addi    r17, r18, 0x1ec
     bl      SMSGetGameRenderWidth__Fv
     mr      r23, r3

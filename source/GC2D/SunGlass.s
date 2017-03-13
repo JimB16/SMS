@@ -46,7 +46,7 @@ loadAfter__9TSunShineFv: # 0x8017d048
     stw     r31, 0x24(sp)
     mr      r31, r3
     bl      loadAfter__Q26JDrama8TNameRefFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x6
     bne-    branch_0x8017d090
@@ -89,7 +89,7 @@ perform__9TSunShineFUlPQ26JDrama9TGraphics: # 0x8017d0a4
 branch_0x8017d0ec:
     clrlwi. r0, r31, 31
     beq-    branch_0x8017d168
-    lwz     r3, -0x7100(r13)
+    lwz     r3, gpSunManager(r13)
     bl      getAddColor__7TSunMgrCFv
     stb     r3, 0x17(r30)
     lbz     r0, 0x28(r30)
@@ -137,7 +137,7 @@ load__9TSunGlassFR20JSUMemoryInputStream: # 0x8017d180
     stw     r31, 0x2c(sp)
     mr      r31, r3
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r0, 0x4(r3)
     stw     r0, 0x10(r31)
@@ -156,7 +156,7 @@ loadAfter__9TSunGlassFv: # 0x8017d1bc
     stw     r31, 0x3c(sp)
     addi    r31, r3, 0x0
     li      r3, 0x0
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x1
     bne-    branch_0x8017d24c
@@ -424,7 +424,7 @@ startFade__9TSunGlassFib: # 0x8017d574
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r29, 0x2
     bne-    branch_0x8017d63c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x0
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
@@ -465,7 +465,7 @@ branch_0x8017d63c:
     li      r0, 0x64
     stb     r0, 0x1d(r30)
     li      r4, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x8017d6c0

@@ -1421,7 +1421,9 @@ incFlag__12TFlagManagerFUll: # 0x802947f4
     slwi    r0, r0, 2
     lwzx    r0, r6, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8029481C:		# jumptable 80294818 case 2
     lis     r6, 0x2
     addi    r0, r6, 0x15
     cmplw   r4, r0
@@ -1434,8 +1436,56 @@ incFlag__12TFlagManagerFUll: # 0x802947f4
     stw     r0, 0x78(r3)
     blr
 
+branch_0x80294844:		# jumptable 80294818 case 4
+lis	  r6, 4	# 0x40005
+addi	  r0, r6, 5 # 0x40005
+cmplw	  r4, r0
+bgelr
+slwi	  r0, r7, 2
+add	  r3, r3, r0
+lwz	  r0, 0xD0(r3)
+add	  r0, r0, r5
+stw	  r0, 0xD0(r3)
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x28f244, 0x802948e4 - 0x80294844
+branch_0x8029486C:		# jumptable 80294818 case 6
+lis	  r6, 6	# 0x60064
+addi	  r0, r6, 0x64 # 0x60064
+cmplw	  r4, r0
+bgelr
+slwi	  r0, r7, 2
+add	  r3, r3, r0
+lwz	  r0, 0xF4(r3)
+add	  r0, r0, r5
+stw	  r0, 0xF4(r3)
+blr
+
+branch_0x80294894:		# jumptable 80294818 case 8
+lis	  r6, 8	# 0x80001
+addi	  r0, r6, 1 # 0x80001
+cmplw	  r4, r0
+bgelr
+slwi	  r0, r7, 2
+add	  r3, r3, r0
+lwz	  r0, 0x288(r3)
+add	  r0, r0, r5
+stw	  r0, 0x288(r3)
+blr
+
+branch_0x802948BC:		# jumptable 80294818 case 10
+lis	  r6, 0xA # 0xA0002
+addi	  r0, r6, 2 # 0xA0002
+cmplw	  r4, r0
+bgelr
+slwi	  r0, r7, 2
+add	  r3, r3, r0
+lwz	  r0, 0x290(r3)
+add	  r0, r0, r5
+stw	  r0, 0x290(r3)
+
+locret_802948E0:	# jumptable 80294818 cases 0,1,3,5,7,9
+blr
+
 
 .globl setBool__12TFlagManagerFbUl
 setBool__12TFlagManagerFbUl: # 0x802948e4
@@ -1450,7 +1500,9 @@ setBool__12TFlagManagerFbUl: # 0x802948e4
     slwi    r0, r0, 2
     lwzx    r0, r6, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80294914:		# jumptable 80294910 case 1
     lis     r6, 0x1
     addi    r0, r6, 0x3b4
     cmplw   r5, r0
@@ -1468,8 +1520,82 @@ branch_0x80294938:
     bl      setFlag__12TFlagManagerFUll
     b       branch_0x80294a14
 
+branch_0x80294948:		# jumptable 80294910 case 3
+lis	  r6, 3	# 0x3001D
+addi	  r0, r6, 0x1D # 0x3001D
+cmplw	  r5, r0
+bge	  def_80294910	# jumptable 80294910 default case
+clrlwi.	  r0, r4, 24
+beq	  branch_0x80294968
+li	  r0, 1
+b	  branch_0x8029496C
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x28f348, 0x80294a14 - 0x80294948
+branch_0x80294968:
+li	  r0, 0
+
+branch_0x8029496C:
+addi	  r4, r5, 0
+mr	  r5, r0
+bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
+b	  def_80294910	# jumptable 80294910 default case
+
+branch_0x8029497C:		# jumptable 80294910 case 5
+lis	  r6, 5	# 0x50064
+addi	  r0, r6, 0x64 # 0x50064
+cmplw	  r5, r0
+bge	  def_80294910	# jumptable 80294910 default case
+clrlwi.	  r0, r4, 24
+beq	  branch_0x8029499C
+li	  r0, 1
+b	  branch_0x802949A0
+
+branch_0x8029499C:
+li	  r0, 0
+
+branch_0x802949A0:
+addi	  r4, r5, 0
+mr	  r5, r0
+bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
+b	  def_80294910	# jumptable 80294910 default case
+
+branch_0x802949B0:		# jumptable 80294910 case 7
+lis	  r6, 7	# 0x70003
+addi	  r0, r6, 3 # 0x70003
+cmplw	  r5, r0
+bge	  def_80294910	# jumptable 80294910 default case
+clrlwi.	  r0, r4, 24
+beq	  branch_0x802949D0
+li	  r0, 1
+b	  branch_0x802949D4
+
+branch_0x802949D0:
+li	  r0, 0
+
+branch_0x802949D4:
+addi	  r4, r5, 0
+mr	  r5, r0
+bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
+b	  def_80294910	# jumptable 80294910 default case
+
+branch_0x802949E4:		# jumptable 80294910 case 9
+lis	  r6, 9	# 0x90002
+addi	  r0, r6, 2 # 0x90002
+cmplw	  r5, r0
+bge	  def_80294910	# jumptable 80294910 default case
+clrlwi.	  r0, r4, 24
+beq	  branch_0x80294A04
+li	  r0, 1
+b	  branch_0x80294A08
+
+branch_0x80294A04:
+li	  r0, 0
+
+branch_0x80294A08:
+addi	  r4, r5, 0
+mr	  r5, r0
+bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
+
+def_80294910:		# jumptable 80294910 default case
 branch_0x80294a14:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1490,7 +1616,9 @@ getBool__12TFlagManagerCFUl: # 0x80294a24
     slwi    r0, r0, 2
     lwzx    r0, r5, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80294A54:		# jumptable 80294A50 case 1
     lis     r5, 0x1
     addi    r0, r5, 0x3b4
     cmplw   r4, r0
@@ -1501,8 +1629,51 @@ getBool__12TFlagManagerCFUl: # 0x80294a24
     subfe   r3, r0, r3
     b       branch_0x80294b0c
 
+branch_0x80294A78:		# jumptable 80294A50 case 3
+lis	  r5, 3	# 0x3001D
+addi	  r0, r5, 0x1D # 0x3001D
+cmplw	  r4, r0
+bge	  def_80294A50	# jumptable 80294A50 default case
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+neg	  r3, r3
+addic	  r0, r3, -1
+subfe	  r3, r0, r3
+b	  branch_0x80294b0c
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x28f478, 0x80294b08 - 0x80294a78
+branch_0x80294A9C:		# jumptable 80294A50 case 5
+lis	  r5, 5	# 0x50064
+addi	  r0, r5, 0x64 # 0x50064
+cmplw	  r4, r0
+bge	  def_80294A50	# jumptable 80294A50 default case
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+neg	  r3, r3
+addic	  r0, r3, -1
+subfe	  r3, r0, r3
+b	  branch_0x80294b0c
+
+branch_0x80294AC0:		# jumptable 80294A50 case 7
+lis	  r5, 7	# 0x70003
+addi	  r0, r5, 3 # 0x70003
+cmplw	  r4, r0
+bge	  def_80294A50	# jumptable 80294A50 default case
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+neg	  r3, r3
+addic	  r0, r3, -1
+subfe	  r3, r0, r3
+b	  branch_0x80294b0c
+
+branch_0x80294AE4:		# jumptable 80294A50 case 9
+lis	  r5, 9	# 0x90002
+addi	  r0, r5, 2 # 0x90002
+cmplw	  r4, r0
+bge	  def_80294A50	# jumptable 80294A50 default case
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+neg	  r3, r3
+addic	  r0, r3, -1
+subfe	  r3, r0, r3
+b	  branch_0x80294b0c
+
+def_80294A50:		# jumptable 80294A50 default case
 branch_0x80294b08:
     li      r3, 0x0
 branch_0x80294b0c:
@@ -1524,7 +1695,9 @@ setFlag__12TFlagManagerFUll: # 0x80294b1c
     slwi    r6, r8, 2
     lwzx    r6, r7, r6
     mtctr   r6
-    bctr       
+    bctr			# switch jump
+
+branch_0x80294B44:		# jumptable 80294B40 case 1
     lis     r6, 0x1
     addi    r6, r6, 0x3b4
     cmplw   r4, r6
@@ -1545,8 +1718,138 @@ setFlag__12TFlagManagerFUll: # 0x80294b1c
     stb     r0, 0x0(r6)
     blr
 
+branch_0x80294B8C:		# jumptable 80294B40 case 2
+lis	  r6, 2	# 0x20015
+addi	  r6, r6, 0x15 # 0x20015
+cmplw	  r4, r6
+bgelr
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+stw	  r5, 0x78(r3)
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x28f58c, 0x80294d4c - 0x80294b8c
+branch_0x80294BAC:		# jumptable 80294B40 case 3
+lis	  r6, 3	# 0x3001D
+addi	  r6, r6, 0x1D # 0x3001D
+cmplw	  r4, r6
+bgelr
+srwi	  r4, r0, 3
+add	  r6, r3, r4
+clrlwi	  r4, r0, 29
+lbz	  r3, 0xCC(r6)
+li	  r0, 1
+slw	  r0, r0, r4
+andc	  r0, r3, r0
+stb	  r0, 0xCC(r6)
+clrlwi	  r0, r5, 31
+slw	  r0, r0, r4
+lbz	  r3, 0xCC(r6)
+or	  r0, r3, r0
+stb	  r0, 0xCC(r6)
+blr
+
+branch_0x80294BF4:		# jumptable 80294B40 case 4
+lis	  r6, 4	# 0x40005
+addi	  r6, r6, 5 # 0x40005
+cmplw	  r4, r6
+bgelr
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+stw	  r5, 0xD0(r3)
+blr
+
+branch_0x80294C14:		# jumptable 80294B40 case 5
+lis	  r6, 5	# 0x50064
+addi	  r6, r6, 0x64 # 0x50064
+cmplw	  r4, r6
+bgelr
+srwi	  r4, r0, 3
+add	  r6, r3, r4
+clrlwi	  r4, r0, 29
+lbz	  r3, 0xE4(r6)
+li	  r0, 1
+slw	  r0, r0, r4
+andc	  r0, r3, r0
+stb	  r0, 0xE4(r6)
+clrlwi	  r0, r5, 31
+slw	  r0, r0, r4
+lbz	  r3, 0xE4(r6)
+or	  r0, r3, r0
+stb	  r0, 0xE4(r6)
+blr
+
+branch_0x80294C5C:		# jumptable 80294B40 case 6
+lis	  r6, 6	# 0x60064
+addi	  r6, r6, 0x64 # 0x60064
+cmplw	  r4, r6
+bgelr
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+stw	  r5, 0xF4(r3)
+blr
+
+branch_0x80294C7C:		# jumptable 80294B40 case 7
+lis	  r6, 7	# 0x70003
+addi	  r6, r6, 3 # 0x70003
+cmplw	  r4, r6
+bgelr
+srwi	  r4, r0, 3
+add	  r6, r3, r4
+clrlwi	  r4, r0, 29
+lbz	  r3, 0x284(r6)
+li	  r0, 1
+slw	  r0, r0, r4
+andc	  r0, r3, r0
+stb	  r0, 0x284(r6)
+clrlwi	  r0, r5, 31
+slw	  r0, r0, r4
+lbz	  r3, 0x284(r6)
+or	  r0, r3, r0
+stb	  r0, 0x284(r6)
+blr
+
+branch_0x80294CC4:		# jumptable 80294B40 case 8
+lis	  r6, 8	# 0x80001
+addi	  r6, r6, 1 # 0x80001
+cmplw	  r4, r6
+bgelr
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+stw	  r5, 0x288(r3)
+blr
+
+branch_0x80294CE4:		# jumptable 80294B40 case 9
+lis	  r6, 9	# 0x90002
+addi	  r6, r6, 2 # 0x90002
+cmplw	  r4, r6
+bgelr
+srwi	  r4, r0, 3
+add	  r6, r3, r4
+clrlwi	  r4, r0, 29
+lbz	  r3, 0x28C(r6)
+li	  r0, 1
+slw	  r0, r0, r4
+andc	  r0, r3, r0
+stb	  r0, 0x28C(r6)
+clrlwi	  r0, r5, 31
+slw	  r0, r0, r4
+lbz	  r3, 0x28C(r6)
+or	  r0, r3, r0
+stb	  r0, 0x28C(r6)
+blr
+
+branch_0x80294D2C:		# jumptable 80294B40 case 10
+lis	  r6, 0xA # 0xA0002
+addi	  r6, r6, 2 # 0xA0002
+cmplw	  r4, r6
+bgelr
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+stw	  r5, 0x290(r3)
+
+locret_80294D48:	# jumptable 80294B40 case 0
+blr
+
 
 .globl getFlag__12TFlagManagerCFUl
 getFlag__12TFlagManagerCFUl: # 0x80294d4c
@@ -1559,7 +1862,9 @@ getFlag__12TFlagManagerCFUl: # 0x80294d4c
     slwi    r5, r7, 2
     lwzx    r5, r6, r5
     mtctr   r5
-    bctr       
+    bctr			# switch jump
+
+branch_0x80294D74:		# jumptable 80294D70 case 1
     lis     r5, 0x1
     addi    r5, r5, 0x3b4
     cmplw   r4, r5
@@ -1571,8 +1876,109 @@ getFlag__12TFlagManagerCFUl: # 0x80294d4c
     clrlwi  r3, r0, 31
     blr
 
+branch_0x80294D9C:		# jumptable 80294D70 case 2
+lis	  r5, 2	# 0x20015
+addi	  r5, r5, 0x15 # 0x20015
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+lwz	  r3, 0x78(r3)
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x28f79c, 0x80294eec - 0x80294d9c
+branch_0x80294DBC:		# jumptable 80294D70 case 3
+lis	  r5, 3	# 0x3001D
+addi	  r5, r5, 0x1D # 0x3001D
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+srwi	  r4, r0, 3
+add	  r3, r3, r4
+lbz	  r3, 0xCC(r3)
+clrlwi	  r0, r0, 29
+sraw	  r0, r3, r0
+clrlwi	  r3, r0, 31
+blr
+
+branch_0x80294DE8:		# jumptable 80294D70 case 4
+lis	  r5, 4	# 0x40005
+addi	  r5, r5, 5 # 0x40005
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+lwz	  r3, 0xD0(r3)
+blr
+
+branch_0x80294E08:		# jumptable 80294D70 case 5
+lis	  r5, 5	# 0x50064
+addi	  r5, r5, 0x64 # 0x50064
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+srwi	  r4, r0, 3
+add	  r3, r3, r4
+lbz	  r3, 0xE4(r3)
+clrlwi	  r0, r0, 29
+sraw	  r0, r3, r0
+clrlwi	  r3, r0, 31
+blr
+
+branch_0x80294E34:		# jumptable 80294D70 case 6
+lis	  r5, 6	# 0x60064
+addi	  r5, r5, 0x64 # 0x60064
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+lwz	  r3, 0xF4(r3)
+blr
+
+branch_0x80294E54:		# jumptable 80294D70 case 7
+lis	  r5, 7	# 0x70003
+addi	  r5, r5, 3 # 0x70003
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+srwi	  r4, r0, 3
+add	  r3, r3, r4
+lbz	  r3, 0x284(r3)
+clrlwi	  r0, r0, 29
+sraw	  r0, r3, r0
+clrlwi	  r3, r0, 31
+blr
+
+branch_0x80294E80:		# jumptable 80294D70 case 8
+lis	  r5, 8	# 0x80001
+addi	  r5, r5, 1 # 0x80001
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+lwz	  r3, 0x288(r3)
+blr
+
+branch_0x80294EA0:		# jumptable 80294D70 case 9
+lis	  r5, 9	# 0x90002
+addi	  r5, r5, 2 # 0x90002
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+srwi	  r4, r0, 3
+add	  r3, r3, r4
+lbz	  r3, 0x28C(r3)
+clrlwi	  r0, r0, 29
+sraw	  r0, r3, r0
+clrlwi	  r3, r0, 31
+blr
+
+branch_0x80294ECC:		# jumptable 80294D70 case 10
+lis	  r5, 0xA # 0xA0002
+addi	  r5, r5, 2 # 0xA0002
+cmplw	  r4, r5
+bge	  def_80294D70	# jumptable 80294D70 default case
+slwi	  r0, r0, 2
+add	  r3, r3, r0
+lwz	  r3, 0x290(r3)
+blr
+
+def_80294D70:		# jumptable 80294D70 default case
 branch_0x80294eec:
     li      r3, 0x0
     blr

@@ -7,7 +7,7 @@ emitCamShake___13TBossHanachanFv: # 0x800fd384
     stfd    f31, 0x70(sp)
     stmw    r25, 0x54(sp)
     mr      r30, r3
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x64(r4)
     cmplwi  r0, 0x1
     beq-    branch_0x800fd600
@@ -228,7 +228,7 @@ emitOneTimeSandPillar___13TBossHanachanFP22TBossHanachanPartsBody: # 0x800fd618
     lfs     f0, 0x14(r3)
     stfs    f0, 0x1a4(r31)
 branch_0x800fd698:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x1a0
     li      r4, 0x7e
     li      r6, 0x0
@@ -256,7 +256,7 @@ branch_0x800fd698:
     li      r4, 0x8
     lfs     f1, -0x5748(rtoc)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2884
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -298,7 +298,7 @@ branch_0x800fd784:
     bl      theNerve__22TNerveBossHanachanDeadFv
     cmplw   r30, r3
     beq-    branch_0x800fdb40
-    lwz     r3, -0x7100(r13)
+    lwz     r3, gpSunManager(r13)
     lfs     f29, 0x20(r3)
     bl      theNerve__23TNerveBossHanachanSnortFv
     cmplw   r30, r3
@@ -308,26 +308,26 @@ branch_0x800fd784:
     lha     r0, 0x68(r3)
     extsh.  r0, r0
     ble-    branch_0x800fd814
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x169
     lwz     r5, 0x118(r7)
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r7, 0x170(r31)
     li      r4, 0x16b
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x1
     lwz     r5, 0x114(r7)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r7, 0x170(r31)
     li      r4, 0x16a
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x1
     lwz     r5, 0x118(r7)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r7, 0x170(r31)
     li      r4, 0x16c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x1
     lwz     r5, 0x114(r7)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -361,7 +361,7 @@ branch_0x800fd848:
     fcmpo   cr0, f0, f29
     ble-    branch_0x800fd898
     addi    r0, r25, 0x150
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwzx    r7, r31, r0
     li      r4, 0x16e
     li      r6, 0x1
@@ -391,7 +391,7 @@ branch_0x800fd8b8:
     fcmpo   cr0, f0, f29
     ble-    branch_0x800fd908
     addi    r0, r25, 0x150
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwzx    r7, r31, r0
     li      r4, 0x16d
     li      r6, 0x1
@@ -449,7 +449,7 @@ branch_0x800fd95c:
     bge-    branch_0x800fda14
     lwz     r4, 0x150(r30)
     addi    r0, r25, 0x14c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x70
     lwzx    r7, r4, r0
     li      r4, 0x7c
@@ -461,7 +461,7 @@ branch_0x800fd95c:
     stfs    f29, 0x74(sp)
     stfs    f1, 0x78(sp)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x70
     li      r4, 0x7d
     li      r6, 0x0
@@ -474,14 +474,14 @@ branch_0x800fda14:
     addi    r5, sp, 0x70
     lfs     f0, 0xc(r23)
     li      r4, 0x77
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     stfs    f0, 0x70(sp)
     li      r6, 0x0
     li      r7, 0x0
     stfs    f2, 0x74(sp)
     stfs    f1, 0x78(sp)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x70
     li      r4, 0x76
     li      r6, 0x0
@@ -512,28 +512,28 @@ branch_0x800fda7c:
     beq-    branch_0x800fdb40
     lwz     r5, 0x170(r31)
     li      r4, 0x78
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x118(r5)
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x170(r31)
     li      r4, 0x7a
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x114(r5)
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x170(r31)
     li      r4, 0x79
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x118(r5)
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x170(r31)
     li      r4, 0x7b
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x114(r5)
     li      r7, 0x0
@@ -546,7 +546,7 @@ branch_0x800fdb1c:
     bne-    branch_0x800fdb40
     lwz     r7, 0x170(r31)
     li      r4, 0x16f
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x1
     lwz     r5, 0x108(r7)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv

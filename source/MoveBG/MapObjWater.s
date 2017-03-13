@@ -140,11 +140,11 @@ perform__18TMapObjWaterFilterFUlPQ26JDrama9TGraphics: # 0x801ea840
     lwz     r0, 0x44(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x801ea9c0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x801ea9c0
-    lwz     r28, -0x7118(r13)
+    lwz     r28, gpCamera(r13)
     li      r27, 0x1
     addi    r3, r28, 0x0
     bl      isSimpleDemoCamera__15CPolarSubCameraCFv
@@ -173,13 +173,13 @@ branch_0x801ea8c4:
 branch_0x801ea8c8:
     clrlwi. r0, r0, 24
     bne-    branch_0x801ea9c0
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f0, -0x22b0(rtoc)
     addi    r27, r3, 0x124
     lfs     f2, 0x128(r3)
     fcmpo   cr0, f2, f0
     ble-    branch_0x801ea90c
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     lfs     f1, 0x0(r27)
     lfs     f3, 0x8(r27)
     bl      getHeight__11TMapObjWaveCFfff

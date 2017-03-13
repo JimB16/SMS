@@ -1,6 +1,4 @@
 
-.incbin "./baserom/code/Text_0x80003100.bin", 0x198, 0x800051cc - 0x80003298
-
 .globl __TRK_reset
 __TRK_reset: # 0x800051cc
     mflr    r0

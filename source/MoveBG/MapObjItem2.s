@@ -395,7 +395,7 @@ branch_0x801fd76c:
     lwz     r3, -0x608c(r13)
     lwz     r0, 0x0(r3)
     stw     r0, 0xc4(r29)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x4(r3)
     stfs    f0, 0xc8(r29)
 branch_0x801fd790:
@@ -680,7 +680,7 @@ perform__12TMushroom1upFUlPQ26JDrama9TGraphics: # 0x801fdad4
     bge-    branch_0x801fdb48
     rlwinm. r0, r30, 0, 22, 22
     beq-    branch_0x801fdb48
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lis     r3, 0x2aab
     subi    r0, r3, 0x5555
     lwz     r4, 0x58(r4)
@@ -748,7 +748,7 @@ control__12TMushroom1upFv: # 0x801fdbb4
 
 branch_0x801fdc04:
     xoris   r0, r0, 0x8000
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
     lfd     f1, -0x1e88(rtoc)
@@ -845,7 +845,7 @@ branch_0x801fdd5c:
     li      r0, 0x1
     stb     r0, 0x138(r31)
 branch_0x801fdd6c:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x44(sp)
@@ -1134,7 +1134,7 @@ makeObjAppeared__12TMushroom1upFv: # 0x801fe0e8
     lbz     r0, 0x139(r31)
     cmpwi   r0, 0x2
     beq-    branch_0x801fe148
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4854
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1145,7 +1145,7 @@ makeObjAppeared__12TMushroom1upFv: # 0x801fe0e8
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x801fe148:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe5
     li      r6, 0x0
@@ -1166,7 +1166,7 @@ branch_0x801fe148:
     lfs     f0, 0x2c(r31)
     stfs    f0, 0x17c(r3)
 branch_0x801fe198:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe6
     li      r6, 0x0
@@ -1218,7 +1218,7 @@ touchPlayer__12TMushroom1upFP9THitActor: # 0x801fe1fc
     li      r0, 0x1
     li      r4, 0x4841
     stb     r0, 0x13a(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801fe278

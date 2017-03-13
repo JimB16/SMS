@@ -44,7 +44,7 @@ SMS_IsInSameCameraCube__FRC3Vec: # 0x8002f8a8
     mr      r29, r3
     mr      r28, r31
     li      r30, 0x0
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, -0x7630(rtoc)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -133,7 +133,7 @@ SMS_IsInOtherFastCube__FRC3Vec: # 0x8002f9c0
     stw     r28, 0x18(sp)
     addi    r28, r3, 0x0
     li      r3, 0x1
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x3
     beq-    branch_0x8002fa04
@@ -247,7 +247,7 @@ branch_0x8002fb54:
     b       branch_0x8002fc1c
 
 branch_0x8002fb68:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x7
     bne-    branch_0x8002fc1c

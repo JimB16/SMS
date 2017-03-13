@@ -859,7 +859,7 @@ makeRelativeAngle__17TKoopaJrSubmarineFv: # 0x80117f70
     fmr     f1, f31
     bl      calcNearerDirection__14TDirectionCalcFf
     lwz     r3, 0x1a0(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x15c(r3)
     lfs     f2, 0x0(r4)
     lfsu    f0, 0x10(r3)
@@ -1006,7 +1006,7 @@ makeKillerVelocity__17TKoopaJrSubmarineFP14TBathtubKillerQ29JGeometry8TVec3_f_: 
     lfs     f0, -0x52b8(rtoc)
     stfs    f0, 0x4(r31)
     stfs    f4, 0x8(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x134(sp)
@@ -1331,7 +1331,7 @@ branch_0x80118668:
     lfs     f0, 0x8(r31)
     fmuls   f0, f0, f1
     stfs    f0, 0x8(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0xf8(sp)
@@ -1525,7 +1525,7 @@ launchKiller__17TKoopaJrSubmarineFv: # 0x8011887c
     stw     r6, 0x34(sp)
     stw     r0, 0x38(sp)
     bl      makeKillerVelocity__17TKoopaJrSubmarineFP14TBathtubKillerQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x285d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1647,13 +1647,13 @@ receiveMessage__17TKoopaJrSubmarineFP9THitActorUl: # 0x80118af8
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bne-    branch_0x80118b60
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r4, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r31, 0x10
     lfs     f1, -0x52c0(rtoc)
     li      r4, 0x6802
@@ -3761,13 +3761,13 @@ receiveMessage__8TKoopaJrFP9THitActorUl: # 0x8011a804
     stw     r30, 0x58(sp)
     addi    r30, r3, 0x0
     bne-    branch_0x8011a9e8
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r4, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x52c0(rtoc)
     li      r4, 0x6802
@@ -4261,7 +4261,7 @@ branch_0x8011af18:
     mr      r3, r31
     bl      checkNerveKillerHit__8TKoopaJrFv
 branch_0x8011af44:
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x10(r31)
     lfs     f1, 0x0(r3)
     fsubs   f0, f1, f0

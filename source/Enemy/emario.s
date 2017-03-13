@@ -243,7 +243,7 @@ branch_0x800392a8:
     fcmpo   cr0, f1, f0
     bge-    branch_0x80039340
     lwz     r3, 0x150(r25)
-    addi    r4, r23, 0x446
+    addi    r4, r23, MARIOSTATUS_446
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -422,7 +422,7 @@ kill__7TEMarioFv: # 0x8003952c
     bl      SMS_isMultiPlayerMap__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x80039558
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r4, r31, 0x10
     bl      removeMultiPlayer__15CPolarSubCameraFPCQ29JGeometry8TVec3_f_
 branch_0x80039558:
@@ -619,7 +619,7 @@ loadAfter__7TEMarioFv: # 0x800397b4
     bl      SMS_isMultiPlayerMap__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x800397fc
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r4, r31, 0x10
     lfs     f1, -0x74a0(rtoc)
     lfs     f2, -0x7498(rtoc)
@@ -693,6 +693,7 @@ branch_0x800398d8:
     li      r0, 0x0
     stw     r0, 0x160(r30)
 branch_0x800398ec:
+
     li      r3, 0x4310
     bl      __nw__FUl
     mr.     r29, r3
@@ -707,6 +708,7 @@ branch_0x800398ec:
     stw     r3, 0x20(r29)
     stw     r0, 0x70(r29)
 branch_0x80039920:
+
     stw     r29, 0x150(r30)
     addi    r4, r31, 0x170
     lwz     r3, 0x150(r30)
@@ -715,7 +717,7 @@ branch_0x80039920:
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x80039960
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r3, 0x150(r30)
     lwz     r4, 0x18(r4)
     lwz     r4, 0x4(r4)
@@ -724,12 +726,13 @@ branch_0x80039920:
     li      r0, 0x3
     stb     r0, 0x388(r3)
 branch_0x80039960:
+
     lwz     r3, 0x4(r30)
     addi    r4, r31, 0x17c
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x80039994
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r3, 0x150(r30)
     lwz     r4, 0x18(r4)
     lwz     r4, 0x8(r4)
@@ -743,7 +746,7 @@ branch_0x80039994:
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x800399c8
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r3, 0x150(r30)
     lwz     r4, 0x18(r4)
     lwz     r4, 0xc(r4)

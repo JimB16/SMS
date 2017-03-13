@@ -17,9 +17,9 @@ ctrlLButtonCamera___15CPolarSubCameraFv: # 0x800291d0
     fneg    f31, f1
     fneg    f30, f0
     bne-    branch_0x80029358
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 16, 16
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80029228
     li      r0, 0x1
     b       branch_0x8002922c
@@ -453,7 +453,7 @@ getNoticeActor___15CPolarSubCameraFv: # 0x800297b8
     bne-    branch_0x80029908
     rlwinm. r0, r4, 0, 30, 30
     bne-    branch_0x80029908
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r4, r3, 0x10
     lfs     f3, 0x0(r4)
     lfs     f2, 0x0(r5)
@@ -555,7 +555,7 @@ branch_0x8002993c:
     cmplw   r0, r4
     beq-    branch_0x80029ab0
 branch_0x8002996c:
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     addi    r6, r4, 0x10
     lfs     f3, 0x10(r4)
     lfs     f2, 0x0(r3)
@@ -628,7 +628,7 @@ branch_0x80029a50:
     xoris   r0, r0, 0x8000
     lwzx    r4, r4, r26
     stw     r0, 0xa4(sp)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     addi    r4, r4, 0x10
     stw     r25, 0xa0(sp)
     lfs     f3, 0x68(r5)

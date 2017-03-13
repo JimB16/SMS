@@ -130,15 +130,15 @@ isMarioRocketing__16TCameraMarioDataCFv: # 0x80028fa8
     stw     r31, 0x14(sp)
     li      r31, 0x0
     bl      SMS_GetMarioStatus__Fv
-    cmpwi   r3, 0x88c
+    cmpwi   r3, MARIOSTATUS_88c
     beq-    branch_0x80028fe4
     bge-    branch_0x80028fd8
-    cmpwi   r3, 0x88b
+    cmpwi   r3, MARIOSTATUS_88b
     bge-    branch_0x80028fe0
     b       branch_0x80028fe4
 
 branch_0x80028fd8:
-    cmpwi   r3, 0x88e
+    cmpwi   r3, MARIOSTATUS_88e
     bge-    branch_0x80028fe4
 branch_0x80028fe0:
     li      r31, 0x1
@@ -158,10 +158,11 @@ isMarioGoDown__16TCameraMarioDataCFv: # 0x80028ffc
     lfs     f0, 0x10(r3)
     fcmpu   cr0, f2, f0
     beq-    branch_0x80029030
-    lwz     r4, -0x60b4(r13)
-    lwz     r3, -0x60d8(r13)
-    lfs     f1, 0x4(r4)
-    lfs     f0, 0x2a0(r3)
+
+    lwz     r4, MarioHitActorPos(r13)
+    lwz     r3, MarioActor(r13)
+    lfs     f1, PositionY(r4)
+    lfs     f0, MarioActor_2a0(r3)
     fsubs   f0, f1, f0
     fcmpo   cr0, f0, f2
     bge-    branch_0x80029030
@@ -181,7 +182,7 @@ calcAndSetMarioData__16TCameraMarioDataFv: # 0x80029038
     stw     r30, 0x48(sp)
     bl      SMS_GetMarioStatus__Fv
     lis     r4, 0x3800
-    addi    r0, r4, 0x34b
+    addi    r0, r4, MARIOSTATUS_34b
     cmpw    r3, r0
     beq-    branch_0x8002907c
     bge-    branch_0x8002908c
@@ -198,15 +199,15 @@ branch_0x8002907c:
     b       branch_0x800290f8
 
 branch_0x8002908c:
-    lwz     r4, -0x60d8(r13)
-    lwz     r5, -0x60b4(r13)
-    addi    r4, r4, 0x29c
-    lfs     f1, 0x8(r5)
+    lwz     r4, MarioActor(r13)
+    lwz     r5, MarioHitActorPos(r13)
+    addi    r4, r4, MarioActor_29c
+    lfs     f1, PositionZ(r5)
     lfs     f0, 0x8(r4)
-    lfs     f3, 0x0(r5)
+    lfs     f3, PositionX(r5)
     fsubs   f4, f1, f0
     lfs     f0, 0x0(r4)
-    lfs     f2, 0x4(r5)
+    lfs     f2, PositionY(r5)
     lfs     f1, 0x4(r4)
     fsubs   f3, f3, f0
     fmuls   f0, f4, f4

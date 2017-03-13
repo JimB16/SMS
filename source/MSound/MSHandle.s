@@ -20,15 +20,52 @@ branch_0x8001c8e8:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8001C914:		# jumptable 8001C910 case 1
     lfs     f2, -0x7a5c(rtoc)
     lfs     f0, -0x7a58(rtoc)
     fmuls   f2, f2, f3
     fdivs   f3, f2, f0
     b       branch_0x8001c988
 
+branch_0x8001C928:		# jumptable 8001C910 case 2
+lfs	  f2, -0x7A54(r2)
+lfs	  f0, -0x7A58(r2)
+fmuls	  f2, f2, f3
+fdivs	  f3, f2, f0
+b	  def_8001C910	# jumptable 8001C910 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x17328, 0x8001c988 - 0x8001c928
+branch_0x8001C93C:		# jumptable 8001C910 case 3
+lfs	  f0, -0x7A50(r2)
+fmuls	  f3, f0, f3
+b	  def_8001C910	# jumptable 8001C910 default case
+
+branch_0x8001C948:		# jumptable 8001C910 case 4
+lfs	  f2, -0x7A58(r2)
+lfs	  f0, -0x7A4C(r2)
+fmuls	  f2, f2, f3
+fmuls	  f3, f2, f0
+b	  def_8001C910	# jumptable 8001C910 default case
+
+branch_0x8001C95C:		# jumptable 8001C910 case 5
+lfs	  f0, -0x7A48(r2)
+fmuls	  f3, f3, f0
+b	  def_8001C910	# jumptable 8001C910 default case
+
+branch_0x8001C968:		# jumptable 8001C910 case 6
+lfs	  f0, -0x7A4C(r2)
+fmuls	  f3, f3, f0
+b	  def_8001C910	# jumptable 8001C910 default case
+
+branch_0x8001C974:		# jumptable 8001C910 case 7
+lis	  r3, unk_803AC8EC@ha
+addi	  r3, r3, unk_803AC8EC@l
+clrlslwi  r0, r4, 24,4
+add	  r3, r3, r0
+lfs	  f3, 0xC(r3)
+
+def_8001C910:		# jumptable 8001C910 default case
 branch_0x8001c988:
     lfs     f2, -0x7a44(rtoc)
     li      r3, 0x0

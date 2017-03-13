@@ -54,7 +54,7 @@ branch_0x8021731c:
     lfs     f1, 0x38(sp)
     addi    r4, r31, 0xc4
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x34(sp)
     lfs     f3, 0x3c(sp)
@@ -121,7 +121,7 @@ branch_0x802173f0:
     mr      r5, r30
     lfs     f0, 0xc0(r31)
     addi    r4, sp, 0x34
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f0
     lfs     f2, -0x196c(rtoc)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -174,7 +174,7 @@ setVariableDamageRadius___8TBaseNPCFv: # 0x80217470
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi. r0, r3, 24
     bne-    branch_0x80217520
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r3)
     fcmpo   cr0, f1, f0

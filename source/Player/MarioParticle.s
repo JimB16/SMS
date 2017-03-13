@@ -30,7 +30,7 @@ sinkInSandEffect__6TMarioFv: # 0x80262abc
     stwu    sp, -0x8(sp)
     li      r6, 0x0
     li      r7, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80262b08
@@ -59,7 +59,7 @@ kickFruitEffect__6TMarioFv: # 0x80262b18
     stw     r31, 0x34(sp)
     mr      r31, r3
     addi    r5, r31, 0x10
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80262ba8
@@ -137,7 +137,7 @@ toroccoEffect__6TMarioFv: # 0x80262bbc
     bl      sqrt__Q29JGeometry8TUtil_f_Ff
     lwz     r4, 0x3f8(r31)
     fmr     f31, f1
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     mr      r7, r31
     lwz     r5, 0x4(r4)
     li      r4, 0x11f
@@ -152,7 +152,7 @@ toroccoEffect__6TMarioFv: # 0x80262bbc
 branch_0x80262c90:
     lwz     r5, 0x3f8(r31)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x120
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -181,7 +181,7 @@ sleepingEffectKill__6TMarioFv: # 0x80262cdc
     li      r4, 0x124
     stwu    sp, -0x8(sp)
     li      r6, 0x1
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80262d0c
@@ -202,7 +202,7 @@ sleepingEffect__6TMarioFv: # 0x80262d1c
     li      r4, 0x124
     stwu    sp, -0x8(sp)
     li      r6, 0x1
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -238,7 +238,7 @@ kickRoofEffect__6TMarioFv: # 0x80262d50
     stfs    f0, 0x1ac(r31)
     lfs     f0, 0x2c(r3)
     stfs    f0, 0x1b0(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lha     r5, 0x27f8(r31)
     addi    r3, r31, 0x0
@@ -261,7 +261,7 @@ elecEndEffect__6TMarioFv: # 0x80262de4
     li      r4, 0x8b
     stwu    sp, -0x8(sp)
     li      r6, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -279,16 +279,16 @@ elecEffect__6TMarioFv: # 0x80262e18
     stw     r31, 0x14(sp)
     mr      r31, r3
     addi    r7, r31, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x178
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x178
     li      r4, 0x118
     li      r6, 0x1
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x178
     li      r4, 0x117
@@ -312,15 +312,15 @@ rocketEffectStart__6TMarioFv: # 0x80262e88
     stw     r31, 0x2c(sp)
     mr      r31, r3
     addi    r5, r31, 0x10
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0x4
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0x12
     li      r6, 0x0
@@ -330,21 +330,21 @@ rocketEffectStart__6TMarioFv: # 0x80262e88
     cmplwi  r3, 0x0
     beq-    branch_0x80262f40
     addi    r5, r3, 0x1c90
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x1
     li      r6, 0x0
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r5, 0x3e4(r31)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x2
     addi    r5, r5, 0x1c90
     li      r6, 0x0
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r5, 0x3e4(r31)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x3
     addi    r5, r5, 0x1c90
     li      r6, 0x0
@@ -368,7 +368,7 @@ meltInWaterEffect__6TMarioFv: # 0x80262f54
     lfs     f1, 0x134(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80262fec
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x220
     li      r4, 0x12b
@@ -592,7 +592,7 @@ branch_0x80263220:
     beq-    branch_0x802632ac
     cmplwi  r4, 0x0
     beq-    branch_0x802632ac
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r4, r31, 0x0
     addi    r5, r29, 0x1a8
     li      r6, 0x0
@@ -604,7 +604,7 @@ branch_0x802632ac:
     addi    r3, r29, 0x0
     addi    r4, r29, 0x1a8
     bl      calcGroundMtx__6TMarioFRCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r4, r30, 0x0
     addi    r5, r29, 0x250
     li      r6, 0x0
@@ -628,10 +628,10 @@ emitRotateShootEffect__6TMarioFv: # 0x802632ec
     stw     r31, 0x14(sp)
     mr      r31, r3
     addi    r7, r31, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x178
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x178
     li      r4, 0x115
@@ -653,7 +653,7 @@ emitBlurSpinJump__6TMarioFv: # 0x80263344
     mr      r31, r3
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x105
     li      r6, 0x1
@@ -661,7 +661,7 @@ emitBlurSpinJump__6TMarioFv: # 0x80263344
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x106
     li      r6, 0x1
@@ -673,7 +673,7 @@ emitBlurSpinJump__6TMarioFv: # 0x80263344
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x126
     li      r6, 0x1
@@ -703,7 +703,7 @@ emitBlurHipDropSuper__6TMarioFv: # 0x802633f8
     mr      r31, r3
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x11a
     li      r6, 0x1
@@ -711,7 +711,7 @@ emitBlurHipDropSuper__6TMarioFv: # 0x802633f8
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x11b
     li      r6, 0x1
@@ -719,7 +719,7 @@ emitBlurHipDropSuper__6TMarioFv: # 0x802633f8
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x11c
     li      r6, 0x1
@@ -727,7 +727,7 @@ emitBlurHipDropSuper__6TMarioFv: # 0x802633f8
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x11d
     li      r6, 0x1
@@ -748,7 +748,7 @@ emitBlurHipDrop__6TMarioFv: # 0x8026349c
     mr      r31, r3
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x104
     li      r6, 0x1
@@ -773,13 +773,12 @@ warpOutEffect__6TMarioFif: # 0x802634e0
     cmpwi   r4, 0x0
     bge-    branch_0x80263510
     b       branch_0x80263580
+    b       branch_0x80263580
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x25df0c, 0x80263510 - 0x8026350c
 branch_0x80263510:
     lfs     f0, -0xce0(rtoc)
     mr      r10, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     fmuls   f0, f0, f1
     li      r4, 0x40
@@ -795,7 +794,7 @@ branch_0x80263510:
 branch_0x80263548:
     lfs     f0, -0xce0(rtoc)
     mr      r10, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     fmuls   f0, f0, f1
     li      r4, 0x41
@@ -815,7 +814,7 @@ branch_0x80263580:
     li      r4, 0x24
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -826,7 +825,7 @@ branch_0x80263580:
     li      r4, 0x25
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -837,7 +836,7 @@ branch_0x80263580:
     li      r4, 0x26
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -848,7 +847,7 @@ branch_0x80263580:
     li      r4, 0x27
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -859,7 +858,7 @@ branch_0x80263580:
     li      r4, 0x28
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -870,7 +869,7 @@ branch_0x80263580:
     li      r4, 0x29
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -881,7 +880,7 @@ branch_0x80263580:
     li      r4, 0x2a
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -892,7 +891,7 @@ branch_0x80263580:
     li      r4, 0x2b
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -903,7 +902,7 @@ branch_0x80263580:
     li      r4, 0x2c
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -925,7 +924,7 @@ branch_0x80263724:
     li      r4, 0x2d
     lwz     r5, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x0
@@ -947,7 +946,7 @@ warpInLight__6TMarioFv: # 0x8026376c
     li      r4, 0x51
     stwu    sp, -0x8(sp)
     li      r6, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -974,12 +973,45 @@ branch_0x802637d0:
     bgt-    branch_0x8026382c
     lwzx    r0, r31, r28
     mtctr   r0
-    bctr       
+    bctr
+
+branch_0x802637E4:
     lbz     r0, 0x3c4(r29)
     b       branch_0x80263830
 
+branch_0x802637EC:
+lbz	  r0, 0x3CF(r29)
+b	  branch_0x80263830
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x25e1ec, 0x8026382c - 0x802637ec
+branch_0x802637F4:
+lbz	  r0, 0x3CF(r29)
+b	  branch_0x80263830
+
+branch_0x802637FC:
+lbz	  r0, 0x3C9(r29)
+b	  branch_0x80263830
+
+branch_0x80263804:
+lbz	  r0, 0x3CA(r29)
+b	  branch_0x80263830
+
+branch_0x8026380C:
+lbz	  r0, 0x3CB(r29)
+b	  branch_0x80263830
+
+branch_0x80263814:
+lbz	  r0, 0x3CC(r29)
+b	  branch_0x80263830
+
+branch_0x8026381C:
+lbz	  r0, 0x3CD(r29)
+b	  branch_0x80263830
+
+branch_0x80263824:
+lbz	  r0, 0x3CE(r29)
+b	  branch_0x80263830
+
+branch_0x8026382C:
 branch_0x8026382c:
     lbz     r0, 0x3c4(r29)
 branch_0x80263830:
@@ -1009,7 +1041,7 @@ branch_0x80263874:
 branch_0x80263880:
     cmpwi   r3, 0x1
     bne-    branch_0x802638ac
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     li      r6, 0x0
     bl      emitAndBindToMtx__21TMarioParticleManagerFlPA4_fUcPCv
@@ -1026,14 +1058,14 @@ branch_0x802638ac:
     mr      r3, r29
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x3c
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtx__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r7, 0x68(r29)
     li      r4, 0x1d6
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x2
     lwz     r5, 0x78(r7)
     lhz     r0, 0x72(r7)
@@ -1063,7 +1095,7 @@ execute__15TWarpInCallBackFP14JPABaseEmitterP15JPABaseParticle: # 0x8026391c
     mr      r31, r5
     extrwi  r0, r31, 6, 24
     xoris   r0, r0, 0x8000
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     stw     r0, 0xdc(sp)
     lis     r0, 0x4330
     lwz     r5, 0x120(r4)
@@ -1198,7 +1230,7 @@ branch_0x80263b40:
     mr      r3, r31
     bl      getRootAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x1e7
     li      r6, 0x3
@@ -1212,7 +1244,7 @@ branch_0x80263b40:
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80263b80:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x1f0
     addi    r7, r31, 0x0
     li      r4, 0x121
@@ -1227,7 +1259,7 @@ branch_0x80263b80:
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80263bb8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x1f0
     addi    r7, r31, 0x0
     li      r4, 0x123
@@ -1242,7 +1274,7 @@ branch_0x80263bb8:
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80263bf0:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x1f0
     addi    r7, r31, 0x0
     li      r4, 0x122
@@ -1305,7 +1337,7 @@ branch_0x80263cb8:
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x1ea
     li      r6, 0x3
@@ -1313,7 +1345,7 @@ branch_0x80263cb8:
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x112
     li      r6, 0x1
@@ -1321,7 +1353,7 @@ branch_0x80263cb8:
     mr      r3, r31
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x113
     li      r6, 0x1
@@ -1347,13 +1379,13 @@ branch_0x80263d44:
     addi    r3, r31, 0x0
     addi    r4, r31, 0x178
     bl      calcGroundMtx__6TMarioFRCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x250
     li      r4, 0x110
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x178
     li      r4, 0x10f
@@ -1364,7 +1396,7 @@ branch_0x80263d44:
 branch_0x80263d8c:
     lwz     r5, 0x3a8(r31)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x103
     lwz     r5, 0x8(r5)
     li      r6, 0x1
@@ -1390,7 +1422,7 @@ treeSlipEffect__6TMarioFv: # 0x80263dc0
     addi    r30, r3, 0x0
     bl      getCenterAnmMtx__6TMarioFv
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     li      r4, 0x102
     li      r6, 0x1
@@ -1437,7 +1469,7 @@ wallSlipEffect__6TMarioFv: # 0x80263e70
     li      r4, 0x102
     stwu    sp, -0x8(sp)
     li      r6, 0x1
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1454,7 +1486,7 @@ blurEffect__6TMarioFv: # 0x80263ea4
     li      r6, 0x1
     stwu    sp, -0x8(sp)
     lwz     r5, 0x3a8(r7)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x8(r5)
     lwz     r5, 0x58(r5)
     addi    r5, r5, 0x30
@@ -1476,7 +1508,7 @@ runningRippleEffect__6TMarioFv: # 0x80263ee4
     lfs     f1, 0xb0(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80263f20
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x190
     li      r4, 0x34
     li      r6, 0x0
@@ -1525,7 +1557,7 @@ branch_0x80263f78:
     bl      isMario__6TMarioFv
     cmpwi   r3, 0x0
     beq-    branch_0x80263fd8
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r8, r30, 0x0
     addi    r5, r30, 0x16c
     li      r4, 0x10c
@@ -1586,7 +1618,7 @@ branch_0x8026406c:
     mr      r8, r30
     lfs     f0, 0x28a0(r30)
     addi    r5, r30, 0x178
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     fsubs   f0, f0, f1
     li      r4, 0x111
     li      r6, 0x1
@@ -1624,7 +1656,7 @@ bubbleFromMouth__6TMarioFi: # 0x802640d4
     cmpwi   r3, 0x0
     beq-    branch_0x8026412c
     mulli   r0, r31, 0x4290
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x16c
     add     r8, r30, r0
     li      r4, 0x10c
@@ -1651,7 +1683,7 @@ execute__15TBubbleCallBackFP14JPABaseEmitterP15JPABaseParticle: # 0x80264144
     stwu    sp, -0x48(sp)
     stw     r31, 0x44(sp)
     mr      r31, r5
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm. r0, r0, 0, 19, 19
     beq-    branch_0x80264170
@@ -1666,7 +1698,7 @@ branch_0x80264174:
     addi    r3, r31, 0x0
     addi    r4, sp, 0x30
     bl      getCurrentPosition__15JPABaseParticleFRQ29JGeometry8TVec3_f_
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f1, 0x34(sp)
     lfs     f0, 0xf0(r3)
     fcmpo   cr0, f1, f0
@@ -1674,12 +1706,12 @@ branch_0x80264174:
     lwz     r0, 0x10(r31)
     ori     r0, r0, 0x2
     stw     r0, 0x10(r31)
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f0, -0xd14(rtoc)
     lfs     f1, 0x28b4(r3)
     fcmpu   cr0, f1, f0
     beq-    branch_0x802641d4
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x30
     li      r4, 0x33
     li      r6, 0x0
@@ -1733,7 +1765,7 @@ branch_0x80264254:
 branch_0x8026425c:
     lwz     r3, 0x424(r31)
     bl      setJumpIntoWaterEffectSmall__12TMarioEffectFv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x1c
     li      r4, 0x31
     li      r6, 0x0
@@ -1768,20 +1800,20 @@ branch_0x802642cc:
 branch_0x802642d0:
     clrlwi. r0, r0, 24
     bne-    branch_0x802642f0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x1c
     li      r4, 0x2f
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x802642f0:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x1c
     li      r4, 0x30
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x1c
     li      r4, 0x1d4
     li      r6, 0x2
@@ -1801,20 +1833,20 @@ branch_0x80264338:
 branch_0x8026433c:
     clrlwi. r0, r0, 24
     bne-    branch_0x8026435c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x1c
     li      r4, 0x31
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x8026435c:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x1c
     li      r4, 0x32
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x1c
     li      r4, 0x1d5
     li      r6, 0x2
@@ -1893,7 +1925,7 @@ smallTouchDownEffect__6TMarioFv: # 0x8026443c
     stw     r31, 0x14(sp)
     subi    r31, r4, 0x43f0
     li      r4, 0x11
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lbz     r0, -0x60d0(r13)
     extsb.  r0, r0
@@ -1940,12 +1972,12 @@ strongTouchDownEffect__6TMarioFv: # 0x802644e0
     stw     r31, 0x14(sp)
     mr      r31, r3
     addi    r5, r31, 0x10
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lha     r7, 0x96(r31)
     bl      emitWithRotate__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_sssUcPCv
     lha     r7, 0x96(r31)
     addi    r5, r31, 0x10
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x11
     li      r6, 0x0
     li      r8, 0x0
@@ -1969,10 +2001,10 @@ emitGetCoinEffect__6TMarioFPQ29JGeometry8TVec3_f_: # 0x80264550
     stw     r31, 0x14(sp)
     mr      r31, r4
     addi    r5, r31, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x37
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     li      r4, 0x38
     li      r6, 0x0
@@ -1994,7 +2026,7 @@ emitGetWaterEffect__6TMarioFv: # 0x802645a8
     li      r6, 0x0
     stwu    sp, -0x8(sp)
     li      r7, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -2013,7 +2045,7 @@ emitGetEffect__6TMarioFv: # 0x802645dc
     stw     r31, 0x14(sp)
     mr      r31, r3
     addi    r5, r31, 0x160
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     addi    r3, r31, 0x0
     li      r4, 0x1989
@@ -2030,7 +2062,7 @@ emitSweatSometimes__6TMarioFv: # 0x80264628
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lha     r4, 0x96(r3)
     lwz     r0, 0x58(r5)
     clrlwi. r0, r0, 28
@@ -2083,7 +2115,7 @@ branch_0x802646ac:
     addi    r5, sp, 0x30
     lwz     r4, 0x8(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r4, 0x58(r4)
     add     r11, r4, r0
     lfs     f0, 0xc(r11)
@@ -2130,7 +2162,7 @@ branch_0x80264768:
 branch_0x8026476c:
     clrlwi. r0, r0, 24
     bne-    branch_0x80264798
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r4, 0x0
     addi    r5, r5, 0x10
     li      r4, 0x15
@@ -2156,7 +2188,7 @@ emitParticle__6TMarioFis: # 0x802647a8
     stwu    sp, -0x8(sp)
     li      r6, 0x0
     li      r8, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r9, 0x0
     li      r10, 0x0
     bl      emitWithRotate__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_sssUcPCv
@@ -2181,7 +2213,7 @@ emitParticle__6TMarioFiPCQ29JGeometry8TVec3_f_: # 0x802647fc
     stw     r0, 0x4(sp)
     li      r7, 0x0
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80264828
@@ -2206,7 +2238,7 @@ emitParticle__6TMarioFi: # 0x8026483c
     li      r6, 0x0
     stwu    sp, -0x8(sp)
     li      r7, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80264870
@@ -2222,6 +2254,10 @@ branch_0x80264874:
     blr
 
 
+/* TMario::moveParticle((void))
+Input:
+r3: MarioActor
+*/
 .globl moveParticle__6TMarioFv
 moveParticle__6TMarioFv: # 0x80264884
     mflr    r0
@@ -2229,23 +2265,23 @@ moveParticle__6TMarioFv: # 0x80264884
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r3
-    lha     r0, 0x4ee(r3)
+    lha     r0, MarioActor_4ee(r3)
     cmpwi   r0, 0x0
     ble-    branch_0x802648dc
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
-    addi    r5, r31, 0x220
+    addi    r5, r31, MarioActor_220
     li      r4, 0x109
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x802648dc
-    lha     r0, 0x4ee(r31)
+    lha     r0, MarioActor_4ee(r31)
     stb     r0, 0x183(r3)
-    lha     r3, 0x283c(r31)
-    lha     r0, 0x4ee(r31)
+    lha     r3, MarioActor_283c(r31)
+    lha     r0, MarioActor_4ee(r31)
     subf    r0, r3, r0
-    sth     r0, 0x4ee(r31)
+    sth     r0, MarioActor_4ee(r31)
 branch_0x802648dc:
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
@@ -2254,6 +2290,8 @@ branch_0x802648dc:
     blr
 
 
+/* TMario::initParticle((void))
+*/
 .globl initParticle__6TMarioFv
 initParticle__6TMarioFv: # 0x802648f0
     mflr    r0

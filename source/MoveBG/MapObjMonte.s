@@ -481,7 +481,7 @@ branch_0x801f226c:
     lwz     r0, 0x6c(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x801f22fc
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfsu    f3, 0x10(r3)
     lfs     f2, 0x0(r4)
     lfs     f1, 0x4(r3)
@@ -525,7 +525,7 @@ branch_0x801f2310:
     lfs     f1, 0x14(r4)
     fcmpo   cr0, f1, f0
     bge-    branch_0x801f2520
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r29, r4, 0x10
     li      r4, 0x3884
     bl      gateCheck__6MSoundFUl
@@ -914,7 +914,7 @@ branch_0x801f2850:
     b       branch_0x801f2b20
 
 branch_0x801f28c0:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -945,7 +945,7 @@ branch_0x801f2920:
     mtlr    r12
     blrl
 branch_0x801f2934:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -998,13 +998,13 @@ branch_0x801f29b8:
     lfs     f0, -0x20f0(rtoc)
     fcmpo   cr0, f1, f0
     bge-    branch_0x801f2b20
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe5
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x387d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1256,7 +1256,7 @@ branch_0x801f2da0:
 branch_0x801f2da4:
     clrlwi. r0, r0, 24
     beq-    branch_0x801f2dc0
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x13c(r31)
     lfs     f1, 0x4(r3)
     fsubs   f0, f1, f0
@@ -1663,7 +1663,7 @@ branch_0x801f3340:
     ble-    branch_0x801f3398
     lfs     f0, 0x13c(r30)
     li      r4, 0x3867
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1683,7 +1683,7 @@ branch_0x801f3340:
 branch_0x801f3398:
     lfs     f0, 0x13c(r30)
     li      r4, 0x3868
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2150,7 +2150,7 @@ loadAfter__14THangingBridgeFv: # 0x801f3a5c
     addi    r29, r3, 0x0
     addi    r31, r4, 0x3a88
     bl      loadAfter__Q26JDrama8TNameRefFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lfs     f30, -0x2170(rtoc)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xd
@@ -2286,7 +2286,7 @@ branch_0x801f3c44:
     bl      sinf
     lfs     f1, 0x1c(r29)
     lfs     f0, 0x28(r29)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     fsubs   f0, f0, f1
     fmadds  f0, f25, f0, f1
     fsubs   f0, f0, f27
@@ -2341,7 +2341,7 @@ branch_0x801f3d58:
     lwz     r3, 0x10(r29)
     cmpw    r30, r3
     blt+    branch_0x801f3c44
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x8
     bne-    branch_0x801f3e44
@@ -2403,7 +2403,7 @@ branch_0x801f3e38:
     cmpw    r27, r0
     blt+    branch_0x801f3dac
 branch_0x801f3e44:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xd
     bne-    branch_0x801f3e94
@@ -2572,7 +2572,7 @@ branch_0x801f408c:
     lwz     r0, 0x10(r28)
     cmpw    r29, r0
     blt+    branch_0x801f4034
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xd
     bne-    branch_0x801f40bc
@@ -2668,7 +2668,7 @@ initDraw__14THangingBridgeCFv: # 0x801f40fc
     li      r7, 0x0
     li      r8, 0x7d
     bl      GXSetTexCoordGen2
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xd
     bne-    branch_0x801f4240
@@ -4051,7 +4051,7 @@ drawOneRope__19THangingBridgeBoardCFRCQ29JGeometry8TVec3_f_: # 0x801f5614
     stfd    f24, 0x38(sp)
     stw     r31, 0x34(sp)
     mr      r31, r4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lfs     f4, 0x4(r4)
     lfs     f0, -0x6238(r13)
     lbz     r0, 0x7c(r3)

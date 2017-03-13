@@ -182,7 +182,7 @@ branch_0x801ece14:
     bne-    branch_0x801ecf54
     mr      r3, r31
     bl      removeMapCollision__11TMapObjBaseFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3821
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -326,7 +326,7 @@ goOnRail__10TRailFenceFv: # 0x801ecf68
     lwz     r0, 0x8(r3)
     rlwinm. r0, r0, 0, 28, 28
     beq-    branch_0x801ed090
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3863
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -368,7 +368,7 @@ branch_0x801ed090:
     lfs     f0, 0x58(sp)
     stfs    f0, 0x78(sp)
 branch_0x801ed0d8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3065
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -424,7 +424,7 @@ receiveMessage__10TRailFenceFP9THitActorUl: # 0x801ed184
     stw     r31, 0x24(sp)
     addi    r31, r3, 0x0
     bne-    branch_0x801ed1f8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3864
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -484,7 +484,7 @@ changeStatusToGo__12TFenceWaterHFv: # 0x801ed248
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     mr      r3, r0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -924,7 +924,7 @@ branch_0x801ed884:
 branch_0x801ed888:
     clrlwi. r0, r0, 24
     bne-    branch_0x801ed90c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3839
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -984,7 +984,7 @@ changeStatusToGo__11TFenceWaterFv: # 0x801ed938
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     mr      r3, r0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1629,7 +1629,7 @@ branch_0x801ee1c4:
 branch_0x801ee1c8:
     clrlwi. r0, r0, 24
     beq-    branch_0x801ee22c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3824
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1665,7 +1665,7 @@ branch_0x801ee23c:
 branch_0x801ee240:
     clrlwi. r0, r0, 24
     beq-    branch_0x801ee2a4
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3825
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1696,7 +1696,7 @@ branch_0x801ee2a4:
     lbz     r0, 0x140(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x801ee40c
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r31
     bl      getRotYFromAxisZ__11TMapObjBaseCFRCQ29JGeometry8TVec3_f_
     lfs     f0, -0x21cc(rtoc)
@@ -1736,7 +1736,7 @@ branch_0x801ee320:
     fcmpo   cr0, f3, f0
     bge-    branch_0x801ee3a0
 branch_0x801ee338:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3824
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1770,7 +1770,7 @@ branch_0x801ee394:
     b       branch_0x801ee404
 
 branch_0x801ee3a0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3825
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

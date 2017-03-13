@@ -630,12 +630,29 @@ branch_0x8033e9fc:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8033EA28:		# jumptable 8033EA24 case 2
     li      r5, 0x15
     b       branch_0x8033ea54
 
+branch_0x8033EA30:		# jumptable 8033EA24 case 0
+li	  r5, 0x13
+b	  branch_0x8033ea54
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x339430, 0x8033ea50 - 0x8033ea30
+branch_0x8033EA38:		# jumptable 8033EA24 case 4
+li	  r5, 0x21
+b	  branch_0x8033ea54
+
+branch_0x8033EA40:		# jumptable 8033EA24 case 5
+li	  r5, 0x22
+b	  branch_0x8033ea54
+
+branch_0x8033EA48:		# jumptable 8033EA24 case 6
+li	  r5, 0x20
+b	  branch_0x8033ea54
+
+def_8033EA24:		# jumptable 8033EA24 default case
 branch_0x8033ea50:
     li      r5, 0x3
 branch_0x8033ea54:
@@ -778,12 +795,29 @@ branch_0x8033ebf8:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8033EC24:		# jumptable 8033EC20 case 2
     li      r5, 0x15
     b       branch_0x8033ec50
 
+branch_0x8033EC2C:		# jumptable 8033EC20 case 0
+li	  r5, 0x13
+b	  branch_0x8033ec50
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33962c, 0x8033ec4c - 0x8033ec2c
+branch_0x8033EC34:		# jumptable 8033EC20 case 4
+li	  r5, 0x21
+b	  branch_0x8033ec50
+
+branch_0x8033EC3C:		# jumptable 8033EC20 case 5
+li	  r5, 0x22
+b	  branch_0x8033ec50
+
+branch_0x8033EC44:		# jumptable 8033EC20 case 6
+li	  r5, 0x20
+b	  branch_0x8033ec50
+
+def_8033EC20:		# jumptable 8033EC20 default case
 branch_0x8033ec4c:
     li      r5, 0x3
 branch_0x8033ec50:

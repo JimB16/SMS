@@ -188,7 +188,7 @@ branch_0x8024d404:
     mr      r3, r31
     bl      moveParticle__6TMarioFv
 branch_0x8024d40c:
-    lwz     r0, -0x60d8(r13)
+    lwz     r0, MarioActor(r13)
     cmplw   r0, r31
     bne-    branch_0x8024d420
     li      r0, 0x1
@@ -318,7 +318,7 @@ branch_0x8024d5c8:
     beq-    branch_0x8024d5d8
     bl      viewCalc__6TYoshiFv
 branch_0x8024d5d8:
-    lwz     r0, -0x60d8(r13)
+    lwz     r0, MarioActor(r13)
     cmplw   r31, r0
     bne-    branch_0x8024d630
     lhz     r0, 0x96(r31)
@@ -694,9 +694,13 @@ branch_0x8024daf8:
     blr
 
 
+/* TMario::isMario((void))
+Input:
+r3: MarioActor
+*/
 .globl isMario__6TMarioFv
 isMario__6TMarioFv: # 0x8024db0c
-    lwz     r0, -0x60d8(r13)
+    lwz     r0, MarioActor(r13)
     cmplw   r0, r3
     bne-    branch_0x8024db20
     li      r3, 0x1

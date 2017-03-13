@@ -1,4 +1,8 @@
 
+/* TNpcThrow::throwMario((THitActor	*))
+Input:
+r4: HitActor (MarioActor?)
+*/
 .globl throwMario__9TNpcThrowFP9THitActor
 throwMario__9TNpcThrowFP9THitActor: # 0x80215004
     mflr    r0
@@ -68,7 +72,7 @@ branch_0x802150b0:
     add     r5, r4, r5
     fmuls   f0, f1, f0
     lfs     f2, 0x0(r5)
-    li      r4, 0x7
+    li      r4, MARIOMSG_THROW
     fmadds  f0, f4, f2, f0
     stfs    f0, 0x34(sp)
     lfs     f1, 0x3c(sp)

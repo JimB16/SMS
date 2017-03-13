@@ -115,7 +115,9 @@ branch_0x802dd0d0:
     slwi    r0, r0, 2
     lwzx    r0, r31, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802DD0FC:		# jumptable 802DD0F8 case 1
     lwz     r5, 0x0(r26)
     addi    r3, r24, 0x0
     addi    r4, r30, 0x0
@@ -125,8 +127,45 @@ branch_0x802dd0d0:
     bl      makeHierarchy__12J3DModelDataFP7J3DNodePPC17J3DModelHierarchy
     b       branch_0x802dd18c
 
+branch_0x802DD11C:		# jumptable 802DD0F8 case 2
+lwz	  r3, 0(r26)
+addi	  r0, r3, 4
+stw	  r0, 0(r26)
+b	  branch_0x802DD238
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2d7b1c, 0x802dd18c - 0x802dd11c
+branch_0x802DD12C:		# jumptable 802DD0F8 case 0
+b	  branch_0x802DD238
+
+branch_0x802DD130:		# jumptable 802DD0F8 case 16
+lwz	  r3, 0(r26)
+lwz	  r4, 0x20(r24)
+addi	  r0, r3, 4
+stw	  r0, 0(r26)
+lhz	  r0, 2(r3)
+slwi	  r0, r0, 2
+lwzx	  r29, r4, r0
+b	  def_802DD0F8	# jumptable 802DD0F8 default case
+
+branch_0x802DD150:		# jumptable 802DD0F8 case 17
+lwz	  r3, 0(r26)
+lwz	  r4, 0x28(r24)
+addi	  r0, r3, 4
+stw	  r0, 0(r26)
+lhz	  r0, 2(r3)
+slwi	  r0, r0, 2
+lwzx	  r28, r4, r0
+b	  def_802DD0F8	# jumptable 802DD0F8 default case
+
+branch_0x802DD170:		# jumptable 802DD0F8 case 18
+lwz	  r3, 0(r26)
+lwz	  r4, 0x30(r24)
+addi	  r0, r3, 4
+stw	  r0, 0(r26)
+lhz	  r0, 2(r3)
+slwi	  r0, r0, 2
+lwzx	  r27, r4, r0
+
+def_802DD0F8:		# jumptable 802DD0F8 default case
 branch_0x802dd18c:
     cmplwi  r29, 0x0
     beq-    branch_0x802dd1b8
@@ -178,8 +217,13 @@ branch_0x802dd1f0:
     bl      makeVcdVatCmd__8J3DShapeFv
     b       branch_0x802dd0d0
 
+branch_0x802DD238:
+lmw	  r22, 0x48+var_28(r1)
+lwz	  r0, 0x48+arg_4(r1)
+addi	  r1, r1, 0x48
+mtlr	  r0
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2d7c38, 0x802dd24c - 0x802dd238
 
 .globl getType__7J3DNodeCFv
 getType__7J3DNodeCFv: # 0x802dd24c

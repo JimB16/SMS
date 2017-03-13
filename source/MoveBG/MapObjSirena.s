@@ -158,7 +158,7 @@ branch_0x801c8384:
     li      r0, 0x3c
     stw     r0, 0x104(r30)
     li      r4, 0x28d5
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801c83c8
@@ -201,7 +201,7 @@ branch_0x801c8418:
 branch_0x801c841c:
     clrlwi. r0, r0, 24
     beq-    branch_0x801c847c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x484d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -212,7 +212,7 @@ branch_0x801c841c:
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x801c844c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28d9
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -287,7 +287,7 @@ branch_0x801c8530:
 branch_0x801c8534:
     clrlwi. r0, r0, 24
     beq-    branch_0x801c8588
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x385d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -333,7 +333,7 @@ branch_0x801c85c4:
 branch_0x801c85c8:
     clrlwi. r0, r0, 24
     beq-    branch_0x801c861c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x385d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -527,7 +527,7 @@ perform__14TWarpAreaActorFUlPQ26JDrama9TGraphics: # 0x801c8810
     lha     r4, 0x68(r30)
     cmpwi   r4, -0x1
     beq-    branch_0x801c886c
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      changeModel__4TMapCFs
 branch_0x801c886c:
     lwz     r3, -0x60a0(r13)
@@ -538,7 +538,7 @@ branch_0x801c886c:
     lha     r4, 0x6a(r30)
     cmpwi   r4, -0x1
     beq-    branch_0x801c8894
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      changeModel__4TMapCFs
 branch_0x801c8894:
     lwz     r0, 0x2c(sp)
@@ -1256,7 +1256,7 @@ branch_0x801c9238:
     beq-    branch_0x801c9420
     lwz     r5, 0x138(r29)
     li      r4, 0x389c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfsx    f0, r5, r28
     fabs    f28, f0
     bl      gateCheck__6MSoundFUl
@@ -1304,7 +1304,7 @@ branch_0x801c92e8:
     beq-    branch_0x801c9338
     lwz     r5, 0x138(r29)
     li      r4, 0x389c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfsx    f0, r5, r28
     fabs    f28, f0
     bl      gateCheck__6MSoundFUl
@@ -1375,7 +1375,7 @@ branch_0x801c93f0:
     li      r0, 0x1
     stb     r0, 0x16c(r29)
     li      r4, 0x484d
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801c9420
@@ -1671,7 +1671,7 @@ branch_0x801c981c:
     lbz     r0, 0x13c(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x801c998c
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x1
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x1
@@ -1709,7 +1709,7 @@ branch_0x801c985c:
     b       branch_0x801c998c
 
 branch_0x801c98b0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4857
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1726,7 +1726,7 @@ branch_0x801c98e0:
     subi    r4, rtoc, 0x2950
     bl      setBck__6MActorFPCc
     li      r0, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r0, 0x58(sp)
     addi    r0, sp, 0x58
     lis     r4, 0x8039
@@ -1750,7 +1750,7 @@ branch_0x801c98e0:
     b       branch_0x801c998c
 
 branch_0x801c9948:
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x1
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x1
@@ -1761,10 +1761,10 @@ branch_0x801c9948:
 branch_0x801c9968:
     clrlwi. r0, r3, 24
     bne-    branch_0x801c998c
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x4fc(r3)
     bl      onNeutralMarioKey__13TMarioGamePadFv
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     li      r0, 0x5
     lwz     r3, 0x4fc(r3)
     stw     r0, 0xe8(r3)
@@ -1795,7 +1795,7 @@ loadAfter__8TDonchouFv: # 0x801c99a8
     lbz     r0, 0xe(r3)
     cmplwi  r0, 0xe
     bne-    branch_0x801c9a54
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x801c9a54
@@ -2232,7 +2232,7 @@ moveObject__16TCasinoPanelGateFv: # 0x801c9f34
     fsubs   f0, f1, f0
     fcmpo   cr0, f3, f0
     bge-    branch_0x801c9fe4
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4058
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2263,7 +2263,7 @@ branch_0x801c9fe4:
     li      r0, 0x1
     stb     r0, 0x16c(r29)
     li      r4, 0x484d
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801ca324
@@ -2347,7 +2347,7 @@ branch_0x801ca148:
     beq-    branch_0x801ca2b0
     lwz     r5, 0x138(r29)
     li      r4, 0x389e
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfsx    f0, r5, r28
     fabs    f28, f0
     bl      gateCheck__6MSoundFUl
@@ -2395,7 +2395,7 @@ branch_0x801ca1f8:
     beq-    branch_0x801ca248
     lwz     r5, 0x138(r29)
     li      r4, 0x389e
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfsx    f0, r5, r28
     fabs    f28, f0
     bl      gateCheck__6MSoundFUl
@@ -2459,7 +2459,7 @@ branch_0x801ca2b8:
     lis     r3, 0x8001
     addi    r3, r3, 0x25
     bl      startBGM__5MSBgmFUl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4849
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3004,7 +3004,7 @@ branch_0x801ca984:
     lfs     f2, 0x18(r29)
     lfs     f0, 0x78(sp)
     fadds   f1, f3, f1
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f3, f2, f0
     lfs     f2, 0x14(r29)
     bl      makeObjAppear__18TMapObjBaseManagerFfffUlb
@@ -3058,7 +3058,7 @@ branch_0x801caafc:
     b       branch_0x801cab38
 
 branch_0x801cab08:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x483d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3233,7 +3233,7 @@ branch_0x801cad5c:
 branch_0x801cad70:
     clrlwi. r0, r0, 24
     beq-    branch_0x801cada8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x308d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3533,7 +3533,7 @@ branch_0x801cb13c:
     stfs    f0, 0x0(r3)
     lwz     r3, 0x138(r29)
     stfsx   f26, r3, r27
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801cb1f4
@@ -3628,7 +3628,7 @@ branch_0x801cb2c8:
     li      r4, 0x4849
     sth     r3, 0x172(r5)
     sth     r0, 0x174(r5)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801cb364
@@ -4001,7 +4001,7 @@ branch_0x801cb820:
     b       branch_0x801cb894
 
 branch_0x801cb82c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x388e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4016,7 +4016,7 @@ branch_0x801cb82c:
     b       branch_0x801cb8c4
 
 branch_0x801cb860:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3890
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4031,7 +4031,7 @@ branch_0x801cb860:
     b       branch_0x801cb8c4
 
 branch_0x801cb894:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x388f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4140,7 +4140,7 @@ branch_0x801cba08:
     b       branch_0x801cba7c
 
 branch_0x801cba14:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x388e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4155,7 +4155,7 @@ branch_0x801cba14:
     b       branch_0x801cbaac
 
 branch_0x801cba48:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3890
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4170,7 +4170,7 @@ branch_0x801cba48:
     b       branch_0x801cbaac
 
 branch_0x801cba7c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x388f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4202,7 +4202,7 @@ branch_0x801cbab0:
     li      r4, 0x4849
     sth     r3, 0x172(r5)
     sth     r0, 0x174(r5)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801cbb40
@@ -4650,7 +4650,7 @@ switchStop__9TRouletteFv: # 0x801cc108
     lbz     r0, 0x6c(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x801cc210
-    lwz     r31, -0x60b4(r13)
+    lwz     r31, MarioHitActorPos(r13)
     bl      SMS_GetMarioGrLevel__Fv
     lfs     f2, -0x2920(rtoc)
     lfs     f0, 0x4(r31)
@@ -4669,7 +4669,7 @@ switchStop__9TRouletteFv: # 0x801cc108
     sth     r0, 0x148(r30)
     sth     r0, 0x14a(r30)
     sth     r0, 0x14c(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801cc1a8
@@ -4694,7 +4694,7 @@ branch_0x801cc1a8:
     sth     r0, 0x148(r30)
     sth     r0, 0x14a(r30)
     sth     r0, 0x14c(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801cc208
@@ -4797,15 +4797,15 @@ branch_0x801cc324:
     lbz     r0, 0x140(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x801cc398
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x4fc(r3)
     bl      onNeutralMarioKey__13TMarioGamePadFv
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     li      r0, 0x5
     li      r4, 0x2125
     lwz     r3, 0x4fc(r3)
     stw     r0, 0xe8(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801cc388
@@ -5029,7 +5029,7 @@ __ct__9TRouletteFPCc: # 0x801cc608
     lbz     r0, 0xe(r3)
     cmplwi  r0, 0xe
     bne-    branch_0x801cc6a8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x801cc6a8

@@ -67,14 +67,158 @@ branch_0x802b77c8:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802B77EC:		# jumptable 802B77E8 cases 0,1,7,9
     lhz     r0, 0x4e(r30)
     ori     r0, r0, 0x2
     sth     r0, 0x4e(r30)
     b       branch_0x802b7a24
 
+branch_0x802B77FC:		# jumptable 802B77E8 case 5
+lis	  r4, 1	# 0x10386
+lwz	  r3, -0x6060(r13)
+addi	  r4, r4, 0x386	# 0x10386
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+bne	  branch_0x802B7848
+lwz	  r3, -0x6060(r13)
+lis	  r4, 4
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 3
+blt	  branch_0x802B7848
+lis	  r4, 5	# 0x50001
+lwz	  r3, -0x6060(r13)
+addi	  r5, r4, 1 # 0x50001
+li	  r4, 1
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+lhz	  r0, 0x4E(r30)
+ori	  r0, r0, 2
+sth	  r0, 0x4E(r30)
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2b21fc, 0x802b7a00 - 0x802b77fc
+branch_0x802B7848:
+lis	  r4, 1	# 0x10387
+lwz	  r3, -0x6060(r13)
+addi	  r4, r4, 0x387	# 0x10387
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+bne	  def_802B77E8	# jumptable 802B77E8 default case
+lwz	  r3, -0x6060(r13)
+lis	  r4, 4
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 5
+blt	  def_802B77E8	# jumptable 802B77E8 default case
+lis	  r4, 5	# 0x50002
+lwz	  r3, -0x6060(r13)
+addi	  r5, r4, 2 # 0x50002
+li	  r4, 1
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+lhz	  r0, 0x4E(r30)
+ori	  r0, r0, 2
+sth	  r0, 0x4E(r30)
+b	  def_802B77E8	# jumptable 802B77E8 default case
+
+branch_0x802B7898:		# jumptable 802B77E8 case 8
+lwz	  r3, -0x6060(r13)
+lis	  r4, 4
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+lwz	  r0, -0x6060(r13)
+lis	  r4, 1	# 0x1038F
+addi	  r20, r3, 0
+mr	  r3, r0
+addi	  r4, r4, 0x38F	# 0x1038F
+li	  r21, 0
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+bne	  branch_0x802B78EC
+lwz	  r3, -0x6060(r13)
+li	  r4, 0x21
+bl	  getShineFlag__12TFlagManagerCFUc # TFlagManager::getShineFlag(const(uchar))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802B78EC
+lhz	  r0, 0x4E(r30)
+li	  r21, 1
+ori	  r0, r0, 2
+sth	  r0, 0x4E(r30)
+
+branch_0x802B78EC:
+cmpwi	  r21, 0
+bne	  branch_0x802B793C
+lwz	  r3, -0x6060(r13)
+li	  r4, 1
+li	  r5, 1
+bl	  getNozzleRight__12TFlagManagerCFUcUc # TFlagManager::getNozzleRight(const(uchar,uchar))
+clrlwi.	  r0, r3, 24
+bne	  branch_0x802B793C
+lis	  r4, 1	# 0x1038F
+lwz	  r3, -0x6060(r13)
+addi	  r4, r4, 0x38F	# 0x1038F
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802B793C
+cmpwi	  r20, 0x19
+blt	  branch_0x802B793C
+lhz	  r0, 0x4E(r30)
+li	  r21, 2
+ori	  r0, r0, 2
+sth	  r0, 0x4E(r30)
+
+branch_0x802B793C:
+cmpwi	  r21, 0
+bne	  branch_0x802B798C
+lwz	  r3, -0x6060(r13)
+li	  r4, 1
+li	  r5, 0
+bl	  getNozzleRight__12TFlagManagerCFUcUc # TFlagManager::getNozzleRight(const(uchar,uchar))
+clrlwi.	  r0, r3, 24
+bne	  branch_0x802B798C
+lwz	  r3, -0x6060(r13)
+li	  r4, 1
+li	  r5, 1
+bl	  getNozzleRight__12TFlagManagerCFUcUc # TFlagManager::getNozzleRight(const(uchar,uchar))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802B798C
+cmpwi	  r20, 0x1E
+blt	  branch_0x802B798C
+lhz	  r0, 0x4E(r30)
+li	  r21, 3
+ori	  r0, r0, 2
+sth	  r0, 0x4E(r30)
+
+branch_0x802B798C:
+lis	  r20, 6 # 0x60003
+lwz	  r3, -0x6060(r13)
+addi	  r5, r21, 0
+addi	  r4, r20, 3 # 0x60003
+bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
+lwz	  r3, -0x6060(r13)
+lis	  r4, 4
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 0x14
+blt	  branch_0x802B79D4	# jumptable 802B77E8 case 2
+lwz	  r3, -0x6060(r13)
+addi	  r4, r20, 3 # 0x60003
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 0
+bne	  branch_0x802B79D4	# jumptable 802B77E8 case 2
+lhz	  r0, 0x4E(r30)
+ori	  r0, r0, 2
+sth	  r0, 0x4E(r30)
+
+branch_0x802B79D4:		# jumptable 802B77E8 case 2
+lwz	  r3, -0x6060(r13)
+lis	  r4, 4
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 0x14
+blt	  def_802B77E8	# jumptable 802B77E8 default case
+lis	  r4, 5	# 0x50004
+lwz	  r3, -0x6060(r13)
+addi	  r5, r4, 4 # 0x50004
+li	  r4, 1
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+b	  def_802B77E8	# jumptable 802B77E8 default case
+
+branch_0x802B7A00:
 branch_0x802b7a00:
     lbz     r0, 0x1(r29)
     cmpwi   r0, 0x3
@@ -87,6 +231,8 @@ branch_0x802b7a10:
     addi    r5, r4, 0x3
     li      r4, 0x1
     bl      setBool__12TFlagManagerFbUl
+
+def_802B77E8:		# jumptable 802B77E8 default case
 branch_0x802b7a24:
     lbz     r3, 0x0(r29)
     bl      SMS_getShineStage__FUc
@@ -109,11 +255,11 @@ branch_0x802b7a24:
     addi    r5, r20, 0x7
     li      r4, 0x1
     bl      setBool__12TFlagManagerFbUl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x100
     bl      loadWave__6MSoundF13MS_SCENE_WAVE
 branch_0x802b7a84:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      initSound__6MSoundFv
     li      r20, 0x0
     stw     r20, 0x10(r30)
@@ -193,7 +339,7 @@ branch_0x802b7b88:
     blrl
     mr      r27, r3
 branch_0x802b7bb8:
-    lwz     r0, -0x6070(r13)
+    lwz     r0, gpMarioParticleManager(r13)
     addi    r20, r27, 0x10
     addi    r4, r20, 0x0
     stw     r0, 0x8f8(sp)
@@ -1461,7 +1607,7 @@ branch_0x802b8e40:
     addi    r4, sp, 0x51c
     stw     r0, 0x51c(sp)
     bl      __ct__Q37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorFRCQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iterator
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      setNoticeInfo__15CPolarSubCameraFv
     stw     r28, 0x10(r30)
     li      r3, 0x20
@@ -2047,7 +2193,9 @@ decideMarioPosIdx__12TMarDirectorFv: # 0x802b97a8
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802B9800:		# jumptable 802B97FC case 15
     li      r0, 0xe
     stw     r0, 0xe4(r28)
     li      r0, 0xff
@@ -2062,8 +2210,158 @@ decideMarioPosIdx__12TMarDirectorFv: # 0x802b97a8
     bl      setColor__9TSMSFaderFQ28JUtility6TColor
     b       branch_0x802b9a24
 
+branch_0x802B9834:		# jumptable 802B97FC case 0
+lis	  r27, 3 # 0x30001
+lwz	  r3, -0x6060(r13)
+addi	  r4, r27, 1 # 0x30001
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  def_802B97FC	# jumptable 802B97FC default case
+lwz	  r3, -0x6060(r13)
+addi	  r5, r27, 1 # 0x30001
+li	  r4, 0
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+b	  def_802B97FC	# jumptable 802B97FC default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2b4234, 0x802b9a24 - 0x802b9834
+branch_0x802B9860:		# jumptable 802B97FC cases 2-6,8,9
+li	  r0, 0xE
+stw	  r0, 0xE4(r28)
+li	  r5, 0xD2
+lis	  r3, unk_803E9700@ha
+stb	  r5, 0x68+var_2C(r1)
+li	  r0, 0xFF
+addi	  r3, r3, unk_803E9700@l
+stb	  r5, 0x68+var_2C+1(r1)
+addi	  r4, r1, 0x68+var_28
+stb	  r5, 0x68+var_2C+2(r1)
+stb	  r0, 0x68+var_2C+3(r1)
+lwz	  r0, 0x68+var_2C(r1)
+stw	  r0, 0x68+var_28(r1)
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+bl	  setColor__9TSMSFaderFQ28JUtility6TColor # TSMSFader::setColor((JUtility::TColor))
+li	  r0, 1
+stb	  r0, 0xD1(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B98A8:		# jumptable 802B97FC case 1
+lis	  r27, 3 # 0x30004
+lwz	  r3, -0x6060(r13)
+addi	  r4, r27, 1 # 0x30001
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802B98D4
+lwz	  r3, -0x6060(r13)
+addi	  r5, r27, 1 # 0x30001
+li	  r4, 0
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B98D4:
+lwz	  r3, -0x6060(r13)
+addi	  r4, r27, 4 # 0x30004
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802B9904
+lwz	  r3, -0x6060(r13)
+addi	  r5, r27, 4 # 0x30004
+li	  r4, 0
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+li	  r0, 4
+stb	  r0, 0xD0(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B9904:
+lbz	  r3, 0(r26)
+bl	  SMS_getShineStage__FUc # SMS_getShineStage(uchar)
+clrlwi	  r0, r3, 24
+cmplwi	  r0, 9		# switch 10 cases
+bgt	  def_802B97FC	# jumptable 802B97FC default case
+lis	  r3, jpt_802B992C@ha
+addi	  r3, r3, jpt_802B992C@l
+slwi	  r0, r0, 2
+lwzx	  r0, r3, r0
+mtctr	  r0
+bctr			# switch jump
+
+branch_0x802B9930:		# jumptable 802B992C case 2
+stb	  r31, 0xD0(r28)
+li	  r3, 2
+li	  r0, 7
+stb	  r3, 0xD1(r28)
+stw	  r0, 0xE4(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B9948:		# jumptable 802B992C case 3
+li	  r3, 2
+stb	  r3, 0xD0(r28)
+li	  r0, 7
+stb	  r3, 0xD1(r28)
+stw	  r0, 0xE4(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B9960:		# jumptable 802B992C case 4
+li	  r0, 3
+stb	  r0, 0xD0(r28)
+li	  r3, 2
+li	  r0, 7
+stb	  r3, 0xD1(r28)
+stw	  r0, 0xE4(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B997C:		# jumptable 802B992C case 5
+li	  r0, 4
+stb	  r0, 0xD0(r28)
+li	  r3, 2
+li	  r0, 7
+stb	  r3, 0xD1(r28)
+stw	  r0, 0xE4(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B9998:		# jumptable 802B992C case 6
+li	  r0, 5
+stb	  r0, 0xD0(r28)
+li	  r3, 2
+li	  r0, 7
+stb	  r3, 0xD1(r28)
+stw	  r0, 0xE4(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B99B4:		# jumptable 802B992C case 7
+li	  r0, 6
+stb	  r0, 0xD0(r28)
+li	  r3, 2
+li	  r0, 7
+stb	  r3, 0xD1(r28)
+stw	  r0, 0xE4(r28)
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B99D0:		# jumptable 802B992C case 8
+li	  r0, 7
+stb	  r0, 0xD0(r28)
+li	  r0, 2
+li	  r3, 0xE
+stb	  r0, 0xD1(r28)
+li	  r0, 0xFF
+addi	  r4, r1, 0x68+var_30
+stw	  r3, 0xE4(r28)
+stb	  r30, 0x68+var_34(r1)
+stb	  r30, 0x68+var_34+1(r1)
+stb	  r30, 0x68+var_34+2(r1)
+stb	  r0, 0x68+var_34+3(r1)
+lwz	  r0, 0x68+var_34(r1)
+stw	  r0, 0x68+var_30(r1)
+lwz	  r3, 0x34(r29) #(dword_803E9734 -	unk_803E9700)(r29)
+bl	  setColor__9TSMSFaderFQ28JUtility6TColor # TSMSFader::setColor((JUtility::TColor))
+b	  def_802B97FC	# jumptable 802B97FC default case
+
+branch_0x802B9A14:		# jumptable 802B992C case 9
+li	  r0, 8
+stb	  r0, 0xD0(r28)
+li	  r0, 7
+stw	  r0, 0xE4(r28)
+
+def_802B992C:
+def_802B97FC:		# jumptable 802B97FC default case
 branch_0x802b9a24:
     lmw     r26, 0x50(sp)
     lwz     r0, 0x6c(sp)

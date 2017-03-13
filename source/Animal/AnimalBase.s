@@ -345,8 +345,8 @@ MsWrap_f___Ffff_80008454: # 0x80008454
     fmr     f1, f2
     blr
 
+    b       branch_0x80008470
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2e68, 0x8000846c - 0x80008468
 branch_0x8000846c:
     fsubs   f1, f1, f0
 branch_0x80008470:
@@ -365,9 +365,9 @@ branch_0x80008484:
 branch_0x80008490:
     fsubs   f0, f3, f2
     b       branch_0x80008470
+    
+    blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2e98, 0x8000849c - 0x80008498
 
 .globl getRotationFlyToDir__11TAnimalBaseFPQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_ff
 getRotationFlyToDir__11TAnimalBaseFPQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_ff: # 0x8000849c
@@ -715,7 +715,7 @@ perform__11TAnimalBaseFUlPQ26JDrama9TGraphics: # 0x800088a8
     addis   r0, r3, 0xff80
     cmplwi  r0, 0x1
     bne-    branch_0x80008960
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3813
     lha     r23, 0x7c(r29)
     bl      gateCheck__6MSoundFUl

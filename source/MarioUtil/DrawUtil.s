@@ -852,11 +852,11 @@ branch_0x80226500:
     lwz     r12, 0x1c(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r31, r31, 0x1
     lfs     f0, 0x28(r4)
     stfs    f0, 0xc(r3)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     lfs     f0, 0x2c(r4)
     stfs    f0, 0x10(r3)
     lfs     f0, 0x10(r3)
@@ -900,7 +900,7 @@ SMS_AddDamageFogEffect__FP12J3DModelDataRCQ29JGeometry8TVec3_f_PQ26JDrama9TGraph
     addi    r30, r3, 0x0
     mr      r3, r0
     bl      PSMTXMultVec
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r31, 0x0
     lwz     r0, -0x5eac(r13)
     lwz     r3, 0x58(r3)
@@ -940,10 +940,10 @@ branch_0x80226608:
     fadds   f0, f0, f30
     fadds   f0, f0, f28
     stfs    f0, 0x8(r3)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     lfs     f0, 0x28(r4)
     stfs    f0, 0xc(r3)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     lfs     f0, 0x2c(r4)
     stfs    f0, 0x10(r3)
 branch_0x8022666c:
@@ -2265,9 +2265,10 @@ perform__11TSilhouetteFUlPQ26JDrama9TGraphics: # 0x80227914
     stw     r29, 0x17c(sp)
     addi    r29, r3, 0x0
     beq-    branch_0x80227998
-    lwz     r3, -0x6094(r13)
+
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    clrlwi. r0, r0, 31
+    clrlwi. r0, r0, 31 # MARIOFLAG_1
     beq-    branch_0x80227958
     li      r0, 0x1
     b       branch_0x8022795c
@@ -2327,7 +2328,7 @@ branch_0x80227a08:
     beq-    branch_0x80227a44
     lwz     r0, 0x12(r29)
     addi    r4, sp, 0x3c
-    lwz     r5, -0x7100(r13)
+    lwz     r5, gpSunManager(r13)
     li      r3, 0x4
     stw     r0, 0x168(sp)
     lbz     r0, 0x1b(r5)
@@ -2341,7 +2342,7 @@ branch_0x80227a08:
 branch_0x80227a44:
     rlwinm. r0, r30, 0, 27, 27
     beq-    branch_0x80227cf0
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r0, 0x10(r3)
     cmpwi   r0, 0x0
     beq-    branch_0x80227cf0
@@ -2369,7 +2370,7 @@ branch_0x80227a44:
     fmr     f2, f1
     fmr     f3, f1
     bl      PSMTXScale
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     addi    r3, sp, 0x78
     lfs     f2, -0x1808(rtoc)
     lfs     f1, 0x0(r4)
@@ -2543,7 +2544,7 @@ setting__11TSilhouetteFPA4_f: # 0x80227d0c
     lwz     r0, 0x20(sp)
     stw     r0, 0x1c(sp)
     bl      GXSetChanAmbColor
-    lwz     r7, -0x60b4(r13)
+    lwz     r7, MarioHitActorPos(r13)
     addi    r3, r31, 0x0
     addi    r4, sp, 0x24
     lwz     r6, 0x0(r7)
@@ -2641,7 +2642,7 @@ loadAfter__11TSilhouetteFv: # 0x80227ea8
     stw     r28, 0x70(sp)
     sth     r0, 0x10(r3)
     lis     r3, 0x803a
-    lwz     r4, -0x7100(r13)
+    lwz     r4, gpSunManager(r13)
     lwz     r0, 0x18(r4)
     subi    r4, r3, 0x27d8
     stw     r0, 0x12(r31)
@@ -2726,7 +2727,7 @@ loadAfter__11TSilhouetteFv: # 0x80227ea8
     stfs    f0, 0x30(r31)
     lfs     f0, -0x17c8(rtoc)
     stfs    f0, 0x3c(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r0, 0x10(r3)
     cmpwi   r0, 0x0
     ble-    branch_0x80228070

@@ -105,13 +105,13 @@ control__13TEggGeneratorFv: # 0x800fe2d0
     stw     r31, 0x2c(sp)
     addi    r31, r3, 0x0
     addi    r3, r31, 0x10
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     addi    r4, r4, 0x10
     bl      PSVECSquareDistance
     lfs     f0, -0x5728(rtoc)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800fe334
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x3f0(r3)
     lbz     r0, 0x0(r3)
     cmplwi  r0, 0x0

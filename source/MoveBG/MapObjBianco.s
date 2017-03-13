@@ -57,7 +57,7 @@ control__8TWoodLogFv: # 0x801c49f4
     lwz     r3, 0x58(r3)
     addi    r4, sp, 0x54
     bl      PSMTXInverse
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0x54
     addi    r4, sp, 0x48
     lfs     f0, 0x0(r6)
@@ -291,7 +291,7 @@ branch_0x801c4d4c:
     stfs    f2, 0x154(r31)
     li      r4, 0x3044
     lfs     f0, 0x158(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f27, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -418,7 +418,7 @@ branch_0x801c4f04:
     cmplwi  r0, 0x0
     beq-    branch_0x801c4f68
     lis     r28, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r28, 0x7648
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -480,7 +480,7 @@ branch_0x801c4ff4:
     cmplwi  r0, 0x0
     beq-    branch_0x801c5058
     lis     r28, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r28, 0x7648
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -542,7 +542,7 @@ branch_0x801c50e4:
     cmplwi  r0, 0x0
     beq-    branch_0x801c5148
     lis     r28, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r28, 0x7648
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -569,7 +569,7 @@ branch_0x801c5148:
     lis     r28, 0x2000
     lfs     f31, -0x2a30(rtoc)
 branch_0x801c517c:
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r28, 0xe
     bl      makeObjAppeared__18TMapObjBaseManagerFUl
     mr.     r29, r3
@@ -927,7 +927,7 @@ branch_0x801c5668:
     stfs    f31, 0xc(r3)
     lis     r31, 0x1
     subi    r4, r31, 0x7648
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801c56c0
@@ -1005,7 +1005,7 @@ branch_0x801c5788:
     stfs    f31, 0xc(r3)
     lis     r31, 0x1
     subi    r4, r31, 0x7648
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801c57e0
@@ -2022,7 +2022,7 @@ bind__9TLeafBoatFv: # 0x801c64ec
     stfs    f0, 0xdc(sp)
     lfs     f1, 0x14(r31)
     lfs     f0, 0x108(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fsubs   f2, f1, f0
     lfs     f1, 0xd4(sp)
     lfs     f3, 0xdc(sp)
@@ -2064,7 +2064,7 @@ branch_0x801c6604:
     lfs     f1, 0xd8(sp)
     li      r0, 0x2
     stfs    f0, 0xb8(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x8c
     lfs     f0, 0x108(r31)
     fsubs   f0, f1, f0
@@ -2104,7 +2104,7 @@ branch_0x801c6678:
     stw     r0, 0x98(r31)
     lwz     r0, 0x58(sp)
     stw     r0, 0x9c(r31)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f1, 0x14(r31)
     lfs     f0, 0x108(r31)
     lfs     f4, 0x4(r3)
@@ -2129,7 +2129,7 @@ branch_0x801c6678:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801c6720
     addi    r3, r31, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x801c6720:
     lwz     r0, 0xec(sp)
@@ -2593,7 +2593,7 @@ calc__19TBiancoMiniWindmillFv: # 0x801c6c74
     addi    r4, r4, 0x30
     bl      PSMTXCopy
     lwz     r4, 0x15c(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r4, r4, 0x10
     bl      getDistPowFromCamera__6MSoundFRC3Vec
     lfs     f0, -0x29e8(rtoc)
@@ -2603,7 +2603,7 @@ calc__19TBiancoMiniWindmillFv: # 0x801c6c74
     li      r4, 0x3045
     lwz     r5, 0x15c(r31)
     fabs    f31, f0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2912,7 +2912,7 @@ branch_0x801c71c4:
     stfs    f2, 0x0(r3)
     li      r4, 0x3040
     lfs     f0, 0x138(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2930,7 +2930,7 @@ branch_0x801c71c4:
 branch_0x801c7214:
     lwz     r5, 0x140(r30)
     fabs    f31, f30
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3042
     addi    r31, r5, 0x10
     bl      gateCheck__6MSoundFUl
@@ -3175,7 +3175,7 @@ control__16TBiancoWatermillFv: # 0x801c752c
     fsubs   f0, f1, f0
     stfs    f0, 0x38(r3)
     lfs     f0, 0x138(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3246,7 +3246,7 @@ drawObject__17TMapObjRootPakkunFPQ26JDrama9TGraphics: # 0x801c761c
     stw     r31, 0x24(sp)
     mr      r31, r3
     bl      drawObject__10TLiveActorFPQ26JDrama9TGraphics
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f1, 0x18(r31)
     lfs     f2, 0x8(r3)
     lfs     f0, -0x29d8(rtoc)
@@ -3385,7 +3385,7 @@ branch_0x801c77f8:
     bl      setRootMtxRotZ__11TMapObjBaseFv
     lfs     f0, -0x79d8(r13)
     li      r4, 0x3047
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f28, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

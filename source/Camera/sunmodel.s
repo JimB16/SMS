@@ -251,7 +251,7 @@ branch_0x8002ed40:
 branch_0x8002ed44:
     addi    r3, r29, 0xac
     bl      CLBChaseGeneralConstantSpecifySpeed_f___FPfff
-    lwz     r5, -0x7118(r13)
+    lwz     r5, gpCamera(r13)
     addi    r3, sp, 0xa8
     lfsu    f0, 0x124(r5)
     mr      r4, r3
@@ -267,7 +267,7 @@ branch_0x8002ed44:
     stfs    f2, 0xac(sp)
     stfs    f0, 0xb0(sp)
     bl      MsVECNormalize__FP3VecP3Vec
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r3, sp, 0xb4
     addi    r4, r4, 0x124
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
@@ -417,7 +417,7 @@ branch_0x8002ef78:
     fsubs   f0, f0, f1
     fmuls   f0, f2, f0
     stfs    f0, 0x194(r30)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r5, r4, 0x1ec
     addi    r4, r4, 0x16c
     bl      CLBCalc2DFPos__FPQ29JGeometry8TVec2_f_PA4_CfPA4_CfRC3VecPUlb
@@ -930,7 +930,7 @@ __ct__9TSunModelFbPCc: # 0x8002f570
     lfs     f0, -0x7640(rtoc)
     stfs    f0, 0x1a8(r30)
     stb     r31, 0x1ac(r30)
-    stw     r30, -0x70f8(r13)
+    stw     r30, gpSunModel(r13)
     beq-    branch_0x8002f758
     lbz     r3, 0x1ac(r30)
     li      r0, 0x30

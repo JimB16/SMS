@@ -204,7 +204,7 @@ branch_0x80217bd4:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x80217c54
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r30
     bl      __ct__9MAnmSoundFP6MSound
     lis     r3, 0x803b
@@ -239,7 +239,7 @@ branch_0x80217c5c:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x80217c78
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r30
     bl      __ct__9MAnmSoundFP6MSound
 branch_0x80217c78:
@@ -973,7 +973,7 @@ branch_0x802185d4:
     lfs     f1, 0x30(sp)
     addi    r4, r31, 0xc4
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x2c(sp)
     lfs     f3, 0x34(sp)
@@ -985,7 +985,7 @@ branch_0x80218608:
     lfs     f1, 0x30(sp)
     addi    r4, r31, 0xc4
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x2c(sp)
     lfs     f3, 0x34(sp)
@@ -1041,7 +1041,7 @@ branch_0x802186c4:
     mr      r5, r30
     lfs     f0, 0xc0(r31)
     addi    r4, sp, 0x2c
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f0
     lfs     f2, 0xbc(r31)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -1202,7 +1202,7 @@ branch_0x802188f4:
     mr.     r29, r3
     beq-    branch_0x80218964
     stw     r29, 0x3c(sp)
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     lwz     r3, 0x3c(sp)
     bl      __ct__9MAnmSoundFP6MSound
     lis     r3, 0x803b
@@ -1232,7 +1232,7 @@ branch_0x8021896c:
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x80218988
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r29
     bl      __ct__9MAnmSoundFP6MSound
 branch_0x80218988:
@@ -1693,7 +1693,7 @@ __ct__10TLiveActorFPCc: # 0x80218e70
     stfs    f1, 0xd8(r31)
     bl      getIllegalCheckData__4TMapFv
     stw     r3, 0xc4(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x8
     beq-    branch_0x80218f88

@@ -191,10 +191,10 @@ setDrawEnd__11TPauseMenu2Fv: # 0x801554a0
     mr      r31, r3
     lwz     r3, -0x60f0(r13)
     bl      finishPause__9RumbleMgrFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      pauseOff__6MSoundFUc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      pauseOut__11TGCConsole2Fv
     lfs     f0, -0x4af4(rtoc)
@@ -317,12 +317,12 @@ branch_0x80155578:
     lfs     f0, -0x4af4(rtoc)
     lwz     r3, 0x1c(r3)
     stfs    f0, 0xc0(r3)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      pauseIn__11TGCConsole2Fv
     lwz     r3, -0x60f0(r13)
     bl      startPause__9RumbleMgrFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1
     bl      pauseOn__6MSoundFb
     lwz     r0, 0xbc(sp)
@@ -409,7 +409,7 @@ perform__11TPauseMenu2FUlPQ26JDrama9TGraphics: # 0x80155788
     stw     r29, 0x5e4(sp)
     addi    r29, r4, 0x0
     stw     r28, 0x5e0(sp)
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lbz     r0, 0x64(r6)
     cmplwi  r0, 0x5
     bne-    branch_0x801560a4
@@ -543,10 +543,10 @@ branch_0x80155970:
     stb     r0, 0x109(r31)
     lwz     r3, -0x60f0(r13)
     bl      finishPause__9RumbleMgrFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      pauseOff__6MSoundFUc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      pauseOut__11TGCConsole2Fv
     lfs     f0, -0x4af4(rtoc)
@@ -560,10 +560,10 @@ branch_0x801559ac:
     stb     r0, 0x109(r31)
     lwz     r3, -0x60f0(r13)
     bl      finishPause__9RumbleMgrFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      pauseOff__6MSoundFUc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      pauseOut__11TGCConsole2Fv
     lfs     f0, -0x4af4(rtoc)
@@ -577,10 +577,10 @@ branch_0x801559e8:
     stb     r0, 0x109(r31)
     lwz     r3, -0x60f0(r13)
     bl      finishPause__9RumbleMgrFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      pauseOff__6MSoundFUc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      pauseOut__11TGCConsole2Fv
     lfs     f0, -0x4af4(rtoc)
@@ -590,7 +590,7 @@ branch_0x801559e8:
     b       branch_0x80155ca8
 
 branch_0x80155a24:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4802
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -619,10 +619,10 @@ branch_0x80155a6c:
     stfs    f0, 0xec(r31)
     lwz     r3, -0x60f0(r13)
     bl      finishPause__9RumbleMgrFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      pauseOff__6MSoundFUc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      pauseOut__11TGCConsole2Fv
     lfs     f0, -0x4af4(rtoc)
@@ -656,7 +656,7 @@ branch_0x80155af4:
     lbz     r0, 0xe0(r31)
     cmpw    r0, r28
     beq-    branch_0x80155ca8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x480f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -727,7 +727,7 @@ branch_0x80155bec:
     lbz     r0, 0xe0(r31)
     cmpw    r0, r28
     beq-    branch_0x80155ca8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x480f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1747,7 +1747,7 @@ branch_0x80156970:
     subi    r0, r3, 0x168
     sth     r0, 0xf8(r31)
 branch_0x80156ae0:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r0, 0x0(r3)
     stw     r0, 0x10c(r31)
@@ -1866,7 +1866,7 @@ branch_0x80156c58:
     blrl
     stw     r3, 0xd4(r29)
     lwz     r3, 0xd4(r29)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r29)
     lis     r4, 0x7461
@@ -1880,7 +1880,7 @@ branch_0x80156c58:
     lwz     r3, 0xdc(r29)
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     lwz     r3, 0xdc(r29)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r29)
     lis     r4, 0x6272
@@ -1890,7 +1890,7 @@ branch_0x80156c58:
     mtlr    r12
     blrl
     stw     r3, 0xd8(r29)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x7c(r3)
     bl      SMS_getShineStage__FUc
     lwz     r0, -0x6060(r13)
@@ -1908,7 +1908,7 @@ branch_0x80156c58:
     lwz     r3, 0xd4(r29)
     crxor   6, 6, 6
     bl      setString__10J2DTextBoxFPCce
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xf
     beq-    branch_0x80156e28

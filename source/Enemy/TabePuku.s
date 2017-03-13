@@ -203,7 +203,7 @@ branch_0x8013680c:
     bge-    branch_0x80136880
 branch_0x80136864:
     addi    r3, r31, 0x0
-    li      r4, 0x8
+    li      r4, MARIOMSG_8
     bl      SMS_SendMessageToMario__FP9THitActorUl
     li      r0, 0x0
     stw     r0, 0x6c(r31)
@@ -535,7 +535,7 @@ execute__18TNerveTabePukuBiteCFP24TSpineBase_10TLiveActor_: # 0x80136c88
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2922
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -667,7 +667,7 @@ execute__20TNerveTabePukuAttackCFP24TSpineBase_10TLiveActor_: # 0x80136e40
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x4e68(rtoc)
     stw     r3, 0xd8(sp)
     cmplwi  r3, 0x0
@@ -713,7 +713,7 @@ branch_0x80136f20:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r4)
     lfs     f2, 0x130(r3)
@@ -2433,7 +2433,7 @@ branch_0x80138700:
     clrlwi. r0, r27, 24
     bne-    branch_0x80138794
     addi    r3, r30, 0x0
-    li      r4, 0x4
+    li      r4, MARIOMSG_4
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80138794
@@ -2931,7 +2931,7 @@ branch_0x80138dc8:
 branch_0x80138de0:
     clrlwi. r0, r29, 24
     beq-    branch_0x80138e18
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2123
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3189,7 +3189,7 @@ bind__11TTPHitActorFv: # 0x8013909c
     lfs     f31, 0xd8(sp)
     lfs     f0, 0x78(r31)
     fmr     f3, f30
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f31, f0
     lfs     f1, 0xd4(sp)
     bl      checkGroundIgnoreWaterSurface__4TMapCFfffPPC12TBGCheckData
@@ -3261,7 +3261,7 @@ branch_0x80139274:
     lfs     f0, 0xdc(sp)
     stfs    f0, 0xa0(sp)
     stfs    f1, 0xa4(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r5, 0xa8(sp)
     stw     r0, 0xb0(sp)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord

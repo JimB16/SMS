@@ -1490,7 +1490,9 @@ setDrawExecVisitorsAfterCB__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags: # 0x8
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8032A7A8:		# jumptable 8032A7A4 case 0
     lbz     r5, 0x8c(r3)
     lis     r4, 0x8041
     subi    r6, r4, 0x40dc
@@ -1502,8 +1504,198 @@ setDrawExecVisitorsAfterCB__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags: # 0x8
     stw     r5, 0x34(r4)
     b       branch_0x8032aa5c
 
+branch_0x8032A7D0:		# jumptable 8032A7A4 case 1
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x84
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3251d0, 0x8032aa5c - 0x8032a7d0
+branch_0x8032A7F8:		# jumptable 8032A7A4 case 2
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032A838
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+beq	  branch_0x8032A838
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x58
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A838:
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x54
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A860:		# jumptable 8032A7A4 case 3
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032A8A0
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+beq	  branch_0x8032A8A0
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x68
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A8A0:
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x64
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A8C8:		# jumptable 8032A7A4 case 4
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032A908
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+beq	  branch_0x8032A908
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x70
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A908:
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x6C
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A930:		# jumptable 8032A7A4 case 10
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032A970
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+beq	  branch_0x8032A970
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x60
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A970:
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x5C
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A998:		# jumptable 8032A7A4 case 7
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x78
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A9C0:		# jumptable 8032A7A4 case 8
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x7C
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032A9E8:		# jumptable 8032A7A4 case 9
+lbz	  r5, 0x8C(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8C(r3)
+addi	  r5, r6, 0x74
+add	  r4, r3, r0
+stw	  r5, 0x34(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032AA10:		# jumptable 8032A7A4 case 5
+lbz	  r5, 0x89(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x89(r3)
+addi	  r5, r6, 0x88
+add	  r4, r3, r0
+stw	  r5, 4(r4)
+b	  def_8032A7A4	# jumptable 8032A7A4 default case
+
+branch_0x8032AA38:		# jumptable 8032A7A4 case 6
+lbz	  r5, 0x89(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x89(r3)
+addi	  r5, r6, 0x8C
+add	  r4, r3, r0
+stw	  r5, 4(r4)
+
+def_8032A7A4:		# jumptable 8032A7A4 default case
 branch_0x8032aa5c:
     lwz     r5, 0x9c(r3)
     cmplwi  r5, 0x0
@@ -1518,7 +1710,9 @@ branch_0x8032aa5c:
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8032AA8C:		# jumptable 8032AA88 case 0
     lbz     r5, 0x8e(r3)
     lis     r4, 0x8041
     subi    r6, r4, 0x40dc
@@ -1530,8 +1724,226 @@ branch_0x8032aa5c:
     stw     r4, 0x70(r3)
     blr
 
+branch_0x8032AAB4:		# jumptable 8032AA88 case 1
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x84
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3254b4, 0x8032ad74 - 0x8032aab4
+branch_0x8032AADC:		# jumptable 8032AA88 case 2
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032AAF4
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+bne	  branch_0x8032AB00
+
+branch_0x8032AAF4:
+lbz	  r0, 0x4D(r5)
+cmpwi	  r0, 0
+beq	  branch_0x8032AB28
+
+branch_0x8032AB00:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x58
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032AB28:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x54
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032AB50:		# jumptable 8032AA88 case 3
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032AB68
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+bne	  branch_0x8032AB74
+
+branch_0x8032AB68:
+lbz	  r0, 0x4D(r5)
+cmpwi	  r0, 0
+beq	  branch_0x8032AB9C
+
+branch_0x8032AB74:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x68
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032AB9C:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x64
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032ABC4:		# jumptable 8032AA88 case 4
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032ABDC
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+bne	  branch_0x8032ABE8
+
+branch_0x8032ABDC:
+lbz	  r0, 0x4D(r5)
+cmpwi	  r0, 0
+beq	  branch_0x8032AC10
+
+branch_0x8032ABE8:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x70
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032AC10:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x6C
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032AC38:		# jumptable 8032AA88 case 10
+lwz	  r4, 0x98(r3)
+cmplwi	  r4, 0
+beq	  branch_0x8032AC50
+lbz	  r0, 0x7F(r4)
+cmpwi	  r0, 0
+bne	  branch_0x8032AC5C
+
+branch_0x8032AC50:
+lbz	  r0, 0x4D(r5)
+cmpwi	  r0, 0
+beq	  branch_0x8032AC84
+
+branch_0x8032AC5C:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x60
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032AC84:
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x5C
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032ACAC:		# jumptable 8032AA88 case 7
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x78
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032ACD4:		# jumptable 8032AA88 case 8
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x7C
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032ACFC:		# jumptable 8032AA88 case 9
+lbz	  r5, 0x8E(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8E(r3)
+addi	  r4, r6, 0x74
+add	  r3, r3, r0
+stw	  r4, 0x70(r3)
+blr
+
+branch_0x8032AD24:		# jumptable 8032AA88 case 5
+lbz	  r5, 0x8A(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8A(r3)
+addi	  r4, r6, 0x88
+add	  r3, r3, r0
+stw	  r4, 0x18(r3)
+blr
+
+branch_0x8032AD4C:		# jumptable 8032AA88 case 6
+lbz	  r5, 0x8A(r3)
+lis	  r4, unk_8040BF24@ha
+addi	  r6, r4, unk_8040BF24@l
+addi	  r4, r5, 1
+slwi	  r0, r5, 2
+stb	  r4, 0x8A(r3)
+addi	  r4, r6, 0x8C
+add	  r3, r3, r0
+stw	  r4, 0x18(r3)
+blr
+
 
 .globl setDrawCalcVisitors__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags
 setDrawCalcVisitors__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags: # 0x8032ad74

@@ -268,7 +268,7 @@ branch_0x8025d3b8:
     sth     r0, 0x86(r31)
     bne-    branch_0x8025d3f0
     addi    r3, r31, 0x0
-    li      r4, 0x7890
+    li      r4, SOUND_7890
     bl      startVoice__6TMarioFUl
 branch_0x8025d3f0:
     mr      r3, r31
@@ -353,7 +353,7 @@ branch_0x8025d4fc:
     lfs     f1, -0xddc(rtoc)
     addi    r4, r31, 0xdc
     lfs     f0, 0x14(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
@@ -1072,7 +1072,7 @@ fencePunch__6TMarioFv: # 0x8025de30
     lwz     r0, 0x74(r31)
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x8025df14
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x193a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1163,7 +1163,7 @@ branch_0x8025df74:
     mtlr    r12
     blrl
     addi    r3, r31, 0x0
-    li      r4, 0x7890
+    li      r4, SOUND_7890
     bl      startVoice__6TMarioFUl
     lwz     r3, 0x2c0(r31)
     lwz     r3, 0x4c(r3)
@@ -1276,7 +1276,7 @@ fenceMove__6TMarioFv: # 0x8025e0e8
     lwz     r0, 0x14(r30)
     lfs     f2, -0xdb4(rtoc)
     stw     r3, 0x164(sp)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     stw     r0, 0x168(sp)
     lwz     r0, 0x18(r30)
     stw     r0, 0x16c(sp)
@@ -1556,7 +1556,7 @@ branch_0x8025e598:
     lwz     r3, 0x74(r30)
     rlwinm. r0, r3, 0, 30, 30
     beq-    branch_0x8025e5f0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x193a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1796,7 +1796,7 @@ pulling__6TMarioFv: # 0x8025e8a8
     li      r0, 0x0
     stw     r0, 0x6c(r31)
     addi    r3, r31, 0x0
-    li      r4, 0x78e0
+    li      r4, SOUND_78e0
     bl      startVoice__6TMarioFUl
     addi    r3, r31, 0x0
     li      r4, 0x88c
@@ -1820,7 +1820,7 @@ branch_0x8025e91c:
     li      r0, 0x0
     stw     r0, 0x6c(r31)
     addi    r3, r31, 0x0
-    li      r4, 0x78e0
+    li      r4, SOUND_78e0
     bl      startVoice__6TMarioFUl
     lis     r4, 0xc00
     addi    r3, r31, 0x0
@@ -2575,7 +2575,7 @@ branch_0x8025f390:
     cmpwi   r0, 0x4
     bne-    branch_0x8025f3ac
     addi    r3, r27, 0x0
-    li      r4, 0x78c1
+    li      r4, SOUND_78c1
     bl      startVoice__6TMarioFUl
 branch_0x8025f3ac:
     lhz     r0, 0x84(r27)
@@ -2583,7 +2583,7 @@ branch_0x8025f3ac:
     cmpwi   r0, 0x8
     bne-    branch_0x8025f3c8
     addi    r3, r27, 0x0
-    li      r4, 0x78c4
+    li      r4, SOUND_78c4
     bl      startVoice__6TMarioFUl
 branch_0x8025f3c8:
     lha     r3, 0x94(r27)
@@ -2634,7 +2634,7 @@ branch_0x8025f43c:
 branch_0x8025f46c:
     cmpwi   r28, 0x1
     bne-    branch_0x8025f4b4
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r29
     lfs     f31, 0x44c(r27)
     bl      gateCheck__6MSoundFUl
@@ -2882,7 +2882,7 @@ branch_0x8025f798:
     lfsx    f1, r5, r0
     fnmsubs  f0, f2, f1, f0
     stfs    f0, 0x18(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -3005,7 +3005,7 @@ branch_0x8025f968:
     lfsx    f1, r5, r0
     fnmsubs  f0, f2, f1, f0
     stfs    f0, 0x18(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -3367,7 +3367,7 @@ branch_0x8025fe7c:
     beq-    branch_0x8025feb8
     lfs     f0, -0xdcc(rtoc)
     addi    r3, r31, 0x0
-    li      r4, 0x78e0
+    li      r4, SOUND_78e0
     stfs    f0, 0x444(r31)
     bl      startVoice__6TMarioFUl
     lis     r4, 0x1000
@@ -3626,7 +3626,7 @@ branch_0x80260230:
 branch_0x80260244:
     li      r29, 0x1810
 branch_0x80260248:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r29
     lfs     f31, 0x44c(r31)
     bl      gateCheck__6MSoundFUl
@@ -3709,7 +3709,7 @@ branch_0x80260360:
     cmpwi   r29, -0x2000
     bge-    branch_0x8026038c
     addi    r3, r31, 0x0
-    li      r4, 0x78e0
+    li      r4, SOUND_78e0
     bl      startVoice__6TMarioFUl
     addi    r3, r31, 0x0
     li      r4, 0x352
@@ -3722,7 +3722,7 @@ branch_0x8026038c:
     cmpwi   r29, 0x2000
     ble-    branch_0x802603c8
     addi    r3, r31, 0x0
-    li      r4, 0x78e0
+    li      r4, SOUND_78e0
     bl      startVoice__6TMarioFUl
     addi    r3, r31, 0x0
     li      r4, 0x353
@@ -4069,7 +4069,7 @@ branch_0x8026080c:
     lfsx    f1, r5, r0
     fnmsubs  f0, f2, f1, f0
     stfs    f0, 0x18(r21)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r21)
     lfs     f2, 0x14(r21)
     lfs     f3, 0x18(r21)
@@ -4098,7 +4098,7 @@ branch_0x802608cc:
     cmpwi   r30, 0x0
     beq-    branch_0x80260904
     addi    r3, r21, 0x0
-    li      r4, 0x788f
+    li      r4, SOUND_788f
     bl      startVoice__6TMarioFUl
     lis     r4, 0x3000
     addi    r3, r21, 0x0
@@ -4119,7 +4119,7 @@ branch_0x80260904:
     lfs     f0, -0xd7c(rtoc)
     addi    r4, sp, 0x210
     stfs    f1, 0x210(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stfs    f2, 0x214(sp)
     stfs    f3, 0x218(sp)
     stfs    f0, 0x21c(sp)
@@ -4238,7 +4238,7 @@ branch_0x80260ab8:
     lfs     f0, -0xdd4(rtoc)
     addi    r4, sp, 0x1e0
     stfs    f1, 0x1e0(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stfs    f2, 0x1e4(sp)
     stfs    f3, 0x1e8(sp)
     stfs    f0, 0x1ec(sp)
@@ -4306,7 +4306,7 @@ branch_0x80260b88:
     lfsx    f1, r5, r0
     fnmsubs  f0, f2, f1, f0
     stfs    f0, 0x18(r21)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r21)
     lfs     f2, 0x14(r21)
     lfs     f3, 0x18(r21)
@@ -4390,7 +4390,7 @@ branch_0x80260cdc:
     stfs    f0, 0x1a4(sp)
     stw     r0, 0x1a8(sp)
     stw     r27, 0x1b0(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
     lwz     r0, 0x198(sp)
     addi    r4, sp, 0x1c4
@@ -4400,7 +4400,7 @@ branch_0x80260cdc:
     stw     r3, 0x1cc(sp)
     lfs     f1, -0xdd4(rtoc)
     stw     r0, 0x1d0(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f0, 0x1cc(sp)
     lfs     f31, 0x1d0(sp)
     fadds   f2, f1, f0
@@ -4438,7 +4438,7 @@ branch_0x80260cdc:
     stfs    f3, 0x1a4(sp)
     stw     r0, 0x1a8(sp)
     stw     r27, 0x1b0(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
     lfs     f31, -0xdd4(rtoc)
     addi    r29, r27, 0x0
@@ -4522,7 +4522,7 @@ branch_0x80260e88:
     stfs    f0, 0x18(r21)
     lfs     f1, -0xde0(rtoc)
     lfs     f0, 0x14(r21)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r21)
     lfs     f3, 0x18(r21)
@@ -4557,7 +4557,7 @@ branch_0x80260f34:
     lfsx    f1, r5, r0
     fnmsubs  f0, f2, f1, f0
     stfs    f0, 0x18(r21)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r21)
     lfs     f2, 0x14(r21)
     lfs     f3, 0x18(r21)
@@ -4594,7 +4594,7 @@ branch_0x80260ff0:
     fcmpo   cr0, f1, f0
     bge-    branch_0x80261044
     addi    r3, r21, 0x0
-    li      r4, 0x788f
+    li      r4, SOUND_788f
     bl      startVoice__6TMarioFUl
     lis     r4, 0x3000
     addi    r3, r21, 0x0
@@ -4712,7 +4712,7 @@ startHangLanding__6TMarioFUl: # 0x80261144
     lfsx    f1, r5, r0
     fnmsubs  f0, f2, f1, f0
     stfs    f0, 0x18(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r30)
     lfs     f2, 0x14(r30)
     lfs     f3, 0x18(r30)
@@ -5130,7 +5130,7 @@ branch_0x8026172c:
     b       branch_0x80261860
 
 branch_0x80261760:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x14
     lfs     f1, 0x0(r31)
     lfs     f2, 0x4(r31)
@@ -5138,7 +5138,7 @@ branch_0x80261760:
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
     fmr     f31, f1
     lfs     f0, -0xddc(rtoc)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x18
     lfs     f1, 0x0(r31)
     fadds   f2, f0, f31
@@ -5363,7 +5363,7 @@ branch_0x80261a7c:
     addis   r0, r3, 0xc000
     cmplwi  r0, 0x246
     bne-    branch_0x80261b30
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x8
     bne-    branch_0x80261acc
@@ -5553,7 +5553,7 @@ branch_0x80261cf4:
     fsubs   f0, f1, f0
     stfs    f0, 0x38c(r31)
     bl      treeSlipEffect__6TMarioFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1140
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5622,7 +5622,7 @@ branch_0x80261e2c:
     addis   r0, r3, 0xc000
     cmplwi  r0, 0x246
     bne-    branch_0x80261ee0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x8
     bne-    branch_0x80261e7c

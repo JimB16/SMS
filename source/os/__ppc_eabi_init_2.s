@@ -28,5 +28,3 @@ branch_0x80005474:
     isync
     blr
 
-
-.incbin "./baserom/code/Text_0x80003100.bin", 0x2394, 0x80005540 - 0x80005494

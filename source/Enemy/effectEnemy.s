@@ -55,9 +55,9 @@ setDeadAnm__12TEffectEnemyFv: # 0x80105870
     stw     r31, 0x1c(sp)
     mr      r31, r3
     addi    r5, r31, 0x10
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28c5
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -97,7 +97,7 @@ sendAttackMsgToMario__12TEffectEnemyFv: # 0x801058ec
 
 branch_0x8010591c:
     addi    r3, r31, 0x0
-    li      r4, 0xa
+    li      r4, MARIOMSG_HURTFIRE
     bl      SMS_SendMessageToMario__FP9THitActorUl
     mr      r3, r31
     lwz     r12, 0x0(r31)
@@ -108,13 +108,13 @@ branch_0x8010591c:
 
 branch_0x80105940:
     addi    r3, r31, 0x0
-    li      r4, 0x9
+    li      r4, MARIOMSG_HURTELECTRIC
     bl      SMS_SendMessageToMario__FP9THitActorUl
     b       branch_0x8010595c
 
 branch_0x80105950:
     addi    r3, r31, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x8010595c:
     lwz     r0, 0x1c(sp)
@@ -214,25 +214,25 @@ branch_0x80105a60:
     lfd     f0, 0x28(sp)
     fsubs   f1, f0, f1
     bl      PSVECScale
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1ed
     li      r6, 0x3
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x135
     li      r6, 0x1
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x136
     li      r6, 0x1
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x137
@@ -332,7 +332,7 @@ branch_0x80105bf8:
     rlwinm. r0, r3, 0, 27, 27
     beq-    branch_0x80105c20
 branch_0x80105c08:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      isInArea__4TMapCFff

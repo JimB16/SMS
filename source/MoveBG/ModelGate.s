@@ -101,7 +101,7 @@ branch_0x801eb0b0:
     lbz     r0, 0x70(r31)
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x801eb1e4
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x190(sp)
@@ -173,7 +173,7 @@ branch_0x801eb1b8:
     fdivs   f0, f1, f0
     stfs    f0, 0xd0(r31)
 branch_0x801eb1e4:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     addi    r3, r31, 0x7c
     addi    r5, sp, 0x1cc
     bl      PSMTXMultVec
@@ -224,7 +224,7 @@ branch_0x801eb268:
     b       branch_0x801eb374
 
 branch_0x801eb2a4:
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x18(r31)
     lfs     f1, 0x8(r3)
     lfs     f2, 0x0(r3)
@@ -260,7 +260,7 @@ branch_0x801eb320:
     fcmpo   cr0, f4, f0
     bge-    branch_0x801eb374
     fdivs   f2, f5, f4
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f3, -0x2280(rtoc)
     addi    r3, sp, 0x1bc
     lwz     r4, 0x0(r5)
@@ -287,9 +287,8 @@ branch_0x801eb374:
     cmpwi   r0, 0x0
     bge-    branch_0x801eb39c
     b       branch_0x801eb540
+    b       branch_0x801eb540
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1e5d98, 0x801eb39c - 0x801eb398
 branch_0x801eb39c:
     lwz     r3, 0x78(r31)
     li      r4, 0x2
@@ -319,7 +318,7 @@ branch_0x801eb3d4:
     li      r4, 0x131
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -330,7 +329,7 @@ branch_0x801eb3d4:
     li      r4, 0x132
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -341,7 +340,7 @@ branch_0x801eb3d4:
     li      r4, 0x133
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -352,7 +351,7 @@ branch_0x801eb3d4:
     li      r4, 0x134
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -364,7 +363,7 @@ branch_0x801eb3d4:
     lha     r3, 0xcc(r31)
     addi    r0, r3, 0x1
     sth     r0, 0xcc(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801eb4d8
@@ -376,7 +375,7 @@ branch_0x801eb3d4:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x801eb4d8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3077
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -481,13 +480,41 @@ branch_0x801eb5e4:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x801EB660:		# jumptable 801EB65C case 1
     stb     r4, 0x0(r7)
     stb     r5, 0x0(r8)
     b       branch_0x801eb6a8
 
+branch_0x801EB66C:		# jumptable 801EB65C case 2
+li	  r0, 8
+stb	  r0, 0(r9)
+b	  def_801EB65C	# jumptable 801EB65C default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1e606c, 0x801eb6a8 - 0x801eb66c
+branch_0x801EB678:		# jumptable 801EB65C case 3
+li	  r0, 8
+stb	  r0, 0(r7)
+b	  def_801EB65C	# jumptable 801EB65C default case
+
+branch_0x801EB684:		# jumptable 801EB65C case 4
+stb	  r4, 0(r10)
+b	  def_801EB65C	# jumptable 801EB65C default case
+
+branch_0x801EB68C:		# jumptable 801EB65C case 5
+stb	  r5, 0(r11)
+b	  def_801EB65C	# jumptable 801EB65C default case
+
+branch_0x801EB694:		# jumptable 801EB65C case 6
+stb	  r4, 0(r12)
+b	  def_801EB65C	# jumptable 801EB65C default case
+
+branch_0x801EB69C:		# jumptable 801EB65C case 7
+stb	  r5, 0(r7)
+stb	  r4, 0(r24)
+stb	  r5, 0(r8)
+
+def_801EB65C:		# jumptable 801EB65C default case
 branch_0x801eb6a8:
     mr      r3, r26
     lwz     r12, 0x0(r26)
@@ -926,7 +953,7 @@ branch_0x801ebce4:
     fmuls   f1, f1, f2
     fcmpo   cr0, f1, f0
     bge-    branch_0x801ebd60
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     lha     r7, 0x74(r30)
     li      r4, 0x1dd
@@ -935,7 +962,7 @@ branch_0x801ebce4:
     li      r9, 0x2
     li      r10, 0x0
     bl      emitWithRotate__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_sssUcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     lha     r7, 0x74(r30)
     li      r4, 0x1de
@@ -968,7 +995,7 @@ screenBlur__10TModelGateFPQ26JDrama9TGraphics: # 0x801ebd84
     mr      r31, r3
     stw     r30, 0x90(sp)
     mr      r30, r4
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f1, 0x10(r3)
     addi    r3, sp, 0x54
     lfs     f2, 0x0(r5)
@@ -986,7 +1013,7 @@ screenBlur__10TModelGateFPQ26JDrama9TGraphics: # 0x801ebd84
     addi    r4, sp, 0x54
     addi    r5, sp, 0x60
     bl      PSMTXMultVecSR
-    lwz     r7, -0x60b4(r13)
+    lwz     r7, MarioHitActorPos(r13)
     addi    r3, r31, 0x7c
     addi    r4, sp, 0x3c
     lwz     r6, 0x0(r7)
@@ -1043,7 +1070,7 @@ branch_0x801ebeb4:
     bge-    branch_0x801ebec0
     lfs     f5, -0x2294(rtoc)
 branch_0x801ebec0:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lis     r4, 0x4330
     lbz     r5, 0xe0(r31)
     lha     r0, 0x258(r3)
@@ -1082,7 +1109,7 @@ branch_0x801ebf3c:
     fsubs   f0, f3, f1
     fmadds  f0, f2, f0, f1
     stfs    f0, 0xe4(r31)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f1, -0x2298(rtoc)
     lfs     f0, 0x270(r3)
     lfs     f3, 0xe4(r31)

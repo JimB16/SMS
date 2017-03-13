@@ -119,8 +119,8 @@ __init_registers: # 0x80005364
     ori     sp, sp, 0x77e8
     lis     rtoc, 0x8041
     ori     rtoc, rtoc, 0x6ba0
-    lis     r13, 0x8041
-    ori     r13, r13, 0x41c0
+    lis     r13, R13Address@h
+    ori     r13, r13, R13Address@l
     blr
 
 
@@ -132,36 +132,40 @@ __init_data: # 0x80005380
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     stw     r29, 0xc(sp)
-    lis     r3, 0x8000
-    addi    r0, r3, 0x5494
+    lis     r3, _rom_copy_info@h
+    addi    r0, r3, _rom_copy_info@l
     mr      r29, r0
-    b       branch_0x800053a8
+    b       branch_romcopyinfo
 
-branch_0x800053a8:
-    b       branch_0x800053ac
+branch_romcopyinfo:
+    b       branch_romcopyinfo_loop
 
-branch_0x800053ac:
+branch_romcopyinfo_loop:
     lwz     r30, 0x8(r29)
     cmplwi  r30, 0x0
     beq-    branch_0x800053ec
+
     lwz     r4, 0x0(r29)
     lwz     r31, 0x4(r29)
     beq-    branch_0x800053e4
+
     cmplw   r31, r4
     beq-    branch_0x800053e4
+
     mr      r3, r31
     mr      r5, r30
     bl      memcpy
     mr      r3, r31
     mr      r4, r30
     bl      __flush_cache
+
 branch_0x800053e4:
     addi    r29, r29, 0xc
-    b       branch_0x800053ac
+    b       branch_romcopyinfo_loop
 
 branch_0x800053ec:
-    lis     r3, 0x8000
-    addi    r0, r3, 0x5518
+    lis     r3, _bss_init_info@h
+    addi    r0, r3, _bss_init_info@l
     mr      r29, r0
     b       branch_0x800053fc
 

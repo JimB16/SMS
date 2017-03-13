@@ -117,7 +117,7 @@ load__4TSkyFR20JSUMemoryInputStream: # 0x8019ff4c
     stw     r31, 0x5c(sp)
     mr      r31, r3
     bl      load__Q26JDrama6TActorFR20JSUMemoryInputStream
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     lis     r3, 0x8039
     subi    r3, r3, 0x5df0
     lwz     r4, 0x14(r4)
@@ -138,7 +138,7 @@ load__4TSkyFR20JSUMemoryInputStream: # 0x8019ff4c
     lwz     r3, 0x44(r31)
     bl      initDL__6MActorFv
 branch_0x8019ffb4:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xf
     beq-    branch_0x8019ffd0
@@ -168,7 +168,7 @@ perform__4TSkyFUlPQ26JDrama9TGraphics: # 0x8019ffe4
     stw     r28, 0x120(sp)
     addi    r28, r3, 0x0
     beq-    branch_0x801a0194
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r4, sp, 0xec
     addi    r31, r3, 0x1ec
     addi    r3, r31, 0x0
@@ -193,7 +193,7 @@ perform__4TSkyFUlPQ26JDrama9TGraphics: # 0x8019ffe4
     fnmsubs  f0, f5, f4, f1
     lfs     f1, 0x110(sp)
     lfs     f4, 0x114(sp)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     stfs    f0, 0xc8(sp)
     lfs     f0, 0x1c(r31)
     lfs     f5, 0xc(r31)

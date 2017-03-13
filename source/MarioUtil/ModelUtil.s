@@ -132,7 +132,7 @@ SMS_RideMoveByGroundActor__FP11TRidingInfoPQ29JGeometry8TVec3_f_Pf: # 0x80233f10
     mr      r29, r3
     lfs     f1, -0x15d0(rtoc)
     lfs     f0, 0x4(r4)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r4)
     lfs     f3, 0x8(r30)

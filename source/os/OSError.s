@@ -210,7 +210,9 @@ branch_0x803448cc:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80344930:		# jumptable 8034492C case 2
     lwz     r4, 0x198(r31)
     addi    r5, r27, 0x0
     addi    r3, r29, 0xd8
@@ -218,8 +220,51 @@ branch_0x803448cc:
     bl      OSReport
     b       branch_0x803449d8
 
+branch_0x80344948:		# jumptable 8034492C case 3
+lwz	  r4, 0x198(r31)
+addi	  r3, r29, 0x138
+crclr	  4*cr1+eq
+bl	  OSReport
+b	  def_8034492C	# jumptable 8034492C default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33f348, 0x803449d8 - 0x80344948
+branch_0x8034495C:		# jumptable 8034492C case 5
+lwz	  r4, 0x198(r31)
+addi	  r5, r27, 0
+addi	  r3, r29, 0x184
+crclr	  4*cr1+eq
+bl	  OSReport
+b	  def_8034492C	# jumptable 8034492C default case
+
+branch_0x80344974:		# jumptable 8034492C case 6
+lwz	  r4, 0x198(r31)
+addi	  r5, r27, 0
+addi	  r3, r29, 0x1E8
+crclr	  4*cr1+eq
+bl	  OSReport
+b	  def_8034492C	# jumptable 8034492C default case
+
+branch_0x8034498C:		# jumptable 8034492C case 15
+addi	  r3, r13, -0x7370
+crclr	  4*cr1+eq
+bl	  OSReport
+lis	  r30, -0x3400 # 0xCC005000
+crclr	  4*cr1+eq
+addi	  r31, r30, 0x5000 # 0xCC005000
+lhz	  r4, 0x5030(r30)
+addi	  r3, r29, 0x248
+lhz	  r5, 0x5032(r30)
+bl	  OSReport
+lhz	  r4, 0x20(r31)
+addi	  r3, r29, 0x268
+lhz	  r5, 0x22(r31)
+crclr	  4*cr1+eq
+bl	  OSReport
+lwz	  r4, 0x6014(r30)
+crclr	  4*cr1+eq
+addi	  r3, r29, 0x288
+bl	  OSReport
+
+def_8034492C:		# jumptable 8034492C default case
 branch_0x803449d8:
     lha     r4, -0x5a08(r13)
     addi    r3, r29, 0x2a4

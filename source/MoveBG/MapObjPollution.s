@@ -149,7 +149,7 @@ loadAfter__23TMapObjRevivalPollutionFv: # 0x801e8900
 branch_0x801e8930:
     lwz     r0, 0x14(r30)
     li      r5, 0x0
-    lwz     r7, -0x62f0(r13)
+    lwz     r7, gpPollution(r13)
     li      r6, 0x0
     add     r28, r0, r29
     lwz     r4, 0x0(r28)
@@ -345,7 +345,7 @@ branch_0x801e8bcc:
     rlwinm. r0, r31, 0, 22, 22
     beq-    branch_0x801e8be4
     lwz     r4, 0x138(r30)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r4, 0x4(r4)
     bl      stampModel__17TPollutionManagerFP8J3DModel
 branch_0x801e8be4:

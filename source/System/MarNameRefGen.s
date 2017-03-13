@@ -523,16 +523,18 @@ branch_0x8029d7d0:
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x8029d80c
-    li      r3, 0x4290
+
+    li      r3, MarioActor_Size
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x8029d7fc
     mr      r3, r29
     bl      __ct__6TMarioFv
 branch_0x8029d7fc:
-    stw     r29, -0x60d8(r13)
+
+    stw     r29, MarioActor(r13)
     mr      r3, r29
-    stw     r29, -0x60b8(r13)
+    stw     r29, MarioHitActor(r13)
     b       branch_0x8029eddc
 
 branch_0x8029d80c:
@@ -552,7 +554,7 @@ branch_0x8029d80c:
     subi    r0, r3, 0x588c
     stw     r0, 0x0(r29)
 branch_0x8029d848:
-    lwz     r4, -0x610c(r13)
+    lwz     r4, LightCommon(r13)
     mr      r3, r29
     stw     r29, 0x10(r4)
     b       branch_0x8029eddc
@@ -980,7 +982,7 @@ branch_0x8029ddd8:
     subi    r4, rtoc, 0x4f4
     bl      __ct__16TCubeManagerBaseFPCcPCc
 branch_0x8029de0c:
-    stw     r29, -0x70f0(r13)
+    stw     r29, CubeManager0(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -999,7 +1001,7 @@ branch_0x8029de18:
     subi    r4, rtoc, 0x4f4
     bl      __ct__16TCubeManagerBaseFPCcPCc
 branch_0x8029de4c:
-    stw     r29, -0x70ec(r13)
+    stw     r29, CubeManager1(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1018,7 +1020,7 @@ branch_0x8029de58:
     subi    r4, rtoc, 0x4f4
     bl      __ct__16TCubeManagerBaseFPCcPCc
 branch_0x8029de8c:
-    stw     r29, -0x70e8(r13)
+    stw     r29, CubeManager2(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1037,7 +1039,7 @@ branch_0x8029de98:
     subi    r4, rtoc, 0x4f4
     bl      __ct__16TCubeManagerBaseFPCcPCc
 branch_0x8029decc:
-    stw     r29, -0x70e4(r13)
+    stw     r29, CubeManager3(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1056,7 +1058,7 @@ branch_0x8029ded8:
     subi    r4, rtoc, 0x4f4
     bl      __ct__16TCubeManagerBaseFPCcPCc
 branch_0x8029df0c:
-    stw     r29, -0x70e0(r13)
+    stw     r29, CubeManager4(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1083,7 +1085,7 @@ branch_0x8029df18:
     subi    r0, r3, 0xdf4
     stw     r0, 0x0(r29)
 branch_0x8029df6c:
-    stw     r29, -0x70dc(r13)
+    stw     r29, CubeManager5(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1110,7 +1112,7 @@ branch_0x8029df78:
     subi    r0, r3, 0xe18
     stw     r0, 0x0(r29)
 branch_0x8029dfcc:
-    stw     r29, -0x70d8(r13)
+    stw     r29, CubeManager6(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1137,7 +1139,7 @@ branch_0x8029dfd8:
     subi    r0, r3, 0xe18
     stw     r0, 0x0(r29)
 branch_0x8029e02c:
-    stw     r29, -0x70d4(r13)
+    stw     r29, CubeManager7(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1164,7 +1166,7 @@ branch_0x8029e038:
     subi    r0, r3, 0xe18
     stw     r0, 0x0(r29)
 branch_0x8029e08c:
-    stw     r29, -0x70d0(r13)
+    stw     r29, CubeManager8(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1183,7 +1185,7 @@ branch_0x8029e098:
     subi    r4, rtoc, 0x4f4
     bl      __ct__16TCubeManagerBaseFPCcPCc
 branch_0x8029e0cc:
-    stw     r29, -0x70cc(r13)
+    stw     r29, CubeManager9(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1202,7 +1204,7 @@ branch_0x8029e0d8:
     subi    r4, rtoc, 0x4f4
     bl      __ct__16TCubeManagerBaseFPCcPCc
 branch_0x8029e10c:
-    stw     r29, -0x70c8(r13)
+    stw     r29, CubeManager10(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1532,7 +1534,7 @@ branch_0x8029e518:
     subi    r0, r3, 0xe58
     stw     r0, 0x0(r30)
 branch_0x8029e578:
-    stw     r29, -0x70c0(r13)
+    stw     r29, OffsetR13_70c0(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1804,7 +1806,7 @@ branch_0x8029e8e4:
     stw     r0, 0x10(r29)
     stb     r0, 0x14(r29)
 branch_0x8029e94c:
-    stw     r29, -0x5fa0(r13)
+    stw     r29, OffsetR13_5fa0(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -1834,7 +1836,7 @@ branch_0x8029e958:
     subi    r0, r3, 0xeb8
     stw     r0, 0x0(r30)
 branch_0x8029e9b8:
-    stw     r29, -0x6000(r13)
+    stw     r29, OffsetR13_6000(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -2123,7 +2125,7 @@ branch_0x8029ed98:
     mr      r3, r29
     bl      __ct__10TConductorFv
 branch_0x8029edc4:
-    stw     r29, -0x70b0(r13)
+    stw     r29, OffsetR13_70b0(r13)
     mr      r3, r29
     b       branch_0x8029eddc
 
@@ -6419,7 +6421,7 @@ __sinit_MarNameRefGen_cpp: # 0x802a2670
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     subi    r31, r3, 0x3588
-    lbz     r0, -0x7204(r13)
+    lbz     r0, OffsetR13_7204(r13)
     extsb.  r0, r0
     bne-    branch_0x802a26b8
     subi    r3, r13, 0x72b8
@@ -6430,9 +6432,9 @@ __sinit_MarNameRefGen_cpp: # 0x802a2670
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, OffsetR13_7204(r13)
 branch_0x802a26b8:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, OffsetR13_7203(r13)
     extsb.  r0, r0
     bne-    branch_0x802a26e8
     subi    r3, r13, 0x72ac
@@ -6443,9 +6445,9 @@ branch_0x802a26b8:
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, OffsetR13_7203(r13)
 branch_0x802a26e8:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, OffsetR13_7202(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2718
     subi    r3, r13, 0x72a0
@@ -6456,9 +6458,9 @@ branch_0x802a26e8:
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, OffsetR13_7202(r13)
 branch_0x802a2718:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, OffsetR13_7201(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2748
     subi    r3, r13, 0x7294
@@ -6469,9 +6471,9 @@ branch_0x802a2718:
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, OffsetR13_7201(r13)
 branch_0x802a2748:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, OffsetR13_7200(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2778
     subi    r3, r13, 0x7288
@@ -6482,9 +6484,9 @@ branch_0x802a2748:
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, OffsetR13_7200(r13)
 branch_0x802a2778:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, OffsetR13_71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x802a27a8
     subi    r3, r13, 0x727c
@@ -6495,9 +6497,9 @@ branch_0x802a2778:
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, OffsetR13_71ff(r13)
 branch_0x802a27a8:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, OffsetR13_71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x802a27d8
     subi    r3, r13, 0x7270
@@ -6508,9 +6510,9 @@ branch_0x802a27a8:
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, OffsetR13_71fe(r13)
 branch_0x802a27d8:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, OffsetR13_71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2808
     subi    r3, r13, 0x7264
@@ -6521,9 +6523,9 @@ branch_0x802a27d8:
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, OffsetR13_71fd(r13)
 branch_0x802a2808:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, OffsetR13_71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2838
     subi    r3, r13, 0x7258
@@ -6534,9 +6536,9 @@ branch_0x802a2808:
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, OffsetR13_71fc(r13)
 branch_0x802a2838:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, OffsetR13_71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2868
     subi    r3, r13, 0x724c
@@ -6547,9 +6549,9 @@ branch_0x802a2838:
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, OffsetR13_71fb(r13)
 branch_0x802a2868:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, OffsetR13_71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2898
     subi    r3, r13, 0x7240
@@ -6560,9 +6562,9 @@ branch_0x802a2868:
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, OffsetR13_71fa(r13)
 branch_0x802a2898:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, OffsetR13_71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x802a28c8
     subi    r3, r13, 0x7234
@@ -6573,9 +6575,9 @@ branch_0x802a2898:
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, OffsetR13_71f9(r13)
 branch_0x802a28c8:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, OffsetR13_71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x802a28f8
     subi    r3, r13, 0x7228
@@ -6586,9 +6588,9 @@ branch_0x802a28c8:
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, OffsetR13_71f8(r13)
 branch_0x802a28f8:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, OffsetR13_71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2928
     subi    r3, r13, 0x721c
@@ -6599,9 +6601,9 @@ branch_0x802a28f8:
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, OffsetR13_71f7(r13)
 branch_0x802a2928:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, OffsetR13_71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x802a2958
     subi    r3, r13, 0x7210
@@ -6612,7 +6614,7 @@ branch_0x802a2928:
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, OffsetR13_71f6(r13)
 branch_0x802a2958:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

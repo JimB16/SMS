@@ -982,7 +982,7 @@ branch_0x80122e50:
     lwz     r0, 0x1a0(r31)
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -1007,7 +1007,7 @@ branch_0x80122ed4:
     li      r4, 0x1c3
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1027,7 +1027,7 @@ branch_0x80122f20:
     li      r4, 0x1c2
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1047,7 +1047,7 @@ branch_0x80122f6c:
     li      r4, 0x1c1
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1067,7 +1067,7 @@ branch_0x80122fb8:
     li      r4, 0x1c0
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1381,7 +1381,7 @@ branch_0x801233f4:
     lwz     r4, -0x5db8(r13)
     lis     r3, 0x8038
     addi    r30, r3, 0x5d48
-    lwz     r28, -0x60b4(r13)
+    lwz     r28, MarioHitActorPos(r13)
     lwz     r29, 0x4(r4)
     mr      r3, r30
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -1518,9 +1518,8 @@ branch_0x80123598:
     stfs    f0, 0x1b8(r31)
     stb     r0, 0x155(r31)
     b       branch_0x8012360c
+    b       branch_0x8012358c
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x11e008, 0x8012360c - 0x80123608
 branch_0x8012360c:
     lwz     r0, 0x154(sp)
     lwz     r31, 0x14c(sp)
@@ -2971,7 +2970,9 @@ getNeckFocus__6TKoopaCFv: # 0x80124994
     slwi    r0, r31, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80124A10:		# jumptable 80124A0C case 6
     lfs     f0, -0x5134(rtoc)
     lfs     f1, -0x514c(rtoc)
     fcmpo   cr0, f3, f0
@@ -2982,8 +2983,203 @@ getNeckFocus__6TKoopaCFv: # 0x80124994
     fdivs   f1, f1, f0
     b       branch_0x80124c6c
 
+branch_0x80124A34:		# jumptable 80124A0C case 2
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x11f434, 0x80124c6c - 0x80124a34
+branch_0x80124A3C:		# jumptable 80124A0C case 0
+lfs	  f0, -0x5104(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124A58
+fdivs	  f0, f3, f0
+fsubs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124A58:
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124A60:		# jumptable 80124A0C case 1
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124A68:		# jumptable 80124A0C case 7
+lfs	  f0, -0x5100(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124A80
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124A80:
+fsubs	  f1, f3, f0
+fsubs	  f0, f2, f0
+fdivs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124A90:		# jumptable 80124A0C case 9
+lfs	  f0, -0x50FC(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124AAC
+fdivs	  f0, f3, f0
+fsubs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124AAC:
+lfs	  f0, -0x50F8(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124AC4
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124AC4:
+fsubs	  f1, f3, f0
+fsubs	  f0, f2, f0
+fdivs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124AD4:		# jumptable 80124A0C case 8
+lfs	  f0, -0x50FC(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124AF0
+fdivs	  f0, f3, f0
+fsubs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124AF0:
+lfs	  f0, -0x50F4(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124B08
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B08:
+fsubs	  f1, f3, f0
+fsubs	  f0, f2, f0
+fdivs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B18:		# jumptable 80124A0C case 14
+lfs	  f0, -0x5160(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124B34
+fdivs	  f0, f3, f0
+fsubs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B34:
+lfs	  f0, -0x5104(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124B4C
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B4C:
+fsubs	  f1, f3, f0
+fsubs	  f0, f2, f0
+fdivs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B5C:		# jumptable 80124A0C case 4
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B64:		# jumptable 80124A0C case 5
+lfs	  f0, -0x50F0(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124B80
+fdivs	  f0, f3, f0
+fsubs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B80:
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B88:		# jumptable 80124A0C case 3
+fdivs	  f1, f3, f2
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124B90:		# jumptable 80124A0C case 12
+lfs	  f2, -0x50EC(r2)
+fcmpo	  cr0, f3, f2
+cror	  eq, lt, eq
+bne	  branch_0x80124BA4
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124BA4:
+lfs	  f0, -0x50E8(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124BC8
+fsubs	  f2, f3, f2
+lfs	  f0, -0x50E4(r2)
+fdivs	  f0, f2, f0
+fsubs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124BC8:
+lfs	  f2, -0x50E0(r2)
+fcmpo	  cr0, f3, f2
+cror	  eq, lt, eq
+bne	  branch_0x80124BE0
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124BE0:
+lfs	  f0, -0x50DC(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124C00
+fsubs	  f1, f3, f2
+lfs	  f0, -0x50D8(r2)
+fdivs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124C00:
+lfs	  f2, -0x50D4(r2)
+fcmpo	  cr0, f3, f2
+cror	  eq, lt, eq
+bne	  branch_0x80124C14
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124C14:
+lfs	  f0, -0x50D0(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  branch_0x80124C38
+fsubs	  f2, f3, f2
+lfs	  f0, -0x5104(r2)
+fdivs	  f0, f2, f0
+fsubs	  f1, f1, f0
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124C38:
+lfs	  f2, -0x50CC(r2)
+fcmpo	  cr0, f3, f2
+cror	  eq, lt, eq
+bne	  branch_0x80124C50
+lfs	  f1, -0x514C(r2)
+b	  def_80124A0C	# jumptable 80124A0C default case
+
+branch_0x80124C50:
+lfs	  f0, -0x50C8(r2)
+fcmpo	  cr0, f3, f0
+cror	  eq, lt, eq
+bne	  def_80124A0C	# jumptable 80124A0C default case
+fsubs	  f1, f3, f2
+lfs	  f0, -0x50D8(r2)
+fdivs	  f1, f1, f0
+
+def_80124A0C:		# jumptable 80124A0C default case
 branch_0x80124c6c:
     lwz     r0, 0x34(sp)
     lwz     r31, 0x2c(sp)
@@ -3547,7 +3743,7 @@ branch_0x80125408:
     lis     r4, 0x8040
     lwz     r7, 0x4(r3)
     addi    r4, r4, 0x45dc
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lwz     r4, 0x38(r4)
     mr      r31, r7
     lhz     r0, 0x18(r3)
@@ -4495,7 +4691,7 @@ branch_0x801261b4:
     bl      getShowered__6TKoopaFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8012646c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xe7
     li      r6, 0x0
@@ -4503,7 +4699,7 @@ branch_0x801261b4:
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r5, 0x68(r29)
     li      r4, 0x6802
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r6, 0x0
     lfs     f1, -0x514c(rtoc)
     addi    r5, r5, 0x10
@@ -4728,7 +4924,7 @@ attack___11TKoopaFlameFP9THitActor: # 0x801264d0
     blrl
     cmpwi   r3, 0x0
     beq-    branch_0x8012657c
-    lwz     r0, -0x60b8(r13)
+    lwz     r0, MarioHitActor(r13)
     cmplw   r31, r0
     bne-    branch_0x8012657c
     lwz     r4, 0x68(r30)
@@ -5234,7 +5430,7 @@ branch_0x80126be4:
     mtlr    r12
     blrl
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     li      r4, 0xf5
     li      r6, 0x0
@@ -5629,7 +5825,7 @@ branch_0x8012711c:
     cmplwi  r0, 0x0
     beq-    branch_0x8012717c
     lis     r27, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r27, 0x7653
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5716,7 +5912,7 @@ branch_0x801271f8:
     fmuls   f0, f0, f2
     stfs    f0, 0x318(sp)
     lwz     r7, 0x70(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r7, 0x38(r7)
     lfs     f1, 0x144(r7)
     bl      getNextGrip__8TBathtubCFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
@@ -5745,7 +5941,7 @@ branch_0x801271f8:
     lfs     f0, 0x334(sp)
     fmuls   f0, f0, f2
     stfs    f0, 0x318(sp)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     bl      getNextJuncture__8TBathtubCFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     stfs    f1, 0x150(r31)
 branch_0x80127308:
@@ -5911,7 +6107,7 @@ branch_0x8012752c:
     b       branch_0x80127a30
 
 branch_0x8012753c:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r31
     bl      getTargetDir__6TKoopaCFRCQ29JGeometry8TVec3_f_
     lfs     f0, 0x150(r31)
@@ -6048,7 +6244,7 @@ branch_0x8012768c:
     fmuls   f0, f0, f2
     stfs    f0, 0x2d0(sp)
     lwz     r7, 0x70(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r7, 0x38(r7)
     lfs     f1, 0x144(r7)
     bl      getNextGrip__8TBathtubCFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
@@ -6077,7 +6273,7 @@ branch_0x8012768c:
     lfs     f0, 0x2ec(sp)
     fmuls   f0, f0, f2
     stfs    f0, 0x2d0(sp)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     bl      getNextJuncture__8TBathtubCFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     stfs    f1, 0x150(r31)
 branch_0x801277bc:
@@ -6510,7 +6706,7 @@ branch_0x80127d50:
     mtlr    r12
     blrl
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     li      r4, 0xf5
     li      r6, 0x0
@@ -6648,7 +6844,7 @@ branch_0x80127ec4:
     fmuls   f0, f0, f2
     stfs    f0, 0x218(sp)
     lwz     r7, 0x70(r30)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r7, 0x38(r7)
     lfs     f1, 0x144(r7)
     bl      getNextGrip__8TBathtubCFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
@@ -6677,7 +6873,7 @@ branch_0x80127ec4:
     lfs     f0, 0x234(sp)
     fmuls   f0, f0, f2
     stfs    f0, 0x218(sp)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     bl      getNextJuncture__8TBathtubCFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     stfs    f1, 0x150(r30)
 branch_0x80127fd4:
@@ -7126,7 +7322,7 @@ branch_0x801285e4:
     b       branch_0x801286a0
 
 branch_0x801285f4:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r30
     bl      getTargetDir__6TKoopaCFRCQ29JGeometry8TVec3_f_
     lfs     f0, 0x150(r30)

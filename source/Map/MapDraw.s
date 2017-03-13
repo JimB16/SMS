@@ -103,7 +103,7 @@ perform__12TMapDrawWallFUlPQ26JDrama9TGraphics: # 0x8018e78c
     stmw    r26, 0xb0(sp)
     addi    r30, r3, 0x0
     beq-    branch_0x8018eaa0
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lha     r0, 0x2c8(r3)
     cmpwi   r0, -0x1
     bne-    branch_0x8018e7e4

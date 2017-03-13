@@ -2859,7 +2859,7 @@ branch_0x80061894:
     cmplw   r3, r0
     beq-    branch_0x800618b4
     addi    r3, r31, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800618b4:
     lwz     r0, 0x2c(sp)

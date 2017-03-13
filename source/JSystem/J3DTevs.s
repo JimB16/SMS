@@ -88,7 +88,9 @@ branch_0x802ee00c:
     slwi    r5, r5, 2
     lwzx    r5, r3, r5
     mtctr   r5
-    bctr       
+    bctr			# switch jump
+
+branch_0x802EE028:		# jumptable 802EE024 case 0
     lwz     r5, 0x4(r4)
     stw     r5, 0x54(sp)
     lwz     r5, 0x8(r4)
@@ -97,8 +99,99 @@ branch_0x802ee00c:
     stw     r5, 0x4c(sp)
     b       branch_0x802ee144
 
+branch_0x802EE044:		# jumptable 802EE024 cases 1,16
+lwz	  r6, 4(r4)
+lwz	  r5, 8(r4)
+cmpwi	  r6, 2
+stw	  r5, 0xA0+var_58(r1)
+bne	  branch_0x802EE064
+li	  r31, 1
+li	  r30, 1
+b	  def_802EE024	# jumptable 802EE024 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2e8a44, 0x802ee144 - 0x802ee044
+branch_0x802EE064:
+cmplwi	  r0, 0
+beq	  branch_0x802EE074
+li	  r31, 1
+b	  branch_0x802EE078
+
+branch_0x802EE074:
+mr	  r31, r6
+
+branch_0x802EE078:
+li	  r30, 0
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE080:		# jumptable 802EE024 case 2
+lwz	  r5, 4(r4)
+stw	  r5, 0xA0+var_5C(r1)
+lwz	  r5, 8(r4)
+stw	  r5, 0xA0+var_60(r1)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE094:		# jumptable 802EE024 case 3
+lwz	  r5, 4(r4)
+stw	  r5, 0xA0+var_64(r1)
+lwz	  r5, 8(r4)
+stw	  r5, 0xA0+var_68(r1)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE0A8:		# jumptable 802EE024 case 4
+lwz	  r5, 4(r4)
+stw	  r5, 0xA0+var_6C(r1)
+lwz	  r5, 8(r4)
+stw	  r5, 0xA0+var_70(r1)
+lbz	  r5, 0xC(r4)
+stw	  r5, 0xA0+var_74(r1)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE0C4:		# jumptable 802EE024 case 5
+lwz	  r5, 4(r4)
+stw	  r5, 0xA0+var_78(r1)
+lwz	  r5, 8(r4)
+stw	  r5, 0xA0+var_7C(r1)
+lbz	  r5, 0xC(r4)
+stw	  r5, 0xA0+var_80(r1)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE0E0:		# jumptable 802EE024 case 6
+lwz	  r5, 4(r4)
+lbz	  r25, 0xC(r4)
+stw	  r5, 0xA0+var_84(r1)
+lwz	  r5, 8(r4)
+stw	  r5, 0xA0+var_88(r1)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE0F8:		# jumptable 802EE024 case 7
+lwz	  r26, 4(r4)
+lwz	  r22, 8(r4)
+lbz	  r20, 0xC(r4)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE108:		# jumptable 802EE024 case 8
+lwz	  r21, 4(r4)
+lwz	  r23, 8(r4)
+lbz	  r15, 0xC(r4)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE118:		# jumptable 802EE024 case 9
+lwz	  r18, 4(r4)
+lwz	  r19, 8(r4)
+lbz	  r16, 0xC(r4)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE128:		# jumptable 802EE024 case 10
+lwz	  r14, 4(r4)
+lwz	  r17, 8(r4)
+lbz	  r24, 0xC(r4)
+b	  def_802EE024	# jumptable 802EE024 default case
+
+branch_0x802EE138:		# jumptable 802EE024 case 11
+lwz	  r27, 4(r4)
+lwz	  r28, 8(r4)
+lbz	  r29, 0xC(r4)
+
+def_802EE024:		# jumptable 802EE024 default case
 branch_0x802ee144:
     addi    r4, r4, 0x10
 branch_0x802ee148:

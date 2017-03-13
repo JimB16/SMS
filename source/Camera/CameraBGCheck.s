@@ -38,7 +38,7 @@ branch_0x80020364:
 branch_0x80020368:
     lfs     f0, 0xb8(r30)
     addi    r4, sp, 0x28
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f0, f31
     lfs     f1, 0x0(r29)
     lfs     f3, 0x8(r29)
@@ -119,7 +119,7 @@ execRoofCheck___15CPolarSubCameraF3Vec: # 0x80020438
     bl      SMS_GetMonteVillageAreaInMario__Fv
     cmpwi   r3, 0x0
     bne-    branch_0x80020494
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0x3e
     beq-    branch_0x80020494
@@ -132,7 +132,7 @@ branch_0x80020494:
     addi    r4, sp, 0x30
     lfs     f2, 0xb8(r30)
     addi    r5, r3, 0xe0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f0, 0x0(r5)
     lfs     f1, 0x0(r28)
     fsubs   f2, f2, f0
@@ -226,7 +226,7 @@ execWallCheck___15CPolarSubCameraFP3Vec: # 0x8002057c
     lfs     f3, 0x88(r28)
     lfs     f0, 0x80(r28)
     fadds   f1, f2, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x6c
     stfs    f0, 0x6c(sp)
     stfs    f1, 0x70(sp)
@@ -866,7 +866,7 @@ branch_0x80020e94:
 branch_0x80020ea4:
     lfs     f0, 0x0(r27)
     addi    r4, sp, 0x94
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r5, sp, 0x88
     stfs    f0, 0x94(sp)
     lfs     f0, 0x4(r27)

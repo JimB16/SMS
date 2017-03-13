@@ -378,7 +378,7 @@ loadAfter__19TMapEventSinkBiancoFv: # 0x8018f8bc
 
 branch_0x8018f8f4:
     lwz     r0, 0x60(r29)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     add     r5, r0, r28
     lhz     r0, 0x0(r5)
     lwz     r4, 0x14(r3)
@@ -393,7 +393,7 @@ branch_0x8018f8f4:
     mtlr    r12
     blrl
     lwz     r0, 0x60(r29)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     add     r5, r0, r28
     lhz     r0, 0x0(r5)
     lwz     r4, 0x14(r3)
@@ -480,7 +480,7 @@ watch__19TMapEventSinkBiancoFv: # 0x8018fa34
     li      r4, 0x0
     stw     r4, 0x28(r31)
     li      r6, 0x0
-    lwz     r5, -0x62f0(r13)
+    lwz     r5, gpPollution(r13)
     b       branch_0x8018faa0
 
 branch_0x8018fa84:
@@ -509,7 +509,7 @@ branch_0x8018fac0:
     cmplwi  r0, 0x0
     bne-    branch_0x8018fb14
     lwz     r0, 0x60(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     add     r5, r0, r30
     lhz     r0, 0x0(r5)
     lwz     r4, 0x14(r3)
@@ -578,9 +578,9 @@ branch_0x8018fb78:
     stfs    f0, 0x30(sp)
     stfs    f0, 0x34(sp)
     stw     r0, 0x7c(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x2c
     li      r4, 0x1e1
     li      r6, 0x2
@@ -609,7 +609,7 @@ branch_0x8018fc00:
     addi    r3, r31, 0x6c
     lfs     f1, 0x78(r31)
     bl      SMS_MarioWarpRequest__FRCQ29JGeometry8TVec3_f_f
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x484d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -640,7 +640,7 @@ branch_0x8018fc58:
     li      r9, 0x0
     li      r10, 0x0
     stfs    f0, 0x8(r3)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r0, 0x28(sp)
     stw     r11, 0x8(sp)
     lfs     f1, -0x43d0(rtoc)
@@ -669,7 +669,7 @@ control__19TMapEventSinkBiancoFv: # 0x8018fcd0
     bne-    branch_0x8018fd38
     mulli   r0, r4, 0xc
     lwz     r4, 0x50(r31)
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     add     r5, r4, r0
     lfsx    f1, r4, r0
     lis     r4, 0x8039
@@ -770,7 +770,7 @@ branch_0x8018fe24:
     blrl
     lwz     r12, 0x0(r3)
     li      r5, 0xf
-    lwz     r4, -0x6088(r13)
+    lwz     r4, gpModelWaterManager(r13)
     lwz     r12, 0xa0(r12)
     lwz     r4, 0x2514(r4)
     mtlr    r12
@@ -799,7 +799,7 @@ branch_0x8018fe94:
     blrl
     lwz     r12, 0x0(r3)
     li      r5, 0xf
-    lwz     r4, -0x6088(r13)
+    lwz     r4, gpModelWaterManager(r13)
     lwz     r12, 0xa0(r12)
     lwz     r4, 0x2514(r4)
     mtlr    r12
@@ -834,7 +834,7 @@ branch_0x8018ff4c:
 branch_0x8018ff54:
     mr      r3, r30
     bl      finishControl__9TMapEventFv
-    lwz     r5, -0x62f0(r13)
+    lwz     r5, gpPollution(r13)
     li      r6, 0x0
     li      r3, 0x0
     b       branch_0x8018ff88
@@ -877,7 +877,7 @@ loadAfter__29TMapEventSinkInPollutionResetFv: # 0x8018ffb4
 
 branch_0x8018ffe0:
     lwz     r0, 0x60(r30)
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     add     r5, r0, r29
     lhz     r0, 0x0(r5)
     addi    r3, r4, 0x1ec
@@ -903,7 +903,7 @@ branch_0x80190024:
 
 branch_0x8019003c:
     lwz     r0, 0x60(r30)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     add     r5, r0, r29
     lhz     r0, 0x0(r5)
     lwz     r4, 0x14(r3)
@@ -918,7 +918,7 @@ branch_0x8019003c:
     mtlr    r12
     blrl
     lwz     r0, 0x60(r30)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     add     r5, r0, r29
     lhz     r0, 0x0(r5)
     lwz     r4, 0x14(r3)
@@ -1003,7 +1003,7 @@ makeBuildingRecovered__29TMapEventSinkInPollutionResetFi: # 0x801900e8
     li      r0, 0x1
     stbx    r0, r3, r29
     lwz     r3, 0x60(r30)
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     lhzx    r0, r3, r31
     add     r3, r3, r31
     lwz     r5, 0x14(r4)
@@ -1018,7 +1018,7 @@ makeBuildingRecovered__29TMapEventSinkInPollutionResetFi: # 0x801900e8
     mtlr    r12
     blrl
     lwz     r3, 0x60(r30)
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     lhzx    r0, r3, r31
     add     r3, r3, r31
     lwz     r4, 0x14(r4)
@@ -1034,7 +1034,7 @@ makeBuildingRecovered__29TMapEventSinkInPollutionResetFi: # 0x801900e8
     mtlr    r12
     blrl
     lwz     r3, 0x60(r30)
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     lhzx    r0, r3, r31
     add     r3, r3, r31
     lwz     r4, 0x14(r4)
@@ -1071,7 +1071,7 @@ loadAfter__24TMapEventSinkInPollutionFv: # 0x80190284
 
 branch_0x801902b0:
     lwz     r0, 0x60(r29)
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     add     r5, r0, r31
     lhz     r0, 0x0(r5)
     addi    r3, r4, 0x1ec
@@ -1115,7 +1115,7 @@ initBuriedBuilding__24TMapEventSinkInPollutionFv: # 0x8019031c
 
 branch_0x80190344:
     lwz     r0, 0x60(r29)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     add     r5, r0, r31
     lhz     r0, 0x0(r5)
     lwz     r4, 0x14(r3)
@@ -1169,7 +1169,7 @@ branch_0x801903ec:
     cmplwi  r0, 0x0
     bne-    branch_0x80190440
     lwz     r0, 0x60(r29)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     add     r5, r0, r31
     lhz     r0, 0x0(r5)
     lwz     r4, 0x14(r3)
@@ -1299,7 +1299,7 @@ branch_0x801905c0:
     lwz     r0, 0x20(r29)
     cmpw    r31, r0
     blt+    branch_0x8019056c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x801905f0
@@ -1582,7 +1582,7 @@ branch_0x80190988:
     lwz     r0, 0x48(r31)
     cmpw    r3, r0
     ble-    branch_0x80190a60
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x80190a10
@@ -1604,7 +1604,7 @@ branch_0x80190a10:
     li      r4, 0x3008
     lwz     r5, 0x50(r31)
     mulli   r0, r0, 0xc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     add     r30, r5, r0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1826,7 +1826,7 @@ branch_0x80190d1c:
 getPollutionObj__13TMapEventSinkFi: # 0x80190d24
     lwz     r5, 0x60(r3)
     slwi    r3, r4, 2
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     lhzx    r0, r5, r3
     add     r3, r5, r3
     lwz     r5, 0x14(r4)

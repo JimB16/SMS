@@ -93,7 +93,7 @@ load__18TMapObjFlagManagerFR20JSUMemoryInputStream: # 0x801db358
     addi    r4, sp, 0x20
     li      r5, 0x8
     bl      readString__14JSUInputStreamFPcUs
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmpwi   r0, 0x2
     beq-    branch_0x801db3b8
@@ -643,11 +643,11 @@ branch_0x801dbaf4:
     lfs     f0, 0x2c(r28)
     fcmpo   cr0, f0, f30
     ble-    branch_0x801dbb4c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x801dbb4c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x302f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

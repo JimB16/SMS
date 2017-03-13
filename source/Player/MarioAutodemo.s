@@ -100,7 +100,7 @@ branch_0x8023fe5c:
     cmplwi  r0, 0x0
     bne-    branch_0x8023fe7c
     addi    r3, r31, 0x0
-    li      r4, 0x7884
+    li      r4, SOUND_7884
     bl      startVoice__6TMarioFUl
     li      r0, 0x1
     sth     r0, 0x84(r31)
@@ -163,7 +163,7 @@ branch_0x8023ff00:
 branch_0x8023ff4c:
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -187,7 +187,7 @@ branch_0x8023ff70:
     cmpwi   r3, 0x1
     bne-    branch_0x8023ffb4
     addi    r3, r31, 0x0
-    addi    r4, r30, 0x467
+    addi    r4, r30, MARIOSTATUS_467
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -209,7 +209,7 @@ branch_0x8023ffbc:
     cmpwi   r3, 0x1
     bne-    branch_0x80240000
     addi    r3, r31, 0x0
-    addi    r4, r30, 0x467
+    addi    r4, r30, MARIOSTATUS_467
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -313,7 +313,7 @@ branch_0x80240100:
     beq-    branch_0x80240198
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -339,7 +339,7 @@ branch_0x8024016c:
     beq-    branch_0x80240198
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -369,7 +369,7 @@ electricDamage__6TMarioFv: # 0x802401b8
     cmplwi  r0, 0x0
     bne-    branch_0x8024021c
     addi    r3, r31, 0x0
-    li      r4, 0x7844
+    li      r4, SOUND_7844
     bl      startVoice__6TMarioFUl
     lfs     f1, -0x14a0(rtoc)
     addi    r3, r31, 0x0
@@ -396,7 +396,7 @@ branch_0x8024021c:
     mr      r3, r31
     bl      getMotionFrameCtrl__6TMarioFv
     lfs     f0, -0x1498(rtoc)
-    li      r4, 0x7852
+    li      r4, SOUND_7852
     stfs    f0, 0x10(r3)
     mr      r3, r31
     lhz     r5, 0x86(r31)
@@ -446,7 +446,7 @@ branch_0x80240284:
     lfs     f2, -0x1498(rtoc)
     blrl
     addi    r3, r31, 0x0
-    li      r4, 0x88d
+    li      r4, MARIOSTATUS_88d
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -564,7 +564,7 @@ branch_0x8024047c:
     beq-    branch_0x802404a8
     lhz     r0, 0x114(r31)
     addi    r3, r31, 0x0
-    li      r4, 0x891
+    li      r4, MARIOSTATUS_891
     ori     r0, r0, 0x2
     sth     r0, 0x114(r31)
     li      r5, 0x0
@@ -627,7 +627,7 @@ branch_0x80240540:
 branch_0x8024054c:
     lis     r4, 0xc00
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x230
+    addi    r4, r4, MARIOSTATUS_230
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -644,7 +644,7 @@ branch_0x80240568:
     beq-    branch_0x802405e0
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -661,7 +661,7 @@ branch_0x802405a4:
     beq-    branch_0x802405e0
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -682,7 +682,7 @@ toroccoStart__6TMarioFv: # 0x802405f8
     mflr    r0
     lis     r4, 0x80
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x447
+    addi    r4, r4, MARIOSTATUS_447
     li      r5, 0x0
     stwu    sp, -0x18(sp)
     li      r6, 0x1
@@ -789,7 +789,7 @@ branch_0x8024073c:
     addi    r3, r30, 0x0
     ori     r0, r0, 0x2
     sth     r0, 0x114(r30)
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -856,7 +856,7 @@ branch_0x8024083c:
     bl      setAnimation__6TMarioFif
     addi    r3, r30, 0x0
     ori     r5, r31, 0x2
-    li      r4, 0x1337
+    li      r4, MARIOSTATUS_1337
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
     b       branch_0x8024092c
@@ -899,7 +899,7 @@ branch_0x802408dc:
     bl      setAnimation__6TMarioFif
     addi    r3, r30, 0x0
     ori     r5, r31, 0x1
-    li      r4, 0x1337
+    li      r4, MARIOSTATUS_1337
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
 branch_0x8024092c:
@@ -974,7 +974,7 @@ branch_0x802409e0:
     lfs     f1, -0x14a0(rtoc)
     bl      setAnimation__6TMarioFif
     addi    r3, r30, 0x0
-    li      r4, 0x1337
+    li      r4, MARIOSTATUS_1337
     li      r5, 0x200
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1000,7 +1000,7 @@ isUnUsualStageStart__6TMarioFv: # 0x80240a58
     stwu    sp, -0x50(sp)
     stw     r31, 0x4c(sp)
     mr      r31, r3
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x3a
     bne-    branch_0x80240b34
@@ -1012,7 +1012,7 @@ isUnUsualStageStart__6TMarioFv: # 0x80240a58
 branch_0x80240a90:
     lis     r4, 0x80
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x447
+    addi    r4, r4, MARIOSTATUS_447
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1110,7 +1110,7 @@ branch_0x80240bd0:
     sth     r0, 0x4(r3)
 branch_0x80240be8:
     addi    r3, r31, 0x0
-    li      r4, 0x891
+    li      r4, MARIOSTATUS_891
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1255,7 +1255,7 @@ branch_0x80240dc4:
 branch_0x80240dcc:
     li      r4, 0x4
 branch_0x80240dd0:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     clrlwi  r4, r4, 24
     bl      setNextStage__12TMarDirectorFUsPQ26JDrama6TActor
 branch_0x80240ddc:
@@ -1358,7 +1358,7 @@ branch_0x80240f2c:
     li      r0, 0x1
     addi    r3, r31, 0x0
     stfs    f0, 0x468(r31)
-    li      r4, -0x2
+    li      r4, SOUND_fffe
     sth     r0, 0x84(r31)
     bl      startVoice__6TMarioFUl
     b       branch_0x802410cc
@@ -1517,7 +1517,7 @@ readBillboard__6TMarioFv: # 0x80241170
     stw     r31, 0x6c(sp)
     mr      r31, r3
     stw     r30, 0x68(sp)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lhz     r0, 0x84(r31)
     lwz     r5, 0xa0(r3)
     cmpwi   r0, 0x1
@@ -1622,7 +1622,7 @@ branch_0x802412c8:
     lha     r0, 0x96(r31)
     cmpw    r30, r0
     bne-    branch_0x8024134c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x2
     stb     r0, 0x126(r3)
     sth     r0, 0x84(r31)
@@ -1637,7 +1637,7 @@ branch_0x80241320:
 branch_0x80241334:
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1692,7 +1692,7 @@ branch_0x802413d4:
     bl      jumpProcess__6TMarioFi
     cmpwi   r3, 0x1
     bne-    branch_0x80241444
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r4, 0x384(r31)
     bl      fireGetStar__12TMarDirectorFP6TShine
     lwz     r3, 0x384(r31)

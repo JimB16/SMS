@@ -37,7 +37,7 @@ branch_0x80022e58:
     b       branch_0x80022f34
 
 branch_0x80022e68:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     li      r31, 0x0
     lwz     r5, -0x70f0(r13)
     lwz     r3, 0x0(r4)

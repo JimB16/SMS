@@ -178,12 +178,32 @@ branch_0x802976cc:
     slwi    r0, r3, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80297708:		# jumptable 80297704 case 0
     li      r28, 0x0
     b       branch_0x80297734
 
+branch_0x80297710:		# jumptable 80297704 case 2
+li	  r28, 1
+b	  def_80297704	# jumptable 80297704 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x292110, 0x80297734 - 0x80297710
+branch_0x80297718:		# jumptable 80297704 case 4
+li	  r28, 2
+b	  def_80297704	# jumptable 80297704 default case
+
+branch_0x80297720:		# jumptable 80297704 case 5
+li	  r28, 3
+b	  def_80297704	# jumptable 80297704 default case
+
+branch_0x80297728:		# jumptable 80297704 case 6
+li	  r28, 4
+b	  def_80297704	# jumptable 80297704 default case
+
+branch_0x80297730:		# jumptable 80297704 case 7
+li	  r28, 5
+
+def_80297704:		# jumptable 80297704 default case
 branch_0x80297734:
     stb     r28, 0x1(r29)
     b       branch_0x802978e8
@@ -361,7 +381,7 @@ branch_0x80297940:
     li      r0, 0x5
     stb     r0, 0xb4(r31)
 branch_0x80297948:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm. r0, r0, 0, 16, 16
     beq-    branch_0x80297960
@@ -425,9 +445,9 @@ branch_0x80297a08:
     lhz     r3, 0x4c(r31)
     clrlwi. r0, r3, 19
     bne-    branch_0x80297b10
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 21, 21
+    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
     beq-    branch_0x80297a2c
     li      r0, 0x1
     b       branch_0x80297a30
@@ -458,7 +478,7 @@ branch_0x80297a70:
     lwz     r0, 0xd4(r3)
     clrlwi. r0, r0, 31
     beq-    branch_0x80297ff4
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm. r0, r0, 0, 19, 19
     beq-    branch_0x80297a94
@@ -497,7 +517,7 @@ branch_0x80297ad4:
     b       branch_0x80297ff4
 
 branch_0x80297ae4:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x483d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -531,7 +551,7 @@ branch_0x80297b40:
     clrrwi  r3, r3, 1
     sth     r3, 0x4c(r31)
     stb     r0, 0x126(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r28, 0x74(r3)
     lwz     r3, 0x94(r28)
     bl      startAppearShineGet__11TConsoleStrFv
@@ -770,7 +790,7 @@ branch_0x80297e80:
     b       branch_0x80297ef4
 
 branch_0x80297eac:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      getRestDemoFrames__15CPolarSubCameraCFv
     cmpwi   r3, 0x0
     bne-    branch_0x80297ef4
@@ -805,7 +825,7 @@ branch_0x80297ef4:
     lbz     r0, 0x24c(r31)
     cmplw   r3, r0
     beq-    branch_0x80297fa0
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      endDemoCamera__15CPolarSubCameraFv
     lwz     r12, 0x14(r28)
     cmplwi  r12, 0x0
@@ -816,7 +836,7 @@ branch_0x80297ef4:
     blrl
 branch_0x80297f54:
     lbz     r0, 0x24d(r31)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     mulli   r4, r0, 0x24
     addi    r28, r4, 0x12c
     add     r28, r31, r28
@@ -851,7 +871,7 @@ branch_0x80297fc4:
     clrlwi. r0, r30, 24
     stb     r3, 0x126(r31)
     beq-    branch_0x80297fd8
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      endDemoCamera__15CPolarSubCameraFv
 branch_0x80297fd8:
     lwz     r12, 0x14(r28)
@@ -980,14 +1000,14 @@ branch_0x8029814c:
     cmpwi   r0, 0x1
     bne-    branch_0x8029818c
     add     r4, r31, r3
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x148(r4)
     bl      startGateDemoCamera__15CPolarSubCameraFPCQ26JDrama6TActor
     b       branch_0x802981d4
 
 branch_0x8029818c:
     add     r7, r31, r3
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x12c(r7)
     lwz     r5, 0x130(r7)
     lwz     r6, 0x134(r7)
@@ -1067,7 +1087,9 @@ nextStateInitialize__12TMarDirectorFUc: # 0x80298250
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8029829C:		# jumptable 80298298 case 1
     lwz     r3, 0x18(r31)
     li      r0, 0x0
     addi    r28, r30, 0x154
@@ -1141,7 +1163,7 @@ branch_0x8029836c:
     beq-    branch_0x80298384
     addi    r28, r30, 0x1c0
 branch_0x80298384:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     mr      r4, r28
     lfs     f1, -0x5e8(rtoc)
     li      r5, 0x0
@@ -1163,8 +1185,380 @@ branch_0x802983c4:
     bl      startStageEntranceDemo__10MSMainProcFUcUc
     b       branch_0x802988c8
 
+branch_0x802983D4:		# jumptable 80298298 case 3
+li	  r0, 0
+stw	  r0, 0x68(r31)
+lhz	  r0, 0x50(r31)
+clrlwi.	  r0, r0, 31
+bne	  def_80298298	# jumptable 80298298 default case
+lbz	  r4, 0x1(r29) #(byte_803E9701 - unk_803E9700)(r29)
+lbz	  r3, 0(r29)
+bl	  startStageBGM__10MSMainProcFUcUc # MSMainProc::startStageBGM((uchar,uchar))
+mr	  r3, r31
+bl	  setMario__12TMarDirectorFv # TMarDirector::setMario((void))
+lhz	  r0, 0x50(r31)
+ori	  r0, r0, 1
+sth	  r0, 0x50(r31)
+b	  def_80298298	# jumptable 80298298 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x292dd4, 0x802988c8 - 0x802983d4
+branch_0x8029840C:		# jumptable 80298298 case 2
+lhz	  r0, 0x50(r31)
+clrlwi.	  r0, r0, 31
+bne	  branch_0x80298438
+lbz	  r4, 0x1(r29) #(byte_803E9701 - unk_803E9700)(r29)
+lbz	  r3, 0(r29)
+bl	  startStageBGM__10MSMainProcFUcUc # MSMainProc::startStageBGM((uchar,uchar))
+mr	  r3, r31
+bl	  setMario__12TMarDirectorFv # TMarDirector::setMario((void))
+lhz	  r0, 0x50(r31)
+ori	  r0, r0, 1
+sth	  r0, 0x50(r31)
+
+branch_0x80298438:
+lbz	  r0, 0x7C(r31)
+cmplwi	  r0, 0xF
+beq	  branch_0x80298458
+lwz	  r4, 0x74(r31)
+li	  r0, -0xC
+lhz	  r3, 0xC(r4)
+and	  r0, r3, r0
+sth	  r0, 0xC(r4)
+
+branch_0x80298458:
+lbz	  r0, 0(r29)
+cmplwi	  r0, 1
+bne	  def_80298298	# jumptable 80298298 default case
+bl	  THPPlayerPlay
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x8029846C:		# jumptable 80298298 case 4
+lbz	  r0, 0x64(r31)
+cmplwi	  r0, 3
+bgt	  branch_0x80298498
+lbz	  r0, 0x7C(r31)
+cmplwi	  r0, 0xF
+beq	  branch_0x80298498
+lwz	  r4, 0x74(r31)
+li	  r0, -0xC
+lhz	  r3, 0xC(r4)
+and	  r0, r3, r0
+sth	  r0, 0xC(r4)
+
+branch_0x80298498:
+lhz	  r0, 0x50(r31)
+rlwinm.	  r0, r0, 0,30,30
+beq	  branch_0x802984BC
+lwz	  r3, 0x74(r31)
+lwz	  r3, 0x94(r3)
+bl	  startAppearGo__11TConsoleStrFv # TConsoleStr::startAppearGo((void))
+lhz	  r0, 0x50(r31)
+rlwinm	  r0, r0, 0,31,29
+sth	  r0, 0x50(r31)
+
+branch_0x802984BC:
+lhz	  r0, 0x50(r31)
+clrlwi.	  r0, r0, 31
+bne	  branch_0x802984E8
+lbz	  r4, 0x1(r29) #(byte_803E9701 - unk_803E9700)(r29)
+lbz	  r3, 0(r29)
+bl	  startStageBGM__10MSMainProcFUcUc # MSMainProc::startStageBGM((uchar,uchar))
+mr	  r3, r31
+bl	  setMario__12TMarDirectorFv # TMarDirector::setMario((void))
+lhz	  r0, 0x50(r31)
+ori	  r0, r0, 1
+sth	  r0, 0x50(r31)
+
+branch_0x802984E8:
+lbz	  r0, 0x124(r31)
+cmplwi	  r0, 0
+bne	  branch_0x802984FC
+addi	  r3, r31, 0xE8
+bl	  OSStartStopwatch
+
+branch_0x802984FC:
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+ori	  r0, r0, 2
+sth	  r0, 0xE2(r3)
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x80298514:		# jumptable 80298298 case 12
+lbz	  r0, 0(r29)
+cmplwi	  r0, 1
+bne	  branch_0x80298524	# jumptable 80298298 case 9
+bl	  THPPlayerStop
+
+branch_0x80298524:		# jumptable 80298298 case 9
+lis	  r3, unk_803E9700@ha
+lwz	  r4, 0xE4(r31)
+addi	  r3, r3, unk_803E9700@l
+lfs	  f1, -0x5E4(r2)
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+lfs	  f2, -0x5E8(r2)
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+lwz	  r0, 0xE4(r31)
+cmplwi	  r0, 8
+bne	  branch_0x80298574
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4859
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80298574
+li	  r3, 0x4859
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x80298574:
+lwz	  r27, gpMSound(r13)
+bl	  SMSGetVSyncTimesPerSec__Fv # SMSGetVSyncTimesPerSec(void)
+lfs	  f0, -0x5E4(r2)
+fmuls	  f1, f0, f1
+bl	  __cvt_fp2unsigned
+addi	  r4, r3, 0
+addi	  r3, r27, 0
+bl	  fadeOutAllSound__6MSoundFUl #	MSound::fadeOutAllSound((ulong))
+lwz	  r3, -0x60F0(r13)
+bl	  reset__9RumbleMgrFv #	RumbleMgr::reset((void))
+li	  r27, 0
+li	  r28, 0
+
+branch_0x802985A4:
+lwz	  r3, 0x18(r31)
+lwzx	  r3, r3, r28
+lha	  r3, 0x78(r3)
+bl	  stopMotor__Q210JUTGamePad7CRumbleFi #	JUTGamePad::CRumble::stopMotor((int))
+addi	  r27, r27, 1
+cmpwi	  r27, 4
+addi	  r28, r28, 4
+blt	  branch_0x802985A4
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x802985C8:		# jumptable 80298298 case 5
+lbz	  r0, 0(r29)
+cmplwi	  r0, 1
+bne	  branch_0x802985D8
+bl	  THPPlayerPause
+
+branch_0x802985D8:
+lwz	  r3, -0x60F0(r13)
+bl	  startPause__9RumbleMgrFv # RumbleMgr::startPause((void))
+lwz	  r3, 0xAC(r31)
+bl	  setDrawStart__11TPauseMenu2Fv	# TPauseMenu2::setDrawStart((void))
+li	  r27, 0
+li	  r28, 0
+
+branch_0x802985F0:
+lwz	  r3, 0x18(r31)
+lwzx	  r3, r3, r28
+lha	  r3, 0x78(r3)
+bl	  stopMotor__Q210JUTGamePad7CRumbleFi #	JUTGamePad::CRumble::stopMotor((int))
+addi	  r27, r27, 1
+cmpwi	  r27, 4
+addi	  r28, r28, 4
+blt	  branch_0x802985F0
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+ori	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x80298628:		# jumptable 80298298 case 10
+lbz	  r0, 0(r29)
+cmplwi	  r0, 1
+bne	  branch_0x80298638
+bl	  THPPlayerPause
+
+branch_0x80298638:
+lwz	  r3, -0x60F0(r13)
+bl	  startPause__9RumbleMgrFv # RumbleMgr::startPause((void))
+li	  r27, 0
+li	  r28, 0
+
+branch_0x80298648:
+lwz	  r3, 0x18(r31)
+lwzx	  r3, r3, r28
+lha	  r3, 0x78(r3)
+bl	  stopMotor__Q210JUTGamePad7CRumbleFi #	JUTGamePad::CRumble::stopMotor((int))
+addi	  r27, r27, 1
+cmpwi	  r27, 4
+addi	  r28, r28, 4
+blt	  branch_0x80298648
+lwz	  r4, 0x18(r31)
+addi	  r3, r30, 0x1CC
+lwz	  r4, 0(r4)
+lhz	  r0, 0xE2(r4)
+ori	  r0, r0, 1
+sth	  r0, 0xE2(r4)
+lwz	  r4, -0x5DB8(r13)
+lwz	  r27, 4(r4)
+bl	  calcKeyCode__Q26JDrama8TNameRefFPCc #	JDrama::TNameRef::calcKeyCode((char const *))
+lwz	  r12, 0(r27)
+addi	  r4, r3, 0
+addi	  r3, r27, 0
+lwz	  r12, 0x1C(r12)
+addi	  r5, r30, 0x1CC
+mtlr	  r12
+blrl
+lhz	  r0, 0xC(r3)
+ori	  r0, r0, 0xB
+sth	  r0, 0xC(r3)
+addi	  r3, r2, -0x5E0
+lwz	  r4, -0x5DB8(r13)
+lwz	  r27, 4(r4)
+bl	  calcKeyCode__Q26JDrama8TNameRefFPCc #	JDrama::TNameRef::calcKeyCode((char const *))
+lwz	  r12, 0(r27)
+addi	  r4, r3, 0
+addi	  r3, r27, 0
+lwz	  r12, 0x1C(r12)
+addi	  r5, r2, -0x5E0
+mtlr	  r12
+blrl
+lhz	  r5, 0xC(r3)
+li	  r0, -0xC
+li	  r4, 0x4817
+and	  r0, r5, r0
+sth	  r0, 0xC(r3)
+lwz	  r3, gpMSound(r13)
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80298718
+li	  r3, 0x4817
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x80298718:
+lis	  r3, unk_803E9700@ha
+lfs	  f1, -0x5F0(r2)
+addi	  r3, r3, unk_803E9700@l
+lfs	  f2, -0x5E8(r2)
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+li	  r4, 6
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+lwz	  r3, 0x78(r31)
+li	  r4, 0
+bl	  setup__6TGuideFP13JKRMemArchive # TGuide::setup((JKRMemArchive *))
+lwz	  r3, 0x78(r31)
+bl	  startMoveCursor__6TGuideFv # TGuide::startMoveCursor((void))
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x8029874C:		# jumptable 80298298 case 11
+lbz	  r0, 0(r29)
+cmplwi	  r0, 1
+bne	  branch_0x8029875C
+bl	  THPPlayerPause
+
+branch_0x8029875C:
+lwz	  r3, -0x60F0(r13)
+bl	  startPause__9RumbleMgrFv # RumbleMgr::startPause((void))
+lwz	  r3, 0xAC(r31)
+lbz	  r4, 0x261(r31)
+lwz	  r3, 0x118(r3)
+bl	  init__9TCardSaveFi # TCardSave::init((int))
+li	  r27, 0
+li	  r28, 0
+
+branch_0x8029877C:
+lwz	  r3, 0x18(r31)
+lwzx	  r3, r3, r28
+lha	  r3, 0x78(r3)
+bl	  stopMotor__Q210JUTGamePad7CRumbleFi #	JUTGamePad::CRumble::stopMotor((int))
+addi	  r27, r27, 1
+cmpwi	  r27, 4
+addi	  r28, r28, 4
+blt	  branch_0x8029877C
+lbz	  r0, 0x261(r31)
+cmpwi	  r0, 5
+bge	  branch_0x802987DC
+cmpwi	  r0, 3
+bge	  branch_0x802987B4
+b	  branch_0x802987DC
+
+branch_0x802987B4:
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4849
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802987DC
+li	  r3, 0x4849
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x802987DC:
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+ori	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x802987F4:		# jumptable 80298298 case 7
+lwz	  r3, gpMarDirector(r13)
+lwz	  r3, 0x74(r3)
+lwz	  r3, 0x94(r3)
+bl	  startAppearMiss__11TConsoleStrFv # TConsoleStr::startAppearMiss((void))
+lis	  r28, 2 # 0x20001
+lwz	  r3, -0x6060(r13)
+addi	  r4, r28, 1 # 0x20001
+li	  r5, 1
+bl	  decFlag__12TFlagManagerFUll #	TFlagManager::decFlag((ulong,long))
+lwz	  r0, 0x5C(r31)
+li	  r3, 0
+addi	  r4, r1, 0x160+var_28
+stw	  r0, 0x60(r31)
+li	  r0, 0xFF
+stb	  r3, 0x160+var_2C(r1)
+stb	  r3, 0x160+var_2C+1(r1)
+stb	  r3, 0x160+var_2C+2(r1)
+stb	  r0, 0x160+var_2C+3(r1)
+lwz	  r0, 0x160+var_2C(r1)
+stw	  r0, 0x160+var_28(r1)
+lwzu	  r3, 0x34(r27)
+bl	  setColor__9TSMSFaderFQ28JUtility6TColor # TSMSFader::setColor((JUtility::TColor))
+lwz	  r3, -0x6060(r13)
+addi	  r4, r28, 1 # 0x20001
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 0
+blt	  branch_0x802988A8
+lis	  r3, 0x8001000C@h
+addi	  r3, r3, 0x8001000C@l
+bl	  startBGM__5MSBgmFUl #	MSBgm::startBGM((ulong))
+lhz	  r0, 0x4E(r31)
+rlwinm.	  r0, r0, 0,28,28
+beq	  branch_0x80298890
+lwz	  r3, 0(r27)
+li	  r4, 2
+lfs	  f1, -0x5E8(r2)
+lfs	  f2, -0x5D8(r2)
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x80298890:
+lwz	  r3, 0(r27)
+li	  r4, 0xA
+lfs	  f1, -0x5E8(r2)
+lfs	  f2, -0x5D4(r2)
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+b	  def_80298298	# jumptable 80298298 default case
+
+branch_0x802988A8:
+lis	  r3, 0x80010028@h
+addi	  r3, r3, 0x80010028@l
+bl	  startBGM__5MSBgmFUl #	MSBgm::startBGM((ulong))
+lwz	  r3, 0(r27)
+li	  r4, 0xD
+lfs	  f1, -0x5E8(r2)
+lfs	  f2, -0x5D8(r2)
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+
+def_80298298:		# jumptable 80298298 default case
 branch_0x802988c8:
     lmw     r27, 0x14c(sp)
     lwz     r0, 0x164(sp)
@@ -1242,7 +1636,7 @@ branch_0x802989a0:
     lfs     f1, 0x74(r3)
     addi    r4, r3, 0x10
 branch_0x802989c8:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      rollingStart__6TMarioFPCQ29JGeometry8TVec3_f_f
     b       branch_0x80298a84
 
@@ -1278,14 +1672,14 @@ branch_0x80298a10:
     lfs     f1, 0x74(r3)
     addi    r4, r3, 0x10
 branch_0x80298a38:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     addi    r5, r30, 0x0
     addi    r6, r28, 0x0
     bl      returnStart__6TMarioFPCQ29JGeometry8TVec3_f_fbi
     b       branch_0x80298a84
 
 branch_0x80298a4c:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      toroccoStart__6TMarioFv
     b       branch_0x80298a84
 
@@ -1299,11 +1693,11 @@ branch_0x80298a58:
     addi    r4, r3, 0x10
     add     r4, r31, r4
 branch_0x80298a78:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f1, -0x5e8(rtoc)
     bl      waitingStart__6TMarioFPCQ29JGeometry8TVec3_f_f
 branch_0x80298a84:
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lis     r3, 0x803f
     subi    r3, r3, 0x6900
     lwz     r0, 0x118(r5)
@@ -1366,7 +1760,7 @@ branch_0x80298b28:
     addi    r3, r28, 0x0
     li      r5, 0x1
     bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     li      r4, 0x0
     li      r5, 0x1
     lwz     r3, 0x3e4(r3)
@@ -1383,7 +1777,7 @@ branch_0x80298b60:
     bl      getShineFlag__12TFlagManagerCFUc
     clrlwi. r0, r3, 24
     bne-    branch_0x80298b9c
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm  r0, r0, 0, 17, 15
     stw     r0, 0x118(r3)
@@ -1414,7 +1808,9 @@ currentStateFinalize__12TMarDirectorFUc: # 0x80298bb0
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80298BF8:		# jumptable 80298BF4 case 0
     lwz     r4, -0x5db8(r13)
     addi    r3, r30, 0x1cc
     lwz     r29, 0x4(r4)
@@ -1455,8 +1851,141 @@ currentStateFinalize__12TMarDirectorFUc: # 0x80298bb0
     bl      reset__9RumbleMgrFv
     b       branch_0x80298e64
 
+branch_0x80298C94:		# jumptable 80298BF4 case 1
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+clrrwi	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+lwz	  r3, gpCamera(r13)
+bl	  endDemoCamera__15CPolarSubCameraFv # CPolarSubCamera::endDemoCamera((void))
+lwz	  r3, 0x74(r31)
+lwz	  r3, 0x94(r3)
+bl	  startOpenWipe__11TConsoleStrFv # TConsoleStr::startOpenWipe((void))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lbz	  r4, 0xf(r3) #(byte_803E970F - unk_803E9700)(r3)
+lbz	  r3, 0xe(r3) #(byte_803E970E - unk_803E9700)(r3)
+bl	  endStageEntranceDemo__10MSMainProcFUcUc # MSMainProc::endStageEntranceDemo((uchar,uchar))
+b	  def_80298BF4	# jumptable 80298BF4 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x293694, 0x80298e64 - 0x80298c94
+branch_0x80298CD4:		# jumptable 80298BF4 case 4
+lbz	  r0, 0x124(r31)
+cmplwi	  r0, 0
+bne	  branch_0x80298CE8
+addi	  r3, r31, 0xE8
+bl	  OSStopStopwatch
+
+branch_0x80298CE8:
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+rlwinm	  r0, r0, 0,31,29
+sth	  r0, 0xE2(r3)
+b	  def_80298BF4	# jumptable 80298BF4 default case
+
+branch_0x80298D00:		# jumptable 80298BF4 case 5
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+clrrwi	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+lwz	  r3, -0x60F0(r13)
+bl	  finishPause__9RumbleMgrFv # RumbleMgr::finishPause((void))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lbz	  r0, 0xe(r3) #(byte_803E970E - unk_803E9700)(r3)
+cmplwi	  r0, 1
+bne	  def_80298BF4	# jumptable 80298BF4 default case
+bl	  THPPlayerPlay
+b	  def_80298BF4	# jumptable 80298BF4 default case
+
+branch_0x80298D38:		# jumptable 80298BF4 case 10
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+clrrwi	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+lwz	  r3, -0x60F0(r13)
+bl	  finishPause__9RumbleMgrFv # RumbleMgr::finishPause((void))
+lwz	  r4, -0x5DB8(r13)
+addi	  r3, r30, 0x1CC
+lwz	  r29, 4(r4)
+bl	  calcKeyCode__Q26JDrama8TNameRefFPCc #	JDrama::TNameRef::calcKeyCode((char const *))
+lwz	  r12, 0(r29)
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+lwz	  r12, 0x1C(r12)
+addi	  r5, r30, 0x1CC
+mtlr	  r12
+blrl
+lhz	  r4, 0xC(r3)
+li	  r0, -0xC
+and	  r0, r4, r0
+sth	  r0, 0xC(r3)
+addi	  r3, r2, -0x5E0
+lwz	  r4, -0x5DB8(r13)
+lwz	  r29, 4(r4)
+bl	  calcKeyCode__Q26JDrama8TNameRefFPCc #	JDrama::TNameRef::calcKeyCode((char const *))
+lwz	  r12, 0(r29)
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+lwz	  r12, 0x1C(r12)
+addi	  r5, r2, -0x5E0
+mtlr	  r12
+blrl
+lhz	  r0, 0xC(r3)
+addi	  r4, r13, -0x6018
+ori	  r0, r0, 0xB
+sth	  r0, 0xC(r3)
+addi	  r3, r2, -0x5D0
+bl	  SMSSwitch2DArchive__FPCcR10TARAMBlock	# SMSSwitch2DArchive(char const	*,TARAMBlock &)
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lbz	  r0, 0xe(r3) #(byte_803E970E - unk_803E9700)(r3)
+cmplwi	  r0, 1
+bne	  def_80298BF4	# jumptable 80298BF4 default case
+bl	  THPPlayerPlay
+b	  def_80298BF4	# jumptable 80298BF4 default case
+
+branch_0x80298DF0:		# jumptable 80298BF4 case 11
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lhz	  r0, 0xE2(r3)
+clrrwi	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+lwz	  r3, -0x60F0(r13)
+bl	  finishPause__9RumbleMgrFv # RumbleMgr::finishPause((void))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lbz	  r0, 0xe(r3) #(byte_803E970E - unk_803E9700)(r3)
+cmplwi	  r0, 1
+bne	  branch_0x80298E24
+bl	  THPPlayerPlay
+
+branch_0x80298E24:
+lbz	  r0, 0x261(r31)
+cmpwi	  r0, 4
+beq	  branch_0x80298E54
+bge	  def_80298BF4	# jumptable 80298BF4 default case
+cmpwi	  r0, 3
+bge	  branch_0x80298E40
+b	  def_80298BF4	# jumptable 80298BF4 default case
+
+branch_0x80298E40:
+lwz	  r3, 0x74(r31)
+li	  r4, 0x4B
+li	  r5, 1
+bl	  startAppearBalloon__11TGCConsole2FUlb	# TGCConsole2::startAppearBalloon((ulong,bool))
+b	  def_80298BF4	# jumptable 80298BF4 default case
+
+branch_0x80298E54:
+lwz	  r3, 0x74(r31)
+li	  r4, 0x4C
+li	  r5, 1
+bl	  startAppearBalloon__11TGCConsole2FUlb	# TGCConsole2::startAppearBalloon((ulong,bool))
+
+def_80298BF4:		# jumptable 80298BF4 default case
 branch_0x80298e64:
     lwz     r0, 0x124(sp)
     lwz     r31, 0x11c(sp)
@@ -1469,6 +1998,20 @@ branch_0x80298e64:
 
 .globl changeState__12TMarDirectorFv
 changeState__12TMarDirectorFv: # 0x80298e80
+
+.set var_D8, -0xD8
+.set var_D4, -0xD4
+.set var_74, -0x74
+.set var_72, -0x72
+.set var_48, -0x48
+.set var_44, -0x44
+.set var_40, -0x40
+.set var_3C, -0x3C
+.set var_28, -0x28
+.set var_1C, -0x1C
+.set var_8, -8
+.set arg_4,  4
+
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x168(sp)
@@ -1485,7 +2028,9 @@ changeState__12TMarDirectorFv: # 0x80298e80
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80298EC4:		# jumptable 80298EC0 case 0
     lis     r3, 0x803f
     subi    r3, r3, 0x6900
     lbz     r0, 0xe(r3)
@@ -1551,8 +2096,443 @@ branch_0x80298f84:
     li      r28, 0x4
     b       branch_0x8029953c
 
+branch_0x80298F8C:		# jumptable 80298EC0 case 1
+lhz	  r0, 0x4E(r31)
+rlwinm.	  r0, r0, 0,29,29
+beq	  branch_0x80298FC0
+lwz	  r3, 0x74(r31)
+lwz	  r3, 0x94(r3)
+lwz	  r0, 0x2B8(r3)
+cmpwi	  r0, 4
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+lhz	  r0, 0x4E(r31)
+li	  r28, 3
+rlwinm	  r0, r0, 0,30,28
+sth	  r0, 0x4E(r31)
+b	  def_80298EC0	# jumptable 80298EC0 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x29398c, 0x8029953c - 0x80298f8c
+branch_0x80298FC0:
+lwz	  r4, 0x74(r31)
+lis	  r3, unk_803E9700@ha
+addi	  r5, r3, unk_803E9700@l
+lwz	  r3, gpCamera(r13)
+lwz	  r29, 0x94(r4)
+addi	  r27, r5, 0xE
+bl	  getRestDemoFrames__15CPolarSubCameraCFv # CPolarSubCamera::getRestDemoFrames(const(void))
+xoris	  r0, r3, 0x8000
+lfd	  f2, -0x5C0(r2)
+stw	  r0, 0x168+var_28+4(r1)
+lis	  r0, 0x4330
+lfs	  f0, -0x5C8(r2)
+mr	  r3, r29
+stw	  r0, 0x168+var_28(r1)
+lfd	  f1, 0x168+var_28(r1)
+fsubs	  f1, f1, f2
+fdivs	  f31, f1, f0
+bl	  getWipeCloseTime__11TConsoleStrFv # TConsoleStr::getWipeCloseTime((void))
+fcmpo	  cr0, f31, f1
+cror	  eq, lt, eq
+beq	  branch_0x80299054
+lbz	  r3, 0(r27)
+cmplwi	  r3, 1
+bne	  branch_0x8029902C
+lbz	  r0, 0x1(r27) #(byte_803E9701 - unk_803E9700)(r27)
+cmplwi	  r0, 1
+beq	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x8029902C:
+cmplwi	  r3, 1
+bne	  branch_0x80299040
+lbz	  r0, 0x1(r27) #(byte_803E9701 - unk_803E9700)(r27)
+cmplwi	  r0, 9
+beq	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299040:
+lwz	  r3, 0x18(r31)
+lwz	  r3, 0(r3)
+lwz	  r0, 0xD4(r3)
+andi.	  r0, r0, 0x61
+beq	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299054:
+lhz	  r0, 0x4E(r31)
+ori	  r0, r0, 4
+sth	  r0, 0x4E(r31)
+lhz	  r0, 0x50(r31)
+lwz	  r3, 0x74(r31)
+rlwinm	  r0, r0, 0,28,28
+neg	  r4, r0
+lwz	  r3, 0x94(r3)
+addic	  r0, r4, -1
+subfe	  r4, r0, r4
+bl	  startCloseWipe__11TConsoleStrFb # TConsoleStr::startCloseWipe((bool))
+lhz	  r0, 0x50(r31)
+rlwinm	  r0, r0, 0,29,27
+sth	  r0, 0x50(r31)
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299090:		# jumptable 80298EC0 case 3
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lbz	  r0, 0xe(r3) #(byte_803E970E - unk_803E9700)(r3)
+cmplwi	  r0, 1
+bne	  branch_0x802990C0
+lwz	  r3, 0x74(r31)
+lwz	  r3, 0x94(r3)
+lwz	  r0, 0x2B8(r3)
+cmpwi	  r0, 6
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+li	  r28, 2
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x802990C0:
+lwz	  r3, 0x74(r31)
+lwz	  r3, 0x94(r3)
+lwz	  r0, 0x2B8(r3)
+cmpwi	  r0, 6
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+lwz	  r3, MarioActor(r13)
+lwz	  r0, 0x7C(r3)
+rlwinm.	  r0, r0, 0,19,19
+beq	  branch_0x802990EC
+li	  r0, 1
+b	  branch_0x802990F0
+
+branch_0x802990EC:
+li	  r0, 0
+
+branch_0x802990F0:
+clrlwi.	  r0, r0, 24
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+li	  r28, 4
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299100:		# jumptable 80298EC0 case 2
+lwz	  r3, 0xE0(r31)
+lbz	  r0, 0x26(r3)
+cmplwi	  r0, 0
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+lwz	  r3, MarioActor(r13)
+lwz	  r0, 0x7C(r3)
+rlwinm.	  r0, r0, 0,19,19
+beq	  branch_0x80299128
+li	  r0, 1
+b	  branch_0x8029912C
+
+branch_0x80299128:
+li	  r0, 0
+
+branch_0x8029912C:
+clrlwi.	  r0, r0, 24
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+li	  r28, 4
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x8029913C:		# jumptable 80298EC0 case 4
+mr	  r3, r31
+bl	  updateGameMode__12TMarDirectorFv # TMarDirector::updateGameMode((void))
+mr	  r28, r3
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x8029914C:		# jumptable 80298EC0 case 5
+lwz	  r3, 0xAC(r31)
+bl	  getNextState__11TPauseMenu2Fv	# TPauseMenu2::getNextState((void))
+clrlwi	  r0, r3, 24
+cmpwi	  r0, 1
+beq	  branch_0x80299184
+bge	  branch_0x80299170
+cmpwi	  r0, 0
+bge	  branch_0x8029917C
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299170:
+cmpwi	  r0, 5
+beq	  branch_0x80299198
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x8029917C:
+li	  r28, 4
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299184:
+li	  r0, 4
+stw	  r0, 0xE4(r31)
+li	  r28, 0xC
+stb	  r0, 0xB4(r31)
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299198:
+addi	  r3, r1, 0x168+var_72
+li	  r4, 0
+bl	  __ct__Q26JDrama10TFlagT_Us_FUs
+li	  r28, 0
+sth	  r28, 0x168+var_D4(r1)
+addi	  r6, r1, 0x168+var_D4
+addi	  r3, r1, 0x168+var_74
+li	  r4, 0
+li	  r5, 0
+bl	  set__13TGameSequenceFUcUcQ26JDrama10TFlagT_Us_
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lbz	  r3, 0xe(r3) #(byte_803E970E - unk_803E9700)(r3)
+bl	  SMS_getShineStage__FUc # SMS_getShineStage(uchar)
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802991E0
+blt	  branch_0x802991F8
+b	  branch_0x802991F8
+
+branch_0x802991E0:
+li	  r0, 1
+stb	  r0, 0x168+var_74(r1)
+li	  r0, 0xFF
+stb	  r0, 0x168+var_74+1(r1)
+sth	  r28, 0x168+var_72(r1)
+b	  branch_0x80299210
+
+branch_0x802991F8:
+li	  r0, 1
+stb	  r0, 0x168+var_74(r1)
+li	  r3, 0xFF
+li	  r0, 0
+stb	  r3, 0x168+var_74+1(r1)
+sth	  r0, 0x168+var_72(r1)
+
+branch_0x80299210:
+lhz	  r0, 0x168+var_72(r1)
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lbz	  r4, 0x168+var_74(r1)
+sth	  r0, 0x168+var_D8(r1)
+lbz	  r5, 0x168+var_74+1(r1)
+addi	  r6, r1, 0x168+var_D8
+addi	  r3, r3, 0x12
+bl	  set__13TGameSequenceFUcUcQ26JDrama10TFlagT_Us_
+lhz	  r0, 0x4C(r31)
+addi	  r3, r31, 0
+rlwinm	  r0, r0, 0,24,22
+sth	  r0, 0x4C(r31)
+bl	  moveStage__12TMarDirectorFv #	TMarDirector::moveStage((void))
+li	  r0, 2
+stw	  r0, 0xE4(r31)
+li	  r28, 9
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299258:		# jumptable 80298EC0 case 10
+lwz	  r3, 0x78(r31)
+lbz	  r0, 0xC4(r3)
+cmplwi	  r0, 0
+beq	  def_80298EC0	# jumptable 80298EC0 default case
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+lwz	  r0, 0x20(r3)
+cmpwi	  r0, 1
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+li	  r28, 4
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299288:		# jumptable 80298EC0 case 11
+lwz	  r3, 0xAC(r31)
+lwz	  r3, 0x118(r3)
+bl	  getNextState__9TCardSaveFv # TCardSave::getNextState((void))
+clrlwi	  r0, r3, 24
+cmpwi	  r0, 1
+beq	  branch_0x80299364
+bge	  def_80298EC0	# jumptable 80298EC0 default case
+cmpwi	  r0, 0
+bge	  branch_0x802992B0
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x802992B0:
+lbz	  r0, 0x261(r31)
+cmplwi	  r0, 7
+bne	  branch_0x8029935C
+lwz	  r3, -0x6060(r13)
+bl	  restore__12TFlagManagerFv # TFlagManager::restore((void))
+lis	  r4, 3	# 0x30001
+lwz	  r3, -0x6060(r13)
+addi	  r5, r4, 1 # 0x30001
+li	  r4, 1
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+lwz	  r3, -0x6060(r13)
+lis	  r4, 4
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 0
+bne	  branch_0x80299308
+lis	  r3, unk_803E9700@ha
+li	  r0, 0
+addi	  r3, r3, unk_803E9700@l
+stbu	  r0, 0x12(r3) #(byte_803E9712 - unk_803E9700)(r3)
+stb	  r0, 1(r3)
+sth	  r0, 2(r3)
+b	  branch_0x8029932C
+
+branch_0x80299308:
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+addi	  r4, r3, 0x12
+li	  r0, 1
+stb	  r0, 0x12(r3) #(byte_803E9712 - unk_803E9700)(r3)
+li	  r3, 0xFF
+li	  r0, 0
+stb	  r3, 0x1(r4) #(byte_803E9701 - unk_803E9700)(r4)
+sth	  r0, 0x2(r4) #(word_803E9702 - unk_803E9700)(r4)
+
+branch_0x8029932C:
+lhz	  r0, 0x4C(r31)
+addi	  r3, r31, 0
+rlwinm	  r0, r0, 0,24,22
+sth	  r0, 0x4C(r31)
+bl	  moveStage__12TMarDirectorFv #	TMarDirector::moveStage((void))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+li	  r4, 0
+bl	  setFadeStatus__9TSMSFaderFQ29TSMSFader11EFadeStatus #	TSMSFader::setFadeStatus((TSMSFader::EFadeStatus))
+li	  r30, 5
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x8029935C:
+li	  r28, 4
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x80299364:
+lbz	  r0, 0x261(r31)
+cmplwi	  r0, 7
+bne	  branch_0x8029938C
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+li	  r4, 0
+bl	  setFadeStatus__9TSMSFaderFQ29TSMSFader11EFadeStatus #	TSMSFader::setFadeStatus((TSMSFader::EFadeStatus))
+li	  r30, 4
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x8029938C:
+li	  r0, 4
+stw	  r0, 0xE4(r31)
+li	  r28, 0xC
+stb	  r0, 0xB4(r31)
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x802993A0:		# jumptable 80298EC0 case 7
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+addi	  r29, r3, 0x34
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+lwz	  r0, 0x20(r3)
+cmpwi	  r0, 0
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+li	  r3, 2
+bl	  getHandle__5MSBgmFUc # MSBgm::getHandle((uchar))
+cmplwi	  r3, 0
+beq	  branch_0x802993E0
+lwz	  r3, 0x60(r31)
+lwz	  r0, 0x5C(r31)
+subf	  r0, r3, r0
+cmpwi	  r0, 0x4B0
+blt	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x802993E0:
+lis	  r4, 2	# 0x20001
+lwz	  r3, -0x6060(r13)
+addi	  r4, r4, 1 # 0x20001
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 0
+blt	  branch_0x802994AC
+lis	  r4, 3	# 0x30002
+lwz	  r3, -0x6060(r13)
+addi	  r5, r4, 2 # 0x30002
+li	  r4, 1
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+addi	  r28, r3, 0xE
+bl	  SMS_isExMap__Fv # SMS_isExMap(void)
+clrlwi.	  r0, r3, 24
+bne	  branch_0x80299438
+lbz	  r0, 0(r28)
+cmplwi	  r0, 0
+beq	  branch_0x80299438
+cmplwi	  r0, 0x3C
+bne	  branch_0x80299458
+
+branch_0x80299438:
+lbz	  r0, 0(r28)
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+stbu	  r0, 0x12(r3) #(byte_803E9712 - unk_803E9700)(r3)
+li	  r0, 0
+stb	  r0, 1(r3)
+sth	  r0, 2(r3)
+b	  branch_0x8029945C
+
+branch_0x80299458:		# decideNextStage(void)
+bl	  decideNextStage__Fv
+
+branch_0x8029945C:
+lhz	  r0, 0x4C(r31)
+addi	  r3, r31, 0
+rlwinm	  r0, r0, 0,24,22
+sth	  r0, 0x4C(r31)
+bl	  moveStage__12TMarDirectorFv #	TMarDirector::moveStage((void))
+li	  r0, 0xF
+stw	  r0, 0xE4(r31)
+li	  r3, 0
+li	  r0, 0xFF
+stb	  r3, 0x168+var_40(r1)
+addi	  r4, r1, 0x168+var_3C
+stb	  r3, 0x168+var_40+1(r1)
+stb	  r3, 0x168+var_40+2(r1)
+stb	  r0, 0x168+var_40+3(r1)
+lwz	  r0, 0x168+var_40(r1)
+stw	  r0, 0x168+var_3C(r1)
+lwz	  r3, 0(r29)
+bl	  setColor__9TSMSFaderFQ28JUtility6TColor # TSMSFader::setColor((JUtility::TColor))
+li	  r28, 0xC
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x802994AC:
+lwz	  r3, 0(r29)
+li	  r4, 0xE
+lfs	  f1, -0x5C4(r2)
+lfs	  f2, -0x5E8(r2)
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+li	  r3, 0
+stb	  r3, 0x168+var_48(r1)
+li	  r0, 0xFF
+addi	  r4, r1, 0x168+var_44
+stb	  r3, 0x168+var_48+1(r1)
+stb	  r3, 0x168+var_48+2(r1)
+stb	  r0, 0x168+var_48+3(r1)
+lwz	  r0, 0x168+var_48(r1)
+stw	  r0, 0x168+var_44(r1)
+lwz	  r3, 0(r29)
+bl	  setColor__9TSMSFaderFQ28JUtility6TColor # TSMSFader::setColor((JUtility::TColor))
+li	  r0, 7
+stb	  r0, 0x261(r31)
+li	  r28, 0xB
+lwz	  r3, 0x74(r31)
+bl	  startDisappearStar__11TGCConsole2Fv #	TGCConsole2::startDisappearStar((void))
+lwz	  r3, 0x74(r31)
+bl	  startDisappearCoin__11TGCConsole2Fv #	TGCConsole2::startDisappearCoin((void))
+b	  def_80298EC0	# jumptable 80298EC0 default case
+
+branch_0x8029950C:		# jumptable 80298EC0 cases 9,12
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+lwz	  r0, 0x20(r3)
+cmpwi	  r0, 0
+bne	  def_80298EC0	# jumptable 80298EC0 default case
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x100
+bl	  checkWaveOnAram__6MSoundF13MS_SCENE_WAVE # MSound::checkWaveOnAram((MS_SCENE_WAVE))
+clrlwi.	  r0, r3, 24
+beq	  def_80298EC0	# jumptable 80298EC0 default case
+lbz	  r30, 0xB4(r31)
+
+def_80298EC0:		# jumptable 80298EC0 default case
 branch_0x8029953c:
     lwz     r3, 0x18(r31)
     li      r4, 0x1
@@ -1857,7 +2837,7 @@ branch_0x802998c4:
     addi    r3, sp, 0x10c
     bl      __ct__Q29JGeometry13SMatrix34C_f_Fv
     li      r0, -0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stw     r0, 0x14c(sp)
     li      r0, 0x0
     li      r28, 0x0
@@ -1906,7 +2886,7 @@ branch_0x802999c8:
     ori     r27, r27, 0x2
     clrrwi  r24, r24, 1
 branch_0x802999d0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stb     r24, 0xac(r3)
     lbz     r0, 0x64(r26)
     cmpwi   r0, 0xa
@@ -2124,7 +3104,7 @@ branch_0x80299c28:
 branch_0x80299cb4:
     clrlwi. r0, r24, 24
     bne-    branch_0x80299ccc
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lha     r0, 0x2c8(r3)
     cmpwi   r0, -0x1
     beq-    branch_0x80299ce8
@@ -2155,7 +3135,7 @@ branch_0x80299d08:
     b       branch_0x8029994c
 
 branch_0x80299d24:
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r29
     stb     r30, 0xac(r4)
 branch_0x80299d30:

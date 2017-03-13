@@ -76,7 +76,7 @@ branch_0x80175fc0:
     stw     r0, 0xac(sp)
     lwz     r3, 0x0(r29)
     bl      setColor__9TSMSFaderFQ28JUtility6TColor
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      initSound__6MSoundFv
     li      r3, 0x0
     b       branch_0x8017616c
@@ -130,7 +130,7 @@ branch_0x8017602c:
     stw     r0, 0xa0(sp)
     lwz     r3, 0x0(r31)
     bl      setColor__9TSMSFaderFQ28JUtility6TColor
-    lwz     r29, -0x6044(r13)
+    lwz     r29, gpMSound(r13)
     bl      SMSGetVSyncTimesPerSec__Fv
     bl      __cvt_fp2unsigned
     addi    r4, r3, 0x0
@@ -154,7 +154,7 @@ branch_0x801760ac:
     lfs     f1, -0x47c8(rtoc)
     lfs     f2, -0x47cc(rtoc)
     bl      startWipe__9TSMSFaderFUlff
-    lwz     r29, -0x6044(r13)
+    lwz     r29, gpMSound(r13)
     bl      SMSGetVSyncTimesPerSec__Fv
     lfs     f0, -0x47d0(rtoc)
     fmuls   f1, f0, f1
@@ -171,7 +171,7 @@ branch_0x80176120:
     lwz     r0, 0x20(r3)
     cmpwi   r0, 0x0
     bne-    branch_0x80176168
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      stopAllSound__6MSoundFv
     lwz     r3, 0x18(r30)
     li      r4, 0x1

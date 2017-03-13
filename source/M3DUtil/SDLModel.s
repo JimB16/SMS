@@ -53,7 +53,7 @@ viewCalcSimple__8SDLModelFv: # 0x8023d36c
     lwz     r3, 0x64(r30)
     slwi    r0, r0, 2
     stwx    r4, r3, r0
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r28, r3, 0x1ec
     b       branch_0x8023d3fc
 

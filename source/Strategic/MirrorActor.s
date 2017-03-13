@@ -432,7 +432,7 @@ branch_0x80224afc:
     b       branch_0x80224b44
 
 branch_0x80224b28:
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x0(r3)
     stfs    f0, 0x50(sp)
     lfs     f0, 0x4(r3)

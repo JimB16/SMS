@@ -29,7 +29,9 @@ branch_0x802b16ec:
     slwi    r0, r0, 2
     lwzx    r0, r31, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802B1710:		# jumptable 802B170C case 1
     addi    r3, r29, 0x0
     li      r4, 0x0
     bl      mount___12TCardManagerFb
@@ -61,8 +63,105 @@ branch_0x802b1778:
     stw     r28, 0x128(r29)
     b       branch_0x802b18a8
 
+branch_0x802B1780:		# jumptable 802B170C case 2
+mr	  r3, r29
+bl	  createFile___12TCardManagerFv	# TCardManager::createFile_((void))
+stw	  r3, 0x128(r29)
+b	  def_802B170C	# jumptable 802B170C default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2ac180, 0x802b18a8 - 0x802b1780
+branch_0x802B1790:		# jumptable 802B170C case 3
+mr	  r3, r29
+bl	  getBookmarkInfos___12TCardManagerFv #	TCardManager::getBookmarkInfos_((void))
+stw	  r3, 0x128(r29)
+b	  def_802B170C	# jumptable 802B170C default case
+
+branch_0x802B17A0:		# jumptable 802B170C case 5
+mr	  r3, r29
+lwz	  r4, 0x474(r29)
+bl	  readBlock___12TCardManagerFUl	# TCardManager::readBlock_((ulong))
+stw	  r3, 0x128(r29)
+b	  def_802B170C	# jumptable 802B170C default case
+
+branch_0x802B17B4:		# jumptable 802B170C case 6
+mr	  r3, r29
+lwz	  r4, 0x474(r29)
+bl	  writeBlock___12TCardManagerFUl # TCardManager::writeBlock_((ulong))
+stw	  r3, 0x128(r29)
+b	  def_802B170C	# jumptable 802B170C default case
+
+branch_0x802B17C8:		# jumptable 802B170C case 7
+addi	  r3, r29, 0
+addi	  r4, r1, 0x58+var_40
+bl	  open___12TCardManagerFP12CARDFileInfo	# TCardManager::open_((CARDFileInfo *))
+mr.	  r28, r3
+bne	  branch_0x802B188C
+lwz	  r0, 0xC(r29)
+lwz	  r27, 0x130(r29)
+cmpwi	  r0, 1
+bne	  branch_0x802B1818
+addi	  r3, r27, 4
+li	  r4, 0
+li	  r5, 0x1FF8
+bl	  memset
+li	  r0, 0
+stw	  r0, 0(r27)
+addi	  r3, r27, 0
+li	  r4, 0x1FFC
+bl	  CalcCheckSum__FPCvUl # CalcCheckSum(void const *,ulong)
+stw	  r3, 0x1FFC(r27)
+b	  branch_0x802B188C
+
+branch_0x802B1818:
+addi	  r4, r27, 0
+addi	  r3, r1, 0x58+var_40
+li	  r5, 0x2000
+li	  r6, 0
+bl	  CARDRead
+mr.	  r28, r3
+bne	  branch_0x802B1878
+lwz	  r25, 0(r27)
+addi	  r3, r27, 0
+addi	  r26, r27, 4
+li	  r4, 0x1FFC
+bl	  CalcCheckSum__FPCvUl # CalcCheckSum(void const *,ulong)
+lwz	  r0, 0x1FFC(r27)
+subf	  r0, r0, r3
+cntlzw	  r0, r0
+extrwi.	  r0, r0, 8,19
+beq	  branch_0x802B1864
+li	  r4, 3
+b	  branch_0x802B1868
+
+branch_0x802B1864:
+li	  r4, 2
+
+branch_0x802B1868:
+addi	  r5, r25, 0
+addi	  r6, r26, 0
+addi	  r3, r29, 0xC
+bl	  set__Q212TCardManager9TCriteriaFQ312TCardManager9TCriteria11TEBlockStatUlPCv # TCardManager::TCriteria::set((TCardManager::TCriteria::TEBlockStat,ulong,void const *))
+
+branch_0x802B1878:
+addi	  r3, r1, 0x58+var_40
+bl	  CARDClose
+cmpwi	  r28, 0
+bne	  branch_0x802B188C
+mr	  r28, r3
+
+branch_0x802B188C:
+stw	  r28, 0x128(r29)
+b	  def_802B170C	# jumptable 802B170C default case
+
+branch_0x802B1894:		# jumptable 802B170C case 8
+mr	  r3, r29
+bl	  writeOptionBlock___12TCardManagerFv #	TCardManager::writeOptionBlock_((void))
+stw	  r3, 0x128(r29)
+b	  def_802B170C	# jumptable 802B170C default case
+
+branch_0x802B18A4:		# jumptable 802B170C case 9
+li	  r30, 0
+
+def_802B170C:		# jumptable 802B170C default case
 branch_0x802b18a8:
     li      r0, 0x0
     stw     r0, 0x448(r29)

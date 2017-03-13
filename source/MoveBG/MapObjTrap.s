@@ -62,13 +62,13 @@ perform__13TLampTrapIronFUlPQ26JDrama9TGraphics: # 0x80201338
     lwz     r0, 0x13c(r29)
     cmpwi   r0, 0x0
     ble-    branch_0x802013c0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1f1
     li      r6, 0x3
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x12c
@@ -105,7 +105,7 @@ control__13TLampTrapIronFv: # 0x802013dc
     clrlwi. r0, r3, 24
     beq-    branch_0x80201450
     addi    r3, r31, 0x0
-    li      r4, 0xa
+    li      r4, MARIOMSG_HURTFIRE
     bl      SMS_SendMessageToMario__FP9THitActorUl
     b       branch_0x80201450
 
@@ -157,7 +157,7 @@ branch_0x80201494:
     stw     r0, 0x140(r31)
     bl      getModel__10TLiveActorCFv
     addi    r5, r3, 0x20
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     li      r4, 0x64
     li      r6, 0x0
@@ -353,7 +353,7 @@ branch_0x8020176c:
     clrlwi. r0, r0, 24
     beq-    branch_0x80201780
     addi    r3, r31, 0x0
-    li      r4, 0xa
+    li      r4, MARIOMSG_HURTFIRE
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x80201780:
     addi    r29, r29, 0x1
@@ -561,7 +561,7 @@ branch_0x802019f8:
     stfs    f0, 0x10(r3)
     lfs     f0, -0x1dd0(rtoc)
     stfs    f0, 0xc(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80201a78
@@ -713,7 +713,7 @@ branch_0x80201c38:
     clrlwi. r0, r3, 24
     beq-    branch_0x80201c78
     addi    r3, r31, 0x0
-    li      r4, 0xa
+    li      r4, MARIOMSG_HURTFIRE
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x80201c78:
     lmw     r27, 0x4c(sp)
@@ -911,7 +911,7 @@ branch_0x80201f0c:
     clrlwi. r0, r0, 24
     beq-    branch_0x80201f20
     addi    r3, r31, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x80201f20:
     addi    r29, r29, 0x1

@@ -52,8 +52,12 @@ getPtrInitPollutionColor__8TBaseNPCCFv: # 0x80206304
     slwi    r4, r4, 2
     lwzx    r0, r3, r4
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80206354:		# jumptable 80206350 cases 0,1,3,9,10,13,18,21
     li      r5, 0x1
+
+def_80206350:		# jumptable 80206350 default case
 branch_0x80206358:
     clrlwi. r0, r5, 24
     beq-    branch_0x80206368
@@ -315,7 +319,7 @@ branch_0x80206648:
     lwz     r3, 0x58(r4)
     lfs     f31, 0x0(r3)
 branch_0x802066c4:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r4, r3, 0x148
     addi    r3, r3, 0x124
     lfs     f3, 0x8(r4)
@@ -326,7 +330,7 @@ branch_0x802066c4:
     fsubs   f2, f2, f0
     bl      matan__Fff
     extsh   r0, r3
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     xoris   r0, r0, 0x8000
     lfs     f0, -0x1d40(rtoc)
     stw     r0, 0x18c(sp)
@@ -486,7 +490,7 @@ branch_0x8020691c:
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x80206964
     lis     r31, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r31, 0x7fe9
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -580,7 +584,7 @@ branch_0x80206a28:
 branch_0x80206a6c:
     mr      r3, r28
     bl      getAnmOffDist___8TBaseNPCFv
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfsu    f3, 0x124(r3)
     lfs     f4, 0x10(r28)
     lfs     f2, 0x14(r28)
@@ -672,7 +676,7 @@ branch_0x80206ba8:
     lwz     r0, 0xf0(r28)
     rlwinm  r0, r0, 0, 8, 6
     stw     r0, 0xf0(r28)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     lfsu    f2, 0x124(r4)
     lfs     f3, 0x10(r28)
     lfs     f1, 0x14(r28)
@@ -749,7 +753,7 @@ getAnmOffDist___8TBaseNPCFv: # 0x80206c98
     mr      r30, r3
     lwz     r0, 0x170(r3)
     lwz     r4, 0xd0(r3)
-    lwz     r5, -0x7118(r13)
+    lwz     r5, gpCamera(r13)
     andi.   r0, r0, 0x204
     lwz     r3, -0x6220(r13)
     lfs     f31, 0x2c(r5)
@@ -1042,7 +1046,7 @@ branch_0x80207070:
     lwz     r3, 0x188(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x8020715c
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     li      r4, 0x1
     lwz     r30, 0x0(r3)
     mr      r5, r4
@@ -1347,8 +1351,12 @@ branch_0x80207474:
     slwi    r4, r4, 2
     lwzx    r0, r3, r4
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802074A8:		# jumptable 802074A4 cases 0,1,8,13,21,22
     li      r5, 0x0
+
+def_802074A4:		# jumptable 802074A4 default case
 branch_0x802074ac:
     clrlwi. r0, r5, 24
     beq-    branch_0x802074c4
@@ -1422,8 +1430,12 @@ branch_0x80207588:
     slwi    r4, r4, 2
     lwzx    r0, r3, r4
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802075B4:		# jumptable 802075B0 cases 0,2,3,5,7-9
     li      r28, 0x1
+
+def_802075B0:		# jumptable 802075B0 default case
 branch_0x802075b8:
     clrlwi. r0, r28, 24
     beq-    branch_0x802075dc
@@ -1490,7 +1502,7 @@ isInMadSearchRange__8TBaseNPCCFv: # 0x8020766c
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     li      r31, 0x0
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r7, 0x228(r3)
     lfs     f2, 0x4(r4)
     lfs     f1, 0x14(r3)
@@ -1522,7 +1534,7 @@ isInBodyTurnSearchRange__8TBaseNPCCFv: # 0x802076d8
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     li      r31, 0x0
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r7, 0x228(r3)
     lfs     f2, 0x4(r4)
     lfs     f1, 0x14(r3)
@@ -1560,7 +1572,7 @@ isNeedNeckStraight__8TBaseNPCCFv: # 0x80207744
     cmplwi  r4, 0x0
     lwz     r29, 0x14(r3)
     beq-    branch_0x8020777c
-    lwz     r0, -0x60b8(r13)
+    lwz     r0, MarioHitActor(r13)
     cmplw   r4, r0
     beq-    branch_0x80207878
 branch_0x8020777c:
@@ -1705,8 +1717,12 @@ isBehaveToWaterNpc__8TBaseNPCCFv: # 0x80207910
     slwi    r5, r5, 2
     lwzx    r0, r4, r5
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80207940:		# jumptable 8020793C cases 0,1,8,13,21,22
     li      r3, 0x0
+
+locret_80207944:	# jumptable 8020793C cases 2-7,9-12,14-20
     blr
 
 
@@ -1918,8 +1934,12 @@ isPollutionNpc__8TBaseNPCCFv: # 0x80207bc4
     slwi    r5, r5, 2
     lwzx    r0, r4, r5
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80207BF4:		# jumptable 80207BF0 cases 0,1,3,9,10,13,18,21
     li      r3, 0x1
+
+locret_80207BF8:	# jumptable 80207BF0 cases 2,4-8,11,12,14-17,19,20
     blr
 
 
@@ -2209,7 +2229,7 @@ loadAfter__8TBaseNPCFv: # 0x80207f04
     addis   r0, r3, 0xfc00
     cmplwi  r0, 0x18
     bne-    branch_0x80207f6c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x80207f6c
@@ -2227,7 +2247,7 @@ loadAfter__8TBaseNPCFv: # 0x80207f04
 branch_0x80207f68:
     stw     r3, 0x188(r31)
 branch_0x80207f6c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     mr      r4, r31
     bl      entryNPC__12TMarDirectorFP8TBaseNPC
     lwz     r0, 0x44(sp)

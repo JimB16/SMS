@@ -15,7 +15,9 @@ fireStreamingMovie__12TMarDirectorFUc: # 0x8029a044
     slwi    r0, r31, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8029A080:		# jumptable 8029A07C case 0
     lhz     r0, 0x4c(r3)
     rlwinm. r0, r0, 0, 23, 23
     bne-    branch_0x8029a214
@@ -40,8 +42,82 @@ fireStreamingMovie__12TMarDirectorFUc: # 0x8029a044
     stw     r31, 0x18(r3)
     b       branch_0x8029a214
 
+branch_0x8029A0DC:		# jumptable 8029A07C case 10
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+rlwinm.	  r0, r0, 0,23,23
+bne	  branch_0x8029a214
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+li	  r4, 0x3B
+li	  r5, 0
+ori	  r0, r0, 0x100
+sth	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+bl	  setNextStage__12TMarDirectorFUsPQ26JDrama6TActor # TMarDirector::setNextStage((ushort,JDrama::TActor *))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+stw	  r31, 0x18(r3) #(dword_803E9718 - unk_803E9700)(r3)
+b	  branch_0x8029a214
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x294adc, 0x8029a1e0 - 0x8029a0dc
+branch_0x8029A110:		# jumptable 8029A07C case 7
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+rlwinm.	  r0, r0, 0,23,23
+bne	  branch_0x8029a214
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+li	  r4, 0xE06
+li	  r5, 0
+ori	  r0, r0, 0x100
+sth	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+bl	  setNextStage__12TMarDirectorFUsPQ26JDrama6TActor # TMarDirector::setNextStage((ushort,JDrama::TActor *))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+stw	  r31, 0x18(r3) #(dword_803E9718 - unk_803E9700)(r3)
+b	  branch_0x8029a214
+
+branch_0x8029A144:		# jumptable 8029A07C case 8
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+rlwinm.	  r0, r0, 0,23,23
+bne	  branch_0x8029a214
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+li	  r4, 0xE07
+li	  r5, 0
+ori	  r0, r0, 0x100
+sth	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+bl	  setNextStage__12TMarDirectorFUsPQ26JDrama6TActor # TMarDirector::setNextStage((ushort,JDrama::TActor *))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+stw	  r31, 0x18(r3) #(dword_803E9718 - unk_803E9700)(r3)
+b	  branch_0x8029a214
+
+branch_0x8029A178:		# jumptable 8029A07C case 11
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+rlwinm.	  r0, r0, 0,23,23
+bne	  branch_0x8029a214
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+li	  r4, 0x3C
+li	  r5, 0
+ori	  r0, r0, 0x100
+sth	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+bl	  setNextStage__12TMarDirectorFUsPQ26JDrama6TActor # TMarDirector::setNextStage((ushort,JDrama::TActor *))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+stw	  r31, 0x18(r3) #(dword_803E9718 - unk_803E9700)(r3)
+b	  branch_0x8029a214
+
+branch_0x8029A1AC:		# jumptable 8029A07C case 2
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+rlwinm.	  r0, r0, 0,23,23
+bne	  branch_0x8029a214
+lhz	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+li	  r4, 0x101
+li	  r5, 0
+ori	  r0, r0, 0x100
+sth	  r0, 0x4c(r3) #(word_803E974C - unk_803E9700)(r3)
+bl	  setNextStage__12TMarDirectorFUsPQ26JDrama6TActor # TMarDirector::setNextStage((ushort,JDrama::TActor *))
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+stw	  r31, 0x18(r3) #(dword_803E9718 - unk_803E9700)(r3)
+b	  branch_0x8029a214
+
+def_8029A07C:		# jumptable 8029A07C default case
 branch_0x8029a1e0:
     lhz     r0, 0x4c(r3)
     rlwinm. r0, r0, 0, 23, 23
@@ -335,7 +411,7 @@ branch_0x8029a5a8:
     stw     r6, 0x8(sp)
     li      r6, -0x1
     li      r8, 0x0
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     li      r9, 0x0
     lfs     f1, 0x4(r7)
     li      r7, 0x0
@@ -452,7 +528,7 @@ fireGetBlueCoin__12TMarDirectorFP5TCoin: # 0x8029a6f0
     ori     r3, r3, 0x200
     sth     r3, 0x4c(r30)
     stb     r0, 0x261(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8029a770
@@ -496,7 +572,7 @@ branch_0x8029a7c4:
     lhz     r0, 0xe2(r3)
     rlwinm  r0, r0, 0, 30, 28
     sth     r0, 0xe2(r3)
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x6c(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x8029a7f0
@@ -508,12 +584,12 @@ branch_0x8029a7f0:
 branch_0x8029a7f4:
     clrlwi. r0, r0, 24
     bne-    branch_0x8029a92c
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x50(r3)
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
     bne-    branch_0x8029a92c
-    lwz     r30, -0x7118(r13)
+    lwz     r30, gpCamera(r13)
     li      r28, 0x1
     addi    r3, r30, 0x0
     bl      isSimpleDemoCamera__15CPolarSubCameraCFv
@@ -552,7 +628,7 @@ branch_0x8029a874:
     bl      isNowCanTaken__8TBaseNPCCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8029a8a0
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     mr      r4, r30
     bl      isTakeSituation__6TMarioFP9THitActor
     clrlwi. r0, r3, 24
@@ -612,12 +688,12 @@ branch_0x8029a92c:
 findNearestTalkNPC__12TMarDirectorFv: # 0x8029a94c
     stwu    sp, -0x58(sp)
     li      r6, 0x0
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     lwz     r4, 0x7c(r4)
     addis   r0, r4, 0xf3c0
     cmplwi  r0, 0x201
     bne-    branch_0x8029aa00
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f7, -0x5b8(rtoc)
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)

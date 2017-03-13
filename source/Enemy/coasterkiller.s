@@ -787,7 +787,7 @@ branch_0x801346bc:
     cmplwi  r0, 0x0
     bne-    branch_0x801346d8
     addi    r3, r31, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x801346d8:
     lwz     r0, 0x3c(sp)
@@ -916,7 +916,7 @@ perform__14TCoasterKillerFUlPQ26JDrama9TGraphics: # 0x80134840
     stfs    f0, 0x1ec(r31)
     lfs     f0, 0x18(r31)
     stfs    f0, 0x1fc(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lbz     r0, -0x64d8(r13)
     extsb.  r0, r0
@@ -941,7 +941,7 @@ branch_0x801348f8:
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x8013498c
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f3, 0x10(r31)
     lfs     f2, 0x0(r3)
     lfs     f1, 0x14(r31)
@@ -958,7 +958,7 @@ branch_0x801348f8:
     fadds   f1, f2, f0
     bl      sqrt__Q29JGeometry8TUtil_f_Ff
     fmr     f31, f1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x20ff
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

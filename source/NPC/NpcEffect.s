@@ -161,7 +161,7 @@ branch_0x802154d8:
     addis   r0, r4, 0xfc00
     cmplwi  r0, 0x7
     beq-    branch_0x802154f8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80215644
@@ -230,7 +230,7 @@ branch_0x802155a8:
     fcmpu   cr0, f1, f0
     beq-    branch_0x80215600
 branch_0x802155d8:
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      getWaveHeight__11TMapObjWaveCFff
@@ -309,7 +309,7 @@ branch_0x802156dc:
     beq-    branch_0x80215734
     lwz     r5, 0x1fc(r31)
     addi    r4, r30, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -351,7 +351,7 @@ branch_0x8021575c:
     beq-    branch_0x802157d4
     lwz     r5, 0x200(r31)
     li      r4, 0x73
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -380,7 +380,7 @@ branch_0x802157d4:
     beq-    branch_0x80215980
     lwz     r5, 0x204(r31)
     li      r4, 0x73
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -441,7 +441,7 @@ branch_0x802158c4:
 branch_0x802158c8:
     cmpwi   r30, -0x1
     beq-    branch_0x80215980
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     mr      r4, r30
     lwz     r5, 0x1fc(r31)
     addi    r7, r31, 0x0

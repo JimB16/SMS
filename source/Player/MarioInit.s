@@ -1662,14 +1662,23 @@ __ct__Q26TMario10TRunParamsFv: # 0x80274fe8
     blr
 
 
+/* TMario::TJumpParams::TJumpParams((void))
+Input:
+r3: MarioActor_b00
+*/
 .globl __ct__Q26TMario11TJumpParamsFv
 __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
+
+.set var_18, -0x18
+.set arg_4,  4
+
     mflr    r0
-    lis     r4, 0x803a
-    stw     r0, 0x4(sp)
+    lis     r4, unk_8039FE80@ha
+    stw     r0, arg_4(sp)
     stwu    sp, -0x28(sp)
-    stmw    r26, 0x10(sp)
-    subi    r30, r4, 0x180
+    stmw    r26, 0x28+var_18(sp)
+    addi    r30, r4, unk_8039FE80@l
+
     addi    r0, r30, 0xef8
     addi    r31, r3, 0x0
     stw     r0, 0x0(r3)
@@ -1682,6 +1691,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x8
     addi    r6, r30, 0x148
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     lis     r3, 0x803b
     subi    r29, r3, 0x42c4
     stw     r29, 0x8(r31)
@@ -1697,6 +1707,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x1c
     addi    r6, r30, 0xf08
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x1c(r31)
     addi    r3, r30, 0xf1c
     lfs     f0, -0x8fc(rtoc)
@@ -1708,6 +1719,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x30
     addi    r6, r30, 0xf1c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x30(r31)
     addi    r3, r30, 0xf28
     lfs     f0, -0x988(rtoc)
@@ -1719,6 +1731,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x44
     addi    r6, r30, 0xf28
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x44(r31)
     addi    r3, r30, 0xf38
     lfs     f0, -0xa38(rtoc)
@@ -1730,6 +1743,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x58
     addi    r6, r30, 0xf38
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x58(r31)
     addi    r3, r30, 0xf4c
     lfs     f0, -0xa40(rtoc)
@@ -1741,6 +1755,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x6c
     addi    r6, r30, 0xf4c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x6c(r31)
     addi    r3, r30, 0xf60
     lfs     f0, -0xa40(rtoc)
@@ -1752,6 +1767,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x80
     addi    r6, r30, 0xf60
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x80(r31)
     addi    r3, r30, 0xf70
     lfs     f0, -0x8f8(rtoc)
@@ -1763,6 +1779,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x94
     addi    r6, r30, 0xf70
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x94(r31)
     addi    r3, r30, 0xf7c
     lfs     f0, -0x924(rtoc)
@@ -1774,6 +1791,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0xa8
     addi    r6, r30, 0xf7c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0xa8(r31)
     addi    r3, r30, 0xf8c
     lfs     f0, -0x988(rtoc)
@@ -1785,6 +1803,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0xbc
     addi    r6, r30, 0xf8c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0xbc(r31)
     addi    r3, r30, 0xfa0
     lfs     f0, -0x9c0(rtoc)
@@ -1796,6 +1815,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0xd0
     addi    r6, r30, 0xfa0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0xd0(r31)
     addi    r3, r30, 0xfb4
     lfs     f0, -0x9c0(rtoc)
@@ -1807,6 +1827,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0xe4
     addi    r6, r30, 0xfb4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0xe4(r31)
     addi    r3, r30, 0xfc4
     lfs     f0, -0x988(rtoc)
@@ -1818,6 +1839,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0xf8
     addi    r6, r30, 0xfc4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0xf8(r31)
     addi    r3, r30, 0xfd8
     lfs     f0, -0x954(rtoc)
@@ -1829,6 +1851,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x10c
     addi    r6, r30, 0xfd8
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x10c(r31)
     addi    r3, r30, 0xfec
     lfs     f0, -0x8f8(rtoc)
@@ -1840,6 +1863,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x120
     addi    r6, r30, 0xfec
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x120(r31)
     addi    r3, r30, 0xffc
     lfs     f0, -0x9a0(rtoc)
@@ -1851,6 +1875,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x134
     addi    r6, r30, 0xffc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x134(r31)
     addi    r3, r30, 0x1010
     lfs     f0, -0x99c(rtoc)
@@ -2174,6 +2199,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x378
     addi    r6, r30, 0x11f8
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r29, 0x378(r31)
     addi    r3, r30, 0x1208
     lfs     f0, -0x954(rtoc)
@@ -2185,6 +2211,7 @@ __ct__Q26TMario11TJumpParamsFv: # 0x8027540c
     addi    r3, r31, 0x38c
     addi    r6, r30, 0x1208
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r27, 0x38c(r31)
     li      r0, 0x32
     addi    r3, r31, 0x0
@@ -3033,7 +3060,7 @@ branch_0x802768b8:
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x80276924
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r29
     bl      __ct__9MAnmSoundFP6MSound
     lis     r3, 0x803b
@@ -3185,7 +3212,7 @@ branch_0x80276b28:
     bl      SMS_isMultiPlayerMap__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x80276b48
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r4, r31, 0x10
     lfs     f1, -0xa78(rtoc)
     lfs     f2, -0x980(rtoc)
@@ -3199,7 +3226,7 @@ branch_0x80276b48:
     beq-    branch_0x80276b88
     lwz     r6, 0x3a8(r31)
     addi    r4, r31, 0x10
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r31, 0x29c
     lwz     r6, 0x8(r6)
     li      r7, 0x1
@@ -3211,7 +3238,7 @@ branch_0x80276b48:
 branch_0x80276b88:
     lwz     r6, 0x3a8(r31)
     addi    r4, r31, 0x10
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r31, 0x29c
     lwz     r6, 0x8(r6)
     li      r7, 0x0
@@ -3230,6 +3257,11 @@ branch_0x80276bac:
     blr
 
 
+/* TMario::load((JSUMemoryInputStream &))
+Input:
+r3:
+r4: JSUMemoryInputStream
+*/
 .globl load__6TMarioFR20JSUMemoryInputStream
 load__6TMarioFR20JSUMemoryInputStream: # 0x80276bd0
     mflr    r0
@@ -3242,47 +3274,48 @@ load__6TMarioFR20JSUMemoryInputStream: # 0x80276bd0
     addi    r29, r3, 0x0
     bl      load__Q26JDrama6TActorFR20JSUMemoryInputStream
     li      r31, 0x0
-    sth     r31, 0x94(r29)
+    sth     r31, MarioActor_AngleX(r29)
     addi    r3, r30, 0x0
-    addi    r4, r29, 0x298
+    addi    r4, r29, MarioActor_298
     lfs     f1, -0x8a0(rtoc)
     li      r5, 0x4
-    lfs     f0, 0x34(r29)
+    lfs     f0, MarioActor_34(r29)
     fmuls   f0, f1, f0
     fctiwz  f0, f0
     stfd    f0, 0x18(sp)
     lwz     r0, 0x1c(sp)
-    sth     r0, 0x96(r29)
-    sth     r31, 0x98(r29)
-    lha     r0, 0x96(r29)
-    sth     r0, 0x9a(r29)
-    lha     r0, 0x96(r29)
-    sth     r0, 0x9c(r29)
-    lha     r0, 0x96(r29)
-    sth     r0, 0x9e(r29)
+    sth     r0, MarioActor_AngleY(r29)
+    sth     r31, MarioActor_AngleZ(r29)
+    lha     r0, MarioActor_AngleY(r29)
+    sth     r0, MarioActor_9a(r29)
+    lha     r0, MarioActor_AngleY(r29)
+    sth     r0, MarioActor_9c(r29)
+    lha     r0, MarioActor_AngleY(r29)
+    sth     r0, MarioActor_9e(r29)
     bl      read__14JSUInputStreamFPvl
     addi    r3, r30, 0x0
     addi    r4, sp, 0x10
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
-    stw     r31, 0x118(r29)
+    stw     r31, MarioActor_Flags(r29)
     lwz     r0, 0x10(sp)
     clrlwi. r0, r0, 31
     beq-    branch_0x80276c74
-    lwz     r0, 0x118(r29)
-    rlwinm  r0, r0, 0, 17, 15
-    stw     r0, 0x118(r29)
+
+    lwz     r0, MarioActor_Flags(r29)
+    rlwinm  r0, r0, 0, 17, 15 # MARIOFLAG_4000 | MARIOFLAG_8000 | MARIOFLAG_10000
+    stw     r0, MarioActor_Flags(r29)
     b       branch_0x80276c80
 
 branch_0x80276c74:
-    lwz     r0, 0x118(r29)
-    ori     r0, r0, 0x8000
-    stw     r0, 0x118(r29)
+    lwz     r0, MarioActor_Flags(r29)
+    ori     r0, r0, MARIOFLAG_8000
+    stw     r0, MarioActor_Flags(r29)
 branch_0x80276c80:
     bl      SMS_SetMarioAccessParams__Fv
     mr      r3, r29
-    lwz     r12, 0x0(r29)
-    lwz     r12, 0xc0(r12)
+    lwz     r12, MarioActor_Type(r29)
+    lwz     r12, MarioActor_Type_c0(r12)
     mtlr    r12
     blrl
     lwz     r0, 0x34(sp)
@@ -3294,425 +3327,469 @@ branch_0x80276c80:
     blr
 
 
+/* TMario::TMario((void))
+r3: MarioActor
+*/
 .globl __ct__6TMarioFv
 __ct__6TMarioFv: # 0x80276cb4
+
+.set var_50, -0x50
+.set var_48, -0x48
+.set var_40, -0x40
+.set arg_4,  4
+
     mflr    r0
-    stw     r0, 0x4(sp)
+    stw     r0, arg_4(sp)
     stwu    sp, -0x58(sp)
-    stmw    r16, 0x18(sp)
-    stw     r3, 0x8(sp)
-    lis     r3, 0x803a
-    subi    r30, r3, 0x180
-    lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r16, r3, 0x29c8
+    stmw    r16, 0x58+var_40(sp)
+    stw     r3, 0x58+var_50(sp)
+
+    lis     r3, unk_8039FE80@ha
+    addi    r30, r3, unk_8039FE80@l
+/* (amWaistRollMax - unk_8039FE80)
+0x188 amWaistRoll
+0x194 amWaistPitch
+0x1a0 amWaistRollMax
+0x1b0
+0x1ec
+0x121c amHeadRot
+0x159c aHitAct_2
+0x15a8 aMarioBodyAngle
+0x16a8 aMarioSurfingWa
+0x16c4 aMarioSurfingGr
+0x16e0
+0x1700
+0x1720
+0x1740
+*/
+    lwz     r31, 0x58+var_50(sp)
+    lis     r3, unk_803DD638@ha
+    addi    r16, r3, unk_803DD638@l
+
     addi    r3, r31, 0x0
-    addi    r4, r30, 0x159c
+    addi    r4, r30, (aHitAct_2 - unk_8039FE80)
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48e4
-    stw     r3, 0x0(r31)
+
+    lis     r3, unk_803AB71C@ha
+    addi    r3, r3, unk_803AB71C@l
+    stw     r3, MarioActor_Type(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
-    stw     r0, 0x20(r31)
+    lis     r3, unk_803AD194@ha
+    stw     r0, MarioActor_20(r31)
     li      r27, 0x0
-    subi    r4, r3, 0x2e6c
-    stw     r27, 0x68(r31)
-    addi    r6, r16, 0x28
-    addi    r5, r16, 0x4c
-    stw     r27, 0x6c(r31)
-    addi    r0, r16, 0xdc
-    addi    r3, r31, 0x474
-    stw     r4, 0x70(r31)
-    addi    r4, r30, 0x159c
-    stw     r6, 0x0(r31)
-    stw     r5, 0x20(r31)
-    stw     r0, 0x70(r31)
-    stw     r27, 0x3f0(r31)
+    addi    r4, r3, unk_803AD194@l
+    stw     r27, MarioActor_68(r31)
+    addi    r6, r16, (unk_803DD660 - unk_803DD638)
+    addi    r5, r16, (unk_803DD684 - unk_803DD638)
+    stw     r27, MarioActor_6c(r31)
+    addi    r0, r16, (unk_803DD714 - unk_803DD638)
+    addi    r3, r31, MarioActor_474
+    stw     r4, MarioActor_70(r31)
+    addi    r4, r30, (aHitAct_2 - unk_8039FE80)
+    stw     r6, MarioActor_Type(r31)
+    stw     r5, MarioActor_20(r31)
+    stw     r0, MarioActor_70(r31)
+    stw     r27, MarioActor_Yoshi(r31)
     bl      __ct__9THitActorFPCc
-    stw     r27, 0x4fc(r31)
-    addi    r3, r31, 0x500
+    stw     r27, MarioActor_MarioGamePad(r31)
+
+    addi    r3, r31, MarioActor_SoundValues
     bl      __ct__17TMarioSoundValuesFv
-    addi    r3, r31, 0x574
+
+    addi    r3, r31, MarioActor_574
     bl      __ct__Q26TMario9TDeParamsFv
-    addi    r0, r30, 0x15a8
-    stw     r0, 0x9a0(r31)
-    addi    r3, r30, 0x121c
-    stw     r27, 0x9a4(r31)
+
+    addi    r0, r30, (aMarioBodyAngle - unk_8039FE80)
+    stw     r0, MarioActor_9a0(r31)
+    addi    r3, r30, (amHeadRot - unk_8039FE80)
+    stw     r27, MarioActor_9a4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    addi    r5, r3, 0x0
-    addi    r3, r31, 0x9a8
-    addi    r4, r31, 0x9a0
-    addi    r6, r30, 0x121c
+    addi    r5, r3, 0x0 # KeyCode
+    addi    r3, r31, MarioActor_9a8
+    addi    r4, r31, MarioActor_9a0 # Ptr to string
+    addi    r6, r30, (amHeadRot - unk_8039FE80) # Ptr to string
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r29, r3, 0x42c4
-    stw     r29, 0x9a8(r31)
-    lis     r3, 0x803b
-    subi    r28, r3, 0x42d0
+
+    lis     r3, unk_803ABD3C@ha
+    addi    r29, r3, unk_803ABD3C@l
+    stw     r29, MarioActor_9a8(r31)
+    lis     r3, unk_803ABD30@ha
+    addi    r28, r3, unk_803ABD30@l
     lfs     f0, -0xa4c(rtoc)
-    addi    r3, r30, 0x188
-    stfs    f0, 0x9b8(r31)
-    stw     r28, 0x9a8(r31)
+    addi    r3, r30, (amWaistRoll - unk_8039FE80)
+    stfs    f0, MarioActor_9b8(r31)
+    stw     r28, MarioActor_9a8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x9bc
-    addi    r4, r31, 0x9a0
-    addi    r6, r30, 0x188
+    addi    r3, r31, MarioActor_9bc
+    addi    r4, r31, MarioActor_9a0
+    addi    r6, r30, (amWaistRoll - unk_8039FE80)
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x9bc(r31)
-    addi    r3, r30, 0x194
+    stw     r29, MarioActor_9bc(r31)
+
+    addi    r3, r30, (amWaistPitch - unk_8039FE80)
     lfs     f0, -0xa4c(rtoc)
-    stfs    f0, 0x9cc(r31)
-    stw     r28, 0x9bc(r31)
+    stfs    f0, MarioActor_9cc(r31)
+    stw     r28, MarioActor_9bc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x9d0
-    addi    r4, r31, 0x9a0
-    addi    r6, r30, 0x194
+    addi    r3, r31, MarioActor_9d0
+    addi    r4, r31, MarioActor_9a0
+    addi    r6, r30, (amWaistPitch - unk_8039FE80)
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x9d0(r31)
-    addi    r3, r30, 0x1a0
+    stw     r29, MarioActor_9d0(r31)
+
+    addi    r3, r30, (amWaistRollMax - unk_8039FE80)
     lfs     f0, -0x988(rtoc)
-    stfs    f0, 0x9e0(r31)
-    stw     r28, 0x9d0(r31)
+    stfs    f0, MarioActor_9e0(r31)
+    stw     r28, MarioActor_9d0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x9e4
-    addi    r4, r31, 0x9a0
-    addi    r6, r30, 0x1a0
+    addi    r3, r31, MarioActor_9e4
+    addi    r4, r31, MarioActor_9a0
+    addi    r6, r30, (amWaistRollMax - unk_8039FE80)
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r23, r3, 0x2f04
-    stw     r23, 0x9e4(r31)
-    lis     r3, 0x803b
-    subi    r22, r3, 0x2f10
-    sth     r27, 0x9f4(r31)
+
+    lis     r3, unk_803AD0FC@ha
+    addi    r23, r3, unk_803AD0FC@l
+    stw     r23, MarioActor_9e4(r31)
+    lis     r3, unk_803AD0F0@ha
+    addi    r22, r3, unk_803AD0F0@l
+    sth     r27, MarioActor_9f4(r31)
     addi    r3, r30, 0x1b0
-    stw     r22, 0x9e4(r31)
+    stw     r22, MarioActor_9e4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x9f8
-    addi    r4, r31, 0x9a0
+    addi    r3, r31, MarioActor_9f8
+    addi    r4, r31, MarioActor_9a0
     addi    r6, r30, 0x1b0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r23, 0x9f8(r31)
+    stw     r23, MarioActor_9f8(r31)
+
     li      r24, 0x3e8
     addi    r3, r30, 0x1ec
-    sth     r24, 0xa08(r31)
-    stw     r22, 0x9f8(r31)
+    sth     r24, MarioActor_a08(r31)
+    stw     r22, MarioActor_9f8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xa0c
-    addi    r4, r31, 0x9a0
+    addi    r3, r31, MarioActor_a0c
+    addi    r4, r31, MarioActor_9a0
     addi    r6, r30, 0x1ec
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xa0c(r31)
-    addi    r3, r31, 0x9a0
+    stw     r29, MarioActor_a0c(r31)
+
+    addi    r3, r31, MarioActor_9a0
     lfs     f0, -0x8cc(rtoc)
-    stfs    f0, 0xa1c(r31)
-    stw     r28, 0xa0c(r31)
-    lwz     r4, 0x9a0(r31)
+    stfs    f0, MarioActor_a1c(r31)
+    stw     r28, MarioActor_a0c(r31)
+    lwz     r4, MarioActor_9a0(r31)
     bl      load__7TParamsFPCc
     addi    r0, r30, 0x15c4
-    stw     r0, 0xa20(r31)
-    addi    r3, r30, 0x121c
-    stw     r27, 0xa24(r31)
+    stw     r0, MarioActor_a20(r31)
+    addi    r3, r30, (amHeadRot - unk_8039FE80)
+    stw     r27, MarioActor_a24(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xa28
-    addi    r4, r31, 0xa20
-    addi    r6, r30, 0x121c
+    addi    r3, r31, MarioActor_a28
+    addi    r4, r31, MarioActor_a20
+    addi    r6, r30, (amHeadRot - unk_8039FE80)
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xa28(r31)
-    addi    r3, r30, 0x188
+    stw     r29, MarioActor_a28(r31)
+
+    addi    r3, r30, (amWaistRoll - unk_8039FE80)
     lfs     f0, -0xa4c(rtoc)
-    stfs    f0, 0xa38(r31)
-    stw     r28, 0xa28(r31)
+    stfs    f0, MarioActor_a38(r31)
+    stw     r28, MarioActor_a28(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xa3c
-    addi    r4, r31, 0xa20
-    addi    r6, r30, 0x188
+    addi    r3, r31, MarioActor_a3c
+    addi    r4, r31, MarioActor_a20
+    addi    r6, r30, (amWaistRoll - unk_8039FE80)
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xa3c(r31)
-    addi    r3, r30, 0x194
+    stw     r29, MarioActor_a3c(r31)
+
+    addi    r3, r30, (amWaistPitch - unk_8039FE80)
     lfs     f0, -0xa4c(rtoc)
-    stfs    f0, 0xa4c(r31)
-    stw     r28, 0xa3c(r31)
+    stfs    f0, MarioActor_a4c(r31)
+    stw     r28, MarioActor_a3c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xa50
-    addi    r4, r31, 0xa20
-    addi    r6, r30, 0x194
+    addi    r3, r31, MarioActor_a50
+    addi    r4, r31, MarioActor_a20
+    addi    r6, r30, (amWaistPitch - unk_8039FE80)
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xa50(r31)
-    addi    r3, r30, 0x1a0
+
+    stw     r29, MarioActor_a50(r31)
+    addi    r3, r30, (amWaistRollMax - unk_8039FE80)
     lfs     f0, -0x988(rtoc)
-    stfs    f0, 0xa60(r31)
-    stw     r28, 0xa50(r31)
+    stfs    f0, MarioActor_a60(r31)
+    stw     r28, MarioActor_a50(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xa64
-    addi    r4, r31, 0xa20
-    addi    r6, r30, 0x1a0
+    addi    r3, r31, MarioActor_a64
+    addi    r4, r31, MarioActor_a20
+    addi    r6, r30, (amWaistRollMax - unk_8039FE80)
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r23, 0xa64(r31)
+
+    stw     r23, MarioActor_a64(r31)
     addi    r3, r30, 0x1b0
-    sth     r27, 0xa74(r31)
-    stw     r22, 0xa64(r31)
+    sth     r27, MarioActor_a74(r31)
+    stw     r22, MarioActor_a64(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xa78
-    addi    r4, r31, 0xa20
+    addi    r3, r31, MarioActor_a78
+    addi    r4, r31, MarioActor_a20
     addi    r6, r30, 0x1b0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r23, 0xa78(r31)
+    stw     r23, MarioActor_a78(r31)
     addi    r3, r30, 0x1ec
-    sth     r24, 0xa88(r31)
-    stw     r22, 0xa78(r31)
+    sth     r24, MarioActor_a88(r31)
+    stw     r22, MarioActor_a78(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xa8c
-    addi    r4, r31, 0xa20
+    addi    r3, r31, MarioActor_a8c
+    addi    r4, r31, MarioActor_a20
     addi    r6, r30, 0x1ec
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xa8c(r31)
-    addi    r3, r31, 0xa20
+    stw     r29, MarioActor_a8c(r31)
+    addi    r3, r31, MarioActor_a20
     lfs     f0, -0x8cc(rtoc)
-    stfs    f0, 0xa9c(r31)
-    stw     r28, 0xa8c(r31)
-    lwz     r4, 0xa20(r31)
+    stfs    f0, MarioActor_a9c(r31)
+    stw     r28, MarioActor_a8c(r31)
+    lwz     r4, MarioActor_a20(r31)
     bl      load__7TParamsFPCc
     addi    r0, r30, 0x15e4
-    stw     r0, 0xaa0(r31)
+    stw     r0, MarioActor_aa0(r31)
     subi    r3, rtoc, 0x8dc
-    stw     r27, 0xaa4(r31)
+    stw     r27, MarioActor_aa4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xaa8
-    addi    r4, r31, 0xaa0
+    addi    r3, r31, MarioActor_aa8
+    addi    r4, r31, MarioActor_aa0
     subi    r6, rtoc, 0x8dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xaa8(r31)
+    stw     r29, MarioActor_aa8(r31)
     subi    r3, rtoc, 0x8d4
     lfs     f0, -0x948(rtoc)
-    stfs    f0, 0xab8(r31)
-    stw     r28, 0xaa8(r31)
+    stfs    f0, MarioActor_ab8(r31)
+    stw     r28, MarioActor_aa8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xabc
-    addi    r4, r31, 0xaa0
+    addi    r3, r31, MarioActor_abc
+    addi    r4, r31, MarioActor_aa0
     subi    r6, rtoc, 0x8d4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xabc(r31)
-    addi    r3, r31, 0xaa0
+    stw     r29, MarioActor_abc(r31)
+    addi    r3, r31, MarioActor_aa0
     lfs     f0, -0xa6c(rtoc)
-    stfs    f0, 0xacc(r31)
-    stw     r28, 0xabc(r31)
-    lwz     r4, 0xaa0(r31)
+    stfs    f0, MarioActor_acc(r31)
+    stw     r28, MarioActor_abc(r31)
+    lwz     r4, MarioActor_aa0(r31)
     bl      load__7TParamsFPCc
     addi    r0, r30, 0x1600
-    stw     r0, 0xad0(r31)
+    stw     r0, MarioActor_ad0(r31)
     subi    r3, rtoc, 0x8dc
-    stw     r27, 0xad4(r31)
+    stw     r27, MarioActor_ad4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xad8
-    addi    r4, r31, 0xad0
+    addi    r3, r31, MarioActor_ad8
+    addi    r4, r31, MarioActor_ad0
     subi    r6, rtoc, 0x8dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xad8(r31)
+    stw     r29, MarioActor_ad8(r31)
     subi    r3, rtoc, 0x8d4
     lfs     f0, -0x948(rtoc)
-    stfs    f0, 0xae8(r31)
-    stw     r28, 0xad8(r31)
+    stfs    f0, MarioActor_ae8(r31)
+    stw     r28, MarioActor_ad8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0xaec
-    addi    r4, r31, 0xad0
+    addi    r3, r31, MarioActor_aec
+    addi    r4, r31, MarioActor_ad0
     subi    r6, rtoc, 0x8d4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0xaec(r31)
-    addi    r3, r31, 0xad0
+    stw     r29, MarioActor_aec(r31)
+    addi    r3, r31, MarioActor_ad0
     lfs     f0, -0xa6c(rtoc)
-    stfs    f0, 0xafc(r31)
-    stw     r28, 0xaec(r31)
-    lwz     r4, 0xad0(r31)
+    stfs    f0, MarioActor_afc(r31)
+    stw     r28, MarioActor_aec(r31)
+    lwz     r4, MarioActor_ad0(r31)
     bl      load__7TParamsFPCc
-    addi    r3, r31, 0xb00
+
+    addi    r3, r31, MarioActor_b00
     bl      __ct__Q26TMario11TJumpParamsFv
-    addi    r3, r31, 0xea0
+    addi    r3, r31, MarioActor_ea0
     bl      __ct__Q26TMario10TRunParamsFv
-    addi    r3, r31, 0x104c
+    addi    r3, r31, MarioActor_104c
     bl      __ct__Q26TMario11TSwimParamsFv
+
     addi    r0, r30, 0xbdc
-    stw     r0, 0x1298(r31)
+    stw     r0, MarioActor_1298(r31)
     subi    r3, rtoc, 0x938
-    stw     r27, 0x129c(r31)
+    stw     r27, MarioActor_129c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x12a0
-    addi    r4, r31, 0x1298
+    addi    r3, r31, MarioActor_12a0
+    addi    r4, r31, MarioActor_1298
     subi    r6, rtoc, 0x938
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x12a0(r31)
+    stw     r29, MarioActor_12a0(r31)
     addi    r3, r30, 0xbf0
     lfs     f0, -0x994(rtoc)
-    stfs    f0, 0x12b0(r31)
-    stw     r28, 0x12a0(r31)
+    stfs    f0, MarioActor_12b0(r31)
+    stw     r28, MarioActor_12a0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x12b4
-    addi    r4, r31, 0x1298
+    addi    r3, r31, MarioActor_12b4
+    addi    r4, r31, MarioActor_1298
     addi    r6, r30, 0xbf0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x12b4(r31)
+    stw     r29, MarioActor_12b4(r31)
     addi    r3, r30, 0xbfc
     lfs     f0, -0xa40(rtoc)
-    stfs    f0, 0x12c4(r31)
-    stw     r28, 0x12b4(r31)
+    stfs    f0, MarioActor_12c4(r31)
+    stw     r28, MarioActor_12b4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x12c8
-    addi    r4, r31, 0x1298
+    addi    r3, r31, MarioActor_12c8
+    addi    r4, r31, MarioActor_1298
     addi    r6, r30, 0xbfc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r23, 0x12c8(r31)
+    stw     r23, MarioActor_12c8(r31)
     li      r0, 0x7d0
     addi    r3, r30, 0xc08
-    sth     r0, 0x12d8(r31)
-    stw     r22, 0x12c8(r31)
+    sth     r0, MarioActor_12d8(r31)
+    stw     r22, MarioActor_12c8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x12dc
-    addi    r4, r31, 0x1298
+    addi    r3, r31, MarioActor_12dc
+    addi    r4, r31, MarioActor_1298
     addi    r6, r30, 0xc08
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r23, 0x12dc(r31)
+    stw     r23, MarioActor_12dc(r31)
     li      r0, 0x960
     addi    r3, r30, 0xc14
-    sth     r0, 0x12ec(r31)
-    stw     r22, 0x12dc(r31)
+    sth     r0, MarioActor_12ec(r31)
+    stw     r22, MarioActor_12dc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x12f0
-    addi    r4, r31, 0x1298
+    addi    r3, r31, MarioActor_12f0
+    addi    r4, r31, MarioActor_1298
     addi    r6, r30, 0xc14
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x12f0(r31)
+    stw     r29, MarioActor_12f0(r31)
     addi    r3, r30, 0xc20
     lfs     f0, -0x930(rtoc)
-    stfs    f0, 0x1300(r31)
-    stw     r28, 0x12f0(r31)
+    stfs    f0, MarioActor_1300(r31)
+    stw     r28, MarioActor_12f0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x1304
-    addi    r4, r31, 0x1298
+    addi    r3, r31, MarioActor_1304
+    addi    r4, r31, MarioActor_1298
     addi    r6, r30, 0xc20
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x1304(r31)
-    addi    r3, r31, 0x1298
+    stw     r29, MarioActor_1304(r31)
+    addi    r3, r31, MarioActor_1298
     lfs     f0, -0x99c(rtoc)
-    stfs    f0, 0x1314(r31)
-    stw     r28, 0x1304(r31)
-    lwz     r4, 0x1298(r31)
+    stfs    f0, MarioActor_1314(r31)
+    stw     r28, MarioActor_1304(r31)
+    lwz     r4, MarioActor_1298(r31)
     bl      load__7TParamsFPCc
     addi    r0, r30, 0xbbc
-    stw     r0, 0x1318(r31)
+    stw     r0, MarioActor_1318(r31)
     addi    r3, r30, 0xbd0
-    stw     r27, 0x131c(r31)
+    stw     r27, MarioActor_131c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x1320
-    addi    r4, r31, 0x1318
+    addi    r3, r31, MarioActor_1320
+    addi    r4, r31, MarioActor_1318
     addi    r6, r30, 0xbd0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x1320(r31)
+    stw     r29, MarioActor_1320(r31)
     addi    r3, r31, 0x1318
     lfs     f0, -0xa70(rtoc)
-    stfs    f0, 0x1330(r31)
-    stw     r28, 0x1320(r31)
-    lwz     r4, 0x1318(r31)
+    stfs    f0, MarioActor_1330(r31)
+    stw     r28, MarioActor_1320(r31)
+    lwz     r4, MarioActor_1318(r31)
     bl      load__7TParamsFPCc
-    addi    r3, r31, 0x1334
+    addi    r3, r31, MarioActor_1334
     bl      __ct__Q26TMario11TWireParamsFv
+
     addi    r0, r30, 0x161c
-    stw     r0, 0x147c(r31)
+    stw     r0, MarioActor_147c(r31)
     addi    r3, r30, 0xa70
-    stw     r27, 0x1480(r31)
+    stw     r27, MarioActor_1480(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x1484
-    addi    r4, r31, 0x147c
+    addi    r3, r31, MarioActor_1484
+    addi    r4, r31, MarioActor_147c
     addi    r6, r30, 0xa70
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x1484(r31)
+    stw     r29, MarioActor_1484(r31)
     addi    r3, r30, 0xa7c
     lfs     f0, -0xa70(rtoc)
-    stfs    f0, 0x1494(r31)
-    stw     r28, 0x1484(r31)
+    stfs    f0, MarioActor_1494(r31)
+    stw     r28, MarioActor_1484(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x1498
-    addi    r4, r31, 0x147c
+    addi    r3, r31, MarioActor_1498
+    addi    r4, r31, MarioActor_147c
     addi    r6, r30, 0xa7c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x1498(r31)
+    stw     r29, MarioActor_1498(r31)
     addi    r3, r30, 0xa88
     lfs     f0, -0x9b0(rtoc)
-    stfs    f0, 0x14a8(r31)
-    stw     r28, 0x1498(r31)
+    stfs    f0, MarioActor_14a8(r31)
+    stw     r28, MarioActor_1498(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x14ac
-    addi    r4, r31, 0x147c
+    addi    r3, r31, MarioActor_14ac
+    addi    r4, r31, MarioActor_147c
     addi    r6, r30, 0xa88
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x14ac(r31)
+    stw     r29, MarioActor_14ac(r31)
     addi    r3, r30, 0xa98
     lfs     f0, -0x994(rtoc)
-    stfs    f0, 0x14bc(r31)
-    stw     r28, 0x14ac(r31)
+    stfs    f0, MarioActor_14bc(r31)
+    stw     r28, MarioActor_14ac(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x14c0
-    addi    r4, r31, 0x147c
+    addi    r3, r31, MarioActor_14c0
+    addi    r4, r31, MarioActor_147c
     addi    r6, r30, 0xa98
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x14c0(r31)
-    addi    r3, r31, 0x147c
+    stw     r29, MarioActor_14c0(r31)
+    addi    r3, r31, MarioActor_147c
     lfs     f0, -0x9c4(rtoc)
-    stfs    f0, 0x14d0(r31)
-    stw     r28, 0x14c0(r31)
-    lwz     r4, 0x147c(r31)
+    stfs    f0, MarioActor_14d0(r31)
+    stw     r28, MarioActor_14c0(r31)
+    lwz     r4, MarioActor_147c(r31)
     bl      load__7TParamsFPCc
     addi    r0, r30, 0x1638
-    stw     r0, 0x14d4(r31)
+    stw     r0, MarioActor_14d4(r31)
     addi    r3, r30, 0xa70
-    stw     r27, 0x14d8(r31)
+    stw     r27, MarioActor_14d8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x14dc
-    addi    r4, r31, 0x14d4
+    addi    r3, r31, MarioActor_14dc
+    addi    r4, r31, MarioActor_14d4
     addi    r6, r30, 0xa70
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x14dc(r31)
+    stw     r29, MarioActor_14dc(r31)
     addi    r3, r30, 0xa7c
     lfs     f0, -0xa70(rtoc)
-    stfs    f0, 0x14ec(r31)
-    stw     r28, 0x14dc(r31)
+    stfs    f0, MarioActor_14ec(r31)
+    stw     r28, MarioActor_14dc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
-    addi    r3, r31, 0x14f0
-    addi    r4, r31, 0x14d4
+    addi    r3, r31, MarioActor_14f0
+    addi    r4, r31, MarioActor_14d4
     addi    r6, r30, 0xa7c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    stw     r29, 0x14f0(r31)
+    stw     r29, MarioActor_14f0(r31)
     addi    r3, r30, 0xa88
     lfs     f0, -0x9b0(rtoc)
-    stfs    f0, 0x1500(r31)
-    stw     r28, 0x14f0(r31)
+    stfs    f0, MarioActor_1500(r31)
+    stw     r28, MarioActor_14f0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     addi    r5, r3, 0x0
     addi    r3, r31, 0x1504
@@ -3898,11 +3975,12 @@ __ct__6TMarioFv: # 0x80276cb4
     stw     r28, 0x1634(r31)
     lwz     r4, 0x15dc(r31)
     bl      load__7TParamsFPCc
+
     addi    r3, r31, 0x1648
-    addi    r4, r30, 0x16a8
+    addi    r4, r30, (aMarioSurfingWa - unk_8039FE80)
     bl      __ct__Q26TMario14TSurfingParamsFPCc
     addi    r3, r31, 0x181c
-    addi    r4, r30, 0x16c4
+    addi    r4, r30, (aMarioSurfingGr - unk_8039FE80)
     bl      __ct__Q26TMario14TSurfingParamsFPCc
     addi    r3, r31, 0x19f0
     addi    r4, r30, 0x16e0
@@ -3916,6 +3994,7 @@ __ct__6TMarioFv: # 0x80276cb4
     addi    r3, r31, 0x1f6c
     addi    r4, r30, 0x1740
     bl      __ct__Q26TMario14TSurfingParamsFPCc
+
     addi    r0, r30, 0x1760
     stw     r0, 0x2140(r31)
     subi    r3, rtoc, 0xa48
@@ -3926,6 +4005,7 @@ __ct__6TMarioFv: # 0x80276cb4
     addi    r4, r31, 0x2140
     subi    r6, rtoc, 0xa48
     bl      __ct__10TBaseParamFP7TParamsUsPCc
+
     stw     r23, 0x2148(r31)
     li      r16, 0x80
     addi    r3, r30, 0x17c
@@ -4197,38 +4277,44 @@ __ct__6TMarioFv: # 0x80276cb4
     addi    r6, r30, 0xa08
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x232c(r31)
+
     addi    r3, r31, 0x22ac
     lfs     f0, -0x954(rtoc)
     stfs    f0, 0x233c(r31)
     stw     r28, 0x232c(r31)
     lwz     r4, 0x22ac(r31)
     bl      load__7TParamsFPCc
+
     addi    r0, r30, 0x7fc
     stw     r0, 0x2340(r31)
     addi    r3, r30, 0x814
     stw     r27, 0x2344(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
+
     addi    r5, r3, 0x0
     addi    r3, r31, 0x2348
     addi    r4, r31, 0x2340
     addi    r6, r30, 0x814
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r26, r3, 0x2f1c
+
+    lis     r3, unk_803AD0E4@ha
+    addi    r26, r3, unk_803AD0E4@l
     stw     r26, 0x2348(r31)
     li      r0, 0x1e
-    lis     r3, 0x803b
+    lis     r3, unk_803AD0D8@ha
     stb     r0, 0x2358(r31)
-    subi    r25, r3, 0x2f28
+    addi    r25, r3, unk_803AD0D8@l
     addi    r3, r30, 0x828
     stw     r25, 0x2348(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
+
     addi    r5, r3, 0x0
     addi    r3, r31, 0x235c
     addi    r4, r31, 0x2340
     addi    r6, r30, 0x828
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r26, 0x235c(r31)
+
     li      r0, 0x5a
     addi    r3, r30, 0x840
     stb     r0, 0x236c(r31)
@@ -8012,305 +8098,320 @@ __ct__6TMarioFv: # 0x80276cb4
     subi    r6, rtoc, 0xa84
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x427c(r31)
+
     addi    r3, r31, 0x424c
     lfs     f0, -0xa7c(rtoc)
     stfs    f0, 0x428c(r31)
     stw     r28, 0x427c(r31)
     lwz     r4, 0x424c(r31)
     bl      load__7TParamsFPCc
+
     li      r0, 0x412
-    sth     r0, 0x114(r31)
+    sth     r0, MarioActor_114(r31)
     li      r0, 0x133f
-    sth     r27, 0x116(r31)
-    stw     r27, 0x74(r31)
-    stw     r27, 0x78(r31)
-    stw     r0, 0x7c(r31)
-    stw     r0, 0x80(r31)
-    sth     r27, 0x84(r31)
-    sth     r27, 0x86(r31)
-    stw     r27, 0x88(r31)
+    sth     r27, MarioActor_116(r31)
+    stw     r27, MarioActor_74(r31)
+    stw     r27, MarioActor_78(r31)
+    stw     r0, MarioActor_Status(r31)
+    stw     r0, MarioActor_LastStatus(r31)
+    sth     r27, MarioActor_StatusTime(r31)
+    sth     r27, MarioActor_86(r31)
+    stw     r27, MarioActor_88(r31)
     lfs     f0, -0xa4c(rtoc)
-    stfs    f0, 0x8c(r31)
-    sth     r27, 0x90(r31)
-    sth     r27, 0x94(r31)
-    sth     r27, 0x96(r31)
-    sth     r27, 0x98(r31)
-    sth     r27, 0x9a(r31)
-    sth     r27, 0x9c(r31)
-    sth     r27, 0x9e(r31)
-    sth     r27, 0xa0(r31)
-    stfs    f0, 0xa4(r31)
-    stfs    f0, 0xa8(r31)
-    stfs    f0, 0xac(r31)
-    stfs    f0, 0xb0(r31)
-    stfs    f0, 0xb4(r31)
-    stfs    f0, 0xb8(r31)
-    stfs    f0, 0xbc(r31)
-    stfs    f0, 0xc0(r31)
-    sth     r27, 0xc4(r31)
-    stfs    f0, 0xc8(r31)
+    stfs    f0, MarioActor_8c(r31)
+    sth     r27, MarioActor_90(r31)
+    sth     r27, MarioActor_AngleX(r31)
+    sth     r27, MarioActor_AngleY(r31)
+    sth     r27, MarioActor_AngleZ(r31)
+    sth     r27, MarioActor_9a(r31)
+    sth     r27, MarioActor_9c(r31)
+    sth     r27, MarioActor_9e(r31)
+    sth     r27, MarioActor_a0(r31)
+    stfs    f0, MarioActor_SpeedX(r31)
+    stfs    f0, MarioActor_SpeedY(r31)
+    stfs    f0, MarioActor_SpeedZ(r31)
+    stfs    f0, MarioActor_Velocity(r31)
+    stfs    f0, MarioActor_b4(r31)
+    stfs    f0, MarioActor_b8(r31)
+    stfs    f0, MarioActor_bc(r31)
+    stfs    f0, MarioActor_c0(r31)
+    sth     r27, MarioActor_c4(r31)
+    stfs    f0, MarioActor_c8(r31)
     lfs     f0, -0x9ac(rtoc)
-    stfs    f0, 0xcc(r31)
+    stfs    f0, MarioActor_cc(r31)
     lfs     f0, -0x9a8(rtoc)
-    stfs    f0, 0xd0(r31)
-    stb     r18, 0xd4(r31)
-    stb     r18, 0xd5(r31)
-    stw     r27, 0xd8(r31)
-    stw     r27, 0xdc(r31)
+    stfs    f0, MarioActor_d0(r31)
+    stb     r18, MarioActor_d4(r31)
+    stb     r18, MarioActor_d5(r31)
+    stw     r27, MarioActor_WlPlane(r31)
+    stw     r27, MarioActor_RfPlane(r31)
+
     bl      getIllegalCheckData__4TMapFv
-    stw     r3, 0xe0(r31)
+    stw     r3, MarioActor_GroundPlane(r31)
+
     li      r5, 0xc3
     lis     r4, 0x4330
-    stw     r27, 0xe4(r31)
+    stw     r27, MarioActor_e4(r31)
     li      r0, -0x1
-    addi    r3, r31, 0x1c0
+    addi    r3, r31, MarioActor_1c0
     lfs     f3, -0xa4c(rtoc)
-    stfs    f3, 0xe8(r31)
-    stfs    f3, 0xec(r31)
-    stfs    f3, 0xf0(r31)
-    sth     r27, 0xf4(r31)
-    sth     r27, 0xf6(r31)
-    sth     r27, 0xf8(r31)
-    sth     r5, 0xfa(r31)
-    sth     r27, 0xfc(r31)
-    sth     r27, 0xfe(r31)
-    sth     r27, 0x100(r31)
-    stfs    f3, 0x104(r31)
-    stw     r27, 0x108(r31)
-    stw     r27, 0x118(r31)
-    stw     r27, 0x11c(r31)
-    lha     r5, 0x58c(r31)
-    sth     r5, 0x120(r31)
-    sth     r27, 0x122(r31)
-    sth     r27, 0x124(r31)
-    sth     r27, 0x126(r31)
-    sth     r27, 0x128(r31)
-    lha     r5, 0x120(r31)
+    stfs    f3, MarioActor_e8(r31)
+    stfs    f3, MarioActor_ec(r31)
+    stfs    f3, MarioActor_WaterLevel(r31)
+    sth     r27, MarioActor_f4(r31)
+    sth     r27, MarioActor_f6(r31)
+    sth     r27, MarioActor_LightID(r31)
+    sth     r5, MarioActor_fa(r31)
+    sth     r27, MarioActor_fc(r31)
+    sth     r27, MarioActor_fe(r31)
+    sth     r27, MarioActor_100(r31)
+    stfs    f3, MarioActor_104(r31)
+    stw     r27, MarioActor_108(r31)
+    stw     r27, MarioActor_Flags(r31)
+    stw     r27, MarioActor_11c_Flags(r31)
+    lha     r5, MarioActor_58c(r31)
+    sth     r5, MarioActor_HP(r31)
+    sth     r27, MarioActor_122(r31)
+    sth     r27, MarioActor_124(r31)
+    sth     r27, MarioActor_126(r31)
+    sth     r27, MarioActor_128(r31)
+    lha     r5, MarioActor_HP(r31)
     lfd     f2, -0x880(rtoc)
     addi    r5, r5, 0x1
     lfs     f0, -0x89c(rtoc)
     xoris   r5, r5, 0x8000
     stw     r5, 0x14(sp)
     stw     r4, 0x10(sp)
+
     lfd     f1, 0x10(sp)
     fsubs   f1, f1, f2
     fsubs   f0, f1, f0
-    stfs    f0, 0x130(r31)
-    lfs     f0, 0x130(r31)
-    stfs    f0, 0x12c(r31)
-    stw     r0, 0x144(r31)
-    stw     r27, 0x148(r31)
-    sth     r27, 0x14c(r31)
-    sth     r27, 0x14e(r31)
-    stw     r27, 0x154(r31)
-    stw     r27, 0x158(r31)
-    stfs    f3, 0x15c(r31)
-    stfs    f3, 0x168(r31)
-    stfs    f3, 0x164(r31)
-    stfs    f3, 0x160(r31)
-    stfs    f3, 0x174(r31)
-    stfs    f3, 0x170(r31)
-    stfs    f3, 0x16c(r31)
-    stfs    f3, 0x180(r31)
-    stfs    f3, 0x17c(r31)
-    stfs    f3, 0x178(r31)
-    stfs    f3, 0x18c(r31)
-    stfs    f3, 0x188(r31)
-    stfs    f3, 0x184(r31)
-    stfs    f3, 0x198(r31)
-    stfs    f3, 0x194(r31)
-    stfs    f3, 0x190(r31)
-    stfs    f3, 0x1b0(r31)
-    stfs    f3, 0x1ac(r31)
-    stfs    f3, 0x1a8(r31)
-    stfs    f3, 0x1bc(r31)
-    stfs    f3, 0x1b8(r31)
-    stfs    f3, 0x1b4(r31)
-    stfs    f3, 0x1a4(r31)
-    stfs    f3, 0x1a0(r31)
-    stfs    f3, 0x19c(r31)
+    stfs    f0, MarioActor_130(r31)
+
+    lfs     f0, MarioActor_130(r31)
+    stfs    f0, MarioActor_12c(r31)
+    stw     r0, MarioActor_144(r31)
+    stw     r27, MarioActor_148(r31)
+    sth     r27, MarioActor_14c(r31)
+    sth     r27, MarioActor_14e(r31)
+    stw     r27, MarioActor_154(r31)
+    stw     r27, MarioActor_158(r31)
+    stfs    f3, MarioActor_15c(r31)
+    stfs    f3, MarioActor_168(r31)
+    stfs    f3, MarioActor_164(r31)
+    stfs    f3, MarioActor_160(r31)
+    stfs    f3, MarioActor_174(r31)
+    stfs    f3, MarioActor_170(r31)
+    stfs    f3, MarioActor_16c(r31)
+    stfs    f3, MarioActor_180(r31)
+    stfs    f3, MarioActor_17c(r31)
+    stfs    f3, MarioActor_178(r31)
+    stfs    f3, MarioActor_18c(r31)
+    stfs    f3, MarioActor_188(r31)
+    stfs    f3, MarioActor_184(r31)
+    stfs    f3, MarioActor_198(r31)
+    stfs    f3, MarioActor_194(r31)
+    stfs    f3, MarioActor_190(r31)
+    stfs    f3, MarioActor_1b0(r31)
+    stfs    f3, MarioActor_1ac(r31)
+    stfs    f3, MarioActor_1a8(r31)
+    stfs    f3, MarioActor_1bc(r31)
+    stfs    f3, MarioActor_1b8(r31)
+    stfs    f3, MarioActor_1b4(r31)
+    stfs    f3, MarioActor_1a4(r31)
+    stfs    f3, MarioActor_1a0(r31)
+    stfs    f3, MarioActor_19c(r31)
+
     bl      PSMTXIdentity
-    addi    r3, r31, 0x1f0
+    addi    r3, r31, MarioActor_1f0
     bl      PSMTXIdentity
-    addi    r3, r31, 0x220
+    addi    r3, r31, MarioActor_220
     bl      PSMTXIdentity
-    addi    r3, r31, 0x250
+    addi    r3, r31, MarioActor_250
     bl      PSMTXIdentity
-    lwz     r4, 0x10(r31)
-    addi    r3, r31, 0x2c4
-    lwz     r0, 0x14(r31)
-    stw     r4, 0x280(r31)
-    stw     r0, 0x284(r31)
-    lwz     r0, 0x18(r31)
-    stw     r0, 0x288(r31)
-    lwz     r4, 0x30(r31)
-    lwz     r0, 0x34(r31)
-    stw     r4, 0x28c(r31)
-    stw     r0, 0x290(r31)
-    lwz     r0, 0x38(r31)
-    stw     r0, 0x294(r31)
-    lwz     r4, 0x10(r31)
-    lwz     r0, 0x14(r31)
-    stw     r4, 0x29c(r31)
-    stw     r0, 0x2a0(r31)
-    lwz     r0, 0x18(r31)
-    stw     r0, 0x2a4(r31)
-    lwz     r4, 0x10(r31)
-    lwz     r0, 0x14(r31)
-    stw     r4, 0x2a8(r31)
-    stw     r0, 0x2ac(r31)
-    lwz     r0, 0x18(r31)
-    stw     r0, 0x2b0(r31)
-    lwz     r0, 0x94(r31)
-    stw     r0, 0x2b4(r31)
-    lhz     r0, 0x98(r31)
-    sth     r0, 0x2b8(r31)
-    sth     r27, 0x2ba(r31)
+
+    lwz     r4, MarioActor_PositionX(r31)
+    addi    r3, r31, MarioActor_2c4
+    lwz     r0, MarioActor_PositionY(r31)
+    stw     r4, MarioActor_280(r31)
+    stw     r0, MarioActor_284(r31)
+    lwz     r0, MarioActor_PositionZ(r31)
+    stw     r0, MarioActor_288(r31)
+    lwz     r4, MarioActor_30(r31)
+    lwz     r0, MarioActor_34(r31)
+    stw     r4, MarioActor_28c(r31)
+    stw     r0, MarioActor_290(r31)
+    lwz     r0, MarioActor_38(r31)
+    stw     r0, MarioActor_294(r31)
+    lwz     r4, MarioActor_PositionX(r31)
+    lwz     r0, MarioActor_PositionY(r31)
+    stw     r4, MarioActor_29c(r31)
+    stw     r0, MarioActor_2a0(r31)
+    lwz     r0, MarioActor_PositionZ(r31)
+    stw     r0, MarioActor_2a4(r31)
+    lwz     r4, MarioActor_PositionX(r31)
+    lwz     r0, MarioActor_PositionY(r31)
+    stw     r4, MarioActor_2a8(r31)
+    stw     r0, MarioActor_2ac(r31)
+    lwz     r0, MarioActor_PositionZ(r31)
+    stw     r0, MarioActor_2b0(r31)
+    lwz     r0, MarioActor_AngleX(r31)
+    stw     r0, MarioActor_2b4(r31)
+    lhz     r0, MarioActor_AngleZ(r31)
+    sth     r0, MarioActor_2b8(r31)
+    sth     r27, MarioActor_2ba(r31)
+
     lfs     f0, -0xa4c(rtoc)
-    stfs    f0, 0x2bc(r31)
-    stw     r27, 0x2c0(r31)
+    stfs    f0, MarioActor_2bc(r31)
+    stw     r27, MarioActor_2c0(r31)
     bl      PSMTXIdentity
     lfs     f0, -0xa4c(rtoc)
-    addi    r3, r31, 0x318
-    stfs    f0, 0x2f4(r31)
-    stfs    f0, 0x2f8(r31)
-    stfs    f0, 0x2fc(r31)
-    stfs    f0, 0x300(r31)
-    stfs    f0, 0x304(r31)
-    stfs    f0, 0x308(r31)
-    stfs    f0, 0x30c(r31)
-    stfs    f0, 0x314(r31)
-    stw     r27, 0x310(r31)
+    addi    r3, r31, MarioActor_318
+    stfs    f0, MarioActor_2f4(r31)
+    stfs    f0, MarioActor_2f8(r31)
+    stfs    f0, MarioActor_2fc(r31)
+    stfs    f0, MarioActor_300(r31)
+    stfs    f0, MarioActor_304(r31)
+    stfs    f0, MarioActor_308(r31)
+    stfs    f0, MarioActor_30c(r31)
+    stfs    f0, MarioActor_314(r31)
+    stw     r27, MarioActor_310(r31)
     bl      PSMTXIdentity
     lfs     f2, -0xa4c(rtoc)
     li      r0, 0x4
-    stfs    f2, 0x348(r31)
-    sth     r27, 0x34c(r31)
-    sth     r27, 0x34e(r31)
-    stw     r27, 0x350(r31)
-    stfs    f2, 0x354(r31)
-    stfs    f2, 0x358(r31)
-    stfs    f2, 0x35c(r31)
-    sth     r27, 0x360(r31)
-    sth     r27, 0x362(r31)
-    sth     r27, 0x364(r31)
-    sth     r27, 0x366(r31)
-    stfs    f2, 0x368(r31)
-    stfs    f2, 0x36c(r31)
-    stfs    f2, 0x370(r31)
-    stfs    f2, 0x374(r31)
-    stfs    f2, 0x378(r31)
-    sth     r27, 0x37e(r31)
-    stw     r16, 0x380(r31)
-    stw     r27, 0x384(r31)
-    stb     r17, 0x388(r31)
-    stw     r27, 0x390(r31)
-    stw     r27, 0x394(r31)
-    stw     r27, 0x398(r31)
-    stw     r27, 0x39c(r31)
-    stw     r27, 0x3a0(r31)
-    stw     r27, 0x3a8(r31)
-    stw     r27, 0x3b0(r31)
-    stw     r27, 0x3b4(r31)
-    stw     r27, 0x3b8(r31)
-    stw     r27, 0x3bc(r31)
-    stb     r27, 0x3c5(r31)
-    stb     r27, 0x3c6(r31)
-    stb     r27, 0x3c7(r31)
-    stb     r27, 0x3c8(r31)
-    stb     r27, 0x3c9(r31)
-    stb     r27, 0x3ca(r31)
-    stb     r27, 0x3cb(r31)
-    stb     r27, 0x3cc(r31)
-    stb     r27, 0x3cd(r31)
-    stb     r27, 0x3ce(r31)
-    stb     r27, 0x3cf(r31)
-    stb     r27, 0x3d0(r31)
-    sth     r27, 0x3d4(r31)
-    sth     r27, 0x3d6(r31)
-    stfs    f2, 0x3d8(r31)
-    stfs    f2, 0x3dc(r31)
-    stw     r27, 0x3e0(r31)
-    stw     r27, 0x3e4(r31)
-    stw     r0, 0x3e8(r31)
-    stfs    f2, 0x3ec(r31)
-    stw     r27, 0x3f0(r31)
-    stw     r27, 0x3f4(r31)
-    stw     r27, 0x3f8(r31)
-    stw     r27, 0x3fc(r31)
-    stw     r27, 0x400(r31)
-    stfs    f2, 0x40c(r31)
-    stfs    f2, 0x408(r31)
-    stfs    f2, 0x404(r31)
-    sth     r27, 0x410(r31)
-    sth     r27, 0x412(r31)
-    stfs    f2, 0x414(r31)
-    stfs    f2, 0x418(r31)
-    stfs    f2, 0x41c(r31)
-    stw     r27, 0x420(r31)
-    stw     r27, 0x424(r31)
+    stfs    f2, MarioActor_348(r31)
+    sth     r27, MarioActor_34c(r31)
+    sth     r27, MarioActor_34e(r31)
+    stw     r27, MarioActor_350(r31)
+    stfs    f2, MarioActor_354(r31)
+    stfs    f2, MarioActor_358(r31)
+    stfs    f2, MarioActor_35c(r31)
+    sth     r27, MarioActor_360(r31)
+    sth     r27, MarioActor_362(r31)
+    sth     r27, MarioActor_364(r31)
+    sth     r27, MarioActor_366(r31)
+    stfs    f2, MarioActor_368(r31)
+    stfs    f2, MarioActor_36c(r31)
+    stfs    f2, MarioActor_370(r31)
+    stfs    f2, MarioActor_374(r31)
+    stfs    f2, MarioActor_378(r31)
+    sth     r27, MarioActor_37e(r31)
+    stw     r16, MarioActor_380(r31)
+    stw     r27, MarioActor_384(r31)
+    stb     r17, MarioActor_388(r31)
+    stw     r27, MarioActor_390(r31)
+    stw     r27, MarioActor_394(r31)
+    stw     r27, MarioActor_398(r31)
+    stw     r27, MarioActor_39c(r31)
+    stw     r27, MarioActor_3a0(r31)
+    stw     r27, MarioActor_3a8(r31)
+    stw     r27, MarioActor_3b0(r31)
+    stw     r27, MarioActor_3b4(r31)
+    stw     r27, MarioActor_3b8(r31)
+    stw     r27, MarioActor_3bc(r31)
+    stb     r27, MarioActor_3c5(r31)
+    stb     r27, MarioActor_3c6(r31)
+    stb     r27, MarioActor_3c7(r31)
+    stb     r27, MarioActor_3c8(r31)
+    stb     r27, MarioActor_3c9(r31)
+    stb     r27, MarioActor_3ca(r31)
+    stb     r27, MarioActor_3cb(r31)
+    stb     r27, MarioActor_3cc(r31)
+    stb     r27, MarioActor_3cd(r31)
+    stb     r27, MarioActor_3ce(r31)
+    stb     r27, MarioActor_3cf(r31)
+    stb     r27, MarioActor_3d0(r31)
+    sth     r27, MarioActor_3d4(r31)
+    sth     r27, MarioActor_3d6(r31)
+    stfs    f2, MarioActor_3d8(r31)
+    stfs    f2, MarioActor_3dc(r31)
+    stw     r27, MarioActor_3e0(r31)
+    stw     r27, MarioActor_WaterGun(r31)
+    stw     r0, MarioActor_3e8(r31)
+    stfs    f2, MarioActor_3ec(r31)
+    stw     r27, MarioActor_Yoshi(r31)
+    stw     r27, MarioActor_3f4(r31)
+    stw     r27, MarioActor_3f8(r31)
+    stw     r27, MarioActor_3fc(r31)
+    stw     r27, MarioActor_400(r31)
+    stfs    f2, MarioActor_40c(r31)
+    stfs    f2, MarioActor_408(r31)
+    stfs    f2, MarioActor_404(r31)
+    sth     r27, MarioActor_410(r31)
+    sth     r27, MarioActor_412(r31)
+    stfs    f2, MarioActor_414(r31)
+    stfs    f2, MarioActor_418(r31)
+    stfs    f2, MarioActor_41c(r31)
+    stw     r27, MarioActor_420(r31)
+    stw     r27, MarioActor_424(r31)
+
     lfs     f0, -0xa94(rtoc)
-    stfs    f0, 0x428(r31)
+    stfs    f0, MarioActor_428(r31)
     lfs     f1, -0x898(rtoc)
-    stfs    f1, 0x42c(r31)
-    stfs    f0, 0x430(r31)
+    stfs    f1, MarioActor_42c(r31)
+    stfs    f0, MarioActor_430(r31)
     lfs     f0, -0x97c(rtoc)
-    stfs    f0, 0x434(r31)
-    stfs    f1, 0x438(r31)
+    stfs    f0, MarioActor_434(r31)
+    stfs    f1, MarioActor_438(r31)
+
     li      r5, 0x14
     li      r4, 0x4000
-    stfs    f0, 0x43c(r31)
+    stfs    f0, MarioActor_43c(r31)
     li      r0, -0x4000
     addi    r3, r31, 0x0
+
     lfs     f0, -0xa40(rtoc)
-    stfs    f0, 0x440(r31)
-    stfs    f2, 0x444(r31)
-    stfs    f2, 0x448(r31)
-    stfs    f2, 0x44c(r31)
-    stfs    f2, 0x458(r31)
-    stfs    f2, 0x454(r31)
-    stfs    f2, 0x450(r31)
-    stw     r27, 0x4dc(r31)
-    stw     r27, 0x4e0(r31)
-    stw     r27, 0x4e4(r31)
-    stw     r27, 0x4e8(r31)
-    stb     r27, 0x4ec(r31)
-    stb     r27, 0x4ed(r31)
-    stfs    f2, 0x4f0(r31)
-    stfs    f2, 0x4f4(r31)
-    stfs    f2, 0x4f8(r31)
-    stw     r27, 0x4fc(r31)
-    stw     r27, 0x530(r31)
-    stb     r27, 0x534(r31)
-    sth     r27, 0x536(r31)
-    sth     r27, 0x538(r31)
-    stb     r27, 0x53a(r31)
-    stb     r27, 0x53b(r31)
-    stw     r27, 0x53c(r31)
+    stfs    f0, MarioActor_440(r31)
+    stfs    f2, MarioActor_444(r31)
+    stfs    f2, MarioActor_448(r31)
+    stfs    f2, MarioActor_44c(r31)
+    stfs    f2, MarioActor_458(r31)
+    stfs    f2, MarioActor_454(r31)
+    stfs    f2, MarioActor_450(r31)
+    stw     r27, MarioActor_4dc(r31)
+    stw     r27, MarioActor_4e0(r31)
+    stw     r27, MarioActor_4e4(r31)
+    stw     r27, MarioActor_4e8(r31)
+    stb     r27, MarioActor_4ec(r31)
+    stb     r27, MarioActor_4ed(r31)
+    stfs    f2, MarioActor_4f0(r31)
+    stfs    f2, MarioActor_4f4(r31)
+    stfs    f2, MarioActor_4f8(r31)
+    stw     r27, MarioActor_MarioGamePad(r31)
+    stw     r27, MarioActor_530(r31)
+    stb     r27, MarioActor_534(r31)
+    sth     r27, MarioActor_536(r31)
+    sth     r27, MarioActor_538(r31)
+    stb     r27, MarioActor_53a(r31)
+    stb     r27, MarioActor_53b(r31)
+    stw     r27, MarioActor_53c(r31)
+
     lfs     f0, -0x894(rtoc)
-    stfs    f0, 0x540(r31)
+    stfs    f0, MarioActor_540(r31)
     lfs     f0, -0x890(rtoc)
-    stfs    f0, 0x544(r31)
-    stb     r27, 0x54c(r31)
-    stb     r5, 0x54d(r31)
-    stw     r27, 0x548(r31)
-    sth     r23, 0x54e(r31)
-    sth     r4, 0x550(r31)
-    sth     r0, 0x552(r31)
-    sth     r27, 0x554(r31)
-    stw     r27, 0x558(r31)
+    stfs    f0, MarioActor_544(r31)
+    stb     r27, MarioActor_54c(r31)
+    stb     r5, MarioActor_54d(r31)
+    stw     r27, MarioActor_548(r31)
+    sth     r23, MarioActor_54e(r31)
+    sth     r4, MarioActor_550(r31)
+    sth     r0, MarioActor_552(r31)
+    sth     r27, MarioActor_554(r31)
+    stw     r27, MarioActor_558(r31)
+
     lfs     f0, -0x88c(rtoc)
-    stfs    f0, 0x55c(r31)
+    stfs    f0, MarioActor_55c(r31)
     lfs     f0, -0x98c(rtoc)
-    stfs    f0, 0x560(r31)
+    stfs    f0, MarioActor_560(r31)
     lfs     f0, -0x930(rtoc)
-    stfs    f0, 0x564(r31)
+    stfs    f0, MarioActor_564(r31)
     lfs     f0, -0x888(rtoc)
-    stfs    f0, 0x568(r31)
+    stfs    f0, MarioActor_568(r31)
     lfs     f0, -0x99c(rtoc)
-    stfs    f0, 0x56c(r31)
-    stfs    f2, 0x570(r31)
-    stw     r27, 0x390(r31)
+    stfs    f0, MarioActor_56c(r31)
+    stfs    f2, MarioActor_570(r31)
+    stw     r27, MarioActor_390(r31)
+
     lwz     r0, 0x5c(sp)
     lmw     r16, 0x18(sp)
     addi    sp, sp, 0x58
@@ -8331,7 +8432,7 @@ __sinit_MarioInit_cpp: # 0x8027bb24
     lfs     f0, -0x878(rtoc)
     stfs    f0, 0x4(r31)
     stfs    f1, 0x8(r31)
-    lbz     r0, -0x7204(r13)
+    lbz     r0, OffsetR13_7204(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bb80
     subi    r3, r13, 0x72b8
@@ -8342,9 +8443,9 @@ __sinit_MarioInit_cpp: # 0x8027bb24
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, OffsetR13_7204(r13)
 branch_0x8027bb80:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, OffsetR13_7203(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bbb0
     subi    r3, r13, 0x72ac
@@ -8355,9 +8456,9 @@ branch_0x8027bb80:
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, OffsetR13_7203(r13)
 branch_0x8027bbb0:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, OffsetR13_7202(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bbe0
     subi    r3, r13, 0x72a0
@@ -8368,9 +8469,9 @@ branch_0x8027bbb0:
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, OffsetR13_7202(r13)
 branch_0x8027bbe0:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, OffsetR13_7201(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bc10
     subi    r3, r13, 0x7294
@@ -8381,9 +8482,9 @@ branch_0x8027bbe0:
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, OffsetR13_7201(r13)
 branch_0x8027bc10:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, OffsetR13_7200(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bc40
     subi    r3, r13, 0x7288
@@ -8394,9 +8495,9 @@ branch_0x8027bc10:
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, OffsetR13_7200(r13)
 branch_0x8027bc40:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, OffsetR13_71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bc70
     subi    r3, r13, 0x727c
@@ -8407,9 +8508,9 @@ branch_0x8027bc40:
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, OffsetR13_71ff(r13)
 branch_0x8027bc70:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, OffsetR13_71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bca0
     subi    r3, r13, 0x7270
@@ -8420,9 +8521,9 @@ branch_0x8027bc70:
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, OffsetR13_71fe(r13)
 branch_0x8027bca0:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, OffsetR13_71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bcd0
     subi    r3, r13, 0x7264
@@ -8433,9 +8534,9 @@ branch_0x8027bca0:
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, OffsetR13_71fd(r13)
 branch_0x8027bcd0:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, OffsetR13_71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bd00
     subi    r3, r13, 0x7258
@@ -8446,9 +8547,9 @@ branch_0x8027bcd0:
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, OffsetR13_71fc(r13)
 branch_0x8027bd00:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, OffsetR13_71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bd30
     subi    r3, r13, 0x724c
@@ -8459,9 +8560,9 @@ branch_0x8027bd00:
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, OffsetR13_71fb(r13)
 branch_0x8027bd30:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, OffsetR13_71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bd60
     subi    r3, r13, 0x7240
@@ -8472,9 +8573,9 @@ branch_0x8027bd30:
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, OffsetR13_71fa(r13)
 branch_0x8027bd60:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, OffsetR13_71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bd90
     subi    r3, r13, 0x7234
@@ -8485,9 +8586,9 @@ branch_0x8027bd60:
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, OffsetR13_71f9(r13)
 branch_0x8027bd90:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, OffsetR13_71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bdc0
     subi    r3, r13, 0x7228
@@ -8498,9 +8599,9 @@ branch_0x8027bd90:
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, OffsetR13_71f8(r13)
 branch_0x8027bdc0:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, OffsetR13_71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x8027bdf0
     subi    r3, r13, 0x721c
@@ -8511,9 +8612,9 @@ branch_0x8027bdc0:
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, OffsetR13_71f7(r13)
 branch_0x8027bdf0:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, OffsetR13_71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x8027be20
     subi    r3, r13, 0x7210
@@ -8524,7 +8625,7 @@ branch_0x8027bdf0:
     addi    r5, r31, 0xb4
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, OffsetR13_71f6(r13)
 branch_0x8027be20:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

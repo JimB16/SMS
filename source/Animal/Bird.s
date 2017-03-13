@@ -76,7 +76,7 @@ execute__23TNerveAnimalBirdLandingCFP24TSpineBase_10TLiveActor_: # 0x8000ac20
     fmuls   f0, f1, f0
     stfs    f0, 0xc(r31)
 branch_0x8000acd4:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r30
     lwz     r12, 0x0(r30)
     lfs     f1, 0x4(r4)
@@ -118,7 +118,7 @@ branch_0x8000ad10:
     lfs     f0, 0x0(r28)
     fmuls   f1, f3, f1
     fmuls   f2, f3, f2
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     fmuls   f3, f3, f0
     bl      isInSight__11TSpineEnemyCFRCQ29JGeometry8TVec3_f_fff
     neg     r3, r3
@@ -310,7 +310,7 @@ execute__26TNerveAnimalBirdPreLandingCFP24TSpineBase_10TLiveActor_: # 0x8000af8c
     mr      r3, r28
     bl      doLanding__11TAnimalBirdFb
 branch_0x8000affc:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r28
     lwz     r12, 0x0(r28)
     lfs     f1, 0x4(r4)
@@ -352,7 +352,7 @@ branch_0x8000b038:
     lfs     f0, 0x0(r30)
     fmuls   f1, f3, f1
     fmuls   f2, f3, f2
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     fmuls   f3, f3, f0
     bl      isInSight__11TSpineEnemyCFRCQ29JGeometry8TVec3_f_fff
     neg     r3, r3
@@ -559,7 +559,7 @@ execute__24TNerveAnimalBirdComebackCFP24TSpineBase_10TLiveActor_: # 0x8000b2bc
 branch_0x8000b368:
     mr      r3, r31
     bl      doFlyToCurPathNode__11TAnimalBirdFv
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r12, 0x0(r31)
     lfs     f1, 0x4(r4)
@@ -601,7 +601,7 @@ branch_0x8000b3ac:
     lfs     f0, 0x0(r29)
     fmuls   f1, f3, f1
     fmuls   f2, f3, f2
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     fmuls   f3, f3, f0
     bl      isInSight__11TSpineEnemyCFRCQ29JGeometry8TVec3_f_fff
     neg     r3, r3
@@ -813,7 +813,7 @@ branch_0x8000b6d0:
     clrlwi. r0, r0, 24
     beq-    branch_0x8000b6f0
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r4, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r31, r3
@@ -1182,7 +1182,7 @@ execute__23TNerveAnimalBirdTakeoffCFP24TSpineBase_10TLiveActor_: # 0x8000bb7c
     lfs     f0, 0xc(r3)
     fmuls   f0, f1, f0
     stfs    f0, 0xc(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8000bc20
@@ -1536,9 +1536,8 @@ MsWrap_f___Ffff_8000c0d8: # 0x8000c0d8
     bne-    branch_0x8000c114
     fmr     f1, f2
     blr
+    b       branch_0x8000c0f4
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x6aec, 0x8000c0f0 - 0x8000c0ec
 branch_0x8000c0f0:
     fsubs   f1, f1, f0
 branch_0x8000c0f4:
@@ -1557,9 +1556,8 @@ branch_0x8000c108:
 branch_0x8000c114:
     fsubs   f0, f3, f2
     b       branch_0x8000c0f4
+    blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x6b1c, 0x8000c120 - 0x8000c11c
 
 .globl theNerve__28TNerveAnimalBirdWalkOnGroundFv
 theNerve__28TNerveAnimalBirdWalkOnGroundFv: # 0x8000c120
@@ -2494,7 +2492,7 @@ branch_0x8000ce14:
     b       branch_0x8000ce54
 
 branch_0x8000ce44:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -2933,7 +2931,7 @@ isFindMario__11TAnimalBirdCFv: # 0x8000d468
     stw     r30, 0x40(sp)
     stw     r29, 0x3c(sp)
     mr      r29, r3
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r12, 0x0(r29)
     lfs     f0, 0x14(r29)
     lfs     f1, 0x4(r4)
@@ -2974,7 +2972,7 @@ branch_0x8000d4c0:
     lfs     f0, 0x0(r31)
     fmuls   f1, f3, f1
     fmuls   f2, f3, f2
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     fmuls   f3, f3, f0
     bl      isInSight__11TSpineEnemyCFRCQ29JGeometry8TVec3_f_fff
     neg     r3, r3
@@ -3273,7 +3271,7 @@ branch_0x8000d8f8:
 branch_0x8000d918:
     clrlwi. r0, r26, 24
     beq-    branch_0x8000d944
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3869
     lha     r28, 0x7c(r31)
     bl      gateCheck__6MSoundFUl
@@ -3333,7 +3331,7 @@ branch_0x8000d9c8:
 branch_0x8000d9ec:
     clrlwi. r0, r26, 24
     beq-    branch_0x8000da18
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3870
     lha     r28, 0x7c(r31)
     bl      gateCheck__6MSoundFUl
@@ -3424,7 +3422,7 @@ branch_0x8000dafc:
     stfs    f0, 0x5c(sp)
     stfs    f0, 0x60(sp)
     bl      SMS_EasyEmitParticle_27E_SMS_EFFECT_ONETIME_NORMAL___F27E_SMS_EFFECT_ONETIME_NORMALPCQ29JGeometry8TVec3_f_PCvRCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r29, 0x10
     lfs     f1, -0x7eac(rtoc)
     li      r4, 0x6802
@@ -3750,7 +3748,7 @@ branch_0x8000df58:
 branch_0x8000df64:
     li      r0, 0x0
     stw     r0, 0x180(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x34(sp)
     lbz     r4, 0x7c(r3)
     lwz     r3, -0x6060(r13)
@@ -4065,7 +4063,7 @@ SMS_EasyEmitParticle_27E_SMS_EFFECT_ONETIME_NORMAL___F27E_SMS_EFFECT_ONETIME_NOR
     stw     r31, 0x1c(sp)
     addi    r31, r6, 0x0
     li      r6, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8000e410

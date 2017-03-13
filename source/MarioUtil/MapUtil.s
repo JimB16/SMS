@@ -45,13 +45,13 @@ branch_0x80236dd0:
 
 .globl SMS_GetMonteVillageAreaInMario__Fv
 SMS_GetMonteVillageAreaInMario__Fv: # 0x80236dd8
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x4
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x8
     bnelr-    
 
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0x33
     bne-    branch_0x80236e04

@@ -10,7 +10,7 @@ changeBackup__9TWaterGunFv: # 0x80268d84
     lfs     f0, 0x1cfc(r3)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80268dd8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x812
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -28,7 +28,7 @@ branch_0x80268dd8:
     lfs     f0, 0x1cfc(r31)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80268e1c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x811
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -130,7 +130,7 @@ branch_0x80268f20:
     lwz     r0, 0xcc(r4)
     cmpw    r5, r0
     bge-    branch_0x80268f78
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     addi    r31, r3, 0x1c90
     li      r4, 0xf
     mr      r3, r0
@@ -272,7 +272,7 @@ branch_0x802690f0:
 branch_0x80269100:
     lbz     r0, 0x1c84(r31)
     addi    r30, r31, 0x1c90
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x24
     slwi    r0, r0, 2
     add     r5, r31, r0
@@ -294,7 +294,7 @@ branch_0x80269100:
 branch_0x80269154:
     lbz     r0, 0x1c84(r31)
     addi    r30, r31, 0x1c90
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     slwi    r0, r0, 2
     add     r5, r31, r0
@@ -316,7 +316,7 @@ branch_0x80269154:
     b       branch_0x80269224
 
 branch_0x802691ac:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r30, r31, 0x1c90
     li      r4, 0x18
     bl      gateCheck__6MSoundFUl
@@ -335,7 +335,7 @@ branch_0x802691e4:
     lbz     r0, 0x1c86(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80269224
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r30, r31, 0x1c90
     li      r4, 0x18
     bl      gateCheck__6MSoundFUl
@@ -676,7 +676,7 @@ isEmitting__9TWaterGunFv: # 0x80269620
     b       branch_0x80269708
 
 branch_0x80269648:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x80269680
@@ -852,7 +852,7 @@ calcAnimation__9TWaterGunFPQ26JDrama9TGraphics: # 0x80269868
     lwz     r0, 0x8(r3)
     lis     r3, 0x803a
     subi    r29, r3, 0xfe8
-    stw     r0, -0x60e0(r13)
+    stw     r0, OffsetR13_60e0(r13)
     lwz     r3, 0x1cd4(r30)
     bl      getFrameCtrl__6MActorFi
     lwz     r4, 0x8(r30)
@@ -1116,7 +1116,7 @@ movement__9TWaterGunFv: # 0x80269be0
     b       branch_0x80269cd8
 
 branch_0x80269c18:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x80269c50
@@ -2368,7 +2368,7 @@ branch_0x8026ae2c:
     beq-    branch_0x8026b564
     cmpwi   r4, 0x3
     beq-    branch_0x8026b564
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x8026b564
@@ -2461,7 +2461,9 @@ branch_0x8026af3c:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8026AF70:		# jumptable 8026AF6C case 0
     lwz     r29, 0x380(r30)
     li      r4, 0x4
     addi    r3, r29, 0x0
@@ -2486,8 +2488,431 @@ branch_0x8026af94:
     stfs    f0, 0x10(r31)
     b       branch_0x8026b520
 
+branch_0x8026AFC8:		# jumptable 8026AF6C case 2
+lwz	  r29, 0x380(r30)
+li	  r4, 7
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026AFEC
+addi	  r3, r29, 0
+li	  r4, 7
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2659c8, 0x8026b520 - 0x8026afc8
+branch_0x8026AFEC:
+lwz	  r3, 0x380(r30)
+li	  r29, 0
+li	  r4, 0
+bl	  getFrameCtrl__6MActorFi # MActor::getFrameCtrl((int))
+lbz	  r0, 5(r3)
+clrlwi.	  r0, r0, 30
+beq	  branch_0x8026B010
+li	  r0, 1
+b	  branch_0x8026B014
+
+branch_0x8026B010:
+mr	  r0, r29
+
+branch_0x8026B014:
+cmpwi	  r0, 0
+beq	  branch_0x8026B020
+li	  r29, 1
+
+branch_0x8026B020:
+lha	  r4, 8(r3)
+lis	  r0, 0x4330
+lfd	  f2, -0xC00(r2)
+xoris	  r4, r4, 0x8000
+lfs	  f0, -0xBEC(r2)
+stw	  r4, 0x1F4(r1)
+lfs	  f3, 0x10(r3)
+stw	  r0, 0x1F0(r1)
+lfd	  f1, 0x1F0(r1)
+fsubs	  f1, f1, f2
+fsubs	  f0, f1, f0
+fcmpo	  cr0, f3, f0
+ble	  branch_0x8026B058
+li	  r29, 1
+
+branch_0x8026B058:
+clrlwi.	  r0, r29, 24
+beq	  def_8026AF6C	# jumptable 8026AF6C default case
+li	  r0, 3
+sth	  r0, 0x36C(r30)
+b	  def_8026AF6C	# jumptable 8026AF6C default case
+
+branch_0x8026B06C:		# jumptable 8026AF6C case 3
+lwz	  r29, 0x380(r30)
+li	  r4, 5
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026B090
+addi	  r3, r29, 0
+li	  r4, 5
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026B090:
+lwz	  r29, 0x368(r30)
+lwz	  r0, 0x1C80(r29)
+cmpwi	  r0, 0
+bne	  branch_0x8026B0A8
+li	  r0, 0
+b	  branch_0x8026B168
+
+branch_0x8026B0A8:
+lwz	  r3, gpMarDirector(r13)
+lbz	  r3, 0x124(r3)
+cmplwi	  r3, 3
+beq	  branch_0x8026B0E0
+cmplwi	  r3, 4
+beq	  branch_0x8026B0E0
+cmplwi	  r3, 1
+li	  r0, 1
+beq	  branch_0x8026B0D8
+cmplwi	  r3, 2
+beq	  branch_0x8026B0D8
+li	  r0, 0
+
+branch_0x8026B0D8:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8026B0E8
+
+branch_0x8026B0E0:
+li	  r0, 0
+b	  branch_0x8026B168
+
+branch_0x8026B0E8:
+lbz	  r0, 0x1C84(r29)
+slwi	  r0, r0, 2
+add	  r3, r29, r0
+lwz	  r3, 0x1C68(r3)
+lwz	  r12, 0x364(r3)
+lwz	  r12, 0xC(r12)
+mtlr	  r12
+blrl
+cmpwi	  r3, 1
+bne	  branch_0x8026B13C
+lbz	  r0, 0x1C84(r29)
+slwi	  r0, r0, 2
+add	  r3, r29, r0
+lwz	  r3, 0x1C68(r3)
+lbz	  r0, 0x385(r3)
+cmpwi	  r0, 1
+bne	  branch_0x8026B134
+li	  r0, 1
+b	  branch_0x8026B168
+
+branch_0x8026B134:
+li	  r0, 0
+b	  branch_0x8026B168
+
+branch_0x8026B13C:
+lbz	  r0, 0x1C84(r29)
+lfs	  f0, -0xC18(r2)
+slwi	  r0, r0, 2
+add	  r3, r29, r0
+lwz	  r3, 0x1C68(r3)
+lfs	  f1, 0x378(r3)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x8026B164
+li	  r0, 1
+b	  branch_0x8026B168
+
+branch_0x8026B164:
+li	  r0, 0
+
+branch_0x8026B168:
+clrlwi.	  r0, r0, 24
+bne	  def_8026AF6C	# jumptable 8026AF6C default case
+li	  r0, 8
+sth	  r0, 0x36C(r30)
+b	  def_8026AF6C	# jumptable 8026AF6C default case
+
+branch_0x8026B17C:		# jumptable 8026AF6C case 8
+lwz	  r29, 0x380(r30)
+li	  r4, 6
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026B1A0
+addi	  r3, r29, 0
+li	  r4, 6
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026B1A0:
+lwz	  r29, 0x368(r30)
+lwz	  r0, 0x1C80(r29)
+cmpwi	  r0, 0
+bne	  branch_0x8026B1B8
+li	  r0, 0
+b	  branch_0x8026B278
+
+branch_0x8026B1B8:
+lwz	  r3, gpMarDirector(r13)
+lbz	  r3, 0x124(r3)
+cmplwi	  r3, 3
+beq	  branch_0x8026B1F0
+cmplwi	  r3, 4
+beq	  branch_0x8026B1F0
+cmplwi	  r3, 1
+li	  r0, 1
+beq	  branch_0x8026B1E8
+cmplwi	  r3, 2
+beq	  branch_0x8026B1E8
+li	  r0, 0
+
+branch_0x8026B1E8:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8026B1F8
+
+branch_0x8026B1F0:
+li	  r0, 0
+b	  branch_0x8026B278
+
+branch_0x8026B1F8:
+lbz	  r0, 0x1C84(r29)
+slwi	  r0, r0, 2
+add	  r3, r29, r0
+lwz	  r3, 0x1C68(r3)
+lwz	  r12, 0x364(r3)
+lwz	  r12, 0xC(r12)
+mtlr	  r12
+blrl
+cmpwi	  r3, 1
+bne	  branch_0x8026B24C
+lbz	  r0, 0x1C84(r29)
+slwi	  r0, r0, 2
+add	  r3, r29, r0
+lwz	  r3, 0x1C68(r3)
+lbz	  r0, 0x385(r3)
+cmpwi	  r0, 1
+bne	  branch_0x8026B244
+li	  r0, 1
+b	  branch_0x8026B278
+
+branch_0x8026B244:
+li	  r0, 0
+b	  branch_0x8026B278
+
+branch_0x8026B24C:
+lbz	  r0, 0x1C84(r29)
+lfs	  f0, -0xC18(r2)
+slwi	  r0, r0, 2
+add	  r3, r29, r0
+lwz	  r3, 0x1C68(r3)
+lfs	  f1, 0x378(r3)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x8026B274
+li	  r0, 1
+b	  branch_0x8026B278
+
+branch_0x8026B274:
+li	  r0, 0
+
+branch_0x8026B278:
+clrlwi	  r0, r0, 24
+cmplwi	  r0, 1
+bne	  branch_0x8026B28C
+li	  r0, 2
+sth	  r0, 0x36C(r30)
+
+branch_0x8026B28C:
+lwz	  r3, 0x380(r30)
+li	  r29, 0
+li	  r4, 0
+bl	  getFrameCtrl__6MActorFi # MActor::getFrameCtrl((int))
+lbz	  r0, 5(r3)
+clrlwi.	  r0, r0, 30
+beq	  branch_0x8026B2B0
+li	  r0, 1
+b	  branch_0x8026B2B4
+
+branch_0x8026B2B0:
+mr	  r0, r29
+
+branch_0x8026B2B4:
+cmpwi	  r0, 0
+beq	  branch_0x8026B2C0
+li	  r29, 1
+
+branch_0x8026B2C0:
+lha	  r4, 8(r3)
+lis	  r0, 0x4330
+lfd	  f2, -0xC00(r2)
+xoris	  r4, r4, 0x8000
+lfs	  f0, -0xBEC(r2)
+stw	  r4, 0x1F4(r1)
+lfs	  f3, 0x10(r3)
+stw	  r0, 0x1F0(r1)
+lfd	  f1, 0x1F0(r1)
+fsubs	  f1, f1, f2
+fsubs	  f0, f1, f0
+fcmpo	  cr0, f3, f0
+ble	  branch_0x8026B2F8
+li	  r29, 1
+
+branch_0x8026B2F8:
+clrlwi.	  r0, r29, 24
+beq	  def_8026AF6C	# jumptable 8026AF6C default case
+lwz	  r3, 0x368(r30)
+lfs	  f1, -0xC18(r2)
+lfs	  f0, 0x1CEC(r3)
+fcmpu	  cr0, f1, f0
+bne	  branch_0x8026B31C
+li	  r0, 1
+b	  branch_0x8026B320
+
+branch_0x8026B31C:
+li	  r0, 0
+
+branch_0x8026B320:
+clrlwi.	  r0, r0, 24
+bne	  def_8026AF6C	# jumptable 8026AF6C default case
+li	  r0, 0
+sth	  r0, 0x36C(r30)
+b	  def_8026AF6C	# jumptable 8026AF6C default case
+
+branch_0x8026B334:		# jumptable 8026AF6C case 4
+lwz	  r29, 0x380(r30)
+li	  r4, 1
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026B358
+addi	  r3, r29, 0
+li	  r4, 1
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026B358:
+lha	  r3, 8(r31)
+lis	  r0, 0x4330
+lwz	  r4, 0x368(r30)
+xoris	  r3, r3, 0x8000
+lfs	  f2, -0xBC0(r2)
+stw	  r3, 0x1F4(r1)
+lfs	  f0, 0x1CFC(r4)
+stw	  r0, 0x1F0(r1)
+lfd	  f1, -0xC00(r2)
+fmuls	  f2, f2, f0
+lfd	  f0, 0x1F0(r1)
+fsubs	  f0, f0, f1
+fmuls	  f0, f2, f0
+stfs	  f0, 0x10(r31)
+lfs	  f0, -0xC18(r2)
+stfs	  f0, 0xC(r31)
+b	  def_8026AF6C	# jumptable 8026AF6C default case
+
+branch_0x8026B39C:		# jumptable 8026AF6C case 5
+lwz	  r29, 0x380(r30)
+li	  r4, 0
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026B3C0
+addi	  r3, r29, 0
+li	  r4, 0
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026B3C0:
+lha	  r3, 8(r31)
+lis	  r0, 0x4330
+lwz	  r4, 0x368(r30)
+xoris	  r3, r3, 0x8000
+lfs	  f4, -0xBC0(r2)
+stw	  r3, 0x1F4(r1)
+lfs	  f3, 0x1CFC(r4)
+stw	  r0, 0x1F0(r1)
+lfs	  f2, -0xC14(r2)
+lfd	  f1, -0xC00(r2)
+lfd	  f0, 0x1F0(r1)
+fnmsubs	  f2, f4, f3, f2
+fsubs	  f0, f0, f1
+fmuls	  f0, f2, f0
+stfs	  f0, 0x10(r31)
+lfs	  f1, -0xC18(r2)
+stfs	  f1, 0xC(r31)
+lwz	  r3, 0x368(r30)
+lfs	  f0, 0x1CFC(r3)
+fcmpo	  cr0, f0, f1
+cror	  eq, lt, eq
+bne	  def_8026AF6C	# jumptable 8026AF6C default case
+li	  r0, 0
+sth	  r0, 0x36C(r30)
+lwz	  r3, 0x368(r30)
+stfs	  f1, 0x1CEC(r3)
+b	  def_8026AF6C	# jumptable 8026AF6C default case
+
+branch_0x8026B42C:		# jumptable 8026AF6C case 6
+lwz	  r29, 0x380(r30)
+li	  r4, 3
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026B450
+addi	  r3, r29, 0
+li	  r4, 3
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026B450:
+lha	  r3, 8(r31)
+lis	  r0, 0x4330
+lwz	  r4, 0x368(r30)
+xoris	  r3, r3, 0x8000
+lfs	  f2, -0xBC0(r2)
+stw	  r3, 0x1F4(r1)
+lfs	  f0, 0x1CFC(r4)
+stw	  r0, 0x1F0(r1)
+lfd	  f1, -0xC00(r2)
+fmuls	  f2, f2, f0
+lfd	  f0, 0x1F0(r1)
+fsubs	  f0, f0, f1
+fmuls	  f0, f2, f0
+stfs	  f0, 0x10(r31)
+lfs	  f0, -0xC18(r2)
+stfs	  f0, 0xC(r31)
+b	  def_8026AF6C	# jumptable 8026AF6C default case
+
+branch_0x8026B494:		# jumptable 8026AF6C case 7
+lwz	  r29, 0x380(r30)
+li	  r4, 2
+addi	  r3, r29, 0
+bl	  checkCurBckFromIndex__6MActorFi # MActor::checkCurBckFromIndex((int))
+cmpwi	  r3, 0
+bne	  branch_0x8026B4B8
+addi	  r3, r29, 0
+li	  r4, 2
+bl	  setBckFromIndex__6MActorFi # MActor::setBckFromIndex((int))
+
+branch_0x8026B4B8:
+lha	  r3, 8(r31)
+lis	  r0, 0x4330
+lwz	  r4, 0x368(r30)
+xoris	  r3, r3, 0x8000
+lfs	  f4, -0xBC0(r2)
+stw	  r3, 0x1F4(r1)
+lfs	  f3, 0x1CFC(r4)
+stw	  r0, 0x1F0(r1)
+lfs	  f2, -0xC14(r2)
+lfd	  f1, -0xC00(r2)
+lfd	  f0, 0x1F0(r1)
+fnmsubs	  f2, f4, f3, f2
+fsubs	  f0, f0, f1
+fmuls	  f0, f2, f0
+stfs	  f0, 0x10(r31)
+lfs	  f1, -0xC18(r2)
+stfs	  f1, 0xC(r31)
+lwz	  r3, 0x368(r30)
+lfs	  f0, 0x1CFC(r3)
+fcmpo	  cr0, f0, f1
+cror	  eq, lt, eq
+bne	  def_8026AF6C	# jumptable 8026AF6C default case
+li	  r0, 2
+sth	  r0, 0x36C(r30)
+lwz	  r3, 0x368(r30)
+stfs	  f1, 0x1CEC(r3)
+
+def_8026AF6C:		# jumptable 8026AF6C default case
 branch_0x8026b520:
     lwz     r3, 0x368(r30)
     lbz     r0, 0x1c86(r3)
@@ -2501,7 +2926,7 @@ branch_0x8026b520:
     li      r4, 0x0
     bl      getEmitMtx__9TWaterGunFi
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     li      r4, 0x10d
     li      r6, 0x1
@@ -2657,7 +3082,7 @@ branch_0x8026b774:
     mr      r4, r30
     fmadds  f0, f1, f0, f2
     stfs    f0, 0xe4(r30)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
     lwz     r7, 0x368(r28)
     clrlwi. r6, r3, 24
@@ -2705,7 +3130,7 @@ branch_0x8026b774:
     li      r0, 0x0
     stw     r0, 0x1c80(r4)
 branch_0x8026b840:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x58(r3)
     clrlwi. r0, r0, 29
     bne-    branch_0x8026b864
@@ -2902,9 +3327,8 @@ branch_0x8026bad4:
     li      r26, 0x0
     li      r25, 0x1
     b       branch_0x8026baf4
+    b       branch_0x8026bfb0
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2664f0, 0x8026baf4 - 0x8026baf0
 branch_0x8026baf4:
     lwz     r3, 0x368(r24)
     lfs     f0, -0xc18(rtoc)
@@ -3021,7 +3445,7 @@ branch_0x8026bc4c:
     b       branch_0x8026bd24
 
 branch_0x8026bc64:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x8026bc9c
@@ -3105,7 +3529,7 @@ branch_0x8026bd5c:
     b       branch_0x8026be34
 
 branch_0x8026bd74:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x8026bdac
@@ -3259,7 +3683,7 @@ branch_0x8026bf68:
     mr      r4, r27
     bl      getEmitMtx__9TWaterGunFi
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r7, r24, r26
     li      r4, 0x10d
     li      r6, 0x1
@@ -3373,7 +3797,7 @@ branch_0x8026c114:
     ori     r0, r0, 0x80
     stw     r0, 0x0(r6)
 branch_0x8026c128:
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     mr      r4, r30
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
     lwz     r7, 0x368(r29)
@@ -3426,7 +3850,7 @@ branch_0x8026c1e8:
     lbz     r0, 0x1c84(r3)
     cmpwi   r0, 0x4
     bne-    branch_0x8026c21c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x58(r3)
     clrlwi. r0, r0, 29
     bne-    branch_0x8026c21c
@@ -3568,7 +3992,7 @@ branch_0x8026c3e4:
 branch_0x8026c3e8:
     lwz     r5, 0x368(r29)
     mr      r28, r0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r4, r28, 0x0
     addi    r31, r5, 0x1c90
     bl      gateCheck__6MSoundFUl
@@ -3634,7 +4058,7 @@ branch_0x8026c494:
     cmplwi  r0, 0x0
     bne-    branch_0x8026c51c
     lwz     r4, 0x368(r29)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r5, 0x8(r4)
     lwz     r4, 0x58(r3)
     lfs     f0, 0x568(r5)
@@ -3682,7 +4106,7 @@ branch_0x8026c540:
     bge-    branch_0x8026c5b8
     lwz     r5, 0x368(r29)
     li      r4, 0x4022
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r31, r5, 0x1c90
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3716,7 +4140,7 @@ branch_0x8026c5b8:
     beq-    branch_0x8026c63c
     lwz     r5, 0x368(r29)
     addi    r4, r31, 0x0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r28, r5, 0x1c90
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3807,9 +4231,9 @@ animation__11TNozzleBaseFi: # 0x8026c704
     addi    r30, r3, 0x0
     beq-    branch_0x8026c748
     b       branch_0x8026cba0
+    b       branch_0x8026c748
+    b       branch_0x8026cba0
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x267140, 0x8026c748 - 0x8026c740
 branch_0x8026c748:
     lwz     r3, 0x368(r31)
     lfs     f0, -0xc18(rtoc)
@@ -3926,7 +4350,7 @@ branch_0x8026c8a0:
     b       branch_0x8026c978
 
 branch_0x8026c8b8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x8026c8f0
@@ -4010,7 +4434,7 @@ branch_0x8026c9b0:
     b       branch_0x8026ca88
 
 branch_0x8026c9c8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x8026ca00
@@ -4239,7 +4663,7 @@ branch_0x8026cce0:
     ori     r0, r0, 0x80
     stw     r0, 0x0(r4)
 branch_0x8026ccf4:
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     mr      r4, r30
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
     lwz     r7, 0x368(r29)
@@ -4357,7 +4781,7 @@ emitCommon__11TNozzleBaseFiP14TWaterEmitInfo: # 0x8026ce88
     addi    r6, sp, 0x44
     lha     r0, 0x2fc(r30)
     addi    r7, sp, 0x38
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     slwi    r0, r0, 2
     add     r3, r3, r0
     lwz     r3, 0x5dbc(r3)
@@ -4516,21 +4940,21 @@ calcGunAngle__11TNozzleBaseFRC20TMarioControllerWork: # 0x8026d0e8
     stw     r31, 0x94(sp)
     mr      r31, r3
     lwz     r3, 0x368(r3)
-    lwz     r0, -0x60b8(r13)
+    lwz     r0, MarioHitActor(r13)
     lwz     r3, 0x8(r3)
     cmplw   r3, r0
     bne-    branch_0x8026d144
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x50(r3)
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
     bne-    branch_0x8026d134
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      isJetCoaster1stCamera__15CPolarSubCameraCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8026d144
 branch_0x8026d134:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lha     r0, 0xa4(r3)
     sth     r0, 0x36e(r31)
     b       branch_0x8026d208
@@ -5134,7 +5558,7 @@ WaterGunDivingCtrlR__FP7J3DNodei: # 0x8026da40
     stw     r0, 0x4(sp)
     stwu    sp, -0x70(sp)
     bne-    branch_0x8026dabc
-    lwz     r4, -0x60e0(r13)
+    lwz     r4, OffsetR13_60e0(r13)
     lis     r0, 0x4330
     lfs     f1, -0xc18(rtoc)
     addi    r3, sp, 0x2c
@@ -5175,7 +5599,7 @@ WaterGunDivingCtrlL__FP7J3DNodei: # 0x8026dad0
     stw     r0, 0x4(sp)
     stwu    sp, -0x70(sp)
     bne-    branch_0x8026db4c
-    lwz     r4, -0x60e0(r13)
+    lwz     r4, OffsetR13_60e0(r13)
     lis     r0, 0x4330
     lfs     f1, -0xc18(rtoc)
     addi    r3, sp, 0x2c
@@ -5216,7 +5640,7 @@ RotateCtrl__FP7J3DNodei: # 0x8026db60
     stw     r0, 0x4(sp)
     stwu    sp, -0x68(sp)
     bne-    branch_0x8026dbd0
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x8026dbd0
     lwz     r4, 0x3e4(r3)
@@ -5254,7 +5678,7 @@ NozzleCtrl__FP7J3DNodei: # 0x8026dbe4
     stw     r0, 0x4(sp)
     stwu    sp, -0x60(sp)
     bne-    branch_0x8026dc7c
-    lwz     r3, -0x60e0(r13)
+    lwz     r3, OffsetR13_60e0(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x8026dc7c
     lwz     r3, 0x3e4(r3)

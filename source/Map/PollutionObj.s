@@ -233,7 +233,7 @@ getDepthFromMap__13TPollutionObjFii: # 0x8019e780
     lfs     f1, 0x40(r3)
     lfs     f5, -0x4180(rtoc)
     fmuls   f3, f2, f31
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmuls   f0, f0, f31
     lfs     f2, -0x417c(rtoc)
     fadds   f30, f4, f3
@@ -248,21 +248,21 @@ getDepthFromMap__13TPollutionObjFii: # 0x8019e780
     fadds   f24, f5, f0
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
     fmr     f26, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmr     f1, f25
     lfs     f2, -0x417c(rtoc)
     fmr     f3, f27
     addi    r4, sp, 0x54
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
     fmr     f27, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmr     f1, f28
     lfs     f2, -0x417c(rtoc)
     fmr     f3, f24
     addi    r4, sp, 0x54
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
     fmr     f28, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmr     f1, f25
     lfs     f2, -0x417c(rtoc)
     fmr     f3, f24
@@ -329,7 +329,7 @@ branch_0x8019e940:
     beq-    branch_0x8019e97c
     lfs     f0, -0x4174(rtoc)
     addi    r4, sp, 0x54
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmuls   f0, f0, f31
     lfs     f2, -0x417c(rtoc)
     fadds   f1, f30, f0

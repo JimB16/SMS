@@ -244,11 +244,11 @@ loadAfter__16TMapObjTreeScaleFv: # 0x801f62b8
     stw     r30, 0x50(sp)
     stw     r29, 0x4c(sp)
     bl      loadAfter__14TMapObjGeneralFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     beq-    branch_0x801f6304
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -343,11 +343,11 @@ branch_0x801f6430:
     b       branch_0x801f64ec
 
 branch_0x801f643c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     beq-    branch_0x801f65d0
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -366,7 +366,7 @@ branch_0x801f643c:
     b       branch_0x801f65d0
 
 branch_0x801f6490:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x300f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -392,7 +392,7 @@ branch_0x801f64c0:
     b       branch_0x801f65d0
 
 branch_0x801f64ec:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x300f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -486,7 +486,7 @@ branch_0x801f660c:
     lwz     r12, 0x118(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x801f6674
@@ -562,7 +562,7 @@ branch_0x801f6694:
     stfs    f31, 0x4(r3)
     stfs    f30, 0x8(r3)
     lwz     r0, 0x2d8(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     mulli   r5, r0, 0xc
     addi    r5, r5, 0x170
     add     r5, r31, r5

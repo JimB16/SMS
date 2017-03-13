@@ -159,7 +159,7 @@ branch_0x801a365c:
     lwz     r3, 0x20(r30)
     lfs     f1, -0x4098(rtoc)
     bl      setJointTransY__11TMapObjBaseFP8J3DJointf
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -297,14 +297,14 @@ loadAfter__26TDolpicEventRiccoMammaGateFv: # 0x801a3820
     addis   r0, r3, 0xfffb
     cmplwi  r0, 0x1
     bne-    branch_0x801a38d4
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     li      r4, 0x0
     addi    r3, r3, 0x70
     bl      offLayer__22TPollutionCounterLayerFi
     b       branch_0x801a38e4
 
 branch_0x801a38d4:
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     li      r4, 0x1
     addi    r3, r3, 0x70
     bl      offLayer__22TPollutionCounterLayerFi
@@ -363,7 +363,7 @@ watch__26TDolpicEventRiccoMammaGateFv: # 0x801a38f8
     cmplwi  r0, 0x1
     bne-    branch_0x801a3a30
     li      r0, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r0, 0x64(sp)
     addi    r0, sp, 0x64
     lis     r4, 0x8039
@@ -377,19 +377,19 @@ watch__26TDolpicEventRiccoMammaGateFv: # 0x801a38f8
     li      r9, 0x0
     li      r10, 0x0
     bl      fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x48
     li      r4, 0x66
     li      r6, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x48
     li      r4, 0x1e2
     li      r6, 0x2
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
     lhz     r0, 0x32(r3)
@@ -399,7 +399,7 @@ watch__26TDolpicEventRiccoMammaGateFv: # 0x801a38f8
 
 branch_0x801a3a30:
     li      r0, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r0, 0x60(sp)
     addi    r0, sp, 0x60
     lis     r4, 0x8039
@@ -413,19 +413,19 @@ branch_0x801a3a30:
     li      r9, 0x0
     li      r10, 0x0
     bl      fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x48
     li      r4, 0x67
     li      r6, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x48
     li      r4, 0x1e3
     li      r6, 0x2
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x4(r3)
     lhz     r0, 0x32(r3)
@@ -435,7 +435,7 @@ branch_0x801a3ab4:
     addi    r3, r31, 0x54
     lfs     f1, 0x60(r31)
     bl      SMS_MarioWarpRequest__FRCQ29JGeometry8TVec3_f_f
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x484d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -520,7 +520,7 @@ control__26TDolpicEventRiccoMammaGateFv: # 0x801a3b08
     lwz     r3, 0x20(r31)
     fmuls   f1, f1, f0
     bl      setJointTransY__11TMapObjBaseFP8J3DJointf
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -538,7 +538,7 @@ branch_0x801a3c18:
     li      r4, 0x13
     li      r5, 0x0
     bl      start__9RumbleMgrFiPf
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3008
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -573,7 +573,7 @@ branch_0x801a3c84:
     lwz     r12, 0x18(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     bl      fireEndDemoCamera__12TMarDirectorFv
     lfs     f1, -0x4080(rtoc)
     li      r3, 0x0
@@ -732,7 +732,7 @@ control__22TDolpicEventBiancoGateFv: # 0x801a3e70
     bl      start__9RumbleMgrFiPf
     lwz     r4, 0x20(r31)
     lfsu    f1, 0x10(r4)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f4, -0x4060(rtoc)
     lfs     f2, 0x4(r4)
     lfs     f3, 0x8(r4)

@@ -388,7 +388,7 @@ branch_0x800c7ab8:
     lha     r0, 0x7c(r29)
     clrlwi. r0, r0, 31
     beq-    branch_0x800c7af8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3034
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -403,7 +403,7 @@ branch_0x800c7ab8:
     b       branch_0x800c7b28
 
 branch_0x800c7af8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3035
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

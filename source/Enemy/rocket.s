@@ -191,7 +191,7 @@ branch_0x8010a8dc:
     stfs    f0, 0x30(r31)
     li      r4, 0x179
     li      r6, 0x1
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r4, 0x8c(r31)
     lwz     r3, 0x1a4(r31)
@@ -297,7 +297,7 @@ execute__27TNerveRocketPossessedNozzleCFP24TSpineBase_10TLiveActor_: # 0x8010aa1
     li      r5, 0xa
     li      r6, 0x0
     bl      start__9RumbleMgrFiiPf
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x180c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -310,7 +310,7 @@ execute__27TNerveRocketPossessedNozzleCFP24TSpineBase_10TLiveActor_: # 0x8010aa1
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x8010aa88:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x825
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -339,9 +339,10 @@ branch_0x8010aab8:
     blrl
 branch_0x8010aaf0:
     addi    r3, r31, 0x0
-    li      r4, 0x5
+    li      r4, MARIOMSG_ROCKET
     bl      SMS_SendMessageToMario__FP9THitActorUl
-    lwz     r3, -0x6048(r13)
+
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r3, 0x0(r3)
     lfs     f0, 0xb4(r3)
@@ -369,7 +370,7 @@ branch_0x8010ab50:
 branch_0x8010ab54:
     clrlwi. r0, r0, 24
     bne-    branch_0x8010ab9c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4807
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -387,7 +388,7 @@ branch_0x8010ab84:
     mtlr    r12
     blrl
 branch_0x8010ab9c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r3, 0x0(r3)
     lwz     r0, 0xd4(r3)
@@ -397,7 +398,7 @@ branch_0x8010ab9c:
     mr      r3, r31
     stfs    f0, 0x190(r31)
     bl      expandCollision__11TSmallEnemyFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -697,7 +698,7 @@ setDeadAnm__7TRocketFv: # 0x8010af4c
     stw     r0, 0x74(r4)
     lwz     r0, 0x88(sp)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x68(r5)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
     lbz     r0, 0x1a0(r31)
@@ -716,13 +717,13 @@ branch_0x8010afd8:
     stw     r0, 0xf0(r31)
     li      r7, 0x0
     lwz     r5, 0x74(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x4(r5)
     addi    r5, r5, 0x20
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x74(r31)
     li      r4, 0xc2
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x4(r5)
     li      r7, 0x0
@@ -803,7 +804,7 @@ branch_0x8010b110:
     fmuls   f1, f1, f0
     lfs     f0, 0x10(r30)
     addi    r4, sp, 0x84
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stfs    f0, 0x84(sp)
     stfs    f2, 0x88(sp)
     stfs    f3, 0x8c(sp)
@@ -1337,7 +1338,7 @@ branch_0x8010b890:
 branch_0x8010b894:
     clrlwi. r0, r0, 24
     beq-    branch_0x8010b8cc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

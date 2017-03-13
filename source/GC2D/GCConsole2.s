@@ -49,7 +49,7 @@ perform__11TGCConsole2FUlPQ26JDrama9TGraphics: # 0x8014083c
     lbz     r0, 0x50(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x8014091c
-    lwz     r19, -0x7118(r13)
+    lwz     r19, gpCamera(r13)
     li      r20, 0x1
     addi    r3, r19, 0x0
     bl      isSimpleDemoCamera__15CPolarSubCameraCFv
@@ -78,9 +78,9 @@ branch_0x801408bc:
 branch_0x801408c0:
     clrlwi. r0, r0, 24
     bne-    branch_0x80140910
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 21, 21
+    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
     beq-    branch_0x801408e0
     li      r0, 0x1
     b       branch_0x801408e4
@@ -105,7 +105,7 @@ branch_0x80140910:
     b       branch_0x801409a0
 
 branch_0x8014091c:
-    lwz     r19, -0x7118(r13)
+    lwz     r19, gpCamera(r13)
     li      r20, 0x1
     addi    r3, r19, 0x0
     bl      isSimpleDemoCamera__15CPolarSubCameraCFv
@@ -134,9 +134,9 @@ branch_0x80140968:
 branch_0x8014096c:
     clrlwi. r0, r0, 24
     bne-    branch_0x801409a0
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 21, 21
+    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
     beq-    branch_0x8014098c
     li      r0, 0x1
     b       branch_0x80140990
@@ -287,14 +287,14 @@ branch_0x80140b74:
     b       branch_0x80140b98
 
 branch_0x80140b84:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     li      r28, 0x0
     lha     r0, 0x120(r3)
     clrlwi  r30, r0, 24
     b       branch_0x80140bb0
 
 branch_0x80140b98:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f0, 0x12c(r3)
     fctiwz  f0, f0
     stfd    f0, 0xf68(sp)
@@ -308,7 +308,7 @@ branch_0x80140bb0:
 branch_0x80140bc0:
     clrlwi. r0, r28, 24
     beq-    branch_0x80140bf8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     bne-    branch_0x80140bf8
@@ -327,7 +327,7 @@ branch_0x80140bf8:
     lbz     r4, 0xcc(r5)
     cmplwi  r4, 0xff
     beq-    branch_0x80140c34
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x80140c34
@@ -340,7 +340,7 @@ branch_0x80140c30:
     stb     r3, 0xcc(r5)
 branch_0x80140c34:
     li      r24, 0x0
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      isUnderWater__6TMarioCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x80140c68
@@ -366,7 +366,9 @@ branch_0x80140c6c:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80140C90:		# jumptable 80140C8C case 0
     lwz     r3, 0x1c4(r31)
     lwz     r3, 0x0(r3)
     lbz     r0, 0xc(r3)
@@ -392,14 +394,14 @@ branch_0x80140ccc:
     addi    r3, r31, 0x0
     li      r4, 0x1
     bl      startAppearLife__11TGCConsole2Fi
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f0, 0x12c(r3)
     fctiwz  f0, f0
     stfd    f0, 0xf68(sp)
     lwz     r0, 0xf6c(sp)
     clrlwi  r30, r0, 24
     stb     r0, 0x1cc(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     bne-    branch_0x80140d28
@@ -434,8 +436,437 @@ branch_0x80140d3c:
     stw     r0, 0x18(r31)
     b       branch_0x80141344
 
+branch_0x80140D84:		# jumptable 80140C8C case 1
+lhz	  r4, 0x84(r31)
+addi	  r3, r31, 0
+addi	  r0, r4, 1
+sth	  r0, 0x84(r31)
+bl	  processAppearLife__11TGCConsole2Fi # TGCConsole2::processAppearLife((int))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80140DB0
+li	  r0, 2
+stw	  r0, 0x18(r31)
+li	  r0, 0
+stb	  r0, 0x38(r31)
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x13b784, 0x80141344 - 0x80140d84
+branch_0x80140DB0:
+clrlwi.	  r0, r24, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+lbz	  r0, 0x38(r31)
+cmplwi	  r0, 0
+bne	  branch_0x80140DD0
+lbz	  r0, 0x4C(r31)
+cmplwi	  r0, 0
+beq	  branch_0x80140DD8
+
+branch_0x80140DD0:
+li	  r24, 0
+b	  branch_0x80140E6C
+
+branch_0x80140DD8:
+li	  r24, 1
+stb	  r24, 0x4C(r31)
+li	  r10, 0
+addi	  r7, r1, 0xB58
+lwz	  r4, 0x174(r31)
+addi	  r6, r1, 0xB50
+lwz	  r3, 0x1C4(r31)
+addi	  r5, r1, 0xB48
+lwz	  r4, 0(r4)
+lwz	  r3, 0x10(r3)
+lwz	  r8, 0x18(r4)
+lwz	  r4, 0x20(r4)
+addi	  r0, r3, 1
+neg	  r0, r0
+subf	  r3, r8, r4
+stw	  r10, 0xB58(r1)
+subf	  r0, r3, r0
+stw	  r0, 0xB5C(r1)
+li	  r4, 0x28
+lwz	  r8, 0x174(r31)
+lwz	  r3, 0x1C4(r31)
+lwz	  r8, 0(r8)
+lwz	  r3, 0x10(r3)
+lwz	  r9, 0x18(r8)
+lwz	  r8, 0x20(r8)
+addi	  r0, r3, 1
+neg	  r3, r0
+subf	  r0, r9, r8
+stw	  r10, 0xB48(r1)
+subf	  r0, r0, r3
+stw	  r10, 0xB50(r1)
+srawi	  r0, r0, 1
+stw	  r0, 0xB54(r1)
+stw	  r10, 0xB4C(r1)
+lwz	  r3, 0x1C4(r31)
+bl	  setPanePosition__10TBoundPaneFlRC8JUTPointRC8JUTPointRC8JUTPoint # TBoundPane::setPanePosition((long,JUTPoint	const &,JUTPoint const &,JUTPoint const	&))
+sth	  r24, 0x84(r31)
+
+branch_0x80140E6C:
+clrlwi.	  r0, r24, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+li	  r0, 3
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80140E80:		# jumptable 80140C8C case 2
+lbz	  r0, 0x1CC(r31)
+cmplwi	  r0, 8
+bne	  branch_0x80140F44
+lbz	  r0, 0x38(r31)
+cmplwi	  r0, 0
+bne	  branch_0x80140F38
+lbz	  r0, 0x4C(r31)
+cmplwi	  r0, 0
+bne	  branch_0x80140F38
+li	  r0, 1
+stb	  r0, 0x4C(r31)
+li	  r25, 0
+addi	  r7, r1, 0xB40
+lwz	  r4, 0x174(r31)
+addi	  r6, r1, 0xB38
+lwz	  r3, 0x1C4(r31)
+addi	  r5, r1, 0xB30
+lwz	  r4, 0(r4)
+lwz	  r3, 0x10(r3)
+lwz	  r8, 0x18(r4)
+lwz	  r4, 0x20(r4)
+addi	  r0, r3, 1
+neg	  r0, r0
+subf	  r3, r8, r4
+stw	  r25, 0xB40(r1)
+subf	  r0, r3, r0
+stw	  r0, 0xB44(r1)
+li	  r4, 0x28
+lwz	  r8, 0x174(r31)
+lwz	  r3, 0x1C4(r31)
+lwz	  r8, 0(r8)
+lwz	  r3, 0x10(r3)
+lwz	  r9, 0x18(r8)
+lwz	  r8, 0x20(r8)
+addi	  r0, r3, 1
+neg	  r3, r0
+subf	  r0, r9, r8
+stw	  r25, 0xB30(r1)
+subf	  r0, r0, r3
+stw	  r25, 0xB38(r1)
+srawi	  r0, r0, 1
+stw	  r0, 0xB3C(r1)
+stw	  r25, 0xB34(r1)
+lwz	  r3, 0x1C4(r31)
+bl	  setPanePosition__10TBoundPaneFlRC8JUTPointRC8JUTPointRC8JUTPoint # TBoundPane::setPanePosition((long,JUTPoint	const &,JUTPoint const &,JUTPoint const	&))
+sth	  r25, 0x84(r31)
+
+branch_0x80140F38:
+li	  r0, 3
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80140F44:
+clrlwi.	  r0, r24, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+lbz	  r0, 0x38(r31)
+cmplwi	  r0, 0
+bne	  branch_0x80140F64
+lbz	  r0, 0x4C(r31)
+cmplwi	  r0, 0
+beq	  branch_0x80140F6C
+
+branch_0x80140F64:
+li	  r24, 0
+b	  branch_0x80141000
+
+branch_0x80140F6C:
+li	  r24, 1
+stb	  r24, 0x4C(r31)
+li	  r10, 0
+addi	  r7, r1, 0xB28
+lwz	  r4, 0x174(r31)
+addi	  r6, r1, 0xB20
+lwz	  r3, 0x1C4(r31)
+addi	  r5, r1, 0xB18
+lwz	  r4, 0(r4)
+lwz	  r3, 0x10(r3)
+lwz	  r8, 0x18(r4)
+lwz	  r4, 0x20(r4)
+addi	  r0, r3, 1
+neg	  r0, r0
+subf	  r3, r8, r4
+stw	  r10, 0xB28(r1)
+subf	  r0, r3, r0
+stw	  r0, 0xB2C(r1)
+li	  r4, 0x28
+lwz	  r8, 0x174(r31)
+lwz	  r3, 0x1C4(r31)
+lwz	  r8, 0(r8)
+lwz	  r3, 0x10(r3)
+lwz	  r9, 0x18(r8)
+lwz	  r8, 0x20(r8)
+addi	  r0, r3, 1
+neg	  r3, r0
+subf	  r0, r9, r8
+stw	  r10, 0xB18(r1)
+subf	  r0, r0, r3
+stw	  r10, 0xB20(r1)
+srawi	  r0, r0, 1
+stw	  r0, 0xB24(r1)
+stw	  r10, 0xB1C(r1)
+lwz	  r3, 0x1C4(r31)
+bl	  setPanePosition__10TBoundPaneFlRC8JUTPointRC8JUTPointRC8JUTPoint # TBoundPane::setPanePosition((long,JUTPoint	const &,JUTPoint const &,JUTPoint const	&))
+sth	  r24, 0x84(r31)
+
+branch_0x80141000:
+clrlwi.	  r0, r24, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+li	  r0, 3
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141014:		# jumptable 80140C8C case 3
+lhz	  r3, 0x84(r31)
+cmplwi	  r3, 0x78
+ble	  branch_0x80141040
+lwz	  r3, 0x1C4(r31)
+bl	  update__10TBoundPaneFv # TBoundPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+li	  r0, 0
+stb	  r0, 0x4C(r31)
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141040:
+addi	  r0, r3, 1
+sth	  r0, 0x84(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x8014104C:		# jumptable 80140C8C case 7
+lhz	  r4, 0x84(r31)
+addi	  r3, r31, 0
+addi	  r0, r4, 1
+sth	  r0, 0x84(r31)
+bl	  processInsertLife__11TGCConsole2Fi # TGCConsole2::processInsertLife((int))
+clrlwi.	  r0, r3, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+li	  r0, 2
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141074:		# jumptable 80140C8C case 8
+lhz	  r4, 0x84(r31)
+addi	  r3, r31, 0
+addi	  r0, r4, 1
+sth	  r0, 0x84(r31)
+bl	  processInsertLife__11TGCConsole2Fi # TGCConsole2::processInsertLife((int))
+clrlwi.	  r0, r3, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+bl	  SMS_isDivingMap__Fv #	SMS_isDivingMap(void)
+clrlwi.	  r0, r3, 24
+beq	  branch_0x801410A8
+li	  r0, 9
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x801410A8:
+li	  r0, 5
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x801410B4:		# jumptable 80140C8C case 4
+mr	  r3, r31
+lhz	  r4, 0x84(r31)
+bl	  processAppearLife__11TGCConsole2Fi # TGCConsole2::processAppearLife((int))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x801410D8
+li	  r0, 5
+stw	  r0, 0x18(r31)
+li	  r0, 0
+stb	  r0, 0x38(r31)
+
+branch_0x801410D8:
+lwz	  r3, MarioActor(r13)
+bl	  isUnderWater__6TMarioCFv # TMario::isUnderWater(const(void))
+clrlwi.	  r0, r3, 24
+bne	  branch_0x801410FC
+lhz	  r0, 0x84(r31)
+cmplwi	  r0, 0
+bne	  branch_0x801410FC
+li	  r0, 1
+sth	  r0, 0x84(r31)
+
+branch_0x801410FC:
+clrlwi	  r0, r30, 24
+cmplwi	  r0, 8
+blt	  branch_0x80141114
+lhz	  r0, 0x84(r31)
+cmplwi	  r0, 0
+beq	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141114:
+lhz	  r3, 0x84(r31)
+cmplwi	  r3, 0x3E8
+bge	  def_80140C8C	# jumptable 80140C8C default case
+addi	  r0, r3, 1
+sth	  r0, 0x84(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x8014112C:		# jumptable 80140C8C case 5
+lwz	  r3, MarioActor(r13)
+bl	  isUnderWater__6TMarioCFv # TMario::isUnderWater(const(void))
+clrlwi.	  r0, r3, 24
+bne	  def_80140C8C	# jumptable 80140C8C default case
+lbz	  r3, 0x1CC(r31)
+cmplwi	  r3, 8
+bne	  branch_0x80141200
+lbz	  r0, 0x38(r31)
+cmplwi	  r0, 0
+bne	  branch_0x801411F4
+lbz	  r0, 0x4C(r31)
+cmplwi	  r0, 0
+bne	  branch_0x801411F4
+li	  r0, 1
+stb	  r0, 0x4C(r31)
+li	  r25, 0
+addi	  r7, r1, 0xB10
+lwz	  r4, 0x174(r31)
+addi	  r6, r1, 0xB08
+lwz	  r3, 0x1C4(r31)
+addi	  r5, r1, 0xB00
+lwz	  r4, 0(r4)
+lwz	  r3, 0x10(r3)
+lwz	  r8, 0x18(r4)
+lwz	  r4, 0x20(r4)
+addi	  r0, r3, 1
+neg	  r0, r0
+subf	  r3, r8, r4
+stw	  r25, 0xB10(r1)
+subf	  r0, r3, r0
+stw	  r0, 0xB14(r1)
+li	  r4, 0x28
+lwz	  r8, 0x174(r31)
+lwz	  r3, 0x1C4(r31)
+lwz	  r8, 0(r8)
+lwz	  r3, 0x10(r3)
+lwz	  r9, 0x18(r8)
+lwz	  r8, 0x20(r8)
+addi	  r0, r3, 1
+neg	  r3, r0
+subf	  r0, r9, r8
+stw	  r25, 0xB00(r1)
+subf	  r0, r0, r3
+stw	  r25, 0xB08(r1)
+srawi	  r0, r0, 1
+stw	  r0, 0xB0C(r1)
+stw	  r25, 0xB04(r1)
+lwz	  r3, 0x1C4(r31)
+bl	  setPanePosition__10TBoundPaneFlRC8JUTPointRC8JUTPointRC8JUTPoint # TBoundPane::setPanePosition((long,JUTPoint	const &,JUTPoint const &,JUTPoint const	&))
+sth	  r25, 0x84(r31)
+
+branch_0x801411F4:
+li	  r0, 6
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141200:
+lha	  r0, 0x1C(r31)
+cmpw	  r3, r0
+beq	  def_80140C8C	# jumptable 80140C8C default case
+addi	  r3, r31, 0
+li	  r4, 1
+bl	  startAppearLife__11TGCConsole2Fi # TGCConsole2::startAppearLife((int))
+lwz	  r4, MarioActor(r13)
+mr	  r3, r31
+lha	  r0, 0x120(r4)
+clrlwi	  r30, r0, 24
+stb	  r0, 0x1CC(r31)
+mr	  r4, r30
+bl	  resetLife__11TGCConsole2Fi # TGCConsole2::resetLife((int))
+li	  r0, 1
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141240:		# jumptable 80140C8C case 6
+lhz	  r3, 0x84(r31)
+cmplwi	  r3, 0x78
+ble	  branch_0x801412A8
+lwz	  r3, 0x1C4(r31)
+bl	  update__10TBoundPaneFv # TBoundPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+li	  r0, 0
+stb	  r0, 0x4C(r31)
+lwz	  r3, MarioActor(r13)
+lha	  r3, 0x120(r3)
+cmpwi	  r3, 8
+bne	  branch_0x8014127C
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x8014127C:
+clrlwi	  r30, r3, 24
+stb	  r3, 0x1CC(r31)
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  startInsertLife__11TGCConsole2Fi # TGCConsole2::startInsertLife((int))
+addi	  r3, r31, 0
+addi	  r4, r30, 0
+bl	  resetLife__11TGCConsole2Fi # TGCConsole2::resetLife((int))
+li	  r0, 7
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x801412A8:
+addi	  r0, r3, 1
+sth	  r0, 0x84(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x801412B4:		# jumptable 80140C8C case 10
+lbz	  r0, 0x50(r31)
+cmplwi	  r0, 0
+beq	  branch_0x801412DC
+lwz	  r3, 0x1C4(r31)
+bl	  update__10TBoundPaneFv # TBoundPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  def_80140C8C	# jumptable 80140C8C default case
+li	  r0, 0
+stb	  r0, 0x4C(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x801412DC:
+lwz	  r3, MarioActor(r13)
+lha	  r0, 0x120(r3)
+cmpwi	  r0, 8
+beq	  branch_0x80141304
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  startInsertLife__11TGCConsole2Fi # TGCConsole2::startInsertLife((int))
+li	  r0, 7
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141304:		# TMario::isUnderWater(const(void))
+bl	  isUnderWater__6TMarioCFv
+clrlwi.	  r0, r3, 24
+bne	  branch_0x8014131C
+bl	  SMS_isDivingMap__Fv #	SMS_isDivingMap(void)
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80141334
+
+branch_0x8014131C:
+addi	  r3, r31, 0
+li	  r4, 1
+bl	  startInsertLife__11TGCConsole2Fi # TGCConsole2::startInsertLife((int))
+li	  r0, 8
+stw	  r0, 0x18(r31)
+b	  def_80140C8C	# jumptable 80140C8C default case
+
+branch_0x80141334:
+li	  r30, 8
+stb	  r30, 0x1CC(r31)
+li	  r0, 0
+stw	  r0, 0x18(r31)
+
+def_80140C8C:		# jumptable 80140C8C default case
 branch_0x80141344:
     lwz     r0, 0x18(r31)
     cmpwi   r0, 0xa
@@ -476,14 +907,14 @@ branch_0x80141398:
     add     r3, r31, r0
     lwz     r3, 0x17c(r3)
     stb     r4, 0xc(r3)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x801415f8
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x801415f8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4801
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -497,7 +928,7 @@ branch_0x80141398:
 
 branch_0x80141424:
     beq-    branch_0x801415f8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x801414a0
@@ -506,7 +937,7 @@ branch_0x80141424:
     bne-    branch_0x801414a0
     clrlwi. r0, r28, 24
     beq-    branch_0x80141478
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x480c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -519,7 +950,7 @@ branch_0x80141424:
     b       branch_0x801414a0
 
 branch_0x80141478:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4823
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -737,12 +1168,12 @@ branch_0x80141784:
 branch_0x801417a4:
     stw     r3, 0x20(r31)
 branch_0x801417a8:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
     cmplwi  r0, 0x201
     bne-    branch_0x8014189c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x8014189c
@@ -852,7 +1283,7 @@ branch_0x80141920:
     lbz     r0, 0x60(r31)
     extsb.  r0, r0
     bne-    branch_0x80141ae8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x80141ae8
@@ -1153,7 +1584,7 @@ branch_0x80141dc4:
     addi    r0, r3, 0x1
     stw     r0, 0x5c(r31)
 branch_0x80141dd0:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r19, 0x3e4(r3)
     lwz     r24, 0x1c80(r19)
     mr      r3, r19
@@ -1266,7 +1697,7 @@ branch_0x80141f3c:
     beq-    branch_0x80141f78
     cmpw    r24, r25
     bne-    branch_0x80141f78
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4807
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1277,7 +1708,7 @@ branch_0x80141f3c:
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x80141f78:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r5, 0x3f0(r3)
     lbz     r0, 0x0(r5)
     cmplwi  r0, 0x8
@@ -1352,7 +1783,7 @@ branch_0x80142068:
     lbz     r0, 0x46(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x801420bc
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm. r0, r0, 0, 16, 16
     beq-    branch_0x80142090
@@ -1392,7 +1823,7 @@ branch_0x801420f8:
     lbz     r0, 0x46(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80142164
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     bne-    branch_0x8014211c
@@ -1489,14 +1920,14 @@ branch_0x80142200:
     lwz     r0, 0xf14(sp)
     cmpw    r3, r0
     bne-    branch_0x801422a0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x801422a0
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x801422a0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4800
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1746,12 +2177,12 @@ branch_0x80142600:
     lbz     r0, 0xc(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x801426bc
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
     cmplwi  r0, 0x201
     beq-    branch_0x801426bc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x801426bc
@@ -1985,7 +2416,7 @@ branch_0x80142954:
     mulli   r0, r0, 0x78
     cmplw   r3, r0
     blt-    branch_0x80142a10
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
     cmplwi  r0, 0x201
@@ -2017,7 +2448,7 @@ branch_0x801429fc:
     li      r4, 0x1
     bl      startAppearTelop__11TGCConsole2Fb
 branch_0x80142a10:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x80142a44
@@ -2183,11 +2614,11 @@ branch_0x80142c6c:
     lbz     r0, 0x59(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80142cf8
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x0
     bne-    branch_0x80142cf0
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lha     r0, 0x120(r3)
     extsh.  r0, r0
     beq-    branch_0x80142cf0
@@ -2204,7 +2635,7 @@ branch_0x80142c6c:
     cmplwi  r0, 0x2
     beq-    branch_0x80142cf0
 branch_0x80142cc8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4819
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2221,11 +2652,11 @@ branch_0x80142cf8:
     lbz     r0, 0x5a(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80142d84
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x0
     bne-    branch_0x80142d7c
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lha     r0, 0x120(r3)
     extsh.  r0, r0
     beq-    branch_0x80142d7c
@@ -2242,7 +2673,7 @@ branch_0x80142cf8:
     cmplwi  r0, 0x2
     beq-    branch_0x80142d7c
 branch_0x80142d54:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3397,7 +3828,7 @@ branch_0x80143de8:
     li      r0, 0x1
     stb     r0, 0x68(r31)
 branch_0x80143df0:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x3f0(r3)
     lbz     r0, 0x0(r3)
     cmplwi  r0, 0x8
@@ -3426,7 +3857,7 @@ branch_0x80143e10:
     lwz     r3, 0x314(r3)
     stb     r4, 0xc(r3)
 branch_0x80143e54:
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lbz     r0, 0x7a(r31)
     lbz     r5, 0x5d5f(r3)
     cmplw   r0, r5
@@ -3571,7 +4002,7 @@ branch_0x80144038:
     bl      GXSetScissor
     addi    r3, sp, 0xbd0
     bl      setup2D__14J2DGrafContextFv
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x3f0(r3)
     lbz     r0, 0x0(r3)
     cmplwi  r0, 0x8
@@ -3584,7 +4015,7 @@ branch_0x80144098:
 branch_0x8014409c:
     cmpwi   r0, 0x0
     beq-    branch_0x80144190
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lbz     r0, 0x5d5f(r3)
     cmpwi   r0, 0x2
     beq-    branch_0x8014410c
@@ -5513,7 +5944,7 @@ checkChangeTelopArray__11TGCConsole2Fv: # 0x80145bac
     stw     r29, 0x44(sp)
     stw     r28, 0x40(sp)
     subi    r28, r3, 0x8
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r31, 0x574(r30)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x1
@@ -5526,13 +5957,90 @@ checkChangeTelopArray__11TGCConsole2Fv: # 0x80145bac
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80145C0C:		# jumptable 80145C08 case 0
     subi    r0, r13, 0x7b78
     stw     r0, 0x574(r30)
     b       branch_0x80145d04
 
+branch_0x80145C18:		# jumptable 80145C08 case 1
+lwz	  r3, 0xC4(r30)
+lwz	  r0, 0x68(r3)
+cmplwi	  r0, 0
+beq	  branch_0x80145C34
+addi	  r0, r13, -0x7B70
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x140618, 0x80145cf0 - 0x80145c18
+branch_0x80145C34:
+li	  r0, 0
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145C40:		# jumptable 80145C08 case 6
+addi	  r0, r28, 0x40
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145C4C:		# jumptable 80145C08 case 7
+addi	  r0, r28, 0x4C
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145C58:		# jumptable 80145C08 case 9
+addi	  r0, r28, 0x2E4
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145C64:		# jumptable 80145C08 case 2
+addi	  r0, r28, 0x2F0
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145C70:		# jumptable 80145C08 case 5
+lis	  r29, 5 # 0x50002
+lwz	  r3, -0x6060(r13)
+addi	  r4, r29, 1 # 0x50001
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80145CB4
+lwz	  r3, -0x6060(r13)
+addi	  r4, r29, 2 # 0x50002
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80145CA8
+addi	  r0, r28, 0x34
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145CA8:
+addi	  r0, r13, -0x7B68
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145CB4:
+lwz	  r3, -0x6060(r13)
+addi	  r4, r29, 2 # 0x50002
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80145CD4
+addi	  r0, r13, -0x7B60
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145CD4:
+addi	  r0, r28, 0x28
+stw	  r0, 0x574(r30)
+b	  branch_0x80145d04
+
+branch_0x80145CE0:		# jumptable 80145C08 case 8
+mr	  r3, r30
+bl	  checkDolpic8__11TGCConsole2Fv	# TGCConsole2::checkDolpic8((void))
+stw	  r3, 0x574(r30)
+b	  branch_0x80145d04
+
+def_80145C08:		# jumptable 80145C08 default case
 branch_0x80145cf0:
     li      r0, 0x0
     stw     r0, 0x574(r30)
@@ -7256,7 +7764,7 @@ processAppearLife__11TGCConsole2Fi: # 0x80147450
     stw     r31, 0x5c(sp)
     mr      r31, r3
     stw     r30, 0x58(sp)
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lha     r0, 0x120(r5)
     extsh.  r0, r0
     beq-    branch_0x80147490
@@ -7730,7 +8238,7 @@ branch_0x80147ac8:
     b       branch_0x80147b30
 
 branch_0x80147b08:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x405c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8295,7 +8803,7 @@ setTimer__11TGCConsole2Fl: # 0x8014836c
     stmw    r25, 0x184(sp)
     addi    r31, r3, 0x0
     bne-    branch_0x8014843c
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r26, 0xc8(r4)
     addi    r3, r4, 0xe8
     lwz     r28, 0xcc(r4)
@@ -8567,11 +9075,11 @@ branch_0x8014878c:
     lwz     r0, 0x51c(r31)
     cmplw   r30, r0
     bge-    branch_0x801487bc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x801487bc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mulli   r4, r30, 0xa
     bl      playTimer__6MSoundFUl
 branch_0x801487bc:
@@ -9518,7 +10026,7 @@ drawWaterBack__11TGCConsole2Fv: # 0x801492a4
     stw     r30, 0x1a0(sp)
     stw     r29, 0x19c(sp)
     mr      r29, r3
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     lha     r0, 0x120(r4)
     extsh.  r0, r0
     beq-    branch_0x80149ad8
@@ -9643,7 +10151,7 @@ branch_0x8014945c:
     bl      GXSetTevOrder
     lwz     r4, 0x26c(r29)
     addi    r3, sp, 0x104
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lwz     r4, 0x0(r4)
     lwz     r31, 0x3e4(r5)
     addi    r4, r4, 0x14
@@ -10610,7 +11118,7 @@ branch_0x8014a298:
     b       branch_0x8014a490
 
 branch_0x8014a2a0:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x8014a2bc
@@ -10728,7 +11236,7 @@ branch_0x8014a430:
     lwz     r28, 0x0(r3)
     cmpwi   r28, -0x1
     beq-    branch_0x8014a48c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r28
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -11928,7 +12436,7 @@ branch_0x8014b4bc:
     li      r4, 0x3ff
     subi    r5, rtoc, 0x4c04
     bl      snprintf
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     addi    r3, sp, 0x5c
     li      r5, 0x0
     bl      __ct__8J2DPrintFP7JUTFonti
@@ -11943,7 +12451,7 @@ branch_0x8014b4bc:
     stfd    f0, 0xd0(sp)
     lwz     r0, 0xd4(sp)
     stw     r0, 0x558(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8014b608
@@ -12248,7 +12756,7 @@ startAppearLife__11TGCConsole2Fi: # 0x8014b9ec
     lbz     r0, 0x50(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8014ba20
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lha     r0, 0x120(r5)
     cmpwi   r0, 0x0
     bne-    branch_0x8014ba28
@@ -12276,7 +12784,7 @@ branch_0x8014ba40:
     lwz     r5, 0x0(r7)
     lwz     r0, 0x2b0(sp)
     stw     r0, 0x140(r5)
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lha     r5, 0x120(r5)
     addi    r0, r5, 0x1
     cmpw    r0, r8
@@ -12304,7 +12812,7 @@ branch_0x8014ba9c:
     lwz     r5, 0x0(r7)
     lwz     r0, 0x2b0(sp)
     stw     r0, 0x140(r5)
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lha     r5, 0x120(r5)
     addi    r0, r5, 0x1
     cmpw    r0, r8
@@ -12332,7 +12840,7 @@ branch_0x8014bb00:
     lwz     r5, 0x0(r7)
     lwz     r0, 0x2b0(sp)
     stw     r0, 0x140(r5)
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lha     r5, 0x120(r5)
     addi    r0, r5, 0x1
     cmpw    r0, r8
@@ -12441,7 +12949,7 @@ branch_0x8014bca4:
     lwz     r5, 0x0(r8)
     lwz     r0, 0x240(sp)
     stw     r0, 0x140(r5)
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lfs     f0, 0x12c(r5)
     fctiwz  f0, f0
     stfd    f0, 0x2c0(sp)
@@ -12472,7 +12980,7 @@ branch_0x8014bd0c:
     lwz     r5, 0x0(r8)
     lwz     r0, 0x240(sp)
     stw     r0, 0x140(r5)
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lfs     f0, 0x12c(r5)
     fctiwz  f0, f0
     stfd    f0, 0x2c0(sp)
@@ -12503,7 +13011,7 @@ branch_0x8014bd7c:
     lwz     r5, 0x0(r8)
     lwz     r0, 0x240(sp)
     stw     r0, 0x140(r5)
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lfs     f0, 0x12c(r5)
     fctiwz  f0, f0
     stfd    f0, 0x2c0(sp)
@@ -12719,7 +13227,7 @@ branch_0x8014c08c:
     lwz     r4, 0x0(r6)
     lwz     r0, 0x2c8(sp)
     stw     r0, 0x140(r4)
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     lha     r4, 0x120(r4)
     addi    r0, r4, 0x1
     cmpw    r0, r7
@@ -12747,7 +13255,7 @@ branch_0x8014c0e8:
     lwz     r4, 0x0(r6)
     lwz     r0, 0x2c8(sp)
     stw     r0, 0x140(r4)
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     lha     r4, 0x120(r4)
     addi    r0, r4, 0x1
     cmpw    r0, r7
@@ -12856,7 +13364,7 @@ branch_0x8014c28c:
     lwz     r4, 0x0(r7)
     lwz     r0, 0x258(sp)
     stw     r0, 0x140(r4)
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     lfs     f0, 0x12c(r4)
     fctiwz  f0, f0
     stfd    f0, 0x2d8(sp)
@@ -12887,7 +13395,7 @@ branch_0x8014c2f4:
     lwz     r4, 0x0(r7)
     lwz     r0, 0x258(sp)
     stw     r0, 0x140(r4)
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     lfs     f0, 0x12c(r4)
     fctiwz  f0, f0
     stfd    f0, 0x2d8(sp)
@@ -13409,7 +13917,7 @@ branch_0x8014c99c:
     addi    r7, sp, 0x50
     li      r4, 0x28
     bl      setPanePosition__10TBoundPaneFlRC8JUTPointRC8JUTPointRC8JUTPoint
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x3f0(r3)
     lbz     r0, 0x0(r3)
     cmplwi  r0, 0x8
@@ -13674,7 +14182,7 @@ branch_0x8014ce28:
     li      r0, 0x0
     stb     r0, 0x42a(r30)
 branch_0x8014ce44:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lhz     r0, 0x4c(r3)
     rlwinm. r0, r0, 0, 16, 16
     bne-    branch_0x8014ce70
@@ -13701,7 +14209,7 @@ startCameraDemo__11TGCConsole2Fv: # 0x8014ce84
     stmw    r25, 0x274(sp)
     addi    r31, r3, 0x0
     li      r3, 0x1
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     lha     r0, 0x120(r4)
     extsh.  r0, r0
     beq-    branch_0x8014cec8
@@ -14006,7 +14514,7 @@ branch_0x8014d2e4:
     b       branch_0x8014d788
 
 branch_0x8014d324:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lhz     r0, 0x4c(r3)
     rlwinm. r0, r0, 0, 16, 16
     beq-    branch_0x8014d340
@@ -14557,7 +15065,7 @@ branch_0x8014db18:
     stw     r0, 0x514(sp)
     lwz     r0, 0x514(sp)
     stw     r0, 0x2f4(r31)
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lha     r3, 0x120(r3)
     extsh.  r0, r3
     addi    r8, r3, 0x0
@@ -15315,13 +15823,13 @@ branch_0x8014e5a4:
     lwz     r3, 0x52c(r31)
     stb     r29, 0xc(r3)
     lwz     r3, 0x52c(r31)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r4, 0x52c(r31)
     addi    r3, sp, 0x55c
     addi    r4, r4, 0x14
     bl      copy__7JUTRectFRC7JUTRect
-    lwz     r3, -0x6038(r13)
+    lwz     r3, gpSystemFont(r13)
     lwz     r4, 0x560(sp)
     lwz     r12, 0x0(r3)
     lwz     r0, 0x568(sp)
@@ -15339,9 +15847,9 @@ branch_0x8014e5a4:
     lwz     r3, 0x530(r31)
     stb     r29, 0xc(r3)
     lwz     r3, 0x530(r31)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
-    lwz     r3, -0x6038(r13)
+    lwz     r3, gpSystemFont(r13)
     lwz     r4, 0x560(sp)
     lwz     r12, 0x0(r3)
     lwz     r0, 0x568(sp)
@@ -15587,7 +16095,7 @@ branch_0x8014ea90:
     addi    r28, r28, 0x4
     stw     r3, 0x4f4(r4)
     blt+    branch_0x8014ea90
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     addi    r4, sp, 0x520
     li      r5, 0x1fb
     lbz     r0, 0x5d5f(r3)
@@ -15636,7 +16144,7 @@ branch_0x8014ea90:
     lwz     r0, 0x11c(r3)
     ori     r0, r0, 0x1
     stw     r0, 0x11c(r3)
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r3, 0x3e4(r3)
     bl      getCurrentNozzle__9TWaterGunCFv
     lwz     r0, 0xcc(r3)
@@ -16408,10 +16916,10 @@ branch_0x8014f61c:
     li      r4, 0x401
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     lwz     r3, 0x3bc(r31)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x3b8(r31)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r4, 0x3b8(r31)
     li      r0, 0x1

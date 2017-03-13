@@ -103,7 +103,7 @@ checkInput__14TOptionControlFv: # 0x801835ec
     stwu    sp, -0xc8(sp)
     stmw    r27, 0xb4(sp)
     mr      r29, r3
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lfs     f1, -0x44c4(rtoc)
     lwz     r3, 0x18(r4)
     lfs     f3, -0x44c8(rtoc)
@@ -251,7 +251,7 @@ branch_0x801837e8:
     bl      setActive__9RumbleMgrFb
     mr      r3, r30
     bl      adjustView__17TOptionRumbleUnitFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -329,7 +329,7 @@ branch_0x80183908:
     lwz     r5, 0xc(r28)
     lis     r4, 0x803c
     addi    r0, r4, 0x14d8
-    lwz     r6, -0x6044(r13)
+    lwz     r6, gpMSound(r13)
     subf    r3, r3, r5
     srawi   r3, r3, 2
     addze   r3, r3
@@ -380,7 +380,7 @@ branch_0x801839b0:
     lwz     r3, 0x10(r27)
     addi    r3, r3, 0x4
     bl      begin__Q29_unnamed_16ArrayWrapper_Ul_CFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -433,7 +433,7 @@ branch_0x80183a6c:
 
 .globl SMSGetMSound__Fv
 SMSGetMSound__Fv: # 0x80183a8c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     blr
 
 
@@ -562,7 +562,7 @@ branch_0x80183bfc:
 branch_0x80183c04:
     clrlwi. r0, r30, 24
     bne-    branch_0x80183c34
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4815
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1303,12 +1303,12 @@ branch_0x80184604:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     addi    r30, r3, 0x0
     addi    r3, r29, 0x0
     bl      setFont__10J2DTextBoxFP7JUTFont
     mr      r3, r30
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r3, 0x1c
     bl      __nw__FUl
@@ -2026,7 +2026,7 @@ branch_0x80184fd4:
     lwz     r6, 0x10(r31)
     lis     r4, 0x803c
     addi    r0, r4, 0x14d8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r5, 0x4(r6)
     lwz     r4, 0xc(r6)
     subf    r4, r5, r4
@@ -2273,7 +2273,7 @@ branch_0x80185320:
     lwz     r6, 0x10(r30)
     lis     r4, 0x803c
     addi    r0, r4, 0x14d8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r5, 0x4(r6)
     lwz     r4, 0xc(r6)
     subf    r4, r5, r4

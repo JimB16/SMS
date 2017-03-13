@@ -155,7 +155,9 @@ getNewIDBySurfaceCode__Q214MSoundSESystem8MSoundSEFUlP8JAIActor: # 0x80017fc0
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80017FF0:		# jumptable 80017FEC case 0
     cmpwi   r5, 0x400
     beq-    branch_0x80018058
     bge-    branch_0x80018020
@@ -199,8 +201,56 @@ branch_0x80018058:
     li      r3, 0x1930
     blr
 
+branch_0x80018060:		# jumptable 80017FEC case 4
+cmpwi	  r5, 0x400
+beq	  branch_0x800180C8
+bge	  branch_0x80018090
+cmpwi	  r5, 0x200
+beq	  branch_0x800180B8
+bge	  branch_0x80018084
+cmpwi	  r5, 0x100
+beq	  branch_0x800180B0
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x12a60, 0x800180d8 - 0x80018060
+branch_0x80018084:
+cmpwi	  r5, 0x300
+beq	  branch_0x800180C0
+blr
+
+branch_0x80018090:
+cmpwi	  r5, 0x600
+beq	  branch_0x800180C8
+bge	  branch_0x800180A8
+cmpwi	  r5, 0x500
+beq	  branch_0x800180C0
+blr
+
+branch_0x800180A8:
+cmpwi	  r5, 0x700
+bnelr
+
+branch_0x800180B0:
+li	  r3, 0x1926
+blr
+
+branch_0x800180B8:
+li	  r3, 0x192A
+blr
+
+branch_0x800180C0:
+li	  r3, 0x192E
+blr
+
+branch_0x800180C8:
+li	  r3, 0x1932
+blr
+
+branch_0x800180D0:		# jumptable 80017FEC cases 2,6
+li	  r3, -1
+
+locret_800180D4:	# jumptable 80017FEC cases 1,3,5
+blr
+
 
 .globl startSoundActorInner__Q214MSoundSESystem8MSoundSEFUlPP8JAISoundP8JAIActorUlUc
 startSoundActorInner__Q214MSoundSESystem8MSoundSEFUlPP8JAISoundP8JAIActorUlUc: # 0x800180d8
@@ -420,9 +470,13 @@ branch_0x80018338:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80018360:		# jumptable 8001835C cases 0,2,4,6
     clrlslwi  r0, r5, 24, 3
     add     r4, r4, r0
+
+def_8001835C:		# jumptable 8001835C default case
 branch_0x80018368:
     addi    r26, r4, 0x0
     addis   r0, r26, 0x1
@@ -442,10 +496,13 @@ branch_0x80018380:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x800183AC:		# jumptable 800183A8 cases 0,4,8,12,16,20
     li      r3, 0x0
     b       branch_0x80018484
 
+def_800183A8:		# jumptable 800183A8 default case
 branch_0x800183b4:
     clrrwi. r0, r31, 31
     beq-    branch_0x800183c8
@@ -665,9 +722,8 @@ branch_0x8001867c:
     cmpwi   r26, 0x3862
     beq-    branch_0x800186b4
     b       branch_0x80018704
+    b       branch_0x80018848
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x13088, 0x8001868c - 0x80018688
 branch_0x8001868c:
     lfs     f30, 0x4(r27)
     b       branch_0x80018704

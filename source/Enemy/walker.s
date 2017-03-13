@@ -151,7 +151,7 @@ branch_0x8006fc40:
     lfs     f1, 0xc0(r30)
     lfs     f0, 0x334(sp)
     fmuls   f2, f2, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
     fadds   f2, f0, f2
@@ -165,7 +165,7 @@ branch_0x8006fc7c:
     lfs     f1, 0xc0(r30)
     lfs     f0, 0x334(sp)
     fmuls   f2, f2, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
     fadds   f2, f0, f2
@@ -215,7 +215,7 @@ branch_0x8006fd18:
     lfs     f1, 0x148(r30)
     addi    r4, sp, 0x31c
     lfs     f0, 0xc0(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
@@ -227,7 +227,7 @@ branch_0x8006fd54:
     lfs     f1, 0x148(r30)
     addi    r4, sp, 0x31c
     lfs     f0, 0xc0(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
@@ -353,7 +353,7 @@ branch_0x8006fec4:
     lfs     f0, 0x338(sp)
     stfs    f0, 0x2f8(sp)
     stfs    f2, 0x2fc(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0x300(sp)
     stw     r31, 0x308(sp)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
@@ -596,7 +596,7 @@ branch_0x800701bc:
     stw     r0, 0x2c0(sp)
     lwz     r0, 0x188(sp)
     stw     r3, 0x2c4(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0x2c8(sp)
     lfs     f3, 0x148(r30)
     lfs     f1, 0xc0(r30)
@@ -662,7 +662,7 @@ branch_0x800701bc:
     stw     r0, 0x2c0(sp)
     lwz     r0, 0x17c(sp)
     stw     r3, 0x2c4(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0x2c8(sp)
     lfs     f3, 0x148(r30)
     lfs     f1, 0xc0(r30)

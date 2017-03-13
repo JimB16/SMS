@@ -51,7 +51,7 @@ execute__22TNerveSmallEnemyChangeCFP24TSpineBase_10TLiveActor_: # 0x8006a3a0
     li      r4, 0x0
     lfs     f1, -0x6c08(rtoc)
     bl      setFrameRate__6MActorFfi
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xcd
     li      r6, 0x0
@@ -781,7 +781,7 @@ branch_0x8006ad38:
     stw     r3, 0x6c(sp)
     lhz     r4, 0x58(r4)
     stw     r0, 0x68(sp)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfd     f0, 0x68(sp)
     lfs     f1, 0x10(r31)
     fsubs   f0, f0, f2
@@ -1009,7 +1009,7 @@ perform__11TSmallEnemyFUlPQ26JDrama9TGraphics: # 0x8006b058
     stw     r0, 0x4(sp)
     li      r0, 0x1
     stwu    sp, -0x8(sp)
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lbz     r6, 0x124(r6)
     cmplwi  r6, 0x3
     beq-    branch_0x8006b084
@@ -1157,7 +1157,7 @@ isHitWallInBound__11TSmallEnemyFv: # 0x8006b21c
     fmuls   f0, f2, f1
     stfs    f5, 0x74(sp)
     stfs    f0, 0x78(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r5, 0x7c(sp)
     stw     r0, 0x84(sp)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
@@ -1404,7 +1404,7 @@ generateEffectColumWater__11TSmallEnemyFv: # 0x8006b5a0
     addi    r4, r31, 0x10
     addi    r5, r31, 0x24
     bl      generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x286d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1437,7 +1437,7 @@ isFindMarioFromParam__11TSmallEnemyCFf: # 0x8006b630
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r6)
     lfs     f2, 0xe0(r3)
@@ -1489,10 +1489,10 @@ isMarioInWater__11TSmallEnemyCFv: # 0x8006b6ec
     li      r31, 0x1
     stw     r30, 0x10(sp)
     addi    r30, r31, 0x0
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r4, 0x0(r3)
     addi    r3, r31, 0x0
-    rlwinm. r0, r4, 0, 30, 30
+    rlwinm. r0, r4, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x8006b724
     mr      r0, r31
     b       branch_0x8006b728
@@ -1525,9 +1525,9 @@ branch_0x8006b750:
 branch_0x8006b770:
     clrlwi. r0, r30, 24
     bne-    branch_0x8006b7a0
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 14, 14
+    rlwinm. r0, r0, 0, 14, 14 # MARIOFLAG_20000
     beq-    branch_0x8006b790
     li      r0, 0x1
     b       branch_0x8006b794
@@ -1561,7 +1561,7 @@ isFindMario__11TSmallEnemyFf: # 0x8006b7bc
     stw     r30, 0x28(sp)
     stw     r29, 0x24(sp)
     stw     r28, 0x20(sp)
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x3
     beq-    branch_0x8006b804
@@ -1590,13 +1590,13 @@ branch_0x8006b82c:
     b       branch_0x8006b904
 
 branch_0x8006b83c:
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     li      r29, 0x1
     addi    r28, r29, 0x0
     lwz     r4, 0x0(r3)
     addi    r3, r29, 0x0
     li      r30, 0x0
-    rlwinm. r0, r4, 0, 30, 30
+    rlwinm. r0, r4, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x8006b864
     mr      r0, r29
     b       branch_0x8006b868
@@ -1629,9 +1629,10 @@ branch_0x8006b890:
 branch_0x8006b8b0:
     clrlwi. r0, r28, 24
     bne-    branch_0x8006b8e0
-    lwz     r3, -0x6094(r13)
+
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 14, 14
+    rlwinm. r0, r0, 0, 14, 14 # MARIOFLAG_20000
     beq-    branch_0x8006b8d0
     li      r0, 0x1
     b       branch_0x8006b8d4
@@ -1778,7 +1779,7 @@ branch_0x8006ba9c:
 .globl decHpByWater__11TSmallEnemyFP9THitActor
 decHpByWater__11TSmallEnemyFP9THitActor: # 0x8006bab8
     lwz     r0, 0x68(r4)
-    lwz     r4, -0x6088(r13)
+    lwz     r4, gpModelWaterManager(r13)
     slwi    r0, r0, 1
     add     r4, r4, r0
     lha     r0, 0x614(r4)
@@ -1810,7 +1811,7 @@ changeOut__11TSmallEnemyFv: # 0x8006bb04
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
     addi    r30, r3, 0x0
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     mr      r3, r0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1839,7 +1840,7 @@ branch_0x8006bb50:
     stw     r0, 0x14(r30)
     lwz     r0, 0x18(r8)
     stw     r0, 0x18(r30)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r31, 0x74(r30)
     bl      SMSGetAnmFrameRate__Fv
@@ -2061,7 +2062,7 @@ branch_0x8006be30:
     lfs     f1, -0x6ba8(rtoc)
     lfs     f0, 0xbc(r31)
     addi    r4, r6, 0x10
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r5, r6, 0x18
     fmuls   f2, f1, f0
     lfs     f1, 0x14(r6)
@@ -2091,7 +2092,7 @@ branch_0x8006bec8:
     stfs    f0, 0xd0(sp)
     lfs     f1, 0xcc(sp)
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0xc8(sp)
     lfs     f3, 0xd0(sp)
@@ -2113,7 +2114,7 @@ branch_0x8006bf40:
     lwz     r5, 0x178(r31)
     lfs     f0, 0xc0(r31)
     lfs     f1, 0x14(r5)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r5)
     lfs     f3, 0x18(r5)
@@ -2230,7 +2231,7 @@ changeByJuice__11TSmallEnemyFv: # 0x8006c0d8
     stw     r31, 0x34(sp)
     stw     r30, 0x30(sp)
     mr      r30, r3
-    lwz     r4, -0x6088(r13)
+    lwz     r4, gpModelWaterManager(r13)
     lbz     r3, 0x5d5f(r4)
     cmplwi  r3, 0x1
     beq-    branch_0x8006c11c
@@ -2337,7 +2338,7 @@ branch_0x8006c270:
     stw     r0, 0x20(r5)
     stw     r6, 0x14(r5)
 branch_0x8006c27c:
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lbz     r0, 0x5d5f(r3)
     stb     r0, 0x185(r30)
     lbz     r0, -0x6ea8(r13)
@@ -2503,13 +2504,13 @@ branch_0x8006c47c:
 branch_0x8006c4a4:
     cmplwi  r29, 0xf
     bne-    branch_0x8006c550
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x6c08(rtoc)
     li      r4, 0x6802
@@ -2999,7 +3000,7 @@ setAfterDeadEffect__11TSmallEnemyFv: # 0x8006cb64
     stw     r31, 0x1c(sp)
     mr      r31, r3
     addi    r5, r31, 0x10
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8006cbc8
@@ -3016,7 +3017,7 @@ setAfterDeadEffect__11TSmallEnemyFv: # 0x8006cb64
     lfs     f0, 0x2c(r31)
     stfs    f0, 0x17c(r3)
 branch_0x8006cbc8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe6
     li      r6, 0x0
@@ -3037,7 +3038,7 @@ branch_0x8006cbc8:
     lfs     f0, 0x2c(r31)
     stfs    f0, 0x17c(r3)
 branch_0x8006cc18:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x295f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3095,7 +3096,7 @@ branch_0x8006ccd4:
     clrlwi. r0, r0, 24
     beq-    branch_0x8006ccf4
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r4, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r27, r3
@@ -3205,7 +3206,7 @@ branch_0x8006ce50:
     lfs     f2, 0x18(r30)
     lfs     f0, 0x38(sp)
     fadds   f1, f3, f1
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f3, f2, f0
     lfs     f2, 0x14(r30)
     bl      makeObjAppear__18TMapObjBaseManagerFfffUlb
@@ -3387,7 +3388,7 @@ branch_0x8006d0c8:
     rlwinm. r0, r3, 0, 27, 27
     beq-    branch_0x8006d0f0
 branch_0x8006d0d8:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      isInArea__4TMapCFff
@@ -3771,7 +3772,7 @@ attackToMario__11TSmallEnemyFv: # 0x8006d648
     stfs    f0, 0x2c(sp)
     stfs    f0, 0x30(sp)
     stfs    f0, 0x34(sp)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f1, 0x10(r31)
     lfs     f0, 0x0(r5)
     lfs     f3, 0x14(r31)
@@ -3829,7 +3830,7 @@ attackToMario__11TSmallEnemyFv: # 0x8006d648
 .globl sendAttackMsgToMario__11TSmallEnemyFv
 sendAttackMsgToMario__11TSmallEnemyFv: # 0x8006d758
     mflr    r0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      SMS_SendMessageToMario__FP9THitActorUl
@@ -4020,7 +4021,7 @@ init__11TSmallEnemyFP12TLiveManager: # 0x8006d998
     lwz     r0, 0xf0(r31)
     ori     r0, r0, 0x1
     stw     r0, 0xf0(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x8006da18
@@ -4184,7 +4185,7 @@ branch_0x8006dc60:
     lwz     r4, 0x124(r31)
     stw     r3, 0x0(r4)
 branch_0x8006dc74:
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6c08(rtoc)
     stw     r3, 0xbc(sp)
     cmplwi  r3, 0x0
@@ -4377,7 +4378,7 @@ loadAfter__18TSmallEnemyManagerFv: # 0x8006decc
     bl      getGlbResource__13JKRFileLoaderFPCc
     lwz     r0, 0x10(r31)
     addi    r6, r3, 0x0
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     clrlwi  r5, r0, 16
     addi    r3, r4, 0x70
     li      r4, 0x1

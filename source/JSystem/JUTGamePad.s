@@ -148,22 +148,33 @@ init__10JUTGamePadFv: # 0x802c8b64
 
 .globl read__10JUTGamePadFv
 read__10JUTGamePadFv: # 0x802c8b9c
+
+.set var_40, -0x40
+.set var_3E, -0x3E
+.set var_3D, -0x3D
+.set var_3C, -0x3C
+.set var_3B, -0x3B
+.set var_30, -0x30
+.set arg_4,  4
+
     mflr    r0
-    lis     r3, 0x8040
-    stw     r0, 0x4(sp)
+    lis     r3, Controllers@h
+    stw     r0, arg_4(sp)
     stwu    sp, -0x160(sp)
-    stmw    r20, 0x130(sp)
-    addi    r31, r3, 0x4454
+    stmw    r20, 0x160+var_30(sp)
+
+    addi    r31, r3, Controllers@l
     addi    r3, r31, 0x0
     bl      PADRead
     mr      r3, r31
     bl      PADClamp
-    lis     r5, 0x8040
-    lis     r4, 0x8040
-    lis     r3, 0x8040
-    addi    r23, r5, 0x4544
-    addi    r24, r4, 0x4584
-    addi    r25, r3, 0x4484
+
+    lis     r5, unk_80404544@h
+    lis     r4, unk_80404584@h
+    lis     r3, unk_80404484@h
+    addi    r23, r5, unk_80404544@l
+    addi    r24, r4, unk_80404584@l
+    addi    r25, r3, unk_80404484@l
     li      r29, 0x0
     li      r30, 0x0
     li      r28, 0x0
@@ -237,11 +248,11 @@ branch_0x802c8cd0:
     addi    r27, r27, 0x10
     addi    r26, r26, 0xc
     blt+    branch_0x802c8bf4
-    lis     r3, 0x8040
-    addi    r4, r3, 0x42d8
-    lis     r3, 0x8040
+    lis     r3, unk_804042D8@h
+    addi    r4, r3, unk_804042D8@l
+    lis     r3, Controllers@h
     lwz     r31, 0x0(r4)
-    addi    r26, r3, 0x4454
+    addi    r26, r3, Controllers@l
     li      r30, 0xc
     b       branch_0x802c8e90
 
@@ -276,11 +287,11 @@ branch_0x802c8d04:
 
 branch_0x802c8d70:
     cmpwi   r30, 0x8
-    addi    r4, sp, 0x120
+    addi    r4, sp, 0x160+var_40
     li      r5, 0x0
     ble-    branch_0x802c8dac
     li      r0, 0x0
-    stb     r0, 0x120(sp)
+    stb     r0, 0x160+var_40(sp)
     li      r5, 0x8
     stb     r0, 0x1(r4)
     stb     r0, 0x2(r4)
@@ -299,25 +310,25 @@ branch_0x802c8dac:
 branch_0x802c8dc0:
     stb     r0, 0x0(r4)
     addi    r4, r4, 0x1
-    bdnz+      branch_0x802c8dc0
+    bdnz+   branch_0x802c8dc0
 branch_0x802c8dcc:
     lwz     r6, 0x0(r31)
     addi    r5, r3, 0x0
-    addi    r4, sp, 0x120
+    addi    r4, sp, 0x160+var_40
     lwz     r3, 0x90(r6)
     bl      streamDataToPadStatus__16JUTGamePadRecordFP9PADStatusPUc
     lwz     r3, 0x0(r31)
     li      r7, 0x0
-    lbz     r4, 0x122(sp)
-    lbz     r5, 0x123(sp)
+    lbz     r4, 0x160+var_3E(sp)
+    lbz     r5, 0x160+var_3D(sp)
     addi    r3, r3, 0x48
     lwz     r6, -0x75b0(r13)
     bl      update__Q210JUTGamePad6CStickFScScQ210JUTGamePad10EStickModeQ210JUTGamePad11EWhichStick
     lwz     r8, 0x0(r31)
     slwi    r20, r3, 24
-    lbz     r4, 0x124(sp)
+    lbz     r4, 0x160+var_3C(sp)
     li      r7, 0x1
-    lbz     r5, 0x125(sp)
+    lbz     r5, 0x160+var_3B(sp)
     lwz     r6, -0x75b0(r13)
     addi    r3, r8, 0x58
     bl      update__Q210JUTGamePad6CStickFScScQ210JUTGamePad10EStickModeQ210JUTGamePad11EWhichStick
@@ -326,7 +337,7 @@ branch_0x802c8dcc:
     or      r20, r20, r0
     addi    r5, r20, 0x0
     addi    r3, r3, 0x18
-    addi    r4, sp, 0x120
+    addi    r4, sp, 0x160+var_40
     bl      update__Q210JUTGamePad7CButtonFPC9PADStatusUl
     b       branch_0x802c8e58
 
@@ -358,14 +369,16 @@ branch_0x802c8e8c:
 branch_0x802c8e90:
     cmplwi  r31, 0x0
     bne+    branch_0x802c8d04
+
     cmplwi  r29, 0x0
     beq-    branch_0x802c8ea8
     mr      r3, r29
     bl      PADReset
 branch_0x802c8ea8:
+
     bl      checkResetSwitch__10JUTGamePadFv
-    lmw     r20, 0x130(sp)
-    lwz     r0, 0x164(sp)
+    lmw     r20, 0x160+var_30(sp)
+    lwz     r0, 0x160+arg_4(sp)
     addi    sp, sp, 0x160
     mtlr    r0
     blr
@@ -373,15 +386,19 @@ branch_0x802c8ea8:
 
 .globl assign__10JUTGamePadFv
 assign__10JUTGamePadFv: # 0x802c8ec0
+
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
-    lis     r4, 0x8040
-    stw     r0, 0x4(sp)
+    lis     r4, Controllers@h
+    stw     r0, arg_4(sp)
     li      r0, 0x4
     mtctr   r0
-    addi    r5, r4, 0x4454
+    addi    r5, r4, Controllers@l
     stwu    sp, -0x18(sp)
     li      r6, 0x0
-    stw     r31, 0x14(sp)
+    stw     r31, 0x18+var_4(sp)
     addi    r31, r3, 0x0
     li      r3, 0x0
 branch_0x802c8eec:
@@ -399,9 +416,9 @@ branch_0x802c8eec:
     li      r0, 0x1
     mulli   r6, r6, 0x30
     stb     r0, 0x0(r4)
-    lis     r3, 0x8040
+    lis     r3, unk_80404484@h
     lwz     r4, 0x3c(r31)
-    addi    r0, r3, 0x4484
+    addi    r0, r3, unk_80404484@l
     lwz     r5, 0x40(r31)
     add     r3, r0, r6
     lwz     r6, 0x44(r31)
@@ -416,8 +433,8 @@ branch_0x802c8f50:
     addi    r3, r3, 0xc
     bdnz+      branch_0x802c8eec
 branch_0x802c8f5c:
-    lwz     r0, 0x1c(sp)
-    lwz     r31, 0x14(sp)
+    lwz     r0, 0x18+arg_4(sp)
+    lwz     r31, 0x18+var_4(sp)
     addi    sp, sp, 0x18
     mtlr    r0
     blr
@@ -425,28 +442,32 @@ branch_0x802c8f5c:
 
 .globl update__10JUTGamePadFv
 update__10JUTGamePadFv: # 0x802c8f70
+
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
-    stw     r0, 0x4(sp)
+    stw     r0, arg_4(sp)
     stwu    sp, -0x18(sp)
-    stw     r31, 0x14(sp)
+    stw     r31, 0x18+var_4(sp)
     mr      r31, r3
     lha     r0, 0x78(r3)
     cmpwi   r0, -0x1
     beq-    branch_0x802c9144
     mulli   r4, r0, 0x30
-    lis     r3, 0x8040
-    addi    r0, r3, 0x4484
+    lis     r3, unk_80404484@h
+    addi    r0, r3, unk_80404484@l
     add     r7, r0, r4
     lwz     r0, 0x0(r7)
-    lis     r5, 0x8040
+    lis     r5, unk_80404544@h
     lwz     r6, 0x4(r7)
-    lis     r4, 0x8040
-    lis     r3, 0x8040
+    lis     r4, unk_80404584@h
+    lis     r3, Controllers@h
     stw     r0, 0x18(r31)
-    addi    r5, r5, 0x4544
-    addi    r0, r4, 0x4584
+    addi    r5, r5, unk_80404544@l
+    addi    r0, r4, unk_80404584@l
     stw     r6, 0x1c(r31)
-    addi    r3, r3, 0x4454
+    addi    r3, r3, Controllers@l
     lwz     r6, 0x8(r7)
     lwz     r4, 0xc(r7)
     stw     r6, 0x20(r31)
@@ -548,8 +569,8 @@ branch_0x802c9138:
     lha     r4, 0x78(r31)
     bl      update__Q210JUTGamePad7CRumbleFs
 branch_0x802c9144:
-    lwz     r0, 0x1c(sp)
-    lwz     r31, 0x14(sp)
+    lwz     r0, 0x18+arg_4(sp)
+    lwz     r31, 0x18+var_4(sp)
     addi    sp, sp, 0x18
     mtlr    r0
     blr

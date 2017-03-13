@@ -130,7 +130,7 @@ watch__17TAirportEventSinkFv: # 0x801e60f0
     stw     r0, 0x28(r8)
     lis     r3, 0x8039
     addi    r4, r3, 0x2c04
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     addi    r5, sp, 0x3c
     sth     r0, 0x3c(sp)
     li      r6, -0x1
@@ -143,14 +143,14 @@ watch__17TAirportEventSinkFv: # 0x801e60f0
     lfs     f1, -0x236c(rtoc)
     addi    r5, r5, 0x10
     bl      fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     li      r4, 0x484d
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
     lhz     r0, 0x32(r3)
     ori     r0, r0, 0x2
     sth     r0, 0x32(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801e61a4
@@ -184,7 +184,7 @@ control__17TAirportEventSinkFv: # 0x801e61c0
     subi    r0, r3, 0x12c
     cmpw    r4, r0
     bne-    branch_0x801e61f8
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     li      r4, 0x0
     addi    r3, r3, 0x70
     bl      offLayer__22TPollutionCounterLayerFi
@@ -215,7 +215,7 @@ finishControl__17TAirportEventSinkFv: # 0x801e6234
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     mr      r30, r3
-    lwz     r5, -0x62f0(r13)
+    lwz     r5, gpPollution(r13)
     lwz     r4, 0x28(r3)
     addi    r31, r5, 0x70
     bl      getPollutionObj__13TMapEventSinkFi
@@ -227,13 +227,13 @@ finishControl__17TAirportEventSinkFv: # 0x801e6234
     lfs     f1, -0x236c(rtoc)
     lis     r4, 0x8039
     lis     r5, 0x8039
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fmr     f2, f1
     fmr     f3, f1
     addi    r4, r4, 0x2c18
     addi    r5, r5, 0x2c30
     bl      makeShineAppearWithDemoOffset__12TItemManagerFPCcPCcfff
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     li      r4, 0x0
     addi    r3, r3, 0x70
     bl      offLayer__22TPollutionCounterLayerFi

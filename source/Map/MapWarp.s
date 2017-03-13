@@ -215,7 +215,7 @@ branch_0x801951ac:
     lwz     r0, 0x0(r31)
     cmpw    r3, r0
     blt+    branch_0x801950dc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x801951d0
@@ -244,7 +244,7 @@ initModel__8TMapWarpFv: # 0x801951e8
     li      r30, 0x0
     stw     r29, 0x4c(sp)
     addi    r29, r3, 0x0
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     lwz     r3, 0x14(r4)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -255,7 +255,7 @@ branch_0x80195220:
     lwz     r0, 0x8(r29)
     cmpw    r30, r0
     beq-    branch_0x80195258
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     clrlslwi  r0, r30, 16, 2
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
@@ -290,10 +290,10 @@ watchToWarp__8TMapWarpFv: # 0x80195280
     stw     r30, 0x168(sp)
     mr      r30, r3
     stw     r29, 0x164(sp)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f1, -0x4280(rtoc)
     lfs     f0, 0x4(r5)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r5)
     lfs     f3, 0x8(r5)
@@ -320,7 +320,7 @@ branch_0x801952e4:
     lwzx    r29, r3, r31
     cmpw    r0, r29
     beq-    branch_0x801953f0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     slwi    r0, r0, 2
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
@@ -331,7 +331,7 @@ branch_0x801952e4:
     lwz     r12, 0x1c(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     slwi    r0, r29, 2
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
@@ -347,7 +347,7 @@ branch_0x801952e4:
     addi    r3, sp, 0xa0
     lwzx    r0, r5, r31
     stw     r0, 0x8(r30)
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lwz     r7, 0x4(r30)
     lwz     r5, 0x0(r6)
     lwz     r0, 0x4(r6)
@@ -398,7 +398,7 @@ branch_0x80195414:
     lwz     r0, 0x8(r30)
     cmpw    r0, r29
     beq-    branch_0x80195488
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     slwi    r0, r0, 2
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
@@ -409,7 +409,7 @@ branch_0x80195414:
     lwz     r12, 0x1c(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     slwi    r0, r29, 2
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
@@ -422,7 +422,7 @@ branch_0x80195414:
     blrl
     stw     r29, 0x8(r30)
 branch_0x80195488:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, -0x70e4(r13)
     bl      getInCubeNo__16TCubeManagerBaseCFRC3Vec
     cmpwi   r3, -0x1
@@ -516,7 +516,7 @@ changeModel__8TMapWarpFi: # 0x801955a0
     lwz     r0, 0x8(r3)
     cmpw    r0, r31
     beq-    branch_0x80195624
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     slwi    r0, r0, 2
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
@@ -527,7 +527,7 @@ changeModel__8TMapWarpFi: # 0x801955a0
     lwz     r12, 0x1c(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     slwi    r0, r31, 2
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)

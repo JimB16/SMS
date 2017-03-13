@@ -123,6 +123,25 @@ branch_0x802a5b20:
 
 .globl drawDVDErr__12TApplicationFv
 drawDVDErr__12TApplicationFv: # 0x802a5b44
+
+.set var_2EC, -0x2EC
+.set var_2E8, -0x2E8
+.set var_2DC, -0x2DC
+.set var_2D8, -0x2D8
+.set var_2D4, -0x2D4
+.set var_2D0, -0x2D0
+.set var_2C4, -0x2C4
+.set var_280, -0x280
+.set var_27C, -0x27C
+.set var_260, -0x260
+.set var_220, -0x220
+.set var_20, -0x20
+.set var_18, -0x18
+.set var_C, -0xC
+.set var_8, -8
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
     lis     r4, 0x803a
     stw     r0, 0x4(sp)
@@ -142,7 +161,9 @@ drawDVDErr__12TApplicationFv: # 0x802a5b44
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802A5B94:		# jumptable 802A5B90 case 0
     addi    r3, sp, 0xf8
     crxor   6, 6, 6
     addi    r5, r30, 0x2c
@@ -152,8 +173,59 @@ drawDVDErr__12TApplicationFv: # 0x802a5b44
     addi    r31, r3, 0x5f31
     b       branch_0x802a5c5c
 
+branch_0x802A5BB4:		# jumptable 802A5B90 case 12
+addi	  r3, r1, 0x318+var_220
+crclr	  4*cr1+eq
+addi	  r5, r30, 0xA8
+li	  r4, 0x200
+bl	  snprintf
+lis	  r3, 0x656D # 0x656D5F32
+addi	  r31, r3, 0x5F32 # 0x656D5F32
+b	  def_802A5B90	# jumptable 802A5B90 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2a05b4, 0x802a5c5c - 0x802a5bb4
+branch_0x802A5BD4:		# jumptable 802A5B90 case 2
+bl	  DVDCheckDisk
+cmpwi	  r3, 0
+bne	  def_802A5B90	# jumptable 802A5B90 default case
+addi	  r3, r1, 0x318+var_220
+crclr	  4*cr1+eq
+addi	  r5, r30, 0x114
+li	  r4, 0x200
+bl	  snprintf
+lis	  r3, 0x656D # 0x656D5F33
+addi	  r31, r3, 0x5F33 # 0x656D5F33
+b	  def_802A5B90	# jumptable 802A5B90 default case
+
+branch_0x802A5C00:		# jumptable 802A5B90 case 6
+addi	  r3, r1, 0x318+var_220
+crclr	  4*cr1+eq
+addi	  r5, r30, 0x124
+li	  r4, 0x200
+bl	  snprintf
+lis	  r3, 0x656D # 0x656D5F34
+addi	  r31, r3, 0x5F34 # 0x656D5F34
+b	  def_802A5B90	# jumptable 802A5B90 default case
+
+branch_0x802A5C20:		# jumptable 802A5B90 case 5
+addi	  r3, r1, 0x318+var_220
+crclr	  4*cr1+eq
+addi	  r5, r30, 0x170
+li	  r4, 0x200
+bl	  snprintf
+lis	  r3, 0x656D # 0x656D5F35
+addi	  r31, r3, 0x5F35 # 0x656D5F35
+b	  def_802A5B90	# jumptable 802A5B90 default case
+
+branch_0x802A5C40:		# jumptable 802A5B90 case 7
+addi	  r3, r1, 0x318+var_220
+crclr	  4*cr1+eq
+addi	  r5, r30, 0x1A0
+li	  r4, 0x200
+bl	  snprintf
+lis	  r3, 0x656D # 0x656D5F36
+addi	  r31, r3, 0x5F36 # 0x656D5F36
+
+def_802A5B90:		# jumptable 802A5B90 default case
 branch_0x802a5c5c:
     cmplwi  r31, 0x0
     beq-    branch_0x802a5f30
@@ -255,9 +327,9 @@ branch_0x802a5c5c:
     li      r5, 0x6
     bl      GXBegin
     li      r9, 0x0
-    lwz     r10, -0x6038(r13)
+    lwz     r10, gpSystemFont(r13)
     lis     r8, 0xcc01
-    lwz     r4, -0x6034(r13)
+    lwz     r4, gpRomFont(r13)
     sth     r9, -0x8000(r8)
     li      r7, 0xa6
     li      r6, 0xff
@@ -587,10 +659,10 @@ branch_0x802a6174:
     lwz     r12, 0x28(r12)
     mtlr    r12
     blrl
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802a62e0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      mainLoop__6MSoundFv
 branch_0x802a62e0:
     lwz     r20, -0x5ff8(r13)
@@ -670,13 +742,189 @@ branch_0x802a63c4:
     slwi    r0, r0, 2
     lwzx    r0, r28, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802A63E4:		# jumptable 802A63E0 case 2
     lwz     r3, 0x1c(r31)
     bl      SMSSetupGCLogoRenderingInfo__FPQ26JDrama8TDisplay
     b       branch_0x802a6644
 
+branch_0x802A63F0:		# jumptable 802A63E0 case 3
+lwz	  r3, 0x1C(r31)
+bl	  SMSSetupGCLogoRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupGCLogoRenderingInfo(JDrama::TDisplay *)
+li	  r3, 0x48
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r25, r3
+beq	  branch_0x802A6410
+mr	  r3, r25
+bl	  __ct__10TGCLogoDirFv # TGCLogoDir::TGCLogoDir((void))
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2a0df0, 0x802a6644 - 0x802a63f0
+branch_0x802A6410:
+stw	  r25, 4(r31)
+mr	  r3, r25
+lwz	  r4, 0x1C(r31)
+lwz	  r5, 0x20(r31)
+bl	  setup__10TGCLogoDirFPQ26JDrama8TDisplayP13TMarioGamePad # TGCLogoDir::setup((JDrama::TDisplay	*,TMarioGamePad	*))
+b	  def_802A63E0	# jumptable 802A63E0 default case
+
+branch_0x802A6428:		# jumptable 802A63E0 case 9
+lwz	  r3, 0x1C(r31)
+bl	  SMSSetupTitleRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupTitleRenderingInfo(JDrama::TDisplay *)
+bl	  SMSGetTitleRenderHeight__Fv #	SMSGetTitleRenderHeight(void)
+clrlwi	  r25, r3, 16
+bl	  SMSGetTitleRenderWidth__Fv # SMSGetTitleRenderWidth(void)
+clrlwi	  r4, r3, 16
+lwz	  r3, 0x34(r31)
+mr	  r5, r25
+bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
+li	  r3, 0x58
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r25, r3
+beq	  branch_0x802A6464
+mr	  r3, r25
+bl	  __ct__13TMenuDirectorFv # TMenuDirector::TMenuDirector((void))
+
+branch_0x802A6464:
+stw	  r25, 4(r31)
+mr	  r3, r25
+lwz	  r4, 0x1C(r31)
+lwz	  r5, 0x20(r31)
+bl	  setup__13TMenuDirectorFPQ26JDrama8TDisplayP13TMarioGamePad # TMenuDirector::setup((JDrama::TDisplay *,TMarioGamePad *))
+lwz	  r3, -0x6060(r13)
+addi	  r4, r27, 1 # 0x20001
+li	  r5, 3
+bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
+li	  r0, 1
+stb	  r0, 0xE(r31)
+li	  r0, 0
+stb	  r0, 0xF(r31)
+sth	  r0, 0x10(r31)
+b	  def_802A63E0	# jumptable 802A63E0 default case
+
+branch_0x802A64A0:		# jumptable 802A63E0 case 5
+mr	  r3, r31
+bl	  checkAdditionalMovie__12TApplicationFv # TApplication::checkAdditionalMovie((void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x802A6504
+lwz	  r3, 0x1C(r31)
+bl	  SMSSetupMovieRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupMovieRenderingInfo(JDrama::TDisplay *)
+bl	  SMSGetGameRenderHeight__Fv # SMSGetGameRenderHeight(void)
+clrlwi	  r25, r3, 16
+bl	  SMSGetGameRenderWidth__Fv # SMSGetGameRenderWidth(void)
+clrlwi	  r4, r3, 16
+lwz	  r3, 0x34(r31)
+mr	  r5, r25
+bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
+li	  r3, 0x3C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r25, r3
+beq	  branch_0x802A64EC
+mr	  r3, r25
+bl	  __ct__14TMovieDirectorFv # TMovieDirector::TMovieDirector((void))
+
+branch_0x802A64EC:
+stw	  r25, 4(r31)
+mr	  r3, r25
+lwz	  r4, 0x1C(r31)
+lwz	  r5, 0x20(r31)
+bl	  setup__14TMovieDirectorFPQ26JDrama8TDisplayP13TMarioGamePad #	TMovieDirector::setup((JDrama::TDisplay	*,TMarioGamePad	*))
+b	  def_802A63E0	# jumptable 802A63E0 default case
+
+branch_0x802A6504:
+lhz	  r0, 0x44(r31)
+lwz	  r3, 0x1C(r31)
+clrlwi	  r0, r0, 31
+neg	  r4, r0
+addic	  r0, r4, -1
+subfe	  r4, r0, r4
+bl	  SMSSetupGameRenderingInfo__FPQ26JDrama8TDisplayb # SMSSetupGameRenderingInfo(JDrama::TDisplay	*,bool)
+bl	  SMSGetGameRenderHeight__Fv # SMSGetGameRenderHeight(void)
+clrlwi	  r25, r3, 16
+bl	  SMSGetGameRenderWidth__Fv # SMSGetGameRenderWidth(void)
+clrlwi	  r4, r3, 16
+lwz	  r3, 0x34(r31)
+mr	  r5, r25
+bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
+li	  r3, 0x268
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r25, r3
+beq	  branch_0x802A6554
+mr	  r3, r25
+bl	  __ct__12TMarDirectorFv # TMarDirector::TMarDirector((void))
+
+branch_0x802A6554:
+stw	  r25, 4(r31)
+mr	  r3, r25
+addi	  r5, r31, 0x20
+lbz	  r7, 0xF(r31)
+lbz	  r6, 0xE(r31)
+lwz	  r4, 0x1C(r31)
+bl	  setup__12TMarDirectorFPQ26JDrama8TDisplayPP13TMarioGamePadUcUc # TMarDirector::setup((JDrama::TDisplay *,TMarioGamePad **,uchar,uchar))
+mr.	  r29, r3
+beq	  def_802A63E0	# jumptable 802A63E0 default case
+li	  r30, 4
+b	  def_802A63E0	# jumptable 802A63E0 default case
+
+branch_0x802A6580:		# jumptable 802A63E0 case 8
+lwz	  r3, 0x1C(r31)
+bl	  SMSSetupTitleRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupTitleRenderingInfo(JDrama::TDisplay *)
+bl	  SMSGetTitleRenderHeight__Fv #	SMSGetTitleRenderHeight(void)
+clrlwi	  r25, r3, 16
+bl	  SMSGetTitleRenderWidth__Fv # SMSGetTitleRenderWidth(void)
+clrlwi	  r4, r3, 16
+lwz	  r3, 0x34(r31)
+mr	  r5, r25
+bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
+li	  r3, 0x50
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r25, r3
+beq	  branch_0x802A65BC
+mr	  r3, r25
+bl	  __ct__10TSelectDirFv # TSelectDir::TSelectDir((void))
+
+branch_0x802A65BC:
+stw	  r25, 4(r31)
+mr	  r3, r25
+lbz	  r6, 0xE(r31)
+lwz	  r4, 0x1C(r31)
+lwz	  r5, 0x20(r31)
+bl	  setup__10TSelectDirFPQ26JDrama8TDisplayP13TMarioGamePadUc # TSelectDir::setup((JDrama::TDisplay *,TMarioGamePad *,uchar))
+b	  def_802A63E0	# jumptable 802A63E0 default case
+
+branch_0x802A65D8:		# jumptable 802A63E0 case 4
+li	  r0, 9
+stw	  r0, 0x18(r26) #(dword_803E9718 -	unk_803E9700)(r26)
+li	  r3, 0xF
+li	  r0, 0
+stb	  r3, 0x12(r31)
+stb	  r0, 0x13(r31)
+sth	  r0, 0x14(r31)
+
+branch_0x802A65F4:		# jumptable 802A63E0 case 6
+lwz	  r3, 0x1C(r31)
+bl	  SMSSetupMovieRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupMovieRenderingInfo(JDrama::TDisplay *)
+bl	  SMSGetGameRenderHeight__Fv # SMSGetGameRenderHeight(void)
+clrlwi	  r25, r3, 16
+bl	  SMSGetGameRenderWidth__Fv # SMSGetGameRenderWidth(void)
+clrlwi	  r4, r3, 16
+lwz	  r3, 0x34(r31)
+mr	  r5, r25
+bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
+li	  r3, 0x3C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r25, r3
+beq	  branch_0x802A6630
+mr	  r3, r25
+bl	  __ct__14TMovieDirectorFv # TMovieDirector::TMovieDirector((void))
+
+branch_0x802A6630:
+stw	  r25, 4(r31)
+mr	  r3, r25
+lwz	  r4, 0x1C(r31)
+lwz	  r5, 0x20(r31)
+bl	  setup__14TMovieDirectorFPQ26JDrama8TDisplayP13TMarioGamePad #	TMovieDirector::setup((JDrama::TDisplay	*,TMarioGamePad	*))
+
+def_802A63E0:		# jumptable 802A63E0 default case
 branch_0x802a6644:
     cmpwi   r29, 0x0
     bne-    branch_0x802a6658
@@ -948,7 +1196,7 @@ finalize__12TApplicationFv: # 0x802a69cc
     mr      r31, r3
     lwz     r3, -0x60f0(r13)
     bl      reset__9RumbleMgrFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802a69fc
     li      r4, 0x3c
@@ -965,7 +1213,7 @@ branch_0x802a6a14:
     bl      VISetBlack
     bl      VIFlush
     bl      VIWaitForRetrace
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802a6a4c
     b       branch_0x802a6a38
@@ -973,7 +1221,7 @@ branch_0x802a6a14:
 branch_0x802a6a34:
     bl      VIWaitForRetrace
 branch_0x802a6a38:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3c
     bl      resetAudioAll__6MSoundFUs
     clrlwi. r0, r3, 24
@@ -1101,7 +1349,7 @@ branch_0x802a6b30:
     stw     r29, -0x5db8(r13)
     stw     r25, 0x68(sp)
     bl      __dt__14JSUInputStreamFv
-    stw     r29, -0x6034(r13)
+    stw     r29, gpRomFont(r13)
     lwz     r3, 0x40(r31)
     bl      destroy__10JKRExpHeapFv
     lwz     r3, -0x5f28(r13)
@@ -1293,7 +1541,7 @@ branch_0x802a6e14:
     li      r5, 0x0
     bl      __ct__10JUTResFontFPC7ResFONTP10JKRArchive
 branch_0x802a6ec4:
-    stw     r28, -0x6038(r13)
+    stw     r28, gpSystemFont(r13)
     addi    r3, r29, 0x0
     subi    r4, rtoc, 0x3d0
     lwz     r12, 0x0(r29)
@@ -1339,7 +1587,7 @@ branch_0x802a6ec4:
     lis     r9, 0xb0
     bl      __ct__6MSoundFP7JKRHeapP7JKRHeapUlPUcPUcUl
 branch_0x802a6f78:
-    stw     r29, -0x6044(r13)
+    stw     r29, gpMSound(r13)
     bl      OSGetSoundMode
     cmplwi  r3, 0x0
     bne-    branch_0x802a6f90
@@ -1350,10 +1598,10 @@ branch_0x802a6f90:
     li      r3, 0x1
 branch_0x802a6f94:
     bl      setParamSoundOutputMode__18JAIGlobalParameterFUl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      loadWave__6MSoundF13MS_SCENE_WAVE
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x210
     bl      loadWave__6MSoundF13MS_SCENE_WAVE
     mr      r3, r27
@@ -1440,7 +1688,7 @@ setupThreadFuncLogo__12TApplicationFv: # 0x802a70a0
 branch_0x802a70cc:
     bl      OSYieldThread
 branch_0x802a70d0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      checkWaveOnAram__6MSoundF13MS_SCENE_WAVE
     clrlwi. r0, r3, 24
@@ -1450,7 +1698,7 @@ branch_0x802a70d0:
 branch_0x802a70e8:
     bl      OSYieldThread
 branch_0x802a70ec:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x210
     bl      checkWaveOnAram__6MSoundF13MS_SCENE_WAVE
     clrlwi. r0, r3, 24
@@ -1739,7 +1987,7 @@ branch_0x802a74e4:
     mr      r3, r29
     bl      __ct__10JUTRomFontFP7JKRHeap
 branch_0x802a7530:
-    stw     r29, -0x6034(r13)
+    stw     r29, gpRomFont(r13)
     mr      r3, r30
     bl      becomeCurrentHeap__7JKRHeapFv
     lis     r3, 0xf4
@@ -1991,7 +2239,7 @@ SMSSwitch2DArchive__FPCcR10TARAMBlock: # 0x802a78b4
     lbz     r0, 0x4(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x802a791c
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lis     r3, 0x6
     li      r0, 0x0
     lwz     r4, 0xd4(r4)
@@ -2007,7 +2255,7 @@ SMSSwitch2DArchive__FPCcR10TARAMBlock: # 0x802a78b4
     b       branch_0x802a794c
 
 branch_0x802a791c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x0
     li      r5, 0x0
     lwz     r4, 0xd4(r3)
@@ -2020,7 +2268,7 @@ branch_0x802a791c:
     li      r10, -0x1
     bl      aramToMainRam__7JKRAramFP12JKRAramBlockPUcUlUl15JKRExpandSwitchUlP7JKRHeapiPUl
 branch_0x802a794c:
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     addi    r3, r31, 0x0
     li      r5, 0x0
     lwz     r4, 0xd4(r4)
@@ -2044,7 +2292,7 @@ SMSMountAramArchive__FP13JKRMemArchiveR10TARAMBlock: # 0x802a797c
     lbz     r0, 0x4(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x802a79d8
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lis     r3, 0x6
     li      r0, 0x0
     lwz     r9, 0xd4(r5)
@@ -2061,7 +2309,7 @@ SMSMountAramArchive__FP13JKRMemArchiveR10TARAMBlock: # 0x802a797c
     b       branch_0x802a7a0c
 
 branch_0x802a79d8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x0
     li      r5, 0x0
     lwz     r10, 0xd4(r3)
@@ -2075,7 +2323,7 @@ branch_0x802a79d8:
     li      r10, -0x1
     bl      aramToMainRam__7JKRAramFP12JKRAramBlockPUcUlUl15JKRExpandSwitchUlP7JKRHeapiPUl
 branch_0x802a7a0c:
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     addi    r3, r31, 0x0
     li      r5, 0x0
     lwz     r4, 0xd4(r4)

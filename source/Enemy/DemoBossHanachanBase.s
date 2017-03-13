@@ -87,7 +87,7 @@ branch_0x800eaacc:
     lfs     f1, 0xc0(r29)
     lfs     f0, 0x14(r29)
     fmuls   f2, f2, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r29)
     lfs     f3, 0x18(r29)
     fadds   f2, f0, f2

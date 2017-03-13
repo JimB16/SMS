@@ -5,7 +5,7 @@ OSGetTime: # 0x803494d8
     mftb    r4, 268
     mftb    r5, 269
     cmpw    r3, r5
-    bne+    OSGetTime
+    bne-    OSGetTime # ToDo Find out why wrong branch prediction
     blr
 
 

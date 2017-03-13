@@ -425,7 +425,7 @@ branch_0x8022b6f4:
     lfs     f0, 0x10(r30)
     lfs     f1, 0x10(r3)
     addi    r4, sp, 0x14
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r28)
     lfs     f3, 0x8(r28)
@@ -455,7 +455,7 @@ branch_0x8022b774:
     lfs     f1, 0x4(r28)
     addi    r4, sp, 0x14
     lfs     f0, 0x10(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r28)
     lfs     f3, 0x8(r28)
@@ -480,7 +480,7 @@ branch_0x8022b7b4:
 branch_0x8022b7cc:
     lfs     f2, 0x10(r30)
     mr      r4, r28
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r5, r28, 0x8
     lfs     f1, 0x4(r28)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -671,7 +671,7 @@ SMS_GetLightPerspectiveForEffectMtx__FPA4_f: # 0x8022ba74
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     mr      r31, r3
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     lfs     f4, 0x2c(r4)
     lfs     f3, 0x28(r4)
     lfs     f2, 0x4c(r4)

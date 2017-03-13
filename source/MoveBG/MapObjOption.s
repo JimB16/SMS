@@ -371,13 +371,13 @@ branch_0x801ef25c:
     lwz     r5, -0x7840(r13)
     li      r6, 0x0
     bl      start__9RumbleMgrFiiPf
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x144
     li      r4, 0x6e
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x144
     li      r4, 0x39
     li      r6, 0x0
@@ -447,13 +447,13 @@ branch_0x801ef358:
     lwz     r5, -0x7840(r13)
     li      r6, 0x0
     bl      start__9RumbleMgrFiiPf
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x144
     li      r4, 0x6e
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x144
     li      r4, 0x39
     li      r6, 0x0

@@ -65,9 +65,8 @@ Hx_Test5: # 0x8017df74
     cmpwi   r0, 0x0
     bge-    branch_0x8017e078
     b       branch_0x8017e40c
+    b       branch_0x8017e40c
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x178a74, 0x8017e078 - 0x8017e074
 branch_0x8017e078:
     li      r0, 0x14
     stw     r0, 0x3c(r31)
@@ -377,9 +376,8 @@ Hx_Test4: # 0x8017e46c
     cmpwi   r0, 0x0
     bge-    branch_0x8017e4e0
     b       branch_0x8017e7c4
+    b       branch_0x8017e7c4
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x178edc, 0x8017e4e0 - 0x8017e4dc
 branch_0x8017e4e0:
     lbz     r0, 0x12(r31)
     cmpwi   r0, 0x1
@@ -1710,7 +1708,9 @@ branch_0x8017f7a4:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8017F7CC:		# jumptable 8017F7C8 case 0
     cmpwi   r5, 0x0
     bne-    branch_0x8017f7e0
     lis     r3, 0x8039
@@ -1732,8 +1732,237 @@ branch_0x8017f7e0:
     stw     r0, -0x635c(r13)
     b       branch_0x8017fb30
 
+branch_0x8017F818:		# jumptable 8017F7C8 case 1
+lwz	  r0, 0x3c(r31) #(dword_803F43FC -	unk_803F43C0)(r31)
+cmplwi	  r0, 0xC0
+bgt	  branch_0x8017F830
+li	  r3, 0xFF
+bl	  Hxs_Logo_ExtraDraw
+b	  branch_0x8017F83C
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x17a218, 0x8017fb30 - 0x8017f818
+branch_0x8017F830:
+subfic	  r0, r0, 0x100
+clrlslwi  r3, r0, 26,2
+bl	  Hxs_Logo_ExtraDraw
+
+branch_0x8017F83C:
+bl	  Hx_TimerCountDown
+bl	  Hx_TimerCountDown
+bl	  Hx_TimerCountDown
+bl	  Hx_TimerCountDown
+cmplwi	  r3, 0
+bne	  def_8017F7C8	# jumptable 8017F7C8 default case
+lwz	  r3, 0(r30)
+addi	  r0, r3, 1
+stw	  r0, 0(r30)
+b	  def_8017F7C8	# jumptable 8017F7C8 default case
+
+branch_0x8017F864:		# jumptable 8017F7C8 case 2
+lwz	  r6, -0x6358(r13)
+lwz	  r0, 8(r6)
+cmpwi	  r0, -1
+bne	  branch_0x8017F880
+li	  r0, 3
+stw	  r0, 0(r30)
+b	  branch_0x8017F930	# jumptable 8017F7C8 case 4
+
+branch_0x8017F880:
+cmpwi	  r0, 0
+bne	  branch_0x8017F8AC
+lfs	  f0, 0(r6)
+addi	  r5, r6, 0xC
+lwz	  r3, -0x634C(r13)
+stfs	  f0, -0x6354(r13)
+addi	  r0, r3, 1
+lfs	  f0, 4(r6)
+stfs	  f0, -0x6350(r13)
+stw	  r5, -0x6358(r13)
+stw	  r0, -0x634C(r13)
+
+branch_0x8017F8AC:
+lwz	  r3, -0x6358(r13)
+lwz	  r0, 8(r3)
+stw	  r0, 0x3c(r31) #(dword_803F43FC -	unk_803F43C0)(r31)
+lwz	  r3, 0(r30)
+addi	  r0, r3, 1
+stw	  r0, 0(r30)
+
+branch_0x8017F8C4:		# jumptable 8017F7C8 case 3
+li	  r3, 0xFF
+bl	  Hxs_Logo_ExtraDraw
+addi	  r5, r29, 0
+li	  r3, 0xFF
+li	  r4, 0xFF
+bl	  Hxs_Logo_TexSetup
+lfs	  f1, -0x6354(r13)
+lfs	  f2, -0x6350(r13)
+lwz	  r3, -0x634C(r13)
+lwz	  r4, -0x6358(r13)
+bl	  Hxs_PenDraw
+bl	  Hx_TimerCountDown
+cmplwi	  r3, 0
+bne	  def_8017F7C8	# jumptable 8017F7C8 default case
+lwz	  r4, -0x6358(r13)
+li	  r0, 2
+lfs	  f0, 0(r4)
+addi	  r3, r4, 0xC
+stfs	  f0, -0x6354(r13)
+lfs	  f0, 4(r4)
+stfs	  f0, -0x6350(r13)
+stw	  r3, -0x6358(r13)
+stw	  r0, 0(r30)
+lwz	  r3, -0x634C(r13)
+addi	  r0, r3, 1
+stw	  r0, -0x634C(r13)
+b	  def_8017F7C8	# jumptable 8017F7C8 default case
+
+branch_0x8017F930:		# jumptable 8017F7C8 case 4
+li	  r0, 5
+stw	  r0, 0x3c(r31) #(dword_803F43FC -	unk_803F43C0)(r31)
+lwz	  r3, 0(r30)
+addi	  r0, r3, 1
+stw	  r0, 0(r30)
+
+branch_0x8017F944:		# jumptable 8017F7C8 case 5
+li	  r3, 0xFF
+bl	  Hxs_Logo_ExtraDraw
+addi	  r5, r29, 0
+li	  r3, 0xFF
+li	  r4, 0xFF
+bl	  Hxs_Logo_TexSetup
+lfs	  f1, -0x6354(r13)
+lfs	  f2, -0x6350(r13)
+lwz	  r3, -0x634C(r13)
+lwz	  r4, -0x6358(r13)
+bl	  Hxs_PenDraw
+bl	  Hx_TimerCountDown
+cmplwi	  r3, 0
+bne	  def_8017F7C8	# jumptable 8017F7C8 default case
+li	  r0, 0xFF
+stw	  r0, 0x3c(r31) #(dword_803F43FC -	unk_803F43C0)(r31)
+lwz	  r3, 0(r30)
+addi	  r0, r3, 1
+stw	  r0, 0(r30)
+b	  def_8017F7C8	# jumptable 8017F7C8 default case
+
+branch_0x8017F994:		# jumptable 8017F7C8 case 6
+addi	  r28, r31, 0x3C
+lwz	  r0, 0x3c(r31) #(dword_803F43FC -	unk_803F43C0)(r31)
+cmplwi	  r0, 0xC0
+blt	  branch_0x8017FA20
+li	  r3, 0xFF
+bl	  Hxs_Logo_ExtraDraw
+lwz	  r0, 0(r28)
+addi	  r5, r29, 0
+clrlwi	  r3, r0, 24
+addi	  r4, r3, 0
+bl	  Hxs_Logo_TexSetup
+lwz	  r0, 0(r28)
+cmplwi	  r0, 0xF8
+ble	  branch_0x8017F9E4
+lfs	  f1, -0x6354(r13)
+lfs	  f2, -0x6350(r13)
+lwz	  r3, -0x634C(r13)
+lwz	  r4, -0x6358(r13)
+bl	  Hxs_PenDraw
+b	  branch_0x8017FA68
+
+branch_0x8017F9E4:
+lhz	  r4, -0x63A0(r13)
+lis	  r3, 0x4330
+lhz	  r0, -0x639E(r13)
+stw	  r4, 0x1C(r1)
+lfd	  f3, -0x45F0(r2)
+stw	  r0, 0x14(r1)
+lfs	  f1, -0x460C(r2)
+stw	  r3, 0x18(r1)
+stw	  r3, 0x10(r1)
+lfd	  f2, 0x18(r1)
+lfd	  f0, 0x10(r1)
+fsubs	  f2, f2, f3
+fsubs	  f3, f0, f3
+bl	  Hxs_Logo_MagDraw
+b	  branch_0x8017FA68
+
+branch_0x8017FA20:
+clrlwi	  r3, r0, 24
+addi	  r4, r3, 0
+addi	  r5, r29, 0
+bl	  Hxs_Logo_TexSetup
+lhz	  r4, -0x63A0(r13)
+lis	  r3, 0x4330
+lhz	  r0, -0x639E(r13)
+stw	  r4, 0x14(r1)
+lfd	  f3, -0x45F0(r2)
+stw	  r0, 0x1C(r1)
+lfs	  f1, -0x460C(r2)
+stw	  r3, 0x10(r1)
+stw	  r3, 0x18(r1)
+lfd	  f2, 0x10(r1)
+lfd	  f0, 0x18(r1)
+fsubs	  f2, f2, f3
+fsubs	  f3, f0, f3
+bl	  Hxs_Logo_MagDraw
+
+branch_0x8017FA68:
+li	  r29, 0
+
+branch_0x8017FA6C:
+bl	  Hx_TimerCountDown
+addi	  r29, r29, 1
+cmplwi	  r29, 3
+blt	  branch_0x8017FA6C
+bl	  Hx_TimerCountDown
+cmplwi	  r3, 0
+bne	  def_8017F7C8	# jumptable 8017F7C8 default case
+li	  r0, 0x19
+stw	  r0, 0(r28)
+addi	  r3, r31, 0x40
+lfs	  f1, -0x4574(r2)
+lfs	  f2, -0x4578(r2)
+lfs	  f3, -0x45AC(r2)
+lfs	  f4, -0x45E4(r2)
+bl	  Hx_MotionSet
+lwz	  r3, 0(r30)
+addi	  r0, r3, 1
+stw	  r0, 0(r30)
+b	  def_8017F7C8	# jumptable 8017F7C8 default case
+
+branch_0x8017FAB8:		# jumptable 8017F7C8 case 7
+addi	  r5, r29, 0
+li	  r3, 0
+li	  r4, 0
+bl	  Hxs_Logo_TexSetup
+addi	  r3, r31, 0x40
+bl	  Hx_MotionUpdate
+lhz	  r4, -0x63A0(r13)
+lis	  r3, 0x4330
+lhz	  r0, -0x639E(r13)
+stw	  r4, 0x14(r1)
+lfs	  f0, -0x460C(r2)
+stw	  r0, 0x1C(r1)
+fadds	  f1, f0, f1
+lfd	  f3, -0x45F0(r2)
+stw	  r3, 0x10(r1)
+stw	  r3, 0x18(r1)
+lfd	  f2, 0x10(r1)
+lfd	  f0, 0x18(r1)
+fsubs	  f2, f2, f3
+fsubs	  f3, f0, f3
+bl	  Hxs_Logo_MagDraw
+bl	  Hx_TimerCountDown
+cmplwi	  r3, 0
+bne	  def_8017F7C8	# jumptable 8017F7C8 default case
+lwz	  r3, 0(r30)
+addi	  r0, r3, 1
+stw	  r0, 0(r30)
+b	  def_8017F7C8	# jumptable 8017F7C8 default case
+
+branch_0x8017FB28:		# jumptable 8017F7C8 case 8
+li	  r0, 3
+stb	  r0, 0x10(r31)
+
+def_8017F7C8:		# jumptable 8017F7C8 default case
 branch_0x8017fb30:
     lwz     r0, 0x34(sp)
     lwz     r31, 0x2c(sp)
@@ -4975,9 +5204,8 @@ branch_0x801829f0:
     subi    r6, r13, 0x639c
     bl      GXSetCopyFilter
     b       branch_0x80182a0c
+    b       branch_0x80182990
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x17d408, 0x80182a0c - 0x80182a08
 branch_0x80182a0c:
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)

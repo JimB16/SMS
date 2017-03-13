@@ -158,7 +158,7 @@ __ct__11TMapObjWaveFPCc: # 0x801dca00
     sth     r31, 0x8e(r30)
     sth     r31, 0x90(r30)
     sth     r0, 0x92(r30)
-    stw     r30, -0x626c(r13)
+    stw     r30, gpMapObjWave(r13)
     lwz     r0, 0x44(sp)
     lwz     r31, 0x3c(sp)
     lwz     r30, 0x38(sp)
@@ -212,7 +212,7 @@ load__11TMapObjWaveFR20JSUMemoryInputStream: # 0x801dcc08
     stfs    f0, 0x24(r31)
     lfs     f0, -0x24ec(rtoc)
     stfs    f0, 0x28(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmpwi   r0, 0xd
     beq-    branch_0x801dcd54
@@ -319,7 +319,7 @@ perform__11TMapObjWaveFUlPQ26JDrama9TGraphics: # 0x801dcdd8
     beq-    branch_0x801dce30
     mr      r3, r30
     bl      updateTime__11TMapObjWaveFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     beq-    branch_0x801dce28
@@ -401,19 +401,21 @@ updateHeightAndAlpha__11TMapObjWaveFv: # 0x801dcf04
     stw     r31, 0x6c(sp)
     mr      r31, r3
     addi    r5, sp, 0x60
-    lwz     r4, -0x60b4(r13)
-    lwz     r3, -0x6328(r13)
+    lwz     r4, MarioHitActorPos(r13)
+    lwz     r3, gpMap(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
-    lwz     r5, -0x60b4(r13)
+
+    lwz     r5, MarioHitActorPos(r13)
     addi    r4, sp, 0x5c
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x0(r5)
     lfs     f2, -0x24d4(rtoc)
     lfs     f3, 0x8(r5)
     bl      checkGroundExactY__4TMapCFfffPPC12TBGCheckData
-    lwz     r3, -0x6094(r13)
+
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 15, 15
+    rlwinm. r0, r0, 0, 15, 15 # MARIOFLAG_10000
     beq-    branch_0x801dcf5c
     li      r0, 0x1
     b       branch_0x801dcf60
@@ -466,9 +468,9 @@ branch_0x801dcfe8:
     clrlwi. r0, r0, 24
     beq-    branch_0x801dd0f4
 branch_0x801dcff0:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r4, sp, 0x5c
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x0(r5)
     lfs     f2, -0x2530(rtoc)
     lfs     f3, 0x8(r5)
@@ -553,11 +555,11 @@ branch_0x801dd0f4:
     lfs     f0, 0x5c(r31)
     stfs    f0, 0x54(r31)
 branch_0x801dd10c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x801dd170
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, -0x24c8(rtoc)
     lfs     f1, 0x0(r3)
     fcmpo   cr0, f0, f1
@@ -579,7 +581,7 @@ branch_0x801dd10c:
     lfs     f0, 0x5c(r31)
     stfs    f0, 0x54(r31)
 branch_0x801dd170:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, -0x70e4(r13)
     bl      getInCubeNo__16TCubeManagerBaseCFRC3Vec
     cmpwi   r3, -0x1
@@ -658,7 +660,7 @@ draw__11TMapObjWaveFv: # 0x801dd21c
     b       branch_0x801dd4ec
 
 branch_0x801dd27c:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     li      r3, 0x98
     lwz     r0, 0x20(r26)
     li      r4, 0x0
@@ -676,7 +678,7 @@ branch_0x801dd27c:
 
 branch_0x801dd2b8:
     fabs    f2, f22
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x0(r3)
     fcmpo   cr0, f2, f28
     fadds   f21, f22, f0
@@ -882,7 +884,7 @@ getHeight__11TMapObjWaveCFfff: # 0x801dd568
     stw     r31, 0x24(sp)
     mr      r31, r3
     lfs     f0, -0x24b0(rtoc)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f0, f30
     bl      checkGroundExactY__4TMapCFfffPPC12TBGCheckData
     lwz     r3, 0x1c(sp)

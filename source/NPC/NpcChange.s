@@ -16,7 +16,7 @@ setPosAndInitAfterSinkBottom__8TBaseNPCFv: # 0x80212d44
     stw     r30, 0x90(sp)
     lwz     r4, 0x194(r31)
     lwz     r0, 0x198(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     stw     r4, 0x80(sp)
     stw     r0, 0x84(sp)
     lwz     r0, 0x19c(r31)
@@ -173,7 +173,7 @@ branch_0x80212f8c:
     stw     r0, 0xf0(r31)
     lfs     f1, 0x148(r31)
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0x80(sp)
     fadds   f2, f30, f0
@@ -329,7 +329,7 @@ branch_0x802131bc:
     bl      isJellyFishMare__8TBaseNPCCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x802133e4
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      isTalkCameraInbetween__15CPolarSubCameraCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x802133e4
@@ -376,7 +376,7 @@ branch_0x80213280:
     bl      SMS_IsMarioOpeningDoor__Fv
     clrlwi. r0, r3, 24
     bne-    branch_0x802133e4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x7
     bne-    branch_0x802132d4
@@ -439,7 +439,7 @@ branch_0x80213354:
     lwz     r3, -0x6220(r13)
     lfs     f2, 0x54(r3)
 branch_0x8021335c:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x14(r28)
     lfs     f1, 0x4(r4)
     fsubs   f0, f1, f0
@@ -462,7 +462,7 @@ branch_0x8021335c:
     lfs     f5, -0x1a34(rtoc)
     stw     r4, 0xfc(sp)
     addi    r4, r28, 0x10
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     stw     r0, 0xf8(sp)
     lfs     f3, 0x18(r5)
     lfd     f0, 0xf8(sp)
@@ -583,7 +583,7 @@ branch_0x80213550:
     bl      theNerve__13TNerveNPCSinkFv
     cmplw   r31, r3
     bne-    branch_0x8021360c
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x10(r28)
     lfs     f2, 0x1c4(r28)
     lfs     f3, 0x18(r28)
@@ -610,7 +610,7 @@ branch_0x802135a4:
     rlwinm  r0, r0, 0, 9, 7
     stw     r0, 0xf0(r28)
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3811
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -634,7 +634,7 @@ branch_0x8021360c:
 branch_0x80213624:
     cmpwi   r27, 0x0
     bne-    branch_0x80213794
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x10(r28)
     lfs     f2, 0x14(r28)
     lfs     f3, 0x18(r28)
@@ -922,7 +922,7 @@ branch_0x802139c4:
     cmplw   r29, r3
     bne-    branch_0x80213a6c
 branch_0x80213a24:
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -1031,7 +1031,7 @@ behaveToHitObject___8TBaseNPCFP9THitActor20EnumHitNpcObjectKind: # 0x80213b70
     beq-    branch_0x80213cc0
     cmpwi   r31, 0x0
     bne-    branch_0x80213fc0
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     li      r3, 0x1
     addi    r5, r3, 0x0
     lbz     r0, 0x124(r6)
@@ -1057,13 +1057,13 @@ branch_0x80213bf0:
 branch_0x80213bfc:
     clrlwi. r0, r3, 24
     bne-    branch_0x80213fc0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r4, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x1a48(rtoc)
     li      r4, 0x6802
@@ -1073,7 +1073,7 @@ branch_0x80213bfc:
     li      r9, 0x4
     bl      startSoundSet__6MSoundFUlPC3VecUlfUlUlUc
     lis     r31, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r31, 0x77c9
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1109,7 +1109,7 @@ branch_0x80213c74:
 branch_0x80213cc0:
     cmpwi   r31, 0x0
     bne-    branch_0x80213d90
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -1483,7 +1483,7 @@ branch_0x802141b4:
     lis     r3, 0x1
     subi    r31, r3, 0x77b8
 branch_0x802141bc:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r31
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

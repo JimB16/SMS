@@ -11,7 +11,7 @@ __ct__12TPoolManagerFPCc: # 0x801f8020
     addi    r0, r3, 0x6614
     stw     r0, 0x0(r31)
     mr      r3, r31
-    stw     r31, -0x6230(r13)
+    stw     r31, gpPoolManager(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18

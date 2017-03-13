@@ -10,7 +10,7 @@ updateCoin__8TNpcCoinFv: # 0x802161e8
     lwz     r0, 0x4(r3)
     cmpwi   r0, 0x0
     ble-    branch_0x8021636c
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -72,7 +72,7 @@ branch_0x80216260:
 
 branch_0x802162ec:
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x8(r31)
     addi    r4, r4, 0xe
     lfs     f2, 0xc(r31)
@@ -92,7 +92,7 @@ branch_0x802162ec:
     stw     r0, 0xf0(r3)
 branch_0x80216338:
     lis     r30, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r30, 0x77f9
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -181,7 +181,7 @@ requestAppearCoin__8TNpcCoinFRC3Vecfi: # 0x80216384
     lwz     r0, 0x4(r31)
     cmpwi   r0, 0x0
     bne-    branch_0x802165e0
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -242,7 +242,7 @@ branch_0x802164f4:
 
 branch_0x80216560:
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x8(r31)
     addi    r4, r4, 0xe
     lfs     f2, 0xc(r31)
@@ -262,7 +262,7 @@ branch_0x80216560:
     stw     r0, 0xf0(r3)
 branch_0x802165ac:
     lis     r30, 0x1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     subi    r4, r30, 0x77f9
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

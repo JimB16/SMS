@@ -56,7 +56,7 @@ perform__6TGuideFUlPQ26JDrama9TGraphics: # 0x801791d0
     bl      SMSSwitch2DArchive__FPCcR10TARAMBlock
     li      r28, 0x0
     stb     r28, 0xc4(r29)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x7c(r3)
     bl      SMS_getShineStage__FUc
     clrlwi  r27, r3, 24
@@ -147,9 +147,8 @@ branch_0x80179334:
     li      r0, 0x0
     stb     r0, 0x164(r29)
     b       branch_0x80179350
+    b       def_801793D8	# jumptable 801793D8 default case
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x173d4c, 0x80179350 - 0x8017934c
 branch_0x80179350:
     rlwinm. r0, r30, 0, 28, 28
     beq-    branch_0x801793ac
@@ -186,7 +185,9 @@ branch_0x801793ac:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x801793DC:		# jumptable 801793D8 case 9
     lbz     r0, 0xc5(r29)
     cmplwi  r0, 0x0
     beq-    branch_0x80179418
@@ -203,7 +204,7 @@ branch_0x801793ac:
     li      r0, 0xa
     stw     r0, 0x10(r29)
 branch_0x80179418:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x7c(r3)
     bl      SMS_getShineStage__FUc
     clrlslwi  r0, r3, 24, 2
@@ -234,8 +235,310 @@ branch_0x80179418:
     blrl
     b       branch_0x801798dc
 
+branch_0x80179490:		# jumptable 801793D8 case 10
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+lwz	  r0, 0x20(r3)
+cmpwi	  r0, 1
+bne	  def_801793D8	# jumptable 801793D8 default case
+li	  r3, 0
+stw	  r3, 0x10(r29)
+li	  r4, 0xFF
+li	  r0, 0x50
+stw	  r3, 0x428(r29)
+stw	  r3, 0x424(r29)
+lwz	  r3, 0x128(r29)
+lwz	  r3, 0(r3)
+stb	  r4, 0xCC(r3)
+lwz	  r3, 0x12C(r29)
+lwz	  r3, 0(r3)
+stb	  r0, 0xCC(r3)
+b	  def_801793D8	# jumptable 801793D8 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x173e90, 0x801798dc - 0x80179490
+branch_0x801794DC:		# jumptable 801793D8 case 0
+mr	  r3, r29
+bl	  linkSelect__6TGuideFv	# TGuide::linkSelect((void))
+b	  def_801793D8	# jumptable 801793D8 default case
+
+branch_0x801794E8:		# jumptable 801793D8 case 1
+lwz	  r3, 0x424(r29)
+bl	  update__7TExPaneFv # TExPane::update((void))
+and	  r28, r28, r3
+li	  r27, 0
+li	  r30, 0
+
+branch_0x801794FC:
+addi	  r0, r30, 0x128
+lwzx	  r3, r29, r0
+bl	  update__7TExPaneFv # TExPane::update((void))
+addi	  r27, r27, 1
+cmpwi	  r27, 2
+and	  r28, r28, r3
+addi	  r30, r30, 4
+blt	  branch_0x801794FC
+clrlwi.	  r0, r28, 24
+beq	  def_801793D8	# jumptable 801793D8 default case
+lwz	  r3, 0x428(r29)
+bl	  update__7TExPaneFv # TExPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  def_801793D8	# jumptable 801793D8 default case
+li	  r0, 2
+stw	  r0, 0x10(r29)
+b	  def_801793D8	# jumptable 801793D8 default case
+
+branch_0x80179540:		# jumptable 801793D8 case 2
+lwz	  r3, 0xC0(r29)
+lwz	  r0, 0xD4(r3)
+rlwinm.	  r0, r0, 0,25,26
+beq	  branch_0x80179770
+lha	  r27, 0x42C(r29)
+li	  r4, 0x14
+lwz	  r3, 0x428(r29)
+li	  r5, 0
+li	  r6, 0xFF
+bl	  setPaneAlpha__7TExPaneFlss # TExPane::setPaneAlpha((long,short,short))
+slwi	  r3, r27, 4
+addi	  r4, r3, 0x218
+addi	  r3, r1, 0x100
+add	  r4, r29, r4
+bl	  copy__7JUTRectFRC7JUTRect # JUTRect::copy((JUTRect const &))
+slwi	  r0, r27, 2
+add	  r3, r29, r0
+lwz	  r4, 0x168(r3)
+addi	  r3, r1, 0x110
+addi	  r4, r4, 0x14
+bl	  copy__7JUTRectFRC7JUTRect # JUTRect::copy((JUTRect const &))
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4805
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x801795BC
+li	  r3, 0x4805
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x801795BC:
+lwz	  r3, 0x104(r1)
+li	  r4, 0x14
+lwz	  r0, 0x10C(r1)
+li	  r5, 0
+lwz	  r27, 0x424(r29)
+subf	  r31, r3, r0
+lwz	  r6, 0x100(r1)
+lwz	  r0, 0x108(r1)
+addi	  r3, r27, 0
+addi	  r8, r31, 0
+subf	  r28, r6, r0
+addi	  r7, r28, 0
+li	  r6, 0
+bl	  setPaneSize__7TExPaneFlllll #	TExPane::setPaneSize((long,long,long,long,long))
+lwz	  r4, 8(r27)
+lis	  r30, 0x4330
+lwz	  r0, 0x10(r27)
+mr	  r3, r27
+lwz	  r5, 4(r27)
+subf	  r6, r4, r0
+lwz	  r4, 0xC(r27)
+subf	  r0, r31, r6
+lfd	  f4, -0x46A8(r2)
+subf	  r5, r5, r4
+lfs	  f5, -0x46AC(r2)
+subf	  r4, r28, r5
+xoris	  r5, r5, 0x8000
+xoris	  r6, r6, 0x8000
+stw	  r5, 0x29C(r1)
+xoris	  r5, r4, 0x8000
+xoris	  r0, r0, 0x8000
+stw	  r6, 0x28C(r1)
+li	  r4, 0x14
+stw	  r5, 0x27C(r1)
+stw	  r0, 0x26C(r1)
+stw	  r30, 0x298(r1)
+stw	  r30, 0x288(r1)
+lfd	  f1, 0x298(r1)
+stw	  r30, 0x278(r1)
+lfd	  f0, 0x288(r1)
+fsubs	  f3, f1, f4
+stw	  r30, 0x268(r1)
+lfd	  f1, 0x278(r1)
+fsubs	  f2, f0, f4
+lfd	  f0, 0x268(r1)
+fsubs	  f1, f1, f4
+fsubs	  f0, f0, f4
+fmuls	  f3, f5, f3
+fmuls	  f2, f5, f2
+fmuls	  f1, f5, f1
+fmuls	  f0, f5, f0
+fctiwz	  f3, f3
+fctiwz	  f2, f2
+fctiwz	  f1, f1
+fctiwz	  f0, f0
+stfd	  f3, 0x290(r1)
+stfd	  f2, 0x280(r1)
+lwz	  r5, 0x294(r1)
+stfd	  f1, 0x270(r1)
+lwz	  r6, 0x284(r1)
+stfd	  f0, 0x260(r1)
+lwz	  r7, 0x274(r1)
+lwz	  r8, 0x264(r1)
+bl	  setPaneOffset__7TExPaneFlllll	# TExPane::setPaneOffset((long,long,long,long,long))
+lwz	  r6, 0x100(r1)
+li	  r4, 0x14
+lwz	  r3, 0x114(r1)
+lwz	  r0, 0x110(r1)
+subf	  r3, r6, r3
+lfs	  f3, -0x46B0(r2)
+addi	  r5, r3, -0x28
+lwz	  r27, 0x424(r29)
+subf	  r0, r6, r0
+lfd	  f2, -0x46A8(r2)
+xoris	  r3, r0, 0x8000
+fmr	  f4, f3
+xoris	  r0, r5, 0x8000
+stw	  r3, 0x25C(r1)
+addi	  r3, r27, 0x14
+stw	  r0, 0x254(r1)
+stw	  r30, 0x258(r1)
+stw	  r30, 0x250(r1)
+lfd	  f1, 0x258(r1)
+lfd	  f0, 0x250(r1)
+fsubs	  f1, f1, f2
+fsubs	  f2, f0, f2
+bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
+lwz	  r3, 0(r27)
+lwz	  r4, 4(r27)
+lwz	  r12, 0(r3)
+lwz	  r5, 8(r27)
+lwz	  r12, 0xC(r12)
+mtlr	  r12
+blrl
+li	  r0, 1
+stb	  r0, 0x4E(r27)
+li	  r4, 0x14
+li	  r5, 0xFF
+lwz	  r3, 0x128(r29)
+li	  r6, 0
+bl	  setPaneAlpha__7TExPaneFlss # TExPane::setPaneAlpha((long,short,short))
+lwz	  r3, 0x12C(r29)
+li	  r4, 0x14
+li	  r5, 0x50
+li	  r6, 0
+bl	  setPaneAlpha__7TExPaneFlss # TExPane::setPaneAlpha((long,short,short))
+li	  r0, 3
+stw	  r0, 0x10(r29)
+b	  def_801793D8	# jumptable 801793D8 default case
+
+branch_0x80179770:
+lwz	  r0, 0x1C(r3)
+rlwinm.	  r0, r0, 0,27,27
+beq	  def_801793D8	# jumptable 801793D8 default case
+li	  r0, 7
+stw	  r0, 0x10(r29)
+b	  def_801793D8	# jumptable 801793D8 default case
+
+branch_0x80179788:		# jumptable 801793D8 case 3
+lwz	  r3, 0x428(r29)
+bl	  update__7TExPaneFv # TExPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  def_801793D8	# jumptable 801793D8 default case
+lwz	  r3, 0x424(r29)
+bl	  update__7TExPaneFv # TExPane::update((void))
+and	  r28, r28, r3
+li	  r27, 0
+li	  r30, 0
+
+branch_0x801797AC:
+addi	  r0, r30, 0x128
+lwzx	  r3, r29, r0
+bl	  update__7TExPaneFv # TExPane::update((void))
+addi	  r27, r27, 1
+cmpwi	  r27, 2
+and	  r28, r28, r3
+addi	  r30, r30, 4
+blt	  branch_0x801797AC
+clrlwi.	  r0, r28, 24
+beq	  def_801793D8	# jumptable 801793D8 default case
+lwz	  r3, 0x424(r29)
+li	  r0, 0
+lwz	  r3, 0(r3)
+stb	  r0, 0xC(r3)
+lwz	  r3, 0x428(r29)
+lwz	  r3, 0(r3)
+stb	  r0, 0xC(r3)
+stw	  r0, 0x10(r29)
+sth	  r0, 0xF0(r29)
+b	  def_801793D8	# jumptable 801793D8 default case
+
+branch_0x801797FC:		# jumptable 801793D8 case 7
+lis	  r3, unk_803E9700@ha
+lfs	  f1, -0x46B4(r2)
+addi	  r3, r3, unk_803E9700@l
+lfs	  f2, -0x46B0(r2)
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+li	  r4, 6
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+lwz	  r3, 0xC0(r29)
+li	  r4, 0x4818
+lhz	  r0, 0xE2(r3)
+rlwinm	  r0, r0, 0,25,23
+sth	  r0, 0xE2(r3)
+lwz	  r3, gpMSound(r13)
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80179850
+li	  r3, 0x4818
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x80179850:
+li	  r0, 0xB
+stw	  r0, 0x10(r29)
+b	  def_801793D8	# jumptable 801793D8 default case
+
+branch_0x8017985C:		# jumptable 801793D8 case 11
+lis	  r3, unk_803E9700@ha
+addi	  r3, r3, unk_803E9700@l
+lwz	  r3, 0x34(r3) #(dword_803E9734 -	unk_803E9700)(r3)
+lwz	  r0, 0x20(r3)
+cmpwi	  r0, 0
+bne	  def_801793D8	# jumptable 801793D8 default case
+lfs	  f1, -0x46B4(r2)
+li	  r4, 5
+lfs	  f2, -0x46B0(r2)
+bl	  startWipe__9TSMSFaderFUlff # TSMSFader::startWipe((ulong,float,float))
+lwz	  r3, 0x424(r29)
+cmplwi	  r3, 0
+beq	  branch_0x801798A8
+lwz	  r3, 0(r3)
+lbz	  r0, 0xC(r3)
+cmplwi	  r0, 0
+beq	  branch_0x801798A8
+li	  r0, 0
+stb	  r0, 0xC(r3)
+
+branch_0x801798A8:
+lwz	  r3, 0x428(r29)
+cmplwi	  r3, 0
+beq	  branch_0x801798CC
+lwz	  r3, 0(r3)
+lbz	  r0, 0xC(r3)
+cmplwi	  r0, 0
+beq	  branch_0x801798CC
+li	  r0, 0
+stb	  r0, 0xC(r3)
+
+branch_0x801798CC:
+li	  r0, 1
+stb	  r0, 0xC4(r29)
+li	  r0, 8
+stw	  r0, 0x10(r29)
+
+def_801793D8:		# jumptable 801793D8 default case
 branch_0x801798dc:
     lmw     r27, 0x2a4(sp)
     lwz     r0, 0x2bc(sp)
@@ -557,7 +860,7 @@ appearGuidePane__6TGuideFi: # 0x80179a54
     mr      r3, r26
     bl      placeMario__6TGuideFv
 branch_0x80179d98:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4804
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -598,7 +901,7 @@ placeMario__6TGuideFv: # 0x80179e0c
     stw     r31, 0xfc(sp)
     mr      r31, r3
     stw     r30, 0xf8(sp)
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r3, 0x7c(r4)
     bl      SMS_getShineStage__FUc
     clrlwi  r0, r3, 24
@@ -610,7 +913,7 @@ placeMario__6TGuideFv: # 0x80179e0c
     b       branch_0x8017a048
 
 branch_0x80179e4c:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lis     r6, 0x4330
     lfd     f6, -0x46a8(rtoc)
     lwz     r3, 0x0(r4)
@@ -3122,7 +3425,7 @@ load__6TGuideFR20JSUMemoryInputStream: # 0x8017c180
     subi    r30, r5, 0x7868
     stb     r0, 0xc5(r3)
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r24, 0xd8(r3)
     cmplwi  r24, 0x0
     beq-    branch_0x8017c1c8
@@ -3154,7 +3457,7 @@ branch_0x8017c1f8:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0xbc(r31)
     addi    r4, r24, 0x7478
@@ -3162,7 +3465,7 @@ branch_0x8017c1f8:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0xbc(r31)
     lis     r24, 0x625f
@@ -3171,7 +3474,7 @@ branch_0x8017c1f8:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0xbc(r31)
     addi    r4, r24, 0x7478
@@ -3179,7 +3482,7 @@ branch_0x8017c1f8:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r25, 0x0
     stw     r25, 0x124(r31)
@@ -3195,7 +3498,7 @@ branch_0x8017c1f8:
     lwz     r3, 0x124(r31)
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     lwz     r3, 0x124(r31)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r27, 0x0
 branch_0x8017c2c8:
@@ -3418,7 +3721,7 @@ branch_0x8017c5e8:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0xbc(r31)
     addi    r4, r26, 0x5f35
@@ -3426,7 +3729,7 @@ branch_0x8017c5e8:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r27, r27, 0x1
     cmpwi   r27, 0xd
@@ -3715,7 +4018,7 @@ branch_0x8017ca28:
     li      r4, 0x1e
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r26, 0x0
     addi    r4, r27, 0xd
@@ -3736,7 +4039,7 @@ branch_0x8017ca28:
     li      r4, 0x200
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r25
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r26, 0x0
     addi    r4, r27, 0x0

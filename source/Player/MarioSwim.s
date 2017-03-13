@@ -231,7 +231,7 @@ branch_0x802728b8:
     addi    r3, r31, 0x0
     li      r4, 0x116
     bl      setAnimation__6TMarioFif
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1950
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1007,7 +1007,7 @@ branch_0x80273254:
     stw     r0, 0x1b0(r31)
     lfs     f0, 0xec(r31)
     stfs    f0, 0x1ac(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x802732c4:
     lfs     f1, -0xab0(rtoc)

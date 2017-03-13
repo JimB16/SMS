@@ -616,7 +616,7 @@ branch_0x80129818:
     mr      r3, r29
     bl      setCurAnmSound__10TLiveActorFv
 branch_0x80129868:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r29
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -760,7 +760,7 @@ branch_0x801299e0:
     lwz     r0, 0x334(r3)
     li      r4, 0x28f3
     stw     r0, 0x1ac(r29)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80129aa4
@@ -1045,7 +1045,7 @@ setAfterDeadEffect__6TKukkuFv: # 0x80129e68
     mr      r31, r3
     bl      setAfterDeadEffect__11TSmallEnemyFv
     lwz     r4, 0x70(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lhz     r4, 0x58(r4)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
@@ -1288,7 +1288,7 @@ branch_0x80129ff8:
     b       branch_0x8012a2fc
 
 branch_0x8012a214:
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r29, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr.     r27, r3
@@ -2021,7 +2021,7 @@ branch_0x8012ac0c:
     bl      getModel__10TLiveActorCFv
     mulli   r0, r30, 0x30
     lwz     r4, 0x58(r3)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r5, r4, r0
     addi    r7, r31, 0x0
     li      r4, 0x18d
@@ -2040,7 +2040,7 @@ branch_0x8012ac40:
     bl      getModel__10TLiveActorCFv
     mulli   r0, r30, 0x30
     lwz     r4, 0x58(r3)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r5, r4, r0
     addi    r7, r31, 0x0
     li      r4, 0x18c
@@ -2410,7 +2410,7 @@ branch_0x8012b164:
 
 branch_0x8012b178:
     addi    r3, r29, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
     lwz     r0, 0x64(r29)
     li      r4, 0x1
@@ -2422,7 +2422,7 @@ branch_0x8012b178:
     lfs     f3, 0x18(r29)
     lfs     f2, 0x14(r29)
     lfs     f1, 0x10(r29)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f4, -0x5034(rtoc)
     bl      stamp__17TPollutionManagerFUsffff
 branch_0x8012b1b8:
@@ -2466,7 +2466,7 @@ branch_0x8012b1bc:
     stfs    f0, 0x58(sp)
     lfs     f1, 0x54(r29)
     lfs     f0, 0x54(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f0, f1
     lfs     f1, 0x50(sp)
     lfs     f3, 0x58(sp)
@@ -2489,7 +2489,7 @@ branch_0x8012b1bc:
     lfs     f3, 0x18(r29)
     lfs     f2, 0x14(r29)
     lfs     f1, 0x10(r29)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f4, -0x5034(rtoc)
     bl      stamp__17TPollutionManagerFUsffff
 branch_0x8012b2bc:
@@ -2499,7 +2499,7 @@ branch_0x8012b2bc:
     addi    r4, sp, 0x50
     lfs     f2, 0x50(r29)
     fadds   f1, f0, f1
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
     lwz     r3, 0x50(sp)
     lwz     r0, 0x54(sp)

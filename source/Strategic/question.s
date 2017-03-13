@@ -304,7 +304,7 @@ request__16TQuestionManagerFQ29JGeometry8TVec3_f_f: # 0x80223be0
     lhz     r0, 0x12(r3)
     cmplwi  r0, 0x20
     bge-    branch_0x80223c6c
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f0, 0x14(r3)
     lfs     f3, 0x8(r5)
     lfs     f2, 0x8(r4)

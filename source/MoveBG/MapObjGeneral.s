@@ -874,7 +874,7 @@ checkGroundCollision__14TMapObjGeneralFPQ29JGeometry8TVec3_f_: # 0x801b3adc
     lfs     f1, 0x4(r4)
     addi    r4, r30, 0xc4
     lfs     f0, 0xc0(r3)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r31)
     lfs     f3, 0x8(r31)
@@ -997,7 +997,7 @@ branch_0x801b3c14:
     lwz     r5, 0xac(r31)
     li      r4, 0x4842
     lwz     r0, 0xb0(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stw     r5, 0x60(sp)
     stw     r0, 0x64(sp)
     lwz     r0, 0xb4(r31)
@@ -1059,7 +1059,7 @@ checkRoofCollision__14TMapObjGeneralFPQ29JGeometry8TVec3_f_: # 0x801b3d64
     lfs     f1, 0x4(r4)
     addi    r4, r30, 0x13c
     lfs     f0, 0xc0(r3)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r31)
     lfs     f3, 0x8(r31)
@@ -1118,7 +1118,7 @@ checkWallCollision__14TMapObjGeneralFPQ29JGeometry8TVec3_f_: # 0x801b3dfc
     lwz     r6, 0x0(r30)
     lwz     r7, 0x8(r3)
     lwz     r5, 0x4(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r6, 0x28(sp)
     stw     r5, 0x2c(sp)
     lwz     r5, 0x8(r30)
@@ -1194,15 +1194,71 @@ work__14TMapObjGeneralFv: # 0x801b3f2c
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x801B3F5C:		# jumptable 801B3F58 case 1
     lwz     r12, 0x0(r3)
     lwz     r12, 0x178(r12)
     mtlr    r12
     blrl
     b       branch_0x801b400c
 
+branch_0x801B3F70:		# jumptable 801B3F58 case 2
+lwz	  r12, 0(r3)
+lwz	  r12, 0x174(r12)
+mtlr	  r12
+blrl
+b	  def_801B3F58	# jumptable 801B3F58 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1ae970, 0x801b400c - 0x801b3f70
+branch_0x801B3F84:		# jumptable 801B3F58 case 3
+lwz	  r12, 0(r3)
+lwz	  r12, 0x17C(r12)
+mtlr	  r12
+blrl
+b	  def_801B3F58	# jumptable 801B3F58 default case
+
+branch_0x801B3F98:		# jumptable 801B3F58 case 7
+lwz	  r12, 0(r3)
+lwz	  r12, 0x180(r12)
+mtlr	  r12
+blrl
+b	  def_801B3F58	# jumptable 801B3F58 default case
+
+branch_0x801B3FAC:		# jumptable 801B3F58 case 9
+lwz	  r12, 0(r3)
+lwz	  r12, 0x18C(r12)
+mtlr	  r12
+blrl
+b	  def_801B3F58	# jumptable 801B3F58 default case
+
+branch_0x801B3FC0:		# jumptable 801B3F58 case 4
+lwz	  r12, 0(r3)
+lwz	  r12, 0x194(r12)
+mtlr	  r12
+blrl
+b	  def_801B3F58	# jumptable 801B3F58 default case
+
+branch_0x801B3FD4:		# jumptable 801B3F58 case 5
+lwz	  r12, 0(r3)
+lwz	  r12, 0x198(r12)
+mtlr	  r12
+blrl
+b	  def_801B3F58	# jumptable 801B3F58 default case
+
+branch_0x801B3FE8:		# jumptable 801B3F58 case 6
+lwz	  r12, 0(r3)
+lwz	  r12, 0x184(r12)
+mtlr	  r12
+blrl
+b	  def_801B3F58	# jumptable 801B3F58 default case
+
+branch_0x801B3FFC:		# jumptable 801B3F58 case 8
+lwz	  r12, 0(r3)
+lwz	  r12, 0x188(r12)
+mtlr	  r12
+blrl
+
+def_801B3F58:		# jumptable 801B3F58 default case
 branch_0x801b400c:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1246,7 +1302,7 @@ branch_0x801b4088:
 branch_0x801b408c:
     clrlwi. r0, r0, 24
     beq-    branch_0x801b40b4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x134(r31)
     lbz     r4, 0x7c(r3)
     lwz     r3, -0x6060(r13)
@@ -1401,7 +1457,7 @@ recover__14TMapObjGeneralFv: # 0x801b4274
     lwz     r4, 0x14(r4)
     lfd     f4, -0x2ca8(rtoc)
     lwz     r4, 0xc(r4)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f5, 0x20(r4)
     lfs     f1, 0x10(r31)
     fdivs   f0, f5, f0
@@ -1897,7 +1953,7 @@ holding__14TMapObjGeneralFv: # 0x801b48f8
     stw     r0, 0x14(r31)
     lwz     r0, 0x18(r6)
     stw     r0, 0x18(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
     stfs    f1, 0xc8(r31)
     lwz     r0, 0x24(sp)
@@ -1968,7 +2024,7 @@ thrown__14TMapObjGeneralFv: # 0x801b49f8
     stw     r31, 0x8c(sp)
     addi    r31, r3, 0x0
     addi    r4, r31, 0x10
-    lwz     r7, -0x60b4(r13)
+    lwz     r7, MarioHitActorPos(r13)
     addi    r5, r31, 0xc4
     lfs     f2, 0x8(r7)
     lfs     f1, 0x4(r7)
@@ -2001,7 +2057,7 @@ thrown__14TMapObjGeneralFv: # 0x801b49f8
     fsubs   f0, f0, f3
     stfs    f1, 0x34(r31)
     stfs    f0, 0x38(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
     stfs    f1, 0xc8(r31)
     li      r0, 0x0
@@ -2110,7 +2166,7 @@ put__14TMapObjGeneralFv: # 0x801b4bdc
     sraw    r0, r3, r0
     lfs     f31, 0x58(r31)
     slwi    r0, r0, 2
-    lwz     r30, -0x60b4(r13)
+    lwz     r30, MarioHitActorPos(r13)
     lfsx    f30, r4, r0
     bl      SMS_GetMarioDamageRadius__Fv
     fadds   f2, f31, f1
@@ -2119,7 +2175,7 @@ put__14TMapObjGeneralFv: # 0x801b4bdc
     fadds   f1, f1, f2
     fmadds  f0, f30, f1, f0
     stfs    f0, 0x10(r31)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x4(r3)
     stfs    f0, 0x14(r31)
     lwz     r3, -0x60ac(r13)
@@ -2129,7 +2185,7 @@ put__14TMapObjGeneralFv: # 0x801b4bdc
     sraw    r0, r3, r0
     lfs     f30, 0x58(r31)
     slwi    r0, r0, 2
-    lwz     r30, -0x60b4(r13)
+    lwz     r30, MarioHitActorPos(r13)
     lfsx    f31, r4, r0
     bl      SMS_GetMarioDamageRadius__Fv
     fadds   f2, f30, f1
@@ -2143,7 +2199,7 @@ put__14TMapObjGeneralFv: # 0x801b4bdc
     lwz     r0, 0xf0(r31)
     rlwinm  r0, r0, 0, 28, 26
     stw     r0, 0xf0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
     stfs    f1, 0xc8(r31)
     lwz     r0, 0x44(sp)
@@ -2261,7 +2317,7 @@ branch_0x801b4e24:
 branch_0x801b4e28:
     clrlwi. r0, r0, 24
     beq-    branch_0x801b4ea8
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f3, 0x10c(r31)
     lfs     f2, 0x0(r4)
     lfs     f1, 0x110(r31)
@@ -2293,7 +2349,7 @@ branch_0x801b4e28:
     b       branch_0x801b4f14
 
 branch_0x801b4ea8:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f3, 0x10c(r31)
     lfs     f2, 0x0(r4)
     lfs     f1, 0x110(r31)
@@ -2338,7 +2394,7 @@ isPollutedGround__14TMapObjGeneralCFRCQ29JGeometry8TVec3_f_: # 0x801b4f30
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r4
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f2, 0x4(r5)
     lfs     f1, 0x0(r4)
     lfs     f3, 0x8(r5)
@@ -2349,7 +2405,7 @@ isPollutedGround__14TMapObjGeneralCFRCQ29JGeometry8TVec3_f_: # 0x801b4f30
     lfs     f2, -0x2c90(rtoc)
     lfs     f0, 0x8(r31)
     fsubs   f1, f1, f2
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     fsubs   f3, f0, f2
     lfs     f2, 0x4(r31)
     bl      isPolluted__17TPollutionManagerCFfff
@@ -2359,7 +2415,7 @@ isPollutedGround__14TMapObjGeneralCFRCQ29JGeometry8TVec3_f_: # 0x801b4f30
     lfs     f1, 0x0(r31)
     lfs     f0, 0x8(r31)
     fadds   f1, f2, f1
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     fsubs   f3, f0, f2
     lfs     f2, 0x4(r31)
     bl      isPolluted__17TPollutionManagerCFfff
@@ -2369,7 +2425,7 @@ isPollutedGround__14TMapObjGeneralCFRCQ29JGeometry8TVec3_f_: # 0x801b4f30
     lfs     f2, -0x2c90(rtoc)
     lfs     f0, 0x8(r31)
     fsubs   f1, f1, f2
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     fadds   f3, f2, f0
     lfs     f2, 0x4(r31)
     bl      isPolluted__17TPollutionManagerCFfff
@@ -2379,7 +2435,7 @@ isPollutedGround__14TMapObjGeneralCFRCQ29JGeometry8TVec3_f_: # 0x801b4f30
     lfs     f1, 0x0(r31)
     lfs     f0, 0x8(r31)
     fadds   f1, f2, f1
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     fadds   f3, f2, f0
     lfs     f2, 0x4(r31)
     bl      isPolluted__17TPollutionManagerCFfff

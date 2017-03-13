@@ -87,7 +87,7 @@ branch_0x800624f8:
     lfs     f1, 0x404(r3)
     lfs     f2, 0x418(r3)
     mr      r3, r30
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f3, -0x6d20(rtoc)
     bl      isInSight__11TSpineEnemyCFRCQ29JGeometry8TVec3_f_fff
     cmpwi   r3, 0x0
@@ -506,7 +506,7 @@ branch_0x80062a64:
 branch_0x80062a68:
     clrlwi. r0, r0, 24
     beq-    branch_0x80062b5c
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r31
     lfs     f1, -0x6d10(rtoc)
     lfs     f2, -0x6d0c(rtoc)
@@ -745,7 +745,7 @@ branch_0x80062d74:
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x80062ea8
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -789,7 +789,7 @@ branch_0x80062d74:
     stfs    f0, 0x1ac(r31)
     stfs    f0, 0x1b8(r31)
     stw     r5, 0xa4(sp)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0xa8(sp)
@@ -1573,7 +1573,7 @@ branch_0x80063898:
 .globl attackToMario__9TNameKuriFv
 attackToMario__9TNameKuriFv: # 0x800638ac
     mflr    r0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
@@ -1758,7 +1758,7 @@ setMeltAnm__9TNameKuriFv: # 0x80063b20
     blrl
     lwz     r5, 0x74(r30)
     li      r4, 0x84
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x4(r5)
     li      r7, 0x0
@@ -1781,7 +1781,7 @@ setMeltAnm__9TNameKuriFv: # 0x80063b20
     lfs     f0, 0x2c(r30)
     stfs    f0, 0x17c(r3)
 branch_0x80063bac:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     li      r4, 0x83
     li      r6, 0x0
@@ -1816,7 +1816,7 @@ branch_0x80063bfc:
     lwz     r0, 0xf0(r30)
     ori     r0, r0, 0x10
     stw     r0, 0xf0(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80063c60
@@ -1872,7 +1872,7 @@ setAfterDeadEffect__9TNameKuriFv: # 0x80063ca8
     cmpw    r0, r31
     bge-    branch_0x80063d0c
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r30)
     addi    r4, r4, 0x1
     lfs     f2, 0x14(r30)
@@ -1901,7 +1901,7 @@ setDeadAnm__9TNameKuriFv: # 0x80063d24
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2800
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1916,7 +1916,7 @@ setDeadAnm__9TNameKuriFv: # 0x80063d24
 branch_0x80063d80:
     lwz     r5, 0x74(r30)
     li      r4, 0x84
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x4(r5)
     li      r7, 0x0
@@ -1939,7 +1939,7 @@ branch_0x80063d80:
     lfs     f0, 0x2c(r30)
     stfs    f0, 0x17c(r3)
 branch_0x80063de0:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     li      r4, 0x83
     li      r6, 0x0
@@ -2287,7 +2287,7 @@ branch_0x80064270:
 branch_0x80064274:
     clrlwi. r0, r0, 24
     beq-    branch_0x800642ac
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2006
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

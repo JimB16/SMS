@@ -45,7 +45,7 @@ execute__22TNerveWalkerTraceMarioCFP24TSpineBase_10TLiveActor_: # 0x80070acc
     lwz     r12, 0x164(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6af8(rtoc)
     stw     r3, 0x48(sp)
     cmplwi  r3, 0x0
@@ -86,9 +86,9 @@ branch_0x80070b88:
     rlwinm  r0, r0, 0, 31, 29
     stw     r0, 0xf0(r31)
 branch_0x80070ba0:
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r4, 0x0(r3)
-    rlwinm. r0, r4, 0, 30, 30
+    rlwinm. r0, r4, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x80070bb8
     li      r0, 0x1
     b       branch_0x80070bbc
@@ -194,7 +194,7 @@ branch_0x80070cf0:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r4)
     lfs     f2, 0x130(r3)
@@ -303,9 +303,9 @@ branch_0x80070e50:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 30, 30
+    rlwinm. r0, r0, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x80070e90
     li      r0, 0x1
     b       branch_0x80070e94
@@ -548,12 +548,13 @@ execute__18TNerveWalkerAttackCFP24TSpineBase_10TLiveActor_: # 0x80071164
     blrl
 branch_0x80071198:
     lwz     r3, 0xf4(r31)
-    lwz     r0, -0x60b8(r13)
+    lwz     r0, MarioHitActor(r13)
     cmplw   r3, r0
     bne-    branch_0x80071288
-    lwz     r3, -0x6094(r13)
+
+    lwz     r3, MarioFlags(r13)
     lwz     r4, 0x0(r3)
-    rlwinm. r0, r4, 0, 30, 30
+    rlwinm. r0, r4, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x800711c0
     li      r0, 0x1
     b       branch_0x800711c4
@@ -613,7 +614,7 @@ branch_0x8007124c:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r4)
     lfs     f2, 0x130(r3)
@@ -1209,7 +1210,7 @@ branch_0x800719ec:
     b       branch_0x80071bd0
 
 branch_0x80071a28:
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6af8(rtoc)
     stw     r3, 0x34(sp)
     cmplwi  r3, 0x0
@@ -1466,7 +1467,7 @@ branch_0x80071db8:
     li      r0, 0x0
     stw     r0, 0x20(r4)
     stw     r3, 0x14(r4)
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6af8(rtoc)
     stw     r3, 0x38(sp)
     cmplwi  r3, 0x0
@@ -1648,7 +1649,7 @@ branch_0x80072048:
 branch_0x8007204c:
     clrlwi. r0, r0, 24
     bne-    branch_0x80072078
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lha     r4, 0x7c(r31)
     lwz     r0, 0x58(r3)
     clrlwi  r3, r4, 28

@@ -236,7 +236,7 @@ branch_0x800323f8:
     lbz     r0, 0x0(r4)
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x800325d8
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, sp, 0x48
     lfs     f0, -0x7574(rtoc)
     lwz     r5, 0x0(r6)

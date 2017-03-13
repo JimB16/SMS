@@ -245,7 +245,7 @@ bumpUpX__19TMareEventBumpyWallFv: # 0x801a4588
     li      r4, 0x5
     lfs     f1, -0x404c(rtoc)
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3008
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -340,7 +340,7 @@ bumpDownX__19TMareEventBumpyWallFv: # 0x801a46d8
     li      r4, 0x5
     lfs     f1, -0x404c(rtoc)
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3008
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -434,7 +434,7 @@ bumpUpZ__19TMareEventBumpyWallFv: # 0x801a482c
     li      r4, 0x5
     lfs     f1, -0x404c(rtoc)
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3008
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -529,7 +529,7 @@ bumpDownZ__19TMareEventBumpyWallFv: # 0x801a497c
     li      r4, 0x5
     lfs     f1, -0x404c(rtoc)
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3008
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1053,7 +1053,7 @@ branch_0x801a50a8:
     bl      __nwa__FUl
     stw     r3, 0x40(r31)
     li      r6, 0x0
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     lwz     r3, 0x10(r31)
     lwz     r5, 0x14(r4)
     lwz     r4, 0x14(r31)
@@ -1203,9 +1203,8 @@ branch_0x801a5328:
     li      r0, 0x1
     stb     r0, 0x0(r28)
     b       branch_0x801a5370
+    b       branch_0x801a51c8
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x19fd6c, 0x801a5370 - 0x801a536c
 branch_0x801a5370:
     lmw     r27, 0x1c4(sp)
     lwz     r0, 0x1dc(sp)
@@ -1407,7 +1406,7 @@ branch_0x801a5594:
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r0, 0x34(r29)
     li      r4, 0x3008
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     add     r24, r0, r26
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1422,7 +1421,7 @@ branch_0x801a5594:
 branch_0x801a5634:
     lwz     r0, 0x34(r29)
     li      r4, 0x15b
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x1
     add     r5, r0, r26
     addi    r7, r5, 0x0
@@ -1522,7 +1521,7 @@ branch_0x801a575c:
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r0, 0x34(r29)
     li      r4, 0x3008
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     add     r24, r0, r26
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1537,7 +1536,7 @@ branch_0x801a575c:
 branch_0x801a57e0:
     lwz     r0, 0x34(r29)
     li      r4, 0x15b
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x1
     add     r5, r0, r26
     addi    r7, r5, 0x0
@@ -1626,7 +1625,7 @@ branch_0x801a591c:
     blt+    branch_0x801a5594
     cmpw    r31, r0
     bne-    branch_0x801a5988
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x484d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1679,7 +1678,7 @@ rising__21TMareEventDepressWallFv: # 0x801a59a4
     lwz     r5, 0x34(r31)
     li      r4, 0x3008
     mulli   r0, r0, 0xc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     add     r30, r5, r0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1697,7 +1696,7 @@ branch_0x801a5a1c:
     lwz     r0, 0x34(r31)
     li      r6, 0x1
     mulli   r29, r30, 0xc
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r5, r0, r29
     addi    r7, r5, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -2216,7 +2215,9 @@ initEffect__13TMareWallRockFv: # 0x801a616c
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x801A6194:		# jumptable 801A6190 case 1
     lfs     f0, -0x3ff8(rtoc)
     stfs    f0, 0x110(r3)
     lfs     f0, -0x3ff4(rtoc)
@@ -2231,8 +2232,94 @@ initEffect__13TMareWallRockFv: # 0x801a616c
     stfs    f0, 0x124(r3)
     blr
 
+branch_0x801A61C8:		# jumptable 801A6190 case 2
+lfs	  f0, -0x3FFC(r2)
+stfs	  f0, 0x110(r3)
+stfs	  f0, 0x114(r3)
+stfs	  f0, 0x118(r3)
+lfs	  f0, -0x3FE4(r2)
+stfs	  f0, 0x11C(r3)
+lfs	  f0, -0x3FE0(r2)
+stfs	  f0, 0x120(r3)
+lfs	  f0, -0x3FDC(r2)
+stfs	  f0, 0x124(r3)
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1a0bc8, 0x801a62f0 - 0x801a61c8
+branch_0x801A61F4:		# jumptable 801A6190 case 3
+lfs	  f0, -0x3FD8(r2)
+stfs	  f0, 0x110(r3)
+lfs	  f0, -0x3FD4(r2)
+stfs	  f0, 0x114(r3)
+lfs	  f0, -0x3FFC(r2)
+stfs	  f0, 0x118(r3)
+lfs	  f0, -0x3FD0(r2)
+stfs	  f0, 0x11C(r3)
+lfs	  f0, -0x3FCC(r2)
+stfs	  f0, 0x120(r3)
+lfs	  f0, -0x3FC8(r2)
+stfs	  f0, 0x124(r3)
+blr
+
+branch_0x801A6228:		# jumptable 801A6190 case 4
+lfs	  f0, -0x3FC4(r2)
+stfs	  f0, 0x110(r3)
+lfs	  f0, -0x3FFC(r2)
+stfs	  f0, 0x114(r3)
+stfs	  f0, 0x118(r3)
+lfs	  f0, -0x3FC0(r2)
+stfs	  f0, 0x11C(r3)
+lfs	  f0, -0x3FBC(r2)
+stfs	  f0, 0x120(r3)
+lfs	  f0, -0x3FB8(r2)
+stfs	  f0, 0x124(r3)
+blr
+
+branch_0x801A6258:		# jumptable 801A6190 case 5
+lfs	  f0, -0x3FB4(r2)
+stfs	  f0, 0x110(r3)
+lfs	  f0, -0x3FB0(r2)
+stfs	  f0, 0x114(r3)
+lfs	  f0, -0x3FFC(r2)
+stfs	  f0, 0x118(r3)
+lfs	  f0, -0x3FAC(r2)
+stfs	  f0, 0x11C(r3)
+lfs	  f0, -0x3FA8(r2)
+stfs	  f0, 0x120(r3)
+lfs	  f0, -0x3FA4(r2)
+stfs	  f0, 0x124(r3)
+blr
+
+branch_0x801A628C:		# jumptable 801A6190 case 6
+lfs	  f0, -0x3FA0(r2)
+stfs	  f0, 0x110(r3)
+lfs	  f0, -0x3F9C(r2)
+stfs	  f0, 0x114(r3)
+lfs	  f0, -0x3FFC(r2)
+stfs	  f0, 0x118(r3)
+lfs	  f0, -0x3F98(r2)
+stfs	  f0, 0x11C(r3)
+lfs	  f0, -0x3F94(r2)
+stfs	  f0, 0x120(r3)
+lfs	  f0, -0x3F90(r2)
+stfs	  f0, 0x124(r3)
+blr
+
+branch_0x801A62C0:		# jumptable 801A6190 case 7
+lfs	  f0, -0x3FF8(r2)
+stfs	  f0, 0x110(r3)
+stfs	  f0, 0x114(r3)
+lfs	  f0, -0x3FFC(r2)
+stfs	  f0, 0x118(r3)
+lfs	  f0, -0x3F8C(r2)
+stfs	  f0, 0x11C(r3)
+lfs	  f0, -0x3F88(r2)
+stfs	  f0, 0x120(r3)
+lfs	  f0, -0x3F84(r2)
+stfs	  f0, 0x124(r3)
+
+locret_801A62EC:	# jumptable 801A6190 case 0
+blr
+
 
 .globl perform__13TMareWallRockFUlPQ26JDrama9TGraphics
 perform__13TMareWallRockFUlPQ26JDrama9TGraphics: # 0x801a62f0
@@ -2286,7 +2373,7 @@ branch_0x801a6384:
     b       branch_0x801a6558
 
 branch_0x801a6394:
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r0, 0x108(r31)
     lwz     r4, 0x14(r3)
     slwi    r3, r0, 2
@@ -2297,7 +2384,7 @@ branch_0x801a6394:
     bge-    branch_0x801a66c0
     mr      r3, r31
     bl      appear__13TMareWallRockFv
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r4, 0x108(r31)
     addi    r3, r3, 0x70
     bl      offLayer__22TPollutionCounterLayerFi
@@ -2323,7 +2410,7 @@ branch_0x801a63d4:
     fsubs   f0, f1, f0
     stfs    f0, 0x18(r31)
 branch_0x801a641c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3008
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2366,7 +2453,7 @@ branch_0x801a6470:
     stfs    f0, 0x34(r3)
     lfs     f0, 0x1c(r30)
     stfs    f0, 0x38(r3)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -2461,7 +2548,7 @@ branch_0x801a65d0:
     stfs    f0, 0x34(r3)
     lfs     f0, 0x1c(r30)
     stfs    f0, 0x38(r3)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x0(r3)
@@ -2546,7 +2633,7 @@ appear__13TMareWallRockFv: # 0x801a66d8
     blrl
     addi    r5, r30, 0x11c
     lfs     f31, 0x128(r30)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r5, 0x0
     li      r4, 0x69
     li      r6, 0x0
@@ -2578,7 +2665,7 @@ appear__13TMareWallRockFv: # 0x801a66d8
     stfs    f0, 0x15c(r31)
 branch_0x801a67d0:
     addi    r5, r30, 0x11c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r5, 0x0
     li      r4, 0x1e5
     li      r6, 0x2

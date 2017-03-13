@@ -209,7 +209,7 @@ loadAfter__15TMapWireManagerFv: # 0x80198bb0
     stw     r30, 0x28(sp)
     stw     r29, 0x24(sp)
     bl      loadAfter__Q26JDrama8TNameRefFv
-    lwz     r29, -0x60d8(r13)
+    lwz     r29, MarioActor(r13)
     li      r3, 0x80
     bl      __nw__FUl
     mr.     r30, r3
@@ -433,7 +433,7 @@ branch_0x80198e94:
     lwz     r0, 0x7c(r28)
     cmplwi  r0, 0x0
     beq-    branch_0x80198ee0
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      getTakenMtx__6TMarioFv
     lwz     r0, 0x68(r28)
     clrrwi  r0, r0, 1
@@ -670,7 +670,7 @@ branch_0x801991a8:
     lwz     r0, 0x7c(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x801991d4
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      getTakenMtx__6TMarioFv
     mr      r4, r3
     lwz     r3, 0x7c(r30)
@@ -678,7 +678,7 @@ branch_0x801991a8:
 branch_0x801991d4:
     cmplwi  r31, 0x0
     beq-    branch_0x801991f4
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      getTakenMtx__6TMarioFv
     addi    r4, r3, 0x0
     addi    r3, r31, 0x0

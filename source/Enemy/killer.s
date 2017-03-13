@@ -235,7 +235,7 @@ isFindMario__7TKillerFf: # 0x800db9e4
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r5)
     lfs     f2, 0xe0(r3)
@@ -282,7 +282,7 @@ calcRootMatrix__7TKillerFv: # 0x800dba9c
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x90(sp)
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lhz     r0, 0x4c(r4)
     clrlwi. r0, r0, 28
     beq-    branch_0x800dbad0
@@ -691,7 +691,7 @@ branch_0x800dc024:
     lfs     f1, -0x5d2c(rtoc)
     stfs    f0, 0x74(sp)
     fmuls   f0, f1, f2
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stfs    f3, 0x78(sp)
     stfs    f4, 0x7c(sp)
     stfs    f0, 0x80(sp)
@@ -771,7 +771,7 @@ branch_0x800dc170:
 branch_0x800dc174:
     cmpwi   r0, 0x0
     beq-    branch_0x800dc248
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x20a9
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -820,7 +820,7 @@ branch_0x800dc1d4:
     lwz     r4, 0xb4(sp)
     lwz     r6, 0xa4(sp)
     bl      MsMtxSetXYZRPH__FPA4_ffffsss
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r27, 0x0
     addi    r7, r29, 0x0
     li      r4, 0x174
@@ -969,7 +969,7 @@ changeOut__7TKillerFv: # 0x800dc410
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
     addi    r30, r3, 0x0
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     mr      r3, r0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1004,7 +1004,7 @@ branch_0x800dc45c:
     stw     r0, 0x14(r30)
     lwz     r0, 0x18(r8)
     stw     r0, 0x18(r30)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r31, 0x74(r30)
     bl      SMSGetAnmFrameRate__Fv
@@ -1295,7 +1295,7 @@ attackToMario__7TKillerFv: # 0x800dc86c
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     mr      r31, r3
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x14(r3)
     lfs     f1, 0x4(r4)
     fcmpo   cr0, f1, f0
@@ -1373,7 +1373,7 @@ branch_0x800dc984:
 
 branch_0x800dc99c:
     addi    r3, r31, 0x0
-    li      r4, 0xa
+    li      r4, MARIOMSG_HURTFIRE
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800dc9a8:
     lwz     r0, 0x3c(sp)
@@ -1555,7 +1555,7 @@ branch_0x800dcb54:
     lfs     f2, 0x18(r28)
     lfs     f0, 0x58(sp)
     fadds   f1, f3, f1
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f3, f2, f0
     lfs     f2, 0x14(r28)
     bl      makeObjAppear__18TMapObjBaseManagerFfffUlb
@@ -3131,7 +3131,7 @@ calcChaseParam__9TFlyEnemyFv: # 0x800de190
     stwu    sp, -0x90(sp)
     stw     r31, 0x8c(sp)
     mr      r31, r3
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x10(r3)
     lfs     f1, 0x0(r4)
     lfs     f3, 0x4(r4)
@@ -3344,7 +3344,7 @@ fly__9TFlyEnemyFv: # 0x800de3c0
     stfs    f0, 0x5c(sp)
     lfs     f31, 0x5c(sp)
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f31, f0
     lfs     f1, 0x58(sp)
     lfs     f3, 0x60(sp)

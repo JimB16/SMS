@@ -312,9 +312,9 @@ branch_0x80194878:
     lwz     r0, 0x30(r29)
     cmplwi  r0, 0x0
     beq-    branch_0x801949ac
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 30, 30
+    rlwinm. r0, r0, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x801948ac
     li      r0, 0x1
     b       branch_0x801948b0
@@ -324,7 +324,7 @@ branch_0x801948ac:
 branch_0x801948b0:
     clrlwi. r0, r0, 24
     beq-    branch_0x80194998
-    lwz     r28, -0x60b4(r13)
+    lwz     r28, MarioHitActorPos(r13)
     bl      SMS_GetMarioGrLevel__Fv
     lfs     f2, -0x4324(rtoc)
     lfs     f0, 0x4(r28)
@@ -336,13 +336,13 @@ branch_0x801948b0:
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r4, sp, 0x18
     lwz     r12, 0x0(r3)
     lwz     r12, 0xdc(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     addi    r4, sp, 0x24
     lwz     r12, 0x0(r3)
     lwz     r12, 0xe4(r12)
@@ -361,7 +361,7 @@ branch_0x801948b0:
     fmr     f7, f5
     fmr     f8, f5
     bl      C_MTXLightOrtho
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0x90
     addi    r4, sp, 0x18
     addi    r5, sp, 0x24

@@ -1687,7 +1687,7 @@ perform__8TTalk2D2FUlPQ26JDrama9TGraphics: # 0x80151c88
     addi    r28, r3, 0x0
     addi    r30, r5, 0x0
     beq-    branch_0x80151e94
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmpwi   r0, 0x2
     beq-    branch_0x80151cc0
@@ -1702,8 +1702,10 @@ branch_0x80151cc0:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
-    lwz     r31, -0x7118(r13)
+    bctr			# switch jump
+
+branch_0x80151CE4:		# jumptable 80151CE0 case 2
+    lwz     r31, gpCamera(r13)
     li      r27, 0x0
     lwz     r4, 0x50(r31)
     mr      r3, r31
@@ -1732,12 +1734,125 @@ branch_0x80151d28:
     stw     r0, 0x248(r28)
     b       branch_0x80151e94
 
+branch_0x80151D44:		# jumptable 80151CE0 case 4
+lbz	  r0, 0x28(r28)
+cmplwi	  r0, 0
+beq	  branch_0x80151D5C
+mr	  r3, r28
+bl	  openBoardWindow__8TTalk2D2Fv # TTalk2D2::openBoardWindow((void))
+b	  branch_0x80151D64
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x14c744, 0x80151e94 - 0x80151d44
+branch_0x80151D5C:
+mr	  r3, r28
+bl	  openNormalWindow__8TTalk2D2Fv	# TTalk2D2::openNormalWindow((void))
+
+branch_0x80151D64:
+clrlwi.	  r0, r3, 24
+beq	  def_80151CE0	# jumptable 80151CE0 default case
+li	  r0, 5
+stw	  r0, 0x248(r28)
+b	  def_80151CE0	# jumptable 80151CE0 default case
+
+branch_0x80151D78:		# jumptable 80151CE0 case 5
+lbz	  r0, 0x28(r28)
+cmplwi	  r0, 0
+beq	  branch_0x80151D98
+mr	  r3, r28
+bl	  moveBoardWindow__8TTalk2D2Fv # TTalk2D2::moveBoardWindow((void))
+mr	  r3, r28
+bl	  checkBoardControler__8TTalk2D2Fv # TTalk2D2::checkBoardControler((void))
+b	  def_80151CE0	# jumptable 80151CE0 default case
+
+branch_0x80151D98:
+mr	  r3, r28
+bl	  moveTalkWindow__8TTalk2D2Fv #	TTalk2D2::moveTalkWindow((void))
+mr	  r3, r28
+bl	  checkControler__8TTalk2D2Fv #	TTalk2D2::checkControler((void))
+b	  def_80151CE0	# jumptable 80151CE0 default case
+
+branch_0x80151DAC:		# jumptable 80151CE0 case 6
+lbz	  r0, 0x28(r28)
+cmplwi	  r0, 0
+beq	  branch_0x80151DD4
+li	  r31, 0
+lwz	  r3, 0x14(r28)
+bl	  update__10TBoundPaneFv # TBoundPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80151DE0
+li	  r31, 1
+b	  branch_0x80151DE0
+
+branch_0x80151DD4:
+mr	  r3, r28
+bl	  closeNormalWindow__8TTalk2D2Fv # TTalk2D2::closeNormalWindow((void))
+mr	  r31, r3
+
+branch_0x80151DE0:
+clrlwi.	  r0, r31, 24
+beq	  def_80151CE0	# jumptable 80151CE0 default case
+lwz	  r0, 0x270(r28)
+clrlwi.	  r0, r0, 31
+beq	  branch_0x80151E00
+li	  r0, 0
+stw	  r0, 0x248(r28)
+b	  def_80151CE0	# jumptable 80151CE0 default case
+
+branch_0x80151E00:
+li	  r0, 1
+stw	  r0, 0x248(r28)
+b	  def_80151CE0	# jumptable 80151CE0 default case
+
+branch_0x80151E0C:		# jumptable 80151CE0 case 7
+lbz	  r0, 0x28(r28)
+cmplwi	  r0, 0
+beq	  branch_0x80151E24
+mr	  r3, r28
+bl	  eraseBoardWindow__8TTalk2D2Fv	# TTalk2D2::eraseBoardWindow((void))
+b	  branch_0x80151E2C
+
+branch_0x80151E24:
+mr	  r3, r28
+bl	  eraseNormalWindow__8TTalk2D2Fv # TTalk2D2::eraseNormalWindow((void))
+
+branch_0x80151E2C:
+clrlwi.	  r0, r3, 24
+beq	  def_80151CE0	# jumptable 80151CE0 default case
+lbz	  r0, 0x28(r28)
+cmplwi	  r0, 0
+beq	  branch_0x80151E4C
+li	  r0, 8
+stw	  r0, 0x248(r28)
+b	  def_80151CE0	# jumptable 80151CE0 default case
+
+branch_0x80151E4C:
+li	  r0, 4
+stw	  r0, 0x248(r28)
+b	  def_80151CE0	# jumptable 80151CE0 default case
+
+branch_0x80151E58:		# jumptable 80151CE0 case 8
+lwz	  r3, 0x18(r28)
+li	  r4, 0
+addi	  r5, r3, 0xCC
+lbz	  r3, 0xCC(r3)
+addi	  r3, r3, 4
+clrlwi	  r0, r3, 16
+cmplwi	  r0, 0xFF
+ble	  branch_0x80151E80
+li	  r3, 0xFF
+li	  r4, 1
+
+branch_0x80151E80:
+clrlwi.	  r0, r4, 24
+stb	  r3, 0(r5)
+beq	  def_80151CE0	# jumptable 80151CE0 default case
+li	  r0, 5
+stw	  r0, 0x248(r28)
+
+def_80151CE0:		# jumptable 80151CE0 default case
 branch_0x80151e94:
     rlwinm. r0, r29, 0, 30, 30
     beq-    branch_0x801520f4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmpwi   r0, 0x2
     beq-    branch_0x80151eb0
@@ -1910,7 +2025,7 @@ branch_0x801520ec:
 branch_0x801520f4:
     rlwinm. r0, r29, 0, 28, 28
     beq-    branch_0x801522ac
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmpwi   r0, 0x2
     beq-    branch_0x80152110
@@ -2399,7 +2514,7 @@ checkControler__8TTalk2D2Fv: # 0x8015275c
     rlwinm. r0, r3, 0, 13, 13
     beq-    branch_0x80152a64
 branch_0x801527bc:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2416,7 +2531,7 @@ branch_0x801527e4:
     lwz     r0, 0x264(r31)
     cmplwi  r0, 0x1e
     bne-    branch_0x80152828
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4851
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2432,7 +2547,7 @@ branch_0x80152828:
     lbz     r0, 0x28(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80152868
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2443,17 +2558,17 @@ branch_0x80152828:
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x8015285c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      talkModeOut__6MSoundFv
     b       branch_0x80152870
 
 branch_0x80152868:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      talkModeOut__6MSoundFv
 branch_0x80152870:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      makeMtxForPrevTalk__15CPolarSubCameraFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x0
     lwz     r3, 0x74(r3)
     bl      startAppearTelop__11TGCConsole2Fb
@@ -2471,7 +2586,7 @@ branch_0x801528a4:
     lwz     r0, 0xd4(r3)
     rlwinm. r0, r0, 0, 13, 14
     beq-    branch_0x80152a64
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2498,7 +2613,7 @@ branch_0x801528e8:
     lbz     r0, 0x214(r31)
     cmpwi   r0, 0x1
     bne-    branch_0x80152968
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2527,7 +2642,7 @@ branch_0x80152968:
     lbz     r0, 0x214(r31)
     extsb.  r0, r0
     bne-    branch_0x801529d0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2559,10 +2674,10 @@ branch_0x801529d0:
     lwz     r0, 0x270(r31)
     clrlwi. r0, r0, 31
     beq-    branch_0x801529f8
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      makeMtxForPrevTalk__15CPolarSubCameraFv
 branch_0x801529f8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2580,7 +2695,7 @@ branch_0x80152a20:
 branch_0x80152a2c:
     rlwinm. r0, r3, 0, 13, 14
     beq-    branch_0x80152a64
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2830,7 +2945,7 @@ checkBoardControler__8TTalk2D2Fv: # 0x80152d50
     rlwinm. r0, r3, 0, 13, 13
     beq-    branch_0x80152ef4
 branch_0x80152d94:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2861,7 +2976,7 @@ branch_0x80152dbc:
     lwz     r0, 0x264(r31)
     cmplwi  r0, 0x1e
     bne-    branch_0x80152e38
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4851
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2877,7 +2992,7 @@ branch_0x80152e38:
     lbz     r0, 0x28(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80152e78
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2888,17 +3003,17 @@ branch_0x80152e38:
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x80152e6c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      talkModeOut__6MSoundFv
     b       branch_0x80152e80
 
 branch_0x80152e78:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      talkModeOut__6MSoundFv
 branch_0x80152e80:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      makeMtxForPrevTalk__15CPolarSubCameraFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x0
     lwz     r3, 0x74(r3)
     bl      startAppearTelop__11TGCConsole2Fb
@@ -2916,7 +3031,7 @@ branch_0x80152eb4:
     lwz     r0, 0xd4(r3)
     rlwinm. r0, r0, 0, 13, 14
     beq-    branch_0x80152ef4
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3059,7 +3174,7 @@ branch_0x8015307c:
     lfs     f0, 0x33c(r28)
     fcmpo   cr0, f1, f0
     bge-    branch_0x801530dc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4827
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3399,7 +3514,7 @@ branch_0x8015351c:
 branch_0x80153548:
     clrlwi. r4, r3, 16
     beq-    branch_0x801537c8
-    lwz     r3, -0x6038(r13)
+    lwz     r3, gpSystemFont(r13)
     addi    r5, sp, 0x110
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -3603,7 +3718,7 @@ openTalkWindow__8TTalk2D2FP8TBaseNPC: # 0x80153824
     addi    r31, r3, 0x0
     stw     r30, 0x90(sp)
     beq-    branch_0x8015384c
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      makeMtxForTalk__15CPolarSubCameraFPC8TBaseNPC
 branch_0x8015384c:
     lbz     r0, 0x28(r31)
@@ -3639,7 +3754,7 @@ branch_0x801538b8:
     lwz     r3, 0x90(r31)
     li      r0, 0xff
     stb     r0, 0xcc(r3)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0x2d
     beq-    branch_0x801538e4
@@ -3684,21 +3799,21 @@ branch_0x80153918:
     fsubs   f0, f0, f1
     stfs    f0, 0xc0(r3)
     stb     r0, 0x250(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startDisappearTelop__11TGCConsole2Fv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r5, 0x1
     lwz     r3, 0x74(r3)
     lwz     r4, 0x3e4(r3)
     bl      startDisappearBalloon__11TGCConsole2FUlb
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startDisappearMario__11TGCConsole2Fv
     lwz     r0, 0x264(r31)
     cmplwi  r0, 0x1e
     bne-    branch_0x801539c8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4848
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3714,7 +3829,7 @@ branch_0x801539c8:
     lbz     r0, 0x28(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80153a0c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4819
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3725,13 +3840,13 @@ branch_0x801539c8:
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x801539fc:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      talkModeIn__6MSoundFb
     b       branch_0x80153a18
 
 branch_0x80153a0c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1
     bl      talkModeIn__6MSoundFb
 branch_0x80153a18:
@@ -3752,12 +3867,12 @@ forceCloseTalk__8TTalk2D2Fv: # 0x80153a38
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     mr      r31, r3
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     bl      makeMtxForPrevTalk__15CPolarSubCameraFv
     lbz     r0, 0x28(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80153a8c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4851
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3770,10 +3885,10 @@ forceCloseTalk__8TTalk2D2Fv: # 0x80153a38
     b       branch_0x80153a94
 
 branch_0x80153a8c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      talkModeOut__6MSoundFv
 branch_0x80153a94:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x0
     lwz     r3, 0x74(r3)
     bl      startAppearTelop__11TGCConsole2Fb
@@ -3803,7 +3918,7 @@ setMessageID__8TTalk2D2FUlUl: # 0x80153ad8
     stmw    r27, 0x44(sp)
     addi    r29, r3, 0x0
     addi    r30, r5, 0x0
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lwz     r31, 0xa0(r6)
     lwz     r0, 0x170(r31)
     rlwinm. r0, r0, 0, 22, 22
@@ -4064,7 +4179,7 @@ branch_0x80153e20:
     lwz     r27, 0x0(r3)
     cmpwi   r27, -0x1
     beq-    branch_0x80153e94
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r27
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4256,7 +4371,7 @@ branch_0x8015410c:
     bl      __nw__FUl
     mr.     r25, r3
     beq-    branch_0x8015415c
-    lwz     r5, -0x6038(r13)
+    lwz     r5, gpSystemFont(r13)
     addi    r3, sp, 0xfc
     li      r4, 0x0
     lwz     r24, 0x48(r5)
@@ -4628,7 +4743,7 @@ branch_0x80154660:
     blrl
     stw     r3, 0x208(r29)
     lwz     r3, 0x208(r29)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r25, 0x0
     li      r28, 0x0
@@ -4682,7 +4797,7 @@ branch_0x8015474c:
     lwz     r3, 0x18(r29)
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     lwz     r3, 0x18(r29)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x10(r29)
     lis     r4, 0x6375
@@ -4779,7 +4894,7 @@ __ct__8TTalk2D2FPCc: # 0x801547fc
     lfs     f0, -0x4bd0(rtoc)
     stfs    f0, 0x33c(r31)
     sth     r0, 0x340(r31)
-    stw     r31, -0x63e8(r13)
+    stw     r31, TalkManager(r13)
 branch_0x801548f8:
     add     r4, r31, r3
     stw     r8, 0x9c(r4)

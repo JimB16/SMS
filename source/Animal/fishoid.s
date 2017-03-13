@@ -289,7 +289,7 @@ branch_0x80006f0c:
 branch_0x80006f10:
     clrlwi. r0, r0, 24
     beq-    branch_0x80006f24
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     bl      newAndRegisterCoinReal__12TItemManagerFv
     stw     r3, 0x15c(r30)
 branch_0x80006f24:
@@ -310,7 +310,7 @@ branch_0x80006f24:
     stfs    f0, 0x30(r3)
     lwz     r3, 0x150(r30)
     stfs    f1, 0x34(r3)
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x7f78(rtoc)
     stw     r3, 0xb0(sp)
     cmplwi  r3, 0x0
@@ -712,7 +712,7 @@ perform__8TRealoidFUlPQ26JDrama9TGraphics: # 0x800074a0
     blrl
     rlwinm. r0, r29, 0, 30, 30
     beq-    branch_0x800075c0
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f3, 0xe8(r30)
     lfs     f2, 0x4c(r3)
     lfs     f1, 0x48(r3)
@@ -815,7 +815,7 @@ clipBoids__8TRealoidFPQ26JDrama9TGraphics: # 0x80007618
     stmw    r27, 0x5c(sp)
     mr      r30, r4
     mr      r29, r3
-    lwz     r5, -0x7118(r13)
+    lwz     r5, gpCamera(r13)
     lfs     f3, 0xe8(r4)
     lfs     f2, 0x4c(r5)
     lfs     f1, 0x48(r5)
@@ -1049,7 +1049,7 @@ branch_0x80007944:
 
 branch_0x80007958:
     addi    r3, r28, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x80007964:
     addi    r29, r29, 0x4

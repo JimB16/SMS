@@ -471,7 +471,7 @@ branch_0x80023564:
     subi    r0, r3, 0x1
     sth     r0, 0x282(r31)
 branch_0x80023578:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -493,7 +493,7 @@ branch_0x800235ac:
     fmadds  f31, f2, f1, f0
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xffe0
-    cmplwi  r0, 0x345
+    cmplwi  r0, MARIOSTATUS_345
     bne-    branch_0x800235d8
     lfs     f0, -0x7934(rtoc)
     fadds   f31, f31, f0
@@ -544,7 +544,7 @@ branch_0x800235ec:
     sth     r0, 0xe0(r31)
     lfs     f0, 0xb0(r31)
     stfs    f0, 0xe4(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80023738
@@ -556,7 +556,7 @@ branch_0x800235ec:
     bl      isTalkCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
     beq-    branch_0x80023708
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x1
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x1
@@ -933,10 +933,10 @@ branch_0x80023b78:
     bl      isNormalCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
     beq-    branch_0x80023c48
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     mr      r28, r29
-    lwz     r0, 0x118(r3)
-    rlwinm. r0, r0, 0, 16, 16
+    lwz     r0, MarioActor_Flags(r3)
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80023be0
     li      r0, 0x1
     b       branch_0x80023be4
@@ -1097,12 +1097,12 @@ branch_0x80023dc8:
     beq-    branch_0x80023df8
     li      r29, 0x0
 branch_0x80023df8:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     li      r30, 0x1
     addi    r28, r30, 0x0
-    lwz     r0, 0x118(r3)
+    lwz     r0, MarioActor_Flags(r3)
     li      r27, 0x0
-    rlwinm. r0, r0, 0, 16, 16
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80023e1c
     mr      r0, r30
     b       branch_0x80023e20
@@ -1384,7 +1384,7 @@ branch_0x800241a0:
 branch_0x800241e4:
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xff80
-    cmplwi  r0, 0x8a9
+    cmplwi  r0, MARIOSTATUS_8a9
     bne-    branch_0x800241fc
     li      r0, 0x3e8
     sth     r0, 0x27a(sp)
@@ -1638,7 +1638,7 @@ branch_0x80024580:
 branch_0x80024584:
     clrlwi. r0, r5, 24
     beq-    branch_0x80024628
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0xa0(r31)
     lfs     f1, 0x8(r3)
     lfs     f2, 0x0(r3)
@@ -1816,7 +1816,7 @@ branch_0x80024800:
     stfs    f0, 0x224(sp)
     lfs     f0, 0x284(sp)
     stfs    f1, 0x228(sp)
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     stfs    f0, 0x22c(sp)
     lwz     r3, 0x6c(r31)
     bl      execCameraInbetween__16TCameraInbetweenFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
@@ -1859,7 +1859,7 @@ branch_0x80024890:
     bne-    branch_0x80024900
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xff80
-    cmplwi  r0, 0x8a9
+    cmplwi  r0, MARIOSTATUS_8a9
     bne-    branch_0x80024900
     lwz     r3, -0x7110(r13)
     lwz     r0, 0x18(r3)
@@ -2003,9 +2003,9 @@ calcSlopeAngleX___15CPolarSubCameraFPs: # 0x80024a84
     addi    r29, r3, 0x0
     stw     r28, 0xf0(sp)
     li      r28, 0x0
-    lwz     r5, -0x60d8(r13)
-    lwz     r0, 0x118(r5)
-    rlwinm. r0, r0, 0, 16, 16
+    lwz     r5, MarioActor(r13)
+    lwz     r0, MarioActor_Flags(r5)
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80024ad0
     li      r0, 0x1
     b       branch_0x80024ad4
@@ -2049,7 +2049,7 @@ branch_0x80024b38:
     bl      isSlopeCameraMode__15CPolarSubCameraCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x80024cfc
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x10(r29)
     lfs     f1, 0x0(r3)
     lfs     f3, 0x8(r3)
@@ -2093,7 +2093,7 @@ branch_0x80024b38:
     lfs     f0, 0xdc(sp)
     fmuls   f0, f0, f30
     stfs    f0, 0xdc(sp)
-    lwz     r9, -0x60b4(r13)
+    lwz     r9, MarioHitActorPos(r13)
     lwz     r0, -0x5eac(r13)
     lwz     r5, 0x0(r9)
     lwz     r6, 0x4(r9)
@@ -2109,7 +2109,7 @@ branch_0x80024b38:
     stw     r0, 0xa0(sp)
     lfs     f2, -0x7900(rtoc)
     lfs     f3, 0x98(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f0, f3, f0
     stfs    f0, 0x98(sp)
     lfs     f3, 0x9c(sp)
@@ -2268,9 +2268,9 @@ isMarioCrabWalk___15CPolarSubCameraCFv: # 0x80024e30
     addi    r30, r31, 0x0
     stw     r29, 0x2c(sp)
     addi    r29, r3, 0x0
-    lwz     r5, -0x60d8(r13)
-    lwz     r0, 0x118(r5)
-    rlwinm. r0, r0, 0, 16, 16
+    lwz     r5, MarioActor(r13)
+    lwz     r0, MarioActor_Flags(r5)
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80024e6c
     li      r0, 0x1
     b       branch_0x80024e70
@@ -2317,9 +2317,9 @@ isMarioAimWithGun___15CPolarSubCameraCFv: # 0x80024ed0
     addi    r30, r31, 0x0
     stw     r29, 0x2c(sp)
     addi    r29, r3, 0x0
-    lwz     r5, -0x60d8(r13)
-    lwz     r0, 0x118(r5)
-    rlwinm. r0, r0, 0, 16, 16
+    lwz     r5, MarioActor(r13)
+    lwz     r0, MarioActor_Flags(r5)
+    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
     beq-    branch_0x80024f0c
     li      r0, 0x1
     b       branch_0x80024f10
@@ -2681,8 +2681,8 @@ branch_0x80025384:
 
 .globl getToroccoMtx___15CPolarSubCameraCFv
 getToroccoMtx___15CPolarSubCameraCFv: # 0x800253a4
-    lwz     r3, -0x60d8(r13)
-    lwz     r3, 0x3f8(r3)
+    lwz     r3, MarioActor(r13)
+    lwz     r3, MarioActor_3f8(r3)
     lwz     r3, 0x4(r3)
     lwz     r3, 0x58(r3)
     addi    r3, r3, 0x60
@@ -2715,7 +2715,7 @@ loadAfter__15CPolarSubCameraFv: # 0x800253dc
     bl      loadAfter__Q26JDrama8TNameRefFv
     li      r0, 0x0
     stw     r0, 0x5c(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x7
     bne-    branch_0x80025420
@@ -2785,7 +2785,7 @@ branch_0x800254b4:
     lwz     r6, 0x68(r31)
     lfs     f0, 0x4(r6)
     stfs    f0, 0x28(r31)
-    lwz     r7, -0x6048(r13)
+    lwz     r7, gpMarDirector(r13)
     lwz     r6, -0x7fc8(r13)
     lbz     r7, 0xd0(r7)
     bl      snprintf
@@ -2865,7 +2865,7 @@ branch_0x800255e8:
     bl      CLBLinearInbetween_s___Fssf
     sth     r3, 0xa4(r31)
     mr      r3, r31
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0xb4(sp)
@@ -2886,7 +2886,7 @@ branch_0x8002563c:
     fmadds  f31, f2, f1, f0
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xffe0
-    cmplwi  r0, 0x345
+    cmplwi  r0, MARIOSTATUS_345
     bne-    branch_0x80025668
     lfs     f0, -0x7934(rtoc)
     fadds   f31, f31, f0
@@ -3119,7 +3119,7 @@ branch_0x80025818:
     lfs     f0, 0x44(r31)
     stfs    f0, 0x8(r3)
 branch_0x800259dc:
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r31, 0x10
     lwz     r3, 0x6c(r31)
     addi    r5, r31, 0x3c
@@ -3229,7 +3229,7 @@ branch_0x80025b78:
     lhz     r0, 0x64(r31)
     rlwinm. r0, r0, 0, 19, 19
     beq-    branch_0x80025bd4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x80025bd4
@@ -3280,7 +3280,7 @@ JetCoasterDemoCallBack__FUlUl: # 0x80025c0c
     lwz     r3, 0x2b0(r3)
     li      r5, 0x0
     bl      startDemo__10TCameraBckFPCcPCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lis     r0, 0x4330
     lfd     f1, -0x7928(rtoc)
     lwz     r3, 0x58(r3)
@@ -3421,7 +3421,7 @@ __ct__15CPolarSubCameraFPCc: # 0x80025c84
     stfs    f0, 0x2c0(r31)
     lfs     f0, -0x78f0(rtoc)
     stfs    f0, 0x2c4(r31)
-    stw     r31, -0x7118(r13)
+    stw     r31, gpCamera(r13)
     bl      __nw__FUl
     mr.     r28, r3
     beq-    branch_0x80025e70
@@ -3549,7 +3549,7 @@ branch_0x80025ff4:
     li      r4, 0x4
     bl      createMultiPlayer__15CPolarSubCameraFUc
 branch_0x80026028:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     lbz     r29, 0x7d(r3)
     cmplwi  r0, 0x3a

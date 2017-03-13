@@ -363,7 +363,7 @@ branch_0x802a2dec:
     addi    r5, r28, 0x7
     li      r4, 0x1
     bl      setBool__12TFlagManagerFbUl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x100
     bl      loadWave__6MSoundF13MS_SCENE_WAVE
 branch_0x802a2e40:
@@ -941,7 +941,7 @@ branch_0x802a3614:
     lwz     r0, 0x20(r3)
     cmpwi   r0, 0x0
     bne-    branch_0x802a3684
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x100
     bl      checkWaveOnAram__6MSoundF13MS_SCENE_WAVE
     clrlwi. r0, r3, 24

@@ -67,7 +67,7 @@ branch_0x80208748:
 branch_0x8020874c:
     clrlwi. r0, r29, 24
     beq-    branch_0x802088e8
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, -0x1d10(rtoc)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)

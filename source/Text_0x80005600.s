@@ -1,4 +1,6 @@
 
+.include "source/Ram_2.s"
+
 /* start at 0x2540 */
 
 .section .ram80005600, "ax"

@@ -26,8 +26,8 @@ branch_0x803389c0:
     cmpwi   r0, 0x0
     bgt+    branch_0x803389a0
     bl      __destroy_global_chain
-    lis     r3, 0x8037
-    addi    r0, r3, 0x3480
+    lis     r3, off_80373480@h
+    addi    r0, r3, off_80373480@l
     mr      r31, r0
     b       branch_0x803389ec
 

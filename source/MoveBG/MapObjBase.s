@@ -125,7 +125,7 @@ loadAfter__11TMapObjBaseFv: # 0x801af834
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      loadAfter__Q26JDrama8TNameRefFv
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -381,7 +381,7 @@ perform__11TMapObjBaseFUlPQ26JDrama9TGraphics: # 0x801afb48
     stw     r29, 0x84(sp)
     addi    r29, r3, 0x0
     stw     r28, 0x80(sp)
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lbz     r3, 0x124(r6)
     cmplwi  r3, 0x1
     beq-    branch_0x801afb90
@@ -501,7 +501,7 @@ branch_0x801afcd8:
     addis   r0, r28, 0x1
     cmplwi  r0, 0xffff
     beq-    branch_0x801afd90
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r28
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -522,7 +522,7 @@ branch_0x801afd48:
     addis   r0, r28, 0x1
     cmplwi  r0, 0xffff
     beq-    branch_0x801afd90
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r28
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1086,7 +1086,7 @@ branch_0x801b04bc:
     addis   r0, r30, 0x1
     cmplwi  r0, 0xffff
     beq-    branch_0x801b0570
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1108,7 +1108,7 @@ branch_0x801b0524:
     addis   r0, r30, 0x1
     cmplwi  r0, 0xffff
     beq-    branch_0x801b0570
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1121,7 +1121,7 @@ branch_0x801b0524:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x801b0570:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -1412,7 +1412,7 @@ makeObjDefault__11TMapObjBaseFv: # 0x801b08f4
     mtlr    r12
     blrl
 branch_0x801b09ac:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -1737,7 +1737,7 @@ branch_0x801b0dbc:
     addis   r0, r30, 0x1
     cmplwi  r0, 0xffff
     beq-    branch_0x801b0e70
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1759,7 +1759,7 @@ branch_0x801b0e24:
     addis   r0, r30, 0x1
     cmplwi  r0, 0xffff
     beq-    branch_0x801b0e70
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1803,7 +1803,7 @@ soundBas__11TMapObjBaseFUlff: # 0x801b0e88
     fadds   f0, f0, f31
     fcmpo   cr0, f30, f0
     bge-    branch_0x801b0f0c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r31
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

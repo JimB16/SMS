@@ -69,7 +69,7 @@ __ct__17TPollutionManagerFPCc: # 0x8019d518
     mr      r3, r30
     stw     r31, 0x208(r30)
     sth     r31, 0x20c(r30)
-    stw     r30, -0x62f0(r13)
+    stw     r30, gpPollution(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     lwz     r30, 0x10(sp)
@@ -99,7 +99,7 @@ load__17TPollutionManagerFR20JSUMemoryInputStream: # 0x8019d58c
     mr      r3, r31
     stw     r0, 0x10(r31)
     bl      setDataAddress__17TPollutionManagerFPQ217TPollutionManager14TPollutionInfo
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x9
     bne-    branch_0x8019d60c
@@ -152,7 +152,7 @@ branch_0x8019d688:
     lwz     r0, 0x10(r31)
     cmpw    r28, r0
     blt+    branch_0x8019d668
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     li      r4, 0x1e
     addi    r3, r3, 0x1ec
     bl      init__20TPollutionCounterObjFi
@@ -221,7 +221,9 @@ newJointModel__17TPollutionManagerCFi: # 0x8019d73c
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8019D77C:		# jumptable 8019D778 case 0
     li      r3, 0xac
     bl      __nw__FUl
     mr.     r31, r3
@@ -232,8 +234,100 @@ branch_0x8019d794:
     mr      r3, r31
     b       branch_0x8019d8b4
 
+branch_0x8019D79C:		# jumptable 8019D778 case 1
+li	  r3, 0xAC
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r31, r3
+beq	  branch_0x8019D7B4
+mr	  r3, r31
+bl	  __ct__15TPollutionLayerFv # TPollutionLayer::TPollutionLayer((void))
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x19819c, 0x8019d8b0 - 0x8019d79c
+branch_0x8019D7B4:
+mr	  r3, r31
+b	  branch_0x8019d8b4
+
+branch_0x8019D7BC:		# jumptable 8019D778 case 4
+li	  r3, 0xB4
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r31, r3
+beq	  branch_0x8019D7E0
+mr	  r3, r31
+bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
+lis	  r3, unk_803C2274@h
+addi	  r0, r3, unk_803C2274@l
+stw	  r0, 0(r31)
+
+branch_0x8019D7E0:
+mr	  r3, r31
+b	  branch_0x8019d8b4
+
+branch_0x8019D7E8:		# jumptable 8019D778 case 5
+li	  r3, 0xB4
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r31, r3
+beq	  branch_0x8019D818
+mr	  r3, r31
+bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
+lis	  r3, unk_803C2274@h
+addi	  r0, r3, unk_803C2274@l
+lis	  r3, unk_803C1EEC@h
+stw	  r0, 0(r31)
+addi	  r0, r3, unk_803C1EEC@l
+stw	  r0, 0(r31)
+
+branch_0x8019D818:
+mr	  r3, r31
+b	  branch_0x8019d8b4
+
+branch_0x8019D820:		# jumptable 8019D778 case 2
+li	  r3, 0xB4
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r31, r3
+beq	  branch_0x8019D844
+mr	  r3, r31
+bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
+lis	  r3, unk_803C2218@h
+addi	  r0, r3, unk_803C2218@l
+stw	  r0, 0(r31)
+
+branch_0x8019D844:
+mr	  r3, r31
+b	  branch_0x8019d8b4
+
+branch_0x8019D84C:		# jumptable 8019D778 case 3
+li	  r3, 0xB4
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r31, r3
+beq	  branch_0x8019D87C
+mr	  r3, r31
+bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
+lis	  r3, unk_803C2218@h
+addi	  r0, r3, unk_803C2218@l
+lis	  r3, unk_803C1E90@h
+stw	  r0, 0(r31)
+addi	  r0, r3, unk_803C1E90@l
+stw	  r0, 0(r31)
+
+branch_0x8019D87C:
+mr	  r3, r31
+b	  branch_0x8019d8b4
+
+branch_0x8019D884:		# jumptable 8019D778 case 6
+li	  r3, 0xAC
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r31, r3
+beq	  branch_0x8019D8A8
+mr	  r3, r31
+bl	  __ct__15TPollutionLayerFv # TPollutionLayer::TPollutionLayer((void))
+lis	  r3, unk_803C22D0@h
+addi	  r0, r3, unk_803C22D0@l
+stw	  r0, 0(r31)
+
+branch_0x8019D8A8:
+mr	  r3, r31
+b	  branch_0x8019d8b4
+
+def_8019D778:		# jumptable 8019D778 default case
 branch_0x8019d8b0:
     li      r3, 0x0
 branch_0x8019d8b4:
@@ -363,9 +457,8 @@ branch_0x8019da40:
 branch_0x8019da54:
     li      r3, 0x0
     b       branch_0x8019da60
+    b       branch_0x8019da14
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x19845c, 0x8019da60 - 0x8019da5c
 branch_0x8019da60:
     lwz     r31, 0x2c(sp)
     addi    sp, sp, 0x30
@@ -491,9 +584,8 @@ branch_0x8019dbe8:
 branch_0x8019dc00:
     mr      r3, r12
     b       branch_0x8019dc0c
+    b       branch_0x8019dbd4
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x198608, 0x8019dc0c - 0x8019dc08
 branch_0x8019dc0c:
     lwz     r31, 0x24(sp)
     addi    sp, sp, 0x28
@@ -638,7 +730,7 @@ clean__17TPollutionManagerFffff: # 0x8019ddb4
     stw     r30, 0x48(sp)
     stw     r29, 0x44(sp)
     mr      r29, r3
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x1
     bne-    branch_0x8019de0c

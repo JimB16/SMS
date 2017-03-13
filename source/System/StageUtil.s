@@ -33,7 +33,7 @@ SMS_getShineStage__FUc: # 0x802a8ac8
 # SMS_isOptionMap(void)
 .globl SMS_isOptionMap__Fv
 SMS_isOptionMap__Fv: # 0x802a8ae0
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x0
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0xf
@@ -46,7 +46,7 @@ SMS_isOptionMap__Fv: # 0x802a8ae0
 # SMS_isDivingMap(void)
 .globl SMS_isDivingMap__Fv
 SMS_isDivingMap__Fv: # 0x802a8afc
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x0
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x39
@@ -67,7 +67,7 @@ branch_0x802a8b20:
 # SMS_isMultiPlayerMap(void)
 .globl SMS_isMultiPlayerMap__Fv
 SMS_isMultiPlayerMap__Fv: # 0x802a8b30
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x0
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0xc

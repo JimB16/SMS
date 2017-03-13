@@ -283,7 +283,7 @@ branch_0x80059874:
     fcmpo   cr0, f0, f1
     bge-    branch_0x800598a8
     addi    r3, r31, 0x0
-    li      r4, 0x3
+    li      r4, MARIOMSG_3
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800598a8:
     li      r3, 0x0
@@ -375,7 +375,7 @@ execute__14TNerveHino2DieCFP24TSpineBase_10TLiveActor_: # 0x80059984
     lis     r3, 0x2000
     lwz     r0, 0x14(r31)
     addi    r4, r3, 0xe
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     stw     r5, 0x64(sp)
     li      r5, 0x0
     stw     r0, 0x68(sp)
@@ -440,7 +440,7 @@ branch_0x80059aa4:
     stw     r0, 0x74(r4)
     lwz     r0, 0x60(sp)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x19c(r31)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
 branch_0x80059acc:
@@ -588,7 +588,7 @@ branch_0x80059ca8:
     stw     r0, 0x74(r4)
     lwz     r0, 0x80(sp)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x19c(r31)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
 branch_0x80059cd0:
@@ -2433,7 +2433,7 @@ branch_0x8005b538:
     b       branch_0x8005b7c0
 
 branch_0x8005b540:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x2
     blt-    branch_0x8005b6b8
@@ -3076,7 +3076,7 @@ branch_0x8005bdd0:
     lfs     f0, -0x6de0(rtoc)
     stfs    f0, 0x194(r31)
 branch_0x8005bdd8:
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lis     r3, 0x1b4f
     subi    r0, r3, 0x7e4b
     lwz     r4, 0x58(r4)
@@ -3482,7 +3482,7 @@ receiveMessageLv2__10THinokuri2FP9THitActorUl: # 0x8005c2f0
 
 branch_0x8005c334:
     lwz     r0, 0x68(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     slwi    r0, r0, 1
     add     r3, r3, r0
     lha     r0, 0x614(r3)
@@ -3772,7 +3772,7 @@ branch_0x8005c6cc:
 
 branch_0x8005c700:
     lwz     r0, 0x68(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     slwi    r0, r0, 1
     add     r3, r3, r0
     lha     r0, 0x614(r3)
@@ -4278,7 +4278,7 @@ updateAnmSound__10THinokuri2Fv: # 0x8005cdb0
     lwz     r0, 0x158(r31)
     cmpwi   r0, 0x0
     ble-    branch_0x8005ce04
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2007
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4806,7 +4806,7 @@ branch_0x8005d31c:
     stw     r0, 0x64(r3)
     lwz     r3, 0x74(r31)
     bl      setJointCallback__6MActorFiPFP7J3DNodei_i
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x8005d5a0

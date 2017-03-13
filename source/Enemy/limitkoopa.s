@@ -1037,7 +1037,7 @@ startHipDrop__11TLimitKoopaFv: # 0x8013af90
     lfs     f0, 0xa8(sp)
     fmuls   f0, f0, f1
     stfs    f0, 0xa8(sp)
-    lwz     r7, -0x60b4(r13)
+    lwz     r7, MarioHitActorPos(r13)
     lwz     r6, 0x0(r7)
     lwz     r0, 0x4(r7)
     stw     r6, 0x90(sp)
@@ -1369,7 +1369,7 @@ branch_0x8013b484:
     lwz     r0, 0x1b0(r31)
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -1394,7 +1394,7 @@ branch_0x8013b508:
     li      r4, 0x1c3
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1414,7 +1414,7 @@ branch_0x8013b554:
     li      r4, 0x1c2
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1434,7 +1434,7 @@ branch_0x8013b5a0:
     li      r4, 0x1c1
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -1454,7 +1454,7 @@ branch_0x8013b5ec:
     li      r4, 0x1c0
     lwz     r5, 0x4(r3)
     mulli   r0, r0, 0x30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     lwz     r5, 0x58(r5)
     add     r5, r5, r0
     li      r6, 0x1
@@ -2696,7 +2696,7 @@ branch_0x8013c6b8:
 branch_0x8013c6d4:
     addi    r3, sp, 0x54
     bl      __ct__14TDirectionCalcFv
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     addi    r3, sp, 0x58
     addi    r5, r31, 0x10
     bl      sub__Q29JGeometry8TVec3_f_FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
@@ -2723,7 +2723,7 @@ branch_0x8013c6d4:
     stfs    f1, 0x16c(r31)
     addi    r3, sp, 0x74
     bl      __ct__14TDirectionCalcFv
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r4, sp, 0x84
     lfs     f0, 0x10(r31)
     addi    r3, sp, 0x74

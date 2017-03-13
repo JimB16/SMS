@@ -93,7 +93,7 @@ branch_0x8003cddc:
     rlwinm. r0, r31, 0, 22, 22
     beq-    branch_0x8003cdf8
     lwz     r4, 0x10(r30)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r4, 0x18(r4)
     lwz     r4, 0x4(r4)
     bl      stampModel__17TPollutionManagerFP8J3DModel
@@ -182,7 +182,7 @@ generatePolluteModel__25TEnemyPolluteModelManagerFRQ29JGeometry8TVec3_f_RQ29JGeo
     lwz     r0, 0x10(r28)
     lwz     r4, 0x18(r28)
     slwi    r0, r0, 2
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwzx    r31, r4, r0
     addi    r4, r29, 0x0
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -282,7 +282,7 @@ perform__25TEnemyPolluteModelManagerFUlPQ26JDrama9TGraphics: # 0x8003d068
     addi    r29, r3, 0x0
     addi    r31, r5, 0x0
     beq-    branch_0x8003d120
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     lwz     r3, -0x70b0(r13)
     lfs     f3, 0xe8(r31)
     lfs     f4, 0x9c(r3)
@@ -392,7 +392,7 @@ perform__16TEnemyAttachmentFUlPQ26JDrama9TGraphics: # 0x8003d1b0
     b       branch_0x8003d2bc
 
 branch_0x8003d1f8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x1
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
@@ -536,7 +536,7 @@ branch_0x8003d3c8:
     clrlwi. r0, r0, 24
     beq-    branch_0x8003d3e0
     addi    r3, r29, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
     b       branch_0x8003d400
 
@@ -720,7 +720,7 @@ branch_0x8003d61c:
     lfs     f1, 0x60(sp)
     addi    r4, r31, 0xc4
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x5c(sp)
     lfs     f3, 0x64(sp)
@@ -761,7 +761,7 @@ branch_0x8003d69c:
     addi    r4, sp, 0x30
     fmuls   f1, f1, f2
     stfs    f3, 0x34(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f0, 0x64(sp)
     stfs    f0, 0x38(sp)
     stfs    f1, 0x3c(sp)
@@ -884,7 +884,7 @@ branch_0x8003d858:
 branch_0x8003d85c:
     clrlwi. r0, r0, 24
     bne-    branch_0x8003d87c
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      isInArea__4TMapCFff

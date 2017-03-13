@@ -32,7 +32,7 @@ branch_0x802b5b90:
     lhz     r0, 0x30(r31)
     ori     r0, r0, 0x1
     sth     r0, 0x30(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      initSound__6MSoundFv
     lis     r3, 0x803f
     subi    r3, r3, 0x6900
@@ -134,7 +134,7 @@ branch_0x802b5ce4:
     b       branch_0x802b5d48
 
 branch_0x802b5d10:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2972
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -600,7 +600,7 @@ branch_0x802b6370:
     lwz     r0, 0x18(r3)
     cmplwi  r0, 0x9
     bne-    branch_0x802b639c
-    lwz     r27, -0x6044(r13)
+    lwz     r27, gpMSound(r13)
     bl      SMSGetVSyncTimesPerSec__Fv
     bl      __cvt_fp2unsigned
     addi    r4, r3, 0x0
@@ -789,7 +789,7 @@ branch_0x802b65c8:
     beq-    branch_0x802b65e0
     bl      unmountFixed__13JKRMemArchiveFv
 branch_0x802b65e0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      stopAllSound__6MSoundFv
     bl      THPPlayerStop
     bl      THPPlayerClose

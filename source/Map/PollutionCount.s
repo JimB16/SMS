@@ -492,7 +492,7 @@ calcViewMtx__22TPollutionCounterLayerFv: # 0x8019b16c
     b       branch_0x8019b2b0
 
 branch_0x8019b1c0:
-    lwz     r5, -0x62f0(r13)
+    lwz     r5, gpPollution(r13)
     addi    r3, r30, 0x0
     addi    r4, r31, 0x0
     lwz     r5, 0x14(r5)
@@ -1466,7 +1466,7 @@ branch_0x8019bfbc:
     addi    r26, r3, 0xd8
     cmpw    r0, r24
     bne-    branch_0x8019c1dc
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lbz     r0, 0x1(r26)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2

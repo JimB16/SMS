@@ -114,7 +114,7 @@ branch_0x800ff670:
     addi    r5, r30, 0x0
     addi    r4, sp, 0x70
     bl      PSMTXConcat
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r27, 0x0
     addi    r5, r27, 0x10
     li      r4, 0x13a
@@ -172,7 +172,7 @@ branch_0x800ff840:
     rlwinm. r0, r28, 0, 22, 22
     beq-    branch_0x800ff858
     lwz     r4, 0x54(r27)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r4, 0x4(r4)
     bl      stampModel__17TPollutionManagerFP8J3DModel
 branch_0x800ff858:
@@ -248,7 +248,7 @@ move__10TBGPolDropFv: # 0x800ff8c8
     lfs     f0, -0x56e4(rtoc)
     fsubs   f0, f1, f0
     stfs    f0, 0x48(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x24(sp)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x2c(sp)
@@ -294,19 +294,19 @@ branch_0x800ff9a4:
     li      r4, 0xd
     bl      setBckFromIndex__6MActorFi
 branch_0x800ff9f8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x24
     li      r4, 0x9e
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x24
     li      r4, 0x9f
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2871
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -337,7 +337,7 @@ branch_0x800ffa88:
     li      r4, 0xb
     bl      setBckFromIndex__6MActorFi
 branch_0x800ffa94:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     mr      r5, r30
     lfs     f1, 0x28(sp)
     addi    r4, sp, 0x24

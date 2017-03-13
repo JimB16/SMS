@@ -623,7 +623,7 @@ branch_0x8004b868:
     fsubs   f0, f0, f31
     stfs    f1, 0x48(sp)
     stfs    f0, 0x4c(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
     stfs    f1, 0x48(sp)
     lwz     r3, 0x50(sp)
@@ -1491,7 +1491,7 @@ branch_0x8004c480:
     addi    r3, sp, 0x88
     lwz     r0, 0x4(r23)
     mr      r4, r3
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     stw     r5, 0x88(sp)
     stw     r0, 0x8c(sp)
     lwz     r0, 0x8(r23)
@@ -2252,7 +2252,7 @@ branch_0x8004cf2c:
     b       branch_0x8004d0b8
 
 branch_0x8004cf34:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r3, sp, 0x40
     addi    r4, r3, 0x0
     lfs     f2, 0x8(r5)

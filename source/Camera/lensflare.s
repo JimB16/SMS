@@ -45,7 +45,7 @@ perform__10TLensFlareFUlPQ26JDrama9TGraphics: # 0x8002d154
     stmw    r27, 0x28c(sp)
     addi    r29, r3, 0x0
     addi    r30, r4, 0x0
-    lwz     r5, -0x7100(r13)
+    lwz     r5, gpSunManager(r13)
     lbz     r0, 0x15(r5)
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x8002d71c
@@ -59,7 +59,7 @@ perform__10TLensFlareFUlPQ26JDrama9TGraphics: # 0x8002d154
 branch_0x8002d1a0:
     lfs     f2, 0x40(r29)
     li      r4, 0x0
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     mr      r5, r4
     fneg    f0, f2
     lfsu    f1, 0xf8(r3)
@@ -103,7 +103,7 @@ branch_0x8002d22c:
     beq-    branch_0x8002d3c0
     lfs     f2, 0x44(r29)
     li      r4, 0x0
-    lwz     r6, -0x70f8(r13)
+    lwz     r6, gpSunModel(r13)
     mr      r5, r4
     fneg    f0, f2
     addi    r3, r6, 0xf8
@@ -191,7 +191,7 @@ branch_0x8002d360:
     lfs     f1, 0x28(r29)
     fcmpo   cr0, f0, f1
     bge-    branch_0x8002d394
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     lfs     f2, -0x7740(rtoc)
     lfs     f0, 0x194(r3)
     fcmpu   cr0, f2, f0
@@ -204,7 +204,7 @@ branch_0x8002d38c:
     b       branch_0x8002d3b4
 
 branch_0x8002d394:
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     lfs     f2, -0x7740(rtoc)
     lfs     f0, 0x194(r3)
     fcmpu   cr0, f2, f0
@@ -223,7 +223,7 @@ branch_0x8002d3c0:
     beq-    branch_0x8002d71c
     rlwinm. r0, r30, 0, 30, 30
     beq-    branch_0x8002d640
-    lwz     r8, -0x70f8(r13)
+    lwz     r8, gpSunModel(r13)
     lis     r3, 0x8002
     addi    r4, r3, 0x10dc
     lwz     r6, 0x198(r8)
@@ -237,17 +237,17 @@ branch_0x8002d3c0:
     lwz     r0, 0x1a0(r8)
     stw     r0, 0x174(sp)
     bl      __construct_array
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f29, 0x28(r3)
     lfs     f30, 0x4c(r3)
     lfs     f31, 0x48(r3)
     bl      getFinalAngleZ__15CPolarSubCameraCFv
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r28, r3, 0x0
     addi    r3, sp, 0x23c
     addi    r4, r4, 0x148
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r3, sp, 0x230
     addi    r4, r4, 0x124
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
@@ -278,7 +278,7 @@ branch_0x8002d3c0:
     fmuls   f0, f0, f30
     stfs    f0, 0x10c(sp)
     bl      CLBCalcNearNinePos__FPQ29JGeometry8TVec3_f_P6S16VecRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_sfRCQ29JGeometry8TVec2_f_
-    lwz     r5, -0x70f8(r13)
+    lwz     r5, gpSunModel(r13)
     addi    r3, sp, 0x248
     lfsu    f1, 0xf8(r5)
     addi    r4, sp, 0x16c
@@ -531,7 +531,7 @@ __ct__10TLensFlareFPCc: # 0x8002d790
     stfs    f0, 0x44(r31)
     lfs     f0, -0x76fc(rtoc)
     stfs    f0, 0x48(r31)
-    lwz     r3, -0x7100(r13)
+    lwz     r3, gpSunManager(r13)
     lbz     r0, 0x15(r3)
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x8002d860

@@ -2460,13 +2460,48 @@ setField__15JPAFieldManagerFUc: # 0x803274c8
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x803274FC:		# jumptable 803274F8 case 0
     bl      setGravityField__15JPAFieldManagerFv
     mr      r5, r3
     b       branch_0x80327558
 
+branch_0x80327508:		# jumptable 803274F8 case 1
+bl	  setAirField__15JPAFieldManagerFv
+mr	  r5, r3
+b	  def_803274F8	# jumptable 803274F8 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x321f08, 0x80327558 - 0x80327508
+branch_0x80327514:		# jumptable 803274F8 case 2
+bl	  setMagnetField__15JPAFieldManagerFv
+mr	  r5, r3
+b	  def_803274F8	# jumptable 803274F8 default case
+
+branch_0x80327520:		# jumptable 803274F8 case 3
+bl	  setNewtonField__15JPAFieldManagerFv
+mr	  r5, r3
+b	  def_803274F8	# jumptable 803274F8 default case
+
+branch_0x8032752C:		# jumptable 803274F8 case 4
+bl	  setVortexField__15JPAFieldManagerFv
+mr	  r5, r3
+b	  def_803274F8	# jumptable 803274F8 default case
+
+branch_0x80327538:		# jumptable 803274F8 case 5
+bl	  setRandomField__15JPAFieldManagerFv
+mr	  r5, r3
+b	  def_803274F8	# jumptable 803274F8 default case
+
+branch_0x80327544:		# jumptable 803274F8 case 6
+bl	  setDragField__15JPAFieldManagerFv
+mr	  r5, r3
+b	  def_803274F8	# jumptable 803274F8 default case
+
+branch_0x80327550:		# jumptable 803274F8 case 7
+bl	  setConvectionField__15JPAFieldManagerFv
+mr	  r5, r3
+
+def_803274F8:		# jumptable 803274F8 default case
 branch_0x80327558:
     lwz     r0, 0xc(sp)
     mr      r3, r5

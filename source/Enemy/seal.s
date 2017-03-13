@@ -46,7 +46,7 @@ execute__13TNerveSealDieCFP24TSpineBase_10TLiveActor_: # 0x800fe564
     bl      setBckFromIndex__6MActorFi
     lwz     r5, 0x74(r30)
     mr      r7, r30
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0xd1
     lwz     r5, 0x4(r5)
     li      r6, 0x0
@@ -68,7 +68,7 @@ execute__13TNerveSealDieCFP24TSpineBase_10TLiveActor_: # 0x800fe564
     lfs     f0, 0x2c(r30)
     stfs    f0, 0x17c(r3)
 branch_0x800fe5f8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x1
     li      r4, 0xd2
@@ -89,7 +89,7 @@ branch_0x800fe5f8:
     lfs     f0, 0x2c(r30)
     stfs    f0, 0x17c(r3)
 branch_0x800fe648:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x6010
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -512,7 +512,7 @@ branch_0x800febbc:
     lfs     f0, -0x5710(rtoc)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800fec10
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2154
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -592,13 +592,13 @@ receiveMessage__5TSealFP9THitActorUl: # 0x800fecc8
     bne-    branch_0x800feeac
     cmplwi  r5, 0xf
     bne-    branch_0x800feeac
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x5704(rtoc)
     li      r4, 0x6802
@@ -607,11 +607,11 @@ receiveMessage__5TSealFP9THitActorUl: # 0x800fecc8
     li      r8, 0x0
     li      r9, 0x4
     bl      startSoundSet__6MSoundFUlPC3VecUlfUlUlUc
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lbz     r0, 0x5d5f(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x800feea4
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x5704(rtoc)
     li      r4, 0x6809

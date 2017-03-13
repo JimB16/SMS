@@ -63,7 +63,7 @@ branch_0x800264a4:
     bne-    branch_0x80026520
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xffe0
-    cmplwi  r0, 0x345
+    cmplwi  r0, MARIOSTATUS_345
     beq-    branch_0x80026520
     li      r29, 0x1
 branch_0x80026520:
@@ -213,8 +213,12 @@ branch_0x800266f0:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80026718:		# jumptable 80026714 cases 0,5,7,10,11,35,41,43,54,57
     li      r31, 0x1
+
+def_80026714:		# jumptable 80026714 default case
 branch_0x8002671c:
     lwz     r0, 0x1c(sp)
     mr      r3, r31
@@ -259,8 +263,12 @@ branch_0x80026788:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x800267B0:		# jumptable 800267AC cases 0,5,7,10,11,35,41,43,54,57
     li      r31, 0x1
+
+def_800267AC:		# jumptable 800267AC default case
 branch_0x800267b4:
     clrlwi. r0, r31, 24
     beq-    branch_0x800267c0

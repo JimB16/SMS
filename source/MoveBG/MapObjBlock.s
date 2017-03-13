@@ -109,7 +109,7 @@ receiveMessage__18TSuperHipDropBlockFP9THitActorUl: # 0x801c2ff0
     li      r4, 0x1
     bl      setBool__12TFlagManagerFbUl
 branch_0x801c3040:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3821
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -176,7 +176,7 @@ perform__12TTelesaBlockFUlPQ26JDrama9TGraphics: # 0x801c30e4
     rlwinm  r0, r0, 0, 23, 21
     stw     r0, 0xf0(r3)
     li      r3, 0x1
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x1
     beq-    branch_0x801c3134
@@ -546,7 +546,7 @@ kill__11TBrickBlockFv: # 0x801c3590
     li      r4, 0x62
     li      r5, 0x0
     bl      emitAndScale__11TMapObjBaseCFlUcPCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3878
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -658,7 +658,7 @@ control__9TIceBlockFv: # 0x801c3754
     stw     r31, 0x34(sp)
     mr      r31, r3
     addi    r7, r31, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
@@ -670,7 +670,7 @@ control__9TIceBlockFv: # 0x801c3754
     lfs     f0, 0x2c(r31)
     stfs    f0, 0x15c(r3)
 branch_0x801c37a0:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x10
     li      r4, 0x158
@@ -739,7 +739,7 @@ branch_0x801c3888:
     lfs     f0, 0x30(r3)
     fmuls   f0, f1, f0
     stfs    f0, 0xb8(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801c38d0
@@ -792,7 +792,7 @@ touchWater__9TIceBlockFP9THitActor: # 0x801c3934
     bl      getWaterSpeed__11TMapObjBaseFP9THitActor
     mr      r3, r31
     bl      getWaterID__11TMapObjBaseFP9THitActor
-    lwz     r4, -0x6088(r13)
+    lwz     r4, gpModelWaterManager(r13)
     slwi    r0, r3, 1
     add     r3, r4, r0
     lhz     r0, 0x414(r3)
@@ -807,13 +807,13 @@ branch_0x801c3984:
 branch_0x801c3988:
     clrlwi. r0, r0, 24
     beq-    branch_0x801c3aa0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x2ab8(rtoc)
     li      r4, 0x6802
@@ -822,7 +822,7 @@ branch_0x801c3988:
     li      r8, 0x0
     li      r9, 0x4
     bl      startSoundSet__6MSoundFUlPC3VecUlfUlUlUc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3079
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1199,7 +1199,7 @@ touchPlayer__10TLeanBlockFP9THitActor: # 0x801c3ee0
     bl      marioIsOn__11TMapObjBaseCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x801c3f70
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x0(r3)
     lfs     f0, 0x138(r31)
@@ -1362,7 +1362,7 @@ branch_0x801c411c:
     lfs     f0, -0x79fc(r13)
     fsubs   f0, f1, f0
     stfs    f0, 0x28(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801c415c
@@ -1419,7 +1419,7 @@ branch_0x801c41f0:
 branch_0x801c41f4:
     clrlwi. r0, r0, 24
     bne-    branch_0x801c4280
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r31
     bl      getDistance__11TMapObjBaseCFRCQ29JGeometry8TVec3_f_
     lfs     f2, -0x2ab0(rtoc)

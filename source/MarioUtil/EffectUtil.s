@@ -19,7 +19,7 @@ SMS_EmitSinkInPollutionEffect__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_b:
     addi    r30, r4, 0x0
     stw     r29, 0x94(sp)
     addi    r29, r3, 0x0
-    lwz     r7, -0x6048(r13)
+    lwz     r7, gpMarDirector(r13)
     lwz     r6, 0x58(r7)
     mulhw   r0, r0, r6
     srawi   r0, r0, 3
@@ -103,14 +103,14 @@ branch_0x80233ae4:
     lfs     f0, 0x8(r29)
     stfs    f0, 0x74(sp)
     beq-    branch_0x80233b4c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x48
     li      r4, 0x1d8
     li      r6, 0x2
     li      r7, 0x0
     bl      emitAndBindToMtx__21TMarioParticleManagerFlPA4_fUcPCv
 branch_0x80233b4c:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x48
     li      r4, 0x1d9
     li      r6, 0x2
@@ -147,14 +147,14 @@ SMS_EmitRippleSea__FPA4_fPv: # 0x80233b9c
     stw     r29, 0x14(sp)
     mr      r29, r3
     addi    r5, r29, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x1e8
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80233be4
     li      r31, 0x0
 branch_0x80233be4:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x107
@@ -164,7 +164,7 @@ branch_0x80233be4:
     bne-    branch_0x80233c08
     li      r31, 0x0
 branch_0x80233c08:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x108
@@ -198,14 +198,14 @@ SMS_EmitRipplePool__FPA4_fPv: # 0x80233c4c
     stw     r29, 0x14(sp)
     mr      r29, r3
     addi    r5, r29, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x1e9
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80233c94
     li      r31, 0x0
 branch_0x80233c94:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x10a
@@ -215,7 +215,7 @@ branch_0x80233c94:
     bne-    branch_0x80233cb8
     li      r31, 0x0
 branch_0x80233cb8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x10b
@@ -248,13 +248,13 @@ SMS_EmitRippleTiny__FPQ29JGeometry8TVec3_f_: # 0x80233cfc
     stw     r30, 0x10(sp)
     mr      r30, r3
     addi    r5, r30, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80233d3c
     li      r31, 0x0
 branch_0x80233d3c:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x0
     li      r4, 0x36
     li      r6, 0x0

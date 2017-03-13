@@ -387,7 +387,7 @@ execWalk__8TBaseNPCFb: # 0x80216e68
     lhz     r0, 0x1e2(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80216ef0
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     li      r3, 0x1
     addi    r5, r3, 0x0
     lbz     r0, 0x124(r6)

@@ -1967,7 +1967,7 @@ setLightData__6MActorFPC12TBGCheckDataRCQ29JGeometry8TVec3_f_: # 0x80239634
     lbz     r0, 0x40(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80239704
-    lwz     r3, -0x70e0(r13)
+    lwz     r3, CubeManager4(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x8023968c
     mr      r4, r31

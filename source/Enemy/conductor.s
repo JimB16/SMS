@@ -10,7 +10,7 @@ perform__10TConductorFUlPQ26JDrama9TGraphics: # 0x80033ed8
     addi    r25, r3, 0x0
     addi    r27, r5, 0x0
     beq-    branch_0x80033f14
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80033f14
@@ -96,7 +96,7 @@ branch_0x80034018:
     cmplwi  r30, 0x0
     beq-    branch_0x800340cc
     lwz     r0, 0x38(r25)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     stw     r0, 0x158(sp)
     stw     r29, 0x15c(sp)
     lfs     f4, 0x9c(r25)
@@ -509,7 +509,7 @@ genEnemyFromPollution__10TConductorFv: # 0x8003455c
     lwz     r3, 0xf0(r30)
     cmplwi  r3, 0x0
     beq-    branch_0x80034880
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lwz     r4, 0xd8(r30)
     lwz     r5, 0x58(r5)
     divw    r0, r5, r4
@@ -565,7 +565,7 @@ branch_0x80034658:
     cmplwi  r0, 0x0
     mr      r31, r0
     beq-    branch_0x80034880
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x94(sp)
@@ -618,12 +618,12 @@ branch_0x80034658:
     lfs     f0, 0x9c(sp)
     fmadds  f0, f31, f1, f0
     stfs    f0, 0x9c(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
     lfs     f0, -0x7500(rtoc)
     fadds   f0, f0, f1
     stfs    f0, 0x98(sp)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x94(sp)
     lfs     f2, 0x98(sp)
     lfs     f3, 0x9c(sp)
@@ -1083,7 +1083,7 @@ isBossDefeated__10TConductorFv: # 0x80034d40
     addi    r31, r5, 0x6768
     stw     r30, 0xb0(sp)
     addi    r30, r3, 0x0
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x7c(r4)
     cmpwi   r0, 0x2
     beq-    branch_0x80034d84

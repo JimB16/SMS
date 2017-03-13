@@ -992,7 +992,7 @@ initECTGft__12TMarDirectorFP12TPerformListP12TPerformListPQ26JDrama55TViewObjPtr
     addi    r29, r4, 0x0
     addi    r17, r6, 0x0
     addi    r28, r7, 0x2a68
-    lwz     r5, -0x62f0(r13)
+    lwz     r5, gpPollution(r13)
     lwz     r0, 0x10(r5)
     cmpwi   r0, 0x0
     bne-    branch_0x8029bc68
@@ -1233,7 +1233,7 @@ branch_0x8029bf54:
     addi    r4, sp, 0xb0
     stw     r0, 0xb0(sp)
     bl      __ct__Q37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorFRCQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iterator
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     li      r9, 0x28
     addi    r3, sp, 0x14c
     lwz     r6, 0x14(r4)
@@ -1345,7 +1345,7 @@ branch_0x8029c118:
     addi    r26, r26, 0x1
     addi    r25, r25, 0x4
 branch_0x8029c168:
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r0, 0x10(r3)
     cmpw    r26, r0
     blt+    branch_0x8029bf2c

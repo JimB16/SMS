@@ -158,7 +158,7 @@ loadAfter__11TWoodBarrelFv: # 0x801aed18
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      loadAfter__14TMapObjGeneralFv
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -415,13 +415,13 @@ appear__11TWoodBarrelFv: # 0x801af02c
     lwz     r12, 0x100(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe5
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x387d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -472,7 +472,7 @@ branch_0x801af0f8:
     stfs    f0, 0x5c(r31)
     bl      calcEntryRadius__9THitActorFv
 branch_0x801af114:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -519,7 +519,7 @@ kill__11TWoodBarrelFv: # 0x801af160
     stw     r0, 0x74(r4)
     lwz     r0, 0x24(sp)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x148(r31)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
     lwz     r3, 0x68(r31)

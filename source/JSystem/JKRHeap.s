@@ -699,6 +699,8 @@ branch_0x802c3c94:
     blr
 
 
+# __nwa(ulong)
+# malloc
 .globl __nwa__FUl
 __nwa__FUl: # 0x802c3ca4
     mflr    r0

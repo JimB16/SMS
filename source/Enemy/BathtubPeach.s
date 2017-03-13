@@ -599,7 +599,7 @@ branch_0x8012e87c:
     lwz     r12, 0xb8(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f31, 0xc(r3)
     lfs     f30, 0x2c(r3)
     lwz     r3, 0x0(r4)
@@ -740,7 +740,7 @@ branch_0x8012eab4:
     lfs     f0, 0x1e0(sp)
     fadds   f0, f1, f0
     stfs    f0, 0x18(r31)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x18(r31)
     lfs     f1, 0x8(r3)
     lfs     f2, 0x0(r3)

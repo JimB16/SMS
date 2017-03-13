@@ -2113,7 +2113,7 @@ perform__11TConsoleStrFUlPQ26JDrama9TGraphics: # 0x80171ca0
     addi    r31, r3, 0x0
     addi    r15, r5, 0x0
     beq-    branch_0x80172138
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x5
     beq-    branch_0x80172060
@@ -2375,7 +2375,7 @@ branch_0x80172060:
     lbz     r0, 0x2a5(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x801720cc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x4
     beq-    branch_0x801720cc
@@ -2406,7 +2406,7 @@ branch_0x801720cc:
     lbz     r0, 0x2a5(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80172138
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x64(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80172138
@@ -2795,7 +2795,7 @@ branch_0x8017265c:
     add     r3, r31, r29
     stw     r26, 0x28c(r3)
     lwz     r3, 0x29c(r3)
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r27, r27, 0x1
     cmpwi   r27, 0x2
@@ -2823,7 +2823,7 @@ branch_0x801726a4:
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x801726cc:
     stw     r26, 0x298(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x7c(r3)
     bl      SMS_getShineStage__FUc
     lwz     r0, -0x6060(r13)
@@ -2841,7 +2841,7 @@ branch_0x801726cc:
     lwz     r3, 0x29c(r31)
     crxor   6, 6, 6
     bl      setString__10J2DTextBoxFPCce
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xf
     beq-    branch_0x801727c4

@@ -32,7 +32,7 @@ proc__17MSStageCubeSwitchFv: # 0x802b9d74
     stw     r31, 0x34(sp)
     addi    r31, r3, 0x0
     addi    r4, sp, 0x20
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lfs     f0, 0x0(rtoc)
     lwz     r5, 0x0(r6)
     lwz     r0, 0x4(r6)
@@ -182,7 +182,7 @@ proc__20MSStageCubeFadeMonteFv: # 0x802b9f4c
     bl      getHandle__5MSBgmFUc
     cmplwi  r30, 0x0
     beq-    branch_0x802ba3d4
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, sp, 0x19c
     lwz     r3, -0x70cc(r13)
     lwz     r5, 0x0(r6)
@@ -206,7 +206,7 @@ proc__20MSStageCubeFadeMonteFv: # 0x802b9f4c
     cmpwi   r30, -0x1
     beq-    branch_0x802ba0c8
     lfs     f0, -0x8(rtoc)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     stfs    f0, 0x158(sp)
     lwz     r3, -0x70cc(r13)
     stfs    f0, 0x15c(sp)
@@ -294,7 +294,7 @@ branch_0x802ba0cc:
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
 branch_0x802ba124:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     stfs    f30, 0x0(r3)
     b       branch_0x802ba3c4
@@ -315,7 +315,7 @@ branch_0x802ba134:
     li      r4, 0xa
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     stfs    f30, 0x0(r3)
     b       branch_0x802ba238
@@ -333,13 +333,13 @@ branch_0x802ba180:
     li      r4, 0xa
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     stfs    f30, 0x0(r3)
     b       branch_0x802ba238
 
 branch_0x802ba1c0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f0
     lwz     r3, 0xa0(r3)
     bl      xFadeBgmForce__10MSBgmXFadeFf
@@ -362,14 +362,14 @@ branch_0x802ba1d4:
     li      r4, 0xa
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f0, -0x8(rtoc)
     lwz     r3, 0xa0(r3)
     stfs    f0, 0x0(r3)
     b       branch_0x802ba238
 
 branch_0x802ba228:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f0
     lwz     r3, 0xa0(r3)
     bl      xFadeBgm__10MSBgmXFadeFf
@@ -382,7 +382,7 @@ branch_0x802ba238:
     beq-    branch_0x802ba3c4
     lwz     r3, -0x70cc(r13)
     slwi    r0, r4, 2
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x10(r3)
     lwzx    r5, r3, r0
@@ -444,7 +444,7 @@ branch_0x802ba32c:
     lwz     r0, 0x198(sp)
     stw     r3, 0xe4(sp)
     addi    r5, sp, 0xec
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stw     r0, 0xe8(sp)
     lwz     r3, 0x8(r3)
     lwz     r3, 0x8(r3)
@@ -507,7 +507,7 @@ proc__21MSStageCubeFadeDoubleFv: # 0x802ba3f4
     bl      getHandle__5MSBgmFUc
     cmplwi  r30, 0x0
     beq-    branch_0x802ba76c
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, sp, 0x170
     lwz     r3, -0x70cc(r13)
     lwz     r5, 0x0(r6)
@@ -548,11 +548,11 @@ branch_0x802ba4b8:
     lwz     r0, 0x8(r31)
     cmpwi   r0, -0x1
     beq-    branch_0x802ba764
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f1, -0x8(rtoc)
     lwz     r3, 0xa0(r3)
     stfs    f1, 0x0(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     bl      xFadeBgmForce__10MSBgmXFadeFf
     b       branch_0x802ba764
@@ -560,7 +560,7 @@ branch_0x802ba4b8:
 branch_0x802ba4ec:
     lwz     r30, 0x4(r31)
     lfs     f0, -0x8(rtoc)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     stfs    f0, 0x124(sp)
     lwz     r3, -0x70cc(r13)
     stfs    f0, 0x128(sp)
@@ -621,7 +621,7 @@ branch_0x802ba5c0:
     fsubs   f0, f0, f2
     fdivs   f0, f1, f0
 branch_0x802ba5d0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f0
     lwz     r3, 0xa0(r3)
     bl      xFadeBgm__10MSBgmXFadeFf
@@ -632,7 +632,7 @@ branch_0x802ba5d0:
     lwz     r0, 0x4(r31)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x10(r3)
     lwzx    r5, r3, r0
     lwz     r3, 0xc(r5)
@@ -693,7 +693,7 @@ branch_0x802ba6cc:
     lwz     r0, 0x168(sp)
     stw     r3, 0xcc(sp)
     addi    r5, sp, 0xd4
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stw     r0, 0xd0(sp)
     lwz     r3, 0x8(r3)
     lwz     r3, 0x8(r3)
@@ -746,7 +746,7 @@ setBgmVolumeForce__15MSStageCubeFadeFv: # 0x802ba78c
     addi    r31, r3, 0x0
     addi    r4, sp, 0x88
     stw     r30, 0x98(sp)
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lfs     f0, 0x0(rtoc)
     lwz     r5, 0x0(r6)
     lwz     r0, 0x4(r6)
@@ -769,7 +769,7 @@ setBgmVolumeForce__15MSStageCubeFadeFv: # 0x802ba78c
     cmpwi   r30, -0x1
     beq-    branch_0x802ba8e4
     lfs     f0, -0x8(rtoc)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     stfs    f0, 0x54(sp)
     lwz     r3, -0x70cc(r13)
     stfs    f0, 0x58(sp)
@@ -834,7 +834,7 @@ branch_0x802ba8d0:
 branch_0x802ba8e4:
     lfs     f0, -0x8(rtoc)
 branch_0x802ba8e8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f0
     lwz     r3, 0xa0(r3)
     bl      xFadeBgmForce__10MSBgmXFadeFf
@@ -863,7 +863,7 @@ proc__15MSStageCubeFadeFv: # 0x802ba910
     bl      getHandle__5MSBgmFUc
     cmplwi  r30, 0x0
     beq-    branch_0x802bac3c
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, sp, 0x164
     lwz     r3, -0x70cc(r13)
     lwz     r5, 0x0(r6)
@@ -887,7 +887,7 @@ proc__15MSStageCubeFadeFv: # 0x802ba910
     lwz     r0, 0x8(r31)
     cmpwi   r0, -0x1
     beq-    branch_0x802bac34
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f0, -0x8(rtoc)
     lwz     r3, 0xa0(r3)
     stfs    f0, 0x0(r3)
@@ -895,7 +895,7 @@ proc__15MSStageCubeFadeFv: # 0x802ba910
 
 branch_0x802ba9c0:
     lfs     f0, -0x8(rtoc)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     stfs    f0, 0x11c(sp)
     lwz     r3, -0x70cc(r13)
     stfs    f0, 0x120(sp)
@@ -956,7 +956,7 @@ branch_0x802baa90:
     fsubs   f0, f0, f2
     fdivs   f0, f1, f0
 branch_0x802baaa0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f0
     lwz     r3, 0xa0(r3)
     bl      xFadeBgm__10MSBgmXFadeFf
@@ -967,7 +967,7 @@ branch_0x802baaa0:
     lwz     r0, 0x4(r31)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x10(r3)
     lwzx    r5, r3, r0
     lwz     r3, 0xc(r5)
@@ -1028,7 +1028,7 @@ branch_0x802bab9c:
     lwz     r0, 0x160(sp)
     stw     r3, 0xc4(sp)
     addi    r5, sp, 0xcc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stw     r0, 0xc8(sp)
     lwz     r3, 0x8(r3)
     lwz     r3, 0x8(r3)
@@ -1095,7 +1095,7 @@ proc__20MSStageDistFadeMonteFv: # 0x802bac5c
     b       branch_0x802bafdc
 
 branch_0x802baca8:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x0(rtoc)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -1185,7 +1185,7 @@ branch_0x802bada0:
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
 branch_0x802badfc:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     stfs    f31, 0x0(r3)
     b       branch_0x802bafc8
@@ -1206,7 +1206,7 @@ branch_0x802bae0c:
     li      r4, 0xa
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     stfs    f31, 0x0(r3)
     b       branch_0x802baebc
@@ -1224,20 +1224,20 @@ branch_0x802bae58:
     li      r4, 0xa
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     stfs    f31, 0x0(r3)
     b       branch_0x802baebc
 
 branch_0x802bae98:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f31
     lwz     r3, 0xa0(r3)
     bl      xFadeBgmForce__10MSBgmXFadeFf
     b       branch_0x802baebc
 
 branch_0x802baeac:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f31
     lwz     r3, 0xa0(r3)
     bl      xFadeBgm__10MSBgmXFadeFf
@@ -1249,7 +1249,7 @@ branch_0x802baebc:
     lwz     r30, 0x4(r31)
     lwz     r6, 0x0(r7)
     lwz     r0, 0x4(r7)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stw     r6, 0x68(sp)
     stw     r0, 0x6c(sp)
     lwz     r0, 0x8(r7)
@@ -1351,7 +1351,7 @@ proc__15MSStageDistFadeFv: # 0x802bb000
     b       branch_0x802bb2b4
 
 branch_0x802bb04c:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x10(r31)
     lfs     f2, 0x0(r4)
     lfs     f3, 0x0(r3)
@@ -1433,13 +1433,13 @@ branch_0x802bb150:
     li      r4, 0x2
     li      r5, 0x0
     bl      setTrackVolume__5MSBgmFUcfUlUc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r3, 0xa0(r3)
     stfs    f30, 0x0(r3)
     b       branch_0x802bb19c
 
 branch_0x802bb18c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fmr     f1, f3
     lwz     r3, 0xa0(r3)
     bl      xFadeBgm__10MSBgmXFadeFf
@@ -1451,7 +1451,7 @@ branch_0x802bb19c:
     lwz     r30, 0x4(r31)
     lwz     r6, 0x0(r7)
     lwz     r0, 0x4(r7)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stw     r6, 0x50(sp)
     stw     r0, 0x54(sp)
     lwz     r0, 0x8(r7)
@@ -1581,7 +1581,7 @@ init__7MSStageFUcUc: # 0x802bb35c
     li      r31, 0x0
     stw     r30, 0x68(sp)
     mr      r30, r3
-    lwz     r5, -0x6044(r13)
+    lwz     r5, gpMSound(r13)
     stw     r31, -0x5fac(r13)
     lfs     f0, -0x8(rtoc)
     stw     r31, -0x5fa8(r13)
@@ -1630,7 +1630,7 @@ branch_0x802bb410:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802bb490
-    lwz     r6, -0x6044(r13)
+    lwz     r6, gpMSound(r13)
     lis     r5, 0x803e
     lis     r4, 0x803e
     lbz     r7, -0x5fb0(r13)
@@ -1673,7 +1673,7 @@ branch_0x802bb498:
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x802bb4e0
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r31
     lbz     r6, -0x5fb0(r13)
     li      r5, 0x5a
@@ -1846,12 +1846,12 @@ startStageBGM__10MSMainProcFUcUc: # 0x802bb6f8
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      initSound__6MSoundFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     stw     r4, 0xa4(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stb     r4, 0xcd(r3)
     lwz     r3, -0x5fd0(r13)
     addis   r0, r3, 0x1
@@ -1866,7 +1866,7 @@ branch_0x802bb740:
     beq-    branch_0x802bb784
     clrlwi. r0, r5, 31
     beq-    branch_0x802bb780
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     lbz     r0, 0xd3(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x802bb784
@@ -1889,7 +1889,7 @@ branch_0x802bb784:
     lbz     r0, -0x5fc8(r13)
     cmplwi  r0, 0x2
     bne-    branch_0x802bb7cc
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     lbz     r0, 0xd3(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x802bb7cc
@@ -1947,10 +1947,10 @@ branch_0x802bb838:
     li      r5, 0x0
     bl      setVolume__5MSBgmFUlfUlUc
 branch_0x802bb854:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     bl      demoModeOut__6MSoundFb
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r0, 0x0
     stb     r0, 0xd0(r3)
     lwz     r0, 0xc(sp)
@@ -1982,7 +1982,7 @@ branch_0x802bb8a0:
     lbz     r0, -0x5fc8(r13)
     cmplwi  r0, 0x1
     bne-    branch_0x802bb8e8
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     lbz     r0, 0xd3(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x802bb8e8
@@ -1994,15 +1994,15 @@ branch_0x802bb8a0:
     li      r5, 0x0
     bl      setVolume__8JAISoundFfUlUc
 branch_0x802bb8e8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r5, 0x0
     lhz     r4, -0x5fc6(r13)
     bl      demoModeIn__6MSoundFUsb
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x0
     li      r0, 0x1
     stw     r4, 0xa8(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stb     r0, 0xcd(r3)
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -2055,7 +2055,9 @@ setMSoundEnterStage__10MSMainProcFUcUc: # 0x802bb920
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802BB9D0:		# jumptable 802BB9CC case 0
     addi    r3, r27, 0x1a
     bl      getSceneNo__5MSBgmFUl
     addi    r0, r27, 0x1a
@@ -2063,22 +2065,679 @@ setMSoundEnterStage__10MSMainProcFUcUc: # 0x802bb920
     stw     r0, -0x5fd0(r13)
     b       branch_0x802bc254
 
+branch_0x802BB9E8:		# jumptable 802BB9CC case 1
+addi	  r3, r27, (branch_0x80010000+1)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+clrlwi	  r0, r24, 24
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, (branch_0x80010000+1)@l
+cmplwi	  r0, 9		# switch 10 cases
+stw	  r3, -0x5FD0(r13)
+bgt	  def_802BB9CC	# jumptable 802BB9CC default case
+lis	  r3, jpt_802BBA1C@ha
+addi	  r3, r3, jpt_802BBA1C@l
+slwi	  r0, r0, 2
+lwzx	  r0, r3, r0
+mtctr	  r0
+bctr			# switch jump
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2b63e8, 0x802bc254 - 0x802bb9e8
+branch_0x802BBA20:		# jumptable 802BBA1C case 0
+lfs	  f0, 0x44(r2)
+stb	  r29, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stfs	  f0, -0x5FB8(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBA38:		# jumptable 802BBA1C case 1
+lhz	  r3, -0x5FC6(r13)
+addi	  r0, r27, (0x80010014+2)@l
+stw	  r0, -0x5FD4(r13)
+addi	  r0, r3, -0x183
+stb	  r30, -0x5FC7(r13)
+sth	  r0, -0x5FC6(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBA54:		# jumptable 802BBA1C case 5
+lfs	  f0, 0x48(r2)
+stb	  r29, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stfs	  f0, -0x5FB8(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBA6C:		# jumptable 802BBA1C case 8
+lis	  r4, 6	# 0x60003
+lwz	  r3, -0x6060(r13)
+addi	  r4, r4, 3 # 0x60003
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 0
+ble	  def_802BB9CC	# jumptable 802BB9CC default case
+lhz	  r3, -0x5FC6(r13)
+addi	  r0, r27, (0x80010014+2)@l
+li	  r4, 6
+stw	  r0, -0x5FD4(r13)
+addi	  r0, r3, -0x83
+stb	  r4, -0x5FC7(r13)
+sth	  r0, -0x5FC6(r13)
+stb	  r31, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBAB0:		# jumptable 802BBA1C case 9
+lhz	  r3, -0x5FC6(r13)
+addi	  r0, r27, (0x80010014+2)@l
+stw	  r0, -0x5FD4(r13)
+addi	  r0, r3, -0x82
+stb	  r30, -0x5FC7(r13)
+sth	  r0, -0x5FC6(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBACC:		# jumptable 802BB9CC case 2
+li	  r3, 0x5814
+li	  r4, 8
+bl	  createRandPlayVec__Q214MSoundSESystem10MSRandPlayFUlUs # MSoundSESystem::MSRandPlay::createRandPlayVec((ulong,ushort))
+addi	  r3, r27, (branch_0x80010000+2)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+clrlwi	  r0, r24, 24
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, (branch_0x80010000+2)@l
+cmpwi	  r0, 6
+stw	  r3, -0x5FD0(r13)
+beq	  branch_0x802BBB2C
+bge	  def_802BB9CC	# jumptable 802BB9CC default case
+cmpwi	  r0, 0
+beq	  branch_0x802BBB08
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBB08:
+lfs	  f0, 0x4C(r2)
+addi	  r0, r27, (0x80010024+3)@l
+stw	  r0, -0x5FD4(r13)
+stb	  r28, -0x5FC7(r13)
+stb	  r29, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stfs	  f0, -0x5FB8(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBB2C:
+lhz	  r3, -0x5FC6(r13)
+addi	  r0, r27, (0x80010014+2)@l
+li	  r4, 3
+stw	  r0, -0x5FD4(r13)
+addi	  r0, r3, -0x83
+stb	  r4, -0x5FC7(r13)
+sth	  r0, -0x5FC6(r13)
+stb	  r31, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stb	  r30, -0x5FB0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBB5C:		# jumptable 802BB9CC case 3
+addi	  r3, r27, (0x80010008+1)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+clrlwi	  r0, r24, 24
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, (0x80010008+1)@l
+cmplwi	  r0, 6
+stw	  r3, -0x5FD0(r13)
+bne	  branch_0x802BBBA8
+lhz	  r3, -0x5FC6(r13)
+addi	  r0, r27, (0x80010014+2)@l
+li	  r4, 3
+stw	  r0, -0x5FD4(r13)
+addi	  r0, r3, -0x83
+stb	  r4, -0x5FC7(r13)
+sth	  r0, -0x5FC6(r13)
+stb	  r31, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stb	  r30, -0x5FB0(r13)
+
+branch_0x802BBBA8:
+clrlwi	  r0, r24, 24
+cmplwi	  r0, 4
+bne	  def_802BB9CC	# jumptable 802BB9CC default case
+lis	  r3, (0x8001000C+1)@h
+lfs	  f0, 0x4C(r2)
+addi	  r4, r3, (0x8001000C+1)@l
+addi	  r0, r3, (0x80010028+2)@l
+stw	  r4, -0x5FC0(r13)
+li	  r3, 3
+stb	  r3, -0x5FC4(r13)
+stw	  r0, -0x5FBC(r13)
+stfs	  f0, -0x5FB8(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBBDC:		# jumptable 802BB9CC case 4
+clrlwi	  r0, r24, 24
+cmplwi	  r0, 2
+beq	  branch_0x802BBC00
+addi	  r3, r27, 3
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 3
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  branch_0x802BBC14
+
+branch_0x802BBC00:
+addi	  r3, r27, 0xD
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0xD
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+
+branch_0x802BBC14:
+clrlwi	  r0, r24, 24
+cmplwi	  r0, 6
+bne	  branch_0x802BBC60
+lhz	  r4, -0x5FC6(r13)
+li	  r3, -0x10
+lis	  r5, (0x80010014+2)@h
+stw	  r3, -0x5FC0(r13)
+addi	  r0, r5, (0x80010014+2)@l
+addi	  r5, r4, -0x83
+stw	  r0, -0x5FD4(r13)
+li	  r0, 3
+li	  r4, 1
+stb	  r0, -0x5FC7(r13)
+li	  r0, 0
+sth	  r5, -0x5FC6(r13)
+stb	  r4, -0x5FC4(r13)
+stw	  r3, -0x5FBC(r13)
+stb	  r0, -0x5FB0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBC60:
+cmplwi	  r0, 2
+bne	  def_802BB9CC	# jumptable 802BB9CC default case
+lis	  r3, (0x8001000C+1)@h
+addi	  r3, r3, (0x8001000C+1)@l
+li	  r0, 0
+stw	  r3, -0x5FD4(r13)
+stb	  r0, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBC80:		# jumptable 802BB9CC case 5
+addi	  r3, r27, 4
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+clrlwi	  r0, r24, 24
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, 4
+cmpwi	  r0, 1
+stw	  r3, -0x5FD0(r13)
+beq	  branch_0x802BBCC0
+bge	  def_802BB9CC	# jumptable 802BB9CC default case
+cmpwi	  r0, 0
+bge	  branch_0x802BBCB0
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBCB0:
+addi	  r0, r27, 0x27
+stb	  r28, -0x5FC7(r13)
+stw	  r0, -0x5FD4(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBCC0:
+lhz	  r3, -0x5FC6(r13)
+addi	  r0, r3, -4
+sth	  r0, -0x5FC6(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBCD0:		# jumptable 802BB9CC case 6
+addi	  r3, r27, 8
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 8
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBCE8:		# jumptable 802BB9CC case 7
+addi	  r3, r27, 0x13
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+clrlwi	  r0, r24, 24
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, 0x13
+cmplwi	  r0, 3
+stw	  r3, -0x5FD0(r13)
+bne	  def_802BB9CC	# jumptable 802BB9CC default case
+addi	  r0, r27, 0x16
+stb	  r31, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r3, -0x5FCC(r13)
+stb	  r29, -0x5FC8(r13)
+stb	  r30, -0x5FB0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBD2C:		# jumptable 802BB9CC case 8
+clrlwi	  r27, r24, 24
+cmplwi	  r27, 6	# switch 7 cases
+bgt	  def_802BBD4C	# jumptable 802BBD4C default case
+lis	  r3, jpt_802BBD4C@ha
+addi	  r3, r3, jpt_802BBD4C@l
+slwi	  r0, r27, 2
+lwzx	  r0, r3, r0
+mtctr	  r0
+bctr			# switch jump
+
+branch_0x802BBD50:		# jumptable 802BBD4C cases 0,2,4,6
+li	  r3, 0x5820
+li	  r4, 5
+bl	  createRandPlayVec__Q214MSoundSESystem10MSRandPlayFUlUs # MSoundSESystem::MSRandPlay::createRandPlayVec((ulong,ushort))
+b	  branch_0x802BBD6C
+
+def_802BBD4C:		# jumptable 802BBD4C default case
+li	  r3, 0x581B
+li	  r4, 5
+bl	  createRandPlayVec__Q214MSoundSESystem10MSRandPlayFUlUs # MSoundSESystem::MSRandPlay::createRandPlayVec((ulong,ushort))
+
+branch_0x802BBD6C:
+cmpwi	  r27, 5
+beq	  branch_0x802BBD78
+b	  branch_0x802BBD94
+
+branch_0x802BBD78:
+lis	  r26, (0x80010020+2)@h
+addi	  r3, r26, (0x80010020+2)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r26, (0x80010020+2)@l
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  branch_0x802BBDAC
+
+branch_0x802BBD94:
+lis	  r26, (0x80010004+3)@h
+addi	  r3, r26, (0x80010004+3)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r26, (0x80010004+3)@l
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+
+branch_0x802BBDAC:
+clrlwi	  r0, r24, 24
+cmplwi	  r0, 6
+bne	  branch_0x802BBDF0
+lhz	  r3, -0x5FC6(r13)
+li	  r0, -0x10
+lis	  r4, (0x80010014+2)@h
+stw	  r0, -0x5FC0(r13)
+addi	  r5, r4, (0x80010014+2)@l
+addi	  r4, r3, -0x83
+stw	  r5, -0x5FD4(r13)
+li	  r5, 6
+li	  r3, 1
+stb	  r5, -0x5FC7(r13)
+sth	  r4, -0x5FC6(r13)
+stb	  r3, -0x5FC4(r13)
+stw	  r0, -0x5FBC(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBDF0:
+cmplwi	  r0, 1
+beq	  def_802BB9CC	# jumptable 802BB9CC default case
+li	  r0, -0x10
+li	  r3, 2
+stw	  r0, -0x5FC0(r13)
+cmpwi	  r27, 7
+stb	  r3, -0x5FC4(r13)
+stw	  r0, -0x5FBC(r13)
+beq	  branch_0x802BBE18
+b	  branch_0x802BBE2C
+
+branch_0x802BBE18:
+lfs	  f0, 0x4C(r2)
+li	  r0, 0
+stb	  r0, -0x5FB4(r13)
+stfs	  f0, -0x5FB8(r13)
+b	  branch_0x802BBE3C
+
+branch_0x802BBE2C:
+lfs	  f0, 0x40(r2)
+li	  r0, 1
+stb	  r0, -0x5FB4(r13)
+stfs	  f0, -0x5FB8(r13)
+
+branch_0x802BBE3C:
+clrlwi	  r0, r24, 24
+cmplwi	  r0, 7
+bne	  branch_0x802BBE60
+lis	  r3, 0x8001002C@h
+addi	  r3, r3, 0x8001002C@l
+li	  r0, 2
+stw	  r3, -0x5FCC(r13)
+stb	  r0, -0x5FC8(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBE60:
+lis	  r3, 0x80010018@h
+addi	  r3, r3, 0x80010018@l
+li	  r0, 0
+stw	  r3, -0x5FCC(r13)
+stb	  r0, -0x5FC8(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBE78:		# jumptable 802BB9CC case 9
+addi	  r3, r27, 0x14
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+clrlwi	  r0, r24, 24
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, 0x14
+cmplwi	  r0, 6
+stw	  r3, -0x5FD0(r13)
+bne	  branch_0x802BBEC8
+lhz	  r3, -0x5FC6(r13)
+addi	  r0, r27, 0x16
+li	  r4, 3
+stw	  r0, -0x5FD4(r13)
+addi	  r0, r3, -0x83
+stb	  r4, -0x5FC7(r13)
+sth	  r0, -0x5FC6(r13)
+stb	  r31, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stb	  r30, -0x5FB0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBEC8:
+cmplwi	  r0, 1
+bne	  def_802BB9CC	# jumptable 802BB9CC default case
+addi	  r0, r27, 0xB
+li	  r3, 3
+stw	  r0, -0x5FC0(r13)
+stb	  r3, -0x5FC4(r13)
+stw	  r0, -0x5FBC(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBEE8:		# jumptable 802BB9CC case 13
+addi	  r3, r27, 5
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+clrlwi	  r0, r24, 24
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, 5
+cmplwi	  r0, 4
+stw	  r3, -0x5FD0(r13)
+bne	  branch_0x802BBF2C
+addi	  r0, r27, 0x16
+stb	  r31, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r3, -0x5FCC(r13)
+stb	  r29, -0x5FC8(r13)
+stb	  r30, -0x5FB0(r13)
+b	  branch_0x802BBF84
+
+branch_0x802BBF2C:
+cmplwi	  r0, 0
+bne	  branch_0x802BBF58
+addi	  r0, r27, 0x16
+stb	  r31, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r3, -0x5FCC(r13)
+stb	  r29, -0x5FC8(r13)
+stb	  r30, -0x5FB0(r13)
+b	  branch_0x802BBF84
+
+branch_0x802BBF58:
+cmplwi	  r0, 6
+beq	  branch_0x802BBF84
+lfs	  f0, 0x50(r2)
+addi	  r0, r27, 0x23
+stw	  r0, -0x5FCC(r13)
+stfs	  f0, -0x5FB8(r13)
+stb	  r29, -0x5FC8(r13)
+stb	  r29, -0x5FC4(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+stb	  r31, -0x5FB4(r13)
+
+branch_0x802BBF84:
+addi	  r0, r24, -6
+clrlwi	  r0, r0, 24
+cmplwi	  r0, 1
+bgt	  def_802BB9CC	# jumptable 802BB9CC default case
+li	  r0, -0x10
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBFA0:		# jumptable 802BB9CC case 14
+addi	  r3, r27, 0x1E
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x1E
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBFB8:		# jumptable 802BB9CC case 15
+addi	  r3, r27, 0x10
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r4, r27, 0x10
+lwz	  r0, gpMSound(r13)
+stw	  r3, -0x5FD8(r13)
+li	  r5, 0
+mr	  r3, r0
+stw	  r4, -0x5FD0(r13)
+bl	  loadArcSeqData__8JAIBasicFUlb	# JAIBasic::loadArcSeqData((ulong,bool))
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBFE0:		# jumptable 802BB9CC case 16
+addi	  r3, r27, 6
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 6
+stw	  r3, -0x5FD8(r13)
+li	  r25, 1
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BBFFC:		# jumptable 802BB9CC case 20
+addi	  r3, r27, 1
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 1
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r0, -0x5FD4(r13)
+stb	  r30, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC01C:		# jumptable 802BB9CC cases 21-24
+lis	  r26, (0x80010020+1)@h
+addi	  r3, r26, (0x80010020+1)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r4, r26, (0x80010020+1)@l
+stw	  r3, -0x5FD8(r13)
+li	  r0, 0
+stw	  r4, -0x5FD0(r13)
+stw	  r4, -0x5FD4(r13)
+stb	  r0, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC044:		# jumptable 802BB9CC case 28
+addi	  r3, r27, 0x12
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x12
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r0, -0x5FD4(r13)
+stb	  r30, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC064:		# jumptable 802BB9CC case 29
+addi	  r3, r27, 0x21
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x21
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r0, -0x5FD4(r13)
+stb	  r30, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC084:		# jumptable 802BB9CC case 30
+addi	  r3, r27, 0x12
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x12
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC09C:		# jumptable 802BB9CC cases 31,32
+lis	  r26, (0x80010010+2)@h
+addi	  r3, r26, (0x80010010+2)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r4, r26, (0x80010010+2)@l
+stw	  r3, -0x5FD8(r13)
+li	  r0, 0
+stw	  r4, -0x5FD0(r13)
+stw	  r4, -0x5FD4(r13)
+stb	  r0, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC0C4:		# jumptable 802BB9CC case 33
+addi	  r3, r27, 0x21
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x21
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r0, -0x5FD4(r13)
+stb	  r30, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC0E4:		# jumptable 802BB9CC cases 34,35,40-43
+lis	  r26, (0x80010010+2)@h
+addi	  r3, r26, (0x80010010+2)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r4, r26, (0x80010010+2)@l
+stw	  r3, -0x5FD8(r13)
+li	  r0, 0
+stw	  r4, -0x5FD0(r13)
+stw	  r4, -0x5FD4(r13)
+stb	  r0, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC10C:		# jumptable 802BB9CC case 44
+addi	  r3, r27, 0x21
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x21
+stw	  r3, -0x5FD8(r13)
+li	  r25, 1
+stw	  r0, -0x5FD0(r13)
+stw	  r0, -0x5FD4(r13)
+stb	  r30, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC130:		# jumptable 802BB9CC cases 45-51
+lis	  r26, (0x80010010+2)@h
+addi	  r3, r26, (0x80010010+2)@l
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r4, r26, (0x80010010+2)@l
+stw	  r3, -0x5FD8(r13)
+li	  r0, 0
+stw	  r4, -0x5FD0(r13)
+stw	  r4, -0x5FD4(r13)
+stb	  r0, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC158:		# jumptable 802BB9CC case 52
+addi	  r3, r27, 0x15
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x15
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+stw	  r0, -0x5FD4(r13)
+stb	  r30, -0x5FC7(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC178:		# jumptable 802BB9CC case 55
+addi	  r3, r27, 0xD
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0xD
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC190:		# jumptable 802BB9CC case 57
+addi	  r3, r27, 0xD
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0xD
+stw	  r3, -0x5FD8(r13)
+li	  r25, 1
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC1AC:		# jumptable 802BB9CC case 58
+clrlwi	  r0, r24, 24
+cmpwi	  r0, 1
+beq	  branch_0x802BC1E0
+bge	  def_802BB9CC	# jumptable 802BB9CC default case
+cmpwi	  r0, 0
+bge	  branch_0x802BC1C8
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC1C8:
+addi	  r3, r27, 0x1F
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x1F
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC1E0:
+addi	  r3, r27, 0x19
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 0x19
+stw	  r3, -0x5FD8(r13)
+stw	  r0, -0x5FD0(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC1F8:		# jumptable 802BB9CC case 59
+addi	  r3, r27, 9
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+addi	  r0, r27, 9
+stw	  r3, -0x5FD8(r13)
+addi	  r3, r27, 0xD
+stw	  r0, -0x5FD0(r13)
+bl	  startBGM__5MSBgmFUl #	MSBgm::startBGM((ulong))
+li	  r0, 3
+stb	  r29, -0x5FC4(r13)
+stb	  r0, -0x5FC7(r13)
+stw	  r26, -0x5FC0(r13)
+stw	  r26, -0x5FBC(r13)
+b	  def_802BB9CC	# jumptable 802BB9CC default case
+
+branch_0x802BC22C:		# jumptable 802BB9CC case 60
+addi	  r3, r27, 0x2E
+bl	  getSceneNo__5MSBgmFUl	# MSBgm::getSceneNo((ulong))
+lhz	  r4, -0x5FC6(r13)
+addi	  r5, r27, 0x2E
+stw	  r3, -0x5FD8(r13)
+addi	  r0, r4, -0x104
+stw	  r5, -0x5FD0(r13)
+stw	  r5, -0x5FD4(r13)
+stb	  r30, -0x5FC7(r13)
+sth	  r0, -0x5FC6(r13)
+
+def_802BBA1C:
+def_802BB9CC:		# jumptable 802BB9CC default case
 branch_0x802bc254:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      initSound__6MSoundFv
     lwz     r4, -0x5fd8(r13)
     cmpwi   r4, -0x1
     beq-    branch_0x802bc278
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r23, 0x0
     addi    r6, r24, 0x0
     bl      enterStage__6MSoundF13MS_SCENE_WAVEUcUc
 branch_0x802bc278:
     mr      r3, r25
     bl      setWaterCameraFir__12MSSeCallBackFb
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     stb     r25, 0x98(r3)
     lwz     r3, -0x5fcc(r13)
     addis   r0, r3, 0x1
@@ -2087,7 +2746,7 @@ branch_0x802bc278:
     lbz     r0, -0x5fc8(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802bc2d0
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     lbz     r0, 0xd3(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x802bc2d0
@@ -2099,7 +2758,7 @@ branch_0x802bc278:
     li      r5, 0x0
     bl      setVolume__8JAISoundFfUlUc
 branch_0x802bc2d0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r0, 0x1
     stb     r0, 0xcc(r3)
     lwz     r0, 0x8c(sp)
@@ -2173,7 +2832,7 @@ fromTalkingCameraDemo__10MSMainProcFb: # 0x802bc398
     li      r4, 0x0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      talkModeIn__6MSoundFb
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -2187,7 +2846,7 @@ toTalkingCameraDemo__10MSMainProcFv: # 0x802bc3c0
     li      r4, 0x0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmpwi   r0, 0x4
     beq-    branch_0x802bc404
@@ -2212,7 +2871,7 @@ branch_0x802bc404:
 branch_0x802bc40c:
     li      r4, 0x4
 branch_0x802bc410:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f1, -0x4(rtoc)
     bl      setCategoryVOLs__6MSoundFUsf
     lwz     r0, 0xc(sp)
@@ -2223,7 +2882,7 @@ branch_0x802bc410:
 
 .globl fromInnerCameraDemo__10MSMainProcFv
 fromInnerCameraDemo__10MSMainProcFv: # 0x802bc42c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r0, 0x0
     stb     r0, 0xce(r3)
     blr
@@ -2231,7 +2890,7 @@ fromInnerCameraDemo__10MSMainProcFv: # 0x802bc42c
 
 .globl toInnerCameraDemo__10MSMainProcFv
 toInnerCameraDemo__10MSMainProcFv: # 0x802bc43c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r0, 0x1
     stb     r0, 0xce(r3)
     blr

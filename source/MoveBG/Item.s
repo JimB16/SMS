@@ -142,7 +142,7 @@ branch_0x801bb328:
     li      r5, 0x0
     sth     r0, 0x160(r30)
     sth     r0, 0x162(r30)
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r3, -0x6060(r13)
     lbz     r4, 0x7c(r4)
     bl      getNozzleRight__12TFlagManagerCFUcUc
@@ -166,7 +166,7 @@ branch_0x801bb380:
     li      r5, 0x1
     sth     r3, 0x160(r30)
     sth     r0, 0x162(r30)
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r3, -0x6060(r13)
     lbz     r4, 0x7c(r4)
     bl      getNozzleRight__12TFlagManagerCFUcUc
@@ -399,14 +399,14 @@ touchPlayer__10TNozzleBoxFP9THitActor: # 0x801bb6cc
     lwz     r0, 0x148(r3)
     cmpwi   r0, 0x4
     bne-    branch_0x801bb74c
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r5, 0x0
     lwz     r3, -0x6060(r13)
     lbz     r4, 0x7c(r4)
     bl      getNozzleRight__12TFlagManagerCFUcUc
     clrlwi. r0, r3, 24
     bne-    branch_0x801bb74c
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r5, 0x1
     lwz     r3, -0x6060(r13)
     lbz     r4, 0x7c(r4)
@@ -416,7 +416,7 @@ touchPlayer__10TNozzleBoxFP9THitActor: # 0x801bb6cc
     lbz     r0, 0x166(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x801bb74c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x5a
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -430,7 +430,7 @@ branch_0x801bb74c:
     lbz     r0, 0x166(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x801bb780
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x59
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -489,7 +489,7 @@ branch_0x801bb7e0:
     lfs     f2, 0x150(r29)
     lfs     f3, 0x154(r29)
     bl      throwObjToFront__11TMapObjBaseCFP11TMapObjBasefff
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3801
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -976,7 +976,7 @@ branch_0x801bbe28:
 branch_0x801bbe38:
     li      r30, 0x4
 branch_0x801bbe3c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x484e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -989,10 +989,10 @@ branch_0x801bbe3c:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x801bbe6c:
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     mr      r4, r30
     bl      resetNozzleBoxesModel__12TItemManagerFi
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     mr      r4, r31
     bl      fireGetNozzle__12TMarDirectorFP11TItemNozzle
 branch_0x801bbe84:
@@ -1064,7 +1064,7 @@ branch_0x801bbf4c:
     b       branch_0x801bc114
 
 branch_0x801bbf64:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x801bbfa4
@@ -1586,7 +1586,9 @@ control__9TEggYoshiFv: # 0x801bc5a8
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x801BC5E8:		# jumptable 801BC5E4 case 13
     mr      r3, r31
     bl      animIsFinished__11TMapObjBaseCFv
     clrlwi. r0, r3, 24
@@ -1656,8 +1658,77 @@ branch_0x801bc6b8:
     sth     r0, 0xfc(r31)
     b       branch_0x801bc7ac
 
+branch_0x801BC6C4:		# jumptable 801BC5E4 case 11
+mr	  r3, r31
+bl	  animIsFinished__11TMapObjBaseCFv # TMapObjBase::animIsFinished(const(void))
+clrlwi.	  r0, r3, 24
+beq	  def_801BC5E4	# jumptable 801BC5E4 default case
+addi	  r3, r31, 0
+li	  r4, 3
+bl	  startAnim__11TMapObjBaseFUs #	TMapObjBase::startAnim((ushort))
+bl	  SMS_GetYoshi__Fv # SMS_GetYoshi(void)
+lbz	  r0, 0(r3)
+mr	  r30, r3
+cmplwi	  r0, 0
+bne	  branch_0x801BC6FC
+li	  r0, 0
+b	  branch_0x801BC700
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1b70c4, 0x801bc7ac - 0x801bc6c4
+branch_0x801BC6FC:
+li	  r0, 1
+
+branch_0x801BC700:
+cmpwi	  r0, 0
+bne	  branch_0x801BC740
+lwz	  r6, 0x10(r31)
+mr	  r3, r30
+lwz	  r0, 0x14(r31)
+addi	  r5, r31, 0
+addi	  r4, r1, 0x24
+stw	  r6, 0x24(r1)
+stw	  r0, 0x28(r1)
+lwz	  r0, 0x18(r31)
+stw	  r0, 0x2C(r1)
+lfs	  f1, 0x34(r31)
+bl	  appearFromEgg__6TYoshiFRCQ29JGeometry8TVec3_f_fP9TEggYoshi
+addi	  r3, r30, 0
+addi	  r4, r31, 0
+bl	  setEggYoshiPtr__6TYoshiFP9TEggYoshi #	TYoshi::setEggYoshiPtr((TEggYoshi *))
+
+branch_0x801BC740:
+li	  r0, 0xC
+sth	  r0, 0xFC(r31)
+b	  def_801BC5E4	# jumptable 801BC5E4 default case
+
+branch_0x801BC74C:		# jumptable 801BC5E4 case 12
+mr	  r3, r31
+bl	  animIsFinished__11TMapObjBaseCFv # TMapObjBase::animIsFinished(const(void))
+clrlwi.	  r0, r3, 24
+beq	  def_801BC5E4	# jumptable 801BC5E4 default case
+mr	  r3, r31
+lwz	  r12, 0(r31)
+lwz	  r12, 0x104(r12)
+mtlr	  r12
+blrl
+li	  r0, 0
+sth	  r0, 0xFC(r31)
+b	  def_801BC5E4	# jumptable 801BC5E4 default case
+
+branch_0x801BC77C:		# jumptable 801BC5E4 case 15
+lwz	  r3, 0xAC(r31)
+lwz	  r0, 0xB0(r31)
+lfs	  f1, -0x2BE4(r2)
+stw	  r3, 0x18(r1)
+stw	  r0, 0x1C(r1)
+lwz	  r0, 0xB4(r31)
+stw	  r0, 0x20(r1)
+lfs	  f0, 0x1C(r1)
+fcmpu	  cr0, f1, f0
+bne	  def_801BC5E4	# jumptable 801BC5E4 default case
+li	  r0, 0x10
+sth	  r0, 0xFC(r31)
+
+def_801BC5E4:		# jumptable 801BC5E4 default case
 branch_0x801bc7ac:
     lwz     r0, 0x3c(sp)
     lwz     r31, 0x34(sp)
@@ -1803,7 +1874,7 @@ branch_0x801bc8f4:
     stfs    f0, 0x34(r30)
     sth     r0, 0xfc(r30)
     stw     r31, 0x150(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801bca04
@@ -1828,7 +1899,7 @@ branch_0x801bc9a4:
     lfs     f0, -0x2ba8(rtoc)
     li      r4, 0x483e
     stfs    f0, 0x10(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801bc9fc
@@ -1856,7 +1927,7 @@ decideRandomLoveFruit__9TEggYoshiFv: # 0x801bca1c
     stwu    sp, -0x68(sp)
     stw     r31, 0x64(sp)
     mr      r31, r3
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r3, 0x7c(r4)
     cmplwi  r3, 0x7
     bne-    branch_0x801bca5c
@@ -2249,7 +2320,7 @@ appearWithDemo__6TShineFPCc: # 0x801bcf04
     stw     r0, 0x18c(r29)
     li      r0, 0x0
     addi    r5, sp, 0x38
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     mr      r4, r30
     sth     r0, 0x38(sp)
     addi    r9, r29, 0x0
@@ -2310,7 +2381,7 @@ appearSimple__6TShineFi: # 0x801bcfb0
     stw     r0, 0x110(r31)
     lwz     r0, 0x18(r31)
     stw     r0, 0x114(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801bd078
@@ -2352,7 +2423,7 @@ appearWithTimeCallback__6TShineFUlUl: # 0x801bd0b8
     li      r6, -0x1
     li      r7, -0x1
     bl      appearWithTime__6TShineFiiii
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lhz     r0, 0x4e(r3)
     ori     r0, r0, 0x1
     sth     r0, 0x4e(r3)
@@ -2361,7 +2432,7 @@ appearWithTimeCallback__6TShineFUlUl: # 0x801bd0b8
 branch_0x801bd0f4:
     cmplwi  r4, 0x1
     bne-    branch_0x801bd10c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lhz     r0, 0x4e(r3)
     clrrwi  r0, r0, 1
     sth     r0, 0x4e(r3)
@@ -2486,7 +2557,7 @@ branch_0x801bd2b4:
     lfs     f0, -0x7a24(r13)
     fmuls   f0, f1, f0
     stfs    f0, 0x160(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801bd2f4
@@ -2537,7 +2608,7 @@ touchPlayer__6TShineFP9THitActor: # 0x801bd334
     lfs     f0, -0x2b74(rtoc)
     stfs    f0, 0x20(r3)
     stfs    f1, 0x24(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801bd3ac
@@ -2584,7 +2655,7 @@ receiveMessage__6TShineFP9THitActorUl: # 0x801bd3dc
     rlwinm  r3, r3, 0, 5, 3
     stw     r3, 0xf8(r31)
     addi    r3, r31, 0x0
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x0(r4)
     stfs    f0, 0x10(r31)
     lfs     f0, 0x4(r4)
@@ -2752,7 +2823,7 @@ branch_0x801bd654:
 branch_0x801bd658:
     clrlwi. r0, r0, 24
     beq-    branch_0x801bd680
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x0(r3)
     stfs    f0, 0x10(r30)
     lfs     f0, 0x4(r3)
@@ -2769,14 +2840,16 @@ branch_0x801bd680:
     slwi    r0, r4, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x801BD6A0:		# jumptable 801BD69C case 1
     lfs     f1, 0x34(r30)
     lis     r31, 0x1
     lfs     f0, 0x16c(r30)
     subi    r4, r31, 0x7e3f
     fadds   f0, f1, f0
     stfs    f0, 0x34(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801bd6e4
@@ -2814,8 +2887,379 @@ branch_0x801bd6e4:
     stb     r0, 0x54(r3)
     b       branch_0x801bdbd0
 
+branch_0x801BD748:		# jumptable 801BD69C case 11
+lwz	  r0, 0x104(r30)
+cmpwi	  r0, 0
+ble	  branch_0x801BD75C
+li	  r0, 1
+b	  branch_0x801BD760
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1b8148, 0x801bdbd0 - 0x801bd748
+branch_0x801BD75C:
+li	  r0, 0
+
+branch_0x801BD760:
+clrlwi.	  r0, r0, 24
+bne	  def_801BD69C	# jumptable 801BD69C default case
+lis	  r3, -0x800 # 0xF7FFFEFF
+lwz	  r4, 0xF8(r30)
+addi	  r0, r3, -0x101 # 0xF7FFFEFF
+and	  r0, r4, r0
+stw	  r0, 0xF8(r30)
+li	  r0, 0xC
+lwz	  r3, 0x170(r30)
+stw	  r3, 0x104(r30)
+sth	  r0, 0xFC(r30)
+b	  def_801BD69C	# jumptable 801BD69C default case
+
+branch_0x801BD790:		# jumptable 801BD69C case 12
+lis	  r31, 1 # 0x81C1
+lwz	  r3, gpMSound(r13)
+addi	  r4, r31, -0x7E3F # 0x81C1
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x801BD7C4
+addi	  r3, r31, -0x7E3F # 0x81C1
+addi	  r4, r30, 0x10
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+li	  r8, 4
+bl	  startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc # MSoundSESystem::MSoundSE::startSoundActor((ulong,Vec	const *,ulong,JAISound **,ulong,uchar))
+
+branch_0x801BD7C4:
+lfs	  f1, 0x14(r30)
+lfs	  f0, -0x7A20(r13)
+fadds	  f0, f1, f0
+stfs	  f0, 0x14(r30)
+lwz	  r0, 0x154(r30)
+cmplwi	  r0, 3
+bne	  branch_0x801BD800
+lfs	  f1, 0x34(r30)
+lfs	  f0, -0x2BBC(r2)
+fadds	  f0, f1, f0
+stfs	  f0, 0x34(r30)
+lfs	  f1, 0x34(r30)
+lfs	  f2, -0x2BE4(r2)
+lfs	  f3, -0x2B60(r2)
+bl	  MsWrap_f___Ffff_801bdbf0
+
+branch_0x801BD800:
+lwz	  r0, 0x104(r30)
+cmpwi	  r0, 0
+ble	  branch_0x801BD814
+li	  r0, 1
+b	  branch_0x801BD818
+
+branch_0x801BD814:
+li	  r0, 0
+
+branch_0x801BD818:
+clrlwi.	  r0, r0, 24
+bne	  def_801BD69C	# jumptable 801BD69C default case
+lwz	  r0, 0x154(r30)
+cmplwi	  r0, 3
+bne	  branch_0x801BD840
+lwz	  r3, 0x170(r30)
+li	  r0, 0xE
+stw	  r3, 0x104(r30)
+sth	  r0, 0xFC(r30)
+b	  def_801BD69C	# jumptable 801BD69C default case
+
+branch_0x801BD840:
+lfs	  f0, 0x14(r30)
+li	  r0, 0xD
+stfs	  f0, 0x164(r30)
+lwz	  r3, 0x168(r30)
+stw	  r3, 0x104(r30)
+sth	  r0, 0xFC(r30)
+b	  def_801BD69C	# jumptable 801BD69C default case
+
+branch_0x801BD85C:		# jumptable 801BD69C case 14
+lis	  r31, 1 # 0x81C1
+lwz	  r3, gpMSound(r13)
+addi	  r4, r31, -0x7E3F # 0x81C1
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x801BD890
+addi	  r3, r31, -0x7E3F # 0x81C1
+addi	  r4, r30, 0x10
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+li	  r8, 4
+bl	  startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc # MSoundSESystem::MSoundSE::startSoundActor((ulong,Vec	const *,ulong,JAISound **,ulong,uchar))
+
+branch_0x801BD890:
+lfs	  f1, 0x14(r30)
+lfs	  f0, -0x7A20(r13)
+fsubs	  f0, f1, f0
+stfs	  f0, 0x14(r30)
+lfs	  f1, 0x34(r30)
+lfs	  f0, -0x2BBC(r2)
+fadds	  f0, f1, f0
+stfs	  f0, 0x34(r30)
+lfs	  f1, 0x34(r30)
+lfs	  f2, -0x2BE4(r2)
+lfs	  f3, -0x2B60(r2)
+bl	  MsWrap_f___Ffff_801bdbf0
+lwz	  r0, 0x104(r30)
+cmpwi	  r0, 0
+ble	  branch_0x801BD8D4
+li	  r0, 1
+b	  branch_0x801BD8D8
+
+branch_0x801BD8D4:
+li	  r0, 0
+
+branch_0x801BD8D8:
+clrlwi.	  r0, r0, 24
+bne	  def_801BD69C	# jumptable 801BD69C default case
+lfs	  f0, -0x2BBC(r2)
+li	  r0, 0xF
+stfs	  f0, 0x16C(r30)
+lwz	  r3, 0x178(r30)
+stw	  r3, 0x104(r30)
+sth	  r0, 0xFC(r30)
+b	  def_801BD69C	# jumptable 801BD69C default case
+
+branch_0x801BD8FC:		# jumptable 801BD69C case 13
+lis	  r31, 1 # 0x81C1
+lwz	  r3, gpMSound(r13)
+addi	  r4, r31, -0x7E3F # 0x81C1
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x801BD930
+addi	  r3, r31, -0x7E3F # 0x81C1
+addi	  r4, r30, 0x10
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+li	  r8, 4
+bl	  startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc # MSoundSESystem::MSoundSE::startSoundActor((ulong,Vec	const *,ulong,JAISound **,ulong,uchar))
+
+branch_0x801BD930:
+mr	  r3, r30
+bl	  movingCircle__6TShineFv # TShine::movingCircle((void))
+b	  def_801BD69C	# jumptable 801BD69C default case
+
+branch_0x801BD93C:		# jumptable 801BD69C case 15
+lis	  r31, 1 # 0x81C1
+lwz	  r3, gpMSound(r13)
+addi	  r4, r31, -0x7E3F # 0x81C1
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x801BD970
+addi	  r3, r31, -0x7E3F # 0x81C1
+addi	  r4, r30, 0x10
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+li	  r8, 4
+bl	  startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc # MSoundSESystem::MSoundSE::startSoundActor((ulong,Vec	const *,ulong,JAISound **,ulong,uchar))
+
+branch_0x801BD970:
+lfs	  f1, 0x14(r30)
+lfs	  f0, 0x110(r30)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x801BD9A0
+lfs	  f0, 0x188(r30)
+fadds	  f0, f1, f0
+stfs	  f0, 0x14(r30)
+lfs	  f1, 0x188(r30)
+lfs	  f0, -0x7A1C(r13)
+fmuls	  f0, f1, f0
+stfs	  f0, 0x188(r30)
+b	  branch_0x801BD9A4
+
+branch_0x801BD9A0:
+stfs	  f0, 0x14(r30)
+
+branch_0x801BD9A4:
+lfs	  f1, 0x16C(r30)
+lfs	  f0, -0x2B90(r2)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x801BD9C4
+lfs	  f0, -0x2B5C(r2)
+fsubs	  f0, f1, f0
+stfs	  f0, 0x16C(r30)
+b	  branch_0x801BD9C8
+
+branch_0x801BD9C4:
+stfs	  f0, 0x16C(r30)
+
+branch_0x801BD9C8:
+lfs	  f1, 0x34(r30)
+lfs	  f0, 0x16C(r30)
+fadds	  f0, f1, f0
+stfs	  f0, 0x34(r30)
+lfs	  f2, 0x34(r30)
+lfs	  f0, -0x2B60(r2)
+b	  branch_0x801BD9E8
+
+branch_0x801BD9E4:
+fsubs	  f2, f2, f0
+
+branch_0x801BD9E8:
+fcmpo	  cr0, f2, f0
+cror	  eq, gt, eq
+beq	  branch_0x801BD9E4
+lfs	  f1, -0x2B60(r2)
+lfs	  f0, -0x2BE4(r2)
+b	  branch_0x801BDA04
+
+branch_0x801BDA00:
+fadds	  f2, f2, f1
+
+branch_0x801BDA04:
+fcmpo	  cr0, f2, f0
+blt	  branch_0x801BDA00
+lwz	  r0, 0x104(r30)
+cmpwi	  r0, 0
+ble	  branch_0x801BDA20
+li	  r0, 1
+b	  branch_0x801BDA24
+
+branch_0x801BDA20:
+li	  r0, 0
+
+branch_0x801BDA24:
+clrlwi.	  r0, r0, 24
+bne	  def_801BD69C	# jumptable 801BD69C default case
+lwz	  r0, 0xF8(r30)
+rlwinm.	  r0, r0, 0,2,2
+beq	  branch_0x801BDA4C
+lfs	  f1, -0x2BD0(r2)
+li	  r3, 0
+li	  r4, 0xA
+li	  r5, 0
+bl	  setTrackVolume__5MSBgmFUcfUlUc # MSBgm::setTrackVolume((uchar,float,ulong,uchar))
+
+branch_0x801BDA4C:
+lwz	  r3, 0x64(r30)
+li	  r0, 0x11
+clrrwi	  r3, r3, 1
+stw	  r3, 0x64(r30)
+sth	  r0, 0xFC(r30)
+b	  def_801BD69C	# jumptable 801BD69C default case
+
+branch_0x801BDA64:		# jumptable 801BD69C case 17
+lfs	  f1, 0x34(r30)
+lfs	  f0, 0x16C(r30)
+fadds	  f0, f1, f0
+stfs	  f0, 0x34(r30)
+lfs	  f2, 0x34(r30)
+lfs	  f0, -0x2B60(r2)
+b	  branch_0x801BDA84
+
+branch_0x801BDA80:
+fsubs	  f2, f2, f0
+
+branch_0x801BDA84:
+fcmpo	  cr0, f2, f0
+cror	  eq, gt, eq
+beq	  branch_0x801BDA80
+lfs	  f1, -0x2B60(r2)
+lfs	  f0, -0x2BE4(r2)
+b	  branch_0x801BDAA0
+
+branch_0x801BDA9C:
+fadds	  f2, f2, f1
+
+branch_0x801BDAA0:
+fcmpo	  cr0, f2, f0
+blt	  branch_0x801BDA9C
+lis	  r31, 1 # 0x10254
+lwz	  r3, gpMSound(r13)
+addi	  r4, r31, -0x7E3F # 0x81C1
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  def_801BD69C	# jumptable 801BD69C default case
+addi	  r3, r31, -0x7E3F # 0x81C1
+addi	  r4, r30, 0x10
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+li	  r8, 4
+bl	  startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc # MSoundSESystem::MSoundSE::startSoundActor((ulong,Vec	const *,ulong,JAISound **,ulong,uchar))
+b	  def_801BD69C	# jumptable 801BD69C default case
+
+branch_0x801BDAE0:		# jumptable 801BD69C case 18
+lwz	  r29, gpCamera(r13)
+li	  r28, 1
+addi	  r3, r29, 0
+bl	  isSimpleDemoCamera__15CPolarSubCameraCFv # CPolarSubCamera::isSimpleDemoCamera(const(void))
+clrlwi.	  r0, r3, 24
+bne	  branch_0x801BDB1C
+lwz	  r0, 0x50(r29)
+cmpwi	  r0, 0x49
+bne	  branch_0x801BDB0C
+mr	  r0, r28
+b	  branch_0x801BDB10
+
+branch_0x801BDB0C:
+li	  r0, 0
+
+branch_0x801BDB10:
+clrlwi.	  r0, r0, 24
+bne	  branch_0x801BDB1C
+li	  r28, 0
+
+branch_0x801BDB1C:
+clrlwi.	  r0, r28, 24
+beq	  branch_0x801BDB2C
+li	  r0, 1
+b	  branch_0x801BDB30
+
+branch_0x801BDB2C:
+li	  r0, 0
+
+branch_0x801BDB30:
+clrlwi.	  r0, r0, 24
+bne	  def_801BD69C	# jumptable 801BD69C default case
+lwz	  r0, 0x104(r30)
+cmpwi	  r0, 0
+ble	  branch_0x801BDB4C
+li	  r0, 1
+b	  branch_0x801BDB50
+
+branch_0x801BDB4C:
+li	  r0, 0
+
+branch_0x801BDB50:
+clrlwi.	  r0, r0, 24
+bne	  def_801BD69C	# jumptable 801BD69C default case
+lwz	  r4, -0x5DB8(r13)
+addi	  r3, r31, 0x254 # 0x10254
+lwz	  r29, 4(r4)
+bl	  calcKeyCode__Q26JDrama8TNameRefFPCc #	JDrama::TNameRef::calcKeyCode((char const *))
+lwz	  r12, 0(r29)
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+lwz	  r12, 0x1C(r12)
+addi	  r5, r31, 0x254 # 0x10254
+mtlr	  r12
+blrl
+lwz	  r0, 0x2C(r3)
+lis	  r3, appearWithTimeCallback__6TShineFUlUl@ha #	TShine::appearWithTimeCallback((ulong,ulong))
+addi	  r8, r3, appearWithTimeCallback__6TShineFUlUl@l # TShine::appearWithTimeCallback((ulong,ulong))
+stw	  r0, 0x18C(r30)
+li	  r0, 0
+addi	  r4, r1, 0xA0
+lwz	  r3, gpMarDirector(r13)
+mr	  r9, r30
+sth	  r0, 0xA0(r1)
+addi	  r5, r30, 0x10
+li	  r6, -1
+stw	  r4, 8(r1)
+addi	  r4, r31, 0x254 # 0x10254
+li	  r7, 1
+lfs	  f1, -0x2BE4(r2)
+li	  r10, 0
+bl	  fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
+li	  r0, 0x11
+sth	  r0, 0xFC(r30)
+
+def_801BD69C:		# jumptable 801BD69C default case
 branch_0x801bdbd0:
     lwz     r0, 0xfc(sp)
     lwz     r31, 0xf4(sp)
@@ -2834,9 +3278,8 @@ MsWrap_f___Ffff_801bdbf0: # 0x801bdbf0
     bne-    branch_0x801bdc2c
     fmr     f1, f2
     blr
+    b       branch_0x801bdc0c
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1b8604, 0x801bdc08 - 0x801bdc04
 branch_0x801bdc08:
     fsubs   f1, f1, f0
 branch_0x801bdc0c:
@@ -2855,9 +3298,8 @@ branch_0x801bdc20:
 branch_0x801bdc2c:
     fsubs   f0, f3, f2
     b       branch_0x801bdc0c
+    blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1b8634, 0x801bdc38 - 0x801bdc34
 
 .globl movingCircle__6TShineFv
 movingCircle__6TShineFv: # 0x801bdc38
@@ -2983,7 +3425,7 @@ calc__6TShineFv: # 0x801bdda8
     lwz     r3, 0x58(r3)
     addi    r29, r3, 0x60
     bne-    branch_0x801be06c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     addi    r7, r31, 0x0
     li      r4, 0x128
@@ -2992,7 +3434,7 @@ calc__6TShineFv: # 0x801bdda8
     stw     r3, 0x198(r31)
     addi    r5, r29, 0x0
     addi    r7, r31, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x129
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -3000,7 +3442,7 @@ calc__6TShineFv: # 0x801bdda8
     lbz     r0, 0x1b4(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x801bde64
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     addi    r7, r31, 0x0
     li      r4, 0x127
@@ -3009,13 +3451,13 @@ calc__6TShineFv: # 0x801bdda8
     stw     r3, 0x194(r31)
     addi    r5, r29, 0x0
     addi    r7, r31, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x12a
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     stw     r3, 0x1a0(r31)
 branch_0x801bde64:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f0, 0x14(r31)
     addi    r3, r3, 0x124
     lfs     f4, 0x10(r31)
@@ -3261,7 +3703,7 @@ load__9TCoinBlueFR20JSUMemoryInputStream: # 0x801be1a4
     lwz     r0, 0xf8(r31)
     oris    r0, r0, 0x1000
     stw     r0, 0xf8(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x134(r31)
     lbz     r4, 0x7c(r3)
     lwz     r3, -0x6060(r13)
@@ -3318,7 +3760,7 @@ taken__9TCoinBlueFP9THitActor: # 0x801be264
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
     addi    r4, r30, 0x0
-    lwz     r0, -0x6048(r13)
+    lwz     r0, gpMarDirector(r13)
     mr      r3, r0
     bl      fireGetBlueCoin__12TMarDirectorFP5TCoin
     lwz     r3, 0x148(r30)
@@ -3372,7 +3814,7 @@ makeObjAppeared__9TCoinBlueFv: # 0x801be330
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     mr      r31, r3
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r0, 0x134(r3)
     lbz     r4, 0x7c(r4)
     lwz     r3, -0x6060(r13)
@@ -3450,7 +3892,7 @@ taken__8TCoinRedFP9THitActor: # 0x801be428
     lwz     r0, -0x6060(r13)
     mr      r3, r0
     bl      incFlag__12TFlagManagerFUll
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4846
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3662,11 +4104,11 @@ loadAfter__5TCoinFv: # 0x801be6e4
     bl      isInMirror__19TMirrorModelManagerCFRQ29JGeometry8TVec3_f_
     clrlwi. r0, r3, 24
     beq-    branch_0x801be7b4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x801be778
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, sp, 0x1c
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -3736,7 +4178,7 @@ perform__5TCoinFUlPQ26JDrama9TGraphics: # 0x801be7cc
     beq-    branch_0x801be954
     rlwinm. r0, r3, 0, 27, 27
     beq-    branch_0x801be954
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x1
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x1
@@ -3937,7 +4379,7 @@ branch_0x801bea9c:
 branch_0x801beaa0:
     clrlwi. r0, r0, 24
     beq-    branch_0x801beaf4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x134(r31)
     lbz     r4, 0x7c(r3)
     lwz     r3, -0x6060(r13)
@@ -3945,7 +4387,7 @@ branch_0x801beaa0:
     bl      getBlueCoinFlag__12TFlagManagerCFUcUc
     clrlwi. r0, r3, 24
     bne-    branch_0x801beb1c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4843
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3958,7 +4400,7 @@ branch_0x801beaa0:
     b       branch_0x801beb1c
 
 branch_0x801beaf4:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3983,7 +4425,7 @@ branch_0x801beb1c:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x58
     li      r6, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -4030,7 +4472,7 @@ appearWithoutSound__5TCoinFv: # 0x801beba8
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x58
     li      r6, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -4102,7 +4544,7 @@ taken__5TCoinFP9THitActor: # 0x801bec88
     addi    r3, r30, 0x0
     li      r5, 0x1
     bl      incGoldCoinFlag__12TFlagManagerFUcl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4811
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4142,7 +4584,7 @@ branch_0x801bed30:
     addi    r5, r31, 0x2a4
     mtlr    r12
     blrl
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r31, 0x2a4
     lfs     f1, 0x10(r28)
     addi    r5, r31, 0x2c4
@@ -4421,7 +4863,7 @@ branch_0x801bf108:
     clrlwi. r0, r0, 24
     bne-    branch_0x801bf19c
     rlwinm. r0, r3, 0, 23, 23
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r30, r3, 0x40
     beq-    branch_0x801bf130
     mr      r3, r31
@@ -4699,7 +5141,7 @@ branch_0x801bf468:
     clrlwi. r0, r0, 24
     beq-    branch_0x801bf4a0
 branch_0x801bf470:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x484c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

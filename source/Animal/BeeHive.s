@@ -186,7 +186,7 @@ execute__25TNerveBeeHiveMarioWaterInCFP24TSpineBase_10TLiveActor_: # 0x8000e930
     lwz     r4, 0x150(r31)
     stfs    f0, 0x34(r4)
     lfs     f1, -0x7e28(rtoc)
-    lwz     r29, -0x60b8(r13)
+    lwz     r29, MarioHitActor(r13)
     fmr     f2, f1
     fmr     f3, f1
     stw     r29, 0x7c(sp)
@@ -267,12 +267,12 @@ branch_0x8000eacc:
     b       branch_0x8000ec00
 
 branch_0x8000ead4:
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     li      r29, 0x1
     addi    r31, r29, 0x0
     lwz     r4, 0x0(r3)
     addi    r3, r29, 0x0
-    rlwinm. r0, r4, 0, 30, 30
+    rlwinm. r0, r4, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x8000eaf8
     mr      r0, r29
     b       branch_0x8000eafc
@@ -305,9 +305,10 @@ branch_0x8000eb24:
 branch_0x8000eb44:
     clrlwi. r0, r31, 24
     bne-    branch_0x8000eb74
-    lwz     r3, -0x6094(r13)
+
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 14, 14
+    rlwinm. r0, r0, 0, 14, 14 # MARIOFLAG_20000
     beq-    branch_0x8000eb64
     li      r0, 0x1
     b       branch_0x8000eb68
@@ -487,7 +488,7 @@ execute__19TNerveBeeHiveAttackCFP24TSpineBase_10TLiveActor_: # 0x8000ed18
     lwz     r4, 0x150(r31)
     stfs    f0, 0x34(r4)
     lfs     f1, -0x7e28(rtoc)
-    lwz     r29, -0x60b8(r13)
+    lwz     r29, MarioHitActor(r13)
     fmr     f2, f1
     fmr     f3, f1
     stw     r29, 0x9c(sp)
@@ -523,12 +524,12 @@ branch_0x8000edc8:
     lwz     r0, 0xb4(sp)
     stw     r0, 0x54(r4)
 branch_0x8000ee1c:
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     li      r29, 0x1
     addi    r28, r29, 0x0
     lwz     r4, 0x0(r3)
     addi    r3, r29, 0x0
-    rlwinm. r0, r4, 0, 30, 30
+    rlwinm. r0, r4, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x8000ee40
     mr      r0, r29
     b       branch_0x8000ee44
@@ -561,9 +562,10 @@ branch_0x8000ee6c:
 branch_0x8000ee8c:
     clrlwi. r0, r28, 24
     bne-    branch_0x8000eebc
-    lwz     r3, -0x6094(r13)
+
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 14, 14
+    rlwinm. r0, r0, 0, 14, 14 # MARIOFLAG_20000
     beq-    branch_0x8000eeac
     li      r0, 0x1
     b       branch_0x8000eeb0
@@ -620,7 +622,7 @@ branch_0x8000ef44:
     b       branch_0x8000effc
 
 branch_0x8000ef58:
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r31, 0x0
     addi    r3, sp, 0x8c
     lwz     r5, 0x0(r6)
@@ -755,7 +757,7 @@ execute__18TNerveBeeHiveBreakCFP24TSpineBase_10TLiveActor_: # 0x8000f0a8
     stfs    f0, 0xb0(sp)
     stfs    f0, 0xb4(sp)
     bl      SMS_EasyEmitParticle_27E_SMS_EFFECT_ONETIME_NORMAL___F27E_SMS_EFFECT_ONETIME_NORMALPCQ29JGeometry8TVec3_f_PCvRCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28f6
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -801,7 +803,7 @@ branch_0x8000f194:
     lwz     r4, 0x150(r31)
     stfs    f0, 0x34(r4)
     lfs     f1, -0x7e28(rtoc)
-    lwz     r29, -0x60b8(r13)
+    lwz     r29, MarioHitActor(r13)
     fmr     f2, f1
     fmr     f3, f1
     stw     r29, 0x84(sp)
@@ -941,7 +943,7 @@ execute__17TNerveBeeHiveFallCFP24TSpineBase_10TLiveActor_: # 0x8000f398
     lwz     r0, 0xf0(r31)
     ori     r0, r0, 0x80
     stw     r0, 0xf0(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8000f40c
@@ -1012,7 +1014,7 @@ branch_0x8000f4e0:
     clrlwi. r0, r0, 24
     beq-    branch_0x8000f4fc
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r4, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r29, r3
@@ -1683,8 +1685,8 @@ branch_0x8000fe30:
     stw     r0, 0x8(r3)
     b       branch_0x8000fe98
 
+    b       branch_0x8000fdd8
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0xa894, 0x8000fe98 - 0x8000fe94
 branch_0x8000fe98:
     lwz     r31, 0x64(sp)
     lwz     r30, 0x60(sp)
@@ -1814,7 +1816,7 @@ branch_0x80010030:
     lfs     f0, -0x7e28(rtoc)
     stfs    f0, 0x18c(r31)
     lfs     f0, 0x188(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f30, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1853,7 +1855,7 @@ branch_0x800100b4:
     bne-    branch_0x80010114
     lfs     f0, 0x188(r31)
     li      r4, 0x28f7
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f30, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2022,7 +2024,7 @@ branch_0x800102fc:
     fmuls   f0, f0, f1
     stfs    f0, 0x174(r31)
 branch_0x80010338:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -2078,7 +2080,7 @@ branch_0x80010338:
     lwz     r4, 0x150(r31)
     stfs    f0, 0x34(r4)
     lfs     f1, -0x7e28(rtoc)
-    lwz     r30, -0x60b8(r13)
+    lwz     r30, MarioHitActor(r13)
     fmr     f2, f1
     fmr     f3, f1
     stw     r30, 0x100(sp)
@@ -2445,7 +2447,7 @@ branch_0x80010920:
     stfs    f3, 0x1a0(r3)
     stfs    f4, 0x1a4(r3)
     stfs    f5, 0x1a8(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      startBeeSe__6MSoundFP3VecUl
 branch_0x80010970:
     lwz     r0, 0x34(sp)
@@ -2579,7 +2581,7 @@ branch_0x80010b18:
     lfs     f1, 0x48(sp)
     fctiwz  f2, f0
     lfs     f0, 0xc0(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f0, f1, f0
     lfs     f1, 0x44(sp)
     stfd    f2, 0x50(sp)
@@ -2645,7 +2647,7 @@ branch_0x80010c28:
     mr      r5, r31
     lfs     f0, 0xc0(r30)
     addi    r4, sp, 0x44
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f0
     lfs     f2, 0xbc(r30)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -2768,7 +2770,7 @@ branch_0x80010dbc:
 branch_0x80010dc8:
     lwz     r3, 0x10(r29)
     lwz     r0, 0x14(r29)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r3, 0x98(sp)
     stw     r0, 0x9c(sp)
     lwz     r0, 0x18(r29)
@@ -2902,14 +2904,14 @@ branch_0x80010f84:
     bl      identity33__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___Fv
     stfs    f31, 0x54(sp)
     addi    r5, sp, 0x48
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0xe7
     stfs    f30, 0x64(sp)
     li      r6, 0x0
     stfs    f29, 0x74(sp)
     li      r7, 0x0
     bl      emitAndBindToMtx__21TMarioParticleManagerFlPA4_fUcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x7e28(rtoc)
     li      r4, 0x6802
@@ -3331,7 +3333,7 @@ receiveMessageFromChild__8TBeeHiveFP4TBee: # 0x80011518
     lwzx    r29, r5, r4
     beq-    branch_0x80011594
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r4, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r29, r3

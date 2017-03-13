@@ -15,7 +15,7 @@ updateBalloon__11TNpcBalloonFv: # 0x8021696c
     lwz     r0, 0x4(r31)
     cmpwi   r0, 0x0
     bne-    branch_0x802169c4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r5, 0x1
     lwz     r4, 0x0(r31)
     lwz     r3, 0x74(r3)

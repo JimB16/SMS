@@ -1145,6 +1145,73 @@ branch_0x80322d04:
 
 .globl createParticle__14JPABaseEmitterFv
 createParticle__14JPABaseEmitterFv: # 0x80322d14
+
+.set var_2D0, -0x2D0
+.set var_2CC, -0x2CC
+.set var_2C8, -0x2C8
+.set var_2C4, -0x2C4
+.set var_2C0, -0x2C0
+.set var_2BC, -0x2BC
+.set var_2B8, -0x2B8
+.set var_2B4, -0x2B4
+.set var_2B0, -0x2B0
+.set var_2AC, -0x2AC
+.set var_2A8, -0x2A8
+.set var_2A4, -0x2A4
+.set var_2A0, -0x2A0
+.set var_29C, -0x29C
+.set var_298, -0x298
+.set var_290, -0x290
+.set var_28C, -0x28C
+.set var_288, -0x288
+.set var_284, -0x284
+.set var_280, -0x280
+.set var_27C, -0x27C
+.set var_278, -0x278
+.set var_208, -0x208
+.set var_204, -0x204
+.set var_200, -0x200
+.set var_1F8, -0x1F8
+.set var_1F4, -0x1F4
+.set var_1F0, -0x1F0
+.set var_1EC, -0x1EC
+.set var_1E8, -0x1E8
+.set var_1E4, -0x1E4
+.set var_1E0, -0x1E0
+.set var_1B0, -0x1B0
+.set var_1AC, -0x1AC
+.set var_1A8, -0x1A8
+.set var_180, -0x180
+.set var_17C, -0x17C
+.set var_178, -0x178
+.set var_170, -0x170
+.set var_140, -0x140
+.set var_110, -0x110
+.set var_E0, -0xE0
+.set var_DC, -0xDC
+.set var_D8, -0xD8
+.set var_B8, -0xB8
+.set var_B0, -0xB0
+.set var_A8, -0xA8
+.set var_88, -0x88
+.set var_80, -0x80
+.set var_78, -0x78
+.set var_70, -0x70
+.set var_68, -0x68
+.set var_60, -0x60
+.set var_58, -0x58
+.set var_50, -0x50
+.set var_48, -0x48
+.set var_40, -0x40
+.set var_38, -0x38
+.set var_30, -0x30
+.set var_28, -0x28
+.set var_20, -0x20
+.set var_18, -0x18
+.set var_10, -0x10
+.set var_8, -8
+.set arg_4,  4
+
     mflr    r0
     lis     r4, 0x8040
     stw     r0, 0x4(sp)
@@ -1304,14 +1371,560 @@ branch_0x80322f0c:
     slwi    r3, r5, 2
     lwzx    r3, r4, r3
     mtctr   r3
-    bctr       
+    bctr			# switch jump
+
+branch_0x80322F5C:		# jumptable 80322F58 case 4
     stfs    f0, 0x470(sp)
     stfs    f0, 0x46c(sp)
     stfs    f0, 0x468(sp)
     b       branch_0x803236e0
 
+branch_0x80322F6C:		# jumptable 80322F58 case 6
+lwz	  r0, 0x188(r31)
+rlwinm.	  r0, r0, 0,30,30
+beq	  branch_0x80322F80
+li	  r0, 1
+b	  branch_0x80322F84
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x31d96c, 0x803236e0 - 0x80322f6c
+branch_0x80322F80:
+li	  r0, 0
+
+branch_0x80322F84:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x80322FD4
+xoris	  r0, r27, 0x8000
+lfd	  f2, 0x828(r2)
+stw	  r0, 0x548+var_B0+4(r1)
+addi	  r0, r26, -1
+lis	  r3, 0x4330
+lfs	  f3, 0x81C(r2)
+stw	  r3, 0x548+var_B0(r1)
+xoris	  r0, r0, 0x8000
+stw	  r0, 0x548+var_B8+4(r1)
+lfd	  f0, 0x548+var_B0(r1)
+stw	  r3, 0x548+var_B8(r1)
+fsubs	  f1, f0, f2
+lfd	  f0, 0x548+var_B8(r1)
+fmuls	  f1, f15, f1
+fsubs	  f0, f0, f2
+fdivs	  f0, f1, f0
+fnmsubs	  f1, f15, f3, f0
+b	  branch_0x80323018
+
+branch_0x80322FD4:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r0, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r0
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+lfs	  f1, 0x814(r2)
+srwi	  r0, r0, 9
+lfs	  f0, 0x81C(r2)
+oris	  r0, r0, 0x3F80
+stw	  r0, 0x548+var_278(r1)
+lfs	  f2, 0x548+var_278(r1)
+fsubs	  f1, f2, f1
+fsubs	  f0, f1, f0
+fmuls	  f1, f15, f0
+
+branch_0x80323018:
+lfs	  f0, 0x810(r2)
+stfs	  f0, 0x548+var_E0(r1)
+stfs	  f0, 0x548+var_DC(r1)
+stfs	  f1, 0x548+var_D8(r1)
+b	  def_80322F58	# jumptable 80322F58 default case
+
+branch_0x8032302C:		# jumptable 80322F58 case 5
+lwz	  r0, 0x188(r31)
+rlwinm.	  r0, r0, 0,30,30
+beq	  branch_0x80323040
+li	  r0, 1
+b	  branch_0x80323044
+
+branch_0x80323040:
+li	  r0, 0
+
+branch_0x80323044:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8032305C
+slwi	  r0, r27, 16
+divw	  r0, r0, r26
+extsh	  r25, r0
+b	  branch_0x80323090
+
+branch_0x8032305C:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r0, 0x21C(r31)
+addi	  r4, r3, 0x660D # 0x19660D
+mullw	  r3, r0, r4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r5, 0x21C(r31)
+mullw	  r3, r5, r4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+extsh	  r25, r5
+
+branch_0x80323090:
+lfs	  f2, 0x1F4(r31)
+lfs	  f0, 0x814(r2)
+fcmpo	  cr0, f2, f0
+bge	  branch_0x803230DC
+extsh	  r0, r25
+lfd	  f1, 0x828(r2)
+xoris	  r0, r0, 0x8000
+stw	  r0, 0x548+var_B8+4(r1)
+lis	  r0, 0x4330
+addi	  r4, r1, 0x548+var_110
+stw	  r0, 0x548+var_B8(r1)
+lfd	  f0, 0x548+var_B8(r1)
+fsubs	  f0, f0, f1
+fmuls	  f0, f0, f2
+fctiwz	  f0, f0
+stfd	  f0, 0x548+var_B0(r1)
+lwz	  r3, 0x548+var_B0+4(r1)
+bl	  JPAGetYRotateMtx__FsPA4_f # JPAGetYRotateMtx(short,float *[4])
+b	  branch_0x803230E8
+
+branch_0x803230DC:
+addi	  r3, r25, 0
+addi	  r4, r1, 0x548+var_110
+bl	  JPAGetYRotateMtx__FsPA4_f # JPAGetYRotateMtx(short,float *[4])
+
+branch_0x803230E8:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r0, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r0
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+lfs	  f0, 0x814(r2)
+srwi	  r0, r0, 9
+oris	  r0, r0, 0x3F80
+stw	  r0, 0x548+var_27C(r1)
+lwz	  r0, 0x188(r31)
+lfs	  f1, 0x548+var_27C(r1)
+clrlwi.	  r0, r0, 31
+fsubs	  f1, f1, f0
+beq	  branch_0x80323134
+li	  r0, 1
+b	  branch_0x80323138
+
+branch_0x80323134:
+li	  r0, 0
+
+branch_0x80323138:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x80323144
+bl	  JPASqrtf__Ff	# JPASqrtf(float)
+
+branch_0x80323144:
+lfs	  f3, 0x1F8(r31)
+addi	  r4, r1, 0x548+var_E0
+lfs	  f2, 0x814(r2)
+mr	  r5, r4
+lfs	  f0, 0x810(r2)
+fsubs	  f2, f2, f3
+addi	  r3, r1, 0x548+var_110
+stfs	  f0, 0x548+var_E0(r1)
+fmadds	  f1, f1, f2, f3
+stfs	  f0, 0x548+var_DC(r1)
+fmuls	  f0, f15, f1
+stfs	  f0, 0x548+var_D8(r1)
+bl	  PSMTXMultVec
+b	  def_80322F58	# jumptable 80322F58 default case
+
+branch_0x8032317C:		# jumptable 80322F58 case 0
+lis	  r3, 0x19 # 0x19660D
+lwz	  r0, 0x21C(r31)
+addi	  r4, r3, 0x660D # 0x19660D
+mullw	  r3, r0, r4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+lfs	  f4, 0x814(r2)
+srwi	  r0, r0, 9
+oris	  r0, r0, 0x3F80
+stw	  r0, 0x548+var_2A8(r1)
+lwz	  r0, 0x21C(r31)
+lfs	  f0, 0x548+var_2A8(r1)
+mullw	  r3, r0, r4
+fsubs	  f3, f0, f4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+srwi	  r0, r0, 9
+oris	  r0, r0, 0x3F80
+stw	  r0, 0x548+var_2AC(r1)
+lwz	  r0, 0x21C(r31)
+lfs	  f0, 0x548+var_2AC(r1)
+mullw	  r3, r0, r4
+fsubs	  f0, f0, f4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+lfs	  f2, 0x81C(r2)
+srwi	  r0, r0, 9
+oris	  r0, r0, 0x3F80
+fsubs	  f1, f0, f2
+stw	  r0, 0x548+var_2B0(r1)
+fsubs	  f0, f3, f2
+lfs	  f3, 0x548+var_2B0(r1)
+fmuls	  f1, f15, f1
+fmuls	  f0, f15, f0
+fsubs	  f3, f3, f4
+fsubs	  f2, f3, f2
+fmuls	  f2, f15, f2
+stfs	  f2, 0x548+var_E0(r1)
+stfs	  f1, 0x548+var_DC(r1)
+stfs	  f0, 0x548+var_D8(r1)
+b	  def_80322F58	# jumptable 80322F58 default case
+
+branch_0x80323238:		# jumptable 80322F58 case 1
+lwz	  r0, 0x188(r31)
+rlwinm.	  r0, r0, 0,30,30
+beq	  branch_0x8032324C
+li	  r0, 1
+b	  branch_0x80323250
+
+branch_0x8032324C:
+li	  r0, 0
+
+branch_0x80323250:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x8032326C
+addi	  r3, r24, 0
+addi	  r4, r25, 0
+addi	  r5, r1, 0x548+var_140
+bl	  JPAGetXYRotateMtx__FssPA4_f #	JPAGetXYRotateMtx(short,short,float *[4])
+b	  branch_0x80323358
+
+branch_0x8032326C:
+lfs	  f1, 0x1F4(r31)
+lfs	  f0, 0x814(r2)
+fcmpo	  cr0, f1, f0
+bge	  branch_0x803232FC
+lis	  r3, 0x19 # 0x19660D
+lwz	  r0, 0x21C(r31)
+addi	  r4, r3, 0x660D # 0x19660D
+mullw	  r3, r0, r4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lis	  r0, 0x4330
+addi	  r5, r1, 0x548+var_140
+lwz	  r6, 0x21C(r31)
+lfd	  f1, 0x828(r2)
+clrlwi	  r3, r6, 16
+lfs	  f2, 0x1F4(r31)
+addi	  r3, r3, -0x8000
+xoris	  r3, r3, 0x8000
+stw	  r3, 0x548+var_B8+4(r1)
+mullw	  r3, r6, r4
+stw	  r0, 0x548+var_B8(r1)
+lfd	  f0, 0x548+var_B8(r1)
+addis	  r3, r3, 0x3C6F
+fsubs	  f0, f0, f1
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+fmuls	  f0, f2, f0
+lwz	  r0, 0x21C(r31)
+clrlwi	  r3, r0, 17
+fctiwz	  f0, f0
+addi	  r3, r3, -0x4000
+stfd	  f0, 0x548+var_B0(r1)
+lwz	  r4, 0x548+var_B0+4(r1)
+bl	  JPAGetXYRotateMtx__FssPA4_f #	JPAGetXYRotateMtx(short,short,float *[4])
+b	  branch_0x80323358
+
+branch_0x803232FC:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r0, 0x21C(r31)
+addi	  r4, r3, 0x660D # 0x19660D
+mullw	  r3, r0, r4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+addi	  r6, r1, 0x548+var_140
+lwz	  r5, 0x21C(r31)
+mullw	  r3, r5, r4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+extsh	  r5, r5
+lwz	  r7, 0x21C(r31)
+mullw	  r3, r7, r4
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+extsh	  r4, r7
+lwz	  r0, 0x21C(r31)
+extsh	  r3, r0
+bl	  JPAGetXYZRotateMtx__FsssPA4_f	# JPAGetXYZRotateMtx(short,short,short,float *[4])
+
+branch_0x80323358:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r0, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r0
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+lfs	  f0, 0x814(r2)
+srwi	  r0, r0, 9
+oris	  r0, r0, 0x3F80
+stw	  r0, 0x548+var_280(r1)
+lwz	  r0, 0x188(r31)
+lfs	  f1, 0x548+var_280(r1)
+clrlwi.	  r0, r0, 31
+fsubs	  f1, f1, f0
+beq	  branch_0x803233A4
+li	  r0, 1
+b	  branch_0x803233A8
+
+branch_0x803233A4:
+li	  r0, 0
+
+branch_0x803233A8:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x803233B4
+bl	  JPASqrtf__Ff	# JPASqrtf(float)
+
+branch_0x803233B4:
+lfs	  f3, 0x1F8(r31)
+addi	  r4, r1, 0x548+var_E0
+lfs	  f2, 0x814(r2)
+mr	  r5, r4
+lfs	  f0, 0x810(r2)
+fsubs	  f2, f2, f3
+addi	  r3, r1, 0x548+var_140
+stfs	  f0, 0x548+var_E0(r1)
+fmadds	  f1, f1, f2, f3
+stfs	  f0, 0x548+var_DC(r1)
+fmuls	  f0, f15, f1
+stfs	  f0, 0x548+var_D8(r1)
+bl	  PSMTXMultVec
+b	  def_80322F58	# jumptable 80322F58 default case
+
+branch_0x803233EC:		# jumptable 80322F58 case 2
+lfs	  f1, 0x1F4(r31)
+lfs	  f0, 0x814(r2)
+fcmpo	  cr0, f1, f0
+bge	  branch_0x80323454
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r3, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r3
+addis	  r3, r3, 0x3C6F
+addi	  r3, r3, -0xCA1
+stw	  r3, 0x21C(r31)
+lwz	  r3, 0x21C(r31)
+lfd	  f1, 0x828(r2)
+clrlwi	  r3, r3, 16
+lfs	  f2, 0x1F4(r31)
+addi	  r3, r3, -0x8000
+xoris	  r3, r3, 0x8000
+stw	  r3, 0x548+var_B8+4(r1)
+stw	  r0, 0x548+var_B8(r1)
+lfd	  f0, 0x548+var_B8(r1)
+fsubs	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x548+var_B0(r1)
+lwz	  r24, 0x548+var_B0+4(r1)
+b	  branch_0x80323478
+
+branch_0x80323454:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r0, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r0
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+extsh	  r24, r0
+
+branch_0x80323478:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r0, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r0
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+lfs	  f0, 0x814(r2)
+srwi	  r0, r0, 9
+oris	  r0, r0, 0x3F80
+stw	  r0, 0x548+var_284(r1)
+lwz	  r0, 0x188(r31)
+lfs	  f1, 0x548+var_284(r1)
+clrlwi.	  r0, r0, 31
+fsubs	  f1, f1, f0
+beq	  branch_0x803234C4
+li	  r0, 1
+b	  branch_0x803234C8
+
+branch_0x803234C4:
+li	  r0, 0
+
+branch_0x803234C8:
+clrlwi.	  r0, r0, 24
+beq	  branch_0x803234D4
+bl	  JPASqrtf__Ff	# JPASqrtf(float)
+
+branch_0x803234D4:
+lfs	  f2, 0x1F8(r31)
+lis	  r3, 0x19 # 0x19660D
+lfs	  f3, 0x814(r2)
+clrlwi	  r5, r24, 16
+lwz	  r0, -0x5EAC(r13)
+fsubs	  f0, f3, f2
+lwz	  r4, -0x5EA8(r13)
+sraw	  r0, r5, r0
+slwi	  r0, r0, 2
+fmadds	  f1, f1, f0, f2
+lfsx	  f0, r4, r0
+addi	  r0, r3, 0x660D # 0x19660D
+fmuls	  f4, f15, f1
+fmuls	  f0, f4, f0
+stfs	  f0, 0x548+var_E0(r1)
+lwz	  r3, 0x21C(r31)
+mullw	  r3, r3, r0
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+lfs	  f1, 0x818(r2)
+srwi	  r3, r0, 9
+lwz	  r0, -0x5EAC(r13)
+oris	  r3, r3, 0x3F80
+lfs	  f0, 0x81C(r2)
+stw	  r3, 0x548+var_288(r1)
+sraw	  r0, r5, r0
+fmuls	  f2, f1, f15
+lwz	  r3, -0x5EA4(r13)
+lfs	  f1, 0x548+var_288(r1)
+slwi	  r0, r0, 2
+fsubs	  f1, f1, f3
+fsubs	  f0, f1, f0
+fmuls	  f0, f2, f0
+stfs	  f0, 0x548+var_DC(r1)
+lfsx	  f0, r3, r0
+fmuls	  f0, f4, f0
+stfs	  f0, 0x548+var_D8(r1)
+b	  def_80322F58	# jumptable 80322F58 default case
+
+branch_0x80323574:		# jumptable 80322F58 case 3
+lfs	  f1, 0x1F4(r31)
+lfs	  f0, 0x814(r2)
+fcmpo	  cr0, f1, f0
+bge	  branch_0x803235DC
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r3, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r3
+addis	  r3, r3, 0x3C6F
+addi	  r3, r3, -0xCA1
+stw	  r3, 0x21C(r31)
+lwz	  r3, 0x21C(r31)
+lfd	  f1, 0x828(r2)
+clrlwi	  r3, r3, 16
+lfs	  f2, 0x1F4(r31)
+addi	  r3, r3, -0x8000
+xoris	  r3, r3, 0x8000
+stw	  r3, 0x548+var_B8+4(r1)
+stw	  r0, 0x548+var_B8(r1)
+lfd	  f0, 0x548+var_B8(r1)
+fsubs	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x548+var_B0(r1)
+lwz	  r24, 0x548+var_B0+4(r1)
+b	  branch_0x80323600
+
+branch_0x803235DC:
+lis	  r3, 0x19 # 0x19660D
+lwz	  r4, 0x21C(r31)
+addi	  r0, r3, 0x660D # 0x19660D
+mullw	  r3, r4, r0
+addis	  r3, r3, 0x3C6F
+addi	  r0, r3, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r0, 0x21C(r31)
+extsh	  r24, r0
+
+branch_0x80323600:
+addi	  r3, r24, 0
+addi	  r4, r1, 0x548+var_170
+bl	  JPAGetYRotateMtx__FsPA4_f # JPAGetYRotateMtx(short,float *[4])
+lwz	  r0, -0x5EAC(r13)
+clrlwi	  r4, r24, 16
+lwz	  r5, -0x5EA8(r13)
+lis	  r3, 0x19 # 0x19660D
+sraw	  r0, r4, r0
+slwi	  r7, r0, 2
+lfs	  f1, 0x810(r2)
+lfsx	  f0, r5, r7
+addi	  r0, r3, 0x660D # 0x19660D
+addi	  r4, r1, 0x548+var_180
+fmuls	  f0, f15, f0
+mr	  r5, r4
+addi	  r3, r1, 0x548+var_170
+stfs	  f0, 0x548+var_E0(r1)
+stfs	  f1, 0x548+var_DC(r1)
+lwz	  r6, -0x5EA4(r13)
+lfsx	  f0, r6, r7
+fmuls	  f0, f15, f0
+stfs	  f0, 0x548+var_D8(r1)
+lwz	  r6, 0x21C(r31)
+lfs	  f0, 0x1F8(r31)
+mullw	  r6, r6, r0
+fmuls	  f2, f15, f0
+addis	  r6, r6, 0x3C6F
+addi	  r0, r6, -0xCA1
+stw	  r0, 0x21C(r31)
+lwz	  r6, 0x21C(r31)
+lwz	  r0, -0x5EAC(r13)
+clrlwi	  r6, r6, 16
+stfs	  f1, 0x548+var_180(r1)
+sraw	  r0, r6, r0
+lwz	  r7, -0x5EA8(r13)
+slwi	  r0, r0, 2
+lfsx	  f0, r7, r0
+fmuls	  f0, f2, f0
+stfs	  f0, 0x548+var_17C(r1)
+lwz	  r6, -0x5EA4(r13)
+lfsx	  f0, r6, r0
+fmuls	  f0, f2, f0
+stfs	  f0, 0x548+var_178(r1)
+bl	  PSMTXMultVec
+lfs	  f31, 0x548+var_180(r1)
+lfs	  f0, 0x548+var_E0(r1)
+fadds	  f0, f0, f31
+stfs	  f0, 0x548+var_E0(r1)
+lfs	  f30, 0x548+var_17C(r1)
+lfs	  f0, 0x548+var_DC(r1)
+fadds	  f0, f0, f30
+stfs	  f0, 0x548+var_DC(r1)
+lfs	  f29, 0x548+var_178(r1)
+lfs	  f0, 0x548+var_D8(r1)
+fadds	  f0, f0, f29
+stfs	  f0, 0x548+var_D8(r1)
+
+def_80322F58:		# jumptable 80322F58 default case
 branch_0x803236e0:
     lbz     r0, 0x1ae(r31)
     cmplwi  r0, 0x3
@@ -2578,13 +3191,69 @@ branch_0x803247e4:
     slwi    r0, r0, 2
     lwzx    r0, r23, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80324800:		# jumptable 803247FC case 0
     bl      JPAGetKeyFrameValue__FfUsPf
     stfs    f1, 0x1b0(r25)
     b       branch_0x80324898
 
+branch_0x8032480C:		# jumptable 803247FC case 1
+bl	  JPAGetKeyFrameValue__FfUsPf
+fctiwz	  f0, f1
+stfd	  f0, 0x88+var_48(r1)
+lwz	  r0, 0x88+var_48+4(r1)
+sth	  r0, 0x1F0(r25)
+b	  def_803247FC	# jumptable 803247FC default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x31f20c, 0x80324898 - 0x8032480c
+branch_0x80324824:		# jumptable 803247FC case 2
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0x1F4(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x80324830:		# jumptable 803247FC case 3
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0x20C(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x8032483C:		# jumptable 803247FC case 4
+bl	  JPAGetKeyFrameValue__FfUsPf
+fctiwz	  f0, f1
+stfd	  f0, 0x88+var_48(r1)
+lwz	  r0, 0x88+var_48+4(r1)
+sth	  r0, 0x1EE(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x80324854:		# jumptable 803247FC case 5
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0x1D8(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x80324860:		# jumptable 803247FC case 6
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0x1FC(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x8032486C:		# jumptable 803247FC case 7
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0x1FC(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x80324878:		# jumptable 803247FC case 8
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0x208(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x80324884:		# jumptable 803247FC case 9
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0x1E4(r25)
+b	  def_803247FC	# jumptable 803247FC default case
+
+branch_0x80324890:		# jumptable 803247FC case 10
+bl	  JPAGetKeyFrameValue__FfUsPf
+stfs	  f1, 0xE4(r25)
+
+def_803247FC:		# jumptable 803247FC default case
 branch_0x80324898:
     addi    r26, r26, 0x1
     addi    r24, r24, 0x4

@@ -61,7 +61,7 @@ branch_0x80199fd4:
     lwz     r5, 0x98(r31)
     li      r6, 0x0
     mulli   r0, r0, 0xc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f1, -0x41e8(rtoc)
     add     r5, r5, r0
     li      r7, 0x0
@@ -73,7 +73,7 @@ branch_0x80199fd4:
     lwz     r5, 0x98(r31)
     li      r4, 0x6f
     mulli   r0, r0, 0xc
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r5, r5, r0
     li      r6, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -131,7 +131,7 @@ branch_0x8019a0ec:
 branch_0x8019a114:
     bl      rand
     xoris   r0, r3, 0x8000
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     stw     r0, 0x6c(sp)
     lfs     f0, 0x0(r3)
     stw     r30, 0x68(sp)
@@ -141,12 +141,12 @@ branch_0x8019a114:
     fsubs   f1, f1, f31
     fmadds  f0, f28, f1, f0
     stfs    f0, 0x0(r28)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x4(r3)
     stfs    f0, 0x4(r28)
     bl      rand
     xoris   r0, r3, 0x8000
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r0, 0x64(sp)
     mr      r3, r31
     lfs     f0, 0x8(r4)
@@ -195,7 +195,7 @@ branch_0x8019a1c0:
     lwz     r7, 0x98(r31)
     lfs     f2, -0x41dc(rtoc)
     xoris   r5, r5, 0x8000
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     stw     r5, 0x64(sp)
     add     r5, r7, r6
     li      r6, 0x0
@@ -251,7 +251,7 @@ branch_0x8019a2ac:
     li      r4, 0x1
     lfs     f2, 0x3c(sp)
     lfs     f1, 0x38(sp)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f4, -0x41d8(rtoc)
     bl      stamp__17TPollutionManagerFUsffff
 branch_0x8019a2e8:
@@ -302,7 +302,7 @@ fire__15TPollutionLayerFv: # 0x8019a320
     lwz     r5, 0x98(r31)
     li      r6, 0x0
     mulli   r0, r0, 0xc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f1, -0x41e8(rtoc)
     add     r5, r5, r0
     li      r7, 0x0
@@ -314,7 +314,7 @@ fire__15TPollutionLayerFv: # 0x8019a320
     lwz     r5, 0x98(r31)
     li      r4, 0x1dc
     mulli   r0, r0, 0xc
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r5, r5, r0
     li      r6, 0x2
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -333,7 +333,7 @@ branch_0x8019a3e8:
     lwz     r5, 0x98(r31)
     li      r4, 0x65
     mulli   r0, r0, 0xc
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r5, r5, r0
     li      r6, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -391,7 +391,7 @@ getPollutedPos__15TPollutionLayerFfPQ29JGeometry8TVec3_f_: # 0x8019a470
 branch_0x8019a4bc:
     bl      rand
     xoris   r0, r3, 0x8000
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     stw     r0, 0x2c(sp)
     lfs     f0, 0x0(r3)
     stw     r31, 0x28(sp)
@@ -401,12 +401,12 @@ branch_0x8019a4bc:
     fsubs   f1, f1, f31
     fmadds  f0, f28, f1, f0
     stfs    f0, 0x0(r29)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x4(r3)
     stfs    f0, 0x4(r29)
     bl      rand
     xoris   r0, r3, 0x8000
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r0, 0x24(sp)
     mr      r3, r28
     lfs     f0, 0x8(r4)
@@ -481,7 +481,7 @@ branch_0x8019a5e0:
     xoris   r0, r3, 0x8000
     lfs     f0, -0x7ac0(r13)
     stw     r0, 0x5c(sp)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     fadds   f1, f0, f27
     stw     r31, 0x58(sp)
     lfs     f0, 0x0(r3)
@@ -504,7 +504,7 @@ branch_0x8019a5e0:
     lfs     f0, -0x7ac0(r13)
     stw     r0, 0x4c(sp)
     mr      r3, r25
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     fadds   f1, f0, f27
     stw     r31, 0x48(sp)
     lfs     f0, 0x8(r4)
@@ -563,7 +563,7 @@ branch_0x8019a728:
     addi    r5, r27, 0x0
     bl      getDepthWorld__13TPollutionPosCFii
     stfs    f1, 0x4(r26)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f1, 0x4(r26)
     lfs     f0, 0x4(r3)
     fcmpo   cr0, f1, f0

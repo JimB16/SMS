@@ -769,7 +769,7 @@ branch_0x800731d0:
     bl      curAnmEndsNext__6MActorFiPc
     cmpwi   r3, 0x0
     beq-    branch_0x80073330
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -1049,7 +1049,7 @@ branch_0x800735ac:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     li      r4, 0xa0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r5, r5, 0x510
     li      r7, 0x0
@@ -1062,7 +1062,7 @@ branch_0x800735dc:
     addi    r5, sp, 0x64
     li      r4, 0x1
     bl      getJointTransByIndex__10TLiveActorCFiPQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x64
     li      r4, 0x9b
     li      r6, 0x0
@@ -1248,7 +1248,7 @@ branch_0x80073844:
     stfs    f0, 0xc(r3)
     lwz     r3, 0x74(r31)
     bl      resetDL__6MActorFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x80073894
@@ -1271,7 +1271,7 @@ branch_0x800738ac:
     li      r3, 0x0
     bl      setBossLivesFlagOnlyFlag__10MSMainProcFb
 branch_0x800738c8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x9
     bne-    branch_0x80073910
@@ -1332,7 +1332,7 @@ branch_0x80073968:
     li      r10, 0x0
     bl      fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
 branch_0x8007399c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x800739b4
@@ -1343,7 +1343,7 @@ branch_0x800739b4:
     addi    r4, r30, 0x3e8
     lfs     f0, 0x14(r31)
     addi    r5, r30, 0x3fc
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
@@ -1364,7 +1364,7 @@ branch_0x800739d8:
     beq-    branch_0x80073a10
     bl      killChildren__13TEnemyManagerFv
 branch_0x80073a10:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2953
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1377,7 +1377,7 @@ branch_0x80073a10:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x80073a40:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x9
     bne-    branch_0x80073ab8
@@ -1386,7 +1386,7 @@ branch_0x80073a40:
     blt-    branch_0x80073ab8
     cmpwi   r0, 0x2ee
     bgt-    branch_0x80073ab8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3008
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1591,7 +1591,7 @@ branch_0x80073d3c:
     blrl
     cmpwi   r3, 0x0
     beq-    branch_0x80073e4c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x80073e4c
@@ -1799,7 +1799,7 @@ branch_0x8007400c:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x138
     addi    r5, r5, 0x8d0
     li      r6, 0x1
@@ -1808,7 +1808,7 @@ branch_0x8007400c:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x139
     addi    r5, r5, 0x150
     li      r6, 0x1
@@ -1817,7 +1817,7 @@ branch_0x8007400c:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x139
     addi    r5, r5, 0xc0
     li      r6, 0x1
@@ -1826,7 +1826,7 @@ branch_0x8007400c:
     lwz     r0, 0x68(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x8007424c
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -2202,7 +2202,7 @@ branch_0x80074584:
     lfs     f1, -0x6a5c(rtoc)
     addi    r4, sp, 0x4c
     lfs     f0, 0x54(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x50(sp)
     lfs     f3, 0x58(sp)
@@ -2210,7 +2210,7 @@ branch_0x80074584:
     stfs    f1, 0x54(sp)
     addi    r5, sp, 0x50
     li      r4, 0x9a
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -2507,7 +2507,7 @@ branch_0x80074954:
     stfs    f0, 0xc(r3)
     lwz     r3, 0x74(r31)
     bl      resetDL__6MActorFv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x800749c8
@@ -2548,7 +2548,7 @@ branch_0x80074a2c:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     li      r4, 0x97
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r5, r5, 0x510
     li      r7, 0x0
@@ -2557,7 +2557,7 @@ branch_0x80074a2c:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     li      r4, 0x99
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r5, r5, 0x510
     li      r7, 0x0
@@ -2566,7 +2566,7 @@ branch_0x80074a2c:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     li      r4, 0x98
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r5, r5, 0x510
     li      r7, 0x0
@@ -2621,7 +2621,7 @@ branch_0x80074b3c:
     lfs     f1, -0x6a5c(rtoc)
     addi    r4, sp, 0x12c
     lfs     f0, 0x134(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x130(sp)
     lfs     f3, 0x138(sp)
@@ -2629,7 +2629,7 @@ branch_0x80074b3c:
     stfs    f1, 0x134(sp)
     addi    r5, sp, 0x130
     li      r4, 0x9a
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -2641,7 +2641,7 @@ branch_0x80074b88:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     li      r4, 0x9c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r5, r5, 0x150
     li      r7, 0x0
@@ -2650,7 +2650,7 @@ branch_0x80074b88:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     li      r4, 0x9d
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r5, r5, 0xc0
     li      r7, 0x0
@@ -2711,7 +2711,7 @@ branch_0x80074c78:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r30)
 branch_0x80074cac:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x80074cc4
@@ -2724,7 +2724,7 @@ branch_0x80074cc4:
     lwz     r3, -0x70cc(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80074d48
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, sp, 0x120
     lfs     f0, -0x6a58(rtoc)
     lwz     r5, 0x0(r6)
@@ -2753,7 +2753,7 @@ branch_0x80074cc4:
     b       branch_0x80074d68
 
 branch_0x80074d48:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3b
     bne-    branch_0x80074d68
@@ -2977,7 +2977,7 @@ branch_0x80075030:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x139
     addi    r5, r5, 0x150
     li      r6, 0x1
@@ -2986,7 +2986,7 @@ branch_0x80075030:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x139
     addi    r5, r5, 0xc0
     li      r6, 0x1
@@ -2997,7 +2997,7 @@ branch_0x80075030:
     li      r0, 0x78
     sth     r0, 0x1ae(r31)
     li      r4, 0x2912
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800750bc
@@ -3263,7 +3263,7 @@ branch_0x80075418:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
 branch_0x80075420:
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6a88(rtoc)
     stw     r3, 0x6c(sp)
     cmplwi  r3, 0x0
@@ -3307,7 +3307,7 @@ branch_0x80075458:
     lwz     r3, 0x74(r31)
     bl      resetDL__6MActorFv
 branch_0x800754c8:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x7c(sp)
@@ -3902,12 +3902,12 @@ branch_0x80075ce8:
     cmpwi   r0, 0x0
     beq-    branch_0x80075d34
 branch_0x80075cf0:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f0, -0x6a4c(rtoc)
     lfs     f1, 0x8c(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80075d34
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x208d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3925,7 +3925,7 @@ branch_0x80075d34:
     lbz     r0, 0x1a0(r31)
     extsb.  r0, r0
     bne-    branch_0x80075e10
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80075d60
@@ -3937,7 +3937,7 @@ branch_0x80075d60:
 branch_0x80075d64:
     cmpwi   r0, 0x0
     bne-    branch_0x80075e10
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x218(sp)
@@ -4144,7 +4144,7 @@ branch_0x80076014:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x13b
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -4300,7 +4300,7 @@ branch_0x800762a4:
     cmplwi  r27, 0x0
     beq-    branch_0x800762bc
     lwz     r4, 0x178(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r4, 0x4(r4)
     bl      stampModel__17TPollutionManagerFP8J3DModel
 branch_0x800762bc:
@@ -4473,7 +4473,7 @@ branch_0x80076510:
     mr      r3, r31
     bl      lenFromToeToMario__10TBossGessoFv
     fmr     f31, f1
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x215c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4533,7 +4533,7 @@ branch_0x800765dc:
     cmpwi   r0, 0x0
     bne-    branch_0x800765f8
 branch_0x800765e4:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x3
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -4695,7 +4695,7 @@ branch_0x800767f8:
     addi    r31, r31, 0x4
     stw     r30, 0x24(r3)
     blt+    branch_0x800767f8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x3
     bne-    branch_0x80076854
@@ -4868,13 +4868,203 @@ branch_0x80076a54:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80076A84:		# jumptable 80076A80 case 0
     mr      r3, r31
     bl      doAttackSingle__10TBossGessoFv
     b       branch_0x80076cec
 
+branch_0x80076A90:		# jumptable 80076A80 case 1
+mr	  r3, r31
+bl	  doAttackDouble__10TBossGessoFv # TBossGesso::doAttackDouble((void))
+b	  def_80076A80	# jumptable 80076A80 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x71490, 0x80076cec - 0x80076a90
+branch_0x80076A9C:		# jumptable 80076A80 case 4
+mr	  r3, r31
+bl	  doAttackSkipRope__10TBossGessoFv # TBossGesso::doAttackSkipRope((void))
+b	  def_80076A80	# jumptable 80076A80 default case
+
+branch_0x80076AA8:		# jumptable 80076A80 case 2
+mr	  r3, r31
+bl	  doAttackUnison__10TBossGessoFv # TBossGesso::doAttackUnison((void))
+b	  def_80076A80	# jumptable 80076A80 default case
+
+branch_0x80076AB4:		# jumptable 80076A80 case 5
+mr	  r3, r31
+bl	  doAttackShoot__10TBossGessoFv	# TBossGesso::doAttackShoot((void))
+b	  def_80076A80	# jumptable 80076A80 default case
+
+branch_0x80076AC0:		# jumptable 80076A80 case 3
+lwz	  r3, 0x160(r31)
+lwz	  r0, 0x68(r3)
+cmplwi	  r0, 0
+beq	  branch_0x80076AE0
+addi	  r3, r31, 0
+li	  r4, 4
+bl	  changeAttackMode__10TBossGessoFi # TBossGesso::changeAttackMode((int))
+b	  def_80076A80	# jumptable 80076A80 default case
+
+branch_0x80076AE0:
+mr	  r3, r31
+lwz	  r12, 0(r31)
+lwz	  r12, 0x108(r12)
+mtlr	  r12
+blrl
+lfs	  f30, 0x2FC(r3)
+bl	  SMS_GetMarioPos__Fv #	SMS_GetMarioPos(void)
+lwz	  r5, 0(r3)
+addi	  r4, r31, 0x10
+lwz	  r0, 4(r3)
+stw	  r5, 0x58(r1)
+stw	  r0, 0x5C(r1)
+lwz	  r0, 8(r3)
+addi	  r3, r1, 0x58
+stw	  r0, 0x60(r1)
+bl	  sub__Q29JGeometry8TVec3_f_FRCQ29JGeometry8TVec3_f_
+addi	  r3, r1, 0x58
+bl	  MsGetRotFromZaxisY__FRCQ29JGeometry8TVec3_f_
+fmr	  f31, f1
+lfs	  f0, -0x6A30(r2)
+lfs	  f1, 0x34(r31)
+fsubs	  f2, f31, f0
+fadds	  f3, f0, f31
+bl	  MsWrap_f___Ffff_80076f5c
+fsubs	  f1, f31, f1
+lfs	  f0, -0x6A64(r2)
+fmuls	  f0, f0, f30
+fabs	  f1, f1
+fcmpo	  cr0, f1, f0
+bge	  branch_0x80076B60
+li	  r0, 1
+b	  branch_0x80076B64
+
+branch_0x80076B60:
+li	  r0, 0
+
+branch_0x80076B64:
+cmpwi	  r0, 0
+beq	  def_80076A80	# jumptable 80076A80 default case
+lwz	  r5, MarioHitActorPos(r13)
+mr	  r3, r31
+lwz	  r4, 0(r5)
+lwz	  r0, 4(r5)
+stw	  r4, 0xAC(r1)
+stw	  r0, 0xB0(r1)
+lwz	  r0, 8(r5)
+stw	  r0, 0xB4(r1)
+lfs	  f1, 0xAC(r1)
+lfs	  f0, 0x10(r31)
+fsubs	  f0, f1, f0
+stfs	  f0, 0xAC(r1)
+lfs	  f1, 0xB0(r1)
+lfs	  f0, 0x14(r31)
+fsubs	  f0, f1, f0
+stfs	  f0, 0xB0(r1)
+lfs	  f1, 0xB4(r1)
+lfs	  f0, 0x18(r31)
+fsubs	  f0, f1, f0
+stfs	  f0, 0xB4(r1)
+lwz	  r12, 0(r31)
+lwz	  r12, 0x108(r12)
+mtlr	  r12
+blrl
+lfs	  f1, 0xAC(r1)
+lfs	  f0, 0xB0(r1)
+fmuls	  f1, f1, f1
+lfs	  f2, 0xB4(r1)
+fmuls	  f0, f0, f0
+lfs	  f3, 0x248(r3)
+fmuls	  f2, f2, f2
+fadds	  f0, f1, f0
+fmuls	  f3, f3, f3
+fadds	  f0, f2, f0
+fcmpo	  cr0, f3, f0
+blt	  branch_0x80076C54
+lwz	  r3, 0x15C(r31)
+lwz	  r0, 0x10(r3)
+cmpwi	  r0, 4
+beq	  branch_0x80076C14
+cmpwi	  r0, 6
+bne	  branch_0x80076C1C
+
+branch_0x80076C14:
+li	  r0, 1
+b	  branch_0x80076C20
+
+branch_0x80076C1C:
+li	  r0, 0
+
+branch_0x80076C20:
+cmpwi	  r0, 0
+beq	  def_80076A80	# jumptable 80076A80 default case
+lwz	  r3, 0x154(r31)
+lwz	  r0, 0x10(r3)
+cmpwi	  r0, 4
+beq	  branch_0x80076C40
+cmpwi	  r0, 6
+bne	  branch_0x80076C48
+
+branch_0x80076C40:
+li	  r0, 1
+b	  branch_0x80076C4C
+
+branch_0x80076C48:
+li	  r0, 0
+
+branch_0x80076C4C:
+cmpwi	  r0, 0
+beq	  def_80076A80	# jumptable 80076A80 default case
+
+branch_0x80076C54:
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  changeAllTentacleState__10TBossGessoFi # TBossGesso::changeAllTentacleState((int))
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  changeAttackMode__10TBossGessoFi # TBossGesso::changeAttackMode((int))
+b	  def_80076A80	# jumptable 80076A80 default case
+
+branch_0x80076C70:		# jumptable 80076A80 case 7
+lbz	  r0, -0x6E00(r13)
+extsb.	  r0, r0
+bne	  branch_0x80076CB0
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B29D8@h
+stw	  r0, -0x6DFC(r13)
+addi	  r0, r3, unk_803B29D8@l
+lis	  r3, __dt__12TNerveBGRollFv@h # TNerveBGRoll::~TNerveBGRoll((void))
+stw	  r0, -0x6DFC(r13)
+addi	  r4, r3, __dt__12TNerveBGRollFv@l # TNerveBGRoll::~TNerveBGRoll((void))
+addi	  r3, r13, -0x6DFC
+addi	  r5, r30, 0x60
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E00(r13)
+
+branch_0x80076CB0:
+lwz	  r4, 0x8C(r31)
+addi	  r0, r13, -0x6DFC
+lwz	  r3, 0x14(r4)
+cmplwi	  r3, 0
+beq	  branch_0x80076CC8
+b	  branch_0x80076CCC
+
+branch_0x80076CC8:
+lwz	  r3, 0x1C(r4)
+
+branch_0x80076CCC:
+cmplw	  r3, r0
+beq	  def_80076A80	# jumptable 80076A80 default case
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  changeAllTentacleState__10TBossGessoFi # TBossGesso::changeAllTentacleState((int))
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  changeAttackMode__10TBossGessoFi # TBossGesso::changeAttackMode((int))
+
+def_80076A80:		# jumptable 80076A80 default case
 branch_0x80076cec:
     lwz     r3, 0x8c(r31)
     lwz     r29, 0x14(r3)
@@ -5067,9 +5257,8 @@ MsWrap_f___Ffff_80076f5c: # 0x80076f5c
     bne-    branch_0x80076f98
     fmr     f1, f2
     blr
+    b       branch_0x80076f78
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x71970, 0x80076f74 - 0x80076f70
 branch_0x80076f74:
     fsubs   f1, f1, f0
 branch_0x80076f78:
@@ -5088,9 +5277,8 @@ branch_0x80076f8c:
 branch_0x80076f98:
     fsubs   f0, f3, f2
     b       branch_0x80076f78
+    blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x719a0, 0x80076fa4 - 0x80076fa0
 
 .globl MsGetRotFromZaxisY__FRCQ29JGeometry8TVec3_f_
 MsGetRotFromZaxisY__FRCQ29JGeometry8TVec3_f_: # 0x80076fa4
@@ -5155,7 +5343,7 @@ branch_0x8007705c:
 
 .globl SMS_GetMarioPos__Fv
 SMS_GetMarioPos__Fv: # 0x8007706c
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     blr
 
 
@@ -5223,7 +5411,7 @@ branch_0x80077138:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r31, 0x10
     lfs     f30, 0x2fc(r3)
     addi    r3, sp, 0x48
@@ -5256,7 +5444,7 @@ branch_0x800771b8:
 branch_0x800771bc:
     cmpwi   r0, 0x0
     beq-    branch_0x80077260
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -5328,7 +5516,7 @@ doAttackUnison__10TBossGessoFv: # 0x80077280
     b       branch_0x80077508
 
 branch_0x800772c8:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -5359,7 +5547,7 @@ branch_0x800772c8:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r31, 0x10
     lfs     f29, 0x2fc(r3)
     addi    r3, sp, 0x60
@@ -5392,7 +5580,7 @@ branch_0x800773b0:
 branch_0x800773b4:
     cmpwi   r0, 0x0
     beq-    branch_0x8007748c
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f1, -0x6a20(rtoc)
     lfs     f0, 0xec(r3)
     lfs     f2, 0x14(r3)
@@ -5570,7 +5758,7 @@ branch_0x800775f4:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r31, 0x10
     lfs     f30, 0x2fc(r3)
     addi    r3, sp, 0x58
@@ -5706,7 +5894,7 @@ branch_0x800777c4:
     lwz     r4, 0x10(r31)
     mr      r3, r31
     lwz     r0, 0x14(r31)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     stw     r4, 0x84(sp)
     stw     r0, 0x88(sp)
     lwz     r0, 0x18(r31)
@@ -5734,7 +5922,7 @@ branch_0x800777c4:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r31, 0x10
     lfs     f30, 0x2fc(r3)
     addi    r3, sp, 0x5c
@@ -5898,7 +6086,7 @@ branch_0x80077a50:
     li      r0, 0x0
     stb     r0, 0x17c(r30)
 branch_0x80077a6c:
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r0, 0x58(r4)
     cmpwi   r0, 0x1e0
     blt-    branch_0x800783e8
@@ -5948,7 +6136,7 @@ branch_0x80077b00:
 branch_0x80077b04:
     cmpwi   r0, 0x0
     beq-    branch_0x80077b98
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f1, -0x6a1c(rtoc)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -5999,7 +6187,7 @@ branch_0x80077ba8:
     mtlr    r12
     lwzx    r28, r30, r0
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r30, 0x10
     lfs     f28, 0x2fc(r3)
     addi    r3, sp, 0x198
@@ -6033,7 +6221,7 @@ branch_0x80077c38:
     lwz     r0, 0x10(r28)
     cmpwi   r0, 0x0
     bne-    branch_0x80077cf0
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r30
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -6151,7 +6339,7 @@ branch_0x80077db0:
     lwz     r0, 0xb8(r3)
     cmpw    r4, r0
     ble-    branch_0x800783e8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80077dec
@@ -6205,7 +6393,7 @@ branch_0x80077e68:
 branch_0x80077e6c:
     cmpwi   r0, 0x0
     bne-    branch_0x800783e8
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r30
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -6317,7 +6505,7 @@ branch_0x80077fd8:
     fadds   f28, f2, f0
     fcmpo   cr0, f28, f30
     bge-    branch_0x80078044
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f1, -0x6a20(rtoc)
     lfs     f0, 0xec(r3)
     lfs     f2, 0x14(r3)
@@ -6341,7 +6529,7 @@ branch_0x8007802c:
 branch_0x80078044:
     fcmpo   cr0, f28, f31
     bge-    branch_0x800780e8
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lfs     f1, -0x6a20(rtoc)
     lfs     f0, 0xec(r3)
     lfs     f2, 0x14(r3)
@@ -6366,7 +6554,7 @@ branch_0x80078078:
     lwz     r0, 0xb8(r3)
     cmpw    r4, r0
     ble-    branch_0x800783e8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x800780bc
@@ -6452,7 +6640,7 @@ branch_0x8007814c:
     ble-    branch_0x800783e8
     fcmpo   cr0, f28, f29
     bge-    branch_0x800783e8
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x1b8(sp)
@@ -6545,7 +6733,7 @@ branch_0x800782e8:
     b       branch_0x800783e8
 
 branch_0x80078300:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80078318
@@ -6562,7 +6750,7 @@ branch_0x8007831c:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, r30, 0x10
     lfs     f28, 0x2fc(r3)
     addi    r3, sp, 0x164
@@ -6635,7 +6823,7 @@ receiveMessage__10TBossGessoFP9THitActorUl: # 0x80078418
     bne-    branch_0x8007845c
     cmplwi  r5, 0xf
     bne-    branch_0x8007845c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r4, 0x10
     li      r4, 0xe7
     li      r6, 0x0
@@ -6742,7 +6930,7 @@ branch_0x80078560:
     li      r4, 0x1a
     bl      getJointTransByIndex__10TLiveActorCFiPQ29JGeometry8TVec3_f_
 branch_0x80078570:
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     addi    r4, sp, 0x2c
     lfs     f1, -0x6a10(rtoc)
     addi    r5, sp, 0x20
@@ -6756,13 +6944,13 @@ branch_0x80078570:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     li      r4, 0x94
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r31, r5, 0x510
     addi    r5, r31, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     li      r4, 0x93
     li      r6, 0x0
@@ -6968,7 +7156,9 @@ changeAttackMode__10TBossGessoFi: # 0x80078834
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8007888C:		# jumptable 80078888 case 3
     li      r28, 0x0
     subi    r30, r13, 0x7ef0
 branch_0x80078894:
@@ -7001,8 +7191,429 @@ branch_0x800788dc:
     blt+    branch_0x80078894
     b       branch_0x80078e30
 
+branch_0x800788F0:		# jumptable 80078888 case 2
+li	  r30, 0
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x732f0, 0x80078e30 - 0x800788f0
+branch_0x800788F4:
+addi	  r0, r30, 0x150
+lwzx	  r3, r31, r0
+lwz	  r4, 0x10(r3)
+cmpwi	  r4, 5
+beq	  branch_0x80078938
+cmpwi	  r4, 6
+beq	  branch_0x8007891C
+addi	  r0, r4, -3
+cmplwi	  r0, 1
+bgt	  branch_0x80078924
+
+branch_0x8007891C:
+li	  r0, 1
+b	  branch_0x80078928
+
+branch_0x80078924:
+li	  r0, 0
+
+branch_0x80078928:
+cmpwi	  r0, 0
+bne	  branch_0x80078938
+li	  r4, 0
+bl	  changeStateAndFixNodes__11TBGTentacleFi # TBGTentacle::changeStateAndFixNodes((int))
+
+branch_0x80078938:
+addi	  r29, r29, 1
+cmpwi	  r29, 4
+addi	  r30, r30, 4
+blt	  branch_0x800788F4
+b	  def_80078888	# jumptable 80078888 default case
+
+branch_0x8007894C:		# jumptable 80078888 case 7
+bl	  rand
+xoris	  r0, r3, 0x8000
+lfd	  f3, -0x6A90(r2)
+stw	  r0, 0xA8+var_18+4(r1)
+lis	  r0, 0x4330
+lfs	  f1, -0x6A08(r2)
+stw	  r0, 0xA8+var_18(r1)
+lfs	  f0, -0x6A68(r2)
+lfd	  f2, 0xA8+var_18(r1)
+fsubs	  f2, f2, f3
+fmuls	  f1, f1, f2
+fmuls	  f0, f0, f1
+fctiwz	  f0, f0
+stfd	  f0, 0xA8+var_20(r1)
+lwz	  r0, 0xA8+var_20+4(r1)
+cmpwi	  r0, 0x28
+bge	  branch_0x8007899C
+li	  r0, 1
+stb	  r0, 0x1A1(r31)
+b	  branch_0x800789A0
+
+branch_0x8007899C:
+stb	  r29, 0x1A1(r31)
+
+branch_0x800789A0:
+li	  r28, 0
+li	  r29, 0
+
+branch_0x800789A8:
+addi	  r0, r29, 0x150
+lwzx	  r3, r31, r0
+lwz	  r4, 0x10(r3)
+cmpwi	  r4, 5
+beq	  branch_0x800789EC
+cmpwi	  r4, 6
+beq	  branch_0x800789D0
+addi	  r0, r4, -3
+cmplwi	  r0, 1
+bgt	  branch_0x800789D8
+
+branch_0x800789D0:
+li	  r0, 1
+b	  branch_0x800789DC
+
+branch_0x800789D8:
+li	  r0, 0
+
+branch_0x800789DC:
+cmpwi	  r0, 0
+bne	  branch_0x800789EC
+li	  r4, 8
+bl	  changeStateAndFixNodes__11TBGTentacleFi # TBGTentacle::changeStateAndFixNodes((int))
+
+branch_0x800789EC:
+addi	  r28, r28, 1
+cmpwi	  r28, 4
+addi	  r29, r29, 4
+blt	  branch_0x800789A8
+lwz	  r3, 0x8C(r31)
+li	  r0, 0
+stw	  r0, 8(r3)
+lbz	  r0, -0x6E00(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078A48
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B29D8@h
+stw	  r0, -0x6DFC(r13)
+addi	  r0, r3, unk_803B29D8@l
+lis	  r3, __dt__12TNerveBGRollFv@h # TNerveBGRoll::~TNerveBGRoll((void))
+stw	  r0, -0x6DFC(r13)
+addi	  r4, r3, __dt__12TNerveBGRollFv@l # TNerveBGRoll::~TNerveBGRoll((void))
+addi	  r3, r13, -0x6DFC
+addi	  r5, r30, 0x60
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E00(r13)
+
+branch_0x80078A48:
+lwz	  r4, 0x8C(r31)
+addi	  r3, r13, -0x6DFC
+lwz	  r0, 0x14(r4)
+cmplwi	  r0, 0
+beq	  branch_0x80078A60
+stw	  r0, 0x1C(r4)
+
+branch_0x80078A60:
+li	  r0, 0
+stw	  r0, 0x20(r4)
+stw	  r3, 0x14(r4)
+lbz	  r0, -0x6E40(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078AAC
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A98@h
+stw	  r0, -0x6E3C(r13)
+addi	  r0, r3, unk_803B2A98@l
+lis	  r3, __dt__12TNerveBGWaitFv@h # TNerveBGWait::~TNerveBGWait((void))
+stw	  r0, -0x6E3C(r13)
+addi	  r4, r3, __dt__12TNerveBGWaitFv@l # TNerveBGWait::~TNerveBGWait((void))
+addi	  r3, r13, -0x6E3C
+addi	  r5, r30, 0
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E40(r13)
+
+branch_0x80078AAC:
+addi	  r5, r13, -0x6E3C
+lwz	  r4, 0x8C(r31)
+cmplwi	  r5, 0
+beq	  def_80078888	# jumptable 80078888 default case
+lwz	  r6, 8(r4)
+lwz	  r0, 4(r4)
+cmpw	  r6, r0
+bge	  def_80078888	# jumptable 80078888 default case
+lwz	  r3, 0xC(r4)
+slwi	  r0, r6, 2
+stwx	  r5, r3, r0
+lwz	  r3, 8(r4)
+addi	  r0, r3, 1
+stw	  r0, 8(r4)
+b	  def_80078888	# jumptable 80078888 default case
+
+branch_0x80078AE8:		# jumptable 80078888 case 5
+lwz	  r3, 0x8C(r31)
+lwz	  r28, 0x14(r3)
+cmplwi	  r28, 0
+beq	  branch_0x80078AFC
+b	  branch_0x80078B00
+
+branch_0x80078AFC:
+lwz	  r28, 0x1C(r3)
+
+branch_0x80078B00:
+lbz	  r0, -0x6E08(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078B40
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A28@h
+stw	  r0, -0x6E04(r13)
+addi	  r0, r3, unk_803B2A28@l
+lis	  r3, __dt__15TNerveBGPolDropFv@h # TNerveBGPolDrop::~TNerveBGPolDrop((void))
+stw	  r0, -0x6E04(r13)
+addi	  r4, r3, __dt__15TNerveBGPolDropFv@l #	TNerveBGPolDrop::~TNerveBGPolDrop((void))
+addi	  r3, r13, -0x6E04
+addi	  r5, r30, 0x54
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E08(r13)
+
+branch_0x80078B40:
+addi	  r0, r13, -0x6E04
+cmplw	  r28, r0
+beq	  def_80078888	# jumptable 80078888 default case
+lwz	  r3, 0x8C(r31)
+lwz	  r28, 0x14(r3)
+cmplwi	  r28, 0
+beq	  branch_0x80078B60
+b	  branch_0x80078B64
+
+branch_0x80078B60:
+lwz	  r28, 0x1C(r3)
+
+branch_0x80078B64:
+lbz	  r0, -0x6E10(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078BA4
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A38@h
+stw	  r0, -0x6E0C(r13)
+addi	  r0, r3, unk_803B2A38@l
+lis	  r3, __dt__15TNerveBGPolluteFv@h # TNerveBGPollute::~TNerveBGPollute((void))
+stw	  r0, -0x6E0C(r13)
+addi	  r4, r3, __dt__15TNerveBGPolluteFv@l #	TNerveBGPollute::~TNerveBGPollute((void))
+addi	  r3, r13, -0x6E0C
+addi	  r5, r30, 0x48
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E10(r13)
+
+branch_0x80078BA4:
+addi	  r0, r13, -0x6E0C
+cmplw	  r28, r0
+beq	  def_80078888	# jumptable 80078888 default case
+lwz	  r3, 0x8C(r31)
+lwz	  r28, 0x14(r3)
+cmplwi	  r28, 0
+beq	  branch_0x80078BC4
+b	  branch_0x80078BC8
+
+branch_0x80078BC4:
+lwz	  r28, 0x1C(r3)
+
+branch_0x80078BC8:
+lbz	  r0, -0x6E28(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078C08
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A68@h
+stw	  r0, -0x6E24(r13)
+addi	  r0, r3, unk_803B2A68@l
+lis	  r3, __dt__22TNerveBGTentacleDamageFv@h # TNerveBGTentacleDamage::~TNerveBGTentacleDamage((void))
+stw	  r0, -0x6E24(r13)
+addi	  r4, r3, __dt__22TNerveBGTentacleDamageFv@l # TNerveBGTentacleDamage::~TNerveBGTentacleDamage((void))
+addi	  r3, r13, -0x6E24
+addi	  r5, r30, 0x24
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E28(r13)
+
+branch_0x80078C08:
+addi	  r0, r13, -0x6E24
+cmplw	  r28, r0
+beq	  def_80078888	# jumptable 80078888 default case
+lwz	  r3, 0x8C(r31)
+lwz	  r28, 0x14(r3)
+cmplwi	  r28, 0
+beq	  branch_0x80078C28
+b	  branch_0x80078C2C
+
+branch_0x80078C28:
+lwz	  r28, 0x1C(r3)
+
+branch_0x80078C2C:
+lbz	  r0, -0x6E38(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078C6C
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A88@h
+stw	  r0, -0x6E34(r13)
+addi	  r0, r3, unk_803B2A88@l
+lis	  r3, __dt__17TNerveBGEyeDamageFv@h # TNerveBGEyeDamage::~TNerveBGEyeDamage((void))
+stw	  r0, -0x6E34(r13)
+addi	  r4, r3, __dt__17TNerveBGEyeDamageFv@l	# TNerveBGEyeDamage::~TNerveBGEyeDamage((void))
+addi	  r3, r13, -0x6E34
+addi	  r5, r30, 0xC
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E38(r13)
+
+branch_0x80078C6C:
+addi	  r0, r13, -0x6E34
+cmplw	  r28, r0
+beq	  def_80078888	# jumptable 80078888 default case
+lwz	  r3, 0x8C(r31)
+lwz	  r28, 0x14(r3)
+cmplwi	  r28, 0
+beq	  branch_0x80078C8C
+b	  branch_0x80078C90
+
+branch_0x80078C8C:
+lwz	  r28, 0x1C(r3)
+
+branch_0x80078C90:
+lbz	  r0, -0x6E30(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078CD0
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A78@h
+stw	  r0, -0x6E2C(r13)
+addi	  r0, r3, unk_803B2A78@l
+lis	  r3, __dt__18TNerveBGBeakDamageFv@h # TNerveBGBeakDamage::~TNerveBGBeakDamage((void))
+stw	  r0, -0x6E2C(r13)
+addi	  r4, r3, __dt__18TNerveBGBeakDamageFv@l # TNerveBGBeakDamage::~TNerveBGBeakDamage((void))
+addi	  r3, r13, -0x6E2C
+addi	  r5, r30, 0x18
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E30(r13)
+
+branch_0x80078CD0:
+addi	  r0, r13, -0x6E2C
+cmplw	  r28, r0
+beq	  def_80078888	# jumptable 80078888 default case
+lwz	  r3, 0x8C(r31)
+li	  r0, 0
+stw	  r0, 8(r3)
+lbz	  r0, -0x6E08(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078D28
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A28@h
+stw	  r0, -0x6E04(r13)
+addi	  r0, r3, unk_803B2A28@l
+lis	  r3, __dt__15TNerveBGPolDropFv@h # TNerveBGPolDrop::~TNerveBGPolDrop((void))
+stw	  r0, -0x6E04(r13)
+addi	  r4, r3, __dt__15TNerveBGPolDropFv@l #	TNerveBGPolDrop::~TNerveBGPolDrop((void))
+addi	  r3, r13, -0x6E04
+addi	  r5, r30, 0x54
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E08(r13)
+
+branch_0x80078D28:
+lwz	  r4, 0x8C(r31)
+addi	  r3, r13, -0x6E04
+lwz	  r0, 0x14(r4)
+cmplwi	  r0, 0
+beq	  branch_0x80078D40
+stw	  r0, 0x1C(r4)
+
+branch_0x80078D40:
+li	  r0, 0
+stw	  r0, 0x20(r4)
+stw	  r3, 0x14(r4)
+lbz	  r0, -0x6E40(r13)
+extsb.	  r0, r0
+bne	  branch_0x80078D8C
+lis	  r3, unk_803AB70C@ha
+addi	  r0, r3, unk_803AB70C@l
+lis	  r3, unk_803B2A98@h
+stw	  r0, -0x6E3C(r13)
+addi	  r0, r3, unk_803B2A98@l
+lis	  r3, __dt__12TNerveBGWaitFv@h # TNerveBGWait::~TNerveBGWait((void))
+stw	  r0, -0x6E3C(r13)
+addi	  r4, r3, __dt__12TNerveBGWaitFv@l # TNerveBGWait::~TNerveBGWait((void))
+addi	  r3, r13, -0x6E3C
+addi	  r5, r30, 0
+bl	  __register_global_object
+li	  r0, 1
+stb	  r0, -0x6E40(r13)
+
+branch_0x80078D8C:
+addi	  r5, r13, -0x6E3C
+lwz	  r4, 0x8C(r31)
+cmplwi	  r5, 0
+beq	  branch_0x80078DC4
+lwz	  r6, 8(r4)
+lwz	  r0, 4(r4)
+cmpw	  r6, r0
+bge	  branch_0x80078DC4
+lwz	  r3, 0xC(r4)
+slwi	  r0, r6, 2
+stwx	  r5, r3, r0
+lwz	  r3, 8(r4)
+addi	  r0, r3, 1
+stw	  r0, 8(r4)
+
+branch_0x80078DC4:
+li	  r28, 0
+li	  r29, 0
+
+branch_0x80078DCC:
+addi	  r0, r29, 0x150
+lwzx	  r3, r31, r0
+lwz	  r4, 0x10(r3)
+cmpwi	  r4, 5
+beq	  branch_0x80078E10
+cmpwi	  r4, 6
+beq	  branch_0x80078DF4
+addi	  r0, r4, -3
+cmplwi	  r0, 1
+bgt	  branch_0x80078DFC
+
+branch_0x80078DF4:
+li	  r0, 1
+b	  branch_0x80078E00
+
+branch_0x80078DFC:
+li	  r0, 0
+
+branch_0x80078E00:
+cmpwi	  r0, 0
+bne	  branch_0x80078E10
+li	  r4, 8
+bl	  changeStateAndFixNodes__11TBGTentacleFi # TBGTentacle::changeStateAndFixNodes((int))
+
+branch_0x80078E10:
+addi	  r28, r28, 1
+cmpwi	  r28, 4
+addi	  r29, r29, 4
+blt	  branch_0x80078DCC
+b	  def_80078888	# jumptable 80078888 default case
+
+branch_0x80078E24:		# jumptable 80078888 case 6
+lwz	  r3, 0x150(r31)
+li	  r4, 9
+bl	  changeStateAndFixNodes__11TBGTentacleFi # TBGTentacle::changeStateAndFixNodes((int))
+
+def_80078888:		# jumptable 80078888 default case
 branch_0x80078e30:
     lwz     r0, 0xac(sp)
     lwz     r31, 0xa4(sp)
@@ -7100,7 +7711,7 @@ branch_0x80078f50:
 
 .globl is2ndFightNow__10TBossGessoCFv
 is2ndFightNow__10TBossGessoCFv: # 0x80078f6c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80078f84
@@ -7140,7 +7751,7 @@ branch_0x80078fd0:
     lwz     r0, 0x198(r30)
     and.    r0, r0, r31
     bne-    branch_0x80078fec
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r5, 0x1
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
@@ -7294,7 +7905,7 @@ rumblePad__10TBossGessoFiRCQ29JGeometry8TVec3_f_: # 0x800791ac
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x800792f0
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x20(sp)
@@ -7356,9 +7967,8 @@ branch_0x800792ac:
     cmpwi   r30, 0x0
     bge-    branch_0x800792c8
     b       branch_0x800792dc
+    b       branch_0x800792dc
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x73cc4, 0x800792c8 - 0x800792c4
 branch_0x800792c8:
     lfs     f0, -0x69fc(rtoc)
     fmuls   f1, f1, f0
@@ -8159,7 +8769,7 @@ branch_0x80079e38:
     stw     r0, 0x98(r31)
     lwz     r0, 0x54(sp)
     stw     r0, 0x9c(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x9
     beq-    branch_0x8007a0e4
@@ -8174,7 +8784,7 @@ branch_0x80079e38:
     lfs     f0, 0xc0(r31)
     lfs     f31, 0xcc(sp)
     fmuls   f0, f1, f0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmr     f3, f31
     lfs     f1, 0xc4(sp)
     fadds   f2, f2, f0
@@ -8187,7 +8797,7 @@ branch_0x80079e38:
     fmuls   f2, f2, f0
     lfs     f0, 0x14(r31)
     fadds   f30, f1, f4
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f0, f2
     lfs     f1, 0xc4(sp)
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
@@ -8217,7 +8827,7 @@ branch_0x80079e38:
     stfs    f0, 0xac(sp)
     bl      generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_
 branch_0x80079f74:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x286a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8246,7 +8856,7 @@ branch_0x80079fc0:
     fmuls   f0, f1, f0
     lfs     f31, 0xc8(sp)
     fmr     f3, f30
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0xc4(sp)
     fadds   f2, f31, f0
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
@@ -8261,7 +8871,7 @@ branch_0x80079fc0:
     fmr     f3, f30
     lfs     f0, 0xc0(r31)
     addi    r4, sp, 0x9c
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0xc4(sp)
     fadds   f2, f4, f0
@@ -8507,7 +9117,7 @@ receiveMessage__10TBGBodyHitFP9THitActorUl: # 0x8007a35c
     bne-    branch_0x8007a3a0
     cmplwi  r5, 0xf
     bne-    branch_0x8007a3a0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r4, 0x10
     li      r4, 0xe7
     li      r6, 0x0
@@ -8727,7 +9337,7 @@ branch_0x8007a640:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
 branch_0x8007a678:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x10
     li      r4, 0xe7
     li      r6, 0x0
@@ -8841,7 +9451,7 @@ branch_0x8007a814:
     lwz     r0, 0x68(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x8007ad08
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x108(sp)
@@ -9231,7 +9841,7 @@ branch_0x8007ad94:
 
 branch_0x8007ada4:
     lwz     r0, 0x68(r29)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     slwi    r0, r0, 1
     add     r3, r3, r0
     lhz     r0, 0x414(r3)
@@ -9397,7 +10007,7 @@ branch_0x8007afb4:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
 branch_0x8007afec:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x10
     li      r4, 0xe7
     li      r6, 0x0
@@ -9512,7 +10122,7 @@ branch_0x8007b168:
     lwz     r0, 0x198(r28)
     rlwinm. r0, r0, 0, 28, 28
     bne-    branch_0x8007b19c
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x25
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -9744,7 +10354,7 @@ moveRequest__10TBGBeakHitFRCQ29JGeometry8TVec3_f_: # 0x8007b488
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x60d8(r13)
+    lwz     r5, MarioActor(r13)
     lis     r0, 0x4330
     lfs     f2, 0x270(r3)
     addi    r3, sp, 0x44

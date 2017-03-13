@@ -380,7 +380,7 @@ branch_0x8003fc54:
     clrlwi. r0, r0, 24
     beq-    branch_0x8003fc6c
     lwz     r4, 0x42f0(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lwz     r4, 0x4(r4)
     bl      stampModel__17TPollutionManagerFP8J3DModel
 branch_0x8003fc6c:
@@ -721,7 +721,7 @@ checkController__11TEnemyMarioFPQ26JDrama9TGraphics: # 0x8004010c
     stw     r31, 0x64(sp)
     stw     r30, 0x60(sp)
     mr      r30, r3
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f2, 0x10(r3)
     lfs     f3, 0x0(r4)
     lfs     f1, 0x8(r4)
@@ -952,7 +952,7 @@ branch_0x80040484:
     clrlwi. r0, r0, 24
     bne-    branch_0x800404c0
     addi    r3, r30, 0x0
-    li      r4, 0x133e
+    li      r4, MARIOSTATUS_133e
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -990,7 +990,7 @@ branch_0x8004050c:
     clrlwi. r0, r0, 24
     bne-    branch_0x80040548
     addi    r3, r30, 0x0
-    li      r4, 0x133e
+    li      r4, MARIOSTATUS_133e
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1174,7 +1174,7 @@ branch_0x8004074c:
     add     r3, r4, r0
     addi    r4, sp, 0x74
     bl      getPoint__10TGraphNodeCFP3Vec
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f3, 0x74(sp)
     lfs     f2, 0x0(r3)
     lfs     f1, 0x78(sp)
@@ -1286,7 +1286,9 @@ hitWater__11TEnemyMarioFP9THitActor: # 0x80040888
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x800408E8:		# jumptable 800408E4 cases 0-2
     li      r0, 0x258
     sth     r0, 0x42ba(r31)
     lha     r3, 0x4294(r31)
@@ -1296,11 +1298,11 @@ hitWater__11TEnemyMarioFP9THitActor: # 0x80040888
     sth     r0, 0x4294(r31)
     addi    r5, r30, 0x10
     li      r4, 0xe7
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r30, 0x10
     lfs     f1, -0x70a8(rtoc)
     li      r4, 0x6802
@@ -1365,11 +1367,14 @@ branch_0x800409d4:
     rlwinm  r0, r0, 0, 12, 10
     stw     r0, 0xf0(r4)
     bl      dropObject__6TMarioFv
+
 branch_0x80040a14:
     li      r0, 0x0
     stw     r0, 0x42a4(r31)
     li      r0, 0xe
     sth     r0, 0x4292(r31)
+
+def_800408E4:		# jumptable 800408E4 default case
 branch_0x80040a24:
     lwz     r0, 0x84(sp)
     lwz     r31, 0x7c(sp)
@@ -1381,6 +1386,24 @@ branch_0x80040a24:
 
 .globl consider__11TEnemyMarioFv
 consider__11TEnemyMarioFv: # 0x80040a3c
+
+.set var_134, -0x134
+.set var_130, -0x130
+.set var_12C, -0x12C
+.set var_124, -0x124
+.set var_E0, -0xE0
+.set var_D0, -0xD0
+.set var_C0, -0xC0
+.set var_B0, -0xB0
+.set var_70, -0x70
+.set var_30, -0x30
+.set var_28, -0x28
+.set var_18, -0x18
+.set var_10, -0x10
+.set var_8, -8
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x220(sp)
@@ -1395,7 +1418,9 @@ consider__11TEnemyMarioFv: # 0x80040a3c
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80040A78:		# jumptable 80040A74 case 0
     mr      r3, r31
     lwz     r12, 0x0(r31)
     lwz     r12, 0xe8(r12)
@@ -1403,8 +1428,583 @@ consider__11TEnemyMarioFv: # 0x80040a3c
     blrl
     b       branch_0x80041278
 
+branch_0x80040A90:		# jumptable 80040A74 case 1
+lfs	  f1, 0x429C(r31)
+lfs	  f0, -0x70A4(r2)
+fcmpo	  cr0, f1, f0
+bge	  branch_0x80040AC0
+lwz	  r5, 0x108(r31)
+li	  r3, 0
+li	  r0, 2
+lwz	  r4, 4(r5)
+ori	  r4, r4, 0x100
+stw	  r4, 4(r5)
+stw	  r3, 0x42A4(r31)
+sth	  r0, 0x4292(r31)
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3b490, 0x80041278 - 0x80040a90
+branch_0x80040AC0:
+lfs	  f1, 0x429C(r31)
+lfs	  f0, -0x70A0(r2)
+fcmpo	  cr0, f1, f0
+bge	  branch_0x80040B64
+lhz	  r5, 0x4296(r31)
+lwz	  r0, -0x5EAC(r13)
+lwz	  r3, -0x5EA8(r13)
+sraw	  r0, r5, r0
+lfs	  f1, -0x710C(r2)
+slwi	  r0, r0, 2
+lfs	  f2, -0x70B4(r2)
+lfsx	  f0, r3, r0
+lwz	  r3, 0x108(r31)
+fmuls	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_10(r1)
+lwz	  r0, 0x220+var_10+4(r1)
+sth	  r0, 0(r3)
+lwz	  r0, -0x5EAC(r13)
+lwz	  r4, -0x5EA4(r13)
+sraw	  r0, r5, r0
+lwz	  r3, 0x108(r31)
+slwi	  r0, r0, 2
+lfsx	  f0, r4, r0
+fneg	  f0, f0
+fmuls	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_18(r1)
+lwz	  r0, 0x220+var_18+4(r1)
+sth	  r0, 2(r3)
+lwz	  r3, 0x108(r31)
+lha	  r0, 0(r3)
+neg	  r0, r0
+sth	  r0, 0(r3)
+lwz	  r3, 0x108(r31)
+lhau	  r0, 2(r3)
+neg	  r0, r0
+sth	  r0, 0(r3)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040B64:
+li	  r0, 0
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040B70:		# jumptable 80040A74 case 2
+mr	  r3, r31
+bl	  emJumping__11TEnemyMarioFv # TEnemyMario::emJumping((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040B7C:		# jumptable 80040A74 case 3
+lfs	  f1, 0x429C(r31)
+lfs	  f0, -0x709C(r2)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x80040C00
+lhz	  r5, 0x4296(r31)
+lwz	  r0, -0x5EAC(r13)
+lwz	  r3, -0x5EA8(r13)
+sraw	  r0, r5, r0
+lfs	  f1, -0x710C(r2)
+slwi	  r0, r0, 2
+lfs	  f2, -0x70B4(r2)
+lfsx	  f0, r3, r0
+lwz	  r3, 0x108(r31)
+fmuls	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_18(r1)
+lwz	  r0, 0x220+var_18+4(r1)
+sth	  r0, 0(r3)
+lwz	  r0, -0x5EAC(r13)
+lwz	  r4, -0x5EA4(r13)
+sraw	  r0, r5, r0
+lwz	  r3, 0x108(r31)
+slwi	  r0, r0, 2
+lfsx	  f0, r4, r0
+fneg	  f0, f0
+fmuls	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_10(r1)
+lwz	  r0, 0x220+var_10+4(r1)
+sth	  r0, 2(r3)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040C00:
+li	  r0, 0
+stw	  r0, 0x42A4(r31)
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040C10:		# jumptable 80040A74 case 5
+mr	  r3, r31
+bl	  emWalkAround__11TEnemyMarioFv	# TEnemyMario::emWalkAround((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040C1C:		# jumptable 80040A74 case 6
+lwz	  r30, 0x42A0(r31)
+addi	  r3, r30, 0x104
+bl	  getPoint__9TPathNodeCFv # TPathNode::getPoint(const(void))
+lwz	  r5, 0(r3)
+addi	  r4, r30, 0x10
+lwz	  r0, 4(r3)
+stw	  r5, 0x220+var_134(r1)
+stw	  r0, 0x220+var_130(r1)
+lwz	  r0, 8(r3)
+addi	  r3, r1, 0x220+var_134
+stw	  r0, 0x220+var_12C(r1)
+bl	  sub__Q29JGeometry8TVec3_f_FRCQ29JGeometry8TVec3_f_
+addi	  r3, r1, 0x220+var_134
+addi	  r4, r3, 0
+bl	  dot__Q29JGeometry8TVec3_f_CFRCQ29JGeometry8TVec3_f_
+bl	  sqrt__Q29JGeometry8TUtil_f_Ff
+lfs	  f0, -0x7098(r2)
+fcmpo	  cr0, f1, f0
+bge	  branch_0x80040C8C
+lfs	  f1, 0x429C(r31)
+lfs	  f0, -0x7094(r2)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x80040C84
+lwz	  r3, 0x42A0(r31)
+bl	  goToRandomNextGraphNode__11TSpineEnemyFv # TSpineEnemy::goToRandomNextGraphNode((void))
+b	  branch_0x80040C8C
+
+branch_0x80040C84:
+lwz	  r3, 0x42A0(r31)
+bl	  goToRandomEscapeGraphNode__11TSpineEnemyFv # TSpineEnemy::goToRandomEscapeGraphNode((void))
+
+branch_0x80040C8C:
+lwz	  r3, 0x42A0(r31)
+addi	  r4, r3, 0xF4
+lwz	  r3, 0xF4(r3)
+cmplwi	  r3, 0
+beq	  branch_0x80040CA8
+addi	  r3, r3, 0x10
+b	  branch_0x80040CAC
+
+branch_0x80040CA8:
+addi	  r3, r4, 4
+
+branch_0x80040CAC:
+lfs	  f3, 0(r3)
+lfs	  f2, 0x10(r31)
+lfs	  f1, 8(r3)
+lfs	  f0, 0x18(r31)
+fsubs	  f2, f3, f2
+fsubs	  f1, f1, f0
+bl	  matan__Fff	# matan(float,float)
+lwz	  r0, -0x5EAC(r13)
+clrlwi	  r6, r3, 16
+lis	  r3, 0x51EC # 0x51EB851F
+lwz	  r4, -0x5EA8(r13)
+sraw	  r0, r6, r0
+slwi	  r0, r0, 2
+lfs	  f1, -0x710C(r2)
+lfsx	  f0, r4, r0
+addi	  r0, r3, -0x7AE1 # 0x51EB851F
+lfs	  f2, -0x70B4(r2)
+fmuls	  f0, f0, f1
+lwz	  r3, 0x108(r31)
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_18(r1)
+lwz	  r4, 0x220+var_18+4(r1)
+sth	  r4, 0(r3)
+lwz	  r3, -0x5EAC(r13)
+lwz	  r5, -0x5EA4(r13)
+sraw	  r4, r6, r3
+lwz	  r3, 0x108(r31)
+slwi	  r4, r4, 2
+lfsx	  f0, r5, r4
+fneg	  f0, f0
+fmuls	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_10(r1)
+lwz	  r4, 0x220+var_10+4(r1)
+sth	  r4, 2(r3)
+lwz	  r3, 0x42A4(r31)
+addi	  r3, r3, 1
+stw	  r3, 0x42A4(r31)
+lwz	  r3, 0x42A4(r31)
+mulhwu	  r0, r0, r3
+srwi	  r0, r0, 5
+mulli	  r0, r0, 0x64
+subf.	  r0, r0, r3
+bne	  def_80040A74	# jumptable 80040A74 default case
+lis	  r4, aGngagngkgGlbGw@h	# "ハムクリマネージャー"
+lwz	  r3, -0x70B0(r13)
+addi	  r5, r4, aGngagngkgGlbGw@l # "ハムクリマネージャー"
+addi	  r4, r31, 0x10
+li	  r6, 1
+li	  r7, 0
+bl	  makeEnemyAppear__10TConductorFRCQ29JGeometry8TVec3_f_PCcii
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040D84:		# jumptable 80040A74 case 4
+lha	  r3, 0x96(r31)
+lha	  r0, 0x4298(r31)
+subf	  r30, r3, r0
+bl	  rand
+cmpwi	  r3, 0x64
+bge	  branch_0x80040DC0
+lwz	  r5, 0x108(r31)
+li	  r3, 0
+li	  r0, 2
+lwz	  r4, 4(r5)
+ori	  r4, r4, 0x100
+stw	  r4, 4(r5)
+stw	  r3, 0x42A4(r31)
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040DC0:
+extsh	  r0, r30
+cmpwi	  r0, -0x1555
+blt	  branch_0x80040DD4
+cmpwi	  r0, 0x1555
+ble	  branch_0x80040E48
+
+branch_0x80040DD4:
+lhz	  r5, 0x4298(r31)
+lwz	  r0, -0x5EAC(r13)
+lwz	  r3, -0x5EA8(r13)
+sraw	  r0, r5, r0
+lfs	  f1, -0x710C(r2)
+slwi	  r0, r0, 2
+lfs	  f2, -0x7090(r2)
+lfsx	  f0, r3, r0
+lwz	  r3, 0x108(r31)
+fmuls	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_18(r1)
+lwz	  r0, 0x220+var_18+4(r1)
+sth	  r0, 0(r3)
+lwz	  r0, -0x5EAC(r13)
+lwz	  r4, -0x5EA4(r13)
+sraw	  r0, r5, r0
+lwz	  r3, 0x108(r31)
+slwi	  r0, r0, 2
+lfsx	  f0, r4, r0
+fneg	  f0, f0
+fmuls	  f0, f0, f1
+fmuls	  f0, f2, f0
+fctiwz	  f0, f0
+stfd	  f0, 0x220+var_10(r1)
+lwz	  r0, 0x220+var_10+4(r1)
+sth	  r0, 2(r3)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040E48:
+li	  r0, 0
+stw	  r0, 0x42A4(r31)
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040E58:		# jumptable 80040A74 case 7
+lwz	  r0, 0x64(r31)
+ori	  r0, r0, 1
+stw	  r0, 0x64(r31)
+lwz	  r3, 0x42A0(r31)
+lwz	  r0, 0x64(r3)
+ori	  r0, r0, 1
+stw	  r0, 0x64(r3)
+lwz	  r3, 0x42A4(r31)
+addi	  r0, r3, 1
+stw	  r0, 0x42A4(r31)
+lwz	  r3, gpPollution(r13)
+lfs	  f1, 0x10(r31)
+lfs	  f2, 0x14(r31)
+lfs	  f3, 0x18(r31)
+bl	  isPolluted__17TPollutionManagerCFfff # TPollutionManager::isPolluted(const(float,float,float))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80040EA8
+lwz	  r0, 0x42A4(r31)
+cmplwi	  r0, 0x1C20
+ble	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040EA8:
+li	  r4, 0
+stw	  r4, 0x42A4(r31)
+li	  r3, 0x78
+li	  r0, 8
+sth	  r3, 0x14C(r31)
+stw	  r4, 0x42A4(r31)
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040EC8:		# jumptable 80040A74 case 8
+lha	  r0, 0x14C(r31)
+cmpwi	  r0, 0
+bne	  def_80040A74	# jumptable 80040A74 default case
+li	  r0, 0
+stw	  r0, 0x42A4(r31)
+sth	  r0, 0x4292(r31)
+lwz	  r0, 0x64(r31)
+clrrwi	  r0, r0, 1
+stw	  r0, 0x64(r31)
+lwz	  r3, 0x42A0(r31)
+lwz	  r0, 0x64(r3)
+clrrwi	  r0, r0, 1
+stw	  r0, 0x64(r3)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040F00:		# jumptable 80040A74 case 9
+lwz	  r0, 0x64(r31)
+addi	  r3, r31, 0
+li	  r4, 0x133E
+ori	  r0, r0, 1
+stw	  r0, 0x64(r31)
+li	  r5, 0
+li	  r6, 0
+lwz	  r7, 0x42A0(r31)
+lwz	  r0, 0x64(r7)
+ori	  r0, r0, 1
+stw	  r0, 0x64(r7)
+lhz	  r0, 0x4290(r31)
+rlwinm	  r0, r0, 0,31,29
+sth	  r0, 0x4290(r31)
+lhz	  r0, 0x114(r31)
+rlwinm	  r0, r0, 0,31,29
+sth	  r0, 0x114(r31)
+bl	  changePlayerStatus__6TMarioFUlUlb # TMario::changePlayerStatus((ulong,ulong,bool))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040F4C:		# jumptable 80040A74 case 10
+mr	  r3, r31
+bl	  emDisappearToGate__11TEnemyMarioFv # TEnemyMario::emDisappearToGate((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80040F58:		# jumptable 80040A74 case 12
+lwz	  r3, MarioHitActorPos(r13)
+lfs	  f3, 0x10(r31)
+lfs	  f2, 0(r3)
+lfs	  f1, 0x14(r31)
+fsubs	  f4, f3, f2
+lfs	  f0, 4(r3)
+lfs	  f2, 0x18(r31)
+fsubs	  f3, f1, f0
+lfs	  f0, 8(r3)
+fsubs	  f2, f2, f0
+fmuls	  f1, f4, f4
+fmuls	  f0, f3, f3
+fmuls	  f2, f2, f2
+fadds	  f0, f1, f0
+fadds	  f1, f2, f0
+bl	  sqrt__Q29JGeometry8TUtil_f_Ff
+lwz	  r4, 0x430C(r31)
+lfs	  f0, 0x18(r4)
+fcmpo	  cr0, f1, f0
+bge	  def_80040A74	# jumptable 80040A74 default case
+lfs	  f1, 0x14(r31)
+lfs	  f0, 0x2C(r4)
+lwz	  r3, MarioHitActorPos(r13)
+fadds	  f0, f1, f0
+lfs	  f1, 4(r3)
+fcmpo	  cr0, f1, f0
+bge	  def_80040A74	# jumptable 80040A74 default case
+lwz	  r3, 0x42A0(r31)
+lwz	  r3, 0x124(r3)
+bl	  getGraph__12TGraphTracerCFv #	TGraphTracer::getGraph(const(void))
+addi	  r4, r31, 0x10
+li	  r5, -1
+bl	  findNearestNodeIndex__9TGraphWebCFRCQ29JGeometry8TVec3_f_Ul
+lwz	  r4, 0x42A0(r31)
+mr	  r30, r3
+lwz	  r3, 0x124(r4)
+bl	  getGraph__12TGraphTracerCFv #	TGraphTracer::getGraph(const(void))
+lwz	  r3, 0(r3)
+slwi	  r0, r30, 4
+lwzx	  r3, r3, r0
+lwz	  r0, 8(r3)
+rlwinm.	  r0, r0, 0,30,30
+beq	  branch_0x8004102C
+lha	  r0, 0x4296(r31)
+sth	  r0, 0x96(r31)
+lwz	  r3, 0x108(r31)
+lwz	  r0, 8(r3)
+ori	  r0, r0, 0x100
+stw	  r0, 8(r3)
+lwz	  r3, 0x108(r31)
+lwz	  r0, 4(r3)
+ori	  r0, r0, 0x100
+stw	  r0, 4(r3)
+
+branch_0x8004102C:
+li	  r0, 0
+stw	  r0, 0x42A4(r31)
+li	  r0, 0xD
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80041040:		# jumptable 80040A74 case 13
+mr	  r3, r31
+bl	  emReplayJumpToNearestNode__11TEnemyMarioFv # TEnemyMario::emReplayJumpToNearestNode((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x8004104C:		# jumptable 80040A74 case 14
+addi	  r3, r31, 0
+li	  r4, 0x133E
+li	  r5, 0
+li	  r6, 1
+bl	  changePlayerStatus__6TMarioFUlUlb # TMario::changePlayerStatus((ulong,ulong,bool))
+lfs	  f1, -0x70B4(r2)
+addi	  r3, r31, 0
+li	  r4, 0x2C
+bl	  setAnimation__6TMarioFif # TMario::setAnimation((int,float))
+mr	  r3, r31
+bl	  getMotionFrameCtrl__6TMarioFv	# TMario::getMotionFrameCtrl((void))
+lfs	  f1, 0x10(r3)
+lfs	  f0, -0x708C(r2)
+fcmpo	  cr0, f1, f0
+ble	  def_80040A74	# jumptable 80040A74 default case
+li	  r0, 0
+stw	  r0, 0x42A4(r31)
+li	  r0, 0xF
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x8004109C:		# jumptable 80040A74 case 15
+mr	  r3, r31
+bl	  emDownAnimation__11TEnemyMarioFv # TEnemyMario::emDownAnimation((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x800410A8:		# jumptable 80040A74 case 16
+mr	  r3, r31
+bl	  emRunAwayToNearestNode__11TEnemyMarioFv # TEnemyMario::emRunAwayToNearestNode((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x800410B4:		# jumptable 80040A74 case 22
+lha	  r3, 0x96(r31)
+li	  r4, 0
+lha	  r0, 0x4296(r31)
+li	  r5, 0x180
+li	  r6, 0x180
+subf	  r0, r3, r0
+extsh	  r3, r0
+bl	  IConverge__Fiiii # IConverge(int,int,int,int)
+lha	  r0, 0x4296(r31)
+lis	  r4, 0xC40 # 0xC400201
+addi	  r4, r4, 0x201	# 0xC400201
+subf	  r0, r3, r0
+sth	  r0, 0x96(r31)
+addi	  r3, r31, 0
+li	  r5, 0
+li	  r6, 0
+bl	  changePlayerStatus__6TMarioFUlUlb # TMario::changePlayerStatus((ulong,ulong,bool))
+mr	  r3, r31
+bl	  changeMontemanWaitingAnim__6TMarioFv # TMario::changeMontemanWaitingAnim((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80041104:		# jumptable 80040A74 case 18
+mr	  r3, r31
+bl	  tryTake__11TEnemyMarioFv # TEnemyMario::tryTake((void))
+clrlwi.	  r0, r3, 24
+beq	  def_80040A74	# jumptable 80040A74 default case
+lwz	  r3, 0x42F0(r31)
+cmplwi	  r3, 0
+beq	  branch_0x80041150
+lwz	  r4, 0x430C(r31)
+lbz	  r0, 0x68(r4)
+cmplwi	  r0, 1
+bne	  branch_0x80041150
+lis	  r4, aStamp_koopa_si@h	# "stamp_koopa_sign_draw1"
+addi	  r4, r4, aStamp_koopa_si@l # "stamp_koopa_sign_draw1"
+bl	  setBck__6MActorFPCc #	MActor::setBck((char const *))
+li	  r0, 0
+stw	  r0, 0x42A4(r31)
+li	  r0, 0x13
+sth	  r0, 0x4292(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80041150:
+mr	  r3, r31
+bl	  decideDoingAfterCarry__11TEnemyMarioFv # TEnemyMario::decideDoingAfterCarry((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x8004115C:		# jumptable 80040A74 case 19
+lwz	  r3, 0x42F0(r31)
+li	  r4, 0
+li	  r5, 0
+bl	  curAnmEndsNext__6MActorFiPc #	MActor::curAnmEndsNext((int,char *))
+cmpwi	  r3, 0
+beq	  def_80040A74	# jumptable 80040A74 default case
+mr	  r3, r31
+bl	  decideDoingAfterCarry__11TEnemyMarioFv # TEnemyMario::decideDoingAfterCarry((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80041180:		# jumptable 80040A74 case 20
+mr	  r3, r31
+bl	  emWaitingToInviteMario__11TEnemyMarioFv # TEnemyMario::emWaitingToInviteMario((void))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x8004118C:		# jumptable 80040A74 cases 24,26
+lha	  r3, 0x96(r31)
+li	  r4, 0
+lha	  r0, 0x4296(r31)
+li	  r5, 0x180
+li	  r6, 0x180
+subf	  r0, r3, r0
+extsh	  r3, r0
+bl	  IConverge__Fiiii # IConverge(int,int,int,int)
+lha	  r0, 0x4296(r31)
+subf	  r0, r3, r0
+sth	  r0, 0x96(r31)
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x800411BC:		# jumptable 80040A74 case 23
+lwz	  r3, 0x42A0(r31)
+addi	  r4, r31, 0x10
+lwz	  r3, 0x124(r3)
+lwz	  r3, 0(r3)
+lwz	  r3, 0(r3)
+addi	  r3, r3, 0x80
+bl	  getPoint__10TGraphNodeCFP3Vec	# TGraphNode::getPoint(const(Vec *))
+li	  r0, -0x8000
+sth	  r0, 0x96(r31)
+mr	  r3, r31
+sth	  r0, 0x9A(r31)
+bl	  isLast1AnimeFrame__6TMarioFv # TMario::isLast1AnimeFrame((void))
+cmpwi	  r3, 0
+beq	  def_80040A74	# jumptable 80040A74 default case
+addi	  r3, r31, 0
+li	  r4, 0xA
+bl	  startDisappear__11TEnemyMarioFUs # TEnemyMario::startDisappear((ushort))
+b	  def_80040A74	# jumptable 80040A74 default case
+
+branch_0x80041204:		# jumptable 80040A74 case 27
+addi	  r3, r1, 0x220+var_E0
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+bl	  set__7JUTRectFiiii # JUTRect::set((int,int,int,int))
+addi	  r3, r1, 0x220+var_D0
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+bl	  set__7JUTRectFiiii # JUTRect::set((int,int,int,int))
+addi	  r3, r1, 0x220+var_C0
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+li	  r7, 0
+bl	  set__7JUTRectFiiii # JUTRect::set((int,int,int,int))
+addi	  r3, r1, 0x220+var_B0
+bl	  __ct__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix44_Q29JGeometry13SMatrix44C_f___Fv
+addi	  r3, r1, 0x220+var_70
+bl	  __ct__Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f__Fv
+li	  r0, -1
+stw	  r0, 0x220+var_30(r1)
+li	  r0, 0
+addi	  r3, r31, 0
+sth	  r0, 0x220+var_28(r1)
+addi	  r4, r1, 0x220+var_124
+bl	  checkController__6TMarioFPQ26JDrama9TGraphics	# TMario::checkController((JDrama::TGraphics *))
+
+def_80040A74:		# jumptable 80040A74 default case
 branch_0x80041278:
     lwz     r0, 0x224(sp)
     lwz     r31, 0x21c(sp)
@@ -1446,7 +2046,7 @@ __ct__Q29JGeometry38TMatrix44_Q29JGeometry13SMatrix44C_f__Fv: # 0x800412b8
 .globl startGateDrawing__11TEnemyMarioFv
 startGateDrawing__11TEnemyMarioFv: # 0x800412bc
     mflr    r0
-    li      r4, 0x133e
+    li      r4, MARIOSTATUS_133e
     stw     r0, 0x4(sp)
     li      r5, 0x0
     li      r6, 0x1
@@ -1503,7 +2103,7 @@ emWaitingToInviteMario__11TEnemyMarioFv: # 0x80041320
     bl      IConverge__Fiiii
     lha     r0, 0x4296(r31)
     lis     r30, 0xc40
-    addi    r4, r30, 0x201
+    addi    r4, r30, MARIOSTATUS_201
     subf    r0, r3, r0
     sth     r0, 0x96(r31)
     addi    r3, r31, 0x0
@@ -1512,7 +2112,7 @@ emWaitingToInviteMario__11TEnemyMarioFv: # 0x80041320
     bl      changePlayerStatus__6TMarioFUlUlb
     mr      r3, r31
     bl      changeMontemanWaitingAnim__6TMarioFv
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f3, 0x10(r31)
     lfs     f2, 0x0(r3)
     lfs     f1, 0x14(r31)
@@ -1534,7 +2134,7 @@ emWaitingToInviteMario__11TEnemyMarioFv: # 0x80041320
     bge-    branch_0x800414a4
     lfs     f1, 0x14(r31)
     lfs     f0, 0x2c(r4)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     fadds   f0, f1, f0
     lfs     f1, 0x4(r3)
     fcmpo   cr0, f1, f0
@@ -1555,7 +2155,7 @@ emWaitingToInviteMario__11TEnemyMarioFv: # 0x80041320
     bl      matan__Fff
     sth     r3, 0x96(r31)
     addi    r3, r31, 0x0
-    addi    r4, r30, 0x201
+    addi    r4, r30, MARIOSTATUS_201
     lha     r0, 0x96(r31)
     li      r5, 0x0
     li      r6, 0x1
@@ -1699,13 +2299,13 @@ emRunAwayToNearestNode__11TEnemyMarioFv: # 0x80041620
     lwz     r3, 0x0(r3)
     add     r3, r3, r0
     bl      getPoint__10TGraphNodeCFP3Vec
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x42e0
     li      r4, 0x1aa
     li      r6, 0x1
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x42e0
     li      r4, 0x1ab
@@ -1767,9 +2367,9 @@ branch_0x80041704:
     lfs     f0, -0x7088(rtoc)
     fadds   f0, f1, f0
     stfs    f0, 0x42e4(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1976
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1887,13 +2487,13 @@ branch_0x800418d0:
     b       branch_0x80041ae0
 
 branch_0x800418fc:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x42e0
     li      r4, 0xed
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x197c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1908,7 +2508,7 @@ branch_0x800418fc:
     b       branch_0x80041ae0
 
 branch_0x80041948:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x80041a2c
@@ -1971,7 +2571,7 @@ branch_0x80041a2c:
     lis     r4, 0xc40
     lwz     r0, 0x114(sp)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     stw     r5, 0x10(r31)
     li      r5, 0x0
     li      r6, 0x1
@@ -2218,7 +2818,7 @@ startRunAway__11TEnemyMarioFv: # 0x80041da4
 .globl emDownAnimation__11TEnemyMarioFv
 emDownAnimation__11TEnemyMarioFv: # 0x80041db8
     mflr    r0
-    li      r4, 0x133e
+    li      r4, MARIOSTATUS_133e
     stw     r0, 0x4(sp)
     li      r5, 0x0
     li      r6, 0x1
@@ -2230,7 +2830,7 @@ emDownAnimation__11TEnemyMarioFv: # 0x80041db8
     addi    r3, r31, 0x0
     li      r4, 0x13e
     bl      setAnimation__6TMarioFif
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
     beq-    branch_0x80041e24
@@ -2276,7 +2876,7 @@ branch_0x80041e58:
     stw     r0, 0x42e4(r31)
     lwz     r0, 0x42c8(r31)
     stw     r0, 0x42e8(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     beq-    branch_0x80041ed0
@@ -2411,7 +3011,7 @@ branch_0x80042058:
     bl      resetHistory__6TMarioFv
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2419,7 +3019,7 @@ branch_0x80042058:
     addi    r3, r28, 0x0
     addi    r4, r31, 0x10
     bl      getPoint__10TGraphNodeCFP3Vec
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0x148
     addi    r4, sp, 0x248
     lwz     r5, 0x0(r6)
@@ -2806,7 +3406,7 @@ branch_0x800425f4:
     bl      resetHistory__6TMarioFv
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2863,7 +3463,7 @@ emReplay__11TEnemyMarioFv: # 0x800426c8
     lbz     r0, 0xe0(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x80042744
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80042744
     lfs     f4, 0xf4(r4)
@@ -3029,9 +3629,9 @@ branch_0x80042938:
     lwz     r0, 0x64(r3)
     ori     r0, r0, 0x1
     stw     r0, 0x64(r3)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x42e0
     li      r4, 0x1ab
@@ -3050,9 +3650,9 @@ branch_0x80042938:
     stw     r0, 0x42e4(r31)
     lwz     r0, 0x180(r31)
     stw     r0, 0x42e8(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x1976
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3114,7 +3714,7 @@ startDisappear__11TEnemyMarioFUs: # 0x80042a68
     stw     r0, 0x42e4(r30)
     lwz     r0, 0x18(r30)
     stw     r0, 0x42e8(r30)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     lbz     r3, 0x7d(r3)
     cmplwi  r0, 0x1
@@ -3136,7 +3736,7 @@ branch_0x80042ad8:
     li      r3, 0x0
     bl      setBossLivesFlag__10MSMainProcFb
 branch_0x80042ae8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x42e0
     li      r4, 0xed
     li      r6, 0x0
@@ -3226,7 +3826,7 @@ branch_0x80042c00:
     li      r4, 0x1
     lfs     f2, 0x14(r31)
     lfs     f1, 0x10(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f4, -0x7060(rtoc)
     bl      stamp__17TPollutionManagerFUsffff
     li      r0, 0x0
@@ -3367,7 +3967,7 @@ branch_0x80042e04:
     li      r4, 0x1
     lfs     f2, 0x14(r31)
     lfs     f1, 0x10(r31)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f4, -0x7060(rtoc)
     bl      stamp__17TPollutionManagerFUsffff
     li      r0, 0x0
@@ -3510,7 +4110,7 @@ branch_0x80042fdc:
 branch_0x80043000:
     stw     r3, 0x384(r29)
     addi    r3, r29, 0x0
-    li      r4, 0x383
+    li      r4, MARIOSTATUS_383
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -3590,7 +4190,7 @@ startMonteReplay__11TEnemyMarioFUl: # 0x80043050
     bl      resetHistory__6TMarioFv
     lis     r4, 0xc40
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -4553,7 +5153,7 @@ branch_0x80043f44:
     cmpw    r18, r19
     blt+    branch_0x80043ed0
 branch_0x80043f4c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x2
     lwz     r3, 0x18(r3)
     lwz     r3, 0x4(r3)
@@ -4667,7 +5267,7 @@ branch_0x800440a4:
     li      r0, 0x0
     stw     r0, 0x42f8(r31)
 branch_0x800440ac:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x80044174
@@ -4727,7 +5327,7 @@ branch_0x80044174:
     stw     r0, 0x42fc(r31)
     stw     r0, 0x4300(r31)
 branch_0x80044180:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xc
     bne-    branch_0x80044260
@@ -4739,7 +5339,7 @@ branch_0x80044180:
     bne-    branch_0x800441c0
     li      r0, 0x3
     stb     r0, 0x388(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r0, 0x4(r3)
     stw     r0, 0x4fc(r31)
@@ -4752,7 +5352,7 @@ branch_0x800441c0:
     bne-    branch_0x800441f0
     li      r0, 0x4
     stb     r0, 0x388(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r0, 0x8(r3)
     stw     r0, 0x4fc(r31)
@@ -4765,7 +5365,7 @@ branch_0x800441f0:
     bne-    branch_0x80044220
     li      r0, 0x5
     stb     r0, 0x388(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r0, 0xc(r3)
     stw     r0, 0x4fc(r31)
@@ -4807,7 +5407,7 @@ branch_0x80044274:
     lbz     r0, 0x42d4(r31)
     cmplwi  r0, 0x2
     bne-    branch_0x800442b0
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     bl      noWave__11TMapObjWaveFv
 branch_0x800442b0:
     li      r0, 0x0
@@ -4930,7 +5530,7 @@ initModel__11TEnemyMarioFv: # 0x8004440c
     stw     r0, 0x398(r31)
     stw     r0, 0x39c(r31)
     stw     r0, 0x3a0(r31)
-    lwz     r26, -0x60d8(r13)
+    lwz     r26, MarioActor(r13)
     lwz     r3, 0x3a8(r26)
     lwz     r3, 0x8(r3)
     lwz     r0, 0x4(r3)
@@ -5675,7 +6275,7 @@ branch_0x80044ec0:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x80044f2c
-    lwz     r4, -0x6044(r13)
+    lwz     r4, gpMSound(r13)
     mr      r3, r30
     bl      __ct__9MAnmSoundFP6MSound
     lis     r3, 0x803b

@@ -164,7 +164,7 @@ branch_0x801e91bc:
     b       branch_0x801e926c
 
 branch_0x801e91c8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r4, 0x14(r30)
     lbz     r0, 0x7c(r3)
     lwzx    r28, r4, r29
@@ -175,7 +175,7 @@ branch_0x801e91c8:
     b       branch_0x801e9264
 
 branch_0x801e91ec:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfsu    f2, 0x124(r3)
     lfs     f3, 0x10(r28)
     lfs     f1, 0x14(r28)

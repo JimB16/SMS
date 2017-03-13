@@ -224,9 +224,8 @@ branch_0x802cfa0c:
     cmpw    r0, r15
     beq-    branch_0x802cfa8c
     b       branch_0x802cfb04
+    b	    branch_0x802cfd14
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2ca418, 0x802cfa1c - 0x802cfa18
 branch_0x802cfa1c:
     lwz     r4, 0x0(r25)
     addi    r3, r31, 0x0
@@ -335,11 +334,109 @@ branch_0x802cfb70:
     slwi    r0, r4, 2
     lwzx    r0, r14, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802CFB8C:		# jumptable 802CFB88 case 0
     b       branch_0x802cfd14
 
+branch_0x802CFB90:		# jumptable 802CFB88 case 1
+mr	  r3, r31
+lwz	  r12, 0(r31)
+li	  r4, 4
+lwz	  r12, 0x10(r12)
+mtlr	  r12
+blrl
+addi	  r3, r30, 0
+addi	  r4, r27, 0
+addi	  r5, r31, 0
+addi	  r6, r24, 0
+addi	  r8, r29, 0
+li	  r7, 0
+li	  r9, 0
+bl	  makeHiearachyPanes__9J2DScreenFP7J2DPaneP20JSURandomInputStreambbbPl # J2DScreen::makeHiearachyPanes((J2DPane	*,JSURandomInputStream *,bool,bool,bool,long *))
+b	  branch_0x802cf928
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2ca590, 0x802cfcdc - 0x802cfb90
+branch_0x802CFBCC:		# jumptable 802CFB88 case 2
+mr	  r3, r31
+lwz	  r12, 0(r31)
+li	  r4, 4
+lwz	  r12, 0x10(r12)
+mtlr	  r12
+blrl
+b	  branch_0x802cfd14
+
+branch_0x802CFBE8:		# jumptable 802CFB88 case 16
+li	  r3, 0xEC
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r27, r3
+beq	  branch_0x802CFC0C
+addi	  r3, r27, 0
+addi	  r4, r28, 0
+addi	  r5, r31, 0
+addi	  r6, r29, 0
+bl	  __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb # J2DPane::J2DPane((J2DPane *,JSURandomInputStream *,bool))
+
+branch_0x802CFC0C:
+lwz	  r0, 0xF8+var_4C(r1)
+cmplwi	  r0, 0
+beq	  branch_0x802cf928
+lwz	  r0, 0x18(r27)
+addi	  r3, r1, 0xF8+var_90
+lwz	  r5, 0x20(r27)
+li	  r4, 0
+lwz	  r8, 0x14(r27)
+lwz	  r6, 0x1C(r27)
+subf	  r7, r0, r5
+li	  r5, 0
+subf	  r6, r8, r6
+bl	  set__7JUTRectFiiii # JUTRect::set((int,int,int,int))
+lwz	  r3, 0xF8+var_90(r1)
+lwz	  r0, 0xF8+var_8C(r1)
+stw	  r3, 0x14(r30)
+stw	  r0, 0x18(r30)
+lwz	  r3, 0xF8+var_88(r1)
+lwz	  r0, 0xF8+var_84(r1)
+stw	  r3, 0x1C(r30)
+stw	  r0, 0x20(r30)
+b	  branch_0x802cf928
+
+branch_0x802CFC64:		# jumptable 802CFB88 case 17
+li	  r3, 0x13C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r27, r3
+beq	  branch_0x802cf928
+addi	  r3, r27, 0
+addi	  r4, r28, 0
+addi	  r5, r31, 0
+addi	  r6, r29, 0
+bl	  __ct__9J2DWindowFP7J2DPaneP20JSURandomInputStreamb # J2DWindow::J2DWindow((J2DPane *,JSURandomInputStream *,bool))
+b	  branch_0x802cf928
+
+branch_0x802CFC8C:		# jumptable 802CFB88 case 18
+li	  r3, 0x15C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r27, r3
+beq	  branch_0x802cf928
+addi	  r3, r27, 0
+addi	  r4, r28, 0
+addi	  r5, r31, 0
+addi	  r6, r29, 0
+bl	  __ct__10J2DPictureFP7J2DPaneP20JSURandomInputStreamb # J2DPicture::J2DPicture((J2DPane *,JSURandomInputStream	*,bool))
+b	  branch_0x802cf928
+
+branch_0x802CFCB4:		# jumptable 802CFB88 case 19
+li	  r3, 0x128
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r27, r3
+beq	  branch_0x802cf928
+addi	  r3, r27, 0
+addi	  r4, r28, 0
+addi	  r5, r31, 0
+addi	  r6, r29, 0
+bl	  __ct__10J2DTextBoxFP7J2DPaneP20JSURandomInputStreamb # J2DTextBox::J2DTextBox((J2DPane *,JSURandomInputStream	*,bool))
+b	  branch_0x802cf928
+
+def_802CFB88:		# jumptable 802CFB88 default case
 branch_0x802cfcdc:
     cmplwi  r23, 0x0
     beq-    branch_0x802cfd04

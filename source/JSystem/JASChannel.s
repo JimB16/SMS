@@ -631,12 +631,32 @@ branch_0x80312028:
     slwi    r0, r0, 2
     lwzx    r0, r26, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8031204C:		# jumptable 80312048 case 1
     fmr     f24, f21
     b       branch_0x80312078
 
+branch_0x80312054:		# jumptable 80312048 case 2
+fmr	  f24, f22
+b	  def_80312048	# jumptable 80312048 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x30ca54, 0x80312078 - 0x80312054
+branch_0x8031205C:		# jumptable 80312048 case 3
+fmr	  f24, f23
+b	  def_80312048	# jumptable 80312048 default case
+
+branch_0x80312064:		# jumptable 80312048 case 5
+fmr	  f24, f27
+b	  def_80312048	# jumptable 80312048 default case
+
+branch_0x8031206C:		# jumptable 80312048 case 6
+fmr	  f24, f26
+b	  def_80312048	# jumptable 80312048 default case
+
+branch_0x80312074:		# jumptable 80312048 case 7
+fmr	  f24, f25
+
+def_80312048:		# jumptable 80312048 default case
 branch_0x80312078:
     fmr     f1, f24
     bl      sinfT__Q28JASystem4CalcFf
@@ -650,12 +670,32 @@ branch_0x80312084:
     slwi    r0, r3, 2
     lwzx    r0, r27, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x803120A8:		# jumptable 803120A4 case 1
     fmr     f24, f21
     b       branch_0x803120d4
 
+branch_0x803120B0:		# jumptable 803120A4 case 2
+fmr	  f24, f22
+b	  def_803120A4	# jumptable 803120A4 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x30cab0, 0x803120d4 - 0x803120b0
+branch_0x803120B8:		# jumptable 803120A4 case 3
+fmr	  f24, f23
+b	  def_803120A4	# jumptable 803120A4 default case
+
+branch_0x803120C0:		# jumptable 803120A4 case 5
+fmr	  f24, f27
+b	  def_803120A4	# jumptable 803120A4 default case
+
+branch_0x803120C8:		# jumptable 803120A4 case 6
+fmr	  f24, f26
+b	  def_803120A4	# jumptable 803120A4 default case
+
+branch_0x803120D0:		# jumptable 803120A4 case 7
+fmr	  f24, f25
+
+def_803120A4:		# jumptable 803120A4 default case
 branch_0x803120d4:
     cmpwi   r3, 0x7
     beq-    branch_0x803120ec

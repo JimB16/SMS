@@ -70,7 +70,7 @@ generate__16TEffectExplosionFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x8
     lwz     r0, 0x8(r31)
     stw     r0, 0x2c(r29)
     lfs     f31, 0x0(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80036420
@@ -81,7 +81,7 @@ generate__16TEffectExplosionFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x8
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80036420:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x0
     li      r4, 0xc5
     li      r6, 0x0
@@ -96,7 +96,7 @@ branch_0x80036420:
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80036458:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x0
     li      r4, 0xc6
     li      r6, 0x0
@@ -111,7 +111,7 @@ branch_0x80036458:
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80036490:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x0
     li      r4, 0xa2
     li      r6, 0x0
@@ -515,7 +515,7 @@ generate__16TEffectColumSandFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x8
     lwz     r0, 0x8(r31)
     stw     r0, 0x2c(r29)
     lfs     f31, 0x0(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80036a48
@@ -830,7 +830,7 @@ generate__21TEffectBombColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: 
     stw     r0, 0x28(r29)
     lwz     r0, 0x8(r31)
     stw     r0, 0x2c(r29)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80036ebc
@@ -847,7 +847,7 @@ generate__21TEffectBombColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: 
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r3)
 branch_0x80036ebc:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x0
     li      r4, 0x30
     li      r6, 0x0
@@ -868,7 +868,7 @@ branch_0x80036ebc:
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r3)
 branch_0x80036f0c:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x0
     li      r4, 0x1d4
     li      r6, 0x2
@@ -1241,7 +1241,7 @@ generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x
     stw     r0, 0x28(r29)
     lwz     r0, 0x20(sp)
     stw     r0, 0x2c(r29)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80037488
@@ -1258,7 +1258,7 @@ generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r3)
 branch_0x80037488:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x0
     li      r4, 0x8a
     li      r6, 0x0
@@ -2018,7 +2018,7 @@ behaveToWater__14TEffectObjBaseFP9THitActor: # 0x80037ec4
     b       branch_0x80037f98
 
 branch_0x80037f04:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28c5
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2040,7 +2040,7 @@ branch_0x80037f34:
     li      r7, 0x0
     ori     r0, r0, 0x1
     stw     r0, 0x64(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80037f98
@@ -2085,7 +2085,7 @@ moveObject__14TEffectObjBaseFv: # 0x80037fac
     lfs     f0, 0x6c(r29)
     fdivs   f1, f1, f0
     bl      PSVECScale
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1f5
@@ -2103,7 +2103,7 @@ moveObject__14TEffectObjBaseFv: # 0x80037fac
     stfs    f1, 0x178(r3)
     stfs    f2, 0x17c(r3)
 branch_0x8003803c:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1c4
@@ -2121,7 +2121,7 @@ branch_0x8003803c:
     stfs    f1, 0x178(r3)
     stfs    f2, 0x17c(r3)
 branch_0x80038080:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1c5
@@ -2139,7 +2139,7 @@ branch_0x80038080:
     stfs    f1, 0x178(r3)
     stfs    f2, 0x17c(r3)
 branch_0x800380c4:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x30b2
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2178,7 +2178,7 @@ branch_0x80038138:
     clrlwi. r0, r0, 24
     beq-    branch_0x8003814c
     addi    r3, r29, 0x0
-    li      r4, 0xa
+    li      r4, MARIOMSG_HURTFIRE
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x8003814c:
     addi    r30, r30, 0x1
@@ -2385,13 +2385,13 @@ emitEffect__19TEffectBiancoFunsuiFv: # 0x80038380
     lwz     r5, 0x24(sp)
     lwz     r6, 0x1c(sp)
     bl      MsMtxSetXYZRPH__FPA4_ffffsss
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x1a9
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x5006
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2475,13 +2475,13 @@ emitEffect__18TEffectPinnaFunsuiFv: # 0x800384c0
     lwz     r5, 0x24(sp)
     lwz     r6, 0x1c(sp)
     bl      MsMtxSetXYZRPH__FPA4_ffffsss
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x1a8
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x5006
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

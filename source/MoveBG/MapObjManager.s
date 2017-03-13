@@ -937,7 +937,7 @@ branch_0x801b5ee4:
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x801b5f04
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lwz     r3, 0x78(r3)
     b       branch_0x801b6968
 
@@ -2097,22 +2097,33 @@ branch_0x801b6e28:
     blr
 
 
+/*
+Input:
+r3: MapObjManager
+r4: ObjectID
+*/
 .globl makeObjAppear__18TMapObjBaseManagerFUl
 makeObjAppear__18TMapObjBaseManagerFUl: # 0x801b6e3c
+
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
     li      r5, 0x0
-    stw     r0, 0x4(sp)
+    stw     r0, arg_4(sp)
     stwu    sp, -0x28(sp)
-    stw     r31, 0x24(sp)
-    lwz     r0, 0x14(r3)
+    stw     r31, 0x28+var_4(sp)
+    lwz     r0, MapObjManager_14(r3)
     cmpwi   r0, 0x0
     mtctr   r0
     ble-    branch_0x801b6f0c
+
 branch_0x801b6e60:
-    lwz     r6, 0x18(r3)
+    lwz     r6, MapObjManager_18(r3)
     lwzx    r6, r6, r5
     lwz     r0, 0x4c(r6)
     addi    r31, r6, 0x0
+
     cmplw   r0, r4
     bne-    branch_0x801b6e80
     li      r0, 0x1
@@ -2164,11 +2175,12 @@ branch_0x801b6ee0:
 branch_0x801b6f04:
     addi    r5, r5, 0x4
     bdnz+      branch_0x801b6e60
+
 branch_0x801b6f0c:
     li      r3, 0x0
 branch_0x801b6f10:
-    lwz     r0, 0x2c(sp)
-    lwz     r31, 0x24(sp)
+    lwz     r0, 0x28+arg_4(sp)
+    lwz     r31, 0x28+var_4(sp)
     addi    sp, sp, 0x28
     mtlr    r0
     blr
@@ -2193,7 +2205,7 @@ makeObjAppear__18TMapObjBaseManagerFfffUlb: # 0x801b6f24
     lfs     f0, -0x2c58(rtoc)
     fmr     f1, f30
     fmr     f3, f31
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f0, f2
     addi    r4, sp, 0x30
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
@@ -2577,7 +2589,7 @@ branch_0x801b747c:
     li      r3, 0x0
 branch_0x801b7480:
     stw     r3, 0x88(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x801b74b4
@@ -2615,7 +2627,7 @@ branch_0x801b74ec:
     li      r3, 0x0
 branch_0x801b74f0:
     stw     r3, 0x94(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r4, 0x7c(r3)
     cmplwi  r4, 0x3
     bne-    branch_0x801b7518
@@ -2691,7 +2703,7 @@ branch_0x801b75f8:
     li      r3, 0x0
 branch_0x801b75fc:
     stw     r3, 0xc4(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x801b761c
@@ -2699,7 +2711,7 @@ branch_0x801b75fc:
     bl      getGlbResource__13JKRFileLoaderFPCc
     stw     r3, 0xcc(r31)
 branch_0x801b761c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xd
     bne-    branch_0x801b7638
@@ -2707,7 +2719,7 @@ branch_0x801b761c:
     bl      getGlbResource__13JKRFileLoaderFPCc
     stw     r3, 0xcc(r31)
 branch_0x801b7638:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x9
     bne-    branch_0x801b7654
@@ -2715,7 +2727,7 @@ branch_0x801b7638:
     bl      getGlbResource__13JKRFileLoaderFPCc
     stw     r3, 0xc8(r31)
 branch_0x801b7654:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x8
     bne-    branch_0x801b7670

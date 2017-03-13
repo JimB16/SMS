@@ -33,13 +33,16 @@ branch_0x803180bc:
     addi    r28, r3, 0x3068
     addi    r29, r31, 0x14
     addi    r30, r31, 0x17
+branch_0x803180D8:
     lbz     r0, 0x0(r30)
     cmplwi  r0, 0x6
     bgt-    branch_0x803184c4
     slwi    r0, r0, 2
     lwzx    r0, r28, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x803180F4:		# jumptable 803180F0 case 1
     lwz     r0, 0x10(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x803184c4
@@ -88,8 +91,255 @@ branch_0x80318188:
     stb     r0, 0x0(r30)
     b       branch_0x803184c4
 
+branch_0x80318194:		# jumptable 803180F0 case 2
+addi	  r29, r31, 0x14
+lhz	  r0, 0x14(r31) #(word_803FDB34 - unk_803FDB20)(r31)
+cmplwi	  r0, 0
+bne	  branch_0x803181FC
+addi	  r3, r31, 0xC
+bl	  getLoopNum__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::getLoopNum((void))
+clrlwi	  r0, r3, 16
+cmplwi	  r0, 0xFFFF
+beq	  branch_0x803181FC
+addi	  r4, r3, 0
+addi	  r3, r31, 0xC
+addi	  r5, r31, 0x5C
+addi	  r6, r13, -0x5B54
+bl	  startSecond__Q38JASystem10HardStream8TControlFUsP11DVDFileInfoPUl # JASystem::HardStream::TControl::startSecond((ushort,DVDFileInfo *,ulong *))
+cmpwi	  r3, 0
+bne	  branch_0x803181E0
+li	  r0, 0
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x312b94, 0x803184c4 - 0x80318194
+branch_0x803181E0:
+addi	  r3, r31, 0xC
+bl	  clearListOne__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::clearListOne((void))
+li	  r0, 1
+sth	  r0, 0(r29)
+li	  r0, 4
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x803181FC:
+addi	  r3, r31, 0xC
+bl	  clearListOne__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::clearListOne((void))
+lwz	  r0, 0x10(r31) #(dword_803FDB30 -	unk_803FDB20)(r31)
+cmplwi	  r0, 0
+bne	  branch_0x80318250
+lhz	  r0, 0(r29)
+cmplwi	  r0, 0
+bne	  branch_0x8031823C
+addi	  r3, r31, 0x410
+li	  r4, 0
+bl	  DVDStopStreamAtEndAsync
+li	  r0, 4
+stb	  r0, 0(r30)
+li	  r0, 2
+sth	  r0, 0(r29)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x8031823C:
+li	  r0, 3
+sth	  r0, 0(r29)
+li	  r0, 4
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x80318250:
+addi	  r3, r31, 0xC
+bl	  getIntroNum__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::getIntroNum((void))
+clrlwi	  r0, r3, 16
+cmplwi	  r0, 0xFFFF
+beq	  branch_0x80318298
+addi	  r4, r3, 0
+addi	  r3, r31, 0xC
+addi	  r5, r31, 0x5C
+addi	  r6, r13, -0x5B54
+bl	  startSecond__Q38JASystem10HardStream8TControlFUsP11DVDFileInfoPUl # JASystem::HardStream::TControl::startSecond((ushort,DVDFileInfo *,ulong *))
+cmpwi	  r3, 0
+bne	  branch_0x8031828C
+li	  r0, 0
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x8031828C:
+li	  r0, 0
+sth	  r0, 0(r29)
+b	  branch_0x803182D8
+
+branch_0x80318298:
+addi	  r3, r31, 0xC
+bl	  getLoopNum__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::getLoopNum((void))
+addi	  r4, r3, 0
+addi	  r3, r31, 0xC
+addi	  r5, r31, 0x5C
+addi	  r6, r13, -0x5B54
+bl	  startSecond__Q38JASystem10HardStream8TControlFUsP11DVDFileInfoPUl # JASystem::HardStream::TControl::startSecond((ushort,DVDFileInfo *,ulong *))
+cmpwi	  r3, 0
+bne	  branch_0x803182C8
+li	  r0, 0
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x803182C8:
+addi	  r3, r31, 0xC
+bl	  clearListOne__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::clearListOne((void))
+li	  r0, 1
+sth	  r0, 0(r29)
+
+branch_0x803182D8:
+li	  r0, 4
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x803182E4:		# jumptable 803180F0 case 4
+addi	  r3, r31, 0xC
+bl	  getCurVol__Q38JASystem10HardStream8TControlFv	# JASystem::HardStream::TControl::getCurVol((void))
+mr	  r28, r3
+bl	  AISetStreamVolLeft
+mr	  r3, r28
+bl	  AISetStreamVolRight
+lbz	  r0, -0x5B4F(r13)
+lis	  r3, getAddrCallback__Q28JASystem10HardStreamFlP15DVDCommandBlock@ha #	JASystem::HardStream::getAddrCallback((long,DVDCommandBlock *))
+addi	  r4, r3, getAddrCallback__Q28JASystem10HardStreamFlP15DVDCommandBlock@l # JASystem::HardStream::getAddrCallback((long,DVDCommandBlock *))
+mulli	  r0, r0, 0x30
+add	  r3, r31, r0
+addi	  r3, r3, 0x110
+bl	  DVDGetStreamPlayAddrAsync
+lbz	  r4, -0x5B4F(r13)
+li	  r3, 0x10
+addi	  r0, r4, 1
+stb	  r0, -0x5B4F(r13)
+lbz	  r4, -0x5B4F(r13)
+divw	  r0, r4, r3
+mullw	  r0, r0, r3
+subf	  r0, r0, r4
+stb	  r0, -0x5B4F(r13)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x80318340:		# jumptable 803180F0 case 5
+lwz	  r4, 0x10(r31)
+cmplwi	  r4, 0
+bne	  branch_0x80318370
+addi	  r3, r31, 0x14
+lhz	  r0, 0x14(r31)
+cmplwi	  r0, 2
+beq	  branch_0x80318364
+li	  r0, 3
+sth	  r0, 0(r3)
+
+branch_0x80318364:
+li	  r0, 4
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x80318370:
+lhz	  r0, 0(r29)
+cmplwi	  r0, 0
+bne	  branch_0x80318410
+lwz	  r3, 0(r4)
+lhz	  r0, 6(r3)
+cmplwi	  r0, 0xFFFF
+bne	  branch_0x803183CC
+lwz	  r0, 4(r4)
+cmplwi	  r0, 0
+bne	  branch_0x803183B8
+addi	  r3, r31, 0x410
+li	  r4, 0
+bl	  DVDStopStreamAtEndAsync
+addi	  r3, r31, 0xC
+bl	  clearListOne__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::clearListOne((void))
+li	  r0, 2
+sth	  r0, 0(r29)
+b	  branch_0x8031847C
+
+branch_0x803183B8:
+addi	  r3, r31, 0xC
+bl	  clearListOne__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::clearListOne((void))
+li	  r0, 1
+sth	  r0, 0(r29)
+b	  branch_0x803180D8
+
+branch_0x803183CC:
+addi	  r3, r31, 0xC
+bl	  getLoopNum__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::getLoopNum((void))
+addi	  r4, r3, 0
+addi	  r3, r31, 0xC
+addi	  r5, r31, 0x5C
+addi	  r6, r13, -0x5B54
+bl	  startSecond__Q38JASystem10HardStream8TControlFUsP11DVDFileInfoPUl # JASystem::HardStream::TControl::startSecond((ushort,DVDFileInfo *,ulong *))
+cmpwi	  r3, 0
+bne	  branch_0x803183FC
+li	  r0, 0
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x803183FC:
+addi	  r3, r31, 0xC
+bl	  clearListOne__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::clearListOne((void))
+li	  r0, 1
+sth	  r0, 0(r29)
+b	  branch_0x8031847C
+
+branch_0x80318410:
+cmplwi	  r4, 0
+bne	  branch_0x8031842C
+li	  r0, 3
+sth	  r0, 0(r29)
+li	  r0, 4
+stb	  r0, 0(r30)
+b	  branch_0x8031847C
+
+branch_0x8031842C:
+addi	  r3, r31, 0xC
+bl	  getIntroNum__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::getIntroNum((void))
+clrlwi	  r0, r3, 16
+cmplwi	  r0, 0xFFFF
+bne	  branch_0x8031844C
+li	  r0, 0
+sth	  r0, 0(r29)
+b	  branch_0x803180D8
+
+branch_0x8031844C:
+addi	  r4, r3, 0
+addi	  r3, r31, 0xC
+addi	  r5, r31, 0x5C
+addi	  r6, r13, -0x5B54
+bl	  startSecond__Q38JASystem10HardStream8TControlFUsP11DVDFileInfoPUl # JASystem::HardStream::TControl::startSecond((ushort,DVDFileInfo *,ulong *))
+cmpwi	  r3, 0
+bne	  branch_0x80318474
+li	  r0, 0
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x80318474:
+li	  r0, 0
+sth	  r0, 0(r29)
+
+branch_0x8031847C:
+li	  r0, 4
+stb	  r0, 0(r30)
+b	  def_803180F0	# jumptable 803180F0 default case
+
+branch_0x80318488:		# jumptable 803180F0 case 6
+li	  r3, 0
+bl	  AISetStreamVolLeft
+li	  r3, 0
+bl	  AISetStreamVolRight
+li	  r3, 0
+bl	  AISetStreamPlayState
+addi	  r3, r31, 0x440
+li	  r4, 0
+bl	  DVDCancelStreamAsync
+li	  r29, 0
+stb	  r29, 0(r30)
+addi	  r3, r31, 0xC
+sth	  r29, 0x14(r31)
+bl	  resetFader__Q38JASystem10HardStream8TControlFv # JASystem::HardStream::TControl::resetFader((void))
+stb	  r29, 0x16(r31)
+
+def_803180F0:		# jumptable 803180F0 default case
 branch_0x803184c4:
     lwz     r0, 0x4c(sp)
     lwz     r31, 0x44(sp)

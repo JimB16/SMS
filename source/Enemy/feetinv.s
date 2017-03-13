@@ -428,7 +428,7 @@ branch_0x800458bc:
 branch_0x800458e0:
     lfs     f29, 0x228(sp)
     addi    r4, sp, 0x214
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f29, f31
     lfs     f1, 0x224(sp)
     lfs     f3, 0x22c(sp)

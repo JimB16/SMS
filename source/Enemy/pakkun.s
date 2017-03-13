@@ -72,14 +72,14 @@ branch_0x80065d0c:
     lwz     r0, 0xf0(r30)
     rlwinm. r0, r0, 0, 29, 29
     bne-    branch_0x80065d9c
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x10(r30)
     lfs     f2, 0x14(r30)
     lfs     f3, 0x18(r30)
     bl      isPolluted__17TPollutionManagerCFfff
     clrlwi. r0, r3, 24
     beq-    branch_0x80065d9c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     addi    r5, r30, 0x10
     li      r4, 0x12d
@@ -239,7 +239,7 @@ branch_0x80065f50:
     lbz     r0, 0x1bc(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x80066078
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -321,20 +321,20 @@ branch_0x80066078:
     lwz     r0, 0xf0(r31)
     rlwinm. r0, r0, 0, 29, 30
     bne-    branch_0x80066120
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
     bl      isPolluted__17TPollutionManagerCFfff
     clrlwi. r0, r3, 24
     bne-    branch_0x800660f8
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x10
     li      r4, 0x13e
     li      r6, 0x1
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x10
     li      r4, 0x13f
@@ -343,7 +343,7 @@ branch_0x80066078:
     b       branch_0x80066120
 
 branch_0x800660f8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x10
     li      r4, 0x12d
@@ -582,7 +582,7 @@ branch_0x800663e0:
     bl      checkCurAnmEnd__11TSpineEnemyCFi
     cmpwi   r3, 0x0
     beq-    branch_0x80066490
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6ca8(rtoc)
     stw     r3, 0x20(sp)
     cmplwi  r3, 0x0
@@ -998,7 +998,7 @@ branch_0x80066914:
     beq-    branch_0x8006699c
     lfs     f31, -0x6c90(rtoc)
 branch_0x8006699c:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     fmuls   f0, f0, f31
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -1017,7 +1017,7 @@ branch_0x800669d0:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0xe0(r3)
     lfs     f2, 0x4(r4)
     lfs     f1, 0x14(r30)
@@ -1123,7 +1123,7 @@ branch_0x80066b58:
     cmplwi  r0, 0x0
     beq-    branch_0x80066bbc
 branch_0x80066b78:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r30
     lfs     f0, 0x10(r30)
     addi    r4, sp, 0x268
@@ -1361,7 +1361,7 @@ branch_0x80066e6c:
     lfs     f0, 0x370(r5)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80067050
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f0, 0x10(r30)
     lfs     f1, 0x0(r3)
     lfs     f3, 0x8(r3)
@@ -2053,7 +2053,7 @@ branch_0x80067868:
     stw     r3, 0x54(sp)
     lfs     f0, -0x6c5c(rtoc)
     stw     r0, 0x50(sp)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     lfd     f2, 0x50(sp)
     lfs     f1, 0x10(r30)
     fsubs   f4, f2, f3
@@ -2159,7 +2159,7 @@ branch_0x800679ac:
     lbz     r0, 0x13c(r31)
     cmplwi  r0, 0x2
     bge-    branch_0x80067a58
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x287f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2226,7 +2226,7 @@ genRandomItem__11TStayPakkunFv: # 0x80067a90
     stw     r0, 0x74(r4)
     lwz     r0, 0x1ac(r30)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x64(r5)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
     bl      SMS_GetMarioWaterGun__Fv
@@ -2238,7 +2238,7 @@ genRandomItem__11TStayPakkunFv: # 0x80067a90
     cmpw    r0, r31
     bge-    branch_0x80067b40
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r30)
     addi    r4, r4, 0x2
     lfs     f2, 0x14(r30)
@@ -2256,7 +2256,7 @@ branch_0x80067b40:
     mtlr    r12
     blrl
 branch_0x80067b5c:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x1a4
     li      r4, 0xa1
     li      r6, 0x0
@@ -2272,7 +2272,7 @@ branch_0x80067b5c:
     stfs    f0, 0x178(r3)
     stfs    f0, 0x17c(r3)
 branch_0x80067b98:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x1a4
     li      r4, 0xa2
     li      r6, 0x0
@@ -2442,7 +2442,7 @@ load__11TStayPakkunFR20JSUMemoryInputStream: # 0x80067db8
     blrl
     lfs     f1, -0x6ca8(rtoc)
     addi    r3, sp, 0x1c
-    lwz     r31, -0x60b8(r13)
+    lwz     r31, MarioHitActor(r13)
     fmr     f2, f1
     fmr     f3, f1
     stw     r31, 0x18(sp)
@@ -2527,7 +2527,7 @@ branch_0x80067ef8:
 branch_0x80067efc:
     clrlwi. r0, r0, 24
     bne-    branch_0x80067f1c
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      isInArea__4TMapCFff
@@ -2640,7 +2640,7 @@ rebirth__11TPakkunSeedFv: # 0x8006802c
     lbz     r3, 0x298(r3)
     lhz     r4, 0x58(r4)
     stw     r3, 0x6c(sp)
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     stw     r0, 0x68(sp)
     lfs     f1, 0x10(r31)
     lfd     f0, 0x68(sp)
@@ -2650,7 +2650,7 @@ rebirth__11TPakkunSeedFv: # 0x8006802c
     fmuls   f0, f4, f0
     fmuls   f4, f0, f5
     bl      stamp__17TPollutionManagerFUsffff
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x287e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2718,7 +2718,7 @@ branch_0x80068198:
 branch_0x8006819c:
     clrlwi. r0, r0, 24
     bne-    branch_0x8006820c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x287e
     lwz     r30, 0x16c(r31)
     bl      gateCheck__6MSoundFUl
@@ -2732,13 +2732,13 @@ branch_0x8006819c:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800681d8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     lwz     r7, 0x194(r30)
     li      r4, 0x13e
     li      r6, 0x1
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     lwz     r7, 0x194(r30)
     li      r4, 0x13f
@@ -2931,7 +2931,7 @@ calcRootMatrix__11TPakkunSeedFv: # 0x80068440
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     mr      r3, r0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3572,7 +3572,7 @@ perform__7TPakkunFUlPQ26JDrama9TGraphics: # 0x80068cac
     rlwinm  r0, r0, 0, 30, 28
     stw     r0, 0xf0(r29)
 branch_0x80068d24:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r29)
     lfs     f2, 0x18(r29)
     bl      isInArea__4TMapCFff
@@ -3768,7 +3768,7 @@ branch_0x80068f90:
     stw     r0, 0x14(r4)
     stw     r0, 0x18(r4)
     stw     r3, 0x1c(r4)
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6ca8(rtoc)
     stw     r3, 0x98(sp)
     cmplwi  r3, 0x0
@@ -3918,7 +3918,7 @@ load__7TPakkunFR20JSUMemoryInputStream: # 0x800691a0
     lwz     r12, 0xfc(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6ca8(rtoc)
     stw     r3, 0x18(sp)
     cmplwi  r3, 0x0
@@ -4009,7 +4009,7 @@ branch_0x80069300:
     lfs     f31, 0x68(r3)
     lfs     f30, 0x54(r3)
 branch_0x80069308:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     fmr     f4, f31
     lfs     f3, 0xe8(r28)
     lfs     f2, 0x4c(r3)

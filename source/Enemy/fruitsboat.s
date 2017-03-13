@@ -267,7 +267,7 @@ branch_0x800eb0a0:
     lfs     f3, -0x5ab8(rtoc)
     bl      walkToCurPathNode__11TSpineEnemyFfff
 branch_0x800eb0b0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x302e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -391,7 +391,7 @@ branch_0x800eb25c:
     lfs     f3, -0x5ab8(rtoc)
     bl      walkToCurPathNode__11TSpineEnemyFfff
 branch_0x800eb26c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x302e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -813,12 +813,12 @@ moveObject__11TFruitsBoatFv: # 0x800eb6bc
     lfs     f0, 0x110(sp)
     fsubs   f0, f0, f3
     stfs    f0, 0x110(sp)
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     lfs     f1, 0x114(sp)
     lfs     f2, 0x11c(sp)
     bl      getWaveHeight__11TMapObjWaveCFff
     stfs    f1, 0x118(sp)
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     lfs     f1, 0x108(sp)
     lfs     f2, 0x110(sp)
     bl      getWaveHeight__11TMapObjWaveCFff
@@ -899,7 +899,7 @@ branch_0x800eb8f8:
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x800ebc1c
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0xe4(sp)
@@ -1116,7 +1116,7 @@ branch_0x800ebc1c:
     lwz     r0, 0xf0(r28)
     rlwinm. r0, r0, 0, 14, 14
     beq-    branch_0x800ebe0c
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0xd4(sp)
@@ -1372,7 +1372,7 @@ setGroundCollision__11TFruitsBoatFv: # 0x800ebfa4
     mr      r31, r3
     lwz     r3, 0x10(r3)
     lwz     r0, 0x14(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r3, 0x40(sp)
     stw     r0, 0x44(sp)
     lwz     r0, 0x18(r31)

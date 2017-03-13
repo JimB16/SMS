@@ -194,12 +194,57 @@ getTiming: # 0x8034ef84
     slwi    r0, r3, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8034EFAC:		# jumptable 8034EFA8 case 0
     mr      r3, r5
     blr
 
+branch_0x8034EFB4:		# jumptable 8034EFA8 case 1
+addi	  r3, r5, 0x26
+blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3499b4, 0x8034f00c - 0x8034efb4
+branch_0x8034EFBC:		# jumptable 8034EFA8 case 4
+addi	  r3, r5, 0x4C
+blr
+
+branch_0x8034EFC4:		# jumptable 8034EFA8 case 5
+addi	  r3, r5, 0x72
+blr
+
+branch_0x8034EFCC:		# jumptable 8034EFA8 case 20
+mr	  r3, r5
+blr
+
+branch_0x8034EFD4:		# jumptable 8034EFA8 case 21
+addi	  r3, r5, 0x26
+blr
+
+branch_0x8034EFDC:		# jumptable 8034EFA8 case 8
+addi	  r3, r5, 0x98
+blr
+
+branch_0x8034EFE4:		# jumptable 8034EFA8 case 9
+addi	  r3, r5, 0xBE
+blr
+
+branch_0x8034EFEC:		# jumptable 8034EFA8 case 2
+addi	  r3, r5, 0xE4
+blr
+
+branch_0x8034EFF4:		# jumptable 8034EFA8 case 3
+addi	  r3, r5, 0x10A
+blr
+
+branch_0x8034EFFC:		# jumptable 8034EFA8 case 16
+addi	  r3, r5, 0x4C
+blr
+
+branch_0x8034F004:		# jumptable 8034EFA8 case 17
+addi	  r3, r5, 0x72
+blr
+
+def_8034EFA8:		# jumptable 8034EFA8 default case
 branch_0x8034f00c:
     li      r3, 0x0
     blr

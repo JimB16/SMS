@@ -290,7 +290,7 @@ branch_0x80297078:
     stw     r30, 0x250(r29)
     stw     r30, 0x25c(r29)
     stb     r30, 0x260(r29)
-    stw     r29, -0x6048(r13)
+    stw     r29, gpMarDirector(r13)
     stw     r30, 0x58(r29)
     stw     r30, 0x5c(r29)
     stb     r30, 0x64(r29)

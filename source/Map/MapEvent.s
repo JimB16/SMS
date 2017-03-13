@@ -122,7 +122,7 @@ load__9TMapEventFR20JSUMemoryInputStream: # 0x8018ef1c
     stw     r31, 0x2c(sp)
     mr      r31, r3
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwz     r3, 0x14(r3)
     lwz     r3, 0x14(r3)
     lwz     r0, 0x0(r3)

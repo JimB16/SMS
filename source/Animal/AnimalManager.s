@@ -115,7 +115,7 @@ clipEnemies__18TAnimalManagerBaseFPQ26JDrama9TGraphics: # 0x80009e08
     stmw    r26, 0x38(sp)
     mr      r27, r3
     mr      r28, r4
-    lwz     r5, -0x7118(r13)
+    lwz     r5, gpCamera(r13)
     lfs     f3, 0x54(r3)
     lwz     r3, 0x58(r3)
     lfs     f2, 0x4c(r5)

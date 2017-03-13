@@ -98,7 +98,7 @@ branch_0x8018964c:
     stw     r31, 0x1c(r4)
     mr      r3, r4
     stb     r0, 0x20(r4)
-    stw     r4, -0x6328(r13)
+    stw     r4, gpMap(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
@@ -569,7 +569,7 @@ update__4TMapFv: # 0x80189bd0
     stw     r30, 0x108(sp)
     addi    r30, r4, 0x7a20
     stw     r29, 0x104(sp)
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lbz     r0, 0x7c(r5)
     cmpwi   r0, 0x7
     beq-    branch_0x80189cc4
@@ -596,7 +596,7 @@ branch_0x80189c20:
     stfs    f0, 0x8(r30)
     stb     r0, -0x6324(r13)
 branch_0x80189c4c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3000
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -623,7 +623,7 @@ branch_0x80189c80:
 branch_0x80189ca4:
     lwz     r5, -0x62b8(r13)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x156
     addi    r5, r5, 0x44
     li      r6, 0x1
@@ -649,11 +649,11 @@ branch_0x80189cec:
     li      r4, 0x3
     bl      changeModel__8TMapWarpFi
 branch_0x80189d00:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80189e18
-    lwz     r30, -0x7118(r13)
+    lwz     r30, gpCamera(r13)
     li      r29, 0x1
     addi    r3, r30, 0x0
     bl      isSimpleDemoCamera__15CPolarSubCameraCFv
@@ -685,15 +685,15 @@ branch_0x80189d60:
     b       branch_0x80189e18
 
 branch_0x80189d6c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x39
     beq-    branch_0x80189e18
     cmplwi  r0, 0x10
     beq-    branch_0x80189e18
-    lwz     r3, -0x6094(r13)
+    lwz     r3, MarioFlags(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 30, 30
+    rlwinm. r0, r0, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x80189d9c
     li      r0, 0x1
     b       branch_0x80189da0
@@ -706,13 +706,13 @@ branch_0x80189da0:
     b       branch_0x80189e18
 
 branch_0x80189dac:
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     lfsu    f1, 0x124(r4)
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     lfs     f2, 0x4(r4)
     lfs     f3, 0x8(r4)
     bl      getHeight__11TMapObjWaveCFfff
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f0, 0x128(r3)
     fcmpu   cr0, f1, f0
     beq-    branch_0x80189ddc
@@ -755,12 +755,12 @@ initStage__Fv: # 0x80189e34
     stw     r31, 0x6c(sp)
     subi    r31, r4, 0x7400
     stw     r30, 0x68(sp)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x9
     bgt-    branch_0x80189fcc
     bl      initStageCommon__Fv
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0xf
     bgt-    branch_0x80189fcc
@@ -769,7 +769,9 @@ initStage__Fv: # 0x80189e34
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80189E8C:		# jumptable 80189E88 case 1
     lbz     r0, 0x7d(r4)
     cmplwi  r0, 0x5
     beq-    branch_0x80189fcc
@@ -791,8 +793,83 @@ initStage__Fv: # 0x80189e34
     blrl
     b       branch_0x80189fcc
 
+branch_0x80189EDC:		# jumptable 80189E88 case 2
+lbz	  r0, 0x7D(r4)
+cmplwi	  r0, 0
+beq	  def_80189E88	# jumptable 80189E88 default case
+li	  r3, 1
+li	  r4, 0
+bl	  newAndInitBuildingCollisionWarp__11TMapObjBaseFiP10TLiveActor	# TMapObjBase::newAndInitBuildingCollisionWarp((int,TLiveActor *))
+lwz	  r12, 0(r3)
+lwz	  r12, 0x18(r12)
+mtlr	  r12
+blrl
+li	  r3, 2
+li	  r4, 0
+bl	  newAndInitBuildingCollisionWarp__11TMapObjBaseFiP10TLiveActor	# TMapObjBase::newAndInitBuildingCollisionWarp((int,TLiveActor *))
+lwz	  r12, 0(r3)
+lwz	  r12, 0x18(r12)
+mtlr	  r12
+blrl
+b	  def_80189E88	# jumptable 80189E88 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1848dc, 0x80189fcc - 0x80189edc
+branch_0x80189F24:		# jumptable 80189E88 case 9
+bl	  initMare__Fv
+b	  def_80189E88	# jumptable 80189E88 default case
+
+branch_0x80189F2C:		# jumptable 80189E88 case 8
+bl	  initMonte__Fv
+b	  def_80189E88	# jumptable 80189E88 default case
+
+branch_0x80189F34:		# jumptable 80189E88 case 6
+lbz	  r0, 0x7D(r4)
+cmplwi	  r0, 0
+beq	  def_80189E88	# jumptable 80189E88 default case
+li	  r3, 1
+li	  r4, 0
+bl	  newAndInitBuildingCollisionWarp__11TMapObjBaseFiP10TLiveActor	# TMapObjBase::newAndInitBuildingCollisionWarp((int,TLiveActor *))
+lwz	  r12, 0(r3)
+lwz	  r12, 0x18(r12)
+mtlr	  r12
+blrl
+b	  def_80189E88	# jumptable 80189E88 default case
+
+branch_0x80189F60:		# jumptable 80189E88 case 5
+lis	  r3, unk_803FD068@ha
+addi	  r3, r3, unk_803FD068@l
+addi	  r30, r3, 0x6A
+lbz	  r0, 0x6a(r3) #(byte_803FD0D2 - unk_803FD068)(r3)
+cmplwi	  r0, 0
+bne	  def_80189E88	# jumptable 80189E88 default case
+lwz	  r3, -0x5FE0(r13)
+addi	  r4, r31, 0x108
+li	  r5, 0x6A
+bl	  load__18JPAResourceManagerFPCcUs # JPAResourceManager::load((char const *,ushort))
+li	  r0, 1
+stb	  r0, 0(r30)
+b	  def_80189E88	# jumptable 80189E88 default case
+
+branch_0x80189F94:		# jumptable 80189E88 case 13
+bl	  initPinnaParco__Fv
+b	  def_80189E88	# jumptable 80189E88 default case
+
+branch_0x80189F9C:		# jumptable 80189E88 case 15
+li	  r3, 0x6C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r30, r3
+beq	  branch_0x80189FB8
+addi	  r3, r30, 0
+addi	  r4, r31, 0x124
+bl	  __ct__17TMapObjOptionWallFPCc	# TMapObjOptionWall::TMapObjOptionWall((char const *))
+
+branch_0x80189FB8:
+mr	  r3, r30
+bl	  init__17TMapObjOptionWallFv #	TMapObjOptionWall::init((void))
+addi	  r3, r31, 0x134
+addi	  r4, r30, 0
+bl	  joinToGroup__11TMapObjBaseFPCcP9THitActor # TMapObjBase::joinToGroup((char const *,THitActor *))
+
+def_80189E88:		# jumptable 80189E88 default case
 branch_0x80189fcc:
     lwz     r0, 0x74(sp)
     lwz     r31, 0x6c(sp)
@@ -835,7 +912,7 @@ initStageCommon__Fv: # 0x80189fe4
     addi    r5, r30, 0x134
     mtlr    r12
     blrl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x7c(r3)
     cmplwi  r3, 0x4
     beq-    branch_0x8018a0a8
@@ -955,7 +1032,7 @@ branch_0x8018a1d4:
     stw     r0, 0x130(sp)
     bl      insert__Q27JGadget18TList_pointer_voidFQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorRCPv
 branch_0x8018a228:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x8018a2a8
@@ -1009,7 +1086,7 @@ initPinnaParco__Fv: # 0x8018a2c4
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x8018a30c
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     addi    r3, r31, 0x0
     li      r5, 0x0
     lwz     r4, 0x14(r4)
@@ -1023,7 +1100,7 @@ branch_0x8018a30c:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x8018a330
-    lwz     r4, -0x6328(r13)
+    lwz     r4, gpMap(r13)
     mr      r3, r30
     lwz     r4, 0x14(r4)
     addi    r4, r4, 0x20
@@ -1083,7 +1160,7 @@ initMare__Fv: # 0x8018a3a8
     addi    r5, r30, 0x134
     mtlr    r12
     blrl
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     mr      r31, r3
     lbz     r0, 0x7d(r4)
     cmplwi  r0, 0x5
@@ -1119,7 +1196,7 @@ branch_0x8018a424:
     stw     r0, 0xe4(sp)
     bl      insert__Q27JGadget18TList_pointer_voidFQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorRCPv
 branch_0x8018a47c:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8018a4ec
@@ -1149,7 +1226,7 @@ branch_0x8018a4bc:
     li      r0, 0x1
     stb     r0, 0x0(r29)
 branch_0x8018a4ec:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x8018a52c
@@ -1315,7 +1392,7 @@ branch_0x8018a704:
     lwz     r0, 0xcc(sp)
     stw     r0, 0xa0(sp)
     bl      insert__Q27JGadget18TList_pointer_voidFQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorRCPv
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r3, 0x7d(r3)
     cmplwi  r3, 0x0
     beq-    branch_0x8018a784
@@ -1352,7 +1429,7 @@ branch_0x8018a7b4:
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x8018a7e4:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x1
     beq-    branch_0x8018a80c

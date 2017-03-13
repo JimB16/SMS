@@ -51,7 +51,7 @@ SMSSetEmitterPolColor__FP14JPABaseEmitteri: # 0x8028770c
 branch_0x80287730:
     cmpwi   r4, 0x6
     bne-    branch_0x802877ec
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x7c(r4)
     cmpwi   r0, 0x9
     beq-    branch_0x802877c8
@@ -1480,7 +1480,7 @@ branch_0x80288a74:
     stfs    f0, 0x88(sp)
     lfs     f0, -0x69c(rtoc)
     stfs    f0, 0x8c(sp)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f0, 0x48(r3)
     stfs    f0, 0x88(sp)
     lfs     f0, 0x4c(r3)
@@ -1709,7 +1709,7 @@ branch_0x80288d54:
     stfs    f0, 0x3c(sp)
     lfs     f0, -0x69c(rtoc)
     stfs    f0, 0x40(sp)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f0, 0x48(r3)
     stfs    f0, 0x3c(sp)
     lfs     f0, 0x4c(r3)

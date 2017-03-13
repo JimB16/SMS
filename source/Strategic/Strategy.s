@@ -301,7 +301,7 @@ branch_0x80223560:
 branch_0x80223578:
     cmpw    r22, r30
     blt+    branch_0x802234f0
-    stw     r28, -0x6140(r13)
+    stw     r28, gpStrategy(r13)
     lmw     r21, 0x44(sp)
     lwz     r0, 0x74(sp)
     addi    sp, sp, 0x70

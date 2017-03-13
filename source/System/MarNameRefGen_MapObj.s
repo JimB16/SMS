@@ -206,7 +206,8 @@ branch_0x802acf6c:
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802acfa4
-    li      r3, 0x7c
+
+    li      r3, ItemManager_Size
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802acf9c

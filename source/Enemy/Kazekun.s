@@ -46,7 +46,7 @@ execute__21TNerveKazekunHitWaterCFP24TSpineBase_10TLiveActor_: # 0x8010c314
     bl      setBck__6MActorFPCc
     mr      r3, r31
     bl      setCurAnmSound__10TLiveActorFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x291d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -331,7 +331,7 @@ execute__22TNerveKazekunDisappearCFP24TSpineBase_10TLiveActor_: # 0x8010c6dc
     bl      setBck__6MActorFPCc
     mr      r3, r30
     bl      setCurAnmSound__10TLiveActorFv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xcf
     li      r6, 0x0
@@ -1068,7 +1068,7 @@ execute__22TNerveKazekunPreAttackCFP24TSpineBase_10TLiveActor_: # 0x8010d12c
     addi    r3, r31, 0x0
     li      r4, 0x1
     bl      doAttackPose__8TKazekunFb
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28b6
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1114,7 +1114,7 @@ branch_0x8010d1a0:
     fsubs   f0, f0, f3
     fcmpo   cr0, f1, f0
     bge-    branch_0x8010d294
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     li      r4, 0x0
     lwz     r3, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -1292,7 +1292,7 @@ branch_0x8010d478:
     mr      r3, r29
     bl      flyAroundMario__8TKazekunFv
     mr      r3, r29
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r12, 0x0(r29)
     li      r30, 0x1
     lfs     f1, 0x4(r4)
@@ -1470,7 +1470,7 @@ execute__19TNerveKazekunAppearCFP24TSpineBase_10TLiveActor_: # 0x8010d6b8
     stw     r0, 0xf0(r30)
     li      r4, 0xcf
     li      r6, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lis     r4, 0x8038
@@ -1931,7 +1931,7 @@ doAttackPose__8TKazekunFb: # 0x8010dd3c
     stw     r31, 0x1bc(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x1b8(sp)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lwz     r3, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r3, 0x198(sp)
@@ -2258,7 +2258,7 @@ flyAroundMario__8TKazekunFv: # 0x8010e260
     stw     r31, 0x114(sp)
     stw     r30, 0x110(sp)
     mr      r30, r3
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0x104(sp)
@@ -2577,7 +2577,7 @@ branch_0x8010e70c:
     clrlwi. r0, r28, 24
     beq-    branch_0x8010e720
     addi    r3, r30, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x8010e720:
     lmw     r27, 0x1c(sp)
@@ -2850,7 +2850,7 @@ branch_0x8010eab0:
     mr      r3, r30
     bl      getModel__10TLiveActorCFv
     addi    r5, r3, 0x20
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     li      r4, 0x189
     li      r6, 0x1
@@ -2858,7 +2858,7 @@ branch_0x8010eab0:
     mr      r3, r30
     bl      getModel__10TLiveActorCFv
     addi    r5, r3, 0x20
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     li      r4, 0x18a
     li      r6, 0x1

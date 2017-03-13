@@ -1884,12 +1884,437 @@ NerveGetByIndex__Fi: # 0x8021aa68
     slwi    r0, r3, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8021AA94:		# jumptable 8021AA90 case 0
     bl      theNerve__22TNerveSmallEnemyFreezeFv
     b       branch_0x8021adf0
 
+branch_0x8021AA9C:		# jumptable 8021AA90 case 1
+bl	  theNerve__19TNerveSmallEnemyDieFv
+b	  branch_0x8021adf0
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x21549c, 0x8021adec - 0x8021aa9c
+branch_0x8021AAA4:		# jumptable 8021AA90 case 2
+bl	  theNerve__20TNerveSmallEnemyJumpFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAAC:		# jumptable 8021AA90 case 3
+bl	  theNerve__28TNerveSmallEnemyHitWaterJumpFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAB4:		# jumptable 8021AA90 case 4
+bl	  theNerve__20TNerveWalkerGenerateFv
+b	  branch_0x8021adf0
+
+branch_0x8021AABC:		# jumptable 8021AA90 case 5
+bl	  theNerve__23TNerveWalkerGraphWanderFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAC4:		# jumptable 8021AA90 case 6
+bl	  theNerve__18TNerveWalkerEscapeFv
+b	  branch_0x8021adf0
+
+branch_0x8021AACC:		# jumptable 8021AA90 case 7
+bl	  theNerve__18TNerveWalkerAttackFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAD4:		# jumptable 8021AA90 case 8
+bl	  theNerve__22TNerveWalkerPostAttackFv
+b	  branch_0x8021adf0
+
+branch_0x8021AADC:		# jumptable 8021AA90 case 9
+bl	  theNerve__22TNerveWalkerTraceMarioFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAE4:		# jumptable 8021AA90 case 10
+bl	  theNerve__25TNerveNameKuriDrawPolluteFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAEC:		# jumptable 8021AA90 case 11
+bl	  theNerve__18TNerveNameKuriLandFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAF4:		# jumptable 8021AA90 case 12
+bl	  theNerve__24TNerveNameKuriJumpAttackFv
+b	  branch_0x8021adf0
+
+branch_0x8021AAFC:		# jumptable 8021AA90 case 13
+bl	  theNerve__31TNerveNameKuriJumpAttackPrepareFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB04:		# jumptable 8021AA90 case 14
+bl	  theNerve__23TNerveNameKuriExplosionFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB0C:		# jumptable 8021AA90 case 15
+bl	  theNerve__21TNerveNameKuriDiffuseFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB14:		# jumptable 8021AA90 case 16
+bl	  theNerve__19TNerveNKFollowMarioFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB1C:		# jumptable 8021AA90 case 17
+bl	  theNerve__12TNerveBGWaitFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB24:		# jumptable 8021AA90 case 18
+bl	  theNerve__22TNerveBGTentacleDamageFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB2C:		# jumptable 8021AA90 case 19
+bl	  theNerve__17TNerveBGEyeDamageFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB34:		# jumptable 8021AA90 case 20
+bl	  theNerve__18TNerveBGBeakDamageFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB3C:		# jumptable 8021AA90 case 21
+bl	  theNerve__11TNerveBGTugFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB44:		# jumptable 8021AA90 case 22
+bl	  theNerve__11TNerveBGDieFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB4C:		# jumptable 8021AA90 case 23
+bl	  theNerve__15TNerveBGPolluteFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB54:		# jumptable 8021AA90 case 24
+bl	  theNerve__15TNerveBGPolDropFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB5C:		# jumptable 8021AA90 case 25
+bl	  theNerve__12TNerveBGRollFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB64:		# jumptable 8021AA90 case 26
+bl	  theNerve__12TNerveBPWaitFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB6C:		# jumptable 8021AA90 case 27
+bl	  theNerve__14TNerveBPCannonFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB74:		# jumptable 8021AA90 case 28
+bl	  theNerve__13TNerveBPVomitFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB7C:		# jumptable 8021AA90 case 29
+bl	  theNerve__15TNerveBPTornadoFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB84:		# jumptable 8021AA90 case 30
+bl	  theNerve__13TNerveBPPivotFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB8C:		# jumptable 8021AA90 case 31
+bl	  theNerve__15TNerveBPSwallowFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB94:		# jumptable 8021AA90 case 32
+bl	  theNerve__16TNerveBPTumbleInFv
+b	  branch_0x8021adf0
+
+branch_0x8021AB9C:		# jumptable 8021AA90 case 33
+bl	  theNerve__14TNerveBPTumbleFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABA4:		# jumptable 8021AA90 case 34
+bl	  theNerve__17TNerveBPTumbleOutFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABAC:		# jumptable 8021AA90 case 35
+bl	  theNerve__13TNerveBPGetUpFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABB4:		# jumptable 8021AA90 case 36
+bl	  theNerve__13TNerveBPSwingFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABBC:		# jumptable 8021AA90 case 37
+bl	  theNerve__18TNerveBPStompReactFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABC4:		# jumptable 8021AA90 case 38
+bl	  theNerve__17TNerveBPJumpReactFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABCC:		# jumptable 8021AA90 case 39
+bl	  theNerve__14TNerveBPPreDieFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABD4:		# jumptable 8021AA90 case 40
+bl	  theNerve__11TNerveBPDieFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABDC:		# jumptable 8021AA90 case 41
+bl	  theNerve__15TNerveBPTakeOffFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABE4:		# jumptable 8021AA90 case 42
+bl	  theNerve__11TNerveBPFlyFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABEC:		# jumptable 8021AA90 case 43
+bl	  theNerve__17TNerveBPTouchDownFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABF4:		# jumptable 8021AA90 case 44
+bl	  theNerve__17TNerveBPFlyCannonFv
+b	  branch_0x8021adf0
+
+branch_0x8021ABFC:		# jumptable 8021AA90 case 45
+bl	  theNerve__16TNerveBPFlyPivotFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC04:		# jumptable 8021AA90 case 46
+bl	  theNerve__12TNerveBPFallFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC0C:		# jumptable 8021AA90 case 47
+bl	  theNerve__13TNerveBPHoverFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC14:		# jumptable 8021AA90 case 48
+bl	  theNerve__13TNerveBPSleepFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC1C:		# jumptable 8021AA90 case 49
+bl	  theNerve__18TNerveBPBreakSleepFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC24:		# jumptable 8021AA90 case 50
+bl	  theNerve__13TNerveBPWaitLFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC2C:		# jumptable 8021AA90 case 51
+bl	  theNerve__15TNerveBPCannonLFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC34:		# jumptable 8021AA90 case 52
+bl	  theNerve__19TNerveBWGraphWanderFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC3C:		# jumptable 8021AA90 case 53
+bl	  theNerve__12TNerveBWRollFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC44:		# jumptable 8021AA90 case 54
+bl	  theNerve__12TNerveBWBarkFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC4C:		# jumptable 8021AA90 case 55
+bl	  theNerve__12TNerveBWJumpFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC54:		# jumptable 8021AA90 case 56
+bl	  theNerve__12TNerveBWStunFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC5C:		# jumptable 8021AA90 case 57
+bl	  theNerve__14TNerveBWWakeupFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC64:		# jumptable 8021AA90 case 58
+bl	  theNerve__18TNerveBWJumpToBathFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC6C:		# jumptable 8021AA90 case 59
+bl	  theNerve__11TNerveBWDieFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC74:		# jumptable 8021AA90 case 60
+bl	  theNerve__16TNerveBWJumpAwayFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC7C:		# jumptable 8021AA90 case 61
+bl	  theNerve__13TNerveBWShakeFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC84:		# jumptable 8021AA90 case 62
+bl	  theNerve__12TNerveBWFallFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC8C:		# jumptable 8021AA90 case 63
+bl	  theNerve__23TNerveBEelTearsGenerateFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC94:		# jumptable 8021AA90 case 64
+bl	  theNerve__27TNerveBEelTearsMarioRecoverFv
+b	  branch_0x8021adf0
+
+branch_0x8021AC9C:		# jumptable 8021AA90 case 65
+bl	  theNerve__20TNerveBEelTearsSplitFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACA4:		# jumptable 8021AA90 case 66
+bl	  theNerve__23TNerveBEelTearsWaterHitFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACAC:		# jumptable 8021AA90 case 67
+bl	  theNerve__21TNerveBEelTearsMoveUpFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACB4:		# jumptable 8021AA90 case 68
+bl	  theNerve__17TNerveOilBallStayFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACBC:		# jumptable 8021AA90 case 69
+bl	  theNerve__23TNerveBossEelWaitAppearFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACC4:		# jumptable 8021AA90 case 70
+bl	  theNerve__22TNerveBossEelFirstSpinFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACCC:		# jumptable 8021AA90 case 71
+bl	  theNerve__23TNerveBossEelSecondSpinFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACD4:		# jumptable 8021AA90 case 72
+bl	  theNerve__19TNerveBossEelAppearFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACDC:		# jumptable 8021AA90 case 73
+bl	  theNerve__20TNerveBossEelOutWaitFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACE4:		# jumptable 8021AA90 case 74
+bl	  theNerve__21TNerveBossEelSlowBackFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACEC:		# jumptable 8021AA90 case 75
+bl	  theNerve__22TNerveBossEelQuickBackFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACF4:		# jumptable 8021AA90 case 76
+bl	  theNerve__16TNerveBossEelEatFv
+b	  branch_0x8021adf0
+
+branch_0x8021ACFC:		# jumptable 8021AA90 case 77
+bl	  theNerve__16TNerveBossEelDieFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD04:		# jumptable 8021AA90 case 78
+bl	  theNerve__26TNerveBossEelMouthOpenWaitFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD0C:		# jumptable 8021AA90 case 79
+bl	  theNerve__26TNerveBossEelSleepOnBottomFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD14:		# jumptable 8021AA90 case 80
+bl	  theNerve__29TNerveBossHanachanGraphWanderFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD1C:		# jumptable 8021AA90 case 81
+bl	  theNerve__24TNerveBossHanachanTumbleFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD24:		# jumptable 8021AA90 case 82
+bl	  theNerve__22TNerveBossHanachanDownFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD2C:		# jumptable 8021AA90 case 83
+bl	  theNerve__23TNerveBossHanachanGetUpFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD34:		# jumptable 8021AA90 case 84
+bl	  theNerve__24TNerveBossHanachanDamageFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD3C:		# jumptable 8021AA90 case 85
+bl	  theNerve__23TNerveBossHanachanSnortFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD44:		# jumptable 8021AA90 case 86
+bl	  theNerve__22TNerveBossHanachanDeadFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD4C:		# jumptable 8021AA90 case 87
+bl	  theNerve__23TNerveSBH_SleepContinueFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD54:		# jumptable 8021AA90 case 88
+bl	  theNerve__14TNerveSBH_FallFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD5C:		# jumptable 8021AA90 case 89
+bl	  theNerve__24TNerveTypicalGraphWanderFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD64:		# jumptable 8021AA90 case 90
+bl	  theNerve__20TNerveNPCGraphWanderFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD6C:		# jumptable 8021AA90 case 91
+bl	  theNerve__14TNerveNPCUTurnFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD74:		# jumptable 8021AA90 case 92
+bl	  theNerve__18TNerveNPCGraphWaitFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD7C:		# jumptable 8021AA90 case 93
+bl	  theNerve__21TNerveNPCWaitContinueFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD84:		# jumptable 8021AA90 case 94
+bl	  theNerve__26TNerveNPCWaitMarioApproachFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD8C:		# jumptable 8021AA90 case 95
+bl	  theNerve__20TNerveNPCTurnToMarioFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD94:		# jumptable 8021AA90 case 96
+bl	  theNerve__12TNerveNPCWetFv
+b	  branch_0x8021adf0
+
+branch_0x8021AD9C:		# jumptable 8021AA90 case 97
+bl	  theNerve__13TNerveNPCSinkFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADA4:		# jumptable 8021AA90 case 98
+bl	  theNerve__24TNerveNPCRecoverFromSinkFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADAC:		# jumptable 8021AA90 case 99
+bl	  theNerve__21TNerveNPCRecoverAfterFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADB4:		# jumptable 8021AA90 case 100
+bl	  theNerve__30TNerveNPCSetPosAfterSinkBottomFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADBC:		# jumptable 8021AA90 case 101
+bl	  theNerve__13TNerveNPCTalkFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADC4:		# jumptable 8021AA90 case 102
+bl	  theNerve__14TNerveNPCThrowFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADCC:		# jumptable 8021AA90 case 103
+bl	  theNerve__12TNerveNPCMadFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADD4:		# jumptable 8021AA90 case 104
+bl	  theNerve__14TNerveNPCBlownFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADDC:		# jumptable 8021AA90 case 105
+bl	  theNerve__18TNerveNPCMareStandFv
+b	  branch_0x8021adf0
+
+branch_0x8021ADE4:		# jumptable 8021AA90 case 106
+bl	  theNerve__23TNerveAnimalGraphWanderFv
+b	  branch_0x8021adf0
+
+def_8021AA90:		# jumptable 8021AA90 default case
 branch_0x8021adec:
     li      r3, 0x0
 branch_0x8021adf0:

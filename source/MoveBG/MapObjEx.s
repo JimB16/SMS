@@ -432,7 +432,7 @@ makeObj__10TJointCoinFPCcUs: # 0x801f7820
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x801f7868
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     bl      newAndRegisterCoinReal__12TItemManagerFv
     mr      r31, r3
     b       branch_0x801f78ac
@@ -668,7 +668,7 @@ branch_0x801f7b60:
     lwz     r12, 0x114(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3850
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -705,7 +705,7 @@ branch_0x801f7c18:
     clrlwi. r0, r0, 24
     beq-    branch_0x801f7c34
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r4, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r4, r3

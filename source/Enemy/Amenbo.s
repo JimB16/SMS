@@ -957,7 +957,7 @@ branch_0x8012c60c:
     bl      isFindOutMario__7TAmenboCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8012c6c8
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0xa0
     addi    r4, r31, 0x10
     lwz     r5, 0x0(r6)
@@ -1123,7 +1123,7 @@ branch_0x8012c884:
     bl      checkCurAnmEnd__11TSpineEnemyCFi
     cmpwi   r3, 0x0
     beq-    branch_0x8012ca24
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0xbc
     addi    r4, r3, 0x0
     lwz     r5, 0x0(r6)
@@ -1541,9 +1541,9 @@ isFindOutMario__7TAmenboCFv: # 0x8012ce28
     stfd    f31, 0x50(sp)
     stw     r31, 0x4c(sp)
     mr      r31, r3
-    lwz     r4, -0x6094(r13)
+    lwz     r4, MarioFlags(r13)
     lwz     r4, 0x0(r4)
-    rlwinm. r0, r4, 0, 15, 15
+    rlwinm. r0, r4, 0, 15, 15 # MARIOFLAG_10000
     beq-    branch_0x8012ce58
     li      r0, 0x1
     b       branch_0x8012ce5c
@@ -1587,7 +1587,7 @@ branch_0x8012ceb8:
     b       branch_0x8012cf94
 
 branch_0x8012cec8:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r3, r31
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -1961,7 +1961,7 @@ branch_0x8012d35c:
     li      r6, 0x1
     stfs    f1, 0x8(r30)
     stfs    f2, 0xc(r30)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8012d3cc
@@ -1996,7 +1996,7 @@ behaveToWater__7TAmenboFP9THitActor: # 0x8012d3f4
     cmpwi   r0, 0x0
     bgt-    branch_0x8012d4ac
     lwz     r0, 0x68(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     slwi    r0, r0, 1
     add     r3, r3, r0
     lhz     r0, 0x414(r3)
@@ -2320,7 +2320,7 @@ branch_0x8012d854:
     bl      theNerve__22TNerveSmallEnemyChangeFv
     cmplw   r29, r3
     beq-    branch_0x8012d99c
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0x54
     addi    r4, r31, 0x10
     lwz     r5, 0x0(r6)
@@ -2476,7 +2476,7 @@ branch_0x8012daa4:
     lfs     f1, 0x38(sp)
     addi    r4, r30, 0xc4
     lfs     f0, 0xc0(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x34(sp)
     lfs     f3, 0x3c(sp)
@@ -2592,7 +2592,7 @@ branch_0x8012dc14:
     mr      r5, r31
     lfs     f0, 0xc0(r30)
     addi    r4, sp, 0x34
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f0
     lfs     f2, 0x14c(r30)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff

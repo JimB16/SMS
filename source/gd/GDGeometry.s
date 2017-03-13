@@ -32,12 +32,177 @@ branch_0x803648cc:
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr
+
+branch_0x803648e4:
     lwz     r28, 0x4(r3)
     b       branch_0x80364ad4
 
+branch_0x803648ec:		# jumptable 803648E0 case 1
+    lwz	    r0, 0x4(r3)
+    clrrwi  r5, r27, 1
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x35f2ec, 0x80364ad4 - 0x803648ec
+branch_0x803648fc:		# jumptable 803648E0 case 2
+    lwz	    r0, 0x4(r3)
+    rlwinm  r5, r27, 0,31,29
+    slwi    r0, r0, 1
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364910:		# jumptable 803648E0 case 3
+    lwz	    r0, 0x4(r3)
+    rlwinm  r5, r27, 0,30,28
+    slwi    r0, r0, 2
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364924:		# jumptable 803648E0 case 4
+    lwz	    r0, 0x4(r3)
+    rlwinm  r5, r27, 0, 29, 27
+    slwi    r0, r0, 3
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364938:		# jumptable 803648E0 case 5
+    lwz	    r0, 0x4(r3)
+    rlwinm  r5, r27, 0, 28, 26
+    slwi    r0, r0, 4
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x8036494c:		# jumptable 803648E0 case 6
+    lwz	    r0, 0x4(r3)
+    rlwinm  r5, r27, 0,27,25
+    slwi    r0, r0, 5
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364960:		# jumptable 803648E0 case 7
+    lwz	    r0, 0x4(r3)
+    rlwinm  r5, r27, 0,26,24
+    slwi    r0, r0, 6
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364974:		# jumptable 803648E0 case 8
+    lwz	    r0, 0x4(r3)
+    rlwinm  r5, r27, 0, 25, 23
+    slwi    r0, r0, 0x7
+    or	    r27, r5, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364988:		# jumptable 803648E0 case 9
+    lwz	    r26, 0x4(r3)
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364990:		# jumptable 803648E0 case 10
+    lwz	    r0, 0x4(r3)
+    cmpwi   r0, 0x0
+    beq	    def_803648E0	# jumptable 803648E0 default case
+    mr	    r25, r0
+    li	    r31, 0x1
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x803649a8:		# jumptable 803648E0 case 25
+    lwz	    r0, 0x4(r3)
+    cmpwi   r0, 0x0
+    beq	    def_803648E0	# jumptable 803648E0 default case
+    mr	    r25, r0
+    li	    r31, 0x2
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x803649c0:		# jumptable 803648E0 case 11
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r24, r6, 0x0
+    add	    r30, r30, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x803649dc:		# jumptable 803648E0 case 12
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r23, r6, 0x0
+    add	    r30, r30, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x803649f8:		# jumptable 803648E0 case 13
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r22, r6, 0x0
+    add	    r29, r29, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364a14:		# jumptable 803648E0 case 14
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r21, r6, 0x0
+    add	    r29, r29, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364a30:		# jumptable 803648E0 case 15
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r20, r6, 0x0
+    add	    r29, r29, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364a4c:		# jumptable 803648E0 case 16
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r19, r6, 0x0
+    add	    r29, r29, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364a68:		# jumptable 803648E0 case 17
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r18, r6, 0x0
+    add	    r29, r29, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364a84:		# jumptable 803648E0 case 18
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r17, r6, 0x0
+    add	    r29, r29, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364aa0:		# jumptable 803648E0 case 19
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r16, r6, 0x0
+    add	    r29, r29, r0
+    b	    def_803648E0	# jumptable 803648E0 default case
+
+branch_0x80364abc:		# jumptable 803648E0 case 20
+    lwz	    r6, 0x4(r3)
+    neg	    r5, r6
+    addic   r0, r5, -0x1
+    subfe   r0, r0, r5
+    addi    r15, r6, 0x0
+    add	    r29, r29, r0
+
+def_803648E0:		# jumptable 803648E0 default case
 branch_0x80364ad4:
     addi    r3, r3, 0x8
 branch_0x80364ad8:
@@ -283,6 +448,27 @@ branch_0x80364de8:
 
 .globl GDSetVtxAttrFmtv
 GDSetVtxAttrFmtv: # 0x80364e68
+
+.set var_90, -0x90
+.set var_8C, -0x8C
+.set var_88, -0x88
+.set var_84, -0x84
+.set var_80, -0x80
+.set var_7C, -0x7C
+.set var_78, -0x78
+.set var_74, -0x74
+.set var_70, -0x70
+.set var_6C, -0x6C
+.set var_68, -0x68
+.set var_64, -0x64
+.set var_60, -0x60
+.set var_5C, -0x5C
+.set var_58, -0x58
+.set var_54, -0x54
+.set var_50, -0x50
+.set var_48, -0x48
+.set arg_4,  4
+
     mflr    r0
     lis     r5, 0x803f
     stw     r0, 0x4(sp)
@@ -349,7 +535,9 @@ branch_0x80364f50:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr
+
+branch_0x80364f6c:
     lwz     r0, 0x4(r4)
     stw     r0, 0x50(sp)
     lwz     r0, 0x8(r4)
@@ -358,9 +546,91 @@ branch_0x80364f50:
     stw     r0, 0x48(sp)
     b       branch_0x80365078
 
+branch_0x80364f88:		# jumptable 80364F68 cases 1,16
+    lwz	    r5, 0x4(r4)
+    lwz	    r0, 0x8(r4)
+    cmpwi   r5, 0x2
+    stw	    r0, 0xA0+var_5C(r1)
+    bne	    branch_0x80364fa8
+    li	    r30, 0x1
+    li	    r31, 0x1
+    b	    branch_0x80365078	# jumptable 80364F68 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x35f988, 0x80365078 - 0x80364f88
-branch_0x80365078:
+branch_0x80364fa8:
+    addi    r30, r5, 0x0
+    li	    r31, 0x0
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x80364fb4:		# jumptable 80364F68 case 2
+    lwz	    r0, 0x4(r4)
+    stw	    r0, 0xA0+var_60(r1)
+    lwz	    r0, 0x8(r4)
+    stw	    r0, 0xA0+var_64(r1)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x80364fc8:		# jumptable 80364F68 case 3
+    lwz	    r0, 0x4(r4)
+    stw	    r0, 0xA0+var_68(r1)
+    lwz	    r0, 0x8(r4)
+    stw	    r0, 0xA0+var_6C(r1)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x80364fdc:		# jumptable 80364F68 case 4
+    lwz	    r0, 0x4(r4)
+    stw	    r0, 0xA0+var_70(r1)
+    lwz	    r0, 0x8(r4)
+    stw	    r0, 0xA0+var_74(r1)
+    lbz	    r0, 0xC(r4)
+    stw	    r0, 0xA0+var_78(r1)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x80364ff8:		# jumptable 80364F68 case 5
+    lwz	    r0, 0x4(r4)
+    stw	    r0, 0xA0+var_7C(r1)
+    lwz	    r0, 0x8(r4)
+    stw	    r0, 0xA0+var_80(r1)
+    lbz	    r0, 0xC(r4)
+    stw	    r0, 0xA0+var_84(r1)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x80365014:		# jumptable 80364F68 case 6
+    lwz	    r0, 0x4(r4)
+    lbz	    r24, 0xC(r4)
+    stw	    r0, 0xA0+var_88(r1)
+    lwz	    r0, 0x8(r4)
+    stw	    r0, 0xA0+var_8C(r1)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x8036502C:		# jumptable 80364F68 case 7
+    lwz	    r23, 0x4(r4)
+    lwz	    r25, 0x8(r4)
+    lbz	    r20, 0xC(r4)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x8036503C:		# jumptable 80364F68 case 8
+    lwz	    r21, 0x4(r4)
+    lwz	    r22, 0x8(r4)
+    lbz	    r14, 0xC(r4)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x8036504C:		# jumptable 80364F68 case 9
+    lwz	    r15, 0x4(r4)
+    lwz	    r16, 0x8(r4)
+    lbz	    r17, 0xC(r4)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x8036505C:		# jumptable 80364F68 case 10
+    lwz	    r18, 0x4(r4)
+    lwz	    r19, 0x8(r4)
+    lbz	    r26, 0xC(r4)
+    b	    branch_0x80365078	# jumptable 80364F68 default case
+
+branch_0x8036506C:		# jumptable 80364F68 case 11
+    lwz	    r27, 0x4(r4)
+    lwz	    r28, 0x8(r4)
+    lbz	    r29, 0xC(r4)
+
+branch_0x80365078:		# jumptable 80364F68 default case
     addi    r4, r4, 0x10
 branch_0x8036507c:
     lwz     r5, 0x0(r4)

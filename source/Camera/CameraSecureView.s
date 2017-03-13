@@ -61,7 +61,7 @@ branch_0x80033c88:
     fnmadds  f1, f31, f2, f3
 branch_0x80033c8c:
     clrlwi  r0, r29, 16
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     sraw    r0, r0, r3
     lwz     r3, -0x60ac(r13)
     slwi    r0, r0, 2
@@ -69,7 +69,7 @@ branch_0x80033c8c:
     fneg    f2, f1
     lfsx    f1, r6, r0
     lfsx    f0, r5, r0
-    lha     r4, 0x9c(r4)
+    lha     r4, MarioActor_9c(r4)
     lha     r3, 0x0(r3)
     fmuls   f1, f2, f1
     fmuls   f30, f2, f0

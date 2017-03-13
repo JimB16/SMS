@@ -70,7 +70,7 @@ perform__9TLensGlowFUlPQ26JDrama9TGraphics: # 0x8002d99c
 branch_0x8002d9e0:
     lfs     f2, 0x94(r28)
     li      r4, 0x0
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     mr      r5, r4
     fneg    f0, f2
     lfsu    f1, 0xf8(r3)
@@ -112,7 +112,7 @@ branch_0x8002da68:
 branch_0x8002da6c:
     clrlwi. r0, r29, 31
     beq-    branch_0x8002dd48
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     lbz     r4, 0x5d(r28)
     lbz     r31, 0x191(r3)
     lfs     f29, 0x194(r3)
@@ -186,11 +186,11 @@ branch_0x8002db3c:
     lfs     f2, 0x70(r28)
     lfs     f3, -0x76f0(rtoc)
     bl      CLBChaseDecrease__FPffff
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     lfs     f28, 0xf8(r3)
     bl      SMSGetGameRenderWidth__Fv
     extrwi  r0, r3, 15, 16
-    lwz     r4, -0x70f8(r13)
+    lwz     r4, gpSunModel(r13)
     xoris   r0, r0, 0x8000
     lfd     f1, -0x76d8(rtoc)
     stw     r0, 0x124(sp)
@@ -229,7 +229,7 @@ branch_0x8002dbf0:
 branch_0x8002dc10:
     lfs     f6, -0x76f0(rtoc)
     li      r0, 0x11
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     mtctr   r0
     fmr     f5, f6
     addi    r5, r3, 0xf8
@@ -262,7 +262,7 @@ branch_0x8002dc4c:
     fmuls   f1, f6, f0
     fmuls   f29, f5, f0
     bl      CLBLinearInbetween_f___Ffff
-    lwz     r3, -0x70f8(r13)
+    lwz     r3, gpSunModel(r13)
     fmr     f28, f1
     fmr     f1, f29
     fmr     f3, f27

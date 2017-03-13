@@ -1271,8 +1271,8 @@ MsWrap_f___Ffff: # 0x80006848
     fmr     f1, f2
     blr
 
+    b       branch_0x80006864
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x125c, 0x80006860 - 0x8000685c
 branch_0x80006860:
     fsubs   f1, f1, f0
 branch_0x80006864:
@@ -1292,8 +1292,8 @@ branch_0x80006884:
     fsubs   f0, f3, f2
     b       branch_0x80006864
 
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x128c, 0x80006890 - 0x8000688c
 
 .globl div__Q29JGeometry8TVec3_f_Ff
 div__Q29JGeometry8TVec3_f_Ff: # 0x80006890

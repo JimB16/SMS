@@ -252,7 +252,7 @@ branch_0x801efa6c:
     b       branch_0x801efc08
 
 branch_0x801efb7c:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0x6d
     li      r6, 0x0
@@ -2006,7 +2006,7 @@ branch_0x801f1358:
     lha     r0, 0x14a(r5)
     cmpwi   r0, 0x5a
     bge-    branch_0x801f13b8
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x58(r3)
     srawi   r3, r0, 2
     addze   r3, r3
@@ -2025,7 +2025,7 @@ branch_0x801f13ac:
     b       branch_0x801f13f0
 
 branch_0x801f13b8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x58(r3)
     srawi   r3, r0, 2
     addze   r3, r3

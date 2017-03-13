@@ -141,7 +141,7 @@ requestCone__12TBeamManagerFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fbbb: 
     addi    r0, r3, 0x1
     stw     r0, 0x3b0(r31)
     beq-    branch_0x800ded64
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r27, 0x0
     addi    r5, r28, 0x0
     addi    r7, sp, 0x1c

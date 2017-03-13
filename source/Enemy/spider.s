@@ -95,7 +95,7 @@ branch_0x8006e954:
     fmuls   f0, f1, f0
     lfs     f28, 0x10c(sp)
     fmr     f3, f27
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x108(sp)
     fadds   f2, f28, f0
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
@@ -110,7 +110,7 @@ branch_0x8006e954:
     fmr     f3, f27
     lfs     f0, 0xc0(r31)
     addi    r4, sp, 0xf4
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0x108(sp)
     fadds   f2, f4, f0
@@ -199,7 +199,7 @@ branch_0x8006eaac:
     lfs     f2, 0x10c(sp)
     lfs     f0, 0x108(sp)
     fmuls   f3, f4, f3
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f2, f1
     stfs    f0, 0xc8(sp)
     stfs    f1, 0xcc(sp)

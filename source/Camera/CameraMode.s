@@ -11,8 +11,12 @@ isSlopeCameraMode__15CPolarSubCameraCFv: # 0x80033738
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80033760:		# jumptable 8003375C cases 0,1,4,11,14,20,38-42,44,47,53-56,65,66,69-72
     li      r3, 0x1
+
+locret_80033764:	# jumptable 8003375C cases 2,3,5-10,12,13,15-19,21-37,43,45,46,48-52,57-64,67,68
     blr
 
 
@@ -53,8 +57,12 @@ branch_0x800337c8:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x800337EC:		# jumptable 800337E8 cases 0,3,5,6,9,12,30-34,39,43,47-49,57-59,63,64
     li      r30, 0x1
+
+def_800337E8:		# jumptable 800337E8 default case
 branch_0x800337f0:
     lwz     r0, 0x24(sp)
     mr      r3, r30
@@ -186,8 +194,12 @@ isNormalCameraCompletely__15CPolarSubCameraCFv: # 0x800338e8
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8003394C:		# jumptable 80033948 cases 0,1,3-6,8,11,13-21,38,42-44,47-54,56,57,60-62,66-72
     li      r4, 0x1
+
+def_80033948:		# jumptable 80033948 default case
 branch_0x80033950:
     clrlwi. r0, r4, 24
     beq-    branch_0x8003395c
@@ -214,8 +226,12 @@ isNormalCameraSpecifyMode__15CPolarSubCameraCFi: # 0x80033978
     slwi    r0, r4, 2
     lwzx    r0, r5, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8003399C:		# jumptable 80033998 cases 0,1,3-6,8,11,13-21,38,42-44,47-54,56,57,60-62,66-72
     li      r3, 0x1
+
+locret_800339A0:	# jumptable 80033998 cases 2,7,9,10,12,22-37,39-41,45,46,55,58,59,63-65
     blr
 
 

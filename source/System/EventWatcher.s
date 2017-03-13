@@ -680,7 +680,7 @@ evStartMontemanBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802899e0
     lis     r3, 0x8001
     addi    r3, r3, 0x2f
     bl      startBGM__5MSBgmFUl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4851
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -895,7 +895,7 @@ branch_0x80289cd0:
 branch_0x80289ce4:
     li      r4, 0x0
 branch_0x80289ce8:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x0
     lwz     r3, 0x18(r3)
     lwz     r3, 0x0(r3)
@@ -942,7 +942,7 @@ evOnNeutralMarioKey__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289d64
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x18(r3)
     lwz     r3, 0x0(r3)
     bl      onNeutralMarioKey__13TMarioGamePadFv
@@ -1074,7 +1074,7 @@ branch_0x80289ed4:
     fmadds  f0, f3, f2, f0
     stfs    f0, 0x8c(sp)
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0x44
     addi    r4, sp, 0x64
     lwz     r5, 0x0(r6)
@@ -1167,7 +1167,7 @@ evAppear8RedCoinsAndTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a038
     lfs     f31, -0x660(rtoc)
     lis     r30, 0x2000
 branch_0x8028a0a8:
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r30, 0xf
     bl      makeObjAppeared__18TMapObjBaseManagerFUl
     mr      r29, r3
@@ -1188,18 +1188,18 @@ branch_0x8028a0a8:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r29
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x58
     li      r6, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     addi    r29, r29, 0x158
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     li      r4, 0xe5
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r29, 0x0
     li      r4, 0xe6
     li      r6, 0x0
@@ -1209,7 +1209,7 @@ branch_0x8028a0a8:
     cmpwi   r27, 0x8
     blt+    branch_0x8028a0a8
     xoris   r0, r28, 0x8000
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     stw     r0, 0x7c(sp)
     lis     r0, 0x4330
     lfd     f1, -0x668(rtoc)
@@ -1224,13 +1224,13 @@ branch_0x8028a0a8:
     stfd    f0, 0x70(sp)
     lwz     r5, 0x74(sp)
     bl      startAppearTimer__11TGCConsole2Fil
-    lwz     r29, -0x6048(r13)
+    lwz     r29, gpMarDirector(r13)
     addi    r3, r29, 0xe8
     bl      OSCheckStopwatch
     stw     r4, 0xcc(r29)
     li      r4, 0xa
     stw     r3, 0xc8(r29)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startMoveTimer__11TGCConsole2Fi
     li      r0, 0x0
@@ -1277,7 +1277,7 @@ evAppearReadyGo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a220
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     lwz     r3, 0x94(r3)
     bl      startAppearReady__11TConsoleStrFv
@@ -1582,7 +1582,7 @@ branch_0x8028a610:
 branch_0x8028a61c:
     cmpwi   r29, 0x1
     bne-    branch_0x8028a670
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x0
     li      r5, 0x8
     lwz     r3, 0x74(r3)
@@ -1592,7 +1592,7 @@ branch_0x8028a61c:
 branch_0x8028a63c:
     cmpwi   r29, 0x1
     bne-    branch_0x8028a670
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x1
     li      r5, 0xa
     lwz     r3, 0x74(r3)
@@ -1602,7 +1602,7 @@ branch_0x8028a63c:
 branch_0x8028a65c:
     cmpwi   r29, 0x1
     bne-    branch_0x8028a670
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearRedCoin__11TGCConsole2Fv
 branch_0x8028a670:
@@ -2188,14 +2188,14 @@ branch_0x8028adac:
     li      r4, 0x2
     li      r5, 0x1
     bl      startFade__9TSunGlassFib
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      wearGlass__6TMarioFv
     lwz     r3, -0x6060(r13)
     li      r4, 0x77
     bl      getShineFlag__12TFlagManagerCFUc
     clrlwi. r0, r3, 24
     beq-    branch_0x8028ae54
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     oris    r0, r0, 0x10
     stw     r0, 0x118(r3)
@@ -2205,14 +2205,14 @@ branch_0x8028ae1c:
     li      r4, 0x3
     li      r5, 0x1
     bl      startFade__9TSunGlassFib
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      takeOffGlass__6TMarioFv
     lwz     r3, -0x6060(r13)
     li      r4, 0x77
     bl      getShineFlag__12TFlagManagerCFUc
     clrlwi. r0, r3, 24
     beq-    branch_0x8028ae54
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     lwz     r0, 0x118(r3)
     rlwinm  r0, r0, 0, 12, 10
     stw     r0, 0x118(r3)
@@ -2262,7 +2262,7 @@ evStartMiss__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028aec8
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      loserExec__6TMarioFv
     li      r0, 0x0
     stw     r0, 0x10(sp)
@@ -2373,7 +2373,7 @@ branch_0x8028b044:
 branch_0x8028b04c:
     li      r31, 0x485b
 branch_0x8028b050:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r31
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2480,7 +2480,7 @@ branch_0x8028b19c:
 branch_0x8028b1b0:
     li      r30, 0x0
 branch_0x8028b1b4:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3011,7 +3011,7 @@ evManiCoinDown__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b860
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearStar__11TGCConsole2Fv
     li      r0, 0x0
@@ -3847,7 +3847,7 @@ branch_0x8028c328:
 branch_0x8028c33c:
     li      r5, 0x0
 branch_0x8028c340:
-    lwz     r4, -0x60d8(r13)
+    lwz     r4, MarioActor(r13)
     cmpwi   r5, 0x1
     lfs     f0, -0x654(rtoc)
     lwz     r3, 0x10(r4)
@@ -4055,8 +4055,8 @@ evStartMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c57c
     lwz     r3, 0x74(r3)
     addi    r4, r29, 0x808
     bl      setBck__6MActorFPCc
-    lwz     r7, -0x60d8(r13)
-    li      r4, 0x1310
+    lwz     r7, MarioActor(r13)
+    li      r4, MARIOSTATUS_1310
     lwz     r3, 0x10(r30)
     li      r5, 0x0
     lwz     r0, 0x14(r30)
@@ -4112,8 +4112,8 @@ evSetMarioWaiting__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c68c
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lis     r4, 0xc40
-    lwz     r3, -0x60d8(r13)
-    addi    r4, r4, 0x201
+    lwz     r3, MarioActor(r13)
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -4211,7 +4211,7 @@ branch_0x8028c7e4:
 branch_0x8028c7f8:
     li      r0, 0x0
 branch_0x8028c7fc:
-    lwz     r7, -0x60d8(r13)
+    lwz     r7, MarioActor(r13)
     mr      r5, r0
     lfs     f0, -0x654(rtoc)
     addi    r4, sp, 0x3c
@@ -4888,7 +4888,7 @@ evStartMarioTalking__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d0ac
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      startTalking__6TMarioFv
     li      r0, 0x0
     stw     r0, 0x10(sp)
@@ -4987,12 +4987,12 @@ branch_0x8028d20c:
     mr      r4, r0
     cmpwi   r4, 0x7
     bne-    branch_0x8028d224
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      setDivHelm__6TMarioFv
     b       branch_0x8028d234
 
 branch_0x8028d224:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     li      r5, 0x1
     lwz     r3, 0x3e4(r3)
     bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
@@ -5098,7 +5098,7 @@ branch_0x8028d370:
     li      r0, 0x1
 branch_0x8028d37c:
     slwi    r0, r0, 2
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     subi    r4, r13, 0x75d8
     lfs     f1, -0x650(rtoc)
     lwzx    r4, r4, r0
@@ -5649,7 +5649,7 @@ branch_0x8028da94:
     beq-    branch_0x8028dacc
     lfs     f1, -0x678(rtoc)
     mr      r4, r28
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     mr      r5, r30
     fmr     f2, f1
     fmr     f3, f1
@@ -5900,7 +5900,7 @@ branch_0x8028ddd8:
     bl      strcmp
     cmpwi   r3, 0x0
     beq-    branch_0x8028de0c
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     mr      r4, r28
     lfs     f1, 0x10(r30)
     mr      r5, r29
@@ -6078,7 +6078,7 @@ branch_0x8028e030:
     lwz     r12, 0xfc(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4854
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6418,7 +6418,7 @@ evGetTime__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e47c
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      getFinishedTime__11TGCConsole2Fv
     li      r0, 0x0
@@ -6531,7 +6531,7 @@ evStopTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e604
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      stopMoveTimer__11TGCConsole2Fv
     li      r0, 0x0
@@ -6747,14 +6747,14 @@ branch_0x8028e8e4:
 branch_0x8028e8f8:
     li      r0, 0x0
 branch_0x8028e8fc:
-    lwz     r30, -0x6048(r13)
+    lwz     r30, gpMarDirector(r13)
     mr      r29, r0
     addi    r3, r30, 0xe8
     bl      OSCheckStopwatch
     stw     r4, 0xcc(r30)
     mr      r4, r29
     stw     r3, 0xc8(r30)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startMoveTimer__11TGCConsole2Fi
     li      r0, 0x0
@@ -6909,7 +6909,7 @@ branch_0x8028eb0c:
 branch_0x8028eb10:
     cmpwi   r0, 0x1
     bne-    branch_0x8028eb30
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     addi    r5, r30, 0x0
     li      r4, 0x0
     lwz     r3, 0x74(r3)
@@ -6919,7 +6919,7 @@ branch_0x8028eb10:
 branch_0x8028eb30:
     cmpwi   r0, 0x2
     bne-    branch_0x8028eb50
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     addi    r5, r30, 0x0
     li      r4, 0x1
     lwz     r3, 0x74(r3)
@@ -6927,7 +6927,7 @@ branch_0x8028eb30:
     b       branch_0x8028eb5c
 
 branch_0x8028eb50:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startDisappearTimer__11TGCConsole2Fv
 branch_0x8028eb5c:
@@ -6975,7 +6975,7 @@ evForceCloseTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028ebcc
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x63e8(r13)
+    lwz     r3, TalkManager(r13)
     bl      forceCloseTalk__8TTalk2D2Fv
     li      r0, 0x0
     stw     r0, 0x14(sp)
@@ -8118,7 +8118,7 @@ evLaunchEventClearDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fa68
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r31, 0x74(r3)
     lwz     r3, 0x94(r31)
     bl      startAppearShineGet__11TConsoleStrFv
@@ -8274,7 +8274,7 @@ branch_0x8028fc8c:
     li      r0, 0x0
 branch_0x8028fc90:
     cmpwi   r0, 0x0
-    lwz     r6, -0x62f0(r13)
+    lwz     r6, gpPollution(r13)
     li      r7, 0x0
     li      r3, 0x0
     li      r4, 0x0
@@ -8353,7 +8353,7 @@ evIsGraffitoCoverage0__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fd70
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     bl      cleanedAll__17TPollutionManagerCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8028fdac
@@ -8406,7 +8406,7 @@ evGameOver__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fe1c
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r0, 0x0
     lhz     r3, 0x4c(r4)
     ori     r3, r3, 0x1
@@ -8505,7 +8505,7 @@ branch_0x8028ff70:
 branch_0x8028ff84:
     li      r0, 0x0
 branch_0x8028ff88:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     clrlwi  r4, r0, 24
     bl      fireStreamingMovie__12TMarDirectorFUc
     li      r0, 0x0
@@ -8658,7 +8658,7 @@ branch_0x80290178:
     li      r3, 0x0
 branch_0x8029017c:
     addi    r0, r3, 0x1
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     clrlwi  r4, r29, 24
     slwi    r0, r0, 8
     add     r4, r4, r0
@@ -8708,7 +8708,7 @@ evGetPollutionLevel__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290208
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     bl      getPollutionDegree__17TPollutionManagerCFv
     li      r0, 0x0
     stw     r0, 0x10(sp)
@@ -8754,7 +8754,7 @@ evGetRestTime__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802902a0
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r30, -0x6048(r13)
+    lwz     r30, gpMarDirector(r13)
     addi    r3, r30, 0xe8
     bl      OSCheckStopwatch
     lis     r5, 0x8000
@@ -8980,10 +8980,10 @@ branch_0x802905a4:
 branch_0x802905b8:
     li      r30, 0x0
 branch_0x802905bc:
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     addi    r3, r3, 0xe8
     bl      OSResetStopwatch
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x0
     stw     r30, 0x120(r3)
     stw     r0, 0x34(sp)
@@ -9894,7 +9894,7 @@ evIsTalkModeNow__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291168
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     li      r3, 0x1
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x1
@@ -10025,7 +10025,7 @@ evGetTalkSelectedValue__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291310
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
     li      r0, 0x0
-    lwz     r3, -0x63e8(r13)
+    lwz     r3, TalkManager(r13)
     stw     r0, 0x1c(sp)
     lbz     r0, 0x214(r3)
     extsb   r0, r0
@@ -10071,7 +10071,7 @@ evGetTalkMode__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802913ac
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
     li      r0, 0x0
-    lwz     r3, -0x63e8(r13)
+    lwz     r3, TalkManager(r13)
     stw     r0, 0x20(sp)
     lwz     r0, 0x248(r3)
     stw     r0, 0x24(sp)
@@ -10222,7 +10222,7 @@ branch_0x802915ac:
 branch_0x802915c0:
     li      r0, 0x0
 branch_0x802915c4:
-    lwz     r3, -0x63e8(r13)
+    lwz     r3, TalkManager(r13)
     mr      r4, r0
     addi    r5, r30, 0x0
     bl      setMessageID__8TTalk2D2FUlUl
@@ -10270,7 +10270,7 @@ evGetTalkNPCName__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291644
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0xa0(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x802916f4
@@ -10367,7 +10367,7 @@ evGetTalkNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291784
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x0
     lwz     r3, 0xa0(r3)
     cmplwi  r3, 0x0

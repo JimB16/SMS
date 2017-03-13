@@ -121,7 +121,7 @@ branch_0x80271af0:
     lwz     r3, 0x3e4(r3)
     bl      getEmitMtx__9TWaterGunFi
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     li      r4, 0xfe
     li      r6, 0x1
@@ -131,7 +131,7 @@ branch_0x80271af0:
     lwz     r3, 0x3e4(r3)
     bl      getEmitMtx__9TWaterGunFi
     mr      r5, r3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r29, 0x0
     li      r4, 0xff
     li      r6, 0x1

@@ -227,7 +227,7 @@ branch_0x8022e230:
     lfs     f19, 0x108(sp)
     lfs     f0, 0x60(r3)
     fmr     f3, f19
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f20, f0
     lfs     f1, 0x100(sp)
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
@@ -256,7 +256,7 @@ branch_0x8022e2c8:
     clrlwi. r0, r0, 24
     beq-    branch_0x8022e2ec
     fmr     f2, f20
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fmr     f3, f19
     lfs     f1, 0x100(sp)
     addi    r4, sp, 0xfc
@@ -872,7 +872,7 @@ forceRequest__19TMBindShadowManagerFRC20TCircleShadowRequestUl: # 0x8022ebbc
     stwu    sp, -0x58(sp)
     lwz     r7, 0x0(r4)
     lwz     r0, 0x4(r4)
-    lwz     r6, -0x7118(r13)
+    lwz     r6, gpCamera(r13)
     stw     r7, 0x14(sp)
     addi    r7, r6, 0x124
     stw     r0, 0x18(sp)
@@ -962,7 +962,7 @@ request__19TMBindShadowManagerFRC20TCircleShadowRequestUl: # 0x8022ecec
     mr      r29, r3
     lwz     r6, 0x0(r30)
     lwz     r0, 0x4(r30)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     stw     r6, 0x44(sp)
     stw     r0, 0x48(sp)
     lwz     r0, 0x8(r30)
@@ -1011,7 +1011,7 @@ branch_0x8022eda0:
     b       branch_0x8022eff4
 
 branch_0x8022edd0:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x0(r30)
     lfs     f2, 0x8(r30)
     bl      isInArea__4TMapCFff
@@ -3919,7 +3919,7 @@ entryDrawShadow__16TMBindShadowBodyFv: # 0x80231720
     stw     r30, 0x78(sp)
     stw     r29, 0x74(sp)
     lwz     r3, 0x4(r3)
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lfs     f0, -0x1618(rtoc)
     addi    r7, r3, 0x10
     lfs     f2, 0x10(r3)
@@ -3985,7 +3985,7 @@ branch_0x80231818:
     lwz     r5, -0x6100(r13)
     lwz     r6, 0x10(r7)
     lwz     r0, 0x14(r7)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r6, 0x5c(sp)
     stw     r0, 0x60(sp)
     lwz     r0, 0x18(r7)
@@ -4004,7 +4004,7 @@ branch_0x80231818:
     beq-    branch_0x802318b0
     lfs     f0, -0x1624(rtoc)
     fmr     f3, f30
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x58
     fsubs   f2, f29, f0
     lfs     f1, 0x5c(sp)
@@ -4046,7 +4046,7 @@ branch_0x80231908:
     lwz     r0, 0x4(r7)
     lwz     r5, -0x6100(r13)
     stw     r3, 0x4c(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0x50(sp)
     lwz     r0, 0x8(r7)
     stw     r0, 0x54(sp)
@@ -4064,7 +4064,7 @@ branch_0x80231908:
     beq-    branch_0x8023197c
     lfs     f0, -0x1624(rtoc)
     fmr     f3, f29
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x48
     fsubs   f2, f30, f0
     lfs     f1, 0x4c(sp)

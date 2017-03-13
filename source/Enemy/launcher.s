@@ -135,7 +135,7 @@ perform__15TCommonLauncherFUlPQ26JDrama9TGraphics: # 0x800a2a90
     beq-    branch_0x800a2b34
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x12d
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -201,7 +201,7 @@ branch_0x800a2bb8:
     clrlwi. r0, r0, 24
     beq-    branch_0x800a2bcc
     addi    r3, r31, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800a2bcc:
     addi    r29, r29, 0x1
@@ -258,7 +258,7 @@ branch_0x800a2c44:
     beq-    branch_0x800a2de0
     lwz     r5, 0x74(r29)
     li      r4, 0xd0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x4(r5)
     li      r7, 0x0
@@ -283,7 +283,7 @@ branch_0x800a2c44:
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r30)
 branch_0x800a2cd8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     li      r4, 0xe4
     li      r6, 0x0
@@ -304,7 +304,7 @@ branch_0x800a2cd8:
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r3)
 branch_0x800a2d28:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x0
     li      r4, 0xe6
     li      r6, 0x0
@@ -1322,13 +1322,13 @@ branch_0x800a3a60:
     bne-    branch_0x800a3ae8
     cmplwi  r5, 0xf
     bne-    branch_0x800a3ae8
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r31, 0x10
     lfs     f1, -0x64f8(rtoc)
     li      r4, 0x6802

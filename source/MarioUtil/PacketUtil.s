@@ -586,7 +586,9 @@ ShapePacketCallBackFunc__FP17J3DCallBackPacketi: # 0x80235f04
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80235F44:		# jumptable 80235F40 case 0
     lwz     r3, 0x8(r5)
     li      r0, 0x10
     lis     r7, 0xcc01
@@ -610,8 +612,449 @@ ShapePacketCallBackFunc__FP17J3DCallBackPacketi: # 0x80235f04
     stw     r0, -0x8000(r7)
     b       branch_0x8023667c
 
+branch_0x80235F9C:		# jumptable 80235F40 case 1
+lwz	  r4, 8(r5)
+li	  r0, 0x61
+lis	  r3, -0x33FF
+lwz	  r6, 0(r4)
+lwz	  r4, 4(r4)
+stw	  r6, 0x15C(r1)
+stw	  r4, 0x160(r1)
+lwz	  r4, 4(r5)
+lha	  r8, 0x162(r1)
+slwi	  r4, r4, 1
+lha	  r9, 0x15C(r1)
+addi	  r7, r4, 0xE0
+stb	  r0, -0x8000(r3)
+clrlslwi  r8, r8, 21,12
+lha	  r5, 0x15E(r1)
+insrwi	  r8, r9, 11,21
+lha	  r6, 0x160(r1)
+insrwi	  r8, r7, 8,0
+stw	  r8, -0x8000(r3)
+clrlslwi  r5, r5, 21,12
+addi	  r4, r4, 0xE1
+insrwi	  r5, r6, 11,21
+stb	  r0, -0x8000(r3)
+insrwi	  r5, r4, 8,0
+stw	  r5, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r5, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r5, -0x8000(r3)
+b	  def_80235F40	# jumptable 80235F40 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x23099c, 0x80236634 - 0x80235f9c
+branch_0x80236014:		# jumptable 80235F40 case 2
+lwz	  r4, 0xC(r5)
+li	  r9, 0x61
+lis	  r8, -0x33FF
+lwz	  r3, 0(r4)
+lwz	  r0, 4(r4)
+stw	  r3, 0x154(r1)
+stw	  r0, 0x158(r1)
+lwz	  r0, 4(r5)
+lha	  r7, 0x15A(r1)
+slwi	  r11, r0, 1
+lha	  r10, 0x154(r1)
+clrlslwi  r7, r7, 21,12
+stb	  r9, -0x8000(r8)
+addi	  r6, r11, 0xE0
+lha	  r3, 0x156(r1)
+insrwi	  r7, r10, 11,21
+lha	  r4, 0x158(r1)
+insrwi	  r7, r6, 8,0
+stw	  r7, -0x8000(r8)
+clrlslwi  r3, r3, 21,12
+addi	  r0, r11, 0xE1
+insrwi	  r3, r4, 11,21
+stb	  r9, -0x8000(r8)
+insrwi	  r3, r0, 8,0
+stw	  r3, -0x8000(r8)
+stb	  r9, -0x8000(r8)
+stw	  r3, -0x8000(r8)
+stb	  r9, -0x8000(r8)
+stw	  r3, -0x8000(r8)
+lwz	  r4, 0x10(r5)
+lwz	  r3, 0(r4)
+lwz	  r0, 4(r4)
+stw	  r3, 0x14C(r1)
+stw	  r0, 0x150(r1)
+lwz	  r0, 8(r5)
+lha	  r6, 0x152(r1)
+slwi	  r10, r0, 1
+lha	  r3, 0x14E(r1)
+lha	  r7, 0x14C(r1)
+clrlslwi  r6, r6, 21,12
+addi	  r5, r10, 0xE0
+stb	  r9, -0x8000(r8)
+insrwi	  r6, r7, 11,21
+insrwi	  r6, r5, 8,0
+lha	  r4, 0x150(r1)
+stw	  r6, -0x8000(r8)
+clrlslwi  r3, r3, 21,12
+addi	  r0, r10, 0xE1
+insrwi	  r3, r4, 11,21
+stb	  r9, -0x8000(r8)
+insrwi	  r3, r0, 8,0
+stw	  r3, -0x8000(r8)
+stb	  r9, -0x8000(r8)
+stw	  r3, -0x8000(r8)
+stb	  r9, -0x8000(r8)
+stw	  r3, -0x8000(r8)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x802360F8:		# jumptable 80235F40 case 3
+lwz	  r4, 0x10(r5)
+li	  r0, 0x61
+lis	  r3, -0x33FF
+lwz	  r6, 0(r4)
+lwz	  r4, 4(r4)
+stw	  r6, 0x144(r1)
+stw	  r4, 0x148(r1)
+lwz	  r4, 4(r5)
+lha	  r9, 0x14A(r1)
+slwi	  r4, r4, 1
+lha	  r10, 0x144(r1)
+addi	  r8, r4, 0xE0
+stb	  r0, -0x8000(r3)
+clrlslwi  r9, r9, 21,12
+lha	  r6, 0x146(r1)
+insrwi	  r9, r10, 11,21
+lha	  r7, 0x148(r1)
+insrwi	  r9, r8, 8,0
+stw	  r9, -0x8000(r3)
+clrlslwi  r6, r6, 21,12
+addi	  r4, r4, 0xE1
+insrwi	  r6, r7, 11,21
+stb	  r0, -0x8000(r3)
+insrwi	  r6, r4, 8,0
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+lwz	  r4, 0x14(r5)
+lwz	  r6, 0(r4)
+lwz	  r4, 4(r4)
+stw	  r6, 0x13C(r1)
+stw	  r4, 0x140(r1)
+lwz	  r4, 8(r5)
+lha	  r9, 0x142(r1)
+slwi	  r4, r4, 1
+lha	  r6, 0x13E(r1)
+addi	  r8, r4, 0xE0
+lha	  r10, 0x13C(r1)
+clrlslwi  r9, r9, 21,12
+stb	  r0, -0x8000(r3)
+insrwi	  r9, r10, 11,21
+lha	  r7, 0x140(r1)
+insrwi	  r9, r8, 8,0
+stw	  r9, -0x8000(r3)
+clrlslwi  r6, r6, 21,12
+addi	  r4, r4, 0xE1
+insrwi	  r6, r7, 11,21
+stb	  r0, -0x8000(r3)
+insrwi	  r6, r4, 8,0
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+lwz	  r4, 0x18(r5)
+lwz	  r6, 0(r4)
+lwz	  r4, 4(r4)
+stw	  r6, 0x134(r1)
+stw	  r4, 0x138(r1)
+lwz	  r4, 0xC(r5)
+lha	  r5, 0x13A(r1)
+slwi	  r8, r4, 1
+lha	  r6, 0x134(r1)
+clrlslwi  r7, r5, 21,12
+lha	  r5, 0x136(r1)
+insrwi	  r7, r6, 11,21
+stb	  r0, -0x8000(r3)
+addi	  r4, r8, 0xE0
+lha	  r6, 0x138(r1)
+insrwi	  r7, r4, 8,0
+stw	  r7, -0x8000(r3)
+clrlslwi  r5, r5, 21,12
+addi	  r4, r8, 0xE1
+insrwi	  r5, r6, 11,21
+stb	  r0, -0x8000(r3)
+insrwi	  r5, r4, 8,0
+stw	  r5, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r5, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r5, -0x8000(r3)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x80236248:		# jumptable 80235F40 case 4
+lwz	  r3, 4(r5)
+lwz	  r4, 8(r5)
+bl	  GXCallDisplayList
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x80236258:		# jumptable 80235F40 case 5
+lwz	  r31, 4(r5)
+addi	  r4, r1, 0xFC
+lwz	  r0, 0x14(r31)
+stw	  r0, 0xFC(r1)
+lbz	  r3, 0(r31)
+lfs	  f1, 4(r31)
+lfs	  f2, 8(r31)
+lfs	  f3, 0xC(r31)
+lfs	  f4, 0x10(r31)
+bl	  FifoSetFog__F10_GXFogTypeffff8_GXColor # FifoSetFog(_GXFogType,float,float,float,float,_GXColor)
+lbz	  r3, 1(r31)
+addi	  r5, r31, 0x18
+lhz	  r4, 2(r31)
+bl	  FifoSetFogRangeAdj__FUcUsP14_GXFogAdjTable # FifoSetFogRangeAdj(uchar,ushort,_GXFogAdjTable *)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x80236294:		# jumptable 80235F40 case 6
+lwz	  r3, 8(r5)
+li	  r6, 0x61
+lis	  r4, -0x33FF
+lwz	  r0, 0(r3)
+stw	  r0, 0x130(r1)
+lwz	  r0, 4(r5)
+lbz	  r3, 0x133(r1)
+slwi	  r8, r0, 1
+lbz	  r7, 0x130(r1)
+insrwi	  r7, r3, 8,12
+stb	  r6, -0x8000(r4)
+addi	  r5, r8, 0xE0
+lbz	  r0, 0x131(r1)
+oris	  r7, r7, 0x80
+lbz	  r3, 0x132(r1)
+slwi	  r5, r5, 24
+insrwi	  r3, r0, 8,12
+or	  r5, r7, r5
+stw	  r5, -0x8000(r4)
+addi	  r0, r8, 0xE1
+oris	  r3, r3, 0x80
+slwi	  r0, r0, 24
+stb	  r6, -0x8000(r4)
+or	  r0, r3, r0
+stw	  r0, -0x8000(r4)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x802362FC:		# jumptable 80235F40 case 7
+lwz	  r3, 0xC(r5)
+li	  r7, 0x61
+lis	  r6, -0x33FF
+lwz	  r0, 0(r3)
+stw	  r0, 0x12C(r1)
+lwz	  r0, 4(r5)
+lbz	  r3, 0x12F(r1)
+slwi	  r9, r0, 1
+lbz	  r8, 0x12C(r1)
+insrwi	  r8, r3, 8,12
+stb	  r7, -0x8000(r6)
+addi	  r4, r9, 0xE0
+lbz	  r0, 0x12D(r1)
+oris	  r8, r8, 0x80
+lbz	  r3, 0x12E(r1)
+slwi	  r4, r4, 24
+insrwi	  r3, r0, 8,12
+or	  r4, r8, r4
+stw	  r4, -0x8000(r6)
+addi	  r0, r9, 0xE1
+oris	  r3, r3, 0x80
+slwi	  r0, r0, 24
+stb	  r7, -0x8000(r6)
+or	  r0, r3, r0
+stw	  r0, -0x8000(r6)
+lwz	  r3, 0x10(r5)
+lwz	  r0, 0(r3)
+stw	  r0, 0x128(r1)
+lwz	  r0, 8(r5)
+lbz	  r3, 0x12B(r1)
+slwi	  r8, r0, 1
+lbz	  r5, 0x128(r1)
+insrwi	  r5, r3, 8,12
+stb	  r7, -0x8000(r6)
+addi	  r4, r8, 0xE0
+lbz	  r0, 0x129(r1)
+lbz	  r3, 0x12A(r1)
+oris	  r5, r5, 0x80
+insrwi	  r3, r0, 8,12
+slwi	  r4, r4, 24
+or	  r4, r5, r4
+stw	  r4, -0x8000(r6)
+addi	  r0, r8, 0xE1
+oris	  r3, r3, 0x80
+slwi	  r0, r0, 24
+stb	  r7, -0x8000(r6)
+or	  r0, r3, r0
+stw	  r0, -0x8000(r6)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x802363C0:		# jumptable 80235F40 case 8
+lwz	  r3, 0xC(r5)
+li	  r7, 0x61
+lis	  r6, -0x33FF
+lwz	  r0, 0(r3)
+addi	  r4, r1, 0xE8
+stw	  r0, 0x124(r1)
+lwz	  r0, 8(r5)
+lbz	  r3, 0x127(r1)
+slwi	  r10, r0, 1
+lbz	  r9, 0x124(r1)
+insrwi	  r9, r3, 8,12
+stb	  r7, -0x8000(r6)
+addi	  r8, r10, 0xE0
+lbz	  r0, 0x125(r1)
+oris	  r9, r9, 0x80
+lbz	  r3, 0x126(r1)
+slwi	  r8, r8, 24
+insrwi	  r3, r0, 8,12
+or	  r8, r9, r8
+stw	  r8, -0x8000(r6)
+addi	  r0, r10, 0xE1
+oris	  r3, r3, 0x80
+slwi	  r0, r0, 24
+stb	  r7, -0x8000(r6)
+or	  r0, r3, r0
+stw	  r0, -0x8000(r6)
+lwz	  r31, 0x14(r5)
+lwz	  r0, 0x14(r31)
+stw	  r0, 0xE8(r1)
+lbz	  r3, 0(r31)
+lfs	  f1, 4(r31)
+lfs	  f2, 8(r31)
+lfs	  f3, 0xC(r31)
+lfs	  f4, 0x10(r31)
+bl	  FifoSetFog__F10_GXFogTypeffff8_GXColor # FifoSetFog(_GXFogType,float,float,float,float,_GXColor)
+lbz	  r3, 1(r31)
+addi	  r5, r31, 0x18
+lhz	  r4, 2(r31)
+bl	  FifoSetFogRangeAdj__FUcUsP14_GXFogAdjTable # FifoSetFogRangeAdj(uchar,ushort,_GXFogAdjTable *)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x80236460:		# jumptable 80235F40 case 9
+lwz	  r4, 8(r5)
+li	  r7, 0x61
+lis	  r6, -0x33FF
+lwz	  r3, 0(r4)
+lwz	  r0, 4(r4)
+stw	  r3, 0x11C(r1)
+stw	  r0, 0x120(r1)
+lwz	  r0, 4(r5)
+lha	  r9, 0x122(r1)
+slwi	  r11, r0, 1
+lha	  r10, 0x11C(r1)
+clrlslwi  r9, r9, 21,12
+stb	  r7, -0x8000(r6)
+addi	  r8, r11, 0xE0
+lha	  r3, 0x11E(r1)
+insrwi	  r9, r10, 11,21
+lha	  r4, 0x120(r1)
+insrwi	  r9, r8, 8,0
+stw	  r9, -0x8000(r6)
+clrlslwi  r3, r3, 21,12
+addi	  r0, r11, 0xE1
+insrwi	  r3, r4, 11,21
+stb	  r7, -0x8000(r6)
+insrwi	  r3, r0, 8,0
+stw	  r3, -0x8000(r6)
+stb	  r7, -0x8000(r6)
+stw	  r3, -0x8000(r6)
+stb	  r7, -0x8000(r6)
+stw	  r3, -0x8000(r6)
+lwz	  r3, 0xC(r5)
+lwz	  r0, 0(r3)
+stw	  r0, 0x118(r1)
+lbz	  r3, 0x11B(r1)
+lbz	  r4, 0x118(r1)
+insrwi	  r4, r3, 8,12
+stb	  r7, -0x8000(r6)
+oris	  r4, r4, 0xE080
+lbz	  r0, 0x119(r1)
+stw	  r4, -0x8000(r6)
+lbz	  r3, 0x11A(r1)
+insrwi	  r3, r0, 8,12
+stb	  r7, -0x8000(r6)
+oris	  r0, r3, 0xE180
+stw	  r0, -0x8000(r6)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x80236514:		# jumptable 80235F40 case 10
+lwz	  r4, 0xC(r5)
+li	  r0, 0x61
+lis	  r3, -0x33FF
+lwz	  r6, 0(r4)
+lwz	  r4, 4(r4)
+stw	  r6, 0x110(r1)
+stw	  r4, 0x114(r1)
+lwz	  r4, 4(r5)
+lha	  r9, 0x116(r1)
+slwi	  r4, r4, 1
+lha	  r10, 0x110(r1)
+addi	  r8, r4, 0xE0
+stb	  r0, -0x8000(r3)
+clrlslwi  r9, r9, 21,12
+lha	  r6, 0x112(r1)
+insrwi	  r9, r10, 11,21
+lha	  r7, 0x114(r1)
+insrwi	  r9, r8, 8,0
+stw	  r9, -0x8000(r3)
+clrlslwi  r6, r6, 21,12
+addi	  r4, r4, 0xE1
+insrwi	  r6, r7, 11,21
+stb	  r0, -0x8000(r3)
+insrwi	  r6, r4, 8,0
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+lwz	  r4, 0x10(r5)
+lwz	  r6, 0(r4)
+lwz	  r4, 4(r4)
+stw	  r6, 0x108(r1)
+stw	  r4, 0x10C(r1)
+lwz	  r4, 8(r5)
+lha	  r9, 0x10E(r1)
+slwi	  r4, r4, 1
+lha	  r6, 0x10A(r1)
+addi	  r8, r4, 0xE0
+lha	  r10, 0x108(r1)
+clrlslwi  r9, r9, 21,12
+stb	  r0, -0x8000(r3)
+insrwi	  r9, r10, 11,21
+lha	  r7, 0x10C(r1)
+insrwi	  r9, r8, 8,0
+stw	  r9, -0x8000(r3)
+clrlslwi  r6, r6, 21,12
+addi	  r4, r4, 0xE1
+insrwi	  r6, r7, 11,21
+stb	  r0, -0x8000(r3)
+insrwi	  r6, r4, 8,0
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+stb	  r0, -0x8000(r3)
+stw	  r6, -0x8000(r3)
+lwz	  r4, 0x14(r5)
+lwz	  r4, 0(r4)
+stw	  r4, 0x104(r1)
+lbz	  r5, 0x107(r1)
+lbz	  r6, 0x104(r1)
+insrwi	  r6, r5, 8,12
+stb	  r0, -0x8000(r3)
+oris	  r6, r6, 0xE080
+lbz	  r4, 0x105(r1)
+stw	  r6, -0x8000(r3)
+lbz	  r5, 0x106(r1)
+insrwi	  r5, r4, 8,12
+stb	  r0, -0x8000(r3)
+oris	  r0, r5, 0xE180
+stw	  r0, -0x8000(r3)
+b	  def_80235F40	# jumptable 80235F40 default case
+
+branch_0x80236634:
 branch_0x80236634:
     cmpwi   r4, 0x1
     bne-    branch_0x8023667c
@@ -633,6 +1076,8 @@ branch_0x80236658:
     stw     r0, 0x100(sp)
     fmr     f4, f1
     bl      FifoSetFog__F10_GXFogTypeffff8_GXColor
+
+def_80235F40:		# jumptable 80235F40 default case
 branch_0x8023667c:
     lwz     r0, 0x17c(sp)
     li      r3, 0x1

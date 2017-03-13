@@ -401,7 +401,7 @@ branch_0x8013d644:
     bl      __ct__14TDirectionCalcFv
     lwz     r3, 0x150(r30)
     addi    r4, sp, 0x68
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lfs     f1, 0x10(r3)
     addi    r5, r3, 0x10
     lfs     f0, 0x0(r6)
@@ -551,7 +551,7 @@ branch_0x8013d868:
     b       branch_0x8013d92c
 
 branch_0x8013d870:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r3, sp, 0x80
     lfs     f0, 0x10(r30)
     mr      r4, r3
@@ -672,7 +672,7 @@ branch_0x8013da08:
     bl      __ct__14TDirectionCalcFv
     lwz     r3, 0x150(r30)
     addi    r4, sp, 0x40
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lfs     f1, 0x10(r3)
     addi    r5, r3, 0x10
     lfs     f0, 0x0(r6)
@@ -780,7 +780,7 @@ moveRun__13TLimitKoopaJrFv: # 0x8013db4c
     bl      __ct__14TDirectionCalcFv
     lwz     r3, 0x150(r31)
     addi    r4, sp, 0x94
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lfs     f1, 0x10(r3)
     addi    r5, r3, 0x10
     lfs     f0, 0x0(r6)

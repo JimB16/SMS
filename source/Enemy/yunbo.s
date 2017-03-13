@@ -46,7 +46,7 @@ execute__17TNerveYumboFreezeCFP24TSpineBase_10TLiveActor_: # 0x80115094
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28a6
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -170,7 +170,7 @@ branch_0x8011526c:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lfs     f0, 0x14(r29)
     lfs     f1, 0x4(r5)
     lfs     f2, 0x130(r3)
@@ -410,20 +410,20 @@ execute__20TNerveYumboAppearingCFP24TSpineBase_10TLiveActor_: # 0x8011556c
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xb6
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xb7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x801155f0:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x30(sp)
@@ -573,7 +573,7 @@ execute__17TNerveYumboHidingCFP24TSpineBase_10TLiveActor_: # 0x8011579c
     li      r0, 0x0
     li      r4, 0x296c
     stb     r0, 0x1d8(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80115834
@@ -595,13 +595,13 @@ branch_0x80115834:
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x80115894
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xb6
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xb7
     li      r6, 0x0
@@ -742,7 +742,7 @@ execute__18TNerveYumboDancingCFP24TSpineBase_10TLiveActor_: # 0x80115a08
     mtlr    r12
     blrl
 branch_0x80115a50:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x80(sp)
@@ -817,7 +817,7 @@ branch_0x80115b48:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f1, 0x14(r30)
     lfs     f0, 0x4(r4)
     lfs     f2, 0xe0(r3)
@@ -1237,7 +1237,7 @@ branch_0x801160d0:
 branch_0x801160fc:
     mr      r3, r30
     bl      setCurAnmSound__10TLiveActorFv
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x110(sp)
@@ -1720,7 +1720,7 @@ branch_0x801167d8:
     subi    r0, r13, 0x6654
     cmplw   r30, r0
     bne-    branch_0x80116834
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x10
     li      r4, 0x12f
@@ -1753,7 +1753,7 @@ branch_0x80116834:
     bl      getModel__10TLiveActorCFv
     mulli   r0, r30, 0x30
     lwz     r4, 0x58(r3)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     add     r5, r4, r0
     addi    r7, r31, 0x0
     li      r4, 0x18b
@@ -2038,7 +2038,7 @@ branch_0x80116be0:
     stw     r0, 0x64(r30)
     lfs     f1, 0x14(r30)
     lfs     f0, 0xc0(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r30)
     lfs     f3, 0x18(r30)
@@ -2196,7 +2196,7 @@ branch_0x80116e54:
 
 branch_0x80116e68:
     addi    r3, r29, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
     lwz     r0, 0x70(r29)
     ori     r0, r0, 0x1

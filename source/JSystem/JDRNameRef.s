@@ -1,4 +1,8 @@
 
+/* JDrama::TNameRef::calcKeyCode((char const *))
+Input:
+r3: Ptr to string
+*/
 .globl calcKeyCode__Q26JDrama8TNameRefFPCc
 calcKeyCode__Q26JDrama8TNameRefFPCc: # 0x802fa4d8
     li      r4, 0x0
@@ -13,6 +17,7 @@ branch_0x802fa4f0:
     lbz     r0, 0x0(r3)
     cmpwi   r0, 0x0
     bne+    branch_0x802fa4e0
+
     clrlwi  r3, r4, 16
     blr
 

@@ -332,7 +332,9 @@ branch_0x80267920:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+def_80267940:		# jumptable 80267940 default case
 branch_0x80267944:
     lfs     f0, -0xc54(rtoc)
     mr      r3, r30
@@ -344,7 +346,193 @@ branch_0x80267944:
     b       branch_0x80267bf0
 
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x262364, 0x80267bf0 - 0x80267964
+branch_0x80267964:		# jumptable 80267940 case 1
+lfs	  f0, -0xC50(r2)
+mr	  r3, r30
+stfs	  f0, 0x50(r30)
+bl	  calcEntryRadius__9THitActorFv	# THitActor::calcEntryRadius((void))
+lhz	  r3, 0x7E(r30)
+addi	  r0, r3, 1
+sth	  r0, 0x7E(r30)
+lhz	  r3, 0x7E(r30)
+lha	  r0, 0x80(r30)
+cmpw	  r3, r0
+blt	  branch_0x8026799C
+li	  r0, 3
+sth	  r0, 0x7C(r30)
+b	  branch_0x80267bf0
+
+branch_0x8026799C:
+mr	  r3, r30
+bl	  canGo__12TYoshiTongueFv # TYoshiTongue::canGo((void))
+cmpwi	  r3, 0
+bne	  branch_0x80267bf0
+li	  r0, 3
+sth	  r0, 0x7C(r30)
+b	  branch_0x80267bf0
+
+branch_0x802679B8:		# jumptable 80267940 case 3
+lfs	  f0, -0xC4C(r2)
+mr	  r3, r30
+stfs	  f0, 0x50(r30)
+bl	  calcEntryRadius__9THitActorFv	# THitActor::calcEntryRadius((void))
+lwz	  r5, 0xB8(r30)
+addi	  r3, r1, 0x100
+lwz	  r0, 0xBC(r30)
+addi	  r4, r30, 0xA0
+stw	  r5, 0x100(r1)
+stw	  r0, 0x104(r1)
+lwz	  r0, 0xC0(r30)
+stw	  r0, 0x108(r1)
+bl	  sub__Q29JGeometry8TVec3_f_FRCQ29JGeometry8TVec3_f_
+lwz	  r0, 0x100(r1)
+lwz	  r3, 0x104(r1)
+stw	  r0, 0x1F8(r1)
+lwz	  r0, 0x108(r1)
+stw	  r3, 0x1FC(r1)
+stw	  r0, 0x200(r1)
+lwz	  r0, 0x6C(r30)
+cmplwi	  r0, 0
+beq	  branch_0x80267AEC
+lfs	  f0, 0x1FC(r1)
+lfs	  f3, 0x200(r1)
+fmuls	  f1, f0, f0
+lfs	  f2, 0x1F8(r1)
+fmuls	  f3, f3, f3
+lfs	  f0, -0xC5C(r2)
+fmadds	  f1, f2, f2, f1
+fadds	  f4, f3, f1
+fcmpo	  cr0, f4, f0
+cror	  eq, lt, eq
+bne	  branch_0x80267A40
+b	  branch_0x80267A64
+
+branch_0x80267A40:
+frsqrte	  f3, f4
+lfs	  f2, -0xC48(r2)
+lfs	  f0, -0xC44(r2)
+frsp	  f3, f3
+fmuls	  f1, f3, f3
+fmuls	  f2, f2, f3
+fnmsubs	  f0, f4, f1, f0
+fmuls	  f0, f2, f0
+fmuls	  f4, f4, f0
+
+branch_0x80267A64:
+lfs	  f0, 0x98(r30)
+fcmpo	  cr0, f4, f0
+bge	  branch_0x80267AEC
+lwz	  r3, 0x6C(r30)
+lfs	  f1, 0x9C(r30)
+addi	  r4, r3, 0x24
+lwz	  r3, 0x24(r3)
+lwz	  r0, 4(r4)
+stw	  r3, 0x1EC(r1)
+stw	  r0, 0x1F0(r1)
+lwz	  r0, 8(r4)
+stw	  r0, 0x1F4(r1)
+lfs	  f0, 0x1EC(r1)
+fmuls	  f0, f0, f1
+stfs	  f0, 0x1EC(r1)
+lfs	  f0, 0x1F0(r1)
+fmuls	  f0, f0, f1
+stfs	  f0, 0x1F0(r1)
+lfs	  f0, 0x1F4(r1)
+fmuls	  f0, f0, f1
+stfs	  f0, 0x1F4(r1)
+lfs	  f1, 0x1EC(r1)
+lfs	  f0, -0xC40(r2)
+fcmpo	  cr0, f1, f0
+bge	  branch_0x80267AD4
+stfs	  f0, 0x1EC(r1)
+stfs	  f0, 0x1F0(r1)
+stfs	  f0, 0x1F4(r1)
+
+branch_0x80267AD4:
+lwz	  r3, 0x1EC(r1)
+lwz	  r0, 0x1F0(r1)
+stw	  r3, 0(r4)
+stw	  r0, 4(r4)
+lwz	  r0, 0x1F4(r1)
+stw	  r0, 8(r4)
+
+branch_0x80267AEC:
+lfs	  f0, 0x1FC(r1)
+lfs	  f3, 0x200(r1)
+fmuls	  f1, f0, f0
+lfs	  f2, 0x1F8(r1)
+fmuls	  f3, f3, f3
+lfs	  f0, -0xC5C(r2)
+fmadds	  f1, f2, f2, f1
+fadds	  f4, f3, f1
+fcmpo	  cr0, f4, f0
+cror	  eq, lt, eq
+bne	  branch_0x80267B1C
+b	  branch_0x80267B40
+
+branch_0x80267B1C:
+frsqrte	  f3, f4
+lfs	  f2, -0xC48(r2)
+lfs	  f0, -0xC44(r2)
+frsp	  f3, f3
+fmuls	  f1, f3, f3
+fmuls	  f2, f2, f3
+fnmsubs	  f0, f4, f1, f0
+fmuls	  f0, f2, f0
+fmuls	  f4, f4, f0
+
+branch_0x80267B40:
+lfs	  f0, 0x94(r30)
+fcmpo	  cr0, f4, f0
+bge	  branch_0x80267bf0
+lwz	  r3, 0x6C(r30)
+cmplwi	  r3, 0
+beq	  branch_0x80267BA0
+lwz	  r0, 0x4C(r3)
+addi	  r4, r30, 0
+li	  r5, 8
+stw	  r0, 0xD0(r30)
+lwz	  r3, 0x6C(r30)
+lwz	  r12, 0(r3)
+lwz	  r12, 0xA0(r12)
+mtlr	  r12
+blrl
+lwz	  r3, 0x6C(r30)
+addi	  r4, r30, 0
+li	  r5, 0xB
+lwz	  r12, 0(r3)
+lwz	  r12, 0xA0(r12)
+mtlr	  r12
+blrl
+li	  r0, 0
+stw	  r0, 0x6C(r30)
+
+branch_0x80267BA0:
+li	  r0, 0
+sth	  r0, 0x7C(r30)
+b	  branch_0x80267bf0
+
+branch_0x80267BAC:		# jumptable 80267940 case 5
+lfs	  f0, -0xC4C(r2)
+mr	  r3, r30
+stfs	  f0, 0x50(r30)
+bl	  calcEntryRadius__9THitActorFv	# THitActor::calcEntryRadius((void))
+lhz	  r3, 0x7E(r30)
+addi	  r0, r3, 1
+sth	  r0, 0x7E(r30)
+lhz	  r3, 0x7E(r30)
+lha	  r0, 0x82(r30)
+cmpw	  r3, r0
+blt	  branch_0x80267bf0
+li	  r0, 3
+sth	  r0, 0x7C(r30)
+b	  branch_0x80267bf0
+
+branch_0x80267BE4:		# jumptable 80267940 cases 6,7
+lhz	  r3, 0x7E(r30)
+addi	  r0, r3, 1
+sth	  r0, 0x7E(r30)
+
 branch_0x80267bf0:
     lhz     r0, 0x7c(r30)
     cmpwi   r0, 0x3
@@ -498,7 +686,7 @@ branch_0x80267c3c:
     bne-    branch_0x8026810c
     stw     r31, 0x6c(r30)
     li      r4, 0x7920
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80267e68
@@ -1005,7 +1193,7 @@ branch_0x80268538:
     addi    r4, r31, 0xb8
     lfs     f0, 0xbc(r31)
     addi    r5, r31, 0xc0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f0
     lfs     f2, -0xc60(rtoc)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -1015,7 +1203,7 @@ branch_0x80268538:
     b       branch_0x802685d8
 
 branch_0x80268568:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x30
     lfs     f1, 0xb8(r31)
     lfs     f2, 0xbc(r31)
@@ -1031,7 +1219,7 @@ branch_0x80268568:
     b       branch_0x802685d8
 
 branch_0x802685a0:
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x2c
     lfs     f1, 0xb8(r31)
     lfs     f3, 0xc0(r31)

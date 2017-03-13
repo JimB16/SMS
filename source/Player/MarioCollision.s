@@ -228,7 +228,7 @@ branch_0x802428f0:
     addi    r3, r24, 0x0
     li      r4, 0x1
     bl      getOffYoshi__6TMarioFb
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x7918
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -408,7 +408,7 @@ branch_0x80242b3c:
     stw     r0, 0x74(r4)
     lwz     r0, 0x1c98(r5)
     stw     r0, 0x78(r4)
-    lwz     r3, -0x6088(r13)
+    lwz     r3, gpModelWaterManager(r13)
     lwz     r4, 0x154(r24)
     bl      emitRequest__18TModelWaterManagerFRC14TWaterEmitInfo
 branch_0x80242b78:
@@ -419,7 +419,7 @@ branch_0x80242b7c:
 branch_0x80242b84:
     cmpwi   r29, 0x0
     ble-    branch_0x80242bac
-    lwz     r0, -0x60d8(r13)
+    lwz     r0, MarioActor(r13)
     cmplw   r24, r0
     bne-    branch_0x80242bac
     lwz     r3, -0x60f0(r13)
@@ -538,7 +538,7 @@ branch_0x80242d2c:
     cmpwi   r26, 0x1
     ble-    branch_0x80242d50
     addi    r3, r24, 0x0
-    li      r4, 0x7830
+    li      r4, SOUND_7830
     bl      startVoice__6TMarioFUl
     b       branch_0x80242d74
 
@@ -546,13 +546,13 @@ branch_0x80242d50:
     cmpwi   r27, 0x0
     bne-    branch_0x80242d68
     addi    r3, r24, 0x0
-    li      r4, 0x783b
+    li      r4, SOUND_783b
     bl      startVoice__6TMarioFUl
     b       branch_0x80242d74
 
 branch_0x80242d68:
     addi    r3, r24, 0x0
-    li      r4, 0x7833
+    li      r4, SOUND_7833
     bl      startVoice__6TMarioFUl
 branch_0x80242d74:
     lfs     f0, 0x134(r24)
@@ -836,7 +836,7 @@ loserExec__6TMarioFv: # 0x802430fc
     ori     r3, r3, 0x400
     stw     r3, 0x118(r31)
     sth     r0, 0x120(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80243178
@@ -1049,7 +1049,7 @@ branch_0x802433c4:
     li      r5, 0x0
     bl      setStatusToJumping__6TMarioFUlUl
 branch_0x802433ec:
-    lwz     r0, -0x60d8(r13)
+    lwz     r0, MarioActor(r13)
     lha     r5, 0x27d0(r30)
     cmplw   r30, r0
     bne-    branch_0x8024340c
@@ -1124,7 +1124,7 @@ branch_0x802434dc:
     bne-    branch_0x80243530
     mr      r3, r30
     bl      getTrampleCt__6TMarioFv
-    lwz     r0, -0x6044(r13)
+    lwz     r0, gpMSound(r13)
     addi    r29, r3, 0x0
     li      r4, 0x1818
     mr      r3, r0
@@ -1385,6 +1385,10 @@ getAttackAngle__6TMarioFPC9THitActor: # 0x802437f0
     blr
 
 
+/* Input:
+r3: MarioActor
+*/
+# TMario::decHP((int))
 .globl decHP__6TMarioFi
 decHP__6TMarioFi: # 0x80243828
     mflr    r0
@@ -1397,8 +1401,9 @@ decHP__6TMarioFi: # 0x80243828
     bl      isUnderWater__6TMarioCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x80243870
-    lwz     r0, 0x118(r30)
-    rlwinm. r0, r0, 0, 19, 19
+
+    lwz     r0, MarioActor_Flags(r30)
+    rlwinm. r0, r0, 0, 19, 19 # MARIOFLAG_1000
     beq-    branch_0x80243864
     li      r0, 0x1
     b       branch_0x80243868
@@ -1413,13 +1418,13 @@ branch_0x80243870:
     lfd     f1, -0x13f8(rtoc)
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
-    lfs     f2, 0x12c(r30)
+    lfs     f2, MarioActor_12c(r30)
     li      r31, 0x0
     stw     r0, 0x18(sp)
     lfd     f0, 0x18(sp)
     fsubs   f0, f0, f1
     fsubs   f0, f2, f0
-    stfs    f0, 0x12c(r30)
+    stfs    f0, MarioActor_12c(r30)
 branch_0x8024389c:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x0
@@ -1427,7 +1432,7 @@ branch_0x8024389c:
     addi    r31, r31, 0x1
     cmpwi   r31, 0xa
     blt+    branch_0x8024389c
-    lfs     f1, 0x12c(r30)
+    lfs     f1, MarioActor_12c(r30)
     lfs     f0, -0x1414(rtoc)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80243910
@@ -1442,14 +1447,14 @@ branch_0x8024389c:
     b       branch_0x80243910
 
 branch_0x802438e8:
-    lha     r0, 0x120(r30)
+    lha     r0, MarioActor_HP(r30)
     subf    r0, r31, r0
-    sth     r0, 0x120(r30)
-    lha     r0, 0x120(r30)
+    sth     r0, MarioActor_HP(r30)
+    lha     r0, MarioActor_HP(r30)
     cmpwi   r0, 0x0
     bgt-    branch_0x80243910
     li      r0, 0x0
-    sth     r0, 0x120(r30)
+    sth     r0, MarioActor_HP(r30)
     mr      r3, r30
     bl      loserExec__6TMarioFv
 branch_0x80243910:
@@ -1461,6 +1466,10 @@ branch_0x80243910:
     blr
 
 
+/* Input:
+r3: MarioActor
+*/
+# TMario::incHP((int))
 .globl incHP__6TMarioFi
 incHP__6TMarioFi: # 0x80243928
     mflr    r0
@@ -1473,8 +1482,9 @@ incHP__6TMarioFi: # 0x80243928
     bl      isUnderWater__6TMarioCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x80243970
-    lwz     r0, 0x118(r30)
-    rlwinm. r0, r0, 0, 19, 19
+
+    lwz     r0, MarioActor_Flags(r30)
+    rlwinm. r0, r0, 0, 19, 19 # MARIOFLAG_1000
     beq-    branch_0x80243964
     li      r0, 0x1
     b       branch_0x80243968
@@ -1489,21 +1499,21 @@ branch_0x80243970:
     lfd     f1, -0x13f8(rtoc)
     stw     r0, 0x44(sp)
     lis     r0, 0x4330
-    lfs     f2, 0x12c(r30)
+    lfs     f2, MarioActor_12c(r30)
     stw     r0, 0x40(sp)
     lfd     f0, 0x40(sp)
     fsubs   f0, f0, f1
     fadds   f0, f2, f0
-    stfs    f0, 0x12c(r30)
-    lfs     f0, 0x12c(r30)
-    lfs     f1, 0x130(r30)
+    stfs    f0, MarioActor_12c(r30)
+    lfs     f0, MarioActor_12c(r30)
+    lfs     f1, MarioActor_130(r30)
     fcmpo   cr0, f0, f1
     ble-    branch_0x802439b0
-    stfs    f1, 0x12c(r30)
+    stfs    f1, MarioActor_12c(r30)
     b       branch_0x80243a28
 
 branch_0x802439b0:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4801
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1516,18 +1526,18 @@ branch_0x802439b0:
     b       branch_0x80243a28
 
 branch_0x802439dc:
-    lha     r0, 0x120(r30)
+    lha     r0, MarioActor_HP(r30)
     add     r0, r0, r31
-    sth     r0, 0x120(r30)
-    lha     r0, 0x120(r30)
-    lha     r3, 0x58c(r30)
+    sth     r0, MarioActor_HP(r30)
+    lha     r0, MarioActor_HP(r30)
+    lha     r3, MarioActor_58c(r30)
     cmpw    r0, r3
     ble-    branch_0x80243a00
-    sth     r3, 0x120(r30)
+    sth     r3, MarioActor_HP(r30)
     b       branch_0x80243a28
 
 branch_0x80243a00:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4801
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1551,7 +1561,7 @@ rumbleStart__6TMarioFii: # 0x80243a40
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x60d8(r13)
+    lwz     r0, MarioActor(r13)
     cmplw   r3, r0
     bne-    branch_0x80243a64
     lwz     r3, -0x60f0(r13)

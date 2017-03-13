@@ -787,7 +787,7 @@ branch_0x8021178c:
     lfs     f1, -0x1a70(rtoc)
     addi    r4, r31, 0xc4
     lfs     f0, 0x14(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
@@ -805,7 +805,7 @@ branch_0x80211880:
     lwz     r0, 0xf0(r31)
     ori     r0, r0, 0x1000
     stw     r0, 0xf0(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x8
     bne-    branch_0x802118dc
@@ -1130,7 +1130,7 @@ branch_0x80211cf4:
     lfs     f1, -0x1a70(rtoc)
     addi    r4, r31, 0xc4
     lfs     f0, 0x14(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)

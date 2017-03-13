@@ -204,7 +204,7 @@ control__13TPinnaCoasterFv: # 0x801d4160
     fmr     f31, f1
     cmpwi   r0, 0x0
     beq-    branch_0x801d42b8
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x305a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -241,7 +241,7 @@ branch_0x801d42b8:
 .globl touchPlayer__8TAmiKingFP9THitActor
 touchPlayer__8TAmiKingFP9THitActor: # 0x801d42f8
     mflr    r0
-    li      r4, 0x9
+    li      r4, MARIOMSG_HURTELECTRIC
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      SMS_SendMessageToMario__FP9THitActorUl
@@ -263,7 +263,7 @@ bind__8TAmiKingFv: # 0x801d431c
     lfs     f1, 0x14(r5)
     addi    r4, r5, 0xc4
     lfs     f0, 0xc0(r5)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r5)
     lfs     f3, 0x18(r5)
@@ -290,7 +290,7 @@ calc__8TAmiKingFv: # 0x801d4374
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x184
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -336,7 +336,7 @@ calc__8TAmiKingFv: # 0x801d4374
     lfs     f0, 0x94(sp)
     fadds   f0, f1, f0
     stfs    f0, 0x144(r31)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x801d4478
@@ -348,7 +348,7 @@ calc__8TAmiKingFv: # 0x801d4374
     stfs    f0, 0x178(r3)
     stfs    f0, 0x17c(r3)
 branch_0x801d4478:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x214f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -363,7 +363,7 @@ branch_0x801d4478:
     b       branch_0x801d44dc
 
 branch_0x801d44ac:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2120
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -448,7 +448,7 @@ branch_0x801d45bc:
 branch_0x801d45c0:
     cmpwi   r0, 0x0
     bne-    branch_0x801d483c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2921
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -463,7 +463,7 @@ branch_0x801d45c0:
 branch_0x801d45f8:
     lwz     r5, 0x74(r30)
     li      r4, 0xca
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     lwz     r5, 0x4(r5)
     li      r7, 0x0
@@ -494,7 +494,7 @@ branch_0x801d463c:
     stfs    f0, 0xb4(sp)
     bl      generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_
 branch_0x801d4674:
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r31, 0x170
     lfs     f1, 0x10(r30)
     addi    r5, r31, 0x190
@@ -513,7 +513,7 @@ branch_0x801d4674:
     mtlr    r12
     blrl
     li      r0, 0x0
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     sth     r0, 0xa4(sp)
     addi    r0, sp, 0xa4
     lis     r4, 0x801d
@@ -613,7 +613,7 @@ branch_0x801d47b8:
     li      r4, 0x0
     bl      setAnmSound__10TLiveActorFPCc
     li      r0, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r0, 0xa0(sp)
     addi    r0, sp, 0xa0
     addi    r4, r31, 0x1c8
@@ -889,7 +889,7 @@ kill__15TBalloonKoopaJrFv: # 0x801d4b54
     addi    r4, r4, 0x1
     li      r5, 0x1
     bl      incFlag__12TFlagManagerFUll
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28b8
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -934,15 +934,15 @@ calc__24TChangeStageMerrygoroundFv: # 0x801d4c2c
     lbz     r0, 0x13c(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x801d4c7c
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x100
     li      r6, 0x1
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x101
     li      r6, 0x1
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -978,7 +978,7 @@ branch_0x801d4cc4:
     lbz     r0, 0xd0(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x801d4d1c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4840
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -997,7 +997,7 @@ branch_0x801d4d04:
     b       branch_0x801d4d44
 
 branch_0x801d4d1c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x483e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1733,17 +1733,17 @@ branch_0x801d5734:
     stfs    f0, 0x50(sp)
     bl      newAndRegisterObj__18TMapObjBaseManagerFPCcRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     stw     r3, 0x498(r31)
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     bl      newAndRegisterCoinReal__12TItemManagerFv
     stw     r3, 0x49c(r31)
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     bl      newAndRegisterCoinReal__12TItemManagerFv
     stw     r3, 0x4a0(r31)
     li      r0, 0x2
     lwz     r3, 0x498(r31)
     stw     r0, 0x134(r3)
     lwz     r4, 0x498(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r0, 0x134(r4)
     lbz     r4, 0x7c(r3)
     lwz     r3, -0x6060(r13)
@@ -1805,7 +1805,7 @@ perform__9TShellCupFUlPQ26JDrama9TGraphics: # 0x801d5878
     bl      perform__11TMapObjBaseFUlPQ26JDrama9TGraphics
     rlwinm. r0, r28, 0, 30, 30
     beq-    branch_0x801d59a4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r0, 0x1
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x1
@@ -2035,7 +2035,7 @@ branch_0x801d5bb4:
 branch_0x801d5bb8:
     clrlwi. r0, r0, 24
     beq-    branch_0x801d5bec
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x483f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2048,7 +2048,7 @@ branch_0x801d5bb8:
     b       branch_0x801d5c40
 
 branch_0x801d5bec:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2061,7 +2061,7 @@ branch_0x801d5bec:
     b       branch_0x801d5c40
 
 branch_0x801d5c18:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x483d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2083,7 +2083,7 @@ branch_0x801d5c4c:
     li      r0, 0x3
     stw     r0, 0x68(r31)
     li      r4, 0x389f
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801d5cfc
@@ -2208,13 +2208,13 @@ receiveMessage__11TPinnaShellFP9THitActorUl: # 0x801d5e18
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bne-    branch_0x801d5eb0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r4, 0x10
     li      r4, 0xe7
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r31, 0x10
     lfs     f1, -0x2750(rtoc)
     li      r4, 0x6802
@@ -2564,7 +2564,7 @@ branch_0x801d62ac:
     bge-    branch_0x801d6338
     lfs     f0, 0x144(r31)
     li      r4, 0x38a0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2592,7 +2592,7 @@ branch_0x801d6338:
     fsubs   f0, f1, f0
     stfs    f0, 0x148(r31)
     lfs     f0, 0x144(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2631,7 +2631,7 @@ branch_0x801d63a4:
     ble-    branch_0x801d6430
     lfs     f0, 0x144(r31)
     li      r4, 0x38a0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2659,7 +2659,7 @@ branch_0x801d6430:
     fadds   f0, f1, f0
     stfs    f0, 0x148(r31)
     lfs     f0, 0x144(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2698,7 +2698,7 @@ branch_0x801d649c:
     bge-    branch_0x801d65f4
     lfs     f0, 0x144(r31)
     li      r4, 0x38a0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2747,7 +2747,7 @@ branch_0x801d654c:
     ble-    branch_0x801d65f4
     lfs     f0, 0x144(r31)
     li      r4, 0x38a0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2996,7 +2996,7 @@ branch_0x801d68e0:
     clrlwi  r3, r26, 16
     cmpw    r3, r0
     blt+    branch_0x801d6880
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x801d690c
@@ -3072,7 +3072,7 @@ branch_0x801d69c8:
     fmuls   f1, f1, f2
     fcmpo   cr0, f0, f1
     ble-    branch_0x801d6a14
-    lwz     r30, -0x6044(r13)
+    lwz     r30, gpMSound(r13)
     li      r4, 0x3085
     addi    r3, r30, 0x0
     bl      gateCheck__6MSoundFUl
@@ -3150,7 +3150,7 @@ becomeCalmlyCallback__12TFerrisWheelFUlUl: # 0x801d6ad0
     bne-    branch_0x801d6b34
     li      r0, 0x2
     sth     r0, 0xfc(r30)
-    lwz     r31, -0x6044(r13)
+    lwz     r31, gpMSound(r13)
     lwz     r3, 0x80(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x801d6b2c

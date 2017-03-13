@@ -36,6 +36,28 @@ branch_0x80163a84:
 
 .globl changeScene__9TCardLoadFv
 changeScene__9TCardLoadFv: # 0x80163aa0
+
+.set var_10C, -0x10C
+.set var_108, -0x108
+.set var_104, -0x104
+.set var_E8, -0xE8
+.set var_E4, -0xE4
+.set var_D0, -0xD0
+.set var_BC, -0xBC
+.set var_84, -0x84
+.set var_80, -0x80
+.set var_6C, -0x6C
+.set var_68, -0x68
+.set var_64, -0x64
+.set var_60, -0x60
+.set var_58, -0x58
+.set var_40, -0x40
+.set var_38, -0x38
+.set var_30, -0x30
+.set var_28, -0x28
+.set var_20, -0x20
+.set arg_4,  4
+
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x1e0(sp)
@@ -50,15 +72,1591 @@ changeScene__9TCardLoadFv: # 0x80163aa0
     slwi    r0, r30, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80163ADC:		# jumptable 80163AD8 case 48
     lwz     r3, -0x603c(r13)
     bl      readOptionBlock__12TCardManagerFv
     li      r0, 0x31
     stw     r0, 0x1c(r31)
     b       branch_0x80164fe4
 
+branch_0x80163AF0:		# jumptable 80163AD8 case 49
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r4, r3, 0
+cmpwi	  r4, -1
+beq	  branch_0x80163BA0
+cmpwi	  r4, 0
+bne	  branch_0x80163B90
+addi	  r25, r1, 0x1E0+var_58
+stw	  r25, 0x1E0+var_84(r1)
+lis	  r4, unk_803AF0F4@ha
+addi	  r0, r4, unk_803AF0F4@l
+lwz	  r3, 0x1E0+var_84(r1)
+lis	  r5, unk_803E0160@h
+addi	  r27, r5, unk_803E0160@l
+stw	  r0, 0(r3)
+li	  r28, 0
+lis	  r6, unk_803E0184@h
+stb	  r28, 4(r3)
+addi	  r0, r6, unk_803E0184@l
+lis	  r4, unk_803E01C8@h
+stw	  r0, 0(r3)
+addi	  r26, r4, unk_803E01C8@l
+li	  r4, 0
+stw	  r27, 0(r3)
+li	  r5, 0
+stw	  r26, 0(r3)
+bl	  setBuffer__20JSUMemoryInputStreamFPCvl # JSUMemoryInputStream::setBuffer((void const *,long))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r25
+bl	  getOptionReadStream__12TCardManagerFP20JSUMemoryInputStream #	TCardManager::getOptionReadStream((JSUMemoryInputStream	*))
+lwz	  r3, -0x6060(r13)
+mr	  r4, r25
+bl	  loadOption__12TFlagManagerFR20JSUMemoryInputStream # TFlagManager::loadOption((JSUMemoryInputStream &))
+stw	  r28, 0x1C(r31)
+addi	  r3, r25, 0
+li	  r4, 0
+stw	  r26, 0x1E0+var_58(r1)
+stw	  r27, 0x1E0+var_58(r1)
+bl	  __dt__14JSUInputStreamFv # JSUInputStream::~JSUInputStream((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x15e4f0, 0x80164fe4 - 0x80163af0
+branch_0x80163B90:
+mr	  r3, r31
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163BA0:
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163BAC:		# jumptable 80163AD8 case 0
+lwz	  r3, 0x38(r31)
+addi	  r4, r31, 0x40
+lhz	  r0, 0xE2(r3)
+ori	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+lwz	  r3, -0x603C(r13)
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+li	  r0, 2
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163BD4:		# jumptable 80163AD8 case 1
+lwz	  r3, -0x603C(r13)
+bl	  unmount__12TCardManagerFv # TCardManager::unmount((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163BE0:		# jumptable 80163AD8 case 2
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r4, r3, 0
+cmpwi	  r4, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+cmpwi	  r4, 0
+bne	  branch_0x80163C10
+li	  r0, 1
+stw	  r0, 0x10(r31)
+li	  r0, 0x13
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163C10:
+mr	  r3, r31
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163C20:		# jumptable 80163AD8 case 3
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -3
+bne	  branch_0x80163C48
+addi	  r3, r31, 0
+li	  r4, 0x1A
+bl	  waitForStart__9TCardLoadF10TEProgress	# TCardLoad::waitForStart((TEProgress))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163C48:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x80163C5C
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80163C5C:
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForStart__9TCardLoadF10TEProgress	# TCardLoad::waitForStart((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163C84:		# jumptable 80163AD8 cases 4,5,12,13,16,45,53
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -3
+beq	  branch_0x80163CAC
+addi	  r3, r31, 0
+li	  r4, 0x1A
+bl	  waitForStart__9TCardLoadF10TEProgress	# TCardLoad::waitForStart((TEProgress))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163CAC:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x80163CC0
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80163CC0:
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForStart__9TCardLoadF10TEProgress	# TCardLoad::waitForStart((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163CE8:		# jumptable 80163AD8 cases 6,7
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x80163D18
+addi	  r3, r31, 0
+li	  r4, 8
+li	  r5, 0x35
+li	  r6, 1
+bl	  waitForChoice__9TCardLoadF10TEProgress10TEProgressi #	TCardLoad::waitForChoice((TEProgress,TEProgress,int))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163D18:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x80163D34
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80163D34:
+addi	  r3, r31, 0
+li	  r4, 8
+li	  r5, 0x35
+li	  r6, 1
+bl	  waitForChoice__9TCardLoadF10TEProgress10TEProgressi #	TCardLoad::waitForChoice((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163D68:		# jumptable 80163AD8 case 8
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x80163DB8
+addi	  r3, r31, 0
+li	  r4, 9
+li	  r5, 0x35
+li	  r6, 1
+bl	  waitForChoice__9TCardLoadF10TEProgress10TEProgressi #	TCardLoad::waitForChoice((TEProgress,TEProgress,int))
+addi	  r26, r3, 0
+extsb.	  r0, r26
+bne	  branch_0x80163DA0
+lwz	  r3, -0x603C(r13)
+bl	  format__12TCardManagerFv # TCardManager::format((void))
+
+branch_0x80163DA0:
+extsb	  r0, r26
+cmpwi	  r0, -1
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163DB8:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x80163DD4
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80163DD4:
+addi	  r3, r31, 0
+li	  r4, 9
+li	  r5, 0x35
+li	  r6, 1
+bl	  waitForChoice__9TCardLoadF10TEProgress10TEProgressi #	TCardLoad::waitForChoice((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163E08:		# jumptable 80163AD8 case 9
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -1
+beq	  branch_0x80163EA4
+cmpwi	  r3, 0
+bne	  branch_0x80163E80
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80163E34
+li	  r0, 4
+stw	  r0, 0x10(r31)
+
+branch_0x80163E34:
+addi	  r3, r31, 0
+li	  r4, 0xA
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 5
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4810
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+li	  r3, 0x4810
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163E80:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80163E94
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80163E94:
+addi	  r3, r31, 0
+li	  r4, 0xB
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163EA4:
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163EBC:		# jumptable 80163AD8 case 10
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForAnyKey__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKey((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163EE4:		# jumptable 80163AD8 case 11
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForAnyKey__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKey((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r4, r3, 0
+addi	  r3, r31, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163F18:		# jumptable 80163AD8 case 26
+addi	  r3, r31, 0
+li	  r4, 0x29
+li	  r5, 2
+li	  r6, 0
+bl	  waitForChoice__9TCardLoadF10TEProgress10TEProgressi #	TCardLoad::waitForChoice((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, 1
+bne	  branch_0x80163F48
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163F48:
+extsb.	  r0, r3
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x6060(r13)
+bl	  firstStart__12TFlagManagerFv # TFlagManager::firstStart((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163F5C:		# jumptable 80163AD8 case 14
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x80163FAC
+addi	  r3, r31, 0
+li	  r4, 0xF
+li	  r5, 0x10
+li	  r6, 0
+bl	  waitForChoice__9TCardLoadF10TEProgress10TEProgressi #	TCardLoad::waitForChoice((TEProgress,TEProgress,int))
+addi	  r26, r3, 0
+extsb.	  r0, r26
+bne	  branch_0x80163F94
+lwz	  r3, -0x603C(r13)
+bl	  createFile__12TCardManagerFv # TCardManager::createFile((void))
+
+branch_0x80163F94:
+extsb	  r0, r26
+cmpwi	  r0, -1
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163FAC:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x80163FC8
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80163FC8:
+addi	  r3, r31, 0
+li	  r4, 0xF
+li	  r5, 4
+li	  r6, 0
+bl	  waitForChoice__9TCardLoadF10TEProgress10TEProgressi #	TCardLoad::waitForChoice((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80163FFC:		# jumptable 80163AD8 case 15
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -1
+beq	  branch_0x80164098
+cmpwi	  r3, 0
+bne	  branch_0x80164074
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164028
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164028:
+addi	  r3, r31, 0
+li	  r4, 0x11
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 5
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4810
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+li	  r3, 0x4810
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164074:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164088
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164088:
+addi	  r3, r31, 0
+li	  r4, 0x12
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164098:
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801640B0:		# jumptable 80163AD8 case 17
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForAnyKey__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKey((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801640D8:		# jumptable 80163AD8 case 18
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForAnyKey__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKey((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r4, r3, 0
+addi	  r3, r31, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x8016410C:		# jumptable 80163AD8 case 19
+lwz	  r4, 0x24(r31)
+cmpwi	  r4, 0
+beq	  branch_0x80164134
+mr	  r3, r31
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+addi	  r5, r3, 0
+addi	  r3, r31, 0
+li	  r4, 2
+li	  r6, 1
+bl	  selectBookmark__9TCardLoadF10TEProgress10TEProgressb # TCardLoad::selectBookmark((TEProgress,TEProgress,bool))
+
+branch_0x80164134:
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+cmpwi	  r3, 0
+bne	  branch_0x8016418C
+li	  r0, 0
+stb	  r0, 0xB6(r31)
+addi	  r3, r31, 0
+li	  r4, 0x1B
+li	  r5, 0
+li	  r6, 1
+bl	  selectBookmark__9TCardLoadF10TEProgress10TEProgressb # TCardLoad::selectBookmark((TEProgress,TEProgress,bool))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+slwi	  r0, r0, 5
+add	  r3, r31, r0
+lwz	  r0, 0x40(r3)
+cmpwi	  r0, 1
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+li	  r0, 0x1E
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x8016418C:
+cmpwi	  r3, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+stw	  r3, 0x24(r31)
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+li	  r0, 3
+stw	  r0, 0x10(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801641B0:		# jumptable 80163AD8 case 28
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+mr.	  r4, r3
+bne	  branch_0x80164224
+addi	  r3, r31, 0
+li	  r4, 0x15
+li	  r5, 2
+li	  r6, 1
+bl	  selectBookmark__9TCardLoadF10TEProgress10TEProgressb # TCardLoad::selectBookmark((TEProgress,TEProgress,bool))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  branch_0x80164208
+stb	  r3, 0xB2(r31)
+lbz	  r0, 0xB2(r31)
+extsb	  r0, r0
+slwi	  r3, r0, 5
+addi	  r0, r3, 0x40
+lwzx	  r0, r31, r0
+cmpwi	  r0, 1
+bne	  branch_0x80164208
+li	  r0, 0x22
+stw	  r0, 0x1C(r31)
+
+branch_0x80164208:
+lwz	  r0, 0x1C(r31)
+cmpwi	  r0, 2
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164224:
+cmpwi	  r4, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+mr	  r3, r31
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+addi	  r4, r3, 0
+addi	  r3, r31, 0
+addi	  r5, r4, 0
+li	  r6, 1
+bl	  selectBookmark__9TCardLoadF10TEProgress10TEProgressb # TCardLoad::selectBookmark((TEProgress,TEProgress,bool))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+li	  r0, 3
+stw	  r0, 0x10(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164260:		# jumptable 80163AD8 case 27
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r28, r3
+bne	  branch_0x801643F0
+mr	  r3, r31
+bl	  selectFunction__9TCardLoadFv # TCardLoad::selectFunction((void))
+mr	  r26, r3
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+extsb	  r0, r26
+cmpwi	  r0, 2
+beq	  branch_0x80164318
+bge	  branch_0x801642A4
+cmpwi	  r0, 0
+beq	  branch_0x801642B0
+bge	  branch_0x80164304
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801642A4:
+cmpwi	  r0, 4
+bge	  def_80163AD8	# jumptable 80163AD8 default case
+b	  branch_0x80164324
+
+branch_0x801642B0:
+lis	  r3, unk_803E9700@ha
+lbz	  r0, 0xB0(r31)
+addi	  r3, r3, unk_803E9700@l
+stb	  r0, 0x38(r3) #(byte_803E9738 - unk_803E9700)(r3)
+lbz	  r0, 0xB0(r31)
+extsb	  r4, r0
+slwi	  r3, r4, 5
+addi	  r0, r3, 0x58
+lwzx	  r0, r31, r0
+cmplwi	  r0, 0
+bne	  branch_0x801642F0
+lwz	  r3, -0x6060(r13)
+bl	  firstStart__12TFlagManagerFv # TFlagManager::firstStart((void))
+li	  r0, 0x29
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801642F0:
+lwz	  r3, -0x603C(r13)
+bl	  readBlock__12TCardManagerFUl # TCardManager::readBlock((ulong))
+li	  r0, 0x28
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164304:
+lbz	  r3, 0xB0(r31)
+li	  r0, 0x1C
+stb	  r3, 0xB1(r31)
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164318:
+li	  r0, 0x1D
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164324:
+lbz	  r3, 0xB0(r31)
+li	  r5, 0
+li	  r4, 1
+extsb	  r3, r3
+cmpw	  r5, r3
+li	  r0, 0
+bne	  branch_0x8016434C
+lwz	  r3, 0x748(r31)
+stb	  r4, 0xC(r3)
+b	  branch_0x80164354
+
+branch_0x8016434C:
+lwz	  r3, 0x748(r31)
+stb	  r0, 0xC(r3)
+
+branch_0x80164354:
+lbz	  r3, 0xB0(r31)
+li	  r5, 1
+extsb	  r3, r3
+cmpw	  r5, r3
+bne	  branch_0x80164374
+lwz	  r3, 0x74C(r31)
+stb	  r4, 0xC(r3)
+b	  branch_0x8016437C
+
+branch_0x80164374:
+lwz	  r3, 0x74C(r31)
+stb	  r0, 0xC(r3)
+
+branch_0x8016437C:
+lbz	  r3, 0xB0(r31)
+li	  r5, 2
+extsb	  r3, r3
+cmpw	  r5, r3
+bne	  branch_0x8016439C
+lwz	  r3, 0x750(r31)
+stb	  r4, 0xC(r3)
+b	  branch_0x801643A4
+
+branch_0x8016439C:
+lwz	  r3, 0x750(r31)
+stb	  r0, 0xC(r3)
+
+branch_0x801643A4:
+lwz	  r3, 0x2C(r31)
+lis	  r4, 0x524F # 0x524F4F54
+addi	  r4, r4, 0x4F54 # 0x524F4F54
+lwz	  r12, 0(r3)
+lwz	  r12, 0x24(r12)
+mtlr	  r12
+blrl
+li	  r26, 0
+stb	  r26, 0xCC(r3)
+lwz	  r3, -0x70B8(r13)
+bl	  moveToUp__13TCameraOptionFv #	TCameraOption::moveToUp((void))
+lbz	  r4, 0xB0(r31)
+lwz	  r3, -0x603C(r13)
+extsb	  r4, r4
+bl	  readBlock__12TCardManagerFUl # TCardManager::readBlock((ulong))
+li	  r0, 4
+stw	  r0, 0x14(r31)
+stb	  r26, 0xB8(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801643F0:
+cmpwi	  r28, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lbz	  r0, 0xB0(r31)
+extsb	  r0, r0
+slwi	  r0, r0, 4
+add	  r3, r31, r0
+lwz	  r3, 0x398(r3)
+lwz	  r3, 0(r3)
+lbz	  r0, 0xC(r3)
+cmplwi	  r0, 0
+beq	  branch_0x80164684
+li	  r5, 0
+stb	  r5, 0xC(r3)
+addi	  r3, r1, 0x1E0+var_6C
+lbz	  r0, 0xB0(r31)
+extsb	  r0, r0
+slwi	  r0, r0, 4
+add	  r4, r31, r0
+lwz	  r4, 0x39C(r4)
+lwz	  r4, 0(r4)
+stb	  r5, 0xC(r4)
+lbz	  r0, 0xB0(r31)
+extsb	  r0, r0
+slwi	  r0, r0, 4
+add	  r4, r31, r0
+lwz	  r4, 0x3A0(r4)
+lwz	  r4, 0(r4)
+stb	  r5, 0xC(r4)
+lbz	  r0, 0xB0(r31)
+extsb	  r0, r0
+slwi	  r0, r0, 4
+add	  r4, r31, r0
+lwz	  r4, 0x3A4(r4)
+lwz	  r4, 0(r4)
+stb	  r5, 0xC(r4)
+lbz	  r0, 0xB0(r31)
+extsb	  r0, r0
+slwi	  r4, r0, 4
+addi	  r4, r4, 0x368
+add	  r4, r31, r4
+bl	  copy__7JUTRectFRC7JUTRect # JUTRect::copy((JUTRect const &))
+lbz	  r0, 0xB0(r31)
+lfs	  f0, -0x49A4(r2)
+extsb	  r0, r0
+lwz	  r5, 0x1E0+var_6C(r1)
+slwi	  r0, r0, 2
+lwz	  r4, 0x1E0+var_64(r1)
+add	  r3, r31, r0
+lwz	  r27, 0x35C(r3)
+subf	  r0, r5, r4
+lfs	  f1, 0x30(r27)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x801644CC
+lfs	  f0, -0x49A0(r2)
+b	  branch_0x801644D0
+
+branch_0x801644CC:
+lfs	  f0, -0x499C(r2)
+
+branch_0x801644D0:
+fadds	  f1, f1, f0
+lfs	  f2, 0x2C(r27)
+lfs	  f0, -0x49A4(r2)
+fctiwz	  f1, f1
+fcmpo	  cr0, f2, f0
+stfd	  f1, 0x1E0+var_28(r1)
+lwz	  r26, 0x1E0+var_28+4(r1)
+ble	  branch_0x801644F8
+lfs	  f0, -0x49A0(r2)
+b	  branch_0x801644FC
+
+branch_0x801644F8:
+lfs	  f0, -0x499C(r2)
+
+branch_0x801644FC:
+fadds	  f0, f2, f0
+xoris	  r3, r0, 0x8000
+xoris	  r0, r26, 0x8000
+stw	  r3, 0x1E0+var_30+4(r1)
+lis	  r5, 0x4330
+fctiwz	  f0, f0
+stw	  r0, 0x1E0+var_40+4(r1)
+lfd	  f3, -0x4998(r2)
+addi	  r3, r27, 0x2C
+stw	  r5, 0x1E0+var_30(r1)
+stfd	  f0, 0x1E0+var_28(r1)
+li	  r4, 0x1E
+lfd	  f0, 0x1E0+var_30(r1)
+lwz	  r25, 0x1E0+var_28+4(r1)
+stw	  r5, 0x1E0+var_40(r1)
+fsubs	  f1, f0, f3
+xoris	  r0, r25, 0x8000
+lfs	  f2, -0x49A4(r2)
+stw	  r0, 0x1E0+var_38+4(r1)
+lfd	  f0, 0x1E0+var_40(r1)
+stw	  r5, 0x1E0+var_38(r1)
+fsubs	  f4, f0, f3
+lfd	  f0, 0x1E0+var_38(r1)
+fsubs	  f3, f0, f3
+bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
+lwz	  r3, 0(r27)
+addi	  r4, r25, 0
+addi	  r5, r26, 0
+lwz	  r12, 0(r3)
+lwz	  r12, 0x14(r12)
+mtlr	  r12
+blrl
+li	  r0, 1
+stb	  r0, 0x4F(r27)
+lbz	  r0, 0xB0(r31)
+lfs	  f0, -0x49A4(r2)
+extsb	  r0, r0
+lwz	  r5, 0x1E0+var_68(r1)
+slwi	  r0, r0, 2
+lwz	  r4, 0x1E0+var_60(r1)
+add	  r3, r31, r0
+lwz	  r27, 0x35C(r3)
+subf	  r0, r5, r4
+lfs	  f1, 0x18(r27)
+fcmpo	  cr0, f1, f0
+ble	  branch_0x801645BC
+lfs	  f0, -0x49A0(r2)
+b	  branch_0x801645C0
+
+branch_0x801645BC:
+lfs	  f0, -0x499C(r2)
+
+branch_0x801645C0:
+fadds	  f1, f1, f0
+lfs	  f2, 0x14(r27)
+lfs	  f0, -0x49A4(r2)
+fctiwz	  f1, f1
+fcmpo	  cr0, f2, f0
+stfd	  f1, 0x1E0+var_40(r1)
+lwz	  r26, 0x1E0+var_40+4(r1)
+ble	  branch_0x801645E8
+lfs	  f0, -0x49A0(r2)
+b	  branch_0x801645EC
+
+branch_0x801645E8:
+lfs	  f0, -0x499C(r2)
+
+branch_0x801645EC:
+fadds	  f0, f2, f0
+xoris	  r3, r0, 0x8000
+xoris	  r0, r26, 0x8000
+stw	  r3, 0x1E0+var_38+4(r1)
+lis	  r5, 0x4330
+fctiwz	  f0, f0
+stw	  r0, 0x1E0+var_28+4(r1)
+lfd	  f3, -0x4998(r2)
+addi	  r3, r27, 0x14
+stw	  r5, 0x1E0+var_38(r1)
+stfd	  f0, 0x1E0+var_40(r1)
+li	  r4, 0x1E
+lfd	  f0, 0x1E0+var_38(r1)
+lwz	  r25, 0x1E0+var_40+4(r1)
+stw	  r5, 0x1E0+var_28(r1)
+fsubs	  f2, f0, f3
+xoris	  r0, r25, 0x8000
+lfs	  f1, -0x49A4(r2)
+stw	  r0, 0x1E0+var_30+4(r1)
+lfd	  f0, 0x1E0+var_28(r1)
+stw	  r5, 0x1E0+var_30(r1)
+fsubs	  f4, f0, f3
+lfd	  f0, 0x1E0+var_30(r1)
+fsubs	  f3, f0, f3
+bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
+lwz	  r3, 0(r27)
+lwz	  r4, 4(r27)
+lwz	  r12, 0(r3)
+lwz	  r0, 8(r27)
+add	  r4, r4, r25
+lwz	  r12, 0xC(r12)
+add	  r5, r0, r26
+mtlr	  r12
+blrl
+li	  r0, 1
+stb	  r0, 0x4E(r27)
+li	  r0, 4
+stw	  r0, 0x10(r31)
+
+branch_0x80164684:
+mr	  r3, r31
+bl	  selectFunction__9TCardLoadFv # TCardLoad::selectFunction((void))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r28, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801646AC:		# jumptable 80163AD8 case 30
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x80164788
+addi	  r3, r31, 0
+li	  r4, 0x1F
+li	  r5, 2
+li	  r6, 1
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+mr	  r26, r3
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+extsb.	  r0, r26
+bne	  branch_0x80164764
+lbz	  r25, 0xB0(r31)
+addi	  r28, r1, 0x1E0+var_BC
+stw	  r28, 0x1E0+var_104(r1)
+extsb	  r25, r25
+lwz	  r24, 0x1E0+var_104(r1)
+mr	  r3, r24
+bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
+lis	  r3, unk_803E0148@h
+addi	  r0, r3, unk_803E0148@l
+lis	  r3, unk_803E0120@h
+stw	  r0, 0(r24)
+addi	  r27, r3, unk_803E0120@l
+lis	  r3, unk_803E01A0@h
+stw	  r27, 0(r24)
+addi	  r26, r3, unk_803E01A0@l
+stw	  r26, 0(r24)
+addi	  r3, r24, 0
+li	  r4, 0
+li	  r5, 0
+bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r28
+bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r25
+bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
+stw	  r26, 0x1E0+var_BC(r1)
+addi	  r3, r28, 0
+li	  r4, 0
+stw	  r27, 0x1E0+var_BC(r1)
+bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164764:
+extsb	  r0, r26
+cmpwi	  r0, 1
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+li	  r0, 2
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164788:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x801647A4
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x801647A4:
+addi	  r3, r31, 0
+li	  r4, 0
+li	  r5, 0
+li	  r6, 1
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801647D8:		# jumptable 80163AD8 case 31
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -1
+beq	  branch_0x80164874
+cmpwi	  r3, 0
+bne	  branch_0x80164850
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164804
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164804:
+addi	  r3, r31, 0
+li	  r4, 0x20
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 5
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4810
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+li	  r3, 0x4810
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164850:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164864
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164864:
+addi	  r3, r31, 0
+li	  r4, 0x21
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164874:
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164884:		# jumptable 80163AD8 case 32
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForAnyKey__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKey((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801648AC:		# jumptable 80163AD8 case 33
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForAnyKeyBM__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKeyBM((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r4, r3, 0
+addi	  r3, r31, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801648E0:		# jumptable 80163AD8 case 29
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x801649B4
+addi	  r3, r31, 0
+li	  r4, 0x1F
+li	  r5, 2
+li	  r6, 1
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+mr	  r26, r3
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+extsb.	  r0, r26
+bne	  branch_0x80164998
+lbz	  r25, 0xB0(r31)
+addi	  r28, r1, 0x1E0+var_D0
+stw	  r28, 0x1E0+var_108(r1)
+extsb	  r25, r25
+lwz	  r24, 0x1E0+var_108(r1)
+mr	  r3, r24
+bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
+lis	  r3, unk_803E0148@h
+addi	  r0, r3, unk_803E0148@l
+lis	  r3, unk_803E0120@h
+stw	  r0, 0(r24)
+addi	  r27, r3, unk_803E0120@l
+lis	  r3, unk_803E01A0@h
+stw	  r27, 0(r24)
+addi	  r26, r3, unk_803E01A0@l
+stw	  r26, 0(r24)
+addi	  r3, r24, 0
+li	  r4, 0
+li	  r5, 0
+bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r28
+bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r25
+bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
+stw	  r26, 0x1E0+var_D0(r1)
+addi	  r3, r28, 0
+li	  r4, 0
+stw	  r27, 0x1E0+var_D0(r1)
+bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164998:
+extsb	  r0, r26
+cmpwi	  r0, 1
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x801649B4:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x801649D0
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x801649D0:
+addi	  r3, r31, 0
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164A04:		# jumptable 80163AD8 case 34
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x80164A6C
+addi	  r3, r31, 0
+li	  r4, 0x24
+li	  r5, 2
+li	  r6, 1
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+mr	  r26, r3
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+extsb.	  r0, r26
+bne	  branch_0x80164A50
+lbz	  r4, 0xB1(r31)
+lwz	  r3, -0x603C(r13)
+extsb	  r4, r4
+bl	  readBlock__12TCardManagerFUl # TCardManager::readBlock((ulong))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164A50:
+extsb	  r0, r26
+cmpwi	  r0, 1
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164A6C:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x80164A88
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164A88:
+addi	  r3, r31, 0
+li	  r4, 0
+li	  r5, 0
+li	  r6, 1
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164ABC:		# jumptable 80163AD8 case 36
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -1
+beq	  branch_0x80164B38
+cmpwi	  r3, 0
+bne	  branch_0x80164B14
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lbz	  r4, 0xB2(r31)
+lwz	  r3, -0x603C(r13)
+extsb	  r4, r4
+bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
+li	  r0, 0x25
+stw	  r0, 0x1C(r31)
+li	  r30, 0x25
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164B14:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164B28
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164B28:
+addi	  r3, r31, 0
+li	  r4, 0x26
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164B38:
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164B48:		# jumptable 80163AD8 case 37
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -1
+beq	  branch_0x80164BE4
+cmpwi	  r3, 0
+bne	  branch_0x80164BC0
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164B74
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164B74:
+addi	  r3, r31, 0
+li	  r4, 0x27
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 5
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4810
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+li	  r3, 0x4810
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164BC0:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164BD4
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164BD4:
+addi	  r3, r31, 0
+li	  r4, 0x26
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164BE4:
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessageBM__9TCardLoadF10TEProgress # TCardLoad::drawMessageBM((TEProgress))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164BF4:		# jumptable 80163AD8 case 21
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x80164C40
+addi	  r3, r31, 0
+li	  r4, 0x24
+li	  r5, 0x13
+li	  r6, 1
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+mr	  r26, r3
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+extsb.	  r0, r26
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lbz	  r4, 0xB1(r31)
+lwz	  r3, -0x603C(r13)
+extsb	  r4, r4
+bl	  readBlock__12TCardManagerFUl # TCardManager::readBlock((ulong))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164C40:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 3
+bge	  branch_0x80164C5C
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164C5C:
+addi	  r3, r31, 0
+li	  r4, 0
+li	  r5, 0
+li	  r6, 1
+bl	  waitForChoiceBM__9TCardLoadF10TEProgress10TEProgressi	# TCardLoad::waitForChoiceBM((TEProgress,TEProgress,int))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164C90:		# jumptable 80163AD8 case 39
+lwz	  r3, -0x603C(r13)
+bl	  probe__12TCardManagerFv # TCardManager::probe((void))
+mr.	  r24, r3
+bne	  branch_0x80164CC8
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  waitForAnyKeyBM__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKeyBM((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164CC8:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  waitForAnyKeyBM__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKeyBM((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164CFC:		# jumptable 80163AD8 case 38
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+mr.	  r24, r3
+bne	  branch_0x80164D38
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  waitForAnyKeyBM__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKeyBM((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164D38:
+cmpwi	  r24, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  waitForAnyKeyBM__9TCardLoadF10TEProgress # TCardLoad::waitForAnyKeyBM((TEProgress))
+extsb	  r0, r3
+cmpwi	  r0, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164D6C:		# jumptable 80163AD8 case 40
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r4, r3, 0
+cmpwi	  r4, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+cmpwi	  r4, 0
+bne	  branch_0x80164E08
+addi	  r28, r1, 0x1E0+var_E4
+stw	  r28, 0x1E0+var_10C(r1)
+lwz	  r24, 0x1E0+var_10C(r1)
+mr	  r3, r24
+bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
+lis	  r3, unk_803E0184@h
+addi	  r0, r3, unk_803E0184@l
+lis	  r3, unk_803E0160@h
+stw	  r0, 0(r24)
+addi	  r27, r3, unk_803E0160@l
+lis	  r3, unk_803E01C8@h
+stw	  r27, 0(r24)
+addi	  r26, r3, unk_803E01C8@l
+stw	  r26, 0(r24)
+addi	  r3, r24, 0
+li	  r4, 0
+li	  r5, 0
+bl	  setBuffer__20JSUMemoryInputStreamFPCvl # JSUMemoryInputStream::setBuffer((void const *,long))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r28
+bl	  getReadStream__12TCardManagerFP20JSUMemoryInputStream	# TCardManager::getReadStream((JSUMemoryInputStream *))
+lwz	  r3, -0x6060(r13)
+mr	  r4, r28
+bl	  load__12TFlagManagerFR20JSUMemoryInputStream # TFlagManager::load((JSUMemoryInputStream &))
+stw	  r26, 0x1E0+var_E4(r1)
+addi	  r3, r28, 0
+li	  r4, 0
+stw	  r27, 0x1E0+var_E4(r1)
+bl	  __dt__14JSUInputStreamFv # JSUInputStream::~JSUInputStream((void))
+li	  r0, 0x29
+stw	  r0, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164E08:
+mr	  r3, r31
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164E18:		# jumptable 80163AD8 case 41
+lwz	  r3, -0x6060(r13)
+lis	  r4, 4
+bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
+cmpwi	  r3, 1
+bge	  branch_0x80164E40
+lwz	  r3, gpMarDirector(r13)
+li	  r4, 0
+li	  r5, 0
+bl	  setNextStage__12TMarDirectorFUsPQ26JDrama6TActor # TMarDirector::setNextStage((ushort,JDrama::TActor *))
+b	  branch_0x80164E50
+
+branch_0x80164E40:
+lwz	  r3, gpMarDirector(r13)
+li	  r4, 1
+li	  r5, 0
+bl	  setNextStage__12TMarDirectorFUsPQ26JDrama6TActor # TMarDirector::setNextStage((ushort,JDrama::TActor *))
+
+branch_0x80164E50:
+lwz	  r3, -0x603C(r13)
+bl	  unmount__12TCardManagerFv # TCardManager::unmount((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164E5C:		# jumptable 80163AD8 case 50
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r4, r3, 0
+cmpwi	  r4, -1
+beq	  def_80163AD8	# jumptable 80163AD8 default case
+cmpwi	  r4, 0
+bne	  branch_0x80164F08
+addi	  r26, r1, 0x1E0+var_80
+stw	  r26, 0x1E0+var_E8(r1)
+lis	  r4, unk_803AF0F4@ha
+addi	  r0, r4, unk_803AF0F4@l
+lwz	  r3, 0x1E0+var_E8(r1)
+lis	  r5, unk_803E0120@h
+addi	  r27, r5, unk_803E0120@l
+stw	  r0, 0(r3)
+li	  r0, 0
+lis	  r4, unk_803E01A0@h
+lis	  r6, unk_803E0148@h
+stb	  r0, 4(r3)
+addi	  r0, r6, unk_803E0148@l
+stw	  r0, 0(r3)
+addi	  r28, r4, unk_803E01A0@l
+li	  r4, 0
+stw	  r27, 0(r3)
+li	  r5, 0
+stw	  r28, 0(r3)
+bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r26
+bl	  getOptionWriteStream__12TCardManagerFP21JSUMemoryOutputStream	# TCardManager::getOptionWriteStream((JSUMemoryOutputStream *))
+lwz	  r3, -0x6060(r13)
+mr	  r4, r26
+bl	  saveOption__12TFlagManagerFR21JSUMemoryOutputStream #	TFlagManager::saveOption((JSUMemoryOutputStream	&))
+lwz	  r3, -0x603C(r13)
+bl	  writeOptionBlock__12TCardManagerFv # TCardManager::writeOptionBlock((void))
+li	  r0, 0x2F
+stw	  r0, 0x1C(r31)
+addi	  r3, r26, 0
+li	  r4, 0
+stw	  r28, 0x1E0+var_80(r1)
+stw	  r27, 0x1E0+var_80(r1)
+bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164F08:
+mr	  r3, r31
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164F18:		# jumptable 80163AD8 case 47
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+addi	  r24, r3, 0
+cmpwi	  r24, -1
+beq	  branch_0x80164FD8
+cmpwi	  r24, 0
+bne	  branch_0x80164F98
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164F48
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164F48:
+addi	  r3, r31, 0
+li	  r4, 2
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 5
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4810
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x80164F88
+li	  r3, 0x4810
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x80164F88:
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164F98:
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 2
+bne	  branch_0x80164FB8
+li	  r0, 3
+stw	  r0, 0x10(r31)
+
+branch_0x80164FB8:
+lwz	  r0, 0x10(r31)
+cmpwi	  r0, 5
+bne	  def_80163AD8	# jumptable 80163AD8 default case
+addi	  r3, r31, 0
+addi	  r4, r24, 0
+bl	  changeMode__9TCardLoadFl # TCardLoad::changeMode((long))
+stw	  r3, 0x1C(r31)
+b	  def_80163AD8	# jumptable 80163AD8 default case
+
+branch_0x80164FD8:
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  drawMessage__9TCardLoadF10TEProgress # TCardLoad::drawMessage((TEProgress))
+
+def_80163AD8:		# jumptable 80163AD8 default case
 branch_0x80164fe4:
     lwz     r0, 0x1c(r31)
     cmpw    r30, r0
@@ -187,7 +1785,7 @@ branch_0x80165160:
     beq-    branch_0x801651d0
     cmpwi   r29, 0x0
     bne-    branch_0x8016519c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4819
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -201,7 +1799,7 @@ branch_0x8016519c:
     lwz     r0, 0x10(r31)
     cmpwi   r0, 0x4
     bne-    branch_0x801651d0
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -231,7 +1829,7 @@ setSelected__9TCardLoadFUc: # 0x801651e4
     lwz     r0, 0x14(r3)
     cmpwi   r0, 0x0
     bne-    branch_0x80165240
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -929,7 +2527,7 @@ branch_0x80165c4c:
     beq-    branch_0x80165cc4
     extsb.  r0, r29
     bne-    branch_0x80165c90
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481b
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -942,7 +2540,7 @@ branch_0x80165c4c:
     b       branch_0x80165cb8
 
 branch_0x80165c90:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1014,7 +2612,7 @@ branch_0x80165d68:
     li      r0, -0x1
     stb     r0, 0xb6(r31)
     li      r4, 0x481d
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80165da0
@@ -1484,7 +3082,7 @@ branch_0x8016647c:
     lwz     r3, -0x5fdc(r13)
     bl      forceDeleteEmitter__17JPAEmitterManagerFP14JPABaseEmitter
 branch_0x801664ac:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4922,7 +6520,7 @@ branch_0x8016979c:
     rlwinm. r0, r0, 0, 25, 26
     beq-    branch_0x801697ec
 branch_0x801697b8:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5296,7 +6894,7 @@ branch_0x80169d18:
     rlwinm. r0, r0, 0, 25, 26
     beq-    branch_0x80169d68
 branch_0x80169d34:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5930,7 +7528,7 @@ branch_0x8016a66c:
 branch_0x8016a680:
     rlwinm. r0, r3, 0, 26, 26
     beq-    branch_0x8016a6bc
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5951,7 +7549,7 @@ branch_0x8016a6bc:
     li      r0, 0x1
     stb     r0, 0xb7(r31)
     li      r4, 0x481d
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8016a6f4
@@ -6413,7 +8011,7 @@ branch_0x8016ad98:
     lwz     r0, 0x50c(r5)
     stw     r3, 0x1c(r6)
     stw     r0, 0x20(r6)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8016ae04
@@ -6890,7 +8488,7 @@ branch_0x8016b4cc:
     beq-    branch_0x8016b53c
     extsb.  r0, r31
     bne-    branch_0x8016b508
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6903,7 +8501,7 @@ branch_0x8016b4cc:
     b       branch_0x8016b530
 
 branch_0x8016b508:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x481d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6924,7 +8522,7 @@ branch_0x8016b53c:
     li      r0, 0x1
     stb     r0, 0xb7(r29)
     li      r4, 0x481d
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8016b574
@@ -7386,7 +8984,7 @@ branch_0x8016bc18:
     lwz     r0, 0x4b8(r5)
     stw     r3, 0x1c(r6)
     stw     r0, 0x20(r6)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8016bc84
@@ -7685,6 +9283,44 @@ branch_0x8016c04c:
 
 .globl titleDraw__9TCardLoadFv
 titleDraw__9TCardLoadFv: # 0x8016c060
+
+.set var_140, -0x140
+.set var_138, -0x138
+.set var_134, -0x134
+.set var_130, -0x130
+.set var_12C, -0x12C
+.set var_128, -0x128
+.set var_124, -0x124
+.set var_120, -0x120
+.set var_11C, -0x11C
+.set var_118, -0x118
+.set var_114, -0x114
+.set var_104, -0x104
+.set var_F0, -0xF0
+.set var_E8, -0xE8
+.set var_E0, -0xE0
+.set var_D8, -0xD8
+.set var_D0, -0xD0
+.set var_C8, -0xC8
+.set var_C0, -0xC0
+.set var_B8, -0xB8
+.set var_B0, -0xB0
+.set var_A8, -0xA8
+.set var_A0, -0xA0
+.set var_98, -0x98
+.set var_90, -0x90
+.set var_88, -0x88
+.set var_80, -0x80
+.set var_78, -0x78
+.set var_6C, -0x6C
+.set var_30, -0x30
+.set var_28, -0x28
+.set var_20, -0x20
+.set var_18, -0x18
+.set var_10, -0x10
+.set var_8, -8
+.set arg_4,  4
+
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x270(sp)
@@ -7704,13 +9340,745 @@ titleDraw__9TCardLoadFv: # 0x8016c060
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8016C0B0:		# jumptable 8016C0AC case 0
     li      r0, 0x1
     stw     r0, 0x18(r29)
     b       branch_0x8016cb60
 
+branch_0x8016C0BC:		# jumptable 8016C0AC case 1
+lfs	  f27, -0x4964(r2)
+li	  r17, 0
+lfs	  f26, -0x4960(r2)
+li	  r18, 0
+lfs	  f29, -0x49A4(r2)
+lfs	  f28, -0x4968(r2)
+li	  r19, 0
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x166abc, 0x8016cb60 - 0x8016c0bc
+branch_0x8016C0D8:
+addi	  r21, r17, 0x266
+add	  r21, r29, r21
+lbz	  r0, 0(r21)
+cmpwi	  r0, 1
+beq	  branch_0x8016C1A0
+bge	  branch_0x8016C0FC
+cmpwi	  r0, 0
+bge	  branch_0x8016C174
+b	  branch_0x8016C2F4
+
+branch_0x8016C0FC:
+cmpwi	  r0, 4
+beq	  branch_0x8016C108
+b	  branch_0x8016C2F4
+
+branch_0x8016C108:
+addi	  r0, r19, 0x242
+lhz	  r3, 0x27A(r29)
+lhzx	  r0, r29, r0
+cmplw	  r3, r0
+ble	  branch_0x8016C2F4
+addi	  r22, r18, 0x1D4
+add	  r22, r29, r22
+lwz	  r4, 0(r22)
+li	  r20, 1
+addi	  r3, r1, 0x270+var_104
+lwz	  r4, 0(r4)
+stb	  r20, 0xC(r4)
+lwz	  r4, 0(r22)
+lwz	  r4, 0(r4)
+addi	  r4, r4, 0x14
+bl	  copy__7JUTRectFRC7JUTRect # JUTRect::copy((JUTRect const &))
+lwz	  r5, 0(r22)
+li	  r4, 0
+li	  r0, 0xB4
+lwz	  r3, 0(r5)
+stb	  r4, 0xCC(r3)
+stfs	  f29, 0x44(r5)
+stfs	  f28, 0x48(r5)
+sth	  r0, 0x4C(r5)
+stb	  r20, 0x50(r5)
+stb	  r4, 0(r21)
+b	  branch_0x8016C2F4
+
+branch_0x8016C174:
+addi	  r0, r18, 0x1D4
+lwzx	  r3, r29, r0
+bl	  update__7TExPaneFv # TExPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016C2F4
+li	  r0, 1
+stb	  r0, 0(r21)
+addi	  r0, r19, 0x242
+li	  r3, 0
+sthx	  r3, r29, r0
+b	  branch_0x8016C2F4
+
+branch_0x8016C1A0:
+cmpwi	  r17, 0x11
+bne	  branch_0x8016C2F4
+li	  r7, 0
+li	  r0, 2
+sth	  r7, 0x27A(r29)
+mtctr	  r0
+li	  r5, 0xB4
+li	  r3, 0xFF
+li	  r0, 1
+
+branch_0x8016C1C4:
+addi	  r6, r7, 0x1D4
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1D8
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1DC
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1E0
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1E4
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1E8
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1EC
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1F0
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+addi	  r6, r7, 0x1F4
+addi	  r7, r7, 0x24
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r6
+lwz	  r4, 0(r8)
+stb	  r5, 0xCC(r4)
+stfs	  f27, 0x44(r8)
+stfs	  f26, 0x48(r8)
+sth	  r3, 0x4C(r8)
+stb	  r0, 0x50(r8)
+bdnz	  branch_0x8016C1C4
+li	  r0, 3
+stw	  r0, 0x18(r29)
+
+branch_0x8016C2F4:
+lhz	  r3, 0x27A(r29)
+addi	  r17, r17, 1
+cmpwi	  r17, 0x12
+addi	  r0, r3, 1
+sth	  r0, 0x27A(r29)
+addi	  r18, r18, 4
+addi	  r19, r19, 2
+blt	  branch_0x8016C0D8
+b	  def_8016C0AC	# jumptable 8016C0AC default case
+
+branch_0x8016C318:		# jumptable 8016C0AC case 3
+lhz	  r0, 0x27A(r29)
+cmplwi	  r0, 0xA0
+ble	  branch_0x8016C4FC
+li	  r19, 1
+li	  r20, 0
+li	  r17, 0
+
+branch_0x8016C330:
+addi	  r18, r17, 0x1D4
+add	  r18, r29, r18
+lwz	  r3, 0(r18)
+bl	  update__7TExPaneFv # TExPane::update((void))
+lwz	  r4, 0(r18)
+and	  r19, r19, r3
+lwz	  r3, 0(r4)
+lwz	  r0, 0x140(r3)
+stw	  r0, 0x270+var_138(r1)
+lbz	  r3, 0x270+var_138(r1)
+addi	  r3, r3, 7
+clrlwi	  r0, r3, 16
+cmplwi	  r0, 0xFF
+ble	  branch_0x8016C36C
+li	  r3, 0xFF
+
+branch_0x8016C36C:
+slwi	  r3, r3, 24
+addis	  r3, r3, 0x100
+addi	  r0, r3, -0x100
+stw	  r0, 0x270+var_140(r1)
+addi	  r20, r20, 1
+cmpwi	  r20, 0x12
+lwz	  r3, 0(r18)
+addi	  r17, r17, 4
+lwz	  r0, 0x270+var_140(r1)
+lwz	  r3, 0(r3)
+stw	  r0, 0x140(r3)
+blt	  branch_0x8016C330
+clrlwi.	  r0, r19, 24
+beq	  branch_0x8016C4FC
+li	  r0, 2
+lfs	  f1, -0x4980(r2)
+mtctr	  r0
+lfs	  f0, -0x495C(r2)
+li	  r3, 0
+li	  r6, 0xFF
+li	  r4, 0
+li	  r0, 1
+
+branch_0x8016C3C4:
+addi	  r7, r3, 0x1D4
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1D8
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1DC
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1E0
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1E4
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1E8
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1EC
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1F0
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+addi	  r7, r3, 0x1F4
+addi	  r3, r3, 0x24
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+lwzx	  r8, r29, r7
+lwz	  r5, 0(r8)
+stb	  r6, 0xCC(r5)
+stfs	  f1, 0x44(r8)
+stfs	  f0, 0x48(r8)
+sth	  r4, 0x4C(r8)
+stb	  r0, 0x50(r8)
+bdnz	  branch_0x8016C3C4
+li	  r0, 0
+sth	  r0, 0x27A(r29)
+li	  r0, 2
+stw	  r0, 0x18(r29)
+
+branch_0x8016C4FC:
+lhz	  r3, 0x27A(r29)
+addi	  r0, r3, 1
+sth	  r0, 0x27A(r29)
+b	  def_8016C0AC	# jumptable 8016C0AC default case
+
+branch_0x8016C50C:		# jumptable 8016C0AC case 2
+lwz	  r3, 0xF0(r29)
+lwz	  r3, 0(r3)
+lbz	  r18, 0xCC(r3)
+addi	  r18, r18, 1
+clrlwi	  r0, r18, 16
+cmplwi	  r0, 0xFF
+ble	  branch_0x8016C570
+li	  r19, 1
+li	  r18, 0xFF
+li	  r20, 0
+li	  r17, 0
+
+branch_0x8016C538:
+addi	  r0, r17, 0x1D4
+lwzx	  r3, r29, r0
+bl	  update__7TExPaneFv # TExPane::update((void))
+addi	  r20, r20, 1
+cmpwi	  r20, 0x12
+and	  r19, r19, r3
+addi	  r17, r17, 4
+blt	  branch_0x8016C538
+clrlwi.	  r0, r19, 24
+beq	  branch_0x8016C570
+li	  r0, 0
+stw	  r0, 0xBC(r29)
+li	  r0, 4
+stw	  r0, 0x18(r29)
+
+branch_0x8016C570:
+lwz	  r3, 0xF0(r29)
+lwz	  r3, 0(r3)
+stb	  r18, 0xCC(r3)
+lwz	  r3, 0xF4(r29)
+lwz	  r3, 0(r3)
+stb	  r18, 0xCC(r3)
+b	  def_8016C0AC	# jumptable 8016C0AC default case
+
+branch_0x8016C58C:		# jumptable 8016C0AC case 4
+lfd	  f30, -0x4998(r2)
+li	  r30, 0
+lfs	  f31, -0x49A0(r2)
+li	  r28, 0
+lfs	  f26, -0x4980(r2)
+lfs	  f27, -0x4958(r2)
+li	  r27, 0
+lfs	  f28, -0x49A4(r2)
+li	  r26, 0
+lfs	  f29, -0x4954(r2)
+lis	  r24, 0x4330
+
+branch_0x8016C5B8:
+addi	  r31, r30, 0x236
+add	  r31, r29, r31
+lbz	  r0, 0(r31)
+cmpwi	  r0, 2
+beq	  branch_0x8016C68C
+bge	  branch_0x8016C5E0
+cmpwi	  r0, 0
+beq	  branch_0x8016C5F0
+bge	  branch_0x8016C61C
+b	  branch_0x8016CB3C
+
+branch_0x8016C5E0:
+cmpwi	  r0, 4
+beq	  branch_0x8016C900
+bge	  branch_0x8016CB3C
+b	  branch_0x8016C6B8
+
+branch_0x8016C5F0:
+addi	  r0, r26, 0xF8
+lwzx	  r3, r29, r0
+bl	  update__7TExPaneFv # TExPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016CB3C
+li	  r0, 1
+stb	  r0, 0(r31)
+addi	  r0, r27, 0x220
+li	  r3, 0
+sthx	  r3, r29, r0
+b	  branch_0x8016CB3C
+
+branch_0x8016C61C:
+addi	  r4, r27, 0x220
+add	  r4, r29, r4
+lhz	  r3, 0(r4)
+addi	  r0, r3, 1
+sth	  r0, 0(r4)
+lhz	  r0, 0(r4)
+cmplwi	  r0, 0x1F4
+ble	  branch_0x8016CB3C
+addi	  r17, r26, 0xF8
+add	  r17, r29, r17
+lwz	  r4, 0(r17)
+addi	  r3, r1, 0x270+var_114
+lwz	  r4, 0(r4)
+addi	  r4, r4, 0x14
+bl	  copy__7JUTRectFRC7JUTRect # JUTRect::copy((JUTRect const &))
+lwz	  r7, 0(r17)
+li	  r6, 0xFF
+li	  r4, 0
+lwz	  r5, 0(r7)
+li	  r3, 1
+li	  r0, 2
+stb	  r6, 0xCC(r5)
+stfs	  f26, 0x44(r7)
+stfs	  f27, 0x48(r7)
+sth	  r4, 0x4C(r7)
+stb	  r3, 0x50(r7)
+stb	  r0, 0(r31)
+b	  branch_0x8016CB3C
+
+branch_0x8016C68C:
+addi	  r0, r26, 0xF8
+lwzx	  r3, r29, r0
+bl	  update__7TExPaneFv # TExPane::update((void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016CB3C
+addi	  r0, r27, 0x220
+li	  r3, 0
+sthx	  r3, r29, r0
+li	  r0, 3
+stb	  r0, 0(r31)
+b	  branch_0x8016CB3C
+
+branch_0x8016C6B8:
+addi	  r4, r27, 0x220
+add	  r4, r29, r4
+lhz	  r3, 0(r4)
+addi	  r0, r3, 1
+sth	  r0, 0(r4)
+lhz	  r0, 0(r4)
+cmplwi	  r0, 0x12C
+ble	  branch_0x8016CB3C
+addi	  r18, r26, 0xF8
+add	  r18, r29, r18
+lwz	  r4, 0(r18)
+addi	  r3, r1, 0x270+var_124
+lwz	  r4, 0(r4)
+addi	  r4, r4, 0x14
+bl	  copy__7JUTRectFRC7JUTRect # JUTRect::copy((JUTRect const &))
+lwz	  r5, 0x270+var_120(r1)
+li	  r4, 0x19
+lwz	  r0, 0x270+var_118(r1)
+lwz	  r3, 0x270+var_124(r1)
+subf	  r20, r5, r0
+lwz	  r0, 0x270+var_11C(r1)
+slwi	  r21, r20, 1
+lwz	  r23, 0(r18)
+subf	  r19, r3, r0
+slwi	  r22, r19, 1
+xoris	  r0, r19, 0x8000
+xoris	  r3, r20, 0x8000
+stw	  r0, 0x270+var_78+4(r1)
+xoris	  r5, r22, 0x8000
+xoris	  r0, r21, 0x8000
+stw	  r3, 0x270+var_80+4(r1)
+addi	  r3, r23, 0x2C
+stw	  r5, 0x270+var_88+4(r1)
+stw	  r0, 0x270+var_90+4(r1)
+stw	  r24, 0x270+var_78(r1)
+stw	  r24, 0x270+var_80(r1)
+lfd	  f1, 0x270+var_78(r1)
+stw	  r24, 0x270+var_88(r1)
+lfd	  f0, 0x270+var_80(r1)
+fsubs	  f1, f1, f30
+stw	  r24, 0x270+var_90(r1)
+lfd	  f3, 0x270+var_88(r1)
+fsubs	  f2, f0, f30
+lfd	  f0, 0x270+var_90(r1)
+fsubs	  f3, f3, f30
+fsubs	  f4, f0, f30
+bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
+lwz	  r3, 0(r23)
+addi	  r4, r22, 0
+addi	  r5, r21, 0
+lwz	  r12, 0(r3)
+lwz	  r12, 0x14(r12)
+mtlr	  r12
+blrl
+li	  r25, 1
+stb	  r25, 0x4F(r23)
+addi	  r3, r23, 0x14
+li	  r4, 0x19
+lwz	  r6, 8(r23)
+lwz	  r0, 0x10(r23)
+lwz	  r5, 4(r23)
+subf	  r8, r6, r0
+lwz	  r0, 0xC(r23)
+subf	  r7, r21, r8
+subf	  r0, r5, r0
+subf	  r6, r22, r0
+subf	  r5, r20, r8
+subf	  r0, r19, r0
+xoris	  r7, r7, 0x8000
+xoris	  r6, r6, 0x8000
+stw	  r7, 0x270+var_98+4(r1)
+xoris	  r5, r5, 0x8000
+xoris	  r0, r0, 0x8000
+stw	  r6, 0x270+var_A8+4(r1)
+stw	  r5, 0x270+var_B8+4(r1)
+stw	  r0, 0x270+var_C8+4(r1)
+stw	  r24, 0x270+var_98(r1)
+stw	  r24, 0x270+var_A8(r1)
+lfd	  f1, 0x270+var_98(r1)
+stw	  r24, 0x270+var_B8(r1)
+lfd	  f0, 0x270+var_A8(r1)
+fsubs	  f3, f1, f30
+stw	  r24, 0x270+var_C8(r1)
+lfd	  f1, 0x270+var_B8(r1)
+fsubs	  f2, f0, f30
+lfd	  f0, 0x270+var_C8(r1)
+fsubs	  f1, f1, f30
+fsubs	  f0, f0, f30
+fmuls	  f3, f31, f3
+fmuls	  f2, f31, f2
+fmuls	  f1, f31, f1
+fmuls	  f0, f31, f0
+fctiwz	  f3, f3
+fctiwz	  f2, f2
+fctiwz	  f1, f1
+fctiwz	  f0, f0
+stfd	  f3, 0x270+var_A0(r1)
+stfd	  f2, 0x270+var_B0(r1)
+lwz	  r22, 0x270+var_A0+4(r1)
+stfd	  f1, 0x270+var_C0(r1)
+lwz	  r21, 0x270+var_B0+4(r1)
+xoris	  r0, r22, 0x8000
+stfd	  f0, 0x270+var_D0(r1)
+lwz	  r6, 0x270+var_C0+4(r1)
+xoris	  r5, r21, 0x8000
+lwz	  r7, 0x270+var_D0+4(r1)
+xoris	  r6, r6, 0x8000
+stw	  r5, 0x270+var_E8+4(r1)
+xoris	  r5, r7, 0x8000
+stw	  r5, 0x270+var_D8+4(r1)
+stw	  r6, 0x270+var_E0+4(r1)
+stw	  r0, 0x270+var_F0+4(r1)
+stw	  r24, 0x270+var_D8(r1)
+stw	  r24, 0x270+var_E0(r1)
+lfd	  f1, 0x270+var_D8(r1)
+stw	  r24, 0x270+var_E8(r1)
+lfd	  f0, 0x270+var_E0(r1)
+fsubs	  f1, f1, f30
+stw	  r24, 0x270+var_F0(r1)
+lfd	  f3, 0x270+var_E8(r1)
+fsubs	  f2, f0, f30
+lfd	  f0, 0x270+var_F0(r1)
+fsubs	  f3, f3, f30
+fsubs	  f4, f0, f30
+bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
+lwz	  r3, 0(r23)
+lwz	  r4, 4(r23)
+lwz	  r12, 0(r3)
+lwz	  r0, 8(r23)
+add	  r4, r4, r21
+lwz	  r12, 0xC(r12)
+add	  r5, r0, r22
+mtlr	  r12
+blrl
+stb	  r25, 0x4E(r23)
+li	  r4, 0
+li	  r0, 0xFF
+lwz	  r5, 0(r18)
+lwz	  r3, 0(r5)
+stb	  r4, 0xCC(r3)
+stfs	  f28, 0x44(r5)
+stfs	  f29, 0x48(r5)
+sth	  r0, 0x4C(r5)
+stb	  r25, 0x50(r5)
+stb	  r4, 0(r31)
+b	  branch_0x8016CB3C
+
+branch_0x8016C900:
+addi	  r17, r27, 0x220
+lhz	  r3, 0x27A(r29)
+add	  r17, r29, r17
+lhz	  r0, 0(r17)
+cmplw	  r3, r0
+ble	  branch_0x8016CB3C
+addi	  r4, r28, 0x124
+addi	  r3, r1, 0x270+var_134
+add	  r4, r29, r4
+bl	  copy__7JUTRectFRC7JUTRect # JUTRect::copy((JUTRect const &))
+lwz	  r4, 0x270+var_130(r1)
+addi	  r20, r26, 0xF8
+lwz	  r0, 0x270+var_128(r1)
+add	  r20, r29, r20
+lwz	  r3, 0x270+var_134(r1)
+subf	  r18, r4, r0
+lwz	  r0, 0x270+var_12C(r1)
+slwi	  r23, r18, 1
+lwz	  r21, 0(r20)
+subf	  r19, r3, r0
+slwi	  r22, r19, 1
+xoris	  r0, r19, 0x8000
+xoris	  r3, r18, 0x8000
+stw	  r0, 0x270+var_F0+4(r1)
+xoris	  r4, r22, 0x8000
+xoris	  r0, r23, 0x8000
+stw	  r3, 0x270+var_E8+4(r1)
+addi	  r3, r21, 0x2C
+stw	  r4, 0x270+var_E0+4(r1)
+li	  r4, 0x19
+stw	  r0, 0x270+var_D8+4(r1)
+stw	  r24, 0x270+var_F0(r1)
+stw	  r24, 0x270+var_E8(r1)
+lfd	  f1, 0x270+var_F0(r1)
+stw	  r24, 0x270+var_E0(r1)
+lfd	  f0, 0x270+var_E8(r1)
+fsubs	  f1, f1, f30
+stw	  r24, 0x270+var_D8(r1)
+lfd	  f3, 0x270+var_E0(r1)
+fsubs	  f2, f0, f30
+lfd	  f0, 0x270+var_D8(r1)
+fsubs	  f3, f3, f30
+fsubs	  f4, f0, f30
+bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
+lwz	  r3, 0(r21)
+addi	  r4, r22, 0
+addi	  r5, r23, 0
+lwz	  r12, 0(r3)
+lwz	  r12, 0x14(r12)
+mtlr	  r12
+blrl
+li	  r25, 1
+stb	  r25, 0x4F(r21)
+addi	  r3, r21, 0x14
+li	  r4, 0x19
+lwz	  r6, 8(r21)
+lwz	  r0, 0x10(r21)
+lwz	  r5, 4(r21)
+subf	  r8, r6, r0
+lwz	  r0, 0xC(r21)
+subf	  r7, r23, r8
+subf	  r0, r5, r0
+subf	  r6, r22, r0
+subf	  r5, r18, r8
+subf	  r0, r19, r0
+xoris	  r7, r7, 0x8000
+xoris	  r6, r6, 0x8000
+stw	  r7, 0x270+var_D0+4(r1)
+xoris	  r5, r5, 0x8000
+xoris	  r0, r0, 0x8000
+stw	  r6, 0x270+var_C0+4(r1)
+stw	  r5, 0x270+var_B0+4(r1)
+stw	  r0, 0x270+var_A0+4(r1)
+stw	  r24, 0x270+var_D0(r1)
+stw	  r24, 0x270+var_C0(r1)
+lfd	  f1, 0x270+var_D0(r1)
+stw	  r24, 0x270+var_B0(r1)
+lfd	  f0, 0x270+var_C0(r1)
+fsubs	  f3, f1, f30
+stw	  r24, 0x270+var_A0(r1)
+lfd	  f1, 0x270+var_B0(r1)
+fsubs	  f2, f0, f30
+lfd	  f0, 0x270+var_A0(r1)
+fsubs	  f1, f1, f30
+fsubs	  f0, f0, f30
+fmuls	  f3, f31, f3
+fmuls	  f2, f31, f2
+fmuls	  f1, f31, f1
+fmuls	  f0, f31, f0
+fctiwz	  f3, f3
+fctiwz	  f2, f2
+fctiwz	  f1, f1
+fctiwz	  f0, f0
+stfd	  f3, 0x270+var_C8(r1)
+stfd	  f2, 0x270+var_B8(r1)
+lwz	  r23, 0x270+var_C8+4(r1)
+stfd	  f1, 0x270+var_A8(r1)
+lwz	  r22, 0x270+var_B8+4(r1)
+xoris	  r0, r23, 0x8000
+stfd	  f0, 0x270+var_98(r1)
+lwz	  r6, 0x270+var_A8+4(r1)
+xoris	  r5, r22, 0x8000
+lwz	  r7, 0x270+var_98+4(r1)
+xoris	  r6, r6, 0x8000
+stw	  r5, 0x270+var_80+4(r1)
+xoris	  r5, r7, 0x8000
+stw	  r5, 0x270+var_90+4(r1)
+stw	  r6, 0x270+var_88+4(r1)
+stw	  r0, 0x270+var_78+4(r1)
+stw	  r24, 0x270+var_90(r1)
+stw	  r24, 0x270+var_88(r1)
+lfd	  f1, 0x270+var_90(r1)
+stw	  r24, 0x270+var_80(r1)
+lfd	  f0, 0x270+var_88(r1)
+fsubs	  f1, f1, f30
+stw	  r24, 0x270+var_78(r1)
+lfd	  f3, 0x270+var_80(r1)
+fsubs	  f2, f0, f30
+lfd	  f0, 0x270+var_78(r1)
+fsubs	  f3, f3, f30
+fsubs	  f4, f0, f30
+bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
+lwz	  r3, 0(r21)
+lwz	  r4, 4(r21)
+lwz	  r12, 0(r3)
+lwz	  r0, 8(r21)
+add	  r4, r4, r22
+lwz	  r12, 0xC(r12)
+add	  r5, r0, r23
+mtlr	  r12
+blrl
+stb	  r25, 0x4E(r21)
+li	  r4, 0
+li	  r0, 0xFF
+lwz	  r5, 0(r20)
+lwz	  r3, 0(r5)
+stb	  r4, 0xCC(r3)
+stfs	  f28, 0x44(r5)
+stfs	  f29, 0x48(r5)
+sth	  r0, 0x4C(r5)
+stb	  r25, 0x50(r5)
+stb	  r4, 0(r31)
+sth	  r4, 0(r17)
+
+branch_0x8016CB3C:
+addi	  r30, r30, 1
+cmpwi	  r30, 0xB
+addi	  r28, r28, 0x10
+addi	  r27, r27, 2
+addi	  r26, r26, 4
+blt	  branch_0x8016C5B8
+lhz	  r3, 0x27A(r29)
+addi	  r0, r3, 1
+sth	  r0, 0x27A(r29)
+
+def_8016C0AC:		# jumptable 8016C0AC default case
 branch_0x8016cb60:
     lwz     r4, 0x18(r29)
     li      r3, 0x4
@@ -7751,7 +10119,9 @@ perform__9TCardLoadFUlPQ26JDrama9TGraphics: # 0x8016cba8
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8016CBF0:		# jumptable 8016CBEC case 0
     mr      r3, r31
     bl      changeScene__9TCardLoadFv
     lbz     r0, 0x295(r31)
@@ -7872,8 +10242,812 @@ branch_0x8016cd8c:
     stw     r0, 0x14(r31)
     b       branch_0x8016d880
 
+branch_0x8016CDA4:		# jumptable 8016CBEC case 4
+li	  r28, 1
+lwz	  r3, -0x603C(r13)
+bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
+cmpwi	  r3, -1
+beq	  branch_0x8016CE54
+cmpwi	  r3, 0
+bne	  branch_0x8016CE40
+lbz	  r0, 0xB8(r31)
+cmplwi	  r0, 0
+bne	  branch_0x8016CE54
+addi	  r27, r1, 0x20C
+stw	  r27, 0x118(r1)
+lwz	  r25, 0x118(r1)
+mr	  r3, r25
+bl	  __ct__14JSUInputStreamFv # JSUInputStream::JSUInputStream((void))
+lis	  r3, unk_803E0160@h
+addi	  r0, r3, unk_803E0160@l
+lis	  r3, unk_803E01C8@h
+stw	  r0, 0(r25)
+addi	  r26, r3, unk_803E01C8@l
+stw	  r26, 0(r25)
+addi	  r3, r25, 0
+li	  r4, 0
+li	  r5, 0
+bl	  setBuffer__20JSUMemoryInputStreamFPCvl # JSUMemoryInputStream::setBuffer((void const *,long))
+lwz	  r3, -0x603C(r13)
+mr	  r4, r27
+bl	  getReadStream__12TCardManagerFP20JSUMemoryInputStream	# TCardManager::getReadStream((JSUMemoryInputStream *))
+lwz	  r3, -0x6060(r13)
+mr	  r4, r27
+bl	  load__12TFlagManagerFR20JSUMemoryInputStream # TFlagManager::load((JSUMemoryInputStream &))
+stw	  r26, 0x20C(r1)
+addi	  r3, r27, 0
+li	  r4, 0
+bl	  __dt__20JSURandomInputStreamFv # JSURandomInputStream::~JSURandomInputStream((void))
+mr	  r3, r31
+bl	  setupScoreScreen__9TCardLoadFv # TCardLoad::setupScoreScreen((void))
+stb	  r28, 0xB8(r31)
+b	  branch_0x8016CE54
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1677a4, 0x8016d880 - 0x8016cda4
+branch_0x8016CE40:
+li	  r0, 0
+stw	  r0, 0x14(r31)
+li	  r0, 3
+stw	  r0, 0x1C(r31)
+stw	  r28, 0x10(r31)
+
+branch_0x8016CE54:
+lwz	  r3, -0x70B8(r13)
+lha	  r0, 0x16(r3)
+cmpwi	  r0, 0
+beq	  branch_0x8016CE6C
+li	  r0, 0
+stb	  r0, 0xB8(r31)
+
+branch_0x8016CE6C:
+lbz	  r0, 0xB8(r31)
+cmplwi	  r0, 0
+beq	  def_8016CBEC	# jumptable 8016CBEC default case
+lwz	  r3, 0x2C(r31)
+lis	  r26, 0x524F #	0x524F4F54
+addi	  r4, r26, 0x4F54 # 0x524F4F54
+lwz	  r12, 0(r3)
+lwz	  r12, 0x24(r12)
+mtlr	  r12
+blrl
+mr	  r27, r3
+lwz	  r3, 0x28(r31)
+addi	  r4, r26, 0x4F54 # 0x524F4F54
+lwz	  r12, 0(r3)
+lwz	  r12, 0x24(r12)
+mtlr	  r12
+blrl
+lbz	  r5, 0xCC(r27)
+addi	  r5, r5, 4
+cmpwi	  r5, 0xFF
+ble	  branch_0x8016CEC8
+li	  r5, 0xFF
+b	  branch_0x8016CECC
+
+branch_0x8016CEC8:
+li	  r28, 0
+
+branch_0x8016CECC:
+stb	  r5, 0xCC(r27)
+lwz	  r4, 0x5A4(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x5E0(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x61C(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x658(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x694(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x6D0(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x70C(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x764(r31)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x760(r31)
+stb	  r5, 0xCC(r4)
+lbz	  r4, 0xCC(r3)
+addic.	  r4, r4, -4
+bge	  branch_0x8016CF2C
+li	  r4, 0
+b	  branch_0x8016CF30
+
+branch_0x8016CF2C:
+li	  r28, 0
+
+branch_0x8016CF30:
+clrlwi.	  r0, r28, 24
+stb	  r4, 0xCC(r3)
+beq	  def_8016CBEC	# jumptable 8016CBEC default case
+li	  r0, 1
+stw	  r0, 0x14(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016CF48:		# jumptable 8016CBEC case 5
+lwz	  r3, 0x2C(r31)
+lis	  r27, 0x524F #	0x524F4F54
+addi	  r4, r27, 0x4F54 # 0x524F4F54
+lwz	  r12, 0(r3)
+li	  r26, 1
+lwz	  r12, 0x24(r12)
+mtlr	  r12
+blrl
+mr	  r28, r3
+lwz	  r3, 0x28(r31)
+addi	  r4, r27, 0x4F54 # 0x524F4F54
+lwz	  r12, 0(r3)
+lwz	  r12, 0x24(r12)
+mtlr	  r12
+blrl
+lbz	  r0, 0xCC(r28)
+addic.	  r0, r0, -4
+bge	  branch_0x8016CF98
+li	  r0, 0
+b	  branch_0x8016CF9C
+
+branch_0x8016CF98:
+li	  r26, 0
+
+branch_0x8016CF9C:
+stb	  r0, 0xCC(r28)
+lwz	  r4, 0x5A4(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x5E0(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x61C(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x658(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x694(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x6D0(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x70C(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x764(r31)
+stb	  r0, 0xCC(r4)
+lwz	  r4, 0x760(r31)
+stb	  r0, 0xCC(r4)
+lbz	  r4, 0xCC(r3)
+addi	  r4, r4, 4
+cmpwi	  r4, 0xFF
+ble	  branch_0x8016D000
+li	  r4, 0xFF
+b	  branch_0x8016D004
+
+branch_0x8016D000:
+li	  r26, 0
+
+branch_0x8016D004:
+clrlwi.	  r0, r26, 24
+stb	  r4, 0xCC(r3)
+beq	  def_8016CBEC	# jumptable 8016CBEC default case
+lbz	  r0, 0xB8(r31)
+cmplwi	  r0, 0
+beq	  branch_0x8016D030
+lwz	  r3, -0x70B8(r13)
+bl	  moveToDown__13TCameraOptionFv	# TCameraOption::moveToDown((void))
+li	  r0, 0
+stb	  r0, 0xB8(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D030:
+lwz	  r3, -0x70B8(r13)
+lha	  r0, 0x16(r3)
+cmpwi	  r0, 0
+bne	  def_8016CBEC	# jumptable 8016CBEC default case
+li	  r28, 0
+stw	  r28, 0x14(r31)
+li	  r0, 2
+addi	  r4, r31, 0x40
+stw	  r0, 0x1C(r31)
+lwz	  r3, -0x603C(r13)
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+stw	  r28, 0x10(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D064:		# jumptable 8016CBEC case 1
+lwz	  r3, 0x38(r31)
+lwz	  r3, 0xD4(r3)
+rlwinm.	  r0, r3, 0,26,26
+bne	  branch_0x8016D07C
+rlwinm.	  r0, r3, 0,25,25
+beq	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D07C:
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x481D
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016D0A4
+li	  r3, 0x481D
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x8016D0A4:
+li	  r0, 1
+stb	  r0, 0xB8(r31)
+li	  r0, 5
+stw	  r0, 0x14(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D0B8:		# jumptable 8016CBEC case 6
+lwz	  r3, 0x774(r31)
+bl	  movementCard2Option__14TOptionControlFv # TOptionControl::movementCard2Option((void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016D0E4
+lwz	  r4, 0x38(r31)
+li	  r0, 2
+lhz	  r3, 0xE2(r4)
+clrrwi	  r3, r3, 1
+sth	  r3, 0xE2(r4)
+stw	  r0, 0x14(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D0E4:
+lwz	  r3, -0x70B8(r13)
+lbz	  r0, 0(r3)
+clrlwi.	  r0, r0, 31
+beq	  def_8016CBEC	# jumptable 8016CBEC default case
+li	  r0, 7
+stw	  r0, 0x14(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D100:		# jumptable 8016CBEC case 2
+lwz	  r3, 0x774(r31)
+bl	  movementOption__14TOptionControlFv # TOptionControl::movementOption((void))
+clrlwi.	  r0, r3, 24
+beq	  def_8016CBEC	# jumptable 8016CBEC default case
+li	  r0, 7
+stw	  r0, 0x14(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D11C:		# jumptable 8016CBEC case 7
+lwz	  r3, -0x70B8(r13)
+lbz	  r0, 0(r3)
+clrlwi.	  r0, r0, 31
+bne	  branch_0x8016D138
+li	  r0, 6
+stw	  r0, 0x14(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D138:
+lwz	  r3, 0x774(r31)
+bl	  movementOption2Card__14TOptionControlFv # TOptionControl::movementOption2Card((void))
+clrlwi.	  r0, r3, 24
+beq	  def_8016CBEC	# jumptable 8016CBEC default case
+lwz	  r3, 0x2A4(r31)
+bl	  onCollision__17TMapObjOptionWallFv # TMapObjOptionWall::onCollision((void))
+li	  r28, 0
+stw	  r28, 0x14(r31)
+lwz	  r3, 0x38(r31)
+lhz	  r0, 0xE2(r3)
+ori	  r0, r0, 1
+sth	  r0, 0xE2(r3)
+lwz	  r3, 0x774(r31)
+bl	  isChangedSetting__14TOptionControlCFv	# TOptionControl::isChangedSetting(const(void))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016D194
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+li	  r0, 0x32
+stw	  r0, 0x1C(r31)
+stw	  r28, 0x10(r31)
+b	  branch_0x8016D1AC
+
+branch_0x8016D194:
+lwz	  r3, -0x603C(r13)
+addi	  r4, r31, 0x40
+bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
+li	  r0, 2
+stw	  r0, 0x1C(r31)
+stw	  r28, 0x10(r31)
+
+branch_0x8016D1AC:
+lwz	  r3, 0x774(r31)
+bl	  resetChangedSetting__14TOptionControlFv # TOptionControl::resetChangedSetting((void))
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D1B8:		# jumptable 8016CBEC case 8
+lwz	  r3, 0x21C(r31)
+addi	  r4, r3, 0xCC
+lbz	  r3, 0xCC(r3)
+addi	  r3, r3, -4
+extsh.	  r0, r3
+bge	  branch_0x8016D1D4
+li	  r3, 0
+
+branch_0x8016D1D4:
+stb	  r3, 0(r4)
+lwz	  r3, -0x70B8(r13)
+lha	  r0, 0xE(r3)
+cmpwi	  r0, 0
+bne	  def_8016CBEC	# jumptable 8016CBEC default case
+lis	  r3, (0x8001000C+2)@h
+addi	  r3, r3, (0x8001000C+2)@l
+bl	  startBGM__5MSBgmFUl #	MSBgm::startBGM((ulong))
+li	  r0, 0x30
+stw	  r0, 0x1C(r31)
+li	  r0, 0
+stw	  r0, 0x14(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D208:		# jumptable 8016CBEC case 3
+mr	  r3, r31
+bl	  titleDraw__9TCardLoadFv # TCardLoad::titleDraw((void))
+lwz	  r0, 0x18(r31)
+cmpwi	  r0, 4
+blt	  branch_0x8016D2C0
+blt	  branch_0x8016D2A0
+lwz	  r0, 0xBC(r31)
+cmpwi	  r0, 0x64
+blt	  branch_0x8016D2A0
+lwz	  r3, -0x70B8(r13)
+lha	  r0, 0xA(r3)
+cmpwi	  r0, 0
+bne	  branch_0x8016D2A0
+lwz	  r3, 0x38(r31)
+lwz	  r0, 0xD4(r3)
+rlwinm.	  r0, r0, 0,26,26
+bne	  branch_0x8016D258
+lwz	  r0, 0x1C(r3)
+rlwinm.	  r0, r0, 0,19,19
+beq	  branch_0x8016D2A0
+
+branch_0x8016D258:
+lwz	  r3, gpMSound(r13)
+li	  r4, 0x4810
+bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016D280
+li	  r3, 0x4810
+li	  r4, 0
+li	  r5, 0
+li	  r6, 0
+bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+
+branch_0x8016D280:
+lwz	  r3, -0x70B8(r13)
+bl	  moveToLoadFromTitle__13TCameraOptionFv # TCameraOption::moveToLoadFromTitle((void))
+lwz	  r3, MarioActor(r13)
+li	  r4, 0
+lfs	  f1, -0x49A4(r2)
+bl	  waitingStart__6TMarioFPCQ29JGeometry8TVec3_f_f
+li	  r0, 8
+stw	  r0, 0x14(r31)
+
+branch_0x8016D2A0:
+lwz	  r3, 0xF0(r31)
+bl	  update__7TExPaneFv # TExPane::update((void))
+lwz	  r3, 0xF4(r31)
+bl	  update__7TExPaneFv # TExPane::update((void))
+lwz	  r3, 0xBC(r31)
+addi	  r0, r3, 1
+stw	  r0, 0xBC(r31)
+b	  branch_0x8016D50C
+
+branch_0x8016D2C0:
+lwz	  r3, 0x38(r31)
+lwz	  r0, 0xD4(r3)
+rlwinm.	  r0, r0, 0,26,26
+bne	  branch_0x8016D2DC
+lwz	  r0, 0x1C(r3)
+rlwinm.	  r0, r0, 0,19,19
+beq	  branch_0x8016D50C
+
+branch_0x8016D2DC:
+lwz	  r7, 0xF0(r31)
+lwz	  r3, 0(r7)
+lbz	  r3, 0xCC(r3)
+extsh.	  r0, r3
+bge	  branch_0x8016D2F8
+li	  r6, 0
+b	  branch_0x8016D2FC
+
+branch_0x8016D2F8:
+mr	  r6, r3
+
+branch_0x8016D2FC:
+extsh	  r0, r6
+cmpwi	  r0, 0xFF
+ble	  branch_0x8016D30C
+li	  r6, 0xFF
+
+branch_0x8016D30C:
+extsh	  r3, r3
+lwz	  r4, 0(r7)
+xoris	  r0, r3, 0x8000
+stw	  r0, 0x354(r1)
+lis	  r5, 0x4330
+subfic	  r0, r3, 0xFF
+stb	  r6, 0xCC(r4)
+xoris	  r4, r0, 0x8000
+li	  r3, 0xFF
+stw	  r5, 0x350(r1)
+li	  r0, 1
+lfd	  f2, -0x4998(r2)
+stw	  r4, 0x35C(r1)
+lfd	  f0, 0x350(r1)
+stw	  r5, 0x358(r1)
+fsubs	  f1, f0, f2
+lfd	  f0, 0x358(r1)
+stfs	  f1, 0x44(r7)
+fsubs	  f1, f0, f2
+lfs	  f0, -0x4944(r2)
+fdivs	  f0, f1, f0
+stfs	  f0, 0x48(r7)
+sth	  r3, 0x4C(r7)
+stb	  r0, 0x50(r7)
+lwz	  r8, 0xF4(r31)
+lwz	  r3, 0(r8)
+lbz	  r3, 0xCC(r3)
+extsh.	  r0, r3
+bge	  branch_0x8016D388
+li	  r5, 0
+b	  branch_0x8016D38C
+
+branch_0x8016D388:
+mr	  r5, r3
+
+branch_0x8016D38C:
+extsh	  r0, r5
+cmpwi	  r0, 0xFF
+ble	  branch_0x8016D39C
+li	  r5, 0xFF
+
+branch_0x8016D39C:
+extsh	  r3, r3
+lwz	  r4, 0(r8)
+xoris	  r0, r3, 0x8000
+stw	  r0, 0x354(r1)
+subfic	  r0, r3, 0xFF
+xoris	  r3, r0, 0x8000
+stb	  r5, 0xCC(r4)
+lis	  r4, 0x4330
+li	  r7, 0x10
+stw	  r3, 0x35C(r1)
+subfic	  r0, r7, 0x12
+lfd	  f2, -0x4998(r2)
+li	  r6, 0xFF
+stw	  r4, 0x350(r1)
+li	  r5, 0
+mtctr	  r0
+lfd	  f0, 0x350(r1)
+cmpwi	  r7, 0x12
+stw	  r4, 0x358(r1)
+li	  r4, 1
+fsubs	  f1, f0, f2
+lfd	  f0, 0x358(r1)
+slwi	  r3, r7, 2
+stfs	  f1, 0x44(r8)
+fsubs	  f1, f0, f2
+lfs	  f0, -0x4944(r2)
+fdivs	  f0, f1, f0
+stfs	  f0, 0x48(r8)
+sth	  r6, 0x4C(r8)
+stb	  r4, 0x50(r8)
+lwz	  r4, 0x1D4(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1D8(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1DC(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1E0(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1E4(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1E8(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1EC(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1F0(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1F4(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1F8(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1FC(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x200(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x204(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x208(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x20C(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x210(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+bge	  branch_0x8016D4F0
+
+branch_0x8016D4D8:
+addi	  r0, r3, 0x1D4
+lwzx	  r4, r31, r0
+addi	  r3, r3, 4
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+bdnz	  branch_0x8016D4D8
+
+branch_0x8016D4F0:
+li	  r0, 0
+sth	  r0, 0x27A(r31)
+lwz	  r0, 0x18(r31)
+cmpwi	  r0, 4
+bge	  branch_0x8016D50C
+li	  r0, 4
+stw	  r0, 0x18(r31)
+
+branch_0x8016D50C:
+lwz	  r3, 0xC0(r31)
+lis	  r0, 0x4330
+lfd	  f3, -0x4998(r2)
+xoris	  r3, r3, 0x8000
+lfs	  f1, -0x4940(r2)
+stw	  r3, 0x354(r1)
+lfs	  f0, -0x493C(r2)
+stw	  r0, 0x350(r1)
+lfd	  f2, 0x350(r1)
+fsubs	  f2, f2, f3
+fdivs	  f1, f2, f1
+fcmpo	  cr0, f1, f0
+ble	  def_8016CBEC	# jumptable 8016CBEC default case
+lis	  r28, 3 # 0x3001C
+lwz	  r3, -0x6060(r13)
+addi	  r4, r28, 0x1C	# 0x3001C
+bl	  getBool__12TFlagManagerCFUl #	TFlagManager::getBool(const(ulong))
+clrlwi.	  r0, r3, 24
+beq	  branch_0x8016D580
+lwz	  r3, gpMarDirector(r13)
+li	  r4, 9
+bl	  fireStreamingMovie__12TMarDirectorFUc	# TMarDirector::fireStreamingMovie((uchar))
+lwz	  r3, -0x6060(r13)
+addi	  r5, r28, 0x1C	# 0x3001C
+li	  r4, 0
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+li	  r0, 0
+stw	  r0, 0xC0(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D580:
+lwz	  r3, gpMarDirector(r13)
+li	  r4, 0xC
+bl	  fireStreamingMovie__12TMarDirectorFUc	# TMarDirector::fireStreamingMovie((uchar))
+lwz	  r3, -0x6060(r13)
+addi	  r5, r28, 0x1C	# 0x3001C
+li	  r4, 1
+bl	  setBool__12TFlagManagerFbUl #	TFlagManager::setBool((bool,ulong))
+li	  r0, 0
+stw	  r0, 0xC0(r31)
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D5A8:		# jumptable 8016CBEC case 9
+lwz	  r3, -0x70B8(r13)
+lha	  r0, 0xA(r3)
+cmpwi	  r0, 0
+bne	  branch_0x8016D5C0
+li	  r0, 3
+stw	  r0, 0x14(r31)
+
+branch_0x8016D5C0:
+lwz	  r3, 0x38(r31)
+lwz	  r0, 0xD4(r3)
+rlwinm.	  r0, r0, 0,26,26
+bne	  branch_0x8016D5DC
+lwz	  r0, 0x1C(r3)
+rlwinm.	  r0, r0, 0,19,19
+beq	  branch_0x8016D80C
+
+branch_0x8016D5DC:
+lwz	  r7, 0xF0(r31)
+lwz	  r3, 0(r7)
+lbz	  r3, 0xCC(r3)
+extsh.	  r0, r3
+bge	  branch_0x8016D5F8
+li	  r6, 0
+b	  branch_0x8016D5FC
+
+branch_0x8016D5F8:
+mr	  r6, r3
+
+branch_0x8016D5FC:
+extsh	  r0, r6
+cmpwi	  r0, 0xFF
+ble	  branch_0x8016D60C
+li	  r6, 0xFF
+
+branch_0x8016D60C:
+extsh	  r3, r3
+lwz	  r4, 0(r7)
+xoris	  r0, r3, 0x8000
+stw	  r0, 0x354(r1)
+lis	  r5, 0x4330
+subfic	  r0, r3, 0xFF
+stb	  r6, 0xCC(r4)
+xoris	  r4, r0, 0x8000
+li	  r3, 0xFF
+stw	  r5, 0x350(r1)
+li	  r0, 1
+lfd	  f2, -0x4998(r2)
+stw	  r4, 0x35C(r1)
+lfd	  f0, 0x350(r1)
+stw	  r5, 0x358(r1)
+fsubs	  f1, f0, f2
+lfd	  f0, 0x358(r1)
+stfs	  f1, 0x44(r7)
+fsubs	  f1, f0, f2
+lfs	  f0, -0x4944(r2)
+fdivs	  f0, f1, f0
+stfs	  f0, 0x48(r7)
+sth	  r3, 0x4C(r7)
+stb	  r0, 0x50(r7)
+lwz	  r8, 0xF4(r31)
+lwz	  r3, 0(r8)
+lbz	  r3, 0xCC(r3)
+extsh.	  r0, r3
+bge	  branch_0x8016D688
+li	  r5, 0
+b	  branch_0x8016D68C
+
+branch_0x8016D688:
+mr	  r5, r3
+
+branch_0x8016D68C:
+extsh	  r0, r5
+cmpwi	  r0, 0xFF
+ble	  branch_0x8016D69C
+li	  r5, 0xFF
+
+branch_0x8016D69C:
+extsh	  r3, r3
+lwz	  r4, 0(r8)
+xoris	  r0, r3, 0x8000
+stw	  r0, 0x354(r1)
+subfic	  r0, r3, 0xFF
+xoris	  r3, r0, 0x8000
+stb	  r5, 0xCC(r4)
+lis	  r4, 0x4330
+li	  r7, 0x10
+stw	  r3, 0x35C(r1)
+subfic	  r0, r7, 0x12
+lfd	  f2, -0x4998(r2)
+li	  r6, 0xFF
+stw	  r4, 0x350(r1)
+li	  r5, 0
+mtctr	  r0
+lfd	  f0, 0x350(r1)
+cmpwi	  r7, 0x12
+stw	  r4, 0x358(r1)
+li	  r4, 1
+fsubs	  f1, f0, f2
+lfd	  f0, 0x358(r1)
+slwi	  r3, r7, 2
+stfs	  f1, 0x44(r8)
+fsubs	  f1, f0, f2
+lfs	  f0, -0x4944(r2)
+fdivs	  f0, f1, f0
+stfs	  f0, 0x48(r8)
+sth	  r6, 0x4C(r8)
+stb	  r4, 0x50(r8)
+lwz	  r4, 0x1D4(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1D8(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1DC(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1E0(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1E4(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1E8(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1EC(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1F0(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1F4(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1F8(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x1FC(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x200(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x204(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x208(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x20C(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+lwz	  r4, 0x210(r31)
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+bge	  branch_0x8016D7F0
+
+branch_0x8016D7D8:
+addi	  r0, r3, 0x1D4
+lwzx	  r4, r31, r0
+addi	  r3, r3, 4
+lwz	  r4, 0(r4)
+stb	  r5, 0xCC(r4)
+bdnz	  branch_0x8016D7D8
+
+branch_0x8016D7F0:
+li	  r4, 0
+sth	  r4, 0x27A(r31)
+li	  r3, 4
+li	  r0, 3
+stw	  r4, 0xBC(r31)
+stw	  r3, 0x18(r31)
+stw	  r0, 0x14(r31)
+
+branch_0x8016D80C:
+mr	  r3, r31
+bl	  titleDraw__9TCardLoadFv # TCardLoad::titleDraw((void))
+b	  def_8016CBEC	# jumptable 8016CBEC default case
+
+branch_0x8016D818:		# jumptable 8016CBEC case 10
+lis	  r3, 0x80010010@h
+addi	  r3, r3, 0x80010010@l
+bl	  startBGM__5MSBgmFUl #	MSBgm::startBGM((ulong))
+lwz	  r6, 0x38(r31)
+li	  r3, 9
+li	  r4, 1
+lhz	  r5, 0xE2(r6)
+li	  r0, 0
+ori	  r5, r5, 1
+sth	  r5, 0xE2(r6)
+lwz	  r6, MarioActor(r13)
+lwz	  r5, 0x118(r6)
+rlwinm	  r5, r5, 0,17,15
+stw	  r5, 0x118(r6)
+stw	  r3, 0x14(r31)
+stw	  r4, 0x18(r31)
+lwz	  r3, 0xF0(r31)
+lwz	  r3, 0(r3)
+stb	  r0, 0xCC(r3)
+lwz	  r3, 0xF4(r31)
+lwz	  r3, 0(r3)
+stb	  r0, 0xCC(r3)
+sth	  r0, 0x27A(r31)
+stw	  r0, 0xC0(r31)
+lwz	  r3, 0x21C(r31)
+stb	  r4, 0xC(r3)
+
+def_8016CBEC:		# jumptable 8016CBEC default case
 branch_0x8016d880:
     lis     r3, 0x1000
     lwz     r4, 0xc0(r31)
@@ -7899,7 +11073,9 @@ branch_0x8016d89c:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8016D8E0:		# jumptable 8016D8DC case 0
     lwz     r3, 0x28(r31)
     addi    r6, sp, 0x23c
     li      r4, 0x0
@@ -7907,8 +11083,43 @@ branch_0x8016d89c:
     bl      draw__9J2DScreenFiiPC14J2DGrafContext
     b       branch_0x8016d968
 
+branch_0x8016D8F8:		# jumptable 8016D8DC case 1
+lwz	  r3, 0x2C(r31)
+addi	  r6, r1, 0x23C
+li	  r4, 0
+li	  r5, 0
+bl	  draw__9J2DScreenFiiPC14J2DGrafContext	# J2DScreen::draw((int,int,J2DGrafContext const	*))
+b	  def_8016D8DC	# jumptable 8016D8DC default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1682f8, 0x8016d968 - 0x8016d8f8
+branch_0x8016D910:		# jumptable 8016D8DC case 2
+lwz	  r3, 0x774(r31)
+addi	  r4, r1, 0x23C
+bl	  draw__14TOptionControlFP13J2DOrthoGraph # TOptionControl::draw((J2DOrthoGraph	*))
+b	  def_8016D8DC	# jumptable 8016D8DC default case
+
+branch_0x8016D920:		# jumptable 8016D8DC cases 4,5
+lwz	  r3, 0x2C(r31)
+addi	  r6, r1, 0x23C
+li	  r4, 0
+li	  r5, 0
+bl	  draw__9J2DScreenFiiPC14J2DGrafContext	# J2DScreen::draw((int,int,J2DGrafContext const	*))
+addi	  r3, r1, 0x23C
+bl	  setup2D__14J2DGrafContextFv #	J2DGrafContext::setup2D((void))
+lwz	  r3, 0x28(r31)
+addi	  r6, r1, 0x23C
+li	  r4, 0
+li	  r5, 0
+bl	  draw__9J2DScreenFiiPC14J2DGrafContext	# J2DScreen::draw((int,int,J2DGrafContext const	*))
+b	  def_8016D8DC	# jumptable 8016D8DC default case
+
+branch_0x8016D954:		# jumptable 8016D8DC cases 3,8,9
+lwz	  r3, 0x34(r31)
+addi	  r6, r1, 0x23C
+li	  r4, 0
+li	  r5, 0
+bl	  draw__9J2DScreenFiiPC14J2DGrafContext	# J2DScreen::draw((int,int,J2DGrafContext const	*))
+
+def_8016D8DC:		# jumptable 8016D8DC default case
 branch_0x8016d968:
     lwz     r3, 0x0(r26)
     lwz     r0, 0x4(r26)
@@ -8767,7 +11978,7 @@ load__9TCardLoadFR20JSUMemoryInputStream: # 0x8016e544
     addi    r31, r3, 0x0
     subi    r30, r5, 0x7f88
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0xf
     bne-    branch_0x8016f880
@@ -9169,7 +12380,7 @@ branch_0x8016eafc:
     mr      r3, r20
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r20
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addi    r4, r19, 0x3062
@@ -9183,7 +12394,7 @@ branch_0x8016eafc:
     mr      r3, r19
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r19
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r3, 0x54
     bl      __nw__FUl
@@ -9229,7 +12440,7 @@ branch_0x8016ec04:
     mr      r3, r22
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r22
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addis   r4, r20, 0x6d5f
@@ -9244,7 +12455,7 @@ branch_0x8016ec04:
     mr      r3, r22
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r22
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addis   r4, r25, 0x7368
@@ -9447,7 +12658,7 @@ branch_0x8016ef34:
     mr      r3, r20
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r20
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addi    r4, r19, 0x3262
@@ -9461,7 +12672,7 @@ branch_0x8016ef34:
     mr      r3, r19
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r19
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r19, 0x0
     li      r20, 0x0
@@ -9533,7 +12744,7 @@ branch_0x8016f080:
     mr      r3, r20
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r20
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addi    r4, r19, 0x3462
@@ -9547,7 +12758,7 @@ branch_0x8016f080:
     mr      r3, r19
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r19
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     lis     r4, 0x74
@@ -9669,7 +12880,7 @@ branch_0x8016f284:
     mr      r3, r20
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r20
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addi    r4, r19, 0x3362
@@ -9683,7 +12894,7 @@ branch_0x8016f284:
     mr      r3, r19
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r19
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r3, 0x54
     bl      __nw__FUl
@@ -9719,7 +12930,7 @@ branch_0x8016f350:
     mr      r3, r20
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r20
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addi    r4, r19, 0x3562
@@ -9733,7 +12944,7 @@ branch_0x8016f350:
     mr      r3, r19
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r19
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x55c(r31)
     li      r0, 0x0
@@ -9788,7 +12999,7 @@ branch_0x8016f45c:
     mr      r3, r20
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r20
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addi    r4, r19, 0x3762
@@ -9802,7 +13013,7 @@ branch_0x8016f45c:
     mr      r3, r19
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r19
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r4, 0x584(r31)
     li      r0, 0x0
@@ -9841,7 +13052,7 @@ branch_0x8016f52c:
     mr      r3, r20
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r20
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x28(r31)
     addi    r4, r19, 0x3662
@@ -9855,7 +13066,7 @@ branch_0x8016f52c:
     mr      r3, r19
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r19
-    lwz     r4, -0x6038(r13)
+    lwz     r4, gpSystemFont(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0xe0(r30)
     addi    r29, sp, 0x1b0

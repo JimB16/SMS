@@ -370,7 +370,7 @@ initModelData__11TMapObjBaseFv: # 0x801b1c34
     lwz     r0, 0x74(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x801b1cdc
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, r31, 0x10
     addi    r5, r31, 0xc4
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData

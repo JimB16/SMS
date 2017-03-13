@@ -10,13 +10,24 @@ GXGetTexBufferSize: # 0x8035f8b4
     slwi    r0, r5, 2
     lwzx    r0, r8, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8035f8dc:		# jumptable 8035F8D8 cases 0,8,14,32,48
     li      r0, 0x3
     li      r8, 0x3
     b       branch_0x8035f908
 
+branch_0x8035f8e8:		# jumptable 8035F8D8 cases 1,2,9,17,34,39-42,57,58
+    li	    r0, 0x3
+    li	    r8, 0x2
+    b	    branch_0x8035f908
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x35a2e8, 0x8035f900 - 0x8035f8e8
+branch_0x8035f8f4:		# jumptable 8035F8D8 cases 3-6,10,19,22,35,43,44,60
+    li	    r0, 0x2
+    li	    r8, 0x2
+    b	    branch_0x8035f908
+
+def_8035F8D8:		# jumptable 8035F8D8 default case
 branch_0x8035f900:
     li      r8, 0x0
     li      r0, 0x0
@@ -113,13 +124,24 @@ __GetImageTileCount: # 0x8035fa10
     slwi    r0, r3, 2
     lwzx    r0, r9, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8035fa30:		# jumptable 8035FA2C cases 0,8,14,32,48
     li      r11, 0x3
     li      r12, 0x3
     b       branch_0x8035fa5c
 
+branch_0x8035fa3c:		# jumptable 8035FA2C cases 1,2,9,17,34,39-42,57,58
+    li	    r11, 0x3
+    li	    r12, 0x2
+    b	    branch_0x8035fa5c
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x35a43c, 0x8035fa54 - 0x8035fa3c
+branch_0x8035fa48:		# jumptable 8035FA2C cases 3-6,10,19,22,35,43,44,60
+    li	    r11, 0x2
+    li	    r12, 0x2
+    b	    branch_0x8035fa5c
+
+def_8035FA2C:		# jumptable 8035FA2C default case
 branch_0x8035fa54:
     li      r12, 0x0
     li      r11, 0x0
@@ -279,15 +301,44 @@ branch_0x8035fc00:
     slwi    r0, r7, 2
     lwzx    r0, r5, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8035fc80:		# jumptable 8035FC7C cases 0,8
     li      r0, 0x1
     stb     r0, 0x1e(r31)
     li      r0, 0x3
     li      r7, 0x3
     b       branch_0x8035fcf4
 
+branch_0x8035fc94:		# jumptable 8035FC7C cases 1,2,9
+    li	    r0, 0x2
+    stb	    r0, 0x1E(r31)
+    li	    r0, 0x3
+    li	    r7, 0x2
+    b	    branch_0x8035fcf4
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x35a694, 0x8035fce4 - 0x8035fc94
+branch_0x8035fca8:		# jumptable 8035FC7C cases 3-5,10
+    li	    r0, 0x2
+    stb	    r0, 0x1E(r31)
+    li	    r0, 0x2
+    li	    r7, 0x2
+    b	    branch_0x8035fcf4
+
+branch_0x8035fcbc:		# jumptable 8035FC7C case 6
+    li	    r0, 0x3
+    stb	    r0, 0x1E(r31)
+    li	    r0, 0x2
+    li	    r7, 0x2
+    b	    branch_0x8035fcf4
+
+branch_0x8035fcd0:		# jumptable 8035FC7C case 14
+    li	    r0, 0x0
+    stb	    r0, 0x1E(r31)
+    li	    r0, 0x3
+    li	    r7, 0x3
+    b	    branch_0x8035fcf4
+
+def_8035FC7C:		# jumptable 8035FC7C default case
 branch_0x8035fce4:
     li      r0, 0x2
     stb     r0, 0x1e(r31)

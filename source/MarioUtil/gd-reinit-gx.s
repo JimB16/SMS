@@ -161,13 +161,17 @@ branch_0x80233304:
 
 .globl ReInitTransform__Fv
 ReInitTransform__Fv: # 0x802333e0
+
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
-    lis     r3, 0x803e
-    stw     r0, 0x4(sp)
+    lis     r3, unk_803DB200@ha
+    stw     r0, arg_4(sp)
     li      r4, 0x0
     stwu    sp, -0x10(sp)
-    stw     r31, 0xc(sp)
-    subi    r31, r3, 0x4e00
+    stw     r31, 0x10+var_4(sp)
+    addi    r31, r3, unk_803DB200@l
     addi    r3, r31, 0x10
     bl      GXLoadPosMtxImm
     addi    r3, r31, 0x10
@@ -395,11 +399,21 @@ branch_0x8023369c:
 
 .globl ReInitializeGX
 ReInitializeGX: # 0x80233760
+
+.set var_40, -0x40
+.set var_3C, -0x3C
+.set var_1C, -0x1C
+.set var_18, -0x18
+.set var_14, -0x14
+.set var_10, -0x10
+.set var_4, -4
+.set arg_4,  4
+
     mflr    r0
     li      r3, 0x0
-    stw     r0, 0x4(sp)
+    stw     r0, arg_4(sp)
     stwu    sp, -0x48(sp)
-    stw     r31, 0x44(sp)
+    stw     r31, 0x48+var_4(sp)
     bl      GXSetNumChans
     li      r3, 0x1
     bl      GXSetNumTexGens
@@ -449,9 +463,10 @@ ReInitializeGX: # 0x80233760
     stw     r0, 0x38(sp)
     bl      GXSetChanMatColor
     bl      ReInitTransform__Fv
-    lis     r3, 0x803e
-    subi    r4, r3, 0x4e00
-    addi    r3, sp, 0xc
+
+    lis     r3, unk_803DB200@ha
+    addi    r4, r3, unk_803DB200@l
+    addi    r3, sp, 0x48+var_3C
     li      r5, 0x4
     li      r6, 0x4
     li      r7, 0x3
@@ -459,28 +474,28 @@ ReInitializeGX: # 0x80233760
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x0
     bl      GXLoadTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x1
     bl      GXLoadTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x2
     bl      GXLoadTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x3
     bl      GXLoadTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x4
     bl      GXLoadTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x5
     bl      GXLoadTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x6
     bl      GXLoadTexObj
-    addi    r3, sp, 0xc
+    addi    r3, sp, 0x48+var_3C
     li      r4, 0x7
     bl      GXLoadTexObj
     bl      ReInitTevStages__Fv

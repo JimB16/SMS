@@ -61,7 +61,7 @@ clipEnemies__18TDebuTelesaManagerFPQ26JDrama9TGraphics: # 0x80135b94
     stmw    r26, 0x40(sp)
     mr      r27, r3
     mr      r28, r4
-    lwz     r5, -0x7118(r13)
+    lwz     r5, gpCamera(r13)
     lwz     r3, 0x38(r3)
     lfs     f2, 0x4c(r5)
     lfs     f1, 0x48(r5)
@@ -290,7 +290,7 @@ branch_0x80135e60:
     b       branch_0x80135ea8
 
 branch_0x80135e68:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2938
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

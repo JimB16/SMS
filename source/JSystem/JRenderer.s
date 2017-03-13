@@ -794,13 +794,96 @@ J3DGDSetTexCoordGen__F13_GXTexCoordID13_GXTexGenType12_GXTexGenSrcUcUl: # 0x802f
     slwi    r0, r5, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x802F38EC:		# jumptable 802F38E8 case 0
     li      r28, 0x0
     li      r31, 0x1
     b       branch_0x802f39a0
 
+branch_0x802F38F8:		# jumptable 802F38E8 case 1
+li	  r28, 1
+li	  r31, 1
+b	  def_802F38E8	# jumptable 802F38E8 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2ee2f8, 0x802f39a0 - 0x802f38f8
+branch_0x802F3904:		# jumptable 802F38E8 case 2
+li	  r28, 3
+li	  r31, 1
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3910:		# jumptable 802F38E8 case 3
+li	  r28, 4
+li	  r31, 1
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F391C:		# jumptable 802F38E8 case 19
+li	  r28, 2
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3924:		# jumptable 802F38E8 case 20
+li	  r28, 2
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F392C:		# jumptable 802F38E8 case 4
+li	  r28, 5
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3934:		# jumptable 802F38E8 case 5
+li	  r28, 6
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F393C:		# jumptable 802F38E8 case 6
+li	  r28, 7
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3944:		# jumptable 802F38E8 case 7
+li	  r28, 8
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F394C:		# jumptable 802F38E8 case 8
+li	  r28, 9
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3954:		# jumptable 802F38E8 case 9
+li	  r28, 0xA
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F395C:		# jumptable 802F38E8 case 10
+li	  r28, 0xB
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3964:		# jumptable 802F38E8 case 11
+li	  r28, 0xC
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F396C:		# jumptable 802F38E8 case 12
+li	  r27, 0
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3974:		# jumptable 802F38E8 case 13
+li	  r27, 1
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F397C:		# jumptable 802F38E8 case 14
+li	  r27, 2
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3984:		# jumptable 802F38E8 case 15
+li	  r27, 3
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F398C:		# jumptable 802F38E8 case 16
+li	  r27, 4
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F3994:		# jumptable 802F38E8 case 17
+li	  r27, 5
+b	  def_802F38E8	# jumptable 802F38E8 default case
+
+branch_0x802F399C:		# jumptable 802F38E8 case 18
+li	  r27, 6
+
+def_802F38E8:		# jumptable 802F38E8 default case
 branch_0x802f39a0:
     cmpwi   r4, 0x1
     beq-    branch_0x802f39c8

@@ -323,10 +323,10 @@ checkPumping__6TMarioFv: # 0x80262674
     b       branch_0x80262778
 
 branch_0x802626b8:
-    lwz     r0, -0x60d8(r13)
+    lwz     r0, MarioActor(r13)
     cmplw   r0, r31
     bne-    branch_0x802626fc
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x50(r3)
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24

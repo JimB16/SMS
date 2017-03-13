@@ -472,6 +472,11 @@ branch_0x800137a0:
     blr
 
 
+/* MSound::startMarioVoice((unsigned long, short, unsigned char))
+Input:
+r3: MSound
+r4: SoundID
+*/
 .globl startMarioVoice__6MSoundFUlsUc
 startMarioVoice__6MSoundFUlsUc: # 0x800137a8
     mflr    r0
@@ -526,7 +531,9 @@ branch_0x80013818:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80013850:		# jumptable 8001384C cases 0,6,11,14,20
     mulli   r0, r30, 0xc
     add     r3, r25, r0
     lwz     r5, 0xb0(r3)
@@ -547,6 +554,7 @@ branch_0x80013818:
     subi    r3, r26, 0x7674
     b       branch_0x80013e7c
 
+def_8001384C:		# jumptable 8001384C default case
 branch_0x8001389c:
     li      r3, -0x1
     b       branch_0x80013e7c

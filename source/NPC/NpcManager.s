@@ -1669,14 +1669,14 @@ clipEnemies__11TNPCManagerFPQ26JDrama9TGraphics: # 0x8020a1b4
     stmw    r26, 0x68(sp)
     mr      r27, r3
     mr      r28, r4
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lwz     r3, 0x58(r3)
     lbz     r0, 0x7c(r5)
     lfs     f31, 0x54(r27)
     cmplwi  r0, 0x1
     lfs     f30, 0x0(r3)
     bne-    branch_0x8020a290
-    lwz     r26, -0x7118(r13)
+    lwz     r26, gpCamera(r13)
     li      r29, 0x1
     addi    r3, r26, 0x0
     bl      isSimpleDemoCamera__15CPolarSubCameraCFv
@@ -1705,7 +1705,7 @@ branch_0x8020a23c:
 branch_0x8020a240:
     clrlwi. r0, r0, 24
     bne-    branch_0x8020a280
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0xd
     beq-    branch_0x8020a280
@@ -1715,7 +1715,7 @@ branch_0x8020a240:
     bl      isNowInbetween__15CPolarSubCameraCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x8020a280
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0x13
     bne-    branch_0x8020a290
@@ -1725,7 +1725,7 @@ branch_0x8020a280:
     bge-    branch_0x8020a290
     fmr     f30, f0
 branch_0x8020a290:
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     fmr     f3, f31
     fmr     f4, f30
     lfs     f2, 0x4c(r3)
@@ -1961,7 +1961,7 @@ __ct__11TNPCManagerFPCc: # 0x8020a574
     stw     r0, 0x58(r31)
     stw     r0, 0x5c(r31)
     stw     r0, 0x60(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r4, -0x70b0(r13)
     lbz     r0, 0x7c(r3)
     lwz     r3, 0xf4(r4)
@@ -1973,13 +1973,69 @@ __ct__11TNPCManagerFPCc: # 0x8020a574
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8020A5E4:		# jumptable 8020A5E0 case 0
     addi    r0, r4, 0x18
     stw     r0, 0x58(r31)
     b       branch_0x8020a67c
 
+branch_0x8020A5F0:		# jumptable 8020A5E0 case 1
+addi	  r0, r4, 0x2C
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x204ff0, 0x8020a674 - 0x8020a5f0
+branch_0x8020A5FC:		# jumptable 8020A5E0 case 2
+addi	  r0, r4, 0x40
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A608:		# jumptable 8020A5E0 case 3
+addi	  r0, r4, 0x54
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A614:		# jumptable 8020A5E0 case 4
+addi	  r0, r4, 0x68
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A620:		# jumptable 8020A5E0 case 5
+addi	  r0, r4, 0x7C
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A62C:		# jumptable 8020A5E0 case 13
+addi	  r0, r4, 0x90
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A638:		# jumptable 8020A5E0 case 6
+addi	  r0, r4, 0xA4
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A644:		# jumptable 8020A5E0 case 7
+addi	  r0, r4, 0xB8
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A650:		# jumptable 8020A5E0 case 9
+addi	  r0, r4, 0xCC
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A65C:		# jumptable 8020A5E0 case 8
+addi	  r0, r4, 0xE0
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+branch_0x8020A668:		# jumptable 8020A5E0 case 10
+addi	  r0, r4, 0xF4
+stw	  r0, 0x58(r31)
+b	  branch_0x8020a67c
+
+def_8020A5E0:		# jumptable 8020A5E0 default case
 branch_0x8020a674:
     addi    r0, r4, 0x108
     stw     r0, 0x58(r31)

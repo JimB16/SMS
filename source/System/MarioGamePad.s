@@ -345,7 +345,7 @@ branch_0x802a84d8:
     lwz     r0, 0xe8(r30)
     cmpwi   r0, 0x0
     bgt-    branch_0x802a8948
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x50(r3)
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24

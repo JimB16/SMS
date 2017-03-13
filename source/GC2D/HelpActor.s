@@ -192,7 +192,7 @@ branch_0x80157824:
 branch_0x80157828:
     cmpwi   r0, -0x1
     bne-    branch_0x801578e4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r5, 0x0
     lwz     r4, 0x68(r31)
     lwz     r3, 0x74(r3)
@@ -235,7 +235,7 @@ branch_0x801578b4:
 branch_0x801578b8:
     cmpwi   r0, -0x1
     beq-    branch_0x801578e4
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r5, 0x0
     lwz     r4, 0x68(r31)
     lwz     r3, 0x74(r3)

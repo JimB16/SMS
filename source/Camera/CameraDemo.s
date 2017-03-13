@@ -51,9 +51,9 @@ execDeadDemoProc___15CPolarSubCameraFv: # 0x8003266c
     blr
 
 branch_0x800326b4:
-    lwz     r4, -0x6094(r13)
+    lwz     r4, MarioFlags(r13)
     lwz     r0, 0x0(r4)
-    rlwinm. r0, r0, 0, 21, 21
+    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
     beq-    branch_0x800326cc
     li      r0, 0x1
     b       branch_0x800326d0
@@ -64,7 +64,7 @@ branch_0x800326d0:
     clrlwi. r0, r0, 24
     beqlr-    
 
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     li      r4, 0x1
     addi    r5, r4, 0x0
     lbz     r0, 0x124(r6)
@@ -113,7 +113,7 @@ ctrlNormalDeadDemo___15CPolarSubCameraFv: # 0x80032740
     stfs    f0, 0x90(r3)
     lfs     f0, 0x8(r6)
     stfs    f0, 0x94(r3)
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     lwz     r3, 0x6c(r3)
     bl      execCameraInbetween__16TCameraInbetweenFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     lwz     r4, 0x6c(r31)
@@ -133,9 +133,9 @@ ctrlNormalDeadDemo___15CPolarSubCameraFv: # 0x80032740
     lfs     f2, -0x7568(rtoc)
     lfs     f3, -0x7564(rtoc)
     bl      CLBChaseDecrease__FPffff
-    lwz     r3, -0x60d8(r13)
-    lwz     r0, 0x118(r3)
-    rlwinm. r0, r0, 0, 19, 19
+    lwz     r3, MarioActor(r13)
+    lwz     r0, MarioActor_Flags(r3)
+    rlwinm. r0, r0, 0, 19, 19 # MARIOFLAG_1000
     beq-    branch_0x800327e4
     li      r0, 0x1
     b       branch_0x800327e8

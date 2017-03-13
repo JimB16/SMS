@@ -50,7 +50,7 @@ execute__14TNerveSBH_FallCFP24TSpineBase_10TLiveActor_: # 0x800ea3b0
     addi    r4, r4, 0x180c
     stw     r5, 0x28(sp)
     addi    r5, r3, 0x1820
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     stw     r0, 0x2c(sp)
     lwz     r0, 0x158(r30)
     stw     r0, 0x30(sp)

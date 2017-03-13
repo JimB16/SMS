@@ -147,7 +147,7 @@ branch_0x802956d4:
 branch_0x80295704:
     li      r0, 0x1
 branch_0x80295708:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r30, r0
     li      r4, 0x7914
     bl      gateCheck__6MSoundFUl

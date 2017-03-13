@@ -413,7 +413,7 @@ execute__13TNerveNPCTalkCFP24TSpineBase_10TLiveActor_: # 0x8020be74
     mr      r5, r3
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     lwz     r31, 0x0(r4)
     lbz     r0, 0x124(r6)
     cmplwi  r0, 0x1
@@ -1069,10 +1069,10 @@ branch_0x8020c6c8:
     beq-    branch_0x8020c86c
     lfs     f1, 0x144(r31)
     addi    r3, r31, 0x10
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     addi    r5, r31, 0x34
     bl      SMS_GoRotate__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, -0x1cc8(rtoc)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)

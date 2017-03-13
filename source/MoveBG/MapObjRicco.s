@@ -206,9 +206,9 @@ fireObj__14TFruitLauncherFv: # 0x801cd40c
     mr      r31, r3
     addi    r5, r31, 0x10
     stw     r30, 0x60(sp)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x384c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -221,7 +221,7 @@ fireObj__14TFruitLauncherFv: # 0x801cd40c
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x801cd474:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x387d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -292,7 +292,7 @@ branch_0x801cd4c4:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd5a0
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x390
     lfs     f2, 0x14(r31)
@@ -306,7 +306,7 @@ branch_0x801cd5a0:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd5d0
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x391
     lfs     f2, 0x14(r31)
@@ -320,7 +320,7 @@ branch_0x801cd5d0:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd600
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x392
     lfs     f2, 0x14(r31)
@@ -334,7 +334,7 @@ branch_0x801cd600:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd630
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x393
     lfs     f2, 0x14(r31)
@@ -345,7 +345,7 @@ branch_0x801cd600:
 
 branch_0x801cd630:
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x394
     lfs     f2, 0x14(r31)
@@ -372,7 +372,7 @@ branch_0x801cd650:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd6bc
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x390
     lfs     f2, 0x14(r31)
@@ -386,7 +386,7 @@ branch_0x801cd6bc:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd6ec
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x391
     lfs     f2, 0x14(r31)
@@ -400,7 +400,7 @@ branch_0x801cd6ec:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd71c
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x392
     lfs     f2, 0x14(r31)
@@ -414,7 +414,7 @@ branch_0x801cd71c:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd74c
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x393
     lfs     f2, 0x14(r31)
@@ -425,7 +425,7 @@ branch_0x801cd71c:
 
 branch_0x801cd74c:
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x394
     lfs     f2, 0x14(r31)
@@ -453,7 +453,7 @@ branch_0x801cd770:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd7d8
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x390
     lfs     f2, 0x14(r31)
@@ -467,7 +467,7 @@ branch_0x801cd7d8:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd808
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x391
     lfs     f2, 0x14(r31)
@@ -481,7 +481,7 @@ branch_0x801cd808:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd838
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x392
     lfs     f2, 0x14(r31)
@@ -495,7 +495,7 @@ branch_0x801cd838:
     fcmpo   cr0, f1, f0
     bge-    branch_0x801cd868
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x393
     lfs     f2, 0x14(r31)
@@ -506,7 +506,7 @@ branch_0x801cd838:
 
 branch_0x801cd868:
     lis     r4, 0x4000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lfs     f1, 0x10(r31)
     addi    r4, r4, 0x394
     lfs     f2, 0x14(r31)
@@ -569,12 +569,12 @@ branch_0x801cd88c:
     lwz     r3, 0xf0(r30)
     rlwinm  r3, r3, 0, 28, 26
     stw     r3, 0xf0(r30)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r0, 0x4c(sp)
     stw     r11, 0x8(sp)
     lfs     f1, -0x28d0(rtoc)
     bl      fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x4849
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -881,7 +881,7 @@ branch_0x801cdd58:
     fsubs   f0, f0, f1
     stfs    f0, 0x38(r31)
     lfs     f0, 0x138(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     fabs    f31, f0
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -906,7 +906,7 @@ branch_0x801cddb8:
     fadds   f0, f0, f30
     fabs    f31, f30
     stfs    f0, 0x14(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x801cde18
@@ -923,7 +923,7 @@ branch_0x801cddb8:
     bl      startSoundActorWithInfo__Q214MSoundSESystem8MSoundSEFUlPC3VecP3VecfUlUlPP8JAISoundUlUc
 branch_0x801cde18:
     fabs    f31, f30
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3023
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -994,7 +994,7 @@ branch_0x801cdefc:
     bne-    branch_0x801cdf88
     lwz     r5, 0x13c(r31)
     li      r4, 0x3832
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1059,7 +1059,7 @@ branch_0x801cdfbc:
     li      r4, 0x3832
     stfs    f0, 0x138(r31)
     lwz     r5, 0x13c(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1100,7 +1100,7 @@ branch_0x801ce038:
     ori     r0, r0, 0x100
     stw     r0, 0xf8(r31)
     lwz     r5, 0x13c(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1521,7 +1521,7 @@ branch_0x801ce618:
     beq-    branch_0x801ce654
 branch_0x801ce620:
     lwz     r30, 0x13c(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1707,7 +1707,7 @@ branch_0x801ce870:
     beq-    branch_0x801ce8ac
 branch_0x801ce878:
     lwz     r30, 0x148(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24

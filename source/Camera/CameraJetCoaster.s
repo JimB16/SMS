@@ -59,7 +59,7 @@ ctrlJetCoasterCamera___15CPolarSubCameraFv: # 0x80030e74
     stw     r30, 0x290(sp)
     stw     r29, 0x28c(sp)
     stw     r28, 0x288(sp)
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x3a
     bne-    branch_0x80031040
@@ -71,7 +71,7 @@ ctrlJetCoasterCamera___15CPolarSubCameraFv: # 0x80030e74
     addi    r4, r4, 0x1
     bl      getFlag__12TFlagManagerCFUl
     mr      r29, r3
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     lis     r4, 0x4000
     addi    r4, r4, 0x132
     bl      getObjNumWithActorType__18TMapObjBaseManagerCFUl
@@ -90,7 +90,7 @@ ctrlJetCoasterCamera___15CPolarSubCameraFv: # 0x80030e74
     sth     r0, 0x0(r3)
     li      r4, 0xe05
     li      r5, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     bl      setNextStage__12TMarDirectorFUsPQ26JDrama6TActor
     b       branch_0x80031040
 
@@ -112,7 +112,7 @@ branch_0x80030f28:
     b       branch_0x80031024
 
 branch_0x80030f64:
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     lwz     r0, 0x58(r4)
     cmpwi   r0, 0x1d4c
     beq-    branch_0x80030fc8
@@ -160,7 +160,7 @@ branch_0x80030fe4:
     b       branch_0x80031024
 
 branch_0x80030fec:
-    lwz     r3, -0x60d8(r13)
+    lwz     r3, MarioActor(r13)
     bl      loserExec__6TMarioFv
     li      r0, 0xe10
     stw     r0, 0x78(r31)
@@ -177,7 +177,7 @@ branch_0x80030fec:
 branch_0x80031024:
     cmpwi   r30, -0x1
     beq-    branch_0x80031040
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     addi    r4, r30, 0x0
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -200,7 +200,7 @@ branch_0x80031040:
     beq-    branch_0x80031080
     li      r30, 0x4824
 branch_0x80031080:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -240,8 +240,8 @@ branch_0x800310f0:
     mr      r3, r31
     bl      calcAngleXFromXRotRatio___15CPolarSubCameraCFv
     sth     r3, 0xa4(r31)
-    lwz     r3, -0x60d8(r13)
-    lha     r0, 0x410(r3)
+    lwz     r3, MarioActor(r13)
+    lha     r0, MarioActor_410(r3)
     sth     r0, 0xa6(r31)
 branch_0x80031120:
     lwz     r4, 0x8c(r31)
@@ -648,7 +648,7 @@ branch_0x80031680:
     stfs    f0, 0x48(r31)
     lwz     r5, 0x8c(r31)
     lwz     r0, 0x90(r31)
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     stw     r5, 0x248(sp)
     stw     r0, 0x24c(sp)
     lwz     r0, 0x94(r31)
@@ -704,7 +704,7 @@ branch_0x800317a8:
     bl      MsVECNormalize__FP3VecP3Vec
     lwz     r3, 0x2b8(r31)
     addi    r6, r31, 0x30
-    lwz     r7, -0x60b4(r13)
+    lwz     r7, MarioHitActorPos(r13)
     mr      r9, r6
     lha     r4, 0x6(r3)
     lha     r3, 0x4(r3)

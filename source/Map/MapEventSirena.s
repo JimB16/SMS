@@ -207,7 +207,7 @@ watch__19TMapEventSirenaSinkFv: # 0x801a08dc
     subi    r31, r3, 0x5dd8
     cmplwi  r0, 0x0
     beq-    branch_0x801a09d8
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     li      r0, 0x0
     addi    r11, sp, 0x44
     lwz     r3, 0x14(r3)
@@ -223,12 +223,12 @@ watch__19TMapEventSirenaSinkFv: # 0x801a08dc
     sth     r3, 0x32(r10)
     li      r10, 0x0
     stw     r0, 0x28(r30)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     sth     r0, 0x44(sp)
     stw     r11, 0x8(sp)
     lfs     f1, -0x4118(rtoc)
     bl      fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r31, 0x154
     lfs     f1, 0x68(r30)
     addi    r5, r31, 0x170
@@ -245,14 +245,14 @@ watch__19TMapEventSirenaSinkFv: # 0x801a08dc
     bl      SMS_MarioWarpRequest__FRCQ29JGeometry8TVec3_f_f
     lwz     r5, -0x62b8(r13)
     li      r4, 0x68
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     addi    r5, r5, 0x44
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r5, -0x62b8(r13)
     li      r4, 0x1e4
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x2
     addi    r5, r5, 0x44
     li      r7, 0x0

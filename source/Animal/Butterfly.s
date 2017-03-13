@@ -200,7 +200,7 @@ branch_0x80012398:
     lfs     f0, -0x7d50(rtoc)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x34(r3)
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x7d74(rtoc)
     stw     r3, 0xe8(sp)
     cmplwi  r3, 0x0
@@ -391,7 +391,7 @@ branch_0x80012664:
     stw     r4, 0x68(r31)
     addi    r5, r31, 0x10
     li      r4, 0xe7
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -438,7 +438,7 @@ branch_0x80012710:
     clrlwi. r0, r0, 24
     beq-    branch_0x8001272c
     lis     r4, 0x2000
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     addi    r4, r4, 0xe
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r30, r3

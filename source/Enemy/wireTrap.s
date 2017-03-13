@@ -127,7 +127,7 @@ branch_0x801080b8:
     subi    r0, r3, 0x1
     stw     r0, 0x16c(r31)
 branch_0x801080d0:
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x68(sp)
@@ -1212,7 +1212,7 @@ branch_0x80108f28:
 
 branch_0x80108f48:
     addi    r3, r26, 0x0
-    li      r4, 0x9
+    li      r4, MARIOMSG_HURTELECTRIC
     bl      SMS_SendMessageToMario__FP9THitActorUl
     b       branch_0x80109414
 
@@ -1606,7 +1606,7 @@ branch_0x80109490:
     bl      checkHitActors__9TWireTrapFv
     mr      r3, r31
     bl      moveObject__10TLiveActorFv
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x20bf
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1647,7 +1647,7 @@ calcRootMatrix__9TWireTrapFv: # 0x80109520
     b       branch_0x80109ad0
 
 branch_0x80109564:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     addi    r5, r30, 0x10
     li      r4, 0x190
@@ -1668,7 +1668,7 @@ branch_0x80109564:
     lfs     f0, 0x2c(r30)
     stfs    f0, 0x17c(r3)
 branch_0x801095b4:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r7, r30, 0x0
     addi    r5, r30, 0x10
     li      r4, 0x191
@@ -2153,7 +2153,9 @@ receiveMessage__9TWireTrapFP9THitActorUl: # 0x80109c60
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80109C98:		# jumptable 80109C94 case 11
     lfs     f0, -0x553c(rtoc)
     addi    r6, sp, 0x6c
     addi    r4, r31, 0x10
@@ -2163,7 +2165,7 @@ receiveMessage__9TWireTrapFP9THitActorUl: # 0x80109c60
     stfs    f0, 0x70(sp)
     stfs    f0, 0x74(sp)
     bl      SMS_EasyEmitParticle_27E_SMS_EFFECT_ONETIME_NORMAL___F27E_SMS_EFFECT_ONETIME_NORMALPCQ29JGeometry8TVec3_f_PCvRCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     addi    r5, r31, 0x10
     lfs     f1, -0x5540(rtoc)
     li      r4, 0x6802
@@ -2176,7 +2178,7 @@ receiveMessage__9TWireTrapFP9THitActorUl: # 0x80109c60
     stw     r0, 0x164(r31)
     lwz     r3, 0x10(r31)
     lwz     r0, 0x14(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r3, 0x54(sp)
     stw     r0, 0x58(sp)
     lwz     r0, 0x18(r31)
@@ -2246,7 +2248,36 @@ branch_0x80109dec:
     b       branch_0x80109e58
 
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1047f4, 0x80109e50 - 0x80109df4
+branch_0x80109DF4:		# jumptable 80109C94 case 0
+lwz	  r0, 0x68(r31)
+cmplwi	  r0, 0
+bne	  def_80109C94	# jumptable 80109C94 default case
+lwz	  r0, 0x64(r31)
+li	  r3, 1
+ori	  r0, r0, 1
+stw	  r0, 0x64(r31)
+stw	  r4, 0x68(r31)
+b	  branch_0x80109e58
+
+branch_0x80109E18:		# jumptable 80109C94 cases 3,4
+lwz	  r0, 0x68(r31)
+cmplwi	  r0, 0
+beq	  def_80109C94	# jumptable 80109C94 default case
+li	  r0, 0
+stw	  r0, 0x68(r31)
+li	  r3, 1
+b	  branch_0x80109e58
+
+branch_0x80109E34:		# jumptable 80109C94 case 7
+mr	  r3, r31
+lwz	  r12, 0(r31)
+lwz	  r12, 0xE4(r12)
+mtlr	  r12
+blrl
+li	  r3, 1
+b	  branch_0x80109e58
+
+def_80109C94:		# jumptable 80109C94 default case
 branch_0x80109e50:
     mr      r3, r31
     bl      receiveMessage__11TSpineEnemyFP9THitActorUl

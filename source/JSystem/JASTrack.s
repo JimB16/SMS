@@ -2246,7 +2246,9 @@ writeTimeParam__Q28JASystem6TTrackFUc: # 0x8031c068
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8031C0C0:		# jumptable 8031C0BC case 0
     lwz     r4, 0x4(r28)
     addi    r3, r28, 0x0
     addi    r0, r4, 0x1
@@ -2256,8 +2258,38 @@ writeTimeParam__Q28JASystem6TTrackFUc: # 0x8031c068
     mr      r29, r3
     b       branch_0x8031c13c
 
+branch_0x8031C0E0:		# jumptable 8031C0BC case 4
+lwz	  r3, 4(r28)
+addi	  r0, r3, 1
+stw	  r0, 4(r28)
+lbz	  r29, 0(r3)
+b	  def_8031C0BC	# jumptable 8031C0BC default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x316ae0, 0x8031c13c - 0x8031c0e0
+branch_0x8031C0F4:		# jumptable 8031C0BC case 8
+lwz	  r3, 4(r28)
+addi	  r0, r3, 1
+stw	  r0, 4(r28)
+lbz	  r0, 0(r3)
+clrlwi	  r4, r0, 16
+rlwinm.	  r0, r0, 0,24,24
+beq	  branch_0x8031C11C
+slwi	  r0, r4, 8
+extsh	  r29, r0
+b	  def_8031C0BC	# jumptable 8031C0BC default case
+
+branch_0x8031C11C:
+slwi	  r3, r4, 8
+slwi	  r0, r4, 1
+or	  r0, r3, r0
+extsh	  r29, r0
+b	  def_8031C0BC	# jumptable 8031C0BC default case
+
+branch_0x8031C130:		# jumptable 8031C0BC case 12
+mr	  r3, r28
+bl	  read16__Q28JASystem8TSeqCtrlFv # JASystem::TSeqCtrl::read16((void))
+mr	  r29, r3
+
+def_8031C0BC:		# jumptable 8031C0BC default case
 branch_0x8031c13c:
     clrlwi  r0, r30, 30
     cmpwi   r0, 0x2
@@ -2412,7 +2444,9 @@ branch_0x8031c32c:
     slwi    r0, r28, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8031C34C:		# jumptable 8031C348 case 0
     lwz     r4, 0x4(r30)
     addi    r3, r30, 0x0
     addi    r0, r4, 0x1
@@ -2422,8 +2456,42 @@ branch_0x8031c32c:
     mr      r24, r3
     b       branch_0x8031c3d0
 
+branch_0x8031C36C:		# jumptable 8031C348 case 4
+lwz	  r3, 4(r30)
+addi	  r0, r3, 1
+stw	  r0, 4(r30)
+lbz	  r24, 0(r3)
+b	  def_8031C348	# jumptable 8031C348 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x316d6c, 0x8031c3d0 - 0x8031c36c
+branch_0x8031C380:		# jumptable 8031C348 case 8
+lwz	  r3, 4(r30)
+addi	  r0, r3, 1
+stw	  r0, 4(r30)
+lbz	  r0, 0(r3)
+clrlwi	  r4, r0, 16
+rlwinm.	  r0, r0, 0,24,24
+beq	  branch_0x8031C3A8
+slwi	  r0, r4, 8
+extsh	  r24, r0
+b	  def_8031C348	# jumptable 8031C348 default case
+
+branch_0x8031C3A8:
+slwi	  r3, r4, 8
+slwi	  r0, r4, 1
+or	  r0, r3, r0
+extsh	  r24, r0
+b	  def_8031C348	# jumptable 8031C348 default case
+
+branch_0x8031C3BC:		# jumptable 8031C348 case 12
+mr	  r3, r30
+bl	  read16__Q28JASystem8TSeqCtrlFv # JASystem::TSeqCtrl::read16((void))
+mr	  r24, r3
+b	  def_8031C348	# jumptable 8031C348 default case
+
+branch_0x8031C3CC:		# jumptable 8031C348 case 16
+li	  r24, -1
+
+def_8031C348:		# jumptable 8031C348 default case
 branch_0x8031c3d0:
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
@@ -3476,14 +3544,156 @@ readRegDirect__Q28JASystem6TTrackFUc: # 0x8031d0bc
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8031D104:		# jumptable 8031D100 case 0
     addi    r3, r31, 0x280
     bl      getBankNumber__Q28JASystem14TRegisterParamCFv
     clrlwi  r28, r3, 24
     b       branch_0x8031d2d4
 
+branch_0x8031D114:		# jumptable 8031D100 case 1
+addi	  r3, r31, 0x280
+bl	  getProgramNumber__Q28JASystem14TRegisterParamCFv # JASystem::TRegisterParam::getProgramNumber(const(void))
+clrlwi	  r28, r3, 24
+b	  branch_0x8031d2d4
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x317b14, 0x8031d2c8 - 0x8031d114
+branch_0x8031D124:		# jumptable 8031D100 case 2
+addi	  r3, r31, 0
+li	  r4, 0
+bl	  readRegDirect__Q28JASystem6TTrackFUc # JASystem::TTrack::readRegDirect((uchar))
+clrlwi	  r3, r3, 16
+li	  r0, 8
+slw	  r0, r3, r0
+addi	  r3, r31, 0
+clrlwi	  r28, r0, 16
+li	  r4, 1
+bl	  readRegDirect__Q28JASystem6TTrackFUc # JASystem::TTrack::readRegDirect((uchar))
+or	  r28, r28, r3
+b	  branch_0x8031d2d4
+
+branch_0x8031D154:		# jumptable 8031D100 case 12
+li	  r0, 4
+mtctr	  r0
+li	  r28, 0
+li	  r6, 0xF
+li	  r3, 0x3C
+li	  r4, 1
+
+branch_0x8031D16C:
+addi	  r0, r3, 0x2C4
+lwzx	  r5, r31, r0
+clrlwi	  r0, r28, 16
+slw	  r0, r0, r4
+cmplwi	  r5, 0
+clrlwi	  r28, r0, 16
+beq	  branch_0x8031D198
+lbz	  r0, 0x3C4(r5)
+cmplwi	  r0, 0
+beq	  branch_0x8031D198
+ori	  r28, r28, 1
+
+branch_0x8031D198:
+addi	  r0, r3, 0x2C0
+lwzx	  r5, r31, r0
+clrlwi	  r0, r28, 16
+slw	  r0, r0, r4
+cmplwi	  r5, 0
+clrlwi	  r28, r0, 16
+addi	  r3, r3, -4
+beq	  branch_0x8031D1C8
+lbz	  r0, 0x3C4(r5)
+cmplwi	  r0, 0
+beq	  branch_0x8031D1C8
+ori	  r28, r28, 1
+
+branch_0x8031D1C8:
+addi	  r0, r3, 0x2C0
+lwzx	  r5, r31, r0
+clrlwi	  r0, r28, 16
+slw	  r0, r0, r4
+cmplwi	  r5, 0
+clrlwi	  r28, r0, 16
+addi	  r3, r3, -4
+addi	  r6, r6, -1
+beq	  branch_0x8031D1FC
+lbz	  r0, 0x3C4(r5)
+cmplwi	  r0, 0
+beq	  branch_0x8031D1FC
+ori	  r28, r28, 1
+
+branch_0x8031D1FC:
+addi	  r0, r3, 0x2C0
+lwzx	  r5, r31, r0
+clrlwi	  r0, r28, 16
+slw	  r0, r0, r4
+cmplwi	  r5, 0
+clrlwi	  r28, r0, 16
+addi	  r3, r3, -4
+addi	  r6, r6, -1
+beq	  branch_0x8031D230
+lbz	  r0, 0x3C4(r5)
+cmplwi	  r0, 0
+beq	  branch_0x8031D230
+ori	  r28, r28, 1
+
+branch_0x8031D230:
+addi	  r6, r6, -1
+addi	  r3, r3, -4
+bdnz	  branch_0x8031D16C
+b	  branch_0x8031d2d4
+
+branch_0x8031D240:		# jumptable 8031D100 case 13
+li	  r28, 0
+li	  r29, 7
+li	  r30, 1
+
+branch_0x8031D24C:
+clrlwi	  r0, r28, 16
+slw	  r0, r0, r30
+addi	  r4, r29, 0
+clrlwi	  r28, r0, 16
+addi	  r3, r31, 0xB4
+bl	  getChannel__Q38JASystem6TTrack8TNoteMgrFi # JASystem::TTrack::TNoteMgr::getChannel((int))
+cmplwi	  r3, 0
+bne	  branch_0x8031D274
+li	  r0, 1
+b	  branch_0x8031D28C
+
+branch_0x8031D274:
+lbz	  r0, 1(r3)
+cmplwi	  r0, 0xFF
+bne	  branch_0x8031D288
+li	  r0, 1
+b	  branch_0x8031D28C
+
+branch_0x8031D288:
+li	  r0, 0
+
+branch_0x8031D28C:
+addic.	  r29, r29, -1
+clrlwi	  r0, r0, 24
+or	  r28, r28, r0
+bge	  branch_0x8031D24C
+b	  branch_0x8031d2d4
+
+branch_0x8031D2A0:		# jumptable 8031D100 case 16
+lwz	  r0, 0xC(r31)
+cmplwi	  r0, 0
+bne	  branch_0x8031D2B4
+li	  r0, 0
+b	  branch_0x8031D2C0
+
+branch_0x8031D2B4:
+slwi	  r0, r0, 1
+add	  r3, r31, r0
+lhz	  r0, 0x2E(r3)
+
+branch_0x8031D2C0:
+mr	  r28, r0
+b	  branch_0x8031d2d4
+
+def_8031D100:		# jumptable 8031D100 default case
 branch_0x8031d2c8:
     clrlslwi  r0, r4, 24, 1
     add     r3, r31, r0
@@ -3533,9 +3743,8 @@ branch_0x8031d350:
     bl      extend8to16__Q28JASystem6PlayerFUc
     mr      r4, r3
     b       branch_0x8031d394
+    b       branch_0x8031d3a4
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x317d64, 0x8031d368 - 0x8031d364
 branch_0x8031d368:
     extrwi  r30, r29, 8, 16
     clrlwi  r31, r29, 16
@@ -3933,9 +4142,8 @@ branch_0x8031d80c:
     cmpwi   r0, 0x3
     bge-    branch_0x8031d834
     b       branch_0x8031d824
+    blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x318218, 0x8031d81c - 0x8031d818
 branch_0x8031d81c:
     fmr     f1, f2
     blr

@@ -55,7 +55,7 @@ branch_0x8023f748:
     bl      setAnimation__6TMarioFif
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -93,7 +93,7 @@ branch_0x8023f7dc:
     rlwinm. r0, r3, 0, 29, 29
     beq-    branch_0x8023f7fc
     addi    r3, r31, 0x0
-    li      r4, 0x88c
+    li      r4, MARIOSTATUS_88c
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -103,7 +103,7 @@ branch_0x8023f7fc:
     rlwinm. r0, r3, 0, 28, 28
     beq-    branch_0x8023f81c
     addi    r3, r31, 0x0
-    li      r4, 0x50
+    li      r4, MARIOSTATUS_50
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -223,7 +223,7 @@ branch_0x8023f944:
     cmpwi   r3, 0x1
     bne-    branch_0x8023f9b4
     addi    r3, r31, 0x0
-    li      r4, 0x788f
+    li      r4, SOUND_788f
     bl      startVoice__6TMarioFUl
     lwz     r0, 0x384(r31)
     stw     r0, 0x6c(r31)
@@ -232,7 +232,7 @@ branch_0x8023f944:
 branch_0x8023f9b4:
     lis     r4, 0xc40
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -252,7 +252,7 @@ branch_0x8023f9d8:
     lis     r4, 0xc40
     sth     r0, 0x37e(r31)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb

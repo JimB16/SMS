@@ -247,7 +247,7 @@ branch_0x800ecffc:
     lwz     r3, 0x4(r29)
     lfs     f2, 0x10(r29)
     addi    r28, r3, 0xc
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x4(r28)
     addi    r4, r28, 0x0
     addi    r5, r28, 0x8
@@ -255,7 +255,7 @@ branch_0x800ecffc:
     lfs     f1, 0x4(r28)
     addi    r4, sp, 0x80
     lfs     f0, 0x10(r29)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r28)
     lfs     f3, 0x8(r28)
@@ -359,13 +359,13 @@ branch_0x800ed158:
     lwz     r0, 0x54(sp)
     stw     r0, 0x14(r30)
     lfs     f2, 0x10(r29)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x10(r30)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
     lfs     f1, 0x4(r27)
     addi    r4, sp, 0x78
     lfs     f0, 0x10(r29)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r27)
     lfs     f3, 0x8(r27)
@@ -616,7 +616,7 @@ receiveMessage__14TWaterHitActorFP9THitActorUl: # 0x800ed544
     cmplwi  r5, 0xf
     li      r0, 0x0
     bne-    branch_0x800ed5ac
-    lwz     r6, -0x6048(r13)
+    lwz     r6, gpMarDirector(r13)
     li      r4, 0x1
     addi    r5, r4, 0x0
     lbz     r0, 0x124(r6)

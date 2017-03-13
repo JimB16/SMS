@@ -178,7 +178,7 @@ branch_0x80192eb4:
 branch_0x80192ef0:
     lwz     r4, 0x1c(r31)
     stwx    r3, r4, r30
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x7
     bne-    branch_0x80192f28
@@ -314,7 +314,7 @@ perform__19TMirrorModelManagerFUlPQ26JDrama9TGraphics: # 0x801930a4
     addi    r31, r4, 0x0
     addi    r30, r3, 0x0
     beq-    branch_0x801932ac
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r4, sp, 0x164
     lwz     r3, -0x70ec(r13)
     lwz     r5, 0x0(r6)
@@ -371,7 +371,7 @@ branch_0x8019314c:
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_80193514
     stfs    f31, 0x138(sp)
     addi    r3, sp, 0x12c
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r28, r4, 0x124
     addi    r4, r28, 0x0
     bl      dot__Q29JGeometry8TVec3_f_CFRCQ29JGeometry8TVec3_f_
@@ -392,13 +392,13 @@ branch_0x8019314c:
     lfs     f0, 0x8(r28)
     fmadds  f0, f1, f2, f0
     stfs    f0, 0xa0(r29)
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r28, r4, 0x148
     addi    r4, r28, 0x0
     bl      dot__Q29JGeometry8TVec3_f_CFRCQ29JGeometry8TVec3_f_
     lfs     f0, 0x138(sp)
     addi    r3, sp, 0x12c
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     fsubs   f3, f1, f0
     lfs     f2, -0x4378(rtoc)
     addi    r27, r4, 0x30
@@ -499,7 +499,7 @@ branch_0x80193314:
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_80193514
     stfs    f28, 0xdc(sp)
     addi    r3, sp, 0xd0
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r28, r4, 0x124
     addi    r4, r28, 0x0
     bl      dot__Q29JGeometry8TVec3_f_CFRCQ29JGeometry8TVec3_f_
@@ -511,7 +511,7 @@ branch_0x80193314:
     addi    r4, sp, 0xd0
     fmuls   f1, f0, f1
     bl      scaleAdd__Q29JGeometry8TVec3_f_FfRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r3, sp, 0xd0
     addi    r28, r4, 0x148
     addi    r4, r28, 0x0
@@ -524,7 +524,7 @@ branch_0x80193314:
     addi    r4, sp, 0xd0
     fmuls   f1, f0, f1
     bl      scaleAdd__Q29JGeometry8TVec3_f_FfRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r3, sp, 0xd0
     addi    r28, r4, 0x30
     addi    r4, r28, 0x0
@@ -542,7 +542,7 @@ branch_0x80193314:
     addi    r5, sp, 0xec
     addi    r6, sp, 0xe0
     bl      C_MTXLookAt
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r3, sp, 0xa0
     lwz     r27, 0x8(r29)
     lfs     f3, -0x4374(rtoc)
@@ -1350,7 +1350,7 @@ drawSetting__13TMirrorCameraFPA4_f: # 0x80193f20
     addi    r30, r3, 0x0
     addi    r3, r30, 0x60
     bl      GXLoadTexObj
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r3, sp, 0x80
     lfs     f3, -0x4374(rtoc)
     lfs     f1, 0x48(r4)
@@ -1395,7 +1395,7 @@ perform__13TMirrorCameraFUlPQ26JDrama9TGraphics: # 0x80193fbc
     stw     r28, 0x58(sp)
     addi    r28, r3, 0x0
     beq-    branch_0x80194054
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     addi    r31, r30, 0x74
     lfs     f0, 0x80(r28)
     mr      r3, r31
@@ -1408,11 +1408,11 @@ perform__13TMirrorCameraFUlPQ26JDrama9TGraphics: # 0x80193fbc
     addi    r4, r30, 0xb4
     addi    r3, r28, 0x30
     bl      PSMTXCopy
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     rlwinm. r0, r29, 0, 27, 27
     lfs     f0, 0x28(r3)
     stfs    f0, 0xe8(r30)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lfs     f0, 0x2c(r3)
     stfs    f0, 0xec(r30)
     beq-    branch_0x8019404c

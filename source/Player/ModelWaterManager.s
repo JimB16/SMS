@@ -255,7 +255,7 @@ drawRefracAndSpec__18TModelWaterManagerCFv: # 0x8027c12c
     bl      GXSetTexCoordGen2
     lfs     f3, -0x83c(rtoc)
     addi    r3, sp, 0x5c
-    lwz     r4, -0x7118(r13)
+    lwz     r4, gpCamera(r13)
     fmr     f5, f3
     lfs     f4, -0x838(rtoc)
     fmr     f6, f3
@@ -568,7 +568,7 @@ drawShineShadowVolume__18TModelWaterManagerFPA4_f: # 0x8027c67c
     stmw    r27, 0x10c(sp)
     addi    r29, r3, 0x0
     addi    r30, r4, 0x0
-    lwz     r5, -0x6048(r13)
+    lwz     r5, gpMarDirector(r13)
     lbz     r0, 0x7c(r5)
     cmplwi  r0, 0x1
     bne-    branch_0x8027cc0c
@@ -1060,7 +1060,7 @@ branch_0x8027cde0:
     lwz     r5, -0x5ea8(r13)
     fdivs   f5, f1, f0
     lwz     r6, -0x5eac(r13)
-    lwz     r7, -0x60b4(r13)
+    lwz     r7, MarioHitActorPos(r13)
     li      r3, 0x0
     lwz     r8, -0x5ea4(r13)
     lfs     f4, -0x824(rtoc)
@@ -1200,7 +1200,7 @@ branch_0x8027ce20:
     li      r4, 0x0
     li      r5, 0xa
     bl      GXBegin
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lis     r29, 0xcc01
     lfs     f2, -0x820(rtoc)
     li      r27, 0xff
@@ -1334,7 +1334,7 @@ branch_0x8027ce20:
     li      r4, 0x0
     li      r5, 0xa
     bl      GXBegin
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     lfs     f2, -0x820(rtoc)
     lfs     f0, 0x4(r3)
     lfs     f3, 0x8(r3)
@@ -2890,14 +2890,14 @@ calcWorldMinMax__18TModelWaterManagerFv: # 0x8027e8e0
     lhz     r4, 0x12(r3)
     cmplwi  r4, 0x0
     bne-    branch_0x8027e974
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0x5d70(r3)
     stw     r0, 0x5d74(r3)
     lwz     r0, 0x8(r5)
     stw     r0, 0x5d78(r3)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0x5d7c(r3)
@@ -3052,7 +3052,7 @@ branch_0x8027ead0:
     beq-    branch_0x8027eba8
     lfs     f1, 0x2014(r27)
     mr      r5, r26
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x6800
     li      r6, 0x0
     li      r7, 0x0
@@ -3085,7 +3085,7 @@ branch_0x8027eba0:
 
 branch_0x8027eba8:
     add     r28, r31, r19
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     addi    r24, r28, 0x81c
     lfs     f1, 0x8(r3)
     addi    r23, r28, 0x814
@@ -3352,7 +3352,7 @@ branch_0x8027ef0c:
     fcmpo   cr0, f2, f27
     bge-    branch_0x8027f284
     addi    r22, r29, 0x818
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f0, 0x818(r29)
     addi    r25, r29, 0x814
     lfs     f1, 0x814(r29)
@@ -3424,7 +3424,7 @@ branch_0x8027f004:
     stfsx   f27, r31, r0
     addi    r5, r29, 0x814
     li      r4, 0x6801
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r6, 0x0
     li      r7, 0x0
     li      r8, 0x0
@@ -3465,7 +3465,7 @@ branch_0x8027f058:
 branch_0x8027f098:
     lfs     f1, 0x2014(r22)
     addi    r5, r29, 0x814
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x6800
     li      r6, 0x0
     li      r7, 0x0
@@ -3526,7 +3526,7 @@ branch_0x8027f118:
     bl      newSplash__14TSplashManagerFQ29JGeometry8TVec3_f_f
 branch_0x8027f170:
     add     r24, r31, r20
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f1, 0x2014(r24)
     addi    r22, r24, 0x2014
     addi    r5, r29, 0x814
@@ -3545,7 +3545,7 @@ branch_0x8027f170:
     lfs     f0, 0x2c(r3)
     fmuls   f0, f1, f0
     stfs    f0, 0x0(r22)
-    lwz     r3, -0x7118(r13)
+    lwz     r3, gpCamera(r13)
     lwz     r4, 0x50(r3)
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
@@ -3628,7 +3628,7 @@ branch_0x8027f298:
     stfs    f3, 0x84(r30)
     stw     r21, 0x88(r30)
     stw     r0, 0x90(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
     clrlwi. r0, r3, 24
     beq-    branch_0x8027f5d0
@@ -3792,7 +3792,7 @@ branch_0x8027f3d0:
 branch_0x8027f53c:
     lfs     f1, 0x0(r24)
     addi    r5, r29, 0x814
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x6800
     li      r6, 0x0
     li      r7, 0x0
@@ -3838,7 +3838,7 @@ branch_0x8027f5d0:
     cror    2, 1, 2
     bne-    branch_0x8027f698
     li      r0, 0x0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0x234(sp)
     addi    r4, sp, 0x234
     lfs     f1, 0x0(r28)
@@ -3947,7 +3947,7 @@ branch_0x8027f740:
     stfs    f1, 0x0(r25)
 branch_0x8027f75c:
     add     r23, r31, r19
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lfs     f1, -0x834(rtoc)
     addi    r5, r23, 0x814
     li      r4, 0x804
@@ -3972,7 +3972,7 @@ branch_0x8027f7a0:
     fsubs   f0, f0, f1
     stfs    f0, 0x0(r25)
     lbzx    r0, r31, r0
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     slwi    r4, r0, 2
     lfs     f1, 0x814(r23)
     addi    r0, r4, 0x5dbc
@@ -4077,7 +4077,7 @@ branch_0x8027f90c:
     addi    r24, r4, 0x814
     stfs    f0, 0x0(r25)
     lbzx    r0, r31, r0
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     slwi    r5, r0, 2
     lfs     f1, 0x814(r4)
     addi    r0, r5, 0x5dbc
@@ -4646,7 +4646,7 @@ loadAfter__18TModelWaterManagerFv: # 0x80280088
     li      r3, 0x3c
 branch_0x802800f8:
     xoris   r0, r3, 0x8000
-    lwz     r4, -0x6048(r13)
+    lwz     r4, gpMarDirector(r13)
     stw     r0, 0x5c(sp)
     lis     r0, 0x4330
     lbz     r3, 0x7c(r4)
@@ -5035,7 +5035,7 @@ branch_0x80280654:
     stb     r24, 0x5e47(r31)
     stb     r3, 0x5e48(r31)
     stb     r0, 0x5e49(r31)
-    stw     r31, -0x6088(r13)
+    stw     r31, gpModelWaterManager(r13)
     lwz     r0, 0x7c(sp)
     lfd     f31, 0x70(sp)
     lfd     f30, 0x68(sp)

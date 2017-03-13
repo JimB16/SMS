@@ -203,7 +203,7 @@ clipActorsAux__12TLiveManagerFPQ26JDrama9TGraphicsff: # 0x8021b074
     stmw    r27, 0x44(sp)
     mr      r29, r4
     mr      r28, r3
-    lwz     r5, -0x7118(r13)
+    lwz     r5, gpCamera(r13)
     lfs     f3, 0xe8(r4)
     lfs     f0, 0x4c(r5)
     lfs     f1, 0x48(r5)

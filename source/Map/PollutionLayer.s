@@ -290,7 +290,7 @@ initTexImage__15TPollutionLayerFPCc: # 0x801a10b4
     bl      getGlbResource__13JKRFileLoaderFPCc
     stw     r3, 0x80(r25)
     li      r4, 0x0
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x9
     bne-    branch_0x801a1108
@@ -578,7 +578,7 @@ stamp__15TPollutionLayerFUsffff: # 0x801a1440
     clrlwi  r31, r3, 16
     mr      r3, r0
     bl      worldToTexSize__13TPollutionPosCFf
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     clrlwi  r0, r28, 16
     clrlwi  r5, r3, 16
     lwz     r6, 0x4(r27)
@@ -598,7 +598,7 @@ stamp__15TPollutionLayerFUsffff: # 0x801a1440
     blrl
     cmpwi   r3, 0x6
     beq-    branch_0x801a1568
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     addi    r4, r28, 0x0
     addi    r3, r3, 0x70
     bl      stampIsCleanType__22TPollutionCounterLayerCFUs
@@ -804,7 +804,7 @@ branch_0x801a1774:
 branch_0x801a1834:
     lwz     r0, -0x62e0(r13)
     fmr     f1, f31
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x6809
     mulli   r0, r0, 0xc
     add     r5, r31, r0
@@ -824,13 +824,13 @@ branch_0x801a187c:
     lwz     r0, -0x62c8(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x801a18dc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x5
     bne-    branch_0x801a18bc
     lwz     r0, -0x62e0(r13)
     mr      r7, r29
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x6a
     mulli   r0, r0, 0xc
     add     r5, r31, r0
@@ -841,7 +841,7 @@ branch_0x801a187c:
 branch_0x801a18bc:
     lwz     r0, -0x62e0(r13)
     mr      r7, r29
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x1db
     mulli   r0, r0, 0xc
     add     r5, r31, r0
@@ -914,7 +914,7 @@ stampModel__15TPollutionLayerFP8J3DModel: # 0x801a1964
     b       branch_0x801a19cc
 
 branch_0x801a19b4:
-    lwz     r6, -0x62f0(r13)
+    lwz     r6, gpPollution(r13)
     mr      r5, r4
     lwz     r0, 0x4(r3)
     addi    r3, r6, 0x70
@@ -1018,7 +1018,7 @@ stamp__24TPollutionLayerWallPlusXFUsffff: # 0x801a1a78
     clrlwi  r31, r3, 16
     addi    r3, r28, 0x0
     bl      worldToTexSize__13TPollutionPosCFf
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     clrlwi  r0, r27, 16
     clrlwi  r5, r3, 16
     lwz     r6, 0x4(r26)
@@ -1123,7 +1123,7 @@ stamp__24TPollutionLayerWallPlusZFUsffff: # 0x801a1be8
     clrlwi  r31, r3, 16
     addi    r3, r28, 0x0
     bl      worldToTexSize__13TPollutionPosCFf
-    lwz     r4, -0x62f0(r13)
+    lwz     r4, gpPollution(r13)
     clrlwi  r0, r27, 16
     clrlwi  r5, r3, 16
     lwz     r6, 0x4(r26)
@@ -1308,14 +1308,14 @@ branch_0x801a1efc:
 
 branch_0x801a1f14:
     fmr     f1, f27
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     fmr     f2, f28
     fadds   f26, f28, f3
     bl      getWaveHeight__11TMapObjWaveCFff
     fsubs   f0, f1, f31
     stfs    f27, -0x8000(r31)
     fmr     f1, f27
-    lwz     r3, -0x626c(r13)
+    lwz     r3, gpMapObjWave(r13)
     fmr     f2, f26
     stfs    f0, -0x8000(r31)
     stfs    f28, -0x8000(r31)

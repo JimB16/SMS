@@ -186,7 +186,7 @@ branch_0x800858bc:
     fmuls   f1, f1, f0
     lfs     f3, -0x6868(rtoc)
     bl      walkToCurPathNode__11TSpineEnemyFfff
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x20dd
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -297,7 +297,7 @@ execute__22TNerveFireWanwanFreezeCFP24TSpineBase_10TLiveActor_: # 0x80085a00
     addi    r3, r30, 0x0
     li      r4, 0x4
     bl      setFrameRate__6MActorFfi
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28a6
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -697,7 +697,7 @@ execute__24TNerveFireWanwanHungTailCFP24TSpineBase_10TLiveActor_: # 0x80085f88
 branch_0x80085fec:
     lwz     r3, 0x10(r31)
     lwz     r0, 0x14(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r3, 0x4c(sp)
     stw     r0, 0x50(sp)
     lwz     r0, 0x18(r31)
@@ -919,7 +919,7 @@ branch_0x800862dc:
     cmpw    r0, r5
     stw     r0, 0x6c(r4)
     bne-    branch_0x80086304
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x19
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -931,7 +931,7 @@ branch_0x80086304:
     li      r4, 0x1
     bl      stop__8JAISoundFUl
 branch_0x80086318:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28e3
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1015,7 +1015,7 @@ branch_0x80086410:
     stw     r0, 0xb0(r31)
     lwz     r0, 0x90(sp)
     stw     r0, 0xb4(r31)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8008648c
@@ -1133,7 +1133,7 @@ execute__23TNerveFireWanwanRecoverCFP24TSpineBase_10TLiveActor_: # 0x8008656c
     subi    r0, r3, 0x1
     stw     r0, 0x68(r4)
 branch_0x800865f4:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28e2
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2141,7 +2141,7 @@ execute__22TNerveFireWanwanAttackCFP24TSpineBase_10TLiveActor_: # 0x80087380
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x6868(rtoc)
     stw     r3, 0x4c(sp)
     cmplwi  r3, 0x0
@@ -2363,7 +2363,7 @@ execute__25TNerveFireWanwanFindMarioCFP24TSpineBase_10TLiveActor_: # 0x8008768c
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r3, sp, 0x94
     addi    r4, r3, 0x0
     lwz     r5, 0x0(r6)
@@ -3194,7 +3194,7 @@ checkWalls__11TFireWanwanFPQ29JGeometry8TVec3_f_P18TBGWallCheckRecordf: # 0x8008
     stfs    f31, 0x44(sp)
     stw     r6, 0x48(sp)
     stw     r0, 0x50(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
     clrlwi. r0, r3, 24
     lwz     r4, 0x38(sp)
@@ -3366,7 +3366,7 @@ bindPoint__11TFireWanwanFPQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeom
     lfs     f1, 0xb8(sp)
     addi    r4, sp, 0xb0
     lfs     f0, 0xc0(r27)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0xb4(sp)
     lfs     f3, 0xbc(sp)
@@ -3378,7 +3378,7 @@ branch_0x80088488:
     lfs     f1, 0xb8(sp)
     addi    r4, sp, 0xb0
     lfs     f0, 0xc0(r27)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0xb4(sp)
     lfs     f3, 0xbc(sp)
@@ -3424,7 +3424,7 @@ branch_0x80088510:
     beq-    branch_0x80088544
     lfs     f0, 0xc0(r27)
     addi    r4, sp, 0xac
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0xb4(sp)
     lfs     f3, 0xbc(sp)
@@ -3434,7 +3434,7 @@ branch_0x80088510:
 branch_0x80088544:
     lfs     f0, 0xc0(r27)
     addi    r4, sp, 0xac
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0xb4(sp)
     lfs     f3, 0xbc(sp)
@@ -4283,7 +4283,7 @@ branch_0x8008913c:
     bl      setQuat__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___FRCQ29JGeometry9TQuat4_f_
     lfs     f0, 0x10(r30)
     addi    r5, sp, 0x90
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x18
     stfs    f0, 0x9c(sp)
     li      r6, 0x0
@@ -4308,7 +4308,7 @@ branch_0x8008913c:
     lfs     f0, 0x2c(r30)
     stfs    f0, 0x17c(r3)
 branch_0x800891b8:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, sp, 0x90
     li      r4, 0x19
     li      r6, 0x0
@@ -4339,7 +4339,7 @@ branch_0x80089208:
     li      r4, 0x1
     bl      stop__8JAISoundFUl
 branch_0x8008922c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28e1
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4575,7 +4575,7 @@ branch_0x80089560:
 
 branch_0x80089570:
     addi    r3, r29, 0x0
-    li      r4, 0xa
+    li      r4, MARIOMSG_HURTFIRE
     bl      SMS_SendMessageToMario__FP9THitActorUl
     mr      r3, r29
     lwz     r12, 0x0(r29)
@@ -4634,7 +4634,7 @@ initEscapeNextGraphNode__11TFireWanwanFv: # 0x800895d4
     li      r5, -0x1
     li      r7, -0x1
     bl      getEscapeFromMarioIndex__9TGraphWebCFiiRCQ29JGeometry8TVec3_f_Ul
-    lwz     r6, -0x60b4(r13)
+    lwz     r6, MarioHitActorPos(r13)
     addi    r31, r3, 0x0
     slwi    r0, r30, 4
     lwz     r5, 0x0(r6)
@@ -5269,7 +5269,7 @@ branch_0x80089ebc:
     mulli   r0, r28, 0x30
     lwz     r4, 0x58(r3)
     lfs     f2, -0x681c(rtoc)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     add     r28, r4, r0
     lfs     f31, 0x2c(r28)
     addi    r4, sp, 0x74
@@ -5455,7 +5455,7 @@ branch_0x8008a168:
     fmuls   f31, f31, f0
 branch_0x8008a184:
     fmr     f2, f29
-    lwz     r3, -0x62f0(r13)
+    lwz     r3, gpPollution(r13)
     fmr     f1, f30
     li      r4, 0x1
     fmr     f3, f28
@@ -5987,7 +5987,7 @@ branch_0x8008a8b0:
     lfs     f1, 0x14(r31)
     addi    r4, r31, 0xc4
     lfs     f0, 0xc0(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
@@ -6447,7 +6447,7 @@ behaveToWater__11TFireWanwanFP9THitActor: # 0x8008aed8
     lwz     r0, 0x160(r30)
     cmpwi   r0, 0x0
     bne-    branch_0x8008b24c
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28d1
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6519,7 +6519,7 @@ branch_0x8008affc:
     lwz     r0, 0x160(r30)
     cmpwi   r0, 0x0
     bne-    branch_0x8008b044
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28c4
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6615,7 +6615,7 @@ branch_0x8008b158:
     b       branch_0x8008b24c
 
 branch_0x8008b168:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28bd
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6738,7 +6738,7 @@ branch_0x8008b308:
     clrlwi  r3, r3, 24
     cmplw   r3, r0
     bne-    branch_0x8008b348
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x290f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6793,9 +6793,9 @@ isMissMario__11TFireWanwanCFv: # 0x8008b3b8
     stfd    f31, 0x60(sp)
     stw     r31, 0x5c(sp)
     mr      r31, r3
-    lwz     r4, -0x6094(r13)
+    lwz     r4, MarioFlags(r13)
     lwz     r4, 0x0(r4)
-    rlwinm. r0, r4, 0, 30, 30
+    rlwinm. r0, r4, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x8008b3e8
     li      r0, 0x1
     b       branch_0x8008b3ec
@@ -6855,7 +6855,7 @@ branch_0x8008b474:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r4)
     lfs     f2, 0x130(r3)
@@ -7330,7 +7330,7 @@ moveRequest__18TFireWanwanTailHitFRCQ29JGeometry8TVec3_f_: # 0x8008bb04
     lwz     r0, 0x4(r4)
     lfs     f2, -0x6864(rtoc)
     stw     r5, 0x34(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r0, 0x38(sp)
     lwz     r0, 0x8(r4)
     addi    r4, sp, 0x30
@@ -7356,7 +7356,7 @@ branch_0x8008bb7c:
     addi    r4, sp, 0x34
     fadds   f0, f1, f0
     stfs    f0, 0x38(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0x38(sp)
     lfs     f2, -0x67bc(rtoc)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -8021,7 +8021,7 @@ branch_0x8008c454:
     addi    r6, sp, 0x150
     li      r3, 0x137
     bl      SMS_EasyEmitParticle_24E_SMS_EFFECT_LOOP_NORMAL___F24E_SMS_EFFECT_LOOP_NORMALPA4_fPCvRCQ29JGeometry8TVec3_f_
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x20ab
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8250,7 +8250,7 @@ branch_0x8008c838:
     fsubs   f0, f1, f0
     fcmpo   cr0, f3, f0
     bge-    branch_0x8008c948
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x1a8(sp)
@@ -8296,7 +8296,7 @@ branch_0x8008c8dc:
 branch_0x8008c900:
     lwz     r5, 0xa4(r30)
     li      r4, 0x20df
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r5, 0x0(r5)
     addi    r30, r5, 0x30
     bl      gateCheck__6MSoundFUl
@@ -8730,7 +8730,7 @@ branch_0x8008cf2c:
     li      r4, 0x28de
     lwz     r3, 0xa4(r30)
     stb     r0, 0x9(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8008cf6c
@@ -8771,7 +8771,7 @@ branch_0x8008cfb0:
     lwz     r3, 0x70(r30)
     lwz     r3, 0x70(r3)
     stw     r0, 0x64(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r29, 0x70(r30)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8999,7 +8999,7 @@ perform__18TFireWanwanManagerFUlPQ26JDrama9TGraphics: # 0x8008d2d0
 
 branch_0x8008d2f8:
     lwz     r4, 0x18(r31)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lwzx    r29, r4, r30
     lfs     f1, 0x10(r29)
     lfs     f2, 0x18(r29)
@@ -9038,12 +9038,12 @@ branch_0x8008d360:
     lbz     r0, 0x60(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x8008d434
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     mr      r3, r31
     bl      getNearestEnemy__13TEnemyManagerFRCQ29JGeometry8TVec3_f_
     cmplwi  r3, 0x0
     beq-    branch_0x8008d434
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     addi    r5, r3, 0x10
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -9080,7 +9080,7 @@ branch_0x8008d360:
     stb     r0, 0x60(r31)
     li      r4, 0x16
     li      r5, 0x1
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
 branch_0x8008d434:
@@ -9105,14 +9105,14 @@ branch_0x8008d434:
     li      r5, 0x1
     lwz     r0, 0x53c(r3)
     stw     r0, 0x64(r31)
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
 branch_0x8008d494:
     lwz     r0, 0x68(r31)
     cmpwi   r0, 0x0
     bne-    branch_0x8008d4bc
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     li      r4, 0x18
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -9142,7 +9142,7 @@ branch_0x8008d4f4:
     lwz     r0, 0x6c(r31)
     cmpw    r0, r3
     bne-    branch_0x8008d558
-    lwz     r3, -0x6048(r13)
+    lwz     r3, gpMarDirector(r13)
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x3
     beq-    branch_0x8008d558
@@ -9159,7 +9159,7 @@ branch_0x8008d4f4:
     lfs     f1, -0x67a0(rtoc)
     subi    r4, r4, 0x48e0
     lfs     f0, 0x14(r6)
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r6)
     lfs     f3, 0x18(r6)
@@ -10342,7 +10342,7 @@ bindOne__11TTailRubberFRQ211TTailRubber4Node: # 0x8008e618
     stfs    f0, 0x38(sp)
     lfs     f1, -0x6778(rtoc)
     lfs     f0, 0x34(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x30(sp)
     lfs     f3, 0x38(sp)
@@ -10367,7 +10367,7 @@ branch_0x8008e6d8:
     mr      r5, r31
     lfs     f0, 0x34(sp)
     addi    r4, sp, 0x30
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f1, f1, f0
     lfs     f2, -0x6774(rtoc)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
@@ -10552,7 +10552,7 @@ SMS_EasyEmitParticle_27E_SMS_EFFECT_ONETIME_NORMAL___F27E_SMS_EFFECT_ONETIME_NOR
     stw     r31, 0x1c(sp)
     addi    r31, r6, 0x0
     li      r6, 0x0
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8008e9a4
@@ -10589,7 +10589,7 @@ SMS_EasyEmitParticle_24E_SMS_EFFECT_LOOP_NORMAL___F24E_SMS_EFFECT_LOOP_NORMALPA4
     stw     r31, 0x1c(sp)
     addi    r31, r6, 0x0
     li      r6, 0x1
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8008ea24
@@ -10626,7 +10626,7 @@ SMS_EasyEmitParticle_26E_SMS_EFFECT_LOOP_INDIRECT___F26E_SMS_EFFECT_LOOP_INDIREC
     stw     r31, 0x1c(sp)
     addi    r31, r6, 0x0
     li      r6, 0x3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8008eaa4
@@ -10663,7 +10663,7 @@ SMS_EasyEmitParticle_24E_SMS_EFFECT_LOOP_NORMAL___F24E_SMS_EFFECT_LOOP_NORMALPCQ
     stw     r31, 0x1c(sp)
     addi    r31, r6, 0x0
     li      r6, 0x1
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8008eb24
@@ -10700,7 +10700,7 @@ SMS_EasyEmitParticle_26E_SMS_EFFECT_LOOP_INDIRECT___F26E_SMS_EFFECT_LOOP_INDIREC
     stw     r31, 0x1c(sp)
     addi    r31, r6, 0x0
     li      r6, 0x3
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x8008eba4

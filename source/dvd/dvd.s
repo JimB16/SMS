@@ -1302,7 +1302,9 @@ branch_0x8034d02c:
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8034D068:		# jumptable 8034D064 case 1
     li      r0, 0x6
     lis     r3, 0x8035
     stw     r0, 0xc(r4)
@@ -1310,8 +1312,101 @@ branch_0x8034d02c:
     bl      DVDLowWaitCoverClose
     b       branch_0x8034d1a8
 
+branch_0x8034D080:		# jumptable 8034D064 case 2
+li	  r0, 0xB
+lis	  r3, cbForStateMotorStopped@ha
+stw	  r0, 0xC(r4)
+addi	  r3, r3, cbForStateMotorStopped@l
+bl	  DVDLowWaitCoverClose
+b	  def_8034D064	# jumptable 8034D064 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x347a80, 0x8034d1a8 - 0x8034d080
+branch_0x8034D098:		# jumptable 8034D064 case 3
+li	  r0, 4
+lis	  r3, cbForStateMotorStopped@ha
+stw	  r0, 0xC(r4)
+addi	  r3, r3, cbForStateMotorStopped@l
+bl	  DVDLowWaitCoverClose
+b	  def_8034D064	# jumptable 8034D064 default case
+
+branch_0x8034D0B0:		# jumptable 8034D064 case 7
+li	  r0, 7
+lis	  r3, cbForStateMotorStopped@ha
+stw	  r0, 0xC(r4)
+addi	  r3, r3, cbForStateMotorStopped@l
+bl	  DVDLowWaitCoverClose
+b	  def_8034D064	# jumptable 8034D064 default case
+
+branch_0x8034D0C8:		# jumptable 8034D064 case 4
+li	  r0, 5
+lis	  r3, cbForStateMotorStopped@ha
+stw	  r0, 0xC(r4)
+addi	  r3, r3, cbForStateMotorStopped@l
+bl	  DVDLowWaitCoverClose
+b	  def_8034D064	# jumptable 8034D064 default case
+
+branch_0x8034D0E0:		# jumptable 8034D064 case 6
+li	  r0, 3
+stw	  r0, 0xC(r4)
+lwz	  r0, -0x592C(r13)
+cmpwi	  r0, 0xD
+beq	  branch_0x8034D118
+bge	  branch_0x8034D10C
+cmpwi	  r0, 6
+bge	  branch_0x8034D148
+cmpwi	  r0, 4
+bge	  branch_0x8034D118
+b	  branch_0x8034D148
+
+branch_0x8034D10C:
+cmpwi	  r0, 0xF
+beq	  branch_0x8034D118
+b	  branch_0x8034D148
+
+branch_0x8034D118:
+bl	  __DVDClearWaitingQueue
+lwz	  r4, -0x5948(r13)
+addi	  r0, r31, 0x80
+stw	  r0, -0x5948(r13)
+lwz	  r12, 0x28(r4)
+cmplwi	  r12, 0
+beq	  branch_0x8034D140
+mtlr	  r12
+li	  r3, -4
+blrl
+
+branch_0x8034D140:
+bl	  stateReady
+b	  def_8034D064	# jumptable 8034D064 default case
+
+branch_0x8034D148:
+bl	  DVDReset
+addi	  r3, r31, 0xB0
+bl	  OSCreateAlarm
+lis	  r3, -0x8000
+lwz	  r0, 0xF8(r3)
+lis	  r4, 0x1062 # 0x10624DD3
+lis	  r3, AlarmHandler_8034ccd4@ha
+srwi	  r0, r0, 2
+addi	  r4, r4, 0x4DD3 # 0x10624DD3
+mulhwu	  r0, r4, r0
+srwi	  r0, r0, 6
+mulli	  r6, r0, 0x47E
+addi	  r7, r3, AlarmHandler_8034ccd4@l
+addi	  r3, r31, 0xB0
+li	  r5, 0
+bl	  OSSetAlarm
+b	  def_8034D064	# jumptable 8034D064 default case
+
+branch_0x8034D18C:		# jumptable 8034D064 case 5
+li	  r0, -1
+stw	  r0, 0xC(r4)
+lwz	  r3, -0x591C(r13)
+bl	  __DVDStoreErrorCode
+lis	  r3, cbForStateError@ha
+addi	  r3, r3, cbForStateError@l
+bl	  DVDLowStopMotor
+
+def_8034D064:		# jumptable 8034D064 default case
 branch_0x8034d1a8:
     li      r0, 0x0
     stw     r0, -0x5920(r13)
@@ -1347,7 +1442,9 @@ stateBusy: # 0x8034d1d8
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8034D218:		# jumptable 8034D214 case 5
     lis     r3, 0xcc00
     lwz     r0, 0x6004(r3)
     addi    r5, r3, 0x6000
@@ -1360,8 +1457,184 @@ stateBusy: # 0x8034d1d8
     bl      DVDLowReadDiskID
     b       branch_0x8034d488
 
+branch_0x8034D244:		# jumptable 8034D214 cases 1,4
+lis	  r3, -0x3400 #	0xCC006000
+addi	  r3, r3, 0x6000 # 0xCC006000
+lwz	  r0, 4(r3)
+lis	  r4, 8
+stw	  r0, 4(r3)
+lwz	  r3, 0x20(r7)
+lwz	  r0, 0x14(r7)
+subf	  r0, r3, r0
+cmplw	  r0, r4
+ble	  branch_0x8034D270
+b	  branch_0x8034D274
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x347c44, 0x8034d488 - 0x8034d244
+branch_0x8034D270:
+mr	  r4, r0
+
+branch_0x8034D274:
+stw	  r4, 0x1C(r7)
+lis	  r3, cbForStateBusy@ha
+addi	  r6, r3, cbForStateBusy@l
+lwz	  r5, 0x20(r7)
+lwz	  r3, 0x18(r7)
+lwz	  r0, 0x10(r7)
+add	  r3, r3, r5
+lwz	  r4, 0x1C(r7)
+add	  r5, r0, r5
+bl	  DVDLowRead
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D2A0:		# jumptable 8034D214 case 2
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r5, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r5)
+addi	  r4, r3, cbForStateBusy@l
+lwz	  r3, 0x10(r7)
+bl	  DVDLowSeek
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D2C4:		# jumptable 8034D214 case 3
+lis	  r3, cbForStateBusy@ha
+addi	  r3, r3, cbForStateBusy@l
+bl	  DVDLowStopMotor
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D2D4:		# jumptable 8034D214 case 15
+lis	  r3, cbForStateBusy@ha
+addi	  r3, r3, cbForStateBusy@l
+bl	  DVDLowStopMotor
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D2E4:		# jumptable 8034D214 case 6
+lis	  r3, -0x3400 #	0xCC006000
+addi	  r3, r3, 0x6000 # 0xCC006000
+lwz	  r0, 4(r3)
+stw	  r0, 4(r3)
+lwz	  r0, -0x5934(r13)
+cmpwi	  r0, 0
+beq	  branch_0x8034D320
+lwz	  r5, -0x5948(r13)
+li	  r0, 0
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 0x1C(r5)
+addi	  r4, r3, cbForStateBusy@l
+li	  r3, 0
+bl	  DVDLowRequestAudioStatus
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D320:
+lwz	  r4, -0x5948(r13)
+li	  r0, 1
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 0x1C(r4)
+addi	  r6, r3, cbForStateBusy@l
+li	  r3, 0
+lwz	  r4, 0x14(r7)
+lwz	  r5, 0x10(r7)
+bl	  DVDLowAudioStream
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D348:		# jumptable 8034D214 case 7
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r4, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r4)
+addi	  r6, r3, cbForStateBusy@l
+lis	  r3, 1
+li	  r4, 0
+li	  r5, 0
+bl	  DVDLowAudioStream
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D374:		# jumptable 8034D214 case 8
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r4, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r4)
+li	  r0, 1
+addi	  r6, r3, cbForStateBusy@l
+stw	  r0, -0x5934(r13)
+li	  r3, 0
+li	  r4, 0
+li	  r5, 0
+bl	  DVDLowAudioStream
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D3A8:		# jumptable 8034D214 case 9
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r5, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r5)
+addi	  r4, r3, cbForStateBusy@l
+li	  r3, 0
+bl	  DVDLowRequestAudioStatus
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D3CC:		# jumptable 8034D214 case 10
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r5, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r5)
+addi	  r4, r3, cbForStateBusy@l
+lis	  r3, 1
+bl	  DVDLowRequestAudioStatus
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D3F0:		# jumptable 8034D214 case 11
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r5, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r5)
+addi	  r4, r3, cbForStateBusy@l
+lis	  r3, 2
+bl	  DVDLowRequestAudioStatus
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D414:		# jumptable 8034D214 case 12
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r5, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r5)
+addi	  r4, r3, cbForStateBusy@l
+lis	  r3, 3
+bl	  DVDLowRequestAudioStatus
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D438:		# jumptable 8034D214 case 13
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r4, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r4)
+addi	  r5, r3, cbForStateBusy@l
+lwz	  r3, 0x10(r7)
+lwz	  r4, 0x14(r7)
+bl	  DVDLowAudioBufferConfig
+b	  def_8034D214	# jumptable 8034D214 default case
+
+branch_0x8034D460:		# jumptable 8034D214 case 14
+lis	  r3, -0x3400 #	0xCC006000
+lwz	  r0, 0x6004(r3)
+addi	  r5, r3, 0x6000 # 0xCC006000
+lis	  r3, cbForStateBusy@ha
+stw	  r0, 4(r5)
+li	  r0, 0x20
+addi	  r4, r3, cbForStateBusy@l
+stw	  r0, 0x1C(r7)
+lwz	  r3, 0x18(r7)
+bl	  DVDLowInquiry
+
+def_8034D214:		# jumptable 8034D214 default case
 branch_0x8034d488:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -2396,7 +2669,9 @@ DVDCancelAsync: # 0x8034e200
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8034E250:		# jumptable 8034E24C cases 0,1,11
     cmplwi  r30, 0x0
     beq-    branch_0x8034e448
     addi    r12, r30, 0x0
@@ -2406,12 +2681,169 @@ DVDCancelAsync: # 0x8034e200
     blrl
     b       branch_0x8034e448
 
+branch_0x8034E270:		# jumptable 8034E24C case 2
+lwz	  r0, -0x5928(r13)
+cmplwi	  r0, 0
+beq	  branch_0x8034E28C
+mr	  r3, r31
+bl	  OSRestoreInterrupts
+li	  r3, 0
+b	  branch_0x8034E454
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x348c70, 0x8034e448 - 0x8034e270
+branch_0x8034E28C:
+li	  r0, 1
+stw	  r30, -0x5924(r13)
+stw	  r0, -0x5928(r13)
+lwz	  r0, 8(r29)
+cmplwi	  r0, 4
+beq	  branch_0x8034E2AC
+cmplwi	  r0, 1
+bne	  def_8034E24C	# jumptable 8034E24C default case
+
+branch_0x8034E2AC:
+bl	  DVDLowBreak
+b	  def_8034E24C	# jumptable 8034E24C default case
+
+branch_0x8034E2B4:		# jumptable 8034E24C case 3
+mr	  r3, r29
+bl	  __DVDDequeueWaitingQueue
+li	  r0, 0xA
+stw	  r0, 0xC(r29)
+lwz	  r12, 0x28(r29)
+cmplwi	  r12, 0
+beq	  branch_0x8034E2E0
+mtlr	  r12
+addi	  r4, r29, 0
+li	  r3, -3
+blrl
+
+branch_0x8034E2E0:
+cmplwi	  r30, 0
+beq	  def_8034E24C	# jumptable 8034E24C default case
+addi	  r12, r30, 0
+mtlr	  r12
+addi	  r4, r29, 0
+li	  r3, 0
+blrl
+b	  def_8034E24C	# jumptable 8034E24C default case
+
+branch_0x8034E300:		# jumptable 8034E24C case 4
+lwz	  r0, 8(r29)
+cmpwi	  r0, 0xD
+beq	  branch_0x8034E330
+bge	  branch_0x8034E324
+cmpwi	  r0, 6
+bge	  branch_0x8034E350
+cmpwi	  r0, 4
+bge	  branch_0x8034E330
+b	  branch_0x8034E350
+
+branch_0x8034E324:
+cmpwi	  r0, 0xF
+beq	  branch_0x8034E330
+b	  branch_0x8034E350
+
+branch_0x8034E330:
+cmplwi	  r30, 0
+beq	  def_8034E24C	# jumptable 8034E24C default case
+addi	  r12, r30, 0
+mtlr	  r12
+addi	  r4, r29, 0
+li	  r3, 0
+blrl
+b	  def_8034E24C	# jumptable 8034E24C default case
+
+branch_0x8034E350:
+lwz	  r0, -0x5928(r13)
+cmplwi	  r0, 0
+beq	  branch_0x8034E36C
+mr	  r3, r31
+bl	  OSRestoreInterrupts
+li	  r3, 0
+b	  branch_0x8034E454
+
+branch_0x8034E36C:
+li	  r0, 1
+stw	  r30, -0x5924(r13)
+stw	  r0, -0x5928(r13)
+b	  def_8034E24C	# jumptable 8034E24C default case
+
+branch_0x8034E37C:		# jumptable 8034E24C cases 5-8,12
+bl	  DVDLowClearCallback
+lis	  r4, cbForStateMotorStopped@ha
+addi	  r0, r4, cbForStateMotorStopped@l
+cmplw	  r3, r0
+beq	  branch_0x8034E3A0
+mr	  r3, r31
+bl	  OSRestoreInterrupts
+li	  r3, 0
+b	  branch_0x8034E454
+
+branch_0x8034E3A0:
+lwz	  r0, 0xC(r29)
+cmpwi	  r0, 4
+bne	  branch_0x8034E3B4
+li	  r0, 3
+stw	  r0, -0x5920(r13)
+
+branch_0x8034E3B4:
+lwz	  r0, 0xC(r29)
+cmpwi	  r0, 5
+bne	  branch_0x8034E3C8
+li	  r0, 4
+stw	  r0, -0x5920(r13)
+
+branch_0x8034E3C8:
+lwz	  r0, 0xC(r29)
+cmpwi	  r0, 6
+bne	  branch_0x8034E3DC
+li	  r0, 1
+stw	  r0, -0x5920(r13)
+
+branch_0x8034E3DC:
+lwz	  r0, 0xC(r29)
+cmpwi	  r0, 0xB
+bne	  branch_0x8034E3F0
+li	  r0, 2
+stw	  r0, -0x5920(r13)
+
+branch_0x8034E3F0:
+lwz	  r0, 0xC(r29)
+cmpwi	  r0, 7
+bne	  branch_0x8034E404
+li	  r0, 7
+stw	  r0, -0x5920(r13)
+
+branch_0x8034E404:
+li	  r0, 0xA
+stw	  r0, 0xC(r29)
+lwz	  r12, 0x28(r29)
+cmplwi	  r12, 0
+beq	  branch_0x8034E428
+mtlr	  r12
+addi	  r4, r29, 0
+li	  r3, -3
+blrl
+
+branch_0x8034E428:
+cmplwi	  r30, 0
+beq	  branch_0x8034E444
+addi	  r12, r30, 0
+mtlr	  r12
+addi	  r4, r29, 0
+li	  r3, 0
+blrl
+
+branch_0x8034E444:
+bl	  stateReady
+
+def_8034E24C:		# jumptable 8034E24C default case
 branch_0x8034e448:
     mr      r3, r31
     bl      OSRestoreInterrupts
     li      r3, 0x1
+
+branch_0x8034E454:
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
     lwz     r30, 0x18(sp)
@@ -2540,12 +2972,33 @@ branch_0x8034e5b4:
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8034E5D8:		# jumptable 8034E5D4 cases 2,3,10,11
     li      r31, 0x1
     b       branch_0x8034e610
 
+branch_0x8034E5E0:		# jumptable 8034E5D4 cases 0,4-8,12
+li	  r31, 0
+b	  def_8034E5D4	# jumptable 8034E5D4 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x348fe0, 0x8034e610 - 0x8034e5e0
+branch_0x8034E5E8:		# jumptable 8034E5D4 cases 1,9
+lis	  r4, -0x3400 #	0xCC006000
+addi	  r4, r4, 0x6000 # 0xCC006000
+lwz	  r4, 4(r4)
+extrwi.	  r0, r4, 1,29
+bne	  branch_0x8034E604
+clrlwi.	  r0, r4, 31
+beq	  branch_0x8034E60C
+
+branch_0x8034E604:
+li	  r31, 0
+b	  def_8034E5D4	# jumptable 8034E5D4 default case
+
+branch_0x8034E60C:
+li	  r31, 1
+
+def_8034E5D4:		# jumptable 8034E5D4 default case
 branch_0x8034e610:
     bl      OSRestoreInterrupts
     mr      r3, r31

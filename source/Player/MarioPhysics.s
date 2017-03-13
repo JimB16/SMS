@@ -1,4 +1,8 @@
 
+/* TMario::jumpProcess((int))
+Input:
+r3: MarioActor
+*/
 .globl jumpProcess__6TMarioFi
 jumpProcess__6TMarioFi: # 0x802563e0
     mflr    r0
@@ -8,8 +12,8 @@ jumpProcess__6TMarioFi: # 0x802563e0
     li      r31, 0x0
     stw     r30, 0x40(sp)
     mr      r30, r3
-    lfs     f2, 0xa4(r3)
-    lfs     f1, 0xac(r3)
+    lfs     f2, MarioActor_SpeedX(r3)
+    lfs     f1, MarioActor_SpeedZ(r3)
     fmuls   f2, f2, f2
     lfs     f0, -0xf10(rtoc)
     fmuls   f1, f1, f1
@@ -36,34 +40,36 @@ jumpProcess__6TMarioFi: # 0x802563e0
     stfs    f0, 0x28(sp)
     lfs     f4, 0x28(sp)
 branch_0x80256468:
-    addi    r3, r30, 0xb40
-    lfs     f0, 0xb40(r30)
+
+    addi    r3, r30, MarioActor_b40
+    lfs     f0, MarioActor_b40(r30)
     fcmpo   cr0, f4, f0
     ble-    branch_0x8025649c
     fdivs   f0, f0, f4
-    lfs     f1, 0xa4(r30)
+    lfs     f1, MarioActor_SpeedX(r30)
     fmuls   f0, f1, f0
-    stfs    f0, 0xa4(r30)
+    stfs    f0, MarioActor_SpeedX(r30)
     lfs     f0, 0x0(r3)
-    lfs     f1, 0xac(r30)
+    lfs     f1, MarioActor_SpeedZ(r30)
     fdivs   f0, f0, f4
     fmuls   f0, f1, f0
-    stfs    f0, 0xac(r30)
+    stfs    f0, MarioActor_SpeedZ(r30)
 branch_0x8025649c:
+
     lfs     f2, -0xef8(rtoc)
     mr      r3, r30
-    lfs     f1, 0xa4(r30)
+    lfs     f1, MarioActor_SpeedX(r30)
     mr      r5, r4
-    lfs     f0, 0x10(r30)
+    lfs     f0, MarioActor_PositionX(r30)
     addi    r4, sp, 0x30
     fmadds  f0, f2, f1, f0
     stfs    f0, 0x30(sp)
-    lfs     f1, 0xa8(r30)
-    lfs     f0, 0x14(r30)
+    lfs     f1, MarioActor_SpeedY(r30)
+    lfs     f0, MarioActor_PositionY(r30)
     fmadds  f0, f2, f1, f0
     stfs    f0, 0x34(sp)
-    lfs     f1, 0xac(r30)
-    lfs     f0, 0x18(r30)
+    lfs     f1, MarioActor_SpeedZ(r30)
+    lfs     f0, MarioActor_PositionZ(r30)
     fmadds  f0, f2, f1, f0
     stfs    f0, 0x38(sp)
     bl      checkGroundAtJumping__6TMarioFRC3Veci
@@ -71,26 +77,30 @@ branch_0x8025649c:
     beq-    branch_0x802564ec
     mr      r31, r3
 branch_0x802564ec:
-    lfs     f1, 0xa8(r30)
+
+    lfs     f1, MarioActor_SpeedY(r30)
     lfs     f0, -0xf10(rtoc)
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x80256508
-    lfs     f0, 0x14(r30)
-    stfs    f0, 0x104(r30)
+    lfs     f0, MarioActor_PositionY(r30)
+    stfs    f0, MarioActor_104(r30)
 branch_0x80256508:
+
     mr      r3, r30
     bl      fallProcess__6TMarioFv
-    lwz     r3, 0x7c(r30)
+    lwz     r3, MarioActor_Status(r30)
     addis   r0, r3, 0xff80
-    cmplwi  r0, 0x88a
+    cmplwi  r0, MARIOSTATUS_DIVE
     beq-    branch_0x80256528
     li      r0, 0x0
-    sth     r0, 0x94(r30)
+    sth     r0, MarioActor_AngleX(r30)
 branch_0x80256528:
-    lha     r0, 0x96(r30)
+
+    lha     r0, MarioActor_AngleY(r30)
     mr      r3, r31
-    sth     r0, 0x9a(r30)
+    sth     r0, MarioActor_9a(r30)
+
     lwz     r0, 0x4c(sp)
     lwz     r31, 0x44(sp)
     lwz     r30, 0x40(sp)
@@ -99,6 +109,10 @@ branch_0x80256528:
     blr
 
 
+/* TMario::fallProcess((void))
+Input:
+r3: MarioActor
+*/
 .globl fallProcess__6TMarioFv
 fallProcess__6TMarioFv: # 0x8025654c
     mflr    r0
@@ -106,22 +120,22 @@ fallProcess__6TMarioFv: # 0x8025654c
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     mr      r31, r3
-    lwz     r4, 0x7c(r3)
-    cmplwi  r4, 0x891
+    lwz     r4, MarioActor_Status(r3)
+    cmplwi  r4, MARIOSTATUS_891
     bne-    branch_0x80256594
-    lfs     f1, 0xa8(r31)
-    lfs     f0, 0x21b0(r31)
+    lfs     f1, MarioActor_SpeedY(r31)
+    lfs     f0, MarioActor_21b0(r31)
     fsubs   f0, f1, f0
-    stfs    f0, 0xa8(r31)
-    lfs     f1, 0xa8(r31)
+    stfs    f0, MarioActor_SpeedY(r31)
+    lfs     f1, MarioActor_SpeedY(r31)
     lfs     f0, -0xef4(rtoc)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8025666c
-    stfs    f0, 0xa8(r31)
+    stfs    f0, MarioActor_SpeedY(r31)
     b       branch_0x8025666c
 
 branch_0x80256594:
-    lwz     r0, 0x78(r31)
+    lwz     r0, MarioActor_78(r31)
     rlwinm. r0, r0, 0, 23, 23
     beq-    branch_0x802565a8
     li      r0, 0x1
@@ -144,10 +158,10 @@ branch_0x802565bc:
     b       branch_0x802565fc
 
 branch_0x802565d4:
-    lwz     r0, 0x74(r31)
+    lwz     r0, MarioActor_74(r31)
     rlwinm. r0, r0, 0, 24, 24
     bne-    branch_0x802565f8
-    lfs     f1, 0xa8(r31)
+    lfs     f1, MarioActor_SpeedY(r31)
     lfs     f0, -0xef0(rtoc)
     fcmpo   cr0, f1, f0
     ble-    branch_0x802565f8
@@ -159,43 +173,43 @@ branch_0x802565f8:
 branch_0x802565fc:
     cmpwi   r0, 0x0
     beq-    branch_0x80256618
-    lfs     f1, 0xa8(r31)
+    lfs     f1, MarioActor_SpeedY(r31)
     lfs     f0, -0xeec(rtoc)
     fmuls   f0, f1, f0
-    stfs    f0, 0xa8(r31)
+    stfs    f0, MarioActor_SpeedY(r31)
     b       branch_0x80256654
 
 branch_0x80256618:
     subi    r0, r4, 0x895
     cmplwi  r0, 0x1
     bgt-    branch_0x80256644
-    lfs     f1, 0xa8(r31)
+    lfs     f1, MarioActor_SpeedY(r31)
     lfs     f0, -0xf10(rtoc)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80256644
-    lfs     f0, 0xb2c(r31)
+    lfs     f0, MarioActor_b2c(r31)
     fsubs   f0, f1, f0
-    stfs    f0, 0xa8(r31)
+    stfs    f0, MarioActor_SpeedY(r31)
     b       branch_0x80256654
 
 branch_0x80256644:
-    lfs     f1, 0xa8(r31)
-    lfs     f0, 0xb18(r31)
+    lfs     f1, MarioActor_SpeedY(r31)
+    lfs     f0, MarioActor_Gravity(r31)
     fsubs   f0, f1, f0
-    stfs    f0, 0xa8(r31)
+    stfs    f0, MarioActor_SpeedY(r31)
 branch_0x80256654:
     mr      r3, r31
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     beq-    branch_0x8025666c
-    lwz     r3, 0x3f0(r31)
+    lwz     r3, MarioActor_Yoshi(r31)
     bl      thinkHoldOut__6TYoshiFv
 branch_0x8025666c:
-    lfs     f1, 0xa8(r31)
+    lfs     f1, MarioActor_SpeedY(r31)
     lfs     f0, -0xef4(rtoc)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80256680
-    stfs    f0, 0xa8(r31)
+    stfs    f0, MarioActor_SpeedY(r31)
 branch_0x80256680:
     lwz     r0, 0x34(sp)
     lwz     r31, 0x2c(sp)
@@ -204,6 +218,10 @@ branch_0x80256680:
     blr
 
 
+/* TMario::checkGroundAtJumping((Vec const &,int))
+Input:
+r3: MarioActor
+*/
 .globl checkGroundAtJumping__6TMarioFRC3Veci
 checkGroundAtJumping__6TMarioFRC3Veci: # 0x80256694
     mflr    r0
@@ -221,17 +239,17 @@ checkGroundAtJumping__6TMarioFRC3Veci: # 0x80256694
     stw     r0, 0x5c(sp)
     lwz     r0, 0x8(r23)
     stw     r0, 0x60(sp)
-    lfs     f2, 0x15c(r22)
+    lfs     f2, MarioActor_15c(r22)
     bl      checkWallPlane__6TMarioFP3Vecff
     lfs     f1, -0xee4(rtoc)
     addi    r31, r3, 0x0
-    lfs     f2, 0x15c(r22)
+    lfs     f2, MarioActor_15c(r22)
     addi    r3, r22, 0x0
     addi    r4, sp, 0x58
     bl      checkWallPlane__6TMarioFP3Vecff
-    lwz     r0, 0x7c(r22)
+    lwz     r0, MarioActor_Status(r22)
     addi    r30, r3, 0x0
-    rlwinm. r0, r0, 0, 15, 15
+    rlwinm. r0, r0, 0, 15, 15 # MARIOSTATUS_10000
     beq-    branch_0x80256708
     li      r0, 0x1
     b       branch_0x8025670c
@@ -242,45 +260,45 @@ branch_0x8025670c:
     clrlwi. r0, r0, 24
     beq-    branch_0x8025673c
     lfs     f1, -0xee4(rtoc)
-    addi    r4, r22, 0xe0
+    addi    r4, r22, MarioActor_GroundPlane
     lfs     f0, 0x5c(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x58(sp)
     lfs     f3, 0x60(sp)
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
-    stfs    f1, 0xec(r22)
+    stfs    f1, MarioActor_ec(r22)
     b       branch_0x80256760
 
 branch_0x8025673c:
     lfs     f2, -0xee4(rtoc)
     mr      r3, r22
     lfs     f0, 0x5c(sp)
-    addi    r4, r22, 0xec
+    addi    r4, r22, MarioActor_ec
     lfs     f1, 0x58(sp)
     fadds   f2, f2, f0
     lfs     f3, 0x60(sp)
-    addi    r5, r22, 0xe0
+    addi    r5, r22, MarioActor_GroundPlane
     bl      checkGroundPlane__6TMarioFfffPfPPC12TBGCheckData
 branch_0x80256760:
     lfs     f1, -0xee0(rtoc)
     mr      r3, r22
-    lfs     f0, 0x14(r22)
+    lfs     f0, MarioActor_PositionY(r22)
     addi    r4, sp, 0x58
-    addi    r5, r22, 0xdc
+    addi    r5, r22, MarioActor_RfPlane
     fadds   f1, f1, f0
     bl      checkRoofPlane__6TMarioFRC3VecfPPC12TBGCheckData
-    stfs    f1, 0xe8(r22)
+    stfs    f1, MarioActor_e8(r22)
     li      r29, 0x7
     li      r28, 0x7
     lfs     f0, 0x58(sp)
     li      r27, 0x7
-    stfs    f0, 0x10(r22)
+    stfs    f0, MarioActor_PositionX(r22)
     lfs     f0, 0x5c(sp)
-    stfs    f0, 0x14(r22)
+    stfs    f0, MarioActor_PositionY(r22)
     lfs     f0, 0x60(sp)
-    stfs    f0, 0x18(r22)
-    lwz     r3, 0xe0(r22)
+    stfs    f0, MarioActor_PositionZ(r22)
+    lwz     r3, MarioActor_GroundPlane(r22)
     lhz     r0, 0x4(r3)
     rlwinm. r0, r0, 0, 27, 27
     beq-    branch_0x802567bc
@@ -292,13 +310,13 @@ branch_0x802567bc:
 branch_0x802567c0:
     clrlwi. r0, r0, 24
     beq-    branch_0x802567e8
-    lwz     r3, 0x29c(r22)
+    lwz     r3, MarioActor_29c(r22)
     li      r29, 0x2
-    lwz     r0, 0x2a0(r22)
-    stw     r3, 0x10(r22)
-    stw     r0, 0x14(r22)
-    lwz     r0, 0x2a4(r22)
-    stw     r0, 0x18(r22)
+    lwz     r0, MarioActor_2a0(r22)
+    stw     r3, MarioActor_PositionX(r22)
+    stw     r0, MarioActor_PositionY(r22)
+    lwz     r0, MarioActor_2a4(r22)
+    stw     r0, MarioActor_PositionZ(r22)
     b       branch_0x802568f8
 
 branch_0x802567e8:
@@ -331,9 +349,9 @@ branch_0x8025683c:
     beq-    branch_0x80256848
     li      r5, 0x1
 branch_0x80256848:
-    lwz     r3, 0x7c(r22)
+    lwz     r3, MarioActor_Status(r22)
     addis   r0, r3, 0xff80
-    cmplwi  r0, 0x8a9
+    cmplwi  r0, MARIOSTATUS_8a9
     bne-    branch_0x80256878
     cmplwi  r4, 0x107
     bne-    branch_0x80256868
@@ -381,19 +399,19 @@ branch_0x802568d4:
     cmpwi   r5, 0x0
     bne-    branch_0x802568f8
     lfs     f0, 0x5c(sp)
-    lfs     f1, 0xec(r22)
+    lfs     f1, MarioActor_ec(r22)
     fcmpo   cr0, f0, f1
     cror    2, 0, 2
     bne-    branch_0x802568f8
-    stfs    f1, 0x14(r22)
+    stfs    f1, MarioActor_PositionY(r22)
     li      r29, 0x1
 branch_0x802568f8:
     cmpwi   r29, 0x1
     bne-    branch_0x80256908
-    lfs     f0, 0xa8(r22)
-    stfs    f0, 0xbc(r22)
+    lfs     f0, MarioActor_SpeedY(r22)
+    stfs    f0, MarioActor_bc(r22)
 branch_0x80256908:
-    lwz     r3, 0xdc(r22)
+    lwz     r3, MarioActor_RfPlane(r22)
     cmplwi  r3, 0x0
     beq-    branch_0x80256a68
     lhz     r3, 0x0(r3)
@@ -424,13 +442,13 @@ branch_0x80256964:
     bne-    branch_0x80256a68
     lfs     f1, -0xedc(rtoc)
     lfs     f0, 0x5c(sp)
-    lfs     f2, 0xe8(r22)
+    lfs     f2, MarioActor_e8(r22)
     fadds   f0, f1, f0
     fcmpo   cr0, f0, f2
     ble-    branch_0x80256a68
     fsubs   f0, f2, f1
-    stfs    f0, 0x14(r22)
-    lwz     r3, 0xdc(r22)
+    stfs    f0, MarioActor_PositionY(r22)
+    lwz     r3, MarioActor_RfPlane(r22)
     lwz     r3, 0x44(r3)
     cmplwi  r3, 0x0
     beq-    branch_0x802569b4
@@ -444,14 +462,14 @@ branch_0x802569b4:
     mr      r3, r22
     lfs     f1, -0xf10(rtoc)
     bl      setPlayerVelocity__6TMarioFf
-    lfs     f1, 0xa8(r22)
+    lfs     f1, MarioActor_SpeedY(r22)
     lfs     f0, -0xf10(rtoc)
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x80256a68
-    stfs    f0, 0xa8(r22)
-    lwz     r0, 0x118(r22)
-    rlwinm. r0, r0, 0, 30, 30
+    stfs    f0, MarioActor_SpeedY(r22)
+    lwz     r0, MarioActor_Flags(r22)
+    rlwinm. r0, r0, 0, 30, 30 # MARIOFLAG_2
     beq-    branch_0x802569ec
     li      r0, 0x1
     b       branch_0x802569f0
@@ -461,13 +479,14 @@ branch_0x802569ec:
 branch_0x802569f0:
     clrlwi. r0, r0, 24
     beq-    branch_0x80256a04
-    lwz     r0, 0x118(r22)
-    ori     r0, r0, 0x200
-    stw     r0, 0x118(r22)
+    lwz     r0, MarioActor_Flags(r22)
+    ori     r0, r0, MARIOFLAG_200
+    stw     r0, MarioActor_Flags(r22)
 branch_0x80256a04:
+
     rlwinm. r0, r24, 0, 30, 30
     beq-    branch_0x80256a64
-    lwz     r0, 0x6c(r22)
+    lwz     r0, MarioActor_6c(r22)
     li      r25, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x80256a30
@@ -479,7 +498,7 @@ branch_0x80256a04:
 branch_0x80256a30:
     clrlwi. r0, r25, 24
     beq-    branch_0x80256a64
-    lwz     r3, 0xdc(r22)
+    lwz     r3, MarioActor_RfPlane(r22)
     lhz     r0, 0x0(r3)
     cmplwi  r0, 0x10a
     bne-    branch_0x80256a50
@@ -499,7 +518,7 @@ branch_0x80256a64:
 branch_0x80256a68:
     li      r3, 0x0
     cmplwi  r31, 0x0
-    stw     r3, 0xd8(r22)
+    stw     r3, MarioActor_WlPlane(r22)
     li      r26, 0x0
     li      r25, 0x0
     bne-    branch_0x80256a88
@@ -571,7 +590,7 @@ branch_0x80256b48:
     bne-    branch_0x80256bc0
     cmpwi   r25, 0x0
     bne-    branch_0x80256bc0
-    lwz     r0, 0x6c(r22)
+    lwz     r0, MarioActor_6c(r22)
     li      r24, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x80256b84
@@ -584,7 +603,7 @@ branch_0x80256b84:
     clrlwi  r0, r24, 24
     cmpwi   r0, 0x1
     bne-    branch_0x80256bc0
-    stw     r30, 0xd8(r22)
+    stw     r30, MarioActor_WlPlane(r22)
     addi    r3, r22, 0x0
     addi    r4, r30, 0x0
     addi    r5, r23, 0x0
@@ -613,14 +632,14 @@ branch_0x80256bd0:
 branch_0x80256be0:
     mr      r0, r30
 branch_0x80256be4:
-    stw     r0, 0xd8(r22)
-    lwz     r3, 0xd8(r22)
+    stw     r0, MarioActor_WlPlane(r22)
+    lwz     r3, MarioActor_WlPlane(r22)
     addi    r3, r3, 0x34
     lfs     f1, 0x8(r3)
     lfs     f2, 0x0(r3)
     bl      matan__Fff
-    lha     r4, 0x96(r22)
-    lha     r5, 0xe60(r22)
+    lha     r4, MarioActor_AngleY(r22)
+    lha     r5, MarioActor_e60(r22)
     addis   r4, r4, 0x1
     subi    r0, r4, 0x8000
     subf    r0, r0, r3
@@ -934,7 +953,7 @@ branch_0x80257004:
     lfs     f1, -0xee0(rtoc)
     addi    r4, sp, 0x20
     lfs     f0, 0x14(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r30)
     lfs     f3, 0x18(r30)
@@ -960,7 +979,7 @@ branch_0x8025703c:
     lis     r4, 0xc40
     stfs    f1, 0x14(r30)
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, MARIOSTATUS_201
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1061,7 +1080,7 @@ waitProcess__6TMarioFv: # 0x80257184
     lwz     r6, 0x29c(r31)
     mr      r3, r31
     lwz     r0, 0x2a0(r31)
-    li      r4, 0x88d
+    li      r4, MARIOSTATUS_88d
     li      r5, 0x0
     stw     r6, 0x10(r31)
     li      r6, 0x0
@@ -1185,7 +1204,7 @@ branch_0x80257358:
     lfs     f1, -0xee4(rtoc)
     addi    r4, sp, 0x1c
     lfs     f0, 0x4(r29)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r29)
     lfs     f3, 0x8(r29)
@@ -1207,7 +1226,7 @@ branch_0x802573ac:
     lfs     f1, -0xee0(rtoc)
     addi    r4, sp, 0x20
     lfs     f0, 0x14(r30)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r29)
     lfs     f3, 0x8(r29)
@@ -1389,7 +1408,7 @@ branch_0x802575d8:
     stfs    f1, 0x34(sp)
     stfs    f3, 0x38(sp)
     stfs    f31, 0x3c(sp)
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     stw     r29, 0x40(sp)
     stw     r30, 0x48(sp)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
@@ -1442,7 +1461,7 @@ branch_0x80257674:
     subi    r0, r3, 0x8000
     addi    r3, r31, 0x0
     fnmsubs  f0, f2, f1, f0
-    addi    r4, r4, 0x54e
+    addi    r4, r4, MARIOSTATUS_54e
     li      r5, 0x0
     stfs    f0, 0x10(r31)
     li      r6, 0x0

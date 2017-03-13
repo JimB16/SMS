@@ -52,12 +52,96 @@ branch_0x80212c3c:
     slwi    r4, r4, 2
     lwzx    r0, r3, r4
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x80212C68:		# jumptable 80212C64 case 0
     addi    r29, r30, 0xf0
     b       branch_0x80212d1c
 
+branch_0x80212C70:		# jumptable 80212C64 case 1
+addi	  r29, r30, 0x128
+b	  def_80212C64	# jumptable 80212C64 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x20d670, 0x80212d1c - 0x80212c70
+branch_0x80212C78:		# jumptable 80212C64 case 2
+addi	  r29, r13, -0x7748
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212C80:		# jumptable 80212C64 case 3
+addi	  r29, r30, 0x140
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212C88:		# jumptable 80212C64 case 7
+addi	  r29, r30, 0x220
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212C90:		# jumptable 80212C64 case 8
+clrlwi.	  r0, r31, 24
+beq	  branch_0x80212CA0
+addi	  r29, r30, 0x29C
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CA0:
+addi	  r29, r30, 0x248
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CA8:		# jumptable 80212C64 case 9
+addi	  r29, r30, 0x2F0
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CB0:		# jumptable 80212C64 case 10
+addi	  r29, r30, 0x318
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CB8:		# jumptable 80212C64 case 11
+addi	  r29, r30, 0x348
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CC0:		# jumptable 80212C64 case 12
+addi	  r29, r13, -0x7740
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CC8:		# jumptable 80212C64 case 13
+clrlwi.	  r0, r31, 24
+beq	  branch_0x80212CD8
+addi	  r29, r30, 0x3C0
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CD8:
+addi	  r29, r30, 0x370
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CE0:		# jumptable 80212C64 case 14
+addi	  r29, r30, 0x410
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CE8:		# jumptable 80212C64 case 15
+addi	  r29, r30, 0x430
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CF0:		# jumptable 80212C64 case 16
+addi	  r29, r30, 0x460
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212CF8:		# jumptable 80212C64 case 17
+addi	  r29, r30, 0x528
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212D00:		# jumptable 80212C64 case 18
+addi	  r29, r30, 0x5B8
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212D08:		# jumptable 80212C64 case 19
+addi	  r29, r30, 0x670
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212D10:		# jumptable 80212C64 case 20
+addi	  r29, r30, 0x690
+b	  def_80212C64	# jumptable 80212C64 default case
+
+branch_0x80212D18:		# jumptable 80212C64 case 21
+addi	  r29, r30, 0x6B8
+
+def_80212C64:		# jumptable 80212C64 default case
 branch_0x80212d1c:
     lwz     r0, 0x24(sp)
     mr      r3, r29

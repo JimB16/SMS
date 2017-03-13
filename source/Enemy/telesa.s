@@ -43,7 +43,7 @@ execute__25TNerveKageMarioModokiWaitCFP24TSpineBase_10TLiveActor_: # 0x80080634
     subi    r4, rtoc, 0x691c
     bl      setBck__6MActorFPCc
     li      r5, 0x0
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r5, 0x44(sp)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -80,7 +80,7 @@ branch_0x800806cc:
     blrl
     clrlwi. r0, r3, 24
     beq-    branch_0x80080798
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xcd
     li      r6, 0x0
@@ -475,7 +475,7 @@ branch_0x80080c44:
     beq-    branch_0x80080d54
     lwz     r3, 0x10(r31)
     lwz     r0, 0x14(r31)
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     stw     r3, 0x4c(sp)
     lfs     f1, -0x68fc(rtoc)
     stw     r0, 0x50(sp)
@@ -602,7 +602,7 @@ execute__18TNerveTelesaFreezeCFP24TSpineBase_10TLiveActor_: # 0x80080df4
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x68e8(rtoc)
     stw     r3, 0x24(sp)
     cmplwi  r3, 0x0
@@ -820,7 +820,7 @@ branch_0x800810e4:
     lbz     r0, 0x184(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x8008110c
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xcd
     li      r6, 0x0
@@ -927,13 +927,13 @@ branch_0x80081228:
     lfs     f1, -0x68e0(rtoc)
     li      r5, 0x1
     lfs     f0, 0x14(r31)
-    lwz     r3, -0x62b0(r13)
+    lwz     r3, gpItemManager(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
     bl      makeObjAppear__18TMapObjBaseManagerFfffUlb
 branch_0x80081294:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r31, 0x10
     li      r4, 0xce
     li      r6, 0x0
@@ -1045,7 +1045,7 @@ branch_0x800813e0:
     lwz     r0, 0x20(r29)
     cmpwi   r0, 0xa
     bne-    branch_0x800814c4
-    lwz     r3, -0x60b8(r13)
+    lwz     r3, MarioHitActor(r13)
     lfs     f0, -0x68e8(rtoc)
     stw     r3, 0x68(sp)
     cmplwi  r3, 0x0
@@ -1117,13 +1117,13 @@ branch_0x800814fc:
     bne-    branch_0x80081520
     lfs     f1, -0x68e8(rtoc)
     mr      r3, r30
-    lwz     r4, -0x60b4(r13)
+    lwz     r4, MarioHitActorPos(r13)
     fmr     f2, f1
     bl      isInSight__11TSpineEnemyCFRCQ29JGeometry8TVec3_f_fff
     cmpwi   r3, 0x0
     beq-    branch_0x800816b8
 branch_0x80081520:
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     addi    r5, r30, 0x10
     li      r4, 0xcd
     li      r6, 0x0
@@ -1212,7 +1212,7 @@ branch_0x80081520:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r29)
 branch_0x80081680:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x2937
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1341,7 +1341,9 @@ load__18TMarioModokiTelesaFR20JSUMemoryInputStream: # 0x800817d0
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr       
+    bctr			# switch jump
+
+branch_0x8008183C:		# jumptable 80081838 case 1
     addi    r3, r30, 0x1e4
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r28, r3
@@ -1358,8 +1360,193 @@ load__18TMarioModokiTelesaFR20JSUMemoryInputStream: # 0x800817d0
     bl      __ct__12SDLModelDataFP12J3DModelData
     b       branch_0x80081b08
 
+branch_0x80081878:		# jumptable 80081838 case 2
+addi	  r3, r30, 0x1FC
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x7c278, 0x80081b08 - 0x80081878
+branch_0x800818B4:		# jumptable 80081838 case 3
+addi	  r3, r30, 0x218
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x800818F0:		# jumptable 80081838 case 4
+addi	  r3, r30, 0x234
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x8008192C:		# jumptable 80081838 case 5
+addi	  r3, r30, 0x254
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x80081968:		# jumptable 80081838 case 6
+addi	  r3, r30, 0x274
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x800819A4:		# jumptable 80081838 case 7
+addi	  r3, r30, 0x294
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x800819E0:		# jumptable 80081838 case 8
+addi	  r3, r30, 0x2B0
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x80081A1C:		# jumptable 80081838 case 9
+addi	  r3, r30, 0x2D0
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x80081A58:		# jumptable 80081838 case 10
+addi	  r3, r30, 0x2F0
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x80081A94:		# jumptable 80081838 case 11
+addi	  r3, r30, 0x30C
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+b	  def_80081838	# jumptable 80081838 default case
+
+branch_0x80081AD0:		# jumptable 80081838 case 12
+addi	  r3, r30, 0x32C
+bl	  getGlbResource__13JKRFileLoaderFPCc #	JKRFileLoader::getGlbResource((char const *))
+mr.	  r28, r3
+beq	  def_80081838	# jumptable 80081838 default case
+li	  r3, 0x1C
+bl	  __nw__FUl	# __nw(ulong)
+mr.	  r29, r3
+beq	  def_80081838	# jumptable 80081838 default case
+addi	  r3, r28, 0
+lis	  r4, 0x1002
+bl	  load__22J3DModelLoaderDataBaseFPCvUl # J3DModelLoaderDataBase::load((void const *,ulong))
+addi	  r4, r3, 0
+addi	  r3, r29, 0
+bl	  __ct__12SDLModelDataFP12J3DModelData # SDLModelData::SDLModelData((J3DModelData *))
+
+def_80081838:		# jumptable 80081838 default case
 branch_0x80081b08:
     li      r3, 0x1c
     bl      __nw__FUl
@@ -2164,7 +2351,7 @@ branch_0x8008260c:
     stw     r0, 0x18(r4)
     stw     r6, 0x1c(r4)
     stw     r6, 0x20(sp)
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0x24(sp)
@@ -2346,7 +2533,7 @@ branch_0x80082778:
     stfs    f0, 0x10(r3)
     lfs     f0, -0x68d4(rtoc)
     stfs    f0, 0xc0(r30)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80082924
@@ -2536,7 +2723,7 @@ branch_0x800829fc:
     stfs    f0, 0x10(r3)
     lfs     f0, -0x68d4(rtoc)
     stfs    f0, 0xc0(r29)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80082c04
@@ -2851,7 +3038,7 @@ changeOut__7TTelesaFv: # 0x80082fac
     lwz     r0, 0x64(r3)
     ori     r0, r0, 0x1
     stw     r0, 0x64(r3)
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80083000
@@ -2877,7 +3064,7 @@ branch_0x80083000:
     stw     r0, 0x14(r30)
     lwz     r0, 0x18(r8)
     stw     r0, 0x18(r30)
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r31, 0x74(r30)
     bl      SMSGetAnmFrameRate__Fv
@@ -3052,7 +3239,7 @@ branch_0x80083264:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
 branch_0x8008329c:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x28cb
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3065,7 +3252,7 @@ branch_0x8008329c:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800832cc:
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     li      r4, 0x3881
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3250,7 +3437,7 @@ branch_0x80083540:
     lfs     f0, 0xc0(r30)
     lfs     f2, -0x68b4(rtoc)
     fadds   f0, f1, f0
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     lfs     f1, 0xb8(sp)
     lfs     f3, 0xc0(sp)
     fadds   f2, f2, f0
@@ -3464,7 +3651,7 @@ branch_0x80083838:
     blt+    branch_0x800837f4
     lwz     r5, 0x58(r4)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x187
     addi    r5, r5, 0xc0
     li      r6, 0x1
@@ -3476,7 +3663,7 @@ branch_0x80083838:
 branch_0x80083880:
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, -0x6070(r13)
+    lwz     r3, gpMarioParticleManager(r13)
     li      r4, 0x188
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -3725,7 +3912,7 @@ branch_0x80083be8:
     beq-    branch_0x80083c10
     lfs     f4, -0x6898(rtoc)
 branch_0x80083c10:
-    lwz     r5, -0x60b4(r13)
+    lwz     r5, MarioHitActorPos(r13)
     addi    r3, sp, 0x78
     lfs     f1, 0x10(r30)
     mr      r4, r3
@@ -3852,7 +4039,7 @@ attackToMario__7TTelesaFv: # 0x80083dbc
     bne-    branch_0x80083e00
     lfs     f1, 0x14(r31)
     lfs     f0, 0x54(r31)
-    lwz     r3, -0x60b4(r13)
+    lwz     r3, MarioHitActorPos(r13)
     fadds   f2, f1, f0
     lfs     f1, -0x68d8(rtoc)
     lfs     f0, 0x4(r3)
@@ -3861,7 +4048,7 @@ attackToMario__7TTelesaFv: # 0x80083dbc
     blt-    branch_0x80083e24
 branch_0x80083e00:
     addi    r3, r31, 0x0
-    li      r4, 0xe
+    li      r4, MARIOMSG_HURT
     bl      SMS_SendMessageToMario__FP9THitActorUl
     lbz     r0, 0x184(r31)
     cmplwi  r0, 0x0
@@ -4013,7 +4200,7 @@ perform__7TTelesaFUlPQ26JDrama9TGraphics: # 0x80083fc8
     beq-    branch_0x80084104
     rlwinm. r0, r30, 0, 30, 30
     beq-    branch_0x800840d4
-    lwz     r3, -0x6328(r13)
+    lwz     r3, gpMap(r13)
     addi    r4, sp, 0x64
     lfs     f1, 0x10(r29)
     lfs     f2, 0x14(r29)
@@ -4643,7 +4830,7 @@ branch_0x800848fc:
     beq-    branch_0x8008494c
     lwz     r5, 0x18(r29)
     li      r4, 0x2943
-    lwz     r3, -0x6044(r13)
+    lwz     r3, gpMSound(r13)
     lwz     r5, 0x0(r5)
     addi    r31, r5, 0x10
     bl      gateCheck__6MSoundFUl
