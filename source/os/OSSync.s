@@ -9,8 +9,8 @@ SystemCallVector: # 0x803481ac
     mtspr   1008, r9
     rfi
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x342bc8, 0x803481cc - 0x803481c8
+branch_0x803481c8:
+    ori     r0, r0, 0x0
 
 .globl __OSInitSystemCall
 __OSInitSystemCall: # 0x803481cc
@@ -18,12 +18,12 @@ __OSInitSystemCall: # 0x803481cc
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    lis     r5, 0x8000
-    lis     r4, 0x8035
-    lis     r3, 0x8035
-    addi    r31, r5, 0xc00
-    subi    r0, r3, 0x7e38
-    subi    r4, r4, 0x7e54
+    lis     r5, unk_80000c00@h
+    lis     r4, SystemCallVector@ha
+    lis     r3, branch_0x803481c8@ha
+    addi    r31, r5, unk_80000c00@l
+    addi    r0, r3, branch_0x803481c8@l
+    addi    r4, r4, SystemCallVector@l
     mr      r3, r31
     subf    r5, r4, r0
     bl      memcpy

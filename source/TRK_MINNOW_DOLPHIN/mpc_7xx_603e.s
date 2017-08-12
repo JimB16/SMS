@@ -1,8 +1,8 @@
 
 .globl TRKSaveExtended1Block
 TRKSaveExtended1Block: # 0x80341334
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2130
+    lis     r2, gTRKCPUState@h
+    ori     r2, r2, gTRKCPUState@l
     mfsr    r16, 0
     mfsr    r17, 1
     mfsr    r18, 2
@@ -19,7 +19,7 @@ TRKSaveExtended1Block: # 0x80341334
     mfsr    r29, 13
     mfsr    r30, 14
     mfsr    r31, 15
-    stmw    r16, 0x1a8(rtoc)
+    stmw    r16, 0x1a8(r2)
     mftb    r10, 268
     mftb    r11, 269
     mfspr   r12, 1008
@@ -42,7 +42,7 @@ TRKSaveExtended1Block: # 0x80341334
     mfspr   r29, 541
     mfspr   r30, 542
     mfspr   r31, 543
-    stmw    r10, 0x1e8(rtoc)
+    stmw    r10, 0x1e8(r2)
     mfspr   r22, 25
     mfspr   r23, 19
     mfspr   r24, 18
@@ -53,7 +53,7 @@ TRKSaveExtended1Block: # 0x80341334
     li      r29, 0x0
     mfspr   r30, 1010
     mfspr   r31, 282
-    stmw    r22, 0x25c(rtoc)
+    stmw    r22, 0x25c(r2)
     mfspr   r20, 912
     mfspr   r21, 913
     mfspr   r22, 914
@@ -66,11 +66,27 @@ TRKSaveExtended1Block: # 0x80341334
     mfspr   r29, 921
     mfspr   r30, 922
     mfspr   r31, 923
-    stmw    r20, 0x2fc(rtoc)
+    stmw    r20, 0x2fc(r2)
     b       branch_0x80341484
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33be40, 0x80341484 - 0x80341440
+branch_0x80341440:
+    mfspr   r16, 928
+    mfspr   r17, 935
+    mfspr   r18, 936
+    mfspr   r19, 937
+    mfspr   r20, 938
+    mfspr   r21, 939
+    mfspr   r22, 940
+    mfspr   r23, 941
+    mfspr   r24, 942
+    mfspr   r25, 943
+    mfspr   r26, 944
+    mfspr   r27, 951
+    mfspr   r28, 959
+    mfspr   r29, 1014
+    mfspr   r30, 1015
+    mfspr   r31, 1023
+    stmw    r16, 0x2b8(r2)
 branch_0x80341484:
     mfspr   r19, 1013
     mfspr   r20, 953
@@ -85,21 +101,30 @@ branch_0x80341484:
     mfspr   r29, 1022
     mfspr   r30, 1019
     mfspr   r31, 1017
-    stmw    r19, 0x284(rtoc)
+    stmw    r19, 0x284(r2)
     b       branch_0x803414e8
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33bec0, 0x803414e8 - 0x803414c0
+branch_0x803414c0:
+    mfspr   r25, 976
+    mfspr   r26, 977
+    mfspr   r27, 978
+    mfspr   r28, 979
+    mfspr   r29, 980
+    mfspr   r30, 981
+    mfspr   r31, 982
+    stmw    r25, 0x240(r2)
+    mfspr   r31, 22
+    stw     r31, R2Off_0x278(r2)
 branch_0x803414e8:
     blr
 
 
 .globl TRKRestoreExtended1Block
 TRKRestoreExtended1Block: # 0x803414ec
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2130
-    lis     r5, 0x803e
-    ori     r5, r5, 0x6898
+    lis     r2, gTRKCPUState@h
+    ori     r2, r2, gTRKCPUState@l
+    lis     r5, gTRKRestoreFlags@h
+    ori     r5, r5, gTRKRestoreFlags@l
     lbz     r3, 0x0(r5)
     lbz     r6, 0x1(r5)
     li      r0, 0x0
@@ -107,12 +132,12 @@ TRKRestoreExtended1Block: # 0x803414ec
     stb     r0, 0x1(r5)
     cmpwi   r3, 0x0
     beq-    branch_0x80341528
-    lwz     r24, 0x1e8(rtoc)
-    lwz     r25, 0x1ec(rtoc)
+    lwz     r24, R2Off_0x1e8(r2)
+    lwz     r25, R2Off_0x1ec(r2)
     mtspr   284, r24
     mtspr   285, r25
 branch_0x80341528:
-    lmw     r20, 0x2fc(rtoc)
+    lmw     r20, 0x2fc(r2)
     mtspr   912, r20
     mtspr   913, r21
     mtspr   914, r22
@@ -126,10 +151,15 @@ branch_0x80341528:
     mtspr   923, r31
     b       branch_0x80341574
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33bf5c, 0x80341574 - 0x8034155c
+branch_0x8034155c:
+    lmw     r26, 0x2e0(r2)
+    mtspr   944, r26
+    mtspr   951, r27
+    mtspr   1014, r29
+    mtspr   1015, r30
+    mtspr   1023, r31
 branch_0x80341574:
-    lmw     r19, 0x284(rtoc)
+    lmw     r19, 0x284(r2)
     mtspr   1013, r19
     mtspr   953, r20
     mtspr   954, r21
@@ -145,10 +175,22 @@ branch_0x80341574:
     mtspr   1017, r31
     b       branch_0x803415e0
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33bfb0, 0x803415e0 - 0x803415b0
+branch_0x803415b0:
+    cmpwi   r6, 0x0
+    beq-    branch_0x803415c0
+    lwz     r26, R2Off_0x278(r2)
+    mtspr   22, r26
+branch_0x803415c0:
+    lmw     r25, 0x240(r2)
+    mtspr   976, r25
+    mtspr   977, r26
+    mtspr   978, r27
+    mtspr   979, r28
+    mtspr   980, r29
+    mtspr   981, r30
+    mtspr   982, r31
 branch_0x803415e0:
-    lmw     r16, 0x1a8(rtoc)
+    lmw     r16, 0x1a8(r2)
     mtsr    0, r16
     mtsr    1, r17
     mtsr    2, r18
@@ -165,7 +207,7 @@ branch_0x803415e0:
     mtsr    13, r29
     mtsr    14, r30
     mtsr    15, r31
-    lmw     r12, 0x1f0(rtoc)
+    lmw     r12, 0x1f0(r2)
     mtspr   1008, r12
     mtspr   1009, r13
     mtspr   27, r14
@@ -186,7 +228,7 @@ branch_0x803415e0:
     mtspr   541, r29
     mtspr   542, r30
     mtspr   543, r31
-    lmw     r22, 0x25c(rtoc)
+    lmw     r22, 0x25c(r2)
     mtspr   25, r22
     mtspr   19, r23
     mtspr   18, r24

@@ -13,8 +13,8 @@ __ct__11JKRAramHeapFUlUl: # 0x802bd978
     lwz     r3, 0x8(sp)
     bl      __ct__11JKRDisposerFv
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x228
+    lis     r3, __vvt__11JKRAramHeap@ha
+    addi    r0, r3, __vvt__11JKRAramHeap@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x18
     bl      OSInitMutex
@@ -47,8 +47,8 @@ __ct__11JKRAramHeapFUlUl: # 0x802bd978
     bl      __ct__12JKRAramBlockFUlUlUlUcb
     mr      r5, r3
 branch_0x802bda2c:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x4290
+    lis     r3, sAramList__11JKRAramHeap@h
+    addi    r3, r3, sAramList__11JKRAramHeap@l
     addi    r4, r5, 0x4
     bl      append__10JSUPtrListFP10JSUPtrLink
     lwz     r0, 0x2c(sp)
@@ -72,8 +72,8 @@ __dt__11JKRAramHeapFv: # 0x802bda5c
     stw     r29, 0x64(sp)
     mr.     r29, r3
     beq-    branch_0x802bdae4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x228
+    lis     r3, __vvt__11JKRAramHeap@ha
+    addi    r0, r3, __vvt__11JKRAramHeap@l
     stw     r0, 0x0(r29)
     lis     r3, 0x8040
     lwz     r31, 0x4290(r3)
@@ -153,12 +153,12 @@ branch_0x802bdb5c:
 .globl allocFromHead__11JKRAramHeapFUl
 allocFromHead__11JKRAramHeapFUl: # 0x802bdb84
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, sAramList__11JKRAramHeap@h
     stw     r0, 0x4(sp)
     addi    r0, r4, 0x1f
     addi    r6, r3, 0x0
     stwu    sp, -0x8(sp)
-    addi    r5, r5, 0x4290
+    addi    r5, r5, sAramList__11JKRAramHeap@l
     clrrwi  r4, r0, 5
     lwz     r5, 0x0(r5)
     li      r8, -0x1
@@ -200,12 +200,12 @@ branch_0x802bdc00:
 .globl allocFromTail__11JKRAramHeapFUl
 allocFromTail__11JKRAramHeapFUl: # 0x802bdc10
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, sAramList__11JKRAramHeap@h
     stw     r0, 0x4(sp)
     addi    r0, r4, 0x1f
     addi    r6, r3, 0x0
     stwu    sp, -0x8(sp)
-    addi    r5, r5, 0x4290
+    addi    r5, r5, sAramList__11JKRAramHeap@l
     clrrwi  r4, r0, 5
     lwz     r5, 0x4(r5)
     li      r3, 0x0
@@ -243,17 +243,17 @@ branch_0x802bdc78:
 .globl __sinit_JKRAramHeap_cpp
 __sinit_JKRAramHeap_cpp: # 0x802bdc88
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sAramList__11JKRAramHeap@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x4290
+    addi    r31, r3, sAramList__11JKRAramHeap@l
     addi    r3, r31, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x802c
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2ab8
-    subi    r4, r4, 0x232c
+    lis     r4, __dt__23JSUList_12JKRAramBlock_Fv@ha
+    lis     r3, unk_803fd548@ha
+    addi    r5, r3, unk_803fd548@l
+    addi    r4, r4, __dt__23JSUList_12JKRAramBlock_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

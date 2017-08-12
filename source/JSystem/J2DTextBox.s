@@ -12,9 +12,9 @@ __ct__10J2DTextBoxFPC7ResFONTPCc: # 0x802d02f4
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__7J2DPaneFv
-    lis     r3, 0x803e
+    lis     r3, __vvt__10J2DTextBox@h
     lwz     r31, 0x8(sp)
-    addi    r0, r3, 0x720
+    addi    r0, r3, __vvt__10J2DTextBox@l
     stw     r0, 0x0(r31)
     li      r8, 0x0
     li      r0, -0x1
@@ -54,9 +54,9 @@ __ct__10J2DTextBoxFP7J2DPaneP20JSURandomInputStreamb: # 0x802d0388
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb
-    lis     r3, 0x803e
+    lis     r3, __vvt__10J2DTextBox@h
     lwz     r5, 0x8(sp)
-    addi    r0, r3, 0x720
+    addi    r0, r3, __vvt__10J2DTextBox@l
     stw     r0, 0x0(r5)
     li      r4, 0x0
     clrlwi. r0, r28, 24
@@ -75,11 +75,11 @@ __ct__10J2DTextBoxFP7J2DPaneP20JSURandomInputStreamb: # 0x802d0388
     addi    r4, sp, 0xd8
     li      r5, 0x1
     bl      read__14JSUInputStreamFPvl
-    lis     r5, 0x464f
+    lis     r5, unk_464f4e54@h
     lbz     r31, 0xd8(sp)
     addi    r4, r30, 0x0
     addi    r3, sp, 0xf0
-    addi    r5, r5, 0x4e54
+    addi    r5, r5, unk_464f4e54@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r28, r3
@@ -154,7 +154,7 @@ branch_0x802d0458:
     mr      r5, r28
     lwz     r4, 0x100(r29)
     bl      read__14JSUInputStreamFPvl
-    subi    r31, r31, 0xa
+    addi    r31, r31, -0xa
     lwz     r3, 0x100(r29)
     li      r4, 0x0
     clrlwi. r0, r31, 24
@@ -174,7 +174,7 @@ branch_0x802d0458:
     mtlr    r12
     blrl
 branch_0x802d058c:
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
 branch_0x802d0590:
     li      r0, 0x0
     lwz     r29, 0x8(sp)
@@ -192,7 +192,7 @@ branch_0x802d0590:
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lwz     r0, 0x98(sp)
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     stw     r0, 0x120(r29)
 branch_0x802d05d8:
     clrlwi. r0, r31, 24
@@ -215,10 +215,10 @@ branch_0x802d05fc:
     b       branch_0x802d081c
 
 branch_0x802d061c:
-    lis     r5, 0x464f
+    lis     r5, unk_464f4e54@h
     addi    r4, r30, 0x0
     addi    r3, sp, 0xf0
-    addi    r5, r5, 0x4e54
+    addi    r5, r5, unk_464f4e54@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r28, r3
@@ -381,9 +381,9 @@ __ct__10J2DTextBoxFUlRC7JUTRectPC7ResFONTPCc18J2DTextBoxHBinding18J2DTextBoxVBin
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__7J2DPaneFUsUlRC7JUTRect
-    lis     r3, 0x803e
+    lis     r3, __vvt__10J2DTextBox@h
     lwz     r31, 0x8(sp)
-    addi    r0, r3, 0x720
+    addi    r0, r3, __vvt__10J2DTextBox@l
     stw     r0, 0x0(r31)
     li      r8, 0x0
     li      r0, -0x1
@@ -480,8 +480,8 @@ branch_0x802d09a8:
     blrl
     stw     r3, 0x118(r27)
 branch_0x802d09ec:
-    lis     r3, 0x5442
-    addi    r0, r3, 0x5831
+    lis     r3, unk_54425831@h
+    addi    r0, r3, unk_54425831@l
     stw     r0, 0x8(r27)
     li      r0, 0x1
     stb     r0, 0x124(r27)
@@ -502,8 +502,8 @@ __dt__10J2DTextBoxFv: # 0x802d0a14
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802d0a9c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x720
+    lis     r3, __vvt__10J2DTextBox@h
+    addi    r0, r3, __vvt__10J2DTextBox@l
     stw     r0, 0x0(r30)
     lbz     r0, 0x124(r30)
     cmplwi  r0, 0x0
@@ -643,7 +643,7 @@ branch_0x802d0bb0:
     crxor   6, 6, 6
     li      r4, 0x0
     li      r5, 0x0
-    addi    r7, rtoc, 0x1e0
+    addi    r7, r2, R2Off_0x1e0
     bl      print__8J2DPrintFiiUcPCce
     addi    r3, sp, 0x24
     bl      PSMTXIdentity

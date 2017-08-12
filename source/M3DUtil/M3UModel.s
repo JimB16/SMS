@@ -299,7 +299,7 @@ changeAnmTexPattern__8M3UModelFiUc: # 0x80237c8c
     lha     r0, 0x2(r3)
     add     r3, r6, r5
     sth     r0, 0x8(r3)
-    lfs     f0, -0x1560(rtoc)
+    lfs     f0, -0x1560(r2)
     stfs    f0, 0x10(r3)
     blr
 
@@ -320,7 +320,7 @@ changeMtxCalcAnmTransform__8M3UModelFiUc: # 0x80237cd0
     lha     r0, 0x2(r3)
     add     r3, r6, r5
     sth     r0, 0x8(r3)
-    lfs     f0, -0x1560(rtoc)
+    lfs     f0, -0x1560(r2)
     stfs    f0, 0x10(r3)
     blr
 

@@ -9,8 +9,8 @@ __dt__19TButterfloidManagerFv: # 0x80012130
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80012178
-    lis     r3, 0x803b
-    subi    r0, r3, 0x3de8
+    lis     r3, __vvt__19TButterfloidManager@ha
+    addi    r0, r3, __vvt__19TButterfloidManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -32,9 +32,9 @@ branch_0x80012178:
 .globl createModelData__19TButterfloidManagerFv
 createModelData__19TButterfloidManagerFv: # 0x80012194
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, entry_2459@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x3e24
+    addi    r4, r4, entry_2459@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -54,8 +54,8 @@ __ct__19TButterfloidManagerFPCc: # 0x800121c8
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x3de8
+    lis     r3, __vvt__19TButterfloidManager@ha
+    addi    r0, r3, __vvt__19TButterfloidManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -82,8 +82,8 @@ createRealoidActor__12TButterfloidFP6MActor: # 0x80012204
     addi    r3, r29, 0x0
     addi    r4, r31, 0x0
     bl      __ct__13TRealoidActorFP6MActor
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3c7c
+    lis     r3, __vvt__10TButterfly@ha
+    addi    r3, r3, __vvt__10TButterfly@l
     stw     r3, 0x0(r29)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r29)
@@ -112,8 +112,8 @@ load__12TButterfloidFR20JSUMemoryInputStream: # 0x80012278
     stw     r28, 0xf8(sp)
     addi    r28, r4, 0x0
     lwz     r0, 0x158(r3)
-    lis     r3, 0x8037
-    addi    r31, r3, 0x3d08
+    lis     r3, unk_80373d08@h
+    addi    r31, r3, unk_80373d08@l
     slwi    r0, r0, 2
     add     r3, r31, r0
     lwz     r5, 0x110(r3)
@@ -137,14 +137,14 @@ branch_0x800122ec:
     b       branch_0x80012354
 
 branch_0x800122f8:
-    lfs     f0, -0x7d74(rtoc)
+    lfs     f0, -0x7d74(r2)
     addi    r6, sp, 0xb8
-    lfs     f1, -0x7d78(rtoc)
+    lfs     f1, -0x7d78(r2)
     addi    r5, sp, 0xac
     stfs    f0, 0xac(sp)
     addi    r4, sp, 0xa0
     stfs    f1, 0xb8(sp)
-    subi    r3, rtoc, 0x7d70
+    addi    r3, r2, R2Off_m0x7d70
     stfs    f0, 0xa0(sp)
     stfs    f1, 0xbc(sp)
     stfs    f0, 0xb0(sp)
@@ -158,15 +158,15 @@ branch_0x800122f8:
 
 branch_0x80012340:
     lwz     r3, 0x9c(sp)
-    subi    r4, rtoc, 0x7d68
+    addi    r4, r2, R2Off_m0x7d68
     bl      newAndRegisterObjByEventID__18TMapObjBaseManagerFUlPCc
     stw     r3, 0x15c(r29)
     b       branch_0x80012398
 
 branch_0x80012354:
-    lfs     f0, -0x7d74(rtoc)
+    lfs     f0, -0x7d74(r2)
     addi    r6, sp, 0xdc
-    lfs     f1, -0x7d78(rtoc)
+    lfs     f1, -0x7d78(r2)
     addi    r5, sp, 0xd0
     stfs    f0, 0xd0(sp)
     addi    r4, sp, 0xc4
@@ -182,26 +182,26 @@ branch_0x80012354:
     bl      newAndRegisterObj__18TMapObjBaseManagerFPCcRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     stw     r3, 0x15c(r29)
 branch_0x80012398:
-    lfs     f0, -0x7d64(rtoc)
+    lfs     f0, -0x7d64(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x24(r3)
-    lfs     f0, -0x7d60(rtoc)
+    lfs     f0, -0x7d60(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x20(r3)
-    lfs     f0, -0x7d5c(rtoc)
+    lfs     f0, -0x7d5c(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x28(r3)
-    lfs     f0, -0x7d58(rtoc)
+    lfs     f0, -0x7d58(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x2c(r3)
-    lfs     f0, -0x7d54(rtoc)
+    lfs     f0, -0x7d54(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x30(r3)
-    lfs     f0, -0x7d50(rtoc)
+    lfs     f0, -0x7d50(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x34(r3)
-    lwz     r3, MarioHitActor(r13)
-    lfs     f0, -0x7d74(rtoc)
+    lwz     r3, R13Off_m0x60b8(r13)
+    lfs     f0, -0x7d74(r2)
     stw     r3, 0xe8(sp)
     cmplwi  r3, 0x0
     stfs    f0, 0xec(sp)
@@ -226,10 +226,10 @@ branch_0x80012418:
     stw     r0, 0x64(r4)
     lwz     r0, 0xf4(sp)
     stw     r0, 0x68(r4)
-    lfs     f0, -0x7d4c(rtoc)
+    lfs     f0, -0x7d4c(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x6c(r3)
-    lfs     f0, -0x7d48(rtoc)
+    lfs     f0, -0x7d48(r2)
     lwz     r3, 0x150(r29)
     stfs    f0, 0x70(r3)
     lwz     r3, 0x150(r29)
@@ -290,27 +290,27 @@ init__12TButterfloidFP12TLiveManager: # 0x800124f8
     mr      r4, r31
     lwz     r3, 0x70(r3)
     bl      manageActor__12TLiveManagerFP10TLiveActor
-    lbz     r0, -0x72c0(r13)
+    lbz     r0, R13Off_m0x72c0(r13)
     extsb.  r0, r0
     bne-    branch_0x80012560
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x72bc(r13)
-    subi    r0, r3, 0x4904
-    lis     r4, 0x8000
-    stw     r0, -0x72bc(r13)
-    lis     r3, 0x803f
-    subi    r5, r3, 0x6500
-    addi    r4, r4, 0x7170
-    subi    r3, r13, 0x72bc
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__31TNerveWaitForever_10TLiveActor_@ha
+    stw     r0, R13Off_m0x72bc(r13)
+    addi    r0, r3, __vvt__31TNerveWaitForever_10TLiveActor_@l
+    lis     r4, __dt__31TNerveWaitForever_10TLiveActor_Fv@h
+    stw     r0, R13Off_m0x72bc(r13)
+    lis     r3, unk_803e9b00@ha
+    addi    r5, r3, unk_803e9b00@l
+    addi    r4, r4, __dt__31TNerveWaitForever_10TLiveActor_Fv@l
+    addi    r3, r13, R13Off_m0x72bc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x72c0(r13)
+    stb     r0, R13Off_m0x72c0(r13)
 branch_0x80012560:
     lwz     r8, 0x8c(r31)
     li      r7, 0x0
-    subi    r0, r13, 0x72bc
+    addi    r0, r13, R13Off_m0x72bc
     stw     r7, 0x8(r8)
     addi    r3, r31, 0x0
     li      r4, 0x0
@@ -320,7 +320,7 @@ branch_0x80012560:
     stw     r0, 0x14(r8)
     stw     r0, 0x18(r8)
     stw     r7, 0x1c(r8)
-    lfs     f1, -0x7d74(rtoc)
+    lfs     f1, -0x7d74(r2)
     fmr     f2, f1
     fmr     f3, f1
     fmr     f4, f1
@@ -346,8 +346,8 @@ __ct__12TButterfloidFiPCc: # 0x800125c4
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
     bl      __ct__8TRealoidFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3d94
+    lis     r3, __vvt__12TButterfloid@ha
+    addi    r3, r3, __vvt__12TButterfloid@l
     stw     r3, 0x0(r30)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -391,7 +391,7 @@ branch_0x80012664:
     stw     r4, 0x68(r31)
     addi    r5, r31, 0x10
     li      r4, 0xe7
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -437,9 +437,9 @@ branch_0x8001270c:
 branch_0x80012710:
     clrlwi. r0, r0, 24
     beq-    branch_0x8001272c
-    lis     r4, 0x2000
-    lwz     r3, gpItemManager(r13)
-    addi    r4, r4, 0xe
+    lis     r4, unk_2000000e@h
+    lwz     r3, R13Off_m0x62b0(r13)
+    addi    r4, r4, unk_2000000e@l
     bl      makeObjAppear__18TMapObjBaseManagerFUl
     mr      r30, r3
 branch_0x8001272c:
@@ -456,9 +456,9 @@ branch_0x8001272c:
     stw     r0, 0x14(r30)
     lwz     r0, 0x18(r31)
     stw     r0, 0x18(r30)
-    lfs     f1, -0x7d74(rtoc)
+    lfs     f1, -0x7d74(r2)
     stfs    f1, 0xac(r30)
-    lfs     f0, -0x7d44(rtoc)
+    lfs     f0, -0x7d44(r2)
     stfs    f0, 0xb0(r30)
     stfs    f1, 0xb4(r30)
     lwz     r0, 0xf0(r30)
@@ -482,24 +482,24 @@ branch_0x8001278c:
 .globl init__10TButterflyFv
 init__10TButterflyFv: # 0x800127a4
     mflr    r0
-    lis     r4, 0x1000
+    lis     r4, unk_10000030@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x30
+    addi    r4, r4, unk_10000030@l
     li      r5, 0x0
     stwu    sp, -0x68(sp)
     li      r6, 0x0
     stw     r31, 0x64(sp)
     stw     r30, 0x60(sp)
-    lfs     f1, -0x7d74(rtoc)
-    lfs     f3, -0x7d40(rtoc)
+    lfs     f1, -0x7d74(r2)
+    lfs     f3, -0x7d40(r2)
     stw     r3, 0x8(sp)
     fmr     f2, f1
     fmr     f4, f3
     lwz     r3, 0x8(sp)
     bl      initHitActor__9THitActorFUlUsiffff
     lwz     r4, 0x8(sp)
-    lis     r3, 0x8037
-    addi    r31, r3, 0x3e74
+    lis     r3, unk_80373e74@h
+    addi    r31, r3, unk_80373e74@l
     lwz     r0, 0x64(r4)
     addi    r3, r31, 0x0
     clrrwi  r0, r0, 1
@@ -507,7 +507,7 @@ init__10TButterflyFv: # 0x800127a4
     lwz     r0, 0x64(r4)
     ori     r0, r0, 0x2
     stw     r0, 0x64(r4)
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r30)
@@ -553,14 +553,14 @@ __dt__12TButterfloidFv: # 0x80012894
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800128fc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3d94
+    lis     r3, __vvt__12TButterfloid@ha
+    addi    r3, r3, __vvt__12TButterfloid@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800128ec
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4660
+    lis     r3, __vvt__8TRealoid@ha
+    addi    r3, r3, __vvt__8TRealoid@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -592,20 +592,20 @@ __dt__10TButterflyFv: # 0x80012918
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80012998
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3c7c
+    lis     r3, __vvt__10TButterfly@ha
+    addi    r3, r3, __vvt__10TButterfly@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80012988
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4548
+    lis     r3, __vvt__13TRealoidActor@ha
+    addi    r3, r3, __vvt__13TRealoidActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80012988
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48e4
+    lis     r3, __vvt__10TTakeActor@ha
+    addi    r3, r3, __vvt__10TTakeActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -627,13 +627,14 @@ branch_0x80012998:
     blr
 
 
-.globl _32___dt__10TButterflyFv
-_32___dt__10TButterflyFv: # 0x800129b4
-    subi    r3, r3, 0x20
+.globl unk_800129b4
+unk_800129b4: # 0x800129b4
+    addi    r3, r3, -0x20
     b       __dt__10TButterflyFv
 
 
-.globl _32___dt__12TButterfloidFv
-_32___dt__12TButterfloidFv: # 0x800129bc
-    subi    r3, r3, 0x20
+.globl unk_800129bc
+unk_800129bc: # 0x800129bc
+    addi    r3, r3, -0x20
     b       __dt__12TButterfloidFv
+

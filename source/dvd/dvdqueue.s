@@ -1,8 +1,8 @@
 
 .globl __DVDClearWaitingQueue
 __DVDClearWaitingQueue: # 0x8034e748
-    lis     r3, 0x8040
-    addi    r3, r3, 0x3238
+    lis     r3, WaitingQueue@h
+    addi    r3, r3, WaitingQueue@l
     stw     r3, 0x0(r3)
     addi    r5, r3, 0x8
     addi    r4, r3, 0x10
@@ -27,9 +27,9 @@ __DVDPushWaitingQueue: # 0x8034e780
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      OSDisableInterrupts
-    lis     r4, 0x8040
+    lis     r4, WaitingQueue@h
     slwi    r5, r30, 3
-    addi    r0, r4, 0x3238
+    addi    r0, r4, WaitingQueue@l
     add     r5, r0, r5
     lwz     r4, 0x4(r5)
     stw     r31, 0x0(r4)
@@ -55,9 +55,9 @@ __DVDPopWaitingQueue: # 0x8034e7e8
     stw     r31, 0xc(sp)
     bl      OSDisableInterrupts
     li      r0, 0x4
-    lis     r4, 0x8040
+    lis     r4, WaitingQueue@h
     mtctr   r0
-    addi    r4, r4, 0x3238
+    addi    r4, r4, WaitingQueue@l
     li      r31, 0x0
 branch_0x8034e810:
     lwz     r0, 0x0(r4)
@@ -65,9 +65,9 @@ branch_0x8034e810:
     beq-    branch_0x8034e860
     bl      OSRestoreInterrupts
     bl      OSDisableInterrupts
-    lis     r4, 0x8040
+    lis     r4, WaitingQueue@h
     slwi    r5, r31, 3
-    addi    r0, r4, 0x3238
+    addi    r0, r4, WaitingQueue@l
     add     r5, r0, r5
     lwz     r31, 0x0(r5)
     lwz     r0, 0x0(r31)
@@ -102,9 +102,9 @@ __DVDCheckWaitingQueue: # 0x8034e888
     stwu    sp, -0x8(sp)
     bl      OSDisableInterrupts
     li      r0, 0x4
-    lis     r4, 0x8040
+    lis     r4, WaitingQueue@h
     mtctr   r0
-    addi    r4, r4, 0x3238
+    addi    r4, r4, WaitingQueue@l
 branch_0x8034e8a8:
     lwz     r0, 0x0(r4)
     cmplw   r0, r4

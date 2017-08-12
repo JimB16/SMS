@@ -14,14 +14,14 @@ sendCommand__12JKRAramPieceFP12JKRAMCommand: # 0x802f0844
 .globl orderAsync__12JKRAramPieceFiUlUlUlP12JKRAramBlockPFUl_v
 orderAsync__12JKRAramPieceFiUlUlUlP12JKRAramBlockPFUl_v: # 0x802f0864
     mflr    r0
-    lis     r9, 0x8040
+    lis     r9, mMutex__12JKRAramPiece@h
     stw     r0, 0x4(sp)
-    lis     r10, 0x803b
-    addi    r0, r9, 0x74d4
+    lis     r10, unk_803aa0b8@ha
+    addi    r0, r9, mMutex__12JKRAramPiece@l
     stwu    sp, -0x50(sp)
     stmw    r24, 0x30(sp)
     addi    r24, r3, 0x0
-    subi    r26, r10, 0x5f48
+    addi    r26, r10, unk_803aa0b8@l
     addi    r27, r4, 0x0
     addi    r28, r5, 0x0
     addi    r29, r6, 0x0
@@ -53,14 +53,14 @@ branch_0x802f08b4:
     addi    r3, r26, 0x44
     crxor   6, 6, 6
     li      r4, 0x66
-    addi    r5, rtoc, 0x360
+    addi    r5, r2, R2Off_0x360
     bl      OSPanic
 branch_0x802f0908:
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x8
     li      r5, -0x4
     bl      __nw__FUlP7JKRHeapi
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     addi    r25, r3, 0x0
     li      r3, 0x98
     li      r5, -0x4
@@ -72,10 +72,10 @@ branch_0x802f0908:
     mr      r26, r3
 branch_0x802f0940:
     stw     r24, 0x40(r26)
-    lis     r3, 0x803e
+    lis     r3, sMessageQueue__7JKRAram@ha
     li      r0, 0x1
     stw     r27, 0x48(r26)
-    subi    r3, r3, 0x208
+    addi    r3, r3, sMessageQueue__7JKRAram@l
     addi    r4, r25, 0x0
     stw     r28, 0x4c(r26)
     li      r5, 0x1
@@ -88,13 +88,13 @@ branch_0x802f0940:
     lwz     r0, 0x58(r26)
     cmplwi  r0, 0x0
     beq-    branch_0x802f0994
-    lis     r3, 0x8040
-    addi    r3, r3, 0x74b0
+    lis     r3, sAramPieceCommandList__12JKRAramPiece@h
+    addi    r3, r3, sAramPieceCommandList__12JKRAramPiece@l
     addi    r4, r26, 0x20
     bl      append__10JSUPtrListFP10JSUPtrLink
 branch_0x802f0994:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x74d4
+    lis     r3, mMutex__12JKRAramPiece@h
+    addi    r3, r3, mMutex__12JKRAramPiece@l
     bl      OSUnlockMutex
     mr      r3, r26
     lmw     r24, 0x30(sp)
@@ -107,11 +107,11 @@ branch_0x802f0994:
 .globl orderSync__12JKRAramPieceFiUlUlUlP12JKRAramBlock
 orderSync__12JKRAramPieceFiUlUlUlP12JKRAramBlock: # 0x802f09b8
     mflr    r0
-    lis     r8, 0x8040
+    lis     r8, mMutex__12JKRAramPiece@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stmw    r26, 0x28(sp)
-    addi    r31, r8, 0x74d4
+    addi    r31, r8, mMutex__12JKRAramPiece@l
     addi    r26, r3, 0x0
     addi    r27, r4, 0x0
     addi    r28, r5, 0x0
@@ -133,8 +133,8 @@ orderSync__12JKRAramPieceFiUlUlUlP12JKRAramBlock: # 0x802f09b8
     addi    r4, sp, 0x1c
     li      r5, 0x1
     bl      OSReceiveMessage
-    lis     r3, 0x8040
-    addi    r3, r3, 0x74b0
+    lis     r3, sAramPieceCommandList__12JKRAramPiece@h
+    addi    r3, r3, sAramPieceCommandList__12JKRAramPiece@l
     addi    r4, r30, 0x20
     bl      remove__10JSUPtrListFP10JSUPtrLink
     mr      r3, r31
@@ -172,9 +172,9 @@ branch_0x802f0a98:
     lwz     r4, 0x44(r31)
     bl      DCStoreRange
 branch_0x802f0aa4:
-    lis     r3, 0x802f
+    lis     r3, doneDMA__12JKRAramPieceFUl@h
     lwz     r5, 0x40(r31)
-    addi    r10, r3, 0xae0
+    addi    r10, r3, doneDMA__12JKRAramPieceFUl@l
     lwz     r7, 0x48(r31)
     lwz     r8, 0x4c(r31)
     mr      r3, r31
@@ -331,17 +331,17 @@ branch_0x802f0c88:
 .globl __sinit_JKRAramPiece_cpp
 __sinit_JKRAramPiece_cpp: # 0x802f0ca4
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sAramPieceCommandList__12JKRAramPiece@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x74b0
+    addi    r31, r3, sAramPieceCommandList__12JKRAramPiece@l
     addi    r3, r31, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x802c
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2a18
-    subi    r4, r4, 0x1440
+    lis     r4, __dt__23JSUList_12JKRAMCommand_Fv@ha
+    lis     r3, unk_803fd5e8@ha
+    addi    r5, r3, unk_803fd5e8@l
+    addi    r4, r4, __dt__23JSUList_12JKRAMCommand_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

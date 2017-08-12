@@ -2,10 +2,10 @@
 .globl PopDecodedTextureSet
 PopDecodedTextureSet: # 0x8001fe00
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, DecodedTextureSetQueue@ha
     stw     r0, 0x4(sp)
     addi    r5, r3, 0x0
-    subi    r3, r4, 0x388
+    addi    r3, r4, DecodedTextureSetQueue@l
     stwu    sp, -0x10(sp)
     addi    r4, sp, 0xc
     bl      OSReceiveMessage
@@ -26,10 +26,10 @@ branch_0x8001fe34:
 .globl PushFreeTextureSet
 PushFreeTextureSet: # 0x8001fe44
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, FreeTextureSetQueue@ha
     stw     r0, 0x4(sp)
     addi    r4, r3, 0x0
-    subi    r3, r5, 0x3a8
+    addi    r3, r5, FreeTextureSetQueue@l
     stwu    sp, -0x8(sp)
     li      r5, 0x0
     bl      OSSendMessage
@@ -42,15 +42,15 @@ PushFreeTextureSet: # 0x8001fe44
 .globl VideoDecode__FP13THPReadBuffer
 VideoDecode__FP13THPReadBuffer: # 0x8001fe74
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     li      r5, 0x1
     stwu    sp, -0x38(sp)
     stmw    r24, 0x18(sp)
-    subi    r31, r4, 0x3ea0
+    addi    r31, r4, ActivePlayer@l
     addi    r24, r3, 0x0
-    lis     r3, 0x803f
-    subi    r30, r3, 0x16b8
+    lis     r3, VideoDecodeThread@ha
+    addi    r30, r3, VideoDecodeThread@l
     addi    r29, r31, 0x6c
     lwz     r0, 0x6c(r31)
     lwz     r4, 0x0(r24)
@@ -82,13 +82,13 @@ branch_0x8001fee4:
     cmpwi   r3, 0x0
     stw     r3, 0xac(r31)
     beq-    branch_0x8001ff2c
-    lwz     r0, -0x711c(r13)
+    lwz     r0, R13Off_m0x711c(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8001ff24
     li      r3, 0x0
     bl      PrepareReady__Fi
     li      r0, 0x0
-    stw     r0, -0x711c(r13)
+    stw     r0, R13Off_m0x711c(r13)
 branch_0x8001ff24:
     mr      r3, r30
     bl      OSSuspendThread
@@ -113,13 +113,13 @@ branch_0x8001ff68:
     lwz     r0, 0x0(r29)
     cmplw   r27, r0
     blt+    branch_0x8001fed0
-    lwz     r0, -0x711c(r13)
+    lwz     r0, R13Off_m0x711c(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8001ff90
     li      r3, 0x1
     bl      PrepareReady__Fi
     li      r0, 0x0
-    stw     r0, -0x711c(r13)
+    stw     r0, R13Off_m0x711c(r13)
 branch_0x8001ff90:
     lmw     r24, 0x18(sp)
     lwz     r0, 0x3c(sp)
@@ -131,14 +131,14 @@ branch_0x8001ff90:
 .globl VideoDecoderForOnMemory__FPv
 VideoDecoderForOnMemory__FPv: # 0x8001ffa4
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r27, 0x24(sp)
-    subi    r31, r4, 0x3ea0
-    lis     r4, 0x803f
+    addi    r31, r4, ActivePlayer@l
+    lis     r4, VideoDecodeThread@ha
     addi    r30, r31, 0xd8
-    subi    r27, r4, 0x16b8
+    addi    r27, r4, VideoDecodeThread@l
     li      r28, 0x0
     lwz     r29, 0xbc(r31)
     stw     r3, 0x10(sp)
@@ -160,7 +160,7 @@ branch_0x8001ffe4:
     divwu   r0, r3, r4
     mullw   r0, r0, r4
     subf    r3, r0, r3
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     cmplw   r3, r0
     bne-    branch_0x8002003c
     lbz     r0, 0xa6(r31)
@@ -194,7 +194,7 @@ branch_0x80020060:
     divwu   r0, r3, r4
     mullw   r0, r0, r4
     subf    r3, r0, r3
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     cmplw   r3, r0
     bne-    branch_0x800200bc
     lbz     r0, 0xa6(r31)
@@ -225,11 +225,11 @@ branch_0x800200d0:
 .globl VideoDecoder__FPv
 VideoDecoder__FPv: # 0x800200d8
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r3, 0x3ea0
+    addi    r31, r3, ActivePlayer@l
     stw     r30, 0x18(sp)
     addi    r30, r31, 0xd8
     stw     r29, 0x14(sp)
@@ -247,7 +247,7 @@ branch_0x80020114:
     lwz     r5, 0x50(r31)
     lwz     r3, 0xc0(r31)
     lwz     r4, 0x4(r28)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     add     r4, r4, r3
     divwu   r3, r4, r5
     mullw   r3, r3, r5
@@ -295,14 +295,14 @@ VideoDecodeThreadCancel: # 0x800201b4
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x7120(r13)
+    lwz     r0, R13Off_m0x7120(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x800201e0
-    lis     r3, 0x803f
-    subi    r3, r3, 0x16b8
+    lis     r3, VideoDecodeThread@ha
+    addi    r3, r3, VideoDecodeThread@l
     bl      OSCancelThread
     li      r0, 0x0
-    stw     r0, -0x7120(r13)
+    stw     r0, R13Off_m0x7120(r13)
 branch_0x800201e0:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -315,11 +315,11 @@ VideoDecodeThreadStart: # 0x800201f0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x7120(r13)
+    lwz     r0, R13Off_m0x7120(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x80020214
-    lis     r3, 0x803f
-    subi    r3, r3, 0x16b8
+    lis     r3, VideoDecodeThread@ha
+    addi    r3, r3, VideoDecodeThread@l
     bl      OSResumeThread
 branch_0x80020214:
     lwz     r0, 0xc(sp)
@@ -333,14 +333,14 @@ CreateVideoDecodeThread: # 0x80020224
     mflr    r0
     mr.     r5, r4
     stw     r0, 0x4(sp)
-    lis     r4, 0x803f
+    lis     r4, VideoDecodeThread@ha
     addi    r8, r3, 0x0
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r4, 0x16b8
+    addi    r31, r4, VideoDecodeThread@l
     beq-    branch_0x80020274
-    lis     r3, 0x8002
-    subi    r4, r3, 0x5c
+    lis     r3, VideoDecoderForOnMemory__FPv@ha
+    addi    r4, r3, VideoDecoderForOnMemory__FPv@l
     addi    r3, r31, 0x0
     addi    r6, r31, 0x1310
     li      r7, 0x1000
@@ -352,8 +352,8 @@ CreateVideoDecodeThread: # 0x80020224
     b       branch_0x800202d4
 
 branch_0x80020274:
-    lis     r3, 0x8002
-    addi    r4, r3, 0xd8
+    lis     r3, VideoDecoder__FPv@h
+    addi    r4, r3, VideoDecoder__FPv@l
     addi    r3, r31, 0x0
     addi    r6, r31, 0x1310
     li      r5, 0x0
@@ -375,9 +375,9 @@ branch_0x800202a4:
     li      r5, 0x3
     bl      OSInitMessageQueue
     li      r0, 0x1
-    stw     r0, -0x7120(r13)
+    stw     r0, R13Off_m0x7120(r13)
     li      r3, 0x1
-    stw     r0, -0x711c(r13)
+    stw     r0, R13Off_m0x711c(r13)
 branch_0x800202d4:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)

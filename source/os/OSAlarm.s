@@ -6,15 +6,15 @@ OSInitAlarm: # 0x80342564
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      __OSGetExceptionHandler
-    lis     r4, 0x8034
-    addi    r4, r4, 0x2bc0
+    lis     r4, DecrementerExceptionHandler@h
+    addi    r4, r4, DecrementerExceptionHandler@l
     cmplw   r3, r4
     beq-    branch_0x803425a0
     li      r0, 0x0
-    subi    r3, r13, 0x5a40
+    addi    r3, r13, R13Off_m0x5a40
     stw     r0, 0x4(r3)
     li      r3, 0x8
-    stw     r0, -0x5a40(r13)
+    stw     r0, R13Off_m0x5a40(r13)
     bl      __OSSetExceptionHandler
 branch_0x803425a0:
     lwz     r0, 0xc(sp)
@@ -85,7 +85,7 @@ branch_0x8034267c:
     xoris   r4, r25, 0x8000
     stw     r30, 0xc(r29)
     stw     r25, 0x8(r29)
-    lwz     r6, -0x5a40(r13)
+    lwz     r6, R13Off_m0x5a40(r13)
     b       branch_0x80342754
 
 branch_0x80342694:
@@ -108,7 +108,7 @@ branch_0x80342694:
     b       branch_0x803427f8
 
 branch_0x803426d8:
-    stw     r29, -0x5a40(r13)
+    stw     r29, R13Off_m0x5a40(r13)
     bl      __OSGetSystemTime
     lwz     r6, 0xc(r29)
     li      r7, 0x0
@@ -127,7 +127,7 @@ branch_0x803426d8:
     b       branch_0x803427f8
 
 branch_0x8034271c:
-    lis     r4, 0x8000
+    lis     r4, unk_7fffffff@ha
     xoris   r3, r7, 0x8000
     subfc   r0, r4, r8
     subfe   r3, r3, r6
@@ -139,7 +139,7 @@ branch_0x8034271c:
     b       branch_0x803427f8
 
 branch_0x80342744:
-    subi    r3, r4, 0x1
+    addi    r3, r4, unk_7fffffff@l
     bl      PPCMtdec
     b       branch_0x803427f8
 
@@ -150,7 +150,7 @@ branch_0x80342754:
     bne+    branch_0x80342694
     li      r30, 0x0
     stw     r30, 0x14(r29)
-    subi    r3, r13, 0x5a40
+    addi    r3, r13, R13Off_m0x5a40
     lwz     r4, 0x4(r3)
     stwu    r29, 0x4(r3)
     cmplwi  r4, 0x0
@@ -161,7 +161,7 @@ branch_0x80342754:
 
 branch_0x80342784:
     stw     r29, 0x0(r3)
-    stw     r29, -0x5a40(r13)
+    stw     r29, R13Off_m0x5a40(r13)
     bl      __OSGetSystemTime
     lwz     r6, 0xc(r29)
     xoris   r5, r30, 0x8000
@@ -179,7 +179,7 @@ branch_0x80342784:
     b       branch_0x803427f8
 
 branch_0x803427c8:
-    lis     r4, 0x8000
+    lis     r4, unk_7fffffff@ha
     xoris   r3, r30, 0x8000
     subfc   r0, r4, r7
     subfe   r3, r3, r6
@@ -191,7 +191,7 @@ branch_0x803427c8:
     b       branch_0x803427f8
 
 branch_0x803427f0:
-    subi    r3, r4, 0x1
+    addi    r3, r4, unk_7fffffff@l
     bl      PPCMtdec
 branch_0x803427f8:
     lmw     r25, 0x24(sp)
@@ -254,7 +254,7 @@ branch_0x803428b0:
     cmplwi  r29, 0x0
     bne-    branch_0x803428cc
     lwz     r0, 0x10(r30)
-    subi    r3, r13, 0x5a40
+    addi    r3, r13, R13Off_m0x5a40
     stw     r0, 0x4(r3)
     b       branch_0x803428d4
 
@@ -270,7 +270,7 @@ branch_0x803428d4:
 
 branch_0x803428e8:
     cmplwi  r29, 0x0
-    stw     r29, -0x5a40(r13)
+    stw     r29, R13Off_m0x5a40(r13)
     beq-    branch_0x80342964
     bl      __OSGetSystemTime
     lwz     r6, 0xc(r29)
@@ -290,7 +290,7 @@ branch_0x803428e8:
     b       branch_0x80342964
 
 branch_0x80342934:
-    lis     r4, 0x8000
+    lis     r4, unk_7fffffff@ha
     xoris   r3, r7, 0x8000
     subfc   r0, r4, r8
     subfe   r3, r3, r6
@@ -302,7 +302,7 @@ branch_0x80342934:
     b       branch_0x80342964
 
 branch_0x8034295c:
-    subi    r3, r4, 0x1
+    addi    r3, r4, unk_7fffffff@l
     bl      PPCMtdec
 branch_0x80342964:
     li      r0, 0x0
@@ -330,7 +330,7 @@ DecrementerExceptionCallback: # 0x80342990
     mr      r29, r4
     stw     r28, 0x2e0(sp)
     bl      __OSGetSystemTime
-    lwz     r0, -0x5a40(r13)
+    lwz     r0, R13Off_m0x5a40(r13)
     addi    r28, r4, 0x0
     addi    r30, r3, 0x0
     cmplwi  r0, 0x0
@@ -366,7 +366,7 @@ branch_0x803429d4:
     b       branch_0x80342a68
 
 branch_0x80342a38:
-    lis     r4, 0x8000
+    lis     r4, unk_7fffffff@ha
     xoris   r3, r7, 0x8000
     subfc   r0, r4, r8
     subfe   r3, r3, r6
@@ -378,7 +378,7 @@ branch_0x80342a38:
     b       branch_0x80342a68
 
 branch_0x80342a60:
-    subi    r3, r4, 0x1
+    addi    r3, r4, unk_7fffffff@l
     bl      PPCMtdec
 branch_0x80342a68:
     mr      r3, r29
@@ -386,10 +386,10 @@ branch_0x80342a68:
 branch_0x80342a70:
     lwz     r3, 0x14(r31)
     cmplwi  r3, 0x0
-    stw     r3, -0x5a40(r13)
+    stw     r3, R13Off_m0x5a40(r13)
     bne-    branch_0x80342a90
     li      r0, 0x0
-    subi    r3, r13, 0x5a40
+    addi    r3, r13, R13Off_m0x5a40
     stw     r0, 0x4(r3)
     b       branch_0x80342a98
 
@@ -415,7 +415,7 @@ branch_0x80342a98:
     li      r5, 0x0
     bl      InsertAlarm
 branch_0x80342adc:
-    lwz     r28, -0x5a40(r13)
+    lwz     r28, R13Off_m0x5a40(r13)
     cmplwi  r28, 0x0
     beq-    branch_0x80342b58
     bl      __OSGetSystemTime
@@ -436,7 +436,7 @@ branch_0x80342adc:
     b       branch_0x80342b58
 
 branch_0x80342b28:
-    lis     r4, 0x8000
+    lis     r4, unk_7fffffff@ha
     xoris   r3, r7, 0x8000
     subfc   r0, r4, r8
     subfe   r3, r3, r6
@@ -448,7 +448,7 @@ branch_0x80342b28:
     b       branch_0x80342b58
 
 branch_0x80342b50:
-    subi    r3, r4, 0x1
+    addi    r3, r4, unk_7fffffff@l
     bl      PPCMtdec
 branch_0x80342b58:
     bl      OSDisableScheduler
@@ -483,7 +483,7 @@ branch_0x80342b58:
 DecrementerExceptionHandler: # 0x80342bc0
     stw     r0, 0x0(r4)
     stw     sp, 0x4(r4)
-    stw     rtoc, 0x8(r4)
+    stw     r2, 0x8(r4)
     stmw    r6, 0x18(r4)
     mfspr   r0, 913
     stw     r0, 0x1a8(r4)

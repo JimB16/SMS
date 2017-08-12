@@ -14,14 +14,14 @@ __dt__16TEffectExplosionFv: # 0x80036310
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80036378
-    lis     r3, 0x803b
-    subi    r3, r3, 0x2620
+    lis     r3, __vvt__16TEffectExplosion@ha
+    addi    r3, r3, __vvt__16TEffectExplosion@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80036368
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -70,7 +70,7 @@ generate__16TEffectExplosionFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x8
     lwz     r0, 0x8(r31)
     stw     r0, 0x2c(r29)
     lfs     f31, 0x0(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80036420
@@ -81,7 +81,7 @@ generate__16TEffectExplosionFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x8
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80036420:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x0
     li      r4, 0xc5
     li      r6, 0x0
@@ -96,7 +96,7 @@ branch_0x80036420:
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80036458:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x0
     li      r4, 0xc6
     li      r6, 0x0
@@ -111,7 +111,7 @@ branch_0x80036458:
     stfs    f31, 0x178(r3)
     stfs    f31, 0x17c(r3)
 branch_0x80036490:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x0
     li      r4, 0xa2
     li      r6, 0x0
@@ -148,8 +148,8 @@ reset__16TEffectExplosionFv: # 0x800364f4
     stw     r31, 0x2c(sp)
     mr      r31, r3
     bl      reset__11TSpineEnemyFv
-    lfs     f1, -0x74e0(rtoc)
-    lfs     f0, -0x74dc(rtoc)
+    lfs     f1, -0x74e0(r2)
+    lfs     f0, -0x74dc(r2)
     stfs    f1, 0x14(sp)
     stfs    f0, 0x18(sp)
     lfs     f1, 0x18(sp)
@@ -157,11 +157,11 @@ reset__16TEffectExplosionFv: # 0x800364f4
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x74c8(rtoc)
+    lfd     f3, -0x74c8(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x74d8(rtoc)
-    subi    r4, rtoc, 0x74d4
+    lfs     f0, -0x74d8(r2)
+    addi    r4, r2, R2Off_m0x74d4
     stw     r0, 0x20(sp)
     lfs     f1, 0x14(sp)
     lfd     f2, 0x20(sp)
@@ -188,25 +188,25 @@ reset__16TEffectExplosionFv: # 0x800364f4
     lwz     r3, 0x74(r31)
     bl      setBck__6MActorFPCc
     lwz     r3, 0x74(r31)
-    subi    r4, rtoc, 0x74d4
+    addi    r4, r2, R2Off_m0x74d4
     bl      setBrk__6MActorFPCc
     lwz     r3, 0x74(r31)
-    subi    r4, rtoc, 0x74d4
+    addi    r4, r2, R2Off_m0x74d4
     bl      setBtk__6MActorFPCc
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x5
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r31)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x4
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r31)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x10(r3)
     lwz     r0, 0x3c(sp)
     lfd     f31, 0x30(sp)
@@ -225,12 +225,12 @@ init__16TEffectExplosionFP12TLiveManager: # 0x80036618
     mr      r31, r3
     bl      init__11TSpineEnemyFP12TLiveManager
     lwz     r0, 0xf0(r31)
-    lis     r3, 0x1000
-    addi    r3, r3, 0x20
+    lis     r3, unk_10000020@h
+    addi    r3, r3, unk_10000020@l
     ori     r0, r0, 0x1
     stw     r0, 0xf0(r31)
-    subi    r4, rtoc, 0x74d4
-    lfs     f0, -0x74e0(rtoc)
+    addi    r4, r2, R2Off_m0x74d4
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x24(r31)
     stfs    f0, 0x28(r31)
     stfs    f0, 0x2c(r31)
@@ -251,10 +251,10 @@ init__16TEffectExplosionFP12TLiveManager: # 0x80036618
     lwz     r3, 0x74(r31)
     bl      setBck__6MActorFPCc
     lwz     r3, 0x74(r31)
-    subi    r4, rtoc, 0x74d4
+    addi    r4, r2, R2Off_m0x74d4
     bl      setBrk__6MActorFPCc
     lwz     r3, 0x74(r31)
-    subi    r4, rtoc, 0x74d4
+    addi    r4, r2, R2Off_m0x74d4
     bl      setBtk__6MActorFPCc
     lwz     r0, 0x64(r31)
     ori     r0, r0, 0x1
@@ -276,8 +276,8 @@ __dt__12TEffectModelFv: # 0x800366d0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80036720
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -301,9 +301,9 @@ branch_0x80036720:
 .globl createModelData__23TEffectExplosionManagerFv
 createModelData__23TEffectExplosionManagerFv: # 0x8003673c
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, entry_2706@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2638
+    addi    r4, r4, entry_2706@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -325,17 +325,17 @@ createEnemyInstance__23TEffectExplosionManagerFv: # 0x80036770
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x800367c8
-    lis     r4, 0x8037
+    lis     r4, unk_80376a70@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x6a70
+    addi    r4, r4, unk_80376a70@l
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__16TEffectExplosion@ha
     stw     r0, 0x20(r31)
-    subi    r3, r3, 0x2620
+    addi    r3, r3, __vvt__16TEffectExplosion@l
     addi    r0, r3, 0x24
     stw     r3, 0x0(r31)
     stw     r0, 0x20(r31)
@@ -351,45 +351,45 @@ branch_0x800367c8:
 .globl loadAfter__23TEffectExplosionManagerFv
 loadAfter__23TEffectExplosionManagerFv: # 0x800367e0
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2f98
+    addi    r3, r3, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r3, 0xc4
     lbz     r0, 0xc4(r3)
-    lis     r3, 0x8037
-    addi    r31, r3, 0x6948
+    lis     r3, unk_80376948@h
+    addi    r31, r3, unk_80376948@l
     cmplwi  r0, 0x0
     bne-    branch_0x8003682c
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x138
     li      r5, 0xc4
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x8003682c:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0xc5
     lbz     r0, 0xc5(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8003685c
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x160
     li      r5, 0xc5
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x8003685c:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0xc6
     lbz     r0, 0xc6(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8003688c
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x188
     li      r5, 0xc6
     bl      load__18JPAResourceManagerFPCcUs
@@ -418,8 +418,8 @@ load__23TEffectExplosionManagerFR20JSUMemoryInputStream: # 0x800368a4
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x800368e4
-    lis     r3, 0x8037
-    addi    r4, r3, 0x6af8
+    lis     r3, unk_80376af8@h
+    addi    r4, r3, unk_80376af8@l
     addi    r3, r29, 0x0
     bl      __ct__17TSpineEnemyParamsFPCc
 branch_0x800368e4:
@@ -444,11 +444,11 @@ __ct__23TEffectExplosionManagerFPCc: # 0x80036910
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
-    lis     r3, 0x803b
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
+    lis     r3, __vvt__23TEffectExplosionManager@ha
     stw     r0, 0x0(r31)
-    subi    r0, r3, 0x24b8
+    addi    r0, r3, __vvt__23TEffectExplosionManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -468,8 +468,8 @@ __dt__19TEffectModelManagerFv: # 0x80036958
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800369a0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -515,7 +515,7 @@ generate__16TEffectColumSandFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x8
     lwz     r0, 0x8(r31)
     stw     r0, 0x2c(r29)
     lfs     f31, 0x0(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80036a48
@@ -542,17 +542,17 @@ branch_0x80036a48:
 .globl reset__16TEffectColumSandFv
 reset__16TEffectColumSandFv: # 0x80036a74
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, unk_80376948@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stfd    f31, 0x30(sp)
     stw     r31, 0x2c(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x28(sp)
-    addi    r30, r4, 0x6948
+    addi    r30, r4, unk_80376948@l
     bl      reset__11TSpineEnemyFv
-    lfs     f1, -0x74e0(rtoc)
-    lfs     f0, -0x74dc(rtoc)
+    lfs     f1, -0x74e0(r2)
+    lfs     f0, -0x74dc(r2)
     stfs    f1, 0x14(sp)
     stfs    f0, 0x18(sp)
     lfs     f1, 0x18(sp)
@@ -560,10 +560,10 @@ reset__16TEffectColumSandFv: # 0x80036a74
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x74c8(rtoc)
+    lfd     f3, -0x74c8(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x74d8(rtoc)
+    lfs     f0, -0x74d8(r2)
     addi    r4, r30, 0x1c8
     stw     r0, 0x20(sp)
     lfs     f1, 0x14(sp)
@@ -599,17 +599,17 @@ reset__16TEffectColumSandFv: # 0x80036a74
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x5
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r31)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x4
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r31)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x10(r3)
     lwz     r0, 0x3c(sp)
     lfd     f31, 0x30(sp)
@@ -623,21 +623,21 @@ reset__16TEffectColumSandFv: # 0x80036a74
 .globl init__16TEffectColumSandFP12TLiveManager
 init__16TEffectColumSandFP12TLiveManager: # 0x80036ba8
     mflr    r0
-    lis     r5, 0x8037
+    lis     r5, unk_80376948@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r5, 0x6948
+    addi    r31, r5, unk_80376948@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      init__11TSpineEnemyFP12TLiveManager
     lwz     r0, 0xf0(r30)
-    lis     r3, 0x1000
-    addi    r3, r3, 0x20
+    lis     r3, unk_10000020@h
+    addi    r3, r3, unk_10000020@l
     ori     r0, r0, 0x1
     stw     r0, 0xf0(r30)
     addi    r4, r31, 0x1c8
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x24(r30)
     stfs    f0, 0x28(r30)
     stfs    f0, 0x2c(r30)
@@ -677,9 +677,9 @@ init__16TEffectColumSandFP12TLiveManager: # 0x80036ba8
 .globl createModelData__23TEffectColumSandManagerFv
 createModelData__23TEffectColumSandManagerFv: # 0x80036c70
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, entry_2697@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2650
+    addi    r4, r4, entry_2697@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -701,17 +701,17 @@ createEnemyInstance__23TEffectColumSandManagerFv: # 0x80036ca4
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x80036cfc
-    lis     r4, 0x8037
+    lis     r4, unk_80376b20@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x6b20
+    addi    r4, r4, unk_80376b20@l
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__16TEffectColumSand@ha
     stw     r0, 0x20(r31)
-    subi    r3, r3, 0x2464
+    addi    r3, r3, __vvt__16TEffectColumSand@l
     addi    r0, r3, 0x24
     stw     r3, 0x0(r31)
     stw     r0, 0x20(r31)
@@ -727,18 +727,18 @@ branch_0x80036cfc:
 .globl loadAfter__23TEffectColumSandManagerFv
 loadAfter__23TEffectColumSandManagerFv: # 0x80036d14
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2f98
+    addi    r3, r3, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x7e
     lbz     r0, 0x7e(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80036d58
-    lis     r4, 0x8037
-    lwz     r3, -0x5fe0(r13)
-    addi    r4, r4, 0x6b30
+    lis     r4, unk_80376b30@h
+    lwz     r3, R13Off_m0x5fe0(r13)
+    addi    r4, r4, unk_80376b30@l
     li      r5, 0x7e
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
@@ -765,8 +765,8 @@ load__23TEffectColumSandManagerFR20JSUMemoryInputStream: # 0x80036d6c
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x80036dac
-    lis     r3, 0x8037
-    addi    r4, r3, 0x6b5c
+    lis     r3, unk_80376b5c@h
+    addi    r4, r3, unk_80376b5c@l
     addi    r3, r29, 0x0
     bl      __ct__17TSpineEnemyParamsFPCc
 branch_0x80036dac:
@@ -791,11 +791,11 @@ __ct__23TEffectColumSandManagerFPCc: # 0x80036dd8
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
-    lis     r3, 0x803b
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
+    lis     r3, __vvt__23TEffectColumSandManager@ha
     stw     r0, 0x0(r31)
-    subi    r0, r3, 0x2350
+    addi    r0, r3, __vvt__23TEffectColumSandManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -830,7 +830,7 @@ generate__21TEffectBombColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: 
     stw     r0, 0x28(r29)
     lwz     r0, 0x8(r31)
     stw     r0, 0x2c(r29)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80036ebc
@@ -847,7 +847,7 @@ generate__21TEffectBombColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: 
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r3)
 branch_0x80036ebc:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x0
     li      r4, 0x30
     li      r6, 0x0
@@ -868,7 +868,7 @@ branch_0x80036ebc:
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r3)
 branch_0x80036f0c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x0
     li      r4, 0x1d4
     li      r6, 0x2
@@ -904,17 +904,17 @@ branch_0x80036f5c:
 .globl reset__21TEffectBombColumWaterFv
 reset__21TEffectBombColumWaterFv: # 0x80036f84
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, unk_80376948@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stfd    f31, 0x30(sp)
     stw     r31, 0x2c(sp)
-    addi    r31, r4, 0x6948
+    addi    r31, r4, unk_80376948@l
     stw     r30, 0x28(sp)
     addi    r30, r3, 0x0
     bl      reset__11TSpineEnemyFv
-    lfs     f1, -0x74e0(rtoc)
-    lfs     f0, -0x74dc(rtoc)
+    lfs     f1, -0x74e0(r2)
+    lfs     f0, -0x74dc(r2)
     stfs    f1, 0x14(sp)
     stfs    f0, 0x18(sp)
     lfs     f1, 0x18(sp)
@@ -922,10 +922,10 @@ reset__21TEffectBombColumWaterFv: # 0x80036f84
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x74c8(rtoc)
+    lfd     f3, -0x74c8(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x74d8(rtoc)
+    lfs     f0, -0x74d8(r2)
     addi    r4, r31, 0x22c
     stw     r0, 0x20(sp)
     lfs     f1, 0x14(sp)
@@ -964,22 +964,22 @@ reset__21TEffectBombColumWaterFv: # 0x80036f84
     lwz     r3, 0x74(r30)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x5
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r30)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x4
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r30)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x2
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r30)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x10(r3)
     lwz     r0, 0x3c(sp)
     lfd     f31, 0x30(sp)
@@ -993,21 +993,21 @@ reset__21TEffectBombColumWaterFv: # 0x80036f84
 .globl init__21TEffectBombColumWaterFP12TLiveManager
 init__21TEffectBombColumWaterFP12TLiveManager: # 0x800370d8
     mflr    r0
-    lis     r5, 0x8037
+    lis     r5, unk_80376948@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r5, 0x6948
+    addi    r31, r5, unk_80376948@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      init__11TSpineEnemyFP12TLiveManager
     lwz     r0, 0xf0(r30)
-    lis     r3, 0x1000
-    addi    r3, r3, 0x20
+    lis     r3, unk_10000020@h
+    addi    r3, r3, unk_10000020@l
     ori     r0, r0, 0x1
     stw     r0, 0xf0(r30)
     addi    r4, r31, 0x22c
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x24(r30)
     stfs    f0, 0x28(r30)
     stfs    f0, 0x2c(r30)
@@ -1050,9 +1050,9 @@ init__21TEffectBombColumWaterFP12TLiveManager: # 0x800370d8
 .globl createModelData__28TEffectBombColumWaterManagerFv
 createModelData__28TEffectBombColumWaterManagerFv: # 0x800371ac
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, entry_2684@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2668
+    addi    r4, r4, entry_2684@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -1074,17 +1074,17 @@ createEnemyInstance__28TEffectBombColumWaterManagerFv: # 0x800371e0
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x80037238
-    lis     r4, 0x8037
+    lis     r4, unk_80376b80@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x6b80
+    addi    r4, r4, unk_80376b80@l
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__21TEffectBombColumWater@ha
     stw     r0, 0x20(r31)
-    subi    r3, r3, 0x22fc
+    addi    r3, r3, __vvt__21TEffectBombColumWater@l
     addi    r0, r3, 0x24
     stw     r3, 0x0(r31)
     stw     r0, 0x20(r31)
@@ -1100,45 +1100,45 @@ branch_0x80037238:
 .globl loadAfter__28TEffectBombColumWaterManagerFv
 loadAfter__28TEffectBombColumWaterManagerFv: # 0x80037250
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2f98
+    addi    r3, r3, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x2f
     lbz     r0, 0x2f(r3)
-    lis     r3, 0x8037
-    addi    r31, r3, 0x6948
+    lis     r3, unk_80376948@h
+    addi    r31, r3, unk_80376948@l
     cmplwi  r0, 0x0
     bne-    branch_0x8003729c
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x24c
     li      r5, 0x2f
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x8003729c:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x30
     lbz     r0, 0x30(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800372cc
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x27c
     li      r5, 0x30
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800372cc:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x1d4
     lbz     r0, 0x1d4(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800372fc
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x2ac
     li      r5, 0x1d4
     bl      load__18JPAResourceManagerFPCcUs
@@ -1167,8 +1167,8 @@ load__28TEffectBombColumWaterManagerFR20JSUMemoryInputStream: # 0x80037314
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x80037354
-    lis     r3, 0x8037
-    addi    r4, r3, 0x6c24
+    lis     r3, unk_80376c24@h
+    addi    r4, r3, unk_80376c24@l
     addi    r3, r29, 0x0
     bl      __ct__17TSpineEnemyParamsFPCc
 branch_0x80037354:
@@ -1193,11 +1193,11 @@ __ct__28TEffectBombColumWaterManagerFPCc: # 0x80037380
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
-    lis     r3, 0x803b
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
+    lis     r3, __vvt__28TEffectBombColumWaterManager@ha
     stw     r0, 0x0(r31)
-    subi    r0, r3, 0x21e8
+    addi    r0, r3, __vvt__28TEffectBombColumWaterManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -1225,7 +1225,7 @@ generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x
     lwz     r4, 0x0(r31)
     addi    r3, sp, 0x18
     lwz     r0, 0x4(r31)
-    lfs     f1, -0x74c0(rtoc)
+    lfs     f1, -0x74c0(r2)
     stw     r4, 0x18(sp)
     stw     r0, 0x1c(sp)
     lwz     r0, 0x8(r31)
@@ -1241,7 +1241,7 @@ generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x
     stw     r0, 0x28(r29)
     lwz     r0, 0x20(sp)
     stw     r0, 0x2c(r29)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80037488
@@ -1258,7 +1258,7 @@ generate__17TEffectColumWaterFRQ29JGeometry8TVec3_f_RQ29JGeometry8TVec3_f_: # 0x
     lfs     f0, 0x2c(r29)
     stfs    f0, 0x17c(r3)
 branch_0x80037488:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x0
     li      r4, 0x8a
     li      r6, 0x0
@@ -1294,17 +1294,17 @@ branch_0x800374d8:
 .globl reset__17TEffectColumWaterFv
 reset__17TEffectColumWaterFv: # 0x80037500
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, unk_80376948@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stfd    f31, 0x30(sp)
     stw     r31, 0x2c(sp)
-    addi    r31, r4, 0x6948
+    addi    r31, r4, unk_80376948@l
     stw     r30, 0x28(sp)
     addi    r30, r3, 0x0
     bl      reset__11TSpineEnemyFv
-    lfs     f1, -0x74e0(rtoc)
-    lfs     f0, -0x74dc(rtoc)
+    lfs     f1, -0x74e0(r2)
+    lfs     f0, -0x74dc(r2)
     stfs    f1, 0x14(sp)
     stfs    f0, 0x18(sp)
     lfs     f1, 0x18(sp)
@@ -1312,10 +1312,10 @@ reset__17TEffectColumWaterFv: # 0x80037500
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x74c8(rtoc)
+    lfd     f3, -0x74c8(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x74d8(rtoc)
+    lfs     f0, -0x74d8(r2)
     addi    r4, r31, 0x2f8
     stw     r0, 0x20(sp)
     lfs     f1, 0x14(sp)
@@ -1354,22 +1354,22 @@ reset__17TEffectColumWaterFv: # 0x80037500
     lwz     r3, 0x74(r30)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x5
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r30)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x4
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r30)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     li      r4, 0x2
     stfs    f0, 0x10(r3)
     lwz     r3, 0x74(r30)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x10(r3)
     lwz     r0, 0x3c(sp)
     lfd     f31, 0x30(sp)
@@ -1383,21 +1383,21 @@ reset__17TEffectColumWaterFv: # 0x80037500
 .globl init__17TEffectColumWaterFP12TLiveManager
 init__17TEffectColumWaterFP12TLiveManager: # 0x80037654
     mflr    r0
-    lis     r5, 0x8037
+    lis     r5, unk_80376948@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r5, 0x6948
+    addi    r31, r5, unk_80376948@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      init__11TSpineEnemyFP12TLiveManager
     lwz     r0, 0xf0(r30)
-    lis     r3, 0x1000
-    addi    r3, r3, 0x20
+    lis     r3, unk_10000020@h
+    addi    r3, r3, unk_10000020@l
     ori     r0, r0, 0x1
     stw     r0, 0xf0(r30)
     addi    r4, r31, 0x2f8
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x24(r30)
     stfs    f0, 0x28(r30)
     stfs    f0, 0x2c(r30)
@@ -1440,9 +1440,9 @@ init__17TEffectColumWaterFP12TLiveManager: # 0x80037654
 .globl createModelData__24TEffectColumWaterManagerFv
 createModelData__24TEffectColumWaterManagerFv: # 0x80037728
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, entry_2672@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2680
+    addi    r4, r4, entry_2672@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -1464,17 +1464,17 @@ createEnemyInstance__24TEffectColumWaterManagerFv: # 0x8003775c
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x800377b4
-    lis     r4, 0x8037
+    lis     r4, unk_80376c54@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x6c54
+    addi    r4, r4, unk_80376c54@l
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__17TEffectColumWater@ha
     stw     r0, 0x20(r31)
-    subi    r3, r3, 0x2194
+    addi    r3, r3, __vvt__17TEffectColumWater@l
     addi    r0, r3, 0x24
     stw     r3, 0x0(r31)
     stw     r0, 0x20(r31)
@@ -1490,32 +1490,32 @@ branch_0x800377b4:
 .globl loadAfter__24TEffectColumWaterManagerFv
 loadAfter__24TEffectColumWaterManagerFv: # 0x800377cc
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2f98
+    addi    r3, r3, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x89
     lbz     r0, 0x89(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80037810
-    lis     r4, 0x8037
-    lwz     r3, -0x5fe0(r13)
-    addi    r4, r4, 0x6c64
+    lis     r4, unk_80376c64@h
+    lwz     r3, R13Off_m0x5fe0(r13)
+    addi    r4, r4, unk_80376c64@l
     li      r5, 0x89
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r31)
 branch_0x80037810:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r31, r3, 0x8a
     lbz     r0, 0x8a(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80037844
-    lis     r4, 0x8037
-    lwz     r3, -0x5fe0(r13)
-    addi    r4, r4, 0x6c8c
+    lis     r4, unk_80376c8c@h
+    lwz     r3, R13Off_m0x5fe0(r13)
+    addi    r4, r4, unk_80376c8c@l
     li      r5, 0x8a
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
@@ -1542,8 +1542,8 @@ load__24TEffectColumWaterManagerFR20JSUMemoryInputStream: # 0x80037858
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x80037898
-    lis     r3, 0x8037
-    addi    r4, r3, 0x6cb4
+    lis     r3, unk_80376cb4@h
+    addi    r4, r3, unk_80376cb4@l
     addi    r3, r29, 0x0
     bl      __ct__17TSpineEnemyParamsFPCc
 branch_0x80037898:
@@ -1568,11 +1568,11 @@ __ct__24TEffectColumWaterManagerFPCc: # 0x800378c4
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
-    lis     r3, 0x803b
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
+    lis     r3, __vvt__24TEffectColumWaterManager@ha
     stw     r0, 0x0(r31)
-    subi    r0, r3, 0x2080
+    addi    r0, r3, __vvt__24TEffectColumWaterManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -1594,7 +1594,7 @@ calcRootMatrix__12TEffectModelFv: # 0x8003790c
     addi    r31, sp, 0x30
     stw     r30, 0x78(sp)
     mr      r30, r3
-    lfs     f0, -0x74bc(rtoc)
+    lfs     f0, -0x74bc(r2)
     lfs     f2, 0x34(r3)
     lfs     f5, 0x38(r3)
     mr      r3, r31
@@ -1686,8 +1686,8 @@ reset__12TEffectModelFv: # 0x80037a64
     stw     r31, 0x2c(sp)
     mr      r31, r3
     bl      reset__11TSpineEnemyFv
-    lfs     f1, -0x74e0(rtoc)
-    lfs     f0, -0x74dc(rtoc)
+    lfs     f1, -0x74e0(r2)
+    lfs     f0, -0x74dc(r2)
     stfs    f1, 0x14(sp)
     stfs    f0, 0x18(sp)
     lfs     f1, 0x18(sp)
@@ -1695,10 +1695,10 @@ reset__12TEffectModelFv: # 0x80037a64
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x74c8(rtoc)
+    lfd     f3, -0x74c8(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x74d8(rtoc)
+    lfs     f0, -0x74d8(r2)
     stw     r0, 0x20(sp)
     lfs     f1, 0x14(sp)
     lfd     f2, 0x20(sp)
@@ -1739,11 +1739,11 @@ init__12TEffectModelFP12TLiveManager: # 0x80037b28
     mr      r31, r3
     bl      init__11TSpineEnemyFP12TLiveManager
     lwz     r4, 0xf0(r31)
-    lis     r3, 0x1000
-    addi    r0, r3, 0x20
+    lis     r3, unk_10000020@h
+    addi    r0, r3, unk_10000020@l
     ori     r3, r4, 0x1
     stw     r3, 0xf0(r31)
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x24(r31)
     stfs    f0, 0x28(r31)
     stfs    f0, 0x2c(r31)
@@ -1899,22 +1899,22 @@ __ct__17TEffectObjManagerFPCc: # 0x80037d40
     stfd    f31, 0x38(sp)
     stmw    r25, 0x1c(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r27, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r0, 0x0(r27)
     mr      r26, r27
     stw     r4, 0x4(r27)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r26)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r26)
     li      r28, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__17TEffectObjManager@ha
     sth     r28, 0xc(r26)
-    subi    r0, r3, 0x1f18
+    addi    r0, r3, __vvt__17TEffectObjManager@l
     addi    r4, r27, 0x0
     stw     r0, 0x0(r27)
     addi    r0, r27, 0x1c
@@ -1924,19 +1924,19 @@ __ct__17TEffectObjManagerFPCc: # 0x80037d40
     stw     r28, 0x18(r27)
     stw     r0, 0x1c(r27)
     stw     r0, 0x20(r27)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      registerOtherObj__10TConductorFPQ26JDrama8TViewObj
-    stw     r27, -0x70a8(r13)
+    stw     r27, R13Off_m0x70a8(r13)
     li      r3, 0x14
     bl      __nwa__FUl
     stw     r3, 0x24(r27)
-    lis     r3, 0x803b
-    subi    r29, r3, 0x1ef4
-    lis     r3, 0x8037
-    lfs     f31, -0x74e0(rtoc)
+    lis     r3, __vvt__14TEffectObjBase@ha
+    addi    r29, r3, __vvt__14TEffectObjBase@l
+    lis     r3, unk_80376ccc@h
+    lfs     f31, -0x74e0(r2)
     addi    r31, r28, 0x0
     addi    r27, r29, 0x24
-    addi    r30, r3, 0x6ccc
+    addi    r30, r3, unk_80376ccc@l
     li      r26, 0x0
 branch_0x80037df4:
     li      r3, 0x78
@@ -1986,7 +1986,7 @@ erase__Q27JGadget66TList_P14TEffectObjBase_Q27JGadget29TAllocator_P14TEffectObjB
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2009,16 +2009,16 @@ behaveToWater__14TEffectObjBaseFP9THitActor: # 0x80037ec4
     cmpwi   r0, 0x2
     bne-    branch_0x80037f98
     lfs     f1, 0x70(r31)
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80037f04
-    lfs     f0, -0x74b8(rtoc)
+    lfs     f0, -0x74b8(r2)
     fsubs   f0, f1, f0
     stfs    f0, 0x70(r31)
     b       branch_0x80037f98
 
 branch_0x80037f04:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x28c5
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2040,7 +2040,7 @@ branch_0x80037f34:
     li      r7, 0x0
     ori     r0, r0, 0x1
     stw     r0, 0x64(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x80037f98
@@ -2085,7 +2085,7 @@ moveObject__14TEffectObjBaseFv: # 0x80037fac
     lfs     f0, 0x6c(r29)
     fdivs   f1, f1, f0
     bl      PSVECScale
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1f5
@@ -2103,7 +2103,7 @@ moveObject__14TEffectObjBaseFv: # 0x80037fac
     stfs    f1, 0x178(r3)
     stfs    f2, 0x17c(r3)
 branch_0x8003803c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1c4
@@ -2121,7 +2121,7 @@ branch_0x8003803c:
     stfs    f1, 0x178(r3)
     stfs    f2, 0x17c(r3)
 branch_0x80038080:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r29, 0x0
     addi    r5, r29, 0x10
     li      r4, 0x1c5
@@ -2139,7 +2139,7 @@ branch_0x80038080:
     stfs    f1, 0x178(r3)
     stfs    f2, 0x17c(r3)
 branch_0x800380c4:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x30b2
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2178,7 +2178,7 @@ branch_0x80038138:
     clrlwi. r0, r0, 24
     beq-    branch_0x8003814c
     addi    r3, r29, 0x0
-    li      r4, MARIOMSG_HURTFIRE
+    li      r4, 0xa
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x8003814c:
     addi    r30, r30, 0x1
@@ -2252,7 +2252,7 @@ reset__14TEffectObjBaseFv: # 0x80038214
     li      r0, 0x1
     stw     r0, 0x68(r3)
     li      r0, 0x0
-    lfs     f0, -0x74b4(rtoc)
+    lfs     f0, -0x74b4(r2)
     stfs    f0, 0x6c(r3)
     stfs    f0, 0x70(r3)
     lwz     r4, 0x64(r3)
@@ -2265,16 +2265,16 @@ reset__14TEffectObjBaseFv: # 0x80038214
 .globl init__14TEffectObjBaseFv
 init__14TEffectObjBaseFv: # 0x80038240
     mflr    r0
-    lis     r4, 0x1000
+    lis     r4, unk_10000005@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x5
+    addi    r4, r4, unk_10000005@l
     li      r5, 0x5
     stwu    sp, -0x18(sp)
     lis     r6, 0x8000
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lfs     f1, -0x74b0(rtoc)
-    lfs     f2, -0x74ac(rtoc)
+    lfs     f1, -0x74b0(r2)
+    lfs     f2, -0x74ac(r2)
     fmr     f3, f1
     fmr     f4, f2
     bl      initHitActor__9THitActorFUlUsiffff
@@ -2304,7 +2304,7 @@ load__14TEffectObjBaseFR20JSUMemoryInputStream: # 0x800382a0
     lwz     r12, 0xa4(r12)
     mtlr    r12
     blrl
-    lwz     r31, -0x70a8(r13)
+    lwz     r31, R13Off_m0x70a8(r13)
     cmplwi  r31, 0x0
     beq-    branch_0x80038310
     addi    r0, r31, 0x1c
@@ -2337,15 +2337,15 @@ __ct__14TEffectObjBaseFPCc: # 0x80038328
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1ef4
+    lis     r3, __vvt__14TEffectObjBase@ha
+    addi    r3, r3, __vvt__14TEffectObjBase@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x24
     li      r0, 0x0
     stw     r3, 0x20(r31)
     mr      r3, r31
     stw     r0, 0x68(r31)
-    lfs     f0, -0x74e0(rtoc)
+    lfs     f0, -0x74e0(r2)
     stfs    f0, 0x6c(r31)
     stfs    f0, 0x70(r31)
     lwz     r0, 0x1c(sp)
@@ -2364,7 +2364,7 @@ emitEffect__19TEffectBiancoFunsuiFv: # 0x80038380
     stw     r30, 0x30(sp)
     mr      r30, r3
     addi    r31, r30, 0x48
-    lfs     f0, -0x74bc(rtoc)
+    lfs     f0, -0x74bc(r2)
     lfs     f2, 0x34(r3)
     lfs     f5, 0x38(r3)
     mr      r3, r31
@@ -2385,13 +2385,13 @@ emitEffect__19TEffectBiancoFunsuiFv: # 0x80038380
     lwz     r5, 0x24(sp)
     lwz     r6, 0x1c(sp)
     bl      MsMtxSetXYZRPH__FPA4_ffffsss
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x1a9
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x5006
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2415,9 +2415,9 @@ branch_0x80038438:
 .globl loadAfter__19TEffectBiancoFunsuiFv
 loadAfter__19TEffectBiancoFunsuiFv: # 0x80038450
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2f98
+    addi    r4, r4, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r4, 0x1a9
@@ -2426,15 +2426,15 @@ loadAfter__19TEffectBiancoFunsuiFv: # 0x80038450
     lbz     r0, 0x1a9(r4)
     cmplwi  r0, 0x0
     bne-    branch_0x8003849c
-    lis     r4, 0x8037
-    lwz     r3, -0x5fe0(r13)
-    addi    r4, r4, 0x6cdc
+    lis     r4, unk_80376cdc@h
+    lwz     r3, R13Off_m0x5fe0(r13)
+    addi    r4, r4, unk_80376cdc@l
     li      r5, 0x1a9
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r31)
 branch_0x8003849c:
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     mr      r4, r30
     bl      registerOtherObj__10TConductorFPQ26JDrama8TViewObj
     lwz     r0, 0x1c(sp)
@@ -2454,7 +2454,7 @@ emitEffect__18TEffectPinnaFunsuiFv: # 0x800384c0
     stw     r30, 0x30(sp)
     mr      r30, r3
     addi    r31, r30, 0x48
-    lfs     f0, -0x74bc(rtoc)
+    lfs     f0, -0x74bc(r2)
     lfs     f2, 0x34(r3)
     lfs     f5, 0x38(r3)
     mr      r3, r31
@@ -2475,13 +2475,13 @@ emitEffect__18TEffectPinnaFunsuiFv: # 0x800384c0
     lwz     r5, 0x24(sp)
     lwz     r6, 0x1c(sp)
     bl      MsMtxSetXYZRPH__FPA4_ffffsss
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x1a8
     li      r6, 0x1
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x5006
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2505,9 +2505,9 @@ branch_0x80038578:
 .globl loadAfter__18TEffectPinnaFunsuiFv
 loadAfter__18TEffectPinnaFunsuiFv: # 0x80038590
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2f98
+    addi    r4, r4, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r4, 0x1a8
@@ -2516,15 +2516,15 @@ loadAfter__18TEffectPinnaFunsuiFv: # 0x80038590
     lbz     r0, 0x1a8(r4)
     cmplwi  r0, 0x0
     bne-    branch_0x800385dc
-    lis     r4, 0x8037
-    lwz     r3, -0x5fe0(r13)
-    addi    r4, r4, 0x6d00
+    lis     r4, unk_80376d00@h
+    lwz     r3, R13Off_m0x5fe0(r13)
+    addi    r4, r4, unk_80376d00@l
     li      r5, 0x1a8
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r31)
 branch_0x800385dc:
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     mr      r4, r30
     bl      registerOtherObj__10TConductorFPQ26JDrama8TViewObj
     lwz     r0, 0x1c(sp)
@@ -2563,12 +2563,12 @@ __dt__23TEffectExplosionManagerFv: # 0x80038634
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8003868c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x24b8
+    lis     r3, __vvt__23TEffectExplosionManager@ha
+    addi    r0, r3, __vvt__23TEffectExplosionManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8003867c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2598,14 +2598,14 @@ __dt__16TEffectColumSandFv: # 0x800386a8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038710
-    lis     r3, 0x803b
-    subi    r3, r3, 0x2464
+    lis     r3, __vvt__16TEffectColumSand@ha
+    addi    r3, r3, __vvt__16TEffectColumSand@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80038700
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -2637,12 +2637,12 @@ __dt__23TEffectColumSandManagerFv: # 0x8003872c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038784
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2350
+    lis     r3, __vvt__23TEffectColumSandManager@ha
+    addi    r0, r3, __vvt__23TEffectColumSandManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80038774
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2672,14 +2672,14 @@ __dt__21TEffectBombColumWaterFv: # 0x800387a0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038808
-    lis     r3, 0x803b
-    subi    r3, r3, 0x22fc
+    lis     r3, __vvt__21TEffectBombColumWater@ha
+    addi    r3, r3, __vvt__21TEffectBombColumWater@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800387f8
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -2711,12 +2711,12 @@ __dt__28TEffectBombColumWaterManagerFv: # 0x80038824
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8003887c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x21e8
+    lis     r3, __vvt__28TEffectBombColumWaterManager@ha
+    addi    r0, r3, __vvt__28TEffectBombColumWaterManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8003886c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2746,14 +2746,14 @@ __dt__17TEffectColumWaterFv: # 0x80038898
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038900
-    lis     r3, 0x803b
-    subi    r3, r3, 0x2194
+    lis     r3, __vvt__17TEffectColumWater@ha
+    addi    r3, r3, __vvt__17TEffectColumWater@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800388f0
-    lis     r3, 0x803b
-    subi    r3, r3, 0x202c
+    lis     r3, __vvt__12TEffectModel@ha
+    addi    r3, r3, __vvt__12TEffectModel@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -2785,12 +2785,12 @@ __dt__24TEffectColumWaterManagerFv: # 0x8003891c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038974
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2080
+    lis     r3, __vvt__24TEffectColumWaterManager@ha
+    addi    r0, r3, __vvt__24TEffectColumWaterManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80038964
-    lis     r3, 0x803b
-    subi    r0, r3, 0x250c
+    lis     r3, __vvt__19TEffectModelManager@ha
+    addi    r0, r3, __vvt__19TEffectModelManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2819,8 +2819,8 @@ __dt__17TEffectObjManagerFv: # 0x80038990
     mr.     r31, r3
     addi    r27, r4, 0x0
     beq-    branch_0x80038a6c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1f18
+    lis     r3, __vvt__17TEffectObjManager@ha
+    addi    r3, r3, __vvt__17TEffectObjManager@l
     addic.  r0, r31, 0x14
     stw     r3, 0x0(r31)
     beq-    branch_0x80038a3c
@@ -2861,8 +2861,8 @@ branch_0x80038a18:
 branch_0x80038a3c:
     cmplwi  r31, 0x0
     beq-    branch_0x80038a5c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x0
     li      r4, 0x0
@@ -2907,14 +2907,14 @@ __dt__14TEffectObjBaseFv: # 0x80038aa4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038b0c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1ef4
+    lis     r3, __vvt__14TEffectObjBase@ha
+    addi    r3, r3, __vvt__14TEffectObjBase@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80038afc
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -2946,14 +2946,14 @@ __dt__19TEffectBiancoFunsuiFv: # 0x80038b28
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038b90
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1e40
+    lis     r3, __vvt__19TEffectBiancoFunsui@ha
+    addi    r3, r3, __vvt__19TEffectBiancoFunsui@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80038b80
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1cf8
+    lis     r3, __vvt__13TSimpleEffect@ha
+    addi    r3, r3, __vvt__13TSimpleEffect@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -2985,14 +2985,14 @@ __dt__18TEffectPinnaFunsuiFv: # 0x80038bac
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038c14
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1d9c
+    lis     r3, __vvt__18TEffectPinnaFunsui@ha
+    addi    r3, r3, __vvt__18TEffectPinnaFunsui@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80038c04
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1cf8
+    lis     r3, __vvt__13TSimpleEffect@ha
+    addi    r3, r3, __vvt__13TSimpleEffect@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -3024,8 +3024,8 @@ __dt__13TSimpleEffectFv: # 0x80038c30
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80038c80
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1cf8
+    lis     r3, __vvt__13TSimpleEffect@ha
+    addi    r3, r3, __vvt__13TSimpleEffect@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -3049,205 +3049,205 @@ branch_0x80038c80:
 .globl __sinit_effectObj_cpp
 __sinit_effectObj_cpp: # 0x80038c9c
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803efee8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x118
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803efee8@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x80038ce4
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x80038ce4:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x80038d14
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x80038d14:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x80038d44
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x80038d44:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x80038d74
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x80038d74:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x80038da4
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x80038da4:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x80038dd4
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x80038dd4:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x80038e04
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x80038e04:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x80038e34
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x80038e34:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x80038e64
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x80038e64:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x80038e94
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x80038e94:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x80038ec4
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x80038ec4:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x80038ef4
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x80038ef4:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x80038f24
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x80038f24:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x80038f54
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x80038f54:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x80038f84
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x80038f84:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
@@ -3256,56 +3256,56 @@ branch_0x80038f84:
     blr
 
 
-.globl _32___dt__13TSimpleEffectFv
-_32___dt__13TSimpleEffectFv: # 0x80038f98
-    subi    r3, r3, 0x20
+.globl unk_80038f98
+unk_80038f98: # 0x80038f98
+    addi    r3, r3, -0x20
     b       __dt__13TSimpleEffectFv
 
 
-.globl _32___dt__18TEffectPinnaFunsuiFv
-_32___dt__18TEffectPinnaFunsuiFv: # 0x80038fa0
-    subi    r3, r3, 0x20
+.globl unk_80038fa0
+unk_80038fa0: # 0x80038fa0
+    addi    r3, r3, -0x20
     b       __dt__18TEffectPinnaFunsuiFv
 
 
-.globl _32___dt__19TEffectBiancoFunsuiFv
-_32___dt__19TEffectBiancoFunsuiFv: # 0x80038fa8
-    subi    r3, r3, 0x20
+.globl unk_80038fa8
+unk_80038fa8: # 0x80038fa8
+    addi    r3, r3, -0x20
     b       __dt__19TEffectBiancoFunsuiFv
 
 
-.globl _32___dt__14TEffectObjBaseFv
-_32___dt__14TEffectObjBaseFv: # 0x80038fb0
-    subi    r3, r3, 0x20
+.globl unk_80038fb0
+unk_80038fb0: # 0x80038fb0
+    addi    r3, r3, -0x20
     b       __dt__14TEffectObjBaseFv
 
 
-.globl _32___dt__12TEffectModelFv
-_32___dt__12TEffectModelFv: # 0x80038fb8
-    subi    r3, r3, 0x20
+.globl unk_80038fb8
+unk_80038fb8: # 0x80038fb8
+    addi    r3, r3, -0x20
     b       __dt__12TEffectModelFv
 
 
-.globl _32___dt__17TEffectColumWaterFv
-_32___dt__17TEffectColumWaterFv: # 0x80038fc0
-    subi    r3, r3, 0x20
+.globl unk_80038fc0
+unk_80038fc0: # 0x80038fc0
+    addi    r3, r3, -0x20
     b       __dt__17TEffectColumWaterFv
 
 
-.globl _32___dt__21TEffectBombColumWaterFv
-_32___dt__21TEffectBombColumWaterFv: # 0x80038fc8
-    subi    r3, r3, 0x20
+.globl unk_80038fc8
+unk_80038fc8: # 0x80038fc8
+    addi    r3, r3, -0x20
     b       __dt__21TEffectBombColumWaterFv
 
 
-.globl _32___dt__16TEffectColumSandFv
-_32___dt__16TEffectColumSandFv: # 0x80038fd0
-    subi    r3, r3, 0x20
+.globl unk_80038fd0
+unk_80038fd0: # 0x80038fd0
+    addi    r3, r3, -0x20
     b       __dt__16TEffectColumSandFv
 
 
-.globl _32___dt__16TEffectExplosionFv
-_32___dt__16TEffectExplosionFv: # 0x80038fd8
-    subi    r3, r3, 0x20
+.globl unk_80038fd8
+unk_80038fd8: # 0x80038fd8
+    addi    r3, r3, -0x20
     b       __dt__16TEffectExplosionFv
 

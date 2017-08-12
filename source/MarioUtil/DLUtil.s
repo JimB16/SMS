@@ -24,7 +24,7 @@ draw__15TDLColorTexQuadFv: # 0x80224f0c
     lwz     r4, 0x20(r4)
     bl      GXSetArray
     li      r3, 0xd
-    subi    r4, r13, 0x7720
+    addi    r4, r13, R13Off_m0x7720
     li      r5, 0x2
     bl      GXSetArray
     bl      GXInvalidateVtxCache
@@ -88,7 +88,7 @@ setEnd__15TDLColorTexQuadFv: # 0x80224fac
     add     r4, r0, r6
     ble-    branch_0x802250c0
     cmpwi   r5, 0x8
-    subi    r6, r5, 0x8
+    addi    r6, r5, -0x8
     ble-    branch_0x802250a0
     addi    r0, r6, 0x7
     srwi    r0, r0, 3
@@ -378,7 +378,7 @@ draw__10TDLTexQuadFv: # 0x80225408
     lwz     r4, 0x14(r4)
     bl      GXSetArray
     li      r3, 0xd
-    subi    r4, r13, 0x7720
+    addi    r4, r13, R13Off_m0x7720
     li      r5, 0x2
     bl      GXSetArray
     bl      GXInvalidateVtxCache
@@ -459,7 +459,7 @@ setEnd__10TDLTexQuadFv: # 0x80225510
     add     r5, r0, r5
     ble-    branch_0x80225624
     cmpwi   r6, 0x8
-    subi    r4, r6, 0x8
+    addi    r4, r6, -0x8
     ble-    branch_0x80225604
     addi    r0, r4, 0x7
     srwi    r0, r0, 3

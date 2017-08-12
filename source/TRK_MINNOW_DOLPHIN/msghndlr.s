@@ -56,7 +56,7 @@ branch_0x8033e2c0:
     mr      r3, r30
     bl      TRKMessageSend
     cmpwi   r3, 0x0
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     beq-    branch_0x8033e2dc
     cmpwi   r31, 0x0
     bgt+    branch_0x8033e2c0
@@ -622,37 +622,35 @@ branch_0x8033e9e0:
 branch_0x8033e9fc:
     cmpwi   r30, 0x0
     beq-    branch_0x8033ea64
-    subi    r0, r30, 0x700
+    addi    r0, r30, -0x700
     cmplwi  r0, 0x6
     bgt-    branch_0x8033ea50
-    lis     r3, 0x803e
-    addi    r3, r3, 0x6860
+    lis     r3, unk_803e6860@h
+    addi    r3, r3, unk_803e6860@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8033EA28:		# jumptable 8033EA24 case 2
+    bctr       
+branch_0x8033ea28:
     li      r5, 0x15
     b       branch_0x8033ea54
 
-branch_0x8033EA30:		# jumptable 8033EA24 case 0
-li	  r5, 0x13
-b	  branch_0x8033ea54
+branch_0x8033ea30:
+    li      r5, 0x13
+    b       branch_0x8033ea54
 
-branch_0x8033EA38:		# jumptable 8033EA24 case 4
-li	  r5, 0x21
-b	  branch_0x8033ea54
+branch_0x8033ea38:
+    li      r5, 0x21
+    b       branch_0x8033ea54
 
-branch_0x8033EA40:		# jumptable 8033EA24 case 5
-li	  r5, 0x22
-b	  branch_0x8033ea54
+branch_0x8033ea40:
+    li      r5, 0x22
+    b       branch_0x8033ea54
 
-branch_0x8033EA48:		# jumptable 8033EA24 case 6
-li	  r5, 0x20
-b	  branch_0x8033ea54
+branch_0x8033ea48:
+    li      r5, 0x20
+    b       branch_0x8033ea54
 
-def_8033EA24:		# jumptable 8033EA24 default case
 branch_0x8033ea50:
     li      r5, 0x3
 branch_0x8033ea54:
@@ -787,37 +785,35 @@ branch_0x8033ebe0:
 branch_0x8033ebf8:
     cmpwi   r30, 0x0
     beq-    branch_0x8033ec60
-    subi    r0, r30, 0x700
+    addi    r0, r30, -0x700
     cmplwi  r0, 0x6
     bgt-    branch_0x8033ec4c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x687c
+    lis     r3, unk_803e687c@h
+    addi    r3, r3, unk_803e687c@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8033EC24:		# jumptable 8033EC20 case 2
+    bctr       
+branch_0x8033ec24:
     li      r5, 0x15
     b       branch_0x8033ec50
 
-branch_0x8033EC2C:		# jumptable 8033EC20 case 0
-li	  r5, 0x13
-b	  branch_0x8033ec50
+branch_0x8033ec2c:
+    li      r5, 0x13
+    b       branch_0x8033ec50
 
-branch_0x8033EC34:		# jumptable 8033EC20 case 4
-li	  r5, 0x21
-b	  branch_0x8033ec50
+branch_0x8033ec34:
+    li      r5, 0x21
+    b       branch_0x8033ec50
 
-branch_0x8033EC3C:		# jumptable 8033EC20 case 5
-li	  r5, 0x22
-b	  branch_0x8033ec50
+branch_0x8033ec3c:
+    li      r5, 0x22
+    b       branch_0x8033ec50
 
-branch_0x8033EC44:		# jumptable 8033EC20 case 6
-li	  r5, 0x20
-b	  branch_0x8033ec50
+branch_0x8033ec44:
+    li      r5, 0x20
+    b       branch_0x8033ec50
 
-def_8033EC20:		# jumptable 8033EC20 default case
 branch_0x8033ec4c:
     li      r5, 0x3
 branch_0x8033ec50:

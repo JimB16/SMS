@@ -9,8 +9,8 @@ __dt__Q26JStage6TLightFv: # 0x8033710c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80337154
-    lis     r3, 0x803e
-    addi    r0, r3, 0x46b8
+    lis     r3, __vvt__Q26JStage6TLight@h
+    addi    r0, r3, __vvt__Q26JStage6TLight@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -49,7 +49,7 @@ JSGSetLightType__Q26JStage6TLightFQ26JStage7TELight: # 0x80337180
 .globl JSGGetColor__Q26JStage6TLightCFv
 JSGGetColor__Q26JStage6TLightCFv: # 0x80337184
     stwu    sp, -0x18(sp)
-    lwz     r0, 0x9a0(rtoc)
+    lwz     r0, R2Off_0x9a0(r2)
     stw     r0, 0x10(sp)
     lwz     r3, 0x10(sp)
     addi    sp, sp, 0x18

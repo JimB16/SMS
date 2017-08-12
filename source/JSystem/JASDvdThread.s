@@ -5,17 +5,17 @@ init__Q28JASystem3DvdFv: # 0x8031706c
     li      r5, 0x0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x73e8(r13)
-    lwz     r4, -0x5b30(r13)
+    lwz     r0, R13Off_m0x73e8(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     slwi    r3, r0, 6
     bl      __nwa__FUlP7JKRHeapi
-    lwz     r0, -0x73e8(r13)
+    lwz     r0, R13Off_m0x73e8(r13)
     li      r5, 0x0
-    stw     r3, -0x5b90(r13)
-    lwz     r4, -0x5b30(r13)
+    stw     r3, R13Off_m0x5b90(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     slwi    r3, r0, 2
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5b8c(r13)
+    stw     r3, R13Off_m0x5b8c(r13)
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
     mtlr    r0
@@ -25,7 +25,7 @@ init__Q28JASystem3DvdFv: # 0x8031706c
 .globl extendPath__Q28JASystem3DvdFPcPc
 extendPath__Q28JASystem3DvdFPcPc: # 0x803170b8
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, unk_803e0000@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
@@ -36,7 +36,7 @@ extendPath__Q28JASystem3DvdFPcPc: # 0x803170b8
     extsb.  r0, r0
     beq-    branch_0x8031711c
     addi    r3, r30, 0x0
-    addi    r4, r5, 0x0
+    addi    r4, r5, unk_803e0000@l
     bl      strcpy
     lbz     r0, 0x0(r31)
     cmpwi   r0, 0x2f
@@ -68,45 +68,45 @@ branch_0x80317128:
 .globl dvdProcInit__Q28JASystem3DvdFv
 dvdProcInit__Q28JASystem3DvdFv: # 0x80317140
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2728
+    addi    r3, r3, mq__Q28JASystem3Dvd@l
     li      r5, 0x20
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
-    lwz     r4, -0x5b8c(r13)
+    lwz     r4, R13Off_m0x5b8c(r13)
     bl      OSInitMessageQueue
-    lwz     r0, -0x73e0(r13)
+    lwz     r0, R13Off_m0x73e0(r13)
     li      r3, 0x1
-    stw     r3, -0x5bb8(r13)
+    stw     r3, R13Off_m0x5bb8(r13)
     li      r5, 0x0
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     slwi    r3, r0, 2
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5b70(r13)
+    stw     r3, R13Off_m0x5b70(r13)
     li      r30, 0x0
     li      r31, 0x0
     b       branch_0x803171b4
 
 branch_0x80317194:
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     li      r3, 0x40
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lwz     r4, -0x5b70(r13)
+    lwz     r4, R13Off_m0x5b70(r13)
     addi    r30, r30, 0x1
     stwx    r3, r4, r31
     addi    r31, r31, 0x4
 branch_0x803171b4:
-    lwz     r0, -0x73e0(r13)
+    lwz     r0, R13Off_m0x73e0(r13)
     cmpw    r30, r0
     blt+    branch_0x80317194
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     slwi    r3, r0, 2
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5b6c(r13)
+    stw     r3, R13Off_m0x5b6c(r13)
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
     lwz     r30, 0x8(sp)
@@ -124,14 +124,14 @@ dvdProc__Q28JASystem3DvdFPv: # 0x803171ec
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     bl      allocDvdBuffer__Q28JASystem3DvdFv
-    lwz     r0, -0x73e4(r13)
+    lwz     r0, R13Off_m0x73e4(r13)
     slwi    r3, r0, 1
     bl      allocFromSysDram__Q28JASystem6KernelFUl
     addi    r29, r3, 0x0
-    subi    r3, r13, 0x5b84
+    addi    r3, r13, R13Off_m0x5b84
     bl      OSInitThreadQueue
-    lis     r3, 0x8040
-    subi    r31, r3, 0x2728
+    lis     r3, mq__Q28JASystem3Dvd@ha
+    addi    r31, r3, mq__Q28JASystem3Dvd@l
 branch_0x80317228:
     addi    r3, r31, 0x0
     addi    r4, sp, 0xc
@@ -139,10 +139,10 @@ branch_0x80317228:
     bl      OSReceiveMessage
     lwz     r30, 0xc(sp)
     bl      updateBuffer__Q28JASystem3DvdFv
-    lwz     r0, -0x5bb4(r13)
+    lwz     r0, R13Off_m0x5bb4(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8031725c
-    lwz     r5, -0x73e4(r13)
+    lwz     r5, R13Off_m0x73e4(r13)
     addi    r3, r29, 0x0
     li      r4, 0x2
     bl      writeBufferSize__Q28JASystem3DvdFPUcUlUl
@@ -270,7 +270,7 @@ branch_0x803173ec:
     stw     r31, 0x58(sp)
     stw     r27, 0x4c(sp)
     stw     r28, 0x50(sp)
-    lwz     r0, -0x5bb8(r13)
+    lwz     r0, R13Off_m0x5bb8(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8031743c
     bl      getCallStack__Q28JASystem3DvdFv
@@ -279,11 +279,11 @@ branch_0x803173ec:
     addi    r4, r31, 0x4
     li      r5, 0x38
     bl      bcopy__Q28JASystem4CalcFPCvPvUl
-    lis     r3, 0x8031
-    addi    r0, r3, 0x7278
-    lis     r3, 0x8040
+    lis     r3, loadToDramDvdTMain__Q28JASystem3DvdFPv@h
+    addi    r0, r3, loadToDramDvdTMain__Q28JASystem3DvdFPv@l
+    lis     r3, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x0(r31)
-    subi    r3, r3, 0x2728
+    addi    r3, r3, mq__Q28JASystem3Dvd@l
     addi    r4, r31, 0x0
     li      r5, 0x1
     bl      OSSendMessage
@@ -299,22 +299,22 @@ branch_0x8031743c:
 .globl loadToAramDvdTMain__Q28JASystem3DvdFPv
 loadToAramDvdTMain__Q28JASystem3DvdFPv: # 0x80317454
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x70(sp)
     stmw    r25, 0x54(sp)
     addi    r30, r3, 0x0
-    subi    r31, r4, 0x2728
-    lbz     r0, -0x5b64(r13)
+    addi    r31, r4, mq__Q28JASystem3Dvd@l
+    lbz     r0, R13Off_m0x5b64(r13)
     extsb.  r0, r0
     bne-    branch_0x8031748c
     li      r3, 0x0
     li      r0, 0x1
-    stw     r3, -0x5b68(r13)
-    stb     r0, -0x5b64(r13)
+    stw     r3, R13Off_m0x5b68(r13)
+    stb     r0, R13Off_m0x5b64(r13)
 branch_0x8031748c:
-    lis     r3, 0x803e
-    addi    r4, r3, 0x3028
+    lis     r3, audioRootPath__Q28JASystem3Dvd@h
+    addi    r4, r3, audioRootPath__Q28JASystem3Dvd@l
     lbz     r0, 0x0(r4)
     extsb.  r0, r0
     beq-    branch_0x803174d4
@@ -372,28 +372,28 @@ branch_0x8031752c:
     stw     r0, 0x2c(r30)
 branch_0x8031754c:
     bl      OSGetTick
-    lis     r3, 0x8032
-    subi    r26, r3, 0x7fb0
+    lis     r3, aramDmaFinish__Q28JASystem3DvdFUl@ha
+    addi    r26, r3, aramDmaFinish__Q28JASystem3DvdFUl@l
     lis     r25, 0x1234
     b       branch_0x80317674
 
 branch_0x80317560:
-    lwz     r5, -0x5b98(r13)
-    subi    r4, r13, 0x5ba0
-    lwz     r6, -0x5bb0(r13)
+    lwz     r5, R13Off_m0x5b98(r13)
+    addi    r4, r13, R13Off_m0x5ba0
+    lwz     r6, R13Off_m0x5bb0(r13)
     addi    r3, r5, 0x1
     divwu   r0, r3, r6
     mullw   r0, r0, r6
     slwi    r5, r5, 2
     lwzx    r27, r4, r5
     subf    r0, r0, r3
-    stw     r0, -0x5b98(r13)
+    stw     r0, R13Off_m0x5b98(r13)
 branch_0x80317588:
-    lwz     r0, -0x5b94(r13)
+    lwz     r0, R13Off_m0x5b94(r13)
     cmplw   r0, r6
     beq+    branch_0x80317588
     lwz     r3, 0x2c(r30)
-    lwz     r0, -0x5bb4(r13)
+    lwz     r0, R13Off_m0x5bb4(r13)
     cmplw   r3, r0
     bge-    branch_0x803175d4
     addi    r0, r3, 0x1f
@@ -419,15 +419,15 @@ branch_0x803175d4:
     bl      dvdReadMutex__Q28JASystem3DvdFP11DVDFileInfoPvllPc
     lwz     r4, 0x28(r30)
     addi    r29, r3, 0x0
-    lwz     r0, -0x5bb4(r13)
+    lwz     r0, R13Off_m0x5bb4(r13)
     add     r0, r4, r0
     stw     r0, 0x28(r30)
-    lwz     r3, -0x5bb4(r13)
+    lwz     r3, R13Off_m0x5bb4(r13)
     lwz     r0, 0x2c(r30)
     subf    r0, r3, r0
     stw     r0, 0x2c(r30)
 branch_0x80317614:
-    lwz     r0, -0x5b68(r13)
+    lwz     r0, R13Off_m0x5b68(r13)
     mr      r7, r27
     lwz     r8, 0x24(r30)
     addi    r9, r28, 0x0
@@ -439,15 +439,15 @@ branch_0x80317614:
     li      r6, 0x1
     addi    r3, r3, 0x5c
     bl      ARQPostRequest
-    lwz     r3, -0x5b68(r13)
-    lwz     r4, -0x5b94(r13)
+    lwz     r3, R13Off_m0x5b68(r13)
+    lwz     r4, R13Off_m0x5b94(r13)
     addi    r0, r3, 0x1
-    stw     r0, -0x5b68(r13)
+    stw     r0, R13Off_m0x5b68(r13)
     addi    r3, r4, 0x1
-    lwz     r0, -0x5b68(r13)
-    stw     r3, -0x5b94(r13)
+    lwz     r0, R13Off_m0x5b68(r13)
+    stw     r3, R13Off_m0x5b94(r13)
     clrlwi  r0, r0, 30
-    stw     r0, -0x5b68(r13)
+    stw     r0, R13Off_m0x5b68(r13)
     lwz     r0, 0x24(r30)
     add     r0, r0, r28
     stw     r0, 0x24(r30)
@@ -458,7 +458,7 @@ branch_0x80317674:
     addi    r3, r31, 0x20
     bl      DVDClose
 branch_0x80317688:
-    lwz     r0, -0x5b94(r13)
+    lwz     r0, R13Off_m0x5b94(r13)
     cmplwi  r0, 0x0
     bne+    branch_0x80317688
     bl      OSGetTick
@@ -499,7 +499,7 @@ branch_0x80317708:
     stw     r31, 0x58(sp)
     stw     r27, 0x4c(sp)
     stw     r28, 0x50(sp)
-    lwz     r0, -0x5bb8(r13)
+    lwz     r0, R13Off_m0x5bb8(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80317758
     bl      getCallStack__Q28JASystem3DvdFv
@@ -508,11 +508,11 @@ branch_0x80317708:
     addi    r4, r31, 0x4
     li      r5, 0x38
     bl      bcopy__Q28JASystem4CalcFPCvPvUl
-    lis     r3, 0x8031
-    addi    r0, r3, 0x7454
-    lis     r3, 0x8040
+    lis     r3, loadToAramDvdTMain__Q28JASystem3DvdFPv@h
+    addi    r0, r3, loadToAramDvdTMain__Q28JASystem3DvdFPv@l
+    lis     r3, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x0(r31)
-    subi    r3, r3, 0x2728
+    addi    r3, r3, mq__Q28JASystem3Dvd@l
     addi    r4, r31, 0x0
     li      r5, 0x1
     bl      OSSendMessage
@@ -530,10 +530,10 @@ checkFileExtend__Q28JASystem3DvdFPc: # 0x80317770
     mflr    r0
     lis     r4, 0x803e
     stw     r0, 0x4(sp)
-    lis     r5, 0x8040
+    lis     r5, mq__Q28JASystem3Dvd@ha
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r5, 0x2728
+    addi    r31, r5, mq__Q28JASystem3Dvd@l
     stw     r30, 0x50(sp)
     addi    r30, r3, 0x0
     lbzu    r0, 0x3028(r4)
@@ -609,7 +609,7 @@ branch_0x80317874:
     stw     r0, 0x44(sp)
     stw     r0, 0x38(sp)
     stw     r0, 0x3c(sp)
-    lwz     r0, -0x5bb8(r13)
+    lwz     r0, R13Off_m0x5bb8(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x803178c8
     bl      getCallStack__Q28JASystem3DvdFv
@@ -618,11 +618,11 @@ branch_0x80317874:
     addi    r4, r31, 0x4
     li      r5, 0x38
     bl      bcopy__Q28JASystem4CalcFPCvPvUl
-    lis     r3, 0x8031
-    addi    r0, r3, 0x7278
-    lis     r3, 0x8040
+    lis     r3, loadToDramDvdTMain__Q28JASystem3DvdFPv@h
+    addi    r0, r3, loadToDramDvdTMain__Q28JASystem3DvdFPv@l
+    lis     r3, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x0(r31)
-    subi    r3, r3, 0x2728
+    addi    r3, r3, mq__Q28JASystem3Dvd@l
     addi    r4, r31, 0x0
     li      r5, 0x1
     bl      OSSendMessage
@@ -658,7 +658,7 @@ checkPassDvdT__Q28JASystem3DvdFUlPUlPFUl_v: # 0x8031790c
     stw     r30, 0x50(sp)
     addi    r30, sp, 0x14
     stw     r3, 0x14(sp)
-    lwz     r0, -0x5bb8(r13)
+    lwz     r0, R13Off_m0x5bb8(r13)
     stw     r4, 0x44(sp)
     cmplwi  r0, 0x0
     stw     r5, 0x48(sp)
@@ -669,11 +669,11 @@ checkPassDvdT__Q28JASystem3DvdFUlPUlPFUl_v: # 0x8031790c
     addi    r4, r31, 0x4
     li      r5, 0x38
     bl      bcopy__Q28JASystem4CalcFPCvPvUl
-    lis     r3, 0x8031
-    addi    r0, r3, 0x7da0
-    lis     r3, 0x8040
+    lis     r3, dvdThreadCheckBack__Q28JASystem3DvdFPv@h
+    addi    r0, r3, dvdThreadCheckBack__Q28JASystem3DvdFPv@l
+    lis     r3, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x0(r31)
-    subi    r3, r3, 0x2728
+    addi    r3, r3, mq__Q28JASystem3Dvd@l
     addi    r4, r31, 0x0
     li      r5, 0x1
     bl      OSSendMessage
@@ -690,11 +690,11 @@ branch_0x80317974:
 .globl checkFile__Q28JASystem3DvdFPc
 checkFile__Q28JASystem3DvdFPc: # 0x80317990
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r4, 0x2728
+    addi    r31, r4, mq__Q28JASystem3Dvd@l
     addi    r4, r31, 0x1d0
     stw     r30, 0x10(sp)
     bl      openDvd__Q28JASystem3DvdFPcP11DVDFileInfo
@@ -720,11 +720,11 @@ branch_0x803179d4:
 .globl loadFile__Q28JASystem3DvdFPcPv
 loadFile__Q28JASystem3DvdFPcPv: # 0x803179ec
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, mq__Q28JASystem3Dvd@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r5, 0x2728
+    addi    r31, r5, mq__Q28JASystem3Dvd@l
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     addi    r29, r4, 0x0
@@ -748,7 +748,7 @@ branch_0x80317a34:
     bl      DVDReadPrio
     cmpwi   r3, -0x1
     bne-    branch_0x80317a74
-    lwz     r12, -0x5b78(r13)
+    lwz     r12, R13Off_m0x5b78(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x80317a74
     mtlr    r12
@@ -775,7 +775,7 @@ branch_0x80317a80:
 .globl pauseDvdT__Q28JASystem3DvdFv
 pauseDvdT__Q28JASystem3DvdFv: # 0x80317aa0
     li      r0, 0x1
-    stw     r0, -0x5b7c(r13)
+    stw     r0, R13Off_m0x5b7c(r13)
     blr
 
 
@@ -784,14 +784,14 @@ unpauseDvdT__Q28JASystem3DvdFv: # 0x80317aac
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x5b7c(r13)
+    lwz     r0, R13Off_m0x5b7c(r13)
     cmpwi   r0, 0x1
     bne-    branch_0x80317acc
-    subi    r3, r13, 0x5b84
+    addi    r3, r13, R13Off_m0x5b84
     bl      OSWakeupThread
 branch_0x80317acc:
     li      r0, 0x0
-    stw     r0, -0x5b7c(r13)
+    stw     r0, R13Off_m0x5b7c(r13)
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
     mtlr    r0
@@ -819,13 +819,13 @@ branch_0x80317b14:
     b       branch_0x80317b4c
 
 branch_0x80317b20:
-    lwz     r3, -0x5b70(r13)
+    lwz     r3, R13Off_m0x5b70(r13)
     mr      r4, r29
     lwzx    r3, r3, r31
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x80317b44
-    lwz     r3, -0x5b6c(r13)
+    lwz     r3, R13Off_m0x5b6c(r13)
     lwzx    r3, r3, r31
     b       branch_0x80317bb8
 
@@ -833,10 +833,10 @@ branch_0x80317b44:
     addi    r30, r30, 0x1
     addi    r31, r31, 0x4
 branch_0x80317b4c:
-    lwz     r3, -0x5b74(r13)
+    lwz     r3, R13Off_m0x5b74(r13)
     cmplw   r30, r3
     blt+    branch_0x80317b20
-    lwz     r0, -0x73e0(r13)
+    lwz     r0, R13Off_m0x73e0(r13)
     cmplw   r3, r0
     bne-    branch_0x80317b6c
     li      r3, -0x1
@@ -848,19 +848,19 @@ branch_0x80317b6c:
     addi    r30, r3, 0x0
     cmpwi   r30, -0x1
     beq-    branch_0x80317bb4
-    lwz     r0, -0x5b74(r13)
+    lwz     r0, R13Off_m0x5b74(r13)
     mr      r4, r29
-    lwz     r3, -0x5b70(r13)
+    lwz     r3, R13Off_m0x5b70(r13)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     bl      strcpy
-    lwz     r0, -0x5b74(r13)
-    lwz     r3, -0x5b6c(r13)
+    lwz     r0, R13Off_m0x5b74(r13)
+    lwz     r3, R13Off_m0x5b6c(r13)
     slwi    r0, r0, 2
     stwx    r30, r3, r0
-    lwz     r3, -0x5b74(r13)
+    lwz     r3, R13Off_m0x5b74(r13)
     addi    r0, r3, 0x1
-    stw     r0, -0x5b74(r13)
+    stw     r0, R13Off_m0x5b74(r13)
 branch_0x80317bb4:
     mr      r3, r30
 branch_0x80317bb8:
@@ -909,17 +909,17 @@ getCallStack__Q28JASystem3DvdFv: # 0x80317c2c
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     bl      OSDisableInterrupts
-    lwz     r4, -0x5b88(r13)
-    lwz     r5, -0x5b90(r13)
+    lwz     r4, R13Off_m0x5b88(r13)
+    lwz     r5, R13Off_m0x5b90(r13)
     addi    r0, r4, 0x1
-    stw     r0, -0x5b88(r13)
+    stw     r0, R13Off_m0x5b88(r13)
     slwi    r0, r4, 6
     add     r31, r5, r0
-    lwz     r0, -0x5b88(r13)
+    lwz     r0, R13Off_m0x5b88(r13)
     cmplwi  r0, 0x20
     bne-    branch_0x80317c6c
     li      r0, 0x0
-    stw     r0, -0x5b88(r13)
+    stw     r0, R13Off_m0x5b88(r13)
 branch_0x80317c6c:
     bl      OSRestoreInterrupts
     lwz     r0, 0x14(sp)
@@ -941,10 +941,10 @@ dvdReadMutex__Q28JASystem3DvdFP11DVDFileInfoPvllPc: # 0x80317c88
     addi    r29, r5, 0x0
     addi    r30, r6, 0x0
     addi    r31, r7, 0x0
-    lwz     r0, -0x5b7c(r13)
+    lwz     r0, R13Off_m0x5b7c(r13)
     cmpwi   r0, 0x1
     bne-    branch_0x80317cc0
-    subi    r3, r13, 0x5b84
+    addi    r3, r13, R13Off_m0x5b84
     bl      OSSleepThread
 branch_0x80317cc0:
     addi    r3, r27, 0x0
@@ -955,7 +955,7 @@ branch_0x80317cc0:
     bl      DVDReadPrio
     cmpwi   r3, -0x1
     bne-    branch_0x80317d00
-    lwz     r12, -0x5b78(r13)
+    lwz     r12, R13Off_m0x5b78(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x80317d00
     mtlr    r12
@@ -1048,16 +1048,16 @@ branch_0x80317dd8:
 allocDvdBuffer__Q28JASystem3DvdFv: # 0x80317dec
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    lwz     r0, -0x5bb4(r13)
+    lwz     r0, R13Off_m0x5bb4(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x80317eb8
-    lwz     r11, -0x5bb0(r13)
+    lwz     r11, R13Off_m0x5bb0(r13)
     li      r31, 0x0
     li      r3, 0x0
     cmplwi  r11, 0x0
     ble-    branch_0x80317eb8
     cmplwi  r11, 0x8
-    subi    r4, r11, 0x8
+    addi    r4, r11, -0x8
     ble-    branch_0x80317e88
     addi    r0, r4, 0x7
     srwi    r0, r0, 3
@@ -1073,7 +1073,7 @@ allocDvdBuffer__Q28JASystem3DvdFv: # 0x80317dec
     addi    r0, r3, 0x0
     ble-    branch_0x80317e88
 branch_0x80317e54:
-    subi    r12, r13, 0x5ba0
+    addi    r12, r13, R13Off_m0x5ba0
     add     r12, r12, r3
     stw     r10, 0x0(r12)
     addi    r31, r31, 0x8
@@ -1092,7 +1092,7 @@ branch_0x80317e88:
     mtctr   r0
     slwi    r3, r31, 2
     li      r0, 0x0
-    subi    r4, r13, 0x5ba0
+    addi    r4, r13, R13Off_m0x5ba0
     bge-    branch_0x80317eb8
 branch_0x80317ea4:
     stwx    r0, r4, r3
@@ -1100,8 +1100,9 @@ branch_0x80317ea4:
     bdnz+      branch_0x80317ea4
     b       branch_0x80317eb8
 
+branch_0x80317eb4:
+    b       branch_0x80317e88
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3128b4, 0x80317eb8 - 0x80317eb4
 branch_0x80317eb8:
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
@@ -1111,14 +1112,14 @@ branch_0x80317eb8:
 .globl writeBufferSize__Q28JASystem3DvdFPUcUlUl
 writeBufferSize__Q28JASystem3DvdFPUcUlUl: # 0x80317ec4
     cmplwi  r4, 0x0
-    stw     r5, -0x5bb4(r13)
+    stw     r5, R13Off_m0x5bb4(r13)
     li      r8, 0x0
-    stw     r4, -0x5bb0(r13)
+    stw     r4, R13Off_m0x5bb0(r13)
     li      r6, 0x0
     blelr-    
 
     cmplwi  r4, 0x8
-    subi    r7, r4, 0x8
+    addi    r7, r4, -0x8
     ble-    branch_0x80317f50
     addi    r0, r7, 0x7
     srwi    r0, r0, 3
@@ -1126,7 +1127,7 @@ writeBufferSize__Q28JASystem3DvdFPUcUlUl: # 0x80317ec4
     mtctr   r0
     ble-    branch_0x80317f50
 branch_0x80317efc:
-    subi    r7, r13, 0x5ba0
+    addi    r7, r13, R13Off_m0x5ba0
     add     r7, r7, r6
     stw     r3, 0x0(r7)
     add     r3, r3, r5
@@ -1152,7 +1153,7 @@ branch_0x80317f50:
     cmplw   r8, r4
     mtctr   r0
     slwi    r4, r8, 2
-    subi    r6, r13, 0x5ba0
+    addi    r6, r13, R13Off_m0x5ba0
     bgelr-    
 
 branch_0x80317f68:
@@ -1165,19 +1166,19 @@ branch_0x80317f68:
 
 .globl updateBuffer__Q28JASystem3DvdFv
 updateBuffer__Q28JASystem3DvdFv: # 0x80317f7c
-    lwz     r7, -0x5ba4(r13)
+    lwz     r7, R13Off_m0x5ba4(r13)
     cmplwi  r7, 0x0
     beqlr-    
 
-    lwz     r8, -0x5bac(r13)
+    lwz     r8, R13Off_m0x5bac(r13)
     li      r4, 0x0
-    stw     r7, -0x5bb0(r13)
+    stw     r7, R13Off_m0x5bb0(r13)
     mr      r3, r4
-    lwz     r5, -0x5ba8(r13)
-    stw     r8, -0x5bb4(r13)
+    lwz     r5, R13Off_m0x5ba8(r13)
+    stw     r8, R13Off_m0x5bb4(r13)
     ble-    branch_0x80318040
     cmplwi  r7, 0x8
-    subi    r6, r7, 0x8
+    addi    r6, r7, -0x8
     ble-    branch_0x80318018
     addi    r0, r6, 0x7
     srwi    r0, r0, 3
@@ -1185,7 +1186,7 @@ updateBuffer__Q28JASystem3DvdFv: # 0x80317f7c
     mtctr   r0
     ble-    branch_0x80318018
 branch_0x80317fc4:
-    subi    r6, r13, 0x5ba0
+    addi    r6, r13, R13Off_m0x5ba0
     add     r6, r6, r3
     stw     r5, 0x0(r6)
     add     r5, r5, r8
@@ -1211,7 +1212,7 @@ branch_0x80318018:
     cmplw   r4, r7
     mtctr   r0
     slwi    r3, r4, 2
-    subi    r4, r13, 0x5ba0
+    addi    r4, r13, R13Off_m0x5ba0
     bge-    branch_0x80318040
 branch_0x80318030:
     stwx    r5, r4, r3
@@ -1220,15 +1221,15 @@ branch_0x80318030:
     bdnz+      branch_0x80318030
 branch_0x80318040:
     li      r0, 0x0
-    stw     r0, -0x5ba4(r13)
-    stw     r0, -0x5ba8(r13)
+    stw     r0, R13Off_m0x5ba4(r13)
+    stw     r0, R13Off_m0x5ba8(r13)
     blr
 
 
 .globl aramDmaFinish__Q28JASystem3DvdFUl
 aramDmaFinish__Q28JASystem3DvdFUl: # 0x80318050
-    lwz     r3, -0x5b94(r13)
-    subi    r0, r3, 0x1
-    stw     r0, -0x5b94(r13)
+    lwz     r3, R13Off_m0x5b94(r13)
+    addi    r0, r3, -0x1
+    stw     r0, R13Off_m0x5b94(r13)
     blr
 

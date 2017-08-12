@@ -9,8 +9,8 @@ __dt__14TEggGenManagerFv: # 0x800fe190
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800fe1d8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x4578
+    lis     r3, __vvt__14TEggGenManager@ha
+    addi    r0, r3, __vvt__14TEggGenManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -43,8 +43,8 @@ load__14TEggGenManagerFR20JSUMemoryInputStream: # 0x800fe1f4
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x800fe234
-    lis     r3, 0x8038
-    addi    r4, r3, 0x3094
+    lis     r3, unk_80383094@h
+    addi    r4, r3, unk_80383094@l
     addi    r3, r29, 0x0
     bl      __ct__17TSpineEnemyParamsFPCc
 branch_0x800fe234:
@@ -64,9 +64,9 @@ branch_0x800fe234:
 .globl createModelData__14TEggGenManagerFv
 createModelData__14TEggGenManagerFv: # 0x800fe260
     mflr    r0
-    lis     r4, 0x8038
+    lis     r4, entry_2257@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x307c
+    addi    r4, r4, entry_2257@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -86,8 +86,8 @@ __ct__14TEggGenManagerFPCc: # 0x800fe294
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803c
-    subi    r0, r3, 0x4578
+    lis     r3, __vvt__14TEggGenManager@ha
+    addi    r0, r3, __vvt__14TEggGenManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -105,13 +105,13 @@ control__13TEggGeneratorFv: # 0x800fe2d0
     stw     r31, 0x2c(sp)
     addi    r31, r3, 0x0
     addi    r3, r31, 0x10
-    lwz     r4, MarioActor(r13)
+    lwz     r4, R13Off_m0x60d8(r13)
     addi    r4, r4, 0x10
     bl      PSVECSquareDistance
-    lfs     f0, -0x5728(rtoc)
+    lfs     f0, -0x5728(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800fe334
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     lwz     r3, 0x3f0(r3)
     lbz     r0, 0x0(r3)
     cmplwi  r0, 0x0
@@ -157,16 +157,16 @@ init__13TEggGeneratorFP12TLiveManager: # 0x800fe348
     bl      __ct__13TMActorKeeperFP12TLiveManagerUs
 branch_0x800fe390:
     stw     r30, 0x78(r31)
-    lis     r3, 0x8038
-    addi    r4, r3, 0x3068
+    lis     r3, unk_80383068@h
+    addi    r4, r3, unk_80383068@l
     lwz     r3, 0x78(r31)
     li      r5, 0x0
     bl      createMActor__13TMActorKeeperFPCcUl
     stw     r3, 0x74(r31)
-    lis     r4, 0x200
+    lis     r4, unk_02000001@h
     addi    r3, r31, 0x0
-    lfs     f1, -0x5724(rtoc)
-    addi    r4, r4, 0x1
+    lfs     f1, -0x5724(r2)
+    addi    r4, r4, unk_02000001@l
     li      r5, 0x1
     fmr     f2, f1
     lis     r6, 0x8000
@@ -177,8 +177,8 @@ branch_0x800fe390:
     li      r4, 0x0
     bl      setBckFromIndex__6MActorFi
     lfs     f2, 0x30(r31)
-    lfs     f1, -0x5720(rtoc)
-    lfs     f0, -0x571c(rtoc)
+    lfs     f1, -0x5720(r2)
+    lfs     f0, -0x571c(r2)
     fsubs   f2, f2, f1
     b       branch_0x800fe3f8
 
@@ -188,8 +188,8 @@ branch_0x800fe3f8:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x800fe3f4
-    lfs     f1, -0x571c(rtoc)
-    lfs     f0, -0x5718(rtoc)
+    lfs     f1, -0x571c(r2)
+    lfs     f0, -0x5718(r2)
     b       branch_0x800fe414
 
 branch_0x800fe410:
@@ -214,8 +214,8 @@ __ct__13TEggGeneratorFPCc: # 0x800fe438
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x4524
+    lis     r3, __vvt__13TEggGenerator@ha
+    addi    r3, r3, __vvt__13TEggGenerator@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     addi    r3, r31, 0x0
@@ -243,8 +243,8 @@ __dt__13TEggGeneratorFv: # 0x800fe494
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800fe4e4
-    lis     r3, 0x803c
-    subi    r3, r3, 0x4524
+    lis     r3, __vvt__13TEggGenerator@ha
+    addi    r3, r3, __vvt__13TEggGenerator@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -265,8 +265,8 @@ branch_0x800fe4e4:
     blr
 
 
-.globl _32___dt__13TEggGeneratorFv
-_32___dt__13TEggGeneratorFv: # 0x800fe500
-    subi    r3, r3, 0x20
+.globl unk_800fe500
+unk_800fe500: # 0x800fe500
+    addi    r3, r3, -0x20
     b       __dt__13TEggGeneratorFv
 

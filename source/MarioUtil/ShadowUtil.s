@@ -8,8 +8,8 @@ __dt__19TMBindShadowManagerFv: # 0x8022df4c
     mr.     r31, r3
     addi    r27, r4, 0x0
     beq-    branch_0x8022e028
-    lis     r3, 0x803e
-    subi    r3, r3, 0x4ef4
+    lis     r3, __vvt__19TMBindShadowManager@ha
+    addi    r3, r3, __vvt__19TMBindShadowManager@l
     addic.  r0, r31, 0x4c
     stw     r3, 0x0(r31)
     beq-    branch_0x8022dff8
@@ -50,8 +50,8 @@ branch_0x8022dfd4:
 branch_0x8022dff8:
     cmplwi  r31, 0x0
     beq-    branch_0x8022e018
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x0
     li      r4, 0x0
@@ -99,7 +99,7 @@ erase__Q27JGadget70TList_P16TMBindShadowBody_Q27JGadget31TAllocator_P16TMBindSha
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -140,22 +140,22 @@ calcVtx__19TMBindShadowManagerFv: # 0x8022e0cc
     li      r29, 0x0
     li      r27, 0x0
     lwz     r26, 0x18(r3)
-    lis     r3, 0x8040
-    addi    r0, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r0, r3, j3dSys@l
     stw     r29, 0x2c(r31)
-    lis     r3, 0x803a
+    lis     r3, unk_8039db08@ha
     mr      r25, r0
-    lfs     f30, -0x166c(rtoc)
-    subi    r30, r3, 0x24f8
-    lfs     f22, -0x1664(rtoc)
-    lfs     f31, -0x1644(rtoc)
-    lfs     f23, -0x1670(rtoc)
-    lfs     f24, -0x1668(rtoc)
-    lfs     f25, -0x1658(rtoc)
-    lfs     f26, -0x1654(rtoc)
-    lfs     f27, -0x1650(rtoc)
-    lfs     f28, -0x164c(rtoc)
-    lfs     f29, -0x1648(rtoc)
+    lfs     f30, -0x166c(r2)
+    addi    r30, r3, unk_8039db08@l
+    lfs     f22, -0x1664(r2)
+    lfs     f31, -0x1644(r2)
+    lfs     f23, -0x1670(r2)
+    lfs     f24, -0x1668(r2)
+    lfs     f25, -0x1658(r2)
+    lfs     f26, -0x1654(r2)
+    lfs     f27, -0x1650(r2)
+    lfs     f28, -0x164c(r2)
+    lfs     f29, -0x1648(r2)
     b       branch_0x8022e8a4
 
 branch_0x8022e164:
@@ -188,7 +188,7 @@ branch_0x8022e164:
     stfs    f0, 0x168(sp)
     lfs     f5, 0x15c(sp)
     lfs     f0, 0x168(sp)
-    lwz     r3, -0x6100(r13)
+    lwz     r3, R13Off_m0x6100(r13)
     fsubs   f7, f5, f5
     fsubs   f6, f0, f5
     lfsu    f2, 0x30(r3)
@@ -222,12 +222,12 @@ branch_0x8022e230:
     fmr     f21, f20
     cmplwi  r0, 0x0
     beq-    branch_0x8022e2ec
-    lwz     r3, -0x6100(r13)
+    lwz     r3, R13Off_m0x6100(r13)
     addi    r4, sp, 0xfc
     lfs     f19, 0x108(sp)
     lfs     f0, 0x60(r3)
     fmr     f3, f19
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f20, f0
     lfs     f1, 0x100(sp)
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
@@ -240,7 +240,7 @@ branch_0x8022e230:
     beq-    branch_0x8022e2bc
     cmplwi  r3, 0x101
     beq-    branch_0x8022e2bc
-    subi    r0, r3, 0x102
+    addi    r0, r3, -0x102
     clrlwi  r0, r0, 16
     cmplwi  r0, 0x3
     ble-    branch_0x8022e2bc
@@ -256,7 +256,7 @@ branch_0x8022e2c8:
     clrlwi. r0, r0, 24
     beq-    branch_0x8022e2ec
     fmr     f2, f20
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fmr     f3, f19
     lfs     f1, 0x100(sp)
     addi    r4, sp, 0xfc
@@ -269,14 +269,14 @@ branch_0x8022e2ec:
     stfs    f21, 0x4(r28)
 branch_0x8022e2fc:
     lfs     f0, 0x18(r28)
-    lfs     f3, -0x166c(rtoc)
+    lfs     f3, -0x166c(r2)
     fcmpo   cr0, f0, f24
     bgt-    branch_0x8022e318
     lfs     f0, 0x14(r28)
     fcmpu   cr0, f22, f0
     beq-    branch_0x8022e31c
 branch_0x8022e318:
-    lfs     f3, -0x1660(rtoc)
+    lfs     f3, -0x1660(r2)
 branch_0x8022e31c:
     lfs     f1, 0xc(r28)
     lfs     f2, 0x10(r28)
@@ -288,7 +288,7 @@ branch_0x8022e334:
     fmuls   f0, f0, f3
     lbz     r0, 0x1c(r28)
     fmuls   f3, f25, f1
-    lfs     f4, -0x165c(rtoc)
+    lfs     f4, -0x165c(r2)
     fmuls   f1, f25, f2
     fmuls   f0, f25, f0
     cmplwi  r0, 0x3
@@ -299,7 +299,7 @@ branch_0x8022e334:
     bne-    branch_0x8022e380
     lfs     f0, -0x7704(r13)
     fmr     f4, f22
-    lfs     f8, -0x1660(rtoc)
+    lfs     f8, -0x1660(r2)
     fmuls   f7, f1, f0
     stfs    f30, 0x10(r28)
     fmuls   f0, f3, f0
@@ -363,7 +363,7 @@ branch_0x8022e3f4:
     stw     r4, 0xdc(sp)
     stw     r3, 0xe0(sp)
     li      r0, 0x0
-    lfs     f4, -0x1664(rtoc)
+    lfs     f4, -0x1664(r2)
     cror    2, 1, 2
     bne-    branch_0x8022e610
     lfs     f1, 0x178(sp)
@@ -572,11 +572,11 @@ branch_0x8022e780:
     stw     r0, 0x2c(r31)
 branch_0x8022e794:
     lwz     r3, 0x20(r28)
-    lfs     f1, -0x166c(rtoc)
+    lfs     f1, -0x166c(r2)
     addis   r0, r3, 0x8000
     cmplwi  r0, 0x1
     bne-    branch_0x8022e7ac
-    lfs     f1, -0x1640(rtoc)
+    lfs     f1, -0x1640(r2)
 branch_0x8022e7ac:
     fmuls   f0, f0, f1
     addi    r3, r26, 0x4
@@ -646,7 +646,7 @@ branch_0x8022e8a4:
     blt+    branch_0x8022e164
     cmpwi   r0, 0x0
     beq-    branch_0x8022eb74
-    lbz     r0, -0x60f8(r13)
+    lbz     r0, R13Off_m0x60f8(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8022eb74
     lwz     r26, 0x18(r31)
@@ -872,7 +872,7 @@ forceRequest__19TMBindShadowManagerFRC20TCircleShadowRequestUl: # 0x8022ebbc
     stwu    sp, -0x58(sp)
     lwz     r7, 0x0(r4)
     lwz     r0, 0x4(r4)
-    lwz     r6, gpCamera(r13)
+    lwz     r6, R13Off_m0x7118(r13)
     stw     r7, 0x14(sp)
     addi    r7, r6, 0x124
     stw     r0, 0x18(sp)
@@ -962,7 +962,7 @@ request__19TMBindShadowManagerFRC20TCircleShadowRequestUl: # 0x8022ecec
     mr      r29, r3
     lwz     r6, 0x0(r30)
     lwz     r0, 0x4(r30)
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     stw     r6, 0x44(sp)
     stw     r0, 0x48(sp)
     lwz     r0, 0x8(r30)
@@ -988,21 +988,21 @@ request__19TMBindShadowManagerFRC20TCircleShadowRequestUl: # 0x8022ecec
     fmuls   f2, f2, f2
     cmplwi  r0, 0x2
     fadds   f0, f1, f0
-    lfs     f1, -0x163c(rtoc)
+    lfs     f1, -0x163c(r2)
     fadds   f31, f2, f0
     bne-    branch_0x8022ed94
-    lfs     f1, -0x1638(rtoc)
+    lfs     f1, -0x1638(r2)
 branch_0x8022ed94:
     cmplwi  r0, 0x1
     bne-    branch_0x8022eda0
-    lfs     f1, -0x166c(rtoc)
+    lfs     f1, -0x166c(r2)
 branch_0x8022eda0:
-    lfs     f0, -0x1668(rtoc)
+    lfs     f0, -0x1668(r2)
     fmuls   f0, f0, f1
     fcmpo   cr0, f31, f0
     bgt-    branch_0x8022eff4
     lfs     f0, 0xc(r30)
-    lfs     f1, -0x1650(rtoc)
+    lfs     f1, -0x1650(r2)
     fcmpo   cr0, f0, f1
     blt-    branch_0x8022eff4
     lfs     f0, 0x10(r30)
@@ -1011,14 +1011,14 @@ branch_0x8022eda0:
     b       branch_0x8022eff4
 
 branch_0x8022edd0:
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x0(r30)
     lfs     f2, 0x8(r30)
     bl      isInArea__4TMapCFff
     clrlwi. r0, r3, 24
     beq-    branch_0x8022eff4
     lfs     f0, 0x0(r30)
-    lis     r0, 0x7f80
+    lis     r0, unk_7f800001@h
     stfs    f0, 0x34(sp)
     lwz     r4, 0x34(sp)
     rlwinm  r3, r4, 0, 1, 8
@@ -1032,7 +1032,7 @@ branch_0x8022edd0:
 branch_0x8022ee14:
     clrlwi. r0, r4, 9
     beq-    branch_0x8022ee24
-    li      r0, 0x1
+    addi    r0, r0, unk_7f800001@l
     b       branch_0x8022ee48
 
 branch_0x8022ee24:
@@ -1055,7 +1055,7 @@ branch_0x8022ee48:
     cmpwi   r0, 0x1
     beq-    branch_0x8022eff4
     lfs     f0, 0x8(r30)
-    lis     r0, 0x7f80
+    lis     r0, unk_7f800001@h
     stfs    f0, 0x30(sp)
     lwz     r4, 0x30(sp)
     rlwinm  r3, r4, 0, 1, 8
@@ -1069,7 +1069,7 @@ branch_0x8022ee48:
 branch_0x8022ee7c:
     clrlwi. r0, r4, 9
     beq-    branch_0x8022ee8c
-    li      r0, 0x1
+    addi    r0, r0, unk_7f800001@l
     b       branch_0x8022eeb0
 
 branch_0x8022ee8c:
@@ -1157,7 +1157,7 @@ branch_0x8022eebc:
     mulli   r0, r0, 0x14
     add     r3, r3, r0
     stb     r4, 0xd(r3)
-    lfs     f0, -0x1634(rtoc)
+    lfs     f0, -0x1634(r2)
     fcmpo   cr0, f31, f0
     ble-    branch_0x8022efd8
     lhz     r0, 0x40(r29)
@@ -1196,7 +1196,7 @@ drawShadow__19TMBindShadowManagerFUlPQ26JDrama9TGraphics: # 0x8022f014
     addi    r31, r3, 0x0
     addi    r30, r4, 0x0
     addi    r24, r5, 0x0
-    lbz     r0, -0x60f8(r13)
+    lbz     r0, R13Off_m0x60f8(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8022f490
     bl      ReInitializeGX
@@ -1263,7 +1263,7 @@ drawShadow__19TMBindShadowManagerFUlPQ26JDrama9TGraphics: # 0x8022f014
     addi    r3, r29, 0x0
     li      r4, 0x0
     bl      GXLoadNrmMtxImm
-    lfs     f31, -0x1668(rtoc)
+    lfs     f31, -0x1668(r2)
     addi    r28, r29, 0x0
     li      r27, 0x0
     li      r25, 0x0
@@ -1595,7 +1595,7 @@ branch_0x8022f490:
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, -0x167c(rtoc)
+    lwz     r0, R2Off_m0x167c(r2)
     addi    r4, sp, 0x78
     li      r3, 0x4
     stw     r0, 0x74(sp)
@@ -1725,7 +1725,7 @@ branch_0x8022f778:
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, -0x1678(rtoc)
+    lwz     r0, R2Off_m0x1678(r2)
     addi    r4, sp, 0x70
     li      r3, 0x4
     stw     r0, 0x6c(sp)
@@ -1755,11 +1755,11 @@ branch_0x8022f778:
     li      r4, 0x0
     li      r5, 0x4
     bl      GXBegin
-    lfs     f2, -0x1630(rtoc)
+    lfs     f2, -0x1630(r2)
     lis     r25, 0xcc01
-    lfs     f1, -0x162c(rtoc)
+    lfs     f1, -0x162c(r2)
     stfs    f2, -0x8000(r25)
-    lfs     f0, -0x1628(rtoc)
+    lfs     f0, -0x1628(r2)
     stfs    f1, -0x8000(r25)
     stfs    f0, -0x8000(r25)
     stfs    f1, -0x8000(r25)
@@ -1783,7 +1783,7 @@ branch_0x8022f778:
     bl      GXSetVtxAttrFmt
     li      r3, 0x1
     bl      GXSetCullMode
-    lwz     r0, -0x1674(rtoc)
+    lwz     r0, R2Off_m0x1674(r2)
     addi    r4, sp, 0x68
     li      r3, 0x4
     stw     r0, 0x64(sp)
@@ -1799,11 +1799,11 @@ branch_0x8022f778:
     li      r4, 0x0
     li      r5, 0x4
     bl      GXBegin
-    lfs     f2, -0x1630(rtoc)
+    lfs     f2, -0x1630(r2)
     li      r3, 0x1
-    lfs     f1, -0x162c(rtoc)
+    lfs     f1, -0x162c(r2)
     stfs    f2, -0x8000(r25)
-    lfs     f0, -0x1628(rtoc)
+    lfs     f0, -0x1628(r2)
     stfs    f1, -0x8000(r25)
     stfs    f0, -0x8000(r25)
     stfs    f1, -0x8000(r25)
@@ -1835,10 +1835,10 @@ branch_0x8022f778:
     li      r4, 0x0
     li      r5, 0x4
     bl      GXBegin
-    lfs     f2, -0x1630(rtoc)
-    lfs     f1, -0x162c(rtoc)
+    lfs     f2, -0x1630(r2)
+    lfs     f1, -0x162c(r2)
     stfs    f2, -0x8000(r25)
-    lfs     f0, -0x1628(rtoc)
+    lfs     f0, -0x1628(r2)
     stfs    f1, -0x8000(r25)
     stfs    f0, -0x8000(r25)
     stfs    f1, -0x8000(r25)
@@ -1871,7 +1871,7 @@ branch_0x8022fa04:
 .globl drawShadowGD__19TMBindShadowManagerFUlPQ26JDrama9TGraphics
 drawShadowGD__19TMBindShadowManagerFUlPQ26JDrama9TGraphics: # 0x8022fa40
     mflr    r0
-    lis     r6, 0x8040
+    lis     r6, unk_803fb300@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x400(sp)
     stfd    f31, 0x3f8(sp)
@@ -1883,16 +1883,16 @@ drawShadowGD__19TMBindShadowManagerFUlPQ26JDrama9TGraphics: # 0x8022fa40
     stfd    f25, 0x3c8(sp)
     stmw    r14, 0x380(sp)
     addi    r27, r3, 0x0
-    subi    r29, r6, 0x4d00
+    addi    r29, r6, unk_803fb300@l
     stw     r4, 0x35c(sp)
     addi    r23, r5, 0x0
     li      r3, 0x1
     bl      GXSetZCompLoc
-    lbz     r0, -0x60f6(r13)
+    lbz     r0, R13Off_m0x60f6(r13)
     extsb.  r0, r0
     bne-    branch_0x8022faf4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x44c0
+    lis     r3, __vvt__10TGDLStatic@ha
+    addi    r0, r3, __vvt__10TGDLStatic@l
     addi    r20, r29, 0x2c
     stw     r0, 0x2c(r29)
     li      r0, 0x0
@@ -1905,16 +1905,16 @@ drawShadowGD__19TMBindShadowManagerFUlPQ26JDrama9TGraphics: # 0x8022fa40
     stw     r0, 0x24(r29)
     stw     r0, 0x28(r29)
     bl      alloc__10TGDLStaticFUl
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e2c
-    lis     r4, 0x8023
+    lis     r3, __vvt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cpp@l
+    lis     r4, __dt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv@h
     stw     r0, 0x0(r20)
     addi    r3, r19, 0x0
-    addi    r4, r4, 0x578
+    addi    r4, r4, __dt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv@l
     addi    r5, r29, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x60f6(r13)
+    stb     r0, R13Off_m0x60f6(r13)
 branch_0x8022faf4:
     lbz     r0, 0x1c(r29)
     cmplwi  r0, 0x0
@@ -1926,11 +1926,11 @@ branch_0x8022fb08:
     lwz     r0, 0x14(r29)
     subf    r4, r3, r0
     bl      GXCallDisplayList
-    lbz     r0, -0x60f5(r13)
+    lbz     r0, R13Off_m0x60f5(r13)
     extsb.  r0, r0
     bne-    branch_0x8022fb84
-    lis     r3, 0x803e
-    subi    r0, r3, 0x44c0
+    lis     r3, __vvt__10TGDLStatic@ha
+    addi    r0, r3, __vvt__10TGDLStatic@l
     addi    r20, r29, 0x5c
     stw     r0, 0x5c(r29)
     li      r0, 0x0
@@ -1943,52 +1943,52 @@ branch_0x8022fb08:
     stw     r0, 0x54(r29)
     stw     r0, 0x58(r29)
     bl      alloc__10TGDLStaticFUl
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e3c
-    lis     r4, 0x8023
+    lis     r3, __vvt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cpp@l
+    lis     r4, __dt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cppFv@h
     stw     r0, 0x0(r20)
     addi    r3, r19, 0x0
-    addi    r4, r4, 0x514
+    addi    r4, r4, __dt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cppFv@l
     addi    r5, r29, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x60f5(r13)
+    stb     r0, R13Off_m0x60f5(r13)
 branch_0x8022fb84:
-    lis     r4, 0x803e
-    lfs     f31, -0x1668(rtoc)
-    subi    r0, r4, 0x4e7c
-    lis     r3, 0x8023
+    lis     r4, __vvt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cpp@ha
+    lfs     f31, -0x1668(r2)
+    addi    r0, r4, __vvt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cpp@l
+    lis     r3, __dt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cppFv@h
     stw     r0, 0x374(sp)
-    addi    r0, r3, 0x384
-    lis     r6, 0x803e
+    addi    r0, r3, __dt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cppFv@l
+    lis     r6, __vvt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cpp@ha
     stw     r0, 0x378(sp)
-    subi    r0, r6, 0x4e6c
-    lis     r7, 0x8023
+    addi    r0, r6, __vvt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cpp@l
+    lis     r7, __dt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cppFv@h
     stw     r0, 0x36c(sp)
-    addi    r0, r7, 0x3e8
-    lis     r5, 0x803e
+    addi    r0, r7, __dt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cppFv@l
+    lis     r5, __vvt__10TGDLStatic@ha
     stw     r0, 0x370(sp)
-    lis     r8, 0x803e
-    subi    r0, r8, 0x4e5c
-    lis     r10, 0x803e
+    lis     r8, __vvt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cpp@ha
+    addi    r0, r8, __vvt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cpp@l
+    lis     r10, __vvt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cpp@ha
     stw     r0, 0x364(sp)
-    lis     r9, 0x8023
-    addi    r0, r9, 0x44c
+    lis     r9, __dt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cppFv@h
+    addi    r0, r9, __dt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cppFv@l
     addi    r28, r23, 0xb4
     stw     r0, 0x368(sp)
-    lis     r11, 0x8023
-    addi    r0, r11, 0x4b0
+    lis     r11, __dt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cppFv@h
+    addi    r0, r11, __dt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cppFv@l
     stw     r0, 0x360(sp)
     addi    r18, r29, 0xfc
     addi    r17, r29, 0xcc
     addi    r16, r29, 0x9c
     addi    r15, r29, 0x6c
-    subi    r24, r5, 0x44c0
+    addi    r24, r5, __vvt__10TGDLStatic@l
     addi    r22, r29, 0x11c
     addi    r21, r29, 0xec
     addi    r20, r29, 0xbc
     addi    r19, r29, 0x8c
-    subi    r14, r10, 0x4e4c
+    addi    r14, r10, __vvt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cpp@l
     li      r23, 0x0
     li      r25, 0x0
     lis     r31, 0xcc01
@@ -2007,7 +2007,7 @@ branch_0x8022fc20:
     lwz     r0, 0x35c(sp)
     and.    r0, r0, r3
     beq-    branch_0x80230340
-    lbz     r0, -0x60f4(r13)
+    lbz     r0, R13Off_m0x60f4(r13)
     extsb.  r0, r0
     bne-    branch_0x8022fca0
     stw     r24, 0x0(r19)
@@ -2026,7 +2026,7 @@ branch_0x8022fc20:
     addi    r5, r29, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x60f4(r13)
+    stb     r0, R13Off_m0x60f4(r13)
 branch_0x8022fca0:
     lbz     r0, 0x7c(r29)
     cmplwi  r0, 0x0
@@ -2103,7 +2103,7 @@ branch_0x8022fcb4:
     stfs    f28, -0x8000(r31)
     stfs    f27, -0x8000(r31)
     addi    r5, r25, 0x4
-    lbz     r4, -0x60f3(r13)
+    lbz     r4, R13Off_m0x60f3(r13)
     li      r26, 0x0
     stfs    f25, -0x8000(r31)
     extsb.  r4, r4
@@ -2177,7 +2177,7 @@ branch_0x8022fcb4:
     stw     r0, 0x0(r20)
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x60f3(r13)
+    stb     r0, R13Off_m0x60f3(r13)
 branch_0x8022fef4:
     lbz     r0, 0xac(r29)
     cmplwi  r0, 0x0
@@ -2254,7 +2254,7 @@ branch_0x8022ff70:
 branch_0x8022fffc:
     cmplwi  r30, 0x0
     bne+    branch_0x8022ff70
-    lbz     r0, -0x60f2(r13)
+    lbz     r0, R13Off_m0x60f2(r13)
     extsb.  r0, r0
     bne-    branch_0x80230058
     stw     r24, 0x0(r21)
@@ -2274,7 +2274,7 @@ branch_0x8022fffc:
     stw     r0, 0x0(r21)
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x60f2(r13)
+    stb     r0, R13Off_m0x60f2(r13)
 branch_0x80230058:
     lbz     r0, 0xdc(r29)
     cmplwi  r0, 0x0
@@ -2330,7 +2330,7 @@ branch_0x8023008c:
 branch_0x80230118:
     cmplwi  r30, 0x0
     bne+    branch_0x8023008c
-    lbz     r0, -0x60f1(r13)
+    lbz     r0, R13Off_m0x60f1(r13)
     extsb.  r0, r0
     bne-    branch_0x80230174
     stw     r24, 0x0(r22)
@@ -2350,7 +2350,7 @@ branch_0x80230118:
     stw     r0, 0x0(r22)
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x60f1(r13)
+    stb     r0, R13Off_m0x60f1(r13)
 branch_0x80230174:
     lbz     r0, 0x10c(r29)
     cmplwi  r0, 0x0
@@ -2489,8 +2489,8 @@ branch_0x80230348:
     blr
 
 
-.globl __dt__Q219TMBindShadowManager26TSetup5$2216ShadowUtil_cppFv
-__dt__Q219TMBindShadowManager26TSetup5$2216ShadowUtil_cppFv: # 0x80230384
+.globl __dt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cppFv
+__dt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cppFv: # 0x80230384
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
@@ -2499,8 +2499,8 @@ __dt__Q219TMBindShadowManager26TSetup5$2216ShadowUtil_cppFv: # 0x80230384
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802303cc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e7c
+    lis     r3, __vvt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cpp@l
     stw     r0, 0x20(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2519,8 +2519,8 @@ branch_0x802303cc:
     blr
 
 
-.globl __dt__Q219TMBindShadowManager26TSetup4$2207ShadowUtil_cppFv
-__dt__Q219TMBindShadowManager26TSetup4$2207ShadowUtil_cppFv: # 0x802303e8
+.globl __dt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cppFv
+__dt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cppFv: # 0x802303e8
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
@@ -2529,8 +2529,8 @@ __dt__Q219TMBindShadowManager26TSetup4$2207ShadowUtil_cppFv: # 0x802303e8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80230430
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e6c
+    lis     r3, __vvt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cpp@l
     stw     r0, 0x20(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2549,8 +2549,8 @@ branch_0x80230430:
     blr
 
 
-.globl __dt__Q219TMBindShadowManager26TSetup3$2195ShadowUtil_cppFv
-__dt__Q219TMBindShadowManager26TSetup3$2195ShadowUtil_cppFv: # 0x8023044c
+.globl __dt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cppFv
+__dt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cppFv: # 0x8023044c
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
@@ -2559,8 +2559,8 @@ __dt__Q219TMBindShadowManager26TSetup3$2195ShadowUtil_cppFv: # 0x8023044c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80230494
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e5c
+    lis     r3, __vvt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cpp@l
     stw     r0, 0x20(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2579,8 +2579,8 @@ branch_0x80230494:
     blr
 
 
-.globl __dt__Q219TMBindShadowManager26TSetup2$2190ShadowUtil_cppFv
-__dt__Q219TMBindShadowManager26TSetup2$2190ShadowUtil_cppFv: # 0x802304b0
+.globl __dt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cppFv
+__dt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cppFv: # 0x802304b0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
@@ -2589,8 +2589,8 @@ __dt__Q219TMBindShadowManager26TSetup2$2190ShadowUtil_cppFv: # 0x802304b0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802304f8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e4c
+    lis     r3, __vvt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cpp@l
     stw     r0, 0x20(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2609,8 +2609,8 @@ branch_0x802304f8:
     blr
 
 
-.globl __dt__Q219TMBindShadowManager28TCylinder$2171ShadowUtil_cppFv
-__dt__Q219TMBindShadowManager28TCylinder$2171ShadowUtil_cppFv: # 0x80230514
+.globl __dt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cppFv
+__dt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cppFv: # 0x80230514
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
@@ -2619,8 +2619,8 @@ __dt__Q219TMBindShadowManager28TCylinder$2171ShadowUtil_cppFv: # 0x80230514
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8023055c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e3c
+    lis     r3, __vvt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cpp@l
     stw     r0, 0x20(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2639,8 +2639,8 @@ branch_0x8023055c:
     blr
 
 
-.globl __dt__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv
-__dt__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv: # 0x80230578
+.globl __dt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv
+__dt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv: # 0x80230578
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
@@ -2649,8 +2649,8 @@ __dt__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv: # 0x80230578
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802305c0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4e2c
+    lis     r3, __vvt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cpp@ha
+    addi    r0, r3, __vvt__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cpp@l
     stw     r0, 0x20(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2700,12 +2700,12 @@ drawShadowVolume__19TMBindShadowManagerFbP16TAlphaShadowQuad: # 0x802305dc
     b       branch_0x80230e18
 
 branch_0x80230648:
-    lis     r3, 0x803a
-    subi    r6, r3, 0x24b8
+    lis     r3, unk_8039db48@ha
+    addi    r6, r3, unk_8039db48@l
     lwz     r5, 0x0(r6)
-    lis     r3, 0x803a
+    lis     r3, unk_8039db6c@ha
     lwz     r0, 0x4(r6)
-    subi    r4, r3, 0x2494
+    addi    r4, r3, unk_8039db6c@l
     stw     r5, 0x17c(sp)
     stw     r0, 0x180(sp)
     lwz     r3, 0x8(r6)
@@ -2759,7 +2759,7 @@ branch_0x80230648:
     subfic  r0, r7, 0x9
     lwz     r5, 0x64(r31)
     mulli   r3, r3, 0xc
-    lfs     f2, -0x1624(rtoc)
+    lfs     f2, -0x1624(r2)
     mtctr   r0
     add     r3, r5, r3
     lfs     f1, 0x4(r3)
@@ -2864,7 +2864,7 @@ branch_0x802308bc:
     subfic  r0, r7, 0x9
     lwz     r5, 0x64(r31)
     mulli   r3, r3, 0xc
-    lfs     f2, -0x1624(rtoc)
+    lfs     f2, -0x1624(r2)
     mtctr   r0
     add     r3, r5, r3
     lfs     f1, 0x4(r3)
@@ -2970,7 +2970,7 @@ branch_0x80230a58:
     bl      GXBegin
     lwz     r4, 0x64(r31)
     lis     r3, 0xcc01
-    lfs     f4, -0x1624(rtoc)
+    lfs     f4, -0x1624(r2)
     lfs     f0, 0x4(r4)
     lfs     f6, 0x8(r4)
     lfs     f3, 0x0(r4)
@@ -3250,7 +3250,7 @@ branch_0x80230e78:
 branch_0x80230e80:
     lfs     f2, 0x4(r3)
     lfs     f1, 0x4(r4)
-    lfs     f0, -0x1624(rtoc)
+    lfs     f0, -0x1624(r2)
     fsubs   f1, f2, f1
     lfs     f5, -0x60fc(r13)
     fabs    f1, f1
@@ -3365,7 +3365,7 @@ branch_0x80230ff4:
 branch_0x80230ffc:
     lfs     f2, 0x4(r3)
     lfs     f1, 0x4(r4)
-    lfs     f0, -0x1624(rtoc)
+    lfs     f0, -0x1624(r2)
     fsubs   f1, f2, f1
     fabs    f1, f1
     fcmpo   cr0, f1, f0
@@ -3457,7 +3457,7 @@ perform__19TMBindShadowManagerFUlPQ26JDrama9TGraphics: # 0x80231108
     beq-    branch_0x80231154
     li      r0, 0x0
     stb     r0, 0x49(r29)
-    lwz     r3, -0x610c(r13)
+    lwz     r3, R13Off_m0x610c(r13)
     bl      getLightPos__22TLightWithDBSetManagerCFv
     addi    r4, r29, 0x30
     bl      PSVECNormalize
@@ -3466,7 +3466,7 @@ perform__19TMBindShadowManagerFUlPQ26JDrama9TGraphics: # 0x80231108
 branch_0x80231154:
     rlwinm. r0, r30, 0, 28, 28
     beq-    branch_0x802311b4
-    lbz     r0, -0x60f7(r13)
+    lbz     r0, R13Off_m0x60f7(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8023117c
     addi    r3, r29, 0x0
@@ -3560,13 +3560,13 @@ branch_0x80231268:
 .globl load__19TMBindShadowManagerFR20JSUMemoryInputStream
 load__19TMBindShadowManagerFR20JSUMemoryInputStream: # 0x80231288
     mflr    r0
-    lis     r5, 0x803a
+    lis     r5, unk_8039db08@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x18(sp)
-    subi    r30, r5, 0x24f8
+    addi    r30, r5, unk_8039db08@l
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
@@ -3659,22 +3659,22 @@ __ct__19TMBindShadowManagerFPCc: # 0x802313e4
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r0, 0x0(r31)
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r31)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r9, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__19TMBindShadowManager@ha
     sth     r9, 0xc(r31)
-    subi    r0, r3, 0x4ef4
-    lis     r3, 0x803f
+    addi    r0, r3, __vvt__19TMBindShadowManager@l
+    lis     r3, gpApplication@ha
     stw     r0, 0x0(r31)
     addi    r7, r31, 0x54
     li      r6, 0x1e
@@ -3683,7 +3683,7 @@ __ct__19TMBindShadowManagerFPCc: # 0x802313e4
     li      r4, 0x73
     stw     r9, 0x20(r31)
     li      r0, 0xb4
-    subi    r3, r3, 0x6900
+    addi    r3, r3, gpApplication@l
     stw     r9, 0x2c(r31)
     sth     r9, 0x40(r31)
     stw     r9, 0x44(r31)
@@ -3694,13 +3694,13 @@ __ct__19TMBindShadowManagerFPCc: # 0x802313e4
     stw     r9, 0x50(r31)
     stw     r7, 0x54(r31)
     stw     r7, 0x58(r31)
-    lfs     f0, -0x1620(rtoc)
+    lfs     f0, -0x1620(r2)
     stfs    f0, 0x60(r31)
     stb     r9, 0x64(r31)
     stb     r9, 0x65(r31)
-    lfs     f0, -0x1670(rtoc)
+    lfs     f0, -0x1670(r2)
     stfs    f0, 0x68(r31)
-    lfs     f0, -0x161c(rtoc)
+    lfs     f0, -0x161c(r2)
     stfs    f0, 0x6c(r31)
     stw     r9, 0x70(r31)
     stb     r6, 0x5c(r31)
@@ -3737,20 +3737,20 @@ branch_0x802314f4:
 branch_0x80231514:
     lwz     r31, 0x8(sp)
     li      r3, 0x4808
-    stw     r31, -0x6100(r13)
+    stw     r31, R13Off_m0x6100(r13)
     bl      __nwa__FUl
-    lis     r4, 0x8023
-    addi    r4, r4, 0x1680
+    lis     r4, __ct__20TCircleShadowRequestFv@h
+    addi    r4, r4, __ct__20TCircleShadowRequestFv@l
     li      r5, 0x0
     li      r6, 0x24
     li      r7, 0x200
     bl      __construct_new_array
-    lis     r4, 0x1
+    lis     r4, unk_0000e008@ha
     stw     r3, 0x10(r31)
-    subi    r3, r4, 0x1ff8
+    addi    r3, r4, unk_0000e008@l
     bl      __nwa__FUl
-    lis     r4, 0x8023
-    addi    r4, r4, 0x1664
+    lis     r4, __ct__16TAlphaShadowQuadFv@h
+    addi    r4, r4, __ct__16TAlphaShadowQuadFv@l
     li      r5, 0x0
     li      r6, 0x70
     li      r7, 0x200
@@ -3758,8 +3758,8 @@ branch_0x80231514:
     stw     r3, 0x18(r31)
     li      r3, 0x1408
     bl      __nwa__FUl
-    lis     r4, 0x8023
-    addi    r4, r4, 0x164c
+    lis     r4, __ct__19TAlphaShadowQuadAryFv@h
+    addi    r4, r4, __ct__19TAlphaShadowQuadAryFv@l
     li      r5, 0x0
     li      r6, 0x14
     li      r7, 0x100
@@ -3767,8 +3767,8 @@ branch_0x80231514:
     stw     r3, 0x1c(r31)
     li      r3, 0x4008
     bl      __nwa__FUl
-    lis     r4, 0x8023
-    addi    r4, r4, 0x161c
+    lis     r4, __ct__21TAlphaShadowBlendQuadFv@h
+    addi    r4, r4, __ct__21TAlphaShadowBlendQuadFv@l
     li      r5, 0x0
     li      r6, 0x20
     li      r7, 0x200
@@ -3776,8 +3776,8 @@ branch_0x80231514:
     stw     r3, 0x24(r31)
     li      r3, 0x710
     bl      __nwa__FUl
-    lis     r4, 0x8023
-    addi    r4, r4, 0x16f4
+    lis     r4, __ct__17TSquareShadowInfoFv@h
+    addi    r4, r4, __ct__17TSquareShadowInfoFv@l
     li      r5, 0x0
     li      r6, 0x3c
     li      r7, 0x1e
@@ -3785,8 +3785,8 @@ branch_0x80231514:
     stw     r3, 0x28(r31)
     li      r3, 0x1c
     bl      __nwa__FUl
-    lis     r4, 0x8023
-    addi    r4, r4, 0x16c8
+    lis     r4, __ct__16TModelShadowInfoFv@h
+    addi    r4, r4, __ct__16TModelShadowInfoFv@l
     li      r5, 0x0
     li      r6, 0x14
     li      r7, 0x1
@@ -3805,12 +3805,12 @@ branch_0x80231514:
 
 .globl __ct__21TAlphaShadowBlendQuadFv
 __ct__21TAlphaShadowBlendQuadFv: # 0x8023161c
-    lfs     f0, -0x1644(rtoc)
+    lfs     f0, -0x1644(r2)
     li      r0, 0x0
     stfs    f0, 0x0(r3)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
-    lfs     f0, -0x166c(rtoc)
+    lfs     f0, -0x166c(r2)
     stfs    f0, 0xc(r3)
     stfs    f0, 0x10(r3)
     stfs    f0, 0x14(r3)
@@ -3831,7 +3831,7 @@ __ct__19TAlphaShadowQuadAryFv: # 0x8023164c
 
 .globl __ct__16TAlphaShadowQuadFv
 __ct__16TAlphaShadowQuadFv: # 0x80231664
-    lfs     f0, -0x1650(rtoc)
+    lfs     f0, -0x1650(r2)
     li      r0, 0x0
     stfs    f0, 0x0(r3)
     stw     r0, 0x64(r3)
@@ -3842,7 +3842,7 @@ __ct__16TAlphaShadowQuadFv: # 0x80231664
 
 .globl __ct__20TCircleShadowRequestFv
 __ct__20TCircleShadowRequestFv: # 0x80231680
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     li      r4, 0x0
     li      r0, 0x1
     stfs    f0, 0xc(r3)
@@ -3872,7 +3872,7 @@ getUseMtxNum__11J3DShapeMtxCFv: # 0x802316c0
 
 .globl __ct__16TModelShadowInfoFv
 __ct__16TModelShadowInfoFv: # 0x802316c8
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     li      r4, 0x0
     li      r0, 0x1
     stfs    f0, 0x0(r3)
@@ -3880,14 +3880,14 @@ __ct__16TModelShadowInfoFv: # 0x802316c8
     stfs    f0, 0x8(r3)
     stb     r4, 0xc(r3)
     stb     r0, 0xd(r3)
-    lfs     f0, -0x1650(rtoc)
+    lfs     f0, -0x1650(r2)
     stfs    f0, 0x10(r3)
     blr
 
 
 .globl __ct__17TSquareShadowInfoFv
 __ct__17TSquareShadowInfoFv: # 0x802316f4
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     addi    r4, r3, 0x0
     addi    r0, r3, 0x3c
     b       branch_0x80231714
@@ -3919,8 +3919,8 @@ entryDrawShadow__16TMBindShadowBodyFv: # 0x80231720
     stw     r30, 0x78(sp)
     stw     r29, 0x74(sp)
     lwz     r3, 0x4(r3)
-    lwz     r6, MarioHitActorPos(r13)
-    lfs     f0, -0x1618(rtoc)
+    lwz     r6, R13Off_m0x60b4(r13)
+    lfs     f0, -0x1618(r2)
     addi    r7, r3, 0x10
     lfs     f2, 0x10(r3)
     lfs     f1, 0x0(r6)
@@ -3943,7 +3943,7 @@ branch_0x80231790:
     fcmpo   cr0, f3, f1
     cror    2, 0, 2
     bne-    branch_0x802317c8
-    lfs     f0, -0x1618(rtoc)
+    lfs     f0, -0x1618(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x802317c8
@@ -3962,7 +3962,7 @@ branch_0x802317d4:
     fcmpo   cr0, f3, f1
     cror    2, 0, 2
     bne-    branch_0x8023180c
-    lfs     f0, -0x1618(rtoc)
+    lfs     f0, -0x1618(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x8023180c
@@ -3974,7 +3974,7 @@ branch_0x8023180c:
 branch_0x80231818:
     clrlwi. r0, r4, 24
     beq-    branch_0x80231908
-    lwz     r3, -0x6100(r13)
+    lwz     r3, R13Off_m0x6100(r13)
     lbzu    r0, 0x65(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x802319d0
@@ -3982,10 +3982,10 @@ branch_0x80231818:
     stb     r0, 0x0(r3)
     addi    r4, sp, 0x58
     lwz     r7, 0x4(r31)
-    lwz     r5, -0x6100(r13)
+    lwz     r5, R13Off_m0x6100(r13)
     lwz     r6, 0x10(r7)
     lwz     r0, 0x14(r7)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     stw     r6, 0x5c(sp)
     stw     r0, 0x60(sp)
     lwz     r0, 0x18(r7)
@@ -4002,9 +4002,9 @@ branch_0x80231818:
     bl      isWaterSurface__12TBGCheckDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x802318b0
-    lfs     f0, -0x1624(rtoc)
+    lfs     f0, -0x1624(r2)
     fmr     f3, f30
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     addi    r4, sp, 0x58
     fsubs   f2, f29, f0
     lfs     f1, 0x5c(sp)
@@ -4044,9 +4044,9 @@ branch_0x80231908:
     lwz     r3, 0x0(r7)
     addi    r4, sp, 0x48
     lwz     r0, 0x4(r7)
-    lwz     r5, -0x6100(r13)
+    lwz     r5, R13Off_m0x6100(r13)
     stw     r3, 0x4c(sp)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     stw     r0, 0x50(sp)
     lwz     r0, 0x8(r7)
     stw     r0, 0x54(sp)
@@ -4062,9 +4062,9 @@ branch_0x80231908:
     bl      isWaterSurface__12TBGCheckDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8023197c
-    lfs     f0, -0x1624(rtoc)
+    lfs     f0, -0x1624(r2)
     fmr     f3, f29
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     addi    r4, sp, 0x48
     fsubs   f2, f30, f0
     lfs     f1, 0x4c(sp)
@@ -4121,23 +4121,23 @@ __ct__16TMBindShadowBodyFP9THitActorP8J3DModelf: # 0x802319f8
     addi    r24, r3, 0x0
     mr      r25, r5
     stw     r6, 0x0(r3)
-    lis     r3, 0x800
-    addi    r0, r3, 0x1
+    lis     r3, unk_08000001@h
+    addi    r0, r3, unk_08000001@l
     stw     r4, 0x4(r24)
     stw     r6, 0x8(r24)
     lwz     r5, 0x4(r4)
     stw     r5, 0xc(r24)
-    lfs     f0, -0x1650(rtoc)
+    lfs     f0, -0x1650(r2)
     stfs    f0, 0x10(r24)
     stfs    f0, 0x14(r24)
-    lfs     f2, -0x1624(rtoc)
+    lfs     f2, -0x1624(r2)
     stfs    f2, 0x18(r24)
     lwz     r4, 0x4c(r4)
     cmpw    r4, r0
     beq-    branch_0x80231a90
     bge-    branch_0x80231a68
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     beq-    branch_0x80231a74
     b       branch_0x80231aa0
@@ -4147,32 +4147,32 @@ branch_0x80231a68:
     cmpw    r4, r0
     bge-    branch_0x80231aa0
 branch_0x80231a74:
-    lfs     f0, -0x1614(rtoc)
+    lfs     f0, -0x1614(r2)
     stfs    f0, 0x10(r24)
-    lfs     f0, -0x1610(rtoc)
+    lfs     f0, -0x1610(r2)
     stfs    f0, 0x14(r24)
-    lfs     f0, -0x160c(rtoc)
+    lfs     f0, -0x160c(r2)
     stfs    f0, 0x18(r24)
     b       branch_0x80231aac
 
 branch_0x80231a90:
-    lfs     f0, -0x1608(rtoc)
+    lfs     f0, -0x1608(r2)
     stfs    f0, 0x10(r24)
     stfs    f2, 0x14(r24)
     b       branch_0x80231aac
 
 branch_0x80231aa0:
-    lfs     f0, -0x1624(rtoc)
+    lfs     f0, -0x1624(r2)
     stfs    f0, 0x10(r24)
     stfs    f0, 0x14(r24)
 branch_0x80231aac:
     lfs     f0, 0x10(r24)
-    lis     r3, 0x800
-    lis     r5, 0x8000
+    lis     r3, unk_08000003@h
+    lis     r5, unk_80000001@h
     fmuls   f0, f0, f1
-    addi    r4, r3, 0x3
+    addi    r4, r3, unk_08000003@l
     addi    r6, r3, 0x1
-    addi    r5, r5, 0x1
+    addi    r5, r5, unk_80000001@l
     stfs    f0, 0x10(r24)
     li      r7, 0x0
     lfs     f0, 0x14(r24)
@@ -4232,11 +4232,11 @@ branch_0x80231b64:
     lwz     r0, 0x8(r24)
     slwi    r3, r0, 2
     bl      __nwa__FUl
-    lis     r4, 0x800
+    lis     r4, unk_08000002@h
     stw     r3, 0x0(r24)
-    lis     r3, 0x8000
-    addi    r30, r4, 0x2
-    addi    r31, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r30, r4, unk_08000002@l
+    addi    r31, r3, unk_80000001@l
     addi    r29, r4, 0x3
     addi    r28, r4, 0x1
     li      r23, 0x0
@@ -4407,7 +4407,7 @@ branch_0x80231d80:
     lhz     r0, 0x1c(r27)
     cmpw    r26, r0
     blt+    branch_0x80231ba4
-    lwz     r4, -0x6100(r13)
+    lwz     r4, R13Off_m0x6100(r13)
     addi    r5, sp, 0x48
     stw     r24, 0x60(sp)
     addi    r3, sp, 0x44
@@ -4444,7 +4444,7 @@ calc__17TMBindShadowPartsFf: # 0x80231dd0
     lwz     r3, 0x4(r4)
     lbz     r0, 0x16(r31)
     lfs     f2, 0x14(r3)
-    lwz     r3, -0x6100(r13)
+    lwz     r3, R13Off_m0x6100(r13)
     cmplwi  r0, 0x0
     fsubs   f3, f2, f1
     lfsu    f9, 0x30(r3)
@@ -4461,7 +4461,7 @@ calc__17TMBindShadowPartsFf: # 0x80231dd0
     fsubs   f8, f8, f1
     lfs     f3, 0x2c(r6)
     fsubs   f1, f7, f1
-    lfs     f2, -0x1670(rtoc)
+    lfs     f2, -0x1670(r2)
     fnmsubs  f6, f9, f8, f6
     fnmsubs  f4, f9, f1, f4
     fnmsubs  f3, f10, f1, f3
@@ -4507,7 +4507,7 @@ branch_0x80231ee0:
     cmplwi  r0, 0x0
     bne-    branch_0x80231f44
     fcmpo   cr0, f30, f31
-    lwz     r3, -0x6100(r13)
+    lwz     r3, R13Off_m0x6100(r13)
     lfs     f0, 0x68(r3)
     lfs     f1, 0x6c(r3)
     ble-    branch_0x80231f20
@@ -4533,7 +4533,7 @@ branch_0x80231f38:
     ble-    branch_0x80231f44
     fmr     f30, f9
 branch_0x80231f44:
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     li      r3, 0x0
     li      r0, 0x1
     stfs    f0, 0xac(sp)
@@ -4567,9 +4567,9 @@ branch_0x80231f44:
     fsubs   f2, f4, f6
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x1600(rtoc)
+    lfd     f2, -0x1600(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x1604(rtoc)
+    lfs     f0, -0x1604(r2)
     stw     r0, 0x10c(sp)
     lis     r0, 0x4330
     fcmpo   cr0, f31, f30
@@ -4579,19 +4579,19 @@ branch_0x80231f44:
     fmuls   f0, f0, f1
     fmr     f1, f0
     ble-    branch_0x80232004
-    lfs     f0, -0x165c(rtoc)
+    lfs     f0, -0x165c(r2)
     fsubs   f1, f1, f0
 branch_0x80232004:
     stfs    f1, 0xb4(sp)
     b       branch_0x80232014
 
 branch_0x8023200c:
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     stfs    f0, 0xb4(sp)
 branch_0x80232014:
     lwz     r5, 0x4(r31)
     addi    r4, sp, 0xa0
-    lwz     r3, -0x6100(r13)
+    lwz     r3, R13Off_m0x6100(r13)
     lwz     r5, 0x4(r5)
     lwz     r5, 0x4c(r5)
     bl      request__19TMBindShadowManagerFRC20TCircleShadowRequestUl
@@ -4621,7 +4621,7 @@ __ct__17TMBindShadowPartsFP8J3DModelUcP16TMBindShadowBodyf: # 0x80232048
     stw     r29, 0x64(sp)
     addi    r29, r4, 0x0
     mr      r4, r30
-    lfs     f0, -0x1650(rtoc)
+    lfs     f0, -0x1650(r2)
     stfs    f0, 0x0(r31)
     stw     r6, 0x4(r31)
     stw     r3, 0x8(r31)
@@ -4668,8 +4668,8 @@ __dt__18J3DMtxCalcBasicAnmFv: # 0x80232114
     stw     r31, 0x24(sp)
     mr.     r31, r3
     beq-    branch_0x802321e0
-    lis     r3, 0x803e
-    subi    r3, r3, 0x4ed0
+    lis     r3, __vvt__18J3DMtxCalcBasicAnm@ha
+    addi    r3, r3, __vvt__18J3DMtxCalcBasicAnm@l
     stw     r3, 0x4c(r31)
     addi    r7, r3, 0x34
     addi    r3, r3, 0x24
@@ -4682,8 +4682,8 @@ __dt__18J3DMtxCalcBasicAnmFv: # 0x80232114
     subf    r0, r3, r6
     stw     r0, 0x4(r3)
     beq-    branch_0x802321a0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x938
+    lis     r3, __vvt__13J3DMtxCalcAnm@h
+    addi    r3, r3, __vvt__13J3DMtxCalcAnm@l
     stw     r3, 0x54(r31)
     addi    r5, r3, 0x10
     li      r0, 0x0
@@ -4693,15 +4693,15 @@ __dt__18J3DMtxCalcBasicAnmFv: # 0x80232114
     subf    r3, r5, r6
     stw     r3, 0x4(r5)
     stw     r0, 0x58(r31)
-    lfs     f0, -0x166c(rtoc)
+    lfs     f0, -0x166c(r2)
     stfs    f0, 0x60(r31)
     stw     r0, 0x5c(r31)
     stfs    f0, 0x64(r31)
 branch_0x802321a0:
     cmplwi  r31, 0x0
     beq-    branch_0x802321d0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x8f4
+    lis     r3, __vvt__15J3DMtxCalcBasic@h
+    addi    r3, r3, __vvt__15J3DMtxCalcBasic@l
     stw     r3, 0x4c(r31)
     addi    r5, r3, 0x24
     addi    r0, r31, 0x50
@@ -4727,15 +4727,15 @@ branch_0x802321e0:
 .globl init__15J3DMtxCalcBasicFRC3VecRA3_A4_Cf
 init__15J3DMtxCalcBasicFRC3VecRA3_A4_Cf: # 0x802321f8
     stwu    sp, -0x28(sp)
-    lis     r6, 0x8040
-    addi    r9, r6, 0x47b8
+    lis     r6, mCurrentS__6J3DSys@h
+    addi    r9, r6, mCurrentS__6J3DSys@l
     lwz     r3, 0x0(r4)
-    lis     r7, 0x803e
+    lis     r7, unk_803db0d0@ha
     lwz     r0, 0x4(r4)
-    lis     r6, 0x8040
-    subi    r8, r7, 0x4f30
+    lis     r6, mParentS__6J3DSys@h
+    addi    r8, r7, unk_803db0d0@l
     stw     r3, 0x0(r9)
-    addi    r7, r6, 0x47c4
+    addi    r7, r6, mParentS__6J3DSys@l
     lis     r3, 0x8040
     stw     r0, 0x4(r9)
     lwz     r0, 0x8(r4)
@@ -4811,8 +4811,8 @@ calc__18J3DMtxCalcBasicAnmFUs: # 0x80232310
     blr
 
 
-.globl makeDL__Q219TMBindShadowManager26TSetup5$2216ShadowUtil_cppFv
-makeDL__Q219TMBindShadowManager26TSetup5$2216ShadowUtil_cppFv: # 0x80232334
+.globl makeDL__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cppFv
+makeDL__Q219TMBindShadowManager26TSetup5_2216ShadowUtil_cppFv: # 0x80232334
     mflr    r0
     li      r3, 0x1
     stw     r0, 0x4(sp)
@@ -4839,8 +4839,8 @@ makeDL__Q219TMBindShadowManager26TSetup5$2216ShadowUtil_cppFv: # 0x80232334
     blr
 
 
-.globl makeDL__Q219TMBindShadowManager26TSetup4$2207ShadowUtil_cppFv
-makeDL__Q219TMBindShadowManager26TSetup4$2207ShadowUtil_cppFv: # 0x80232394
+.globl makeDL__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cppFv
+makeDL__Q219TMBindShadowManager26TSetup4_2207ShadowUtil_cppFv: # 0x80232394
     mflr    r0
     li      r3, 0x1
     stw     r0, 0x4(sp)
@@ -4867,8 +4867,8 @@ makeDL__Q219TMBindShadowManager26TSetup4$2207ShadowUtil_cppFv: # 0x80232394
     blr
 
 
-.globl makeDL__Q219TMBindShadowManager26TSetup3$2195ShadowUtil_cppFv
-makeDL__Q219TMBindShadowManager26TSetup3$2195ShadowUtil_cppFv: # 0x802323f4
+.globl makeDL__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cppFv
+makeDL__Q219TMBindShadowManager26TSetup3_2195ShadowUtil_cppFv: # 0x802323f4
     mflr    r0
     li      r3, 0x0
     stw     r0, 0x4(sp)
@@ -4892,8 +4892,8 @@ makeDL__Q219TMBindShadowManager26TSetup3$2195ShadowUtil_cppFv: # 0x802323f4
     blr
 
 
-.globl makeDL__Q219TMBindShadowManager26TSetup2$2190ShadowUtil_cppFv
-makeDL__Q219TMBindShadowManager26TSetup2$2190ShadowUtil_cppFv: # 0x80232448
+.globl makeDL__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cppFv
+makeDL__Q219TMBindShadowManager26TSetup2_2190ShadowUtil_cppFv: # 0x80232448
     mflr    r0
     li      r3, 0x0
     stw     r0, 0x4(sp)
@@ -4920,8 +4920,8 @@ makeDL__Q219TMBindShadowManager26TSetup2$2190ShadowUtil_cppFv: # 0x80232448
     blr
 
 
-.globl makeDL__Q219TMBindShadowManager28TCylinder$2171ShadowUtil_cppFv
-makeDL__Q219TMBindShadowManager28TCylinder$2171ShadowUtil_cppFv: # 0x802324a8
+.globl makeDL__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cppFv
+makeDL__Q219TMBindShadowManager28TCylinder_2171ShadowUtil_cppFv: # 0x802324a8
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x438(sp)
@@ -4937,12 +4937,12 @@ makeDL__Q219TMBindShadowManager28TCylinder$2171ShadowUtil_cppFv: # 0x802324a8
     li      r27, 0x0
     li      r28, 0x0
     lis     r31, 0x4330
-    lfs     f0, -0x166c(rtoc)
-    lfs     f27, -0x15f8(rtoc)
+    lfs     f0, -0x166c(r2)
+    lfs     f27, -0x15f8(r2)
     fneg    f31, f0
-    lfs     f28, -0x15f4(rtoc)
-    lfd     f29, -0x1600(rtoc)
-    lfs     f30, -0x1638(rtoc)
+    lfs     f28, -0x15f4(r2)
+    lfd     f29, -0x1600(r2)
+    lfs     f30, -0x1638(r2)
 branch_0x802324fc:
     xoris   r0, r27, 0x8000
     stw     r0, 0x3ec(sp)
@@ -4962,7 +4962,7 @@ branch_0x802324fc:
     cmpwi   r27, 0xa
     addi    r28, r28, 0x4
     ble+    branch_0x802324fc
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x1
@@ -4970,13 +4970,13 @@ branch_0x802324fc:
     ble-    branch_0x80232560
     bl      GDOverflowed
 branch_0x80232560:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0x98
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x2
@@ -4984,7 +4984,7 @@ branch_0x80232560:
     ble-    branch_0x80232594
     bl      GDOverflowed
 branch_0x80232594:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r29, 0x0
     li      r5, 0x16
     lwz     r3, 0x8(r4)
@@ -4994,18 +4994,18 @@ branch_0x80232594:
     stw     r0, 0x8(r4)
     li      r28, 0x0
     stb     r29, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lfs     f30, -0x166c(rtoc)
+    lfs     f30, -0x166c(r2)
 branch_0x802325d4:
     lfsx    f27, r31, r28
     li      r3, 0x4
     stfs    f27, 0x98(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x98(sp)
     lwz     r4, 0x8(r5)
@@ -5013,21 +5013,21 @@ branch_0x802325d4:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x98(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x98(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x98(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5036,7 +5036,7 @@ branch_0x802325d4:
     lfsx    f28, r30, r28
     stfs    f28, 0x94(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x94(sp)
     lwz     r4, 0x8(r5)
@@ -5044,21 +5044,21 @@ branch_0x802325d4:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x94(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x94(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x94(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5066,7 +5066,7 @@ branch_0x802325d4:
     stb     r6, 0x0(r4)
     stfs    f31, 0x90(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x90(sp)
     lwz     r4, 0x8(r5)
@@ -5074,21 +5074,21 @@ branch_0x802325d4:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x90(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x90(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x90(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5096,7 +5096,7 @@ branch_0x802325d4:
     stb     r6, 0x0(r4)
     stfs    f27, 0x8c(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x8c(sp)
     lwz     r4, 0x8(r5)
@@ -5104,21 +5104,21 @@ branch_0x802325d4:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x8c(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x8c(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x8c(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5126,7 +5126,7 @@ branch_0x802325d4:
     stb     r6, 0x0(r4)
     stfs    f28, 0x88(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x88(sp)
     lwz     r4, 0x8(r5)
@@ -5134,21 +5134,21 @@ branch_0x802325d4:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x88(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x88(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x88(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5156,7 +5156,7 @@ branch_0x802325d4:
     stb     r6, 0x0(r4)
     stfs    f30, 0x84(sp)
     bl      GDOverflowCheck
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     addi    r29, r29, 0x1
     lwz     r0, 0x84(sp)
     cmpwi   r29, 0xa
@@ -5166,28 +5166,28 @@ branch_0x802325d4:
     stw     r0, 0x8(r4)
     addi    r28, r28, 0x4
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x84(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 8
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x84(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 16
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r5, 0x84(sp)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
     ble+    branch_0x802325d4
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x1
@@ -5195,13 +5195,13 @@ branch_0x802325d4:
     ble-    branch_0x802328d8
     bl      GDOverflowed
 branch_0x802328d8:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0xa0
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x2
@@ -5209,7 +5209,7 @@ branch_0x802328d8:
     ble-    branch_0x8023290c
     bl      GDOverflowed
 branch_0x8023290c:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r29, 0x0
     li      r6, 0xc
     lwz     r4, 0x8(r5)
@@ -5217,15 +5217,15 @@ branch_0x8023290c:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r29, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     stfs    f0, 0x80(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x80(sp)
     lwz     r4, 0x8(r5)
@@ -5233,30 +5233,30 @@ branch_0x8023290c:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x80(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x80(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x80(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     stfs    f0, 0x7c(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x7c(sp)
     lwz     r4, 0x8(r5)
@@ -5264,30 +5264,30 @@ branch_0x8023290c:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x7c(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x7c(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x7c(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lfs     f0, -0x166c(rtoc)
+    lfs     f0, -0x166c(r2)
     stfs    f0, 0x78(sp)
     bl      GDOverflowCheck
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     addi    r31, sp, 0x24c
     lwz     r0, 0x78(sp)
     addi    r30, sp, 0xbc
@@ -5297,33 +5297,33 @@ branch_0x8023290c:
     stw     r0, 0x8(r4)
     li      r28, 0x0
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x78(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 8
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x78(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 16
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r5, 0x78(sp)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lfs     f30, -0x166c(rtoc)
+    lfs     f30, -0x166c(r2)
 branch_0x80232ac0:
     lfsx    f0, r31, r28
     li      r3, 0x4
     stfs    f0, 0x74(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x74(sp)
     lwz     r4, 0x8(r5)
@@ -5331,21 +5331,21 @@ branch_0x80232ac0:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x74(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x74(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x74(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5355,7 +5355,7 @@ branch_0x80232ac0:
     fneg    f0, f0
     stfs    f0, 0x70(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x70(sp)
     lwz     r4, 0x8(r5)
@@ -5363,21 +5363,21 @@ branch_0x80232ac0:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x70(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x70(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x70(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5385,7 +5385,7 @@ branch_0x80232ac0:
     stb     r6, 0x0(r4)
     stfs    f30, 0x6c(sp)
     bl      GDOverflowCheck
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     addi    r29, r29, 0x1
     lwz     r0, 0x6c(sp)
     cmpwi   r29, 0xa
@@ -5395,28 +5395,28 @@ branch_0x80232ac0:
     stw     r0, 0x8(r4)
     addi    r28, r28, 0x4
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x6c(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 8
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x6c(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 16
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r5, 0x6c(sp)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
     ble+    branch_0x80232ac0
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x1
@@ -5424,13 +5424,13 @@ branch_0x80232ac0:
     ble-    branch_0x80232c60
     bl      GDOverflowed
 branch_0x80232c60:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0xa0
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x2
@@ -5438,7 +5438,7 @@ branch_0x80232c60:
     ble-    branch_0x80232c94
     bl      GDOverflowed
 branch_0x80232c94:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r29, 0x0
     li      r6, 0xc
     lwz     r4, 0x8(r5)
@@ -5446,15 +5446,15 @@ branch_0x80232c94:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r29, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     stfs    f0, 0x68(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x68(sp)
     lwz     r4, 0x8(r5)
@@ -5462,30 +5462,30 @@ branch_0x80232c94:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x68(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x68(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x68(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lfs     f0, -0x1664(rtoc)
+    lfs     f0, -0x1664(r2)
     stfs    f0, 0x64(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x64(sp)
     lwz     r4, 0x8(r5)
@@ -5493,21 +5493,21 @@ branch_0x80232c94:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x64(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x64(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x64(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5515,7 +5515,7 @@ branch_0x80232c94:
     stb     r6, 0x0(r4)
     stfs    f31, 0x60(sp)
     bl      GDOverflowCheck
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     addi    r30, sp, 0x24c
     lwz     r0, 0x60(sp)
     addi    r31, sp, 0xbc
@@ -5525,21 +5525,21 @@ branch_0x80232c94:
     stw     r0, 0x8(r4)
     li      r28, 0x0
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x60(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 8
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x60(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 16
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r5, 0x60(sp)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
@@ -5550,7 +5550,7 @@ branch_0x80232e40:
     li      r3, 0x4
     stfs    f0, 0x5c(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x5c(sp)
     lwz     r4, 0x8(r5)
@@ -5558,21 +5558,21 @@ branch_0x80232e40:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x5c(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x5c(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x5c(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5581,7 +5581,7 @@ branch_0x80232e40:
     lfsx    f0, r31, r28
     stfs    f0, 0x58(sp)
     bl      GDOverflowCheck
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r3, 0x4
     lwz     r0, 0x58(sp)
     lwz     r4, 0x8(r5)
@@ -5589,21 +5589,21 @@ branch_0x80232e40:
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x58(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 8
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r0, 0x58(sp)
     lwz     r4, 0x8(r5)
     extrwi  r6, r0, 8, 16
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r6, 0x58(sp)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
@@ -5611,7 +5611,7 @@ branch_0x80232e40:
     stb     r6, 0x0(r4)
     stfs    f31, 0x54(sp)
     bl      GDOverflowCheck
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     addi    r29, r29, 0x1
     lwz     r0, 0x54(sp)
     cmpwi   r29, 0xa
@@ -5621,21 +5621,21 @@ branch_0x80232e40:
     stw     r0, 0x8(r4)
     addi    r28, r28, 0x4
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x54(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 8
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x54(sp)
     lwz     r3, 0x8(r4)
     extrwi  r5, r0, 8, 16
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r5, 0x54(sp)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
@@ -5660,7 +5660,7 @@ GDOverflowCheck: # 0x80232fec
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     lwz     r0, 0xc(r5)
     add     r3, r4, r3
@@ -5674,8 +5674,8 @@ branch_0x80233014:
     blr
 
 
-.globl makeDL__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv
-makeDL__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv: # 0x80233024
+.globl makeDL__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv
+makeDL__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv: # 0x80233024
     mflr    r0
     li      r3, 0x0
     stw     r0, 0x4(sp)
@@ -5712,7 +5712,7 @@ makeDL__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv: # 0x80233024
     li      r8, 0xff
     li      r9, 0x4
     bl      GDSetTevOrder
-    lwz     r0, -0x1680(rtoc)
+    lwz     r0, R2Off_m0x1680(r2)
     addi    r4, sp, 0x1c
     li      r3, 0x4
     stw     r0, 0x18(sp)
@@ -5730,11 +5730,11 @@ makeDL__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv: # 0x80233024
     li      r9, 0x3c
     li      r10, 0x3c
     bl      GDSetCurrentMtx
-    lis     r3, 0x803e
-    subi    r3, r3, 0x4f24
+    lis     r3, vl_localstatic0_makeDL__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv@ha
+    addi    r3, r3, vl_localstatic0_makeDL__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv@l
     bl      GDSetVtxDescv
-    lis     r3, 0x803e
-    subi    r4, r3, 0x4f14
+    lis     r3, fl_localstatic1_makeDL__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv@ha
+    addi    r4, r3, fl_localstatic1_makeDL__Q219TMBindShadowManager26TSetup1_2172ShadowUtil_cppFv@l
     li      r3, 0x0
     bl      GDSetVtxAttrFmtv
     lwz     r0, 0x24(sp)
@@ -5743,41 +5743,41 @@ makeDL__Q219TMBindShadowManager26TSetup1$2172ShadowUtil_cppFv: # 0x80233024
     blr
 
 
-.globl _104_4_calc__18J3DMtxCalcBasicAnmFUs
-_104_4_calc__18J3DMtxCalcBasicAnmFUs: # 0x80233128
+.globl unk_80233128
+unk_80233128: # 0x80233128
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       calc__18J3DMtxCalcBasicAnmFUs
 
 
-.globl _104_4_calcTransform__15J3DMtxCalcBasicFUsRC16J3DTransformInfo
-_104_4_calcTransform__15J3DMtxCalcBasicFUsRC16J3DTransformInfo: # 0x8023313c
+.globl unk_8023313c
+unk_8023313c: # 0x8023313c
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       calcTransform__15J3DMtxCalcBasicFUsRC16J3DTransformInfo
 
 
-.globl _104_4_init__15J3DMtxCalcBasicFRC3VecRA3_A4_Cf
-_104_4_init__15J3DMtxCalcBasicFRC3VecRA3_A4_Cf: # 0x80233150
+.globl unk_80233150
+unk_80233150: # 0x80233150
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       init__15J3DMtxCalcBasicFRC3VecRA3_A4_Cf
 
 
-.globl _80_calc__18J3DMtxCalcBasicAnmFUs
-_80_calc__18J3DMtxCalcBasicAnmFUs: # 0x80233164
-    subi    r3, r3, 0x50
+.globl unk_80233164
+unk_80233164: # 0x80233164
+    addi    r3, r3, -0x50
     b       calc__18J3DMtxCalcBasicAnmFUs
 
 
-.globl _80___dt__18J3DMtxCalcBasicAnmFv
-_80___dt__18J3DMtxCalcBasicAnmFv: # 0x8023316c
-    subi    r3, r3, 0x50
+.globl unk_8023316c
+unk_8023316c: # 0x8023316c
+    addi    r3, r3, -0x50
     b       __dt__18J3DMtxCalcBasicAnmFv
 

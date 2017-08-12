@@ -9,8 +9,8 @@ __ct__10JPATextureFPCUcP7JKRHeap: # 0x80336974
     lwz     r3, 0x8(sp)
     bl      __ct__12JPADataBlockFPCUcP7JKRHeap
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4580
+    lis     r3, __vvt__10JPATexture@h
+    addi    r0, r3, __vvt__10JPATexture@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r3, r31, 0x8
@@ -312,7 +312,7 @@ initialize__17JPADefaultTextureFP7JKRHeap: # 0x803369d4
     li      r9, 0x1
     li      r10, 0x0
     bl      GXInitTexObj
-    lfs     f1, 0x980(rtoc)
+    lfs     f1, 0x980(r2)
     addi    r3, r31, 0x4
     li      r4, 0x1
     fmr     f2, f1
@@ -339,16 +339,16 @@ __dt__10JPATextureFv: # 0x80336e7c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80336ed8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4580
+    lis     r3, __vvt__10JPATexture@h
+    addi    r0, r3, __vvt__10JPATexture@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x8
     li      r4, -0x1
     bl      __dt__10JUTTextureFv
     cmplwi  r30, 0x0
     beq-    branch_0x80336ec8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4474
+    lis     r3, __vvt__12JPADataBlock@h
+    addi    r0, r3, __vvt__12JPADataBlock@l
     stw     r0, 0x0(r30)
 branch_0x80336ec8:
     extsh.  r0, r31

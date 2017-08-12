@@ -9,12 +9,12 @@ __dt__9TStrategyFv: # 0x80223180
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802231d8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5be0
+    lis     r3, __vvt__9TStrategy@ha
+    addi    r0, r3, __vvt__9TStrategy@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802231c8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -249,16 +249,16 @@ branch_0x802234b0:
     addi    r4, sp, 0x20
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
-    lis     r6, 0x803b
+    lis     r6, __vvt__10JSUIosBase@ha
     lwz     r30, 0x20(sp)
-    lis     r5, 0x803e
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r5, __vvt__14JSUInputStream@h
+    lis     r4, __vvt__20JSURandomInputStream@h
+    lis     r3, __vvt__20JSUMemoryInputStream@h
     addi    r31, sp, 0x24
-    subi    r23, r6, 0xf0c
-    addi    r25, r5, 0x184
-    addi    r26, r4, 0x160
-    addi    r27, r3, 0x1c8
+    addi    r23, r6, __vvt__10JSUIosBase@l
+    addi    r25, r5, __vvt__14JSUInputStream@l
+    addi    r26, r4, __vvt__20JSURandomInputStream@l
+    addi    r27, r3, __vvt__20JSUMemoryInputStream@l
     li      r22, 0x0
     b       branch_0x80223578
 
@@ -301,7 +301,7 @@ branch_0x80223560:
 branch_0x80223578:
     cmpw    r22, r30
     blt+    branch_0x802234f0
-    stw     r28, gpStrategy(r13)
+    stw     r28, R13Off_m0x6140(r13)
     lmw     r21, 0x44(sp)
     lwz     r0, 0x74(sp)
     addi    sp, sp, 0x70
@@ -312,9 +312,9 @@ branch_0x80223578:
 .globl __ct__9TStrategyFPCc
 __ct__9TStrategyFPCc: # 0x80223598
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r3, 0x0
@@ -322,14 +322,14 @@ __ct__9TStrategyFPCc: # 0x80223598
     mr      r3, r4
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r31)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__9TStrategy@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x5be0
+    addi    r0, r3, __vvt__9TStrategy@l
     li      r3, 0x0
     stw     r0, 0x0(r31)
     cmpwi   r3, 0x10
@@ -392,12 +392,12 @@ __dt__12TIdxGroupObjFv: # 0x80223698
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80223718
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5bbc
+    lis     r3, __vvt__12TIdxGroupObj@ha
+    addi    r0, r3, __vvt__12TIdxGroupObj@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80223708
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b90
+    lis     r3, __vvt__Q26JDrama47TViewObjPtrListT_9THitActor_Q26JDrama8TViewObj_@ha
+    addi    r3, r3, __vvt__Q26JDrama47TViewObjPtrListT_9THitActor_Q26JDrama8TViewObj_@l
     addic.  r0, r30, 0x10
     stw     r3, 0x0(r30)
     beq-    branch_0x802236e8
@@ -407,8 +407,8 @@ __dt__12TIdxGroupObjFv: # 0x80223698
 branch_0x802236e8:
     cmplwi  r30, 0x0
     beq-    branch_0x80223708
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -438,8 +438,8 @@ __dt__Q26JDrama47TViewObjPtrListT_9THitActor_Q26JDrama8TViewObj_Fv: # 0x80223734
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802237a4
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b90
+    lis     r3, __vvt__Q26JDrama47TViewObjPtrListT_9THitActor_Q26JDrama8TViewObj_@ha
+    addi    r3, r3, __vvt__Q26JDrama47TViewObjPtrListT_9THitActor_Q26JDrama8TViewObj_@l
     addic.  r0, r30, 0x10
     stw     r3, 0x0(r30)
     beq-    branch_0x80223774
@@ -449,8 +449,8 @@ __dt__Q26JDrama47TViewObjPtrListT_9THitActor_Q26JDrama8TViewObj_Fv: # 0x80223734
 branch_0x80223774:
     cmplwi  r30, 0x0
     beq-    branch_0x80223794
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

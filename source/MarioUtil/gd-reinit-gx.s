@@ -85,17 +85,17 @@ ReInitTevStages__Fv: # 0x80233174
     li      r5, 0xff
     li      r6, 0xff
     bl      GXSetTevOrder
-    lwz     r0, -0x76f4(r13)
+    lwz     r0, R13Off_m0x76f4(r13)
     addi    r4, sp, 0x10
     li      r3, 0x1
     stw     r0, 0x10(sp)
     bl      GXSetTevColor
-    lwz     r0, -0x76f4(r13)
+    lwz     r0, R13Off_m0x76f4(r13)
     addi    r4, sp, 0xc
     li      r3, 0x2
     stw     r0, 0xc(sp)
     bl      GXSetTevColor
-    lwz     r0, -0x76f4(r13)
+    lwz     r0, R13Off_m0x76f4(r13)
     addi    r4, sp, 0x8
     li      r3, 0x3
     stw     r0, 0x8(sp)
@@ -161,17 +161,13 @@ branch_0x80233304:
 
 .globl ReInitTransform__Fv
 ReInitTransform__Fv: # 0x802333e0
-
-.set var_4, -4
-.set arg_4,  4
-
     mflr    r0
-    lis     r3, unk_803DB200@ha
-    stw     r0, arg_4(sp)
+    lis     r3, NullTexData@ha
+    stw     r0, 0x4(sp)
     li      r4, 0x0
     stwu    sp, -0x10(sp)
-    stw     r31, 0x10+var_4(sp)
-    addi    r31, r3, unk_803DB200@l
+    stw     r31, 0xc(sp)
+    addi    r31, r3, NullTexData@l
     addi    r3, r31, 0x10
     bl      GXLoadPosMtxImm
     addi    r3, r31, 0x10
@@ -325,13 +321,13 @@ ReInitTransform__Fv: # 0x802333e0
 .globl ReInitGeometry__Fv
 ReInitGeometry__Fv: # 0x8023364c
     mflr    r0
-    lis     r3, 0x803a
+    lis     r3, unk_8039dc18@ha
     stw     r0, 0x4(sp)
     li      r0, 0x1a
-    subi    r3, r3, 0x23e8
+    addi    r3, r3, unk_8039dc18@l
     mtctr   r0
     stwu    sp, -0xe0(sp)
-    subi    r4, r3, 0x8
+    addi    r4, r3, -0x8
     stw     r31, 0xdc(sp)
     addi    r5, sp, 0x0
 branch_0x80233674:
@@ -399,21 +395,11 @@ branch_0x8023369c:
 
 .globl ReInitializeGX
 ReInitializeGX: # 0x80233760
-
-.set var_40, -0x40
-.set var_3C, -0x3C
-.set var_1C, -0x1C
-.set var_18, -0x18
-.set var_14, -0x14
-.set var_10, -0x10
-.set var_4, -4
-.set arg_4,  4
-
     mflr    r0
     li      r3, 0x0
-    stw     r0, arg_4(sp)
+    stw     r0, 0x4(sp)
     stwu    sp, -0x48(sp)
-    stw     r31, 0x48+var_4(sp)
+    stw     r31, 0x44(sp)
     bl      GXSetNumChans
     li      r3, 0x1
     bl      GXSetNumTexGens
@@ -442,31 +428,30 @@ ReInitializeGX: # 0x80233760
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, -0x76f8(r13)
+    lwz     r0, R13Off_m0x76f8(r13)
     addi    r4, sp, 0x2c
     li      r3, 0x4
     stw     r0, 0x2c(sp)
     bl      GXSetChanAmbColor
-    lwz     r0, -0x76f8(r13)
+    lwz     r0, R13Off_m0x76f8(r13)
     addi    r4, sp, 0x30
     li      r3, 0x5
     stw     r0, 0x30(sp)
     bl      GXSetChanAmbColor
-    lwz     r0, -0x76f4(r13)
+    lwz     r0, R13Off_m0x76f4(r13)
     addi    r4, sp, 0x34
     li      r3, 0x4
     stw     r0, 0x34(sp)
     bl      GXSetChanMatColor
-    lwz     r0, -0x76f4(r13)
+    lwz     r0, R13Off_m0x76f4(r13)
     addi    r4, sp, 0x38
     li      r3, 0x5
     stw     r0, 0x38(sp)
     bl      GXSetChanMatColor
     bl      ReInitTransform__Fv
-
-    lis     r3, unk_803DB200@ha
-    addi    r4, r3, unk_803DB200@l
-    addi    r3, sp, 0x48+var_3C
+    lis     r3, NullTexData@ha
+    addi    r4, r3, NullTexData@l
+    addi    r3, sp, 0xc
     li      r5, 0x4
     li      r6, 0x4
     li      r7, 0x3
@@ -474,28 +459,28 @@ ReInitializeGX: # 0x80233760
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x0
     bl      GXLoadTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x1
     bl      GXLoadTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x2
     bl      GXLoadTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x3
     bl      GXLoadTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x4
     bl      GXLoadTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x5
     bl      GXLoadTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x6
     bl      GXLoadTexObj
-    addi    r3, sp, 0x48+var_3C
+    addi    r3, sp, 0xc
     li      r4, 0x7
     bl      GXLoadTexObj
     bl      ReInitTevStages__Fv
@@ -533,14 +518,14 @@ branch_0x802338c8:
     bl      GXSetAlphaUpdate
     li      r3, 0x1
     bl      GXSetDither
-    lfs     f2, -0x15ec(rtoc)
+    lfs     f2, -0x15ec(r2)
     addi    r4, sp, 0x8
-    lwz     r0, -0x76f8(r13)
+    lwz     r0, R13Off_m0x76f8(r13)
     li      r3, 0x0
     fmr     f4, f2
     stw     r0, 0x8(sp)
-    lfs     f1, -0x15f0(rtoc)
-    lfs     f3, -0x15e8(rtoc)
+    lfs     f1, -0x15f0(r2)
+    lfs     f3, -0x15e8(r2)
     bl      GXSetFog
     li      r3, 0x0
     li      r4, 0x0

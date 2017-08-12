@@ -154,11 +154,11 @@ branch_0x80310d74:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r0, -0x5c78(r13)
+    lwz     r0, R13Off_m0x5c78(r13)
     subf    r4, r3, r28
     addi    r3, r27, 0x0
     add     r0, r0, r4
-    stw     r0, -0x5c78(r13)
+    stw     r0, R13Off_m0x5c78(r13)
 branch_0x80310db4:
     lmw     r18, 0x48(sp)
     lwz     r0, 0x84(sp)
@@ -307,11 +307,11 @@ branch_0x80310f94:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r0, -0x5c78(r13)
+    lwz     r0, R13Off_m0x5c78(r13)
     subf    r4, r3, r30
     addi    r3, r29, 0x0
     add     r0, r0, r4
-    stw     r0, -0x5c78(r13)
+    stw     r0, R13Off_m0x5c78(r13)
 branch_0x80310fd4:
     lmw     r23, 0x5c(sp)
     lwz     r0, 0x84(sp)

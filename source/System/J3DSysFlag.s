@@ -9,12 +9,12 @@ __dt__14TGXAlphaUpdateFv: # 0x80296938
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80296990
-    lis     r3, 0x803e
-    subi    r0, r3, 0x10e0
+    lis     r3, __vvt__14TGXAlphaUpdate@ha
+    addi    r0, r3, __vvt__14TGXAlphaUpdate@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80296980
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -98,9 +98,9 @@ perform__17TJ3DSysSetViewMtxFUlPQ26JDrama9TGraphics: # 0x80296a50
     rlwinm. r0, r4, 0, 29, 29
     stwu    sp, -0x8(sp)
     beq-    branch_0x80296a74
-    lis     r4, 0x8040
+    lis     r4, j3dSys@h
     addi    r3, r5, 0xb4
-    addi    r4, r4, 0x45dc
+    addi    r4, r4, j3dSys@l
     bl      PSMTXCopy
 branch_0x80296a74:
     lwz     r0, 0xc(sp)
@@ -116,22 +116,22 @@ perform__11TJ3DSysFlagFUlPQ26JDrama9TGraphics: # 0x80296a84
     rlwinm. r0, r4, 0, 24, 24
     stwu    sp, -0x20(sp)
     beq-    branch_0x80296aac
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     lwz     r0, 0x34(r3)
     rlwinm  r0, r0, 0, 31, 29
     stw     r0, 0x34(r3)
 branch_0x80296aac:
     rlwinm. r0, r4, 0, 28, 28
     beq-    branch_0x80296af8
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     lwz     r0, 0x34(r3)
     addi    r4, sp, 0x1c
     ori     r0, r0, 0x2
     stw     r0, 0x34(r3)
     li      r3, 0x4
-    lwz     r0, -0x610(rtoc)
+    lwz     r0, R2Off_m0x610(r2)
     stw     r0, 0x18(sp)
     lwz     r0, 0x18(sp)
     stw     r0, 0x1c(sp)
@@ -158,12 +158,12 @@ __dt__9TReInitGXFv: # 0x80296b08
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80296b60
-    lis     r3, 0x803e
-    subi    r0, r3, 0x10bc
+    lis     r3, __vvt__9TReInitGX@ha
+    addi    r0, r3, __vvt__9TReInitGX@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80296b50
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -193,12 +193,12 @@ __dt__12TSMSDrawInitFv: # 0x80296b7c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80296bd4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1098
+    lis     r3, __vvt__12TSMSDrawInit@ha
+    addi    r0, r3, __vvt__12TSMSDrawInit@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80296bc4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -228,12 +228,12 @@ __dt__17TJ3DSysSetViewMtxFv: # 0x80296bf0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80296c48
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1074
+    lis     r3, __vvt__17TJ3DSysSetViewMtx@ha
+    addi    r0, r3, __vvt__17TJ3DSysSetViewMtx@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80296c38
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -263,12 +263,12 @@ __dt__11TJ3DSysFlagFv: # 0x80296c64
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80296cbc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1050
+    lis     r3, __vvt__11TJ3DSysFlag@ha
+    addi    r0, r3, __vvt__11TJ3DSysFlag@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80296cac
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

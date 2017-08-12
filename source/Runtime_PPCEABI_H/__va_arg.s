@@ -56,11 +56,11 @@ branch_0x80337d5c:
 branch_0x80337d84:
     li      r0, 0x8
     stb     r0, 0x0(r7)
-    subi    r0, r8, 0x1
+    addi    r0, r8, -0x1
     not     r6, r0
     lwz     r0, 0x4(r3)
     add     r5, r8, r0
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     and     r6, r6, r0
     add     r0, r6, r8
     stw     r0, 0x4(r3)

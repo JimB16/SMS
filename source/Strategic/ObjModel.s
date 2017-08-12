@@ -153,7 +153,7 @@ branch_0x8021cbb4:
     li      r3, 0x0
     ble-    branch_0x8021cc38
     cmpwi   r31, 0x8
-    subi    r4, r31, 0x8
+    addi    r4, r31, -0x8
     ble-    branch_0x8021cc20
     addi    r0, r4, 0x7
     srwi    r0, r0, 3
@@ -315,7 +315,7 @@ branch_0x8021cdbc:
     li      r3, 0x0
     ble-    branch_0x8021ce3c
     cmpwi   r6, 0x8
-    subi    r4, r6, 0x8
+    addi    r4, r6, -0x8
     ble-    branch_0x8021ce24
     addi    r0, r4, 0x7
     srwi    r0, r0, 3
@@ -402,7 +402,7 @@ createMActorFromNthData__13TMActorKeeperFiUl: # 0x8021cec8
     li      r3, 0x0
     ble-    branch_0x8021cf70
     cmpwi   r4, 0x8
-    subi    r5, r4, 0x8
+    addi    r5, r4, -0x8
     ble-    branch_0x8021cf58
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -479,14 +479,14 @@ createMActorFromDefaultBmd__13TMActorKeeperFPCcUl: # 0x8021d008
     stwu    sp, -0x138(sp)
     stmw    r27, 0x124(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x803a
+    lis     r3, unk_8039d310@ha
     addi    r28, r4, 0x0
-    subi    r6, r3, 0x2cf0
+    addi    r6, r3, unk_8039d310@l
     addi    r29, r5, 0x0
     addi    r5, r28, 0x0
     addi    r3, sp, 0x14
     lwz     r30, 0x14(r31)
-    subi    r4, rtoc, 0x18b0
+    addi    r4, r2, R2Off_m0x18b0
     bl      sprintf
     addi    r3, sp, 0x14
     bl      getGlbResource__13JKRFileLoaderFPCc
@@ -775,7 +775,7 @@ branch_0x8021d3c4:
     li      r3, 0x0
     ble-    branch_0x8021d430
     cmpwi   r30, 0x8
-    subi    r4, r30, 0x8
+    addi    r4, r30, -0x8
     ble-    branch_0x8021d418
     addi    r0, r4, 0x7
     srwi    r0, r0, 3
@@ -818,7 +818,7 @@ getNthData__16TModelDataKeeperCFi: # 0x8021d448
     li      r6, 0x0
     ble-    branch_0x8021d4b8
     cmpwi   r4, 0x8
-    subi    r3, r4, 0x8
+    addi    r3, r4, -0x8
     ble-    branch_0x8021d4a0
     addi    r0, r3, 0x7
     srwi    r0, r0, 3
@@ -873,7 +873,7 @@ branch_0x8021d4f0:
     addi    r6, r29, 0x0
     addi    r3, sp, 0x20
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x18b0
+    addi    r4, r2, R2Off_m0x18b0
     bl      sprintf
     addi    r3, sp, 0x20
     bl      getGlbResource__13JKRFileLoaderFPCc
@@ -926,7 +926,7 @@ loadModelData__16TModelDataKeeperFPCcUlPCc: # 0x8021d5a4
     addi    r31, r4, 0x0
     addi    r3, sp, 0x18
     stw     r30, 0x118(sp)
-    subi    r4, rtoc, 0x18b0
+    addi    r4, r2, R2Off_m0x18b0
     bl      sprintf
     addi    r3, sp, 0x18
     bl      getGlbResource__13JKRFileLoaderFPCc

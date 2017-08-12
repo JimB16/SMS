@@ -9,12 +9,12 @@ __dt__15TCubeStreamInfoFv: # 0x80030330
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80030388
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2d58
+    lis     r3, __vvt__15TCubeStreamInfo@ha
+    addi    r0, r3, __vvt__15TCubeStreamInfo@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80030378
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2d18
+    lis     r3, __vvt__16TCubeGeneralInfo@ha
+    addi    r0, r3, __vvt__16TCubeGeneralInfo@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -83,7 +83,7 @@ load__15TCubeStreamInfoFR20JSUMemoryInputStream: # 0x800303a4
     bl      read__14JSUInputStreamFPvl
     lfs     f0, 0x24(r29)
     mr      r3, r30
-    lfs     f1, -0x7600(rtoc)
+    lfs     f1, -0x7600(r2)
     addi    r4, sp, 0x58
     li      r5, 0x4
     fmuls   f0, f0, f1
@@ -113,7 +113,7 @@ load__15TCubeStreamInfoFR20JSUMemoryInputStream: # 0x800303a4
     addi    r4, sp, 0x5c
     li      r5, 0x4
     lwz     r0, 0x34(r29)
-    lfd     f1, -0x75f8(rtoc)
+    lfd     f1, -0x75f8(r2)
     xoris   r0, r0, 0x8000
     stw     r0, 0x6c(sp)
     stw     r31, 0x68(sp)
@@ -123,7 +123,7 @@ load__15TCubeStreamInfoFR20JSUMemoryInputStream: # 0x800303a4
     bl      read__14JSUInputStreamFPvl
     lwz     r0, 0x5c(sp)
     mr      r3, r30
-    lfd     f1, -0x75f8(rtoc)
+    lfd     f1, -0x75f8(r2)
     addi    r4, r29, 0x38
     xoris   r0, r0, 0x8000
     stw     r0, 0x64(sp)
@@ -190,7 +190,7 @@ load__15TCubeCameraInfoFR20JSUMemoryInputStream: # 0x80030544
     bl      read__14JSUInputStreamFPvl
     lfs     f0, 0x24(r30)
     mr      r3, r31
-    lfs     f1, -0x7600(rtoc)
+    lfs     f1, -0x7600(r2)
     addi    r4, sp, 0x58
     li      r5, 0x4
     fmuls   f0, f0, f1
@@ -220,7 +220,7 @@ load__15TCubeCameraInfoFR20JSUMemoryInputStream: # 0x80030544
     mr      r31, r3
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     mr      r4, r3
-    lwz     r3, -0x70c0(r13)
+    lwz     r3, R13Off_m0x70c0(r13)
     mr      r5, r31
     lwz     r12, 0x0(r3)
     lwz     r12, 0x1c(r12)
@@ -283,7 +283,7 @@ load__16TCubeGeneralInfoFR20JSUMemoryInputStream: # 0x800306a8
     bl      read__14JSUInputStreamFPvl
     lfs     f0, 0x24(r30)
     mr      r3, r31
-    lfs     f1, -0x7600(rtoc)
+    lfs     f1, -0x7600(r2)
     addi    r4, sp, 0x58
     li      r5, 0x4
     fmuls   f0, f0, f1
@@ -326,12 +326,12 @@ __dt__15TCubeCameraInfoFv: # 0x800307dc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80030834
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2d38
+    lis     r3, __vvt__15TCubeCameraInfo@ha
+    addi    r0, r3, __vvt__15TCubeCameraInfo@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80030824
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2d18
+    lis     r3, __vvt__16TCubeGeneralInfo@ha
+    addi    r0, r3, __vvt__16TCubeGeneralInfo@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -361,8 +361,8 @@ __dt__16TCubeGeneralInfoFv: # 0x80030850
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80030898
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2d18
+    lis     r3, __vvt__16TCubeGeneralInfo@ha
+    addi    r0, r3, __vvt__16TCubeGeneralInfo@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

@@ -16,8 +16,8 @@ WriteCallback: # 0x80356ab0
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
     mulli   r5, r29, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     blt-    branch_0x80356b28
     lwz     r3, 0x80(r31)
@@ -25,7 +25,7 @@ WriteCallback: # 0x80356ab0
     addi    r4, r3, 0x6000
     cmplw   r0, r4
     addis   r5, r3, 0x1
-    subi    r5, r5, 0x8000
+    addi    r5, r5, -0x8000
     bne-    branch_0x80356b14
     stw     r5, 0x88(r31)
     addi    r3, r5, 0x0
@@ -74,18 +74,18 @@ EraseCallback: # 0x80356b84
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stw     r30, 0x20(sp)
     mulli   r5, r31, 0x110
     stw     r29, 0x1c(sp)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     mr.     r29, r4
     add     r30, r0, r5
     blt-    branch_0x80356bf0
     lwz     r5, 0x88(r30)
-    lis     r3, 0x8035
+    lis     r3, WriteCallback@h
     lwz     r0, 0x80(r30)
-    addi    r7, r3, 0x6ab0
+    addi    r7, r3, WriteCallback@l
     lwz     r3, 0xc(r30)
     subf    r0, r0, r5
     srwi    r0, r0, 13
@@ -130,8 +130,8 @@ __CARDAllocBlock: # 0x80356c4c
     mulli   r7, r3, 0x110
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
-    lis     r6, 0x8040
-    addi    r0, r6, 0x3460
+    lis     r6, __CARDBlock@h
+    addi    r0, r6, __CARDBlock@l
     stw     r31, 0x1c(sp)
     add     r9, r0, r7
     stw     r30, 0x18(sp)
@@ -152,8 +152,8 @@ branch_0x80356c84:
 branch_0x80356c9c:
     subf    r0, r4, r0
     sth     r0, 0x6(r8)
-    lis     r6, 0x1
-    subi    r12, r6, 0x1
+    lis     r6, unk_0000ffff@ha
+    addi    r12, r6, unk_0000ffff@l
     lhz     r11, 0x8(r8)
     addi    r0, r12, 0x0
     li      r30, 0x0
@@ -163,7 +163,7 @@ branch_0x80356cbc:
     lhz     r10, 0x10(r9)
     addi    r30, r30, 0x1
     clrlwi  r6, r30, 16
-    subi    r7, r10, 0x5
+    addi    r7, r10, -0x5
     cmpw    r7, r6
     bge-    branch_0x80356cdc
     li      r3, -0x6
@@ -196,7 +196,7 @@ branch_0x80356d20:
 branch_0x80356d28:
     sth     r0, 0x0(r7)
     addi    r31, r11, 0x0
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
 branch_0x80356d34:
     cmplwi  r4, 0x0
     bne+    branch_0x80356cbc
@@ -230,9 +230,9 @@ __CARDUpdateFatBlock: # 0x80356d64
     lhz     r3, 0x4(r4)
     mulli   r4, r28, 0x110
     addi    r0, r3, 0x1
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     sth     r0, 0x4(r29)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r4
     addi    r3, r29, 0x4
     li      r4, 0x1ffc
@@ -241,8 +241,8 @@ __CARDUpdateFatBlock: # 0x80356d64
     li      r4, 0x2000
     bl      DCStoreRange
     stw     r30, 0xd8(r31)
-    lis     r3, 0x8035
-    addi    r5, r3, 0x6b84
+    lis     r3, EraseCallback@h
+    addi    r5, r3, EraseCallback@l
     lwz     r0, 0x80(r31)
     mr      r3, r28
     lwz     r4, 0xc(r31)

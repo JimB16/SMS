@@ -9,8 +9,8 @@ __dt__15TFishoidManagerFv: # 0x80006b60
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80006ba8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x4958
+    lis     r3, __vvt__15TFishoidManager@ha
+    addi    r0, r3, __vvt__15TFishoidManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -42,9 +42,9 @@ changeDrawBuffer__13TEnemyManagerFUl: # 0x80006bc8
 .globl createModelData__15TFishoidManagerFv
 createModelData__15TFishoidManagerFv: # 0x80006bcc
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, entry_2319@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x35c0
+    addi    r4, r4, entry_2319@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -64,8 +64,8 @@ __ct__15TFishoidManagerFPCc: # 0x80006c00
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x4958
+    lis     r3, __vvt__15TFishoidManager@ha
+    addi    r0, r3, __vvt__15TFishoidManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -89,16 +89,16 @@ createRealoidActor__8TFishoidFP6MActor: # 0x80006c3c
     beq-    branch_0x80006cd0
     stw     r30, 0x10(sp)
     mr      r3, r30
-    subi    r4, rtoc, 0x7f98
+    addi    r4, r2, R2Off_m0x7f98
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48e4
+    lis     r3, __vvt__10TTakeActor@ha
+    addi    r3, r3, __vvt__10TTakeActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__13TRealoidActor@ha
     stw     r0, 0x20(r30)
     li      r5, 0x0
-    subi    r3, r3, 0x4548
+    addi    r3, r3, __vvt__13TRealoidActor@l
     stw     r5, 0x68(r30)
     addi    r0, r3, 0x24
     stw     r5, 0x6c(r30)
@@ -109,8 +109,8 @@ createRealoidActor__8TFishoidFP6MActor: # 0x80006c3c
     stw     r31, 0x70(r4)
     stw     r5, 0x74(r4)
     bl      __ct__Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f__Fv
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4718
+    lis     r3, __vvt__5TFish@ha
+    addi    r3, r3, __vvt__5TFish@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -134,20 +134,20 @@ __dt__13TRealoidActorFv: # 0x80006cec
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80006d6c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4548
+    lis     r3, __vvt__13TRealoidActor@ha
+    addi    r3, r3, __vvt__13TRealoidActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80006d5c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48e4
+    lis     r3, __vvt__10TTakeActor@ha
+    addi    r3, r3, __vvt__10TTakeActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80006d5c
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -184,14 +184,14 @@ __dt__10TTakeActorFv: # 0x80006d8c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80006df4
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48e4
+    lis     r3, __vvt__10TTakeActor@ha
+    addi    r3, r3, __vvt__10TTakeActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80006de4
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -223,8 +223,8 @@ __dt__9THitActorFv: # 0x80006e10
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80006e60
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -258,9 +258,9 @@ load__8TFishoidFR20JSUMemoryInputStream: # 0x80006e7c
     stw     r28, 0xc0(sp)
     addi    r28, r4, 0x0
     lwz     r0, 0x158(r3)
-    lis     r3, 0x8037
+    lis     r3, cFishoidMdlNames__9_unnamed_@h
     slwi    r4, r0, 2
-    addi    r0, r3, 0x35b0
+    addi    r0, r3, cFishoidMdlNames__9_unnamed_@l
     add     r3, r0, r4
     lwz     r5, 0x0(r3)
     addi    r3, r30, 0x0
@@ -271,7 +271,7 @@ load__8TFishoidFR20JSUMemoryInputStream: # 0x80006e7c
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lwz     r3, 0xac(sp)
-    subi    r4, rtoc, 0x7f90
+    addi    r4, r2, R2Off_m0x7f90
     bl      newAndRegisterObjByEventID__18TMapObjBaseManagerFUlPCc
     stw     r3, 0x15c(r30)
     lwz     r3, 0x15c(r30)
@@ -289,29 +289,29 @@ branch_0x80006f0c:
 branch_0x80006f10:
     clrlwi. r0, r0, 24
     beq-    branch_0x80006f24
-    lwz     r3, gpItemManager(r13)
+    lwz     r3, R13Off_m0x62b0(r13)
     bl      newAndRegisterCoinReal__12TItemManagerFv
     stw     r3, 0x15c(r30)
 branch_0x80006f24:
-    lfs     f0, -0x7f8c(rtoc)
+    lfs     f0, -0x7f8c(r2)
     lwz     r3, 0x150(r30)
     stfs    f0, 0x20(r3)
-    lfs     f0, -0x7f88(rtoc)
+    lfs     f0, -0x7f88(r2)
     lwz     r3, 0x150(r30)
     stfs    f0, 0x24(r3)
-    lfs     f0, -0x7f84(rtoc)
+    lfs     f0, -0x7f84(r2)
     lwz     r3, 0x150(r30)
     stfs    f0, 0x28(r3)
-    lfs     f1, -0x7f80(rtoc)
+    lfs     f1, -0x7f80(r2)
     lwz     r3, 0x150(r30)
     stfs    f1, 0x2c(r3)
-    lfs     f0, -0x7f7c(rtoc)
+    lfs     f0, -0x7f7c(r2)
     lwz     r3, 0x150(r30)
     stfs    f0, 0x30(r3)
     lwz     r3, 0x150(r30)
     stfs    f1, 0x34(r3)
-    lwz     r3, MarioHitActor(r13)
-    lfs     f0, -0x7f78(rtoc)
+    lwz     r3, R13Off_m0x60b8(r13)
+    lfs     f0, -0x7f78(r2)
     stw     r3, 0xb0(sp)
     cmplwi  r3, 0x0
     stfs    f0, 0xb4(sp)
@@ -326,9 +326,9 @@ branch_0x80006f24:
     stfs    f2, 0xbc(sp)
 branch_0x80006fa0:
     lwz     r4, 0x150(r30)
-    lis     r3, 0x8037
+    lis     r3, unk_803735fc@h
     lwz     r0, 0xb0(sp)
-    addi    r28, r3, 0x35fc
+    addi    r28, r3, unk_803735fc@l
     li      r31, 0x0
     stw     r0, 0x5c(r4)
     li      r29, 0x0
@@ -338,10 +338,10 @@ branch_0x80006fa0:
     stw     r0, 0x64(r4)
     lwz     r0, 0xbc(sp)
     stw     r0, 0x68(r4)
-    lfs     f0, -0x7f74(rtoc)
+    lfs     f0, -0x7f74(r2)
     lwz     r3, 0x150(r30)
     stfs    f0, 0x6c(r3)
-    lfs     f0, -0x7f70(rtoc)
+    lfs     f0, -0x7f70(r2)
     lwz     r3, 0x150(r30)
     stfs    f0, 0x70(r3)
     lwz     r3, 0x150(r30)
@@ -366,7 +366,7 @@ branch_0x8000701c:
     lwz     r0, 0x15c(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x80007084
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0x154(r30)
     slwi    r0, r0, 2
     lwzx    r28, r3, r0
@@ -407,27 +407,27 @@ init__8TFishoidFP12TLiveManager: # 0x800070a4
     mr      r4, r31
     lwz     r3, 0x70(r3)
     bl      manageActor__12TLiveManagerFP10TLiveActor
-    lbz     r0, -0x72c0(r13)
+    lbz     r0, R13Off_m0x72c0(r13)
     extsb.  r0, r0
     bne-    branch_0x8000710c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x72bc(r13)
-    subi    r0, r3, 0x4904
-    lis     r4, 0x8000
-    stw     r0, -0x72bc(r13)
-    lis     r3, 0x803f
-    subi    r5, r3, 0x68b0
-    addi    r4, r4, 0x7170
-    subi    r3, r13, 0x72bc
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__31TNerveWaitForever_10TLiveActor_@ha
+    stw     r0, R13Off_m0x72bc(r13)
+    addi    r0, r3, __vvt__31TNerveWaitForever_10TLiveActor_@l
+    lis     r4, __dt__31TNerveWaitForever_10TLiveActor_Fv@h
+    stw     r0, R13Off_m0x72bc(r13)
+    lis     r3, unk_803e9750@ha
+    addi    r5, r3, unk_803e9750@l
+    addi    r4, r4, __dt__31TNerveWaitForever_10TLiveActor_Fv@l
+    addi    r3, r13, R13Off_m0x72bc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x72c0(r13)
+    stb     r0, R13Off_m0x72c0(r13)
 branch_0x8000710c:
     lwz     r8, 0x8c(r31)
     li      r7, 0x0
-    subi    r0, r13, 0x72bc
+    addi    r0, r13, R13Off_m0x72bc
     stw     r7, 0x8(r8)
     addi    r3, r31, 0x0
     li      r4, 0x0
@@ -437,7 +437,7 @@ branch_0x8000710c:
     stw     r0, 0x14(r8)
     stw     r0, 0x18(r8)
     stw     r7, 0x1c(r8)
-    lfs     f1, -0x7f78(rtoc)
+    lfs     f1, -0x7f78(r2)
     fmr     f2, f1
     fmr     f3, f1
     fmr     f4, f1
@@ -460,12 +460,12 @@ __dt__31TNerveWaitForever_10TLiveActor_Fv: # 0x80007170
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800071b4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x4904
+    lis     r3, __vvt__31TNerveWaitForever_10TLiveActor_@ha
+    addi    r0, r3, __vvt__31TNerveWaitForever_10TLiveActor_@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800071a4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800071a4:
     extsh.  r0, r4
@@ -489,8 +489,8 @@ __dt__24TNerveBase_10TLiveActor_Fv: # 0x800071cc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80007200
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r3, r3, __vvt__24TNerveBase_10TLiveActor_@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x80007200
@@ -564,7 +564,7 @@ branch_0x800072d0:
     lwz     r0, 0x10(r3)
     cmpw    r28, r0
     blt+    branch_0x800072a8
-    lfs     f0, -0x7f78(rtoc)
+    lfs     f0, -0x7f78(r2)
     li      r6, 0x0
     li      r3, 0x0
     b       branch_0x80007340
@@ -601,7 +601,7 @@ branch_0x80007340:
     beq-    branch_0x8000738c
     clrlwi. r0, r31, 31
     beq-    branch_0x8000738c
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     lwz     r3, 0x14(r5)
     mulli   r0, r0, 0x50
     add     r4, r3, r0
@@ -630,14 +630,14 @@ __ct__8TFishoidFiPCc: # 0x800073a0
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4660
+    lis     r3, __vvt__8TRealoid@ha
+    addi    r3, r3, __vvt__8TRealoid@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__8TFishoid@ha
     stw     r0, 0x20(r30)
     li      r6, 0x0
-    subi    r4, r3, 0x4830
+    addi    r4, r3, __vvt__8TFishoid@l
     stw     r6, 0x150(r30)
     addi    r0, r4, 0x24
     addi    r3, r30, 0x0
@@ -666,8 +666,8 @@ __dt__8TRealoidFv: # 0x80007424
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80007474
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4660
+    lis     r3, __vvt__8TRealoid@ha
+    addi    r3, r3, __vvt__8TRealoid@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -712,11 +712,11 @@ perform__8TRealoidFUlPQ26JDrama9TGraphics: # 0x800074a0
     blrl
     rlwinm. r0, r29, 0, 30, 30
     beq-    branch_0x800075c0
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lfs     f3, 0xe8(r30)
     lfs     f2, 0x4c(r3)
     lfs     f1, 0x48(r3)
-    lfs     f4, -0x7f6c(rtoc)
+    lfs     f4, -0x7f6c(r2)
     bl      SetViewFrustumClipCheckPerspective__Fffff
     li      r31, 0x0
     addi    r26, r31, 0x0
@@ -726,7 +726,7 @@ perform__8TRealoidFUlPQ26JDrama9TGraphics: # 0x800074a0
 branch_0x80007500:
     lwz     r0, 0x14(r3)
     mr      r3, r30
-    lfs     f1, -0x7f68(rtoc)
+    lfs     f1, -0x7f68(r2)
     addi    r4, sp, 0x74
     add     r6, r0, r26
     lwz     r5, 0x0(r6)
@@ -815,11 +815,11 @@ clipBoids__8TRealoidFPQ26JDrama9TGraphics: # 0x80007618
     stmw    r27, 0x5c(sp)
     mr      r30, r4
     mr      r29, r3
-    lwz     r5, gpCamera(r13)
+    lwz     r5, R13Off_m0x7118(r13)
     lfs     f3, 0xe8(r4)
     lfs     f2, 0x4c(r5)
     lfs     f1, 0x48(r5)
-    lfs     f4, -0x7f6c(rtoc)
+    lfs     f4, -0x7f6c(r2)
     bl      SetViewFrustumClipCheckPerspective__Fffff
     li      r31, 0x0
     li      r28, 0x0
@@ -829,7 +829,7 @@ clipBoids__8TRealoidFPQ26JDrama9TGraphics: # 0x80007618
 branch_0x80007658:
     lwz     r0, 0x14(r3)
     mr      r3, r30
-    lfs     f1, -0x7f68(rtoc)
+    lfs     f1, -0x7f68(r2)
     addi    r4, sp, 0x44
     add     r6, r0, r27
     lwz     r5, 0x0(r6)
@@ -901,9 +901,9 @@ branch_0x80007748:
     bl      __nw__FUl
     mr.     r26, r3
     beq-    branch_0x80007770
-    lis     r3, 0x8037
+    lis     r3, unk_80373608@h
     lwz     r4, 0x54(sp)
-    addi    r5, r3, 0x3608
+    addi    r5, r3, unk_80373608@l
     addi    r3, r26, 0x0
     bl      __ct__11TBoidLeaderFiPCc
 branch_0x80007770:
@@ -939,7 +939,7 @@ branch_0x80007770:
     lwz     r30, 0x78(r27)
     lwz     r3, 0x10(r27)
     lwz     r0, 0x14(r27)
-    lfs     f31, -0x7f64(rtoc)
+    lfs     f31, -0x7f64(r2)
     stw     r3, 0x48(sp)
     stw     r0, 0x4c(sp)
     lwz     r0, 0x18(r27)
@@ -994,8 +994,8 @@ __ct__8TRealoidFPCc: # 0x80007898
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4660
+    lis     r3, __vvt__8TRealoid@ha
+    addi    r3, r3, __vvt__8TRealoid@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -1032,9 +1032,9 @@ checkHitActors__13TRealoidActorFv: # 0x800078f8
     rlwinm. r0, r0, 0, 29, 30
     bne-    branch_0x80007970
     lhz     r0, 0x48(r28)
-    lis     r3, 0x8000
+    lis     r3, unk_80000001@h
     lwz     r4, 0x44(r28)
-    addi    r31, r3, 0x1
+    addi    r31, r3, unk_80000001@l
     slwi    r0, r0, 2
     addi    r29, r4, 0x0
     add     r30, r4, r0
@@ -1049,7 +1049,7 @@ branch_0x80007944:
 
 branch_0x80007958:
     addi    r3, r28, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x80007964:
     addi    r29, r29, 0x4
@@ -1126,9 +1126,9 @@ branch_0x80007a44:
     stw     r0, 0x18(r30)
     lwz     r5, 0x0(r31)
     lwz     r0, 0x4(r31)
-    lfs     f1, -0x7f78(rtoc)
+    lfs     f1, -0x7f78(r2)
     stw     r5, 0xbc(sp)
-    lfs     f0, -0x7f84(rtoc)
+    lfs     f0, -0x7f84(r2)
     stw     r0, 0xc0(sp)
     lwz     r0, 0x8(r31)
     stw     r0, 0xc4(sp)
@@ -1274,18 +1274,18 @@ __ct__13TRealoidActorFP6MActor: # 0x80007c80
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r4, 0x0
-    subi    r4, rtoc, 0x7f98
+    addi    r4, r2, R2Off_m0x7f98
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48e4
+    lis     r3, __vvt__10TTakeActor@ha
+    addi    r3, r3, __vvt__10TTakeActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__13TRealoidActor@ha
     stw     r0, 0x20(r30)
     li      r5, 0x0
-    subi    r4, r3, 0x4548
+    addi    r4, r3, __vvt__13TRealoidActor@l
     stw     r5, 0x68(r30)
     addi    r0, r4, 0x24
     addi    r3, r30, 0x0
@@ -1366,14 +1366,14 @@ __dt__8TFishoidFv: # 0x80007d78
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80007de0
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4830
+    lis     r3, __vvt__8TFishoid@ha
+    addi    r3, r3, __vvt__8TFishoid@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80007dd0
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4660
+    lis     r3, __vvt__8TRealoid@ha
+    addi    r3, r3, __vvt__8TRealoid@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -1397,7 +1397,7 @@ branch_0x80007de0:
 
 .globl getPhaseShift__11TSpineEnemyCFv
 getPhaseShift__11TSpineEnemyCFv: # 0x80007dfc
-    lfs     f1, -0x7f78(rtoc)
+    lfs     f1, -0x7f78(r2)
     blr
 
 
@@ -1442,7 +1442,7 @@ branch_0x80007e28:
     fadds   f0, f1, f0
     fadds   f1, f2, f0
     bl      sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x7f68(rtoc)
+    lfs     f0, -0x7f68(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80007ea8
     li      r3, 0x1
@@ -1467,20 +1467,20 @@ __dt__5TFishFv: # 0x80007ebc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80007f3c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4718
+    lis     r3, __vvt__5TFish@ha
+    addi    r3, r3, __vvt__5TFish@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80007f2c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4548
+    lis     r3, __vvt__13TRealoidActor@ha
+    addi    r3, r3, __vvt__13TRealoidActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80007f2c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x48e4
+    lis     r3, __vvt__10TTakeActor@ha
+    addi    r3, r3, __vvt__10TTakeActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -1508,67 +1508,68 @@ execute__31TNerveWaitForever_10TLiveActor_CFP24TSpineBase_10TLiveActor_: # 0x800
     blr
 
 
-.globl _32___dt__13TRealoidActorFv
-_32___dt__13TRealoidActorFv: # 0x80007f60
-    subi    r3, r3, 0x20
+.globl unk_80007f60
+unk_80007f60: # 0x80007f60
+    addi    r3, r3, -0x20
     b       __dt__13TRealoidActorFv
 
 
-.globl _32___dt__8TRealoidFv
-_32___dt__8TRealoidFv: # 0x80007f68
-    subi    r3, r3, 0x20
+.globl unk_80007f68
+unk_80007f68: # 0x80007f68
+    addi    r3, r3, -0x20
     b       __dt__8TRealoidFv
 
 
-.globl _32___dt__5TFishFv
-_32___dt__5TFishFv: # 0x80007f70
-    subi    r3, r3, 0x20
+.globl unk_80007f70
+unk_80007f70: # 0x80007f70
+    addi    r3, r3, -0x20
     b       __dt__5TFishFv
 
 
-.globl _32___dt__8TFishoidFv
-_32___dt__8TFishoidFv: # 0x80007f78
-    subi    r3, r3, 0x20
+.globl unk_80007f78
+unk_80007f78: # 0x80007f78
+    addi    r3, r3, -0x20
     b       __dt__8TFishoidFv
 
 
-.globl _32_JSGSetRotation__Q26JDrama6TActorFRC3Vec
-_32_JSGSetRotation__Q26JDrama6TActorFRC3Vec: # 0x80007f80
-    subi    r3, r3, 0x20
+.globl unk_80007f80
+unk_80007f80: # 0x80007f80
+    addi    r3, r3, -0x20
     b       JSGSetRotation__Q26JDrama6TActorFRC3Vec
 
 
-.globl _32_JSGGetRotation__Q26JDrama6TActorCFP3Vec
-_32_JSGGetRotation__Q26JDrama6TActorCFP3Vec: # 0x80007f88
-    subi    r3, r3, 0x20
+.globl unk_80007f88
+unk_80007f88: # 0x80007f88
+    addi    r3, r3, -0x20
     b       JSGGetRotation__Q26JDrama6TActorCFP3Vec
 
 
-.globl _32_JSGSetScaling__Q26JDrama6TActorFRC3Vec
-_32_JSGSetScaling__Q26JDrama6TActorFRC3Vec: # 0x80007f90
-    subi    r3, r3, 0x20
+.globl unk_80007f90
+unk_80007f90: # 0x80007f90
+    addi    r3, r3, -0x20
     b       JSGSetScaling__Q26JDrama6TActorFRC3Vec
 
 
-.globl _32_JSGGetScaling__Q26JDrama6TActorCFP3Vec
-_32_JSGGetScaling__Q26JDrama6TActorCFP3Vec: # 0x80007f98
-    subi    r3, r3, 0x20
+.globl unk_80007f98
+unk_80007f98: # 0x80007f98
+    addi    r3, r3, -0x20
     b       JSGGetScaling__Q26JDrama6TActorCFP3Vec
 
 
-.globl _32_JSGSetTranslation__Q26JDrama6TActorFRC3Vec
-_32_JSGSetTranslation__Q26JDrama6TActorFRC3Vec: # 0x80007fa0
-    subi    r3, r3, 0x20
+.globl unk_80007fa0
+unk_80007fa0: # 0x80007fa0
+    addi    r3, r3, -0x20
     b       JSGSetTranslation__Q26JDrama6TActorFRC3Vec
 
 
-.globl _32_JSGGetTranslation__Q26JDrama6TActorCFP3Vec
-_32_JSGGetTranslation__Q26JDrama6TActorCFP3Vec: # 0x80007fa8
-    subi    r3, r3, 0x20
+.globl unk_80007fa8
+unk_80007fa8: # 0x80007fa8
+    addi    r3, r3, -0x20
     b       JSGGetTranslation__Q26JDrama6TActorCFP3Vec
 
 
-.globl _32___dt__10TTakeActorFv
-_32___dt__10TTakeActorFv: # 0x80007fb0
-    subi    r3, r3, 0x20
+.globl unk_80007fb0
+unk_80007fb0: # 0x80007fb0
+    addi    r3, r3, -0x20
     b       __dt__10TTakeActorFv
+

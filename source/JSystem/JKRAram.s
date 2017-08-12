@@ -10,10 +10,10 @@ create__7JKRAramFUlUllll: # 0x802bdd2c
     addi    r29, r5, 0x0
     addi    r30, r6, 0x0
     addi    r31, r7, 0x0
-    lwz     r0, -0x5f90(r13)
+    lwz     r0, R13Off_m0x5f90(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802bdd88
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x88
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi
@@ -24,19 +24,19 @@ create__7JKRAramFUlUllll: # 0x802bdd2c
     addi    r6, r31, 0x0
     bl      __ct__7JKRAramFUlUll
 branch_0x802bdd84:
-    stw     r3, -0x5f90(r13)
+    stw     r3, R13Off_m0x5f90(r13)
 branch_0x802bdd88:
     mr      r3, r29
     bl      create__13JKRAramStreamFl
     mr      r3, r30
     bl      create__9JKRDecompFl
-    lwz     r3, -0x5f90(r13)
+    lwz     r3, R13Off_m0x5f90(r13)
     lwz     r3, 0x2c(r3)
     bl      OSResumeThread
     lmw     r27, 0x24(sp)
     lwz     r0, 0x3c(sp)
     addi    sp, sp, 0x38
-    lwz     r3, -0x5f90(r13)
+    lwz     r3, R13Off_m0x5f90(r13)
     mtlr    r0
     blr
 
@@ -58,8 +58,8 @@ __ct__7JKRAramFUlUll: # 0x802bddbc
     lwz     r3, 0x8(sp)
     bl      __ct__9JKRThreadFUlii
     lwz     r30, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1e8
+    lis     r3, __vvt__7JKRAram@ha
+    addi    r0, r3, __vvt__7JKRAram@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x7c
     li      r4, 0x3
@@ -103,7 +103,7 @@ branch_0x802bde8c:
     li      r0, 0x0
     stw     r0, 0x70(r31)
 branch_0x802bde94:
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x44
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi
@@ -137,11 +137,11 @@ __dt__7JKRAramFv: # 0x802bdee8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802bdf5c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1e8
+    lis     r3, __vvt__7JKRAram@ha
+    addi    r0, r3, __vvt__7JKRAram@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
-    stw     r0, -0x5f90(r13)
+    stw     r0, R13Off_m0x5f90(r13)
     lwz     r3, 0x78(r30)
     cmplwi  r3, 0x0
     beq-    branch_0x802bdf40
@@ -172,12 +172,12 @@ branch_0x802bdf5c:
 .globl run__7JKRAramFv
 run__7JKRAramFv: # 0x802bdf78
     mflr    r0
-    lis     r3, 0x803e
+    lis     r3, sMessageBuffer__7JKRAram@ha
     stw     r0, 0x4(sp)
     li      r5, 0x4
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r3, 0x218
+    addi    r31, r3, sMessageBuffer__7JKRAram@l
     addi    r4, r31, 0x0
     stw     r30, 0x18(sp)
     addi    r3, r31, 0x10
@@ -220,11 +220,11 @@ mainRamToAram__7JKRAramFPUcUlUl15JKRExpandSwitchUlP7JKRHeapi: # 0x802bdfe0
     beq-    branch_0x802be03c
     clrlwi. r0, r25, 27
     beq-    branch_0x802be03c
-    lis     r3, 0x803b
+    lis     r3, unk_803a9340@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x6cb4
-    subi    r3, r3, 0x6cc0
+    lis     r4, unk_803a934c@ha
+    addi    r5, r4, unk_803a934c@l
+    addi    r3, r3, unk_803a9340@l
     li      r4, 0xe1
     bl      OSPanic
 branch_0x802be03c:
@@ -270,7 +270,7 @@ branch_0x802be0b4:
 branch_0x802be0b8:
     cmplwi  r25, 0x0
     bne-    branch_0x802be10c
-    lwz     r3, -0x5f90(r13)
+    lwz     r3, R13Off_m0x5f90(r13)
     addi    r4, r27, 0x0
     li      r5, 0x0
     lwz     r3, 0x78(r3)
@@ -284,7 +284,7 @@ branch_0x802be0b8:
 branch_0x802be0e8:
     cmpwi   r29, 0x0
     bge-    branch_0x802be100
-    lwz     r4, -0x5f90(r13)
+    lwz     r4, R13Off_m0x5f90(r13)
     lwz     r4, 0x78(r4)
     lbz     r0, 0x40(r4)
     b       branch_0x802be104
@@ -353,7 +353,7 @@ branch_0x802be1bc:
 branch_0x802be1c4:
     cmplwi  r25, 0x0
     bne-    branch_0x802be218
-    lwz     r3, -0x5f90(r13)
+    lwz     r3, R13Off_m0x5f90(r13)
     addi    r4, r26, 0x0
     li      r5, 0x0
     lwz     r3, 0x78(r3)
@@ -361,7 +361,7 @@ branch_0x802be1c4:
     cmpwi   r29, 0x0
     addi    r30, r3, 0x0
     bge-    branch_0x802be1fc
-    lwz     r4, -0x5f90(r13)
+    lwz     r4, R13Off_m0x5f90(r13)
     lwz     r4, 0x78(r4)
     lbz     r0, 0x40(r4)
     b       branch_0x802be200
@@ -422,11 +422,11 @@ branch_0x802be298:
     beq-    branch_0x802be2c4
     clrlwi. r0, r28, 27
     beq-    branch_0x802be2c4
-    lis     r3, 0x803b
+    lis     r3, unk_803a9340@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x6cb4
-    subi    r3, r3, 0x6cc0
+    lis     r4, unk_803a934c@ha
+    addi    r5, r4, unk_803a934c@l
+    addi    r3, r3, unk_803a9340@l
     li      r4, 0xe1
     bl      OSPanic
 branch_0x802be2c4:
@@ -474,7 +474,7 @@ branch_0x802be350:
     b       branch_0x802be534
 
 branch_0x802be360:
-    lwz     r3, -0x5f2c(r13)
+    lwz     r3, R13Off_m0x5f2c(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
     mtlr    r12
@@ -545,7 +545,7 @@ branch_0x802be438:
     b       branch_0x802be534
 
 branch_0x802be454:
-    lwz     r3, -0x5f2c(r13)
+    lwz     r3, R13Off_m0x5f2c(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
     mtlr    r12
@@ -587,7 +587,7 @@ branch_0x802be4d0:
     b       branch_0x802be534
 
 branch_0x802be4e0:
-    lwz     r3, -0x5f2c(r13)
+    lwz     r3, R13Off_m0x5f2c(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
     mtlr    r12
@@ -621,11 +621,11 @@ branch_0x802be534:
 .globl aramToMainRam__7JKRAramFP12JKRAramBlockPUcUlUl15JKRExpandSwitchUlP7JKRHeapiPUl
 aramToMainRam__7JKRAramFP12JKRAramBlockPUcUlUl15JKRExpandSwitchUlP7JKRHeapiPUl: # 0x802be548
     mflr    r0
-    lis     r11, 0x803b
+    lis     r11, unk_803a9340@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stmw    r22, 0x30(sp)
-    subi    r23, r11, 0x6cc0
+    addi    r23, r11, unk_803a9340@l
     lwz     r31, 0x60(sp)
     addi    r24, r3, 0x0
     addi    r25, r4, 0x0
@@ -712,40 +712,40 @@ JKRDecompressFromAramToMainRam__FUlPvUlUlUl: # 0x802be654
     addi    r31, r7, 0x0
     li      r4, 0x400
     li      r5, 0x20
-    lwz     r0, -0x5f30(r13)
+    lwz     r0, R13Off_m0x5f30(r13)
     mr      r3, r0
     lwz     r12, 0x0(r3)
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    stw     r3, -0x5f8c(r13)
+    stw     r3, R13Off_m0x5f8c(r13)
     cmplwi  r31, 0x0
-    lwz     r3, -0x5f8c(r13)
+    lwz     r3, R13Off_m0x5f8c(r13)
     addi    r0, r3, 0x400
-    stw     r0, -0x5f88(r13)
+    stw     r0, R13Off_m0x5f88(r13)
     beq-    branch_0x802be6e4
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     li      r4, 0x1120
     li      r5, 0x0
     lwz     r12, 0x0(r3)
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    stw     r3, -0x5f84(r13)
-    lwz     r3, -0x5f84(r13)
+    stw     r3, R13Off_m0x5f84(r13)
+    lwz     r3, R13Off_m0x5f84(r13)
     addi    r0, r3, 0x1120
-    stw     r3, -0x5f7c(r13)
-    stw     r0, -0x5f80(r13)
+    stw     r3, R13Off_m0x5f7c(r13)
+    stw     r0, R13Off_m0x5f80(r13)
     b       branch_0x802be6ec
 
 branch_0x802be6e4:
     li      r0, 0x0
-    stw     r0, -0x5f84(r13)
+    stw     r0, R13Off_m0x5f84(r13)
 branch_0x802be6ec:
     li      r0, 0x0
-    stw     r27, -0x5f6c(r13)
+    stw     r27, R13Off_m0x5f6c(r13)
     cmplwi  r29, 0x0
-    stw     r0, -0x5f78(r13)
+    stw     r0, R13Off_m0x5f78(r13)
     beq-    branch_0x802be708
     mr      r3, r29
     b       branch_0x802be70c
@@ -754,17 +754,17 @@ branch_0x802be708:
     li      r3, -0x1
 branch_0x802be70c:
     li      r0, 0x0
-    stw     r3, -0x5f74(r13)
-    stw     r31, -0x5f68(r13)
-    stw     r0, -0x5f64(r13)
-    stw     r30, -0x5f60(r13)
+    stw     r3, R13Off_m0x5f74(r13)
+    stw     r31, R13Off_m0x5f68(r13)
+    stw     r0, R13Off_m0x5f64(r13)
+    stw     r30, R13Off_m0x5f60(r13)
     bl      firstSrcData__Fv
     mr      r4, r28
     bl      decompSZS_subroutine__FPUcPUc
-    lwz     r3, -0x5f8c(r13)
+    lwz     r3, R13Off_m0x5f8c(r13)
     li      r4, 0x0
     bl      free__7JKRHeapFPvP7JKRHeap
-    lwz     r3, -0x5f84(r13)
+    lwz     r3, R13Off_m0x5f84(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802be74c
     li      r4, 0x0
@@ -805,9 +805,9 @@ branch_0x802be7b4:
     b       branch_0x802be9d8
 
 branch_0x802be7bc:
-    lwz     r7, -0x5f68(r13)
+    lwz     r7, R13Off_m0x5f68(r13)
     lwz     r6, 0x4(r3)
-    lwz     r5, -0x5f60(r13)
+    lwz     r5, R13Off_m0x5f60(r13)
     subf    r6, r7, r6
     add     r6, r30, r6
     add     r5, r30, r5
@@ -820,10 +820,10 @@ branch_0x802be7e4:
 branch_0x802be7e8:
     cmpwi   r4, 0x0
     bne-    branch_0x802be818
-    lwz     r0, -0x5f70(r13)
+    lwz     r0, R13Off_m0x5f70(r13)
     cmplw   r3, r0
     ble-    branch_0x802be80c
-    lwz     r0, -0x5f74(r13)
+    lwz     r0, R13Off_m0x5f74(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802be80c
     bl      nextSrcData__FPUc
@@ -834,10 +834,10 @@ branch_0x802be80c:
 branch_0x802be818:
     rlwinm. r5, r0, 0, 24, 24
     beq-    branch_0x802be8a8
-    lwz     r6, -0x5f68(r13)
+    lwz     r6, R13Off_m0x5f68(r13)
     cmplwi  r6, 0x0
     beq-    branch_0x802be880
-    lwz     r5, -0x5f64(r13)
+    lwz     r5, R13Off_m0x5f64(r13)
     cmplw   r5, r6
     blt-    branch_0x802be84c
     lbz     r5, 0x0(r3)
@@ -846,17 +846,17 @@ branch_0x802be818:
     cmplw   r30, r31
     beq-    branch_0x802be9d4
 branch_0x802be84c:
-    lwz     r6, -0x5f7c(r13)
+    lwz     r6, R13Off_m0x5f7c(r13)
     lbz     r7, 0x0(r3)
     addi    r5, r6, 0x1
-    stw     r5, -0x5f7c(r13)
+    stw     r5, R13Off_m0x5f7c(r13)
     stb     r7, 0x0(r6)
-    lwz     r6, -0x5f7c(r13)
-    lwz     r5, -0x5f80(r13)
+    lwz     r6, R13Off_m0x5f7c(r13)
+    lwz     r5, R13Off_m0x5f80(r13)
     cmplw   r6, r5
     bne-    branch_0x802be878
-    lwz     r5, -0x5f84(r13)
-    stw     r5, -0x5f7c(r13)
+    lwz     r5, R13Off_m0x5f84(r13)
+    stw     r5, R13Off_m0x5f7c(r13)
 branch_0x802be878:
     addi    r3, r3, 0x1
     b       branch_0x802be898
@@ -869,13 +869,13 @@ branch_0x802be880:
     cmplw   r30, r31
     beq-    branch_0x802be9d4
 branch_0x802be898:
-    lwz     r5, -0x5f64(r13)
+    lwz     r5, R13Off_m0x5f64(r13)
     addi    r5, r5, 0x1
-    stw     r5, -0x5f64(r13)
+    stw     r5, R13Off_m0x5f64(r13)
     b       branch_0x802be9c4
 
 branch_0x802be8a8:
-    lwz     r8, -0x5f68(r13)
+    lwz     r8, R13Off_m0x5f68(r13)
     lbz     r6, 0x0(r3)
     cmplwi  r8, 0x0
     lbz     r9, 0x1(r3)
@@ -883,21 +883,21 @@ branch_0x802be8a8:
     srawi   r5, r6, 4
     addi    r3, r3, 0x2
     beq-    branch_0x802be8f4
-    lwz     r6, -0x5f7c(r13)
-    lwz     r7, -0x5f84(r13)
+    lwz     r6, R13Off_m0x5f7c(r13)
+    lwz     r7, R13Off_m0x5f84(r13)
     subf    r6, r9, r6
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
     cmplw   r6, r7
     addi    r9, r6, 0x0
     bge-    branch_0x802be8fc
-    lwz     r6, -0x5f80(r13)
+    lwz     r6, R13Off_m0x5f80(r13)
     subf    r6, r7, r6
     add     r9, r9, r6
     b       branch_0x802be8fc
 
 branch_0x802be8f4:
     subf    r6, r9, r30
-    subi    r9, r6, 0x1
+    addi    r9, r6, -0x1
 branch_0x802be8fc:
     cmpwi   r5, 0x0
     bne-    branch_0x802be914
@@ -912,8 +912,8 @@ branch_0x802be918:
     cmplwi  r8, 0x0
     beq-    branch_0x802be998
 branch_0x802be920:
-    lwz     r7, -0x5f64(r13)
-    lwz     r6, -0x5f68(r13)
+    lwz     r7, R13Off_m0x5f64(r13)
+    lwz     r6, R13Off_m0x5f68(r13)
     cmplw   r7, r6
     blt-    branch_0x802be944
     lbz     r6, 0x0(r9)
@@ -922,27 +922,27 @@ branch_0x802be920:
     cmplw   r30, r31
     beq-    branch_0x802be9c4
 branch_0x802be944:
-    lwz     r7, -0x5f7c(r13)
+    lwz     r7, R13Off_m0x5f7c(r13)
     lbz     r8, 0x0(r9)
     addi    r6, r7, 0x1
-    stw     r6, -0x5f7c(r13)
+    stw     r6, R13Off_m0x5f7c(r13)
     stb     r8, 0x0(r7)
-    lwz     r6, -0x5f7c(r13)
-    lwz     r7, -0x5f80(r13)
+    lwz     r6, R13Off_m0x5f7c(r13)
+    lwz     r7, R13Off_m0x5f80(r13)
     cmplw   r6, r7
     bne-    branch_0x802be970
-    lwz     r6, -0x5f84(r13)
-    stw     r6, -0x5f7c(r13)
+    lwz     r6, R13Off_m0x5f84(r13)
+    stw     r6, R13Off_m0x5f7c(r13)
 branch_0x802be970:
     addi    r9, r9, 0x1
     cmplw   r9, r7
     bne-    branch_0x802be980
-    lwz     r9, -0x5f84(r13)
+    lwz     r9, R13Off_m0x5f84(r13)
 branch_0x802be980:
-    lwz     r6, -0x5f64(r13)
+    lwz     r6, R13Off_m0x5f64(r13)
     subic.  r5, r5, 0x1
     addi    r6, r6, 0x1
-    stw     r6, -0x5f64(r13)
+    stw     r6, R13Off_m0x5f64(r13)
     bne+    branch_0x802be920
     b       branch_0x802be9c4
 
@@ -952,16 +952,16 @@ branch_0x802be998:
     addi    r30, r30, 0x1
     cmplw   r30, r31
     beq-    branch_0x802be9c4
-    lwz     r6, -0x5f64(r13)
+    lwz     r6, R13Off_m0x5f64(r13)
     subic.  r5, r5, 0x1
     addi    r9, r9, 0x1
     addi    r6, r6, 0x1
-    stw     r6, -0x5f64(r13)
+    stw     r6, R13Off_m0x5f64(r13)
     bne+    branch_0x802be998
 branch_0x802be9c4:
     cmplw   r30, r31
     slwi    r0, r0, 1
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
     blt+    branch_0x802be7e8
 branch_0x802be9d4:
     li      r3, 0x0
@@ -981,12 +981,12 @@ firstSrcData__Fv: # 0x802be9f0
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
-    lwz     r4, -0x5f88(r13)
-    lwz     r3, -0x5f8c(r13)
-    subi    r0, r4, 0x19
-    lwz     r31, -0x5f74(r13)
+    lwz     r4, R13Off_m0x5f88(r13)
+    lwz     r3, R13Off_m0x5f8c(r13)
+    addi    r0, r4, -0x19
+    lwz     r31, R13Off_m0x5f74(r13)
     subf    r4, r3, r4
-    stw     r0, -0x5f70(r13)
+    stw     r0, R13Off_m0x5f70(r13)
     cmplw   r31, r4
     addi    r30, r3, 0x0
     addi    r0, r4, 0x0
@@ -996,22 +996,22 @@ firstSrcData__Fv: # 0x802be9f0
 branch_0x802bea30:
     mr      r31, r0
 branch_0x802bea34:
-    lwz     r4, -0x5f6c(r13)
+    lwz     r4, R13Off_m0x5f6c(r13)
     addi    r0, r31, 0x1f
-    lwz     r3, -0x5f78(r13)
+    lwz     r3, R13Off_m0x5f78(r13)
     addi    r5, r30, 0x0
     clrrwi  r6, r0, 5
     add     r4, r4, r3
     li      r3, 0x1
     li      r7, 0x0
     bl      orderSync__12JKRAramPieceFiUlUlUlP12JKRAramBlock
-    lwz     r4, -0x5f78(r13)
+    lwz     r4, R13Off_m0x5f78(r13)
     mr      r3, r30
-    lwz     r0, -0x5f74(r13)
+    lwz     r0, R13Off_m0x5f74(r13)
     add     r4, r4, r31
     subf    r0, r31, r0
-    stw     r4, -0x5f78(r13)
-    stw     r0, -0x5f74(r13)
+    stw     r4, R13Off_m0x5f78(r13)
+    stw     r0, R13Off_m0x5f74(r13)
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
     lwz     r30, 0x8(sp)
@@ -1030,51 +1030,51 @@ nextSrcData__FPUc: # 0x802bea8c
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
-    lwz     r0, -0x5f88(r13)
+    lwz     r0, R13Off_m0x5f88(r13)
     subf    r0, r4, r0
     clrlwi. r5, r0, 27
     mr      r29, r0
     beq-    branch_0x802bead0
-    lwz     r3, -0x5f8c(r13)
+    lwz     r3, R13Off_m0x5f8c(r13)
     addi    r0, r3, 0x20
     subf    r30, r5, r0
     b       branch_0x802bead4
 
 branch_0x802bead0:
-    lwz     r30, -0x5f8c(r13)
+    lwz     r30, R13Off_m0x5f8c(r13)
 branch_0x802bead4:
     addi    r3, r30, 0x0
     addi    r5, r29, 0x0
     bl      memcpy
-    lwz     r0, -0x5f88(r13)
+    lwz     r0, R13Off_m0x5f88(r13)
     add     r31, r30, r29
-    lwz     r3, -0x5f74(r13)
+    lwz     r3, R13Off_m0x5f74(r13)
     subf    r0, r31, r0
     cmplw   r0, r3
     mr      r28, r0
     ble-    branch_0x802beb00
     mr      r28, r3
 branch_0x802beb00:
-    lwz     r4, -0x5f6c(r13)
+    lwz     r4, R13Off_m0x5f6c(r13)
     addi    r0, r28, 0x1f
-    lwz     r3, -0x5f78(r13)
+    lwz     r3, R13Off_m0x5f78(r13)
     add     r5, r30, r29
     clrrwi  r6, r0, 5
     add     r4, r4, r3
     li      r3, 0x1
     li      r7, 0x0
     bl      orderSync__12JKRAramPieceFiUlUlUlP12JKRAramBlock
-    lwz     r0, -0x5f74(r13)
-    lwz     r3, -0x5f78(r13)
+    lwz     r0, R13Off_m0x5f74(r13)
+    lwz     r3, R13Off_m0x5f78(r13)
     subf    r0, r28, r0
-    stw     r0, -0x5f74(r13)
+    stw     r0, R13Off_m0x5f74(r13)
     add     r3, r3, r28
-    lwz     r0, -0x5f74(r13)
-    stw     r3, -0x5f78(r13)
+    lwz     r0, R13Off_m0x5f74(r13)
+    stw     r3, R13Off_m0x5f78(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802beb50
     add     r0, r31, r28
-    stw     r0, -0x5f70(r13)
+    stw     r0, R13Off_m0x5f70(r13)
 branch_0x802beb50:
     lwz     r0, 0x24(sp)
     mr      r3, r30
@@ -1090,17 +1090,17 @@ branch_0x802beb50:
 .globl __sinit_JKRAram_cpp
 __sinit_JKRAram_cpp: # 0x802beb74
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sAramCommandList__7JKRAram@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x429c
+    addi    r31, r3, sAramCommandList__7JKRAram@l
     addi    r3, r31, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x802c
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2aa8
-    subi    r4, r4, 0x1440
+    lis     r4, __dt__23JSUList_12JKRAMCommand_Fv@ha
+    lis     r3, unk_803fd558@ha
+    addi    r5, r3, unk_803fd558@l
+    addi    r4, r4, __dt__23JSUList_12JKRAMCommand_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

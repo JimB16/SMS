@@ -1,8 +1,8 @@
 
 .globl TRK_flush_cache
 TRK_flush_cache: # 0x8033fa1c
-    lis     r5, 0xffff
-    ori     r5, r5, 0xfff1
+    lis     r5, unk_fffffff1@h
+    ori     r5, r5, unk_fffffff1@l
     and     r5, r5, r3
     subf    r3, r5, r3
     add     r4, r4, r3

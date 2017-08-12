@@ -16,7 +16,7 @@ getSwitch__6MSoundFUlUlUl: # 0x80013218
     stw     r30, 0x18(sp)
     addi    r30, r4, 0x0
     mr      r4, r0
-    lwz     r3, -0x7160(r13)
+    lwz     r3, R13Off_m0x7160(r13)
     bl      getSoundInfoFromID__8JAIBasicFUl
     cmplwi  r3, 0x0
     bne-    branch_0x80013254
@@ -42,7 +42,7 @@ getBstSwitch__6MSoundFUl: # 0x80013278
     mr      r4, r3
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x7160(r13)
+    lwz     r3, R13Off_m0x7160(r13)
     bl      getSoundInfoFromID__8JAIBasicFUl
     cmplwi  r3, 0x0
     bne-    branch_0x800132a0
@@ -188,7 +188,7 @@ branch_0x800133e0:
     b       branch_0x800134b0
 
 branch_0x8001344c:
-    lfs     f0, -0x7d04(rtoc)
+    lfs     f0, -0x7d04(r2)
     fmr     f1, f30
     mr      r3, r26
     stfs    f0, 0x38(sp)
@@ -265,16 +265,16 @@ branch_0x80013540:
     addi    r30, r3, 0x0
     beq-    branch_0x8001358c
     stw     r29, 0x3c(sp)
-    lis     r0, 0x4330
-    lfd     f1, -0x7cf8(rtoc)
-    li      r3, 0x0
+    lis     r0, unk_43300000@h
+    lfd     f1, -0x7cf8(r2)
+    addi    r3, r0, unk_43300000@l
     stw     r0, 0x38(sp)
-    lfs     f2, -0x7d00(rtoc)
+    lfs     f2, -0x7d00(r2)
     lfd     f0, 0x38(sp)
-    lfs     f3, -0x7cfc(rtoc)
+    lfs     f3, -0x7cfc(r2)
     fsubs   f1, f0, f1
-    lfs     f4, -0x7d08(rtoc)
-    lfs     f5, -0x7d04(rtoc)
+    lfs     f4, -0x7d08(r2)
+    lfs     f5, -0x7d04(r2)
     bl      linearTransform__7JALCalcFfffffb
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -359,7 +359,7 @@ branch_0x8001365c:
 
 .globl getWallSound__6MSoundFUlf
 getWallSound__6MSoundFUlf: # 0x8001367c
-    lfs     f0, -0x7cf0(rtoc)
+    lfs     f0, -0x7cf0(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800136a0
     cmplwi  r4, 0x1c
@@ -372,7 +372,7 @@ branch_0x80013698:
     blr
 
 branch_0x800136a0:
-    lfs     f0, -0x7cec(rtoc)
+    lfs     f0, -0x7cec(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800136c4
     cmplwi  r4, 0x1c
@@ -472,11 +472,6 @@ branch_0x800137a0:
     blr
 
 
-/* MSound::startMarioVoice((unsigned long, short, unsigned char))
-Input:
-r3: MSound
-r4: SoundID
-*/
 .globl startMarioVoice__6MSoundFUlsUc
 startMarioVoice__6MSoundFUlsUc: # 0x800137a8
     mflr    r0
@@ -523,27 +518,26 @@ branch_0x80013818:
     clrlwi  r30, r3, 24
     li      r3, 0x1
     bne-    branch_0x800138a4
-    subi    r0, r26, 0x78ab
+    addi    r0, r26, -0x78ab
     cmplwi  r0, 0x14
     bgt-    branch_0x8001389c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3b08
+    lis     r3, unk_803ac4f8@ha
+    addi    r3, r3, unk_803ac4f8@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80013850:		# jumptable 8001384C cases 0,6,11,14,20
+    bctr       
+branch_0x80013850:
     mulli   r0, r30, 0xc
     add     r3, r25, r0
     lwz     r5, 0xb0(r3)
     clrlslwi  r3, r31, 24, 2
     addi    r4, r3, 0x8c
     stw     r5, 0x68(sp)
-    lis     r26, 0x1
+    lis     r26, unk_0000898c@ha
     li      r0, 0x0
     stw     r5, 0x6c(sp)
-    subi    r3, r26, 0x7674
+    addi    r3, r26, unk_0000898c@l
     add     r4, r25, r4
     stw     r5, 0x70(sp)
     addi    r5, sp, 0x68
@@ -551,10 +545,9 @@ branch_0x80013850:		# jumptable 8001384C cases 0,6,11,14,20
     stw     r0, 0x74(sp)
     li      r7, 0x4
     bl      startSoundActorInner__Q214MSoundSESystem8MSoundSEFUlPP8JAISoundP8JAIActorUlUc
-    subi    r3, r26, 0x7674
+    addi    r3, r26, -0x7674
     b       branch_0x80013e7c
 
-def_8001384C:		# jumptable 8001384C default case
 branch_0x8001389c:
     li      r3, -0x1
     b       branch_0x80013e7c
@@ -624,8 +617,8 @@ branch_0x80013940:
     cmpwi   r26, -0x2
     beq-    branch_0x80013d80
     bge-    branch_0x80013984
-    lis     r3, 0xffff
-    addi    r0, r3, 0x3
+    lis     r3, unk_ffff0003@h
+    addi    r0, r3, unk_ffff0003@l
     cmpw    r26, r0
     beq-    branch_0x80013a98
     b       branch_0x80013d98
@@ -731,7 +724,7 @@ branch_0x80013a98:
     cmplwi  r0, 0x2
     beq-    branch_0x80013ac4
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce8(rtoc)
+    lfs     f0, -0x7ce8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013ac4
     li      r26, 0x7806
@@ -747,7 +740,7 @@ branch_0x80013ad8:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce4(rtoc)
+    lfs     f0, -0x7ce4(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x7818
@@ -758,7 +751,7 @@ branch_0x80013afc:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce4(rtoc)
+    lfs     f0, -0x7ce4(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x781c
@@ -769,7 +762,7 @@ branch_0x80013b20:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce4(rtoc)
+    lfs     f0, -0x7ce4(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x781c
@@ -787,7 +780,7 @@ branch_0x80013b58:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce0(rtoc)
+    lfs     f0, -0x7ce0(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x781b
@@ -859,7 +852,7 @@ branch_0x80013c28:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7cdc(rtoc)
+    lfs     f0, -0x7cdc(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x7807
@@ -880,7 +873,7 @@ branch_0x80013c60:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7cd8(rtoc)
+    lfs     f0, -0x7cd8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x7803
@@ -898,7 +891,7 @@ branch_0x80013ca4:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce8(rtoc)
+    lfs     f0, -0x7ce8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x7800
@@ -916,7 +909,7 @@ branch_0x80013cdc:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce8(rtoc)
+    lfs     f0, -0x7ce8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x780a
@@ -941,7 +934,7 @@ branch_0x80013d28:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d48
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce8(rtoc)
+    lfs     f0, -0x7ce8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d48
     li      r26, 0x780e
@@ -950,7 +943,7 @@ branch_0x80013d48:
     cmplwi  r0, 0x2
     beq-    branch_0x80013d98
     bl      getRandom_0_1__7JALCalcFv
-    lfs     f0, -0x7ce8(rtoc)
+    lfs     f0, -0x7ce8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80013d98
     li      r26, 0x7813
@@ -1003,12 +996,12 @@ branch_0x80013d98:
     bl      setPortData__8JAISoundFUcUs
     lwz     r3, 0x0(r26)
     li      r4, 0x0
-    lfs     f1, -0x7cd4(rtoc)
+    lfs     f1, -0x7cd4(r2)
     li      r5, 0x0
     bl      setPitch__8JAISoundFfUlUc
     lwz     r3, 0x0(r26)
     li      r4, 0x0
-    lfs     f1, -0x7cd0(rtoc)
+    lfs     f1, -0x7cd0(r2)
     li      r5, 0x0
     bl      setVolume__8JAISoundFfUlUc
     b       branch_0x80013e48
@@ -1153,15 +1146,15 @@ setSeExtParameter__6MSoundFP8JAISound: # 0x80013f7c
     b       branch_0x80013fe0
 
 branch_0x80013fdc:
-    lfs     f1, -0x7d04(rtoc)
+    lfs     f1, -0x7d04(r2)
 branch_0x80013fe0:
     lbz     r3, 0xc(r31)
     lis     r0, 0x4330
-    lfd     f3, -0x7cf8(rtoc)
+    lfd     f3, -0x7cf8(r2)
     stw     r3, 0x1c(sp)
-    lfs     f0, -0x7ccc(rtoc)
+    lfs     f0, -0x7ccc(r2)
     stw     r0, 0x18(sp)
-    lfs     f4, -0x7d04(rtoc)
+    lfs     f4, -0x7d04(r2)
     lfd     f2, 0x18(sp)
     fsubs   f2, f2, f3
     fdivs   f0, f2, f0
@@ -1197,14 +1190,14 @@ branch_0x80014044:
 .globl getRandomVolumeNormal__Q214MSoundSESystem9MSRandVolFUl
 getRandomVolumeNormal__Q214MSoundSESystem9MSRandVolFUl: # 0x80014064
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, smList__Q214MSoundSESystem9MSRandVol@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x5544
+    addi    r4, r4, smList__Q214MSoundSESystem9MSRandVol@l
     stwu    sp, -0x8(sp)
     lwz     r4, 0x0(r4)
     cmplwi  r4, 0x0
     bne-    branch_0x8001408c
-    lfs     f1, -0x7d04(rtoc)
+    lfs     f1, -0x7d04(r2)
     b       branch_0x800140a8
 
 branch_0x8001408c:
@@ -1301,7 +1294,7 @@ branch_0x80014174:
 branch_0x800141b0:
     cmplwi  r29, 0x64
     bge-    branch_0x800141dc
-    lfs     f1, -0x7d08(rtoc)
+    lfs     f1, -0x7d08(r2)
     addi    r3, r28, 0x0
     addi    r4, r31, 0x0
     li      r5, 0x2
@@ -1327,7 +1320,7 @@ branch_0x800141fc:
     sraw    r0, r29, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014220
-    lfs     f1, -0x7d08(rtoc)
+    lfs     f1, -0x7d08(r2)
     addi    r3, r28, 0x0
     addi    r4, r31, 0x0
     li      r5, 0x3
@@ -1370,12 +1363,12 @@ resetAudioAll__6MSoundFUs: # 0x80014258
 branch_0x8001428c:
     bl      getParamOutputGainUp__18JAIGlobalParameterFv
     fmr     f31, f1
-    lfs     f0, -0x7cc8(rtoc)
+    lfs     f0, -0x7cc8(r2)
     fcmpo   cr0, f31, f0
     cror    2, 0, 2
     bne-    branch_0x800142c8
-    lfs     f1, -0x7cc4(rtoc)
-    lfs     f2, -0x7d08(rtoc)
+    lfs     f1, -0x7cc4(r2)
+    lfs     f2, -0x7d08(r2)
     bl      setMixerLevel__Q28JASystem6DriverFff
     bl      stop__Q28JASystem11AudioThreadFv
     li      r0, 0x0
@@ -1386,18 +1379,18 @@ branch_0x8001428c:
 
 branch_0x800142c8:
     clrlwi  r0, r31, 16
-    lfd     f2, -0x7cf8(rtoc)
+    lfd     f2, -0x7cf8(r2)
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
-    lfs     f3, -0x7d04(rtoc)
+    lfs     f3, -0x7d04(r2)
     stw     r0, 0x10(sp)
-    lfs     f1, -0x7cc0(rtoc)
+    lfs     f1, -0x7cc0(r2)
     lfd     f0, 0x10(sp)
     fsubs   f0, f0, f2
     fdivs   f2, f3, f0
     bl      powf
     fmuls   f31, f31, f1
-    lfs     f1, -0x7cc4(rtoc)
+    lfs     f1, -0x7cc4(r2)
     fmr     f2, f31
     bl      setMixerLevel__Q28JASystem6DriverFff
     fmr     f1, f31
@@ -1421,7 +1414,7 @@ setCategoryVOLs__6MSoundFUsf: # 0x8001432c
     stw     r31, 0x3c(sp)
     stw     r30, 0x38(sp)
     stw     r29, 0x34(sp)
-    lfs     f0, -0x7ccc(rtoc)
+    lfs     f0, -0x7ccc(r2)
     fmuls   f0, f0, f1
     fctiwz  f0, f0
     stfd    f0, 0x20(sp)
@@ -1442,7 +1435,7 @@ branch_0x80014378:
     b       branch_0x800143c0
 
 branch_0x80014384:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     clrlwi  r5, r29, 24
     clrlslwi  r4, r29, 24, 1
     lwz     r6, 0x0(r3)
@@ -1496,14 +1489,14 @@ branch_0x80014418:
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x80014434:
-    lis     r3, 0x803b
-    lfs     f31, -0x7ccc(rtoc)
-    subi    r30, r3, 0x3714
+    lis     r3, smSeCategory__8MSHandle@ha
+    lfs     f31, -0x7ccc(r2)
+    addi    r30, r3, smSeCategory__8MSHandle@l
     li      r31, 0x0
     b       branch_0x800144c8
 
 branch_0x80014448:
-    lwz     r4, -0x7164(r13)
+    lwz     r4, R13Off_m0x7164(r13)
     clrlwi  r5, r31, 24
     clrlslwi  r3, r31, 24, 1
     lwz     r4, 0x0(r4)
@@ -1515,7 +1508,7 @@ branch_0x80014448:
     sraw    r0, r0, r5
     clrlwi. r0, r0, 31
     beq-    branch_0x800144c4
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x800144c4
     slwi    r0, r5, 4
@@ -1552,7 +1545,7 @@ branch_0x800144e0:
     sraw    r0, r31, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014504
-    lfs     f1, -0x7d04(rtoc)
+    lfs     f1, -0x7d04(r2)
     addi    r3, r30, 0x0
     li      r4, 0xf
     li      r5, 0x3
@@ -1603,7 +1596,7 @@ branch_0x80014580:
     b       branch_0x800145c8
 
 branch_0x8001458c:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     clrlwi  r5, r30, 24
     clrlslwi  r4, r30, 24, 1
     lwz     r6, 0x0(r3)
@@ -1632,7 +1625,7 @@ branch_0x800145e0:
     sraw    r0, r31, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014604
-    lfs     f1, -0x7cbc(rtoc)
+    lfs     f1, -0x7cbc(r2)
     addi    r3, r30, 0x0
     li      r4, 0x1e
     li      r5, 0x3
@@ -1654,7 +1647,7 @@ branch_0x80014608:
 .globl demoModeOut__6MSoundFb
 demoModeOut__6MSoundFb: # 0x8001462c
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, smSeCategory__8MSHandle@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stfd    f31, 0x38(sp)
@@ -1663,12 +1656,12 @@ demoModeOut__6MSoundFb: # 0x8001462c
     stw     r30, 0x30(sp)
     addi    r30, r4, 0x0
     stw     r29, 0x2c(sp)
-    subi    r29, r3, 0x3714
-    lfs     f31, -0x7ccc(rtoc)
+    addi    r29, r3, smSeCategory__8MSHandle@l
+    lfs     f31, -0x7ccc(r2)
     b       branch_0x800146d0
 
 branch_0x80014660:
-    lwz     r4, -0x7164(r13)
+    lwz     r4, R13Off_m0x7164(r13)
     clrlwi  r5, r31, 24
     clrlslwi  r3, r31, 24, 1
     lwz     r4, 0x0(r4)
@@ -1676,7 +1669,7 @@ branch_0x80014660:
     lhzx    r0, r4, r0
     cmplwi  r0, 0x0
     beq-    branch_0x800146cc
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x800146cc
     slwi    r0, r5, 4
@@ -1715,7 +1708,7 @@ branch_0x800146f0:
     sraw    r0, r30, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014714
-    lfs     f1, -0x7d04(rtoc)
+    lfs     f1, -0x7d04(r2)
     addi    r3, r29, 0x0
     li      r4, 0xf
     li      r5, 0x3
@@ -1755,7 +1748,7 @@ branch_0x8001476c:
     sraw    r0, r30, r4
     clrlwi. r0, r0, 31
     beq-    branch_0x800147a4
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     slwi    r4, r4, 1
     addi    r0, r4, 0x8a
     lwz     r4, 0x0(r3)
@@ -1782,7 +1775,7 @@ branch_0x800147c8:
     sraw    r0, r31, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x800147ec
-    lfs     f1, -0x7d08(rtoc)
+    lfs     f1, -0x7d08(r2)
     addi    r3, r30, 0x0
     li      r4, 0xf
     li      r5, 0x3
@@ -1842,9 +1835,9 @@ branch_0x80014870:
     li      r6, 0x0
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x8001488c:
-    lis     r3, 0x803b
-    lfs     f31, -0x7ccc(rtoc)
-    subi    r30, r3, 0x3714
+    lis     r3, smSeCategory__8MSHandle@ha
+    lfs     f31, -0x7ccc(r2)
+    addi    r30, r3, smSeCategory__8MSHandle@l
     li      r31, 0x0
     b       branch_0x80014918
 
@@ -1852,14 +1845,14 @@ branch_0x800148a0:
     clrlwi  r5, r31, 24
     cmplwi  r5, 0x4
     beq-    branch_0x80014914
-    lwz     r4, -0x7164(r13)
+    lwz     r4, R13Off_m0x7164(r13)
     slwi    r3, r5, 1
     addi    r0, r3, 0x8a
     lwz     r3, 0x0(r4)
     lhzx    r0, r3, r0
     cmplwi  r0, 0x0
     beq-    branch_0x80014914
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80014914
     slwi    r0, r5, 4
@@ -1896,7 +1889,7 @@ branch_0x80014930:
     sraw    r0, r31, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014954
-    lfs     f1, -0x7d04(rtoc)
+    lfs     f1, -0x7d04(r2)
     addi    r3, r30, 0x0
     li      r4, 0xa
     li      r5, 0x3
@@ -1931,7 +1924,7 @@ branch_0x8001499c:
     b       branch_0x800149d0
 
 branch_0x800149a4:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     clrlslwi  r4, r30, 24, 1
     addi    r0, r4, 0x8a
     lwz     r5, 0x0(r3)
@@ -1956,7 +1949,7 @@ branch_0x800149e8:
     sraw    r0, r31, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014a0c
-    lfs     f1, -0x7d08(rtoc)
+    lfs     f1, -0x7d08(r2)
     addi    r3, r30, 0x0
     li      r4, 0xf
     li      r5, 0x3
@@ -2011,7 +2004,7 @@ branch_0x80014a94:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x4
     beq-    branch_0x80014ac8
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     slwi    r4, r0, 1
     addi    r0, r4, 0x8a
     lwz     r4, 0x0(r3)
@@ -2038,7 +2031,7 @@ branch_0x80014aec:
     sraw    r0, r31, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014b10
-    lfs     f1, -0x7d08(rtoc)
+    lfs     f1, -0x7d08(r2)
     addi    r3, r30, 0x0
     li      r4, 0x3c
     li      r5, 0x3
@@ -2061,7 +2054,7 @@ branch_0x80014b30:
     sraw    r0, r31, r0
     clrlwi. r0, r0, 31
     beq-    branch_0x80014b54
-    lfs     f1, -0x7d08(rtoc)
+    lfs     f1, -0x7d08(r2)
     addi    r3, r30, 0x0
     li      r4, 0x0
     li      r5, 0x3
@@ -2093,15 +2086,15 @@ initSound__6MSoundFv: # 0x80014b7c
     mr      r30, r3
     stw     r29, 0x2c(sp)
     lbz     r0, 0xac(r3)
-    lis     r3, 0x803b
-    subi    r29, r3, 0x3714
+    lis     r3, smSeCategory__8MSHandle@ha
+    addi    r29, r3, smSeCategory__8MSHandle@l
     ori     r0, r0, 0x2
     stb     r0, 0xac(r30)
-    lfs     f31, -0x7ccc(rtoc)
+    lfs     f31, -0x7ccc(r2)
     b       branch_0x80014c2c
 
 branch_0x80014bbc:
-    lwz     r4, -0x7164(r13)
+    lwz     r4, R13Off_m0x7164(r13)
     clrlwi  r5, r31, 24
     clrlslwi  r3, r31, 24, 1
     lwz     r4, 0x0(r4)
@@ -2109,7 +2102,7 @@ branch_0x80014bbc:
     lhzx    r0, r4, r0
     cmplwi  r0, 0x0
     beq-    branch_0x80014c28
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80014c28
     slwi    r0, r5, 4
@@ -2277,7 +2270,7 @@ branch_0x80014dd8:
     addi    r0, r3, 0x1
     stw     r0, 0xa8(r30)
 branch_0x80014df8:
-    lwz     r31, -0x72a0(r13)
+    lwz     r31, R13Off_m0x72a0(r13)
     b       branch_0x80014e18
 
 branch_0x80014e00:
@@ -2290,7 +2283,7 @@ branch_0x80014e00:
 branch_0x80014e18:
     cmplwi  r31, 0x0
     bne+    branch_0x80014e00
-    lwz     r31, -0x72ac(r13)
+    lwz     r31, R13Off_m0x72ac(r13)
     b       branch_0x80014e40
 
 branch_0x80014e28:
@@ -2319,7 +2312,7 @@ branch_0x80014e58:
 .globl __ct__6MSoundFP7JKRHeapP7JKRHeapUlPUcPUcUl
 __ct__6MSoundFP7JKRHeapP7JKRHeapUlPUcPUcUl: # 0x80014e70
     mflr    r0
-    lis     r9, 0x8037
+    lis     r9, unk_80373e80@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x88(sp)
     stfd    f31, 0x80(sp)
@@ -2331,20 +2324,20 @@ __ct__6MSoundFP7JKRHeapP7JKRHeapUlPUcPUcUl: # 0x80014e70
     addi    r28, r6, 0x0
     addi    r26, r7, 0x0
     addi    r27, r8, 0x0
-    addi    r30, r9, 0x3e80
+    addi    r30, r9, unk_80373e80@l
     bl      __ct__8JAIBasicFv
-    lis     r3, 0x803b
-    subi    r0, r3, 0x3b40
-    lis     r3, 0x8001
+    lis     r3, __vvt__6MSound@ha
+    addi    r0, r3, __vvt__6MSound@l
+    lis     r3, __ct__9JAICameraFv@h
     stw     r0, 0x4(r31)
-    addi    r4, r3, 0x51b4
+    addi    r4, r3, __ct__9JAICameraFv@l
     addi    r3, r31, 0xb0
     li      r5, 0x0
     li      r6, 0xc
     li      r7, 0x2
     bl      __construct_array
-    lis     r3, 0x15
-    addi    r3, r3, 0x1800
+    lis     r3, unk_00151800@h
+    addi    r3, r3, unk_00151800@l
     addi    r29, r28, 0x0
     addi    r4, r24, 0x0
     li      r5, 0x0
@@ -2352,13 +2345,13 @@ __ct__6MSoundFP7JKRHeapP7JKRHeapUlPUcPUcUl: # 0x80014e70
     cmplwi  r25, 0x0
     addi    r28, r3, 0x0
     beq-    branch_0x80014f00
-    stw     r25, -0x5d78(r13)
-    stw     r25, -0x5db0(r13)
+    stw     r25, R13Off_m0x5d78(r13)
+    stw     r25, R13Off_m0x5db0(r13)
 branch_0x80014f00:
     addi    r3, r30, 0x20
     bl      setParamInitDataFileName__18JAIGlobalParameterFPc
     addi    r0, r30, 0x38
-    stw     r0, -0x74e8(r13)
+    stw     r0, R13Off_m0x74e8(r13)
     addi    r3, r30, 0x50
     bl      setParamWavePath__18JAIGlobalParameterFPc
     addi    r3, r30, 0x64
@@ -2373,20 +2366,20 @@ branch_0x80014f00:
     bl      setParamSeqControlBufferMax__18JAIGlobalParameterFUl
     li      r3, 0x8
     bl      setParamSystemRootTrackMax__18JAIGlobalParameterFl
-    lis     r30, 0x1
-    subi    r3, r30, 0x1000
+    lis     r30, unk_0000f000@ha
+    addi    r3, r30, unk_0000f000@l
     bl      setParamStayHeapSize__18JAIGlobalParameterFUl
     li      r3, 0x3
     bl      setParamAutoHeapMax__18JAIGlobalParameterFUl
-    subi    r3, r30, 0x5d01
+    addi    r3, r30, -0x5d01
     bl      setParamAutoHeapRoomSize__18JAIGlobalParameterFUl
     li      r3, 0x1
     bl      setParamStayHeapMax__18JAIGlobalParameterFUl
     li      r3, 0x1
     bl      setParamStreamInsideBufferCut__18JAIGlobalParameterFb
-    lfs     f1, -0x7cc4(rtoc)
+    lfs     f1, -0x7cc4(r2)
     bl      setParamInputGainDown__18JAIGlobalParameterFf
-    lfs     f1, -0x7cb8(rtoc)
+    lfs     f1, -0x7cb8(r2)
     bl      setParamOutputGainUp__18JAIGlobalParameterFf
     addi    r3, r31, 0x0
     li      r4, 0x2
@@ -2398,7 +2391,7 @@ branch_0x80014f00:
 branch_0x80014fa0:
     cmplwi  r27, 0x0
     beq-    branch_0x80014fac
-    stw     r27, -0x5d98(r13)
+    stw     r27, R13Off_m0x5d98(r13)
 branch_0x80014fac:
     addi    r3, r31, 0x0
     addi    r4, r28, 0x0
@@ -2408,10 +2401,10 @@ branch_0x80014fac:
     addi    r3, r31, 0x0
     li      r4, 0x1
     bl      initInterface__8JAIBasicFUc
-    lis     r3, 0x803b
-    lfs     f30, -0x7d08(rtoc)
-    lfs     f31, -0x7ccc(rtoc)
-    subi    r30, r3, 0x3714
+    lis     r3, smSeCategory__8MSHandle@ha
+    lfs     f30, -0x7d08(r2)
+    lfs     f31, -0x7ccc(r2)
+    addi    r30, r3, smSeCategory__8MSHandle@l
     li      r28, 0x0
     b       branch_0x80015068
 
@@ -2462,15 +2455,15 @@ branch_0x80015068:
     blt+    branch_0x80014fe4
     fmr     f1, f30
     bl      setParamDistanceMax__18JAIGlobalParameterFf
-    lfs     f1, -0x7d08(rtoc)
+    lfs     f1, -0x7d08(r2)
     bl      setParamMinDistanceVolume__18JAIGlobalParameterFf
-    lfs     f1, -0x7cb4(rtoc)
+    lfs     f1, -0x7cb4(r2)
     bl      setParamMaxVolumeDistance__18JAIGlobalParameterFf
     li      r0, 0x3
     stb     r0, 0xac(r31)
-    lwz     r0, -0x5d90(r13)
-    stw     r31, -0x7164(r13)
-    stw     r0, -0x7160(r13)
+    lwz     r0, R13Off_m0x5d90(r13)
+    stw     r31, R13Off_m0x7164(r13)
+    stw     r0, R13Off_m0x7160(r13)
     bl      init__9JALSystemFv
     bl      construct__Q214MSoundSESystem8MSoundSEFv
     bl      init__5MSBgmFv
@@ -2483,7 +2476,7 @@ branch_0x80015068:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x800150d8
-    lfs     f0, -0x7d08(rtoc)
+    lfs     f0, -0x7d08(r2)
     stfs    f0, 0x0(r3)
 branch_0x800150d8:
     stw     r3, 0xa0(r31)
@@ -2494,7 +2487,7 @@ branch_0x800150d8:
     stw     r0, 0x94(r31)
     stb     r3, 0x98(r31)
     sth     r3, -0x7168(r13)
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     lbz     r0, 0x98(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x80015110
@@ -2503,8 +2496,8 @@ branch_0x800150d8:
 branch_0x80015110:
     li      r8, 0x0
     stb     r8, 0xcc(r31)
-    lis     r3, 0x8040
-    addi    r7, r3, 0x74ec
+    lis     r3, JAInullCamera@h
+    addi    r7, r3, JAInullCamera@l
     stb     r8, 0xcd(r31)
     li      r4, 0x1
     li      r0, 0xff
@@ -2565,20 +2558,20 @@ getDistPowFromCamera__6MSoundFRC3Vec: # 0x800151c8
     lwz     r3, 0x8(r3)
     lfs     f1, 0x4(r4)
     lwz     r31, 0x0(r3)
-    lfs     f2, -0x7cb0(rtoc)
+    lfs     f2, -0x7cb0(r2)
     lfs     f0, 0x4(r31)
     fsubs   f1, f1, f0
     bl      powf
     lfs     f3, 0x0(r30)
     fmr     f31, f1
     lfs     f0, 0x0(r31)
-    lfs     f2, -0x7cb0(rtoc)
+    lfs     f2, -0x7cb0(r2)
     fsubs   f1, f3, f0
     bl      powf
     lfs     f3, 0x8(r30)
     fadds   f31, f1, f31
     lfs     f0, 0x8(r31)
-    lfs     f2, -0x7cb0(rtoc)
+    lfs     f2, -0x7cb0(r2)
     fsubs   f1, f3, f0
     bl      powf
     lwz     r0, 0x24(sp)
@@ -2631,8 +2624,8 @@ branch_0x800152a8:
     stw     r4, 0x24(sp)
     add     r6, r3, r0
     stw     r4, 0x28(sp)
-    lis     r3, 0x8040
-    addi    r4, r3, 0x74ec
+    lis     r3, JAInullCamera@h
+    addi    r4, r3, JAInullCamera@l
     lwz     r5, 0x20(sp)
     lwz     r0, 0x24(sp)
     stw     r5, 0xb0(r6)
@@ -2848,9 +2841,9 @@ branch_0x80015548:
     li      r4, 0x0
     bl      stop__8JAISoundFUl
 branch_0x80015578:
-    lis     r3, 0x8040
+    lis     r3, JAInullCamera@h
     lwz     r7, 0x8(r31)
-    addi    r6, r3, 0x74ec
+    addi    r6, r3, JAInullCamera@l
     lwz     r4, 0x0(r6)
     li      r5, 0x0
     lwz     r3, 0x4(r6)
@@ -3018,9 +3011,9 @@ branch_0x80015794:
 .globl setRegisterTrackCallback__6MSoundFv
 setRegisterTrackCallback__6MSoundFv: # 0x800157b0
     mflr    r0
-    lis     r3, 0x8001
+    lis     r3, setParameterSeqSync__12MSSeCallBackFPQ28JASystem6TTrackUs@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x58a8
+    addi    r3, r3, setParameterSeqSync__12MSSeCallBackFPQ28JASystem6TTrackUs@l
     stwu    sp, -0x8(sp)
     bl      registerTrackCallback__Q28JASystem8TrackMgrFPFPQ28JASystem6TTrackUs_Us
     lwz     r0, 0xc(sp)
@@ -3044,8 +3037,8 @@ makeSound__6MSoundFUl: # 0x800157d8
     addi    r3, r3, 0x8
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8001
-    addi    r4, r4, 0x586c
+    lis     r4, __ct__8MSHandleFv@h
+    addi    r4, r4, __ct__8MSHandleFv@l
     addi    r7, r31, 0x0
     li      r5, 0x0
     li      r6, 0x44
@@ -3054,13 +3047,13 @@ makeSound__6MSoundFUl: # 0x800157d8
 
 branch_0x80015828:
     mr      r31, r4
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     mulli   r3, r31, 0x44
     addi    r3, r3, 0x8
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8001
-    addi    r4, r4, 0x586c
+    lis     r4, __ct__8MSHandleFv@h
+    addi    r4, r4, __ct__8MSHandleFv@l
     addi    r7, r31, 0x0
     li      r5, 0x0
     li      r6, 0x44
@@ -3081,8 +3074,8 @@ __ct__8MSHandleFv: # 0x8001586c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__8JAISoundFv
-    lis     r3, 0x803b
-    subi    r0, r3, 0x3614
+    lis     r3, __vvt__8MSHandle@ha
+    addi    r0, r3, __vvt__8MSHandle@l
     stw     r0, 0x40(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -3141,15 +3134,15 @@ branch_0x8001592c:
     b       branch_0x80015d90
 
 branch_0x80015944:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     lhz     r3, 0x9a(r3)
     b       branch_0x80015da0
 
 branch_0x80015950:
-    lis     r4, 0x803b
-    lis     r3, 0x803b
-    subi    r27, r4, 0x3b90
-    subi    r28, r3, 0x3b50
+    lis     r4, smTrackCategory__12MSSeCallBack@ha
+    lis     r3, smPolifonic__12MSSeCallBack@ha
+    addi    r27, r4, smTrackCategory__12MSSeCallBack@l
+    addi    r28, r3, smPolifonic__12MSSeCallBack@l
     li      r30, 0x0
     b       branch_0x800159d8
 
@@ -3232,8 +3225,8 @@ branch_0x80015a40:
     lhz     r0, 0x5a(sp)
     cmplw   r0, r29
     ble-    branch_0x80015a7c
-    lis     r3, 0x1
-    subi    r0, r3, 0x14
+    lis     r3, unk_0000ffec@ha
+    addi    r0, r3, unk_0000ffec@l
     sth     r0, 0x58(sp)
     b       branch_0x80015a84
 
@@ -3425,14 +3418,14 @@ branch_0x80015bec:
     li      r4, 0x10
     bl      onSwitch__Q38JASystem6TTrack11TOuterParamFUs
 branch_0x80015d18:
-    lis     r3, 0x1
-    subi    r0, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r0, r3, unk_0000ffff@l
     sth     r0, 0x13a(r31)
     mr      r3, r24
     b       branch_0x80015da0
 
 branch_0x80015d2c:
-    lwz     r4, -0x7164(r13)
+    lwz     r4, R13Off_m0x7164(r13)
     lbz     r3, 0xd1(r4)
     lbz     r0, 0xd2(r4)
     cmplwi  r3, 0x8
@@ -3442,29 +3435,30 @@ branch_0x80015d2c:
     cmplwi  r0, 0x1
     bne-    branch_0x80015da0
 branch_0x80015d50:
-    lis     r3, 0x1
-    subi    r3, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r3, r3, unk_0000ffff@l
     b       branch_0x80015da0
 
+branch_0x80015d5c:
+    b       branch_0x80015da0
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1075c, 0x80015d60 - 0x80015d5c
 branch_0x80015d60:
-    lbz     r0, -0x7165(r13)
+    lbz     r0, R13Off_m0x7165(r13)
     extsb.  r0, r0
     bne-    branch_0x80015d7c
     li      r3, 0x0
     li      r0, 0x1
-    stb     r3, -0x7166(r13)
-    stb     r0, -0x7165(r13)
+    stb     r3, R13Off_m0x7166(r13)
+    stb     r0, R13Off_m0x7165(r13)
 branch_0x80015d7c:
-    lbz     r0, -0x7166(r13)
+    lbz     r0, R13Off_m0x7166(r13)
     xori     r0, r0, 0x1
-    stb     r0, -0x7166(r13)
-    lbz     r3, -0x7166(r13)
+    stb     r0, R13Off_m0x7166(r13)
+    lbz     r3, R13Off_m0x7166(r13)
     b       branch_0x80015da0
 
 branch_0x80015d90:
-    lbz     r3, -0x7166(r13)
+    lbz     r3, R13Off_m0x7166(r13)
     b       branch_0x80015da0
 
 branch_0x80015d98:
@@ -3490,7 +3484,7 @@ branch_0x80015dc8:
     li      r0, 0x0
     sth     r0, -0x7168(r13)
 branch_0x80015dd0:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     lbz     r0, 0x98(r3)
     cmplwi  r0, 0x1
     bnelr-    
@@ -3815,7 +3809,7 @@ calcDyna__31JALSeModData_15JALSeModVolFunk_Ff: # 0x80016184
 
 .globl search__30JALListS_15JALSeModVolFunk_Ul_FUl
 search__30JALListS_15JALSeModVolFunk_Ul_FUl: # 0x800161bc
-    lwz     r4, -0x7210(r13)
+    lwz     r4, R13Off_m0x7210(r13)
     b       branch_0x800161e0
 
 branch_0x800161c4:
@@ -3837,7 +3831,7 @@ branch_0x800161e0:
 
 .globl searchGroup__54JALListGrp_15JALSeModPitFGrp_Ul_19JALSeModDataGrpMemb_FUl
 searchGroup__54JALListGrp_15JALSeModPitFGrp_Ul_19JALSeModDataGrpMemb_FUl: # 0x800161f0
-    lwz     r4, -0x7264(r13)
+    lwz     r4, R13Off_m0x7264(r13)
     b       branch_0x8001623c
 
 branch_0x800161f8:
@@ -3876,205 +3870,205 @@ branch_0x8001623c:
 .globl __sinit_MSound_cpp
 __sinit_MSound_cpp: # 0x8001624c
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803e9bc8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x6438
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803e9bc8@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x80016294
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x80016294:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x800162c4
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x800162c4:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x800162f4
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x800162f4:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x80016324
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x80016324:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x80016354
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x80016354:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x80016384
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x80016384:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x800163b4
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x800163b4:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x800163e4
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x800163e4:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x80016414
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x80016414:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x80016444
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x80016444:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x80016474
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x80016474:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x800164a4
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x800164a4:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x800164d4
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x800164d4:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x80016504
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x80016504:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x80016534
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x80016534:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

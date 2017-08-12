@@ -2,20 +2,20 @@
 .globl __ct__12JKRArcFinderFP10JKRArchivell
 __ct__12JKRArcFinderFP10JKRArchivell: # 0x802c2c14
     mflr    r0
-    lis     r7, 0x803e
+    lis     r7, __vvt__12JKRArcFinder@ha
     stw     r0, 0x4(sp)
     li      r8, 0x0
-    subi    r7, r7, 0x78
+    addi    r7, r7, __vvt__12JKRArcFinder@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4168
+    lis     r3, __vvt__13JKRFileFinder@ha
+    addi    r0, r3, __vvt__13JKRFileFinder@l
     lwz     r31, 0x8(sp)
     eqv     r3, r6, r8
     srwi    r3, r3, 31
     stw     r0, 0xc(r31)
-    subi    r0, r6, 0x1
+    addi    r0, r6, -0x1
     subfc   r6, r6, r8
     stb     r8, 0x10(r31)
     addze   r6, r3
@@ -101,12 +101,12 @@ __dt__12JKRArcFinderFv: # 0x802c2d68
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802c2dac
-    lis     r3, 0x803e
-    subi    r0, r3, 0x78
+    lis     r3, __vvt__12JKRArcFinder@ha
+    addi    r0, r3, __vvt__12JKRArcFinder@l
     stw     r0, 0xc(r31)
     beq-    branch_0x802c2d9c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4168
+    lis     r3, __vvt__13JKRFileFinder@ha
+    addi    r0, r3, __vvt__13JKRFileFinder@l
     stw     r0, 0xc(r31)
 branch_0x802c2d9c:
     extsh.  r0, r4

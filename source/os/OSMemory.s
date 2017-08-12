@@ -22,15 +22,15 @@ branch_0x8034635c:
 .globl MEMIntrruptHandler
 MEMIntrruptHandler: # 0x80346370
     mflr    r0
-    lis     r3, 0xcc00
+    lis     r3, unk_cc004000@h
     stw     r0, 0x4(sp)
-    addi    r8, r3, 0x4000
+    addi    r8, r3, unk_cc004000@l
     li      r0, 0x0
     stwu    sp, -0x8(sp)
     lhz     r7, 0x4024(r3)
-    lis     r3, 0x8040
+    lis     r3, __OSErrorTable@h
     lhz     r6, 0x22(r8)
-    addi    r3, r3, 0x25d0
+    addi    r3, r3, __OSErrorTable@l
     lhz     r5, 0x1e(r8)
     insrwi  r6, r7, 10, 6
     sth     r0, 0x20(r8)
@@ -71,13 +71,13 @@ OSProtectRange: # 0x803463dc
     subf    r4, r27, r29
     bl      DCFlushRange
     bl      OSDisableInterrupts
-    lis     r0, 0x8000
+    lis     r0, unk_80000003@h
     srw     r30, r0, r26
     addi    r28, r3, 0x0
     addi    r3, r30, 0x0
     bl      __OSMaskInterrupts
-    lis     r3, 0xcc00
-    addi    r5, r3, 0x4000
+    lis     r3, unk_cc004000@h
+    addi    r5, r3, unk_cc004000@l
     slwi    r3, r26, 2
     extrwi  r0, r27, 16, 6
     sthx    r0, r5, r3
@@ -86,7 +86,7 @@ OSProtectRange: # 0x803463dc
     sth     r4, 0x2(r3)
     addi    r4, r5, 0x10
     slwi    r6, r26, 1
-    li      r0, 0x3
+    addi    r0, r0, unk_80000003@l
     lhz     r5, 0x10(r5)
     slw     r3, r0, r6
     slw     r0, r31, r6
@@ -111,14 +111,14 @@ branch_0x8034648c:
 .globl Config24MB
 Config24MB: # 0x803464a0
     li      r7, 0x0
-    lis     r4, 0x0
-    addi    r4, r4, 0x2
-    lis     r3, 0x8000
-    addi    r3, r3, 0x1ff
-    lis     r6, 0x100
-    addi    r6, r6, 0x2
-    lis     r5, 0x8100
-    addi    r5, r5, 0xff
+    lis     r4, unk_00000002@h
+    addi    r4, r4, unk_00000002@l
+    lis     r3, unk_800001ff@h
+    addi    r3, r3, unk_800001ff@l
+    lis     r6, unk_01000002@h
+    addi    r6, r6, unk_01000002@l
+    lis     r5, unk_810000ff@h
+    addi    r5, r5, unk_810000ff@l
     isync
     mtspr   536, r7
     mtspr   537, r4
@@ -147,14 +147,14 @@ Config24MB: # 0x803464a0
 .globl Config48MB
 Config48MB: # 0x80346520
     li      r7, 0x0
-    lis     r4, 0x0
-    addi    r4, r4, 0x2
-    lis     r3, 0x8000
-    addi    r3, r3, 0x3ff
-    lis     r6, 0x200
-    addi    r6, r6, 0x2
-    lis     r5, 0x8200
-    addi    r5, r5, 0x1ff
+    lis     r4, unk_00000002@h
+    addi    r4, r4, unk_00000002@l
+    lis     r3, unk_800003ff@h
+    addi    r3, r3, unk_800003ff@l
+    lis     r6, unk_02000002@h
+    addi    r6, r6, unk_02000002@l
+    lis     r5, unk_820001ff@h
+    addi    r5, r5, unk_820001ff@l
     isync
     mtspr   536, r7
     mtspr   537, r4
@@ -205,29 +205,29 @@ __OSInitMemoryProtection: # 0x803465b8
     cmplw   r29, r0
     mr      r31, r3
     bgt-    branch_0x803465fc
-    lis     r3, 0x8034
-    addi    r3, r3, 0x64a0
+    lis     r3, Config24MB@h
+    addi    r3, r3, Config24MB@l
     bl      RealMode
     b       branch_0x80346614
 
 branch_0x803465fc:
-    lis     r0, 0x300
+    lis     r0, unk_03000000@h
     cmplw   r29, r0
     bgt-    branch_0x80346614
-    lis     r3, 0x8034
-    addi    r3, r3, 0x6520
+    lis     r3, Config48MB@h
+    addi    r3, r3, Config48MB@l
     bl      RealMode
 branch_0x80346614:
-    lis     r3, 0xcc00
-    addi    r29, r3, 0x4000
-    li      r0, 0x0
+    lis     r3, unk_cc004000@h
+    addi    r29, r3, unk_cc004000@l
+    addi    r0, r0, unk_03000000@l
     sth     r0, 0x20(r29)
     li      r0, 0xff
     lis     r3, 0xf000
     sth     r0, 0x10(r29)
     bl      __OSMaskInterrupts
-    lis     r3, 0x8034
-    addi    r30, r3, 0x6370
+    lis     r3, MEMIntrruptHandler@h
+    addi    r30, r3, MEMIntrruptHandler@l
     mr      r4, r30
     li      r3, 0x0
     bl      __OSSetInterruptHandler
@@ -243,8 +243,8 @@ branch_0x80346614:
     mr      r4, r30
     li      r3, 0x4
     bl      __OSSetInterruptHandler
-    lis     r3, 0x803f
-    subi    r3, r3, 0x7e80
+    lis     r3, ResetFunctionInfo@ha
+    addi    r3, r3, ResetFunctionInfo@l
     bl      OSRegisterResetFunction
     lis     r3, 0x8000
     lwz     r4, 0xf0(r3)
@@ -257,7 +257,7 @@ branch_0x80346614:
     li      r0, 0x2
     sth     r0, 0x28(r29)
 branch_0x803466ac:
-    lis     r3, 0x800
+    lis     r3, unk_08000000@h
     bl      __OSUnmaskInterrupts
     mr      r3, r31
     bl      OSRestoreInterrupts

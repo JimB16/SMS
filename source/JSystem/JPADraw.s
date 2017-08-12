@@ -2,13 +2,13 @@
 .globl initialize__7JPADrawFP14JPABaseEmitterP18JPATextureResource
 initialize__7JPADrawFP14JPABaseEmitterP18JPATextureResource: # 0x803292ac
     mflr    r0
-    lis     r6, 0x8041
+    lis     r6, cb__7JPADraw@ha
     stw     r0, 0x4(sp)
-    subi    r0, r6, 0x3ef0
+    addi    r0, r6, cb__7JPADraw@l
     stwu    sp, -0x190(sp)
     stw     r31, 0x18c(sp)
     addi    r31, r3, 0x0
-    stw     r0, -0x5ad8(r13)
+    stw     r0, R13Off_m0x5ad8(r13)
     li      r0, 0x0
     stw     r4, 0x90(r3)
     lwz     r3, 0x90(r3)
@@ -37,9 +37,9 @@ initialize__7JPADrawFP14JPABaseEmitterP18JPATextureResource: # 0x803292ac
     addi    r3, r3, 0xf4
     stw     r3, 0xa8(r31)
     stb     r0, 0xc2(r31)
-    lfs     f0, 0x8c4(rtoc)
+    lfs     f0, 0x8c4(r2)
     stfs    f0, 0xb4(r31)
-    lwz     r0, 0x8c0(rtoc)
+    lwz     r0, R2Off_0x8c0(r2)
     stw     r0, 0x180(sp)
     lwz     r4, 0x94(r31)
     lbz     r3, 0x83(r4)
@@ -193,8 +193,8 @@ branch_0x8032955c:
     addi    r4, sp, 0x168
     bl      setDrawExecVisitorsBeforeCB__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags
     lbz     r4, 0x89(r31)
-    lis     r3, 0x8041
-    subi    r5, r3, 0x40dc
+    lis     r3, vc__7JPADraw@ha
+    addi    r5, r3, vc__7JPADraw@l
     addi    r3, r4, 0x1
     slwi    r0, r4, 2
     stb     r3, 0x89(r31)
@@ -292,12 +292,12 @@ draw__7JPADrawFPA4_f: # 0x80329610
     li      r9, 0x2
     bl      GXSetChanCtrl
     lwz     r9, 0x94(r30)
-    lis     r4, 0x803e
-    addi    r6, r4, 0x44e0
+    lis     r4, stLogicOp__12JPABaseShape@h
+    addi    r6, r4, stLogicOp__12JPABaseShape@l
     lbz     r8, 0x70(r9)
-    lis     r5, 0x803e
+    lis     r5, stBlendFactor__12JPABaseShape@h
     lbz     r4, 0x6e(r9)
-    lis     r3, 0x803e
+    lis     r3, stBlendMode__12JPABaseShape@h
     slwi    r8, r8, 2
     add     r6, r6, r8
     lbz     r7, 0x6f(r9)
@@ -305,19 +305,19 @@ draw__7JPADrawFPA4_f: # 0x80329610
     slwi    r4, r4, 2
     slwi    r8, r7, 2
     lwz     r6, 0x0(r6)
-    addi    r7, r5, 0x44b8
+    addi    r7, r5, stBlendFactor__12JPABaseShape@l
     add     r5, r7, r8
     add     r4, r7, r4
     lwz     r5, 0x0(r5)
     slwi    r7, r0, 2
     lwz     r4, 0x0(r4)
-    addi    r0, r3, 0x44a8
+    addi    r0, r3, stBlendMode__12JPABaseShape@l
     add     r3, r0, r7
     lwz     r3, 0x0(r3)
     bl      GXSetBlendMode
     lwz     r6, 0x90(r30)
-    lis     r3, 0x8041
-    subi    r5, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r5, r3, cb__7JPADraw@l
     lbz     r3, 0x180(r6)
     li      r0, 0xff
     stb     r3, 0x98(r5)
@@ -556,8 +556,8 @@ initParticle__7JPADrawFP15JPABaseParticle: # 0x80329a58
     bl      JPAGetEmitterInfoPtr__Fv
     addi    r4, r3, 0x54
     lfs     f0, 0x54(r3)
-    lis     r3, 0x19
-    addi    r0, r3, 0x660d
+    lis     r3, unk_0019660d@h
+    addi    r0, r3, unk_0019660d@l
     stfs    f0, 0x0(r31)
     lis     r3, 0x4330
     lfs     f0, 0x4(r4)
@@ -568,7 +568,7 @@ initParticle__7JPADrawFP15JPABaseParticle: # 0x80329a58
     stw     r4, 0x2c(r31)
     lwz     r4, 0xbc(r30)
     stw     r4, 0x30(r31)
-    lfs     f0, 0x8c4(rtoc)
+    lfs     f0, 0x8c4(r2)
     stfs    f0, 0x20(r31)
     lwz     r6, 0x90(r30)
     lwz     r5, 0x94(r30)
@@ -576,13 +576,13 @@ initParticle__7JPADrawFP15JPABaseParticle: # 0x80329a58
     lha     r5, 0x58(r5)
     mullw   r4, r4, r0
     addis   r4, r4, 0x3c6f
-    subi    r4, r4, 0xca1
+    addi    r4, r4, -0xca1
     stw     r4, 0x21c(r6)
     xoris   r4, r5, 0x8000
     lwz     r5, 0x21c(r6)
     stw     r4, 0x14c(sp)
     srwi    r4, r5, 9
-    lfd     f2, 0x8d8(rtoc)
+    lfd     f2, 0x8d8(r2)
     oris    r4, r4, 0x3f80
     stw     r3, 0x148(sp)
     stw     r4, 0x110(sp)
@@ -605,14 +605,14 @@ initParticle__7JPADrawFP15JPABaseParticle: # 0x80329a58
     lwz     r3, 0x21c(r4)
     mullw   r3, r3, r0
     addis   r3, r3, 0x3c6f
-    subi    r3, r3, 0xca1
+    addi    r3, r3, -0xca1
     stw     r3, 0x21c(r4)
     lwz     r3, 0x21c(r4)
-    lfs     f1, 0x8d0(rtoc)
+    lfs     f1, 0x8d0(r2)
     srwi    r3, r3, 9
-    lfs     f3, 0x8cc(rtoc)
+    lfs     f3, 0x8cc(r2)
     oris    r3, r3, 0x3f80
-    lfs     f5, 0x8c8(rtoc)
+    lfs     f5, 0x8c8(r2)
     stw     r3, 0x10c(sp)
     lfs     f2, 0x10c(sp)
     lwz     r3, 0x98(r30)
@@ -631,10 +631,10 @@ initParticle__7JPADrawFP15JPABaseParticle: # 0x80329a58
     lwz     r3, 0x21c(r4)
     mullw   r3, r3, r0
     addis   r3, r3, 0x3c6f
-    subi    r3, r3, 0xca1
+    addi    r3, r3, -0xca1
     stw     r3, 0x21c(r4)
     lwz     r3, 0x21c(r4)
-    lfs     f3, 0x8d4(rtoc)
+    lfs     f3, 0x8d4(r2)
     srwi    r3, r3, 9
     oris    r3, r3, 0x3f80
     stw     r3, 0x108(sp)
@@ -649,7 +649,7 @@ initParticle__7JPADrawFP15JPABaseParticle: # 0x80329a58
     lwz     r3, 0x21c(r4)
     mullw   r3, r3, r0
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r4)
     lwz     r0, 0x21c(r4)
     srwi    r0, r0, 9
@@ -674,7 +674,7 @@ branch_0x80329c54:
     lwz     r3, 0x21c(r4)
     mullw   r3, r3, r0
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r4)
     lwz     r0, 0x21c(r4)
     srwi    r0, r0, 9
@@ -703,17 +703,17 @@ branch_0x80329cb8:
     sth     r0, 0x36(r31)
 branch_0x80329cc4:
     lwz     r5, 0x90(r30)
-    lis     r3, 0x19
-    addi    r4, r3, 0x660d
+    lis     r3, unk_0019660d@h
+    addi    r4, r3, unk_0019660d@l
     lwz     r0, 0x21c(r5)
     mullw   r3, r0, r4
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r5)
     lwz     r0, 0x21c(r5)
-    lfs     f2, 0x8c4(rtoc)
+    lfs     f2, 0x8c4(r2)
     srwi    r0, r0, 9
-    lfs     f3, 0x8d4(rtoc)
+    lfs     f3, 0x8d4(r2)
     oris    r0, r0, 0x3f80
     stw     r0, 0xfc(sp)
     lfs     f0, 0xfc(sp)
@@ -731,7 +731,7 @@ branch_0x80329cc4:
     lwz     r0, 0x21c(r5)
     mullw   r3, r0, r4
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r5)
     lwz     r0, 0x21c(r5)
     srwi    r0, r0, 9
@@ -791,7 +791,7 @@ initChild__7JPADrawFP15JPABaseParticleP15JPABaseParticle: # 0x80329da8
     stw     r0, 0x4(r3)
     lwz     r0, 0x8(r31)
     stw     r0, 0x8(r3)
-    lfs     f0, 0x8c4(rtoc)
+    lfs     f0, 0x8c4(r2)
     stfs    f0, 0x20(r3)
     lwz     r5, 0x9c(r30)
     lbz     r0, 0x4e(r5)
@@ -799,7 +799,7 @@ initChild__7JPADrawFP15JPABaseParticleP15JPABaseParticle: # 0x80329da8
     beq-    branch_0x80329f24
     lbz     r0, 0x2c(r31)
     lis     r4, 0x4330
-    lfd     f1, 0x8e0(rtoc)
+    lfd     f1, 0x8e0(r2)
     stw     r0, 0xcc(sp)
     lfs     f2, 0x34(r5)
     stw     r4, 0xc8(sp)
@@ -879,7 +879,7 @@ branch_0x80329f38:
     stw     r0, 0x74(sp)
     lfs     f0, 0x2c(r5)
     stw     r4, 0x70(sp)
-    lfd     f1, 0x8e0(rtoc)
+    lfd     f1, 0x8e0(r2)
     fmuls   f2, f2, f0
     lfd     f0, 0x70(sp)
     fsubs   f0, f0, f1
@@ -923,7 +923,7 @@ branch_0x80329fc4:
     b       branch_0x8032a010
 
 branch_0x80329ffc:
-    lfs     f0, 0x8c4(rtoc)
+    lfs     f0, 0x8c4(r2)
     stfs    f0, 0x24(r3)
     stfs    f0, 0x14(r3)
     stfs    f0, 0xc(r3)
@@ -935,7 +935,7 @@ branch_0x8032a010:
     lbz     r0, 0x4d(r4)
     cmpwi   r0, 0x0
     beq-    branch_0x8032a048
-    lfs     f1, 0x8c8(rtoc)
+    lfs     f1, 0x8c8(r2)
     lfs     f0, 0x30(r4)
     fmuls   f0, f1, f0
     fctiwz  f0, f0
@@ -994,8 +994,8 @@ setDrawExecVisitorsBeforeCB__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags: # 0x
     cmplwi  r0, 0x0
     beq-    branch_0x8032a0f8
     lbz     r5, 0x88(r3)
-    lis     r6, 0x8041
-    subi    r6, r6, 0x40dc
+    lis     r6, vc__7JPADraw@ha
+    addi    r6, r6, vc__7JPADraw@l
     addi    r0, r5, 0x1
     stb     r0, 0x88(r3)
     addi    r6, r6, 0x50
@@ -1006,8 +1006,8 @@ branch_0x8032a0f8:
     cmpwi   r0, 0x0
     beq-    branch_0x8032a12c
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1025,8 +1025,8 @@ branch_0x8032a12c:
     cmplwi  r0, 0x0
     beq-    branch_0x8032a170
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1037,8 +1037,8 @@ branch_0x8032a12c:
 
 branch_0x8032a170:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1054,8 +1054,8 @@ branch_0x8032a194:
     cmpwi   r0, 0x0
     beq-    branch_0x8032a1d4
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1066,8 +1066,8 @@ branch_0x8032a194:
 
 branch_0x8032a1d4:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1078,8 +1078,8 @@ branch_0x8032a1d4:
 
 branch_0x8032a1fc:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1099,8 +1099,8 @@ branch_0x8032a220:
     bne-    branch_0x8032a270
 branch_0x8032a248:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1112,8 +1112,8 @@ branch_0x8032a248:
 branch_0x8032a270:
     beq-    branch_0x8032a358
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1139,8 +1139,8 @@ branch_0x8032a2b0:
     bne-    branch_0x8032a2f8
 branch_0x8032a2d0:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1151,8 +1151,8 @@ branch_0x8032a2d0:
 
 branch_0x8032a2f8:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1169,8 +1169,8 @@ branch_0x8032a320:
     bne-    branch_0x8032a358
 branch_0x8032a334:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1190,8 +1190,8 @@ branch_0x8032a358:
     beq-    branch_0x8032a3a8
 branch_0x8032a380:
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1204,8 +1204,8 @@ branch_0x8032a3a8:
     cmplwi  r6, 0x0
     beq-    branch_0x8032a3d4
     lbz     r6, 0x89(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x89(r3)
@@ -1225,8 +1225,8 @@ branch_0x8032a3d4:
     rlwinm. r0, r5, 0, 29, 29
     bne-    branch_0x8032a424
     lbz     r6, 0x8a(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8a(r3)
@@ -1245,8 +1245,8 @@ branch_0x8032a424:
     cmpwi   r0, 0x0
     beq-    branch_0x8032a474
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1257,8 +1257,8 @@ branch_0x8032a424:
 
 branch_0x8032a474:
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1275,8 +1275,8 @@ branch_0x8032a49c:
     cmpwi   r0, 0x0
     beq-    branch_0x8032a4dc
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1287,8 +1287,8 @@ branch_0x8032a49c:
 
 branch_0x8032a4dc:
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1302,8 +1302,8 @@ branch_0x8032a504:
     cmpwi   r0, 0x0
     beq-    branch_0x8032a574
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1320,8 +1320,8 @@ branch_0x8032a538:
     cmpwi   r0, 0x0
     bne-    branch_0x8032a574
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1340,8 +1340,8 @@ branch_0x8032a574:
     clrlwi. r0, r0, 31
     bne-    branch_0x8032a5c0
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1375,8 +1375,8 @@ branch_0x8032a5fc:
     clrlwi. r0, r0, 31
     beq-    branch_0x8032a6b8
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1393,8 +1393,8 @@ branch_0x8032a63c:
     clrlwi. r0, r0, 31
     beq-    branch_0x8032a6b8
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1411,8 +1411,8 @@ branch_0x8032a67c:
     cmpwi   r0, 0x0
     bne-    branch_0x8032a6b8
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1434,8 +1434,8 @@ branch_0x8032a6b8:
     beq-    branch_0x8032a708
 branch_0x8032a6e4:
     lbz     r5, 0x8e(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8e(r3)
@@ -1453,8 +1453,8 @@ branch_0x8032a708:
     bltlr-    
 
     lbz     r5, 0x8e(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8e(r3)
@@ -1465,8 +1465,8 @@ branch_0x8032a708:
 
 branch_0x8032a74c:
     lbz     r5, 0x8e(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8e(r3)
@@ -1485,17 +1485,16 @@ setDrawExecVisitorsAfterCB__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags: # 0x8
     lbz     r0, 0x69(r4)
     cmplwi  r0, 0xa
     bgt-    branch_0x8032aa5c
-    lis     r4, 0x803e
-    addi    r4, r4, 0x3ecc
+    lis     r4, unk_803e3ecc@h
+    addi    r4, r4, unk_803e3ecc@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8032A7A8:		# jumptable 8032A7A4 case 0
+    bctr       
+branch_0x8032a7a8:
     lbz     r5, 0x8c(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8c(r3)
@@ -1504,198 +1503,196 @@ branch_0x8032A7A8:		# jumptable 8032A7A4 case 0
     stw     r5, 0x34(r4)
     b       branch_0x8032aa5c
 
-branch_0x8032A7D0:		# jumptable 8032A7A4 case 1
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x84
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a7d0:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x84
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A7F8:		# jumptable 8032A7A4 case 2
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032A838
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-beq	  branch_0x8032A838
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x58
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a7f8:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032a838
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032a838
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x58
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A838:
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x54
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a838:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x54
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A860:		# jumptable 8032A7A4 case 3
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032A8A0
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-beq	  branch_0x8032A8A0
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x68
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a860:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032a8a0
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032a8a0
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x68
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A8A0:
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x64
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a8a0:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x64
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A8C8:		# jumptable 8032A7A4 case 4
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032A908
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-beq	  branch_0x8032A908
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x70
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a8c8:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032a908
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032a908
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x70
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A908:
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x6C
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a908:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x6c
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A930:		# jumptable 8032A7A4 case 10
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032A970
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-beq	  branch_0x8032A970
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x60
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a930:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032a970
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032a970
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x60
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A970:
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x5C
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a970:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x5c
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A998:		# jumptable 8032A7A4 case 7
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x78
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a998:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x78
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A9C0:		# jumptable 8032A7A4 case 8
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x7C
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a9c0:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x7c
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032A9E8:		# jumptable 8032A7A4 case 9
-lbz	  r5, 0x8C(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8C(r3)
-addi	  r5, r6, 0x74
-add	  r4, r3, r0
-stw	  r5, 0x34(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032a9e8:
+    lbz     r5, 0x8c(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8c(r3)
+    addi    r5, r6, 0x74
+    add     r4, r3, r0
+    stw     r5, 0x34(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032AA10:		# jumptable 8032A7A4 case 5
-lbz	  r5, 0x89(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x89(r3)
-addi	  r5, r6, 0x88
-add	  r4, r3, r0
-stw	  r5, 4(r4)
-b	  def_8032A7A4	# jumptable 8032A7A4 default case
+branch_0x8032aa10:
+    lbz     r5, 0x89(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x89(r3)
+    addi    r5, r6, 0x88
+    add     r4, r3, r0
+    stw     r5, 0x4(r4)
+    b       branch_0x8032aa5c
 
-branch_0x8032AA38:		# jumptable 8032A7A4 case 6
-lbz	  r5, 0x89(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x89(r3)
-addi	  r5, r6, 0x8C
-add	  r4, r3, r0
-stw	  r5, 4(r4)
-
-def_8032A7A4:		# jumptable 8032A7A4 default case
+branch_0x8032aa38:
+    lbz     r5, 0x89(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x89(r3)
+    addi    r5, r6, 0x8c
+    add     r4, r3, r0
+    stw     r5, 0x4(r4)
 branch_0x8032aa5c:
     lwz     r5, 0x9c(r3)
     cmplwi  r5, 0x0
@@ -1705,17 +1702,16 @@ branch_0x8032aa5c:
     cmplwi  r0, 0xa
     bgtlr-    
 
-    lis     r4, 0x803e
-    addi    r4, r4, 0x3ea0
+    lis     r4, unk_803e3ea0@h
+    addi    r4, r4, unk_803e3ea0@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8032AA8C:		# jumptable 8032AA88 case 0
+    bctr       
+branch_0x8032aa8c:
     lbz     r5, 0x8e(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8e(r3)
@@ -1724,225 +1720,217 @@ branch_0x8032AA8C:		# jumptable 8032AA88 case 0
     stw     r4, 0x70(r3)
     blr
 
-branch_0x8032AAB4:		# jumptable 8032AA88 case 1
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x84
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
+branch_0x8032aab4:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x84
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AADC:		# jumptable 8032AA88 case 2
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032AAF4
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-bne	  branch_0x8032AB00
+branch_0x8032aadc:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032aaf4
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    bne-    branch_0x8032ab00
+branch_0x8032aaf4:
+    lbz     r0, 0x4d(r5)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032ab28
+branch_0x8032ab00:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x58
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AAF4:
-lbz	  r0, 0x4D(r5)
-cmpwi	  r0, 0
-beq	  branch_0x8032AB28
+branch_0x8032ab28:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x54
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AB00:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x58
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
+branch_0x8032ab50:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032ab68
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    bne-    branch_0x8032ab74
+branch_0x8032ab68:
+    lbz     r0, 0x4d(r5)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032ab9c
+branch_0x8032ab74:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x68
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AB28:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x54
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
+branch_0x8032ab9c:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x64
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AB50:		# jumptable 8032AA88 case 3
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032AB68
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-bne	  branch_0x8032AB74
+branch_0x8032abc4:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032abdc
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    bne-    branch_0x8032abe8
+branch_0x8032abdc:
+    lbz     r0, 0x4d(r5)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032ac10
+branch_0x8032abe8:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x70
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AB68:
-lbz	  r0, 0x4D(r5)
-cmpwi	  r0, 0
-beq	  branch_0x8032AB9C
+branch_0x8032ac10:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x6c
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AB74:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x68
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
+branch_0x8032ac38:
+    lwz     r4, 0x98(r3)
+    cmplwi  r4, 0x0
+    beq-    branch_0x8032ac50
+    lbz     r0, 0x7f(r4)
+    cmpwi   r0, 0x0
+    bne-    branch_0x8032ac5c
+branch_0x8032ac50:
+    lbz     r0, 0x4d(r5)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8032ac84
+branch_0x8032ac5c:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x60
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AB9C:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x64
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
+branch_0x8032ac84:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x5c
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032ABC4:		# jumptable 8032AA88 case 4
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032ABDC
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-bne	  branch_0x8032ABE8
+branch_0x8032acac:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x78
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032ABDC:
-lbz	  r0, 0x4D(r5)
-cmpwi	  r0, 0
-beq	  branch_0x8032AC10
+branch_0x8032acd4:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x7c
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032ABE8:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x70
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
+branch_0x8032acfc:
+    lbz     r5, 0x8e(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8e(r3)
+    addi    r4, r6, 0x74
+    add     r3, r3, r0
+    stw     r4, 0x70(r3)
+    blr
 
-branch_0x8032AC10:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x6C
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
+branch_0x8032ad24:
+    lbz     r5, 0x8a(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8a(r3)
+    addi    r4, r6, 0x88
+    add     r3, r3, r0
+    stw     r4, 0x18(r3)
+    blr
 
-branch_0x8032AC38:		# jumptable 8032AA88 case 10
-lwz	  r4, 0x98(r3)
-cmplwi	  r4, 0
-beq	  branch_0x8032AC50
-lbz	  r0, 0x7F(r4)
-cmpwi	  r0, 0
-bne	  branch_0x8032AC5C
-
-branch_0x8032AC50:
-lbz	  r0, 0x4D(r5)
-cmpwi	  r0, 0
-beq	  branch_0x8032AC84
-
-branch_0x8032AC5C:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x60
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
-
-branch_0x8032AC84:
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x5C
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
-
-branch_0x8032ACAC:		# jumptable 8032AA88 case 7
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x78
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
-
-branch_0x8032ACD4:		# jumptable 8032AA88 case 8
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x7C
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
-
-branch_0x8032ACFC:		# jumptable 8032AA88 case 9
-lbz	  r5, 0x8E(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8E(r3)
-addi	  r4, r6, 0x74
-add	  r3, r3, r0
-stw	  r4, 0x70(r3)
-blr
-
-branch_0x8032AD24:		# jumptable 8032AA88 case 5
-lbz	  r5, 0x8A(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8A(r3)
-addi	  r4, r6, 0x88
-add	  r3, r3, r0
-stw	  r4, 0x18(r3)
-blr
-
-branch_0x8032AD4C:		# jumptable 8032AA88 case 6
-lbz	  r5, 0x8A(r3)
-lis	  r4, unk_8040BF24@ha
-addi	  r6, r4, unk_8040BF24@l
-addi	  r4, r5, 1
-slwi	  r0, r5, 2
-stb	  r4, 0x8A(r3)
-addi	  r4, r6, 0x8C
-add	  r3, r3, r0
-stw	  r4, 0x18(r3)
-blr
+branch_0x8032ad4c:
+    lbz     r5, 0x8a(r3)
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
+    addi    r4, r5, 0x1
+    slwi    r0, r5, 2
+    stb     r4, 0x8a(r3)
+    addi    r4, r6, 0x8c
+    add     r3, r3, r0
+    stw     r4, 0x18(r3)
+    blr
 
 
 .globl setDrawCalcVisitors__7JPADrawFRCQ27JPADraw22JPADrawVisitorDefFlags
@@ -1975,8 +1963,8 @@ branch_0x8032adbc:
 
 branch_0x8032adcc:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -1987,8 +1975,8 @@ branch_0x8032adcc:
 
 branch_0x8032adf4:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -1999,8 +1987,8 @@ branch_0x8032adf4:
 
 branch_0x8032ae1c:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2011,8 +1999,8 @@ branch_0x8032ae1c:
 
 branch_0x8032ae44:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2023,8 +2011,8 @@ branch_0x8032ae44:
 
 branch_0x8032ae6c:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2036,8 +2024,8 @@ branch_0x8032ae90:
     cmpwi   r0, 0x0
     beq-    branch_0x8032aec0
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2049,8 +2037,8 @@ branch_0x8032aec0:
     cmpwi   r0, 0x0
     beq-    branch_0x8032aef0
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2085,8 +2073,8 @@ branch_0x8032af38:
 
 branch_0x8032af48:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2097,8 +2085,8 @@ branch_0x8032af48:
 
 branch_0x8032af70:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2109,8 +2097,8 @@ branch_0x8032af70:
 
 branch_0x8032af98:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2121,8 +2109,8 @@ branch_0x8032af98:
 
 branch_0x8032afc0:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2133,8 +2121,8 @@ branch_0x8032afc0:
 
 branch_0x8032afe8:
     lbz     r6, 0x8b(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8b(r3)
@@ -2154,8 +2142,8 @@ branch_0x8032b00c:
     cmplwi  r0, 0x0
     beq-    branch_0x8032b060
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2166,8 +2154,8 @@ branch_0x8032b00c:
 
 branch_0x8032b060:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2178,8 +2166,8 @@ branch_0x8032b060:
 
 branch_0x8032b088:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2196,8 +2184,8 @@ branch_0x8032b0ac:
     cmplwi  r0, 0x1
     beq-    branch_0x8032b0f4
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2208,8 +2196,8 @@ branch_0x8032b0ac:
 
 branch_0x8032b0f4:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2226,8 +2214,8 @@ branch_0x8032b118:
     rlwinm. r0, r5, 0, 30, 30
     bne-    branch_0x8032b160
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2243,8 +2231,8 @@ branch_0x8032b160:
     cmplwi  r0, 0x0
     beq-    branch_0x8032b19c
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2255,8 +2243,8 @@ branch_0x8032b160:
 
 branch_0x8032b19c:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2269,8 +2257,8 @@ branch_0x8032b1c4:
     rlwinm. r0, r5, 0, 28, 28
     beq-    branch_0x8032b1f0
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2283,8 +2271,8 @@ branch_0x8032b1f0:
     rlwinm. r0, r0, 0, 27, 27
     beq-    branch_0x8032b228
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2295,8 +2283,8 @@ branch_0x8032b1f0:
 
 branch_0x8032b228:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2332,8 +2320,8 @@ branch_0x8032b294:
 
 branch_0x8032b2a4:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2344,8 +2332,8 @@ branch_0x8032b2a4:
 
 branch_0x8032b2cc:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2356,8 +2344,8 @@ branch_0x8032b2cc:
 
 branch_0x8032b2f4:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2368,8 +2356,8 @@ branch_0x8032b2f4:
 
 branch_0x8032b31c:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2380,8 +2368,8 @@ branch_0x8032b31c:
 
 branch_0x8032b344:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2393,8 +2381,8 @@ branch_0x8032b368:
     cmpwi   r0, 0x0
     beq-    branch_0x8032b398
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2406,8 +2394,8 @@ branch_0x8032b398:
     cmpwi   r0, 0x0
     beq-    branch_0x8032b3f0
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2418,8 +2406,8 @@ branch_0x8032b398:
 
 branch_0x8032b3cc:
     lbz     r6, 0x8d(r3)
-    lis     r5, 0x8041
-    subi    r7, r5, 0x40dc
+    lis     r5, vc__7JPADraw@ha
+    addi    r7, r5, vc__7JPADraw@l
     addi    r5, r6, 0x1
     slwi    r0, r6, 2
     stb     r5, 0x8d(r3)
@@ -2434,8 +2422,8 @@ branch_0x8032b3f0:
     cmpwi   r0, 0x0
     bne-    branch_0x8032b4c0
     lbz     r5, 0x8d(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8d(r3)
@@ -2515,8 +2503,8 @@ branch_0x8032b508:
 
 branch_0x8032b518:
     lbz     r5, 0x8d(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8d(r3)
@@ -2527,8 +2515,8 @@ branch_0x8032b518:
 
 branch_0x8032b540:
     lbz     r5, 0x8d(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8d(r3)
@@ -2539,8 +2527,8 @@ branch_0x8032b540:
 
 branch_0x8032b568:
     lbz     r5, 0x8d(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8d(r3)
@@ -2551,8 +2539,8 @@ branch_0x8032b568:
 
 branch_0x8032b590:
     lbz     r5, 0x8d(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8d(r3)
@@ -2563,8 +2551,8 @@ branch_0x8032b590:
 
 branch_0x8032b5b8:
     lbz     r5, 0x8d(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8d(r3)
@@ -2580,8 +2568,8 @@ branch_0x8032b5dc:
     cmpwi   r0, 0x0
     beq-    branch_0x8032b618
     lbz     r5, 0x8f(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8f(r3)
@@ -2595,8 +2583,8 @@ branch_0x8032b618:
     beqlr-    
 
     lbz     r5, 0x8f(r3)
-    lis     r4, 0x8041
-    subi    r6, r4, 0x40dc
+    lis     r4, vc__7JPADraw@ha
+    addi    r6, r4, vc__7JPADraw@l
     addi    r4, r5, 0x1
     slwi    r0, r5, 2
     stb     r4, 0x8f(r3)
@@ -2629,29 +2617,29 @@ branch_0x8032b688:
     b       branch_0x8032b6a8
 
 branch_0x8032b694:
-    lis     r3, 0x8041
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r3, r3, cb__7JPADraw@l
     addi    r3, r3, 0x68
     bl      PSMTXIdentity
     b       branch_0x8032b6d4
 
 branch_0x8032b6a8:
-    lis     r3, 0x8041
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r3, r3, cb__7JPADraw@l
     lwz     r4, 0x34(r3)
     mr      r3, r31
     bl      loadYBBMtx__7JPADrawFPA4_f
     b       branch_0x8032b6d4
 
 branch_0x8032b6c0:
-    lis     r3, 0x8041
-    subi    r4, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r4, r3, cb__7JPADraw@l
     lwz     r3, 0x34(r4)
     addi    r4, r4, 0x68
     bl      PSMTXCopy
 branch_0x8032b6d4:
-    lis     r3, 0x8041
-    subi    r30, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r30, r3, cb__7JPADraw@l
     addi    r3, r30, 0x68
     li      r4, 0x0
     bl      GXLoadPosMtxImm
@@ -2659,7 +2647,7 @@ branch_0x8032b6d4:
     addi    r6, r30, 0x4
     lwz     r4, 0x90(r31)
     addi    r7, r30, 0x8
-    lfs     f1, 0x8e8(rtoc)
+    lfs     f1, 0x8e8(r2)
     lfs     f0, 0x14(r3)
     lfs     f2, 0x174(r4)
     fmuls   f0, f1, f0
@@ -2676,7 +2664,7 @@ branch_0x8032b6d4:
     cmplwi  r0, 0x0
     bne-    branch_0x8032b758
     lfs     f0, 0x0(r6)
-    lfs     f1, 0x8ec(rtoc)
+    lfs     f1, 0x8ec(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x0(r6)
     lfs     f0, 0x0(r7)
@@ -2688,11 +2676,11 @@ branch_0x8032b758:
     cmplwi  r0, 0x1
     bne-    branch_0x8032b780
     lfs     f1, 0x0(r6)
-    lfs     f0, 0x8ec(rtoc)
+    lfs     f0, 0x8ec(r2)
     fmuls   f0, f1, f0
     stfs    f0, 0x0(r6)
     lfs     f1, 0x0(r7)
-    lfs     f0, 0x8f0(rtoc)
+    lfs     f0, 0x8f0(r2)
     fmuls   f0, f1, f0
     stfs    f0, 0x0(r7)
 branch_0x8032b780:
@@ -2705,10 +2693,10 @@ branch_0x8032b780:
     lbz     r0, 0x7c(r3)
     lis     r3, 0x8041
     lis     r5, 0x4330
-    lfd     f3, 0x8e0(rtoc)
+    lfd     f3, 0x8e0(r2)
     stw     r0, 0xd4(sp)
-    lfs     f2, 0x8c4(rtoc)
-    subi    r4, r3, 0x3ef0
+    lfs     f2, 0x8c4(r2)
+    addi    r4, r3, -0x3ef0
     stw     r5, 0xd0(sp)
     lfs     f1, 0x0(r6)
     lfd     f0, 0xd0(sp)
@@ -2729,16 +2717,16 @@ branch_0x8032b780:
     b       branch_0x8032b810
 
 branch_0x8032b7fc:
-    lis     r3, 0x8041
-    lfs     f0, 0x8f4(rtoc)
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    lfs     f0, 0x8f4(r2)
+    addi    r3, r3, cb__7JPADraw@l
     stfs    f0, 0x10(r3)
     stfs    f0, 0xc(r3)
 branch_0x8032b810:
     lwz     r4, 0x94(r31)
-    lis     r3, 0x8041
-    lfs     f0, 0x8f4(rtoc)
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    lfs     f0, 0x8f4(r2)
+    addi    r3, r3, cb__7JPADraw@l
     lfs     f1, 0x2c(r4)
     lfs     f2, 0x30(r4)
     stfs    f0, 0x14(r3)
@@ -2762,8 +2750,8 @@ branch_0x8032b810:
     lhzx    r0, r3, r0
     sth     r0, 0xc0(r31)
 branch_0x8032b878:
-    lis     r3, 0x8041
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r3, r3, cb__7JPADraw@l
     li      r0, 0x0
     stw     r0, 0xa0(r3)
     addi    r6, r3, 0xa0
@@ -2774,7 +2762,7 @@ branch_0x8032b878:
     beq-    branch_0x8032b8b8
     cmplwi  r4, 0x9
     beq-    branch_0x8032b8b8
-    subi    r0, r4, 0x4
+    addi    r0, r4, -0x4
     clrlwi  r0, r0, 24
     cmplwi  r0, 0x2
     bgt-    branch_0x8032b934
@@ -2795,32 +2783,32 @@ branch_0x8032b8d8:
     b       branch_0x8032b918
 
 branch_0x8032b8e8:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xadc
+    lis     r4, dirTypeVel__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypeVel__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032b934
 
 branch_0x8032b8f8:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xaf8
+    lis     r4, dirTypePos__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypePos__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032b934
 
 branch_0x8032b908:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xb14
+    lis     r4, dirTypePosInv__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypePosInv__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032b934
 
 branch_0x8032b918:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xb54
+    lis     r4, dirTypeEmtrDir__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypeEmtrDir__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032b934
 
 branch_0x8032b928:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xb70
+    lis     r4, dirTypePrevPtcl__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypePrevPtcl__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
 branch_0x8032b934:
     lwz     r5, 0x94(r31)
@@ -2829,7 +2817,7 @@ branch_0x8032b934:
     beq-    branch_0x8032b95c
     cmplwi  r4, 0x4
     beq-    branch_0x8032b95c
-    subi    r0, r4, 0x7
+    addi    r0, r4, -0x7
     clrlwi  r0, r0, 24
     cmplwi  r0, 0x1
     bgt-    branch_0x8032b9d8
@@ -2850,32 +2838,32 @@ branch_0x8032b97c:
     b       branch_0x8032b9bc
 
 branch_0x8032b98c:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xc18
+    lis     r4, rotTypeY__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeY__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032b9d8
 
 branch_0x8032b99c:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xc58
+    lis     r4, rotTypeX__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeX__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032b9d8
 
 branch_0x8032b9ac:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xc98
+    lis     r4, rotTypeZ__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeZ__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032b9d8
 
 branch_0x8032b9bc:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xcd8
+    lis     r4, rotTypeXYZ__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeXYZ__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032b9d8
 
 branch_0x8032b9cc:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xd34
+    lis     r4, rotTypeYJiggle__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeYJiggle__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
 branch_0x8032b9d8:
     lwz     r0, 0xe4(sp)
@@ -2909,29 +2897,29 @@ branch_0x8032ba28:
     b       branch_0x8032ba48
 
 branch_0x8032ba34:
-    lis     r3, 0x8041
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r3, r3, cb__7JPADraw@l
     addi    r3, r3, 0x68
     bl      PSMTXIdentity
     b       branch_0x8032ba74
 
 branch_0x8032ba48:
-    lis     r3, 0x8041
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r3, r3, cb__7JPADraw@l
     lwz     r4, 0x34(r3)
     mr      r3, r31
     bl      loadYBBMtx__7JPADrawFPA4_f
     b       branch_0x8032ba74
 
 branch_0x8032ba60:
-    lis     r3, 0x8041
-    subi    r4, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r4, r3, cb__7JPADraw@l
     lwz     r3, 0x34(r4)
     addi    r4, r4, 0x68
     bl      PSMTXCopy
 branch_0x8032ba74:
-    lis     r3, 0x8041
-    subi    r30, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r30, r3, cb__7JPADraw@l
     addi    r3, r30, 0x68
     li      r4, 0x0
     bl      GXLoadPosMtxImm
@@ -2942,7 +2930,7 @@ branch_0x8032ba74:
     clrlwi. r0, r0, 31
     lfs     f3, 0x178(r3)
     bne-    branch_0x8032bad0
-    lfs     f1, 0x8e8(rtoc)
+    lfs     f1, 0x8e8(r2)
     lfs     f0, 0x14(r4)
     fmuls   f0, f1, f0
     fmuls   f0, f2, f0
@@ -2956,7 +2944,7 @@ branch_0x8032ba74:
 
 branch_0x8032bad0:
     lwz     r3, 0x94(r31)
-    lfs     f1, 0x8e8(rtoc)
+    lfs     f1, 0x8e8(r2)
     lfs     f0, 0x14(r3)
     fmuls   f0, f1, f0
     fmuls   f0, f2, f0
@@ -2971,9 +2959,9 @@ branch_0x8032bafc:
     lbz     r0, 0x44(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8032bb34
-    lis     r3, 0x8041
-    lfs     f1, 0x8ec(rtoc)
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    lfs     f1, 0x8ec(r2)
+    addi    r3, r3, cb__7JPADraw@l
     lfs     f0, 0x4(r3)
     fmuls   f0, f0, f1
     stfs    f0, 0x4(r3)
@@ -2985,20 +2973,20 @@ branch_0x8032bafc:
 branch_0x8032bb34:
     cmplwi  r0, 0x1
     bne-    branch_0x8032bb64
-    lis     r3, 0x8041
-    lfs     f0, 0x8ec(rtoc)
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    lfs     f0, 0x8ec(r2)
+    addi    r3, r3, cb__7JPADraw@l
     lfs     f1, 0x4(r3)
     fmuls   f0, f1, f0
     stfs    f0, 0x4(r3)
     lfs     f1, 0x8(r3)
-    lfs     f0, 0x8f0(rtoc)
+    lfs     f0, 0x8f0(r2)
     fmuls   f0, f1, f0
     stfs    f0, 0x8(r3)
 branch_0x8032bb64:
-    lis     r3, 0x8041
-    lfs     f0, 0x8f4(rtoc)
-    subi    r4, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    lfs     f0, 0x8f4(r2)
+    addi    r4, r3, cb__7JPADraw@l
     stfs    f0, 0x10(r4)
     addi    r6, r4, 0xa0
     li      r0, 0x0
@@ -3008,7 +2996,7 @@ branch_0x8032bb64:
     stfs    f0, 0x18(r4)
     stfs    f0, 0x2c(r4)
     stfs    f0, 0x14(r4)
-    lfs     f0, 0x8c4(rtoc)
+    lfs     f0, 0x8c4(r2)
     stfs    f0, 0x30(r4)
     stfs    f0, 0x28(r4)
     stfs    f0, 0x24(r4)
@@ -3021,7 +3009,7 @@ branch_0x8032bb64:
     beq-    branch_0x8032bbd8
     cmplwi  r4, 0x9
     beq-    branch_0x8032bbd8
-    subi    r0, r4, 0x4
+    addi    r0, r4, -0x4
     clrlwi  r0, r0, 24
     cmplwi  r0, 0x2
     bgt-    branch_0x8032bc54
@@ -3042,32 +3030,32 @@ branch_0x8032bbf8:
     b       branch_0x8032bc38
 
 branch_0x8032bc08:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xadc
+    lis     r4, dirTypeVel__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypeVel__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032bc54
 
 branch_0x8032bc18:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xaf8
+    lis     r4, dirTypePos__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypePos__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032bc54
 
 branch_0x8032bc28:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xb14
+    lis     r4, dirTypePosInv__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypePosInv__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032bc54
 
 branch_0x8032bc38:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xb54
+    lis     r4, dirTypeEmtrDir__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypeEmtrDir__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
     b       branch_0x8032bc54
 
 branch_0x8032bc48:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xb70
+    lis     r4, dirTypePrevPtcl__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@h
+    addi    r0, r4, dirTypePrevPtcl__FP15JPABaseParticleP14JPABaseEmitterRQ29JGeometry8TVec3_f_@l
     stw     r0, 0x0(r6)
 branch_0x8032bc54:
     lwz     r5, 0x9c(r31)
@@ -3076,7 +3064,7 @@ branch_0x8032bc54:
     beq-    branch_0x8032bc7c
     cmplwi  r4, 0x4
     beq-    branch_0x8032bc7c
-    subi    r0, r4, 0x7
+    addi    r0, r4, -0x7
     clrlwi  r0, r0, 24
     cmplwi  r0, 0x1
     bgt-    branch_0x8032bcf8
@@ -3097,32 +3085,32 @@ branch_0x8032bc9c:
     b       branch_0x8032bcdc
 
 branch_0x8032bcac:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xc18
+    lis     r4, rotTypeY__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeY__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032bcf8
 
 branch_0x8032bcbc:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xc58
+    lis     r4, rotTypeX__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeX__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032bcf8
 
 branch_0x8032bccc:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xc98
+    lis     r4, rotTypeZ__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeZ__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032bcf8
 
 branch_0x8032bcdc:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xcd8
+    lis     r4, rotTypeXYZ__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeXYZ__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
     b       branch_0x8032bcf8
 
 branch_0x8032bcec:
-    lis     r4, 0x8033
-    addi    r0, r4, 0xd34
+    lis     r4, rotTypeYJiggle__FffRA3_A4_f@h
+    addi    r0, r4, rotTypeYJiggle__FffRA3_A4_f@l
     stw     r0, 0x0(r3)
 branch_0x8032bcf8:
     lwz     r0, 0xb4(sp)
@@ -3145,8 +3133,8 @@ drawParticle__7JPADrawFv: # 0x8032bd10
     stb     r0, 0xc2(r30)
     bl      setParticleClipBoard__7JPADrawFv
     lwz     r4, 0x90(r30)
-    lis     r3, 0x8041
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r3, r3, cb__7JPADraw@l
     addi    r0, r4, 0xf4
     stw     r0, 0xa8(r30)
     addi    r31, r3, 0x4
@@ -3163,8 +3151,8 @@ drawParticle__7JPADrawFv: # 0x8032bd10
     lwz     r3, 0x9c(sp)
     bl      GXSetLineWidth
     lwz     r4, 0x94(r30)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x4520
+    lis     r3, stCompare__12JPABaseShape@h
+    addi    r31, r3, stCompare__12JPABaseShape@l
     lbz     r0, 0x78(r4)
     lbz     r5, 0x79(r4)
     slwi    r0, r0, 2
@@ -3176,8 +3164,8 @@ drawParticle__7JPADrawFv: # 0x8032bd10
     lbz     r3, 0x76(r3)
     bl      GXSetZCompLoc
     lwz     r8, 0x94(r30)
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4540
+    lis     r3, stAlphaOp__12JPABaseShape@h
+    addi    r3, r3, stAlphaOp__12JPABaseShape@l
     lbz     r5, 0x74(r8)
     lbz     r0, 0x71(r8)
     slwi    r6, r5, 2
@@ -3360,8 +3348,8 @@ branch_0x8032bff0:
     bl      load__10JUTTextureF11_GXTexMapID
 branch_0x8032c020:
     lwz     r4, 0x94(r30)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x4520
+    lis     r3, stCompare__12JPABaseShape@h
+    addi    r31, r3, stCompare__12JPABaseShape@l
     lbz     r0, 0x78(r4)
     lbz     r5, 0x79(r4)
     slwi    r0, r0, 2
@@ -3373,8 +3361,8 @@ branch_0x8032c020:
     lbz     r3, 0x76(r3)
     bl      GXSetZCompLoc
     lwz     r8, 0x94(r30)
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4540
+    lis     r3, stAlphaOp__12JPABaseShape@h
+    addi    r3, r3, stAlphaOp__12JPABaseShape@l
     lbz     r5, 0x74(r8)
     lbz     r0, 0x71(r8)
     slwi    r6, r5, 2
@@ -3559,8 +3547,8 @@ zDrawParticle__7JPADrawFv: # 0x8032c29c
     stb     r0, 0xc2(r31)
     bl      setParticleClipBoard__7JPADrawFv
     lwz     r4, 0x90(r31)
-    lis     r3, 0x8041
-    subi    r3, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r3, r3, cb__7JPADraw@l
     addi    r0, r4, 0xf4
     stw     r0, 0xa8(r31)
     addi    r30, r3, 0x4
@@ -3914,11 +3902,11 @@ loadYBBMtx__7JPADrawFPA4_f: # 0x8032c740
     stfd    f30, 0x38(sp)
     stw     r31, 0x34(sp)
     mr      r31, r4
-    lfs     f4, 0x8f4(rtoc)
+    lfs     f4, 0x8f4(r2)
     lfs     f31, 0x14(r4)
     lfs     f30, 0x24(r4)
     fmadds  f1, f31, f31, f4
-    lfs     f0, 0x8f8(rtoc)
+    lfs     f0, 0x8f8(r2)
     fmadds  f1, f30, f30, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
@@ -3928,18 +3916,18 @@ loadYBBMtx__7JPADrawFPA4_f: # 0x8032c740
 
 branch_0x8032c788:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, 0x8c4(rtoc)
+    lfs     f0, 0x8c4(r2)
     fmuls   f0, f0, f1
     fmuls   f3, f31, f0
     fmuls   f4, f30, f0
 branch_0x8032c79c:
-    lis     r3, 0x8041
-    lfs     f1, 0x8c4(rtoc)
-    subi    r4, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    lfs     f1, 0x8c4(r2)
+    addi    r4, r3, cb__7JPADraw@l
     fneg    f0, f4
     stfs    f1, 0x38(r4)
     addi    r3, r4, 0x68
-    lfs     f2, 0x8f4(rtoc)
+    lfs     f2, 0x8f4(r2)
     stfs    f2, 0x3c(r4)
     stfs    f2, 0x40(r4)
     lfs     f1, 0xc(r31)
@@ -3967,69 +3955,69 @@ branch_0x8032c79c:
 .globl __sinit_JPADraw_cpp
 __sinit_JPADraw_cpp: # 0x8032c810
     mflr    r0
-    lis     r3, 0x8041
+    lis     r3, vc__7JPADraw@ha
     stw     r0, 0x4(sp)
-    lis     r8, 0x803e
-    lis     r6, 0x803e
+    lis     r8, __vvt__23JPADrawExecSetPointSize@h
+    lis     r6, __vvt__23JPADrawExecSetLineWidth@h
     stwu    sp, -0x40(sp)
-    lis     r12, 0x803e
-    lis     r11, 0x803e
+    lis     r12, __vvt__32JPADrawExecRegisterColorEmitterE@h
+    lis     r11, __vvt__31JPADrawExecRegisterColorChildPE@h
     stmw    r23, 0x1c(sp)
-    subi    r7, r3, 0x40dc
-    lis     r4, 0x803e
-    addi    r3, r4, 0x3f28
-    lis     r4, 0x803e
-    addi    r0, r4, 0x4444
-    lis     r10, 0x803e
-    lis     r4, 0x803e
-    lis     r5, 0x803e
-    addi    r8, r8, 0x43ac
-    addi    r6, r6, 0x439c
-    addi    r12, r12, 0x422c
+    addi    r7, r3, vc__7JPADraw@l
+    lis     r4, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r3, r4, __vvt__25JPADrawExecEmitterVisitor@l
+    lis     r4, __vvt__20JPADrawExecGenPrjMtx@h
+    addi    r0, r4, __vvt__20JPADrawExecGenPrjMtx@l
+    lis     r10, __vvt__30JPADrawExecRegisterPrmColorAnm@h
+    lis     r4, __vvt__23JPADrawExecGenPrjTexMtx@h
+    lis     r5, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r8, r8, __vvt__23JPADrawExecSetPointSize@l
+    addi    r6, r6, __vvt__23JPADrawExecSetLineWidth@l
+    addi    r12, r12, __vvt__32JPADrawExecRegisterColorEmitterE@l
     stw     r3, 0x0(r7)
-    addi    r11, r11, 0x421c
-    addi    r10, r10, 0x438c
+    addi    r11, r11, __vvt__31JPADrawExecRegisterColorChildPE@l
+    addi    r10, r10, __vvt__30JPADrawExecRegisterPrmColorAnm@l
     stw     r0, 0x0(r7)
-    addi    r0, r4, 0x4434
-    lis     r4, 0x803e
+    addi    r0, r4, __vvt__23JPADrawExecGenPrjTexMtx@l
+    lis     r4, __vvt__21JPADrawExecGenTexMtx0@h
     stw     r3, 0x4(r7)
     addi    r29, r7, 0x48
     stw     r0, 0x4(r7)
-    addi    r0, r4, 0x4424
-    lis     r4, 0x803e
+    addi    r0, r4, __vvt__21JPADrawExecGenTexMtx0@l
+    lis     r4, __vvt__20JPADrawExecGenIdtMtx@h
     stw     r3, 0x8(r7)
     stw     r0, 0x8(r7)
-    addi    r0, r4, 0x4414
-    lis     r4, 0x803e
+    addi    r0, r4, __vvt__20JPADrawExecGenIdtMtx@l
+    lis     r4, __vvt__20JPADrawExecSetTexMtx@h
     stw     r3, 0xc(r7)
-    addi    r4, r4, 0x43f0
+    addi    r4, r4, __vvt__20JPADrawExecSetTexMtx@l
     addi    r9, r4, 0x10
     stw     r0, 0xc(r7)
-    addi    r0, r5, 0x3f18
-    lis     r5, 0x803e
+    addi    r0, r5, __vvt__26JPADrawExecParticleVisitor@l
+    lis     r5, __vvt__33JPADrawExecRegisterColorEmitterPE@h
     stw     r3, 0x10(r7)
-    addi    r5, r5, 0x424c
+    addi    r5, r5, __vvt__33JPADrawExecRegisterColorEmitterPE@l
     stw     r0, 0x14(r7)
     stw     r4, 0x10(r7)
-    lis     r4, 0x803e
-    addi    r28, r4, 0x423c
+    lis     r4, __vvt__32JPADrawExecRegisterColorEmitterP@h
+    addi    r28, r4, __vvt__32JPADrawExecRegisterColorEmitterP@l
     stw     r9, 0x14(r7)
-    lis     r9, 0x803e
-    lis     r4, 0x803e
+    lis     r9, __vvt__30JPADrawExecRegisterPrmAlphaAnm@h
+    lis     r4, __vvt__29JPADrawExecLoadDefaultTexture@h
     stw     r0, 0x18(r7)
-    addi    r9, r9, 0x437c
-    addi    r4, r4, 0x43e0
+    addi    r9, r9, __vvt__30JPADrawExecRegisterPrmAlphaAnm@l
+    addi    r4, r4, __vvt__29JPADrawExecLoadDefaultTexture@l
     stw     r8, 0x18(r7)
-    lis     r8, 0x803e
-    addi    r8, r8, 0x436c
+    lis     r8, __vvt__30JPADrawExecRegisterEnvColorAnm@h
+    addi    r8, r8, __vvt__30JPADrawExecRegisterEnvColorAnm@l
     stw     r0, 0x1c(r7)
     stw     r6, 0x1c(r7)
-    lis     r6, 0x803e
-    addi    r6, r6, 0x435c
+    lis     r6, __vvt__26JPADrawExecRegisterPrmCEnv@h
+    addi    r6, r6, __vvt__26JPADrawExecRegisterPrmCEnv@l
     stw     r3, 0x20(r7)
     stw     r5, 0x20(r7)
-    lis     r5, 0x803e
-    addi    r5, r5, 0x434c
+    lis     r5, __vvt__26JPADrawExecRegisterPrmAEnv@h
+    addi    r5, r5, __vvt__26JPADrawExecRegisterPrmAEnv@l
     stw     r3, 0x24(r7)
     stw     r28, 0x24(r7)
     stw     r3, 0x28(r7)
@@ -4050,66 +4038,66 @@ __sinit_JPADraw_cpp: # 0x8032c810
     stw     r4, 0x44(r7)
     stw     r3, 0x48(r7)
     stw     r0, 0x4c(r7)
-    lis     r4, 0x803e
-    addi    r4, r4, 0x43bc
+    lis     r4, __vvt__22JPADrawExecLoadTexture@h
+    addi    r4, r4, __vvt__22JPADrawExecLoadTexture@l
     stw     r4, 0x0(r29)
     addi    r5, r4, 0x10
-    lis     r4, 0x803e
+    lis     r4, __vvt__20JPADrawExecLoadExTex@h
     stw     r5, 0x4(r29)
-    addi    r6, r4, 0x4454
-    lis     r5, 0x803e
+    addi    r6, r4, __vvt__20JPADrawExecLoadExTex@l
+    lis     r5, __vvt__20JPADrawExecBillBoard@h
     stw     r3, 0x50(r7)
-    lis     r4, 0x803e
-    lis     r9, 0x803e
+    lis     r4, __vvt__23JPADrawExecRotBillBoard@h
+    lis     r9, __vvt__21JPADrawExecYBillBoard@h
     stw     r6, 0x50(r7)
-    lis     r8, 0x803e
-    lis     r6, 0x803e
+    lis     r8, __vvt__24JPADrawExecRotYBillBoard@h
+    lis     r6, __vvt__22JPADrawExecDirectional@h
     stw     r0, 0x54(r7)
-    addi    r5, r5, 0x433c
-    lis     r12, 0x803e
+    addi    r5, r5, __vvt__20JPADrawExecBillBoard@l
+    lis     r12, __vvt__19JPADrawExecRotation@h
     stw     r5, 0x54(r7)
-    lis     r5, 0x803e
-    lis     r10, 0x803e
+    lis     r5, __vvt__25JPADrawExecRotDirectional@h
+    lis     r10, __vvt__16JPADrawExecPoint@h
     stw     r0, 0x58(r7)
-    addi    r4, r4, 0x432c
-    addi    r9, r9, 0x431c
+    addi    r4, r4, __vvt__23JPADrawExecRotBillBoard@l
+    addi    r9, r9, __vvt__21JPADrawExecYBillBoard@l
     stw     r4, 0x58(r7)
-    addi    r8, r8, 0x430c
-    addi    r6, r6, 0x42fc
+    addi    r8, r8, __vvt__24JPADrawExecRotYBillBoard@l
+    addi    r6, r6, __vvt__22JPADrawExecDirectional@l
     stw     r0, 0x5c(r7)
-    addi    r5, r5, 0x42ec
-    lis     r4, 0x803e
+    addi    r5, r5, __vvt__25JPADrawExecRotDirectional@l
+    lis     r4, __vvt__27JPADrawExecDirectionalCross@h
     stw     r9, 0x5c(r7)
-    lis     r9, 0x803e
-    lis     r29, 0x803e
+    lis     r9, __vvt__15JPADrawExecLine@h
+    lis     r29, __vvt__30JPADrawExecRotDirectionalCross@h
     stw     r0, 0x60(r7)
-    lis     r28, 0x803e
-    addi    r12, r12, 0x42ac
+    lis     r28, __vvt__23JPADrawExecDirBillBoard@h
+    addi    r12, r12, __vvt__19JPADrawExecRotation@l
     stw     r8, 0x60(r7)
-    lis     r8, 0x803e
-    lis     r11, 0x803e
+    lis     r8, __vvt__17JPADrawExecStripe@h
+    lis     r11, __vvt__24JPADrawExecRotationCross@h
     stw     r0, 0x64(r7)
-    addi    r10, r10, 0x428c
-    addi    r9, r9, 0x427c
+    addi    r10, r10, __vvt__16JPADrawExecPoint@l
+    addi    r9, r9, __vvt__15JPADrawExecLine@l
     stw     r6, 0x64(r7)
-    lis     r6, 0x803e
-    addi    r8, r8, 0x426c
+    lis     r6, __vvt__22JPADrawExecStripeCross@h
+    addi    r8, r8, __vvt__17JPADrawExecStripe@l
     stw     r0, 0x68(r7)
-    addi    r6, r6, 0x425c
+    addi    r6, r6, __vvt__22JPADrawExecStripeCross@l
     addi    r31, r7, 0x98
     stw     r5, 0x68(r7)
-    addi    r5, r4, 0x42dc
-    lis     r4, 0x803e
+    addi    r5, r4, __vvt__27JPADrawExecDirectionalCross@l
+    lis     r4, __vvt__19JPADrawExecCallBack@h
     stw     r0, 0x6c(r7)
     stw     r5, 0x6c(r7)
-    addi    r5, r4, 0x4048
-    addi    r4, r29, 0x42cc
+    addi    r5, r4, __vvt__19JPADrawExecCallBack@l
+    addi    r4, r29, __vvt__30JPADrawExecRotDirectionalCross@l
     stw     r0, 0x70(r7)
     stw     r4, 0x70(r7)
-    addi    r4, r28, 0x42bc
+    addi    r4, r28, __vvt__23JPADrawExecDirBillBoard@l
     stw     r0, 0x74(r7)
     stw     r4, 0x74(r7)
-    addi    r4, r11, 0x429c
+    addi    r4, r11, __vvt__24JPADrawExecRotationCross@l
     stw     r0, 0x78(r7)
     stw     r12, 0x78(r7)
     stw     r0, 0x7c(r7)
@@ -4127,66 +4115,66 @@ __sinit_JPADraw_cpp: # 0x8032c810
     stw     r0, 0x94(r7)
     stw     r5, 0x90(r7)
     stw     r4, 0x94(r7)
-    lis     r3, 0x803e
-    addi    r6, r3, 0x3f08
-    lis     r3, 0x803e
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r6, r3, __vvt__26JPADrawCalcParticleVisitor@l
+    lis     r3, __vvt__17JPADrawCalcScaleX@h
     stw     r6, 0x0(r31)
-    addi    r0, r3, 0x4038
+    addi    r0, r3, __vvt__17JPADrawCalcScaleX@l
     stw     r0, 0x0(r31)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4018
+    lis     r3, __vvt__24JPADrawCalcScaleXBySpeed@h
+    addi    r0, r3, __vvt__24JPADrawCalcScaleXBySpeed@l
     stw     r6, 0x9c(r7)
-    lis     r3, 0x803e
-    lis     r5, 0x803e
+    lis     r3, __vvt__17JPADrawCalcScaleY@h
+    lis     r5, __vvt__24JPADrawCalcScaleYBySpeed@h
     stw     r0, 0x9c(r7)
-    addi    r0, r3, 0x4028
-    lis     r4, 0x803e
+    addi    r0, r3, __vvt__17JPADrawCalcScaleY@l
+    lis     r4, __vvt__23JPADrawCalcScaleCopyX2Y@h
     stw     r6, 0xa0(r7)
-    lis     r3, 0x803e
-    lis     r9, 0x803e
+    lis     r3, __vvt__31JPADrawCalcScaleAnmTimingNormal@h
+    lis     r9, __vvt__32JPADrawCalcScaleAnmTimingRepeatX@h
     stw     r0, 0xa0(r7)
-    addi    r0, r5, 0x4008
-    lis     r5, 0x803e
+    addi    r0, r5, __vvt__24JPADrawCalcScaleYBySpeed@l
+    lis     r5, __vvt__32JPADrawCalcScaleAnmTimingRepeatY@h
     stw     r6, 0xa4(r7)
-    lis     r8, 0x803e
-    lis     r10, 0x803e
+    lis     r8, __vvt__33JPADrawCalcScaleAnmTimingReverseX@h
+    lis     r10, __vvt__25JPADrawCalcEmitterVisitor@h
     stw     r0, 0xa4(r7)
-    addi    r0, r4, 0x3ff8
-    lis     r4, 0x803e
+    addi    r0, r4, __vvt__23JPADrawCalcScaleCopyX2Y@l
+    lis     r4, __vvt__33JPADrawCalcScaleAnmTimingReverseY@h
     stw     r6, 0xa8(r7)
     addi    r31, r7, 0xe4
     stw     r0, 0xa8(r7)
-    addi    r0, r3, 0x3fe8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__31JPADrawCalcScaleAnmTimingNormal@l
+    lis     r3, __vvt__19JPADrawCalcColorPrm@h
     stw     r6, 0xac(r7)
     stw     r0, 0xac(r7)
-    addi    r0, r9, 0x3fd8
-    addi    r9, r3, 0x41f8
+    addi    r0, r9, __vvt__32JPADrawCalcScaleAnmTimingRepeatX@l
+    addi    r9, r3, __vvt__19JPADrawCalcColorPrm@l
     stw     r6, 0xb0(r7)
-    lis     r3, 0x803e
-    addi    r11, r3, 0x41d4
+    lis     r3, __vvt__19JPADrawCalcColorEnv@h
+    addi    r11, r3, __vvt__19JPADrawCalcColorEnv@l
     stw     r0, 0xb0(r7)
-    addi    r0, r5, 0x3fc8
-    lis     r3, 0x803e
+    addi    r0, r5, __vvt__32JPADrawCalcScaleAnmTimingRepeatY@l
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameNormal@h
     stw     r6, 0xb4(r7)
-    lis     r5, 0x803e
+    lis     r5, __vvt__31JPADrawCalcColorCopyFromEmitter@h
     stw     r0, 0xb4(r7)
-    addi    r0, r8, 0x3fb8
-    addi    r8, r3, 0x41b0
+    addi    r0, r8, __vvt__33JPADrawCalcScaleAnmTimingReverseX@l
+    addi    r8, r3, __vvt__30JPADrawCalcColorAnmFrameNormal@l
     stw     r6, 0xb8(r7)
-    lis     r3, 0x803e
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameRepeat@h
     stw     r0, 0xb8(r7)
-    addi    r0, r4, 0x3fa8
-    addi    r4, r3, 0x418c
+    addi    r0, r4, __vvt__33JPADrawCalcScaleAnmTimingReverseY@l
+    addi    r4, r3, __vvt__30JPADrawCalcColorAnmFrameRepeat@l
     stw     r6, 0xbc(r7)
     addi    r3, r9, 0x10
     stw     r0, 0xbc(r7)
-    addi    r0, r10, 0x3ef8
+    addi    r0, r10, __vvt__25JPADrawCalcEmitterVisitor@l
     addi    r10, r11, 0x10
     stw     r0, 0xc0(r7)
     stw     r6, 0xc4(r7)
     stw     r9, 0xc0(r7)
-    addi    r9, r5, 0x3f98
+    addi    r9, r5, __vvt__31JPADrawCalcColorCopyFromEmitter@l
     addi    r5, r8, 0x10
     stw     r3, 0xc4(r7)
     addi    r3, r4, 0x10
@@ -4206,47 +4194,47 @@ __sinit_JPADraw_cpp: # 0x8032c810
     stw     r3, 0xe0(r7)
     stw     r0, 0xe4(r7)
     stw     r6, 0xe8(r7)
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4168
+    lis     r3, __vvt__31JPADrawCalcColorAnmFrameReverse@h
+    addi    r3, r3, __vvt__31JPADrawCalcColorAnmFrameReverse@l
     stw     r3, 0x0(r31)
     addi    r4, r3, 0x10
-    lis     r9, 0x803e
+    lis     r9, __vvt__16JPADrawCalcAlpha@h
     stw     r4, 0x4(r31)
-    lis     r3, 0x803e
-    addi    r4, r3, 0x4144
+    lis     r3, __vvt__29JPADrawCalcColorAnmFrameMerge@h
+    addi    r4, r3, __vvt__29JPADrawCalcColorAnmFrameMerge@l
     stw     r0, 0xec(r7)
-    lis     r3, 0x803e
-    addi    r11, r3, 0x4120
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameRandom@h
+    addi    r11, r3, __vvt__30JPADrawCalcColorAnmFrameRandom@l
     stw     r6, 0xf0(r7)
-    lis     r8, 0x803e
+    lis     r8, __vvt__27JPADrawCalcAlphaFlickNrmSin@h
     addi    r3, r4, 0x10
     stw     r4, 0xec(r7)
-    addi    r9, r9, 0x3f88
-    addi    r8, r8, 0x3f78
+    addi    r9, r9, __vvt__16JPADrawCalcAlpha@l
+    addi    r8, r8, __vvt__27JPADrawCalcAlphaFlickNrmSin@l
     stw     r3, 0xf0(r7)
-    lis     r3, 0x803e
-    addi    r12, r3, 0x40fc
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexNormal@h
+    addi    r12, r3, __vvt__32JPADrawCalcTextureAnmIndexNormal@l
     stw     r0, 0xf4(r7)
-    lis     r3, 0x803e
-    addi    r10, r3, 0x40d8
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexRepeat@h
+    addi    r10, r3, __vvt__32JPADrawCalcTextureAnmIndexRepeat@l
     stw     r6, 0xf8(r7)
-    lis     r3, 0x803e
-    addi    r29, r3, 0x40b4
+    lis     r3, __vvt__33JPADrawCalcTextureAnmIndexReverse@h
+    addi    r29, r3, __vvt__33JPADrawCalcTextureAnmIndexReverse@l
     stw     r11, 0xf4(r7)
     addi    r11, r11, 0x10
-    lis     r3, 0x803e
+    lis     r3, __vvt__31JPADrawCalcTextureAnmIndexMerge@h
     stw     r11, 0xf8(r7)
-    addi    r31, r3, 0x4090
-    lis     r3, 0x803e
+    addi    r31, r3, __vvt__31JPADrawCalcTextureAnmIndexMerge@l
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexRandom@h
     stw     r6, 0xfc(r7)
-    lis     r5, 0x803e
-    addi    r11, r3, 0x406c
+    lis     r5, __vvt__27JPADrawCalcAlphaFlickAddSin@h
+    addi    r11, r3, __vvt__32JPADrawCalcTextureAnmIndexRandom@l
     stw     r9, 0xfc(r7)
-    addi    r3, r5, 0x3f68
-    lis     r9, 0x803e
+    addi    r3, r5, __vvt__27JPADrawCalcAlphaFlickAddSin@l
+    lis     r9, __vvt__24JPADrawCalcChildAlphaOut@h
     stw     r6, 0x100(r7)
-    lis     r5, 0x8040
-    lis     r4, 0x803e
+    lis     r5, unk_803fe2b8@ha
+    lis     r4, __vvt__28JPADrawCalcAlphaFlickMultSin@h
     stw     r8, 0x100(r7)
     addi    r28, r10, 0x10
     addi    r26, r7, 0x11c
@@ -4254,20 +4242,20 @@ __sinit_JPADraw_cpp: # 0x8032c810
     addi    r30, r29, 0x10
     addi    r25, r7, 0x124
     stw     r3, 0x104(r7)
-    addi    r3, r4, 0x3f58
-    lis     r4, 0x8033
+    addi    r3, r4, __vvt__28JPADrawCalcAlphaFlickMultSin@l
+    lis     r4, __dt__23JPADrawVisitorContainerFv@ha
     stw     r6, 0x108(r7)
     addi    r24, r7, 0x12c
     addi    r23, r7, 0x134
     stw     r3, 0x108(r7)
-    addi    r9, r9, 0x3f48
+    addi    r9, r9, __vvt__24JPADrawCalcChildAlphaOut@l
     addi    r27, r7, 0x138
     stw     r0, 0x10c(r7)
-    lis     r8, 0x803e
+    lis     r8, __vvt__24JPADrawCalcChildScaleOut@h
     addi    r3, r7, 0x0
     stw     r6, 0x110(r7)
-    subi    r4, r4, 0x3234
-    subi    r5, r5, 0x1d48
+    addi    r4, r4, __dt__23JPADrawVisitorContainerFv@l
+    addi    r5, r5, unk_803fe2b8@l
     stw     r12, 0x10c(r7)
     addi    r12, r12, 0x10
     stw     r12, 0x110(r7)
@@ -4278,7 +4266,7 @@ __sinit_JPADraw_cpp: # 0x8032c810
     addi    r10, r11, 0x10
     stw     r28, 0x118(r7)
     stw     r0, 0x11c(r7)
-    addi    r7, r8, 0x3f38
+    addi    r7, r8, __vvt__24JPADrawCalcChildScaleOut@l
     stw     r6, 0x4(r26)
     stw     r29, 0x0(r26)
     stw     r30, 0x4(r26)
@@ -4295,21 +4283,21 @@ __sinit_JPADraw_cpp: # 0x8032c810
     stw     r6, 0x0(r27)
     stw     r7, 0x0(r27)
     bl      __register_global_object
-    lis     r3, 0x8041
-    subi    r0, r3, 0x3ef0
+    lis     r3, cb__7JPADraw@ha
+    addi    r0, r3, cb__7JPADraw@l
     stw     r0, 0xc(sp)
-    lis     r3, 0x8003
-    subi    r4, r3, 0x83c
+    lis     r3, __ct__Q29JGeometry8TVec2_f_Fv@ha
+    addi    r4, r3, __ct__Q29JGeometry8TVec2_f_Fv@l
     lwz     r28, 0xc(sp)
     li      r5, 0x0
     li      r6, 0x8
     addi    r3, r28, 0x14
     li      r7, 0x4
     bl      __construct_array
-    lis     r4, 0x8033
-    lis     r3, 0x8040
-    subi    r5, r3, 0x1d3c
-    subi    r4, r4, 0x3274
+    lis     r4, __dt__16JPADrawClipBoardFv@ha
+    lis     r3, unk_803fe2c4@ha
+    addi    r5, r3, unk_803fe2c4@l
+    addi    r4, r4, __dt__16JPADrawClipBoardFv@l
     addi    r3, r28, 0x0
     bl      __register_global_object
     lmw     r23, 0x1c(sp)
@@ -4350,825 +4338,825 @@ __dt__23JPADrawVisitorContainerFv: # 0x8032cdcc
     beq-    branch_0x8032d994
     addic.  r0, r31, 0x138
     beq-    branch_0x8032ce0c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f38
+    lis     r3, __vvt__24JPADrawCalcChildScaleOut@h
+    addi    r3, r3, __vvt__24JPADrawCalcChildScaleOut@l
     addic.  r0, r31, 0x138
     stw     r3, 0x138(r31)
     beq-    branch_0x8032ce0c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x138(r31)
 branch_0x8032ce0c:
     addic.  r0, r31, 0x134
     beq-    branch_0x8032ce34
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f48
+    lis     r3, __vvt__24JPADrawCalcChildAlphaOut@h
+    addi    r3, r3, __vvt__24JPADrawCalcChildAlphaOut@l
     addic.  r0, r31, 0x134
     stw     r3, 0x134(r31)
     beq-    branch_0x8032ce34
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x134(r31)
 branch_0x8032ce34:
     addic.  r0, r31, 0x12c
     beq-    branch_0x8032ce78
-    lis     r3, 0x803e
-    addi    r3, r3, 0x406c
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexRandom@h
+    addi    r3, r3, __vvt__32JPADrawCalcTextureAnmIndexRandom@l
     stw     r3, 0x12c(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x130
     stw     r3, 0x130(r31)
     beq-    branch_0x8032ce64
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x130(r31)
 branch_0x8032ce64:
     addic.  r0, r31, 0x12c
     beq-    branch_0x8032ce78
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x12c(r31)
 branch_0x8032ce78:
     addic.  r0, r31, 0x124
     beq-    branch_0x8032cebc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4090
+    lis     r3, __vvt__31JPADrawCalcTextureAnmIndexMerge@h
+    addi    r3, r3, __vvt__31JPADrawCalcTextureAnmIndexMerge@l
     stw     r3, 0x124(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x128
     stw     r3, 0x128(r31)
     beq-    branch_0x8032cea8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x128(r31)
 branch_0x8032cea8:
     addic.  r0, r31, 0x124
     beq-    branch_0x8032cebc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x124(r31)
 branch_0x8032cebc:
     addic.  r0, r31, 0x11c
     beq-    branch_0x8032cf00
-    lis     r3, 0x803e
-    addi    r3, r3, 0x40b4
+    lis     r3, __vvt__33JPADrawCalcTextureAnmIndexReverse@h
+    addi    r3, r3, __vvt__33JPADrawCalcTextureAnmIndexReverse@l
     stw     r3, 0x11c(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x120
     stw     r3, 0x120(r31)
     beq-    branch_0x8032ceec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x120(r31)
 branch_0x8032ceec:
     addic.  r0, r31, 0x11c
     beq-    branch_0x8032cf00
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x11c(r31)
 branch_0x8032cf00:
     addic.  r0, r31, 0x114
     beq-    branch_0x8032cf44
-    lis     r3, 0x803e
-    addi    r3, r3, 0x40d8
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexRepeat@h
+    addi    r3, r3, __vvt__32JPADrawCalcTextureAnmIndexRepeat@l
     stw     r3, 0x114(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x118
     stw     r3, 0x118(r31)
     beq-    branch_0x8032cf30
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x118(r31)
 branch_0x8032cf30:
     addic.  r0, r31, 0x114
     beq-    branch_0x8032cf44
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x114(r31)
 branch_0x8032cf44:
     addic.  r0, r31, 0x10c
     beq-    branch_0x8032cf88
-    lis     r3, 0x803e
-    addi    r3, r3, 0x40fc
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexNormal@h
+    addi    r3, r3, __vvt__32JPADrawCalcTextureAnmIndexNormal@l
     stw     r3, 0x10c(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x110
     stw     r3, 0x110(r31)
     beq-    branch_0x8032cf74
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x110(r31)
 branch_0x8032cf74:
     addic.  r0, r31, 0x10c
     beq-    branch_0x8032cf88
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x10c(r31)
 branch_0x8032cf88:
     addic.  r0, r31, 0x108
     beq-    branch_0x8032cfb0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f58
+    lis     r3, __vvt__28JPADrawCalcAlphaFlickMultSin@h
+    addi    r3, r3, __vvt__28JPADrawCalcAlphaFlickMultSin@l
     addic.  r0, r31, 0x108
     stw     r3, 0x108(r31)
     beq-    branch_0x8032cfb0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x108(r31)
 branch_0x8032cfb0:
     addic.  r0, r31, 0x104
     beq-    branch_0x8032cfd8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f68
+    lis     r3, __vvt__27JPADrawCalcAlphaFlickAddSin@h
+    addi    r3, r3, __vvt__27JPADrawCalcAlphaFlickAddSin@l
     addic.  r0, r31, 0x104
     stw     r3, 0x104(r31)
     beq-    branch_0x8032cfd8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x104(r31)
 branch_0x8032cfd8:
     addic.  r0, r31, 0x100
     beq-    branch_0x8032d000
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f78
+    lis     r3, __vvt__27JPADrawCalcAlphaFlickNrmSin@h
+    addi    r3, r3, __vvt__27JPADrawCalcAlphaFlickNrmSin@l
     addic.  r0, r31, 0x100
     stw     r3, 0x100(r31)
     beq-    branch_0x8032d000
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x100(r31)
 branch_0x8032d000:
     addic.  r0, r31, 0xfc
     beq-    branch_0x8032d028
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f88
+    lis     r3, __vvt__16JPADrawCalcAlpha@h
+    addi    r3, r3, __vvt__16JPADrawCalcAlpha@l
     addic.  r0, r31, 0xfc
     stw     r3, 0xfc(r31)
     beq-    branch_0x8032d028
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xfc(r31)
 branch_0x8032d028:
     addic.  r0, r31, 0xf4
     beq-    branch_0x8032d06c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4120
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameRandom@h
+    addi    r3, r3, __vvt__30JPADrawCalcColorAnmFrameRandom@l
     stw     r3, 0xf4(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0xf8
     stw     r3, 0xf8(r31)
     beq-    branch_0x8032d058
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xf8(r31)
 branch_0x8032d058:
     addic.  r0, r31, 0xf4
     beq-    branch_0x8032d06c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0xf4(r31)
 branch_0x8032d06c:
     addic.  r0, r31, 0xec
     beq-    branch_0x8032d0b0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4144
+    lis     r3, __vvt__29JPADrawCalcColorAnmFrameMerge@h
+    addi    r3, r3, __vvt__29JPADrawCalcColorAnmFrameMerge@l
     stw     r3, 0xec(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0xf0
     stw     r3, 0xf0(r31)
     beq-    branch_0x8032d09c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xf0(r31)
 branch_0x8032d09c:
     addic.  r0, r31, 0xec
     beq-    branch_0x8032d0b0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0xec(r31)
 branch_0x8032d0b0:
     addic.  r0, r31, 0xe4
     beq-    branch_0x8032d0f4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4168
+    lis     r3, __vvt__31JPADrawCalcColorAnmFrameReverse@h
+    addi    r3, r3, __vvt__31JPADrawCalcColorAnmFrameReverse@l
     stw     r3, 0xe4(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0xe8
     stw     r3, 0xe8(r31)
     beq-    branch_0x8032d0e0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xe8(r31)
 branch_0x8032d0e0:
     addic.  r0, r31, 0xe4
     beq-    branch_0x8032d0f4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0xe4(r31)
 branch_0x8032d0f4:
     addic.  r0, r31, 0xdc
     beq-    branch_0x8032d138
-    lis     r3, 0x803e
-    addi    r3, r3, 0x418c
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameRepeat@h
+    addi    r3, r3, __vvt__30JPADrawCalcColorAnmFrameRepeat@l
     stw     r3, 0xdc(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0xe0
     stw     r3, 0xe0(r31)
     beq-    branch_0x8032d124
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xe0(r31)
 branch_0x8032d124:
     addic.  r0, r31, 0xdc
     beq-    branch_0x8032d138
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0xdc(r31)
 branch_0x8032d138:
     addic.  r0, r31, 0xd4
     beq-    branch_0x8032d17c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x41b0
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameNormal@h
+    addi    r3, r3, __vvt__30JPADrawCalcColorAnmFrameNormal@l
     stw     r3, 0xd4(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0xd8
     stw     r3, 0xd8(r31)
     beq-    branch_0x8032d168
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xd8(r31)
 branch_0x8032d168:
     addic.  r0, r31, 0xd4
     beq-    branch_0x8032d17c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0xd4(r31)
 branch_0x8032d17c:
     addic.  r0, r31, 0xd0
     beq-    branch_0x8032d1a4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f98
+    lis     r3, __vvt__31JPADrawCalcColorCopyFromEmitter@h
+    addi    r3, r3, __vvt__31JPADrawCalcColorCopyFromEmitter@l
     addic.  r0, r31, 0xd0
     stw     r3, 0xd0(r31)
     beq-    branch_0x8032d1a4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xd0(r31)
 branch_0x8032d1a4:
     addic.  r0, r31, 0xc8
     beq-    branch_0x8032d1e8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x41d4
+    lis     r3, __vvt__19JPADrawCalcColorEnv@h
+    addi    r3, r3, __vvt__19JPADrawCalcColorEnv@l
     stw     r3, 0xc8(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0xcc
     stw     r3, 0xcc(r31)
     beq-    branch_0x8032d1d4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xcc(r31)
 branch_0x8032d1d4:
     addic.  r0, r31, 0xc8
     beq-    branch_0x8032d1e8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0xc8(r31)
 branch_0x8032d1e8:
     addic.  r0, r31, 0xc0
     beq-    branch_0x8032d22c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x41f8
+    lis     r3, __vvt__19JPADrawCalcColorPrm@h
+    addi    r3, r3, __vvt__19JPADrawCalcColorPrm@l
     stw     r3, 0xc0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0xc4
     stw     r3, 0xc4(r31)
     beq-    branch_0x8032d218
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xc4(r31)
 branch_0x8032d218:
     addic.  r0, r31, 0xc0
     beq-    branch_0x8032d22c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0xc0(r31)
 branch_0x8032d22c:
     addic.  r0, r31, 0xbc
     beq-    branch_0x8032d254
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3fa8
+    lis     r3, __vvt__33JPADrawCalcScaleAnmTimingReverseY@h
+    addi    r3, r3, __vvt__33JPADrawCalcScaleAnmTimingReverseY@l
     addic.  r0, r31, 0xbc
     stw     r3, 0xbc(r31)
     beq-    branch_0x8032d254
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xbc(r31)
 branch_0x8032d254:
     addic.  r0, r31, 0xb8
     beq-    branch_0x8032d27c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3fb8
+    lis     r3, __vvt__33JPADrawCalcScaleAnmTimingReverseX@h
+    addi    r3, r3, __vvt__33JPADrawCalcScaleAnmTimingReverseX@l
     addic.  r0, r31, 0xb8
     stw     r3, 0xb8(r31)
     beq-    branch_0x8032d27c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xb8(r31)
 branch_0x8032d27c:
     addic.  r0, r31, 0xb4
     beq-    branch_0x8032d2a4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3fc8
+    lis     r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatY@h
+    addi    r3, r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatY@l
     addic.  r0, r31, 0xb4
     stw     r3, 0xb4(r31)
     beq-    branch_0x8032d2a4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xb4(r31)
 branch_0x8032d2a4:
     addic.  r0, r31, 0xb0
     beq-    branch_0x8032d2cc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3fd8
+    lis     r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatX@h
+    addi    r3, r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatX@l
     addic.  r0, r31, 0xb0
     stw     r3, 0xb0(r31)
     beq-    branch_0x8032d2cc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xb0(r31)
 branch_0x8032d2cc:
     addic.  r0, r31, 0xac
     beq-    branch_0x8032d2f4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3fe8
+    lis     r3, __vvt__31JPADrawCalcScaleAnmTimingNormal@h
+    addi    r3, r3, __vvt__31JPADrawCalcScaleAnmTimingNormal@l
     addic.  r0, r31, 0xac
     stw     r3, 0xac(r31)
     beq-    branch_0x8032d2f4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xac(r31)
 branch_0x8032d2f4:
     addic.  r0, r31, 0xa8
     beq-    branch_0x8032d31c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3ff8
+    lis     r3, __vvt__23JPADrawCalcScaleCopyX2Y@h
+    addi    r3, r3, __vvt__23JPADrawCalcScaleCopyX2Y@l
     addic.  r0, r31, 0xa8
     stw     r3, 0xa8(r31)
     beq-    branch_0x8032d31c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xa8(r31)
 branch_0x8032d31c:
     addic.  r0, r31, 0xa4
     beq-    branch_0x8032d344
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4008
+    lis     r3, __vvt__24JPADrawCalcScaleYBySpeed@h
+    addi    r3, r3, __vvt__24JPADrawCalcScaleYBySpeed@l
     addic.  r0, r31, 0xa4
     stw     r3, 0xa4(r31)
     beq-    branch_0x8032d344
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xa4(r31)
 branch_0x8032d344:
     addic.  r0, r31, 0xa0
     beq-    branch_0x8032d36c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4028
+    lis     r3, __vvt__17JPADrawCalcScaleY@h
+    addi    r3, r3, __vvt__17JPADrawCalcScaleY@l
     addic.  r0, r31, 0xa0
     stw     r3, 0xa0(r31)
     beq-    branch_0x8032d36c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0xa0(r31)
 branch_0x8032d36c:
     addic.  r0, r31, 0x9c
     beq-    branch_0x8032d394
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4018
+    lis     r3, __vvt__24JPADrawCalcScaleXBySpeed@h
+    addi    r3, r3, __vvt__24JPADrawCalcScaleXBySpeed@l
     addic.  r0, r31, 0x9c
     stw     r3, 0x9c(r31)
     beq-    branch_0x8032d394
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x9c(r31)
 branch_0x8032d394:
     addic.  r0, r31, 0x98
     beq-    branch_0x8032d3bc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4038
+    lis     r3, __vvt__17JPADrawCalcScaleX@h
+    addi    r3, r3, __vvt__17JPADrawCalcScaleX@l
     addic.  r0, r31, 0x98
     stw     r3, 0x98(r31)
     beq-    branch_0x8032d3bc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x98(r31)
 branch_0x8032d3bc:
     addic.  r0, r31, 0x90
     beq-    branch_0x8032d400
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4048
+    lis     r3, __vvt__19JPADrawExecCallBack@h
+    addi    r3, r3, __vvt__19JPADrawExecCallBack@l
     stw     r3, 0x90(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x94
     stw     r3, 0x94(r31)
     beq-    branch_0x8032d3ec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x94(r31)
 branch_0x8032d3ec:
     addic.  r0, r31, 0x90
     beq-    branch_0x8032d400
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x90(r31)
 branch_0x8032d400:
     addic.  r0, r31, 0x8c
     beq-    branch_0x8032d428
-    lis     r3, 0x803e
-    addi    r3, r3, 0x425c
+    lis     r3, __vvt__22JPADrawExecStripeCross@h
+    addi    r3, r3, __vvt__22JPADrawExecStripeCross@l
     addic.  r0, r31, 0x8c
     stw     r3, 0x8c(r31)
     beq-    branch_0x8032d428
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x8c(r31)
 branch_0x8032d428:
     addic.  r0, r31, 0x88
     beq-    branch_0x8032d450
-    lis     r3, 0x803e
-    addi    r3, r3, 0x426c
+    lis     r3, __vvt__17JPADrawExecStripe@h
+    addi    r3, r3, __vvt__17JPADrawExecStripe@l
     addic.  r0, r31, 0x88
     stw     r3, 0x88(r31)
     beq-    branch_0x8032d450
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x88(r31)
 branch_0x8032d450:
     addic.  r0, r31, 0x84
     beq-    branch_0x8032d478
-    lis     r3, 0x803e
-    addi    r3, r3, 0x427c
+    lis     r3, __vvt__15JPADrawExecLine@h
+    addi    r3, r3, __vvt__15JPADrawExecLine@l
     addic.  r0, r31, 0x84
     stw     r3, 0x84(r31)
     beq-    branch_0x8032d478
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x84(r31)
 branch_0x8032d478:
     addic.  r0, r31, 0x80
     beq-    branch_0x8032d4a0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x428c
+    lis     r3, __vvt__16JPADrawExecPoint@h
+    addi    r3, r3, __vvt__16JPADrawExecPoint@l
     addic.  r0, r31, 0x80
     stw     r3, 0x80(r31)
     beq-    branch_0x8032d4a0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x80(r31)
 branch_0x8032d4a0:
     addic.  r0, r31, 0x7c
     beq-    branch_0x8032d4c8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x429c
+    lis     r3, __vvt__24JPADrawExecRotationCross@h
+    addi    r3, r3, __vvt__24JPADrawExecRotationCross@l
     addic.  r0, r31, 0x7c
     stw     r3, 0x7c(r31)
     beq-    branch_0x8032d4c8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x7c(r31)
 branch_0x8032d4c8:
     addic.  r0, r31, 0x78
     beq-    branch_0x8032d4f0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x42ac
+    lis     r3, __vvt__19JPADrawExecRotation@h
+    addi    r3, r3, __vvt__19JPADrawExecRotation@l
     addic.  r0, r31, 0x78
     stw     r3, 0x78(r31)
     beq-    branch_0x8032d4f0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x78(r31)
 branch_0x8032d4f0:
     addic.  r0, r31, 0x74
     beq-    branch_0x8032d518
-    lis     r3, 0x803e
-    addi    r3, r3, 0x42bc
+    lis     r3, __vvt__23JPADrawExecDirBillBoard@h
+    addi    r3, r3, __vvt__23JPADrawExecDirBillBoard@l
     addic.  r0, r31, 0x74
     stw     r3, 0x74(r31)
     beq-    branch_0x8032d518
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x74(r31)
 branch_0x8032d518:
     addic.  r0, r31, 0x70
     beq-    branch_0x8032d540
-    lis     r3, 0x803e
-    addi    r3, r3, 0x42cc
+    lis     r3, __vvt__30JPADrawExecRotDirectionalCross@h
+    addi    r3, r3, __vvt__30JPADrawExecRotDirectionalCross@l
     addic.  r0, r31, 0x70
     stw     r3, 0x70(r31)
     beq-    branch_0x8032d540
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x70(r31)
 branch_0x8032d540:
     addic.  r0, r31, 0x6c
     beq-    branch_0x8032d568
-    lis     r3, 0x803e
-    addi    r3, r3, 0x42dc
+    lis     r3, __vvt__27JPADrawExecDirectionalCross@h
+    addi    r3, r3, __vvt__27JPADrawExecDirectionalCross@l
     addic.  r0, r31, 0x6c
     stw     r3, 0x6c(r31)
     beq-    branch_0x8032d568
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x6c(r31)
 branch_0x8032d568:
     addic.  r0, r31, 0x68
     beq-    branch_0x8032d590
-    lis     r3, 0x803e
-    addi    r3, r3, 0x42ec
+    lis     r3, __vvt__25JPADrawExecRotDirectional@h
+    addi    r3, r3, __vvt__25JPADrawExecRotDirectional@l
     addic.  r0, r31, 0x68
     stw     r3, 0x68(r31)
     beq-    branch_0x8032d590
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x68(r31)
 branch_0x8032d590:
     addic.  r0, r31, 0x64
     beq-    branch_0x8032d5b8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x42fc
+    lis     r3, __vvt__22JPADrawExecDirectional@h
+    addi    r3, r3, __vvt__22JPADrawExecDirectional@l
     addic.  r0, r31, 0x64
     stw     r3, 0x64(r31)
     beq-    branch_0x8032d5b8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x64(r31)
 branch_0x8032d5b8:
     addic.  r0, r31, 0x60
     beq-    branch_0x8032d5e0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x430c
+    lis     r3, __vvt__24JPADrawExecRotYBillBoard@h
+    addi    r3, r3, __vvt__24JPADrawExecRotYBillBoard@l
     addic.  r0, r31, 0x60
     stw     r3, 0x60(r31)
     beq-    branch_0x8032d5e0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x60(r31)
 branch_0x8032d5e0:
     addic.  r0, r31, 0x5c
     beq-    branch_0x8032d608
-    lis     r3, 0x803e
-    addi    r3, r3, 0x431c
+    lis     r3, __vvt__21JPADrawExecYBillBoard@h
+    addi    r3, r3, __vvt__21JPADrawExecYBillBoard@l
     addic.  r0, r31, 0x5c
     stw     r3, 0x5c(r31)
     beq-    branch_0x8032d608
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x5c(r31)
 branch_0x8032d608:
     addic.  r0, r31, 0x58
     beq-    branch_0x8032d630
-    lis     r3, 0x803e
-    addi    r3, r3, 0x432c
+    lis     r3, __vvt__23JPADrawExecRotBillBoard@h
+    addi    r3, r3, __vvt__23JPADrawExecRotBillBoard@l
     addic.  r0, r31, 0x58
     stw     r3, 0x58(r31)
     beq-    branch_0x8032d630
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x58(r31)
 branch_0x8032d630:
     addic.  r0, r31, 0x54
     beq-    branch_0x8032d658
-    lis     r3, 0x803e
-    addi    r3, r3, 0x433c
+    lis     r3, __vvt__20JPADrawExecBillBoard@h
+    addi    r3, r3, __vvt__20JPADrawExecBillBoard@l
     addic.  r0, r31, 0x54
     stw     r3, 0x54(r31)
     beq-    branch_0x8032d658
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x54(r31)
 branch_0x8032d658:
     addic.  r0, r31, 0x50
     beq-    branch_0x8032d680
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4454
+    lis     r3, __vvt__20JPADrawExecLoadExTex@h
+    addi    r3, r3, __vvt__20JPADrawExecLoadExTex@l
     addic.  r0, r31, 0x50
     stw     r3, 0x50(r31)
     beq-    branch_0x8032d680
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x50(r31)
 branch_0x8032d680:
     addic.  r0, r31, 0x48
     beq-    branch_0x8032d6c4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x43bc
+    lis     r3, __vvt__22JPADrawExecLoadTexture@h
+    addi    r3, r3, __vvt__22JPADrawExecLoadTexture@l
     stw     r3, 0x48(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4c
     stw     r3, 0x4c(r31)
     beq-    branch_0x8032d6b0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x4c(r31)
 branch_0x8032d6b0:
     addic.  r0, r31, 0x48
     beq-    branch_0x8032d6c4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x48(r31)
 branch_0x8032d6c4:
     addic.  r0, r31, 0x44
     beq-    branch_0x8032d6ec
-    lis     r3, 0x803e
-    addi    r3, r3, 0x43e0
+    lis     r3, __vvt__29JPADrawExecLoadDefaultTexture@h
+    addi    r3, r3, __vvt__29JPADrawExecLoadDefaultTexture@l
     addic.  r0, r31, 0x44
     stw     r3, 0x44(r31)
     beq-    branch_0x8032d6ec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x44(r31)
 branch_0x8032d6ec:
     addic.  r0, r31, 0x40
     beq-    branch_0x8032d714
-    lis     r3, 0x803e
-    addi    r3, r3, 0x434c
+    lis     r3, __vvt__26JPADrawExecRegisterPrmAEnv@h
+    addi    r3, r3, __vvt__26JPADrawExecRegisterPrmAEnv@l
     addic.  r0, r31, 0x40
     stw     r3, 0x40(r31)
     beq-    branch_0x8032d714
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x40(r31)
 branch_0x8032d714:
     addic.  r0, r31, 0x3c
     beq-    branch_0x8032d73c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x435c
+    lis     r3, __vvt__26JPADrawExecRegisterPrmCEnv@h
+    addi    r3, r3, __vvt__26JPADrawExecRegisterPrmCEnv@l
     addic.  r0, r31, 0x3c
     stw     r3, 0x3c(r31)
     beq-    branch_0x8032d73c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x3c(r31)
 branch_0x8032d73c:
     addic.  r0, r31, 0x38
     beq-    branch_0x8032d764
-    lis     r3, 0x803e
-    addi    r3, r3, 0x436c
+    lis     r3, __vvt__30JPADrawExecRegisterEnvColorAnm@h
+    addi    r3, r3, __vvt__30JPADrawExecRegisterEnvColorAnm@l
     addic.  r0, r31, 0x38
     stw     r3, 0x38(r31)
     beq-    branch_0x8032d764
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x38(r31)
 branch_0x8032d764:
     addic.  r0, r31, 0x34
     beq-    branch_0x8032d78c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x437c
+    lis     r3, __vvt__30JPADrawExecRegisterPrmAlphaAnm@h
+    addi    r3, r3, __vvt__30JPADrawExecRegisterPrmAlphaAnm@l
     addic.  r0, r31, 0x34
     stw     r3, 0x34(r31)
     beq-    branch_0x8032d78c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x34(r31)
 branch_0x8032d78c:
     addic.  r0, r31, 0x30
     beq-    branch_0x8032d7b4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x438c
+    lis     r3, __vvt__30JPADrawExecRegisterPrmColorAnm@h
+    addi    r3, r3, __vvt__30JPADrawExecRegisterPrmColorAnm@l
     addic.  r0, r31, 0x30
     stw     r3, 0x30(r31)
     beq-    branch_0x8032d7b4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x30(r31)
 branch_0x8032d7b4:
     addic.  r0, r31, 0x2c
     beq-    branch_0x8032d7dc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x421c
+    lis     r3, __vvt__31JPADrawExecRegisterColorChildPE@h
+    addi    r3, r3, __vvt__31JPADrawExecRegisterColorChildPE@l
     addic.  r0, r31, 0x2c
     stw     r3, 0x2c(r31)
     beq-    branch_0x8032d7dc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x2c(r31)
 branch_0x8032d7dc:
     addic.  r0, r31, 0x28
     beq-    branch_0x8032d804
-    lis     r3, 0x803e
-    addi    r3, r3, 0x422c
+    lis     r3, __vvt__32JPADrawExecRegisterColorEmitterE@h
+    addi    r3, r3, __vvt__32JPADrawExecRegisterColorEmitterE@l
     addic.  r0, r31, 0x28
     stw     r3, 0x28(r31)
     beq-    branch_0x8032d804
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x28(r31)
 branch_0x8032d804:
     addic.  r0, r31, 0x24
     beq-    branch_0x8032d82c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x423c
+    lis     r3, __vvt__32JPADrawExecRegisterColorEmitterP@h
+    addi    r3, r3, __vvt__32JPADrawExecRegisterColorEmitterP@l
     addic.  r0, r31, 0x24
     stw     r3, 0x24(r31)
     beq-    branch_0x8032d82c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x24(r31)
 branch_0x8032d82c:
     addic.  r0, r31, 0x20
     beq-    branch_0x8032d854
-    lis     r3, 0x803e
-    addi    r3, r3, 0x424c
+    lis     r3, __vvt__33JPADrawExecRegisterColorEmitterPE@h
+    addi    r3, r3, __vvt__33JPADrawExecRegisterColorEmitterPE@l
     addic.  r0, r31, 0x20
     stw     r3, 0x20(r31)
     beq-    branch_0x8032d854
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x20(r31)
 branch_0x8032d854:
     addic.  r0, r31, 0x1c
     beq-    branch_0x8032d87c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x439c
+    lis     r3, __vvt__23JPADrawExecSetLineWidth@h
+    addi    r3, r3, __vvt__23JPADrawExecSetLineWidth@l
     addic.  r0, r31, 0x1c
     stw     r3, 0x1c(r31)
     beq-    branch_0x8032d87c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x1c(r31)
 branch_0x8032d87c:
     addic.  r0, r31, 0x18
     beq-    branch_0x8032d8a4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x43ac
+    lis     r3, __vvt__23JPADrawExecSetPointSize@h
+    addi    r3, r3, __vvt__23JPADrawExecSetPointSize@l
     addic.  r0, r31, 0x18
     stw     r3, 0x18(r31)
     beq-    branch_0x8032d8a4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x18(r31)
 branch_0x8032d8a4:
     addic.  r0, r31, 0x10
     beq-    branch_0x8032d8e8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x43f0
+    lis     r3, __vvt__20JPADrawExecSetTexMtx@h
+    addi    r3, r3, __vvt__20JPADrawExecSetTexMtx@l
     stw     r3, 0x10(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x14
     stw     r3, 0x14(r31)
     beq-    branch_0x8032d8d4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x14(r31)
 branch_0x8032d8d4:
     addic.  r0, r31, 0x10
     beq-    branch_0x8032d8e8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x10(r31)
 branch_0x8032d8e8:
     addic.  r0, r31, 0xc
     beq-    branch_0x8032d910
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4414
+    lis     r3, __vvt__20JPADrawExecGenIdtMtx@h
+    addi    r3, r3, __vvt__20JPADrawExecGenIdtMtx@l
     addic.  r0, r31, 0xc
     stw     r3, 0xc(r31)
     beq-    branch_0x8032d910
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0xc(r31)
 branch_0x8032d910:
     addic.  r0, r31, 0x8
     beq-    branch_0x8032d938
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4424
+    lis     r3, __vvt__21JPADrawExecGenTexMtx0@h
+    addi    r3, r3, __vvt__21JPADrawExecGenTexMtx0@l
     addic.  r0, r31, 0x8
     stw     r3, 0x8(r31)
     beq-    branch_0x8032d938
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x8(r31)
 branch_0x8032d938:
     addic.  r0, r31, 0x4
     beq-    branch_0x8032d960
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4434
+    lis     r3, __vvt__23JPADrawExecGenPrjTexMtx@h
+    addi    r3, r3, __vvt__23JPADrawExecGenPrjTexMtx@l
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032d960
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032d960:
     cmplwi  r31, 0x0
     beq-    branch_0x8032d984
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4444
+    lis     r3, __vvt__20JPADrawExecGenPrjMtx@h
+    addi    r0, r3, __vvt__20JPADrawExecGenPrjMtx@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032d984
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032d984:
     extsh.  r0, r4
@@ -5192,12 +5180,12 @@ __dt__24JPADrawCalcChildScaleOutFv: # 0x8032d9ac
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032d9f0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f38
+    lis     r3, __vvt__24JPADrawCalcChildScaleOut@h
+    addi    r0, r3, __vvt__24JPADrawCalcChildScaleOut@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032d9e0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032d9e0:
     extsh.  r0, r4
@@ -5221,12 +5209,12 @@ __dt__24JPADrawCalcChildAlphaOutFv: # 0x8032da08
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032da4c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f48
+    lis     r3, __vvt__24JPADrawCalcChildAlphaOut@h
+    addi    r0, r3, __vvt__24JPADrawCalcChildAlphaOut@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032da3c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032da3c:
     extsh.  r0, r4
@@ -5250,21 +5238,21 @@ __dt__32JPADrawCalcTextureAnmIndexRandomFv: # 0x8032da64
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032dac8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x406c
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexRandom@h
+    addi    r3, r3, __vvt__32JPADrawCalcTextureAnmIndexRandom@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032daa4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032daa4:
     cmplwi  r31, 0x0
     beq-    branch_0x8032dab8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032dab8:
     extsh.  r0, r4
@@ -5288,21 +5276,21 @@ __dt__31JPADrawCalcTextureAnmIndexMergeFv: # 0x8032dae0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032db44
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4090
+    lis     r3, __vvt__31JPADrawCalcTextureAnmIndexMerge@h
+    addi    r3, r3, __vvt__31JPADrawCalcTextureAnmIndexMerge@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032db20
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032db20:
     cmplwi  r31, 0x0
     beq-    branch_0x8032db34
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032db34:
     extsh.  r0, r4
@@ -5326,21 +5314,21 @@ __dt__33JPADrawCalcTextureAnmIndexReverseFv: # 0x8032db5c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032dbc0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x40b4
+    lis     r3, __vvt__33JPADrawCalcTextureAnmIndexReverse@h
+    addi    r3, r3, __vvt__33JPADrawCalcTextureAnmIndexReverse@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032db9c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032db9c:
     cmplwi  r31, 0x0
     beq-    branch_0x8032dbb0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032dbb0:
     extsh.  r0, r4
@@ -5364,21 +5352,21 @@ __dt__32JPADrawCalcTextureAnmIndexRepeatFv: # 0x8032dbd8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032dc3c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x40d8
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexRepeat@h
+    addi    r3, r3, __vvt__32JPADrawCalcTextureAnmIndexRepeat@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032dc18
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032dc18:
     cmplwi  r31, 0x0
     beq-    branch_0x8032dc2c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032dc2c:
     extsh.  r0, r4
@@ -5402,21 +5390,21 @@ __dt__32JPADrawCalcTextureAnmIndexNormalFv: # 0x8032dc54
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032dcb8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x40fc
+    lis     r3, __vvt__32JPADrawCalcTextureAnmIndexNormal@h
+    addi    r3, r3, __vvt__32JPADrawCalcTextureAnmIndexNormal@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032dc94
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032dc94:
     cmplwi  r31, 0x0
     beq-    branch_0x8032dca8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032dca8:
     extsh.  r0, r4
@@ -5440,12 +5428,12 @@ __dt__28JPADrawCalcAlphaFlickMultSinFv: # 0x8032dcd0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032dd14
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f58
+    lis     r3, __vvt__28JPADrawCalcAlphaFlickMultSin@h
+    addi    r0, r3, __vvt__28JPADrawCalcAlphaFlickMultSin@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032dd04
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032dd04:
     extsh.  r0, r4
@@ -5469,12 +5457,12 @@ __dt__27JPADrawCalcAlphaFlickAddSinFv: # 0x8032dd2c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032dd70
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f68
+    lis     r3, __vvt__27JPADrawCalcAlphaFlickAddSin@h
+    addi    r0, r3, __vvt__27JPADrawCalcAlphaFlickAddSin@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032dd60
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032dd60:
     extsh.  r0, r4
@@ -5498,12 +5486,12 @@ __dt__27JPADrawCalcAlphaFlickNrmSinFv: # 0x8032dd88
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ddcc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f78
+    lis     r3, __vvt__27JPADrawCalcAlphaFlickNrmSin@h
+    addi    r0, r3, __vvt__27JPADrawCalcAlphaFlickNrmSin@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ddbc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ddbc:
     extsh.  r0, r4
@@ -5527,12 +5515,12 @@ __dt__16JPADrawCalcAlphaFv: # 0x8032dde4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032de28
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f88
+    lis     r3, __vvt__16JPADrawCalcAlpha@h
+    addi    r0, r3, __vvt__16JPADrawCalcAlpha@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032de18
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032de18:
     extsh.  r0, r4
@@ -5556,21 +5544,21 @@ __dt__30JPADrawCalcColorAnmFrameRandomFv: # 0x8032de40
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032dea4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4120
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameRandom@h
+    addi    r3, r3, __vvt__30JPADrawCalcColorAnmFrameRandom@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032de80
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032de80:
     cmplwi  r31, 0x0
     beq-    branch_0x8032de94
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032de94:
     extsh.  r0, r4
@@ -5594,21 +5582,21 @@ __dt__29JPADrawCalcColorAnmFrameMergeFv: # 0x8032debc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032df20
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4144
+    lis     r3, __vvt__29JPADrawCalcColorAnmFrameMerge@h
+    addi    r3, r3, __vvt__29JPADrawCalcColorAnmFrameMerge@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032defc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032defc:
     cmplwi  r31, 0x0
     beq-    branch_0x8032df10
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032df10:
     extsh.  r0, r4
@@ -5632,21 +5620,21 @@ __dt__31JPADrawCalcColorAnmFrameReverseFv: # 0x8032df38
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032df9c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4168
+    lis     r3, __vvt__31JPADrawCalcColorAnmFrameReverse@h
+    addi    r3, r3, __vvt__31JPADrawCalcColorAnmFrameReverse@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032df78
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032df78:
     cmplwi  r31, 0x0
     beq-    branch_0x8032df8c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032df8c:
     extsh.  r0, r4
@@ -5670,21 +5658,21 @@ __dt__30JPADrawCalcColorAnmFrameRepeatFv: # 0x8032dfb4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e018
-    lis     r3, 0x803e
-    addi    r3, r3, 0x418c
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameRepeat@h
+    addi    r3, r3, __vvt__30JPADrawCalcColorAnmFrameRepeat@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032dff4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032dff4:
     cmplwi  r31, 0x0
     beq-    branch_0x8032e008
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e008:
     extsh.  r0, r4
@@ -5708,21 +5696,21 @@ __dt__30JPADrawCalcColorAnmFrameNormalFv: # 0x8032e030
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e094
-    lis     r3, 0x803e
-    addi    r3, r3, 0x41b0
+    lis     r3, __vvt__30JPADrawCalcColorAnmFrameNormal@h
+    addi    r3, r3, __vvt__30JPADrawCalcColorAnmFrameNormal@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032e070
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032e070:
     cmplwi  r31, 0x0
     beq-    branch_0x8032e084
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e084:
     extsh.  r0, r4
@@ -5746,12 +5734,12 @@ __dt__31JPADrawCalcColorCopyFromEmitterFv: # 0x8032e0ac
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e0f0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f98
+    lis     r3, __vvt__31JPADrawCalcColorCopyFromEmitter@h
+    addi    r0, r3, __vvt__31JPADrawCalcColorCopyFromEmitter@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e0e0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e0e0:
     extsh.  r0, r4
@@ -5775,21 +5763,21 @@ __dt__19JPADrawCalcColorEnvFv: # 0x8032e108
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e16c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x41d4
+    lis     r3, __vvt__19JPADrawCalcColorEnv@h
+    addi    r3, r3, __vvt__19JPADrawCalcColorEnv@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032e148
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032e148:
     cmplwi  r31, 0x0
     beq-    branch_0x8032e15c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e15c:
     extsh.  r0, r4
@@ -5813,21 +5801,21 @@ __dt__19JPADrawCalcColorPrmFv: # 0x8032e184
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e1e8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x41f8
+    lis     r3, __vvt__19JPADrawCalcColorPrm@h
+    addi    r3, r3, __vvt__19JPADrawCalcColorPrm@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032e1c4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032e1c4:
     cmplwi  r31, 0x0
     beq-    branch_0x8032e1d8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e1d8:
     extsh.  r0, r4
@@ -5851,8 +5839,8 @@ __dt__25JPADrawCalcEmitterVisitorFv: # 0x8032e200
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e234
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3ef8
+    lis     r3, __vvt__25JPADrawCalcEmitterVisitor@h
+    addi    r3, r3, __vvt__25JPADrawCalcEmitterVisitor@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8032e234
@@ -5875,12 +5863,12 @@ __dt__33JPADrawCalcScaleAnmTimingReverseYFv: # 0x8032e24c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e290
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3fa8
+    lis     r3, __vvt__33JPADrawCalcScaleAnmTimingReverseY@h
+    addi    r0, r3, __vvt__33JPADrawCalcScaleAnmTimingReverseY@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e280
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e280:
     extsh.  r0, r4
@@ -5904,12 +5892,12 @@ __dt__33JPADrawCalcScaleAnmTimingReverseXFv: # 0x8032e2a8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e2ec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3fb8
+    lis     r3, __vvt__33JPADrawCalcScaleAnmTimingReverseX@h
+    addi    r0, r3, __vvt__33JPADrawCalcScaleAnmTimingReverseX@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e2dc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e2dc:
     extsh.  r0, r4
@@ -5933,12 +5921,12 @@ __dt__32JPADrawCalcScaleAnmTimingRepeatYFv: # 0x8032e304
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e348
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3fc8
+    lis     r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatY@h
+    addi    r0, r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatY@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e338
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e338:
     extsh.  r0, r4
@@ -5962,12 +5950,12 @@ __dt__32JPADrawCalcScaleAnmTimingRepeatXFv: # 0x8032e360
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e3a4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3fd8
+    lis     r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatX@h
+    addi    r0, r3, __vvt__32JPADrawCalcScaleAnmTimingRepeatX@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e394
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e394:
     extsh.  r0, r4
@@ -5991,12 +5979,12 @@ __dt__31JPADrawCalcScaleAnmTimingNormalFv: # 0x8032e3bc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e400
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3fe8
+    lis     r3, __vvt__31JPADrawCalcScaleAnmTimingNormal@h
+    addi    r0, r3, __vvt__31JPADrawCalcScaleAnmTimingNormal@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e3f0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e3f0:
     extsh.  r0, r4
@@ -6020,12 +6008,12 @@ __dt__23JPADrawCalcScaleCopyX2YFv: # 0x8032e418
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e45c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3ff8
+    lis     r3, __vvt__23JPADrawCalcScaleCopyX2Y@h
+    addi    r0, r3, __vvt__23JPADrawCalcScaleCopyX2Y@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e44c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e44c:
     extsh.  r0, r4
@@ -6049,12 +6037,12 @@ __dt__24JPADrawCalcScaleYBySpeedFv: # 0x8032e474
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e4b8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4008
+    lis     r3, __vvt__24JPADrawCalcScaleYBySpeed@h
+    addi    r0, r3, __vvt__24JPADrawCalcScaleYBySpeed@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e4a8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e4a8:
     extsh.  r0, r4
@@ -6078,12 +6066,12 @@ __dt__17JPADrawCalcScaleYFv: # 0x8032e4d0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e514
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4028
+    lis     r3, __vvt__17JPADrawCalcScaleY@h
+    addi    r0, r3, __vvt__17JPADrawCalcScaleY@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e504
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e504:
     extsh.  r0, r4
@@ -6107,12 +6095,12 @@ __dt__24JPADrawCalcScaleXBySpeedFv: # 0x8032e52c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e570
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4018
+    lis     r3, __vvt__24JPADrawCalcScaleXBySpeed@h
+    addi    r0, r3, __vvt__24JPADrawCalcScaleXBySpeed@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e560
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e560:
     extsh.  r0, r4
@@ -6136,12 +6124,12 @@ __dt__17JPADrawCalcScaleXFv: # 0x8032e588
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e5cc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4038
+    lis     r3, __vvt__17JPADrawCalcScaleX@h
+    addi    r0, r3, __vvt__17JPADrawCalcScaleX@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e5bc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawCalcParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e5bc:
     extsh.  r0, r4
@@ -6165,8 +6153,8 @@ __dt__26JPADrawCalcParticleVisitorFv: # 0x8032e5e4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e618
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f08
+    lis     r3, __vvt__26JPADrawCalcParticleVisitor@h
+    addi    r3, r3, __vvt__26JPADrawCalcParticleVisitor@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8032e618
@@ -6189,21 +6177,21 @@ __dt__19JPADrawExecCallBackFv: # 0x8032e630
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e694
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4048
+    lis     r3, __vvt__19JPADrawExecCallBack@h
+    addi    r3, r3, __vvt__19JPADrawExecCallBack@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032e670
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032e670:
     cmplwi  r31, 0x0
     beq-    branch_0x8032e684
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e684:
     extsh.  r0, r4
@@ -6227,12 +6215,12 @@ __dt__22JPADrawExecStripeCrossFv: # 0x8032e6ac
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e6f0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x425c
+    lis     r3, __vvt__22JPADrawExecStripeCross@h
+    addi    r0, r3, __vvt__22JPADrawExecStripeCross@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e6e0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e6e0:
     extsh.  r0, r4
@@ -6256,12 +6244,12 @@ __dt__17JPADrawExecStripeFv: # 0x8032e708
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e74c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x426c
+    lis     r3, __vvt__17JPADrawExecStripe@h
+    addi    r0, r3, __vvt__17JPADrawExecStripe@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e73c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e73c:
     extsh.  r0, r4
@@ -6285,12 +6273,12 @@ __dt__15JPADrawExecLineFv: # 0x8032e764
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e7a8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x427c
+    lis     r3, __vvt__15JPADrawExecLine@h
+    addi    r0, r3, __vvt__15JPADrawExecLine@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e798
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e798:
     extsh.  r0, r4
@@ -6314,12 +6302,12 @@ __dt__16JPADrawExecPointFv: # 0x8032e7c0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e804
-    lis     r3, 0x803e
-    addi    r0, r3, 0x428c
+    lis     r3, __vvt__16JPADrawExecPoint@h
+    addi    r0, r3, __vvt__16JPADrawExecPoint@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e7f4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e7f4:
     extsh.  r0, r4
@@ -6343,12 +6331,12 @@ __dt__24JPADrawExecRotationCrossFv: # 0x8032e81c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e860
-    lis     r3, 0x803e
-    addi    r0, r3, 0x429c
+    lis     r3, __vvt__24JPADrawExecRotationCross@h
+    addi    r0, r3, __vvt__24JPADrawExecRotationCross@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e850
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e850:
     extsh.  r0, r4
@@ -6372,12 +6360,12 @@ __dt__19JPADrawExecRotationFv: # 0x8032e878
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e8bc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x42ac
+    lis     r3, __vvt__19JPADrawExecRotation@h
+    addi    r0, r3, __vvt__19JPADrawExecRotation@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e8ac
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e8ac:
     extsh.  r0, r4
@@ -6401,12 +6389,12 @@ __dt__23JPADrawExecDirBillBoardFv: # 0x8032e8d4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e918
-    lis     r3, 0x803e
-    addi    r0, r3, 0x42bc
+    lis     r3, __vvt__23JPADrawExecDirBillBoard@h
+    addi    r0, r3, __vvt__23JPADrawExecDirBillBoard@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e908
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e908:
     extsh.  r0, r4
@@ -6430,12 +6418,12 @@ __dt__30JPADrawExecRotDirectionalCrossFv: # 0x8032e930
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e974
-    lis     r3, 0x803e
-    addi    r0, r3, 0x42cc
+    lis     r3, __vvt__30JPADrawExecRotDirectionalCross@h
+    addi    r0, r3, __vvt__30JPADrawExecRotDirectionalCross@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e964
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e964:
     extsh.  r0, r4
@@ -6459,12 +6447,12 @@ __dt__27JPADrawExecDirectionalCrossFv: # 0x8032e98c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032e9d0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x42dc
+    lis     r3, __vvt__27JPADrawExecDirectionalCross@h
+    addi    r0, r3, __vvt__27JPADrawExecDirectionalCross@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032e9c0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032e9c0:
     extsh.  r0, r4
@@ -6488,12 +6476,12 @@ __dt__25JPADrawExecRotDirectionalFv: # 0x8032e9e8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ea2c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x42ec
+    lis     r3, __vvt__25JPADrawExecRotDirectional@h
+    addi    r0, r3, __vvt__25JPADrawExecRotDirectional@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ea1c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ea1c:
     extsh.  r0, r4
@@ -6517,12 +6505,12 @@ __dt__22JPADrawExecDirectionalFv: # 0x8032ea44
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ea88
-    lis     r3, 0x803e
-    addi    r0, r3, 0x42fc
+    lis     r3, __vvt__22JPADrawExecDirectional@h
+    addi    r0, r3, __vvt__22JPADrawExecDirectional@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ea78
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ea78:
     extsh.  r0, r4
@@ -6546,12 +6534,12 @@ __dt__24JPADrawExecRotYBillBoardFv: # 0x8032eaa0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032eae4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x430c
+    lis     r3, __vvt__24JPADrawExecRotYBillBoard@h
+    addi    r0, r3, __vvt__24JPADrawExecRotYBillBoard@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ead4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ead4:
     extsh.  r0, r4
@@ -6575,12 +6563,12 @@ __dt__21JPADrawExecYBillBoardFv: # 0x8032eafc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032eb40
-    lis     r3, 0x803e
-    addi    r0, r3, 0x431c
+    lis     r3, __vvt__21JPADrawExecYBillBoard@h
+    addi    r0, r3, __vvt__21JPADrawExecYBillBoard@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032eb30
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032eb30:
     extsh.  r0, r4
@@ -6604,12 +6592,12 @@ __dt__23JPADrawExecRotBillBoardFv: # 0x8032eb58
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032eb9c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x432c
+    lis     r3, __vvt__23JPADrawExecRotBillBoard@h
+    addi    r0, r3, __vvt__23JPADrawExecRotBillBoard@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032eb8c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032eb8c:
     extsh.  r0, r4
@@ -6633,12 +6621,12 @@ __dt__20JPADrawExecBillBoardFv: # 0x8032ebb4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ebf8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x433c
+    lis     r3, __vvt__20JPADrawExecBillBoard@h
+    addi    r0, r3, __vvt__20JPADrawExecBillBoard@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ebe8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ebe8:
     extsh.  r0, r4
@@ -6662,12 +6650,12 @@ __dt__20JPADrawExecLoadExTexFv: # 0x8032ec10
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ec54
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4454
+    lis     r3, __vvt__20JPADrawExecLoadExTex@h
+    addi    r0, r3, __vvt__20JPADrawExecLoadExTex@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ec44
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ec44:
     extsh.  r0, r4
@@ -6691,21 +6679,21 @@ __dt__22JPADrawExecLoadTextureFv: # 0x8032ec6c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ecd0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x43bc
+    lis     r3, __vvt__22JPADrawExecLoadTexture@h
+    addi    r3, r3, __vvt__22JPADrawExecLoadTexture@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032ecac
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032ecac:
     cmplwi  r31, 0x0
     beq-    branch_0x8032ecc0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ecc0:
     extsh.  r0, r4
@@ -6729,12 +6717,12 @@ __dt__29JPADrawExecLoadDefaultTextureFv: # 0x8032ece8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ed2c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x43e0
+    lis     r3, __vvt__29JPADrawExecLoadDefaultTexture@h
+    addi    r0, r3, __vvt__29JPADrawExecLoadDefaultTexture@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ed1c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ed1c:
     extsh.  r0, r4
@@ -6758,12 +6746,12 @@ __dt__26JPADrawExecRegisterPrmAEnvFv: # 0x8032ed44
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ed88
-    lis     r3, 0x803e
-    addi    r0, r3, 0x434c
+    lis     r3, __vvt__26JPADrawExecRegisterPrmAEnv@h
+    addi    r0, r3, __vvt__26JPADrawExecRegisterPrmAEnv@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ed78
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ed78:
     extsh.  r0, r4
@@ -6787,12 +6775,12 @@ __dt__26JPADrawExecRegisterPrmCEnvFv: # 0x8032eda0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ede4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x435c
+    lis     r3, __vvt__26JPADrawExecRegisterPrmCEnv@h
+    addi    r0, r3, __vvt__26JPADrawExecRegisterPrmCEnv@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032edd4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032edd4:
     extsh.  r0, r4
@@ -6816,12 +6804,12 @@ __dt__30JPADrawExecRegisterEnvColorAnmFv: # 0x8032edfc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ee40
-    lis     r3, 0x803e
-    addi    r0, r3, 0x436c
+    lis     r3, __vvt__30JPADrawExecRegisterEnvColorAnm@h
+    addi    r0, r3, __vvt__30JPADrawExecRegisterEnvColorAnm@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ee30
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ee30:
     extsh.  r0, r4
@@ -6845,12 +6833,12 @@ __dt__30JPADrawExecRegisterPrmAlphaAnmFv: # 0x8032ee58
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ee9c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x437c
+    lis     r3, __vvt__30JPADrawExecRegisterPrmAlphaAnm@h
+    addi    r0, r3, __vvt__30JPADrawExecRegisterPrmAlphaAnm@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ee8c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ee8c:
     extsh.  r0, r4
@@ -6874,12 +6862,12 @@ __dt__30JPADrawExecRegisterPrmColorAnmFv: # 0x8032eeb4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032eef8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x438c
+    lis     r3, __vvt__30JPADrawExecRegisterPrmColorAnm@h
+    addi    r0, r3, __vvt__30JPADrawExecRegisterPrmColorAnm@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032eee8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032eee8:
     extsh.  r0, r4
@@ -6903,12 +6891,12 @@ __dt__31JPADrawExecRegisterColorChildPEFv: # 0x8032ef10
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032ef54
-    lis     r3, 0x803e
-    addi    r0, r3, 0x421c
+    lis     r3, __vvt__31JPADrawExecRegisterColorChildPE@h
+    addi    r0, r3, __vvt__31JPADrawExecRegisterColorChildPE@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032ef44
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032ef44:
     extsh.  r0, r4
@@ -6932,12 +6920,12 @@ __dt__32JPADrawExecRegisterColorEmitterEFv: # 0x8032ef6c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032efb0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x422c
+    lis     r3, __vvt__32JPADrawExecRegisterColorEmitterE@h
+    addi    r0, r3, __vvt__32JPADrawExecRegisterColorEmitterE@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032efa0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032efa0:
     extsh.  r0, r4
@@ -6961,12 +6949,12 @@ __dt__32JPADrawExecRegisterColorEmitterPFv: # 0x8032efc8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f00c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x423c
+    lis     r3, __vvt__32JPADrawExecRegisterColorEmitterP@h
+    addi    r0, r3, __vvt__32JPADrawExecRegisterColorEmitterP@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032effc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032effc:
     extsh.  r0, r4
@@ -6990,12 +6978,12 @@ __dt__33JPADrawExecRegisterColorEmitterPEFv: # 0x8032f024
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f068
-    lis     r3, 0x803e
-    addi    r0, r3, 0x424c
+    lis     r3, __vvt__33JPADrawExecRegisterColorEmitterPE@h
+    addi    r0, r3, __vvt__33JPADrawExecRegisterColorEmitterPE@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032f058
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f058:
     extsh.  r0, r4
@@ -7019,12 +7007,12 @@ __dt__23JPADrawExecSetLineWidthFv: # 0x8032f080
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f0c4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x439c
+    lis     r3, __vvt__23JPADrawExecSetLineWidth@h
+    addi    r0, r3, __vvt__23JPADrawExecSetLineWidth@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032f0b4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f0b4:
     extsh.  r0, r4
@@ -7048,12 +7036,12 @@ __dt__23JPADrawExecSetPointSizeFv: # 0x8032f0dc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f120
-    lis     r3, 0x803e
-    addi    r0, r3, 0x43ac
+    lis     r3, __vvt__23JPADrawExecSetPointSize@h
+    addi    r0, r3, __vvt__23JPADrawExecSetPointSize@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032f110
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f110:
     extsh.  r0, r4
@@ -7077,21 +7065,21 @@ __dt__20JPADrawExecSetTexMtxFv: # 0x8032f138
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f19c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x43f0
+    lis     r3, __vvt__20JPADrawExecSetTexMtx@h
+    addi    r3, r3, __vvt__20JPADrawExecSetTexMtx@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x10
     addic.  r0, r31, 0x4
     stw     r3, 0x4(r31)
     beq-    branch_0x8032f178
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r0, r3, __vvt__26JPADrawExecParticleVisitor@l
     stw     r0, 0x4(r31)
 branch_0x8032f178:
     cmplwi  r31, 0x0
     beq-    branch_0x8032f18c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f18c:
     extsh.  r0, r4
@@ -7115,8 +7103,8 @@ __dt__26JPADrawExecParticleVisitorFv: # 0x8032f1b4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f1e8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f18
+    lis     r3, __vvt__26JPADrawExecParticleVisitor@h
+    addi    r3, r3, __vvt__26JPADrawExecParticleVisitor@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8032f1e8
@@ -7139,12 +7127,12 @@ __dt__20JPADrawExecGenIdtMtxFv: # 0x8032f200
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f244
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4414
+    lis     r3, __vvt__20JPADrawExecGenIdtMtx@h
+    addi    r0, r3, __vvt__20JPADrawExecGenIdtMtx@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032f234
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f234:
     extsh.  r0, r4
@@ -7168,12 +7156,12 @@ __dt__21JPADrawExecGenTexMtx0Fv: # 0x8032f25c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f2a0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4424
+    lis     r3, __vvt__21JPADrawExecGenTexMtx0@h
+    addi    r0, r3, __vvt__21JPADrawExecGenTexMtx0@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032f290
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f290:
     extsh.  r0, r4
@@ -7197,12 +7185,12 @@ __dt__23JPADrawExecGenPrjTexMtxFv: # 0x8032f2b8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f2fc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4434
+    lis     r3, __vvt__23JPADrawExecGenPrjTexMtx@h
+    addi    r0, r3, __vvt__23JPADrawExecGenPrjTexMtx@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032f2ec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f2ec:
     extsh.  r0, r4
@@ -7226,12 +7214,12 @@ __dt__20JPADrawExecGenPrjMtxFv: # 0x8032f314
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f358
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4444
+    lis     r3, __vvt__20JPADrawExecGenPrjMtx@h
+    addi    r0, r3, __vvt__20JPADrawExecGenPrjMtx@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8032f348
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r0, r3, __vvt__25JPADrawExecEmitterVisitor@l
     stw     r0, 0x0(r31)
 branch_0x8032f348:
     extsh.  r0, r4
@@ -7255,8 +7243,8 @@ __dt__25JPADrawExecEmitterVisitorFv: # 0x8032f370
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8032f3a4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3f28
+    lis     r3, __vvt__25JPADrawExecEmitterVisitor@h
+    addi    r3, r3, __vvt__25JPADrawExecEmitterVisitor@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8032f3a4

@@ -10,12 +10,12 @@ updateBalloon__11TNpcBalloonFv: # 0x8021696c
     li      r3, 0x0
     cmpwi   r4, 0x0
     ble-    branch_0x802169c4
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x4(r31)
     lwz     r0, 0x4(r31)
     cmpwi   r0, 0x0
     bne-    branch_0x802169c4
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r5, 0x1
     lwz     r4, 0x0(r31)
     lwz     r3, 0x74(r3)
@@ -36,3 +36,4 @@ setNextMessage__11TNpcBalloonFUll: # 0x802169d8
     stw     r4, 0x0(r3)
     stw     r5, 0x4(r3)
     blr
+

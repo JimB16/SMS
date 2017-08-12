@@ -8,8 +8,8 @@ __dt__20TAreaCylinderManagerFv: # 0x80107828
     mr.     r31, r3
     addi    r27, r4, 0x0
     beq-    branch_0x80107904
-    lis     r3, 0x803c
-    subi    r3, r3, 0x38a0
+    lis     r3, __vvt__20TAreaCylinderManager@ha
+    addi    r3, r3, __vvt__20TAreaCylinderManager@l
     addic.  r0, r31, 0x10
     stw     r3, 0x0(r31)
     beq-    branch_0x801078d4
@@ -50,8 +50,8 @@ branch_0x801078b0:
 branch_0x801078d4:
     cmplwi  r31, 0x0
     beq-    branch_0x801078f4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x0
     li      r4, 0x0
@@ -99,7 +99,7 @@ erase__Q27JGadget64TList_P13TAreaCylinder_Q27JGadget28TAllocator_P13TAreaCylinde
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -363,7 +363,7 @@ load__13TAreaCylinderFR20JSUMemoryInputStream: # 0x80107bfc
     bl      read__14JSUInputStreamFPvl
     lfs     f0, 0x1c(r30)
     mr      r3, r31
-    lfs     f1, -0x5570(rtoc)
+    lfs     f1, -0x5570(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x1c(r30)
     lfs     f0, 0x20(r30)
@@ -391,7 +391,7 @@ branch_0x80107d14:
     blt+    branch_0x80107cf8
     mr      r3, r31
     bl      readString__14JSUInputStreamFv
-    lwz     r29, -0x70b0(r13)
+    lwz     r29, R13Off_m0x70b0(r13)
     mr      r28, r3
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -408,21 +408,21 @@ branch_0x80107d14:
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x80107dd0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
     stw     r29, 0x64(sp)
-    addi    r0, r3, 0x20f0
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     stw     r0, 0x0(r29)
     mr      r3, r28
     stw     r28, 0x4(r29)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r29)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r29)
     li      r5, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__20TAreaCylinderManager@ha
     sth     r5, 0xc(r29)
-    subi    r0, r3, 0x38a0
+    addi    r0, r3, __vvt__20TAreaCylinderManager@l
     lwz     r6, 0x64(sp)
     stw     r0, 0x0(r6)
     addi    r0, r6, 0x18
@@ -432,7 +432,7 @@ branch_0x80107d14:
     stw     r5, 0x14(r6)
     stw     r0, 0x18(r6)
     stw     r0, 0x1c(r6)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      registerAreaCylinderManager__10TConductorFP20TAreaCylinderManager
 branch_0x80107dd0:
     mr      r4, r29
@@ -453,9 +453,9 @@ branch_0x80107dd4:
     bl      read__14JSUInputStreamFPvl
     lwz     r3, 0x5c(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x5568(rtoc)
+    lfd     f2, -0x5568(r2)
     xoris   r3, r3, 0x8000
-    lfs     f0, -0x556c(rtoc)
+    lfs     f0, -0x556c(r2)
     stw     r3, 0x8c(sp)
     stw     r0, 0x88(sp)
     lfd     f1, 0x88(sp)
@@ -475,9 +475,9 @@ branch_0x80107dd4:
 .globl __ct__13TAreaCylinderFPCc
 __ct__13TAreaCylinderFPCc: # 0x80107e58
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -486,16 +486,16 @@ __ct__13TAreaCylinderFPCc: # 0x80107e58
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__13TAreaCylinder@ha
     sth     r0, 0xc(r31)
-    subi    r0, r3, 0x387c
+    addi    r0, r3, __vvt__13TAreaCylinder@l
     addi    r3, r31, 0x0
     stw     r0, 0x0(r31)
-    lfs     f0, -0x5560(rtoc)
+    lfs     f0, -0x5560(r2)
     stfs    f0, 0x18(r31)
     stfs    f0, 0x14(r31)
     stfs    f0, 0x10(r31)
@@ -517,12 +517,12 @@ __dt__13TAreaCylinderFv: # 0x80107ed4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80107f2c
-    lis     r3, 0x803c
-    subi    r0, r3, 0x387c
+    lis     r3, __vvt__13TAreaCylinder@ha
+    addi    r0, r3, __vvt__13TAreaCylinder@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80107f1c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

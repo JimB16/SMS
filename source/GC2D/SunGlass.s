@@ -9,16 +9,16 @@ __dt__9TSunShineFv: # 0x8017cfc4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8017d02c
-    lis     r3, 0x803c
-    addi    r0, r3, 0x10a0
+    lis     r3, __vvt__9TSunShine@h
+    addi    r0, r3, __vvt__9TSunShine@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d01c
-    lis     r3, 0x803c
-    addi    r0, r3, 0x10c8
+    lis     r3, __vvt__9TSunGlass@h
+    addi    r0, r3, __vvt__9TSunGlass@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d01c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -46,7 +46,7 @@ loadAfter__9TSunShineFv: # 0x8017d048
     stw     r31, 0x24(sp)
     mr      r31, r3
     bl      loadAfter__Q26JDrama8TNameRefFv
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x6
     bne-    branch_0x8017d090
@@ -89,7 +89,7 @@ perform__9TSunShineFUlPQ26JDrama9TGraphics: # 0x8017d0a4
 branch_0x8017d0ec:
     clrlwi. r0, r31, 31
     beq-    branch_0x8017d168
-    lwz     r3, gpSunManager(r13)
+    lwz     r3, R13Off_m0x7100(r13)
     bl      getAddColor__7TSunMgrCFv
     stb     r3, 0x17(r30)
     lbz     r0, 0x28(r30)
@@ -110,14 +110,14 @@ branch_0x8017d124:
     stb     r0, 0x28(r30)
     addi    r4, sp, 0x1c
     li      r5, 0x200
-    lfs     f0, -0x4668(rtoc)
+    lfs     f0, -0x4668(r2)
     li      r6, 0x0
-    lfs     f1, -0x4664(rtoc)
+    lfs     f1, -0x4664(r2)
     li      r7, 0x0
     stfs    f0, 0x1c(sp)
-    lfs     f0, -0x4660(rtoc)
+    lfs     f0, -0x4660(r2)
     stfs    f1, 0x20(sp)
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     stfs    f0, 0x24(sp)
     bl      createEmitter__17JPAEmitterManagerFRCQ29JGeometry8TVec3_f_lP34JPACallBackBase_P14JPABaseEmitter_P54JPACallBackBase2_P14JPABaseEmitter_P15JPABaseParticle_
 branch_0x8017d168:
@@ -137,7 +137,7 @@ load__9TSunGlassFR20JSUMemoryInputStream: # 0x8017d180
     stw     r31, 0x2c(sp)
     mr      r31, r3
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x18(r3)
     lwz     r0, 0x4(r3)
     stw     r0, 0x10(r31)
@@ -156,24 +156,24 @@ loadAfter__9TSunGlassFv: # 0x8017d1bc
     stw     r31, 0x3c(sp)
     addi    r31, r3, 0x0
     li      r3, 0x0
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x1
     bne-    branch_0x8017d24c
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     lis     r4, 0x4
     bl      getFlag__12TFlagManagerCFUl
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x4650(rtoc)
+    lfd     f3, -0x4650(r2)
     stw     r0, 0x34(sp)
     lis     r4, 0x4330
-    lfs     f0, -0x4658(rtoc)
+    lfs     f0, -0x4658(r2)
     stw     r4, 0x30(sp)
     lbz     r3, 0x1f(r31)
     lfd     f1, 0x30(sp)
     lbz     r0, 0x1e(r31)
     fsubs   f2, f1, f3
-    lfs     f1, -0x465c(rtoc)
+    lfs     f1, -0x465c(r2)
     subf    r0, r3, r0
     xoris   r0, r0, 0x8000
     fdivs   f2, f2, f0
@@ -213,9 +213,9 @@ perform__9TSunGlassFUlPQ26JDrama9TGraphics: # 0x8017d264
     lha     r0, 0x22(r3)
     mullw   r6, r7, r6
     stw     r9, 0x34(sp)
-    lfd     f2, -0x4650(rtoc)
+    lfd     f2, -0x4650(r2)
     stw     r8, 0x30(sp)
-    lfd     f1, -0x4648(rtoc)
+    lfd     f1, -0x4648(r2)
     xoris   r6, r6, 0x8000
     lfd     f0, 0x30(sp)
     xoris   r0, r0, 0x8000
@@ -295,7 +295,7 @@ draw__9TSunGlassFRCQ26JDrama5TRectQ28JUtility6TColor: # 0x8017d354
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lfs     f1, -0x4660(rtoc)
+    lfs     f1, -0x4660(r2)
     addi    r3, sp, 0x20
     fmr     f2, f1
     fmr     f3, f1
@@ -372,7 +372,7 @@ branch_0x8017d4dc:
     li      r5, 0x4
     bl      GXBegin
     lwz     r0, 0x0(r30)
-    lis     r5, 0xcc01
+    lis     r5, unk_cc010000@h
     lwz     r3, 0x4(r30)
     li      r4, 0x0
     extsh   r6, r0
@@ -413,36 +413,36 @@ startFade__9TSunGlassFib: # 0x8017d574
     stw     r0, 0x4(sp)
     stwu    sp, -0x68(sp)
     stw     r31, 0x64(sp)
-    addi    r31, r5, 0x0
+    addi    r31, r5, unk_cc010000@l
     stw     r30, 0x60(sp)
     addi    r30, r3, 0x0
     stw     r29, 0x5c(sp)
     addi    r29, r4, 0x0
     lis     r4, 0x4
-    lwz     r0, -0x6060(r13)
+    lwz     r0, R13Off_m0x6060(r13)
     mr      r3, r0
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r29, 0x2
     bne-    branch_0x8017d63c
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x0
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x8017d62c
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     lis     r4, 0x4
     bl      getFlag__12TFlagManagerCFUl
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x4650(rtoc)
+    lfd     f3, -0x4650(r2)
     stw     r0, 0x54(sp)
     lis     r4, 0x4330
-    lfs     f0, -0x4658(rtoc)
+    lfs     f0, -0x4658(r2)
     stw     r4, 0x50(sp)
     lbz     r3, 0x1f(r30)
     lfd     f1, 0x50(sp)
     lbz     r0, 0x1e(r30)
     fsubs   f2, f1, f3
-    lfs     f1, -0x465c(rtoc)
+    lfs     f1, -0x465c(r2)
     subf    r0, r3, r0
     xoris   r0, r0, 0x8000
     fdivs   f2, f2, f0
@@ -465,24 +465,24 @@ branch_0x8017d63c:
     li      r0, 0x64
     stb     r0, 0x1d(r30)
     li      r4, 0x0
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x1
     bne-    branch_0x8017d6c0
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     lis     r4, 0x4
     bl      getFlag__12TFlagManagerCFUl
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x4650(rtoc)
+    lfd     f3, -0x4650(r2)
     stw     r0, 0x44(sp)
     lis     r4, 0x4330
-    lfs     f0, -0x4658(rtoc)
+    lfs     f0, -0x4658(r2)
     stw     r4, 0x40(sp)
     lbz     r3, 0x1f(r30)
     lfd     f1, 0x40(sp)
     lbz     r0, 0x1e(r30)
     fsubs   f2, f1, f3
-    lfs     f1, -0x465c(rtoc)
+    lfs     f1, -0x465c(r2)
     subf    r0, r3, r0
     xoris   r0, r0, 0x8000
     fdivs   f2, f2, f0
@@ -520,12 +520,12 @@ __dt__9TSunGlassFv: # 0x8017d6ec
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8017d744
-    lis     r3, 0x803c
-    addi    r0, r3, 0x10c8
+    lis     r3, __vvt__9TSunGlass@h
+    addi    r0, r3, __vvt__9TSunGlass@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d734
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

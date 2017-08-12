@@ -38,7 +38,7 @@ addFileTable__13MActorAnmDataFPCc: # 0x8023beac
     addi    r30, r4, 0x0
     addi    r3, r30, 0x0
     stw     r29, 0xcc(sp)
-    subi    r4, rtoc, 0x1508
+    addi    r4, r2, R2Off_m0x1508
     stw     r28, 0xc8(sp)
     bl      strstr
     cmplwi  r3, 0x0
@@ -50,7 +50,7 @@ addFileTable__13MActorAnmDataFPCc: # 0x8023beac
     li      r4, 0x2e
     bl      strrchr
     bl      strlen
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     subf    r29, r0, r29
     addi    r3, r29, 0x0
     bl      __nwa__FUl
@@ -58,7 +58,7 @@ addFileTable__13MActorAnmDataFPCc: # 0x8023beac
     addi    r28, r3, 0x0
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
-    subi    r5, rtoc, 0x1500
+    addi    r5, r2, R2Off_m0x1500
     bl      snprintf
     lwz     r3, 0x2c(r31)
     li      r4, 0x0
@@ -88,7 +88,7 @@ branch_0x8023bf58:
     stw     r0, 0x4(r31)
 branch_0x8023bf84:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x14fc
+    addi    r4, r2, R2Off_m0x14fc
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c038
@@ -99,7 +99,7 @@ branch_0x8023bf84:
     li      r4, 0x2e
     bl      strrchr
     bl      strlen
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     subf    r29, r0, r29
     addi    r3, r29, 0x0
     bl      __nwa__FUl
@@ -107,7 +107,7 @@ branch_0x8023bf84:
     addi    r28, r3, 0x0
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
-    subi    r5, rtoc, 0x1500
+    addi    r5, r2, R2Off_m0x1500
     bl      snprintf
     lwz     r3, 0x30(r31)
     li      r4, 0x0
@@ -137,7 +137,7 @@ branch_0x8023c00c:
     stw     r0, 0xc(r31)
 branch_0x8023c038:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x14f4
+    addi    r4, r2, R2Off_m0x14f4
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c0ec
@@ -148,7 +148,7 @@ branch_0x8023c038:
     li      r4, 0x2e
     bl      strrchr
     bl      strlen
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     subf    r29, r0, r29
     addi    r3, r29, 0x0
     bl      __nwa__FUl
@@ -156,7 +156,7 @@ branch_0x8023c038:
     addi    r28, r3, 0x0
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
-    subi    r5, rtoc, 0x1500
+    addi    r5, r2, R2Off_m0x1500
     bl      snprintf
     lwz     r3, 0x34(r31)
     li      r4, 0x0
@@ -186,7 +186,7 @@ branch_0x8023c0c0:
     stw     r0, 0x10(r31)
 branch_0x8023c0ec:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x14ec
+    addi    r4, r2, R2Off_m0x14ec
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c1a0
@@ -197,7 +197,7 @@ branch_0x8023c0ec:
     li      r4, 0x2e
     bl      strrchr
     bl      strlen
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     subf    r29, r0, r29
     addi    r3, r29, 0x0
     bl      __nwa__FUl
@@ -205,7 +205,7 @@ branch_0x8023c0ec:
     addi    r28, r3, 0x0
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
-    subi    r5, rtoc, 0x1500
+    addi    r5, r2, R2Off_m0x1500
     bl      snprintf
     lwz     r3, 0x38(r31)
     li      r4, 0x0
@@ -235,7 +235,7 @@ branch_0x8023c174:
     stw     r0, 0x14(r31)
 branch_0x8023c1a0:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x14e4
+    addi    r4, r2, R2Off_m0x14e4
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c254
@@ -246,7 +246,7 @@ branch_0x8023c1a0:
     li      r4, 0x2e
     bl      strrchr
     bl      strlen
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     subf    r29, r0, r29
     addi    r3, r29, 0x0
     bl      __nwa__FUl
@@ -254,7 +254,7 @@ branch_0x8023c1a0:
     addi    r28, r3, 0x0
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
-    subi    r5, rtoc, 0x1500
+    addi    r5, r2, R2Off_m0x1500
     bl      snprintf
     lwz     r3, 0x3c(r31)
     li      r4, 0x0
@@ -284,7 +284,7 @@ branch_0x8023c228:
     stw     r0, 0x18(r31)
 branch_0x8023c254:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x14dc
+    addi    r4, r2, R2Off_m0x14dc
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c308
@@ -295,7 +295,7 @@ branch_0x8023c254:
     li      r4, 0x2e
     bl      strrchr
     bl      strlen
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     subf    r29, r0, r29
     addi    r3, r29, 0x0
     bl      __nwa__FUl
@@ -303,7 +303,7 @@ branch_0x8023c254:
     addi    r28, r3, 0x0
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
-    subi    r5, rtoc, 0x1500
+    addi    r5, r2, R2Off_m0x1500
     bl      snprintf
     lwz     r3, 0x40(r31)
     li      r4, 0x0
@@ -357,8 +357,8 @@ init__13MActorAnmDataFPCcPPCc: # 0x8023c328
     crxor   6, 6, 6
     addi    r3, sp, 0x138
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
-    subi    r6, rtoc, 0x14cc
+    addi    r5, r2, R2Off_m0x14d4
+    addi    r6, r2, R2Off_m0x14cc
     bl      snprintf
     b       branch_0x8023c384
 
@@ -367,7 +367,7 @@ branch_0x8023c36c:
     crxor   6, 6, 6
     addi    r3, sp, 0x138
     li      r4, 0xff
-    subi    r5, rtoc, 0x1500
+    addi    r5, r2, R2Off_m0x1500
     bl      snprintf
 branch_0x8023c384:
     cmpwi   r3, 0x0
@@ -381,8 +381,8 @@ branch_0x8023c398:
     crxor   6, 6, 6
     addi    r6, sp, 0x138
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
-    subi    r7, rtoc, 0x14cc
+    addi    r5, r2, R2Off_m0x14d4
+    addi    r7, r2, R2Off_m0x14cc
     bl      snprintf
     addi    r3, sp, 0x138
     bl      findFirstFile__13JKRFileLoaderFPCc
@@ -390,7 +390,7 @@ branch_0x8023c398:
     addi    r26, r29, 0x0
 branch_0x8023c3c4:
     lwz     r27, 0x0(r29)
-    subi    r4, rtoc, 0x1508
+    addi    r4, r2, R2Off_m0x1508
     addi    r3, r27, 0x0
     bl      strstr
     cmplwi  r3, 0x0
@@ -400,7 +400,7 @@ branch_0x8023c3c4:
     stw     r0, 0x4(r31)
 branch_0x8023c3e8:
     addi    r3, r27, 0x0
-    subi    r4, rtoc, 0x14fc
+    addi    r4, r2, R2Off_m0x14fc
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c408
@@ -409,7 +409,7 @@ branch_0x8023c3e8:
     stw     r0, 0xc(r31)
 branch_0x8023c408:
     addi    r3, r27, 0x0
-    subi    r4, rtoc, 0x14f4
+    addi    r4, r2, R2Off_m0x14f4
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c428
@@ -418,7 +418,7 @@ branch_0x8023c408:
     stw     r0, 0x10(r31)
 branch_0x8023c428:
     addi    r3, r27, 0x0
-    subi    r4, rtoc, 0x14ec
+    addi    r4, r2, R2Off_m0x14ec
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c448
@@ -427,7 +427,7 @@ branch_0x8023c428:
     stw     r0, 0x14(r31)
 branch_0x8023c448:
     addi    r3, r27, 0x0
-    subi    r4, rtoc, 0x14e4
+    addi    r4, r2, R2Off_m0x14e4
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c468
@@ -436,7 +436,7 @@ branch_0x8023c448:
     stw     r0, 0x18(r31)
 branch_0x8023c468:
     addi    r3, r27, 0x0
-    subi    r4, rtoc, 0x14dc
+    addi    r4, r2, R2Off_m0x14dc
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c488
@@ -459,7 +459,7 @@ branch_0x8023c488:
 
 branch_0x8023c4b8:
     lwzx    r26, r30, r27
-    subi    r4, rtoc, 0x1508
+    addi    r4, r2, R2Off_m0x1508
     addi    r3, r26, 0x0
     bl      strstr
     cmplwi  r3, 0x0
@@ -469,7 +469,7 @@ branch_0x8023c4b8:
     stw     r0, 0x4(r31)
 branch_0x8023c4dc:
     addi    r3, r26, 0x0
-    subi    r4, rtoc, 0x14fc
+    addi    r4, r2, R2Off_m0x14fc
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c4fc
@@ -478,7 +478,7 @@ branch_0x8023c4dc:
     stw     r0, 0xc(r31)
 branch_0x8023c4fc:
     addi    r3, r26, 0x0
-    subi    r4, rtoc, 0x14f4
+    addi    r4, r2, R2Off_m0x14f4
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c51c
@@ -487,7 +487,7 @@ branch_0x8023c4fc:
     stw     r0, 0x10(r31)
 branch_0x8023c51c:
     addi    r3, r26, 0x0
-    subi    r4, rtoc, 0x14ec
+    addi    r4, r2, R2Off_m0x14ec
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c53c
@@ -496,7 +496,7 @@ branch_0x8023c51c:
     stw     r0, 0x14(r31)
 branch_0x8023c53c:
     addi    r3, r26, 0x0
-    subi    r4, rtoc, 0x14e4
+    addi    r4, r2, R2Off_m0x14e4
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c55c
@@ -505,7 +505,7 @@ branch_0x8023c53c:
     stw     r0, 0x18(r31)
 branch_0x8023c55c:
     addi    r3, r26, 0x0
-    subi    r4, rtoc, 0x14dc
+    addi    r4, r2, R2Off_m0x14dc
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x8023c57c
@@ -675,7 +675,7 @@ branch_0x8023c798:
     mr      r26, r3
 branch_0x8023c7c0:
     lwz     r3, 0x0(r26)
-    subi    r4, rtoc, 0x14c8
+    addi    r4, r2, R2Off_m0x14c8
     bl      strstr
     mr      r3, r31
     lwz     r4, 0x0(r26)
@@ -722,42 +722,42 @@ branch_0x8023c85c:
     cmplwi  r3, 0x0
     beq-    branch_0x8023c874
     addi    r4, sp, 0x38
-    subi    r5, rtoc, 0x1508
+    addi    r5, r2, R2Off_m0x1508
     bl      loadAnmPtrArray__39MActorAnmDataEach_18J3DAnmTransformKey_FPCcPCc
 branch_0x8023c874:
     lwz     r3, 0x30(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x8023c88c
     addi    r4, sp, 0x38
-    subi    r5, rtoc, 0x14fc
+    addi    r5, r2, R2Off_m0x14fc
     bl      loadAnmPtrArray__35MActorAnmDataEach_14J3DAnmColorKey_FPCcPCc
 branch_0x8023c88c:
     lwz     r3, 0x34(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x8023c8a4
     addi    r4, sp, 0x38
-    subi    r5, rtoc, 0x14f4
+    addi    r5, r2, R2Off_m0x14f4
     bl      loadAnmPtrArray__37MActorAnmDataEach_16J3DAnmTexPattern_FPCcPCc
 branch_0x8023c8a4:
     lwz     r3, 0x38(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x8023c8bc
     addi    r4, sp, 0x38
-    subi    r5, rtoc, 0x14ec
+    addi    r5, r2, R2Off_m0x14ec
     bl      loadAnmPtrArray__40MActorAnmDataEach_19J3DAnmTextureSRTKey_FPCcPCc
 branch_0x8023c8bc:
     lwz     r3, 0x3c(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x8023c8d4
     addi    r4, sp, 0x38
-    subi    r5, rtoc, 0x14e4
+    addi    r5, r2, R2Off_m0x14e4
     bl      loadAnmPtrArray__36MActorAnmDataEach_15J3DAnmTevRegKey_FPCcPCc
 branch_0x8023c8d4:
     lwz     r3, 0x40(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x8023c8ec
     addi    r4, sp, 0x38
-    subi    r5, rtoc, 0x14dc
+    addi    r5, r2, R2Off_m0x14dc
     bl      loadAnmPtrArray__37MActorAnmDataEach_16J3DAnmClusterKey_FPCcPCc
 branch_0x8023c8ec:
     lmw     r26, 0x238(sp)
@@ -775,8 +775,8 @@ __dt__13JKRFileFinderFv: # 0x8023c900
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8023c934
-    lis     r3, 0x803e
-    subi    r3, r3, 0x4168
+    lis     r3, __vvt__13JKRFileFinder@ha
+    addi    r3, r3, __vvt__13JKRFileFinder@l
     extsh.  r0, r4
     stw     r3, 0xc(r31)
     ble-    branch_0x8023c934
@@ -927,7 +927,7 @@ branch_0x8023cae8:
     blt-    branch_0x8023cb04
     cmpwi   r25, 0x7a
     bgt-    branch_0x8023cb04
-    subi    r29, r25, 0x20
+    addi    r29, r25, -0x20
     b       branch_0x8023cb08
 
 branch_0x8023cb04:
@@ -938,7 +938,7 @@ branch_0x8023cb08:
     blt-    branch_0x8023cb24
     cmpwi   r24, 0x7a
     bgt-    branch_0x8023cb24
-    subi    r26, r24, 0x20
+    addi    r26, r24, -0x20
     b       branch_0x8023cb28
 
 branch_0x8023cb24:
@@ -954,13 +954,13 @@ branch_0x8023cb38:
     blt-    branch_0x8023cb4c
     cmpwi   r25, 0x7a
     bgt-    branch_0x8023cb4c
-    subi    r25, r25, 0x20
+    addi    r25, r25, -0x20
 branch_0x8023cb4c:
     cmpwi   r24, 0x61
     blt-    branch_0x8023cb60
     cmpwi   r24, 0x7a
     bgt-    branch_0x8023cb60
-    subi    r24, r24, 0x20
+    addi    r24, r24, -0x20
 branch_0x8023cb60:
     cmpw    r25, r24
     bge-    branch_0x8023cb70
@@ -983,7 +983,7 @@ branch_0x8023cb90:
     blt-    branch_0x8023cbac
     cmpwi   r24, 0x7a
     bgt-    branch_0x8023cbac
-    subi    r26, r24, 0x20
+    addi    r26, r24, -0x20
     b       branch_0x8023cbb0
 
 branch_0x8023cbac:
@@ -995,7 +995,7 @@ branch_0x8023cbb0:
     blt-    branch_0x8023cbd0
     cmpwi   r25, 0x7a
     bgt-    branch_0x8023cbd0
-    subi    r27, r25, 0x20
+    addi    r27, r25, -0x20
     b       branch_0x8023cbd4
 
 branch_0x8023cbd0:
@@ -1011,13 +1011,13 @@ branch_0x8023cbe4:
     blt-    branch_0x8023cbf8
     cmpwi   r24, 0x7a
     bgt-    branch_0x8023cbf8
-    subi    r24, r24, 0x20
+    addi    r24, r24, -0x20
 branch_0x8023cbf8:
     cmpwi   r25, 0x61
     blt-    branch_0x8023cc0c
     cmpwi   r25, 0x7a
     bgt-    branch_0x8023cc0c
-    subi    r25, r25, 0x20
+    addi    r25, r25, -0x20
 branch_0x8023cc0c:
     cmpw    r24, r25
     bge-    branch_0x8023cc1c
@@ -1031,12 +1031,12 @@ branch_0x8023cc20:
     blt-    branch_0x8023cc58
     stw     r0, 0x4(r5)
     add     r24, r4, r30
-    subi    r7, r7, 0x1
+    addi    r7, r7, -0x1
     lwz     r0, 0x4(r3)
-    subi    r30, r30, 0x4
+    addi    r30, r30, -0x4
     add     r5, r0, r31
     lhz     r0, 0x0(r5)
-    subi    r31, r31, 0x2
+    addi    r31, r31, -0x2
     sth     r0, 0x2(r5)
     lwz     r0, 0x0(r24)
     stw     r0, 0x4(r24)
@@ -1084,7 +1084,7 @@ branch_0x8023ccc4:
     blt-    branch_0x8023cce0
     cmpwi   r9, 0x7a
     bgt-    branch_0x8023cce0
-    subi    r0, r9, 0x20
+    addi    r0, r9, -0x20
     b       branch_0x8023cce4
 
 branch_0x8023cce0:
@@ -1095,7 +1095,7 @@ branch_0x8023cce4:
     blt-    branch_0x8023cd00
     cmpwi   r10, 0x7a
     bgt-    branch_0x8023cd00
-    subi    r8, r10, 0x20
+    addi    r8, r10, -0x20
     b       branch_0x8023cd04
 
 branch_0x8023cd00:
@@ -1107,13 +1107,13 @@ branch_0x8023cd04:
     blt-    branch_0x8023cd20
     cmpwi   r9, 0x7a
     bgt-    branch_0x8023cd20
-    subi    r9, r9, 0x20
+    addi    r9, r9, -0x20
 branch_0x8023cd20:
     cmpwi   r10, 0x61
     blt-    branch_0x8023cd34
     cmpwi   r10, 0x7a
     bgt-    branch_0x8023cd34
-    subi    r10, r10, 0x20
+    addi    r10, r10, -0x20
 branch_0x8023cd34:
     cmpw    r9, r10
     blt-    branch_0x8023cd5c
@@ -1159,14 +1159,14 @@ branch_0x8023cda0:
     crxor   6, 6, 6
     addi    r3, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     addi    r7, r29, 0x0
     crxor   6, 6, 6
     addi    r3, sp, 0x11c
     addi    r6, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     b       branch_0x8023ce08
 
@@ -1176,7 +1176,7 @@ branch_0x8023cdec:
     addi    r7, r29, 0x0
     addi    r3, sp, 0x11c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
 branch_0x8023ce08:
     addi    r3, sp, 0x11c
@@ -1230,14 +1230,14 @@ branch_0x8023ce90:
     crxor   6, 6, 6
     addi    r3, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     addi    r7, r29, 0x0
     crxor   6, 6, 6
     addi    r3, sp, 0x11c
     addi    r6, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     b       branch_0x8023cef8
 
@@ -1247,7 +1247,7 @@ branch_0x8023cedc:
     addi    r7, r29, 0x0
     addi    r3, sp, 0x11c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
 branch_0x8023cef8:
     addi    r3, sp, 0x11c
@@ -1301,14 +1301,14 @@ branch_0x8023cf80:
     crxor   6, 6, 6
     addi    r3, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     addi    r7, r29, 0x0
     crxor   6, 6, 6
     addi    r3, sp, 0x11c
     addi    r6, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     b       branch_0x8023cfe8
 
@@ -1318,7 +1318,7 @@ branch_0x8023cfcc:
     addi    r7, r29, 0x0
     addi    r3, sp, 0x11c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
 branch_0x8023cfe8:
     addi    r3, sp, 0x11c
@@ -1372,14 +1372,14 @@ branch_0x8023d070:
     crxor   6, 6, 6
     addi    r3, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     addi    r7, r29, 0x0
     crxor   6, 6, 6
     addi    r3, sp, 0x11c
     addi    r6, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     b       branch_0x8023d0d8
 
@@ -1389,7 +1389,7 @@ branch_0x8023d0bc:
     addi    r7, r29, 0x0
     addi    r3, sp, 0x11c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
 branch_0x8023d0d8:
     addi    r3, sp, 0x11c
@@ -1443,14 +1443,14 @@ branch_0x8023d160:
     crxor   6, 6, 6
     addi    r3, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     addi    r7, r29, 0x0
     crxor   6, 6, 6
     addi    r3, sp, 0x11c
     addi    r6, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     b       branch_0x8023d1c8
 
@@ -1460,7 +1460,7 @@ branch_0x8023d1ac:
     addi    r7, r29, 0x0
     addi    r3, sp, 0x11c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
 branch_0x8023d1c8:
     addi    r3, sp, 0x11c
@@ -1514,14 +1514,14 @@ branch_0x8023d250:
     crxor   6, 6, 6
     addi    r3, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     addi    r7, r29, 0x0
     crxor   6, 6, 6
     addi    r3, sp, 0x11c
     addi    r6, sp, 0x1c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
     b       branch_0x8023d2b8
 
@@ -1531,7 +1531,7 @@ branch_0x8023d29c:
     addi    r7, r29, 0x0
     addi    r3, sp, 0x11c
     li      r4, 0xff
-    subi    r5, rtoc, 0x14d4
+    addi    r5, r2, R2Off_m0x14d4
     bl      snprintf
 branch_0x8023d2b8:
     addi    r3, sp, 0x11c

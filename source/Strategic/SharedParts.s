@@ -89,9 +89,9 @@ branch_0x80224270:
 .globl __ct__12TSharedPartsFPC10TLiveActoriP6MActorPCc
 __ct__12TSharedPartsFPC10TLiveActoriP6MActorPCc: # 0x80224284
     mflr    r0
-    lis     r8, 0x803e
+    lis     r8, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r8, 0x20f0
+    addi    r0, r8, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     addi    r31, r6, 0x0
@@ -106,13 +106,13 @@ __ct__12TSharedPartsFPC10TLiveActoriP6MActorPCc: # 0x80224284
     addi    r3, r7, 0x0
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r28)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r28)
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__12TSharedParts@ha
     sth     r0, 0xc(r28)
-    subi    r0, r3, 0x5a58
+    addi    r0, r3, __vvt__12TSharedParts@l
     addi    r3, r28, 0x0
     stw     r0, 0x0(r28)
     stw     r29, 0x10(r28)
@@ -139,21 +139,21 @@ __ct__12TSharedPartsFPC10TLiveActoriP12SDLModelDataUlPCc: # 0x8022431c
     addi    r29, r6, 0x0
     addi    r30, r7, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     addi    r3, r8, 0x0
     stw     r0, 0x0(r31)
     stw     r8, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__12TSharedParts@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x5a58
+    addi    r0, r3, __vvt__12TSharedParts@l
     li      r3, 0xac
     stw     r0, 0x0(r31)
     stw     r27, 0x10(r31)
@@ -206,21 +206,21 @@ __ct__12TSharedPartsFPC10TLiveActoriPCcUlUlPCc: # 0x8022440c
     addi    r29, r7, 0x0
     addi    r30, r8, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     addi    r3, r9, 0x0
     stw     r0, 0x0(r31)
     stw     r9, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__12TSharedParts@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x5a58
+    addi    r0, r3, __vvt__12TSharedParts@l
     addi    r3, r28, 0x0
     stw     r0, 0x0(r31)
     stw     r26, 0x10(r31)

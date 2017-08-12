@@ -200,7 +200,7 @@ branch_0x80339230:
     li      r0, 0x0
     stw     r0, 0x24(r27)
 branch_0x80339248:
-    subi    r0, r26, 0x1
+    addi    r0, r26, -0x1
     add     r0, r28, r0
     divwu   r3, r0, r26
 branch_0x80339254:

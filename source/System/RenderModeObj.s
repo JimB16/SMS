@@ -57,12 +57,12 @@ branch_0x802a4f94:
     bl      CalcRenderModeVIXOrigin__6JDramaFP16_GXRenderModeObj
     mr      r3, r31
     bl      CalcRenderModeVIYOrigin__6JDramaFP16_GXRenderModeObj
-    lis     r3, 0x803e
-    subi    r4, r3, 0xce8
+    lis     r3, SMSAASamplePattern_non@ha
+    addi    r4, r3, SMSAASamplePattern_non@l
     addi    r3, r31, 0x0
     bl      CopyRenderModeSamplePattern__6JDramaFP16_GXRenderModeObjPA2_CUc
-    lis     r3, 0x803e
-    subi    r4, r3, 0xcb8
+    lis     r3, SMSVFilter_non@ha
+    addi    r4, r3, SMSVFilter_non@l
     addi    r3, r31, 0x0
     bl      CopyRenderModeVFilter__6JDramaFP16_GXRenderModeObjPCUc
     lhz     r0, 0x64(r28)
@@ -85,10 +85,10 @@ SMSSetupGameRenderingInfo__FPQ26JDrama8TDisplayb: # 0x802a5010
     stwu    sp, -0x38(sp)
     stmw    r26, 0x20(sp)
     addi    r26, r3, 0x0
-    lis     r3, 0x803e
+    lis     r3, unk_803df2f0@ha
     addi    r31, r26, 0x10
     addi    r30, r4, 0x0
-    subi    r29, r3, 0xd10
+    addi    r29, r3, unk_803df2f0@l
     li      r28, 0x0
     bl      VIGetTvFormat
     cmplwi  r3, 0x0
@@ -182,9 +182,9 @@ SMSSetupTitleRenderingInfo__FPQ26JDrama8TDisplay: # 0x802a514c
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0x803e
+    lis     r3, unk_803df2f0@ha
     addi    r30, r27, 0x10
-    subi    r31, r3, 0xd10
+    addi    r31, r3, unk_803df2f0@l
     li      r29, 0x0
     bl      VIGetTvFormat
     cmplwi  r3, 0x0
@@ -258,11 +258,11 @@ branch_0x802a522c:
 .globl SMSSetupTitleRenderMode__FP16_GXRenderModeObj
 SMSSetupTitleRenderMode__FP16_GXRenderModeObj: # 0x802a5254
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, unk_803df2f0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r4, 0xd10
+    addi    r31, r4, unk_803df2f0@l
     stw     r30, 0x18(sp)
     li      r30, 0x0
     stw     r29, 0x14(sp)
@@ -368,12 +368,12 @@ SMSSetupGCLogoRenderingInfo__FPQ26JDrama8TDisplay: # 0x802a5364
     bl      CalcRenderModeVIXOrigin__6JDramaFP16_GXRenderModeObj
     mr      r3, r31
     bl      CalcRenderModeVIYOrigin__6JDramaFP16_GXRenderModeObj
-    lis     r3, 0x803e
-    subi    r4, r3, 0xce8
+    lis     r3, SMSAASamplePattern_non@ha
+    addi    r4, r3, SMSAASamplePattern_non@l
     addi    r3, r31, 0x0
     bl      CopyRenderModeSamplePattern__6JDramaFP16_GXRenderModeObjPA2_CUc
-    lis     r3, 0x803e
-    subi    r4, r3, 0xcb0
+    lis     r3, SMSVFilter_flicker@ha
+    addi    r4, r3, SMSVFilter_flicker@l
     addi    r3, r31, 0x0
     bl      CopyRenderModeVFilter__6JDramaFP16_GXRenderModeObjPCUc
     lhz     r0, 0x64(r30)

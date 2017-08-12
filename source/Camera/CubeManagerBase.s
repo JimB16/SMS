@@ -9,12 +9,12 @@ __dt__16TCubeManagerBaseFv: # 0x8002f834
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8002f88c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2dc0
+    lis     r3, __vvt__16TCubeManagerBase@ha
+    addi    r0, r3, __vvt__16TCubeManagerBase@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8002f87c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -44,11 +44,11 @@ SMS_IsInSameCameraCube__FRC3Vec: # 0x8002f8a8
     mr      r29, r3
     mr      r28, r31
     li      r30, 0x0
-    lwz     r4, MarioHitActorPos(r13)
-    lfs     f0, -0x7630(rtoc)
+    lwz     r4, R13Off_m0x60b4(r13)
+    lfs     f0, -0x7630(r2)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
-    lwz     r27, -0x70f0(r13)
+    lwz     r27, R13Off_m0x70f0(r13)
     stw     r3, 0x74(sp)
     stw     r0, 0x78(sp)
     lwz     r0, 0x8(r4)
@@ -80,7 +80,7 @@ branch_0x8002f930:
     blt+    branch_0x8002f8fc
     li      r31, -0x1
 branch_0x8002f940:
-    lwz     r26, -0x70f0(r13)
+    lwz     r26, R13Off_m0x70f0(r13)
     li      r27, 0x0
     li      r28, 0x0
     b       branch_0x8002f984
@@ -133,7 +133,7 @@ SMS_IsInOtherFastCube__FRC3Vec: # 0x8002f9c0
     stw     r28, 0x18(sp)
     addi    r28, r3, 0x0
     li      r3, 0x1
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x3
     beq-    branch_0x8002fa04
@@ -143,7 +143,7 @@ SMS_IsInOtherFastCube__FRC3Vec: # 0x8002f9c0
 branch_0x8002fa04:
     clrlwi. r0, r3, 24
     bne-    branch_0x8002fac4
-    lwz     r30, -0x70d8(r13)
+    lwz     r30, R13Off_m0x70d8(r13)
     addi    r4, r28, 0x0
     li      r31, 0x0
     addi    r3, r30, 0x0
@@ -159,7 +159,7 @@ branch_0x8002fa04:
 branch_0x8002fa40:
     clrlwi. r0, r31, 24
     bne-    branch_0x8002fac0
-    lwz     r31, -0x70d4(r13)
+    lwz     r31, R13Off_m0x70d4(r13)
     addi    r4, r28, 0x0
     li      r30, 0x0
     addi    r3, r31, 0x0
@@ -175,7 +175,7 @@ branch_0x8002fa40:
 branch_0x8002fa7c:
     clrlwi. r0, r30, 24
     bne-    branch_0x8002fac0
-    lwz     r31, -0x70d0(r13)
+    lwz     r31, R13Off_m0x70d0(r13)
     addi    r4, r28, 0x0
     li      r30, 0x0
     addi    r3, r31, 0x0
@@ -247,7 +247,7 @@ branch_0x8002fb54:
     b       branch_0x8002fc1c
 
 branch_0x8002fb68:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x7
     bne-    branch_0x8002fc1c
@@ -259,7 +259,7 @@ branch_0x8002fb68:
     slwi    r3, r5, 2
     slwi    r0, r29, 2
     lwz     r6, 0x10(r4)
-    subi    r4, rtoc, 0x762c
+    addi    r4, r2, R2Off_m0x762c
     add     r5, r6, r3
     lwzx    r3, r6, r0
     lwz     r5, 0x0(r5)
@@ -270,12 +270,12 @@ branch_0x8002fb68:
     cmpwi   r3, 0x0
     bne-    branch_0x8002fbf0
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x7624
+    addi    r4, r2, R2Off_m0x7624
     bl      strcmp
     cmpwi   r3, 0x0
     beq-    branch_0x8002fbe8
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x761c
+    addi    r4, r2, R2Off_m0x761c
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x8002fc1c
@@ -285,12 +285,12 @@ branch_0x8002fbe8:
 
 branch_0x8002fbf0:
     addi    r3, r29, 0x0
-    subi    r4, rtoc, 0x7624
+    addi    r4, r2, R2Off_m0x7624
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x8002fc1c
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x761c
+    addi    r4, r2, R2Off_m0x761c
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x8002fc1c
@@ -441,7 +441,7 @@ load__16TCubeManagerBaseFR20JSUMemoryInputStream: # 0x8002fdc0
     stw     r29, 0x3c(sp)
     mr      r29, r3
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r3, -0x5db8(r13)
+    lwz     r3, R13Off_m0x5db8(r13)
     lwz     r31, 0x18(r29)
     lwz     r30, 0x4(r3)
     mr      r3, r31
@@ -484,28 +484,28 @@ branch_0x8002fe4c:
 .globl __ct__16TCubeManagerBaseFPCcUc
 __ct__16TCubeManagerBaseFPCcUc: # 0x8002fe68
     mflr    r0
-    lis     r6, 0x8037
+    lis     r6, unk_80375810@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x48(sp)
     stmw    r26, 0x30(sp)
     mr      r27, r5
-    addi    r31, r6, 0x5810
+    addi    r31, r6, unk_80375810@l
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r28, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r28, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r29, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r28, 0x0(r29)
     stw     r4, 0x4(r29)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r29)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r29)
     li      r4, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__16TCubeManagerBase@ha
     sth     r4, 0xc(r29)
-    subi    r0, r3, 0x2dc0
+    addi    r0, r3, __vvt__16TCubeManagerBase@l
     li      r3, 0x24
     stw     r0, 0x0(r29)
     stb     r27, 0x10(r29)
@@ -524,8 +524,8 @@ __ct__16TCubeManagerBaseFPCcUc: # 0x8002fe68
     addi    r3, r28, 0xc
     addi    r4, sp, 0x18
     bl      __ct__Q27JGadget20TVector_pointer_voidFRCQ27JGadget14TAllocator_Pv_
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2d9c
+    lis     r3, __vvt__54TNameRefPtrAryT_16TCubeGeneralInfo_Q26JDrama8TNameRef_@ha
+    addi    r0, r3, __vvt__54TNameRefPtrAryT_16TCubeGeneralInfo_Q26JDrama8TNameRef_@l
     stw     r0, 0x0(r28)
 branch_0x8002ff18:
     lwz     r4, 0x8(sp)
@@ -534,11 +534,11 @@ branch_0x8002ff18:
     lbz     r4, 0x10(r4)
     addi    r3, r3, 0xc
     bl      reserve__Q27JGadget20TVector_pointer_voidFUl
-    lis     r4, 0x803e
-    lis     r3, 0x803b
-    addi    r28, r4, 0x20f0
+    lis     r4, __vvt__Q26JDrama8TNameRef@h
+    lis     r3, __vvt__16TCubeGeneralInfo@ha
+    addi    r28, r4, __vvt__Q26JDrama8TNameRef@l
     addi    r29, r31, 0x34
-    subi    r31, r3, 0x2d18
+    addi    r31, r3, __vvt__16TCubeGeneralInfo@l
     li      r27, 0x0
     b       branch_0x8002fff0
 
@@ -556,16 +556,16 @@ branch_0x8002ff4c:
     sth     r3, 0x8(r30)
     addi    r3, r30, 0xc
     stw     r31, 0x0(r30)
-    lfs     f1, -0x7614(rtoc)
+    lfs     f1, -0x7614(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_80030014
-    lfs     f1, -0x7614(rtoc)
+    lfs     f1, -0x7614(r2)
     addi    r3, r30, 0x18
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_80030014
-    lfs     f1, -0x7610(rtoc)
+    lfs     f1, -0x7610(r2)
     addi    r3, r30, 0x24
     fmr     f2, f1
     fmr     f3, f1
@@ -608,9 +608,9 @@ set_f___Q29JGeometry8TVec3_f_Ffff_80030014: # 0x80030014
 .globl __ct__16TCubeManagerBaseFPCcPCc
 __ct__16TCubeManagerBaseFPCcPCc: # 0x80030024
     mflr    r0
-    lis     r6, 0x803e
+    lis     r6, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x20f0
+    addi    r0, r6, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r5
@@ -621,13 +621,13 @@ __ct__16TCubeManagerBaseFPCcPCc: # 0x80030024
     mr      r3, r4
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r4, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__16TCubeManagerBase@ha
     sth     r4, 0xc(r30)
-    subi    r0, r3, 0x2dc0
+    addi    r0, r3, __vvt__16TCubeManagerBase@l
     addi    r3, r30, 0x0
     stw     r0, 0x0(r30)
     stb     r4, 0x10(r30)
@@ -651,8 +651,8 @@ __dt__54TNameRefPtrAryT_16TCubeGeneralInfo_Q26JDrama8TNameRef_Fv: # 0x800300a4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80030100
-    lis     r3, 0x803b
-    subi    r3, r3, 0x2d9c
+    lis     r3, __vvt__54TNameRefPtrAryT_16TCubeGeneralInfo_Q26JDrama8TNameRef_@ha
+    addi    r3, r3, __vvt__54TNameRefPtrAryT_16TCubeGeneralInfo_Q26JDrama8TNameRef_@l
     addic.  r0, r30, 0xc
     stw     r3, 0x0(r30)
     beq-    branch_0x800300e4

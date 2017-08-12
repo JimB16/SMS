@@ -2,16 +2,16 @@
 .globl __ct__13JPAExtraShapeFPCUc
 __ct__13JPAExtraShapeFPCUc: # 0x803361c0
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__12JPADataBlock@h
     stw     r0, 0x4(sp)
-    addi    r5, r5, 0x4474
+    addi    r5, r5, __vvt__12JPADataBlock@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r4
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4560
+    lis     r3, __vvt__13JPAExtraShape@h
+    addi    r0, r3, __vvt__13JPAExtraShape@l
     lwz     r31, 0x8(sp)
     stw     r5, 0x0(r31)
     stw     r0, 0x0(r31)
@@ -46,7 +46,7 @@ __ct__13JPAExtraShapeFPCUc: # 0x803361c0
     lha     r3, 0x26(r30)
     bl      JPAConvertFixToFloat__Fs
     stfs    f1, 0x28(r31)
-    lfs     f0, 0x970(rtoc)
+    lfs     f0, 0x970(r2)
     lfs     f2, 0x8(r31)
     fcmpu   cr0, f0, f2
     beq-    branch_0x80336298
@@ -57,11 +57,11 @@ __ct__13JPAExtraShapeFPCUc: # 0x803361c0
     b       branch_0x8033629c
 
 branch_0x80336298:
-    lfs     f0, 0x974(rtoc)
+    lfs     f0, 0x974(r2)
 branch_0x8033629c:
     stfs    f0, 0x2c(r31)
     lwz     r3, 0x8(sp)
-    lfs     f0, 0x974(rtoc)
+    lfs     f0, 0x974(r2)
     lfs     f1, 0xc(r3)
     fcmpu   cr0, f0, f1
     beq-    branch_0x803362c8
@@ -84,12 +84,12 @@ branch_0x803362c8:
     stfs    f1, 0x3c(r31)
     lha     r3, 0x3a(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x978(rtoc)
+    lfs     f0, 0x978(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x40(r31)
     lha     r3, 0x3e(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x978(rtoc)
+    lfs     f0, 0x978(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x44(r31)
     lbz     r0, 0x40(r30)
@@ -100,12 +100,12 @@ branch_0x803362c8:
     sth     r0, 0x74(r31)
     lha     r3, 0x44(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x978(rtoc)
+    lfs     f0, 0x978(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x48(r31)
     lha     r3, 0x48(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x978(rtoc)
+    lfs     f0, 0x978(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x4c(r31)
     lbz     r0, 0x4a(r30)
@@ -116,11 +116,11 @@ branch_0x803362c8:
     sth     r0, 0x76(r31)
     lbz     r0, 0x4e(r30)
     stb     r0, 0x7e(r31)
-    lfs     f0, 0x970(rtoc)
+    lfs     f0, 0x970(r2)
     lfs     f1, 0x38(r31)
     fcmpu   cr0, f0, f1
     beq-    branch_0x803363b8
-    lfs     f2, 0x974(rtoc)
+    lfs     f2, 0x974(r2)
     lfs     f0, 0x48(r31)
     fsubs   f0, f2, f0
     fdivs   f0, f0, f1
@@ -133,12 +133,12 @@ branch_0x803362c8:
     b       branch_0x803363c4
 
 branch_0x803363b8:
-    lfs     f0, 0x974(rtoc)
+    lfs     f0, 0x974(r2)
     stfs    f0, 0x58(r31)
     stfs    f0, 0x50(r31)
 branch_0x803363c4:
     lwz     r3, 0x8(sp)
-    lfs     f2, 0x974(rtoc)
+    lfs     f2, 0x974(r2)
     lfs     f0, 0x3c(r3)
     fcmpu   cr0, f2, f0
     beq-    branch_0x80336408
@@ -194,12 +194,12 @@ __dt__13JPAExtraShapeFv: # 0x80336474
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x803364b8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4560
+    lis     r3, __vvt__13JPAExtraShape@h
+    addi    r0, r3, __vvt__13JPAExtraShape@l
     stw     r0, 0x0(r31)
     beq-    branch_0x803364a8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4474
+    lis     r3, __vvt__12JPADataBlock@h
+    addi    r0, r3, __vvt__12JPADataBlock@l
     stw     r0, 0x0(r31)
 branch_0x803364a8:
     extsh.  r0, r4

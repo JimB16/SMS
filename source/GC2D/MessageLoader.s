@@ -20,22 +20,22 @@ branch_0x80157270:
 .globl parseBlock__14TMessageLoaderFUlUlPv
 parseBlock__14TMessageLoaderFUlUlPv: # 0x80157278
     mflr    r0
-    lis     r7, 0x803b
+    lis     r7, __vvt__10JSUIosBase@ha
     stw     r0, 0x4(sp)
-    lis     r9, 0x803e
-    lis     r8, 0x803e
+    lis     r9, __vvt__14JSUInputStream@h
+    lis     r8, __vvt__20JSURandomInputStream@h
     stwu    sp, -0xb8(sp)
     stmw    r17, 0x7c(sp)
     addi    r0, sp, 0x5c
-    addi    r25, r9, 0x184
-    addi    r26, r8, 0x160
+    addi    r25, r9, __vvt__14JSUInputStream@l
+    addi    r26, r8, __vvt__20JSURandomInputStream@l
     addi    r20, r3, 0x0
     addi    r21, r5, 0x0
     stw     r0, 0x54(sp)
-    subi    r0, r7, 0xf0c
-    lis     r7, 0x803e
+    addi    r0, r7, __vvt__10JSUIosBase@l
+    lis     r7, __vvt__20JSUMemoryInputStream@h
     lwz     r10, 0x54(sp)
-    addi    r27, r7, 0x1c8
+    addi    r27, r7, __vvt__20JSUMemoryInputStream@l
     stw     r0, 0x0(r10)
     li      r0, 0x0
     addi    r3, r10, 0x0
@@ -47,12 +47,12 @@ parseBlock__14TMessageLoaderFUlUlPv: # 0x80157278
     stw     r26, 0x0(r10)
     stw     r27, 0x0(r10)
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
-    lis     r3, 0x5354
-    lis     r4, 0x4441
-    lis     r5, 0x494e
-    addi    r30, r3, 0x5231
-    addi    r29, r4, 0x5431
-    addi    r28, r5, 0x4631
+    lis     r3, unk_53545231@h
+    lis     r4, unk_44415431@h
+    lis     r5, unk_494e4631@h
+    addi    r30, r3, unk_53545231@l
+    addi    r29, r4, unk_44415431@l
+    addi    r28, r5, unk_494e4631@l
     addi    r31, sp, 0x38
     li      r22, 0x0
     b       branch_0x80157470
@@ -82,7 +82,7 @@ branch_0x80157344:
     lwz     r24, 0x0(r18)
     addi    r18, r18, 0x4
     stw     r31, 0x2c(sp)
-    subi    r19, r24, 0x8
+    addi    r19, r24, -0x8
     lwz     r17, 0x2c(sp)
     mr      r3, r17
     bl      __ct__10JSUIosBaseFv
@@ -158,17 +158,17 @@ branch_0x80157454:
 branch_0x8015745c:
     lwz     r4, 0x70(sp)
     addi    r3, sp, 0x5c
-    subi    r4, r4, 0x8
+    addi    r4, r4, -0x8
     bl      skip__20JSURandomInputStreamFl
     addi    r22, r22, 0x1
 branch_0x80157470:
     cmplw   r22, r21
     blt+    branch_0x8015730c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x5c(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x5c(sp)
     addi    r3, sp, 0x5c
     li      r4, 0x0
@@ -183,8 +183,8 @@ branch_0x80157470:
 
 .globl __ct__10JSUIosBaseFv
 __ct__10JSUIosBaseFv: # 0x801574b4
-    lis     r4, 0x803b
-    subi    r0, r4, 0xf0c
+    lis     r4, __vvt__10JSUIosBase@ha
+    addi    r0, r4, __vvt__10JSUIosBase@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stb     r0, 0x4(r3)

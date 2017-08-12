@@ -9,20 +9,20 @@ __dt__16TMapObjTreeScaleFv: # 0x801f5f68
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801f5fe8
-    lis     r3, 0x803d
-    addi    r3, r3, 0x5ca8
+    lis     r3, __vvt__16TMapObjTreeScale@h
+    addi    r3, r3, __vvt__16TMapObjTreeScale@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801f5fd8
-    lis     r3, 0x803d
-    addi    r3, r3, 0x5e84
+    lis     r3, __vvt__11TMapObjTree@h
+    addi    r3, r3, __vvt__11TMapObjTree@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801f5fd8
-    lis     r3, 0x803d
-    subi    r3, r3, 0x74e0
+    lis     r3, __vvt__14TMapObjGeneral@ha
+    addi    r3, r3, __vvt__14TMapObjGeneral@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -72,16 +72,16 @@ __ct__16TMapObjTreeScaleFPCc: # 0x801f6030
     lwz     r30, 0x8(sp)
     mr      r3, r30
     bl      __ct__14TMapObjGeneralFPCc
-    lis     r3, 0x803d
-    addi    r3, r3, 0x5e84
+    lis     r3, __vvt__11TMapObjTree@h
+    addi    r3, r3, __vvt__11TMapObjTree@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
-    lis     r3, 0x803d
+    lis     r3, __vvt__16TMapObjTreeScale@h
     stw     r0, 0x20(r30)
-    addi    r8, r3, 0x5ca8
-    lis     r3, 0x8002
-    lfs     f0, -0x2060(rtoc)
-    addi    r4, r3, 0x10dc
+    addi    r8, r3, __vvt__16TMapObjTreeScale@l
+    lis     r3, __ct__Q29JGeometry8TVec3_f_Fv@h
+    lfs     f0, -0x2060(r2)
+    addi    r4, r3, __ct__Q29JGeometry8TVec3_f_Fv@l
     li      r31, 0x0
     stfs    f0, 0x148(r30)
     li      r9, 0x1
@@ -108,7 +108,7 @@ __ct__16TMapObjTreeScaleFPCc: # 0x801f6030
     li      r3, 0x0
     stw     r31, 0x2dc(r30)
     stw     r31, 0x2e0(r30)
-    lfs     f0, -0x2060(rtoc)
+    lfs     f0, -0x2060(r2)
 branch_0x801f60f0:
     addi    r0, r31, 0x178
     stfsx   f0, r30, r0
@@ -162,7 +162,7 @@ branch_0x801f60f0:
     stfsx   f0, r30, r0
     bdnz+      branch_0x801f60f0
     subfic  r0, r3, 0x1e
-    lfs     f0, -0x2060(rtoc)
+    lfs     f0, -0x2060(r2)
     cmpwi   r3, 0x1e
     mtctr   r0
     mulli   r3, r3, 0xc
@@ -199,20 +199,20 @@ __dt__11TMapObjTreeFv: # 0x801f621c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801f629c
-    lis     r3, 0x803d
-    addi    r3, r3, 0x5e84
+    lis     r3, __vvt__11TMapObjTree@h
+    addi    r3, r3, __vvt__11TMapObjTree@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801f628c
-    lis     r3, 0x803d
-    subi    r3, r3, 0x74e0
+    lis     r3, __vvt__14TMapObjGeneral@ha
+    addi    r3, r3, __vvt__14TMapObjGeneral@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801f628c
-    lis     r3, 0x803c
-    addi    r3, r3, 0x2ab8
+    lis     r3, __vvt__11TMapObjBase@h
+    addi    r3, r3, __vvt__11TMapObjBase@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -244,11 +244,11 @@ loadAfter__16TMapObjTreeScaleFv: # 0x801f62b8
     stw     r30, 0x50(sp)
     stw     r29, 0x4c(sp)
     bl      loadAfter__14TMapObjGeneralFv
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     beq-    branch_0x801f6304
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -278,15 +278,15 @@ branch_0x801f6304:
     mr      r3, r31
     stfs    f0, 0x58(r31)
     bl      calcEntryRadius__9THitActorFv
-    lfs     f0, -0x205c(rtoc)
+    lfs     f0, -0x205c(r2)
     mr      r3, r31
     stfs    f0, 0x5c(r31)
     bl      calcEntryRadius__9THitActorFv
     mr      r3, r31
     bl      removeMapCollision__11TMapObjBaseFv
     lwz     r0, 0xf8(r31)
-    lis     r3, 0x4000
-    addi    r4, r3, 0x3b
+    lis     r3, unk_4000003b@h
+    addi    r4, r3, unk_4000003b@l
     rlwinm  r0, r0, 0, 24, 22
     stw     r0, 0xf8(r31)
     li      r0, 0xb
@@ -296,9 +296,9 @@ branch_0x801f6304:
     bl      getModel__10TLiveActorCFv
     bl      SMS_HideAllShapePacket__FP8J3DModel
 branch_0x801f63a0:
-    lwz     r4, -0x5db8(r13)
-    lis     r3, 0x8039
-    addi    r30, r3, 0x3d20
+    lwz     r4, R13Off_m0x5db8(r13)
+    lis     r3, unk_80393d20@h
+    addi    r30, r3, unk_80393d20@l
     lwz     r29, 0x4(r4)
     mr      r3, r30
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -343,11 +343,11 @@ branch_0x801f6430:
     b       branch_0x801f64ec
 
 branch_0x801f643c:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     beq-    branch_0x801f65d0
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
@@ -356,8 +356,8 @@ branch_0x801f643c:
     bne-    branch_0x801f65d0
     mr      r3, r31
     bl      awake__11TMapObjBaseFv
-    lis     r3, 0x4000
-    addi    r0, r3, 0x39
+    lis     r3, unk_40000039@h
+    addi    r0, r3, unk_40000039@l
     stw     r0, 0x4c(r31)
     mr      r3, r31
     bl      removeMapCollision__11TMapObjBaseFv
@@ -366,7 +366,7 @@ branch_0x801f643c:
     b       branch_0x801f65d0
 
 branch_0x801f6490:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x300f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -392,7 +392,7 @@ branch_0x801f64c0:
     b       branch_0x801f65d0
 
 branch_0x801f64ec:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x300f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -406,7 +406,7 @@ branch_0x801f64ec:
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x801f651c:
     lfs     f1, 0x28(r31)
-    lfs     f0, -0x2058(rtoc)
+    lfs     f0, -0x2058(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x801f653c
     lfs     f0, -0x77e4(r13)
@@ -418,7 +418,7 @@ branch_0x801f653c:
     stfs    f0, 0x28(r31)
 branch_0x801f6540:
     lfs     f1, 0x24(r31)
-    lfs     f0, -0x2058(rtoc)
+    lfs     f0, -0x2058(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x801f6570
     lfs     f0, -0x77dc(r13)
@@ -486,7 +486,7 @@ branch_0x801f660c:
     lwz     r12, 0x118(r12)
     mtlr    r12
     blrl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x2
     bne-    branch_0x801f6674
@@ -508,31 +508,31 @@ branch_0x801f6650:
     clrlwi. r0, r3, 24
     beq-    branch_0x801f6694
 branch_0x801f6674:
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     addi    r5, r31, 0x10
     li      r4, 0x13
     bl      start__9RumbleMgrFiP3Vec
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x5
-    lfs     f1, -0x2058(rtoc)
+    lfs     f1, -0x2058(r2)
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
 branch_0x801f6694:
     lwz     r3, 0x2dc(r31)
-    lwz     r0, -0x77d4(r13)
+    lwz     r0, R13Off_m0x77d4(r13)
     cmpw    r3, r0
     ble-    branch_0x801f6784
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f4, -0x2048(rtoc)
+    lfd     f4, -0x2048(r2)
     stw     r0, 0x64(sp)
     lis     r30, 0x4330
-    lfs     f3, -0x2054(rtoc)
+    lfs     f3, -0x2054(r2)
     stw     r30, 0x60(sp)
-    lfs     f2, -0x2050(rtoc)
+    lfs     f2, -0x2050(r2)
     lfd     f0, 0x60(sp)
     lfs     f1, 0x18(r31)
     fsubs   f4, f0, f4
-    lfs     f0, -0x204c(rtoc)
+    lfs     f0, -0x204c(r2)
     lfs     f31, 0x14(r31)
     fmuls   f3, f3, f4
     fmadds  f1, f2, f3, f1
@@ -543,15 +543,15 @@ branch_0x801f6694:
     stw     r3, 0x5c(sp)
     addi    r7, r31, 0x0
     mulli   r3, r0, 0xc
-    lfd     f1, -0x2048(rtoc)
+    lfd     f1, -0x2048(r2)
     stw     r30, 0x58(sp)
-    lfs     f3, -0x2054(rtoc)
+    lfs     f3, -0x2054(r2)
     lfd     f0, 0x58(sp)
     addi    r3, r3, 0x170
-    lfs     f2, -0x2050(rtoc)
+    lfs     f2, -0x2050(r2)
     fsubs   f4, f0, f1
     lfs     f1, 0x10(r31)
-    lfs     f0, -0x204c(rtoc)
+    lfs     f0, -0x204c(r2)
     add     r3, r31, r3
     li      r4, 0x1db
     fmuls   f3, f3, f4
@@ -562,7 +562,7 @@ branch_0x801f6694:
     stfs    f31, 0x4(r3)
     stfs    f30, 0x8(r3)
     lwz     r0, 0x2d8(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     mulli   r5, r0, 0xc
     addi    r5, r5, 0x170
     add     r5, r31, r5
@@ -600,7 +600,7 @@ touchWater__16TMapObjTreeScaleFP9THitActor: # 0x801f67b0
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r3
-    lfs     f1, -0x2058(rtoc)
+    lfs     f1, -0x2058(r2)
     lfs     f0, 0x24(r3)
     fcmpu   cr0, f1, f0
     bne-    branch_0x801f67e0
@@ -622,8 +622,8 @@ branch_0x801f67f8:
     beq-    branch_0x801f6824
     mr      r3, r31
     bl      awake__11TMapObjBaseFv
-    lis     r3, 0x4000
-    addi    r0, r3, 0x39
+    lis     r3, unk_40000039@h
+    addi    r0, r3, unk_40000039@l
     stw     r0, 0x4c(r31)
     mr      r3, r31
     bl      removeMapCollision__11TMapObjBaseFv
@@ -647,15 +647,15 @@ __ct__11TMapObjTreeFPCc: # 0x801f683c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__14TMapObjGeneralFPCc
-    lis     r3, 0x803d
-    addi    r3, r3, 0x5e84
+    lis     r3, __vvt__11TMapObjTree@h
+    addi    r3, r3, __vvt__11TMapObjTree@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     li      r4, 0x0
     stw     r0, 0x20(r31)
     li      r0, 0x1
     addi    r3, r31, 0x0
-    lfs     f0, -0x2060(rtoc)
+    lfs     f0, -0x2060(r2)
     stfs    f0, 0x148(r31)
     stfs    f0, 0x14c(r31)
     stw     r4, 0x150(r31)
@@ -687,17 +687,17 @@ initMapObj__11TMapObjTreeFv: # 0x801f68b4
     mulli   r3, r25, 0x3c
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x801f
-    addi    r4, r4, 0x6ef4
+    lis     r4, __ct__11TMapObjLeafFv@h
+    addi    r4, r4, __ct__11TMapObjLeafFv@l
     addi    r7, r25, 0x0
     li      r5, 0x0
     li      r6, 0x3c
     bl      __construct_new_array
-    lis     r4, 0x8039
+    lis     r4, unk_80393d58@h
     stw     r3, 0x154(r29)
-    lis     r3, 0x8039
-    addi    r27, r4, 0x3d58
-    addi    r26, r3, 0x3d40
+    lis     r3, unk_80393d40@h
+    addi    r27, r4, unk_80393d58@l
+    addi    r26, r3, unk_80393d40@l
     li      r31, 0x0
     li      r28, 0x0
     b       branch_0x801f6a30
@@ -798,9 +798,9 @@ branch_0x801f6a50:
 
 .globl initEach__11TMapObjTreeFv
 initEach__11TMapObjTreeFv: # 0x801f6a64
-    lis     r4, 0x4000
+    lis     r4, unk_40000037@h
     lwz     r5, 0x4c(r3)
-    addi    r0, r4, 0x37
+    addi    r0, r4, unk_40000037@l
     cmpw    r5, r0
     beq-    branch_0x801f6b60
     bge-    branch_0x801f6a9c
@@ -820,87 +820,87 @@ branch_0x801f6a9c:
     bgelr-    
 
 branch_0x801f6aac:
-    lfs     f0, -0x2040(rtoc)
+    lfs     f0, -0x2040(r2)
     li      r0, 0xc
     stfs    f0, 0x148(r3)
-    lfs     f0, -0x203c(rtoc)
+    lfs     f0, -0x203c(r2)
     stfs    f0, 0x14c(r3)
     stw     r0, 0x150(r3)
-    lfs     f0, -0x2038(rtoc)
+    lfs     f0, -0x2038(r2)
     stfs    f0, 0x15c(r3)
-    lfs     f0, -0x2034(rtoc)
+    lfs     f0, -0x2034(r2)
     stfs    f0, 0x160(r3)
-    lfs     f0, -0x2030(rtoc)
+    lfs     f0, -0x2030(r2)
     stfs    f0, 0x164(r3)
-    lfs     f0, -0x202c(rtoc)
+    lfs     f0, -0x202c(r2)
     stfs    f0, 0x168(r3)
     blr
 
 branch_0x801f6ae8:
-    lfs     f0, -0x2040(rtoc)
+    lfs     f0, -0x2040(r2)
     li      r0, 0x8
     stfs    f0, 0x148(r3)
-    lfs     f0, -0x2028(rtoc)
+    lfs     f0, -0x2028(r2)
     stfs    f0, 0x14c(r3)
     stw     r0, 0x150(r3)
-    lfs     f0, -0x2038(rtoc)
+    lfs     f0, -0x2038(r2)
     stfs    f0, 0x15c(r3)
-    lfs     f0, -0x2034(rtoc)
+    lfs     f0, -0x2034(r2)
     stfs    f0, 0x160(r3)
-    lfs     f0, -0x2030(rtoc)
+    lfs     f0, -0x2030(r2)
     stfs    f0, 0x164(r3)
-    lfs     f0, -0x202c(rtoc)
+    lfs     f0, -0x202c(r2)
     stfs    f0, 0x168(r3)
     blr
 
 branch_0x801f6b24:
-    lfs     f0, -0x2024(rtoc)
+    lfs     f0, -0x2024(r2)
     li      r0, 0xc
     stfs    f0, 0x148(r3)
-    lfs     f0, -0x2028(rtoc)
+    lfs     f0, -0x2028(r2)
     stfs    f0, 0x14c(r3)
     stw     r0, 0x150(r3)
-    lfs     f0, -0x2038(rtoc)
+    lfs     f0, -0x2038(r2)
     stfs    f0, 0x15c(r3)
-    lfs     f0, -0x2034(rtoc)
+    lfs     f0, -0x2034(r2)
     stfs    f0, 0x160(r3)
-    lfs     f0, -0x2030(rtoc)
+    lfs     f0, -0x2030(r2)
     stfs    f0, 0x164(r3)
-    lfs     f0, -0x202c(rtoc)
+    lfs     f0, -0x202c(r2)
     stfs    f0, 0x168(r3)
     blr
 
 branch_0x801f6b60:
-    lfs     f0, -0x203c(rtoc)
+    lfs     f0, -0x203c(r2)
     li      r0, 0x8
     stfs    f0, 0x148(r3)
-    lfs     f0, -0x2020(rtoc)
+    lfs     f0, -0x2020(r2)
     stfs    f0, 0x14c(r3)
     stw     r0, 0x150(r3)
-    lfs     f0, -0x2038(rtoc)
+    lfs     f0, -0x2038(r2)
     stfs    f0, 0x15c(r3)
-    lfs     f0, -0x2034(rtoc)
+    lfs     f0, -0x2034(r2)
     stfs    f0, 0x160(r3)
-    lfs     f0, -0x2030(rtoc)
+    lfs     f0, -0x2030(r2)
     stfs    f0, 0x164(r3)
-    lfs     f0, -0x202c(rtoc)
+    lfs     f0, -0x202c(r2)
     stfs    f0, 0x168(r3)
     blr
 
 branch_0x801f6b9c:
-    lfs     f0, -0x201c(rtoc)
+    lfs     f0, -0x201c(r2)
     li      r0, 0x8
     stfs    f0, 0x148(r3)
-    lfs     f0, -0x2028(rtoc)
+    lfs     f0, -0x2028(r2)
     stfs    f0, 0x14c(r3)
     stw     r0, 0x150(r3)
-    lfs     f0, -0x2018(rtoc)
+    lfs     f0, -0x2018(r2)
     stfs    f0, 0x15c(r3)
-    lfs     f0, -0x2014(rtoc)
+    lfs     f0, -0x2014(r2)
     stfs    f0, 0x160(r3)
-    lfs     f0, -0x2010(rtoc)
+    lfs     f0, -0x2010(r2)
     stfs    f0, 0x164(r3)
-    lfs     f0, -0x200c(rtoc)
+    lfs     f0, -0x200c(r2)
     stfs    f0, 0x168(r3)
     blr
 
@@ -965,12 +965,12 @@ controlLeaf__11TMapObjTreeFi: # 0x801f6c74
     stw     r28, 0xc0(sp)
     addi    r28, r3, 0x0
     lwz     r3, 0x154(r3)
-    lfs     f3, -0x2060(rtoc)
+    lfs     f3, -0x2060(r2)
     add     r29, r3, r0
     lfs     f1, 0x4(r29)
     fcmpu   cr0, f3, f1
     bne-    branch_0x801f6cf8
-    lwz     r3, -0x60a0(r13)
+    lwz     r3, R13Off_m0x60a0(r13)
     lfs     f0, 0x0(r3)
     fcmpo   cr0, f0, f3
     cror    2, 0, 2
@@ -1005,7 +1005,7 @@ branch_0x801f6cf8:
     fmuls   f0, f1, f0
     stfs    f0, 0x4(r29)
     stfs    f3, 0x8c(sp)
-    lfs     f0, -0x2058(rtoc)
+    lfs     f0, -0x2058(r2)
     stfs    f3, 0x7c(sp)
     stfs    f3, 0x6c(sp)
     stfs    f3, 0x78(sp)
@@ -1039,8 +1039,8 @@ branch_0x801f6cf8:
     addi    r3, r30, 0x0
     add     r4, r4, r0
     bl      PSMTXCopy
-    lwz     r3, -0x60a0(r13)
-    lfs     f0, -0x2060(rtoc)
+    lwz     r3, R13Off_m0x60a0(r13)
+    lfs     f0, -0x2060(r2)
     lfs     f1, 0x0(r3)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
@@ -1084,7 +1084,7 @@ touchPlayer__11TMapObjTreeFP9THitActor: # 0x801f6e30
     stw     r30, 0x30(sp)
     addi    r30, r3, 0x0
     stb     r0, 0x158(r3)
-    lwz     r3, -0x608c(r13)
+    lwz     r3, R13Off_m0x608c(r13)
     lwz     r3, 0x0(r3)
     lwz     r0, 0x44(r3)
     lha     r31, 0x2(r3)
@@ -1141,7 +1141,7 @@ __ct__11TMapObjLeafFv: # 0x801f6ef4
     stw     r31, 0x44(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x40(sp)
-    lfs     f0, -0x2060(rtoc)
+    lfs     f0, -0x2060(r2)
     stfs    f0, 0x0(r3)
     stfs    f0, 0x4(r3)
     li      r3, 0x60
@@ -1155,7 +1155,7 @@ __ct__11TMapObjLeafFv: # 0x801f6ef4
     stfs    f0, 0x10(r31)
     stfs    f0, 0x2c(r31)
     stfs    f0, 0x1c(r31)
-    lfs     f0, -0x2058(rtoc)
+    lfs     f0, -0x2058(r2)
     stfs    f0, 0x34(r31)
     stfs    f0, 0x20(r31)
     stfs    f0, 0xc(r31)
@@ -1178,205 +1178,205 @@ branch_0x801f6f6c:
 .globl __sinit_MapObjTree_cpp
 __sinit_MapObjTree_cpp: # 0x801f6f8c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, unk_803fa7b8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x5848
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803fa7b8@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x801f6fd4
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x801f6fd4:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7004
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x801f7004:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7034
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x801f7034:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7064
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x801f7064:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7094
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x801f7094:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x801f70c4
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x801f70c4:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x801f70f4
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x801f70f4:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7124
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x801f7124:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7154
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x801f7154:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7184
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x801f7184:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x801f71b4
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x801f71b4:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x801f71e4
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x801f71e4:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7214
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x801f7214:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7244
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x801f7244:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x801f7274
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x801f7274:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
@@ -1385,14 +1385,14 @@ branch_0x801f7274:
     blr
 
 
-.globl _32___dt__11TMapObjTreeFv
-_32___dt__11TMapObjTreeFv: # 0x801f7288
-    subi    r3, r3, 0x20
+.globl unk_801f7288
+unk_801f7288: # 0x801f7288
+    addi    r3, r3, -0x20
     b       __dt__11TMapObjTreeFv
 
 
-.globl _32___dt__16TMapObjTreeScaleFv
-_32___dt__16TMapObjTreeScaleFv: # 0x801f7290
-    subi    r3, r3, 0x20
+.globl unk_801f7290
+unk_801f7290: # 0x801f7290
+    addi    r3, r3, -0x20
     b       __dt__16TMapObjTreeScaleFv
 

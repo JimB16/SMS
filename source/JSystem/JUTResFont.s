@@ -52,8 +52,8 @@ __ct__10JUTResFontFPC7ResFONTP10JKRArchive: # 0x802f1300
     lwz     r3, 0x8(sp)
     bl      __ct__7JUTFontFv
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1814
+    lis     r3, __vvt__10JUTResFont@h
+    addi    r0, r3, __vvt__10JUTResFont@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0
@@ -83,8 +83,8 @@ __dt__10JUTResFontFv: # 0x802f137c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f13fc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1814
+    lis     r3, __vvt__10JUTResFont@h
+    addi    r0, r3, __vvt__10JUTResFont@l
     stw     r0, 0x0(r30)
     lwz     r3, 0x50(r30)
     cmplwi  r3, 0x0
@@ -103,8 +103,8 @@ branch_0x802f13c8:
 branch_0x802f13d8:
     cmplwi  r30, 0x0
     beq-    branch_0x802f13ec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x540
+    lis     r3, __vvt__7JUTFont@h
+    addi    r0, r3, __vvt__7JUTFont@l
     stw     r0, 0x0(r30)
 branch_0x802f13ec:
     extsh.  r0, r31
@@ -219,23 +219,23 @@ branch_0x802f1540:
 .globl countBlock__10JUTResFontFv
 countBlock__10JUTResFontFv: # 0x802f1554
     mflr    r0
-    lis     r5, 0x474c
+    lis     r5, unk_474c5931@h
     stw     r0, 0x4(sp)
     li      r0, 0x0
-    lis     r4, 0x5749
+    lis     r4, unk_57494431@h
     stwu    sp, -0x30(sp)
-    lis     r7, 0x4d41
-    lis     r6, 0x494e
+    lis     r7, unk_4d415031@h
+    lis     r6, unk_494e4631@h
     stmw    r24, 0x10(sp)
     addi    r30, r3, 0x0
-    addi    r27, r5, 0x5931
-    addi    r28, r4, 0x4431
-    addi    r25, r7, 0x5031
-    addi    r26, r6, 0x4631
+    addi    r27, r5, unk_474c5931@l
+    addi    r28, r4, unk_57494431@l
+    addi    r25, r7, unk_4d415031@l
+    addi    r26, r6, unk_494e4631@l
     li      r24, 0x0
     sth     r0, 0x5c(r3)
-    lis     r3, 0x803b
-    subi    r29, r3, 0x5ed8
+    lis     r3, unk_803aa128@ha
+    addi    r29, r3, unk_803aa128@l
     sth     r0, 0x5e(r30)
     sth     r0, 0x60(r30)
     lwz     r3, 0x48(r30)
@@ -299,29 +299,29 @@ branch_0x802f1628:
 .globl setBlock__10JUTResFontFv
 setBlock__10JUTResFontFv: # 0x802f164c
     mflr    r0
-    lis     r4, 0x1
+    lis     r4, unk_0000ffff@ha
     stw     r0, 0x4(sp)
-    subi    r0, r4, 0x1
-    lis     r6, 0x474c
+    addi    r0, r4, unk_0000ffff@l
+    lis     r6, unk_474c5931@h
     stwu    sp, -0x40(sp)
-    lis     r5, 0x5749
-    lis     r8, 0x4d41
+    lis     r5, unk_57494431@h
+    lis     r8, unk_4d415031@h
     stmw    r20, 0x10(sp)
-    lis     r7, 0x494e
-    lis     r4, 0x803e
+    lis     r7, unk_494e4631@h
+    lis     r4, saoAboutEncoding___10JUTResFont@h
     addi    r24, r3, 0x0
-    addi    r29, r6, 0x5931
-    addi    r30, r5, 0x4431
-    addi    r27, r8, 0x5031
-    addi    r28, r7, 0x4631
-    addi    r31, r4, 0x1808
+    addi    r29, r6, unk_474c5931@l
+    addi    r30, r5, unk_57494431@l
+    addi    r27, r8, unk_4d415031@l
+    addi    r28, r7, unk_494e4631@l
+    addi    r31, r4, saoAboutEncoding___10JUTResFont@l
     li      r23, 0x0
     li      r22, 0x0
     li      r21, 0x0
     li      r25, 0x0
     sth     r0, 0x64(r3)
-    lis     r3, 0x803b
-    subi    r20, r3, 0x5eb8
+    lis     r3, unk_803aa148@ha
+    addi    r20, r3, unk_803aa148@l
     lwz     r9, 0x48(r24)
     addi    r26, r9, 0x20
     b       branch_0x802f1768
@@ -669,9 +669,9 @@ branch_0x802f1b68:
     lbz     r0, 0x44(sp)
     stw     r3, 0x64(sp)
     lis     r3, 0x4330
-    lfd     f2, 0x378(rtoc)
+    lfd     f2, 0x378(r2)
     stw     r3, 0x60(sp)
-    lfd     f1, 0x380(rtoc)
+    lfd     f1, 0x380(r2)
     lfd     f0, 0x60(sp)
     stw     r0, 0x5c(sp)
     fsubs   f0, f0, f2
@@ -693,7 +693,7 @@ branch_0x802f1bb8:
     xoris   r3, r0, 0x8000
     lbz     r0, 0x4(r29)
     stw     r30, 0x58(sp)
-    lfd     f2, 0x378(rtoc)
+    lfd     f2, 0x378(r2)
     cmplwi  r0, 0x0
     lfd     f0, 0x58(sp)
     stw     r3, 0x64(sp)
@@ -712,7 +712,7 @@ branch_0x802f1bb8:
     mtlr    r12
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f2, 0x378(rtoc)
+    lfd     f2, 0x378(r2)
     stw     r0, 0x5c(sp)
     lbz     r3, 0x45(sp)
     stw     r30, 0x58(sp)
@@ -738,9 +738,9 @@ branch_0x802f1c74:
     xoris   r3, r3, 0x8000
     lbz     r0, 0x45(sp)
     stw     r3, 0x5c(sp)
-    lfd     f2, 0x378(rtoc)
+    lfd     f2, 0x378(r2)
     stw     r30, 0x58(sp)
-    lfd     f1, 0x380(rtoc)
+    lfd     f1, 0x380(r2)
     lfd     f0, 0x58(sp)
     stw     r0, 0x64(sp)
     fsubs   f0, f0, f2
@@ -757,7 +757,7 @@ branch_0x802f1cc0:
     mtlr    r12
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f1, 0x378(rtoc)
+    lfd     f1, 0x378(r2)
     stw     r0, 0x5c(sp)
     lis     r30, 0x4330
     addi    r3, r29, 0x0
@@ -770,7 +770,7 @@ branch_0x802f1cc0:
     fdivs   f26, f28, f0
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f1, 0x378(rtoc)
+    lfd     f1, 0x378(r2)
     stw     r0, 0x64(sp)
     mr      r3, r29
     lwz     r12, 0x0(r29)
@@ -782,7 +782,7 @@ branch_0x802f1cc0:
     fnmsubs  f26, f0, f26, f27
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f1, 0x378(rtoc)
+    lfd     f1, 0x378(r2)
     stw     r0, 0x54(sp)
     mr      r3, r29
     lwz     r12, 0x0(r29)
@@ -811,7 +811,7 @@ branch_0x802f1cc0:
     stw     r30, 0x48(sp)
     lwz     r12, 0x28(r12)
     divw    r30, r4, r0
-    lfd     f1, 0x378(rtoc)
+    lfd     f1, 0x378(r2)
     lfd     f0, 0x48(sp)
     mtlr    r12
     fsubs   f0, f0, f1
@@ -851,7 +851,7 @@ branch_0x802f1cc0:
     li      r5, 0x4
     bl      GXBegin
     lis     r8, 0xcc01
-    lfs     f0, 0x370(rtoc)
+    lfs     f0, 0x370(r2)
     stfs    f31, -0x8000(r8)
     li      r3, 0x0
     li      r4, 0x9
@@ -1102,8 +1102,8 @@ getFontCode__10JUTResFontCFi: # 0x802f2150
     blt-    branch_0x802f21c0
     cmplwi  r30, 0x7f
     bge-    branch_0x802f21c0
-    lis     r3, 0x803b
-    subi    r3, r3, 0x5ea4
+    lis     r3, unk_803aa15c@ha
+    addi    r3, r3, unk_803aa15c@l
     slwi    r0, r30, 1
     add     r3, r3, r0
     lhz     r30, -0x40(r3)
@@ -1143,7 +1143,7 @@ branch_0x802f2224:
     lhz     r3, 0xe(r4)
     addi    r5, r4, 0x10
     li      r6, 0x0
-    subi    r7, r3, 0x1
+    addi    r7, r3, -0x1
     b       branch_0x802f227c
 
 branch_0x802f2240:
@@ -1154,7 +1154,7 @@ branch_0x802f2240:
     lhzx    r0, r5, r3
     cmpw    r30, r0
     bge-    branch_0x802f2264
-    subi    r7, r4, 0x1
+    addi    r7, r4, -0x1
     b       branch_0x802f227c
 
 branch_0x802f2264:
@@ -1280,7 +1280,7 @@ branch_0x802f23bc:
     addi    r4, r4, 0x20
     add     r4, r11, r4
     bl      GXInitTexObj
-    lfs     f1, 0x370(rtoc)
+    lfs     f1, 0x370(r2)
     addi    r3, r28, 0x24
     li      r4, 0x1
     fmr     f2, f1
@@ -1310,14 +1310,14 @@ branch_0x802f2430:
 .globl convertSjis__10JUTResFontCFiPUs
 convertSjis__10JUTResFontCFiPUs: # 0x802f2450
     clrlwi  r3, r4, 24
-    subi    r0, r3, 0x40
+    addi    r0, r3, -0x40
     cmpwi   r0, 0x40
     extrwi  r3, r4, 8, 16
     mr      r4, r0
     blt-    branch_0x802f246c
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
 branch_0x802f246c:
-    subi    r0, r3, 0x88
+    addi    r0, r3, -0x88
     mulli   r3, r0, 0xbc
     addi    r3, r3, 0x2be
     add     r3, r4, r3

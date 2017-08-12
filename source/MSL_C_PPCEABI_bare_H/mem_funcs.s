@@ -57,8 +57,8 @@ branch_0x8033948c:
 __copy_longs_unaligned: # 0x803394a0
     neg     r0, r3
     clrlwi. r6, r0, 30
-    subi    r4, r4, 0x1
-    subi    r3, r3, 0x1
+    addi    r4, r4, -0x1
+    addi    r3, r3, -0x1
     beq-    branch_0x803394c8
     subf    r5, r6, r5
 branch_0x803394b8:
@@ -70,11 +70,11 @@ branch_0x803394c8:
     addi    r0, r4, 0x1
     clrlwi  r11, r0, 30
     subf    r4, r11, r4
-    subi    r8, r4, 0x3
+    addi    r8, r4, -0x3
     lwzu    r9, 0x4(r8)
     clrlslwi  r4, r0, 30, 3
     subfic  r12, r4, 0x20
-    subi    r6, r3, 0x3
+    addi    r6, r3, -0x3
     srwi    r7, r5, 3
 branch_0x803394ec:
     lwz     r10, 0x4(r8)
@@ -171,8 +171,8 @@ branch_0x803395fc:
 __copy_longs_aligned: # 0x80339610
     neg     r0, r3
     clrlwi. r6, r0, 30
-    subi    r7, r4, 0x1
-    subi    r3, r3, 0x1
+    addi    r7, r4, -0x1
+    addi    r3, r3, -0x1
     beq-    branch_0x80339638
     subf    r5, r6, r5
 branch_0x80339628:
@@ -182,8 +182,8 @@ branch_0x80339628:
     bne+    branch_0x80339628
 branch_0x80339638:
     srwi.   r4, r5, 5
-    subi    r6, r7, 0x3
-    subi    r3, r3, 0x3
+    addi    r6, r7, -0x3
+    addi    r3, r3, -0x3
     beq-    branch_0x80339690
 branch_0x80339648:
     lwz     r0, 0x4(r6)

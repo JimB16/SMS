@@ -62,14 +62,14 @@ branch_0x80344704:
     addi    r29, r5, 0x0
     stw     r5, 0x10(sp)
     stw     r6, 0x14(sp)
-    lis     r6, 0x803e
-    addi    r31, r6, 0x7320
+    lis     r6, unk_803e7320@h
+    addi    r31, r6, unk_803e7320@l
     stw     r7, 0x18(sp)
     stw     r8, 0x1c(sp)
     stw     r9, 0x20(sp)
     stw     r10, 0x24(sp)
     bl      OSDisableInterrupts
-    lis     r0, 0x300
+    lis     r0, unk_03000000@h
     stw     r0, 0x74(sp)
     addi    r0, sp, 0x98
     addi    r4, sp, 0x74
@@ -86,7 +86,7 @@ branch_0x80344704:
     addi    r3, r31, 0x18
     crxor   6, 6, 6
     bl      OSReport
-    li      r30, 0x0
+    addi    r30, r0, unk_03000000@l
     bl      OSGetStackPointer
     mr      r29, r3
     b       branch_0x803447ac
@@ -122,9 +122,9 @@ branch_0x803447cc:
 
 .globl OSSetErrorHandler
 OSSetErrorHandler: # 0x803447f0
-    lis     r5, 0x8040
+    lis     r5, __OSErrorTable@h
     clrlslwi  r3, r3, 16, 2
-    addi    r0, r5, 0x25d0
+    addi    r0, r5, __OSErrorTable@l
     add     r5, r0, r3
     lwz     r3, 0x0(r5)
     stw     r4, 0x0(r5)
@@ -142,8 +142,8 @@ __OSUnhandledException: # 0x8034480c
     addi    r26, r5, 0x0
     addi    r27, r6, 0x0
     lwz     r0, 0x19c(r4)
-    lis     r4, 0x803e
-    addi    r29, r4, 0x7320
+    lis     r4, unk_803e7320@h
+    addi    r29, r4, unk_803e7320@l
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x80344854
     addi    r3, r29, 0x5c
@@ -154,9 +154,9 @@ __OSUnhandledException: # 0x8034480c
 
 branch_0x80344854:
     clrlwi  r30, r25, 24
-    lis     r3, 0x8040
+    lis     r3, __OSErrorTable@h
     clrlslwi  r4, r25, 24, 2
-    addi    r0, r3, 0x25d0
+    addi    r0, r3, __OSErrorTable@l
     add     r28, r0, r4
     lwz     r0, 0x0(r28)
     cmplwi  r0, 0x0
@@ -186,7 +186,7 @@ branch_0x803448bc:
     clrlwi  r4, r25, 24
     bl      OSReport
 branch_0x803448cc:
-    subi    r3, r13, 0x7370
+    addi    r3, r13, R13Off_m0x7370
     crxor   6, 6, 6
     bl      OSReport
     mr      r3, r31
@@ -205,14 +205,13 @@ branch_0x803448cc:
     clrlwi  r0, r25, 24
     cmplwi  r0, 0xf
     bgt-    branch_0x803449d8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x75fc
+    lis     r3, unk_803e75fc@h
+    addi    r3, r3, unk_803e75fc@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80344930:		# jumptable 8034492C case 2
+    bctr       
+branch_0x80344930:
     lwz     r4, 0x198(r31)
     addi    r5, r27, 0x0
     addi    r3, r29, 0xd8
@@ -220,58 +219,56 @@ branch_0x80344930:		# jumptable 8034492C case 2
     bl      OSReport
     b       branch_0x803449d8
 
-branch_0x80344948:		# jumptable 8034492C case 3
-lwz	  r4, 0x198(r31)
-addi	  r3, r29, 0x138
-crclr	  4*cr1+eq
-bl	  OSReport
-b	  def_8034492C	# jumptable 8034492C default case
+branch_0x80344948:
+    lwz     r4, 0x198(r31)
+    addi    r3, r29, 0x138
+    crxor   6, 6, 6
+    bl      OSReport
+    b       branch_0x803449d8
 
-branch_0x8034495C:		# jumptable 8034492C case 5
-lwz	  r4, 0x198(r31)
-addi	  r5, r27, 0
-addi	  r3, r29, 0x184
-crclr	  4*cr1+eq
-bl	  OSReport
-b	  def_8034492C	# jumptable 8034492C default case
+branch_0x8034495c:
+    lwz     r4, 0x198(r31)
+    addi    r5, r27, 0x0
+    addi    r3, r29, 0x184
+    crxor   6, 6, 6
+    bl      OSReport
+    b       branch_0x803449d8
 
-branch_0x80344974:		# jumptable 8034492C case 6
-lwz	  r4, 0x198(r31)
-addi	  r5, r27, 0
-addi	  r3, r29, 0x1E8
-crclr	  4*cr1+eq
-bl	  OSReport
-b	  def_8034492C	# jumptable 8034492C default case
+branch_0x80344974:
+    lwz     r4, 0x198(r31)
+    addi    r5, r27, 0x0
+    addi    r3, r29, 0x1e8
+    crxor   6, 6, 6
+    bl      OSReport
+    b       branch_0x803449d8
 
-branch_0x8034498C:		# jumptable 8034492C case 15
-addi	  r3, r13, -0x7370
-crclr	  4*cr1+eq
-bl	  OSReport
-lis	  r30, -0x3400 # 0xCC005000
-crclr	  4*cr1+eq
-addi	  r31, r30, 0x5000 # 0xCC005000
-lhz	  r4, 0x5030(r30)
-addi	  r3, r29, 0x248
-lhz	  r5, 0x5032(r30)
-bl	  OSReport
-lhz	  r4, 0x20(r31)
-addi	  r3, r29, 0x268
-lhz	  r5, 0x22(r31)
-crclr	  4*cr1+eq
-bl	  OSReport
-lwz	  r4, 0x6014(r30)
-crclr	  4*cr1+eq
-addi	  r3, r29, 0x288
-bl	  OSReport
-
-def_8034492C:		# jumptable 8034492C default case
+branch_0x8034498c:
+    addi    r3, r13, R13Off_m0x7370
+    crxor   6, 6, 6
+    bl      OSReport
+    lis     r30, unk_cc005000@h
+    crxor   6, 6, 6
+    addi    r31, r30, unk_cc005000@l
+    lhz     r4, 0x5030(r30)
+    addi    r3, r29, 0x248
+    lhz     r5, 0x5032(r30)
+    bl      OSReport
+    lhz     r4, 0x20(r31)
+    addi    r3, r29, 0x268
+    lhz     r5, 0x22(r31)
+    crxor   6, 6, 6
+    bl      OSReport
+    lwz     r4, 0x6014(r30)
+    crxor   6, 6, 6
+    addi    r3, r29, 0x288
+    bl      OSReport
 branch_0x803449d8:
     lha     r4, -0x5a08(r13)
     addi    r3, r29, 0x2a4
     crxor   6, 6, 6
-    lwz     r5, -0x5a0c(r13)
-    lwz     r7, -0x5a00(r13)
-    lwz     r8, -0x59fc(r13)
+    lwz     r5, R13Off_m0x5a0c(r13)
+    lwz     r7, R13Off_m0x5a00(r13)
+    lwz     r8, R13Off_m0x59fc(r13)
     bl      OSReport
     bl      PPCHalt
     lmw     r25, 0x1c(sp)

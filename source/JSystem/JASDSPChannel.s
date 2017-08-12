@@ -27,10 +27,10 @@ branch_0x80314698:
     b       branch_0x803146dc
 
 branch_0x803146b0:
-    lwz     r3, -0x5c1c(r13)
+    lwz     r3, R13Off_m0x5c1c(r13)
     li      r0, 0x1
-    subi    r3, r3, 0x1
-    stw     r3, -0x5c1c(r13)
+    addi    r3, r3, -0x1
+    stw     r3, R13Off_m0x5c1c(r13)
     lwz     r3, 0xc(r31)
     sth     r0, 0x10a(r3)
     lwz     r3, 0xc(r31)
@@ -98,28 +98,28 @@ initAll__Q28JASystem11TDSPChannelFv: # 0x8031476c
     stw     r30, 0x10(sp)
     stw     r29, 0xc(sp)
     stw     r28, 0x8(sp)
-    lbz     r0, -0x5c14(r13)
+    lbz     r0, R13Off_m0x5c14(r13)
     extsb.  r0, r0
     bne-    branch_0x803147a0
     li      r0, 0x1
-    stw     r0, -0x5c18(r13)
-    stb     r0, -0x5c14(r13)
+    stw     r0, R13Off_m0x5c18(r13)
+    stb     r0, R13Off_m0x5c14(r13)
 branch_0x803147a0:
-    lwz     r0, -0x5c18(r13)
+    lwz     r0, R13Off_m0x5c18(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8031483c
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     li      r3, 0x508
     li      r5, 0x20
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8031
-    lis     r5, 0x8031
-    addi    r4, r4, 0x489c
-    addi    r5, r5, 0x485c
+    lis     r4, __ct__Q28JASystem11TDSPChannelFv@h
+    lis     r5, __dt__Q28JASystem11TDSPChannelFv@h
+    addi    r4, r4, __ct__Q28JASystem11TDSPChannelFv@l
+    addi    r5, r5, __dt__Q28JASystem11TDSPChannelFv@l
     li      r6, 0x14
     li      r7, 0x40
     bl      __construct_new_array
-    stw     r3, -0x5c20(r13)
+    stw     r3, R13Off_m0x5c20(r13)
     li      r28, 0x0
     li      r30, 0x1
     li      r31, 0x0
@@ -127,7 +127,7 @@ branch_0x803147a0:
 
 branch_0x803147ec:
     clrlwi  r0, r28, 24
-    lwz     r3, -0x5c20(r13)
+    lwz     r3, R13Off_m0x5c20(r13)
     mulli   r0, r0, 0x14
     add     r29, r3, r0
     stb     r28, 0x0(r29)
@@ -146,7 +146,7 @@ branch_0x80314828:
     cmplwi  r0, 0x40
     blt+    branch_0x803147ec
     li      r0, 0x0
-    stw     r0, -0x5c18(r13)
+    stw     r0, R13Off_m0x5c18(r13)
 branch_0x8031483c:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -206,7 +206,7 @@ branch_0x803148dc:
     li      r29, 0x0
     li      r31, 0x0
 branch_0x803148e4:
-    lwz     r0, -0x5c20(r13)
+    lwz     r0, R13Off_m0x5c20(r13)
     add     r3, r0, r31
     lbz     r4, 0x1(r3)
     cmplwi  r4, 0x1
@@ -243,14 +243,14 @@ branch_0x80314930:
 branch_0x8031494c:
     cmpwi   r30, 0x0
     beq-    branch_0x80314978
-    lwz     r4, -0x7410(r13)
-    lwz     r3, -0x5c1c(r13)
-    subi    r5, r4, 0x1
-    lwz     r0, -0x5c20(r13)
+    lwz     r4, R13Off_m0x7410(r13)
+    lwz     r3, R13Off_m0x5c1c(r13)
+    addi    r5, r4, -0x1
+    lwz     r0, R13Off_m0x5c20(r13)
     addi    r4, r3, 0x1
-    stw     r5, -0x7410(r13)
+    stw     r5, R13Off_m0x7410(r13)
     add     r3, r0, r31
-    stw     r4, -0x5c1c(r13)
+    stw     r4, R13Off_m0x5c1c(r13)
     b       branch_0x8031498c
 
 branch_0x80314978:
@@ -296,16 +296,16 @@ branch_0x803149e4:
     lbz     r0, 0x1(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x803149fc
-    lwz     r4, -0x5c1c(r13)
-    subi    r0, r4, 0x1
-    stw     r0, -0x5c1c(r13)
+    lwz     r4, R13Off_m0x5c1c(r13)
+    addi    r0, r4, -0x1
+    stw     r0, R13Off_m0x5c1c(r13)
 branch_0x803149fc:
     lbz     r0, 0x1(r3)
     cmplwi  r0, 0x1
     beq-    branch_0x80314a14
-    lwz     r4, -0x7410(r13)
+    lwz     r4, R13Off_m0x7410(r13)
     addi    r0, r4, 0x1
-    stw     r0, -0x7410(r13)
+    stw     r0, R13Off_m0x7410(r13)
 branch_0x80314a14:
     li      r0, 0x1
     stb     r0, 0x1(r3)
@@ -319,7 +319,7 @@ branch_0x80314a14:
 
 .globl getLower__Q28JASystem11TDSPChannelFv
 getLower__Q28JASystem11TDSPChannelFv: # 0x80314a34
-    lwz     r5, -0x5c20(r13)
+    lwz     r5, R13Off_m0x5c20(r13)
     li      r7, 0xff
     li      r8, 0x0
     li      r9, 0x0
@@ -379,7 +379,7 @@ branch_0x80314ad8:
 
 .globl getLowerActive__Q28JASystem11TDSPChannelFv
 getLowerActive__Q28JASystem11TDSPChannelFv: # 0x80314ae8
-    lwz     r5, -0x5c20(r13)
+    lwz     r5, R13Off_m0x5c20(r13)
     li      r7, 0xff
     li      r8, 0x0
     li      r9, 0x0
@@ -468,10 +468,10 @@ branch_0x80314bec:
     lhz     r0, 0x0(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80314c44
-    lwz     r3, -0x5c1c(r13)
+    lwz     r3, R13Off_m0x5c1c(r13)
     li      r0, 0x1
-    subi    r3, r3, 0x1
-    stw     r3, -0x5c1c(r13)
+    addi    r3, r3, -0x1
+    stw     r3, R13Off_m0x5c1c(r13)
     lwz     r3, 0xc(r31)
     sth     r0, 0x10a(r3)
     lwz     r3, 0xc(r31)
@@ -505,14 +505,14 @@ updateAll__Q28JASystem11TDSPChannelFv: # 0x80314c60
     stw     r29, 0x44(sp)
     stw     r28, 0x40(sp)
     bl      OSGetTick
-    lwz     r0, -0x5c10(r13)
-    stw     r3, -0x5c10(r13)
+    lwz     r0, R13Off_m0x5c10(r13)
+    stw     r3, R13Off_m0x5c10(r13)
     subf    r29, r0, r3
     bl      getDSPSyncCount__Q28JASystem11AudioThreadFv
     subfic  r5, r3, 0x7
-    lis     r3, 0x803e
+    lis     r3, history__8JASystem@h
     slwi    r0, r5, 2
-    addi    r4, r3, 0x2fc0
+    addi    r4, r3, history__8JASystem@l
     add     r3, r4, r0
     cmplwi  r5, 0x0
     stw     r29, 0x0(r3)
@@ -520,7 +520,7 @@ updateAll__Q28JASystem11TDSPChannelFv: # 0x80314c60
     lwz     r3, 0x0(r4)
     lis     r0, 0x4330
     stw     r29, 0x34(sp)
-    lfd     f3, 0x6c8(rtoc)
+    lfd     f3, 0x6c8(r2)
     stw     r3, 0x3c(sp)
     lfs     f0, -0x740c(r13)
     stw     r0, 0x38(sp)
@@ -563,7 +563,7 @@ branch_0x80314d48:
     li      r30, 0x0
     li      r29, 0x0
 branch_0x80314d50:
-    lwz     r0, -0x5c20(r13)
+    lwz     r0, R13Off_m0x5c20(r13)
     add     r28, r0, r29
     lbz     r0, 0x1(r28)
     lwz     r31, 0xc(r28)
@@ -609,7 +609,7 @@ branch_0x80314dec:
     cmplwi  r0, 0x0
     beq-    branch_0x80314e50
     lhz     r3, 0x6(r28)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x6(r28)
     lhz     r0, 0x6(r28)
     cmplwi  r0, 0x0

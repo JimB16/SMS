@@ -7,12 +7,12 @@ __dt__24TNerveBossTelesaFallDemoFv: # 0x800bd89c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800bd8e0
-    lis     r3, 0x803b
-    addi    r0, r3, 0x79d8
+    lis     r3, __vvt__24TNerveBossTelesaFallDemo@h
+    addi    r0, r3, __vvt__24TNerveBossTelesaFallDemo@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800bd8d0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800bd8d0:
     extsh.  r0, r4
@@ -42,7 +42,7 @@ execute__24TNerveBossTelesaFallDemoCFP24TSpineBase_10TLiveActor_: # 0x800bd8f8
     bne-    branch_0x800bd96c
     lwz     r0, 0xf0(r31)
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_4
+    li      r4, 0x4
     ori     r0, r0, 0x2
     stw     r0, 0xf0(r31)
     bl      SMS_SendMessageToMario__FP9THitActorUl
@@ -53,10 +53,10 @@ execute__24TNerveBossTelesaFallDemoCFP24TSpineBase_10TLiveActor_: # 0x800bd8f8
 branch_0x800bd948:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     bl      setFrameRate__6MActorFfi
     lwz     r3, 0x184(r31)
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stfsu   f0, 0x24(r3)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
@@ -68,7 +68,7 @@ branch_0x800bd96c:
     lwz     r5, 0x10(r31)
     addi    r3, sp, 0x34
     lwz     r0, 0x14(r31)
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     stw     r5, 0x34(sp)
     stw     r0, 0x38(sp)
     lwz     r0, 0x18(r31)
@@ -91,26 +91,26 @@ branch_0x800bd96c:
     clrrwi  r3, r3, 1
     stw     r3, 0x64(r4)
     stw     r0, 0x8(r30)
-    lbz     r0, -0x6a58(r13)
+    lbz     r0, R13Off_m0x6a58(r13)
     extsb.  r0, r0
     bne-    branch_0x800bda28
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a54(r13)
-    addi    r0, r3, 0x7adc
-    lis     r4, 0x800c
-    stw     r0, -0x6a54(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b34
-    subi    r4, r4, 0x251c
-    subi    r3, r13, 0x6a54
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveBossTelesaHideWait@h
+    stw     r0, R13Off_m0x6a54(r13)
+    addi    r0, r3, __vvt__24TNerveBossTelesaHideWait@l
+    lis     r4, __dt__24TNerveBossTelesaHideWaitFv@ha
+    stw     r0, R13Off_m0x6a54(r13)
+    lis     r3, unk_803f1b34@h
+    addi    r5, r3, unk_803f1b34@l
+    addi    r4, r4, __dt__24TNerveBossTelesaHideWaitFv@l
+    addi    r3, r13, R13Off_m0x6a54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a58(r13)
+    stb     r0, R13Off_m0x6a58(r13)
 branch_0x800bda28:
     lwz     r0, 0x14(r30)
-    subi    r3, r13, 0x6a54
+    addi    r3, r13, R13Off_m0x6a54
     cmplwi  r0, 0x0
     beq-    branch_0x800bda3c
     stw     r0, 0x1c(r30)
@@ -118,25 +118,25 @@ branch_0x800bda3c:
     li      r0, 0x0
     stw     r0, 0x20(r30)
     stw     r3, 0x14(r30)
-    lbz     r0, -0x6a58(r13)
+    lbz     r0, R13Off_m0x6a58(r13)
     extsb.  r0, r0
     bne-    branch_0x800bda8c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a54(r13)
-    addi    r0, r3, 0x7adc
-    lis     r4, 0x800c
-    stw     r0, -0x6a54(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b34
-    subi    r4, r4, 0x251c
-    subi    r3, r13, 0x6a54
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveBossTelesaHideWait@h
+    stw     r0, R13Off_m0x6a54(r13)
+    addi    r0, r3, __vvt__24TNerveBossTelesaHideWait@l
+    lis     r4, __dt__24TNerveBossTelesaHideWaitFv@ha
+    stw     r0, R13Off_m0x6a54(r13)
+    lis     r3, unk_803f1b34@h
+    addi    r5, r3, unk_803f1b34@l
+    addi    r4, r4, __dt__24TNerveBossTelesaHideWaitFv@l
+    addi    r3, r13, R13Off_m0x6a54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a58(r13)
+    stb     r0, R13Off_m0x6a58(r13)
 branch_0x800bda8c:
-    subi    r4, r13, 0x6a54
+    addi    r4, r13, R13Off_m0x6a54
     cmplwi  r4, 0x0
     beq-    branch_0x800bdac0
     lwz     r5, 0x8(r30)
@@ -172,12 +172,12 @@ __dt__24TNerveBossTelesaHideWaitFv: # 0x800bdae4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800bdb28
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7adc
+    lis     r3, __vvt__24TNerveBossTelesaHideWait@h
+    addi    r0, r3, __vvt__24TNerveBossTelesaHideWait@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800bdb18
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800bdb18:
     extsh.  r0, r4
@@ -233,7 +233,7 @@ branch_0x800bdbc0:
 branch_0x800bdbc4:
     lbz     r3, 0x13c(r31)
     clrlwi  r0, r0, 24
-    lbz     r4, -0x7e28(r13)
+    lbz     r4, R13Off_m0x7e28(r13)
     subf    r0, r3, r0
     mulli   r0, r0, 0x1e
     add     r0, r4, r0
@@ -259,7 +259,7 @@ branch_0x800bdc08:
     stw     r3, 0x164(r31)
     li      r0, 0x10
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -301,7 +301,7 @@ branch_0x800bdc9c:
 branch_0x800bdca0:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x28e7
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -331,12 +331,12 @@ __dt__22TNerveBossTelesaFreezeFv: # 0x800bdcf0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800bdd34
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7a8c
+    lis     r3, __vvt__22TNerveBossTelesaFreeze@h
+    addi    r0, r3, __vvt__22TNerveBossTelesaFreeze@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800bdd24
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800bdd24:
     extsh.  r0, r4
@@ -371,7 +371,7 @@ execute__27TNerveBossTelesaPrepareSlotCFP24TSpineBase_10TLiveActor_: # 0x800bdd4
     stw     r3, 0x164(r31)
     li      r0, 0xf
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -439,7 +439,7 @@ branch_0x800bde24:
     stw     r3, 0x164(r31)
     li      r0, 0xc
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -503,7 +503,7 @@ branch_0x800bdf14:
     stw     r3, 0x164(r31)
     li      r0, 0xd
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -571,7 +571,7 @@ branch_0x800be024:
 branch_0x800be028:
     lbz     r3, 0x13c(r31)
     clrlwi  r0, r0, 24
-    lbz     r4, -0x7e28(r13)
+    lbz     r4, R13Off_m0x7e28(r13)
     subf    r0, r3, r0
     mulli   r0, r0, 0x1e
     add     r0, r4, r0
@@ -593,7 +593,7 @@ branch_0x800be060:
     stw     r3, 0x164(r31)
     li      r0, 0xf
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -666,10 +666,10 @@ branch_0x800be15c:
     clrlwi. r0, r0, 24
     beq-    branch_0x800be194
     xoris   r0, r29, 0x8000
-    lfd     f2, -0x6120(rtoc)
+    lfd     f2, -0x6120(r2)
     stw     r0, 0xf4(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x6128(rtoc)
+    lfs     f0, -0x6128(r2)
     stw     r0, 0xf0(sp)
     lfd     f1, 0xf0(sp)
     fsubs   f1, f1, f2
@@ -679,7 +679,7 @@ branch_0x800be15c:
     lwz     r29, 0xec(sp)
 branch_0x800be194:
     lwz     r3, 0x368(r31)
-    subi    r0, r29, 0x78
+    addi    r0, r29, -0x78
     cmpw    r3, r0
     ble-    branch_0x800be1b0
     subf    r4, r3, r29
@@ -731,7 +731,7 @@ branch_0x800be228:
     lbz     r0, 0x350(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x800be278
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2968
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -746,7 +746,7 @@ branch_0x800be228:
     b       branch_0x800be2a8
 
 branch_0x800be278:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x28d5
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -761,26 +761,26 @@ branch_0x800be278:
 branch_0x800be2a8:
     li      r0, 0x0
     stw     r0, 0x8(r30)
-    lbz     r0, -0x6a60(r13)
+    lbz     r0, R13Off_m0x6a60(r13)
     extsb.  r0, r0
     bne-    branch_0x800be2f4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a5c(r13)
-    addi    r0, r3, 0x7aec
-    lis     r4, 0x800c
-    stw     r0, -0x6a5c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b28
-    subi    r4, r4, 0x1c4c
-    subi    r3, r13, 0x6a5c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBossTelesaHide@h
+    stw     r0, R13Off_m0x6a5c(r13)
+    addi    r0, r3, __vvt__20TNerveBossTelesaHide@l
+    lis     r4, __dt__20TNerveBossTelesaHideFv@ha
+    stw     r0, R13Off_m0x6a5c(r13)
+    lis     r3, unk_803f1b28@h
+    addi    r5, r3, unk_803f1b28@l
+    addi    r4, r4, __dt__20TNerveBossTelesaHideFv@l
+    addi    r3, r13, R13Off_m0x6a5c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a60(r13)
+    stb     r0, R13Off_m0x6a60(r13)
 branch_0x800be2f4:
     lwz     r0, 0x14(r30)
-    subi    r3, r13, 0x6a5c
+    addi    r3, r13, R13Off_m0x6a5c
     cmplwi  r0, 0x0
     beq-    branch_0x800be308
     stw     r0, 0x1c(r30)
@@ -788,25 +788,25 @@ branch_0x800be308:
     li      r0, 0x0
     stw     r0, 0x20(r30)
     stw     r3, 0x14(r30)
-    lbz     r0, -0x6a60(r13)
+    lbz     r0, R13Off_m0x6a60(r13)
     extsb.  r0, r0
     bne-    branch_0x800be358
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a5c(r13)
-    addi    r0, r3, 0x7aec
-    lis     r4, 0x800c
-    stw     r0, -0x6a5c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b28
-    subi    r4, r4, 0x1c4c
-    subi    r3, r13, 0x6a5c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBossTelesaHide@h
+    stw     r0, R13Off_m0x6a5c(r13)
+    addi    r0, r3, __vvt__20TNerveBossTelesaHide@l
+    lis     r4, __dt__20TNerveBossTelesaHideFv@ha
+    stw     r0, R13Off_m0x6a5c(r13)
+    lis     r3, unk_803f1b28@h
+    addi    r5, r3, unk_803f1b28@l
+    addi    r4, r4, __dt__20TNerveBossTelesaHideFv@l
+    addi    r3, r13, R13Off_m0x6a5c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a60(r13)
+    stb     r0, R13Off_m0x6a60(r13)
 branch_0x800be358:
-    subi    r4, r13, 0x6a5c
+    addi    r4, r13, R13Off_m0x6a5c
     cmplwi  r4, 0x0
     beq-    branch_0x800be38c
     lwz     r5, 0x8(r30)
@@ -843,12 +843,12 @@ __dt__20TNerveBossTelesaHideFv: # 0x800be3b4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800be3f8
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7aec
+    lis     r3, __vvt__20TNerveBossTelesaHide@h
+    addi    r0, r3, __vvt__20TNerveBossTelesaHide@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800be3e8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800be3e8:
     extsh.  r0, r4
@@ -872,12 +872,12 @@ __dt__27TNerveBossTelesaPrepareSlotFv: # 0x800be410
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800be454
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7a9c
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800be444
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800be444:
     extsh.  r0, r4
@@ -909,7 +909,7 @@ execute__28TNerveBossTelesaSpitSlotItemCFP24TSpineBase_10TLiveActor_: # 0x800be4
     cmpwi   r3, 0x0
     bne-    branch_0x800be55c
     lfs     f1, -0x7e24(r13)
-    lfs     f0, -0x6118(rtoc)
+    lfs     f0, -0x6118(r2)
     lfs     f2, 0x364(r31)
     fsubs   f0, f1, f0
     fcmpo   cr0, f2, f0
@@ -920,7 +920,7 @@ execute__28TNerveBossTelesaSpitSlotItemCFP24TSpineBase_10TLiveActor_: # 0x800be4
     stw     r3, 0x164(r31)
     li      r0, 0xe
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -973,25 +973,25 @@ branch_0x800be55c:
     lwz     r0, 0x20(r30)
     cmpwi   r0, 0x258
     ble-    branch_0x800be684
-    lbz     r0, -0x6a38(r13)
+    lbz     r0, R13Off_m0x6a38(r13)
     extsb.  r0, r0
     bne-    branch_0x800be5c0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a34(r13)
-    addi    r0, r3, 0x7a9c
-    lis     r4, 0x800c
-    stw     r0, -0x6a34(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b64
-    subi    r4, r4, 0x1bf0
-    subi    r3, r13, 0x6a34
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
+    lis     r4, __dt__27TNerveBossTelesaPrepareSlotFv@ha
+    stw     r0, R13Off_m0x6a34(r13)
+    lis     r3, unk_803f1b64@h
+    addi    r5, r3, unk_803f1b64@l
+    addi    r4, r4, __dt__27TNerveBossTelesaPrepareSlotFv@l
+    addi    r3, r13, R13Off_m0x6a34
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a38(r13)
+    stb     r0, R13Off_m0x6a38(r13)
 branch_0x800be5c0:
-    subi    r4, r13, 0x6a34
+    addi    r4, r13, R13Off_m0x6a34
     cmplwi  r4, 0x0
     beq-    branch_0x800be5f4
     lwz     r5, 0x8(r30)
@@ -1057,7 +1057,7 @@ branch_0x800be684:
     cmpwi   r0, 0xc8
     ble-    branch_0x800be6a0
     lfs     f1, 0x364(r31)
-    lfs     f0, -0x6114(rtoc)
+    lfs     f0, -0x6114(r2)
     fsubs   f0, f1, f0
     stfs    f0, 0x364(r31)
 branch_0x800be6a0:
@@ -1079,12 +1079,12 @@ __dt__28TNerveBossTelesaSpitSlotItemFv: # 0x800be6bc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800be700
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7aac
+    lis     r3, __vvt__28TNerveBossTelesaSpitSlotItem@h
+    addi    r0, r3, __vvt__28TNerveBossTelesaSpitSlotItem@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800be6f0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800be6f0:
     extsh.  r0, r4
@@ -1116,7 +1116,7 @@ execute__25TNerveBossTelesaSlotStartCFP24TSpineBase_10TLiveActor_: # 0x800be718
     stw     r3, 0x164(r31)
     li      r0, 0xb
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1167,7 +1167,7 @@ branch_0x800be7d8:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f1, -0x6110(rtoc)
+    lfs     f1, -0x6110(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x800be820
@@ -1189,7 +1189,7 @@ branch_0x800be820:
     stw     r3, 0x164(r31)
     li      r0, 0xf
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1247,24 +1247,24 @@ branch_0x800be8ec:
     beq-    branch_0x800be990
     li      r0, 0x0
     stb     r0, 0x18c(r31)
-    lbz     r0, -0x6a40(r13)
+    lbz     r0, R13Off_m0x6a40(r13)
     extsb.  r0, r0
     bne-    branch_0x800be950
-    subi    r3, r13, 0x6a3c
+    addi    r3, r13, R13Off_m0x6a3c
     bl      __ct__24TNerveBase_10TLiveActor_Fv
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7aac
-    lis     r4, 0x800c
-    stw     r0, -0x6a3c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b58
-    subi    r4, r4, 0x1944
-    subi    r3, r13, 0x6a3c
+    lis     r3, __vvt__28TNerveBossTelesaSpitSlotItem@h
+    addi    r0, r3, __vvt__28TNerveBossTelesaSpitSlotItem@l
+    lis     r4, __dt__28TNerveBossTelesaSpitSlotItemFv@ha
+    stw     r0, R13Off_m0x6a3c(r13)
+    lis     r3, unk_803f1b58@h
+    addi    r5, r3, unk_803f1b58@l
+    addi    r4, r4, __dt__28TNerveBossTelesaSpitSlotItemFv@l
+    addi    r3, r13, R13Off_m0x6a3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a40(r13)
+    stb     r0, R13Off_m0x6a40(r13)
 branch_0x800be950:
-    subi    r5, r13, 0x6a3c
+    addi    r5, r13, R13Off_m0x6a3c
     lwz     r4, 0x8c(r31)
     cmplwi  r5, 0x0
     beq-    branch_0x800be988
@@ -1293,7 +1293,7 @@ branch_0x800be994:
 branch_0x800be9a4:
     lfs     f1, 0x364(r31)
     li      r3, 0x0
-    lfs     f0, -0x610c(rtoc)
+    lfs     f0, -0x610c(r2)
     fmuls   f0, f1, f0
     stfs    f0, 0x364(r31)
 branch_0x800be9b8:
@@ -1312,12 +1312,12 @@ __dt__25TNerveBossTelesaSlotStartFv: # 0x800be9cc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800bea10
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7abc
+    lis     r3, __vvt__25TNerveBossTelesaSlotStart@h
+    addi    r0, r3, __vvt__25TNerveBossTelesaSlotStart@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800bea00
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800bea00:
     extsh.  r0, r4
@@ -1356,7 +1356,7 @@ execute__22TNerveBossTelesaAppearCFP24TSpineBase_10TLiveActor_: # 0x800bea28
     stw     r3, 0x164(r31)
     li      r4, 0x0
     stw     r4, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1401,13 +1401,13 @@ branch_0x800beaf8:
     cmplwi  r0, 0x0
     bne-    branch_0x800beb20
     li      r0, 0x1
-    lis     r3, 0x8001
+    lis     r3, unk_8001000d@h
     stb     r0, 0x384(r31)
-    addi    r3, r3, 0xd
+    addi    r3, r3, unk_8001000d@l
     bl      startBGM__5MSBgmFUl
 branch_0x800beb20:
     lwz     r3, 0x184(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfsu   f0, 0x24(r3)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
@@ -1443,7 +1443,7 @@ branch_0x800beb6c:
     stw     r3, 0x164(r31)
     li      r0, 0xf
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1497,15 +1497,15 @@ branch_0x800bec40:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f1, -0x6108(rtoc)
+    lfs     f1, -0x6108(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x800becb0
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x22
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x292a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1541,7 +1541,7 @@ branch_0x800becf4:
 branch_0x800becf8:
     lbz     r3, 0x13c(r31)
     clrlwi  r0, r0, 24
-    lwz     r4, -0x7e1c(r13)
+    lwz     r4, R13Off_m0x7e1c(r13)
     subf    r0, r3, r0
     lwz     r5, 0x20(r30)
     mulli   r0, r0, 0x64
@@ -1557,7 +1557,7 @@ branch_0x800becf8:
     stw     r3, 0x164(r31)
     li      r0, 0xe
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1602,7 +1602,7 @@ branch_0x800bedc0:
 branch_0x800bedc8:
     lfs     f1, 0x364(r31)
     li      r3, 0x0
-    lfs     f0, -0x6104(rtoc)
+    lfs     f0, -0x6104(r2)
     fmuls   f0, f1, f0
     stfs    f0, 0x364(r31)
     lwz     r0, 0x84(sp)
@@ -1621,12 +1621,12 @@ __dt__22TNerveBossTelesaAppearFv: # 0x800bedf4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800bee38
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7acc
+    lis     r3, __vvt__22TNerveBossTelesaAppear@h
+    addi    r0, r3, __vvt__22TNerveBossTelesaAppear@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800bee28
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800bee28:
     extsh.  r0, r4
@@ -1679,7 +1679,7 @@ branch_0x800beec4:
 branch_0x800beec8:
     lbz     r3, 0x13c(r31)
     clrlwi  r0, r0, 24
-    lbz     r4, -0x7e28(r13)
+    lbz     r4, R13Off_m0x7e28(r13)
     subf    r0, r3, r0
     mulli   r0, r0, 0x1e
     add     r0, r4, r0
@@ -1697,7 +1697,7 @@ branch_0x800bef00:
     stb     r0, 0x34f(r31)
     li      r4, 0x2
     lwz     r3, 0x184(r31)
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stfsu   f0, 0x24(r3)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
@@ -1712,7 +1712,7 @@ branch_0x800bef00:
     mr      r3, r0
     bl      getFrameCtrl__6MActorFi
     xoris   r0, r30, 0x8000
-    lfd     f1, -0x6120(rtoc)
+    lfd     f1, -0x6120(r2)
     stw     r0, 0x6c(sp)
     lis     r0, 0x4330
     stw     r0, 0x68(sp)
@@ -1725,7 +1725,7 @@ branch_0x800bef68:
     lwz     r5, 0x10(r31)
     addi    r3, sp, 0x38
     lwz     r0, 0x14(r31)
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     stw     r5, 0x38(sp)
     stw     r0, 0x3c(sp)
     lwz     r0, 0x18(r31)
@@ -1738,25 +1738,25 @@ branch_0x800bef68:
     lbz     r0, 0x6c(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800bf034
-    lbz     r0, -0x6a50(r13)
+    lbz     r0, R13Off_m0x6a50(r13)
     extsb.  r0, r0
     bne-    branch_0x800befec
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a4c(r13)
-    addi    r0, r3, 0x7acc
-    lis     r4, 0x800c
-    stw     r0, -0x6a4c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b40
-    subi    r4, r4, 0x120c
-    subi    r3, r13, 0x6a4c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossTelesaAppear@h
+    stw     r0, R13Off_m0x6a4c(r13)
+    addi    r0, r3, __vvt__22TNerveBossTelesaAppear@l
+    lis     r4, __dt__22TNerveBossTelesaAppearFv@ha
+    stw     r0, R13Off_m0x6a4c(r13)
+    lis     r3, unk_803f1b40@h
+    addi    r5, r3, unk_803f1b40@l
+    addi    r4, r4, __dt__22TNerveBossTelesaAppearFv@l
+    addi    r3, r13, R13Off_m0x6a4c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a50(r13)
+    stb     r0, R13Off_m0x6a50(r13)
 branch_0x800befec:
-    subi    r4, r13, 0x6a4c
+    addi    r4, r13, R13Off_m0x6a4c
     cmplwi  r4, 0x0
     beq-    branch_0x800bf020
     lwz     r5, 0x8(r30)
@@ -1808,7 +1808,7 @@ execute__20TNerveBossTelesaHideCFP24TSpineBase_10TLiveActor_: # 0x800bf050
     stw     r3, 0x164(r31)
     li      r0, 0x4
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1873,29 +1873,29 @@ branch_0x800bf130:
     lwz     r0, 0x64(r3)
     ori     r0, r0, 0x1
     stw     r0, 0x64(r3)
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     bl      start__9RumbleMgrFiiPf
     mr      r3, r31
     bl      rouletteStart__11TBossTelesaFv
-    lbz     r0, -0x6a58(r13)
+    lbz     r0, R13Off_m0x6a58(r13)
     extsb.  r0, r0
     bne-    branch_0x800bf1d0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a54(r13)
-    addi    r0, r3, 0x7adc
-    lis     r4, 0x800c
-    stw     r0, -0x6a54(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b34
-    subi    r4, r4, 0x251c
-    subi    r3, r13, 0x6a54
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveBossTelesaHideWait@h
+    stw     r0, R13Off_m0x6a54(r13)
+    addi    r0, r3, __vvt__24TNerveBossTelesaHideWait@l
+    lis     r4, __dt__24TNerveBossTelesaHideWaitFv@ha
+    stw     r0, R13Off_m0x6a54(r13)
+    lis     r3, unk_803f1b34@h
+    addi    r5, r3, unk_803f1b34@l
+    addi    r4, r4, __dt__24TNerveBossTelesaHideWaitFv@l
+    addi    r3, r13, R13Off_m0x6a54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a58(r13)
+    stb     r0, R13Off_m0x6a58(r13)
 branch_0x800bf1d0:
-    subi    r4, r13, 0x6a54
+    addi    r4, r13, R13Off_m0x6a54
     cmplwi  r4, 0x0
     beq-    branch_0x800bf204
     lwz     r5, 0x8(r30)
@@ -1945,7 +1945,7 @@ branch_0x800bf25c:
     stw     r3, 0x164(r31)
     li      r0, 0xe
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1993,7 +1993,7 @@ branch_0x800bf300:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f1, -0x6108(rtoc)
+    lfs     f1, -0x6108(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x800bf324
@@ -2026,12 +2026,12 @@ __dt__20TNerveBossTelesaSpitFv: # 0x800bf358
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800bf39c
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7afc
+    lis     r3, __vvt__20TNerveBossTelesaSpit@h
+    addi    r0, r3, __vvt__20TNerveBossTelesaSpit@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800bf38c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800bf38c:
     extsh.  r0, r4
@@ -2069,7 +2069,7 @@ execute__19TNerveBossTelesaDieCFP24TSpineBase_10TLiveActor_: # 0x800bf3b4
     lbz     r3, 0x13c(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x800bf40c
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x13c(r31)
 branch_0x800bf40c:
     lwz     r0, 0x64(r31)
@@ -2098,7 +2098,7 @@ branch_0x800bf40c:
     stw     r3, 0x164(r31)
     li      r0, 0x2
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2140,9 +2140,9 @@ branch_0x800bf4f0:
 branch_0x800bf4f4:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x1f
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     b       branch_0x800bf6e0
 
@@ -2153,7 +2153,7 @@ branch_0x800bf510:
     stw     r3, 0x164(r31)
     li      r0, 0x5
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2198,20 +2198,20 @@ branch_0x800bf5a8:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      setBrkFromIndex__6MActorFi
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x20
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     b       branch_0x800bf6e0
 
 branch_0x800bf5d0:
-    lis     r3, 0x8001
-    addi    r3, r3, 0xd
+    lis     r3, unk_8001000d@h
+    addi    r3, r3, unk_8001000d@l
     li      r4, 0xa
     bl      stopBGM__5MSBgmFUlUl
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x21
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r3, 0x74(r31)
     li      r4, 0x0
@@ -2219,7 +2219,7 @@ branch_0x800bf5d0:
     stw     r3, 0x164(r31)
     li      r0, 0x3
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2266,11 +2266,11 @@ branch_0x800bf688:
     bl      setBrkFromIndex__6MActorFi
     lwz     r3, 0x184(r31)
     li      r4, 0x28db
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stfsu   f0, 0x24(r3)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800bf6e0
@@ -2307,12 +2307,12 @@ branch_0x800bf6e0:
     stfs    f0, 0x374(r31)
     stfs    f1, 0x378(r31)
     stfs    f2, 0x37c(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r0, 0x380(r31)
     cmpwi   r0, 0xd8
     bne-    branch_0x800bf774
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x374
     li      r4, 0xdd
     li      r6, 0x0
@@ -2323,7 +2323,7 @@ branch_0x800bf6e0:
 branch_0x800bf774:
     cmpwi   r0, 0xd9
     bne-    branch_0x800bf798
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x374
     li      r4, 0xde
     li      r6, 0x0
@@ -2332,7 +2332,7 @@ branch_0x800bf774:
     b       branch_0x800bf7b0
 
 branch_0x800bf798:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x374
     li      r4, 0xdf
     li      r6, 0x0
@@ -2341,7 +2341,7 @@ branch_0x800bf798:
 branch_0x800bf7b0:
     mr      r3, r31
     bl      forceAllItemKill__11TBossTelesaFv
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     li      r28, 0x0
     lwz     r3, 0x178(r31)
     mr      r29, r28
@@ -2376,12 +2376,12 @@ branch_0x800bf828:
     ble-    branch_0x800bf8c8
     li      r29, 0x0
     stw     r29, 0x388(r31)
-    lis     r3, 0x8038
-    lis     r5, 0x8038
-    subi    r4, r3, 0x1288
-    lwz     r3, gpItemManager(r13)
+    lis     r3, unk_8037ed78@ha
+    lis     r5, unk_8037ed8c@ha
+    addi    r4, r3, unk_8037ed78@l
+    lwz     r3, R13Off_m0x62b0(r13)
     lfs     f1, 0x10(r31)
-    subi    r5, r5, 0x1274
+    addi    r5, r5, unk_8037ed8c@l
     lfs     f2, 0x14(r31)
     lfs     f3, 0x18(r31)
     bl      makeShineAppearWithDemo__12TItemManagerFPCcPCcfff
@@ -2437,7 +2437,7 @@ branch_0x800bf8d4:
     stw     r3, 0x164(r31)
     li      r0, 0x7
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2493,7 +2493,7 @@ branch_0x800bf9ac:
     stw     r3, 0x164(r31)
     li      r0, 0x6
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2564,7 +2564,7 @@ branch_0x800bfa64:
     stw     r3, 0x164(r31)
     li      r0, 0xf
     stw     r0, 0x160(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2611,26 +2611,26 @@ branch_0x800bfb4c:
     bl      setBtpFromIndex__6MActorFi
     li      r0, 0x0
     stw     r0, 0x8(r30)
-    lbz     r0, -0x6a38(r13)
+    lbz     r0, R13Off_m0x6a38(r13)
     extsb.  r0, r0
     bne-    branch_0x800bfbac
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a34(r13)
-    addi    r0, r3, 0x7a9c
-    lis     r4, 0x800c
-    stw     r0, -0x6a34(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b64
-    subi    r4, r4, 0x1bf0
-    subi    r3, r13, 0x6a34
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
+    lis     r4, __dt__27TNerveBossTelesaPrepareSlotFv@ha
+    stw     r0, R13Off_m0x6a34(r13)
+    lis     r3, unk_803f1b64@h
+    addi    r5, r3, unk_803f1b64@l
+    addi    r4, r4, __dt__27TNerveBossTelesaPrepareSlotFv@l
+    addi    r3, r13, R13Off_m0x6a34
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a38(r13)
+    stb     r0, R13Off_m0x6a38(r13)
 branch_0x800bfbac:
     lwz     r0, 0x14(r30)
-    subi    r3, r13, 0x6a34
+    addi    r3, r13, R13Off_m0x6a34
     cmplwi  r0, 0x0
     beq-    branch_0x800bfbc0
     stw     r0, 0x1c(r30)
@@ -2638,25 +2638,25 @@ branch_0x800bfbc0:
     li      r0, 0x0
     stw     r0, 0x20(r30)
     stw     r3, 0x14(r30)
-    lbz     r0, -0x6a38(r13)
+    lbz     r0, R13Off_m0x6a38(r13)
     extsb.  r0, r0
     bne-    branch_0x800bfc10
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a34(r13)
-    addi    r0, r3, 0x7a9c
-    lis     r4, 0x800c
-    stw     r0, -0x6a34(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b64
-    subi    r4, r4, 0x1bf0
-    subi    r3, r13, 0x6a34
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
+    lis     r4, __dt__27TNerveBossTelesaPrepareSlotFv@ha
+    stw     r0, R13Off_m0x6a34(r13)
+    lis     r3, unk_803f1b64@h
+    addi    r5, r3, unk_803f1b64@l
+    addi    r4, r4, __dt__27TNerveBossTelesaPrepareSlotFv@l
+    addi    r3, r13, R13Off_m0x6a34
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a38(r13)
+    stb     r0, R13Off_m0x6a38(r13)
 branch_0x800bfc10:
-    subi    r4, r13, 0x6a34
+    addi    r4, r13, R13Off_m0x6a34
     cmplwi  r4, 0x0
     beq-    branch_0x800bfc50
     lwz     r5, 0x8(r30)
@@ -2699,12 +2699,12 @@ __dt__19TNerveBossTelesaDieFv: # 0x800bfc7c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800bfcc0
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7b0c
+    lis     r3, __vvt__19TNerveBossTelesaDie@h
+    addi    r0, r3, __vvt__19TNerveBossTelesaDie@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800bfcb0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800bfcb0:
     extsh.  r0, r4
@@ -2727,26 +2727,26 @@ forceHide__11TBossTelesaFv: # 0x800bfcd8
     stwu    sp, -0x48(sp)
     stw     r31, 0x44(sp)
     addi    r31, r3, 0x0
-    lbz     r0, -0x6a70(r13)
+    lbz     r0, R13Off_m0x6a70(r13)
     extsb.  r0, r0
     bne-    branch_0x800bfd30
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a6c(r13)
-    addi    r0, r3, 0x7b0c
-    lis     r4, 0x800c
-    stw     r0, -0x6a6c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b10
-    subi    r4, r4, 0x384
-    subi    r3, r13, 0x6a6c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__19TNerveBossTelesaDie@h
+    stw     r0, R13Off_m0x6a6c(r13)
+    addi    r0, r3, __vvt__19TNerveBossTelesaDie@l
+    lis     r4, __dt__19TNerveBossTelesaDieFv@ha
+    stw     r0, R13Off_m0x6a6c(r13)
+    lis     r3, unk_803f1b10@h
+    addi    r5, r3, unk_803f1b10@l
+    addi    r4, r4, __dt__19TNerveBossTelesaDieFv@l
+    addi    r3, r13, R13Off_m0x6a6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a70(r13)
+    stb     r0, R13Off_m0x6a70(r13)
 branch_0x800bfd30:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6a6c
+    addi    r0, r13, R13Off_m0x6a6c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800bfe60
@@ -2767,7 +2767,7 @@ branch_0x800bfd30:
     lbz     r0, 0x350(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x800bfdbc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2968
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2782,7 +2782,7 @@ branch_0x800bfd30:
     b       branch_0x800bfdec
 
 branch_0x800bfdbc:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x28d5
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2798,26 +2798,26 @@ branch_0x800bfdec:
     lwz     r3, 0x8c(r31)
     li      r0, 0x0
     stw     r0, 0x8(r3)
-    lbz     r0, -0x6a60(r13)
+    lbz     r0, R13Off_m0x6a60(r13)
     extsb.  r0, r0
     bne-    branch_0x800bfe3c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a5c(r13)
-    addi    r0, r3, 0x7aec
-    lis     r4, 0x800c
-    stw     r0, -0x6a5c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b28
-    subi    r4, r4, 0x1c4c
-    subi    r3, r13, 0x6a5c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBossTelesaHide@h
+    stw     r0, R13Off_m0x6a5c(r13)
+    addi    r0, r3, __vvt__20TNerveBossTelesaHide@l
+    lis     r4, __dt__20TNerveBossTelesaHideFv@ha
+    stw     r0, R13Off_m0x6a5c(r13)
+    lis     r3, unk_803f1b28@h
+    addi    r5, r3, unk_803f1b28@l
+    addi    r4, r4, __dt__20TNerveBossTelesaHideFv@l
+    addi    r3, r13, R13Off_m0x6a5c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a60(r13)
+    stb     r0, R13Off_m0x6a60(r13)
 branch_0x800bfe3c:
     lwz     r4, 0x8c(r31)
-    subi    r3, r13, 0x6a5c
+    addi    r3, r13, R13Off_m0x6a5c
     lwz     r0, 0x14(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x800bfe54
@@ -2847,7 +2847,7 @@ forceAllItemKill__11TBossTelesaFv: # 0x800bfe74
     li      r29, 0x0
     stw     r28, 0x28(sp)
     addi    r28, r3, 0x0
-    lfs     f31, -0x6130(rtoc)
+    lfs     f31, -0x6130(r2)
     b       branch_0x800bff38
 
 branch_0x800bfea8:
@@ -2857,7 +2857,7 @@ branch_0x800bfea8:
     lwz     r0, 0x68(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x800bfed4
-    li      r4, MARIOMSG_8
+    li      r4, 0x8
     bl      SMS_SendMessageToMario__FP9THitActorUl
     lwz     r3, 0x0(r30)
     li      r0, 0x0
@@ -2881,7 +2881,7 @@ branch_0x800bfed4:
     blrl
     lwz     r5, 0x0(r30)
     li      r4, 0xcd
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     addi    r5, r5, 0x10
     li      r7, 0x0
@@ -2967,14 +2967,14 @@ branch_0x800c0018:
     cmpwi   r6, 0x2
     stw     r0, 0x208(sp)
     addi    r28, r4, 0xf0
-    lfd     f2, -0x6120(rtoc)
+    lfd     f2, -0x6120(r2)
     lfd     f0, 0x208(sp)
     mr      r25, r28
     stw     r3, 0x204(sp)
     fsubs   f1, f0, f2
-    lfs     f3, -0x6100(rtoc)
+    lfs     f3, -0x6100(r2)
     stw     r0, 0x200(sp)
-    lfs     f0, -0x6128(rtoc)
+    lfs     f0, -0x6128(r2)
     fdivs   f16, f3, f1
     lfd     f1, 0x200(sp)
     fsubs   f1, f1, f2
@@ -2994,11 +2994,11 @@ branch_0x800c0094:
     subf    r21, r3, r0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f19, -0x6120(rtoc)
+    lfd     f19, -0x6120(r2)
     stw     r0, 0x204(sp)
     xoris   r0, r21, 0x8000
     lis     r30, 0x4330
-    lfs     f20, -0x60fc(rtoc)
+    lfs     f20, -0x60fc(r2)
     stw     r30, 0x200(sp)
     lwz     r3, 0x1e8(sp)
     xoris   r29, r25, 0x8000
@@ -3008,21 +3008,21 @@ branch_0x800c0094:
     stw     r30, 0x208(sp)
     li      r21, 0x0
     fsubs   f1, f0, f19
-    lfs     f27, -0x6114(rtoc)
+    lfs     f27, -0x6114(r2)
     lfd     f0, 0x208(sp)
-    lfs     f21, -0x60f8(rtoc)
+    lfs     f21, -0x60f8(r2)
     fmuls   f1, f20, f1
     fsubs   f0, f0, f19
-    lfs     f22, -0x6130(rtoc)
-    lfs     f23, -0x60f4(rtoc)
-    lfs     f30, -0x60f0(rtoc)
+    lfs     f22, -0x6130(r2)
+    lfs     f23, -0x60f4(r2)
+    lfs     f30, -0x60f0(r2)
     fmuls   f0, f0, f1
-    lfs     f29, -0x60ec(rtoc)
-    lfs     f28, -0x60e8(rtoc)
+    lfs     f29, -0x60ec(r2)
+    lfs     f28, -0x60e8(r2)
     fctiwz  f0, f0
-    lfs     f26, -0x60e4(rtoc)
-    lfs     f25, -0x60e0(rtoc)
-    lfs     f24, -0x60dc(rtoc)
+    lfs     f26, -0x60e4(r2)
+    lfs     f25, -0x60e0(r2)
+    lfs     f24, -0x60dc(r2)
     stfd    f0, 0x1f8(sp)
     lwz     r0, 0x1fc(sp)
     add     r24, r3, r0
@@ -3061,8 +3061,9 @@ branch_0x800c0138:
     li      r0, 0x0
     b       branch_0x800c01d4
 
+branch_0x800c01b4:
+    b       branch_0x800c01bc
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0xbabb4, 0x800c01b8 - 0x800c01b4
 branch_0x800c01b8:
     subf    r0, r25, r0
 branch_0x800c01bc:
@@ -3287,14 +3288,14 @@ branch_0x800c04e8:
     lbz     r3, 0x370(r31)
     stw     r4, 0x1fc(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x6120(rtoc)
+    lfd     f2, -0x6120(r2)
     cmplwi  r3, 0x0
     stw     r0, 0x1f8(sp)
-    lfs     f3, -0x6100(rtoc)
+    lfs     f3, -0x6100(r2)
     lfd     f0, 0x1f8(sp)
     stw     r4, 0x204(sp)
     fsubs   f1, f0, f2
-    lfs     f0, -0x6128(rtoc)
+    lfs     f0, -0x6128(r2)
     stw     r0, 0x200(sp)
     fdivs   f16, f3, f1
     lfd     f1, 0x200(sp)
@@ -3302,7 +3303,7 @@ branch_0x800c04e8:
     fmuls   f1, f16, f1
     fmuls   f17, f1, f0
     beq-    branch_0x800c0540
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x370(r31)
     b       branch_0x800c0548
 
@@ -3310,17 +3311,17 @@ branch_0x800c0540:
     li      r0, 0x0
     stb     r0, 0x370(r31)
 branch_0x800c0548:
-    lfs     f30, -0x6130(rtoc)
+    lfs     f30, -0x6130(r2)
     li      r23, 0x0
-    lfs     f29, -0x60d8(rtoc)
+    lfs     f29, -0x60d8(r2)
     li      r21, 0x0
-    lfd     f28, -0x6120(rtoc)
-    lfs     f27, -0x60d4(rtoc)
+    lfd     f28, -0x6120(r2)
+    lfs     f27, -0x60d4(r2)
     lis     r30, 0x4330
-    lfs     f26, -0x60d0(rtoc)
+    lfs     f26, -0x60d0(r2)
     lis     r29, 0x2000
-    lfs     f25, -0x60ec(rtoc)
-    lfs     f24, -0x60fc(rtoc)
+    lfs     f25, -0x60ec(r2)
+    lfs     f24, -0x60fc(r2)
     b       branch_0x800c0724
 
 branch_0x800c0578:
@@ -3387,7 +3388,7 @@ branch_0x800c0578:
     fmuls   f0, f18, f0
     fmuls   f0, f2, f0
     stfs    f0, 0x194(sp)
-    lwz     r3, gpItemManager(r13)
+    lwz     r3, R13Off_m0x62b0(r13)
     bl      makeObjAppeared__18TMapObjBaseManagerFUl
     lfs     f1, 0x1c(r28)
     li      r4, 0x3c0
@@ -3481,31 +3482,31 @@ branch_0x800c079c:
     subf    r21, r3, r0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f24, -0x6120(rtoc)
+    lfd     f24, -0x6120(r2)
     stw     r0, 0x1fc(sp)
     lis     r29, 0x4330
     xoris   r0, r21, 0x8000
-    lfs     f25, -0x60fc(rtoc)
+    lfs     f25, -0x60fc(r2)
     stw     r29, 0x1f8(sp)
-    lis     r3, 0x803b
+    lis     r3, manNameTable_3929@h
     lwz     r4, 0x14c(sp)
     stw     r0, 0x204(sp)
-    addi    r30, r3, 0x79b4
+    addi    r30, r3, manNameTable_3929@l
     lfd     f0, 0x1f8(sp)
     li      r22, 0x0
     stw     r29, 0x200(sp)
     fsubs   f1, f0, f24
-    lfs     f26, -0x6130(rtoc)
+    lfs     f26, -0x6130(r2)
     lfd     f0, 0x200(sp)
-    lfs     f27, -0x60f4(rtoc)
+    lfs     f27, -0x60f4(r2)
     fmuls   f1, f25, f1
     fsubs   f0, f0, f24
-    lfs     f28, -0x6114(rtoc)
-    lfs     f29, -0x6128(rtoc)
-    lfs     f30, -0x612c(rtoc)
+    lfs     f28, -0x6114(r2)
+    lfs     f29, -0x6128(r2)
+    lfs     f30, -0x612c(r2)
     fmuls   f0, f0, f1
-    lfs     f19, -0x60d8(rtoc)
-    lfs     f18, -0x60ec(rtoc)
+    lfs     f19, -0x60d8(r2)
+    lfs     f18, -0x60ec(r2)
     fctiwz  f0, f0
     stfd    f0, 0x208(sp)
     lwz     r0, 0x20c(sp)
@@ -3530,7 +3531,7 @@ branch_0x800c0860:
     mr      r24, r27
 branch_0x800c0864:
     slwi    r0, r24, 2
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     add     r4, r30, r0
     lwz     r5, 0x0(r4)
     addi    r4, r31, 0x10
@@ -3704,7 +3705,7 @@ rouletteStart__11TBossTelesaFv: # 0x800c0abc
     stw     r29, 0x6c(sp)
     stw     r28, 0x68(sp)
     lwz     r3, 0x178(r3)
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     lfs     f0, 0x13c(r3)
     fcmpu   cr0, f1, f0
     lwz     r3, 0x17c(r31)
@@ -3713,12 +3714,12 @@ rouletteStart__11TBossTelesaFv: # 0x800c0abc
     lwz     r3, 0x180(r31)
     lfs     f0, 0x13c(r3)
     fcmpu   cr0, f1, f0
-    lfs     f1, -0x60cc(rtoc)
-    lfs     f0, -0x60c8(rtoc)
+    lfs     f1, -0x60cc(r2)
+    lfs     f0, -0x60c8(r2)
     stfs    f1, 0x50(sp)
     stfs    f0, 0x54(sp)
-    lfs     f1, -0x60c4(rtoc)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f1, -0x60c4(r2)
+    lfs     f0, -0x612c(r2)
     stfs    f1, 0x48(sp)
     stfs    f0, 0x4c(sp)
     lfs     f1, 0x4c(sp)
@@ -3726,11 +3727,11 @@ rouletteStart__11TBossTelesaFv: # 0x800c0abc
     fsubs   f26, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f2, -0x6120(rtoc)
+    lfd     f2, -0x6120(r2)
     stw     r0, 0x64(sp)
     lis     r0, 0x4330
     addi    r3, r31, 0x0
-    lfs     f0, -0x60fc(rtoc)
+    lfs     f0, -0x60fc(r2)
     stw     r0, 0x60(sp)
     lwz     r12, 0x0(r31)
     lfd     f1, 0x60(sp)
@@ -3758,16 +3759,16 @@ branch_0x800c0bc0:
     lbz     r3, 0x13c(r31)
     clrlwi  r0, r0, 24
     lis     r29, 0x4330
-    lfd     f29, -0x6120(rtoc)
+    lfd     f29, -0x6120(r2)
     subf    r0, r3, r0
     xoris   r0, r0, 0x8000
     lfs     f1, -0x7e20(r13)
     stw     r0, 0x64(sp)
     li      r28, 0x0
-    lfs     f30, -0x6130(rtoc)
+    lfs     f30, -0x6130(r2)
     li      r30, 0x0
     stw     r29, 0x60(sp)
-    lfs     f31, -0x60fc(rtoc)
+    lfs     f31, -0x60fc(r2)
     lfd     f0, 0x60(sp)
     fsubs   f0, f0, f29
     fmuls   f26, f1, f0
@@ -3775,22 +3776,22 @@ branch_0x800c0c00:
     fcmpo   cr0, f28, f30
     ble-    branch_0x800c0c24
     cmpwi   r28, 0x0
-    lfs     f27, -0x60c4(rtoc)
+    lfs     f27, -0x60c4(r2)
     beq-    branch_0x800c0c1c
     cmpwi   r28, 0x2
     bne-    branch_0x800c0c3c
 branch_0x800c0c1c:
-    lfs     f27, -0x612c(rtoc)
+    lfs     f27, -0x612c(r2)
     b       branch_0x800c0c3c
 
 branch_0x800c0c24:
     cmpwi   r28, 0x0
-    lfs     f27, -0x612c(rtoc)
+    lfs     f27, -0x612c(r2)
     beq-    branch_0x800c0c38
     cmpwi   r28, 0x2
     bne-    branch_0x800c0c3c
 branch_0x800c0c38:
-    lfs     f27, -0x60c4(rtoc)
+    lfs     f27, -0x60c4(r2)
 branch_0x800c0c3c:
     lfs     f1, 0x54(sp)
     lfs     f0, 0x50(sp)
@@ -3848,14 +3849,14 @@ branch_0x800c0ce4:
     cmpwi   r29, 0x3
     addi    r30, r30, 0x4
     blt+    branch_0x800c0ce4
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     li      r4, 0x14
     li      r5, 0xf
     li      r6, 0x0
     bl      start__9RumbleMgrFiiPf
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x23
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r0, 0xb4(sp)
     lfd     f31, 0xa8(sp)
@@ -3896,9 +3897,9 @@ genAttacker__11TBossTelesaFv: # 0x800c0d78
     lbz     r0, 0x150(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x800c0e00
-    lis     r4, 0x8038
-    lwz     r3, -0x70b0(r13)
-    subi    r5, r4, 0x1260
+    lis     r4, unk_8037eda0@ha
+    lwz     r3, R13Off_m0x70b0(r13)
+    addi    r5, r4, unk_8037eda0@l
     addi    r4, r25, 0x10
     li      r6, 0x1
     bl      makeOneEnemyAppear__10TConductorFRCQ29JGeometry8TVec3_f_PCci
@@ -3913,14 +3914,14 @@ genAttacker__11TBossTelesaFv: # 0x800c0d78
 
 branch_0x800c0e00:
     lwz     r4, 0x15c(r25)
-    lis     r3, 0x8038
+    lis     r3, unk_8037eca8@ha
     lis     r30, 0x4330
-    lfd     f24, -0x6120(rtoc)
+    lfd     f24, -0x6120(r2)
     lwz     r28, 0x144(r4)
     lwz     r5, 0x74(r25)
-    subi    r31, r3, 0x1358
+    addi    r31, r3, unk_8037eca8@l
     xoris   r0, r28, 0x8000
-    lfs     f2, -0x60c0(rtoc)
+    lfs     f2, -0x60c0(r2)
     stw     r0, 0xac(sp)
     lwz     r4, 0x4(r5)
     li      r27, 0x0
@@ -3931,25 +3932,25 @@ branch_0x800c0e00:
     stw     r0, 0xa4(sp)
     addi    r29, r3, 0xf0
     fsubs   f1, f0, f24
-    lfs     f0, -0x6128(rtoc)
+    lfs     f0, -0x6128(r2)
     stw     r30, 0xa0(sp)
-    lfs     f25, -0x6130(rtoc)
+    lfs     f25, -0x6130(r2)
     fdivs   f23, f2, f1
     lfd     f1, 0xa0(sp)
-    lfs     f26, -0x60bc(rtoc)
-    lfs     f27, -0x6114(rtoc)
-    lfs     f28, -0x60dc(rtoc)
+    lfs     f26, -0x60bc(r2)
+    lfs     f27, -0x6114(r2)
+    lfs     f28, -0x60dc(r2)
     fsubs   f1, f1, f24
-    lfs     f29, -0x60ec(rtoc)
-    lfs     f30, -0x612c(rtoc)
-    lfs     f31, -0x60fc(rtoc)
+    lfs     f29, -0x60ec(r2)
+    lfs     f30, -0x612c(r2)
+    lfs     f31, -0x60fc(r2)
     fmuls   f1, f23, f1
-    lfs     f21, -0x60b8(rtoc)
+    lfs     f21, -0x60b8(r2)
     fmuls   f22, f1, f0
     b       branch_0x800c10a0
 
 branch_0x800c0e8c:
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r5, r31, 0x0
     addi    r4, r25, 0x10
     li      r6, 0x1
@@ -4028,7 +4029,7 @@ branch_0x800c0e8c:
     stw     r0, 0x198(r26)
     addi    r4, r24, 0x8
     li      r5, 0x1
-    lwz     r3, gpItemManager(r13)
+    lwz     r3, R13Off_m0x62b0(r13)
     lfs     f1, 0x10(r26)
     lfs     f2, 0x14(r26)
     lfs     f3, 0x18(r26)
@@ -4110,8 +4111,8 @@ branch_0x800c10a8:
 
 .globl getBasNameTable__11TBossTelesaCFv
 getBasNameTable__11TBossTelesaCFv: # 0x800c10ec
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7940
+    lis     r3, btelesa_bastable@h
+    addi    r3, r3, btelesa_bastable@l
     blr
 
 
@@ -4314,32 +4315,32 @@ slotFall__11TBossTelesaFv: # 0x800c137c
     stw     r31, 0x1c(sp)
     mr      r31, r3
     lwz     r3, 0x178(r3)
-    lfs     f0, -0x60ac(rtoc)
+    lfs     f0, -0x60ac(r2)
     lfs     f1, 0x14(r3)
     lwz     r4, 0x184(r31)
     fsubs   f0, f1, f0
     lfsu    f1, 0x14(r4)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800c13c4
-    lfs     f0, -0x60a8(rtoc)
+    lfs     f0, -0x60a8(r2)
     li      r3, 0x0
     fsubs   f0, f1, f0
     stfs    f0, 0x0(r4)
     b       branch_0x800c14b0
 
 branch_0x800c13c4:
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     fsubs   f0, f1, f0
     stfs    f0, 0x0(r4)
     lwz     r3, 0x178(r31)
     lwz     r4, 0x184(r31)
     lfs     f1, 0x14(r3)
-    lfs     f0, -0x60a4(rtoc)
+    lfs     f0, -0x60a4(r2)
     lfs     f2, 0x14(r4)
     fsubs   f0, f1, f0
     fcmpo   cr0, f2, f0
     bge-    branch_0x800c1440
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     li      r4, 0x0
     lfs     f0, 0x13c(r3)
     fcmpu   cr0, f1, f0
@@ -4366,7 +4367,7 @@ branch_0x800c1440:
     lwz     r4, 0x178(r31)
     lwz     r3, 0x184(r31)
     lfs     f1, 0x14(r4)
-    lfs     f0, -0x60a0(rtoc)
+    lfs     f0, -0x60a0(r2)
     lfs     f2, 0x14(r3)
     fsubs   f0, f1, f0
     fcmpo   cr0, f2, f0
@@ -4376,18 +4377,18 @@ branch_0x800c1440:
 
 branch_0x800c1468:
     lwz     r3, 0x150(r4)
-    lfs     f1, -0x609c(rtoc)
+    lfs     f1, -0x609c(r2)
     stfs    f1, 0x50(r3)
-    lfs     f0, -0x6098(rtoc)
+    lfs     f0, -0x6098(r2)
     stfs    f0, 0x54(r3)
     stfs    f1, 0x58(r3)
     stfs    f0, 0x5c(r3)
     bl      calcEntryRadius__9THitActorFv
     lwz     r3, 0x17c(r31)
-    lfs     f1, -0x609c(rtoc)
+    lfs     f1, -0x609c(r2)
     lwz     r3, 0x150(r3)
     stfs    f1, 0x50(r3)
-    lfs     f0, -0x6098(rtoc)
+    lfs     f0, -0x6098(r2)
     stfs    f0, 0x54(r3)
     stfs    f1, 0x58(r3)
     stfs    f0, 0x5c(r3)
@@ -4415,8 +4416,8 @@ rouletteFall__11TBossTelesaFv: # 0x800c14c4
     lfs     f0, 0x14(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800c1610
-    lfs     f0, -0x6114(rtoc)
-    subi    r4, rtoc, 0x60b4
+    lfs     f0, -0x6114(r2)
+    addi    r4, r2, R2Off_m0x60b4
     fsubs   f0, f1, f0
     stfs    f0, 0x0(r5)
     lwz     r3, 0x178(r31)
@@ -4424,14 +4425,14 @@ rouletteFall__11TBossTelesaFv: # 0x800c14c4
     bl      setBck__6MActorFPCc
     lwz     r3, 0x17c(r31)
     lwz     r4, 0x178(r31)
-    lfs     f1, -0x6094(rtoc)
+    lfs     f1, -0x6094(r2)
     lfs     f0, 0x14(r3)
     lfs     f2, 0x14(r4)
     fadds   f0, f1, f0
     fcmpo   cr0, f2, f0
     ble-    branch_0x800c1550
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_4
+    li      r4, 0x4
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800c159c
@@ -4441,11 +4442,11 @@ rouletteFall__11TBossTelesaFv: # 0x800c14c4
 
 branch_0x800c1550:
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_8
+    li      r4, 0x8
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800c159c
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2926
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4461,7 +4462,7 @@ branch_0x800c1594:
     li      r0, 0x0
     stw     r0, 0x6c(r31)
 branch_0x800c159c:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x28dc
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4474,7 +4475,7 @@ branch_0x800c159c:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800c15cc:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2125
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4487,7 +4488,7 @@ branch_0x800c15cc:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800c15fc:
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     lwz     r3, 0x4fc(r3)
     bl      onNeutralMarioKey__13TMarioGamePadFv
     li      r3, 0x0
@@ -4514,7 +4515,7 @@ damageRecover__11TBossTelesaFv: # 0x800c162c
     addi    r30, r3, 0x0
     li      r27, 0x0
     li      r29, 0x0
-    lfs     f31, -0x6130(rtoc)
+    lfs     f31, -0x6130(r2)
 branch_0x800c1650:
     addi    r31, r29, 0x2a8
     add     r31, r30, r31
@@ -4525,7 +4526,7 @@ branch_0x800c1650:
     lwz     r0, 0x68(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c167c
-    li      r4, MARIOMSG_8
+    li      r4, 0x8
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800c167c:
     lwz     r3, 0x0(r31)
@@ -4535,7 +4536,7 @@ branch_0x800c167c:
     blrl
     lwz     r5, 0x0(r31)
     li      r4, 0xcd
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     addi    r5, r5, 0x10
     li      r7, 0x0
@@ -4549,7 +4550,7 @@ branch_0x800c16bc:
     cmpwi   r27, 0x14
     addi    r29, r29, 0x4
     blt+    branch_0x800c1650
-    lfs     f31, -0x6130(rtoc)
+    lfs     f31, -0x6130(r2)
     li      r31, 0x0
     li      r29, 0x0
 branch_0x800c16d8:
@@ -4562,7 +4563,7 @@ branch_0x800c16d8:
     lwz     r0, 0x68(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c1704
-    li      r4, MARIOMSG_8
+    li      r4, 0x8
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800c1704:
     lwz     r3, 0x0(r28)
@@ -4572,7 +4573,7 @@ branch_0x800c1704:
     blrl
     lwz     r5, 0x0(r28)
     li      r4, 0xcd
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     addi    r5, r5, 0x10
     li      r7, 0x0
@@ -4592,7 +4593,7 @@ branch_0x800c1744:
     blrl
     lwz     r5, 0x0(r27)
     li      r4, 0xcd
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     addi    r5, r5, 0x10
     li      r7, 0x0
@@ -4609,7 +4610,7 @@ branch_0x800c1790:
     lbz     r0, 0x350(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x800c17e0
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2968
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4624,7 +4625,7 @@ branch_0x800c1790:
     b       branch_0x800c1810
 
 branch_0x800c17e0:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x28d5
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4637,25 +4638,25 @@ branch_0x800c17e0:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800c1810:
-    lbz     r0, -0x6a60(r13)
+    lbz     r0, R13Off_m0x6a60(r13)
     extsb.  r0, r0
     bne-    branch_0x800c1854
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a5c(r13)
-    addi    r0, r3, 0x7aec
-    lis     r4, 0x800c
-    stw     r0, -0x6a5c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b28
-    subi    r4, r4, 0x1c4c
-    subi    r3, r13, 0x6a5c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBossTelesaHide@h
+    stw     r0, R13Off_m0x6a5c(r13)
+    addi    r0, r3, __vvt__20TNerveBossTelesaHide@l
+    lis     r4, __dt__20TNerveBossTelesaHideFv@ha
+    stw     r0, R13Off_m0x6a5c(r13)
+    lis     r3, unk_803f1b28@h
+    addi    r5, r3, unk_803f1b28@l
+    addi    r4, r4, __dt__20TNerveBossTelesaHideFv@l
+    addi    r3, r13, R13Off_m0x6a5c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a60(r13)
+    stb     r0, R13Off_m0x6a60(r13)
 branch_0x800c1854:
-    subi    r5, r13, 0x6a5c
+    addi    r5, r13, R13Off_m0x6a5c
     lwz     r4, 0x8c(r30)
     cmplwi  r5, 0x0
     beq-    branch_0x800c188c
@@ -4691,26 +4692,26 @@ setSpicy__11TBossTelesaFP10TLiveActor: # 0x800c18ac
     addi    r30, r3, 0x0
     stw     r29, 0x4c(sp)
     stw     r28, 0x48(sp)
-    lbz     r0, -0x6a40(r13)
+    lbz     r0, R13Off_m0x6a40(r13)
     extsb.  r0, r0
     bne-    branch_0x800c1914
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a3c(r13)
-    addi    r0, r3, 0x7aac
-    lis     r4, 0x800c
-    stw     r0, -0x6a3c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b58
-    subi    r4, r4, 0x1944
-    subi    r3, r13, 0x6a3c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__28TNerveBossTelesaSpitSlotItem@h
+    stw     r0, R13Off_m0x6a3c(r13)
+    addi    r0, r3, __vvt__28TNerveBossTelesaSpitSlotItem@l
+    lis     r4, __dt__28TNerveBossTelesaSpitSlotItemFv@ha
+    stw     r0, R13Off_m0x6a3c(r13)
+    lis     r3, unk_803f1b58@h
+    addi    r5, r3, unk_803f1b58@l
+    addi    r4, r4, __dt__28TNerveBossTelesaSpitSlotItemFv@l
+    addi    r3, r13, R13Off_m0x6a3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a40(r13)
+    stb     r0, R13Off_m0x6a40(r13)
 branch_0x800c1914:
     lwz     r3, 0x8c(r30)
-    subi    r0, r13, 0x6a3c
+    addi    r0, r13, R13Off_m0x6a3c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800c1a24
@@ -4728,7 +4729,7 @@ branch_0x800c1914:
     bl      getCurAnmIdx__6MActorCFi
     stw     r3, 0x164(r30)
     stw     r29, 0x160(r30)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     stfs    f0, 0x168(r30)
     lwz     r4, 0x74(r30)
     lwz     r3, 0xc(r4)
@@ -4777,7 +4778,7 @@ branch_0x800c19e0:
     stb     r0, 0x35b(r30)
     li      r4, 0x11
     li      r5, 0x1
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
 branch_0x800c1a10:
@@ -4813,32 +4814,32 @@ checkHitObject__11TBossTelesaFP9THitActor: # 0x800c1a44
     addis   r0, r3, 0xc000
     cmplwi  r0, 0x0
     bne-    branch_0x800c1cf4
-    lbz     r0, -0x6a38(r13)
+    lbz     r0, R13Off_m0x6a38(r13)
     extsb.  r0, r0
     bne-    branch_0x800c1ac0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a34(r13)
-    addi    r0, r3, 0x7a9c
-    lis     r4, 0x800c
-    stw     r0, -0x6a34(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b64
-    subi    r4, r4, 0x1bf0
-    subi    r3, r13, 0x6a34
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
+    lis     r4, __dt__27TNerveBossTelesaPrepareSlotFv@ha
+    stw     r0, R13Off_m0x6a34(r13)
+    lis     r3, unk_803f1b64@h
+    addi    r5, r3, unk_803f1b64@l
+    addi    r4, r4, __dt__27TNerveBossTelesaPrepareSlotFv@l
+    addi    r3, r13, R13Off_m0x6a34
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a38(r13)
+    stb     r0, R13Off_m0x6a38(r13)
 branch_0x800c1ac0:
     lwz     r3, 0x8c(r30)
-    subi    r0, r13, 0x6a34
+    addi    r0, r13, R13Off_m0x6a34
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c1cf4
-    lis     r3, 0x4000
+    lis     r3, unk_40000393@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x393
+    addi    r0, r3, unk_40000393@l
     cmpw    r4, r0
     beq-    branch_0x800c1b80
     bge-    branch_0x800c1b00
@@ -4902,8 +4903,9 @@ branch_0x800c1b80:
     blrl
     b       branch_0x800c1bbc
 
+branch_0x800c1bb8:
+    b       branch_0x800c1cf4
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0xbc5b8, 0x800c1bbc - 0x800c1bb8
 branch_0x800c1bbc:
     lbz     r0, 0x350(r30)
     cmplwi  r0, 0x0
@@ -4919,7 +4921,7 @@ branch_0x800c1bbc:
     stb     r0, 0x35a(r30)
     li      r4, 0xf
     li      r5, 0x1
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
 branch_0x800c1c00:
@@ -4929,7 +4931,7 @@ branch_0x800c1c00:
     lwz     r0, 0x35c(r30)
     cmpwi   r0, 0x2
     ble-    branch_0x800c1c38
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x10
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -4950,12 +4952,12 @@ branch_0x800c1c38:
     stw     r0, 0x378(r30)
     lwz     r0, 0x18(r31)
     stw     r0, 0x37c(r30)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r4, 0x380(r30)
     cmpwi   r4, 0x0
     blt-    branch_0x800c1c88
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x374
     li      r6, 0x0
     li      r7, 0x0
@@ -4964,7 +4966,7 @@ branch_0x800c1c88:
     lbz     r0, 0x350(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x800c1cb0
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x374
     li      r4, 0xdb
     li      r6, 0x0
@@ -4973,7 +4975,7 @@ branch_0x800c1c88:
     b       branch_0x800c1ce0
 
 branch_0x800c1cb0:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2944
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5022,26 +5024,26 @@ perform__11TBossTelesaFUlPQ26JDrama9TGraphics: # 0x800c1d14
     lwz     r0, 0xf0(r29)
     andi.   r0, r0, 0x5
     bne-    branch_0x800c1dd0
-    lbz     r0, -0x6a70(r13)
+    lbz     r0, R13Off_m0x6a70(r13)
     extsb.  r0, r0
     bne-    branch_0x800c1d90
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a6c(r13)
-    addi    r0, r3, 0x7b0c
-    lis     r4, 0x800c
-    stw     r0, -0x6a6c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b10
-    subi    r4, r4, 0x384
-    subi    r3, r13, 0x6a6c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__19TNerveBossTelesaDie@h
+    stw     r0, R13Off_m0x6a6c(r13)
+    addi    r0, r3, __vvt__19TNerveBossTelesaDie@l
+    lis     r4, __dt__19TNerveBossTelesaDieFv@ha
+    stw     r0, R13Off_m0x6a6c(r13)
+    lis     r3, unk_803f1b10@h
+    addi    r5, r3, unk_803f1b10@l
+    addi    r4, r4, __dt__19TNerveBossTelesaDieFv@l
+    addi    r3, r13, R13Off_m0x6a6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a70(r13)
+    stb     r0, R13Off_m0x6a70(r13)
 branch_0x800c1d90:
     lwz     r3, 0x8c(r29)
-    subi    r0, r13, 0x6a6c
+    addi    r0, r13, R13Off_m0x6a6c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c1dd0
@@ -5119,7 +5121,7 @@ calcRootMatrix__11TBossTelesaFv: # 0x800c1e68
     lwz     r0, 0x2c(r31)
     stw     r0, 0x1c(r4)
     lfs     f2, 0x364(r31)
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     lwz     r3, 0x15c(r31)
     fcmpo   cr0, f2, f0
     lfs     f29, 0x18(r31)
@@ -5168,7 +5170,7 @@ branch_0x800c1ee0:
     lwz     r0, 0x38(r31)
     stw     r0, 0x38(r5)
     lwz     r3, 0x74(r31)
-    lfs     f29, -0x6090(rtoc)
+    lfs     f29, -0x6090(r2)
     bl      checkCurBckFromIndex__6MActorFi
     cmpwi   r3, 0x0
     bne-    branch_0x800c1fb4
@@ -5196,7 +5198,7 @@ branch_0x800c1fb4:
     bl      checkCurBckFromIndex__6MActorFi
     cmpwi   r3, 0x0
     bne-    branch_0x800c1fe8
-    lfs     f29, -0x608c(rtoc)
+    lfs     f29, -0x608c(r2)
     b       branch_0x800c1fe8
 
 branch_0x800c1fdc:
@@ -5246,7 +5248,7 @@ branch_0x800c2064:
     lhz     r0, 0x24(r3)
     cmplw   r4, r0
     blt+    branch_0x800c2020
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x374
     stfs    f0, 0x374(r31)
@@ -5254,9 +5256,9 @@ branch_0x800c2064:
     li      r6, 0x1
     stfs    f0, 0x378(r31)
     stfs    f0, 0x37c(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x374
     li      r4, 0x1a6
@@ -5276,7 +5278,7 @@ branch_0x800c2064:
     stfs    f0, 0x374(r31)
     stfs    f1, 0x378(r31)
     stfs    f2, 0x37c(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r3, 0x74(r31)
     li      r4, 0x4
@@ -5305,7 +5307,7 @@ branch_0x800c2064:
     bne-    branch_0x800c21d0
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x19e
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -5314,7 +5316,7 @@ branch_0x800c2064:
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x19f
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -5323,7 +5325,7 @@ branch_0x800c2064:
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1a0
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -5340,12 +5342,12 @@ branch_0x800c21d0:
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
     lfs     f1, 0x10(r3)
-    lfs     f0, -0x6088(rtoc)
+    lfs     f0, -0x6088(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c2224
     lwz     r5, 0x74(r31)
     li      r4, 0xe0
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     lwz     r5, 0x4(r5)
     li      r7, 0x0
@@ -5358,7 +5360,7 @@ branch_0x800c2224:
     bl      checkCurBckFromIndex__6MActorFi
     cmpwi   r3, 0x0
     beq-    branch_0x800c231c
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x20fe
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5373,7 +5375,7 @@ branch_0x800c2224:
 branch_0x800c2268:
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1a1
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -5382,7 +5384,7 @@ branch_0x800c2268:
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1a2
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -5391,7 +5393,7 @@ branch_0x800c2268:
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1a3
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -5400,7 +5402,7 @@ branch_0x800c2268:
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1a4
     lwz     r5, 0x4(r5)
     li      r6, 0x1
@@ -5409,7 +5411,7 @@ branch_0x800c2268:
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     lwz     r5, 0x74(r31)
     mr      r7, r31
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1f0
     lwz     r5, 0x4(r5)
     li      r6, 0x3
@@ -5425,30 +5427,30 @@ branch_0x800c231c:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f1, -0x6108(rtoc)
+    lfs     f1, -0x6108(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x800c23b8
-    lbz     r0, -0x6a40(r13)
+    lbz     r0, R13Off_m0x6a40(r13)
     extsb.  r0, r0
     bne-    branch_0x800c2390
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a3c(r13)
-    addi    r0, r3, 0x7aac
-    lis     r4, 0x800c
-    stw     r0, -0x6a3c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b58
-    subi    r4, r4, 0x1944
-    subi    r3, r13, 0x6a3c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__28TNerveBossTelesaSpitSlotItem@h
+    stw     r0, R13Off_m0x6a3c(r13)
+    addi    r0, r3, __vvt__28TNerveBossTelesaSpitSlotItem@l
+    lis     r4, __dt__28TNerveBossTelesaSpitSlotItemFv@ha
+    stw     r0, R13Off_m0x6a3c(r13)
+    lis     r3, unk_803f1b58@h
+    addi    r5, r3, unk_803f1b58@l
+    addi    r4, r4, __dt__28TNerveBossTelesaSpitSlotItemFv@l
+    addi    r3, r13, R13Off_m0x6a3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a40(r13)
+    stb     r0, R13Off_m0x6a40(r13)
 branch_0x800c2390:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6a3c
+    addi    r0, r13, R13Off_m0x6a3c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c23b0
@@ -5489,7 +5491,7 @@ getTakingMtx__11TBossTelesaFv: # 0x800c23dc
     bl      gekko_ps_copy12__9JGeometryFPvPv
     lwz     r4, 0x178(r30)
     mr      r3, r31
-    lfs     f0, -0x6100(rtoc)
+    lfs     f0, -0x6100(r2)
     lfs     f1, 0x14(r4)
     fsubs   f0, f1, f0
     stfs    f0, 0x294(r30)
@@ -5508,47 +5510,47 @@ kill__11TBossTelesaFv: # 0x800c2444
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     addi    r31, r3, 0x0
-    lbz     r0, -0x6a70(r13)
+    lbz     r0, R13Off_m0x6a70(r13)
     extsb.  r0, r0
     bne-    branch_0x800c249c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a6c(r13)
-    addi    r0, r3, 0x7b0c
-    lis     r4, 0x800c
-    stw     r0, -0x6a6c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b10
-    subi    r4, r4, 0x384
-    subi    r3, r13, 0x6a6c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__19TNerveBossTelesaDie@h
+    stw     r0, R13Off_m0x6a6c(r13)
+    addi    r0, r3, __vvt__19TNerveBossTelesaDie@l
+    lis     r4, __dt__19TNerveBossTelesaDieFv@ha
+    stw     r0, R13Off_m0x6a6c(r13)
+    lis     r3, unk_803f1b10@h
+    addi    r5, r3, unk_803f1b10@l
+    addi    r4, r4, __dt__19TNerveBossTelesaDieFv@l
+    addi    r3, r13, R13Off_m0x6a6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a70(r13)
+    stb     r0, R13Off_m0x6a70(r13)
 branch_0x800c249c:
     lwz     r4, 0x8c(r31)
-    subi    r3, r13, 0x6a6c
+    addi    r3, r13, R13Off_m0x6a6c
     lwz     r0, 0x14(r4)
     cmplw   r0, r3
     beq-    branch_0x800c2548
-    lbz     r0, -0x6a70(r13)
+    lbz     r0, R13Off_m0x6a70(r13)
     extsb.  r0, r0
     bne-    branch_0x800c24f0
-    lis     r4, 0x803b
-    subi    r0, r4, 0x48f4
-    lis     r4, 0x803b
-    stw     r0, -0x6a6c(r13)
-    addi    r0, r4, 0x7b0c
-    lis     r4, 0x800c
-    stw     r0, -0x6a6c(r13)
-    lis     r5, 0x803f
-    subi    r4, r4, 0x384
-    addi    r5, r5, 0x1b10
+    lis     r4, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r4, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r4, __vvt__19TNerveBossTelesaDie@h
+    stw     r0, R13Off_m0x6a6c(r13)
+    addi    r0, r4, __vvt__19TNerveBossTelesaDie@l
+    lis     r4, __dt__19TNerveBossTelesaDieFv@ha
+    stw     r0, R13Off_m0x6a6c(r13)
+    lis     r5, unk_803f1b10@h
+    addi    r4, r4, __dt__19TNerveBossTelesaDieFv@l
+    addi    r5, r5, unk_803f1b10@l
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a70(r13)
+    stb     r0, R13Off_m0x6a70(r13)
 branch_0x800c24f0:
-    subi    r6, r13, 0x6a6c
+    addi    r6, r13, R13Off_m0x6a6c
     lwz     r5, 0x8c(r31)
     cmplwi  r6, 0x0
     beq-    branch_0x800c2548
@@ -5591,15 +5593,15 @@ moveObject__11TBossTelesaFv: # 0x800c255c
     stw     r29, 0x1bc(sp)
     stw     r28, 0x1b8(sp)
     lwz     r0, 0xf0(r3)
-    lis     r3, 0x803f
-    addi    r30, r3, 0x1af8
+    lis     r3, unk_803f1af8@h
+    addi    r30, r3, unk_803f1af8@l
     clrlwi. r0, r0, 31
     bne-    branch_0x800c2e1c
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r3, sp, 0x17c
     addi    r4, r4, 0x124
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
-    lwz     r6, MarioHitActorPos(r13)
+    lwz     r6, R13Off_m0x60b4(r13)
     addi    r3, sp, 0xec
     addi    r4, sp, 0x17c
     lwz     r5, 0x0(r6)
@@ -5614,7 +5616,7 @@ moveObject__11TBossTelesaFv: # 0x800c255c
     stw     r0, 0x1ac(sp)
     lwz     r0, 0xf4(sp)
     stw     r3, 0x1b0(sp)
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stw     r0, 0x1b4(sp)
     lfs     f1, 0x1b0(sp)
     lfs     f3, 0x1b4(sp)
@@ -5630,8 +5632,8 @@ moveObject__11TBossTelesaFv: # 0x800c255c
 
 branch_0x800c2614:
     frsqrte f3, f4
-    lfs     f2, -0x6128(rtoc)
-    lfs     f0, -0x6094(rtoc)
+    lfs     f2, -0x6128(r2)
+    lfs     f0, -0x6094(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -5642,8 +5644,8 @@ branch_0x800c2638:
     lfs     f0, -0x7e18(r13)
     fcmpo   cr0, f4, f0
     bge-    branch_0x800c2678
-    lwz     r4, MarioHitActorPos(r13)
-    lwz     r3, gpCamera(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lfs     f1, 0x4(r4)
     lfs     f0, 0x14c(r3)
     lfs     f2, -0x7e14(r13)
@@ -5652,13 +5654,13 @@ branch_0x800c2638:
     fmadds  f0, f2, f1, f0
     stfs    f0, 0x360(r31)
     lfs     f0, 0x360(r31)
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     stfs    f0, 0x290(r3)
     b       branch_0x800c26a4
 
 branch_0x800c2678:
     lfs     f1, 0x360(r31)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f0, -0x612c(r2)
     fabs    f2, f1
     fcmpo   cr0, f2, f0
     ble-    branch_0x800c26a4
@@ -5666,12 +5668,12 @@ branch_0x800c2678:
     fmuls   f0, f1, f0
     stfs    f0, 0x360(r31)
     lfs     f0, 0x360(r31)
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     stfs    f0, 0x290(r3)
 branch_0x800c26a4:
-    lwz     r3, MarioFlags(r13)
+    lwz     r3, R13Off_m0x6094(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
+    rlwinm. r0, r0, 0, 21, 21
     beq-    branch_0x800c26bc
     li      r0, 0x1
     b       branch_0x800c26c0
@@ -5681,7 +5683,7 @@ branch_0x800c26bc:
 branch_0x800c26c0:
     clrlwi. r0, r0, 24
     beq-    branch_0x800c26f8
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x28d4
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5694,31 +5696,31 @@ branch_0x800c26c0:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800c26f8:
-    lbz     r0, -0x6a28(r13)
+    lbz     r0, R13Off_m0x6a28(r13)
     extsb.  r0, r0
     bne-    branch_0x800c2738
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a24(r13)
-    addi    r0, r3, 0x79d8
-    lis     r3, 0x800c
-    stw     r0, -0x6a24(r13)
-    subi    r4, r3, 0x2764
-    subi    r3, r13, 0x6a24
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveBossTelesaFallDemo@h
+    stw     r0, R13Off_m0x6a24(r13)
+    addi    r0, r3, __vvt__24TNerveBossTelesaFallDemo@l
+    lis     r3, __dt__24TNerveBossTelesaFallDemoFv@ha
+    stw     r0, R13Off_m0x6a24(r13)
+    addi    r4, r3, __dt__24TNerveBossTelesaFallDemoFv@l
+    addi    r3, r13, R13Off_m0x6a24
     addi    r5, r30, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a28(r13)
+    stb     r0, R13Off_m0x6a28(r13)
 branch_0x800c2738:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6a24
+    addi    r0, r13, R13Off_m0x6a24
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c279c
     lwz     r3, 0x17c(r31)
     lwz     r5, 0x178(r31)
-    lfs     f1, -0x60a8(rtoc)
+    lfs     f1, -0x60a8(r2)
     lfs     f0, 0x14(r3)
     lfs     f2, 0x14(r5)
     fadds   f0, f1, f0
@@ -5732,62 +5734,62 @@ branch_0x800c2738:
     lwz     r0, 0x18(r5)
     stw     r0, 0x18(r4)
     lwz     r3, 0x184(r31)
-    lfs     f0, -0x6118(rtoc)
+    lfs     f0, -0x6118(r2)
     lfs     f1, 0x14(r3)
     fadds   f0, f1, f0
     stfs    f0, 0x14(r3)
 branch_0x800c279c:
-    lbz     r0, -0x6a38(r13)
+    lbz     r0, R13Off_m0x6a38(r13)
     extsb.  r0, r0
     bne-    branch_0x800c27dc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a34(r13)
-    addi    r0, r3, 0x7a9c
-    lis     r3, 0x800c
-    stw     r0, -0x6a34(r13)
-    subi    r4, r3, 0x1bf0
-    subi    r3, r13, 0x6a34
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
+    lis     r3, __dt__27TNerveBossTelesaPrepareSlotFv@ha
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r4, r3, __dt__27TNerveBossTelesaPrepareSlotFv@l
+    addi    r3, r13, R13Off_m0x6a34
     addi    r5, r30, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a38(r13)
+    stb     r0, R13Off_m0x6a38(r13)
 branch_0x800c27dc:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6a34
+    addi    r0, r13, R13Off_m0x6a34
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800c2814
     lwz     r3, 0x74(r31)
     li      r4, 0x3
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     bl      setFrameRate__6MActorFfi
     lwz     r3, 0x74(r31)
     li      r4, 0x3
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stfs    f0, 0x10(r3)
 branch_0x800c2814:
-    lbz     r0, -0x6a70(r13)
+    lbz     r0, R13Off_m0x6a70(r13)
     extsb.  r0, r0
     bne-    branch_0x800c2854
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a6c(r13)
-    addi    r0, r3, 0x7b0c
-    lis     r3, 0x800c
-    stw     r0, -0x6a6c(r13)
-    subi    r4, r3, 0x384
-    subi    r3, r13, 0x6a6c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__19TNerveBossTelesaDie@h
+    stw     r0, R13Off_m0x6a6c(r13)
+    addi    r0, r3, __vvt__19TNerveBossTelesaDie@l
+    lis     r3, __dt__19TNerveBossTelesaDieFv@ha
+    stw     r0, R13Off_m0x6a6c(r13)
+    addi    r4, r3, __dt__19TNerveBossTelesaDieFv@l
+    addi    r3, r13, R13Off_m0x6a6c
     addi    r5, r30, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a70(r13)
+    stb     r0, R13Off_m0x6a70(r13)
 branch_0x800c2854:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6a6c
+    addi    r0, r13, R13Off_m0x6a6c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c2950
@@ -5811,7 +5813,7 @@ branch_0x800c28a0:
 branch_0x800c28a4:
     lbz     r3, 0x13c(r31)
     clrlwi  r0, r0, 24
-    lbz     r4, -0x7e28(r13)
+    lbz     r4, R13Off_m0x7e28(r13)
     subf    r0, r3, r0
     mulli   r0, r0, 0x1e
     add     r0, r4, r0
@@ -5835,7 +5837,7 @@ branch_0x800c28dc:
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
     lfs     f1, 0x10(r3)
-    lfs     f0, -0x60dc(rtoc)
+    lfs     f0, -0x60dc(r2)
     fcmpo   cr0, f1, f0
     bgt-    branch_0x800c2920
 branch_0x800c290c:
@@ -5849,7 +5851,7 @@ branch_0x800c2920:
     clrlwi  r0, r30, 24
     cmplw   r3, r0
     ble-    branch_0x800c2950
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x34f(r31)
     b       branch_0x800c2950
 
@@ -5860,12 +5862,12 @@ branch_0x800c293c:
     addi    r0, r3, 0x1
     stb     r0, 0x34f(r31)
 branch_0x800c2950:
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r3, sp, 0x164
     li      r28, 0x0
     addi    r4, r4, 0x124
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
-    lwz     r6, MarioHitActorPos(r13)
+    lwz     r6, R13Off_m0x60b4(r13)
     addi    r3, sp, 0xd0
     addi    r4, sp, 0x164
     lwz     r5, 0x0(r6)
@@ -5888,7 +5890,7 @@ branch_0x800c2950:
     stw     r0, 0x1a0(r31)
     lwz     r0, 0x18(r4)
     stw     r0, 0x1a4(r31)
-    lfs     f2, -0x6084(rtoc)
+    lfs     f2, -0x6084(r2)
     lfs     f1, 0x19c(sp)
     lfs     f0, 0x19c(r31)
     fmadds  f0, f2, f1, f0
@@ -5898,7 +5900,7 @@ branch_0x800c2950:
     fmadds  f0, f2, f1, f0
     stfs    f0, 0x1a4(r31)
     lwz     r3, 0x178(r31)
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     lfs     f0, 0x13c(r3)
     fcmpu   cr0, f1, f0
     beq-    branch_0x800c29fc
@@ -5929,7 +5931,7 @@ branch_0x800c2a3c:
     b       branch_0x800c2ab0
 
 branch_0x800c2a48:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x30b7
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5944,7 +5946,7 @@ branch_0x800c2a48:
     b       branch_0x800c2ae0
 
 branch_0x800c2a7c:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x30b6
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5959,7 +5961,7 @@ branch_0x800c2a7c:
     b       branch_0x800c2ae0
 
 branch_0x800c2ab0:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x30b5
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5972,7 +5974,7 @@ branch_0x800c2ab0:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800c2ae0:
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     mr      r3, r31
     stfs    f0, 0x9c(r31)
     stfs    f0, 0x98(r31)
@@ -6004,7 +6006,7 @@ branch_0x800c2b40:
     clrlwi. r0, r0, 24
     beq-    branch_0x800c2b54
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800c2b54:
     addi    r28, r28, 0x1
@@ -6030,13 +6032,13 @@ branch_0x800c2b5c:
     lfs     f0, 0x9c(r31)
     fadds   f0, f1, f0
     stfs    f0, 0x18(r31)
-    lfs     f1, -0x6118(rtoc)
+    lfs     f1, -0x6118(r2)
     lfs     f0, 0xc8(r31)
     fadds   f0, f1, f0
     stfs    f0, 0x14(r31)
     lfs     f2, 0x168(r31)
-    lfs     f1, -0x60cc(rtoc)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f1, -0x60cc(r2)
+    lfs     f0, -0x612c(r2)
     fsubs   f1, f2, f1
     fcmpo   cr0, f1, f0
     ble-    branch_0x800c2bdc
@@ -6044,7 +6046,7 @@ branch_0x800c2b5c:
     b       branch_0x800c2bec
 
 branch_0x800c2bdc:
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c2bec
     fmr     f1, f0
@@ -6088,7 +6090,7 @@ branch_0x800c2c6c:
     lwz     r3, 0x16c(r31)
     lwz     r4, 0x4(r4)
     addi    r5, r3, 0x10
-    lfs     f1, -0x60f4(rtoc)
+    lfs     f1, -0x60f4(r2)
     lwz     r3, 0x58(r4)
     lfs     f2, 0x4c(r3)
     addi    r4, r3, 0x30
@@ -6099,7 +6101,7 @@ branch_0x800c2c6c:
     stfs    f1, 0x4(r5)
     stfs    f3, 0x8(r5)
     lfs     f1, 0x14(r31)
-    lfs     f2, -0x6080(rtoc)
+    lfs     f2, -0x6080(r2)
     lwz     r3, 0x174(r31)
     lfs     f3, 0x2c(r4)
     fsubs   f1, f1, f2
@@ -6143,7 +6145,7 @@ branch_0x800c2d34:
     clrlwi. r0, r0, 24
     beq-    branch_0x800c2d4c
     addi    r3, r28, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
     b       branch_0x800c2d54
 
@@ -6159,7 +6161,7 @@ branch_0x800c2d5c:
     blt+    branch_0x800c2d10
     lwz     r28, 0x170(r31)
     li      r29, 0x0
-    lfs     f31, -0x6098(rtoc)
+    lfs     f31, -0x6098(r2)
     li      r30, 0x0
     b       branch_0x800c2e08
 
@@ -6179,7 +6181,7 @@ branch_0x800c2da0:
     clrlwi. r0, r0, 24
     beq-    branch_0x800c2db8
     addi    r3, r28, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
     b       branch_0x800c2e00
 
@@ -6254,7 +6256,7 @@ reset__11TBossTelesaFv: # 0x800c2e40
     stw     r0, 0xf0(r31)
     stb     r30, 0x18c(r31)
     lwz     r7, 0x15c(r31)
-    lfd     f2, -0x6120(rtoc)
+    lfd     f2, -0x6120(r2)
     lwz     r0, 0xe0(r7)
     lwz     r4, 0xf4(r7)
     xoris   r0, r0, 0x8000
@@ -6284,15 +6286,15 @@ reset__11TBossTelesaFv: # 0x800c2e40
     stfs    f1, 0x58(r31)
     stfs    f0, 0x5c(r31)
     bl      calcEntryRadius__9THitActorFv
-    lwz     r3, gpMarDirector(r13)
-    lis     r4, 0x8038
+    lwz     r3, R13Off_m0x6048(r13)
+    lis     r4, unk_8037edb4@ha
     sth     r30, 0x44(sp)
     addi    r0, sp, 0x44
-    subi    r4, r4, 0x124c
+    addi    r4, r4, unk_8037edb4@l
     stw     r0, 0x8(sp)
     li      r5, 0x0
     li      r6, -0x1
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     li      r7, 0x1
     li      r8, 0x0
     li      r9, 0x0
@@ -6309,17 +6311,17 @@ reset__11TBossTelesaFv: # 0x800c2e40
 .globl loadAfter__11TBossTelesaFv
 loadAfter__11TBossTelesaFv: # 0x800c2f68
     mflr    r0
-    lis     r4, 0x4000
+    lis     r4, unk_4000019a@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x8038
-    addi    r4, r4, 0x19a
+    lis     r5, unk_8037ea38@ha
+    addi    r4, r4, unk_4000019a@l
     stwu    sp, -0x370(sp)
     stfd    f31, 0x368(sp)
     stfd    f30, 0x360(sp)
     stmw    r24, 0x340(sp)
     addi    r31, r3, 0x0
-    subi    r30, r5, 0x15c8
-    lwz     r3, -0x62b8(r13)
+    addi    r30, r5, unk_8037ea38@l
+    lwz     r3, R13Off_m0x62b8(r13)
     bl      getObjNumWithActorType__18TMapObjBaseManagerCFUl
     cmplwi  r3, 0x0
     beq-    branch_0x800c3008
@@ -6351,14 +6353,14 @@ branch_0x800c2ff0:
     addi    r7, r7, 0x1
     addi    r3, r3, 0x4
 branch_0x800c2ff8:
-    lwz     r4, -0x62b8(r13)
+    lwz     r4, R13Off_m0x62b8(r13)
     lwz     r0, 0x14(r4)
     cmpw    r7, r0
     blt+    branch_0x800c2fb4
 branch_0x800c3008:
-    lis     r4, 0x4000
-    lwz     r3, -0x62b8(r13)
-    addi    r4, r4, 0x1a6
+    lis     r4, unk_400001a6@h
+    lwz     r3, R13Off_m0x62b8(r13)
+    addi    r4, r4, unk_400001a6@l
     bl      getObjNumWithActorType__18TMapObjBaseManagerCFUl
     cmplwi  r3, 0x0
     beq-    branch_0x800c307c
@@ -6388,14 +6390,14 @@ branch_0x800c3064:
     addi    r6, r6, 0x1
     addi    r3, r3, 0x4
 branch_0x800c306c:
-    lwz     r4, -0x62b8(r13)
+    lwz     r4, R13Off_m0x62b8(r13)
     lwz     r0, 0x14(r4)
     cmpw    r6, r0
     blt+    branch_0x800c302c
 branch_0x800c307c:
-    lfs     f31, -0x612c(rtoc)
+    lfs     f31, -0x612c(r2)
     addi    r27, sp, 0x314
-    lfs     f30, -0x6130(rtoc)
+    lfs     f30, -0x6130(r2)
     addi    r26, sp, 0x320
     addi    r25, sp, 0x32c
     li      r29, 0x0
@@ -6423,9 +6425,9 @@ branch_0x800c309c:
     addi    r29, r29, 0x1
     addi    r28, r28, 0x4
     blt+    branch_0x800c309c
-    lfs     f31, -0x612c(rtoc)
+    lfs     f31, -0x612c(r2)
     addi    r25, sp, 0x2f0
-    lfs     f30, -0x6130(rtoc)
+    lfs     f30, -0x6130(r2)
     addi    r26, sp, 0x2fc
     addi    r27, sp, 0x308
     slwi    r28, r29, 2
@@ -6452,9 +6454,9 @@ branch_0x800c310c:
     addi    r29, r29, 0x1
     addi    r28, r28, 0x4
     blt+    branch_0x800c310c
-    lfs     f31, -0x612c(rtoc)
+    lfs     f31, -0x612c(r2)
     addi    r25, sp, 0x2cc
-    lfs     f30, -0x6130(rtoc)
+    lfs     f30, -0x6130(r2)
     addi    r26, sp, 0x2d8
     addi    r27, sp, 0x2e4
     slwi    r28, r29, 2
@@ -6481,9 +6483,9 @@ branch_0x800c317c:
     addi    r29, r29, 0x1
     addi    r28, r28, 0x4
     blt+    branch_0x800c317c
-    lfs     f31, -0x612c(rtoc)
+    lfs     f31, -0x612c(r2)
     addi    r25, sp, 0x2a8
-    lfs     f30, -0x6130(rtoc)
+    lfs     f30, -0x6130(r2)
     addi    r26, sp, 0x2b4
     addi    r27, sp, 0x2c0
     slwi    r29, r29, 2
@@ -6527,7 +6529,7 @@ branch_0x800c3244:
     cmpwi   r24, 0x14
     addi    r29, r29, 0x4
     blt+    branch_0x800c3244
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x3c4
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -6540,7 +6542,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x2f8(r31)
     addi    r3, r30, 0x3d0
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6552,7 +6554,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x2fc(r31)
     addi    r3, r30, 0x3dc
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6564,7 +6566,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x300(r31)
     addi    r3, r30, 0x3e8
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6576,7 +6578,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x304(r31)
     addi    r3, r30, 0x3f4
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6588,7 +6590,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x308(r31)
     addi    r3, r30, 0x400
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6600,7 +6602,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x30c(r31)
     addi    r3, r30, 0x40c
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6612,7 +6614,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x310(r31)
     addi    r3, r30, 0x418
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6624,7 +6626,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x314(r31)
     addi    r3, r30, 0x424
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6636,7 +6638,7 @@ branch_0x800c3244:
     blrl
     stw     r3, 0x318(r31)
     addi    r3, r30, 0x430
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6660,7 +6662,7 @@ branch_0x800c3468:
     cmpwi   r24, 0xa
     addi    r29, r29, 0x4
     blt+    branch_0x800c3468
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x43c
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -6673,7 +6675,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x320(r31)
     addi    r3, r30, 0x448
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6685,7 +6687,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x324(r31)
     addi    r3, r30, 0x454
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6697,7 +6699,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x328(r31)
     addi    r3, r30, 0x460
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6709,7 +6711,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x32c(r31)
     addi    r3, r30, 0x46c
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6721,7 +6723,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x330(r31)
     addi    r3, r30, 0x478
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6733,7 +6735,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x334(r31)
     addi    r3, r30, 0x484
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6745,7 +6747,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x338(r31)
     addi    r3, r30, 0x490
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6757,7 +6759,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x33c(r31)
     addi    r3, r30, 0x49c
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6769,7 +6771,7 @@ branch_0x800c3468:
     blrl
     stw     r3, 0x340(r31)
     addi    r3, r30, 0x4a8
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6793,7 +6795,7 @@ branch_0x800c3678:
     cmpwi   r24, 0xa
     addi    r29, r29, 0x4
     blt+    branch_0x800c3678
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     addi    r3, r30, 0x368
     lwz     r4, 0x184(r31)
     stfs    f0, 0x1e4(r4)
@@ -6801,7 +6803,7 @@ branch_0x800c3678:
     stfs    f0, 0x1e8(r4)
     lwz     r4, 0x184(r31)
     stfs    f0, 0x1ec(r4)
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -6814,9 +6816,9 @@ branch_0x800c3678:
     stw     r3, 0x354(r31)
     addi    r25, sp, 0x284
     addi    r26, sp, 0x290
-    lfs     f30, -0x612c(rtoc)
+    lfs     f30, -0x612c(r2)
     addi    r27, sp, 0x29c
-    lfs     f31, -0x6130(rtoc)
+    lfs     f31, -0x6130(r2)
     li      r24, 0x0
 branch_0x800c3704:
     stfs    f30, 0x284(sp)
@@ -6836,286 +6838,286 @@ branch_0x800c3704:
     addi    r24, r24, 0x1
     cmpwi   r24, 0x5
     blt+    branch_0x800c3704
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xd7
     lbz     r0, 0xd7(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3778
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x4c4
     li      r5, 0xd7
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3778:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xd8
     lbz     r0, 0xd8(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c37a8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x4e8
     li      r5, 0xd8
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c37a8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xd9
     lbz     r0, 0xd9(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c37d8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x510
     li      r5, 0xd9
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c37d8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xda
     lbz     r0, 0xda(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3808
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x538
     li      r5, 0xda
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3808:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xdb
     lbz     r0, 0xdb(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3838
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x560
     li      r5, 0xdb
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3838:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xdc
     lbz     r0, 0xdc(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3868
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x588
     li      r5, 0xdc
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3868:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xdd
     lbz     r0, 0xdd(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3898
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x5ac
     li      r5, 0xdd
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3898:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xde
     lbz     r0, 0xde(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c38c8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x5d4
     li      r5, 0xde
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c38c8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xdf
     lbz     r0, 0xdf(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c38f8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x5fc
     li      r5, 0xdf
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c38f8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xe0
     lbz     r0, 0xe0(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3928
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x624
     li      r5, 0xe0
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3928:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0xe1
     lbz     r0, 0xe1(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3958
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x650
     li      r5, 0xe1
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3958:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x19e
     lbz     r0, 0x19e(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3988
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x678
     li      r5, 0x19e
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3988:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x19f
     lbz     r0, 0x19f(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c39b8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x6a0
     li      r5, 0x19f
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c39b8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a0
     lbz     r0, 0x1a0(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c39e8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x6c8
     li      r5, 0x1a0
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c39e8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a1
     lbz     r0, 0x1a1(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3a18
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x6f0
     li      r5, 0x1a1
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3a18:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a2
     lbz     r0, 0x1a2(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3a48
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x714
     li      r5, 0x1a2
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3a48:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a3
     lbz     r0, 0x1a3(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3a78
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x73c
     li      r5, 0x1a3
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3a78:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a4
     lbz     r0, 0x1a4(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3aa8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x764
     li      r5, 0x1a4
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3aa8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a5
     lbz     r0, 0x1a5(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3ad8
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x78c
     li      r5, 0x1a5
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3ad8:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a6
     lbz     r0, 0x1a6(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3b08
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x7b4
     li      r5, 0x1a6
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3b08:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1a7
     lbz     r0, 0x1a7(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3b38
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x7dc
     li      r5, 0x1a7
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r25)
 branch_0x800c3b38:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r25, r3, 0x1f0
     lbz     r0, 0x1f0(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800c3b68
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r30, 0x800
     li      r5, 0x1f0
     bl      load__18JPAResourceManagerFPCcUs
@@ -7151,7 +7153,7 @@ branch_0x800c3b9c:
 branch_0x800c3bcc:
     stw     r25, 0x188(r31)
     addi    r3, r30, 0x858
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r28)
@@ -7167,7 +7169,7 @@ branch_0x800c3bcc:
     ori     r0, r0, 0x1
     stw     r0, 0xf0(r3)
 branch_0x800c3c10:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x864
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7198,13 +7200,13 @@ branch_0x800c3c50:
 .globl init__11TBossTelesaFP12TLiveManager
 init__11TBossTelesaFP12TLiveManager: # 0x800c3c74
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_8037ea38@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x258(sp)
     stw     r31, 0x254(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x250(sp)
-    subi    r30, r5, 0x15c8
+    addi    r30, r5, unk_8037ea38@l
     stw     r29, 0x24c(sp)
     stw     r28, 0x248(sp)
     stw     r4, 0x70(r3)
@@ -7280,8 +7282,8 @@ branch_0x800c3d80:
     bl      initHitActor__9THitActorFUlUsiffff
     bl      getIllegalCheckData__4TMapFv
     stw     r3, 0xc4(r31)
-    lwz     r3, MarioHitActor(r13)
-    lfs     f0, -0x6130(rtoc)
+    lwz     r3, R13Off_m0x60b8(r13)
+    lfs     f0, -0x6130(r2)
     stw     r3, 0x234(sp)
     cmplwi  r3, 0x0
     stfs    f0, 0x238(sp)
@@ -7320,34 +7322,34 @@ branch_0x800c3de4:
     lwz     r12, 0x108(r12)
     mtlr    r12
     blrl
-    lis     r4, 0x800
+    lis     r4, unk_08000013@h
     stw     r3, 0x15c(r31)
-    addi    r0, r4, 0x13
+    addi    r0, r4, unk_08000013@l
     stw     r0, 0x4c(r31)
     lwz     r0, 0x64(r31)
     oris    r0, r0, 0xd000
     stw     r0, 0x64(r31)
-    lbz     r0, -0x6a28(r13)
+    lbz     r0, R13Off_m0x6a28(r13)
     extsb.  r0, r0
     bne-    branch_0x800c3ea8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a24(r13)
-    addi    r0, r3, 0x79d8
-    lis     r4, 0x800c
-    stw     r0, -0x6a24(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b7c
-    subi    r4, r4, 0x2764
-    subi    r3, r13, 0x6a24
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveBossTelesaFallDemo@h
+    stw     r0, R13Off_m0x6a24(r13)
+    addi    r0, r3, __vvt__24TNerveBossTelesaFallDemo@l
+    lis     r4, __dt__24TNerveBossTelesaFallDemoFv@ha
+    stw     r0, R13Off_m0x6a24(r13)
+    lis     r3, unk_803f1b7c@h
+    addi    r5, r3, unk_803f1b7c@l
+    addi    r4, r4, __dt__24TNerveBossTelesaFallDemoFv@l
+    addi    r3, r13, R13Off_m0x6a24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a28(r13)
+    stb     r0, R13Off_m0x6a28(r13)
 branch_0x800c3ea8:
     lwz     r5, 0x8c(r31)
     li      r3, 0x0
-    subi    r0, r13, 0x6a24
+    addi    r0, r13, R13Off_m0x6a24
     stw     r3, 0x8(r5)
     li      r4, 0x1
     stw     r3, 0x20(r5)
@@ -7394,7 +7396,7 @@ branch_0x800c3f40:
     stb     r0, 0x34a(r31)
     stb     r0, 0x349(r31)
     stb     r0, 0x348(r31)
-    lbz     r0, -0x7e28(r13)
+    lbz     r0, R13Off_m0x7e28(r13)
     stb     r0, 0x34f(r31)
     stb     r0, 0x34e(r31)
     stb     r0, 0x34d(r31)
@@ -7463,7 +7465,7 @@ branch_0x800c4034:
     li      r0, 0x0
     stw     r0, 0x154(r31)
     stw     r0, 0x158(r31)
-    lwz     r4, -0x62b8(r13)
+    lwz     r4, R13Off_m0x62b8(r13)
     lwz     r4, 0x18(r4)
     lwzx    r5, r4, r3
     lwz     r4, 0x10(r5)
@@ -7476,7 +7478,7 @@ branch_0x800c406c:
     addi    r6, r6, 0x1
     addi    r3, r3, 0x4
 branch_0x800c4074:
-    lwz     r4, -0x62b8(r13)
+    lwz     r4, R13Off_m0x62b8(r13)
     lwz     r0, 0x14(r4)
     cmpw    r6, r0
     blt+    branch_0x800c4010
@@ -7504,8 +7506,8 @@ branch_0x800c40b8:
     addi    r3, r28, 0x0
     addi    r4, r30, 0x87c
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7fb8
+    lis     r3, __vvt__15TBossTelesaBody@h
+    addi    r3, r3, __vvt__15TBossTelesaBody@l
     stw     r3, 0x0(r28)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -7514,7 +7516,7 @@ branch_0x800c40b8:
 branch_0x800c40f0:
     stw     r28, 0x16c(r31)
     addi    r3, r30, 0x894
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -7542,14 +7544,14 @@ branch_0x800c40f0:
     lwz     r0, 0x1e4(sp)
     stw     r0, 0x18c(sp)
     bl      insert__Q27JGadget18TList_pointer_voidFQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorRCPv
-    lis     r4, 0x800
+    lis     r4, unk_08000013@h
     lwz     r3, 0x16c(r31)
-    lfs     f1, -0x6080(rtoc)
-    addi    r4, r4, 0x13
-    lfs     f2, -0x607c(rtoc)
+    lfs     f1, -0x6080(r2)
+    addi    r4, r4, unk_08000013@l
+    lfs     f2, -0x607c(r2)
     li      r5, 0x5
-    lfs     f3, -0x6118(rtoc)
-    lfs     f4, -0x6078(rtoc)
+    lfs     f3, -0x6118(r2)
+    lfs     f4, -0x6078(r2)
     lis     r6, 0xd100
     bl      initHitActor__9THitActorFUlUsiffff
     lwz     r4, 0x16c(r31)
@@ -7565,15 +7567,15 @@ branch_0x800c40f0:
     addi    r3, r28, 0x0
     addi    r4, r30, 0x8a0
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7f14
+    lis     r3, __vvt__17TBossTelesaTongue@h
+    addi    r3, r3, __vvt__17TBossTelesaTongue@l
     stw     r3, 0x0(r28)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r28)
 branch_0x800c41d8:
     stw     r28, 0x170(r31)
     addi    r3, r30, 0x894
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -7601,10 +7603,10 @@ branch_0x800c41d8:
     lwz     r0, 0x1d0(sp)
     stw     r0, 0x17c(sp)
     bl      insert__Q27JGadget18TList_pointer_voidFQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorRCPv
-    lfs     f1, -0x60c0(rtoc)
-    lis     r3, 0x800
-    lfs     f2, -0x6080(rtoc)
-    addi    r4, r3, 0x13
+    lfs     f1, -0x60c0(r2)
+    lis     r3, unk_08000013@h
+    lfs     f2, -0x6080(r2)
+    addi    r4, r3, unk_08000013@l
     fmr     f3, f1
     fmr     f4, f2
     lwz     r3, 0x170(r31)
@@ -7624,8 +7626,8 @@ branch_0x800c41d8:
     addi    r3, r28, 0x0
     addi    r4, r30, 0x8b8
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x79e8
+    lis     r3, __vvt__25TBossTelesaKillSmallEnemy@h
+    addi    r3, r3, __vvt__25TBossTelesaKillSmallEnemy@l
     stw     r3, 0x0(r28)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -7635,7 +7637,7 @@ branch_0x800c41d8:
 branch_0x800c42cc:
     stw     r28, 0x174(r31)
     addi    r3, r30, 0x894
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -7663,10 +7665,10 @@ branch_0x800c42cc:
     lwz     r0, 0x1bc(sp)
     stw     r0, 0x16c(sp)
     bl      insert__Q27JGadget18TList_pointer_voidFQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorRCPv
-    lfs     f1, -0x6074(rtoc)
-    lis     r3, 0x1000
-    lfs     f2, -0x6118(rtoc)
-    addi    r4, r3, 0xc
+    lfs     f1, -0x6074(r2)
+    lis     r3, unk_1000000c@h
+    lfs     f2, -0x6118(r2)
+    addi    r4, r3, unk_1000000c@l
     fmr     f3, f1
     fmr     f4, f2
     lwz     r3, 0x174(r31)
@@ -7682,7 +7684,7 @@ branch_0x800c42cc:
     stw     r31, 0x68(r3)
     lwz     r3, 0x74(r31)
     bl      setLightType__6MActorFi
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x8d8
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7720,8 +7722,8 @@ __ct__11TBossTelesaFPCc: # 0x800c4400
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7b1c
+    lis     r3, __vvt__11TBossTelesa@h
+    addi    r3, r3, __vvt__11TBossTelesa@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     li      r6, 0x1
@@ -7736,7 +7738,7 @@ __ct__11TBossTelesaFPCc: # 0x800c4400
     stw     r5, 0x15c(r31)
     stw     r4, 0x160(r31)
     stw     r4, 0x164(r31)
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stfs    f0, 0x168(r31)
     stw     r5, 0x16c(r31)
     stw     r5, 0x184(r31)
@@ -7765,56 +7767,56 @@ __ct__11TBossTelesaFPCc: # 0x800c4400
 
 .globl getResultFromAng__11TTelesaSlotFf
 getResultFromAng__11TTelesaSlotFf: # 0x800c44bc
-    lfs     f0, -0x6070(rtoc)
+    lfs     f0, -0x6070(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c44d0
     li      r3, 0x0
     blr
 
 branch_0x800c44d0:
-    lfs     f0, -0x606c(rtoc)
+    lfs     f0, -0x606c(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c44e4
     li      r3, 0x1
     blr
 
 branch_0x800c44e4:
-    lfs     f0, -0x6068(rtoc)
+    lfs     f0, -0x6068(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c44f8
     li      r3, 0x3
     blr
 
 branch_0x800c44f8:
-    lfs     f0, -0x6064(rtoc)
+    lfs     f0, -0x6064(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c450c
     li      r3, 0x2
     blr
 
 branch_0x800c450c:
-    lfs     f0, -0x6060(rtoc)
+    lfs     f0, -0x6060(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c4520
     li      r3, 0x0
     blr
 
 branch_0x800c4520:
-    lfs     f0, -0x605c(rtoc)
+    lfs     f0, -0x605c(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c4534
     li      r3, 0x1
     blr
 
 branch_0x800c4534:
-    lfs     f0, -0x6058(rtoc)
+    lfs     f0, -0x6058(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c4548
     li      r3, 0x3
     blr
 
 branch_0x800c4548:
-    lfs     f0, -0x6054(rtoc)
+    lfs     f0, -0x6054(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c455c
     li      r3, 0x2
@@ -7834,10 +7836,10 @@ getForcastResult__11TTelesaSlotFi: # 0x800c4564
     stwu    sp, -0x28(sp)
     lwz     r5, 0x13c(r3)
     lwz     r4, 0x138(r3)
-    lfs     f3, -0x6050(rtoc)
+    lfs     f3, -0x6050(r2)
     lfsx    f1, r5, r0
     lfsx    f5, r4, r0
-    lfs     f2, -0x6130(rtoc)
+    lfs     f2, -0x6130(r2)
 branch_0x800c4590:
     fabs    f4, f5
     lfs     f0, 0x160(r3)
@@ -7887,7 +7889,7 @@ branch_0x800c4608:
     subf.   r0, r0, r4
     bne-    branch_0x800c4674
     xoris   r0, r5, 0x8000
-    lfd     f2, -0x6120(rtoc)
+    lfd     f2, -0x6120(r2)
     stw     r0, 0x24(sp)
     lis     r4, 0x4330
     stw     r4, 0x20(sp)
@@ -8000,8 +8002,8 @@ forceStopSlot__11TTelesaSlotFi: # 0x800c476c
     mr      r31, r3
     stw     r30, 0x50(sp)
     mr      r30, r4
-    lfs     f1, -0x6130(rtoc)
-    lfs     f0, -0x612c(rtoc)
+    lfs     f1, -0x6130(r2)
+    lfs     f0, -0x612c(r2)
     stfs    f1, 0x3c(sp)
     stfs    f0, 0x40(sp)
     lbz     r0, 0x19c(r3)
@@ -8014,17 +8016,17 @@ forceStopSlot__11TTelesaSlotFi: # 0x800c476c
     extsh   r0, r3
     cmpwi   r0, 0x1
     bne-    branch_0x800c47cc
-    lfs     f30, -0x6104(rtoc)
+    lfs     f30, -0x6104(r2)
 branch_0x800c47cc:
     lfs     f1, 0x40(sp)
     lfs     f0, 0x3c(sp)
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x6120(rtoc)
+    lfd     f3, -0x6120(r2)
     stw     r0, 0x4c(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x60fc(rtoc)
+    lfs     f0, -0x60fc(r2)
     stw     r0, 0x48(sp)
     lfs     f1, 0x3c(sp)
     lfd     f2, 0x48(sp)
@@ -8114,13 +8116,13 @@ moveStart__11TTelesaSlotFv: # 0x800c48f0
     cmpwi   r7, 0x0
     stb     r5, 0x198(r3)
     stb     r0, 0x1a8(r3)
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     bne-    branch_0x800c491c
-    lfs     f1, -0x60c4(rtoc)
+    lfs     f1, -0x60c4(r2)
 branch_0x800c491c:
     cmpwi   r7, 0x1
     bne-    branch_0x800c4928
-    lfs     f1, -0x604c(rtoc)
+    lfs     f1, -0x604c(r2)
 branch_0x800c4928:
     lfs     f0, 0x158(r3)
     li      r7, 0x1
@@ -8129,10 +8131,10 @@ branch_0x800c4928:
     stfs    f0, 0x0(r4)
     stb     r5, 0x199(r3)
     stb     r0, 0x1a9(r3)
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     cmpwi   r7, 0x1
     bne-    branch_0x800c4954
-    lfs     f1, -0x604c(rtoc)
+    lfs     f1, -0x604c(r2)
 branch_0x800c4954:
     lfs     f0, 0x158(r3)
     li      r7, 0x2
@@ -8141,10 +8143,10 @@ branch_0x800c4954:
     stfs    f0, 0x4(r4)
     stb     r5, 0x19a(r3)
     stb     r0, 0x1aa(r3)
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     cmpwi   r7, 0x1
     bne-    branch_0x800c4980
-    lfs     f1, -0x604c(rtoc)
+    lfs     f1, -0x604c(r2)
 branch_0x800c4980:
     lfs     f0, 0x158(r3)
     lwz     r4, 0x138(r3)
@@ -8168,14 +8170,14 @@ moveObject__11TTelesaSlotFv: # 0x800c4994
     stmw    r25, 0x7c(sp)
     mr      r30, r3
     bl      moveObject__10TLiveActorFv
-    lfs     f30, -0x6130(rtoc)
+    lfs     f30, -0x6130(r2)
     li      r31, 0x0
-    lfs     f27, -0x612c(rtoc)
+    lfs     f27, -0x612c(r2)
     li      r29, 0x0
-    lfd     f28, -0x6120(rtoc)
-    lfs     f29, -0x60fc(rtoc)
+    lfd     f28, -0x6120(r2)
+    lfs     f29, -0x60fc(r2)
     lis     r28, 0x4330
-    lfs     f31, -0x6050(rtoc)
+    lfs     f31, -0x6050(r2)
     b       branch_0x800c4db0
 
 branch_0x800c49ec:
@@ -8301,7 +8303,7 @@ branch_0x800c4b24:
     stfs    f0, 0x0(r3)
     lwz     r3, 0x138(r30)
     stfsx   f30, r3, r29
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800c4bdc
@@ -8394,13 +8396,13 @@ branch_0x800c4cdc:
     li      r6, 0x0
     li      r7, 0x0
     stfs    f30, 0x37c(r27)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     lwz     r3, 0x184(r27)
     bl      getSlotResult__11TTelesaSlotFv
     cmpwi   r3, 0x2
     bne-    branch_0x800c4d44
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x293f
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8415,7 +8417,7 @@ branch_0x800c4cdc:
     b       branch_0x800c4da8
 
 branch_0x800c4d44:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2940
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8430,7 +8432,7 @@ branch_0x800c4d44:
     b       branch_0x800c4da8
 
 branch_0x800c4d78:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x294d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8472,7 +8474,7 @@ calcRootMatrix__11TTelesaSlotFv: # 0x800c4dec
     stw     r31, 0x1c(sp)
     mr      r31, r3
     lwz     r3, 0x138(r3)
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     lfs     f0, 0x0(r3)
     fcmpu   cr0, f1, f0
     beq-    branch_0x800c4e1c
@@ -8495,7 +8497,7 @@ branch_0x800c4e44:
     lbz     r0, 0x1e0(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x800c4e88
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x308d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8536,8 +8538,8 @@ randomReset__11TTelesaSlotFv: # 0x800c4eb0
     lis     r28, 0x4330
     stw     r31, 0x14(sp)
     stw     r0, 0x18(sp)
-    lfd     f30, -0x6120(rtoc)
-    lfs     f31, -0x60fc(rtoc)
+    lfd     f30, -0x6120(r2)
+    lfs     f31, -0x60fc(r2)
 branch_0x800c4eec:
     lwz     r3, 0x14(sp)
     lwz     r0, 0x18(sp)
@@ -8601,21 +8603,21 @@ initMapObj__11TTelesaSlotFv: # 0x800c4f9c
     ori     r3, r3, 0x10
     stw     r3, 0xf0(r30)
     li      r3, 0x60
-    lfs     f0, -0x60f8(rtoc)
+    lfs     f0, -0x60f8(r2)
     stfs    f0, 0x14c(r30)
     lfs     f0, 0x14(r30)
     stfs    f0, 0x150(r30)
-    lfs     f0, -0x6114(rtoc)
+    lfs     f0, -0x6114(r2)
     stfs    f0, 0x154(r30)
     stfs    f0, 0x158(r30)
-    lfs     f0, -0x6048(rtoc)
+    lfs     f0, -0x6048(r2)
     stfs    f0, 0x15c(r30)
-    lfs     f0, -0x6128(rtoc)
+    lfs     f0, -0x6128(r2)
     stfs    f0, 0x160(r30)
     sth     r4, 0x164(r30)
     stw     r0, 0x168(r30)
     lfs     f1, 0x58(r30)
-    lfs     f0, -0x6094(rtoc)
+    lfs     f0, -0x6094(r2)
     fdivs   f0, f1, f0
     stfs    f0, 0x140(r30)
     lfs     f0, 0x5c(r30)
@@ -8639,8 +8641,8 @@ branch_0x800c5034:
     mr      r29, r31
     stw     r0, 0x20(sp)
     lis     r28, 0x4330
-    lfd     f30, -0x6120(rtoc)
-    lfs     f31, -0x60fc(rtoc)
+    lfd     f30, -0x6120(r2)
+    lfs     f31, -0x60fc(r2)
 branch_0x800c5070:
     lwz     r3, 0x1c(sp)
     lwz     r0, 0x20(sp)
@@ -8738,7 +8740,7 @@ branch_0x800c51b4:
     lhz     r0, 0x48(r31)
     cmpw    r29, r0
     blt+    branch_0x800c5150
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     addi    r3, sp, 0x18
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
@@ -8756,12 +8758,12 @@ branch_0x800c51b4:
     stfs    f0, 0x1c(sp)
     lfs     f2, 0x20(sp)
     lfs     f1, 0x18(r31)
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     fsubs   f1, f2, f1
     stfs    f1, 0x20(sp)
     stfs    f0, 0x1c(sp)
     bl      MsVECMag2__FP3Vec
-    lfs     f0, -0x6118(rtoc)
+    lfs     f0, -0x6118(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c5238
     lwz     r3, 0x68(r31)
@@ -8787,48 +8789,48 @@ receiveMessage__17TBossTelesaTongueFP9THitActorUl: # 0x800c5258
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     bne-    branch_0x800c5364
-    lbz     r0, -0x6a50(r13)
+    lbz     r0, R13Off_m0x6a50(r13)
     lwz     r31, 0x68(r3)
     extsb.  r0, r0
     bne-    branch_0x800c52b8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a4c(r13)
-    addi    r0, r3, 0x7acc
-    lis     r4, 0x800c
-    stw     r0, -0x6a4c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b40
-    subi    r4, r4, 0x120c
-    subi    r3, r13, 0x6a4c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossTelesaAppear@h
+    stw     r0, R13Off_m0x6a4c(r13)
+    addi    r0, r3, __vvt__22TNerveBossTelesaAppear@l
+    lis     r4, __dt__22TNerveBossTelesaAppearFv@ha
+    stw     r0, R13Off_m0x6a4c(r13)
+    lis     r3, unk_803f1b40@h
+    addi    r5, r3, unk_803f1b40@l
+    addi    r4, r4, __dt__22TNerveBossTelesaAppearFv@l
+    addi    r3, r13, R13Off_m0x6a4c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a50(r13)
+    stb     r0, R13Off_m0x6a50(r13)
 branch_0x800c52b8:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6a4c
+    addi    r0, r13, R13Off_m0x6a4c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c5364
-    lbz     r0, -0x6a48(r13)
+    lbz     r0, R13Off_m0x6a48(r13)
     extsb.  r0, r0
     bne-    branch_0x800c530c
-    subi    r3, r13, 0x6a44
+    addi    r3, r13, R13Off_m0x6a44
     bl      __ct__24TNerveBase_10TLiveActor_Fv
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7abc
-    lis     r4, 0x800c
-    stw     r0, -0x6a44(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b4c
-    subi    r4, r4, 0x1634
-    subi    r3, r13, 0x6a44
+    lis     r3, __vvt__25TNerveBossTelesaSlotStart@h
+    addi    r0, r3, __vvt__25TNerveBossTelesaSlotStart@l
+    lis     r4, __dt__25TNerveBossTelesaSlotStartFv@ha
+    stw     r0, R13Off_m0x6a44(r13)
+    lis     r3, unk_803f1b4c@h
+    addi    r5, r3, unk_803f1b4c@l
+    addi    r4, r4, __dt__25TNerveBossTelesaSlotStartFv@l
+    addi    r3, r13, R13Off_m0x6a44
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a48(r13)
+    stb     r0, R13Off_m0x6a48(r13)
 branch_0x800c530c:
-    subi    r6, r13, 0x6a44
+    addi    r6, r13, R13Off_m0x6a44
     lwz     r5, 0x8c(r31)
     cmplwi  r6, 0x0
     beq-    branch_0x800c5364
@@ -8870,8 +8872,8 @@ receiveMessage__15TBossTelesaBodyFP9THitActorUl: # 0x800c537c
     stw     r29, 0x4c(sp)
     mr.     r29, r5
     lwz     r30, 0x68(r3)
-    lis     r3, 0x803f
-    addi    r31, r3, 0x1af8
+    lis     r3, unk_803f1af8@h
+    addi    r31, r3, unk_803f1af8@l
     bne-    branch_0x800c54b4
     lwz     r3, 0x4c(r4)
     addis   r0, r3, 0x8000
@@ -8885,45 +8887,45 @@ branch_0x800c53c0:
 branch_0x800c53c4:
     clrlwi. r0, r0, 24
     bne-    branch_0x800c54b4
-    lbz     r0, -0x6a38(r13)
+    lbz     r0, R13Off_m0x6a38(r13)
     extsb.  r0, r0
     bne-    branch_0x800c540c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a34(r13)
-    addi    r0, r3, 0x7a9c
-    lis     r3, 0x800c
-    stw     r0, -0x6a34(r13)
-    subi    r4, r3, 0x1bf0
-    subi    r3, r13, 0x6a34
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
+    lis     r3, __dt__27TNerveBossTelesaPrepareSlotFv@ha
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r4, r3, __dt__27TNerveBossTelesaPrepareSlotFv@l
+    addi    r3, r13, R13Off_m0x6a34
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a38(r13)
+    stb     r0, R13Off_m0x6a38(r13)
 branch_0x800c540c:
     lwz     r3, 0x8c(r30)
-    subi    r0, r13, 0x6a34
+    addi    r0, r13, R13Off_m0x6a34
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c54b4
-    lbz     r0, -0x6a68(r13)
+    lbz     r0, R13Off_m0x6a68(r13)
     extsb.  r0, r0
     bne-    branch_0x800c545c
-    subi    r3, r13, 0x6a64
+    addi    r3, r13, R13Off_m0x6a64
     bl      __ct__24TNerveBase_10TLiveActor_Fv
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7afc
-    lis     r3, 0x800c
-    stw     r0, -0x6a64(r13)
-    subi    r4, r3, 0xca8
-    subi    r3, r13, 0x6a64
+    lis     r3, __vvt__20TNerveBossTelesaSpit@h
+    addi    r0, r3, __vvt__20TNerveBossTelesaSpit@l
+    lis     r3, __dt__20TNerveBossTelesaSpitFv@ha
+    stw     r0, R13Off_m0x6a64(r13)
+    addi    r4, r3, __dt__20TNerveBossTelesaSpitFv@l
+    addi    r3, r13, R13Off_m0x6a64
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a68(r13)
+    stb     r0, R13Off_m0x6a68(r13)
 branch_0x800c545c:
-    subi    r6, r13, 0x6a64
+    addi    r6, r13, R13Off_m0x6a64
     lwz     r5, 0x8c(r30)
     cmplwi  r6, 0x0
     beq-    branch_0x800c54b4
@@ -8949,45 +8951,45 @@ branch_0x800c54a8:
 branch_0x800c54b4:
     cmplwi  r29, 0xf
     bne-    branch_0x800c55a4
-    lbz     r0, -0x6a38(r13)
+    lbz     r0, R13Off_m0x6a38(r13)
     extsb.  r0, r0
     bne-    branch_0x800c54fc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6a34(r13)
-    addi    r0, r3, 0x7a9c
-    lis     r3, 0x800c
-    stw     r0, -0x6a34(r13)
-    subi    r4, r3, 0x1bf0
-    subi    r3, r13, 0x6a34
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBossTelesaPrepareSlot@h
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r0, r3, __vvt__27TNerveBossTelesaPrepareSlot@l
+    lis     r3, __dt__27TNerveBossTelesaPrepareSlotFv@ha
+    stw     r0, R13Off_m0x6a34(r13)
+    addi    r4, r3, __dt__27TNerveBossTelesaPrepareSlotFv@l
+    addi    r3, r13, R13Off_m0x6a34
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a38(r13)
+    stb     r0, R13Off_m0x6a38(r13)
 branch_0x800c54fc:
     lwz     r3, 0x8c(r30)
-    subi    r0, r13, 0x6a34
+    addi    r0, r13, R13Off_m0x6a34
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c55a4
-    lbz     r0, -0x6a30(r13)
+    lbz     r0, R13Off_m0x6a30(r13)
     extsb.  r0, r0
     bne-    branch_0x800c554c
-    subi    r3, r13, 0x6a2c
+    addi    r3, r13, R13Off_m0x6a2c
     bl      __ct__24TNerveBase_10TLiveActor_Fv
-    lis     r3, 0x803b
-    addi    r0, r3, 0x7a8c
-    lis     r3, 0x800c
-    stw     r0, -0x6a2c(r13)
-    subi    r4, r3, 0x2310
-    subi    r3, r13, 0x6a2c
+    lis     r3, __vvt__22TNerveBossTelesaFreeze@h
+    addi    r0, r3, __vvt__22TNerveBossTelesaFreeze@l
+    lis     r3, __dt__22TNerveBossTelesaFreezeFv@ha
+    stw     r0, R13Off_m0x6a2c(r13)
+    addi    r4, r3, __dt__22TNerveBossTelesaFreezeFv@l
+    addi    r3, r13, R13Off_m0x6a2c
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a30(r13)
+    stb     r0, R13Off_m0x6a30(r13)
 branch_0x800c554c:
-    subi    r6, r13, 0x6a2c
+    addi    r6, r13, R13Off_m0x6a2c
     lwz     r5, 0x8c(r30)
     cmplwi  r6, 0x0
     beq-    branch_0x800c55a4
@@ -9036,9 +9038,9 @@ perform__18TBossTelesaManagerFUlPQ26JDrama9TGraphics: # 0x800c55c4
 .globl createModelData__18TBossTelesaManagerFv
 createModelData__18TBossTelesaManagerFv: # 0x800c55e4
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, entry_3269@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x799c
+    addi    r4, r4, entry_3269@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -9060,8 +9062,8 @@ createEnemyInstance__18TBossTelesaManagerFv: # 0x800c5618
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x800c5648
-    lis     r3, 0x8038
-    subi    r4, r3, 0xcc8
+    lis     r3, unk_8037f338@ha
+    addi    r4, r3, unk_8037f338@l
     addi    r3, r31, 0x0
     bl      __ct__11TBossTelesaFPCc
 branch_0x800c5648:
@@ -9087,8 +9089,8 @@ load__18TBossTelesaManagerFR20JSUMemoryInputStream: # 0x800c5660
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x800c56a0
-    lis     r3, 0x8038
-    subi    r4, r3, 0xcbc
+    lis     r3, unk_8037f344@ha
+    addi    r4, r3, unk_8037f344@l
     addi    r3, r29, 0x0
     bl      __ct__25TBossTelesaSaveLoadParamsFPCc
 branch_0x800c56a0:
@@ -9113,8 +9115,8 @@ __ct__18TBossTelesaManagerFPCc: # 0x800c56cc
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7fa4
+    lis     r3, __vvt__18TBossTelesaManager@ha
+    addi    r0, r3, __vvt__18TBossTelesaManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -9127,12 +9129,12 @@ __ct__18TBossTelesaManagerFPCc: # 0x800c56cc
 .globl __ct__25TBossTelesaSaveLoadParamsFPCc
 __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_8037ea38@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r25, 0x14(sp)
     addi    r31, r3, 0x0
-    subi    r30, r5, 0x15c8
+    addi    r30, r5, unk_8037ea38@l
     bl      __ct__17TSpineEnemyParamsFPCc
     addi    r3, r30, 0x924
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9141,13 +9143,13 @@ __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     addi    r3, r31, 0xa8
     addi    r6, r30, 0x924
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r29, r3, 0x42ac
+    lis     r3, __vvt__10TParamT_l_@ha
+    addi    r29, r3, __vvt__10TParamT_l_@l
     stw     r29, 0xa8(r31)
     li      r0, 0xc8
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TParamRT_l_@ha
     stw     r0, 0xb8(r31)
-    subi    r28, r3, 0x42b8
+    addi    r28, r3, __vvt__11TParamRT_l_@l
     addi    r3, r30, 0x934
     stw     r28, 0xa8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9211,12 +9213,12 @@ __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     addi    r3, r31, 0x120
     addi    r6, r30, 0x98c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r27, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r27, r3, __vvt__10TParamT_f_@l
     stw     r27, 0x120(r31)
-    lis     r3, 0x803b
-    subi    r26, r3, 0x42d0
-    lfs     f0, -0x6088(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r26, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x6088(r2)
     addi    r3, r30, 0x998
     stfs    f0, 0x130(r31)
     stw     r26, 0x120(r31)
@@ -9239,7 +9241,7 @@ __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x148(r31)
     addi    r3, r30, 0x9b8
-    lfs     f0, -0x60ec(rtoc)
+    lfs     f0, -0x60ec(r2)
     stfs    f0, 0x158(r31)
     stw     r26, 0x148(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9250,7 +9252,7 @@ __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x15c(r31)
     addi    r3, r30, 0x9cc
-    lfs     f0, -0x6078(rtoc)
+    lfs     f0, -0x6078(r2)
     stfs    f0, 0x16c(r31)
     stw     r26, 0x15c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9282,7 +9284,7 @@ __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x198(r31)
     addi    r3, r30, 0xa08
-    lfs     f0, -0x60c8(rtoc)
+    lfs     f0, -0x60c8(r2)
     stfs    f0, 0x1a8(r31)
     stw     r26, 0x198(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9293,7 +9295,7 @@ __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x1ac(r31)
     addi    r3, r30, 0xa20
-    lfs     f0, -0x60c8(rtoc)
+    lfs     f0, -0x60c8(r2)
     stfs    f0, 0x1bc(r31)
     stw     r26, 0x1ac(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9304,7 +9306,7 @@ __ct__25TBossTelesaSaveLoadParamsFPCc: # 0x800c5708
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x1c0(r31)
     addi    r3, r30, 0xa30
-    lfs     f0, -0x6080(rtoc)
+    lfs     f0, -0x6080(r2)
     stfs    f0, 0x1d0(r31)
     stw     r26, 0x1c0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9423,12 +9425,12 @@ __dt__17TNerveBubbleSplitFv: # 0x800c5b68
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800c5bac
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7f50
+    lis     r3, __vvt__17TNerveBubbleSplit@ha
+    addi    r0, r3, __vvt__17TNerveBubbleSplit@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800c5b9c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800c5b9c:
     extsh.  r0, r4
@@ -9479,8 +9481,8 @@ branch_0x800c5c28:
     lwz     r12, 0x190(r12)
     mtlr    r12
     blrl
-    lwz     r3, MarioHitActor(r13)
-    lfs     f0, -0x6130(rtoc)
+    lwz     r3, R13Off_m0x60b8(r13)
+    lfs     f0, -0x6130(r2)
     stw     r3, 0x98(sp)
     cmplwi  r3, 0x0
     stfs    f0, 0x9c(sp)
@@ -9516,9 +9518,9 @@ branch_0x800c5cc0:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     mr      r29, r3
-    lfs     f0, -0x6088(rtoc)
+    lfs     f0, -0x6088(r2)
     stfs    f1, 0xd0(sp)
     stfs    f0, 0xd4(sp)
     lfs     f1, 0xd4(sp)
@@ -9526,10 +9528,10 @@ branch_0x800c5cc0:
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x6120(rtoc)
+    lfd     f3, -0x6120(r2)
     stw     r0, 0xdc(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x60fc(rtoc)
+    lfs     f0, -0x60fc(r2)
     stw     r0, 0xd8(sp)
     lfs     f1, 0xd0(sp)
     lfd     f2, 0xd8(sp)
@@ -9567,7 +9569,7 @@ branch_0x800c5d6c:
     lfs     f1, 0x1cc(r31)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c5e80
-    lfs     f0, -0x6114(rtoc)
+    lfs     f0, -0x6114(r2)
     fadds   f0, f1, f0
     stfs    f0, 0x1cc(r31)
     b       branch_0x800c5e80
@@ -9592,7 +9594,7 @@ branch_0x800c5d9c:
     lfs     f0, 0x94(sp)
     stfs    f0, 0xcc(sp)
     lfs     f0, 0xc4(sp)
-    lfs     f1, -0x6044(rtoc)
+    lfs     f1, -0x6044(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0xc4(sp)
     lfs     f0, 0xc8(sp)
@@ -9611,7 +9613,7 @@ branch_0x800c5d9c:
 
 branch_0x800c5e28:
     mr      r3, r31
-    lfs     f1, -0x612c(rtoc)
+    lfs     f1, -0x612c(r2)
     lwz     r12, 0x0(r31)
     li      r4, 0x0
     lwz     r12, 0x1ac(r12)
@@ -9623,7 +9625,7 @@ branch_0x800c5e44:
     bne-    branch_0x800c5e80
     li      r0, 0x0
     stb     r0, 0x1d1(r31)
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stfs    f0, 0xb8(sp)
     stfs    f0, 0xbc(sp)
     stfs    f0, 0xc0(sp)
@@ -9635,7 +9637,7 @@ branch_0x800c5e44:
     stw     r0, 0xb4(r31)
 branch_0x800c5e80:
     lfs     f1, 0x1cc(r31)
-    lfs     f0, -0x6040(rtoc)
+    lfs     f0, -0x6040(r2)
     fadds   f0, f1, f0
     stfs    f0, 0x1cc(r31)
     lwz     r3, 0x194(r31)
@@ -9670,25 +9672,25 @@ branch_0x800c5ef4:
     lwz     r0, 0x33c(r3)
     cmpw    r4, r0
     ble-    branch_0x800c5f88
-    lbz     r0, -0x6a78(r13)
+    lbz     r0, R13Off_m0x6a78(r13)
     extsb.  r0, r0
     bne-    branch_0x800c5f4c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6a74(r13)
-    subi    r0, r3, 0x7f50
-    lis     r4, 0x800c
-    stw     r0, -0x6a74(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1b04
-    addi    r4, r4, 0x5b68
-    subi    r3, r13, 0x6a74
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__17TNerveBubbleSplit@ha
+    stw     r0, R13Off_m0x6a74(r13)
+    addi    r0, r3, __vvt__17TNerveBubbleSplit@l
+    lis     r4, __dt__17TNerveBubbleSplitFv@h
+    stw     r0, R13Off_m0x6a74(r13)
+    lis     r3, unk_803f1b04@h
+    addi    r5, r3, unk_803f1b04@l
+    addi    r4, r4, __dt__17TNerveBubbleSplitFv@l
+    addi    r3, r13, R13Off_m0x6a74
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a78(r13)
+    stb     r0, R13Off_m0x6a78(r13)
 branch_0x800c5f4c:
-    subi    r4, r13, 0x6a74
+    addi    r4, r13, R13Off_m0x6a74
     cmplwi  r4, 0x0
     beq-    branch_0x800c5f80
     lwz     r5, 0x8(r30)
@@ -9729,10 +9731,10 @@ appendEnemy__7TBubbleFv: # 0x800c5fac
     addi    r31, r3, 0x0
     stw     r30, 0x40(sp)
     stw     r0, 0x198(r3)
-    lis     r3, 0x8038
-    subi    r30, r3, 0x15c8
-    lfs     f1, -0x6130(rtoc)
-    lfs     f0, -0x6098(rtoc)
+    lis     r3, unk_8037ea38@ha
+    addi    r30, r3, unk_8037ea38@l
+    lfs     f1, -0x6130(r2)
+    lfs     f0, -0x6098(r2)
     stfs    f1, 0x2c(sp)
     stfs    f0, 0x30(sp)
     lfs     f1, 0x30(sp)
@@ -9740,26 +9742,26 @@ appendEnemy__7TBubbleFv: # 0x800c5fac
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f4, -0x6120(rtoc)
+    lfd     f4, -0x6120(r2)
     stw     r0, 0x3c(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x60fc(rtoc)
+    lfs     f1, -0x60fc(r2)
     stw     r0, 0x38(sp)
     lfs     f2, 0x2c(sp)
     lfd     f3, 0x38(sp)
-    lfs     f0, -0x60dc(rtoc)
+    lfs     f0, -0x60dc(r2)
     fsubs   f3, f3, f4
     fmuls   f1, f1, f3
     fmuls   f1, f31, f1
     fadds   f1, f2, f1
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c6068
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r4, r31, 0x10
     addi    r5, r30, 0x2fc
     li      r6, 0x1
     bl      makeOneEnemyAppear__10TConductorFRCQ29JGeometry8TVec3_f_PCci
-    lfs     f0, -0x603c(rtoc)
+    lfs     f0, -0x603c(r2)
     mr      r30, r3
     stfs    f0, 0x154(r3)
     lwz     r12, 0x0(r30)
@@ -9769,15 +9771,15 @@ appendEnemy__7TBubbleFv: # 0x800c5fac
     b       branch_0x800c6128
 
 branch_0x800c6068:
-    lfs     f0, -0x6098(rtoc)
+    lfs     f0, -0x6098(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c60a8
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r4, r31, 0x10
     addi    r5, r30, 0x2b4
     li      r6, 0x1
     bl      makeOneEnemyAppear__10TConductorFRCQ29JGeometry8TVec3_f_PCci
-    lfs     f0, -0x6038(rtoc)
+    lfs     f0, -0x6038(r2)
     mr      r30, r3
     stfs    f0, 0x154(r3)
     lwz     r12, 0x0(r30)
@@ -9787,17 +9789,17 @@ branch_0x800c6068:
     b       branch_0x800c6128
 
 branch_0x800c60a8:
-    lfs     f0, -0x6034(rtoc)
+    lfs     f0, -0x6034(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800c60f8
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r4, r31, 0x10
     addi    r5, r30, 0x368
     li      r6, 0x1
     bl      makeOneEnemyAppear__10TConductorFRCQ29JGeometry8TVec3_f_PCci
     mr.     r30, r3
     beq-    branch_0x800c61a4
-    lfs     f0, -0x603c(rtoc)
+    lfs     f0, -0x603c(r2)
     mr      r3, r30
     stfs    f0, 0x154(r30)
     lwz     r12, 0x0(r30)
@@ -9809,12 +9811,12 @@ branch_0x800c60a8:
     b       branch_0x800c6128
 
 branch_0x800c60f8:
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r4, r31, 0x10
     addi    r5, r30, 0xa7c
     li      r6, 0x1
     bl      makeOneEnemyAppear__10TConductorFRCQ29JGeometry8TVec3_f_PCci
-    lfs     f0, -0x603c(rtoc)
+    lfs     f0, -0x603c(r2)
     mr      r30, r3
     stfs    f0, 0x154(r3)
     lwz     r12, 0x0(r30)
@@ -9837,10 +9839,10 @@ branch_0x800c6128:
     oris    r0, r0, 0x800
     stw     r0, 0x64(r30)
     stw     r30, 0x6c(r31)
-    lfs     f0, -0x6130(rtoc)
-    lfs     f1, -0x6114(rtoc)
+    lfs     f0, -0x6130(r2)
+    lfs     f1, -0x6114(r2)
     stfs    f0, 0x10(sp)
-    lfs     f0, -0x60ec(rtoc)
+    lfs     f0, -0x60ec(r2)
     stfs    f1, 0x14(sp)
     stfs    f0, 0x18(sp)
     lwz     r3, 0x10(sp)
@@ -9871,12 +9873,12 @@ __dt__16TNerveBubbleLiveFv: # 0x800c61c0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800c6204
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7f40
+    lis     r3, __vvt__16TNerveBubbleLive@ha
+    addi    r0, r3, __vvt__16TNerveBubbleLive@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800c61f4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800c61f4:
     extsh.  r0, r4
@@ -9894,8 +9896,8 @@ branch_0x800c6204:
 
 .globl getBasNameTable__7TBubbleCFv
 getBasNameTable__7TBubbleCFv: # 0x800c621c
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7940
+    lis     r3, btelesa_bastable@h
+    addi    r3, r3, btelesa_bastable@l
     blr
 
 
@@ -9935,12 +9937,12 @@ calcRootMatrix__7TBubbleFv: # 0x800c6268
     bne-    branch_0x800c631c
     lfs     f1, 0xc8(r31)
     lfs     f0, 0x1cc(r31)
-    lfs     f2, -0x6034(rtoc)
+    lfs     f2, -0x6034(r2)
     fadds   f0, f1, f0
     fadds   f0, f2, f0
     stfs    f0, 0x14(r31)
     lfs     f0, 0x38(r31)
-    lfs     f2, -0x6030(rtoc)
+    lfs     f2, -0x6030(r2)
     lfs     f1, 0x34(r31)
     fmuls   f0, f2, f0
     lfs     f3, 0x30(r31)
@@ -10008,26 +10010,26 @@ behaveToWater__7TBubbleFP9THitActor: # 0x800c637c
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     addi    r31, r3, 0x0
-    lbz     r0, -0x6a80(r13)
+    lbz     r0, R13Off_m0x6a80(r13)
     extsb.  r0, r0
     bne-    branch_0x800c63d4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6a7c(r13)
-    subi    r0, r3, 0x7f40
-    lis     r4, 0x800c
-    stw     r0, -0x6a7c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1af8
-    addi    r4, r4, 0x61c0
-    subi    r3, r13, 0x6a7c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBubbleLive@ha
+    stw     r0, R13Off_m0x6a7c(r13)
+    addi    r0, r3, __vvt__16TNerveBubbleLive@l
+    lis     r4, __dt__16TNerveBubbleLiveFv@h
+    stw     r0, R13Off_m0x6a7c(r13)
+    lis     r3, unk_803f1af8@h
+    addi    r5, r3, unk_803f1af8@l
+    addi    r4, r4, __dt__16TNerveBubbleLiveFv@l
+    addi    r3, r13, R13Off_m0x6a7c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a80(r13)
+    stb     r0, R13Off_m0x6a80(r13)
 branch_0x800c63d4:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6a7c
+    addi    r0, r13, R13Off_m0x6a7c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800c6454
@@ -10041,11 +10043,11 @@ branch_0x800c63d4:
     lwz     r12, 0xe4(r12)
     mtlr    r12
     blrl
-    lfs     f1, -0x6088(rtoc)
-    lis     r3, 0x2000
+    lfs     f1, -0x6088(r2)
+    lis     r3, unk_20000002@h
     lfs     f0, 0x14(r31)
-    addi    r4, r3, 0x2
-    lwz     r3, gpItemManager(r13)
+    addi    r4, r3, unk_20000002@l
+    lwz     r3, R13Off_m0x62b0(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
@@ -10159,11 +10161,11 @@ getGravityY__7TBubbleCFv: # 0x800c658c
     lbz     r0, 0x1d1(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x800c65ac
-    lfs     f1, -0x6040(rtoc)
+    lfs     f1, -0x6040(r2)
     blr
 
 branch_0x800c65ac:
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     blr
 
 branch_0x800c65b4:
@@ -10187,18 +10189,18 @@ split__7TBubbleFv: # 0x800c65bc
     li      r27, 0x0
     lis     r30, 0x4330
     lwz     r4, 0x194(r3)
-    lis     r3, 0x8038
-    lfs     f29, -0x6130(rtoc)
-    subi    r29, r3, 0x1358
-    lfs     f30, -0x60e8(rtoc)
+    lis     r3, unk_8037eca8@ha
+    lfs     f29, -0x6130(r2)
+    addi    r29, r3, unk_8037eca8@l
+    lfs     f30, -0x60e8(r2)
     lwz     r28, 0x350(r4)
-    lfs     f31, -0x6114(rtoc)
-    lfd     f27, -0x6120(rtoc)
-    lfs     f28, -0x60fc(rtoc)
+    lfs     f31, -0x6114(r2)
+    lfd     f27, -0x6120(r2)
+    lfs     f28, -0x60fc(r2)
     b       branch_0x800c6740
 
 branch_0x800c6618:
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r5, r29, 0x0
     addi    r4, r31, 0x10
     li      r6, 0x1
@@ -10302,8 +10304,8 @@ reset__7TBubbleFv: # 0x800c6774
     lwz     r0, 0xf0(r31)
     ori     r0, r0, 0x8
     stw     r0, 0xf0(r31)
-    lfs     f1, -0x60dc(rtoc)
-    lfs     f0, -0x6034(rtoc)
+    lfs     f1, -0x60dc(r2)
+    lfs     f0, -0x6034(r2)
     stfs    f1, 0x20(sp)
     stfs    f0, 0x24(sp)
     lfs     f1, 0x24(sp)
@@ -10311,10 +10313,10 @@ reset__7TBubbleFv: # 0x800c6774
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x6120(rtoc)
+    lfd     f3, -0x6120(r2)
     stw     r0, 0x2c(sp)
     lis     r3, 0x4330
-    lfs     f0, -0x60fc(rtoc)
+    lfs     f0, -0x60fc(r2)
     li      r0, 0x0
     stw     r3, 0x28(sp)
     lfs     f1, 0x20(sp)
@@ -10329,26 +10331,26 @@ reset__7TBubbleFv: # 0x800c6774
     stb     r30, 0x1d1(r31)
     stb     r0, 0x1d2(r31)
     stw     r0, 0x198(r31)
-    lbz     r0, -0x6a80(r13)
+    lbz     r0, R13Off_m0x6a80(r13)
     extsb.  r0, r0
     bne-    branch_0x800c684c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6a7c(r13)
-    subi    r0, r3, 0x7f40
-    lis     r4, 0x800c
-    stw     r0, -0x6a7c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1af8
-    addi    r4, r4, 0x61c0
-    subi    r3, r13, 0x6a7c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBubbleLive@ha
+    stw     r0, R13Off_m0x6a7c(r13)
+    addi    r0, r3, __vvt__16TNerveBubbleLive@l
+    lis     r4, __dt__16TNerveBubbleLiveFv@h
+    stw     r0, R13Off_m0x6a7c(r13)
+    lis     r3, unk_803f1af8@h
+    addi    r5, r3, unk_803f1af8@l
+    addi    r4, r4, __dt__16TNerveBubbleLiveFv@l
+    addi    r3, r13, R13Off_m0x6a7c
     bl      __register_global_object
-    stb     r30, -0x6a80(r13)
+    stb     r30, R13Off_m0x6a80(r13)
 branch_0x800c684c:
     lwz     r4, 0x8c(r31)
     li      r3, 0x0
-    subi    r0, r13, 0x6a7c
+    addi    r0, r13, R13Off_m0x6a7c
     stw     r3, 0x8(r4)
     stw     r3, 0x20(r4)
     stw     r0, 0x14(r4)
@@ -10366,17 +10368,17 @@ branch_0x800c684c:
 .globl init__7TBubbleFP12TLiveManager
 init__7TBubbleFP12TLiveManager: # 0x800c6888
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_8037ea38@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x78(sp)
     stw     r31, 0x74(sp)
-    subi    r31, r5, 0x15c8
+    addi    r31, r5, unk_8037ea38@l
     stw     r30, 0x70(sp)
     addi    r30, r3, 0x0
     stw     r29, 0x6c(sp)
     bl      init__12TWalkerEnemyFP12TLiveManager
-    lis     r3, 0x1000
-    addi    r0, r3, 0x20
+    lis     r3, unk_10000020@h
+    addi    r0, r3, unk_10000020@l
     stw     r0, 0x4c(r30)
     li      r0, 0x11
     addi    r3, r30, 0x0
@@ -10386,27 +10388,27 @@ init__7TBubbleFP12TLiveManager: # 0x800c6888
     mtlr    r12
     blrl
     stw     r3, 0x194(r30)
-    lbz     r0, -0x6a80(r13)
+    lbz     r0, R13Off_m0x6a80(r13)
     extsb.  r0, r0
     bne-    branch_0x800c6920
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6a7c(r13)
-    subi    r0, r3, 0x7f40
-    lis     r4, 0x800c
-    stw     r0, -0x6a7c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1af8
-    addi    r4, r4, 0x61c0
-    subi    r3, r13, 0x6a7c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBubbleLive@ha
+    stw     r0, R13Off_m0x6a7c(r13)
+    addi    r0, r3, __vvt__16TNerveBubbleLive@l
+    lis     r4, __dt__16TNerveBubbleLiveFv@h
+    stw     r0, R13Off_m0x6a7c(r13)
+    lis     r3, unk_803f1af8@h
+    addi    r5, r3, unk_803f1af8@l
+    addi    r4, r4, __dt__16TNerveBubbleLiveFv@l
+    addi    r3, r13, R13Off_m0x6a7c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6a80(r13)
+    stb     r0, R13Off_m0x6a80(r13)
 branch_0x800c6920:
     lwz     r5, 0x8c(r30)
     li      r3, 0x0
-    subi    r0, r13, 0x6a7c
+    addi    r0, r13, R13Off_m0x6a7c
     stw     r3, 0x8(r5)
     li      r4, 0x3
     stw     r3, 0x20(r5)
@@ -10415,7 +10417,7 @@ branch_0x800c6920:
     stw     r3, 0x1c(r5)
     lwz     r3, 0x74(r30)
     bl      setLightType__6MActorFi
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x8d8
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10445,9 +10447,9 @@ branch_0x800c6920:
 .globl createModelData__14TBubbleManagerFv
 createModelData__14TBubbleManagerFv: # 0x800c69b0
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, entry_3166@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x7984
+    addi    r4, r4, entry_3166@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -10472,12 +10474,12 @@ createEnemyInstance__14TBubbleManagerFv: # 0x800c69e4
     mr.     r29, r3
     beq-    branch_0x800c6a54
     stw     r29, 0xc(sp)
-    subi    r4, rtoc, 0x602c
+    addi    r4, r2, R2Off_m0x602c
     lwz     r3, 0xc(sp)
     bl      __ct__12TWalkerEnemyFPCc
     lwz     r30, 0xc(sp)
-    lis     r3, 0x803c
-    subi    r3, r3, 0x7f30
+    lis     r3, __vvt__7TBubble@ha
+    addi    r3, r3, __vvt__7TBubble@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     li      r31, 0x0
@@ -10485,7 +10487,7 @@ createEnemyInstance__14TBubbleManagerFv: # 0x800c69e4
     addi    r3, r30, 0x19c
     stw     r31, 0x198(r30)
     bl      __ct__Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f__Fv
-    lfs     f0, -0x6130(rtoc)
+    lfs     f0, -0x6130(r2)
     stfs    f0, 0x1cc(r30)
     stb     r31, 0x1d0(r30)
     stb     r31, 0x1d1(r30)
@@ -10503,13 +10505,13 @@ branch_0x800c6a54:
 .globl load__14TBubbleManagerFR20JSUMemoryInputStream
 load__14TBubbleManagerFR20JSUMemoryInputStream: # 0x800c6a74
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_8037ea38@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r25, 0x1c(sp)
     addi    r29, r3, 0x0
     addi    r25, r4, 0x0
-    subi    r31, r5, 0x15c8
+    addi    r31, r5, unk_8037ea38@l
     li      r3, 0x3a4
     bl      __nw__FUl
     mr.     r30, r3
@@ -10526,13 +10528,13 @@ load__14TBubbleManagerFR20JSUMemoryInputStream: # 0x800c6a74
     addi    r4, r26, 0x0
     addi    r3, r26, 0x32c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r28, r3, 0x42ac
+    lis     r3, __vvt__10TParamT_l_@ha
+    addi    r28, r3, __vvt__10TParamT_l_@l
     stw     r28, 0x32c(r26)
     li      r0, 0xc8
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TParamRT_l_@ha
     stw     r0, 0x33c(r26)
-    subi    r27, r3, 0x42b8
+    addi    r27, r3, __vvt__11TParamRT_l_@l
     addi    r3, r31, 0xab4
     stw     r27, 0x32c(r26)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10552,12 +10554,12 @@ load__14TBubbleManagerFR20JSUMemoryInputStream: # 0x800c6a74
     addi    r3, r26, 0x354
     addi    r6, r31, 0xac4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r27, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r27, r3, __vvt__10TParamT_f_@l
     stw     r27, 0x354(r26)
-    lis     r3, 0x803b
-    subi    r28, r3, 0x42d0
-    lfs     f0, -0x60e0(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r28, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x60e0(r2)
     addi    r3, r31, 0xad0
     stfs    f0, 0x364(r26)
     stw     r28, 0x354(r26)
@@ -10569,7 +10571,7 @@ load__14TBubbleManagerFR20JSUMemoryInputStream: # 0x800c6a74
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x368(r26)
     addi    r3, r31, 0xae0
-    lfs     f0, -0x60dc(rtoc)
+    lfs     f0, -0x60dc(r2)
     stfs    f0, 0x378(r26)
     stw     r28, 0x368(r26)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10580,7 +10582,7 @@ load__14TBubbleManagerFR20JSUMemoryInputStream: # 0x800c6a74
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x37c(r26)
     addi    r3, r31, 0xaf0
-    lfs     f0, -0x6024(rtoc)
+    lfs     f0, -0x6024(r2)
     stfs    f0, 0x38c(r26)
     stw     r28, 0x37c(r26)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10591,7 +10593,7 @@ load__14TBubbleManagerFR20JSUMemoryInputStream: # 0x800c6a74
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x390(r26)
     mr      r3, r26
-    lfs     f0, -0x6118(rtoc)
+    lfs     f0, -0x6118(r2)
     stfs    f0, 0x3a0(r26)
     stw     r28, 0x390(r26)
     lwz     r4, 0x0(r26)
@@ -10616,8 +10618,8 @@ __ct__14TBubbleManagerFPCc: # 0x800c6c10
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__18TSmallEnemyManagerFPCc
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7d78
+    lis     r3, __vvt__14TBubbleManager@ha
+    addi    r0, r3, __vvt__14TBubbleManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -10637,14 +10639,14 @@ __dt__25TBossTelesaKillSmallEnemyFv: # 0x800c6c4c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c6cb4
-    lis     r3, 0x803b
-    addi    r3, r3, 0x79e8
+    lis     r3, __vvt__25TBossTelesaKillSmallEnemy@h
+    addi    r3, r3, __vvt__25TBossTelesaKillSmallEnemy@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c6ca4
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -10676,8 +10678,8 @@ __dt__11TBossTelesaFv: # 0x800c6cd0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c6d20
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7b1c
+    lis     r3, __vvt__11TBossTelesa@h
+    addi    r3, r3, __vvt__11TBossTelesa@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -10708,20 +10710,20 @@ __dt__11TTelesaSlotFv: # 0x800c6d3c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c6dbc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7c30
+    lis     r3, __vvt__11TTelesaSlot@h
+    addi    r3, r3, __vvt__11TTelesaSlot@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c6dac
-    lis     r3, 0x803d
-    subi    r3, r3, 0x1f84
+    lis     r3, __vvt__9TSlotDrum@ha
+    addi    r3, r3, __vvt__9TSlotDrum@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c6dac
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7da4
+    lis     r3, __vvt__17TSirenaRollMapObj@h
+    addi    r3, r3, __vvt__17TSirenaRollMapObj@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -10753,8 +10755,8 @@ __dt__11TMapObjBaseFv: # 0x800c6dd8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c6e28
-    lis     r3, 0x803c
-    addi    r3, r3, 0x2ab8
+    lis     r3, __vvt__11TMapObjBase@h
+    addi    r3, r3, __vvt__11TMapObjBase@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -10790,13 +10792,13 @@ getRollAngX__9TSlotDrumCFi: # 0x800c6e48
 
 .globl getRollAngY__17TSirenaRollMapObjCFi
 getRollAngY__17TSirenaRollMapObjCFi: # 0x800c6e58
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     blr
 
 
 .globl getRollAngZ__17TSirenaRollMapObjCFi
 getRollAngZ__17TSirenaRollMapObjCFi: # 0x800c6e60
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     blr
 
 
@@ -10887,13 +10889,13 @@ getHitObjNumMax__11TMapObjBaseFv: # 0x800c6f18
 
 .globl getDepthAtFloating__11TMapObjBaseFv
 getDepthAtFloating__11TMapObjBaseFv: # 0x800c6f20
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     blr
 
 
 .globl getRollAngX__17TSirenaRollMapObjCFi
 getRollAngX__17TSirenaRollMapObjCFi: # 0x800c6f28
-    lfs     f1, -0x6130(rtoc)
+    lfs     f1, -0x6130(r2)
     blr
 
 
@@ -10913,14 +10915,14 @@ __dt__17TSirenaRollMapObjFv: # 0x800c6f38
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c6fa0
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7da4
+    lis     r3, __vvt__17TSirenaRollMapObj@h
+    addi    r3, r3, __vvt__17TSirenaRollMapObj@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c6f90
-    lis     r3, 0x803c
-    addi    r3, r3, 0x2ab8
+    lis     r3, __vvt__11TMapObjBase@h
+    addi    r3, r3, __vvt__11TMapObjBase@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -10952,14 +10954,14 @@ __dt__17TBossTelesaTongueFv: # 0x800c6fbc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c7024
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7f14
+    lis     r3, __vvt__17TBossTelesaTongue@h
+    addi    r3, r3, __vvt__17TBossTelesaTongue@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c7014
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -10991,14 +10993,14 @@ __dt__15TBossTelesaBodyFv: # 0x800c7040
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c70a8
-    lis     r3, 0x803b
-    addi    r3, r3, 0x7fb8
+    lis     r3, __vvt__15TBossTelesaBody@h
+    addi    r3, r3, __vvt__15TBossTelesaBody@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c7098
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -11030,8 +11032,8 @@ __dt__18TBossTelesaManagerFv: # 0x800c70c4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c710c
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7fa4
+    lis     r3, __vvt__18TBossTelesaManager@ha
+    addi    r0, r3, __vvt__18TBossTelesaManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -11070,20 +11072,20 @@ __dt__7TBubbleFv: # 0x800c7130
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c71b0
-    lis     r3, 0x803c
-    subi    r3, r3, 0x7f30
+    lis     r3, __vvt__7TBubble@ha
+    addi    r3, r3, __vvt__7TBubble@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c71a0
-    lis     r3, 0x803b
-    addi    r3, r3, 0x27b0
+    lis     r3, __vvt__12TWalkerEnemy@h
+    addi    r3, r3, __vvt__12TWalkerEnemy@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800c71a0
-    lis     r3, 0x803b
-    addi    r3, r3, 0x23a8
+    lis     r3, __vvt__11TSmallEnemy@h
+    addi    r3, r3, __vvt__11TSmallEnemy@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -11115,12 +11117,12 @@ __dt__14TBubbleManagerFv: # 0x800c71cc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800c7224
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7d78
+    lis     r3, __vvt__14TBubbleManager@ha
+    addi    r0, r3, __vvt__14TBubbleManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x800c7214
-    lis     r3, 0x803b
-    addi    r0, r3, 0x2550
+    lis     r3, __vvt__18TSmallEnemyManager@h
+    addi    r0, r3, __vvt__18TSmallEnemyManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -11143,205 +11145,205 @@ branch_0x800c7224:
 .globl __sinit_bosstelesa_cpp
 __sinit_bosstelesa_cpp: # 0x800c7240
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803f1af8@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x1af8
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803f1af8@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7288
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x800c7288:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x800c72b8
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x800c72b8:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x800c72e8
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x800c72e8:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7318
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0xb4
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x800c7318:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7348
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0xc0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x800c7348:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7378
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0xcc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x800c7378:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x800c73a8
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0xd8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x800c73a8:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x800c73d8
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0xe4
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x800c73d8:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7408
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0xf0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x800c7408:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7438
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0xfc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x800c7438:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7468
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x108
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x800c7468:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7498
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x114
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x800c7498:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x800c74c8
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x120
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x800c74c8:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x800c74f8
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x12c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x800c74f8:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x800c7528
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0x138
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x800c7528:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
@@ -11350,44 +11352,44 @@ branch_0x800c7528:
     blr
 
 
-.globl _32___dt__7TBubbleFv
-_32___dt__7TBubbleFv: # 0x800c753c
-    subi    r3, r3, 0x20
+.globl unk_800c753c
+unk_800c753c: # 0x800c753c
+    addi    r3, r3, -0x20
     b       __dt__7TBubbleFv
 
 
-.globl _32___dt__15TBossTelesaBodyFv
-_32___dt__15TBossTelesaBodyFv: # 0x800c7544
-    subi    r3, r3, 0x20
+.globl unk_800c7544
+unk_800c7544: # 0x800c7544
+    addi    r3, r3, -0x20
     b       __dt__15TBossTelesaBodyFv
 
 
-.globl _32___dt__17TBossTelesaTongueFv
-_32___dt__17TBossTelesaTongueFv: # 0x800c754c
-    subi    r3, r3, 0x20
+.globl unk_800c754c
+unk_800c754c: # 0x800c754c
+    addi    r3, r3, -0x20
     b       __dt__17TBossTelesaTongueFv
 
 
-.globl _32___dt__17TSirenaRollMapObjFv
-_32___dt__17TSirenaRollMapObjFv: # 0x800c7554
-    subi    r3, r3, 0x20
+.globl unk_800c7554
+unk_800c7554: # 0x800c7554
+    addi    r3, r3, -0x20
     b       __dt__17TSirenaRollMapObjFv
 
 
-.globl _32___dt__11TTelesaSlotFv
-_32___dt__11TTelesaSlotFv: # 0x800c755c
-    subi    r3, r3, 0x20
+.globl unk_800c755c
+unk_800c755c: # 0x800c755c
+    addi    r3, r3, -0x20
     b       __dt__11TTelesaSlotFv
 
 
-.globl _32___dt__11TBossTelesaFv
-_32___dt__11TBossTelesaFv: # 0x800c7564
-    subi    r3, r3, 0x20
+.globl unk_800c7564
+unk_800c7564: # 0x800c7564
+    addi    r3, r3, -0x20
     b       __dt__11TBossTelesaFv
 
 
-.globl _32___dt__25TBossTelesaKillSmallEnemyFv
-_32___dt__25TBossTelesaKillSmallEnemyFv: # 0x800c756c
-    subi    r3, r3, 0x20
+.globl unk_800c756c
+unk_800c756c: # 0x800c756c
+    addi    r3, r3, -0x20
     b       __dt__25TBossTelesaKillSmallEnemyFv
 

@@ -22,7 +22,7 @@ initLinkBuffer__7JAIDataFP13JAILinkBufferUl: # 0x80303244
     mr      r29, r4
     addi    r28, r3, 0x0
     addi    r26, r5, 0x0
-    lwz     r4, -0x7450(r13)
+    lwz     r4, R13Off_m0x7450(r13)
     lwz     r0, 0x8(r29)
     mulli   r30, r4, 0x1c
     stw     r0, 0x0(r29)
@@ -34,20 +34,20 @@ initLinkBuffer__7JAIDataFP13JAILinkBufferUl: # 0x80303244
     addi    r0, r3, 0x44
     stw     r0, 0x30(r3)
     lwz     r0, 0x1f4(r28)
-    stw     r0, -0x5cc0(r13)
+    stw     r0, R13Off_m0x5cc0(r13)
     lwz     r3, 0x8(r29)
     stb     r6, 0x1(r3)
     lwz     r3, 0x1f4(r28)
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x8(r29)
-    subi    r26, r26, 0x1
+    addi    r26, r26, -0x1
     li      r31, 0x1
     stw     r3, 0x1c(r4)
     li      r27, 0x44
     b       branch_0x80303328
 
 branch_0x803032c0:
-    subi    r0, r31, 0x1
+    addi    r0, r31, -0x1
     lwz     r4, 0x8(r29)
     mulli   r0, r0, 0x44
     add     r3, r4, r0
@@ -63,7 +63,7 @@ branch_0x803032c0:
     li      r5, 0x0
     lwz     r3, 0x1f4(r28)
     mr      r4, r30
-    stw     r3, -0x5cc0(r13)
+    stw     r3, R13Off_m0x5cc0(r13)
     lwz     r3, 0x8(r29)
     stbx    r5, r3, r0
     lwz     r3, 0x1f4(r28)
@@ -76,7 +76,7 @@ branch_0x803032c0:
 branch_0x80303328:
     cmplw   r31, r26
     blt+    branch_0x803032c0
-    subi    r0, r31, 0x1
+    addi    r0, r31, -0x1
     lwz     r3, 0x8(r29)
     mulli   r0, r0, 0x44
     mulli   r26, r31, 0x44
@@ -89,7 +89,7 @@ branch_0x80303328:
     add     r3, r0, r26
     stw     r5, 0x30(r3)
     lwz     r0, 0x1f4(r28)
-    stw     r0, -0x5cc0(r13)
+    stw     r0, R13Off_m0x5cc0(r13)
     lwz     r0, 0x8(r29)
     add     r3, r0, r26
     stb     r5, 0x1(r3)
@@ -128,7 +128,7 @@ initSeqParaLinkBuffer__7JAIDataFv: # 0x8030339c
     b       branch_0x80303420
 
 branch_0x803033e8:
-    subi    r0, r7, 0x1
+    addi    r0, r7, -0x1
     lwz     r6, 0x1c4(r31)
     mulli   r0, r0, 0x185c
     add     r5, r6, r0
@@ -143,11 +143,11 @@ branch_0x803033e8:
     addi    r7, r7, 0x1
     addi    r3, r3, 0x185c
 branch_0x80303420:
-    lwz     r4, -0x74b4(r13)
-    subi    r0, r4, 0x1
+    lwz     r4, R13Off_m0x74b4(r13)
+    addi    r0, r4, -0x1
     cmplw   r7, r0
     blt+    branch_0x803033e8
-    subi    r0, r7, 0x1
+    addi    r0, r7, -0x1
     lwz     r3, 0x1c4(r31)
     mulli   r0, r0, 0x185c
     mulli   r5, r7, 0x185c
@@ -170,7 +170,7 @@ branch_0x80303468:
     addi    r29, r29, 0x1
     addi    r30, r30, 0x185c
 branch_0x80303480:
-    lwz     r0, -0x74b4(r13)
+    lwz     r0, R13Off_m0x74b4(r13)
     cmplw   r29, r0
     blt+    branch_0x80303468
     lwz     r0, 0x24(sp)
@@ -193,7 +193,7 @@ initSeqParameter__7JAIDataFP15JAISeqParameter: # 0x803034a8
     stw     r0, 0x1758(r4)
     li      r0, 0x0
     li      r6, 0x0
-    lfs     f2, 0x4d8(rtoc)
+    lfs     f2, 0x4d8(r2)
     stfs    f2, 0x8(r4)
     stw     r0, 0x10(r4)
     stb     r0, 0x1755(r4)
@@ -211,8 +211,8 @@ initSeqParameter__7JAIDataFP15JAISeqParameter: # 0x803034a8
     stw     r0, 0x1784(r4)
     stw     r0, 0x1788(r4)
     stw     r0, 0x178c(r4)
-    lfs     f1, 0x4dc(rtoc)
-    lfs     f0, 0x4e0(rtoc)
+    lfs     f1, 0x4dc(r2)
+    lfs     f0, 0x4e0(r2)
     b       branch_0x803035ec
 
 branch_0x80303520:
@@ -268,10 +268,10 @@ branch_0x80303520:
     sth     r8, 0x1370(r9)
     sth     r8, 0x1372(r9)
 branch_0x803035ec:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     cmplw   r31, r0
     blt+    branch_0x80303520
-    lfs     f2, 0x4e0(rtoc)
+    lfs     f2, 0x4e0(r2)
     li      r6, 0x0
     li      r7, 0x0
     stfs    f2, 0x18(r4)
@@ -307,8 +307,8 @@ branch_0x803035ec:
     stw     r6, 0x100(r4)
     stfs    f2, 0x108(r4)
     stw     r6, 0x110(r4)
-    lfs     f1, 0x4d8(rtoc)
-    lfs     f0, 0x4dc(rtoc)
+    lfs     f1, 0x4d8(r2)
+    lfs     f0, 0x4dc(r2)
     b       branch_0x803036dc
 
 branch_0x80303694:
@@ -331,7 +331,7 @@ branch_0x80303694:
     stw     r6, 0x4e0(r5)
     stw     r6, 0x620(r5)
 branch_0x803036dc:
-    lwz     r5, -0x74b8(r13)
+    lwz     r5, R13Off_m0x74b8(r13)
     addi    r0, r5, 0xc
     cmplw   r7, r0
     blt+    branch_0x80303694
@@ -344,14 +344,14 @@ branch_0x803036dc:
 initSePara__7JAIDataFP14JAISeParameter: # 0x803036f8
     lfs     f1, -0x7468(r13)
     li      r3, 0x0
-    lfs     f0, 0x4e4(rtoc)
+    lfs     f0, 0x4e4(r2)
     li      r0, 0x2
     mtctr   r0
     fdivs   f3, f1, f0
-    lfs     f2, 0x4d8(rtoc)
-    lfs     f1, 0x4dc(rtoc)
+    lfs     f2, 0x4d8(r2)
+    lfs     f1, 0x4dc(r2)
     mr      r9, r3
-    lfs     f0, 0x4e0(rtoc)
+    lfs     f0, 0x4e0(r2)
     addi    r8, r3, 0x0
     addi    r7, r3, 0x0
     addi    r6, r3, 0x0
@@ -415,7 +415,7 @@ branch_0x80303734:
     stw     r5, 0x330(r10)
     stw     r0, 0x3b0(r10)
     bdnz+      branch_0x80303734
-    lfs     f0, 0x4e8(rtoc)
+    lfs     f0, 0x4e8(r2)
     li      r0, 0x0
     stfs    f0, 0x198(r4)
     stfs    f0, 0x218(r4)
@@ -456,7 +456,7 @@ initStreamParaLinkBuffer__7JAIDataFv: # 0x80303858
     b       branch_0x803038dc
 
 branch_0x803038a4:
-    subi    r0, r7, 0x1
+    addi    r0, r7, -0x1
     lwz     r6, 0x1dc(r31)
     mulli   r0, r0, 0x3e0
     add     r5, r6, r0
@@ -471,11 +471,11 @@ branch_0x803038a4:
     addi    r7, r7, 0x1
     addi    r3, r3, 0x3e0
 branch_0x803038dc:
-    lwz     r4, -0x74ac(r13)
-    subi    r0, r4, 0x1
+    lwz     r4, R13Off_m0x74ac(r13)
+    addi    r0, r4, -0x1
     cmplw   r7, r0
     blt+    branch_0x803038a4
-    subi    r0, r7, 0x1
+    addi    r0, r7, -0x1
     lwz     r3, 0x1dc(r31)
     mulli   r0, r0, 0x3e0
     mulli   r5, r7, 0x3e0
@@ -498,7 +498,7 @@ branch_0x80303924:
     addi    r29, r29, 0x1
     addi    r30, r30, 0x3e0
 branch_0x8030393c:
-    lwz     r0, -0x74ac(r13)
+    lwz     r0, R13Off_m0x74ac(r13)
     cmplw   r29, r0
     blt+    branch_0x80303924
     lwz     r0, 0x24(sp)
@@ -520,8 +520,8 @@ initStreamParameter__7JAIDataFP18JAIStreamParameter: # 0x80303964
     stw     r5, 0x4(r4)
     stw     r5, 0x8(r4)
     stw     r5, 0xc(r4)
-    lfs     f1, 0x4d8(rtoc)
-    lfs     f0, 0x4dc(rtoc)
+    lfs     f1, 0x4d8(r2)
+    lfs     f0, 0x4dc(r2)
 branch_0x8030398c:
     add     r6, r4, r3
     stfs    f1, 0x18(r6)
@@ -542,20 +542,20 @@ branch_0x8030398c:
 initSeqTrackInfoParameter__7JAIDataFUl: # 0x803039c0
     mulli   r4, r4, 0x50
     lwz     r0, 0x180(r3)
-    lfs     f2, 0x4d8(rtoc)
+    lfs     f2, 0x4d8(r2)
     add     r5, r0, r4
     stfs    f2, 0xc(r5)
     li      r5, 0x0
     li      r6, 0x0
     lwz     r0, 0x180(r3)
-    lfs     f0, 0x4dc(rtoc)
+    lfs     f0, 0x4dc(r2)
     add     r7, r0, r4
     stfs    f0, 0x18(r7)
     lwz     r0, 0x180(r3)
     add     r7, r0, r4
     stfs    f2, 0x10(r7)
     lwz     r0, 0x180(r3)
-    lfs     f1, 0x4e0(rtoc)
+    lfs     f1, 0x4e0(r2)
     add     r7, r0, r4
     stfs    f1, 0x14(r7)
     lwz     r0, 0x180(r3)
@@ -564,7 +564,7 @@ initSeqTrackInfoParameter__7JAIDataFUl: # 0x803039c0
     lwz     r0, 0x180(r3)
     add     r7, r0, r4
     stfs    f2, 0x20(r7)
-    lfs     f0, 0x4ec(rtoc)
+    lfs     f0, 0x4ec(r2)
     b       branch_0x80303a94
 
 branch_0x80303a28:
@@ -596,7 +596,7 @@ branch_0x80303a28:
     stwx    r8, r7, r6
     addi    r6, r6, 0x4
 branch_0x80303a94:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     cmplw   r5, r0
     blt+    branch_0x80303a28
     blr
@@ -611,12 +611,12 @@ initStreamUpdateParameter__7JAIDataFv: # 0x80303aa4
     stb     r0, 0x1(r4)
     lwz     r4, 0x184(r3)
     stb     r0, 0x2(r4)
-    lfs     f0, 0x4d8(rtoc)
+    lfs     f0, 0x4d8(r2)
     lwz     r4, 0x184(r3)
     stfs    f0, 0x4(r4)
     lwz     r4, 0x184(r3)
     stfs    f0, 0x8(r4)
-    lfs     f0, 0x4dc(rtoc)
+    lfs     f0, 0x4dc(r2)
     lwz     r4, 0x184(r3)
     stfs    f0, 0xc(r4)
     lwz     r4, 0x184(r3)
@@ -638,7 +638,7 @@ branch_0x80303afc:
     addi    r5, r6, 0xc
     cmplwi  r3, 0x0
     beq-    branch_0x80303b44
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x0(r5)
     lwz     r0, 0x0(r5)
     cmplwi  r0, 0x0
@@ -689,7 +689,7 @@ branch_0x80303b90:
 
 .globl checkOnMemory__7JAIDataFUlPUc
 checkOnMemory__7JAIDataFUlPUc: # 0x80303ba0
-    lwz     r7, -0x74a8(r13)
+    lwz     r7, R13Off_m0x74a8(r13)
     li      r9, 0x0
     b       branch_0x80303bfc
 
@@ -757,7 +757,7 @@ branch_0x80303c54:
 
 .globl checkUsefulAutoHeapPosition__7JAIDataFv
 checkUsefulAutoHeapPosition__7JAIDataFv: # 0x80303c68
-    lwz     r6, -0x74a8(r13)
+    lwz     r6, R13Off_m0x74a8(r13)
     li      r7, 0x0
     li      r4, 0x0
     cmplwi  r6, 0x0
@@ -849,7 +849,7 @@ releaseAutoHeapPointer__7JAIDataFUc: # 0x80303d64
 .globl getFreeStayHeapPointer__7JAIDataFUlUl
 getFreeStayHeapPointer__7JAIDataFUlUl: # 0x80303d88
     lwz     r8, 0x1b8(r3)
-    lwz     r9, -0x74a4(r13)
+    lwz     r9, R13Off_m0x74a4(r13)
     cmplw   r8, r9
     blt-    branch_0x80303da0
     li      r3, 0x0
@@ -858,7 +858,7 @@ getFreeStayHeapPointer__7JAIDataFUlUl: # 0x80303d88
 branch_0x80303da0:
     lwz     r12, 0x1f0(r3)
     mulli   r11, r8, 0x14
-    lwz     r0, -0x749c(r13)
+    lwz     r0, R13Off_m0x749c(r13)
     addi    r6, r12, 0x4
     lwzx    r10, r6, r11
     lwz     r6, 0x0(r6)
@@ -886,7 +886,7 @@ branch_0x80303e04:
     addi    r0, r4, 0x1
     stw     r0, 0x1b8(r3)
     lwz     r4, 0x1b8(r3)
-    lwz     r0, -0x74a4(r13)
+    lwz     r0, R13Off_m0x74a4(r13)
     cmplw   r4, r0
     bge-    branch_0x80303e38
     mulli   r0, r4, 0x14
@@ -914,9 +914,9 @@ setAutoHeapLoadedFlag__7JAIDataFUcUc: # 0x80303e40
 .globl getInfoPointer__7JAIDataFUlPPv
 getInfoPointer__7JAIDataFUlPPv: # 0x80303e54
     mflr    r0
-    lis     r6, 0x803e
+    lis     r6, nullInfoData2__8JAIConst@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x252c
+    addi    r0, r6, nullInfoData2__8JAIConst@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r5, 0x0
@@ -929,13 +929,13 @@ getInfoPointer__7JAIDataFUlPPv: # 0x80303e54
     cmplwi  r0, 0x0
     bne-    branch_0x80303ee8
     clrrwi  r4, r28, 30
-    lis     r0, 0xc000
+    lis     r0, unk_c0000010@h
     cmpw    r4, r0
     addi    r30, r3, 0x88
     beq-    branch_0x80303ee0
     bge-    branch_0x80303ebc
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x80303f44
     b       branch_0x80303ed8
@@ -952,7 +952,7 @@ branch_0x80303ec8:
     b       branch_0x80303f44
 
 branch_0x80303ed8:
-    li      r29, 0x10
+    addi    r29, r0, unk_c0000010@l
     b       branch_0x80303f44
 
 branch_0x80303ee0:
@@ -961,12 +961,12 @@ branch_0x80303ee0:
 
 branch_0x80303ee8:
     clrrwi  r5, r28, 30
-    lis     r0, 0xc000
+    lis     r0, unk_c0000010@h
     cmpw    r5, r0
     beq-    branch_0x80303f3c
     bge-    branch_0x80303f10
-    lis     r4, 0x8000
-    addi    r0, r4, 0x1
+    lis     r4, unk_80000001@h
+    addi    r0, r4, unk_80000001@l
     cmpw    r5, r0
     bge-    branch_0x80303f44
     b       branch_0x80303f30
@@ -985,7 +985,7 @@ branch_0x80303f1c:
 
 branch_0x80303f30:
     addi    r30, r3, 0xc
-    li      r29, 0x10
+    addi    r29, r0, unk_c0000010@l
     b       branch_0x80303f44
 
 branch_0x80303f3c:
@@ -1031,16 +1031,16 @@ initData__7JAIDataFv: # 0x80303fac
     stmw    r26, 0x18(sp)
     mr      r30, r3
     addi    r4, r30, 0x88
-    lwz     r5, -0x7498(r13)
+    lwz     r5, R13Off_m0x7498(r13)
     bl      initInfoDataWork__7JAIDataFP13JAISoundTablePc
     lbz     r0, 0x1b0(r30)
     cmplwi  r0, 0x1
     bne-    branch_0x80303ff8
-    lwz     r5, -0x7494(r13)
+    lwz     r5, R13Off_m0x7494(r13)
     addi    r3, r30, 0x0
     addi    r4, r30, 0xc
     bl      initInfoDataWork__7JAIDataFP13JAISoundTablePc
-    lwz     r5, -0x7490(r13)
+    lwz     r5, R13Off_m0x7490(r13)
     addi    r3, r30, 0x0
     addi    r4, r30, 0x104
     bl      initInfoDataWork__7JAIDataFP13JAISoundTablePc
@@ -1050,7 +1050,7 @@ branch_0x80303ff8:
     cmplwi  r0, 0x0
     beq-    branch_0x80304078
     li      r0, 0x0
-    stw     r0, -0x74c0(r13)
+    stw     r0, R13Off_m0x74c0(r13)
     li      r31, 0x0
     li      r28, 0x0
     b       branch_0x8030406c
@@ -1073,19 +1073,19 @@ branch_0x80304048:
     bl      getParamSeCategoryMax__18JAIGlobalParameterFv
     cmplw   r26, r3
     blt+    branch_0x8030402c
-    lwz     r0, -0x74c0(r13)
+    lwz     r0, R13Off_m0x74c0(r13)
     cmplw   r0, r27
     bge-    branch_0x80304064
-    stw     r27, -0x74c0(r13)
+    stw     r27, R13Off_m0x74c0(r13)
 branch_0x80304064:
     addi    r31, r31, 0x1
     addi    r28, r28, 0x4
 branch_0x8030406c:
-    lwz     r0, -0x74c8(r13)
+    lwz     r0, R13Off_m0x74c8(r13)
     cmplw   r31, r0
     blt+    branch_0x8030401c
 branch_0x80304078:
-    lwz     r0, -0x7458(r13)
+    lwz     r0, R13Off_m0x7458(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x1c
     bl      allocHeap__8JAIBasicFUl
@@ -1104,7 +1104,7 @@ branch_0x80304078:
     b       branch_0x803040f0
 
 branch_0x803040bc:
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     lwz     r6, 0x230(r30)
     mulli   r0, r0, 0x1c
     add     r4, r6, r0
@@ -1118,11 +1118,11 @@ branch_0x803040bc:
     addi    r5, r5, 0x1
     addi    r3, r3, 0x1c
 branch_0x803040f0:
-    lwz     r4, -0x7458(r13)
-    subi    r0, r4, 0x1
+    lwz     r4, R13Off_m0x7458(r13)
+    addi    r0, r4, -0x1
     cmplw   r5, r0
     blt+    branch_0x803040bc
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     lwz     r3, 0x230(r30)
     mulli   r0, r0, 0x1c
     mulli   r5, r5, 0x1c
@@ -1154,7 +1154,7 @@ branch_0x803040f0:
 
 branch_0x80304174:
     lwz     r3, 0x1f4(r30)
-    lwz     r4, -0x74c4(r13)
+    lwz     r4, R13Off_m0x74c4(r13)
     lwz     r12, 0x4(r3)
     lwz     r12, 0xc(r12)
     mtlr    r12
@@ -1168,10 +1168,10 @@ branch_0x80304174:
     lwzx    r5, r5, r29
     stwx    r5, r4, r0
     lwz     r0, 0x1e8(r30)
-    lwz     r5, -0x74c4(r13)
+    lwz     r5, R13Off_m0x74c4(r13)
     add     r4, r0, r28
     bl      initLinkBuffer__7JAIDataFP13JAILinkBufferUl
-    lwz     r0, -0x74c4(r13)
+    lwz     r0, R13Off_m0x74c4(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0xc
     bl      allocHeap__8JAIBasicFUl
@@ -1190,7 +1190,7 @@ branch_0x803041e4:
     addi    r4, r4, 0xc
     stwx    r5, r3, r0
 branch_0x803041fc:
-    lwz     r0, -0x74c4(r13)
+    lwz     r0, R13Off_m0x74c4(r13)
     cmplw   r6, r0
     blt+    branch_0x803041e4
     addi    r26, r26, 0x1
@@ -1200,17 +1200,17 @@ branch_0x80304214:
     bl      getParamSeCategoryMax__18JAIGlobalParameterFv
     cmplw   r26, r3
     blt+    branch_0x80304174
-    lwz     r0, -0x74c0(r13)
+    lwz     r0, R13Off_m0x74c0(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x18
     bl      allocHeap__8JAIBasicFUl
     stw     r3, 0x0(r30)
     li      r5, 0x0
     li      r3, 0x0
-    lfs     f2, 0x4d8(rtoc)
+    lfs     f2, 0x4d8(r2)
     li      r4, 0xff
-    lfs     f1, 0x4e0(rtoc)
-    lfs     f0, 0x4dc(rtoc)
+    lfs     f1, 0x4e0(r2)
+    lfs     f0, 0x4dc(r2)
     b       branch_0x80304278
 
 branch_0x80304250:
@@ -1225,18 +1225,18 @@ branch_0x80304250:
     stb     r4, 0x0(r6)
     stfs    f1, 0x14(r6)
 branch_0x80304278:
-    lwz     r0, -0x74c0(r13)
+    lwz     r0, R13Off_m0x74c0(r13)
     cmplw   r5, r0
     blt+    branch_0x80304250
     lwz     r3, 0x1f4(r30)
-    lwz     r4, -0x74b4(r13)
+    lwz     r4, R13Off_m0x74b4(r13)
     lwz     r12, 0x4(r3)
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
     stw     r3, 0x208(r30)
     lwz     r3, 0x1f4(r30)
-    lwz     r4, -0x74b0(r13)
+    lwz     r4, R13Off_m0x74b0(r13)
     lwz     r12, 0x4(r3)
     lwz     r12, 0xc(r12)
     mtlr    r12
@@ -1246,15 +1246,15 @@ branch_0x80304278:
     addi    r4, r30, 0x210
     lwz     r0, 0x208(r30)
     stw     r0, 0x218(r30)
-    lwz     r5, -0x74b4(r13)
+    lwz     r5, R13Off_m0x74b4(r13)
     bl      initLinkBuffer__7JAIDataFP13JAILinkBufferUl
     lwz     r0, 0x20c(r30)
     addi    r3, r30, 0x0
     addi    r4, r30, 0x21c
     stw     r0, 0x224(r30)
-    lwz     r5, -0x74b0(r13)
+    lwz     r5, R13Off_m0x74b0(r13)
     bl      initLinkBuffer__7JAIDataFP13JAILinkBufferUl
-    lwz     r0, -0x74b4(r13)
+    lwz     r0, R13Off_m0x74b4(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x185c
     bl      allocHeap__8JAIBasicFUl
@@ -1262,7 +1262,7 @@ branch_0x80304278:
     mr      r3, r30
     bl      initSeqParaLinkBuffer__7JAIDataFv
     bl      getParamSeCategoryMax__18JAIGlobalParameterFv
-    lwz     r0, -0x74c4(r13)
+    lwz     r0, R13Off_m0x74c4(r13)
     mullw   r0, r0, r3
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x444
@@ -1282,7 +1282,7 @@ branch_0x80304278:
     b       branch_0x8030438c
 
 branch_0x80304354:
-    subi    r0, r31, 0x1
+    addi    r0, r31, -0x1
     lwz     r5, 0x1d0(r30)
     mulli   r0, r0, 0x444
     add     r4, r5, r0
@@ -1298,12 +1298,12 @@ branch_0x80304354:
     addi    r28, r28, 0x444
 branch_0x8030438c:
     bl      getParamSeCategoryMax__18JAIGlobalParameterFv
-    lwz     r0, -0x74c4(r13)
+    lwz     r0, R13Off_m0x74c4(r13)
     mullw   r3, r0, r3
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     cmplw   r31, r0
     blt+    branch_0x80304354
-    subi    r0, r31, 0x1
+    addi    r0, r31, -0x1
     lwz     r3, 0x1d0(r30)
     mulli   r0, r0, 0x444
     mulli   r5, r31, 0x444
@@ -1314,7 +1314,7 @@ branch_0x8030438c:
     lwz     r0, 0x1d0(r30)
     add     r3, r0, r5
     stw     r4, 0x440(r3)
-    lwz     r0, -0x74ac(r13)
+    lwz     r0, R13Off_m0x74ac(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x3e0
     bl      allocHeap__8JAIBasicFUl
@@ -1334,11 +1334,11 @@ branch_0x803043f8:
     addi    r28, r28, 0x444
 branch_0x80304410:
     bl      getParamSeCategoryMax__18JAIGlobalParameterFv
-    lwz     r0, -0x74c4(r13)
+    lwz     r0, R13Off_m0x74c4(r13)
     mullw   r0, r0, r3
     cmplw   r26, r0
     blt+    branch_0x803043f8
-    lwz     r0, -0x74a8(r13)
+    lwz     r0, R13Off_m0x74a8(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x14
     bl      allocHeap__8JAIBasicFUl
@@ -1364,10 +1364,10 @@ branch_0x8030444c:
     lwz     r4, 0x1ec(r30)
     stwx    r6, r4, r0
 branch_0x80304480:
-    lwz     r0, -0x74a8(r13)
+    lwz     r0, R13Off_m0x74a8(r13)
     cmplw   r9, r0
     blt+    branch_0x8030444c
-    lwz     r0, -0x74a4(r13)
+    lwz     r0, R13Off_m0x74a4(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x14
     bl      allocHeap__8JAIBasicFUl
@@ -1393,15 +1393,15 @@ branch_0x803044b4:
     lwz     r4, 0x1f0(r30)
     stwx    r6, r4, r0
 branch_0x803044e8:
-    lwz     r0, -0x74a4(r13)
+    lwz     r0, R13Off_m0x74a4(r13)
     cmplw   r9, r0
     blt+    branch_0x803044b4
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     lwz     r3, 0x1f4(r30)
     slwi    r4, r0, 2
     bl      allocHeap__8JAIBasicFUl
     stw     r3, 0x1e0(r30)
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     lwz     r3, 0x1f4(r30)
     mulli   r4, r0, 0x50
     bl      allocHeap__8JAIBasicFUl
@@ -1438,42 +1438,42 @@ branch_0x8030452c:
     stwx    r8, r4, r3
     lwz     r3, 0x180(r30)
     stwx    r8, r3, r0
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     lwz     r3, 0x1f4(r30)
     slwi    r4, r0, 2
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x180(r30)
     addi    r0, r28, 0x24
     stwx    r3, r4, r0
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     lwz     r3, 0x1f4(r30)
     slwi    r4, r0, 2
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x180(r30)
     addi    r0, r28, 0x30
     stwx    r3, r4, r0
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     lwz     r3, 0x1f4(r30)
     slwi    r4, r0, 2
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x180(r30)
     addi    r0, r28, 0x28
     stwx    r3, r4, r0
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     lwz     r3, 0x1f4(r30)
     slwi    r4, r0, 2
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x180(r30)
     addi    r0, r28, 0x2c
     stwx    r3, r4, r0
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     lwz     r3, 0x1f4(r30)
     slwi    r4, r0, 2
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x180(r30)
     addi    r0, r28, 0x34
     stwx    r3, r4, r0
-    lwz     r4, -0x74bc(r13)
+    lwz     r4, R13Off_m0x74bc(r13)
     lwz     r3, 0x1f4(r30)
     addi    r0, r4, 0x1
     slwi    r4, r0, 2
@@ -1488,7 +1488,7 @@ branch_0x8030452c:
     addi    r29, r29, 0x4
     addi    r28, r28, 0x50
 branch_0x80304658:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r31, r0
     blt+    branch_0x8030452c
     lwz     r3, 0x1f4(r30)
@@ -1502,12 +1502,12 @@ branch_0x80304658:
     stb     r0, 0x1(r3)
     lwz     r3, 0x184(r30)
     stb     r0, 0x2(r3)
-    lfs     f0, 0x4d8(rtoc)
+    lfs     f0, 0x4d8(r2)
     lwz     r3, 0x184(r30)
     stfs    f0, 0x4(r3)
     lwz     r3, 0x184(r30)
     stfs    f0, 0x8(r3)
-    lfs     f0, 0x4dc(rtoc)
+    lfs     f0, 0x4dc(r2)
     lwz     r3, 0x184(r30)
     stfs    f0, 0xc(r3)
     lwz     r3, 0x184(r30)
@@ -1522,12 +1522,12 @@ branch_0x80304658:
     b       branch_0x80304718
 
 branch_0x803046d8:
-    lwz     r0, -0x74c8(r13)
+    lwz     r0, R13Off_m0x74c8(r13)
     slwi    r4, r0, 2
     bl      allocHeap__8JAIBasicFUl
-    lis     r4, 0x803e
+    lis     r4, sCInfos_0__8JAIConst@h
     stw     r3, 0x4(r30)
-    addi    r5, r4, 0x254c
+    addi    r5, r4, sCInfos_0__8JAIConst@l
     li      r6, 0x0
     li      r3, 0x0
     b       branch_0x8030470c
@@ -1538,7 +1538,7 @@ branch_0x803046fc:
     stwx    r5, r4, r3
     addi    r3, r3, 0x4
 branch_0x8030470c:
-    lwz     r0, -0x74c8(r13)
+    lwz     r0, R13Off_m0x74c8(r13)
     cmplw   r6, r0
     blt+    branch_0x803046fc
 branch_0x80304718:

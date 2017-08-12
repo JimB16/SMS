@@ -211,22 +211,22 @@ __ct__Q26JDrama11TEfbCtrlTexFPCcQ26JDrama10TFlagT_Us_: # 0x802f8a5c
     stw     r29, 0x24(sp)
     stw     r28, 0x20(sp)
     addi    r28, r3, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
     lhz     r29, 0x0(r5)
-    addi    r0, r3, 0x20f0
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     mr      r3, r4
     stw     r28, 0x18(sp)
     stw     r0, 0x0(r28)
     stw     r4, 0x4(r28)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r28)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r28)
     li      r30, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama8TEfbCtrl@h
     sth     r30, 0xc(r28)
-    addi    r0, r3, 0x1e98
+    addi    r0, r3, __vvt__Q26JDrama8TEfbCtrl@l
     li      r4, 0x0
     lwz     r31, 0x18(sp)
     li      r5, 0x0
@@ -235,14 +235,14 @@ __ct__Q26JDrama11TEfbCtrlTexFPCcQ26JDrama10TFlagT_Us_: # 0x802f8a5c
     addi    r3, r31, 0x10
     li      r7, 0x0
     bl      set__7JUTRectFiiii
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama11TEfbCtrlTex@h
     sth     r29, 0x20(r31)
-    addi    r0, r3, 0x1e50
+    addi    r0, r3, __vvt__Q26JDrama11TEfbCtrlTex@l
     stw     r0, 0x0(r28)
-    lis     r3, 0x100
+    lis     r3, unk_00ffffff@ha
     li      r4, 0x3
     stw     r30, 0x2c(r28)
-    subi    r0, r3, 0x1
+    addi    r0, r3, unk_00ffffff@l
     addi    r3, r28, 0x0
     stw     r4, 0x34(r28)
     stb     r30, 0x38(r28)
@@ -436,16 +436,16 @@ __dt__Q26JDrama11TEfbCtrlTexFv: # 0x802f8da4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f8e0c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1e50
+    lis     r3, __vvt__Q26JDrama11TEfbCtrlTex@h
+    addi    r0, r3, __vvt__Q26JDrama11TEfbCtrlTex@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f8dfc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1e98
+    lis     r3, __vvt__Q26JDrama8TEfbCtrl@h
+    addi    r0, r3, __vvt__Q26JDrama8TEfbCtrl@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f8dfc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -475,16 +475,16 @@ __dt__Q26JDrama12TEfbCtrlDispFv: # 0x802f8e28
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f8e90
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1e74
+    lis     r3, __vvt__Q26JDrama12TEfbCtrlDisp@h
+    addi    r0, r3, __vvt__Q26JDrama12TEfbCtrlDisp@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f8e80
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1e98
+    lis     r3, __vvt__Q26JDrama8TEfbCtrl@h
+    addi    r0, r3, __vvt__Q26JDrama8TEfbCtrl@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f8e80
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

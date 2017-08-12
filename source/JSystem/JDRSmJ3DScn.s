@@ -10,17 +10,17 @@ __ct__Q26JDrama9TSmJ3DScnFPCcl: # 0x802fc540
     stw     r28, 0x20(sp)
     addi    r28, r5, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r29, 0x8(sp)
     mr      r3, r4
     stw     r29, 0x1c(sp)
     stw     r0, 0x0(r29)
     stw     r4, 0x4(r29)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r29)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r29)
     li      r30, 0x0
     addi    r4, sp, 0x14
@@ -28,11 +28,11 @@ __ct__Q26JDrama9TSmJ3DScnFPCcl: # 0x802fc540
     lwz     r31, 0x1c(sp)
     addi    r3, r31, 0x10
     bl      __ct__Q27JGadget18TList_pointer_voidFRCQ27JGadget14TAllocator_Pv_
-    lis     r3, 0x803c
-    addi    r0, r3, 0xf5c
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@h
+    addi    r0, r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@l
+    lis     r3, __vvt__Q26JDrama9TSmJ3DScn@h
     stw     r0, 0x0(r31)
-    addi    r0, r3, 0x2250
+    addi    r0, r3, __vvt__Q26JDrama9TSmJ3DScn@l
     stw     r0, 0x0(r29)
     stw     r30, 0x20(r29)
     stw     r28, 0x28(r29)
@@ -100,8 +100,8 @@ branch_0x802fc678:
     mtlr    r12
     blrl
 branch_0x802fc6a4:
-    lis     r4, 0x8040
-    addi    r30, r4, 0x45dc
+    lis     r4, j3dSys@h
+    addi    r30, r4, j3dSys@l
     addi    r3, r28, 0xb4
     addi    r4, r30, 0x0
     bl      PSMTXCopy
@@ -122,8 +122,8 @@ branch_0x802fc6e0:
     cmpw    r29, r0
     blt+    branch_0x802fc6cc
     lwz     r4, 0x24(r31)
-    lis     r3, 0x8040
-    addi    r30, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r30, r3, j3dSys@l
     lwz     r0, 0x0(r4)
     addi    r3, r31, 0x0
     addi    r5, r28, 0x0
@@ -167,19 +167,19 @@ loadSuper__Q26JDrama9TSmJ3DScnFR20JSUMemoryInputStream: # 0x802fc758
     mr.     r29, r3
     beq-    branch_0x802fc7d4
     stw     r29, 0x10(sp)
-    lis     r3, 0x803b
-    subi    r4, r3, 0x5b78
+    lis     r3, unk_803aa488@ha
+    addi    r4, r3, unk_803aa488@l
     lwz     r3, 0x10(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x10(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1ee8
+    lis     r3, __vvt__Q26JDrama9TLightMap@h
+    addi    r0, r3, __vvt__Q26JDrama9TLightMap@l
     stw     r0, 0x0(r29)
     li      r0, 0x0
     stw     r0, 0x10(r29)
@@ -211,12 +211,12 @@ __dt__Q26JDrama9TSmJ3DScnFv: # 0x802fc80c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fc88c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2250
+    lis     r3, __vvt__Q26JDrama9TSmJ3DScn@h
+    addi    r0, r3, __vvt__Q26JDrama9TSmJ3DScn@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fc87c
-    lis     r3, 0x803c
-    addi    r3, r3, 0xf5c
+    lis     r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@h
+    addi    r3, r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@l
     addic.  r0, r30, 0x10
     stw     r3, 0x0(r30)
     beq-    branch_0x802fc85c
@@ -226,8 +226,8 @@ __dt__Q26JDrama9TSmJ3DScnFv: # 0x802fc80c
 branch_0x802fc85c:
     cmplwi  r30, 0x0
     beq-    branch_0x802fc87c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

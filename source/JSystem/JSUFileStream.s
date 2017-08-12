@@ -1,19 +1,19 @@
 
 .globl __ct__18JSUFileInputStreamFP7JKRFile
 __ct__18JSUFileInputStreamFP7JKRFile: # 0x802c6380
-    lis     r5, 0x803b
-    subi    r0, r5, 0xf0c
+    lis     r5, __vvt__10JSUIosBase@ha
+    addi    r0, r5, __vvt__10JSUIosBase@l
     stw     r0, 0x0(r3)
     li      r6, 0x0
-    lis     r5, 0x803e
+    lis     r5, __vvt__14JSUInputStream@h
     stb     r6, 0x4(r3)
-    addi    r0, r5, 0x184
-    lis     r5, 0x803e
+    addi    r0, r5, __vvt__14JSUInputStream@l
+    lis     r5, __vvt__20JSURandomInputStream@h
     stw     r0, 0x0(r3)
-    addi    r0, r5, 0x160
-    lis     r5, 0x803e
+    addi    r0, r5, __vvt__20JSURandomInputStream@l
+    lis     r5, __vvt__18JSUFileInputStream@h
     stw     r0, 0x0(r3)
-    addi    r0, r5, 0x1f0
+    addi    r0, r5, __vvt__18JSUFileInputStream@l
     stw     r0, 0x0(r3)
     stw     r4, 0x8(r3)
     stw     r6, 0xc(r3)
@@ -162,12 +162,12 @@ __dt__18JSUFileInputStreamFv: # 0x802c6580
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c65d8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1f0
+    lis     r3, __vvt__18JSUFileInputStream@h
+    addi    r0, r3, __vvt__18JSUFileInputStream@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802c65c8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x160
+    lis     r3, __vvt__20JSURandomInputStream@h
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

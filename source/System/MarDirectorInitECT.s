@@ -2,14 +2,14 @@
 .globl setupPerformList_console__12TMarDirectorFv
 setupPerformList_console__12TMarDirectorFv: # 0x8029ad3c
     mflr    r0
-    lis     r5, 0x803a
+    lis     r5, unk_803a2a68@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x80(sp)
     stmw    r27, 0x6c(sp)
-    addi    r31, r5, 0x2a68
+    addi    r31, r5, unk_803a2a68@l
     addi    r28, r3, 0x0
     addi    r3, r31, 0xe0
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r30)
@@ -24,7 +24,7 @@ setupPerformList_console__12TMarDirectorFv: # 0x8029ad3c
     bl      __nw__FUl
     mr.     r27, r3
     beq-    branch_0x8029ada8
-    lwz     r4, -0x5fdc(r13)
+    lwz     r4, R13Off_m0x5fdc(r13)
     addi    r3, r27, 0x0
     addi    r5, r31, 0xec
     bl      __ct__15TEmitterViewObjFP17JPAEmitterManagerPCc
@@ -62,7 +62,7 @@ branch_0x8029ada8:
     li      r5, 0x3
     bl      push_back__12TPerformListFPCcUl
     lwz     r3, 0x30(r28)
-    subi    r4, rtoc, 0x5b0
+    addi    r4, r2, R2Off_m0x5b0
     li      r5, 0x3
     bl      push_back__12TPerformListFPCcUl
     lmw     r27, 0x6c(sp)
@@ -75,7 +75,7 @@ branch_0x8029ada8:
 .globl initECDisp__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_PQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_
 initECDisp__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_PQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_: # 0x8029ae4c
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_803a2a68@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x370(sp)
     stfd    f31, 0x368(sp)
@@ -83,7 +83,7 @@ initECDisp__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama
     stmw    r20, 0x330(sp)
     addi    r30, r3, 0x0
     addi    r29, r5, 0x0
-    addi    r31, r4, 0x2a68
+    addi    r31, r4, unk_803a2a68@l
     li      r3, 0x24
     bl      __nw__FUl
     mr.     r20, r3
@@ -94,15 +94,15 @@ initECDisp__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama
     lwz     r3, 0x244(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x244(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
     lwz     r21, 0x2a0(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1e98
+    lis     r3, __vvt__Q26JDrama8TEfbCtrl@h
+    addi    r0, r3, __vvt__Q26JDrama8TEfbCtrl@l
     stw     r0, 0x0(r21)
     addi    r3, r21, 0x10
     li      r4, 0x0
@@ -111,9 +111,9 @@ initECDisp__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama
     li      r7, 0x0
     bl      set__7JUTRectFiiii
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama12TEfbCtrlDisp@h
     sth     r0, 0x20(r21)
-    addi    r0, r3, 0x1e74
+    addi    r0, r3, __vvt__Q26JDrama12TEfbCtrlDisp@l
     stw     r0, 0x0(r20)
 branch_0x8029aef0:
     mr      r24, r20
@@ -153,18 +153,18 @@ branch_0x8029aef0:
     addi    r4, sp, 0x238
     stw     r0, 0x238(sp)
     bl      __ct__Q37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorFRCQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iterator
-    lwz     r4, -0x5db8(r13)
-    subi    r3, rtoc, 0x5a8
+    lwz     r4, R13Off_m0x5db8(r13)
+    addi    r3, r2, R2Off_m0x5a8
     lwz     r20, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r20)
     addi    r4, r3, 0x0
     addi    r3, r20, 0x0
     lwz     r12, 0x1c(r12)
-    subi    r5, rtoc, 0x5a8
+    addi    r5, r2, R2Off_m0x5a8
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r22, r3, 0x0
     addi    r3, r31, 0x118
     lwz     r21, 0x4(r4)
@@ -176,7 +176,7 @@ branch_0x8029aef0:
     addi    r5, r31, 0x118
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r25, r3, 0x0
     addi    r21, r31, 0x12c
     lwz     r20, 0x4(r4)
@@ -264,7 +264,7 @@ branch_0x8029b0c8:
     b       branch_0x8029b264
 
 branch_0x8029b130:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x15c
     lwz     r20, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -353,7 +353,7 @@ branch_0x8029b264:
 branch_0x8029b27c:
     bl      SMSGetGameRenderWidth__Fv
     clrlwi  r0, r3, 16
-    lfd     f1, -0x578(rtoc)
+    lfd     f1, -0x578(r2)
     srawi   r0, r0, 1
     addze   r0, r0
     xoris   r0, r0, 0x8000
@@ -364,7 +364,7 @@ branch_0x8029b27c:
     fsubs   f30, f0, f1
     bl      SMSGetGameRenderHeight__Fv
     clrlwi  r0, r3, 16
-    lfd     f1, -0x578(rtoc)
+    lfd     f1, -0x578(r2)
     srawi   r0, r0, 1
     addze   r0, r0
     xoris   r0, r0, 0x8000
@@ -381,36 +381,36 @@ branch_0x8029b27c:
     lwz     r3, 0x200(sp)
     bl      __ct__Q26JDrama8TViewObjFPCc
     lwz     r23, 0x200(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r23)
     addi    r3, r23, 0x10
-    lfs     f1, -0x5a0(rtoc)
+    lfs     f1, -0x5a0(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8029ba58
     li      r4, 0x0
     fneg    f1, f30
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     sth     r4, 0x1c(r23)
-    addi    r0, r3, 0x4718
+    addi    r0, r3, __vvt__Q26JStage7TObject@l
     fneg    f0, f31
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r0, r3, 0x45c8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TCamera@l
+    lis     r3, __vvt__Q26JDrama7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x1c64
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r21)
     addi    r0, r3, 0x24
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TOrthoProj@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x19c0
+    addi    r3, r3, __vvt__Q26JDrama10TOrthoProj@l
     addi    r0, r3, 0x24
     sth     r4, 0x24(r21)
-    lfs     f2, -0x59c(rtoc)
+    lfs     f2, -0x59c(r2)
     stfs    f2, 0x28(r21)
-    lfs     f2, -0x598(rtoc)
+    lfs     f2, -0x598(r2)
     stfs    f2, 0x2c(r21)
     stw     r3, 0x0(r21)
     stw     r0, 0x20(r21)
@@ -427,7 +427,7 @@ branch_0x8029b38c:
     beq-    branch_0x8029b47c
     bl      SMSGetGameRenderWidth__Fv
     clrlwi  r0, r3, 16
-    lfd     f1, -0x570(rtoc)
+    lfd     f1, -0x570(r2)
     stw     r0, 0x324(sp)
     lis     r26, 0x4330
     stw     r26, 0x320(sp)
@@ -436,7 +436,7 @@ branch_0x8029b38c:
     bl      SMSGetGameRenderHeight__Fv
     clrlwi  r0, r3, 16
     stw     r21, 0x1fc(sp)
-    lfd     f1, -0x570(rtoc)
+    lfd     f1, -0x570(r2)
     addi    r4, r31, 0x168
     stw     r0, 0x32c(sp)
     lwz     r3, 0x1fc(sp)
@@ -445,38 +445,38 @@ branch_0x8029b38c:
     fsubs   f31, f0, f1
     bl      __ct__Q26JDrama8TViewObjFPCc
     lwz     r26, 0x1fc(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r26)
     addi    r3, r26, 0x10
-    lfs     f1, -0x5a0(rtoc)
+    lfs     f1, -0x5a0(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8029ba58
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     sth     r4, 0x1c(r26)
-    addi    r0, r3, 0x4718
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r0, r3, 0x45c8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TCamera@l
+    lis     r3, __vvt__Q26JDrama7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x1c64
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r21)
     addi    r0, r3, 0x24
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TOrthoProj@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x19c0
+    addi    r3, r3, __vvt__Q26JDrama10TOrthoProj@l
     addi    r0, r3, 0x24
     sth     r4, 0x24(r21)
-    lfs     f0, -0x594(rtoc)
+    lfs     f0, -0x594(r2)
     stfs    f0, 0x28(r21)
-    lfs     f0, -0x590(rtoc)
+    lfs     f0, -0x590(r2)
     stfs    f0, 0x2c(r21)
     stw     r3, 0x0(r21)
     stw     r0, 0x20(r21)
-    lfs     f0, -0x5a0(rtoc)
+    lfs     f0, -0x5a0(r2)
     stfs    f0, 0x30(r21)
     stfs    f0, 0x34(r21)
     stfs    f30, 0x38(r21)
@@ -510,7 +510,7 @@ branch_0x8029b4b8:
     addi    r4, r22, 0x0
     li      r5, 0x8
     bl      push_back__12TPerformListFPQ26JDrama8TViewObjUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x184
     lwz     r20, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -521,7 +521,7 @@ branch_0x8029b4b8:
     addi    r5, r31, 0x184
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r26, r3, 0x0
     addi    r3, r31, 0x19c
     lwz     r20, 0x4(r4)
@@ -533,7 +533,7 @@ branch_0x8029b4b8:
     addi    r5, r31, 0x19c
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r29, r3, 0x0
     addi    r3, r31, 0x1ac
     lwz     r20, 0x4(r4)
@@ -545,7 +545,7 @@ branch_0x8029b4b8:
     addi    r5, r31, 0x1ac
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r22, r3, 0x0
     addi    r3, r31, 0x1c0
     lwz     r20, 0x4(r4)
@@ -626,7 +626,7 @@ branch_0x8029b620:
     li      r5, 0x8
     bl      push_back__12TPerformListFPQ26JDrama8TViewObjUl
 branch_0x8029b6a8:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x1cc
     lwz     r20, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -637,7 +637,7 @@ branch_0x8029b6a8:
     addi    r5, r31, 0x1cc
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r22, r3, 0x0
     addi    r3, r31, 0x1dc
     lwz     r20, 0x4(r4)
@@ -692,7 +692,7 @@ branch_0x8029b6a8:
     beq-    branch_0x8029b888
     bl      SMSGetGameRenderWidth__Fv
     clrlwi  r0, r3, 16
-    lfd     f1, -0x570(rtoc)
+    lfd     f1, -0x570(r2)
     stw     r0, 0x324(sp)
     lis     r22, 0x4330
     stw     r22, 0x320(sp)
@@ -701,7 +701,7 @@ branch_0x8029b6a8:
     bl      SMSGetGameRenderHeight__Fv
     clrlwi  r0, r3, 16
     stw     r21, 0x1e0(sp)
-    lfd     f1, -0x570(rtoc)
+    lfd     f1, -0x570(r2)
     addi    r4, r31, 0x168
     stw     r0, 0x32c(sp)
     lwz     r3, 0x1e0(sp)
@@ -710,38 +710,38 @@ branch_0x8029b6a8:
     fsubs   f30, f0, f1
     bl      __ct__Q26JDrama8TViewObjFPCc
     lwz     r22, 0x1e0(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r22)
     addi    r3, r22, 0x10
-    lfs     f1, -0x5a0(rtoc)
+    lfs     f1, -0x5a0(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8029ba58
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     sth     r4, 0x1c(r22)
-    addi    r0, r3, 0x4718
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r0, r3, 0x45c8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TCamera@l
+    lis     r3, __vvt__Q26JDrama7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x1c64
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r21)
     addi    r0, r3, 0x24
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TOrthoProj@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x19c0
+    addi    r3, r3, __vvt__Q26JDrama10TOrthoProj@l
     addi    r0, r3, 0x24
     sth     r4, 0x24(r21)
-    lfs     f0, -0x59c(rtoc)
+    lfs     f0, -0x59c(r2)
     stfs    f0, 0x28(r21)
-    lfs     f0, -0x598(rtoc)
+    lfs     f0, -0x598(r2)
     stfs    f0, 0x2c(r21)
     stw     r3, 0x0(r21)
     stw     r0, 0x20(r21)
-    lfs     f0, -0x5a0(rtoc)
+    lfs     f0, -0x5a0(r2)
     stfs    f0, 0x30(r21)
     stfs    f0, 0x34(r21)
     stfs    f31, 0x38(r21)
@@ -751,7 +751,7 @@ branch_0x8029b888:
     addi    r3, r30, 0x0
     li      r5, 0x10
     bl      push_back__12TPerformListFPQ26JDrama8TViewObjUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x100
     lwz     r20, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -775,51 +775,51 @@ branch_0x8029b888:
     lwz     r3, 0x1d8(sp)
     bl      __ct__Q26JDrama8TViewObjFPCc
     lwz     r22, 0x1d8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r22)
     addi    r3, r22, 0x10
-    lfs     f1, -0x5a0(rtoc)
+    lfs     f1, -0x5a0(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8029ba58
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     sth     r4, 0x1c(r22)
-    addi    r0, r3, 0x4718
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r0, r3, 0x45c8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TCamera@l
+    lis     r3, __vvt__Q26JDrama7TCamera@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x1c64
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r21)
     addi    r0, r3, 0x24
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TOrthoProj@h
     stw     r0, 0x20(r21)
-    addi    r3, r3, 0x19c0
+    addi    r3, r3, __vvt__Q26JDrama10TOrthoProj@l
     addi    r0, r3, 0x24
     sth     r4, 0x24(r21)
-    lfs     f0, -0x58c(rtoc)
+    lfs     f0, -0x58c(r2)
     stfs    f0, 0x28(r21)
-    lfs     f0, -0x588(rtoc)
+    lfs     f0, -0x588(r2)
     stfs    f0, 0x2c(r21)
     stw     r3, 0x0(r21)
     stw     r0, 0x20(r21)
-    lfs     f0, -0x5a0(rtoc)
+    lfs     f0, -0x5a0(r2)
     stfs    f0, 0x30(r21)
-    lfs     f0, -0x584(rtoc)
+    lfs     f0, -0x584(r2)
     stfs    f0, 0x34(r21)
-    lfs     f0, -0x580(rtoc)
+    lfs     f0, -0x580(r2)
     stfs    f0, 0x38(r21)
-    lfs     f0, -0x57c(rtoc)
+    lfs     f0, -0x57c(r2)
     stfs    f0, 0x3c(r21)
 branch_0x8029b994:
     addi    r3, r30, 0x0
     addi    r4, r21, 0x0
     li      r5, 0x10
     bl      push_back__12TPerformListFPQ26JDrama8TViewObjUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0xe0
     lwz     r20, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -838,15 +838,15 @@ branch_0x8029b994:
     addi    r4, r21, 0x0
     li      r5, 0x10
     bl      push_back__12TPerformListFPQ26JDrama8TViewObjUl
-    lwz     r4, -0x5db8(r13)
-    subi    r3, rtoc, 0x5b0
+    lwz     r4, R13Off_m0x5db8(r13)
+    addi    r3, r2, R2Off_m0x5b0
     lwz     r20, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r20)
     addi    r4, r3, 0x0
     addi    r3, r20, 0x0
     lwz     r12, 0x1c(r12)
-    subi    r5, rtoc, 0x5b0
+    addi    r5, r2, R2Off_m0x5b0
     mtlr    r12
     blrl
     addi    r4, r3, 0x0
@@ -884,12 +884,12 @@ __dt__Q26JDrama8TEfbCtrlFv: # 0x8029ba68
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8029bac0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1e98
+    lis     r3, __vvt__Q26JDrama8TEfbCtrl@h
+    addi    r0, r3, __vvt__Q26JDrama8TEfbCtrl@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8029bab0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -912,14 +912,14 @@ branch_0x8029bac0:
 .globl initECTMir__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_
 initECTMir__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_: # 0x8029badc
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_803a2a68@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x88(sp)
     stw     r31, 0x84(sp)
-    addi    r31, r4, 0x2a68
+    addi    r31, r4, unk_803a2a68@l
     stw     r30, 0x80(sp)
     stw     r29, 0x7c(sp)
-    lwz     r3, -0x5db8(r13)
+    lwz     r3, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r3)
     addi    r3, r31, 0x20c
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -932,12 +932,12 @@ initECTMir__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama
     blrl
     addi    r29, r3, 0x0
     li      r0, 0x228
-    lis     r3, 0x803e
+    lis     r3, SMSVFilter_flicker@ha
     sth     r0, 0x20(r29)
-    subi    r0, r3, 0xcb0
+    addi    r0, r3, SMSVFilter_flicker@l
     stw     r0, 0x44(r29)
     addi    r3, r31, 0x21c
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r30)
@@ -978,7 +978,7 @@ initECTMir__12TMarDirectorFP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama
 .globl initECTGft__12TMarDirectorFP12TPerformListP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_PQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_
 initECTGft__12TMarDirectorFP12TPerformListP12TPerformListPQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_PQ26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_: # 0x8029bbd4
     mflr    r0
-    lis     r7, 0x803a
+    lis     r7, unk_803a2a68@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x218(sp)
     stfd    f31, 0x210(sp)
@@ -991,12 +991,12 @@ initECTGft__12TMarDirectorFP12TPerformListP12TPerformListPQ26JDrama55TViewObjPtr
     addi    r24, r3, 0x0
     addi    r29, r4, 0x0
     addi    r17, r6, 0x0
-    addi    r28, r7, 0x2a68
-    lwz     r5, gpPollution(r13)
+    addi    r28, r7, unk_803a2a68@l
+    lwz     r5, R13Off_m0x62f0(r13)
     lwz     r0, 0x10(r5)
     cmpwi   r0, 0x0
     bne-    branch_0x8029bc68
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r28, 0x228
     lwz     r14, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -1016,7 +1016,7 @@ initECTGft__12TMarDirectorFP12TPerformListP12TPerformListPQ26JDrama55TViewObjPtr
     b       branch_0x8029c178
 
 branch_0x8029bc68:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r28, 0x238
     lwz     r14, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -1027,7 +1027,7 @@ branch_0x8029bc68:
     addi    r5, r28, 0x238
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     stw     r3, 0x188(sp)
     addi    r3, r28, 0x19c
     lwz     r14, 0x4(r4)
@@ -1117,41 +1117,41 @@ branch_0x8029bdc0:
     lwz     r3, 0xbc(sp)
     bl      __ct__Q26JDrama8TViewObjFPCc
     lwz     r22, 0xbc(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r22)
     addi    r3, r22, 0x10
-    lfs     f1, -0x5a0(rtoc)
+    lfs     f1, -0x5a0(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8029ba58
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     sth     r0, 0x1c(r22)
-    addi    r5, r3, 0x4718
-    lis     r3, 0x803e
+    addi    r5, r3, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage7TCamera@h
     stw     r5, 0x20(r26)
-    addi    r5, r3, 0x45c8
-    lis     r3, 0x803e
+    addi    r5, r3, __vvt__Q26JStage7TCamera@l
+    lis     r3, __vvt__Q26JDrama7TCamera@h
     stw     r5, 0x20(r26)
-    addi    r3, r3, 0x1c64
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r26)
     addi    r4, r3, 0x24
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TOrthoProj@h
     stw     r4, 0x20(r26)
-    addi    r4, r3, 0x19c0
+    addi    r4, r3, __vvt__Q26JDrama10TOrthoProj@l
     addi    r3, r4, 0x24
     sth     r0, 0x24(r26)
-    lfs     f0, -0x59c(rtoc)
+    lfs     f0, -0x59c(r2)
     stfs    f0, 0x28(r26)
-    lfs     f0, -0x598(rtoc)
+    lfs     f0, -0x598(r2)
     stfs    f0, 0x2c(r26)
     stw     r4, 0x0(r26)
     stw     r3, 0x20(r26)
-    lfs     f0, -0x5a0(rtoc)
+    lfs     f0, -0x5a0(r2)
     stfs    f0, 0x30(r26)
     stfs    f0, 0x34(r26)
-    lfs     f0, -0x568(rtoc)
+    lfs     f0, -0x568(r2)
     stfs    f0, 0x38(r26)
     stfs    f0, 0x3c(r26)
 branch_0x8029be88:
@@ -1171,27 +1171,27 @@ branch_0x8029be88:
     addi    r4, r21, 0x0
     li      r5, 0x8
     bl      push_back__12TPerformListFPQ26JDrama8TViewObjUl
-    lis     r4, 0x803e
-    lfd     f28, -0x570(rtoc)
-    addi    r22, r4, 0x1c64
-    lfs     f29, -0x59c(rtoc)
-    lis     r4, 0x803e
-    lfs     f30, -0x598(rtoc)
-    lis     r3, 0x803e
-    lfs     f31, -0x5a0(rtoc)
-    addi    r21, r3, 0x19c0
-    addi    r0, r4, 0x45c8
-    lis     r5, 0x803e
+    lis     r4, __vvt__Q26JDrama7TCamera@h
+    lfd     f28, -0x570(r2)
+    addi    r22, r4, __vvt__Q26JDrama7TCamera@l
+    lfs     f29, -0x59c(r2)
+    lis     r4, __vvt__Q26JStage7TCamera@h
+    lfs     f30, -0x598(r2)
+    lis     r3, __vvt__Q26JDrama10TOrthoProj@h
+    lfs     f31, -0x5a0(r2)
+    addi    r21, r3, __vvt__Q26JDrama10TOrthoProj@l
+    addi    r0, r4, __vvt__Q26JStage7TCamera@l
+    lis     r5, __vvt__Q26JDrama10TPlacement@h
     stw     r0, 0x18c(sp)
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     addi    r24, r17, 0x10
     addi    r19, r22, 0x24
     addi    r20, r21, 0x24
-    addi    r15, r5, 0x2140
+    addi    r15, r5, __vvt__Q26JDrama10TPlacement@l
     addi    r16, sp, 0x13c
     addi    r17, sp, 0x9c
     addi    r18, sp, 0xb8
-    addi    r14, r3, 0x4718
+    addi    r14, r3, __vvt__Q26JStage7TObject@l
     li      r26, 0x0
     li      r25, 0x0
     lis     r23, 0x4330
@@ -1233,7 +1233,7 @@ branch_0x8029bf54:
     addi    r4, sp, 0xb0
     stw     r0, 0xb0(sp)
     bl      __ct__Q37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorFRCQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iterator
-    lwz     r4, gpPollution(r13)
+    lwz     r4, R13Off_m0x62f0(r13)
     li      r9, 0x28
     addi    r3, sp, 0x14c
     lwz     r6, 0x14(r4)
@@ -1303,7 +1303,7 @@ branch_0x8029c064:
     lwz     r30, 0xac(sp)
     stw     r15, 0x0(r30)
     addi    r3, r30, 0x10
-    lfs     f1, -0x5a0(rtoc)
+    lfs     f1, -0x5a0(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8029ba58
@@ -1345,7 +1345,7 @@ branch_0x8029c118:
     addi    r26, r26, 0x1
     addi    r25, r25, 0x4
 branch_0x8029c168:
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lwz     r0, 0x10(r3)
     cmpw    r26, r0
     blt+    branch_0x8029bf2c

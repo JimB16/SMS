@@ -1,15 +1,15 @@
 
 .globl OSGetConsoleType
 OSGetConsoleType: # 0x80341c08
-    lwz     r3, -0x5a70(r13)
+    lwz     r3, R13Off_m0x5a70(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80341c20
     lwz     r3, 0x2c(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x80341c2c
 branch_0x80341c20:
-    lis     r3, 0x1000
-    addi    r3, r3, 0x2
+    lis     r3, unk_10000002@h
+    addi    r3, r3, unk_10000002@l
     b       branch_0x80341c2c
 
 branch_0x80341c2c:
@@ -27,8 +27,8 @@ ClearArena: # 0x80341c30
     cmplwi  r0, 0x0
     beq-    branch_0x80341c80
     li      r0, 0x0
-    stw     r0, -0x5a54(r13)
-    stw     r0, -0x5a58(r13)
+    stw     r0, R13Off_m0x5a54(r13)
+    stw     r0, R13Off_m0x5a58(r13)
     bl      OSGetArenaHi
     mr      r31, r3
     bl      OSGetArenaLo
@@ -44,8 +44,8 @@ branch_0x80341c80:
     lwz     r3, -0x2010(r4)
     lwz     r0, -0x2014(r4)
     cmplwi  r3, 0x0
-    stw     r3, -0x5a54(r13)
-    stw     r0, -0x5a58(r13)
+    stw     r3, R13Off_m0x5a54(r13)
+    stw     r0, R13Off_m0x5a58(r13)
     bne-    branch_0x80341cc0
     bl      OSGetArenaHi
     mr      r31, r3
@@ -59,11 +59,11 @@ branch_0x80341c80:
 
 branch_0x80341cc0:
     bl      OSGetArenaLo
-    lwz     r0, -0x5a54(r13)
+    lwz     r0, R13Off_m0x5a54(r13)
     cmplw   r3, r0
     bge-    branch_0x80341d44
     bl      OSGetArenaHi
-    lwz     r0, -0x5a54(r13)
+    lwz     r0, R13Off_m0x5a54(r13)
     cmplw   r3, r0
     bgt-    branch_0x80341d04
     bl      OSGetArenaHi
@@ -78,14 +78,14 @@ branch_0x80341cc0:
 
 branch_0x80341d04:
     bl      OSGetArenaLo
-    lwz     r0, -0x5a54(r13)
+    lwz     r0, R13Off_m0x5a54(r13)
     subf    r31, r3, r0
     bl      OSGetArenaLo
     mr      r5, r31
     li      r4, 0x0
     bl      memset
     bl      OSGetArenaHi
-    lwz     r31, -0x5a58(r13)
+    lwz     r31, R13Off_m0x5a58(r13)
     cmplw   r3, r31
     ble-    branch_0x80341d44
     bl      OSGetArenaHi
@@ -109,8 +109,8 @@ InquiryCallback: # 0x80341d58
     b       branch_0x80341d84
 
 branch_0x80341d68:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2580
+    lis     r3, DriveInfo@h
+    addi    r3, r3, DriveInfo@l
     lhz     r0, 0x2(r3)
     lis     r3, 0x8000
     ori     r0, r0, 0x8000
@@ -133,38 +133,38 @@ OSInit: # 0x80341d94
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     stw     r29, 0xc(sp)
-    lwz     r0, -0x5a60(r13)
-    lis     r4, 0x8040
-    lis     r3, 0x803e
+    lwz     r0, R13Off_m0x5a60(r13)
+    lis     r4, DriveInfo@h
+    lis     r3, unk_803e6940@h
     cmpwi   r0, 0x0
-    addi    r30, r4, 0x2580
-    addi    r31, r3, 0x6940
+    addi    r30, r4, DriveInfo@l
+    addi    r31, r3, unk_803e6940@l
     bne-    branch_0x80342130
     li      r0, 0x1
-    stw     r0, -0x5a60(r13)
+    stw     r0, R13Off_m0x5a60(r13)
     bl      __OSGetSystemTime
-    stw     r4, -0x5a44(r13)
-    stw     r3, -0x5a48(r13)
+    stw     r4, R13Off_m0x5a44(r13)
+    stw     r3, R13Off_m0x5a48(r13)
     bl      OSDisableInterrupts
     bl      PPCDisableSpeculation
     bl      PPCSetFpNonIEEEMode
     li      r0, 0x0
     lis     r4, 0x8000
-    stw     r0, -0x5a6c(r13)
-    stw     r4, -0x5a70(r13)
-    stw     r0, -0x5954(r13)
+    stw     r0, R13Off_m0x5a6c(r13)
+    stw     r4, R13Off_m0x5a70(r13)
+    stw     r0, R13Off_m0x5954(r13)
     lwz     r3, 0xf4(r4)
     cmplwi  r3, 0x0
     beq-    branch_0x80341e38
     addi    r0, r3, 0xc
-    stw     r0, -0x5a6c(r13)
+    stw     r0, R13Off_m0x5a6c(r13)
     lwz     r0, 0x24(r3)
-    lwz     r3, -0x5a6c(r13)
-    stw     r0, -0x587c(r13)
+    lwz     r3, R13Off_m0x5a6c(r13)
+    stw     r0, R13Off_m0x587c(r13)
     lwz     r0, 0x0(r3)
     clrlwi  r0, r0, 24
     stb     r0, 0x30e8(r4)
-    lwz     r0, -0x587c(r13)
+    lwz     r0, R13Off_m0x587c(r13)
     clrlwi  r0, r0, 24
     stb     r0, 0x30e9(r4)
     b       branch_0x80341e5c
@@ -174,46 +174,46 @@ branch_0x80341e38:
     cmplwi  r0, 0x0
     beq-    branch_0x80341e5c
     lbz     r3, 0x30e8(r4)
-    subi    r0, r13, 0x5a68
-    stw     r3, -0x5a68(r13)
-    stw     r0, -0x5a6c(r13)
+    addi    r0, r13, R13Off_m0x5a68
+    stw     r3, R13Off_m0x5a68(r13)
+    stw     r0, R13Off_m0x5a6c(r13)
     lbz     r0, 0x30e9(r4)
-    stw     r0, -0x587c(r13)
+    stw     r0, R13Off_m0x587c(r13)
 branch_0x80341e5c:
     li      r0, 0x1
-    lwz     r3, -0x5a70(r13)
-    stw     r0, -0x5954(r13)
+    lwz     r3, R13Off_m0x5a70(r13)
+    stw     r0, R13Off_m0x5954(r13)
     lwz     r3, 0x30(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x80341e80
-    lis     r3, 0x8043
-    subi    r3, r3, 0x6800
+    lis     r3, unk_80429800@ha
+    addi    r3, r3, unk_80429800@l
     b       branch_0x80341e80
 
 branch_0x80341e80:
     bl      OSSetArenaLo
-    lwz     r3, -0x5a70(r13)
+    lwz     r3, R13Off_m0x5a70(r13)
     lwz     r0, 0x30(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80341ec0
-    lwz     r3, -0x5a6c(r13)
+    lwz     r3, R13Off_m0x5a6c(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80341ec0
     lwz     r0, 0x0(r3)
     cmplwi  r0, 0x2
     bge-    branch_0x80341ec0
-    lis     r3, 0x8042
-    addi    r3, r3, 0x77e8
+    lis     r3, unk_804277e8@h
+    addi    r3, r3, unk_804277e8@l
     addi    r0, r3, 0x1f
     clrrwi  r3, r0, 5
     bl      OSSetArenaLo
 branch_0x80341ec0:
-    lwz     r3, -0x5a70(r13)
+    lwz     r3, R13Off_m0x5a70(r13)
     lwz     r3, 0x34(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x80341edc
-    lis     r3, 0x8170
-    addi    r3, r3, 0x0
+    lis     r3, unk_81700000@h
+    addi    r3, r3, unk_81700000@l
     b       branch_0x80341edc
 
 branch_0x80341edc:
@@ -223,8 +223,8 @@ branch_0x80341edc:
     bl      OSInitAlarm
     bl      __OSModuleInit
     bl      __OSInterruptInit
-    lis     r3, 0x8034
-    addi    r4, r3, 0x70e4
+    lis     r3, __OSResetSWInterruptHandler@h
+    addi    r4, r3, __OSResetSWInterruptHandler@l
     li      r3, 0x16
     bl      __OSSetInterruptHandler
     bl      __OSContextInit
@@ -237,14 +237,14 @@ branch_0x80341edc:
     bl      PPCMfhid2
     rlwinm  r3, r3, 0, 2, 0
     bl      PPCMthid2
-    lwz     r3, -0x5a70(r13)
+    lwz     r3, R13Off_m0x5a70(r13)
     addi    r4, r3, 0x2c
     lwz     r0, 0x0(r4)
     rlwinm  r0, r0, 0, 3, 3
     cmplwi  r0, 0x0
     beq-    branch_0x80341f54
-    lis     r3, 0x1000
-    addi    r0, r3, 0x4
+    lis     r3, unk_10000004@h
+    addi    r0, r3, unk_10000004@l
     stw     r0, 0x0(r4)
     b       branch_0x80341f5c
 
@@ -252,16 +252,16 @@ branch_0x80341f54:
     li      r0, 0x1
     stw     r0, 0x0(r4)
 branch_0x80341f5c:
-    lis     r3, 0xcc00
-    lwz     r4, -0x5a70(r13)
-    addi    r3, r3, 0x3000
+    lis     r3, unk_cc003000@h
+    lwz     r4, R13Off_m0x5a70(r13)
+    addi    r3, r3, unk_cc003000@l
     lwz     r0, 0x2c(r3)
     lwz     r3, 0x2c(r4)
     clrrwi  r0, r0, 28
     srwi    r0, r0, 28
     add     r0, r3, r0
     stw     r0, 0x2c(r4)
-    lwz     r0, -0x5a50(r13)
+    lwz     r0, R13Off_m0x5a50(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x80341f90
     bl      __OSInitMemoryProtection
@@ -277,15 +277,15 @@ branch_0x80341f90:
     addi    r3, r31, 0x50
     crxor   6, 6, 6
     bl      OSReport
-    lwz     r3, -0x5a70(r13)
+    lwz     r3, R13Off_m0x5a70(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80341fd4
     lwz     r4, 0x2c(r3)
     cmplwi  r4, 0x0
     bne-    branch_0x80341fe0
 branch_0x80341fd4:
-    lis     r3, 0x1000
-    addi    r4, r3, 0x2
+    lis     r3, unk_10000002@h
+    addi    r4, r3, unk_10000002@l
     b       branch_0x80341fe0
 
 branch_0x80341fe0:
@@ -298,8 +298,8 @@ branch_0x80341fe0:
     b       branch_0x80342084
 
 branch_0x80341ffc:
-    lis     r3, 0x1000
-    addi    r0, r3, 0x2
+    lis     r3, unk_10000002@h
+    addi    r0, r3, unk_10000002@l
     cmpw    r4, r0
     beq-    branch_0x80342050
     bge-    branch_0x80342020
@@ -342,10 +342,10 @@ branch_0x80342070:
     addis   r4, r4, 0xf000
     crxor   6, 6, 6
     addi    r3, r31, 0xac
-    subi    r4, r4, 0x3
+    addi    r4, r4, -0x3
     bl      OSReport
 branch_0x80342084:
-    lwz     r4, -0x5a70(r13)
+    lwz     r4, R13Off_m0x5a70(r13)
     addi    r3, r31, 0xc0
     crxor   6, 6, 6
     lwz     r0, 0x28(r4)
@@ -359,7 +359,7 @@ branch_0x80342084:
     mr      r5, r29
     addi    r3, r31, 0xd0
     bl      OSReport
-    lwz     r3, -0x5a6c(r13)
+    lwz     r3, R13Off_m0x5a6c(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x803420d8
     lwz     r0, 0x0(r3)
@@ -369,15 +369,15 @@ branch_0x80342084:
 branch_0x803420d8:
     bl      ClearArena
     bl      OSEnableInterrupts
-    lwz     r0, -0x5a50(r13)
+    lwz     r0, R13Off_m0x5a50(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x80342130
     bl      DVDInit
-    lwz     r0, -0x5a64(r13)
+    lwz     r0, R13Off_m0x5a64(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x80342110
-    lis     r3, 0x1
-    subi    r0, r3, 0x7000
+    lis     r3, unk_00009000@ha
+    addi    r0, r3, unk_00009000@l
     lis     r3, 0x8000
     sth     r0, 0x30e6(r3)
     b       branch_0x80342130
@@ -386,8 +386,8 @@ branch_0x80342110:
     mr      r3, r30
     li      r4, 0x20
     bl      DCInvalidateRange
-    lis     r3, 0x8034
-    addi    r5, r3, 0x1d58
+    lis     r3, InquiryCallback@h
+    addi    r5, r3, InquiryCallback@l
     mr      r4, r30
     addi    r3, r30, 0x20
     bl      DVDInquiryAsync
@@ -407,29 +407,29 @@ OSExceptionInit: # 0x8034214c
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r20, 0x8(sp)
-    lis     r3, 0x8000
+    lis     r3, unk_80000060@h
     lwz     r0, 0x60(r3)
-    lis     r4, 0x8034
-    addi    r30, r4, 0x248c
-    lis     r5, 0x8034
+    lis     r4, unk_8034248c@h
+    addi    r30, r4, unk_8034248c@l
+    lis     r5, OSExceptionVector@h
     lwz     r25, 0x0(r30)
-    lis     r4, 0x8034
-    addi    r5, r5, 0x2424
-    addi    r4, r4, 0x24bc
-    lis     r6, 0x803e
+    lis     r4, branch_0x803424bc@h
+    addi    r5, r5, OSExceptionVector@l
+    addi    r4, r4, branch_0x803424bc@l
+    lis     r6, unk_803e6940@h
     cmplwi  r0, 0x0
     mr      r24, r5
-    addi    r29, r6, 0x6940
+    addi    r29, r6, unk_803e6940@l
     subf    r23, r5, r4
-    addi    r20, r3, 0x60
+    addi    r20, r3, unk_80000060@l
     bne-    branch_0x803421e4
     addi    r3, r29, 0x124
     crxor   6, 6, 6
     bl      DBPrintf
-    lis     r4, 0x8034
-    lis     r3, 0x8034
-    addi    r0, r3, 0x23f0
-    addi    r4, r4, 0x23cc
+    lis     r4, __OSDBIntegrator@h
+    lis     r3, __OSDBJump@h
+    addi    r0, r3, __OSDBJump@l
+    addi    r4, r4, __OSDBIntegrator@l
     subf    r21, r4, r0
     mr      r3, r20
     mr      r5, r21
@@ -442,18 +442,18 @@ OSExceptionInit: # 0x8034214c
     mr      r4, r21
     bl      ICInvalidateRange
 branch_0x803421e4:
-    lis     r4, 0x8034
-    lis     r3, 0x8034
-    addi    r31, r4, 0x23f0
-    addi    r0, r3, 0x23f4
+    lis     r4, __OSDBJump@h
+    lis     r3, __OSSetExceptionHandler@h
+    addi    r31, r4, __OSDBJump@l
+    addi    r0, r3, __OSSetExceptionHandler@l
     addi    r28, r29, 0xe8
     subf    r27, r31, r0
     li      r26, 0x0
     b       branch_0x80342204
 
 branch_0x80342204:
-    lis     r3, 0x8034
-    addi    r21, r3, 0x247c
+    lis     r3, unk_8034247c@h
+    addi    r21, r3, unk_8034247c@l
     lis     r22, 0x6000
     b       branch_0x80342214
 
@@ -461,7 +461,7 @@ branch_0x80342214:
     b       branch_0x8034235c
 
 branch_0x80342218:
-    lwz     r3, -0x5a6c(r13)
+    lwz     r3, R13Off_m0x5a6c(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80342254
     lwz     r0, 0x0(r3)
@@ -559,15 +559,15 @@ branch_0x8034235c:
     clrlwi  r0, r26, 24
     cmplwi  r0, 0xf
     blt+    branch_0x80342218
-    lis     r3, 0x8000
-    addi    r0, r3, 0x3000
-    stw     r0, -0x5a5c(r13)
+    lis     r3, unk_80003000@h
+    addi    r0, r3, unk_80003000@l
+    stw     r0, R13Off_m0x5a5c(r13)
     li      r20, 0x0
     b       branch_0x8034237c
 
 branch_0x8034237c:
-    lis     r3, 0x8034
-    addi    r23, r3, 0x24c0
+    lis     r3, OSDefaultExceptionHandler@h
+    addi    r23, r3, OSDefaultExceptionHandler@l
     b       branch_0x80342388
 
 branch_0x80342388:
@@ -613,7 +613,7 @@ __OSDBJump: # 0x803423f0
 .globl __OSSetExceptionHandler
 __OSSetExceptionHandler: # 0x803423f4
     clrlwi  r0, r3, 24
-    lwz     r3, -0x5a5c(r13)
+    lwz     r3, R13Off_m0x5a5c(r13)
     slwi    r0, r0, 2
     add     r5, r3, r0
     lwz     r3, 0x0(r5)
@@ -624,7 +624,7 @@ __OSSetExceptionHandler: # 0x803423f4
 .globl __OSGetExceptionHandler
 __OSGetExceptionHandler: # 0x80342410
     clrlwi  r0, r3, 24
-    lwz     r3, -0x5a5c(r13)
+    lwz     r3, R13Off_m0x5a5c(r13)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     blr
@@ -662,8 +662,8 @@ OSExceptionVector: # 0x80342424
     lwz     r4, 0xd4(r0)
     rlwinm. r5, r5, 0, 30, 30
     bne-    branch_0x803424ac
-    lis     r5, 0x8034
-    addi    r5, r5, 0x24c0
+    lis     r5, OSDefaultExceptionHandler@h
+    addi    r5, r5, OSDefaultExceptionHandler@l
     mtspr   26, r5
     rfi
 
@@ -673,14 +673,14 @@ branch_0x803424ac:
     mtspr   26, r5
     rfi
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33cebc, 0x803424c0 - 0x803424bc
+branch_0x803424bc:
+    ori     r0, r0, 0x0
 
 .globl OSDefaultExceptionHandler
 OSDefaultExceptionHandler: # 0x803424c0
     stw     r0, 0x0(r4)
     stw     sp, 0x4(r4)
-    stw     rtoc, 0x8(r4)
+    stw     r2, 0x8(r4)
     stmw    r6, 0x18(r4)
     mfspr   r0, 913
     stw     r0, 0x1a8(r4)
@@ -722,8 +722,8 @@ __OSPSInit: # 0x80342518
 
 .globl __OSGetDIConfig
 __OSGetDIConfig: # 0x80342550
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6000
+    lis     r3, unk_cc006000@h
+    addi    r3, r3, unk_cc006000@l
     lwz     r0, 0x24(r3)
     clrlwi  r3, r0, 24
     blr

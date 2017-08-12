@@ -247,7 +247,7 @@ drawSyncCallback__16TDrawSyncManagerFUs: # 0x802a9318
     addi    r4, r3, 0x0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x5ff0(r13)
+    lwz     r0, R13Off_m0x5ff0(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802a933c
     mr      r3, r0
@@ -268,7 +268,7 @@ start__16TDrawSyncManagerFUlUll: # 0x802a934c
     addi    r26, r3, 0x0
     addi    r31, r4, 0x0
     addi    r27, r5, 0x0
-    lwz     r0, -0x5ff0(r13)
+    lwz     r0, R13Off_m0x5ff0(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802a946c
     li      r3, 0x350
@@ -292,7 +292,7 @@ start__16TDrawSyncManagerFUlUll: # 0x802a934c
     lwz     r0, 0x4(r28)
     stw     r0, 0x8(r28)
     stw     r29, 0xc(r28)
-    lfs     f0, -0x398(rtoc)
+    lfs     f0, -0x398(r2)
     stfs    f0, 0x10(r28)
     stw     r29, 0x14(r28)
     lwz     r4, 0x8(r28)
@@ -301,8 +301,8 @@ start__16TDrawSyncManagerFUlUll: # 0x802a934c
     li      r3, 0x1000
     bl      __nwa__FUl
     addi    r6, r3, 0x0
-    lis     r4, 0x802b
-    subi    r4, r4, 0x6e7c
+    lis     r4, threadFunc__16TDrawSyncManagerFPv@ha
+    addi    r4, r4, threadFunc__16TDrawSyncManagerFPv@l
     addi    r5, r28, 0x0
     addi    r8, r27, 0x0
     addi    r3, r28, 0x18
@@ -334,12 +334,12 @@ branch_0x802a9458:
     addi    r3, r3, 0x18
     bl      OSResumeThread
 branch_0x802a9468:
-    stw     r30, -0x5ff0(r13)
+    stw     r30, R13Off_m0x5ff0(r13)
 branch_0x802a946c:
     lmw     r26, 0x28(sp)
     lwz     r0, 0x44(sp)
     addi    sp, sp, 0x40
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     mtlr    r0
     blr
 
@@ -440,10 +440,10 @@ branch_0x802a955c:
     stw     r3, -0x34(r7)
     lwz     r6, -0x40(r9)
     lwz     r3, -0x3c(r9)
-    subi    r9, r9, 0x40
+    addi    r9, r9, -0x40
     stw     r6, -0x40(r7)
     stw     r3, -0x3c(r7)
-    subi    r7, r7, 0x40
+    addi    r7, r7, -0x40
     bdnz+      branch_0x802a955c
     andi.   r5, r5, 0x7
     beq-    branch_0x802a9618
@@ -452,10 +452,10 @@ branch_0x802a95f0:
 branch_0x802a95f4:
     lwz     r6, -0x8(r9)
     lwz     r3, -0x4(r9)
-    subi    r9, r9, 0x8
+    addi    r9, r9, -0x8
     stw     r6, -0x8(r7)
     stw     r3, -0x4(r7)
-    subi    r7, r7, 0x8
+    addi    r7, r7, -0x8
     bdnz+      branch_0x802a95f4
     b       branch_0x802a9618
 
@@ -515,7 +515,7 @@ branch_0x802a969c:
 branch_0x802a96ac:
     stw     r3, 0xdc(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x390(rtoc)
+    lfd     f2, -0x390(r2)
     add     r25, r3, r29
     stw     r0, 0xd8(sp)
     lfs     f0, 0x10(r30)
@@ -634,3 +634,4 @@ __ct__Q216TDrawSyncManager19TDrawSyncTokenRangeFUsUsP17TDrawSyncCallback: # 0x80
     sth     r5, 0x2(r3)
     stw     r6, 0x4(r3)
     blr
+

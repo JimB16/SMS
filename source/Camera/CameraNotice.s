@@ -17,9 +17,9 @@ ctrlLButtonCamera___15CPolarSubCameraFv: # 0x800291d0
     fneg    f31, f1
     fneg    f30, f0
     bne-    branch_0x80029358
-    lwz     r3, MarioFlags(r13)
+    lwz     r3, R13Off_m0x6094(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 16, 16 # MARIOFLAG_8000
+    rlwinm. r0, r0, 0, 16, 16
     beq-    branch_0x80029228
     li      r0, 0x1
     b       branch_0x8002922c
@@ -29,7 +29,7 @@ branch_0x80029228:
 branch_0x8002922c:
     clrlwi. r0, r0, 24
     bne-    branch_0x80029254
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     lfs     f0, 0x0(r3)
     stfs    f0, 0x8c(r31)
     lfs     f0, 0x4(r3)
@@ -42,7 +42,7 @@ branch_0x80029254:
     bl      SMS_GetMarioWaterGun__Fv
     cmplwi  r3, 0x0
     bne-    branch_0x80029280
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     lfs     f0, 0x0(r3)
     stfs    f0, 0x8c(r31)
     lfs     f0, 0x4(r3)
@@ -68,13 +68,13 @@ branch_0x80029280:
     stfs    f0, 0x34(sp)
     stfs    f1, 0x38(sp)
     stfs    f2, 0x3c(sp)
-    lfs     f29, -0x7858(rtoc)
+    lfs     f29, -0x7858(r2)
     bl      dot__Q29JGeometry8TVec3_f_CFRCQ29JGeometry8TVec3_f_
-    lfs     f0, -0x7854(rtoc)
+    lfs     f0, -0x7854(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x800292ec
-    lfs     f0, -0x7850(rtoc)
+    lfs     f0, -0x7850(r2)
     stfs    f0, 0x3c(sp)
     stfs    f0, 0x38(sp)
     stfs    f0, 0x34(sp)
@@ -88,7 +88,7 @@ branch_0x800292ec:
     bl      scale__Q29JGeometry8TVec3_f_FfRCQ29JGeometry8TVec3_f_
 branch_0x80029300:
     lfs     f0, 0x34(sp)
-    lfs     f1, -0x784c(rtoc)
+    lfs     f1, -0x784c(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x34(sp)
     lfs     f0, 0x38(sp)
@@ -116,7 +116,7 @@ branch_0x80029358:
     lhz     r0, 0x64(r31)
     rlwinm. r0, r0, 0, 26, 26
     beq-    branch_0x800293a0
-    lfs     f0, -0x7850(rtoc)
+    lfs     f0, -0x7850(r2)
     fcmpu   cr0, f0, f31
     beq-    branch_0x8002938c
     mr      r3, r31
@@ -165,7 +165,7 @@ getNozzleTopPos___15CPolarSubCameraCFPQ29JGeometry8TVec3_f_: # 0x800293e0
     bl      SMS_GetMarioWaterGun__Fv
     cmplwi  r3, 0x0
     bne-    branch_0x8002942c
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     lfs     f0, 0x0(r3)
     stfs    f0, 0x0(r31)
     lfs     f0, 0x4(r3)
@@ -187,26 +187,26 @@ branch_0x8002942c:
     lfs     f31, 0x4(r3)
     fmuls   f1, f30, f30
     lfs     f29, 0x24(r3)
-    lfs     f0, -0x7854(rtoc)
+    lfs     f0, -0x7854(r2)
     fmadds  f1, f31, f31, f1
     fmadds  f1, f29, f29, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80029484
-    lfs     f4, -0x7850(rtoc)
+    lfs     f4, -0x7850(r2)
     fmr     f3, f4
     fmr     f2, f3
     b       branch_0x8002949c
 
 branch_0x80029484:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x7858(rtoc)
+    lfs     f0, -0x7858(r2)
     fmuls   f0, f0, f1
     fmuls   f2, f31, f0
     fmuls   f3, f30, f0
     fmuls   f4, f29, f0
 branch_0x8002949c:
-    lfs     f1, -0x784c(rtoc)
+    lfs     f1, -0x784c(r2)
     lfs     f0, 0x0(r31)
     fmuls   f2, f2, f1
     fmuls   f3, f3, f1
@@ -243,7 +243,7 @@ calcNoticeTargetYrot___15CPolarSubCameraFRC3Vec: # 0x800294f0
     addi    r31, r3, 0x0
     stw     r30, 0x80(sp)
     addi    r30, r4, 0x0
-    lwz     r5, -0x7110(r13)
+    lwz     r5, R13Off_m0x7110(r13)
     lwz     r3, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r3, 0x6c(sp)
@@ -285,7 +285,7 @@ calcNoticeTargetYrot___15CPolarSubCameraFRC3Vec: # 0x800294f0
     stfs    f0, 0x68(sp)
     bl      MsVECNormalize__FP3VecP3Vec
     lfs     f3, 0x60(sp)
-    lfs     f2, -0x7848(rtoc)
+    lfs     f2, -0x7848(r2)
     lfs     f0, 0x6c(sp)
     lfs     f1, 0x68(sp)
     fmadds  f3, f3, f2, f0
@@ -309,17 +309,17 @@ branch_0x8002960c:
     neg     r0, r0
 branch_0x80029614:
     xoris   r0, r0, 0x8000
-    lfd     f1, -0x7838(rtoc)
+    lfd     f1, -0x7838(r2)
     stw     r0, 0x7c(sp)
     lis     r0, 0x4330
     fcmpo   cr0, f30, f28
-    lfs     f2, -0x7844(rtoc)
+    lfs     f2, -0x7844(r2)
     stw     r0, 0x78(sp)
     lfd     f0, 0x78(sp)
     fsubs   f0, f0, f1
     fmuls   f31, f2, f0
     ble-    branch_0x80029648
-    lfs     f28, -0x7858(rtoc)
+    lfs     f28, -0x7858(r2)
     b       branch_0x8002965c
 
 branch_0x80029648:
@@ -330,17 +330,17 @@ branch_0x80029648:
     fmr     f28, f1
 branch_0x8002965c:
     lwz     r3, 0x2d0(r31)
-    lfs     f1, -0x7858(rtoc)
+    lfs     f1, -0x7858(r2)
     lfs     f3, 0xa8(r31)
     lfs     f2, 0xb8(r3)
     bl      CLBLinearInbetween_f___Ffff
     lwz     r3, 0x2d0(r31)
     lis     r0, 0x4330
-    lfd     f3, -0x7838(rtoc)
+    lfd     f3, -0x7838(r2)
     lha     r3, 0x7c(r3)
     lfs     f4, 0x288(r31)
     xoris   r3, r3, 0x8000
-    lfs     f0, -0x7840(rtoc)
+    lfs     f0, -0x7840(r2)
     stw     r3, 0x7c(sp)
     stw     r0, 0x78(sp)
     lfd     f2, 0x78(sp)
@@ -453,7 +453,7 @@ getNoticeActor___15CPolarSubCameraFv: # 0x800297b8
     bne-    branch_0x80029908
     rlwinm. r0, r4, 0, 30, 30
     bne-    branch_0x80029908
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     addi    r4, r3, 0x10
     lfs     f3, 0x0(r4)
     lfs     f2, 0x0(r5)
@@ -532,8 +532,8 @@ branch_0x80029908:
     lfs     f1, 0x18(r3)
     bl      CLBSquared_f___Ff
     fmr     f31, f1
-    lfs     f29, -0x7830(rtoc)
-    lfd     f30, -0x7838(rtoc)
+    lfs     f29, -0x7830(r2)
+    lfd     f30, -0x7838(r2)
     addi    r30, r27, 0x1ec
     addi    r31, r27, 0x16c
     li      r28, 0x0
@@ -555,7 +555,7 @@ branch_0x8002993c:
     cmplw   r0, r4
     beq-    branch_0x80029ab0
 branch_0x8002996c:
-    lwz     r3, MarioHitActorPos(r13)
+    lwz     r3, R13Off_m0x60b4(r13)
     addi    r6, r4, 0x10
     lfs     f3, 0x10(r4)
     lfs     f2, 0x0(r3)
@@ -620,7 +620,7 @@ branch_0x80029a4c:
 branch_0x80029a50:
     clrlwi. r0, r0, 24
     beq-    branch_0x80029ab0
-    lwz     r3, -0x60ac(r13)
+    lwz     r3, R13Off_m0x60ac(r13)
     fmr     f2, f27
     lwz     r4, 0x2a0(r27)
     lha     r0, 0x0(r3)
@@ -628,12 +628,12 @@ branch_0x80029a50:
     xoris   r0, r0, 0x8000
     lwzx    r4, r4, r26
     stw     r0, 0xa4(sp)
-    lwz     r3, MarioHitActorPos(r13)
+    lwz     r3, R13Off_m0x60b4(r13)
     addi    r4, r4, 0x10
     stw     r25, 0xa0(sp)
     lfs     f3, 0x68(r5)
     lfd     f0, 0xa0(sp)
-    lfs     f4, -0x782c(rtoc)
+    lfs     f4, -0x782c(r2)
     fsubs   f0, f0, f30
     fmuls   f1, f29, f0
     bl      MsIsInSight__FRCQ29JGeometry8TVec3_f_fRCQ29JGeometry8TVec3_f_fff
@@ -674,15 +674,15 @@ setNoticeInfo__15CPolarSubCameraFv: # 0x80029af0
     bl      __nwa__FUl
     stw     r3, 0x2a0(r31)
     li      r0, 0x0
-    lis     r3, 0x803b
+    lis     r3, sNoticeActorManagerName@ha
     stw     r0, 0x2a4(r31)
-    subi    r29, r3, 0x2f50
+    addi    r29, r3, sNoticeActorManagerName@l
     li      r30, 0x0
     stw     r0, 0x29c(r31)
     b       branch_0x80029cfc
 
 branch_0x80029b2c:
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      getManagerByName__10TConductorFPCc
     cmplwi  r3, 0x0
     beq-    branch_0x80029cf8
@@ -692,7 +692,7 @@ branch_0x80029b2c:
     cmpw    r5, r4
     bge-    branch_0x80029cf8
     cmpwi   r4, 0x8
-    subi    r7, r4, 0x8
+    addi    r7, r4, -0x8
     ble-    branch_0x80029cb8
     addi    r0, r7, 0x7
     srwi    r0, r0, 3
@@ -807,8 +807,8 @@ branch_0x80029cfc:
     lwz     r4, 0x0(r3)
     cmplwi  r4, 0x0
     bne+    branch_0x80029b2c
-    lwz     r3, -0x5db8(r13)
-    lwz     r27, -0x7fb0(r13)
+    lwz     r3, R13Off_m0x5db8(r13)
+    lwz     r27, R13Off_m0x7fb0(r13)
     lwz     r28, 0x4(r3)
     mr      r3, r27
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc

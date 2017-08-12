@@ -7,12 +7,12 @@ __dt__23TNerveAnimalGraphWanderFv: # 0x8000a4c8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8000a50c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x42a0
+    lis     r3, __vvt__23TNerveAnimalGraphWander@ha
+    addi    r0, r3, __vvt__23TNerveAnimalGraphWander@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8000a4fc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x8000a4fc:
     extsh.  r0, r4
@@ -87,11 +87,11 @@ branch_0x8000a5b8:
     stw     r0, 0x0(r27)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x7ec8(rtoc)
+    lfd     f3, -0x7ec8(r2)
     stw     r0, 0xcc(sp)
     subf    r0, r28, r29
     lis     r3, 0x4330
-    lfs     f1, -0x7ed8(rtoc)
+    lfs     f1, -0x7ed8(r2)
     stw     r3, 0xc8(sp)
     xoris   r0, r0, 0x8000
     stw     r0, 0xc4(sp)
@@ -154,11 +154,11 @@ branch_0x8000a6cc:
     stw     r0, 0x0(r27)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x7ec8(rtoc)
+    lfd     f3, -0x7ec8(r2)
     stw     r0, 0xbc(sp)
     subf    r0, r29, r28
     lis     r3, 0x4330
-    lfs     f1, -0x7ed8(rtoc)
+    lfs     f1, -0x7ed8(r2)
     stw     r3, 0xb8(sp)
     xoris   r0, r0, 0x8000
     stw     r0, 0xc4(sp)
@@ -218,7 +218,7 @@ branch_0x8000a77c:
     fadds   f0, f1, f0
     fadds   f1, f2, f0
     bl      sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x7ed4(rtoc)
+    lfs     f0, -0x7ed4(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8000aa44
     lwz     r0, 0x118(r31)
@@ -274,7 +274,7 @@ branch_0x8000a848:
     fadds   f0, f1, f0
     fadds   f1, f2, f0
     bl      sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x7ed0(rtoc)
+    lfs     f0, -0x7ed0(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8000aa44
     mr      r3, r31
@@ -316,11 +316,11 @@ branch_0x8000a920:
     stw     r0, 0x0(r27)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x7ec8(rtoc)
+    lfd     f3, -0x7ec8(r2)
     stw     r0, 0xbc(sp)
     subf    r0, r29, r30
     lis     r3, 0x4330
-    lfs     f1, -0x7ed8(rtoc)
+    lfs     f1, -0x7ed8(r2)
     stw     r3, 0xb8(sp)
     xoris   r0, r0, 0x8000
     stw     r0, 0xc4(sp)
@@ -360,11 +360,11 @@ branch_0x8000a9c4:
     stw     r0, 0x0(r27)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x7ec8(rtoc)
+    lfd     f3, -0x7ec8(r2)
     stw     r0, 0xbc(sp)
     subf    r0, r30, r29
     lis     r3, 0x4330
-    lfs     f1, -0x7ed8(rtoc)
+    lfs     f1, -0x7ed8(r2)
     stw     r3, 0xb8(sp)
     xoris   r0, r0, 0x8000
     stw     r0, 0xc4(sp)
@@ -409,7 +409,7 @@ pop__23TSolidStack_9TPathNode_Fv: # 0x8000aa5c
     blr
 
 branch_0x8000aa98:
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stw     r0, 0x4(r4)
     lwz     r0, 0x4(r4)
     lwz     r4, 0x8(r4)
@@ -431,26 +431,26 @@ theNerve__23TNerveAnimalGraphWanderFv: # 0x8000aad4
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x71f0(r13)
+    lbz     r0, R13Off_m0x71f0(r13)
     extsb.  r0, r0
     bne-    branch_0x8000ab24
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x71ec(r13)
-    subi    r0, r3, 0x42a0
-    lis     r4, 0x8001
-    stw     r0, -0x71ec(r13)
-    lis     r3, 0x803f
-    subi    r5, r3, 0x6730
-    subi    r4, r4, 0x5b38
-    subi    r3, r13, 0x71ec
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveAnimalGraphWander@ha
+    stw     r0, R13Off_m0x71ec(r13)
+    addi    r0, r3, __vvt__23TNerveAnimalGraphWander@l
+    lis     r4, __dt__23TNerveAnimalGraphWanderFv@ha
+    stw     r0, R13Off_m0x71ec(r13)
+    lis     r3, unk_803e98d0@ha
+    addi    r5, r3, unk_803e98d0@l
+    addi    r4, r4, __dt__23TNerveAnimalGraphWanderFv@l
+    addi    r3, r13, R13Off_m0x71ec
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f0(r13)
+    stb     r0, R13Off_m0x71f0(r13)
 branch_0x8000ab24:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x71ec
+    addi    r3, r13, R13Off_m0x71ec
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -464,13 +464,13 @@ CLBPalFrame_i___Fi: # 0x8000ab38
     stw     r31, 0x1c(sp)
     mr      r31, r3
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x7eb8(rtoc)
+    lfs     f0, -0x7eb8(r2)
     xoris   r0, r31, 0x8000
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
     fdivs   f0, f0, f1
     stw     r0, 0x10(sp)
-    lfd     f2, -0x7ec8(rtoc)
+    lfd     f2, -0x7ec8(r2)
     lfd     f1, 0x10(sp)
     fsubs   f1, f1, f2
     fmuls   f1, f1, f0
@@ -485,14 +485,14 @@ CLBPalFrame_i___Fi: # 0x8000ab38
 .globl CLBRoundf_i___Ff
 CLBRoundf_i___Ff: # 0x8000ab90
     stwu    sp, -0x18(sp)
-    lfs     f0, -0x7ec0(rtoc)
+    lfs     f0, -0x7ec0(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8000aba8
-    lfs     f0, -0x7ebc(rtoc)
+    lfs     f0, -0x7ebc(r2)
     b       branch_0x8000abac
 
 branch_0x8000aba8:
-    lfs     f0, -0x7eb4(rtoc)
+    lfs     f0, -0x7eb4(r2)
 branch_0x8000abac:
     fadds   f0, f1, f0
     fctiwz  f0, f0
@@ -500,3 +500,4 @@ branch_0x8000abac:
     lwz     r3, 0x14(sp)
     addi    sp, sp, 0x18
     blr
+

@@ -63,11 +63,11 @@ branch_0x8033bd54:
     b       branch_0x8033bf14
 
 branch_0x8033bd5c:
-    lfd     f1, 0x9e0(rtoc)
+    lfd     f1, 0x9e0(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bd64:
-    lfd     f1, 0x9e8(rtoc)
+    lfd     f1, 0x9e8(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bd6c:
@@ -75,11 +75,11 @@ branch_0x8033bd6c:
     bne-    branch_0x8033bd8c
     cmpwi   r5, 0x0
     bge-    branch_0x8033bd84
-    lfd     f1, 0x9f0(rtoc)
+    lfd     f1, 0x9f0(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bd84:
-    lfd     f1, 0x9f8(rtoc)
+    lfd     f1, 0x9f8(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bd8c:
@@ -103,19 +103,19 @@ branch_0x8033bdc0:
     b       branch_0x8033bde4
 
 branch_0x8033bdcc:
-    lfd     f1, 0xa00(rtoc)
+    lfd     f1, 0xa00(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bdd4:
-    lfd     f1, 0xa08(rtoc)
+    lfd     f1, 0xa08(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bddc:
-    lfd     f1, 0xa10(rtoc)
+    lfd     f1, 0xa10(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bde4:
-    lfd     f1, 0xa18(rtoc)
+    lfd     f1, 0xa18(r2)
     b       branch_0x8033bf14
 
 branch_0x8033bdec:
@@ -133,19 +133,19 @@ branch_0x8033be08:
     b       branch_0x8033be2c
 
 branch_0x8033be14:
-    lfd     f1, 0xa20(rtoc)
+    lfd     f1, 0xa20(r2)
     b       branch_0x8033bf14
 
 branch_0x8033be1c:
-    lfd     f1, 0xa28(rtoc)
+    lfd     f1, 0xa28(r2)
     b       branch_0x8033bf14
 
 branch_0x8033be24:
-    lfd     f1, 0x9e0(rtoc)
+    lfd     f1, 0x9e0(r2)
     b       branch_0x8033bf14
 
 branch_0x8033be2c:
-    lfd     f1, 0x9e8(rtoc)
+    lfd     f1, 0x9e8(r2)
     b       branch_0x8033bf14
 
 branch_0x8033be34:
@@ -154,11 +154,11 @@ branch_0x8033be34:
     bne-    branch_0x8033be58
     cmpwi   r5, 0x0
     bge-    branch_0x8033be50
-    lfd     f1, 0x9f0(rtoc)
+    lfd     f1, 0x9f0(r2)
     b       branch_0x8033bf14
 
 branch_0x8033be50:
-    lfd     f1, 0x9f8(rtoc)
+    lfd     f1, 0x9f8(r2)
     b       branch_0x8033bf14
 
 branch_0x8033be58:
@@ -166,7 +166,7 @@ branch_0x8033be58:
     srawi   r0, r0, 20
     cmpwi   r0, 0x3c
     ble-    branch_0x8033be74
-    lfd     f0, 0x9f8(rtoc)
+    lfd     f0, 0x9f8(r2)
     stfd    f0, 0x18(sp)
     b       branch_0x8033bea8
 
@@ -175,7 +175,7 @@ branch_0x8033be74:
     bge-    branch_0x8033be90
     cmpwi   r0, -0x3c
     bge-    branch_0x8033be90
-    lfd     f0, 0xa20(rtoc)
+    lfd     f0, 0xa20(r2)
     stfd    f0, 0x18(sp)
     b       branch_0x8033bea8
 
@@ -212,16 +212,16 @@ branch_0x8033bed4:
 
 branch_0x8033bee8:
     lfd     f1, 0x18(sp)
-    lfd     f0, 0xa30(rtoc)
-    lfd     f2, 0x9e0(rtoc)
+    lfd     f0, 0xa30(r2)
+    lfd     f2, 0x9e0(r2)
     fsub    f0, f1, f0
     fsub    f1, f2, f0
     b       branch_0x8033bf14
 
 branch_0x8033bf00:
     lfd     f2, 0x18(sp)
-    lfd     f1, 0xa30(rtoc)
-    lfd     f0, 0x9e0(rtoc)
+    lfd     f1, 0xa30(r2)
+    lfd     f0, 0x9e0(r2)
     fsub    f1, f2, f1
     fsub    f1, f1, f0
 branch_0x8033bf14:

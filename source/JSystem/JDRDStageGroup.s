@@ -51,18 +51,18 @@ __dt__Q26JDrama12TDStageGroupFv: # 0x802f86a0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f8758
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1e20
+    lis     r3, __vvt__Q26JDrama12TDStageGroup@h
+    addi    r3, r3, __vvt__Q26JDrama12TDStageGroup@l
     addic.  r0, r30, 0x20
     stw     r3, 0x0(r30)
     beq-    branch_0x802f8700
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1ec0
+    lis     r3, __vvt__Q26JDrama9TFrmGXSet@h
+    addi    r3, r3, __vvt__Q26JDrama9TFrmGXSet@l
     addic.  r0, r30, 0x20
     stw     r3, 0x20(r30)
     beq-    branch_0x802f8700
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x20(r30)
     addi    r3, r30, 0x20
     li      r4, 0x0
@@ -70,8 +70,8 @@ __dt__Q26JDrama12TDStageGroupFv: # 0x802f86a0
 branch_0x802f8700:
     cmplwi  r30, 0x0
     beq-    branch_0x802f8748
-    lis     r3, 0x803c
-    addi    r3, r3, 0xf5c
+    lis     r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@h
+    addi    r3, r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@l
     addic.  r0, r30, 0x10
     stw     r3, 0x0(r30)
     beq-    branch_0x802f8728
@@ -81,8 +81,8 @@ branch_0x802f8700:
 branch_0x802f8728:
     cmplwi  r30, 0x0
     beq-    branch_0x802f8748
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

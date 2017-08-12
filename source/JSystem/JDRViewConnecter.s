@@ -2,9 +2,9 @@
 .globl __ct__Q26JDrama14TViewConnecterFPQ26JDrama8TViewObjPQ26JDrama8TViewObjQ26JDrama10TFlagT_Us_PCc
 __ct__Q26JDrama14TViewConnecterFPQ26JDrama8TViewObjPQ26JDrama8TViewObjQ26JDrama10TFlagT_Us_PCc: # 0x802fcb5c
     mflr    r0
-    lis     r8, 0x803e
+    lis     r8, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r8, 0x20f0
+    addi    r0, r8, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     addi    r31, r6, 0x0
@@ -19,13 +19,13 @@ __ct__Q26JDrama14TViewConnecterFPQ26JDrama8TViewObjPQ26JDrama8TViewObjQ26JDrama1
     addi    r3, r7, 0x0
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r28)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r28)
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama14TViewConnecter@h
     sth     r0, 0xc(r28)
-    addi    r0, r3, 0x2280
+    addi    r0, r3, __vvt__Q26JDrama14TViewConnecter@l
     addi    r3, r28, 0x0
     stw     r0, 0x0(r28)
     stw     r29, 0x10(r28)

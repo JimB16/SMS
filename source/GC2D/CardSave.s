@@ -9,12 +9,12 @@ __dt__9TCardSaveFv: # 0x80157e7c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80157ed4
-    lis     r3, 0x803c
-    addi    r0, r3, 0x7a0
+    lis     r3, __vvt__9TCardSave@h
+    addi    r0, r3, __vvt__9TCardSave@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80157ec4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -62,38 +62,6 @@ branch_0x80157f28:
 
 .globl execMovement___9TCardSaveFv
 execMovement___9TCardSaveFv: # 0x80157f30
-
-.set var_308, -0x308
-.set var_304, -0x304
-.set var_300, -0x300
-.set var_29C, -0x29C
-.set var_278, -0x278
-.set var_274, -0x274
-.set var_208, -0x208
-.set var_1DC, -0x1DC
-.set var_1B8, -0x1B8
-.set var_16C, -0x16C
-.set var_168, -0x168
-.set var_144, -0x144
-.set var_124, -0x124
-.set var_AC, -0xAC
-.set var_98, -0x98
-.set var_90, -0x90
-.set var_88, -0x88
-.set var_80, -0x80
-.set var_78, -0x78
-.set var_70, -0x70
-.set var_68, -0x68
-.set var_60, -0x60
-.set var_58, -0x58
-.set var_50, -0x50
-.set var_48, -0x48
-.set var_40, -0x40
-.set var_38, -0x38
-.set var_30, -0x30
-.set var_24, -0x24
-.set arg_4,  4
-
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x5e8(sp)
@@ -108,16 +76,15 @@ execMovement___9TCardSaveFv: # 0x80157f30
     lwz     r0, 0x310(r31)
     cmplwi  r0, 0x35
     bgt-    branch_0x8015b178
-    lis     r3, 0x803c
-    addi    r3, r3, 0x7c4
+    lis     r3, unk_803c07c4@h
+    addi    r3, r3, unk_803c07c4@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80157F80:		# jumptable 80157F7C case 0
-    lis     r3, 0x803f
-    subi    r3, r3, 0x6900
+    bctr       
+branch_0x80157f80:
+    lis     r3, gpApplication@ha
+    addi    r3, r3, gpApplication@l
     lbz     r0, 0x38(r3)
     stb     r0, 0x2ea(r31)
     lwz     r0, 0x308(r31)
@@ -138,3398 +105,3363 @@ branch_0x80157fbc:
     li      r0, 0x2
     stw     r0, 0x310(r31)
     addi    r4, r31, 0x278
-    lwz     r3, -0x603c(r13)
+    lwz     r3, R13Off_m0x603c(r13)
     bl      getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo
     b       branch_0x8015b178
 
-branch_0x80157FD4:		# jumptable 80157F7C cases 1,25
-lwz	  r3, 0x270(r31)
-lhz	  r0, 0xE2(r3)
-clrrwi	  r0, r0, 1
-sth	  r0, 0xE2(r3)
-lwz	  r3, -0x603C(r13)
-bl	  unmount__12TCardManagerFv # TCardManager::unmount((void))
-lbz	  r0, 0x18(r31)
-cmplwi	  r0, 0
-bne	  branch_0x8015800C
-lwz	  r0, 0x308(r31)
-cmpwi	  r0, 0
-bne	  branch_0x8015800C
-lwz	  r3, 0x2D8(r31)
-bl	  setDrawEnd__11TPauseMenu2Fv #	TPauseMenu2::setDrawEnd((void))
+branch_0x80157fd4:
+    lwz     r3, 0x270(r31)
+    lhz     r0, 0xe2(r3)
+    clrrwi  r0, r0, 1
+    sth     r0, 0xe2(r3)
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      unmount__12TCardManagerFv
+    lbz     r0, 0x18(r31)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8015800c
+    lwz     r0, 0x308(r31)
+    cmpwi   r0, 0x0
+    bne-    branch_0x8015800c
+    lwz     r3, 0x2d8(r31)
+    bl      setDrawEnd__11TPauseMenu2Fv
+branch_0x8015800c:
+    li      r0, 0x1
+    stb     r0, 0x2df(r31)
+    b       branch_0x8015b178
 
-branch_0x8015800C:
-li	  r0, 1
-stb	  r0, 0x2DF(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x80158018:		# jumptable 80157F7C case 2
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-addi	  r4, r3, 0
-cmpwi	  r4, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-cmpwi	  r4, 0
-bne	  branch_0x801581F4
-lbz	  r0, 0x2EA(r31)
-extsb	  r0, r0
-slwi	  r3, r0, 5
-addi	  r0, r3, 0x294
-lhzx	  r0, r31, r0
-cmplwi	  r0, 0x3E7
-mr	  r25, r0
-ble	  branch_0x80158058
-li	  r25, 0x3E7
-
+branch_0x80158018:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    addi    r4, r3, 0x0
+    cmpwi   r4, -0x1
+    beq-    branch_0x8015b178
+    cmpwi   r4, 0x0
+    bne-    branch_0x801581f4
+    lbz     r0, 0x2ea(r31)
+    extsb   r0, r0
+    slwi    r3, r0, 5
+    addi    r0, r3, 0x294
+    lhzx    r0, r31, r0
+    cmplwi  r0, 0x3e7
+    mr      r25, r0
+    ble-    branch_0x80158058
+    li      r25, 0x3e7
 branch_0x80158058:
-clrlwi	  r27, r25, 16
-cmplwi	  r27, 0x64
-bge	  branch_0x801580CC
-lis	  r4, 0x6666 # 0x66666667
-lwz	  r3, 0x148(r31)
-addi	  r0, r4, 0x6667 # 0x66666667
-mulhw	  r25, r0, r27
-srawi	  r0, r25, 2
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-li	  r5, 0
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-srawi	  r0, r25, 2
-lwz	  r3, 0x14C(r31)
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-mulli	  r0, r0, 0xA
-subf	  r0, r0, r27
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-li	  r5, 0
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-b	  branch_0x8015819C
+    clrlwi  r27, r25, 16
+    cmplwi  r27, 0x64
+    bge-    branch_0x801580cc
+    lis     r4, unk_66666667@h
+    lwz     r3, 0x148(r31)
+    addi    r0, r4, unk_66666667@l
+    mulhw   r25, r0, r27
+    srawi   r0, r25, 2
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    li      r5, 0x0
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    srawi   r0, r25, 2
+    lwz     r3, 0x14c(r31)
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    mulli   r0, r0, 0xa
+    subf    r0, r0, r27
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    li      r5, 0x0
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    b       branch_0x8015819c
 
-branch_0x801580CC:
-lis	  r4, 0x51EC # 0x51EB851F
-lwz	  r3, 0x13C(r31)
-addi	  r0, r4, -0x7AE1 # 0x51EB851F
-mulhw	  r0, r0, r27
-srawi	  r0, r0, 5
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-li	  r5, 0
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-stw	  r27, 0x5E8+var_30+4(r1)
-lis	  r0, 0x4330
-lfd	  f1, -0x4A40(r2)
-lis	  r3, 0x6666 # 0x66666667
-stw	  r0, 0x5E8+var_30(r1)
-addi	  r0, r3, 0x6667 # 0x66666667
-lfs	  f2, -0x4A50(r2)
-lfd	  f0, 0x5E8+var_30(r1)
-li	  r5, 0
-lwz	  r3, 0x140(r31)
-fsubs	  f0, f0, f1
-fmuls	  f0, f2, f0
-fctiwz	  f0, f0
-stfd	  f0, 0x5E8+var_38(r1)
-lwz	  r4, 0x5E8+var_38+4(r1)
-mulli	  r4, r4, 0x64
-subf	  r25, r4, r25
-clrlwi	  r23, r25, 16
-mulhw	  r25, r0, r23
-srawi	  r0, r25, 2
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-srawi	  r0, r25, 2
-lwz	  r3, 0x144(r31)
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-mulli	  r0, r0, 0xA
-subf	  r0, r0, r23
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-li	  r5, 0
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
+branch_0x801580cc:
+    lis     r4, unk_51eb851f@ha
+    lwz     r3, 0x13c(r31)
+    addi    r0, r4, unk_51eb851f@l
+    mulhw   r0, r0, r27
+    srawi   r0, r0, 5
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    li      r5, 0x0
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    stw     r27, 0x5bc(sp)
+    lis     r0, 0x4330
+    lfd     f1, -0x4a40(r2)
+    lis     r3, unk_66666667@h
+    stw     r0, 0x5b8(sp)
+    addi    r0, r3, unk_66666667@l
+    lfs     f2, -0x4a50(r2)
+    lfd     f0, 0x5b8(sp)
+    li      r5, 0x0
+    lwz     r3, 0x140(r31)
+    fsubs   f0, f0, f1
+    fmuls   f0, f2, f0
+    fctiwz  f0, f0
+    stfd    f0, 0x5b0(sp)
+    lwz     r4, 0x5b4(sp)
+    mulli   r4, r4, 0x64
+    subf    r25, r4, r25
+    clrlwi  r23, r25, 16
+    mulhw   r25, r0, r23
+    srawi   r0, r25, 2
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    srawi   r0, r25, 2
+    lwz     r3, 0x144(r31)
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    mulli   r0, r0, 0xa
+    subf    r0, r0, r23
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    li      r5, 0x0
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+branch_0x8015819c:
+    lwz     r0, 0x308(r31)
+    cmpwi   r0, 0x6
+    beq-    branch_0x801581d0
+    bge-    branch_0x801581b8
+    cmpwi   r0, 0x0
+    beq-    branch_0x801581c4
+    b       branch_0x801581e8
 
-branch_0x8015819C:
-lwz	  r0, 0x308(r31)
-cmpwi	  r0, 6
-beq	  branch_0x801581D0
-bge	  branch_0x801581B8
-cmpwi	  r0, 0
-beq	  branch_0x801581C4
-b	  branch_0x801581E8
+branch_0x801581b8:
+    cmpwi   r0, 0x8
+    beq-    branch_0x801581dc
+    b       branch_0x801581e8
 
-branch_0x801581B8:
-cmpwi	  r0, 8
-beq	  branch_0x801581DC
-b	  branch_0x801581E8
+branch_0x801581c4:
+    li      r0, 0x15
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x801581C4:
-li	  r0, 0x15
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801581d0:
+    li      r0, 0x2b
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x801581D0:
-li	  r0, 0x2B
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801581dc:
+    li      r0, 0x33
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x801581DC:
-li	  r0, 0x33
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801581e8:
+    li      r0, 0x2a
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x801581E8:
-li	  r0, 0x2A
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801581f4:
+    mr      r3, r31
+    bl      changeMode__9TCardSaveFl
+    stw     r3, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x801581F4:
-mr	  r3, r31
-bl	  changeMode__9TCardSaveFl # TCardSave::changeMode((long))
-stw	  r3, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158204:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, -0x3
+    bne-    branch_0x8015822c
+    addi    r3, r31, 0x0
+    li      r4, 0x1
+    bl      waitForStop__9TCardSaveF10TEProgress
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    b       branch_0x8015b178
 
-branch_0x80158204:		# jumptable 80157F7C case 3
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, -3
-bne	  branch_0x8015822C
-addi	  r3, r31, 0
-li	  r4, 1
-bl	  waitForStop__9TCardSaveF10TEProgress # TCardSave::waitForStop((TEProgress))
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015822C:
-lwz	  r3, 0xA4(r31)
-lbz	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  branch_0x80158410
-lwz	  r6, 0x50(r31)
-lis	  r28, 0x4330
-lwz	  r0, 0x58(r31)
-li	  r4, 0x14
-lwz	  r5, 0x4C(r31)
-lwz	  r3, 0x54(r31)
-subf	  r24, r6, r0
-xoris	  r0, r24, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r25, r5, r3
-xoris	  r3, r25, 0x8000
-stw	  r0, 0x5E8+var_30+4(r1)
-lfd	  f4, -0x4A38(r2)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_38+4(r1)
-lwz	  r26, 0x48(r31)
-stw	  r28, 0x5E8+var_38(r1)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r25, 0
-addi	  r5, r24, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r24, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r25, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_40+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_50+4(r1)
-stw	  r5, 0x5E8+var_60+4(r1)
-stw	  r0, 0x5E8+var_70+4(r1)
-stw	  r28, 0x5E8+var_40(r1)
-stw	  r28, 0x5E8+var_50(r1)
-lfd	  f1, 0x5E8+var_40(r1)
-stw	  r28, 0x5E8+var_60(r1)
-lfd	  f0, 0x5E8+var_50(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_70(r1)
-lfd	  f1, 0x5E8+var_60(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_70(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_48(r1)
-stfd	  f2, 0x5E8+var_58(r1)
-lwz	  r25, 0x5E8+var_48+4(r1)
-stfd	  f1, 0x5E8+var_68(r1)
-lwz	  r24, 0x5E8+var_58+4(r1)
-xoris	  r0, r25, 0x8000
-stfd	  f0, 0x5E8+var_78(r1)
-lwz	  r6, 0x5E8+var_68+4(r1)
-xoris	  r5, r24, 0x8000
-lwz	  r7, 0x5E8+var_78+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_90+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_80+4(r1)
-stw	  r6, 0x5E8+var_88+4(r1)
-stw	  r0, 0x5E8+var_98+4(r1)
-stw	  r28, 0x5E8+var_80(r1)
-stw	  r28, 0x5E8+var_88(r1)
-lfd	  f1, 0x5E8+var_80(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f0, 0x5E8+var_88(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_98(r1)
-lfd	  f3, 0x5E8+var_90(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_98(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r24
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r25
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r4, 0
-li	  r0, 3
-lwz	  r3, 0xA4(r31)
-stb	  r4, 0xC(r3)
-stw	  r0, 0x10(r31)
-
+branch_0x8015822c:
+    lwz     r3, 0xa4(r31)
+    lbz     r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x80158410
+    lwz     r6, 0x50(r31)
+    lis     r28, 0x4330
+    lwz     r0, 0x58(r31)
+    li      r4, 0x14
+    lwz     r5, 0x4c(r31)
+    lwz     r3, 0x54(r31)
+    subf    r24, r6, r0
+    xoris   r0, r24, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r25, r5, r3
+    xoris   r3, r25, 0x8000
+    stw     r0, 0x5bc(sp)
+    lfd     f4, -0x4a38(r2)
+    fmr     f2, f1
+    stw     r3, 0x5b4(sp)
+    lwz     r26, 0x48(r31)
+    stw     r28, 0x5b0(sp)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r25, 0x0
+    addi    r5, r24, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r24, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r25, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x5ac(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x59c(sp)
+    stw     r5, 0x58c(sp)
+    stw     r0, 0x57c(sp)
+    stw     r28, 0x5a8(sp)
+    stw     r28, 0x598(sp)
+    lfd     f1, 0x5a8(sp)
+    stw     r28, 0x588(sp)
+    lfd     f0, 0x598(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x578(sp)
+    lfd     f1, 0x588(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x578(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x5a0(sp)
+    stfd    f2, 0x590(sp)
+    lwz     r25, 0x5a4(sp)
+    stfd    f1, 0x580(sp)
+    lwz     r24, 0x594(sp)
+    xoris   r0, r25, 0x8000
+    stfd    f0, 0x570(sp)
+    lwz     r6, 0x584(sp)
+    xoris   r5, r24, 0x8000
+    lwz     r7, 0x574(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x55c(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x56c(sp)
+    stw     r6, 0x564(sp)
+    stw     r0, 0x554(sp)
+    stw     r28, 0x568(sp)
+    stw     r28, 0x560(sp)
+    lfd     f1, 0x568(sp)
+    stw     r28, 0x558(sp)
+    lfd     f0, 0x560(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x550(sp)
+    lfd     f3, 0x558(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x550(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r24
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r25
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r4, 0x0
+    li      r0, 0x3
+    lwz     r3, 0xa4(r31)
+    stb     r4, 0xc(r3)
+    stw     r0, 0x10(r31)
 branch_0x80158410:
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  waitForStop__9TCardSaveF10TEProgress # TCardSave::waitForStop((TEProgress))
-extsb	  r0, r3
-cmpwi	  r0, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x603C(r13)
-addi	  r4, r31, 0x278
-bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
-b	  def_80157F7C	# jumptable 80157F7C default case
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      waitForStop__9TCardSaveF10TEProgress
+    extsb   r0, r3
+    cmpwi   r0, -0x1
+    beq-    branch_0x8015b178
+    lwz     r3, R13Off_m0x603c(r13)
+    addi    r4, r31, 0x278
+    bl      getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo
+    b       branch_0x8015b178
 
-branch_0x80158438:		# jumptable 80157F7C cases 4,5,12,13,45,53
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, -3
-beq	  branch_0x80158460
-addi	  r3, r31, 0
-li	  r4, 1
-bl	  waitForStop__9TCardSaveF10TEProgress # TCardSave::waitForStop((TEProgress))
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158438:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, -0x3
+    beq-    branch_0x80158460
+    addi    r3, r31, 0x0
+    li      r4, 0x1
+    bl      waitForStop__9TCardSaveF10TEProgress
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    b       branch_0x8015b178
 
 branch_0x80158460:
-lwz	  r3, 0xA4(r31)
-lbz	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  branch_0x80158644
-lwz	  r6, 0x50(r31)
-lis	  r28, 0x4330
-lwz	  r0, 0x58(r31)
-li	  r4, 0x14
-lwz	  r5, 0x4C(r31)
-lwz	  r3, 0x54(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0x48(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r25, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r24, 0x5E8+var_70+4(r1)
-xoris	  r0, r25, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r24, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r24
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r25
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r4, 0
-li	  r0, 3
-lwz	  r3, 0xA4(r31)
-stb	  r4, 0xC(r3)
-stw	  r0, 0x10(r31)
-
+    lwz     r3, 0xa4(r31)
+    lbz     r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x80158644
+    lwz     r6, 0x50(r31)
+    lis     r28, 0x4330
+    lwz     r0, 0x58(r31)
+    li      r4, 0x14
+    lwz     r5, 0x4c(r31)
+    lwz     r3, 0x54(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0x48(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r25, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r24, 0x57c(sp)
+    xoris   r0, r25, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r24, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r24
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r25
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r4, 0x0
+    li      r0, 0x3
+    lwz     r3, 0xa4(r31)
+    stb     r4, 0xc(r3)
+    stw     r0, 0x10(r31)
 branch_0x80158644:
-addi	  r3, r31, 0
-li	  r4, 3
-bl	  waitForStop__9TCardSaveF10TEProgress # TCardSave::waitForStop((TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    bl      waitForStop__9TCardSaveF10TEProgress
+    b       branch_0x8015b178
 
-branch_0x80158654:		# jumptable 80157F7C cases 6,7
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, -3
-beq	  branch_0x80158684
-addi	  r3, r31, 0
-li	  r4, 8
-li	  r5, 0x35
-li	  r6, 1
-bl	  waitForChoice__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoice((TEProgress,TEProgress,signed	char))
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158654:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, -0x3
+    beq-    branch_0x80158684
+    addi    r3, r31, 0x0
+    li      r4, 0x8
+    li      r5, 0x35
+    li      r6, 0x1
+    bl      waitForChoice__9TCardSaveF10TEProgress10TEProgressSc
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    b       branch_0x8015b178
 
 branch_0x80158684:
-lwz	  r3, 0xF8(r31)
-lbz	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  branch_0x801588B4
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x801588B4
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
+    lwz     r3, 0xf8(r31)
+    lbz     r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x801588b4
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x801588b4
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+branch_0x801588b4:
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    li      r5, 0x3
+    li      r6, 0x1
+    bl      waitForChoice__9TCardSaveF10TEProgress10TEProgressSc
+    b       branch_0x8015b178
 
-branch_0x801588B4:
-addi	  r3, r31, 0
-li	  r4, 3
-li	  r5, 3
-li	  r6, 1
-bl	  waitForChoice__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoice((TEProgress,TEProgress,signed	char))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x801588CC:		# jumptable 80157F7C case 8
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-addi	  r25, r3, 0
-cmpwi	  r25, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-cmpwi	  r25, 0
-bne	  branch_0x80158920
-addi	  r3, r31, 0
-li	  r4, 9
-li	  r5, 0x35
-li	  r6, 1
-bl	  waitForChoice__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoice((TEProgress,TEProgress,signed	char))
-extsb.	  r0, r3
-bne	  branch_0x80158914
-li	  r0, 0
-stw	  r0, 0x2E0(r31)
-lwz	  r3, -0x603C(r13)
-bl	  format__12TCardManagerFv # TCardManager::format((void))
-
+branch_0x801588cc:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    addi    r25, r3, 0x0
+    cmpwi   r25, -0x1
+    beq-    branch_0x8015b178
+    cmpwi   r25, 0x0
+    bne-    branch_0x80158920
+    addi    r3, r31, 0x0
+    li      r4, 0x9
+    li      r5, 0x35
+    li      r6, 0x1
+    bl      waitForChoice__9TCardSaveF10TEProgress10TEProgressSc
+    extsb.  r0, r3
+    bne-    branch_0x80158914
+    li      r0, 0x0
+    stw     r0, 0x2e0(r31)
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      format__12TCardManagerFv
 branch_0x80158914:
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    b       branch_0x8015b178
 
 branch_0x80158920:
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x80158B40
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r23, r6, r0
-xoris	  r0, r23, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r23, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r23, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x80158b40
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r23, r6, r0
+    xoris   r0, r23, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r23, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r23, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+branch_0x80158b40:
+    addi    r3, r31, 0x0
+    addi    r4, r25, 0x0
+    bl      changeMode__9TCardSaveFl
+    addi    r4, r3, 0x0
+    addi    r3, r31, 0x0
+    addi    r5, r4, 0x0
+    li      r6, 0x1
+    bl      waitForChoice__9TCardSaveF10TEProgress10TEProgressSc
+    b       branch_0x8015b178
 
-branch_0x80158B40:
-addi	  r3, r31, 0
-addi	  r4, r25, 0
-bl	  changeMode__9TCardSaveFl # TCardSave::changeMode((long))
-addi	  r4, r3, 0
-addi	  r3, r31, 0
-addi	  r5, r4, 0
-li	  r6, 1
-bl	  waitForChoice__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoice((TEProgress,TEProgress,signed	char))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158b64:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, -0x1
+    beq-    branch_0x80158f74
+    cmpwi   r3, 0x0
+    bne-    branch_0x80158d84
+    addi    r3, r31, 0x0
+    li      r4, 0xa
+    bl      drawMessage__9TCardSaveF10TEProgress
+    lwz     r3, 0x2e0(r31)
+    cmpwi   r3, 0x12c
+    ble-    branch_0x80158d78
+    lwz     r3, 0x178(r31)
+    lbzu    r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015b178
+    li      r0, 0x0
+    stb     r0, 0x0(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r6, 0x168(r31)
+    lwz     r0, 0x170(r31)
+    lwz     r5, 0x164(r31)
+    lwz     r3, 0x16c(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0x160(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r0, 0x3
+    stw     r0, 0x10(r31)
+    b       branch_0x8015b178
 
-branch_0x80158B64:		# jumptable 80157F7C case 9
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, -1
-beq	  branch_0x80158F74
-cmpwi	  r3, 0
-bne	  branch_0x80158D84
-addi	  r3, r31, 0
-li	  r4, 0xA
-bl	  drawMessage__9TCardSaveF10TEProgress # TCardSave::drawMessage((TEProgress))
-lwz	  r3, 0x2E0(r31)
-cmpwi	  r3, 0x12C
-ble	  branch_0x80158D78
-lwz	  r3, 0x178(r31)
-lbzu	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  def_80157F7C	# jumptable 80157F7C default case
-li	  r0, 0
-stb	  r0, 0(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r6, 0x168(r31)
-lwz	  r0, 0x170(r31)
-lwz	  r5, 0x164(r31)
-lwz	  r3, 0x16C(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0x160(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r0, 3
-stw	  r0, 0x10(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158d78:
+    addi    r0, r3, 0x1
+    stw     r0, 0x2e0(r31)
+    b       branch_0x8015b178
 
-branch_0x80158D78:
-addi	  r0, r3, 1
-stw	  r0, 0x2E0(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158d84:
+    lwz     r3, 0x178(r31)
+    lbzu    r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x80158f64
+    li      r0, 0x0
+    stb     r0, 0x0(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r6, 0x168(r31)
+    lwz     r0, 0x170(r31)
+    lwz     r5, 0x164(r31)
+    lwz     r3, 0x16c(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0x160(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r0, 0x3
+    stw     r0, 0x10(r31)
+branch_0x80158f64:
+    addi    r3, r31, 0x0
+    li      r4, 0xb
+    bl      drawMessage__9TCardSaveF10TEProgress
+    b       branch_0x8015b178
 
-branch_0x80158D84:
-lwz	  r3, 0x178(r31)
-lbzu	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  branch_0x80158F64
-li	  r0, 0
-stb	  r0, 0(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r6, 0x168(r31)
-lwz	  r0, 0x170(r31)
-lwz	  r5, 0x164(r31)
-lwz	  r3, 0x16C(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0x160(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r0, 3
-stw	  r0, 0x10(r31)
+branch_0x80158f74:
+    addi    r3, r31, 0x0
+    li      r4, 0x0
+    bl      drawMessage__9TCardSaveF10TEProgress
+    b       branch_0x8015b178
 
-branch_0x80158F64:
-addi	  r3, r31, 0
-li	  r4, 0xB
-bl	  drawMessage__9TCardSaveF10TEProgress # TCardSave::drawMessage((TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158f84:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, 0x0
+    bne-    branch_0x80158fc4
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      waitForAnyKey__9TCardSaveF10TEProgress
+    extsb   r23, r3
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    cmpwi   r23, -0x1
+    beq-    branch_0x8015b178
+    lwz     r3, R13Off_m0x603c(r13)
+    addi    r4, r31, 0x278
+    bl      getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo
+    b       branch_0x8015b178
 
-branch_0x80158F74:
-addi	  r3, r31, 0
-li	  r4, 0
-bl	  drawMessage__9TCardSaveF10TEProgress # TCardSave::drawMessage((TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80158fc4:
+    lwz     r0, 0x310(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x801591ac
+    lwz     r3, 0x178(r31)
+    lbz     r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x801591ac
+    lwz     r6, 0x168(r31)
+    lis     r28, 0x4330
+    lwz     r0, 0x170(r31)
+    li      r4, 0x14
+    lwz     r5, 0x164(r31)
+    lwz     r3, 0x16c(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0x160(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r0, 0x0
+    lwz     r3, 0x178(r31)
+    stb     r0, 0xc(r3)
+branch_0x801591ac:
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    bl      waitForAnyKey__9TCardSaveF10TEProgress
+    b       branch_0x8015b178
 
-branch_0x80158F84:		# jumptable 80157F7C case 10
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, 0
-bne	  branch_0x80158FC4
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  waitForAnyKey__9TCardSaveF10TEProgress # TCardSave::waitForAnyKey((TEProgress))
-extsb	  r23, r3
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-cmpwi	  r23, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x603C(r13)
-addi	  r4, r31, 0x278
-bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801591bc:
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      waitForAnyKey__9TCardSaveF10TEProgress
+    extsb   r0, r3
+    cmpwi   r0, -0x1
+    beq-    branch_0x8015b178
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    addi    r4, r3, 0x0
+    addi    r3, r31, 0x0
+    bl      changeMode__9TCardSaveFl
+    stw     r3, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x80158FC4:
-lwz	  r0, 0x310(r31)
-cmpwi	  r0, 2
-bne	  branch_0x801591AC
-lwz	  r3, 0x178(r31)
-lbz	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  branch_0x801591AC
-lwz	  r6, 0x168(r31)
-lis	  r28, 0x4330
-lwz	  r0, 0x170(r31)
-li	  r4, 0x14
-lwz	  r5, 0x164(r31)
-lwz	  r3, 0x16C(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0x160(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r0, 0
-lwz	  r3, 0x178(r31)
-stb	  r0, 0xC(r3)
-
-branch_0x801591AC:
-addi	  r3, r31, 0
-li	  r4, 3
-bl	  waitForAnyKey__9TCardSaveF10TEProgress # TCardSave::waitForAnyKey((TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x801591BC:		# jumptable 80157F7C case 11
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  waitForAnyKey__9TCardSaveF10TEProgress # TCardSave::waitForAnyKey((TEProgress))
-extsb	  r0, r3
-cmpwi	  r0, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-addi	  r4, r3, 0
-addi	  r3, r31, 0
-bl	  changeMode__9TCardSaveFl # TCardSave::changeMode((long))
-stw	  r3, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x801591F0:		# jumptable 80157F7C case 14
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 0
-bne	  branch_0x80159204
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-
+branch_0x801591f0:
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x0
+    bne-    branch_0x80159204
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
 branch_0x80159204:
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, 0
-bne	  branch_0x80159248
-addi	  r3, r31, 0
-li	  r4, 0xF
-li	  r5, 0x10
-li	  r6, 0
-bl	  waitForChoice__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoice((TEProgress,TEProgress,signed	char))
-extsb	  r23, r3
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-cmpwi	  r23, 0
-bne	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x603C(r13)
-bl	  createFile__12TCardManagerFv # TCardManager::createFile((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, 0x0
+    bne-    branch_0x80159248
+    addi    r3, r31, 0x0
+    li      r4, 0xf
+    li      r5, 0x10
+    li      r6, 0x0
+    bl      waitForChoice__9TCardSaveF10TEProgress10TEProgressSc
+    extsb   r23, r3
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    cmpwi   r23, 0x0
+    bne-    branch_0x8015b178
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      createFile__12TCardManagerFv
+    b       branch_0x8015b178
 
 branch_0x80159248:
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x80159468
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r24, r6, r0
-xoris	  r0, r24, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r23, r5, r3
-xoris	  r3, r23, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r23, 0
-addi	  r5, r24, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r24, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r23, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x80159468
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r24, r6, r0
+    xoris   r0, r24, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r23, r5, r3
+    xoris   r3, r23, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r23, 0x0
+    addi    r5, r24, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r24, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r23, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
 branch_0x80159468:
-addi	  r3, r31, 0
-li	  r4, 3
-li	  r5, 3
-li	  r6, 1
-bl	  waitForChoice__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoice((TEProgress,TEProgress,signed	char))
-b	  def_80157F7C	# jumptable 80157F7C default case
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    li      r5, 0x3
+    li      r6, 0x1
+    bl      waitForChoice__9TCardSaveF10TEProgress10TEProgressSc
+    b       branch_0x8015b178
 
-branch_0x80159480:		# jumptable 80157F7C case 15
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, -1
-beq	  branch_0x801598A8
-cmpwi	  r3, 0
-bne	  branch_0x801596A0
-addi	  r3, r31, 0
-li	  r4, 0x11
-bl	  drawMessage__9TCardSaveF10TEProgress # TCardSave::drawMessage((TEProgress))
-lwz	  r3, 0x2E0(r31)
-cmpwi	  r3, 0x12C
-ble	  branch_0x80159694
-lwz	  r3, 0x178(r31)
-lbzu	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  def_80157F7C	# jumptable 80157F7C default case
-li	  r0, 0
-stb	  r0, 0(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r6, 0x168(r31)
-lwz	  r0, 0x170(r31)
-lwz	  r5, 0x164(r31)
-lwz	  r3, 0x16C(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0x160(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r0, 3
-stw	  r0, 0x10(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159480:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, -0x1
+    beq-    branch_0x801598a8
+    cmpwi   r3, 0x0
+    bne-    branch_0x801596a0
+    addi    r3, r31, 0x0
+    li      r4, 0x11
+    bl      drawMessage__9TCardSaveF10TEProgress
+    lwz     r3, 0x2e0(r31)
+    cmpwi   r3, 0x12c
+    ble-    branch_0x80159694
+    lwz     r3, 0x178(r31)
+    lbzu    r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015b178
+    li      r0, 0x0
+    stb     r0, 0x0(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r6, 0x168(r31)
+    lwz     r0, 0x170(r31)
+    lwz     r5, 0x164(r31)
+    lwz     r3, 0x16c(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0x160(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r0, 0x3
+    stw     r0, 0x10(r31)
+    b       branch_0x8015b178
 
 branch_0x80159694:
-addi	  r0, r3, 1
-stw	  r0, 0x2E0(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+    addi    r0, r3, 0x1
+    stw     r0, 0x2e0(r31)
+    b       branch_0x8015b178
 
-branch_0x801596A0:
-addi	  r3, r31, 0
-li	  r4, 0x12
-bl	  drawMessage__9TCardSaveF10TEProgress # TCardSave::drawMessage((TEProgress))
-lwz	  r3, 0x2E0(r31)
-cmpwi	  r3, 0x12C
-ble	  branch_0x8015989C
-lwz	  r3, 0x178(r31)
-lbzu	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  def_80157F7C	# jumptable 80157F7C default case
-li	  r0, 0
-stb	  r0, 0(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r6, 0x168(r31)
-lwz	  r0, 0x170(r31)
-lwz	  r5, 0x164(r31)
-lwz	  r3, 0x16C(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0x160(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r0, 3
-stw	  r0, 0x10(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801596a0:
+    addi    r3, r31, 0x0
+    li      r4, 0x12
+    bl      drawMessage__9TCardSaveF10TEProgress
+    lwz     r3, 0x2e0(r31)
+    cmpwi   r3, 0x12c
+    ble-    branch_0x8015989c
+    lwz     r3, 0x178(r31)
+    lbzu    r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015b178
+    li      r0, 0x0
+    stb     r0, 0x0(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r6, 0x168(r31)
+    lwz     r0, 0x170(r31)
+    lwz     r5, 0x164(r31)
+    lwz     r3, 0x16c(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0x160(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r0, 0x3
+    stw     r0, 0x10(r31)
+    b       branch_0x8015b178
 
-branch_0x8015989C:
-addi	  r0, r3, 1
-stw	  r0, 0x2E0(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015989c:
+    addi    r0, r3, 0x1
+    stw     r0, 0x2e0(r31)
+    b       branch_0x8015b178
 
-branch_0x801598A8:
-addi	  r3, r31, 0
-li	  r4, 0
-bl	  drawMessage__9TCardSaveF10TEProgress # TCardSave::drawMessage((TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801598a8:
+    addi    r3, r31, 0x0
+    li      r4, 0x0
+    bl      drawMessage__9TCardSaveF10TEProgress
+    b       branch_0x8015b178
 
-branch_0x801598B8:		# jumptable 80157F7C case 17
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  waitForAnyKey__9TCardSaveF10TEProgress # TCardSave::waitForAnyKey((TEProgress))
-extsb	  r0, r3
-cmpwi	  r0, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x603C(r13)
-addi	  r4, r31, 0x278
-bl	  getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo	# TCardManager::getBookmarkInfos((TCardBookmarkInfo *))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801598b8:
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      waitForAnyKey__9TCardSaveF10TEProgress
+    extsb   r0, r3
+    cmpwi   r0, -0x1
+    beq-    branch_0x8015b178
+    lwz     r3, R13Off_m0x603c(r13)
+    addi    r4, r31, 0x278
+    bl      getBookmarkInfos__12TCardManagerFP17TCardBookmarkInfo
+    b       branch_0x8015b178
 
-branch_0x801598E0:		# jumptable 80157F7C case 18
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  waitForAnyKey__9TCardSaveF10TEProgress # TCardSave::waitForAnyKey((TEProgress))
-extsb	  r0, r3
-cmpwi	  r0, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-addi	  r4, r3, 0
-addi	  r3, r31, 0
-bl	  changeMode__9TCardSaveFl # TCardSave::changeMode((long))
-stw	  r3, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x801598e0:
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      waitForAnyKey__9TCardSaveF10TEProgress
+    extsb   r0, r3
+    cmpwi   r0, -0x1
+    beq-    branch_0x8015b178
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    addi    r4, r3, 0x0
+    addi    r3, r31, 0x0
+    bl      changeMode__9TCardSaveFl
+    stw     r3, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x80159914:		# jumptable 80157F7C case 16
-addi	  r3, r31, 0
-li	  r4, 1
-bl	  waitForStop__9TCardSaveF10TEProgress # TCardSave::waitForStop((TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159914:
+    addi    r3, r31, 0x0
+    li      r4, 0x1
+    bl      waitForStop__9TCardSaveF10TEProgress
+    b       branch_0x8015b178
 
-branch_0x80159924:		# jumptable 80157F7C case 19
-lbz	  r0, 0x2EA(r31)
-stb	  r0, 0x2E8(r31)
-lbz	  r0, 0x2EA(r31)
-extsb	  r0, r0
-slwi	  r3, r0, 5
-addi	  r6, r3, 0x278
-add	  r6, r31, r6
-lwz	  r0, 0(r6)
-cmpwi	  r0, 1
-bne	  branch_0x80159958
-li	  r0, 0x14
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159924:
+    lbz     r0, 0x2ea(r31)
+    stb     r0, 0x2e8(r31)
+    lbz     r0, 0x2ea(r31)
+    extsb   r0, r0
+    slwi    r3, r0, 5
+    addi    r6, r3, 0x278
+    add     r6, r31, r6
+    lwz     r0, 0x0(r6)
+    cmpwi   r0, 0x1
+    bne-    branch_0x80159958
+    li      r0, 0x14
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
 branch_0x80159958:
-lwz	  r0, 0x18(r6)
-cmplwi	  r0, 0
-bne	  branch_0x801599F8
-li	  r0, 0x16
-stw	  r0, 0x310(r31)
-addi	  r27, r1, 0x5E8+var_124
-lbz	  r24, 0x2EA(r31)
-stw	  r27, 0x5E8+var_274(r1)
-extsb	  r24, r24
-lwz	  r23, 0x5E8+var_274(r1)
-mr	  r3, r23
-bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
-lis	  r3, unk_803E0148@h
-addi	  r0, r3, unk_803E0148@l
-lis	  r3, unk_803E0120@h
-stw	  r0, 0(r23)
-addi	  r26, r3, unk_803E0120@l
-lis	  r3, unk_803E01A0@h
-stw	  r26, 0(r23)
-addi	  r25, r3, unk_803E01A0@l
-stw	  r25, 0(r23)
-addi	  r3, r23, 0
-li	  r4, 0
-li	  r5, 0
-bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r27
-bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
-lwz	  r3, -0x6060(r13)
-mr	  r4, r27
-bl	  save__12TFlagManagerFR21JSUMemoryOutputStream	# TFlagManager::save((JSUMemoryOutputStream &))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r24
-bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
-stw	  r25, 0x5E8+var_124(r1)
-addi	  r3, r27, 0
-li	  r4, 0
-stw	  r26, 0x5E8+var_124(r1)
-bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+    lwz     r0, 0x18(r6)
+    cmplwi  r0, 0x0
+    bne-    branch_0x801599f8
+    li      r0, 0x16
+    stw     r0, 0x310(r31)
+    addi    r27, sp, 0x4c4
+    lbz     r24, 0x2ea(r31)
+    stw     r27, 0x374(sp)
+    extsb   r24, r24
+    lwz     r23, 0x374(sp)
+    mr      r3, r23
+    bl      __ct__10JSUIosBaseFv
+    lis     r3, __vvt__15JSUOutputStream@h
+    addi    r0, r3, __vvt__15JSUOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
+    stw     r0, 0x0(r23)
+    addi    r26, r3, __vvt__21JSURandomOutputStream@l
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    stw     r26, 0x0(r23)
+    addi    r25, r3, __vvt__21JSUMemoryOutputStream@l
+    stw     r25, 0x0(r23)
+    addi    r3, r23, 0x0
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      setBuffer__21JSUMemoryOutputStreamFPvl
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r27
+    bl      getWriteStream__12TCardManagerFP21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x6060(r13)
+    mr      r4, r27
+    bl      save__12TFlagManagerFR21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r24
+    bl      writeBlock__12TCardManagerFUl
+    stw     r25, 0x4c4(sp)
+    addi    r3, r27, 0x0
+    li      r4, 0x0
+    stw     r26, 0x4c4(sp)
+    bl      __dt__15JSUOutputStreamFv
+    b       branch_0x8015b178
 
-branch_0x801599F8:
-beq	  branch_0x80159A20
-lwz	  r3, -0x6060(r13)
-lwz	  r0, 8(r6)
-lwz	  r4, 0x298(r3)
-lwz	  r5, 0x29C(r3)
-lwz	  r3, 0xC(r6)
-xor	  r0, r4, r0
-xor	  r3, r5, r3
-or.	  r0, r3, r0
-bne	  branch_0x80159A2C
+branch_0x801599f8:
+    beq-    branch_0x80159a20
+    lwz     r3, R13Off_m0x6060(r13)
+    lwz     r0, 0x8(r6)
+    lwz     r4, 0x298(r3)
+    lwz     r5, 0x29c(r3)
+    lwz     r3, 0xc(r6)
+    xor     r0, r4, r0
+    xor     r3, r5, r3
+    or.     r0, r3, r0
+    bne-    branch_0x80159a2c
+branch_0x80159a20:
+    li      r0, 0x16
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x80159A20:
-li	  r0, 0x16
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159a2c:
+    li      r0, 0x2c
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x80159A2C:
-li	  r0, 0x2C
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159a38:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    mr.     r25, r3
+    bne-    branch_0x80159afc
+    addi    r3, r31, 0x0
+    li      r4, 0x16
+    li      r5, 0x2
+    li      r6, 0x1
+    bl      waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc
+    extsb   r23, r3
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    cmpwi   r23, 0x0
+    bne-    branch_0x8015b178
+    lbz     r24, 0x2ea(r31)
+    addi    r27, sp, 0x4a4
+    stw     r27, 0x370(sp)
+    extsb   r24, r24
+    lwz     r23, 0x370(sp)
+    mr      r3, r23
+    bl      __ct__10JSUIosBaseFv
+    lis     r3, __vvt__15JSUOutputStream@h
+    addi    r0, r3, __vvt__15JSUOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
+    stw     r0, 0x0(r23)
+    addi    r26, r3, __vvt__21JSURandomOutputStream@l
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    stw     r26, 0x0(r23)
+    addi    r25, r3, __vvt__21JSUMemoryOutputStream@l
+    stw     r25, 0x0(r23)
+    addi    r3, r23, 0x0
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      setBuffer__21JSUMemoryOutputStreamFPvl
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r27
+    bl      getWriteStream__12TCardManagerFP21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x6060(r13)
+    mr      r4, r27
+    bl      save__12TFlagManagerFR21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r24
+    bl      writeBlock__12TCardManagerFUl
+    stw     r25, 0x4a4(sp)
+    addi    r3, r27, 0x0
+    li      r4, 0x0
+    stw     r26, 0x4a4(sp)
+    bl      __dt__15JSUOutputStreamFv
+    b       branch_0x8015b178
 
-branch_0x80159A38:		# jumptable 80157F7C cases 20,30
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-mr.	  r25, r3
-bne	  branch_0x80159AFC
-addi	  r3, r31, 0
-li	  r4, 0x16
-li	  r5, 2
-li	  r6, 1
-bl	  waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoiceBM((TEProgress,TEProgress,signed char))
-extsb	  r23, r3
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-cmpwi	  r23, 0
-bne	  def_80157F7C	# jumptable 80157F7C default case
-lbz	  r24, 0x2EA(r31)
-addi	  r27, r1, 0x5E8+var_144
-stw	  r27, 0x5E8+var_278(r1)
-extsb	  r24, r24
-lwz	  r23, 0x5E8+var_278(r1)
-mr	  r3, r23
-bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
-lis	  r3, unk_803E0148@h
-addi	  r0, r3, unk_803E0148@l
-lis	  r3, unk_803E0120@h
-stw	  r0, 0(r23)
-addi	  r26, r3, unk_803E0120@l
-lis	  r3, unk_803E01A0@h
-stw	  r26, 0(r23)
-addi	  r25, r3, unk_803E01A0@l
-stw	  r25, 0(r23)
-addi	  r3, r23, 0
-li	  r4, 0
-li	  r5, 0
-bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r27
-bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
-lwz	  r3, -0x6060(r13)
-mr	  r4, r27
-bl	  save__12TFlagManagerFR21JSUMemoryOutputStream	# TFlagManager::save((JSUMemoryOutputStream &))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r24
-bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
-stw	  r25, 0x5E8+var_144(r1)
-addi	  r3, r27, 0
-li	  r4, 0
-stw	  r26, 0x5E8+var_144(r1)
-bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159afc:
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x80159d1c
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r24, r6, r0
+    xoris   r0, r24, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r23, r5, r3
+    xoris   r3, r23, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r23, 0x0
+    addi    r5, r24, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r24, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r23, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+branch_0x80159d1c:
+    addi    r3, r31, 0x0
+    addi    r4, r25, 0x0
+    bl      changeMode__9TCardSaveFl
+    addi    r4, r3, 0x0
+    addi    r3, r31, 0x0
+    addi    r5, r4, 0x0
+    li      r6, 0x1
+    bl      waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc
+    b       branch_0x8015b178
 
-branch_0x80159AFC:
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x80159D1C
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r24, r6, r0
-xoris	  r0, r24, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r23, r5, r3
-xoris	  r3, r23, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r23, 0
-addi	  r5, r24, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r24, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r23, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
+branch_0x80159d40:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, 0x0
+    bne-    branch_0x80159e68
+    addi    r3, r31, 0x0
+    li      r4, 0x16
+    li      r5, 0x1
+    li      r6, 0x0
+    bl      waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc
+    extsb   r23, r3
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    cmpwi   r23, 0x0
+    bne-    branch_0x8015b178
+    lbz     r7, 0x2ea(r31)
+    extsb   r0, r7
+    slwi    r3, r0, 5
+    addi    r6, r3, 0x278
+    add     r6, r31, r6
+    lwz     r0, 0x0(r6)
+    cmpwi   r0, 0x1
+    bne-    branch_0x80159da4
+    li      r0, 0x1e
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x80159D1C:
-addi	  r3, r31, 0
-addi	  r4, r25, 0
-bl	  changeMode__9TCardSaveFl # TCardSave::changeMode((long))
-addi	  r4, r3, 0
-addi	  r3, r31, 0
-addi	  r5, r4, 0
-li	  r6, 1
-bl	  waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoiceBM((TEProgress,TEProgress,signed char))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159da4:
+    lwz     r0, 0x18(r6)
+    cmplwi  r0, 0x0
+    beq-    branch_0x80159dd4
+    lwz     r3, R13Off_m0x6060(r13)
+    lwz     r0, 0x8(r6)
+    lwz     r4, 0x298(r3)
+    lwz     r5, 0x29c(r3)
+    lwz     r3, 0xc(r6)
+    xor     r0, r4, r0
+    xor     r3, r5, r3
+    or.     r0, r3, r0
+    bne-    branch_0x80159e5c
+branch_0x80159dd4:
+    addi    r27, sp, 0x480
+    stw     r27, 0x34c(sp)
+    extsb   r24, r7
+    lwz     r23, 0x34c(sp)
+    mr      r3, r23
+    bl      __ct__10JSUIosBaseFv
+    lis     r3, __vvt__15JSUOutputStream@h
+    addi    r0, r3, __vvt__15JSUOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
+    stw     r0, 0x0(r23)
+    addi    r26, r3, __vvt__21JSURandomOutputStream@l
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    stw     r26, 0x0(r23)
+    addi    r25, r3, __vvt__21JSUMemoryOutputStream@l
+    stw     r25, 0x0(r23)
+    addi    r3, r23, 0x0
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      setBuffer__21JSUMemoryOutputStreamFPvl
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r27
+    bl      getWriteStream__12TCardManagerFP21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x6060(r13)
+    mr      r4, r27
+    bl      save__12TFlagManagerFR21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r24
+    bl      writeBlock__12TCardManagerFUl
+    stw     r25, 0x480(sp)
+    addi    r3, r27, 0x0
+    li      r4, 0x0
+    stw     r26, 0x480(sp)
+    bl      __dt__15JSUOutputStreamFv
+    b       branch_0x8015b178
 
-branch_0x80159D40:		# jumptable 80157F7C case 21
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, 0
-bne	  branch_0x80159E68
-addi	  r3, r31, 0
-li	  r4, 0x16
-li	  r5, 1
-li	  r6, 0
-bl	  waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoiceBM((TEProgress,TEProgress,signed char))
-extsb	  r23, r3
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-cmpwi	  r23, 0
-bne	  def_80157F7C	# jumptable 80157F7C default case
-lbz	  r7, 0x2EA(r31)
-extsb	  r0, r7
-slwi	  r3, r0, 5
-addi	  r6, r3, 0x278
-add	  r6, r31, r6
-lwz	  r0, 0(r6)
-cmpwi	  r0, 1
-bne	  branch_0x80159DA4
-li	  r0, 0x1E
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x80159e5c:
+    li      r0, 0x2c
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x80159DA4:
-lwz	  r0, 0x18(r6)
-cmplwi	  r0, 0
-beq	  branch_0x80159DD4
-lwz	  r3, -0x6060(r13)
-lwz	  r0, 8(r6)
-lwz	  r4, 0x298(r3)
-lwz	  r5, 0x29C(r3)
-lwz	  r3, 0xC(r6)
-xor	  r0, r4, r0
-xor	  r3, r5, r3
-or.	  r0, r3, r0
-bne	  branch_0x80159E5C
+branch_0x80159e68:
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x8015a088
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r24, r6, r0
+    xoris   r0, r24, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r23, r5, r3
+    xoris   r3, r23, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r23, 0x0
+    addi    r5, r24, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r24, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r23, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+branch_0x8015a088:
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    li      r5, 0x3
+    li      r6, 0x1
+    bl      waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc
+    b       branch_0x8015b178
 
-branch_0x80159DD4:
-addi	  r27, r1, 0x5E8+var_168
-stw	  r27, 0x5E8+var_29C(r1)
-extsb	  r24, r7
-lwz	  r23, 0x5E8+var_29C(r1)
-mr	  r3, r23
-bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
-lis	  r3, unk_803E0148@h
-addi	  r0, r3, unk_803E0148@l
-lis	  r3, unk_803E0120@h
-stw	  r0, 0(r23)
-addi	  r26, r3, unk_803E0120@l
-lis	  r3, unk_803E01A0@h
-stw	  r26, 0(r23)
-addi	  r25, r3, unk_803E01A0@l
-stw	  r25, 0(r23)
-addi	  r3, r23, 0
-li	  r4, 0
-li	  r5, 0
-bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r27
-bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
-lwz	  r3, -0x6060(r13)
-mr	  r4, r27
-bl	  save__12TFlagManagerFR21JSUMemoryOutputStream	# TFlagManager::save((JSUMemoryOutputStream &))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r24
-bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
-stw	  r25, 0x5E8+var_168(r1)
-addi	  r3, r27, 0
-li	  r4, 0
-stw	  r26, 0x5E8+var_168(r1)
-bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015a0a0:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, -0x1
+    beq-    branch_0x8015a84c
+    cmpwi   r3, 0x0
+    bne-    branch_0x8015a5f4
+    lbz     r0, 0x2dc(r31)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015a0e0
+    li      r0, 0x0
+    stb     r0, 0x2dc(r31)
+    lbz     r0, 0x2dd(r31)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8015a0e0
+    lwz     r3, R13Off_m0x6060(r13)
+    bl      saveSuccess__12TFlagManagerFv
+branch_0x8015a0e0:
+    addi    r3, r31, 0x0
+    li      r4, 0x17
+    bl      drawMessageBM__9TCardSaveF10TEProgress
+    extsb   r0, r3
+    cmpwi   r0, -0x1
+    beq-    branch_0x8015a10c
+    lbz     r0, 0x2de(r31)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015a10c
+    li      r0, 0x19
+    stw     r0, 0x310(r31)
+branch_0x8015a10c:
+    lwz     r3, 0x2e0(r31)
+    cmpwi   r3, 0x12c
+    ble-    branch_0x8015a3d8
+    lbz     r0, 0x2dd(r31)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015a348
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x8015a5e8
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r24, r6, r0
+    xoris   r0, r24, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r23, r5, r3
+    xoris   r3, r23, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r23, 0x0
+    addi    r5, r24, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r24, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r23, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    b       branch_0x8015a5e8
 
-branch_0x80159E5C:
-li	  r0, 0x2C
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015a348:
+    addi    r27, sp, 0x53c
+    stw     r27, 0x47c(sp)
+    lis     r4, __vvt__10JSUIosBase@ha
+    addi    r0, r4, __vvt__10JSUIosBase@l
+    lwz     r3, 0x47c(sp)
+    lis     r5, __vvt__21JSURandomOutputStream@h
+    addi    r26, r5, __vvt__21JSURandomOutputStream@l
+    stw     r0, 0x0(r3)
+    li      r0, 0x0
+    lis     r4, __vvt__21JSUMemoryOutputStream@h
+    lis     r6, __vvt__15JSUOutputStream@h
+    stb     r0, 0x4(r3)
+    addi    r0, r6, __vvt__15JSUOutputStream@l
+    stw     r0, 0x0(r3)
+    addi    r25, r4, __vvt__21JSUMemoryOutputStream@l
+    li      r4, 0x0
+    stw     r26, 0x0(r3)
+    li      r5, 0x0
+    stw     r25, 0x0(r3)
+    bl      setBuffer__21JSUMemoryOutputStreamFPvl
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r27
+    bl      getOptionWriteStream__12TCardManagerFP21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x6060(r13)
+    mr      r4, r27
+    bl      saveOption__12TFlagManagerFR21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      writeOptionBlock__12TCardManagerFv
+    li      r0, 0x1
+    stb     r0, 0x2dd(r31)
+    addi    r3, r27, 0x0
+    li      r4, 0x0
+    stw     r25, 0x53c(sp)
+    stw     r26, 0x53c(sp)
+    bl      __dt__15JSUOutputStreamFv
+    b       branch_0x8015a5e8
 
-branch_0x80159E68:
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x8015A088
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r24, r6, r0
-xoris	  r0, r24, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r23, r5, r3
-xoris	  r3, r23, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r23, 0
-addi	  r5, r24, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r24, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r23, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
+branch_0x8015a3d8:
+    lbz     r0, 0x2dd(r31)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8015a5dc
+    cmpwi   r3, 0xc8
+    bne-    branch_0x8015a5dc
+    lwz     r3, R13Off_m0x6044(r13)
+    li      r4, 0x481b
+    bl      gateCheck__6MSoundFUl
+    clrlwi. r0, r3, 24
+    beq-    branch_0x8015a414
+    li      r3, 0x481b
+    li      r4, 0x0
+    li      r5, 0x0
+    li      r6, 0x0
+    bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
+branch_0x8015a414:
+    lwz     r0, 0x308(r31)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8015a430
+    cmpwi   r0, 0x6
+    beq-    branch_0x8015a430
+    cmpwi   r0, 0x8
+    bne-    branch_0x8015a5cc
+branch_0x8015a430:
+    lwz     r3, 0x128(r31)
+    li      r0, 0x0
+    lis     r4, 0x4
+    stb     r0, 0xc(r3)
+    lwz     r3, R13Off_m0x6060(r13)
+    bl      getFlag__12TFlagManagerCFUl
+    clrlwi  r25, r3, 16
+    cmplwi  r25, 0x3e7
+    ble-    branch_0x8015a458
+    li      r25, 0x3e7
+branch_0x8015a458:
+    clrlwi  r27, r25, 16
+    cmplwi  r27, 0x64
+    bge-    branch_0x8015a4e4
+    lis     r3, unk_66666667@h
+    lwz     r4, 0x138(r31)
+    addi    r0, r3, unk_66666667@l
+    mulhw   r25, r0, r27
+    li      r0, 0x1
+    stb     r0, 0xc(r4)
+    srawi   r0, r25, 2
+    srwi    r3, r0, 31
+    add     r0, r0, r3
+    lwz     r3, 0x134(r31)
+    li      r4, 0x0
+    stb     r4, 0xc(r3)
+    slwi    r0, r0, 2
+    add     r3, r31, r0
+    lwz     r4, 0x1c(r3)
+    li      r5, 0x0
+    lwz     r3, 0x148(r31)
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    srawi   r0, r25, 2
+    lwz     r3, 0x14c(r31)
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    mulli   r0, r0, 0xa
+    subf    r0, r0, r27
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    li      r5, 0x0
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    b       branch_0x8015a5cc
 
-branch_0x8015A088:
-addi	  r3, r31, 0
-li	  r4, 3
-li	  r5, 3
-li	  r6, 1
-bl	  waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoiceBM((TEProgress,TEProgress,signed char))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015a4e4:
+    lis     r3, unk_51eb851f@ha
+    lwz     r4, 0x134(r31)
+    addi    r0, r3, unk_51eb851f@l
+    mulhw   r0, r0, r27
+    li      r3, 0x1
+    stb     r3, 0xc(r4)
+    srawi   r0, r0, 5
+    srwi    r3, r0, 31
+    add     r0, r0, r3
+    lwz     r3, 0x138(r31)
+    li      r4, 0x0
+    stb     r4, 0xc(r3)
+    slwi    r0, r0, 2
+    add     r3, r31, r0
+    lwz     r4, 0x1c(r3)
+    li      r5, 0x0
+    lwz     r3, 0x13c(r31)
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    stw     r27, 0x554(sp)
+    lis     r0, 0x4330
+    lfd     f1, -0x4a40(r2)
+    lis     r3, unk_66666667@h
+    stw     r0, 0x550(sp)
+    addi    r0, r3, unk_66666667@l
+    lfs     f2, -0x4a50(r2)
+    lfd     f0, 0x550(sp)
+    li      r5, 0x0
+    lwz     r3, 0x140(r31)
+    fsubs   f0, f0, f1
+    fmuls   f0, f2, f0
+    fctiwz  f0, f0
+    stfd    f0, 0x558(sp)
+    lwz     r4, 0x55c(sp)
+    mulli   r4, r4, 0x64
+    subf    r25, r4, r25
+    clrlwi  r23, r25, 16
+    mulhw   r25, r0, r23
+    srawi   r0, r25, 2
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+    srawi   r0, r25, 2
+    lwz     r3, 0x144(r31)
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    mulli   r0, r0, 0xa
+    subf    r0, r0, r23
+    slwi    r0, r0, 2
+    add     r4, r31, r0
+    lwz     r4, 0x1c(r4)
+    li      r5, 0x0
+    lwz     r4, 0x20(r4)
+    bl      changeTexture__10J2DPictureFPC7ResTIMGUc
+branch_0x8015a5cc:
+    lwz     r3, 0x2e0(r31)
+    addi    r0, r3, 0x1
+    stw     r0, 0x2e0(r31)
+    b       branch_0x8015a5e8
 
-branch_0x8015A0A0:		# jumptable 80157F7C case 22
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, -1
-beq	  branch_0x8015A84C
-cmpwi	  r3, 0
-bne	  branch_0x8015A5F4
-lbz	  r0, 0x2DC(r31)
-cmplwi	  r0, 0
-beq	  branch_0x8015A0E0
-li	  r0, 0
-stb	  r0, 0x2DC(r31)
-lbz	  r0, 0x2DD(r31)
-cmplwi	  r0, 0
-bne	  branch_0x8015A0E0
-lwz	  r3, -0x6060(r13)
-bl	  saveSuccess__12TFlagManagerFv	# TFlagManager::saveSuccess((void))
+branch_0x8015a5dc:
+    lwz     r3, 0x2e0(r31)
+    addi    r0, r3, 0x1
+    stw     r0, 0x2e0(r31)
+branch_0x8015a5e8:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    b       branch_0x8015b178
 
-branch_0x8015A0E0:
-addi	  r3, r31, 0
-li	  r4, 0x17
-bl	  drawMessageBM__9TCardSaveF10TEProgress # TCardSave::drawMessageBM((TEProgress))
-extsb	  r0, r3
-cmpwi	  r0, -1
-beq	  branch_0x8015A10C
-lbz	  r0, 0x2DE(r31)
-cmplwi	  r0, 0
-beq	  branch_0x8015A10C
-li	  r0, 0x19
-stw	  r0, 0x310(r31)
+branch_0x8015a5f4:
+    addi    r3, r31, 0x0
+    li      r4, 0x18
+    bl      drawMessageBM__9TCardSaveF10TEProgress
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x8015a820
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r28, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r24, r6, r0
+    xoris   r0, r24, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r23, r5, r3
+    xoris   r3, r23, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r23, 0x0
+    addi    r5, r24, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r24, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r23, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+branch_0x8015a820:
+    lbz     r0, 0x2dc(r31)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015b178
+    li      r0, 0x0
+    stb     r0, 0x2dc(r31)
+    lbz     r0, 0x2dd(r31)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8015b178
+    lwz     r3, R13Off_m0x6060(r13)
+    bl      saveFail__12TFlagManagerFv
+    b       branch_0x8015b178
 
-branch_0x8015A10C:
-lwz	  r3, 0x2E0(r31)
-cmpwi	  r3, 0x12C
-ble	  branch_0x8015A3D8
-lbz	  r0, 0x2DD(r31)
-cmplwi	  r0, 0
-beq	  branch_0x8015A348
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x8015A5E8
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r24, r6, r0
-xoris	  r0, r24, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r23, r5, r3
-xoris	  r3, r23, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r23, 0
-addi	  r5, r24, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r24, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r23, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-b	  branch_0x8015A5E8
+branch_0x8015a84c:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    addi    r3, r31, 0x0
+    li      r4, 0x0
+    bl      drawMessageBM__9TCardSaveF10TEProgress
+    lwz     r3, 0x2e0(r31)
+    addi    r0, r3, 0x1
+    stw     r0, 0x2e0(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A348:
-addi	  r27, r1, 0x5E8+var_AC
-stw	  r27, 0x5E8+var_16C(r1)
-lis	  r4, unk_803AF0F4@ha
-addi	  r0, r4, unk_803AF0F4@l
-lwz	  r3, 0x5E8+var_16C(r1)
-lis	  r5, unk_803E0120@h
-addi	  r26, r5, unk_803E0120@l
-stw	  r0, 0(r3)
-li	  r0, 0
-lis	  r4, unk_803E01A0@h
-lis	  r6, unk_803E0148@h
-stb	  r0, 4(r3)
-addi	  r0, r6, unk_803E0148@l
-stw	  r0, 0(r3)
-addi	  r25, r4, unk_803E01A0@l
-li	  r4, 0
-stw	  r26, 0(r3)
-li	  r5, 0
-stw	  r25, 0(r3)
-bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r27
-bl	  getOptionWriteStream__12TCardManagerFP21JSUMemoryOutputStream	# TCardManager::getOptionWriteStream((JSUMemoryOutputStream *))
-lwz	  r3, -0x6060(r13)
-mr	  r4, r27
-bl	  saveOption__12TFlagManagerFR21JSUMemoryOutputStream #	TFlagManager::saveOption((JSUMemoryOutputStream	&))
-lwz	  r3, -0x603C(r13)
-bl	  writeOptionBlock__12TCardManagerFv # TCardManager::writeOptionBlock((void))
-li	  r0, 1
-stb	  r0, 0x2DD(r31)
-addi	  r3, r27, 0
-li	  r4, 0
-stw	  r25, 0x5E8+var_AC(r1)
-stw	  r26, 0x5E8+var_AC(r1)
-bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
-b	  branch_0x8015A5E8
+branch_0x8015a870:
+    lwz     r0, 0x308(r31)
+    cmpwi   r0, 0x0
+    bne-    branch_0x8015a888
+    lbz     r0, 0x18(r31)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015a894
+branch_0x8015a888:
+    li      r0, 0x1
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A3D8:
-lbz	  r0, 0x2DD(r31)
-cmplwi	  r0, 0
-bne	  branch_0x8015A5DC
-cmpwi	  r3, 0xC8
-bne	  branch_0x8015A5DC
-lwz	  r3, gpMSound(r13)
-li	  r4, 0x481B
-bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
-clrlwi.	  r0, r3, 24
-beq	  branch_0x8015A414
-li	  r3, 0x481B
-li	  r4, 0
-li	  r5, 0
-li	  r6, 0
-bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
+branch_0x8015a894:
+    addi    r3, r31, 0x0
+    li      r4, 0x1
+    li      r5, 0x19
+    li      r6, 0x0
+    bl      waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc
+    b       branch_0x8015b178
 
-branch_0x8015A414:
-lwz	  r0, 0x308(r31)
-cmpwi	  r0, 0
-beq	  branch_0x8015A430
-cmpwi	  r0, 6
-beq	  branch_0x8015A430
-cmpwi	  r0, 8
-bne	  branch_0x8015A5CC
+branch_0x8015a8ac:
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      waitForAnyKeyBM__9TCardSaveF10TEProgress
+    extsb   r0, r3
+    cmpwi   r0, -0x1
+    beq-    branch_0x8015b178
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    addi    r4, r3, 0x0
+    addi    r3, r31, 0x0
+    bl      changeMode__9TCardSaveFl
+    stw     r3, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A430:
-lwz	  r3, 0x128(r31)
-li	  r0, 0
-lis	  r4, 4
-stb	  r0, 0xC(r3)
-lwz	  r3, -0x6060(r13)
-bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
-clrlwi	  r25, r3, 16
-cmplwi	  r25, 0x3E7
-ble	  branch_0x8015A458
-li	  r25, 0x3E7
+branch_0x8015a8e0:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, 0x0
+    bne-    branch_0x8015aa0c
+    addi    r3, r31, 0x0
+    li      r4, 0x16
+    li      r5, 0x1
+    bl      waitForSelect2__9TCardSaveF10TEProgress10TEProgress
+    extsb   r23, r3
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    cmpwi   r23, 0x0
+    bne-    branch_0x8015b178
+    lbz     r7, 0x2ea(r31)
+    extsb   r0, r7
+    slwi    r3, r0, 5
+    addi    r6, r3, 0x278
+    add     r6, r31, r6
+    lwz     r0, 0x0(r6)
+    cmpwi   r0, 0x1
+    bne-    branch_0x8015a940
+    li      r0, 0x1e
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A458:
-clrlwi	  r27, r25, 16
-cmplwi	  r27, 0x64
-bge	  branch_0x8015A4E4
-lis	  r3, 0x6666 # 0x66666667
-lwz	  r4, 0x138(r31)
-addi	  r0, r3, 0x6667 # 0x66666667
-mulhw	  r25, r0, r27
-li	  r0, 1
-stb	  r0, 0xC(r4)
-srawi	  r0, r25, 2
-srwi	  r3, r0, 31
-add	  r0, r0, r3
-lwz	  r3, 0x134(r31)
-li	  r4, 0
-stb	  r4, 0xC(r3)
-slwi	  r0, r0, 2
-add	  r3, r31, r0
-lwz	  r4, 0x1C(r3)
-li	  r5, 0
-lwz	  r3, 0x148(r31)
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-srawi	  r0, r25, 2
-lwz	  r3, 0x14C(r31)
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-mulli	  r0, r0, 0xA
-subf	  r0, r0, r27
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-li	  r5, 0
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-b	  branch_0x8015A5CC
+branch_0x8015a940:
+    lwz     r0, 0x18(r6)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015a970
+    lwz     r3, R13Off_m0x6060(r13)
+    lwz     r0, 0x8(r6)
+    lwz     r4, 0x298(r3)
+    lwz     r5, 0x29c(r3)
+    lwz     r3, 0xc(r6)
+    xor     r0, r4, r0
+    xor     r3, r5, r3
+    or.     r0, r3, r0
+    bne-    branch_0x8015aa00
+branch_0x8015a970:
+    addi    r27, sp, 0x430
+    stw     r27, 0x2e8(sp)
+    extsb   r24, r7
+    lwz     r23, 0x2e8(sp)
+    mr      r3, r23
+    bl      __ct__10JSUIosBaseFv
+    lis     r3, __vvt__15JSUOutputStream@h
+    addi    r0, r3, __vvt__15JSUOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
+    stw     r0, 0x0(r23)
+    addi    r26, r3, __vvt__21JSURandomOutputStream@l
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    stw     r26, 0x0(r23)
+    addi    r25, r3, __vvt__21JSUMemoryOutputStream@l
+    stw     r25, 0x0(r23)
+    addi    r3, r23, 0x0
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      setBuffer__21JSUMemoryOutputStreamFPvl
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r27
+    bl      getWriteStream__12TCardManagerFP21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x6060(r13)
+    mr      r4, r27
+    bl      save__12TFlagManagerFR21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r24
+    bl      writeBlock__12TCardManagerFUl
+    stw     r25, 0x430(sp)
+    addi    r3, r27, 0x0
+    li      r4, 0x0
+    stw     r26, 0x430(sp)
+    bl      __dt__15JSUOutputStreamFv
+    li      r0, 0x16
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A4E4:
-lis	  r3, 0x51EC # 0x51EB851F
-lwz	  r4, 0x134(r31)
-addi	  r0, r3, -0x7AE1 # 0x51EB851F
-mulhw	  r0, r0, r27
-li	  r3, 1
-stb	  r3, 0xC(r4)
-srawi	  r0, r0, 5
-srwi	  r3, r0, 31
-add	  r0, r0, r3
-lwz	  r3, 0x138(r31)
-li	  r4, 0
-stb	  r4, 0xC(r3)
-slwi	  r0, r0, 2
-add	  r3, r31, r0
-lwz	  r4, 0x1C(r3)
-li	  r5, 0
-lwz	  r3, 0x13C(r31)
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-stw	  r27, 0x5E8+var_98+4(r1)
-lis	  r0, 0x4330
-lfd	  f1, -0x4A40(r2)
-lis	  r3, 0x6666 # 0x66666667
-stw	  r0, 0x5E8+var_98(r1)
-addi	  r0, r3, 0x6667 # 0x66666667
-lfs	  f2, -0x4A50(r2)
-lfd	  f0, 0x5E8+var_98(r1)
-li	  r5, 0
-lwz	  r3, 0x140(r31)
-fsubs	  f0, f0, f1
-fmuls	  f0, f2, f0
-fctiwz	  f0, f0
-stfd	  f0, 0x5E8+var_90(r1)
-lwz	  r4, 0x5E8+var_90+4(r1)
-mulli	  r4, r4, 0x64
-subf	  r25, r4, r25
-clrlwi	  r23, r25, 16
-mulhw	  r25, r0, r23
-srawi	  r0, r25, 2
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
-srawi	  r0, r25, 2
-lwz	  r3, 0x144(r31)
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-mulli	  r0, r0, 0xA
-subf	  r0, r0, r23
-slwi	  r0, r0, 2
-add	  r4, r31, r0
-lwz	  r4, 0x1C(r4)
-li	  r5, 0
-lwz	  r4, 0x20(r4)
-bl	  changeTexture__10J2DPictureFPC7ResTIMGUc # J2DPicture::changeTexture((ResTIMG	const *,uchar))
+branch_0x8015aa00:
+    li      r0, 0x2c
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A5CC:
-lwz	  r3, 0x2E0(r31)
-addi	  r0, r3, 1
-stw	  r0, 0x2E0(r31)
-b	  branch_0x8015A5E8
+branch_0x8015aa0c:
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x3
+    bge-    branch_0x8015aa20
+    li      r0, 0x4
+    stw     r0, 0x10(r31)
+branch_0x8015aa20:
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    li      r5, 0x3
+    bl      waitForSelect2__9TCardSaveF10TEProgress10TEProgress
+    b       branch_0x8015b178
 
-branch_0x8015A5DC:
-lwz	  r3, 0x2E0(r31)
-addi	  r0, r3, 1
-stw	  r0, 0x2E0(r31)
+branch_0x8015aa34:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, 0x0
+    bne-    branch_0x8015ab9c
+    addi    r3, r31, 0x0
+    li      r4, 0x16
+    li      r5, 0x16
+    li      r6, 0x1
+    bl      waitForSelect3__9TCardSaveF10TEProgress10TEProgress10TEProgress
+    extsb   r25, r3
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    cmpwi   r25, -0x1
+    beq-    branch_0x8015b178
+    cmplwi  r25, 0x1
+    bgt-    branch_0x8015ab90
+    lbz     r7, 0x2ea(r31)
+    extsb   r0, r7
+    slwi    r3, r0, 5
+    addi    r6, r3, 0x278
+    add     r6, r31, r6
+    lwz     r0, 0x0(r6)
+    cmpwi   r0, 0x1
+    bne-    branch_0x8015aaa0
+    li      r0, 0x1e
+    stw     r0, 0x310(r31)
+    b       branch_0x8015ab68
 
-branch_0x8015A5E8:
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015aaa0:
+    lwz     r0, 0x18(r6)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015aad0
+    lwz     r3, R13Off_m0x6060(r13)
+    lwz     r0, 0x8(r6)
+    lwz     r4, 0x298(r3)
+    lwz     r5, 0x29c(r3)
+    lwz     r3, 0xc(r6)
+    xor     r0, r4, r0
+    xor     r3, r5, r3
+    or.     r0, r3, r0
+    bne-    branch_0x8015ab60
+branch_0x8015aad0:
+    addi    r28, sp, 0x40c
+    stw     r28, 0x2e4(sp)
+    extsb   r24, r7
+    lwz     r23, 0x2e4(sp)
+    mr      r3, r23
+    bl      __ct__10JSUIosBaseFv
+    lis     r3, __vvt__15JSUOutputStream@h
+    addi    r0, r3, __vvt__15JSUOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
+    stw     r0, 0x0(r23)
+    addi    r27, r3, __vvt__21JSURandomOutputStream@l
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    stw     r27, 0x0(r23)
+    addi    r26, r3, __vvt__21JSUMemoryOutputStream@l
+    stw     r26, 0x0(r23)
+    addi    r3, r23, 0x0
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      setBuffer__21JSUMemoryOutputStreamFPvl
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r28
+    bl      getWriteStream__12TCardManagerFP21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x6060(r13)
+    mr      r4, r28
+    bl      save__12TFlagManagerFR21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r24
+    bl      writeBlock__12TCardManagerFUl
+    stw     r26, 0x40c(sp)
+    addi    r3, r28, 0x0
+    li      r4, 0x0
+    stw     r27, 0x40c(sp)
+    bl      __dt__15JSUOutputStreamFv
+    li      r0, 0x16
+    stw     r0, 0x310(r31)
+    b       branch_0x8015ab68
 
-branch_0x8015A5F4:
-addi	  r3, r31, 0
-li	  r4, 0x18
-bl	  drawMessageBM__9TCardSaveF10TEProgress # TCardSave::drawMessageBM((TEProgress))
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x8015A820
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r28, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r24, r6, r0
-xoris	  r0, r24, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r23, r5, r3
-xoris	  r3, r23, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r23, 0
-addi	  r5, r24, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r24, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r23, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
+branch_0x8015ab60:
+    li      r0, 0x2c
+    stw     r0, 0x310(r31)
+branch_0x8015ab68:
+    cmpwi   r25, 0x0
+    bne-    branch_0x8015ab7c
+    li      r0, 0x0
+    stb     r0, 0x2de(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A820:
-lbz	  r0, 0x2DC(r31)
-cmplwi	  r0, 0
-beq	  def_80157F7C	# jumptable 80157F7C default case
-li	  r0, 0
-stb	  r0, 0x2DC(r31)
-lbz	  r0, 0x2DD(r31)
-cmplwi	  r0, 0
-bne	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x6060(r13)
-bl	  saveFail__12TFlagManagerFv # TFlagManager::saveFail((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015ab7c:
+    cmpwi   r25, 0x1
+    bne-    branch_0x8015b178
+    li      r0, 0x1
+    stb     r0, 0x2de(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A84C:
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-addi	  r3, r31, 0
-li	  r4, 0
-bl	  drawMessageBM__9TCardSaveF10TEProgress # TCardSave::drawMessageBM((TEProgress))
-lwz	  r3, 0x2E0(r31)
-addi	  r0, r3, 1
-stw	  r0, 0x2E0(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015ab90:
+    li      r0, 0x1
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A870:		# jumptable 80157F7C case 23
-lwz	  r0, 0x308(r31)
-cmpwi	  r0, 0
-bne	  branch_0x8015A888
-lbz	  r0, 0x18(r31)
-cmplwi	  r0, 0
-beq	  branch_0x8015A894
+branch_0x8015ab9c:
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x3
+    bge-    branch_0x8015abb0
+    li      r0, 0x4
+    stw     r0, 0x10(r31)
+branch_0x8015abb0:
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    li      r5, 0x3
+    li      r6, 0x3
+    bl      waitForSelect3__9TCardSaveF10TEProgress10TEProgress10TEProgress
+    b       branch_0x8015b178
 
-branch_0x8015A888:
-li	  r0, 1
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015abc8:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    cmpwi   r3, -0x3
+    beq-    branch_0x8015abf0
+    addi    r3, r31, 0x0
+    li      r4, 0x1
+    bl      waitForStop__9TCardSaveF10TEProgress
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    b       branch_0x8015b178
 
-branch_0x8015A894:
-addi	  r3, r31, 0
-li	  r4, 1
-li	  r5, 0x19
-li	  r6, 0
-bl	  waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoiceBM((TEProgress,TEProgress,signed char))
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015abf0:
+    lwz     r3, 0xa4(r31)
+    lbz     r0, 0xc(r3)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015add4
+    lwz     r6, 0x50(r31)
+    lis     r28, 0x4330
+    lwz     r0, 0x58(r31)
+    li      r4, 0x14
+    lwz     r5, 0x4c(r31)
+    lwz     r3, 0x54(r31)
+    subf    r25, r6, r0
+    xoris   r0, r25, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r24, r5, r3
+    xoris   r3, r24, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0x48(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r28, 0x550(sp)
+    stw     r28, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r24, 0x0
+    addi    r5, r25, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r27, 0x1
+    stb     r27, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r25, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r24, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r28, 0x560(sp)
+    stw     r28, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r28, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r28, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r28, 0x5a0(sp)
+    stw     r28, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r28, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r28, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r27, 0x4e(r26)
+    li      r4, 0x0
+    li      r0, 0x3
+    lwz     r3, 0xa4(r31)
+    stb     r4, 0xc(r3)
+    stw     r0, 0x10(r31)
+branch_0x8015add4:
+    addi    r3, r31, 0x0
+    li      r4, 0x3
+    bl      waitForStop__9TCardSaveF10TEProgress
+    b       branch_0x8015b178
 
-branch_0x8015A8AC:		# jumptable 80157F7C case 24
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  waitForAnyKeyBM__9TCardSaveF10TEProgress # TCardSave::waitForAnyKeyBM((TEProgress))
-extsb	  r0, r3
-cmpwi	  r0, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-addi	  r4, r3, 0
-addi	  r3, r31, 0
-bl	  changeMode__9TCardSaveFl # TCardSave::changeMode((long))
-stw	  r3, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015ade4:
+    mr      r3, r31
+    bl      waitForSelectOver__9TCardSaveFv
+    b       branch_0x8015b178
 
-branch_0x8015A8E0:		# jumptable 80157F7C case 42
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, 0
-bne	  branch_0x8015AA0C
-addi	  r3, r31, 0
-li	  r4, 0x16
-li	  r5, 1
-bl	  waitForSelect2__9TCardSaveF10TEProgress10TEProgress #	TCardSave::waitForSelect2((TEProgress,TEProgress))
-extsb	  r23, r3
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-cmpwi	  r23, 0
-bne	  def_80157F7C	# jumptable 80157F7C default case
-lbz	  r7, 0x2EA(r31)
-extsb	  r0, r7
-slwi	  r3, r0, 5
-addi	  r6, r3, 0x278
-add	  r6, r31, r6
-lwz	  r0, 0(r6)
-cmpwi	  r0, 1
-bne	  branch_0x8015A940
-li	  r0, 0x1E
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015adf0:
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      getLastStatus__12TCardManagerFv
+    mr.     r25, r3
+    bne-    branch_0x8015af20
+    addi    r3, r31, 0x0
+    li      r4, 0x16
+    li      r5, 0x1
+    li      r6, 0x0
+    bl      waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc
+    extsb   r23, r3
+    lwz     r3, R13Off_m0x603c(r13)
+    bl      probe__12TCardManagerFv
+    cmpwi   r23, 0x0
+    bne-    branch_0x8015b178
+    lbz     r7, 0x2ea(r31)
+    extsb   r0, r7
+    slwi    r3, r0, 5
+    addi    r6, r3, 0x278
+    add     r6, r31, r6
+    lwz     r0, 0x0(r6)
+    cmpwi   r0, 0x1
+    bne-    branch_0x8015ae54
+    li      r0, 0x1e
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A940:
-lwz	  r0, 0x18(r6)
-cmplwi	  r0, 0
-beq	  branch_0x8015A970
-lwz	  r3, -0x6060(r13)
-lwz	  r0, 8(r6)
-lwz	  r4, 0x298(r3)
-lwz	  r5, 0x29C(r3)
-lwz	  r3, 0xC(r6)
-xor	  r0, r4, r0
-xor	  r3, r5, r3
-or.	  r0, r3, r0
-bne	  branch_0x8015AA00
+branch_0x8015ae54:
+    lwz     r0, 0x18(r6)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8015ae84
+    lwz     r3, R13Off_m0x6060(r13)
+    lwz     r0, 0x8(r6)
+    lwz     r4, 0x298(r3)
+    lwz     r5, 0x29c(r3)
+    lwz     r3, 0xc(r6)
+    xor     r0, r4, r0
+    xor     r3, r5, r3
+    or.     r0, r3, r0
+    bne-    branch_0x8015af14
+branch_0x8015ae84:
+    addi    r27, sp, 0x3e0
+    stw     r27, 0x2e0(sp)
+    extsb   r24, r7
+    lwz     r23, 0x2e0(sp)
+    mr      r3, r23
+    bl      __ct__10JSUIosBaseFv
+    lis     r3, __vvt__15JSUOutputStream@h
+    addi    r0, r3, __vvt__15JSUOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
+    stw     r0, 0x0(r23)
+    addi    r26, r3, __vvt__21JSURandomOutputStream@l
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    stw     r26, 0x0(r23)
+    addi    r25, r3, __vvt__21JSUMemoryOutputStream@l
+    stw     r25, 0x0(r23)
+    addi    r3, r23, 0x0
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      setBuffer__21JSUMemoryOutputStreamFPvl
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r27
+    bl      getWriteStream__12TCardManagerFP21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x6060(r13)
+    mr      r4, r27
+    bl      save__12TFlagManagerFR21JSUMemoryOutputStream
+    lwz     r3, R13Off_m0x603c(r13)
+    mr      r4, r24
+    bl      writeBlock__12TCardManagerFUl
+    stw     r25, 0x3e0(sp)
+    addi    r3, r27, 0x0
+    li      r4, 0x0
+    stw     r26, 0x3e0(sp)
+    bl      __dt__15JSUOutputStreamFv
+    li      r0, 0x16
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015A970:
-addi	  r27, r1, 0x5E8+var_1B8
-stw	  r27, 0x5E8+var_300(r1)
-extsb	  r24, r7
-lwz	  r23, 0x5E8+var_300(r1)
-mr	  r3, r23
-bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
-lis	  r3, unk_803E0148@h
-addi	  r0, r3, unk_803E0148@l
-lis	  r3, unk_803E0120@h
-stw	  r0, 0(r23)
-addi	  r26, r3, unk_803E0120@l
-lis	  r3, unk_803E01A0@h
-stw	  r26, 0(r23)
-addi	  r25, r3, unk_803E01A0@l
-stw	  r25, 0(r23)
-addi	  r3, r23, 0
-li	  r4, 0
-li	  r5, 0
-bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r27
-bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
-lwz	  r3, -0x6060(r13)
-mr	  r4, r27
-bl	  save__12TFlagManagerFR21JSUMemoryOutputStream	# TFlagManager::save((JSUMemoryOutputStream &))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r24
-bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
-stw	  r25, 0x5E8+var_1B8(r1)
-addi	  r3, r27, 0
-li	  r4, 0
-stw	  r26, 0x5E8+var_1B8(r1)
-bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
-li	  r0, 0x16
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015af14:
+    li      r0, 0x2c
+    stw     r0, 0x310(r31)
+    b       branch_0x8015b178
 
-branch_0x8015AA00:
-li	  r0, 0x2C
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
+branch_0x8015af20:
+    lwz     r0, 0x10(r31)
+    cmpwi   r0, 0x2
+    bne-    branch_0x8015b140
+    lwz     r3, 0x134(r31)
+    li      r5, 0x0
+    li      r0, 0x3
+    stb     r5, 0xc(r3)
+    lis     r27, 0x4330
+    li      r4, 0x14
+    lwz     r3, 0x138(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x128(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xf8(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x130(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x150(r31)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0xfc(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    lwz     r3, 0x100(r31)
+    lwz     r3, 0x0(r3)
+    stb     r5, 0xc(r3)
+    stw     r0, 0x10(r31)
+    lwz     r6, 0xe8(r31)
+    lwz     r0, 0xf0(r31)
+    lwz     r5, 0xe4(r31)
+    lwz     r3, 0xec(r31)
+    subf    r24, r6, r0
+    xoris   r0, r24, 0x8000
+    lfs     f1, -0x4a4c(r2)
+    subf    r23, r5, r3
+    xoris   r3, r23, 0x8000
+    stw     r0, 0x55c(sp)
+    lwz     r26, 0xe0(r31)
+    fmr     f2, f1
+    stw     r3, 0x554(sp)
+    lfd     f4, -0x4a38(r2)
+    addi    r3, r26, 0x2c
+    stw     r27, 0x550(sp)
+    stw     r27, 0x558(sp)
+    lfd     f3, 0x550(sp)
+    lfd     f0, 0x558(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    addi    r4, r23, 0x0
+    addi    r5, r24, 0x0
+    lwz     r12, 0x0(r3)
+    lwz     r12, 0x14(r12)
+    mtlr    r12
+    blrl
+    li      r28, 0x1
+    stb     r28, 0x4f(r26)
+    addi    r3, r26, 0x14
+    li      r4, 0x14
+    lwz     r6, 0x8(r26)
+    lwz     r0, 0x10(r26)
+    lwz     r5, 0x4(r26)
+    subf    r7, r6, r0
+    lwz     r0, 0xc(r26)
+    subf    r6, r24, r7
+    lfd     f4, -0x4a38(r2)
+    subf    r8, r5, r0
+    lfs     f5, -0x4a48(r2)
+    subf    r0, r23, r8
+    xoris   r5, r6, 0x8000
+    xoris   r6, r0, 0x8000
+    stw     r5, 0x564(sp)
+    xoris   r5, r7, 0x8000
+    xoris   r0, r8, 0x8000
+    stw     r6, 0x574(sp)
+    stw     r5, 0x584(sp)
+    stw     r0, 0x594(sp)
+    stw     r27, 0x560(sp)
+    stw     r27, 0x570(sp)
+    lfd     f1, 0x560(sp)
+    stw     r27, 0x580(sp)
+    lfd     f0, 0x570(sp)
+    fsubs   f3, f1, f4
+    stw     r27, 0x590(sp)
+    lfd     f1, 0x580(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x590(sp)
+    fsubs   f1, f1, f4
+    fsubs   f0, f0, f4
+    fmuls   f3, f5, f3
+    fmuls   f2, f5, f2
+    fmuls   f1, f5, f1
+    fmuls   f0, f5, f0
+    fctiwz  f3, f3
+    fctiwz  f2, f2
+    fctiwz  f1, f1
+    fctiwz  f0, f0
+    stfd    f3, 0x568(sp)
+    stfd    f2, 0x578(sp)
+    lwz     r24, 0x56c(sp)
+    stfd    f1, 0x588(sp)
+    lwz     r23, 0x57c(sp)
+    xoris   r0, r24, 0x8000
+    stfd    f0, 0x598(sp)
+    lwz     r6, 0x58c(sp)
+    xoris   r5, r23, 0x8000
+    lwz     r7, 0x59c(sp)
+    xoris   r6, r6, 0x8000
+    stw     r5, 0x5b4(sp)
+    xoris   r5, r7, 0x8000
+    stw     r5, 0x5a4(sp)
+    stw     r6, 0x5ac(sp)
+    stw     r0, 0x5bc(sp)
+    stw     r27, 0x5a0(sp)
+    stw     r27, 0x5a8(sp)
+    lfd     f1, 0x5a0(sp)
+    stw     r27, 0x5b0(sp)
+    lfd     f0, 0x5a8(sp)
+    fsubs   f1, f1, f4
+    stw     r27, 0x5b8(sp)
+    lfd     f3, 0x5b0(sp)
+    fsubs   f2, f0, f4
+    lfd     f0, 0x5b8(sp)
+    fsubs   f3, f3, f4
+    fsubs   f4, f0, f4
+    bl      setValue__8TCoord2DFlffff
+    lwz     r3, 0x0(r26)
+    lwz     r4, 0x4(r26)
+    lwz     r12, 0x0(r3)
+    lwz     r0, 0x8(r26)
+    add     r4, r4, r23
+    lwz     r12, 0xc(r12)
+    add     r5, r0, r24
+    mtlr    r12
+    blrl
+    stb     r28, 0x4e(r26)
+branch_0x8015b140:
+    addi    r3, r31, 0x0
+    addi    r4, r25, 0x0
+    bl      changeMode__9TCardSaveFl
+    addi    r4, r3, 0x0
+    addi    r3, r31, 0x0
+    addi    r5, r4, 0x0
+    li      r6, 0x1
+    bl      waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc
+    b       branch_0x8015b178
 
-branch_0x8015AA0C:
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 3
-bge	  branch_0x8015AA20
-li	  r0, 4
-stw	  r0, 0x10(r31)
-
-branch_0x8015AA20:
-addi	  r3, r31, 0
-li	  r4, 3
-li	  r5, 3
-bl	  waitForSelect2__9TCardSaveF10TEProgress10TEProgress #	TCardSave::waitForSelect2((TEProgress,TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015AA34:		# jumptable 80157F7C case 43
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, 0
-bne	  branch_0x8015AB9C
-addi	  r3, r31, 0
-li	  r4, 0x16
-li	  r5, 0x16
-li	  r6, 1
-bl	  waitForSelect3__9TCardSaveF10TEProgress10TEProgress10TEProgress # TCardSave::waitForSelect3((TEProgress,TEProgress,TEProgress))
-extsb	  r25, r3
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-cmpwi	  r25, -1
-beq	  def_80157F7C	# jumptable 80157F7C default case
-cmplwi	  r25, 1
-bgt	  branch_0x8015AB90
-lbz	  r7, 0x2EA(r31)
-extsb	  r0, r7
-slwi	  r3, r0, 5
-addi	  r6, r3, 0x278
-add	  r6, r31, r6
-lwz	  r0, 0(r6)
-cmpwi	  r0, 1
-bne	  branch_0x8015AAA0
-li	  r0, 0x1E
-stw	  r0, 0x310(r31)
-b	  branch_0x8015AB68
-
-branch_0x8015AAA0:
-lwz	  r0, 0x18(r6)
-cmplwi	  r0, 0
-beq	  branch_0x8015AAD0
-lwz	  r3, -0x6060(r13)
-lwz	  r0, 8(r6)
-lwz	  r4, 0x298(r3)
-lwz	  r5, 0x29C(r3)
-lwz	  r3, 0xC(r6)
-xor	  r0, r4, r0
-xor	  r3, r5, r3
-or.	  r0, r3, r0
-bne	  branch_0x8015AB60
-
-branch_0x8015AAD0:
-addi	  r28, r1, 0x5E8+var_1DC
-stw	  r28, 0x5E8+var_304(r1)
-extsb	  r24, r7
-lwz	  r23, 0x5E8+var_304(r1)
-mr	  r3, r23
-bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
-lis	  r3, unk_803E0148@h
-addi	  r0, r3, unk_803E0148@l
-lis	  r3, unk_803E0120@h
-stw	  r0, 0(r23)
-addi	  r27, r3, unk_803E0120@l
-lis	  r3, unk_803E01A0@h
-stw	  r27, 0(r23)
-addi	  r26, r3, unk_803E01A0@l
-stw	  r26, 0(r23)
-addi	  r3, r23, 0
-li	  r4, 0
-li	  r5, 0
-bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r28
-bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
-lwz	  r3, -0x6060(r13)
-mr	  r4, r28
-bl	  save__12TFlagManagerFR21JSUMemoryOutputStream	# TFlagManager::save((JSUMemoryOutputStream &))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r24
-bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
-stw	  r26, 0x5E8+var_1DC(r1)
-addi	  r3, r28, 0
-li	  r4, 0
-stw	  r27, 0x5E8+var_1DC(r1)
-bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
-li	  r0, 0x16
-stw	  r0, 0x310(r31)
-b	  branch_0x8015AB68
-
-branch_0x8015AB60:
-li	  r0, 0x2C
-stw	  r0, 0x310(r31)
-
-branch_0x8015AB68:
-cmpwi	  r25, 0
-bne	  branch_0x8015AB7C
-li	  r0, 0
-stb	  r0, 0x2DE(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015AB7C:
-cmpwi	  r25, 1
-bne	  def_80157F7C	# jumptable 80157F7C default case
-li	  r0, 1
-stb	  r0, 0x2DE(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015AB90:
-li	  r0, 1
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015AB9C:
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 3
-bge	  branch_0x8015ABB0
-li	  r0, 4
-stw	  r0, 0x10(r31)
-
-branch_0x8015ABB0:
-addi	  r3, r31, 0
-li	  r4, 3
-li	  r5, 3
-li	  r6, 3
-bl	  waitForSelect3__9TCardSaveF10TEProgress10TEProgress10TEProgress # TCardSave::waitForSelect3((TEProgress,TEProgress,TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015ABC8:		# jumptable 80157F7C case 44
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-cmpwi	  r3, -3
-beq	  branch_0x8015ABF0
-addi	  r3, r31, 0
-li	  r4, 1
-bl	  waitForStop__9TCardSaveF10TEProgress # TCardSave::waitForStop((TEProgress))
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015ABF0:
-lwz	  r3, 0xA4(r31)
-lbz	  r0, 0xC(r3)
-cmplwi	  r0, 0
-beq	  branch_0x8015ADD4
-lwz	  r6, 0x50(r31)
-lis	  r28, 0x4330
-lwz	  r0, 0x58(r31)
-li	  r4, 0x14
-lwz	  r5, 0x4C(r31)
-lwz	  r3, 0x54(r31)
-subf	  r25, r6, r0
-xoris	  r0, r25, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r24, r5, r3
-xoris	  r3, r24, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0x48(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r28, 0x5E8+var_98(r1)
-stw	  r28, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r24, 0
-addi	  r5, r25, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r27, 1
-stb	  r27, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r25, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r24, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r28, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r28, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r28, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r28, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r28, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r28, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r27, 0x4E(r26)
-li	  r4, 0
-li	  r0, 3
-lwz	  r3, 0xA4(r31)
-stb	  r4, 0xC(r3)
-stw	  r0, 0x10(r31)
-
-branch_0x8015ADD4:
-addi	  r3, r31, 0
-li	  r4, 3
-bl	  waitForStop__9TCardSaveF10TEProgress # TCardSave::waitForStop((TEProgress))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015ADE4:		# jumptable 80157F7C case 46
-mr	  r3, r31
-bl	  waitForSelectOver__9TCardSaveFv # TCardSave::waitForSelectOver((void))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015ADF0:		# jumptable 80157F7C case 51
-lwz	  r3, -0x603C(r13)
-bl	  getLastStatus__12TCardManagerFv # TCardManager::getLastStatus((void))
-mr.	  r25, r3
-bne	  branch_0x8015AF20
-addi	  r3, r31, 0
-li	  r4, 0x16
-li	  r5, 1
-li	  r6, 0
-bl	  waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoiceBM((TEProgress,TEProgress,signed char))
-extsb	  r23, r3
-lwz	  r3, -0x603C(r13)
-bl	  probe__12TCardManagerFv # TCardManager::probe((void))
-cmpwi	  r23, 0
-bne	  def_80157F7C	# jumptable 80157F7C default case
-lbz	  r7, 0x2EA(r31)
-extsb	  r0, r7
-slwi	  r3, r0, 5
-addi	  r6, r3, 0x278
-add	  r6, r31, r6
-lwz	  r0, 0(r6)
-cmpwi	  r0, 1
-bne	  branch_0x8015AE54
-li	  r0, 0x1E
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015AE54:
-lwz	  r0, 0x18(r6)
-cmplwi	  r0, 0
-beq	  branch_0x8015AE84
-lwz	  r3, -0x6060(r13)
-lwz	  r0, 8(r6)
-lwz	  r4, 0x298(r3)
-lwz	  r5, 0x29C(r3)
-lwz	  r3, 0xC(r6)
-xor	  r0, r4, r0
-xor	  r3, r5, r3
-or.	  r0, r3, r0
-bne	  branch_0x8015AF14
-
-branch_0x8015AE84:
-addi	  r27, r1, 0x5E8+var_208
-stw	  r27, 0x5E8+var_308(r1)
-extsb	  r24, r7
-lwz	  r23, 0x5E8+var_308(r1)
-mr	  r3, r23
-bl	  __ct__10JSUIosBaseFv # JSUIosBase::JSUIosBase((void))
-lis	  r3, unk_803E0148@h
-addi	  r0, r3, unk_803E0148@l
-lis	  r3, unk_803E0120@h
-stw	  r0, 0(r23)
-addi	  r26, r3, unk_803E0120@l
-lis	  r3, unk_803E01A0@h
-stw	  r26, 0(r23)
-addi	  r25, r3, unk_803E01A0@l
-stw	  r25, 0(r23)
-addi	  r3, r23, 0
-li	  r4, 0
-li	  r5, 0
-bl	  setBuffer__21JSUMemoryOutputStreamFPvl # JSUMemoryOutputStream::setBuffer((void *,long))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r27
-bl	  getWriteStream__12TCardManagerFP21JSUMemoryOutputStream # TCardManager::getWriteStream((JSUMemoryOutputStream	*))
-lwz	  r3, -0x6060(r13)
-mr	  r4, r27
-bl	  save__12TFlagManagerFR21JSUMemoryOutputStream	# TFlagManager::save((JSUMemoryOutputStream &))
-lwz	  r3, -0x603C(r13)
-mr	  r4, r24
-bl	  writeBlock__12TCardManagerFUl	# TCardManager::writeBlock((ulong))
-stw	  r25, 0x5E8+var_208(r1)
-addi	  r3, r27, 0
-li	  r4, 0
-stw	  r26, 0x5E8+var_208(r1)
-bl	  __dt__15JSUOutputStreamFv # JSUOutputStream::~JSUOutputStream((void))
-li	  r0, 0x16
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015AF14:
-li	  r0, 0x2C
-stw	  r0, 0x310(r31)
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015AF20:
-lwz	  r0, 0x10(r31)
-cmpwi	  r0, 2
-bne	  branch_0x8015B140
-lwz	  r3, 0x134(r31)
-li	  r5, 0
-li	  r0, 3
-stb	  r5, 0xC(r3)
-lis	  r27, 0x4330
-li	  r4, 0x14
-lwz	  r3, 0x138(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x128(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xF8(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x130(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x150(r31)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0xFC(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-lwz	  r3, 0x100(r31)
-lwz	  r3, 0(r3)
-stb	  r5, 0xC(r3)
-stw	  r0, 0x10(r31)
-lwz	  r6, 0xE8(r31)
-lwz	  r0, 0xF0(r31)
-lwz	  r5, 0xE4(r31)
-lwz	  r3, 0xEC(r31)
-subf	  r24, r6, r0
-xoris	  r0, r24, 0x8000
-lfs	  f1, -0x4A4C(r2)
-subf	  r23, r5, r3
-xoris	  r3, r23, 0x8000
-stw	  r0, 0x5E8+var_90+4(r1)
-lwz	  r26, 0xE0(r31)
-fmr	  f2, f1
-stw	  r3, 0x5E8+var_98+4(r1)
-lfd	  f4, -0x4A38(r2)
-addi	  r3, r26, 0x2C
-stw	  r27, 0x5E8+var_98(r1)
-stw	  r27, 0x5E8+var_90(r1)
-lfd	  f3, 0x5E8+var_98(r1)
-lfd	  f0, 0x5E8+var_90(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-addi	  r4, r23, 0
-addi	  r5, r24, 0
-lwz	  r12, 0(r3)
-lwz	  r12, 0x14(r12)
-mtlr	  r12
-blrl
-li	  r28, 1
-stb	  r28, 0x4F(r26)
-addi	  r3, r26, 0x14
-li	  r4, 0x14
-lwz	  r6, 8(r26)
-lwz	  r0, 0x10(r26)
-lwz	  r5, 4(r26)
-subf	  r7, r6, r0
-lwz	  r0, 0xC(r26)
-subf	  r6, r24, r7
-lfd	  f4, -0x4A38(r2)
-subf	  r8, r5, r0
-lfs	  f5, -0x4A48(r2)
-subf	  r0, r23, r8
-xoris	  r5, r6, 0x8000
-xoris	  r6, r0, 0x8000
-stw	  r5, 0x5E8+var_88+4(r1)
-xoris	  r5, r7, 0x8000
-xoris	  r0, r8, 0x8000
-stw	  r6, 0x5E8+var_78+4(r1)
-stw	  r5, 0x5E8+var_68+4(r1)
-stw	  r0, 0x5E8+var_58+4(r1)
-stw	  r27, 0x5E8+var_88(r1)
-stw	  r27, 0x5E8+var_78(r1)
-lfd	  f1, 0x5E8+var_88(r1)
-stw	  r27, 0x5E8+var_68(r1)
-lfd	  f0, 0x5E8+var_78(r1)
-fsubs	  f3, f1, f4
-stw	  r27, 0x5E8+var_58(r1)
-lfd	  f1, 0x5E8+var_68(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_58(r1)
-fsubs	  f1, f1, f4
-fsubs	  f0, f0, f4
-fmuls	  f3, f5, f3
-fmuls	  f2, f5, f2
-fmuls	  f1, f5, f1
-fmuls	  f0, f5, f0
-fctiwz	  f3, f3
-fctiwz	  f2, f2
-fctiwz	  f1, f1
-fctiwz	  f0, f0
-stfd	  f3, 0x5E8+var_80(r1)
-stfd	  f2, 0x5E8+var_70(r1)
-lwz	  r24, 0x5E8+var_80+4(r1)
-stfd	  f1, 0x5E8+var_60(r1)
-lwz	  r23, 0x5E8+var_70+4(r1)
-xoris	  r0, r24, 0x8000
-stfd	  f0, 0x5E8+var_50(r1)
-lwz	  r6, 0x5E8+var_60+4(r1)
-xoris	  r5, r23, 0x8000
-lwz	  r7, 0x5E8+var_50+4(r1)
-xoris	  r6, r6, 0x8000
-stw	  r5, 0x5E8+var_38+4(r1)
-xoris	  r5, r7, 0x8000
-stw	  r5, 0x5E8+var_48+4(r1)
-stw	  r6, 0x5E8+var_40+4(r1)
-stw	  r0, 0x5E8+var_30+4(r1)
-stw	  r27, 0x5E8+var_48(r1)
-stw	  r27, 0x5E8+var_40(r1)
-lfd	  f1, 0x5E8+var_48(r1)
-stw	  r27, 0x5E8+var_38(r1)
-lfd	  f0, 0x5E8+var_40(r1)
-fsubs	  f1, f1, f4
-stw	  r27, 0x5E8+var_30(r1)
-lfd	  f3, 0x5E8+var_38(r1)
-fsubs	  f2, f0, f4
-lfd	  f0, 0x5E8+var_30(r1)
-fsubs	  f3, f3, f4
-fsubs	  f4, f0, f4
-bl	  setValue__8TCoord2DFlffff # TCoord2D::setValue((long,float,float,float,float))
-lwz	  r3, 0(r26)
-lwz	  r4, 4(r26)
-lwz	  r12, 0(r3)
-lwz	  r0, 8(r26)
-add	  r4, r4, r23
-lwz	  r12, 0xC(r12)
-add	  r5, r0, r24
-mtlr	  r12
-blrl
-stb	  r28, 0x4E(r26)
-
-branch_0x8015B140:
-addi	  r3, r31, 0
-addi	  r4, r25, 0
-bl	  changeMode__9TCardSaveFl # TCardSave::changeMode((long))
-addi	  r4, r3, 0
-addi	  r3, r31, 0
-addi	  r5, r4, 0
-li	  r6, 1
-bl	  waitForChoiceBM__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoiceBM((TEProgress,TEProgress,signed char))
-b	  def_80157F7C	# jumptable 80157F7C default case
-
-branch_0x8015B164:		# jumptable 80157F7C case 52
-addi	  r3, r31, 0
-li	  r4, 0x19
-li	  r5, 1
-li	  r6, 1
-bl	  waitForChoice__9TCardSaveF10TEProgress10TEProgressSc # TCardSave::waitForChoice((TEProgress,TEProgress,signed	char))
-
-def_80157F7C:		# jumptable 80157F7C default case
+branch_0x8015b164:
+    addi    r3, r31, 0x0
+    li      r4, 0x19
+    li      r5, 0x1
+    li      r6, 0x1
+    bl      waitForChoice__9TCardSaveF10TEProgress10TEProgressSc
 branch_0x8015b178:
     lwz     r0, 0x310(r31)
     cmpw    r29, r0
@@ -3552,7 +3484,7 @@ branch_0x8015b1b4:
     beq-    branch_0x8015b224
     cmpwi   r30, 0x1
     bne-    branch_0x8015b1f0
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x4819
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3566,7 +3498,7 @@ branch_0x8015b1f0:
     lwz     r0, 0x10(r31)
     cmpwi   r0, 0x3
     bne-    branch_0x8015b224
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481a
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -3610,8 +3542,8 @@ branch_0x8015b278:
 
 branch_0x8015b284:
     lwz     r0, 0x310(r30)
-    lis     r3, 0x803c
-    addi    r27, r3, 0x6c8
+    lis     r3, cMessageID__9TCardSave@h
+    addi    r27, r3, cMessageID__9TCardSave@l
     lwz     r28, 0x12c(r30)
     slwi    r0, r0, 2
     add     r4, r27, r0
@@ -3678,14 +3610,14 @@ branch_0x8015b284:
     lwz     r3, 0xec(r30)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r26, r5, r3
     xoris   r3, r26, 0x8000
     stw     r0, 0x19c(sp)
     lwz     r27, 0xe0(r30)
     fmr     f4, f3
     stw     r3, 0x1a4(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r27, 0x2c
     stw     r28, 0x1a0(sp)
     stw     r28, 0x198(sp)
@@ -3710,9 +3642,9 @@ branch_0x8015b284:
     subf    r7, r5, r0
     lwz     r0, 0xc(r27)
     subf    r5, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r26, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -3881,9 +3813,9 @@ branch_0x8015b684:
     lhzx    r27, r30, r0
     cmplwi  r27, 0x64
     bge-    branch_0x8015b724
-    lis     r4, 0x6666
+    lis     r4, unk_66666667@h
     lwz     r3, 0x148(r30)
-    addi    r0, r4, 0x6667
+    addi    r0, r4, unk_66666667@l
     mulhw   r26, r0, r27
     srawi   r0, r26, 2
     srwi    r4, r0, 31
@@ -3913,9 +3845,9 @@ branch_0x8015b684:
     b       branch_0x8015b7d4
 
 branch_0x8015b724:
-    lis     r4, 0x51ec
+    lis     r4, unk_51eb851f@ha
     lwz     r3, 0x13c(r30)
-    subi    r0, r4, 0x7ae1
+    addi    r0, r4, unk_51eb851f@l
     mulhw   r0, r0, r27
     srawi   r0, r0, 5
     srwi    r4, r0, 31
@@ -3926,11 +3858,11 @@ branch_0x8015b724:
     li      r5, 0x0
     lwz     r4, 0x20(r4)
     bl      changeTexture__10J2DPictureFPC7ResTIMGUc
-    subi    r27, r27, 0x64
+    addi    r27, r27, -0x64
     lwz     r3, 0x140(r30)
-    lis     r4, 0x6666
+    lis     r4, unk_66666667@h
     clrlwi  r27, r27, 16
-    addi    r0, r4, 0x6667
+    addi    r0, r4, unk_66666667@l
     mulhw   r26, r0, r27
     srawi   r0, r26, 2
     srwi    r4, r0, 31
@@ -3997,14 +3929,14 @@ branch_0x8015b7e0:
     lwz     r3, 0xec(r30)
     subf    r26, r6, r0
     xoris   r0, r26, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r25, r5, r3
     xoris   r3, r25, 0x8000
     stw     r0, 0x144(sp)
     lwz     r27, 0xe0(r30)
     fmr     f2, f1
     stw     r3, 0x13c(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r27, 0x2c
     stw     r28, 0x138(sp)
     stw     r28, 0x140(sp)
@@ -4030,9 +3962,9 @@ branch_0x8015b7e0:
     subf    r7, r6, r0
     lwz     r0, 0xc(r27)
     subf    r6, r26, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r25, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -4174,14 +4106,14 @@ branch_0x8015babc:
     lwz     r3, 0x1c8(r30)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r26, r5, r3
     xoris   r3, r26, 0x8000
     stw     r0, 0x1d4(sp)
     lwz     r27, 0x1bc(r30)
     fmr     f4, f3
     stw     r3, 0x1dc(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r27, 0x2c
     stw     r28, 0x1d8(sp)
     stw     r28, 0x1d0(sp)
@@ -4206,9 +4138,9 @@ branch_0x8015babc:
     subf    r7, r5, r0
     lwz     r0, 0xc(r27)
     subf    r5, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r26, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -4443,9 +4375,9 @@ branch_0x8015bef8:
     extsh   r28, r25
     cmpwi   r28, 0x64
     bge-    branch_0x8015bf78
-    lis     r4, 0x6666
+    lis     r4, unk_66666667@h
     lwz     r3, 0x224(r30)
-    addi    r0, r4, 0x6667
+    addi    r0, r4, unk_66666667@l
     mulhw   r27, r0, r28
     srawi   r0, r27, 2
     srwi    r4, r0, 31
@@ -4474,9 +4406,9 @@ branch_0x8015bef8:
     b       branch_0x8015c024
 
 branch_0x8015bf78:
-    lis     r4, 0x51ec
+    lis     r4, unk_51eb851f@ha
     lwz     r3, 0x218(r30)
-    subi    r0, r4, 0x7ae1
+    addi    r0, r4, unk_51eb851f@l
     mulhw   r0, r0, r28
     srawi   r0, r0, 5
     srwi    r4, r0, 31
@@ -4487,11 +4419,11 @@ branch_0x8015bf78:
     li      r5, 0x0
     lwz     r4, 0x20(r4)
     bl      changeTexture__10J2DPictureFPC7ResTIMGUc
-    subi    r25, r25, 0x64
+    addi    r25, r25, -0x64
     lwz     r3, 0x21c(r30)
-    lis     r4, 0x6666
+    lis     r4, unk_66666667@h
     extsh   r25, r25
-    addi    r0, r4, 0x6667
+    addi    r0, r4, unk_66666667@l
     mulhw   r27, r0, r25
     srawi   r0, r27, 2
     srwi    r4, r0, 31
@@ -4529,7 +4461,7 @@ branch_0x8015c034:
     lwz     r3, 0xd4(r3)
     rlwinm. r0, r3, 0, 26, 26
     beq-    branch_0x8015c07c
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4549,7 +4481,7 @@ branch_0x8015c07c:
     beq-    branch_0x8015c098
     extsb.  r0, r27
     ble-    branch_0x8015c0b4
-    subi    r0, r27, 0x1
+    addi    r0, r27, -0x1
     stb     r0, 0x2e9(r30)
     b       branch_0x8015c0b4
 
@@ -4567,7 +4499,7 @@ branch_0x8015c0b4:
     extsb   r0, r0
     cmpw    r3, r0
     beq-    branch_0x8015c3fc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -4610,14 +4542,14 @@ branch_0x8015c148:
     lwz     r3, 0x1c8(r30)
     subf    r26, r6, r0
     xoris   r0, r26, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r25, r5, r3
     xoris   r3, r25, 0x8000
     stw     r0, 0x17c(sp)
     lwz     r27, 0x1bc(r30)
     fmr     f2, f1
     stw     r3, 0x174(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r27, 0x2c
     stw     r28, 0x170(sp)
     stw     r28, 0x178(sp)
@@ -4643,9 +4575,9 @@ branch_0x8015c148:
     subf    r7, r6, r0
     lwz     r0, 0xc(r27)
     subf    r6, r26, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r25, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -4820,9 +4752,9 @@ branch_0x8015c454:
 
 branch_0x8015c464:
     lwz     r4, 0x310(r26)
-    lis     r3, 0x803c
+    lis     r3, cMessageID__9TCardSave@h
     lwz     r0, 0x308(r26)
-    addi    r3, r3, 0x6c8
+    addi    r3, r3, cMessageID__9TCardSave@l
     slwi    r4, r4, 2
     add     r3, r3, r4
     cmpwi   r0, 0x3
@@ -4889,14 +4821,14 @@ branch_0x8015c4d0:
     lwz     r3, 0x188(r26)
     subf    r24, r6, r0
     xoris   r0, r24, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r25, r5, r3
     xoris   r3, r25, 0x8000
     stw     r0, 0x11c(sp)
     lwz     r28, 0x17c(r26)
     fmr     f4, f3
     stw     r3, 0x124(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r29, 0x120(sp)
     stw     r29, 0x118(sp)
@@ -4921,9 +4853,9 @@ branch_0x8015c4d0:
     subf    r7, r5, r0
     lwz     r0, 0xc(r28)
     subf    r5, r24, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r25, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -5037,7 +4969,7 @@ branch_0x8015c774:
     lwz     r3, 0xd4(r3)
     rlwinm. r0, r3, 0, 26, 26
     beq-    branch_0x8015c7bc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5070,7 +5002,7 @@ branch_0x8015c7e0:
     extsb   r0, r0
     cmpw    r3, r0
     beq-    branch_0x8015cadc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5118,14 +5050,14 @@ branch_0x8015c87c:
     lwz     r3, 0x188(r26)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r24, r5, r3
     xoris   r3, r24, 0x8000
     stw     r0, 0xc4(sp)
     lwz     r28, 0x17c(r26)
     fmr     f2, f1
     stw     r3, 0xbc(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r30, 0xb8(sp)
     stw     r30, 0xc0(sp)
@@ -5151,9 +5083,9 @@ branch_0x8015c87c:
     subf    r7, r6, r0
     lwz     r0, 0xc(r28)
     subf    r6, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r24, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -5313,14 +5245,14 @@ branch_0x8015cb44:
     lwz     r3, 0x24c(r27)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r26, r5, r3
     xoris   r3, r26, 0x8000
     stw     r0, 0x10c(sp)
     lwz     r29, 0x240(r27)
     fmr     f4, f3
     stw     r3, 0x114(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r29, 0x2c
     stw     r30, 0x110(sp)
     stw     r30, 0x108(sp)
@@ -5345,9 +5277,9 @@ branch_0x8015cb44:
     subf    r7, r5, r0
     lwz     r0, 0xc(r29)
     subf    r5, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r26, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -5458,7 +5390,7 @@ branch_0x8015cd94:
     lwz     r3, 0xd4(r3)
     rlwinm. r0, r3, 0, 26, 26
     beq-    branch_0x8015cddc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5491,7 +5423,7 @@ branch_0x8015ce00:
     extsb   r0, r0
     cmpw    r3, r0
     beq-    branch_0x8015d0f4
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481e
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -5534,14 +5466,14 @@ branch_0x8015ce94:
     lwz     r3, 0x24c(r27)
     subf    r26, r6, r0
     xoris   r0, r26, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r25, r5, r3
     xoris   r3, r25, 0x8000
     stw     r0, 0xb4(sp)
     lwz     r29, 0x240(r27)
     fmr     f2, f1
     stw     r3, 0xac(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r29, 0x2c
     stw     r30, 0xa8(sp)
     stw     r30, 0xb0(sp)
@@ -5567,9 +5499,9 @@ branch_0x8015ce94:
     subf    r7, r6, r0
     lwz     r0, 0xc(r29)
     subf    r6, r26, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r25, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -5720,8 +5652,8 @@ branch_0x8015d14c:
 
 branch_0x8015d158:
     lwz     r0, 0x310(r27)
-    lis     r3, 0x803c
-    addi    r30, r3, 0x6c8
+    lis     r3, cMessageID__9TCardSave@h
+    addi    r30, r3, cMessageID__9TCardSave@l
     lwz     r31, 0x174(r27)
     slwi    r0, r0, 2
     add     r4, r30, r0
@@ -5764,14 +5696,14 @@ branch_0x8015d158:
     lwz     r3, 0x16c(r27)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r26, r5, r3
     xoris   r3, r26, 0x8000
     stw     r0, 0xb4(sp)
     lwz     r29, 0x160(r27)
     fmr     f4, f3
     stw     r3, 0xbc(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r29, 0x2c
     stw     r30, 0xb8(sp)
     stw     r30, 0xb0(sp)
@@ -5796,9 +5728,9 @@ branch_0x8015d158:
     subf    r7, r5, r0
     lwz     r0, 0xc(r29)
     subf    r5, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r26, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -5897,14 +5829,14 @@ branch_0x8015d3d8:
     lwz     r3, 0x16c(r27)
     subf    r26, r6, r0
     xoris   r0, r26, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r25, r5, r3
     xoris   r3, r25, 0x8000
     stw     r0, 0x5c(sp)
     lwz     r29, 0x160(r27)
     fmr     f2, f1
     stw     r3, 0x54(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r29, 0x2c
     stw     r30, 0x50(sp)
     stw     r30, 0x58(sp)
@@ -5930,9 +5862,9 @@ branch_0x8015d3d8:
     subf    r7, r6, r0
     lwz     r0, 0xc(r29)
     subf    r6, r26, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r25, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -6068,8 +6000,8 @@ branch_0x8015d660:
     stw     r0, 0x10(r27)
 branch_0x8015d678:
     lwz     r0, 0x310(r27)
-    lis     r3, 0x803c
-    addi    r30, r3, 0x6c8
+    lis     r3, cMessageID__9TCardSave@h
+    addi    r30, r3, cMessageID__9TCardSave@l
     lwz     r31, 0x12c(r27)
     slwi    r0, r0, 2
     add     r4, r30, r0
@@ -6134,14 +6066,14 @@ branch_0x8015d678:
     lwz     r3, 0xec(r27)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r26, r5, r3
     xoris   r3, r26, 0x8000
     stw     r0, 0x13c(sp)
     lwz     r29, 0xe0(r27)
     fmr     f4, f3
     stw     r3, 0x144(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r29, 0x2c
     stw     r31, 0x140(sp)
     stw     r31, 0x138(sp)
@@ -6166,9 +6098,9 @@ branch_0x8015d678:
     subf    r7, r5, r0
     lwz     r0, 0xc(r29)
     subf    r5, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r26, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -6416,8 +6348,8 @@ branch_0x8015db80:
 
 branch_0x8015db8c:
     lwz     r0, 0x310(r27)
-    lis     r3, 0x803c
-    addi    r30, r3, 0x6c8
+    lis     r3, cMessageID__9TCardSave@h
+    addi    r30, r3, cMessageID__9TCardSave@l
     lwz     r31, 0x174(r27)
     slwi    r0, r0, 2
     add     r4, r30, r0
@@ -6460,14 +6392,14 @@ branch_0x8015db8c:
     lwz     r3, 0x16c(r27)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r26, r5, r3
     xoris   r3, r26, 0x8000
     stw     r0, 0xa4(sp)
     lwz     r29, 0x160(r27)
     fmr     f4, f3
     stw     r3, 0xac(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r29, 0x2c
     stw     r31, 0xa8(sp)
     stw     r31, 0xa0(sp)
@@ -6492,9 +6424,9 @@ branch_0x8015db8c:
     subf    r7, r5, r0
     lwz     r0, 0xc(r29)
     subf    r5, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r26, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -6637,8 +6569,8 @@ branch_0x8015dea8:
     stw     r0, 0x10(r31)
 branch_0x8015dec0:
     lwz     r0, 0x310(r31)
-    lis     r3, 0x803c
-    addi    r23, r3, 0x6c8
+    lis     r3, cMessageID__9TCardSave@h
+    addi    r23, r3, cMessageID__9TCardSave@l
     lwz     r24, 0x12c(r31)
     slwi    r0, r0, 2
     add     r4, r23, r0
@@ -6703,14 +6635,14 @@ branch_0x8015dec0:
     lwz     r3, 0xec(r31)
     subf    r23, r6, r0
     xoris   r0, r23, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r22, r5, r3
     xoris   r3, r22, 0x8000
     stw     r0, 0x464(sp)
     lwz     r28, 0xe0(r31)
     fmr     f4, f3
     stw     r3, 0x46c(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r26, 0x468(sp)
     stw     r26, 0x460(sp)
@@ -6735,9 +6667,9 @@ branch_0x8015dec0:
     subf    r7, r5, r0
     lwz     r0, 0xc(r28)
     subf    r5, r23, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r22, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -6832,14 +6764,14 @@ branch_0x8015e170:
     li      r26, 0x0
     lis     r4, 0x4
     stb     r26, 0xc(r3)
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     bl      getFlag__12TFlagManagerCFUl
     clrlwi  r22, r3, 16
     cmplwi  r22, 0x64
     bge-    branch_0x8015e254
-    lis     r4, 0x6666
+    lis     r4, unk_66666667@h
     lwz     r3, 0x148(r31)
-    addi    r0, r4, 0x6667
+    addi    r0, r4, unk_66666667@l
     mulhw   r23, r0, r22
     srawi   r0, r23, 2
     srwi    r4, r0, 31
@@ -6869,9 +6801,9 @@ branch_0x8015e170:
     b       branch_0x8015e458
 
 branch_0x8015e254:
-    lis     r4, 0x51ec
+    lis     r4, unk_51eb851f@ha
     lwz     r3, 0x13c(r31)
-    subi    r0, r4, 0x7ae1
+    addi    r0, r4, unk_51eb851f@l
     mulhw   r0, r0, r22
     srawi   r0, r0, 5
     srwi    r4, r0, 31
@@ -6882,11 +6814,11 @@ branch_0x8015e254:
     li      r5, 0x0
     lwz     r4, 0x20(r4)
     bl      changeTexture__10J2DPictureFPC7ResTIMGUc
-    subi    r24, r22, 0x64
+    addi    r24, r22, -0x64
     lwz     r3, 0x140(r31)
-    lis     r4, 0x6666
+    lis     r4, unk_66666667@h
     clrlwi  r24, r24, 16
-    addi    r0, r4, 0x6667
+    addi    r0, r4, unk_66666667@l
     mulhw   r22, r0, r24
     srawi   r0, r22, 2
     srwi    r4, r0, 31
@@ -7016,7 +6948,7 @@ branch_0x8015e458:
     lwz     r3, 0x0(r3)
     stb     r0, 0xc(r3)
     lwz     r23, 0xfc(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r23)
     lwz     r5, 0x108(r31)
     fcmpo   cr0, f1, f0
@@ -7026,25 +6958,25 @@ branch_0x8015e458:
     subf    r25, r5, r4
     subf    r29, r3, r0
     ble-    branch_0x8015e4a8
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015e4ac
 
 branch_0x8015e4a8:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015e4ac:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r23)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x400(sp)
     lwz     r24, 0x404(sp)
     ble-    branch_0x8015e4d4
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015e4d8
 
 branch_0x8015e4d4:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015e4d8:
     fadds   f0, f2, f0
     xoris   r0, r29, 0x8000
@@ -7055,7 +6987,7 @@ branch_0x8015e4d8:
     lis     r27, 0x4330
     stw     r3, 0x414(sp)
     addi    r3, r23, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x400(sp)
     li      r4, 0x1
     lwz     r22, 0x404(sp)
@@ -7092,9 +7024,9 @@ branch_0x8015e4d8:
     subf    r8, r6, r0
     lwz     r0, 0xc(r23)
     subf    r7, r24, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r22, r0
     subf    r5, r25, r8
     subf    r0, r29, r0
@@ -7166,7 +7098,7 @@ branch_0x8015e4d8:
     blrl
     stb     r26, 0x4e(r23)
     lwz     r23, 0x100(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r23)
     lwz     r5, 0x118(r31)
     fcmpo   cr0, f1, f0
@@ -7176,25 +7108,25 @@ branch_0x8015e4d8:
     subf    r29, r5, r4
     subf    r25, r3, r0
     ble-    branch_0x8015e6e8
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015e6ec
 
 branch_0x8015e6e8:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015e6ec:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r23)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x3e8(sp)
     lwz     r24, 0x3ec(sp)
     ble-    branch_0x8015e714
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015e718
 
 branch_0x8015e714:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015e718:
     fadds   f0, f2, f0
     xoris   r0, r25, 0x8000
@@ -7205,7 +7137,7 @@ branch_0x8015e718:
     lis     r27, 0x4330
     stw     r3, 0x3fc(sp)
     addi    r3, r23, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x3e8(sp)
     li      r4, 0x1
     lwz     r22, 0x3ec(sp)
@@ -7242,9 +7174,9 @@ branch_0x8015e718:
     subf    r8, r6, r0
     lwz     r0, 0xc(r23)
     subf    r7, r24, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r22, r0
     subf    r5, r29, r8
     subf    r0, r25, r0
@@ -7375,13 +7307,13 @@ branch_0x8015e9b0:
     lwz     r4, 0x44(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x8015e9d8
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     bl      forceDeleteEmitter__17JPAEmitterManagerFP14JPABaseEmitter
 branch_0x8015e9d8:
     lbz     r0, 0x2e9(r31)
     extsb.  r0, r0
     bne-    branch_0x8015ea10
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7394,7 +7326,7 @@ branch_0x8015e9d8:
     b       branch_0x8015ea38
 
 branch_0x8015ea10:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7434,14 +7366,14 @@ branch_0x8015ea38:
     lwz     r3, 0xec(r31)
     subf    r23, r6, r0
     xoris   r0, r23, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r22, r5, r3
     xoris   r3, r22, 0x8000
     stw     r0, 0x3f4(sp)
     lwz     r25, 0xe0(r31)
     fmr     f2, f1
     stw     r3, 0x3ec(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r25, 0x2c
     stw     r27, 0x3e8(sp)
     stw     r27, 0x3f0(sp)
@@ -7467,9 +7399,9 @@ branch_0x8015ea38:
     subf    r7, r6, r0
     lwz     r0, 0xc(r25)
     subf    r6, r23, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r22, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -7595,11 +7527,11 @@ branch_0x8015ece4:
     subf    r23, r5, r0
     lwz     r0, 0x3c0(sp)
     xoris   r5, r23, 0x8000
-    lfd     f5, -0x4a38(rtoc)
+    lfd     f5, -0x4a38(r2)
     subf    r22, r4, r0
     stw     r5, 0x3ec(sp)
     xoris   r0, r22, 0x8000
-    lfs     f2, -0x4a28(rtoc)
+    lfs     f2, -0x4a28(r2)
     stw     r0, 0x3fc(sp)
     li      r4, 0x28
     stw     r27, 0x3e8(sp)
@@ -7652,9 +7584,9 @@ branch_0x8015ece4:
     subf    r8, r6, r0
     lwz     r0, 0xc(r28)
     subf    r7, r23, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r22, r0
     subf    r5, r24, r8
     subf    r0, r25, r0
@@ -7740,17 +7672,17 @@ branch_0x8015ece4:
     subf    r3, r6, r0
     lwz     r0, 0x3b4(sp)
     xoris   r7, r3, 0x8000
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     xoris   r6, r6, 0x8000
     stw     r7, 0x3d4(sp)
     subf    r0, r8, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     stw     r6, 0x3dc(sp)
     xoris   r7, r0, 0x8000
     xoris   r0, r8, 0x8000
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     stw     r7, 0x3e4(sp)
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     li      r6, 0x0
     stw     r27, 0x3d0(sp)
     li      r7, 0x0
@@ -7772,7 +7704,7 @@ branch_0x8015ece4:
     stfs    f1, 0x3a0(sp)
     stfs    f0, 0x3a4(sp)
     bl      createEmitter__17JPAEmitterManagerFRCQ29JGeometry8TVec3_f_lP34JPACallBackBase_P14JPABaseEmitter_P54JPACallBackBase2_P14JPABaseEmitter_P15JPABaseParticle_
-    lwz     r4, -0x5fdc(r13)
+    lwz     r4, R13Off_m0x5fdc(r13)
     li      r3, 0x0
     li      r0, 0x888
     lwz     r4, 0xc8(r4)
@@ -7787,11 +7719,11 @@ branch_0x8015ece4:
     lha     r5, 0x170(r5)
     bl      JPAGetXYZRotateMtx__FsssPA4_f
     lwz     r3, 0x44(r31)
-    lfs     f0, -0x4a24(rtoc)
+    lfs     f0, -0x4a24(r2)
     stfs    f0, 0x190(r3)
-    lfs     f0, -0x4a30(rtoc)
+    lfs     f0, -0x4a30(r2)
     stfs    f0, 0x194(r3)
-    lfs     f0, -0x4a20(rtoc)
+    lfs     f0, -0x4a20(r2)
     stfs    f0, 0x198(r3)
     b       branch_0x8015f25c
 
@@ -7806,11 +7738,11 @@ branch_0x8015f02c:
     lwz     r0, 0x3c0(sp)
     subf    r22, r6, r5
     xoris   r5, r22, 0x8000
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r23, r4, r0
     xoris   r0, r23, 0x8000
     stw     r5, 0x3d4(sp)
-    lfs     f2, -0x4a28(rtoc)
+    lfs     f2, -0x4a28(r2)
     li      r4, 0x28
     stw     r0, 0x3e4(sp)
     stw     r26, 0x3d0(sp)
@@ -7863,9 +7795,9 @@ branch_0x8015f02c:
     subf    r8, r6, r0
     lwz     r0, 0xc(r28)
     subf    r7, r25, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r24, r0
     subf    r5, r22, r8
     subf    r0, r23, r0
@@ -7946,13 +7878,13 @@ branch_0x8015f26c:
     subfic  r0, r0, 0x50
 branch_0x8015f270:
     xoris   r0, r0, 0x8000
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     stw     r0, 0x3d4(sp)
     lis     r0, 0x4330
-    lfs     f3, -0x4a1c(rtoc)
+    lfs     f3, -0x4a1c(r2)
     mr      r3, r28
     stw     r0, 0x3d0(sp)
-    lfs     f0, -0x4a18(rtoc)
+    lfs     f0, -0x4a18(r2)
     lfd     f1, 0x3d0(sp)
     fsubs   f1, f1, f2
     fmuls   f1, f3, f1
@@ -7988,13 +7920,13 @@ branch_0x8015f2ec:
     lwz     r4, 0x44(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x8015f320
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     bl      forceDeleteEmitter__17JPAEmitterManagerFP14JPABaseEmitter
 branch_0x8015f320:
     li      r0, 0x0
     stw     r0, 0x2fc(r31)
     li      r4, 0x481e
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8015f350
@@ -8005,7 +7937,7 @@ branch_0x8015f320:
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x8015f350:
     lwz     r22, 0xfc(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r22)
     lwz     r5, 0x108(r31)
     fcmpo   cr0, f1, f0
@@ -8015,25 +7947,25 @@ branch_0x8015f350:
     subf    r25, r5, r4
     subf    r24, r3, r0
     ble-    branch_0x8015f384
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015f388
 
 branch_0x8015f384:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015f388:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r22)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x3d0(sp)
     lwz     r26, 0x3d4(sp)
     ble-    branch_0x8015f3b0
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015f3b4
 
 branch_0x8015f3b0:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015f3b4:
     fadds   f0, f2, f0
     xoris   r0, r24, 0x8000
@@ -8044,7 +7976,7 @@ branch_0x8015f3b4:
     lis     r29, 0x4330
     stw     r3, 0x3e4(sp)
     addi    r3, r22, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x3d0(sp)
     li      r4, 0x1
     lwz     r23, 0x3d4(sp)
@@ -8081,9 +8013,9 @@ branch_0x8015f3b4:
     subf    r8, r6, r0
     lwz     r0, 0xc(r22)
     subf    r7, r26, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r23, r0
     subf    r5, r25, r8
     subf    r0, r24, r0
@@ -8155,7 +8087,7 @@ branch_0x8015f3b4:
     blrl
     stb     r28, 0x4e(r22)
     lwz     r22, 0x100(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r22)
     lwz     r5, 0x118(r31)
     fcmpo   cr0, f1, f0
@@ -8165,25 +8097,25 @@ branch_0x8015f3b4:
     subf    r25, r5, r4
     subf    r24, r3, r0
     ble-    branch_0x8015f5c4
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015f5c8
 
 branch_0x8015f5c4:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015f5c8:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r22)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x3d0(sp)
     lwz     r26, 0x3d4(sp)
     ble-    branch_0x8015f5f0
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015f5f4
 
 branch_0x8015f5f0:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015f5f4:
     fadds   f0, f2, f0
     xoris   r0, r24, 0x8000
@@ -8194,7 +8126,7 @@ branch_0x8015f5f4:
     lis     r29, 0x4330
     stw     r3, 0x3e4(sp)
     addi    r3, r22, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x3d0(sp)
     li      r4, 0x1
     lwz     r23, 0x3d4(sp)
@@ -8231,9 +8163,9 @@ branch_0x8015f5f4:
     subf    r8, r6, r0
     lwz     r0, 0xc(r22)
     subf    r7, r26, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r23, r0
     subf    r5, r25, r8
     subf    r0, r24, r0
@@ -8412,8 +8344,8 @@ branch_0x8015f928:
 
 branch_0x8015f934:
     lwz     r0, 0x310(r31)
-    lis     r3, 0x803c
-    addi    r23, r3, 0x6c8
+    lis     r3, cMessageID__9TCardSave@h
+    addi    r23, r3, cMessageID__9TCardSave@l
     lwz     r24, 0xf4(r31)
     slwi    r0, r0, 2
     add     r4, r23, r0
@@ -8472,14 +8404,14 @@ branch_0x8015f934:
     lwz     r3, 0xec(r31)
     subf    r23, r6, r0
     xoris   r0, r23, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r22, r5, r3
     xoris   r3, r22, 0x8000
     stw     r0, 0x3f4(sp)
     lwz     r28, 0xe0(r31)
     fmr     f4, f3
     stw     r3, 0x3fc(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r26, 0x3f8(sp)
     stw     r26, 0x3f0(sp)
@@ -8504,9 +8436,9 @@ branch_0x8015f934:
     subf    r7, r5, r0
     lwz     r0, 0xc(r28)
     subf    r5, r23, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r22, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -8636,7 +8568,7 @@ branch_0x8015fc58:
     stw     r0, 0x13c(r3)
 branch_0x8015fca0:
     lwz     r24, 0xfc(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r24)
     lwz     r5, 0x108(r31)
     fcmpo   cr0, f1, f0
@@ -8646,25 +8578,25 @@ branch_0x8015fca0:
     subf    r29, r5, r4
     subf    r28, r3, r0
     ble-    branch_0x8015fcd4
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015fcd8
 
 branch_0x8015fcd4:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015fcd8:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r24)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x390(sp)
     lwz     r23, 0x394(sp)
     ble-    branch_0x8015fd00
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015fd04
 
 branch_0x8015fd00:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015fd04:
     fadds   f0, f2, f0
     xoris   r0, r28, 0x8000
@@ -8675,7 +8607,7 @@ branch_0x8015fd04:
     lis     r27, 0x4330
     stw     r3, 0x3a4(sp)
     addi    r3, r24, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x390(sp)
     li      r4, 0x1
     lwz     r22, 0x394(sp)
@@ -8712,9 +8644,9 @@ branch_0x8015fd04:
     subf    r8, r6, r0
     lwz     r0, 0xc(r24)
     subf    r7, r23, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r22, r0
     subf    r5, r29, r8
     subf    r0, r28, r0
@@ -8786,7 +8718,7 @@ branch_0x8015fd04:
     blrl
     stb     r26, 0x4e(r24)
     lwz     r24, 0x100(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r24)
     lwz     r5, 0x118(r31)
     fcmpo   cr0, f1, f0
@@ -8796,25 +8728,25 @@ branch_0x8015fd04:
     subf    r29, r5, r4
     subf    r28, r3, r0
     ble-    branch_0x8015ff14
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015ff18
 
 branch_0x8015ff14:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015ff18:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r24)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x378(sp)
     lwz     r23, 0x37c(sp)
     ble-    branch_0x8015ff40
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x8015ff44
 
 branch_0x8015ff40:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x8015ff44:
     fadds   f0, f2, f0
     xoris   r0, r28, 0x8000
@@ -8825,7 +8757,7 @@ branch_0x8015ff44:
     lis     r27, 0x4330
     stw     r3, 0x38c(sp)
     addi    r3, r24, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x378(sp)
     li      r4, 0x1
     lwz     r22, 0x37c(sp)
@@ -8862,9 +8794,9 @@ branch_0x8015ff44:
     subf    r8, r6, r0
     lwz     r0, 0xc(r24)
     subf    r7, r23, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r22, r0
     subf    r5, r29, r8
     subf    r0, r28, r0
@@ -8954,13 +8886,13 @@ branch_0x80160144:
     lwz     r4, 0x44(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x8016016c
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     bl      forceDeleteEmitter__17JPAEmitterManagerFP14JPABaseEmitter
 branch_0x8016016c:
     lbz     r0, 0x2e9(r31)
     extsb.  r0, r0
     bne-    branch_0x801601a4
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -8973,7 +8905,7 @@ branch_0x8016016c:
     b       branch_0x801601cc
 
 branch_0x801601a4:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -9005,14 +8937,14 @@ branch_0x801601cc:
     lwz     r3, 0xec(r31)
     subf    r23, r6, r0
     xoris   r0, r23, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r22, r5, r3
     xoris   r3, r22, 0x8000
     stw     r0, 0x384(sp)
     lwz     r28, 0xe0(r31)
     fmr     f2, f1
     stw     r3, 0x37c(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r27, 0x378(sp)
     stw     r27, 0x380(sp)
@@ -9038,9 +8970,9 @@ branch_0x801601cc:
     subf    r7, r6, r0
     lwz     r0, 0xc(r28)
     subf    r6, r23, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r22, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -9117,10 +9049,10 @@ branch_0x801603c4:
     lwz     r4, 0x44(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x801603e0
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     bl      forceDeleteEmitter__17JPAEmitterManagerFP14JPABaseEmitter
 branch_0x801603e0:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -9152,14 +9084,14 @@ branch_0x80160408:
     lwz     r3, 0xec(r31)
     subf    r23, r6, r0
     xoris   r0, r23, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r22, r5, r3
     xoris   r3, r22, 0x8000
     stw     r0, 0x384(sp)
     lwz     r28, 0xe0(r31)
     fmr     f2, f1
     stw     r3, 0x37c(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r27, 0x378(sp)
     stw     r27, 0x380(sp)
@@ -9185,9 +9117,9 @@ branch_0x80160408:
     subf    r7, r6, r0
     lwz     r0, 0xc(r28)
     subf    r6, r23, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r22, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -9314,11 +9246,11 @@ branch_0x80160698:
     subf    r23, r5, r0
     lwz     r0, 0x358(sp)
     xoris   r5, r23, 0x8000
-    lfd     f5, -0x4a38(rtoc)
+    lfd     f5, -0x4a38(r2)
     subf    r22, r4, r0
     stw     r5, 0x37c(sp)
     xoris   r0, r22, 0x8000
-    lfs     f2, -0x4a28(rtoc)
+    lfs     f2, -0x4a28(r2)
     stw     r0, 0x38c(sp)
     li      r4, 0x28
     stw     r27, 0x378(sp)
@@ -9371,9 +9303,9 @@ branch_0x80160698:
     subf    r8, r6, r0
     lwz     r0, 0xc(r28)
     subf    r7, r23, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r22, r0
     subf    r5, r24, r8
     subf    r0, r25, r0
@@ -9459,17 +9391,17 @@ branch_0x80160698:
     subf    r3, r6, r0
     lwz     r0, 0x34c(sp)
     xoris   r7, r3, 0x8000
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     xoris   r6, r6, 0x8000
     stw     r7, 0x364(sp)
     subf    r0, r8, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     stw     r6, 0x36c(sp)
     xoris   r7, r0, 0x8000
     xoris   r0, r8, 0x8000
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     stw     r7, 0x374(sp)
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     li      r6, 0x0
     stw     r27, 0x360(sp)
     li      r7, 0x0
@@ -9491,7 +9423,7 @@ branch_0x80160698:
     stfs    f1, 0x338(sp)
     stfs    f0, 0x33c(sp)
     bl      createEmitter__17JPAEmitterManagerFRCQ29JGeometry8TVec3_f_lP34JPACallBackBase_P14JPABaseEmitter_P54JPACallBackBase2_P14JPABaseEmitter_P15JPABaseParticle_
-    lwz     r4, -0x5fdc(r13)
+    lwz     r4, R13Off_m0x5fdc(r13)
     li      r3, 0x0
     li      r0, 0x888
     lwz     r4, 0xc8(r4)
@@ -9506,11 +9438,11 @@ branch_0x80160698:
     lha     r5, 0x170(r5)
     bl      JPAGetXYZRotateMtx__FsssPA4_f
     lwz     r3, 0x44(r31)
-    lfs     f0, -0x4a24(rtoc)
+    lfs     f0, -0x4a24(r2)
     stfs    f0, 0x190(r3)
-    lfs     f0, -0x4a30(rtoc)
+    lfs     f0, -0x4a30(r2)
     stfs    f0, 0x194(r3)
-    lfs     f0, -0x4a20(rtoc)
+    lfs     f0, -0x4a20(r2)
     stfs    f0, 0x198(r3)
     b       branch_0x80160c10
 
@@ -9525,11 +9457,11 @@ branch_0x801609e0:
     lwz     r0, 0x358(sp)
     subf    r22, r6, r5
     xoris   r5, r22, 0x8000
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r23, r4, r0
     xoris   r0, r23, 0x8000
     stw     r5, 0x364(sp)
-    lfs     f2, -0x4a28(rtoc)
+    lfs     f2, -0x4a28(r2)
     li      r4, 0x28
     stw     r0, 0x374(sp)
     stw     r26, 0x360(sp)
@@ -9582,9 +9514,9 @@ branch_0x801609e0:
     subf    r8, r6, r0
     lwz     r0, 0xc(r28)
     subf    r7, r25, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r24, r0
     subf    r5, r22, r8
     subf    r0, r23, r0
@@ -9665,13 +9597,13 @@ branch_0x80160c20:
     subfic  r0, r0, 0x50
 branch_0x80160c24:
     xoris   r0, r0, 0x8000
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     stw     r0, 0x364(sp)
     lis     r0, 0x4330
-    lfs     f3, -0x4a1c(rtoc)
+    lfs     f3, -0x4a1c(r2)
     mr      r3, r28
     stw     r0, 0x360(sp)
-    lfs     f0, -0x4a18(rtoc)
+    lfs     f0, -0x4a18(r2)
     lfd     f1, 0x360(sp)
     fsubs   f1, f1, f2
     fmuls   f1, f3, f1
@@ -9707,13 +9639,13 @@ branch_0x80160ca0:
     lwz     r4, 0x44(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x80160cd4
-    lwz     r3, -0x5fdc(r13)
+    lwz     r3, R13Off_m0x5fdc(r13)
     bl      forceDeleteEmitter__17JPAEmitterManagerFP14JPABaseEmitter
 branch_0x80160cd4:
     li      r0, 0x0
     stw     r0, 0x2fc(r31)
     li      r4, 0x481e
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80160d04
@@ -9724,7 +9656,7 @@ branch_0x80160cd4:
     bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x80160d04:
     lwz     r22, 0xfc(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r22)
     lwz     r5, 0x108(r31)
     fcmpo   cr0, f1, f0
@@ -9734,25 +9666,25 @@ branch_0x80160d04:
     subf    r25, r5, r4
     subf    r24, r3, r0
     ble-    branch_0x80160d38
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x80160d3c
 
 branch_0x80160d38:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x80160d3c:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r22)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x360(sp)
     lwz     r26, 0x364(sp)
     ble-    branch_0x80160d64
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x80160d68
 
 branch_0x80160d64:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x80160d68:
     fadds   f0, f2, f0
     xoris   r0, r24, 0x8000
@@ -9763,7 +9695,7 @@ branch_0x80160d68:
     lis     r29, 0x4330
     stw     r3, 0x374(sp)
     addi    r3, r22, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x360(sp)
     li      r4, 0x1
     lwz     r23, 0x364(sp)
@@ -9800,9 +9732,9 @@ branch_0x80160d68:
     subf    r8, r6, r0
     lwz     r0, 0xc(r22)
     subf    r7, r26, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r23, r0
     subf    r5, r25, r8
     subf    r0, r24, r0
@@ -9874,7 +9806,7 @@ branch_0x80160d68:
     blrl
     stb     r28, 0x4e(r22)
     lwz     r22, 0x100(r31)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     lfs     f1, 0x18(r22)
     lwz     r5, 0x118(r31)
     fcmpo   cr0, f1, f0
@@ -9884,25 +9816,25 @@ branch_0x80160d68:
     subf    r25, r5, r4
     subf    r24, r3, r0
     ble-    branch_0x80160f78
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x80160f7c
 
 branch_0x80160f78:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x80160f7c:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r22)
-    lfs     f0, -0x4a4c(rtoc)
+    lfs     f0, -0x4a4c(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x360(sp)
     lwz     r26, 0x364(sp)
     ble-    branch_0x80160fa4
-    lfs     f0, -0x4a48(rtoc)
+    lfs     f0, -0x4a48(r2)
     b       branch_0x80160fa8
 
 branch_0x80160fa4:
-    lfs     f0, -0x4a2c(rtoc)
+    lfs     f0, -0x4a2c(r2)
 branch_0x80160fa8:
     fadds   f0, f2, f0
     xoris   r0, r24, 0x8000
@@ -9913,7 +9845,7 @@ branch_0x80160fa8:
     lis     r29, 0x4330
     stw     r3, 0x374(sp)
     addi    r3, r22, 0x2c
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     stfd    f0, 0x360(sp)
     li      r4, 0x1
     lwz     r23, 0x364(sp)
@@ -9950,9 +9882,9 @@ branch_0x80160fa8:
     subf    r8, r6, r0
     lwz     r0, 0xc(r22)
     subf    r7, r26, r8
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r0, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r6, r23, r0
     subf    r5, r25, r8
     subf    r0, r24, r0
@@ -10130,8 +10062,8 @@ branch_0x801612d8:
 
 branch_0x801612e4:
     lwz     r0, 0x310(r26)
-    lis     r3, 0x803c
-    addi    r29, r3, 0x6c8
+    lis     r3, cMessageID__9TCardSave@h
+    addi    r29, r3, cMessageID__9TCardSave@l
     lwz     r30, 0xa0(r26)
     slwi    r0, r0, 2
     add     r4, r29, r0
@@ -10194,14 +10126,14 @@ branch_0x801612e4:
     lwz     r3, 0x54(r26)
     subf    r24, r6, r0
     xoris   r0, r24, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r25, r5, r3
     xoris   r3, r25, 0x8000
     stw     r0, 0x17c(sp)
     lwz     r28, 0x48(r26)
     fmr     f4, f3
     stw     r3, 0x184(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r30, 0x180(sp)
     stw     r30, 0x178(sp)
@@ -10226,9 +10158,9 @@ branch_0x801612e4:
     subf    r7, r5, r0
     lwz     r0, 0xc(r28)
     subf    r5, r24, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r25, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -10306,14 +10238,14 @@ branch_0x801612e4:
     lwz     r3, 0xd0(r26)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f3, -0x4a4c(rtoc)
+    lfs     f3, -0x4a4c(r2)
     subf    r24, r5, r3
     xoris   r3, r24, 0x8000
     stw     r0, 0x10c(sp)
     lwz     r28, 0xc4(r26)
     fmr     f4, f3
     stw     r3, 0x114(sp)
-    lfd     f2, -0x4a38(rtoc)
+    lfd     f2, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r30, 0x110(sp)
     stw     r30, 0x108(sp)
@@ -10338,9 +10270,9 @@ branch_0x801612e4:
     subf    r7, r5, r0
     lwz     r0, 0xc(r28)
     subf    r5, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r6, r6, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r24, r6
     xoris   r7, r7, 0x8000
     xoris   r6, r6, 0x8000
@@ -10416,7 +10348,7 @@ branch_0x801612e4:
     beq-    branch_0x8016177c
     cmpwi   r3, 0x5
     beq-    branch_0x8016177c
-    subi    r0, r3, 0xc
+    addi    r0, r3, -0xc
     cmplwi  r0, 0x1
     ble-    branch_0x8016177c
     cmpwi   r3, 0x2d
@@ -10463,7 +10395,7 @@ branch_0x801617ec:
     lwz     r0, 0xd4(r3)
     rlwinm. r0, r0, 0, 26, 26
     beq-    branch_0x80161c10
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x481c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -10482,14 +10414,14 @@ branch_0x80161824:
     lwz     r3, 0x54(r26)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r24, r5, r3
     xoris   r3, r24, 0x8000
     stw     r0, 0xb4(sp)
     lwz     r28, 0x48(r26)
     fmr     f2, f1
     stw     r3, 0xac(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r30, 0xa8(sp)
     stw     r30, 0xb0(sp)
@@ -10515,9 +10447,9 @@ branch_0x80161824:
     subf    r7, r6, r0
     lwz     r0, 0xc(r28)
     subf    r6, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r24, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -10593,14 +10525,14 @@ branch_0x80161824:
     lwz     r3, 0xd0(r26)
     subf    r25, r6, r0
     xoris   r0, r25, 0x8000
-    lfs     f1, -0x4a4c(rtoc)
+    lfs     f1, -0x4a4c(r2)
     subf    r24, r5, r3
     xoris   r3, r24, 0x8000
     stw     r0, 0x124(sp)
     lwz     r28, 0xc4(r26)
     fmr     f2, f1
     stw     r3, 0x11c(sp)
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     addi    r3, r28, 0x2c
     stw     r30, 0x118(sp)
     stw     r30, 0x120(sp)
@@ -10625,9 +10557,9 @@ branch_0x80161824:
     subf    r7, r6, r0
     lwz     r0, 0xc(r28)
     subf    r6, r25, r7
-    lfd     f4, -0x4a38(rtoc)
+    lfd     f4, -0x4a38(r2)
     subf    r8, r5, r0
-    lfs     f5, -0x4a48(rtoc)
+    lfs     f5, -0x4a48(r2)
     subf    r0, r24, r8
     xoris   r5, r6, 0x8000
     xoris   r6, r0, 0x8000
@@ -10754,21 +10686,21 @@ setMessageC__9TCardSaveFP10J2DTextBoxlUl: # 0x80161c28
     bl      SMSGetMessageData__FPvUl
     addi    r0, sp, 0x150
     stw     r0, 0x30(sp)
-    lis     r4, 0x803b
-    subi    r30, r4, 0xf0c
+    lis     r4, __vvt__10JSUIosBase@ha
+    addi    r30, r4, __vvt__10JSUIosBase@l
     lwz     r6, 0x30(sp)
-    lis     r5, 0x803e
-    addi    r0, r5, 0x184
+    lis     r5, __vvt__14JSUInputStream@h
+    addi    r0, r5, __vvt__14JSUInputStream@l
     stw     r30, 0x0(r6)
     li      r29, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__20JSURandomInputStream@h
     stb     r29, 0x4(r6)
-    lis     r5, 0x803e
+    lis     r5, __vvt__20JSUMemoryInputStream@h
     stw     r0, 0x0(r6)
-    addi    r0, r4, 0x160
+    addi    r0, r4, __vvt__20JSURandomInputStream@l
     addi    r4, r3, 0x0
     stw     r0, 0x0(r6)
-    addi    r0, r5, 0x1c8
+    addi    r0, r5, __vvt__20JSUMemoryInputStream@l
     addi    r3, r6, 0x0
     stw     r0, 0x0(r6)
     mr      r5, r31
@@ -10777,26 +10709,26 @@ setMessageC__9TCardSaveFP10J2DTextBoxlUl: # 0x80161c28
     bl      getStringPtr__10J2DTextBoxCFv
     addi    r0, sp, 0x13c
     stw     r0, 0x2c(sp)
-    lis     r7, 0x803e
-    lis     r6, 0x803e
+    lis     r7, __vvt__15JSUOutputStream@h
+    lis     r6, __vvt__21JSURandomOutputStream@h
     lwz     r8, 0x2c(sp)
     mr      r4, r3
-    addi    r0, r7, 0x148
+    addi    r0, r7, __vvt__15JSUOutputStream@l
     stw     r30, 0x0(r8)
-    addi    r6, r6, 0x120
-    lis     r5, 0x803e
+    addi    r6, r6, __vvt__21JSURandomOutputStream@l
+    lis     r5, __vvt__21JSUMemoryOutputStream@h
     stb     r29, 0x4(r8)
     addi    r3, r8, 0x0
     stw     r0, 0x0(r8)
-    addi    r0, r5, 0x1a0
+    addi    r0, r5, __vvt__21JSUMemoryOutputStream@l
     mr      r5, r31
     stw     r6, 0x0(r8)
     stw     r0, 0x0(r8)
     bl      setBuffer__21JSUMemoryOutputStreamFPvl
-    lis     r3, 0x8038
-    lis     r4, 0x8038
-    addi    r30, r3, 0x7fcc
-    addi    r29, r4, 0x7fa8
+    lis     r3, unk_80387fcc@h
+    lis     r4, unk_80387fa8@h
+    addi    r30, r3, unk_80387fcc@l
+    addi    r29, r4, unk_80387fa8@l
     b       branch_0x80161f58
 
 branch_0x80161d10:
@@ -10826,7 +10758,7 @@ branch_0x80161d50:
     bl      read__14JSUInputStreamFPvl
     lbz     r4, 0x27(sp)
     addi    r3, sp, 0x150
-    subi    r4, r4, 0x2
+    addi    r4, r4, -0x2
     bl      skip__20JSURandomInputStreamFl
     b       branch_0x80161f58
 
@@ -10836,20 +10768,20 @@ branch_0x80161d74:
     addi    r4, sp, 0x26
     li      r5, 0x1
     bl      write__15JSUOutputStreamFPCvl
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1a0
-    lis     r3, 0x803e
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    addi    r0, r3, __vvt__21JSUMemoryOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
     stw     r0, 0x13c(sp)
-    addi    r0, r3, 0x120
+    addi    r0, r3, __vvt__21JSURandomOutputStream@l
     stw     r0, 0x13c(sp)
     addi    r3, sp, 0x13c
     li      r4, 0x0
     bl      __dt__15JSUOutputStreamFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x150(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x150(sp)
     addi    r3, sp, 0x150
     li      r4, 0x0
@@ -11004,20 +10936,20 @@ branch_0x80161f58:
     subf.   r0, r3, r31
     bne+    branch_0x80161d10
 branch_0x80161fc0:
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1a0
-    lis     r3, 0x803e
+    lis     r3, __vvt__21JSUMemoryOutputStream@h
+    addi    r0, r3, __vvt__21JSUMemoryOutputStream@l
+    lis     r3, __vvt__21JSURandomOutputStream@h
     stw     r0, 0x13c(sp)
-    addi    r0, r3, 0x120
+    addi    r0, r3, __vvt__21JSURandomOutputStream@l
     stw     r0, 0x13c(sp)
     addi    r3, sp, 0x13c
     li      r4, 0x0
     bl      __dt__15JSUOutputStreamFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x150(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x150(sp)
     addi    r3, sp, 0x150
     li      r4, 0x0
@@ -11065,11 +10997,11 @@ branch_0x80162068:
     li      r4, 0x0
     li      r5, 0x0
     bl      draw__9J2DScreenFiiPC14J2DGrafContext
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r0, 0x1c(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x1c(sp)
     lwz     r3, 0x0(r30)
     lwz     r0, 0x4(r30)
@@ -11114,13 +11046,13 @@ init__9TCardSaveFi: # 0x8016210c
     lwz     r3, 0x308(r3)
     cmpwi   r3, 0x7
     beq-    branch_0x80162158
-    subi    r0, r3, 0x8
+    addi    r0, r3, -0x8
     cmplwi  r0, 0x1
     bgt-    branch_0x801621a0
 branch_0x80162158:
     lwz     r3, 0x14(r30)
-    lis     r31, 0x6d61
-    addi    r4, r31, 0x736b
+    lis     r31, unk_6d61736b@h
+    addi    r4, r31, unk_6d61736b@l
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
     mtlr    r12
@@ -11139,8 +11071,8 @@ branch_0x80162158:
 
 branch_0x801621a0:
     lwz     r3, 0x14(r30)
-    lis     r4, 0x6d61
-    addi    r4, r4, 0x736b
+    lis     r4, unk_6d61736b@h
+    addi    r4, r4, unk_6d61736b@l
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
     mtlr    r12
@@ -11164,11 +11096,11 @@ initData__9TCardSaveFP13TMarioGamePad: # 0x801621d8
     mr      r31, r3
     addi    r29, r4, 0x0
     lbz     r0, 0x18(r3)
-    lis     r3, 0x8038
-    addi    r30, r3, 0x7f88
+    lis     r3, unk_80387f88@h
+    addi    r30, r3, unk_80387f88@l
     cmplwi  r0, 0x0
     beq-    branch_0x80162238
-    subi    r3, rtoc, 0x4a14
+    addi    r3, r2, R2Off_m0x4a14
     bl      getVolume__13JKRFileLoaderFPCc
     addi    r25, r3, 0x0
     li      r3, 0xf4
@@ -11184,7 +11116,7 @@ branch_0x80162230:
     b       branch_0x80162268
 
 branch_0x80162238:
-    subi    r3, rtoc, 0x4a0c
+    addi    r3, r2, R2Off_m0x4a0c
     bl      getVolume__13JKRFileLoaderFPCc
     addi    r25, r3, 0x0
     li      r3, 0xf4
@@ -11247,15 +11179,15 @@ branch_0x801622f0:
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x8016232c
-    lis     r5, 0x77
+    lis     r5, unk_00775f30@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f30
+    addi    r5, r5, unk_00775f30@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x8016232c:
     stw     r24, 0x48(r31)
-    lis     r26, 0x6d5f
-    addi    r4, r26, 0x3561
+    lis     r26, unk_6d5f3561@h
+    addi    r4, r26, unk_6d5f3561@l
     lwz     r3, 0x48(r31)
     lwz     r5, 0x0(r3)
     lwz     r3, 0x14(r5)
@@ -11284,23 +11216,23 @@ branch_0x8016232c:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0xa4(r31)
     li      r4, 0x200
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r3, 0x54
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x801623f0
-    lis     r5, 0x77
+    lis     r5, unk_00775f33@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f33
+    addi    r5, r5, unk_00775f33@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x801623f0:
     stw     r24, 0xa8(r31)
@@ -11318,15 +11250,15 @@ branch_0x801623f0:
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x80162440
-    lis     r5, 0x77
+    lis     r5, unk_00775f33@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f33
+    addi    r5, r5, unk_00775f33@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x80162440:
     stw     r24, 0xc4(r31)
-    lis     r26, 0x6d5f
-    addi    r4, r26, 0x3761
+    lis     r26, unk_6d5f3761@h
+    addi    r4, r26, unk_6d5f3761@l
     lwz     r3, 0xc4(r31)
     lwz     r5, 0x0(r3)
     lwz     r3, 0x14(r5)
@@ -11355,28 +11287,28 @@ branch_0x80162440:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0xdc(r31)
     li      r4, 0x200
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r3, 0x54
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x80162504
-    lis     r5, 0x77
+    lis     r5, unk_00775f31@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f31
+    addi    r5, r5, unk_00775f31@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x80162504:
     stw     r24, 0xe0(r31)
-    lis     r26, 0x6d5f
-    addi    r4, r26, 0x3261
+    lis     r26, unk_6d5f3261@h
+    addi    r4, r26, unk_6d5f3261@l
     lwz     r3, 0xe0(r31)
     lwz     r5, 0x0(r3)
     lwz     r3, 0x14(r5)
@@ -11405,23 +11337,23 @@ branch_0x80162504:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0xf8(r31)
     li      r4, 0x200
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r3, 0x54
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x801625c8
-    lis     r5, 0x73
+    lis     r5, unk_00735f36@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f36
+    addi    r5, r5, unk_00735f36@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x801625c8:
     stw     r24, 0xfc(r31)
@@ -11439,15 +11371,15 @@ branch_0x801625c8:
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x80162618
-    lis     r5, 0x73
+    lis     r5, unk_00735f37@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f37
+    addi    r5, r5, unk_00735f37@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x80162618:
     stw     r24, 0x100(r31)
-    lis     r26, 0x6d5f
-    addi    r4, r26, 0x3361
+    lis     r26, unk_6d5f3361@h
+    addi    r4, r26, unk_6d5f3361@l
     lwz     r3, 0x100(r31)
     lwz     r5, 0x0(r3)
     lwz     r3, 0x14(r5)
@@ -11476,14 +11408,14 @@ branch_0x80162618:
     mr      r3, r27
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r27, 0x128(r31)
     li      r4, 0x20
     addi    r3, r27, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
     addi    r4, r26, 0x3461
@@ -11504,18 +11436,18 @@ branch_0x80162618:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0x130(r31)
     li      r4, 0x200
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
-    lis     r26, 0x665f
-    addi    r4, r26, 0x7369
+    lis     r26, unk_665f7369@h
+    addi    r4, r26, unk_665f7369@l
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
     mtlr    r12
@@ -11528,8 +11460,8 @@ branch_0x80162618:
     mtlr    r12
     blrl
     stw     r3, 0x138(r31)
-    lis     r26, 0x6e5f
-    addi    r4, r26, 0x3461
+    lis     r26, unk_6e5f3461@h
+    addi    r4, r26, unk_6e5f3461@l
     lwz     r3, 0x14(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
@@ -11564,8 +11496,8 @@ branch_0x80162618:
     mtlr    r12
     blrl
     stw     r3, 0x14c(r31)
-    lis     r3, 0x74
-    addi    r4, r3, 0x5f30
+    lis     r3, unk_00745f30@h
+    addi    r4, r3, unk_00745f30@l
     lwz     r3, 0x14(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
@@ -11592,15 +11524,15 @@ branch_0x8016281c:
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x80162874
-    lis     r5, 0x77
+    lis     r5, unk_00775f32@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f32
+    addi    r5, r5, unk_00775f32@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x80162874:
     stw     r24, 0x160(r31)
-    lis     r26, 0x6d5f
-    addi    r4, r26, 0x3661
+    lis     r26, unk_6d5f3661@h
+    addi    r4, r26, unk_6d5f3661@l
     lwz     r3, 0x160(r31)
     lwz     r5, 0x0(r3)
     lwz     r3, 0x14(r5)
@@ -11629,28 +11561,28 @@ branch_0x80162874:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0x178(r31)
     li      r4, 0x200
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r3, 0x54
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x80162938
-    lis     r5, 0x77
+    lis     r5, unk_00775f34@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f34
+    addi    r5, r5, unk_00775f34@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x80162938:
     stw     r24, 0x17c(r31)
-    lis     r26, 0x736d
-    addi    r4, r26, 0x3061
+    lis     r26, unk_736d3061@h
+    addi    r4, r26, unk_736d3061@l
     lwz     r3, 0x17c(r31)
     lwz     r5, 0x0(r3)
     lwz     r3, 0x14(r5)
@@ -11679,14 +11611,14 @@ branch_0x80162938:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0x194(r31)
     li      r4, 0x200
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     li      r25, 0x0
     li      r26, 0x0
@@ -11702,7 +11634,7 @@ branch_0x801629e4:
     add     r28, r31, r26
     stw     r3, 0x198(r28)
     lwz     r3, 0x198(r28)
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
     addis   r4, r27, 0x736d
@@ -11713,7 +11645,7 @@ branch_0x801629e4:
     blrl
     stw     r3, 0x19c(r28)
     lwz     r3, 0x19c(r28)
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
     addis   r4, r27, 0x7363
@@ -11743,15 +11675,15 @@ branch_0x801629e4:
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x80162ac4
-    lis     r5, 0x77
+    lis     r5, unk_00775f35@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f35
+    addi    r5, r5, unk_00775f35@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x80162ac4:
     stw     r24, 0x1bc(r31)
-    lis     r26, 0x736d
-    addi    r4, r26, 0x3661
+    lis     r26, unk_736d3661@h
+    addi    r4, r26, unk_736d3661@l
     lwz     r3, 0x1bc(r31)
     lwz     r5, 0x0(r3)
     lwz     r3, 0x14(r5)
@@ -11780,18 +11712,18 @@ branch_0x80162ac4:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0x204(r31)
     li      r4, 0x200
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
-    lis     r26, 0x6d5f
-    addi    r4, r26, 0x3861
+    lis     r26, unk_6d5f3861@h
+    addi    r4, r26, unk_6d5f3861@l
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
     mtlr    r12
@@ -11809,18 +11741,18 @@ branch_0x80162ac4:
     mr      r3, r26
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r26, 0x20c(r31)
     li      r4, 0x20
     addi    r3, r26, 0x0
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r26
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
-    lis     r26, 0x665f
-    addi    r4, r26, 0x736b
+    lis     r26, unk_665f736b@h
+    addi    r4, r26, unk_665f736b@l
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
     mtlr    r12
@@ -11833,8 +11765,8 @@ branch_0x80162ac4:
     mtlr    r12
     blrl
     stw     r3, 0x214(r31)
-    lis     r26, 0x6e5f
-    addi    r4, r26, 0x3661
+    lis     r26, unk_6e5f3661@h
+    addi    r4, r26, unk_6e5f3661@l
     lwz     r3, 0x14(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
@@ -11869,8 +11801,8 @@ branch_0x80162ac4:
     mtlr    r12
     blrl
     stw     r3, 0x228(r31)
-    lis     r3, 0x74
-    addi    r4, r3, 0x5f34
+    lis     r3, unk_00745f34@h
+    addi    r4, r3, unk_00745f34@l
     lwz     r3, 0x14(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
@@ -11907,7 +11839,7 @@ branch_0x80162d0c:
     add     r28, r31, r26
     stw     r3, 0x1e8(r28)
     lwz     r3, 0x1e8(r28)
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
     addis   r4, r27, 0x736d
@@ -11918,7 +11850,7 @@ branch_0x80162d0c:
     blrl
     stw     r3, 0x1ec(r28)
     lwz     r3, 0x1ec(r28)
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x14(r31)
     addis   r4, r27, 0x7363
@@ -11948,10 +11880,10 @@ branch_0x80162d0c:
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x80162dec
-    lis     r5, 0x77
+    lis     r5, unk_00775f36@h
     lwz     r4, 0x14(r31)
     addi    r3, r24, 0x0
-    addi    r5, r5, 0x5f36
+    addi    r5, r5, unk_00775f36@l
     bl      __ct__7TExPaneFP9J2DScreenUl
 branch_0x80162dec:
     stw     r24, 0x240(r31)
@@ -12004,10 +11936,10 @@ branch_0x80162e28:
     lwz     r12, 0x24(r12)
     mtlr    r12
     blrl
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x0(r25)
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r24, r24, 0x1
     cmpwi   r24, 0x2
@@ -12016,8 +11948,8 @@ branch_0x80162e28:
     addi    r26, r26, 0x100
     blt+    branch_0x80162e28
     lwz     r5, 0x254(r31)
-    lis     r3, 0x6d61
-    addi    r4, r3, 0x736b
+    lis     r3, unk_6d61736b@h
+    addi    r4, r3, unk_6d61736b@l
     lwz     r0, 0x14(r5)
     sth     r0, 0x26c(r31)
     lwz     r3, 0x14(r31)
@@ -12033,7 +11965,7 @@ branch_0x80162e28:
     lbz     r0, 0x18(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x80162f54
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0xdc
     lwz     r26, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -12047,8 +11979,8 @@ branch_0x80162e28:
     stw     r3, 0x2d8(r31)
 branch_0x80162f54:
     lwz     r3, 0x14(r31)
-    lis     r30, 0x736d
-    addi    r4, r30, 0x3161
+    lis     r30, unk_736d3161@h
+    addi    r4, r30, unk_736d3161@l
     lwz     r12, 0x0(r3)
     lwz     r12, 0x24(r12)
     mtlr    r12
@@ -12065,13 +11997,13 @@ branch_0x80162f54:
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r28, 0x0
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x2e4(r31)
     li      r4, 0x1c
@@ -12109,13 +12041,13 @@ branch_0x80162f54:
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r28, 0x0
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x2e4(r31)
     li      r4, 0x1d
@@ -12153,13 +12085,13 @@ branch_0x80162f54:
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r28, 0x0
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x2e4(r31)
     li      r4, 0x1c
@@ -12197,13 +12129,13 @@ branch_0x80162f54:
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r28, 0x0
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x2e4(r31)
     li      r4, 0x1e
@@ -12241,13 +12173,13 @@ branch_0x80162f54:
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r28, 0x0
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x2e4(r31)
     li      r4, 0x1d
@@ -12285,13 +12217,13 @@ branch_0x80162f54:
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r28, 0x0
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x2e4(r31)
     li      r4, 0x1f
@@ -12329,13 +12261,13 @@ branch_0x80162f54:
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r27
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     addi    r3, r28, 0x0
     li      r4, 0x80
     bl      SMSMakeTextBuffer__FP10J2DTextBoxi
     mr      r3, r28
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     bl      setFont__10J2DTextBoxFP7JUTFont
     lwz     r3, 0x2e4(r31)
     li      r4, 0x20
@@ -12371,7 +12303,7 @@ load__9TCardSaveFR20JSUMemoryInputStream: # 0x80163440
     stw     r31, 0x24(sp)
     mr      r31, r3
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     mr      r3, r31
     lwz     r4, 0x18(r4)
     lwz     r4, 0x0(r4)
@@ -12393,21 +12325,21 @@ __ct__9TCardSaveFPCcb: # 0x80163480
     stw     r29, 0x1c(sp)
     addi    r29, r5, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r30, 0x8(sp)
     mr      r3, r4
     stw     r0, 0x0(r30)
     stw     r4, 0x4(r30)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r31, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__9TCardSave@h
     sth     r31, 0xc(r30)
-    addi    r0, r3, 0x7a0
+    addi    r0, r3, __vvt__9TCardSave@l
     addi    r3, r30, 0x4c
     stw     r0, 0x0(r30)
     li      r4, 0x0
@@ -12590,205 +12522,205 @@ branch_0x80163728:
 .globl __sinit_CardSave_cpp
 __sinit_CardSave_cpp: # 0x80163730
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803f4018@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x4018
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803f4018@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x80163778
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x80163778:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x801637a8
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x801637a8:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x801637d8
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x801637d8:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x80163808
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x80163808:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x80163838
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x80163838:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x80163868
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x80163868:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x80163898
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x80163898:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x801638c8
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x801638c8:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x801638f8
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x801638f8:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x80163928
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x80163928:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x80163958
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x80163958:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x80163988
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x80163988:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x801639b8
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x801639b8:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x801639e8
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x801639e8:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x80163a18
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x80163a18:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

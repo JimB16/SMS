@@ -14,18 +14,18 @@ __ct__13JKRDvdArchiveFlQ210JKRArchive15EMountDirection: # 0x802c00f0
     lwz     r3, 0x8(sp)
     bl      __ct__10JKRArchiveFlQ210JKRArchive10EMountMode
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x138
+    lis     r3, __vvt__13JKRDvdArchive@ha
+    addi    r0, r3, __vvt__13JKRDvdArchive@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x0
     addi    r4, r29, 0x0
     stw     r30, 0x5c(r31)
     bl      open__13JKRDvdArchiveFl
-    lis     r3, 0x5241
-    addi    r0, r3, 0x5243
+    lis     r3, unk_52415243@h
+    addi    r0, r3, unk_52415243@l
     stw     r0, 0x2c(r31)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     lwz     r5, 0x48(r31)
     addi    r4, r31, 0x18
     lwz     r6, 0x50(r31)
@@ -57,8 +57,8 @@ __dt__13JKRDvdArchiveFv: # 0x802c0198
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     beq-    branch_0x802c027c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x138
+    lis     r3, __vvt__13JKRDvdArchive@ha
+    addi    r0, r3, __vvt__13JKRDvdArchive@l
     stw     r0, 0x0(r30)
     lbz     r0, 0x30(r30)
     cmplwi  r0, 0x1
@@ -97,8 +97,8 @@ branch_0x802c0224:
     mtlr    r12
     blrl
 branch_0x802c0248:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     addi    r4, r30, 0x18
     bl      remove__10JSUPtrListFP10JSUPtrLink
     li      r0, 0x0
@@ -141,7 +141,7 @@ open__13JKRDvdArchiveFl: # 0x802c02a0
     stw     r0, 0x48(r31)
     stw     r0, 0x4c(r31)
     stw     r0, 0x50(r31)
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     bl      __nw__FUlP7JKRHeapi
     cmplwi  r3, 0x0
     beq-    branch_0x802c02f8
@@ -158,7 +158,7 @@ branch_0x802c02f8:
     b       branch_0x802c047c
 
 branch_0x802c0318:
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     li      r4, 0x20
     li      r5, 0x20
     lwz     r12, 0x0(r3)
@@ -231,7 +231,7 @@ branch_0x802c03b4:
 branch_0x802c0414:
     cmplwi  r30, 0x0
     beq-    branch_0x802c0434
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     mr      r4, r30
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
@@ -409,9 +409,9 @@ fetchResource_subroutine__13JKRDvdArchiveFlUlUlPUcUlii: # 0x802c063c
     stwu    sp, -0x40(sp)
     stmw    r26, 0x28(sp)
     addi    r26, r5, 0x0
-    lis     r5, 0x803b
+    lis     r5, unk_803a9448@ha
     addi    r0, r26, 0x1f
-    subi    r5, r5, 0x6bb8
+    addi    r5, r5, unk_803a9448@l
     addi    r28, r3, 0x0
     addi    r29, r4, 0x0
     addi    r30, r6, 0x0
@@ -454,7 +454,7 @@ branch_0x802c06b8:
     b       branch_0x802c080c
 
 branch_0x802c06e4:
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     li      r4, 0x20
     li      r5, 0x20
     lwz     r12, 0x0(r3)
@@ -471,7 +471,7 @@ branch_0x802c06e4:
     li      r8, 0x1
     li      r10, 0x0
     bl      loadToMainRAM__12JKRDvdRipperFlPUc15JKRExpandSwitchUlP7JKRHeapQ212JKRDvdRipper15EAllocDirectionUlPi
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     mr      r4, r27
     lbz     r0, 0x5(r27)
     lwz     r12, 0x0(r3)
@@ -552,9 +552,9 @@ fetchResource_subroutine__13JKRDvdArchiveFlUlUlP7JKRHeapiiPPUc: # 0x802c0820
     stwu    sp, -0x48(sp)
     stmw    r25, 0x2c(sp)
     addi    r25, r5, 0x0
-    lis     r5, 0x803b
+    lis     r5, unk_803a9448@ha
     addi    r0, r25, 0x1f
-    subi    r5, r5, 0x6bb8
+    addi    r5, r5, unk_803a9448@l
     addi    r28, r3, 0x0
     addi    r29, r4, 0x0
     addi    r30, r6, 0x0

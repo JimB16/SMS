@@ -2,9 +2,9 @@
 .globl __ct__19SampleCtrlModelDataFP12J3DModelData
 __ct__19SampleCtrlModelDataFP12J3DModelData: # 0x8023ef2c
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__19SampleCtrlModelData@ha
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0x40f8
+    addi    r0, r5, __vvt__19SampleCtrlModelData@l
     stwu    sp, -0x48(sp)
     stmw    r27, 0x34(sp)
     addi    r31, r4, 0x0
@@ -215,8 +215,8 @@ __dt__19SampleCtrlModelDataFv: # 0x8023f208
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8023f23c
-    lis     r3, 0x803e
-    subi    r3, r3, 0x40f8
+    lis     r3, __vvt__19SampleCtrlModelData@ha
+    addi    r3, r3, __vvt__19SampleCtrlModelData@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8023f23c

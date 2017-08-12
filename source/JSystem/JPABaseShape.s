@@ -15,25 +15,25 @@ makeColorTable__FP17JPAColorRegAnmKeyiiP7JKRHeap: # 0x80335994
     slwi    r3, r29, 2
     bl      alloc__7JKRHeapFUliP7JKRHeap
     lbz     r7, 0x2(r30)
-    lis     r0, 0x4330
+    lis     r0, unk_43300000@h
     lbz     r6, 0x3(r30)
     cmpwi   r29, 0x0
     stw     r7, 0x3c(sp)
     lbz     r5, 0x4(r30)
     mtctr   r29
     stw     r6, 0x34(sp)
-    li      r6, 0x0
+    addi    r6, r0, unk_43300000@l
     lbz     r4, 0x5(r30)
     stw     r5, 0x2c(sp)
     li      r5, 0x0
-    lfs     f9, 0x950(rtoc)
+    lfs     f9, 0x950(r2)
     li      r7, 0x0
     stw     r4, 0x24(sp)
     fmr     f8, f9
-    lfd     f6, 0x958(rtoc)
+    lfd     f6, 0x958(r2)
     stw     r0, 0x38(sp)
     li      r4, 0x0
-    lfs     f5, 0x954(rtoc)
+    lfs     f5, 0x954(r2)
     stw     r0, 0x30(sp)
     fmr     f7, f8
     lfd     f0, 0x38(sp)
@@ -45,7 +45,7 @@ makeColorTable__FP17JPAColorRegAnmKeyiiP7JKRHeap: # 0x80335994
     lfd     f1, 0x28(sp)
     lfd     f0, 0x20(sp)
     fsubs   f2, f2, f6
-    lfd     f4, 0x960(rtoc)
+    lfd     f4, 0x960(r2)
     fsubs   f1, f1, f6
     fsubs   f0, f0, f6
     fmr     f11, f2
@@ -124,7 +124,7 @@ branch_0x80335a60:
     b       branch_0x80335bdc
 
 branch_0x80335b74:
-    lfs     f9, 0x950(rtoc)
+    lfs     f9, 0x950(r2)
     fmr     f8, f9
     fmr     f7, f8
     fmr     f3, f7
@@ -169,9 +169,9 @@ branch_0x80335be8:
 .globl __ct__12JPABaseShapeFPCUcP7JKRHeap
 __ct__12JPABaseShapeFPCUcP7JKRHeap: # 0x80335c04
     mflr    r0
-    lis     r7, 0x803e
+    lis     r7, __vvt__12JPADataBlock@h
     stw     r0, 0x4(sp)
-    addi    r7, r7, 0x4474
+    addi    r7, r7, __vvt__12JPADataBlock@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r5, 0x0
@@ -179,8 +179,8 @@ __ct__12JPABaseShapeFPCUcP7JKRHeap: # 0x80335c04
     addi    r30, r4, 0x0
     stw     r29, 0x1c(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4550
+    lis     r3, __vvt__12JPABaseShape@h
+    addi    r0, r3, __vvt__12JPABaseShape@l
     lwz     r6, 0x8(sp)
     stw     r7, 0x0(r6)
     stw     r0, 0x0(r6)
@@ -200,8 +200,8 @@ __ct__12JPABaseShapeFPCUcP7JKRHeap: # 0x80335c04
     lbz     r6, 0x23(r4)
     clrlwi. r0, r5, 31
     beq-    branch_0x80335c90
-    lis     r3, 0x1
-    subi    r4, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r4, r3, unk_0000ffff@l
     b       branch_0x80335c94
 
 branch_0x80335c90:
@@ -212,8 +212,8 @@ branch_0x80335c94:
     clrlwi. r0, r6, 31
     sth     r4, 0x5a(r3)
     beq-    branch_0x80335cb4
-    lis     r3, 0x1
-    subi    r4, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r4, r3, unk_0000ffff@l
     b       branch_0x80335cb8
 
 branch_0x80335cb4:
@@ -449,32 +449,32 @@ branch_0x80335f80:
     stw     r0, 0x64(r29)
     lha     r3, 0x80(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x968(rtoc)
+    lfs     f0, 0x968(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x1c(r29)
     lha     r3, 0x82(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x968(rtoc)
+    lfs     f0, 0x968(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x20(r29)
     lha     r3, 0x84(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x968(rtoc)
+    lfs     f0, 0x968(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x24(r29)
     lha     r3, 0x86(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x968(rtoc)
+    lfs     f0, 0x968(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x28(r29)
     lha     r3, 0x88(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x968(rtoc)
+    lfs     f0, 0x968(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x2c(r29)
     lha     r3, 0x8a(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x968(rtoc)
+    lfs     f0, 0x968(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x30(r29)
     lha     r3, 0x8c(r30)
@@ -485,12 +485,12 @@ branch_0x80335f80:
     stfs    f1, 0x38(r29)
     lha     r3, 0x90(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x96c(rtoc)
+    lfs     f0, 0x96c(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x3c(r29)
     lha     r3, 0x92(r30)
     bl      JPAConvertFixToFloat__Fs
-    lfs     f0, 0x96c(rtoc)
+    lfs     f0, 0x96c(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x40(r29)
     lha     r3, 0x94(r30)
@@ -569,12 +569,12 @@ __dt__12JPABaseShapeFv: # 0x80336164
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x803361a8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4550
+    lis     r3, __vvt__12JPABaseShape@h
+    addi    r0, r3, __vvt__12JPABaseShape@l
     stw     r0, 0x0(r31)
     beq-    branch_0x80336198
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4474
+    lis     r3, __vvt__12JPADataBlock@h
+    addi    r0, r3, __vvt__12JPADataBlock@l
     stw     r0, 0x0(r31)
 branch_0x80336198:
     extsh.  r0, r4

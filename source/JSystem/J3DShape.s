@@ -2,11 +2,11 @@
 .globl loadMtxIndx_PNGP__11J3DShapeMtxCFiUs
 loadMtxIndx_PNGP__11J3DShapeMtxCFiUs: # 0x802dfaac
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    addi    r31, r3, 0x45dc
+    addi    r31, r3, j3dSys@l
     addi    r3, r31, 0x0
     stw     r30, 0x20(sp)
     addi    r30, r5, 0x0
@@ -29,11 +29,11 @@ loadMtxIndx_PNGP__11J3DShapeMtxCFiUs: # 0x802dfaac
 .globl loadMtxIndx_PCPU__11J3DShapeMtxCFiUs
 loadMtxIndx_PCPU__11J3DShapeMtxCFiUs: # 0x802dfb08
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    addi    r31, r3, 0x45dc
+    addi    r31, r3, j3dSys@l
     addi    r3, r31, 0x0
     stw     r30, 0x20(sp)
     addi    r30, r5, 0x0
@@ -57,11 +57,11 @@ loadMtxIndx_PCPU__11J3DShapeMtxCFiUs: # 0x802dfb08
 .globl loadMtxIndx_NCPU__11J3DShapeMtxCFiUs
 loadMtxIndx_NCPU__11J3DShapeMtxCFiUs: # 0x802dfb68
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r3, 0x45dc
+    addi    r31, r3, j3dSys@l
     addi    r3, r31, 0x0
     stw     r30, 0x18(sp)
     addi    r30, r4, 0x0
@@ -80,11 +80,11 @@ loadMtxIndx_NCPU__11J3DShapeMtxCFiUs: # 0x802dfb68
 .globl loadMtxIndx_PNCPU__11J3DShapeMtxCFiUs
 loadMtxIndx_PNCPU__11J3DShapeMtxCFiUs: # 0x802dfbb4
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r3, 0x45dc
+    addi    r31, r3, j3dSys@l
     addi    r3, r31, 0x0
     stw     r30, 0x18(sp)
     mulli   r30, r4, 0x3
@@ -104,13 +104,13 @@ loadMtxIndx_PNCPU__11J3DShapeMtxCFiUs: # 0x802dfbb4
 .globl load__11J3DShapeMtxCFv
 load__11J3DShapeMtxCFv: # 0x802dfc04
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, mtxLoadPipeline__11J3DShapeMtx@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
-    lwz     r0, -0x5e90(r13)
+    lwz     r0, R13Off_m0x5e90(r13)
     addi    r12, sp, 0xc
     mulli   r5, r0, 0xc
-    addi    r0, r4, 0x11e0
+    addi    r0, r4, mtxLoadPipeline__11J3DShapeMtx@l
     add     r6, r0, r5
     lwz     r5, 0x0(r6)
     li      r4, 0x0
@@ -166,8 +166,8 @@ __dt__11J3DShapeMtxFv: # 0x802dfcc8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dfcfc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x125c
+    lis     r3, __vvt__11J3DShapeMtx@h
+    addi    r3, r3, __vvt__11J3DShapeMtx@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802dfcfc
@@ -199,9 +199,9 @@ load__13J3DShapeMtxDLCFv: # 0x802dfd14
 .globl load__16J3DShapeMtxMultiCFv
 load__16J3DShapeMtxMultiCFv: # 0x802dfd3c
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, mtxLoadPipeline__11J3DShapeMtx@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x11e0
+    addi    r0, r4, mtxLoadPipeline__11J3DShapeMtx@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     li      r31, 0x0
@@ -209,7 +209,7 @@ load__16J3DShapeMtxMultiCFv: # 0x802dfd3c
     li      r30, 0x0
     stw     r29, 0x1c(sp)
     mr      r29, r3
-    lwz     r5, -0x5e90(r13)
+    lwz     r5, R13Off_m0x5e90(r13)
     mulli   r4, r5, 0xc
     add     r5, r0, r4
     lwz     r4, 0x0(r5)
@@ -291,8 +291,8 @@ branch_0x802dfe50:
 
 .globl __ct__12J3DShapeDrawFPCUcUl
 __ct__12J3DShapeDrawFPCUcUl: # 0x802dfe70
-    lis     r6, 0x803e
-    addi    r0, r6, 0x1210
+    lis     r6, __vvt__12J3DShapeDraw@h
+    addi    r0, r6, __vvt__12J3DShapeDraw@l
     stw     r0, 0x0(r3)
     stw     r4, 0x8(r3)
     stw     r5, 0x4(r3)
@@ -317,14 +317,14 @@ draw__12J3DShapeDrawCFv: # 0x802dfe88
 .globl initialize__8J3DShapeFv
 initialize__8J3DShapeFv: # 0x802dfeb4
     li      r5, 0x0
-    lis     r4, 0x1
+    lis     r4, unk_0000ffff@ha
     stw     r5, 0x0(r3)
-    subi    r0, r4, 0x1
+    addi    r0, r4, unk_0000ffff@l
     sth     r0, 0x4(r3)
-    subi    r0, r13, 0x5e88
+    addi    r0, r13, R13Off_m0x5e88
     sth     r5, 0x6(r3)
     stw     r5, 0x8(r3)
-    lfs     f0, 0x2a0(rtoc)
+    lfs     f0, 0x2a0(r2)
     stfs    f0, 0xc(r3)
     stfs    f0, 0x10(r3)
     stfs    f0, 0x14(r3)
@@ -483,13 +483,13 @@ branch_0x802e00dc:
     lwz     r0, 0x8(r5)
     cmpwi   r0, 0x4
     bne-    branch_0x802e00f8
-    subi    r0, r6, 0x9
+    addi    r0, r6, -0x9
     li      r6, 0xc
     stbx    r6, r8, r0
     b       branch_0x802e0104
 
 branch_0x802e00f8:
-    subi    r0, r6, 0x9
+    addi    r0, r6, -0x9
     li      r6, 0x6
     stbx    r6, r8, r0
 branch_0x802e0104:
@@ -497,7 +497,7 @@ branch_0x802e0104:
     lwz     r0, 0x0(r5)
     lwz     r7, 0x10(r6)
     slwi    r6, r0, 2
-    subi    r0, r6, 0x24
+    addi    r0, r6, -0x24
     stwx    r7, r4, r0
     b       branch_0x802e01e4
 
@@ -505,13 +505,13 @@ branch_0x802e0120:
     lwz     r0, 0x8(r5)
     cmpwi   r0, 0x4
     bne-    branch_0x802e013c
-    subi    r0, r6, 0x9
+    addi    r0, r6, -0x9
     li      r6, 0xc
     stbx    r6, r8, r0
     b       branch_0x802e0148
 
 branch_0x802e013c:
-    subi    r0, r6, 0x9
+    addi    r0, r6, -0x9
     li      r6, 0x6
     stbx    r6, r8, r0
 branch_0x802e0148:
@@ -519,22 +519,22 @@ branch_0x802e0148:
     lwz     r0, 0x0(r5)
     lwz     r7, 0x14(r6)
     slwi    r6, r0, 2
-    subi    r0, r6, 0x24
+    addi    r0, r6, -0x24
     stwx    r7, r4, r0
     b       branch_0x802e01e4
 
 branch_0x802e0164:
-    subi    r0, r6, 0x9
+    addi    r0, r6, -0x9
     li      r6, 0x4
     stbx    r6, r8, r0
     lwz     r9, 0x0(r5)
     lwz     r7, 0x44(r3)
-    subi    r0, r9, 0xb
+    addi    r0, r9, -0xb
     clrlslwi  r6, r0, 24, 2
     addi    r0, r6, 0x1c
     slwi    r6, r9, 2
     lwzx    r7, r7, r0
-    subi    r0, r6, 0x24
+    addi    r0, r6, -0x24
     stwx    r7, r4, r0
     b       branch_0x802e01e4
 
@@ -542,24 +542,24 @@ branch_0x802e0198:
     lwz     r0, 0x8(r5)
     cmpwi   r0, 0x4
     bne-    branch_0x802e01b4
-    subi    r0, r6, 0x9
+    addi    r0, r6, -0x9
     li      r6, 0x8
     stbx    r6, r8, r0
     b       branch_0x802e01c0
 
 branch_0x802e01b4:
-    subi    r0, r6, 0x9
+    addi    r0, r6, -0x9
     li      r6, 0x4
     stbx    r6, r8, r0
 branch_0x802e01c0:
     lwz     r9, 0x0(r5)
     lwz     r7, 0x44(r3)
-    subi    r0, r9, 0xd
+    addi    r0, r9, -0xd
     clrlslwi  r6, r0, 24, 2
     addi    r0, r6, 0x24
     slwi    r6, r9, 2
     lwzx    r7, r7, r0
-    subi    r0, r6, 0x24
+    addi    r0, r6, -0x24
     stwx    r7, r4, r0
 branch_0x802e01e4:
     addi    r5, r5, 0x10
@@ -635,7 +635,7 @@ makeVcdVatCmd__8J3DShapeFv: # 0x802e02ac
     addi    r3, sp, 0x14
     bl      GDInitGDLObj
     addi    r0, sp, 0x14
-    stw     r0, -0x5778(r13)
+    stw     r0, R13Off_m0x5778(r13)
     lwz     r3, 0x2c(r31)
     bl      GDSetVtxDescv
     mr      r3, r31
@@ -648,7 +648,7 @@ makeVcdVatCmd__8J3DShapeFv: # 0x802e02ac
     bl      GDPadCurr32
     bl      GDFlushCurrToMem
     li      r0, 0x0
-    stw     r0, -0x5778(r13)
+    stw     r0, R13Off_m0x5778(r13)
     lwz     r0, 0x34(sp)
     lwz     r31, 0x2c(sp)
     addi    sp, sp, 0x30
@@ -659,11 +659,11 @@ makeVcdVatCmd__8J3DShapeFv: # 0x802e02ac
 .globl loadVtxArray__8J3DShapeCFv
 loadVtxArray__8J3DShapeCFv: # 0x802e0320
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, j3dSys@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x45dc
+    addi    r31, r4, j3dSys@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     li      r3, 0x9
@@ -676,8 +676,8 @@ loadVtxArray__8J3DShapeCFv: # 0x802e0320
     li      r3, 0xa
     bl      J3DLoadArrayBasePtr__F7_GXAttrPv
 branch_0x802e0364:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     lwz     r4, 0x114(r3)
     li      r3, 0xb
     bl      J3DLoadArrayBasePtr__F7_GXAttrPv
@@ -702,10 +702,10 @@ draw__8J3DShapeCFv: # 0x802e0390
     lwz     r3, 0x28(r3)
     bl      GXCallDisplayList
     lwz     r0, 0x8(r31)
-    lis     r3, 0x8040
-    addi    r30, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r30, r3, j3dSys@l
     extrwi  r0, r0, 2, 28
-    stw     r0, -0x5e90(r13)
+    stw     r0, R13Off_m0x5e90(r13)
     li      r3, 0x9
     lwz     r4, 0x10c(r30)
     bl      J3DLoadArrayBasePtr__F7_GXAttrPv
@@ -716,8 +716,8 @@ draw__8J3DShapeCFv: # 0x802e0390
     li      r3, 0xa
     bl      J3DLoadArrayBasePtr__F7_GXAttrPv
 branch_0x802e03f0:
-    lis     r3, 0x8040
-    addi    r30, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r30, r3, j3dSys@l
     lwz     r4, 0x114(r30)
     li      r3, 0xb
     bl      J3DLoadArrayBasePtr__F7_GXAttrPv
@@ -797,8 +797,8 @@ __dt__12J3DShapeDrawFv: # 0x802e04f8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e052c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1210
+    lis     r3, __vvt__12J3DShapeDraw@h
+    addi    r3, r3, __vvt__12J3DShapeDraw@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802e052c
@@ -821,12 +821,12 @@ __dt__16J3DShapeMtxMultiFv: # 0x802e0544
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e0588
-    lis     r3, 0x803e
-    addi    r0, r3, 0x121c
+    lis     r3, __vvt__16J3DShapeMtxMulti@h
+    addi    r0, r3, __vvt__16J3DShapeMtxMulti@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802e0578
-    lis     r3, 0x803e
-    addi    r0, r3, 0x125c
+    lis     r3, __vvt__11J3DShapeMtx@h
+    addi    r0, r3, __vvt__11J3DShapeMtx@l
     stw     r0, 0x0(r31)
 branch_0x802e0578:
     extsh.  r0, r4
@@ -844,8 +844,8 @@ branch_0x802e0588:
 
 .globl getType__16J3DShapeMtxMultiCFv
 getType__16J3DShapeMtxMultiCFv: # 0x802e05a0
-    lis     r3, 0x534d
-    addi    r3, r3, 0x4d4c
+    lis     r3, unk_534d4d4c@h
+    addi    r3, r3, unk_534d4d4c@l
     blr
 
 
@@ -871,12 +871,12 @@ __dt__13J3DShapeMtxDLFv: # 0x802e05c4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e0608
-    lis     r3, 0x803e
-    addi    r0, r3, 0x123c
+    lis     r3, __vvt__13J3DShapeMtxDL@h
+    addi    r0, r3, __vvt__13J3DShapeMtxDL@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802e05f8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x125c
+    lis     r3, __vvt__11J3DShapeMtx@h
+    addi    r0, r3, __vvt__11J3DShapeMtx@l
     stw     r0, 0x0(r31)
 branch_0x802e05f8:
     extsh.  r0, r4
@@ -899,15 +899,15 @@ calcNBTScale__13J3DShapeMtxDLFRC3VecPA3_A3_fPA3_A3_f: # 0x802e0620
 
 .globl getType__11J3DShapeMtxCFv
 getType__11J3DShapeMtxCFv: # 0x802e0624
-    lis     r3, 0x534d
-    addi    r3, r3, 0x5458
+    lis     r3, unk_534d5458@h
+    addi    r3, r3, unk_534d5458@l
     blr
 
 
 .globl __sinit_J3DShape_cpp
 __sinit_J3DShape_cpp: # 0x802e0630
-    lis     r3, 0x803e
-    addi    r4, r3, 0x11b0
+    lis     r3, unk_803e11b0@h
+    addi    r4, r3, unk_803e11b0@l
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x30(r4)

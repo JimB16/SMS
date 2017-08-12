@@ -17,8 +17,8 @@ __ct__6J3DSysFv: # 0x802e069c
     bl      PSMTXIdentity
     li      r0, 0x1
     stw     r0, 0x4c(r30)
-    lis     r3, 0x8040
-    addi    r4, r3, 0x47d0
+    lis     r3, sTexCoordScaleTable__6J3DSys@h
+    addi    r4, r3, sTexCoordScaleTable__6J3DSys@l
     stw     r31, 0x50(r30)
     mr      r3, r30
     stw     r31, 0x38(r30)
@@ -105,9 +105,9 @@ loadNrmMtxIndx__6J3DSysCFiUs: # 0x802e07e0
 .globl setTexCacheRegion__6J3DSysF15_GXTexCacheSize
 setTexCacheRegion__6J3DSysF15_GXTexCacheSize: # 0x802e0808
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, unk_803a9fa0@ha
     stw     r0, 0x4(sp)
-    subi    r7, r5, 0x6060
+    addi    r7, r5, unk_803a9fa0@l
     lis     r5, 0x803b
     stwu    sp, -0x50(sp)
     stmw    r24, 0x30(sp)
@@ -447,8 +447,8 @@ branch_0x802e0d00:
     clrlwi  r0, r31, 24
     cmplwi  r0, 0xa
     blt+    branch_0x802e0ce4
-    lis     r4, 0x803b
-    subi    r5, r4, 0x6040
+    lis     r4, unk_803a9fc0@ha
+    addi    r5, r4, unk_803a9fc0@l
     lwz     r4, 0x0(r5)
     li      r31, 0x0
     lwz     r0, 0x4(r5)
@@ -475,24 +475,24 @@ branch_0x802e0d64:
     clrlwi  r0, r31, 24
     cmplwi  r0, 0x3
     blt+    branch_0x802e0d4c
-    lwz     r0, -0x7548(r13)
+    lwz     r0, R13Off_m0x7548(r13)
     addi    r4, sp, 0x24
     li      r3, 0x4
     stw     r0, 0x24(sp)
     bl      GXSetChanMatColor
-    lwz     r0, -0x7548(r13)
+    lwz     r0, R13Off_m0x7548(r13)
     addi    r4, sp, 0x20
     li      r3, 0x5
     stw     r0, 0x20(sp)
     bl      GXSetChanMatColor
-    lbz     r3, -0x7540(r13)
+    lbz     r3, R13Off_m0x7540(r13)
     bl      GXSetNumChans
     li      r3, 0x1
     bl      GXSetNumTexGens
     li      r3, 0x1
     bl      GXSetNumTevStages
-    lis     r4, 0x803b
-    subi    r5, r4, 0x6028
+    lis     r4, unk_803a9fd8@ha
+    addi    r5, r4, unk_803a9fd8@l
     lwz     r4, 0x0(r5)
     addi    r29, sp, 0x28
     lwz     r0, 0x4(r5)
@@ -517,8 +517,8 @@ branch_0x802e0de4:
     cmpwi   r28, 0x4
     addi    r31, r31, 0x4
     blt+    branch_0x802e0de4
-    lis     r4, 0x803e
-    addi    r29, r4, 0x15d8
+    lis     r4, j3dDefaultTexCoordInfo@h
+    addi    r29, r4, j3dDefaultTexCoordInfo@l
     li      r31, 0x0
     b       branch_0x802e0e4c
 
@@ -555,7 +555,7 @@ branch_0x802e0e74:
     b       branch_0x802e0ea4
 
 branch_0x802e0e8c:
-    lwz     r0, -0x7528(r13)
+    lwz     r0, R13Off_m0x7528(r13)
     addi    r4, r29, 0x0
     clrlwi  r3, r31, 24
     stw     r0, 0x1c(sp)
@@ -570,9 +570,9 @@ branch_0x802e0ea4:
     b       branch_0x802e0edc
 
 branch_0x802e0ebc:
-    lwz     r5, -0x7534(r13)
+    lwz     r5, R13Off_m0x7534(r13)
     mr      r4, r29
-    lwz     r0, -0x7530(r13)
+    lwz     r0, R13Off_m0x7530(r13)
     clrlwi  r3, r31, 24
     stw     r5, 0x14(sp)
     stw     r0, 0x18(sp)
@@ -703,9 +703,9 @@ branch_0x802e102c:
 .globl reinitTexture__6J3DSysFv
 reinitTexture__6J3DSysFv: # 0x802e1094
     mflr    r0
-    lis     r3, 0x803e
+    lis     r3, NullTexData_803e1280@h
     stw     r0, 0x4(sp)
-    addi    r4, r3, 0x1280
+    addi    r4, r3, NullTexData_803e1280@l
     li      r5, 0x4
     stwu    sp, -0x30(sp)
     li      r6, 0x4
@@ -748,9 +748,9 @@ reinitTexture__6J3DSysFv: # 0x802e1094
 .globl __sinit_J3DSys_cpp
 __sinit_J3DSys_cpp: # 0x802e1138
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     stwu    sp, -0x8(sp)
     bl      __ct__6J3DSysFv
     lwz     r0, 0xc(sp)

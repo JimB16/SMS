@@ -8,8 +8,8 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     stmw    r25, 0x14(sp)
     mr      r31, r3
     stw     r4, 0x0(r3)
-    lis     r3, 0x8038
-    addi    r30, r3, 0x20a0
+    lis     r3, unk_803820a0@h
+    addi    r30, r3, unk_803820a0@l
     stw     r0, 0x4(r31)
     addi    r3, r30, 0x20
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -18,12 +18,12 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     addi    r3, r31, 0x8
     addi    r6, r30, 0x20
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r29, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r29, r3, __vvt__10TParamT_f_@l
     stw     r29, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r28, r3, 0x42d0
-    lfs     f0, -0x58e0(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r28, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x58e0(r2)
     addi    r3, r30, 0x38
     stfs    f0, 0x18(r31)
     stw     r28, 0x8(r31)
@@ -35,7 +35,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1c(r31)
     addi    r3, r30, 0x4c
-    lfs     f0, -0x58dc(rtoc)
+    lfs     f0, -0x58dc(r2)
     stfs    f0, 0x2c(r31)
     stw     r28, 0x1c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -46,7 +46,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x30(r31)
     addi    r3, r30, 0x64
-    lfs     f0, -0x58d8(rtoc)
+    lfs     f0, -0x58d8(r2)
     stfs    f0, 0x40(r31)
     stw     r28, 0x30(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -57,7 +57,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x44(r31)
     addi    r3, r30, 0x78
-    lfs     f0, -0x58d4(rtoc)
+    lfs     f0, -0x58d4(r2)
     stfs    f0, 0x54(r31)
     stw     r28, 0x44(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -68,7 +68,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x58(r31)
     addi    r3, r30, 0x8c
-    lfs     f0, -0x58d4(rtoc)
+    lfs     f0, -0x58d4(r2)
     stfs    f0, 0x68(r31)
     stw     r28, 0x58(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -79,7 +79,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x6c(r31)
     addi    r3, r30, 0x9c
-    lfs     f0, -0x58d0(rtoc)
+    lfs     f0, -0x58d0(r2)
     stfs    f0, 0x7c(r31)
     stw     r28, 0x6c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -90,7 +90,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x80(r31)
     addi    r3, r30, 0xb0
-    lfs     f0, -0x58cc(rtoc)
+    lfs     f0, -0x58cc(r2)
     stfs    f0, 0x90(r31)
     stw     r28, 0x80(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -101,7 +101,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x94(r31)
     addi    r3, r30, 0xc4
-    lfs     f0, -0x58c8(rtoc)
+    lfs     f0, -0x58c8(r2)
     stfs    f0, 0xa4(r31)
     stw     r28, 0x94(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -112,7 +112,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xa8(r31)
     addi    r3, r30, 0xdc
-    lfs     f0, -0x58c4(rtoc)
+    lfs     f0, -0x58c4(r2)
     stfs    f0, 0xb8(r31)
     stw     r28, 0xa8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -123,7 +123,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xbc(r31)
     addi    r3, r30, 0xf4
-    lfs     f0, -0x58c0(rtoc)
+    lfs     f0, -0x58c0(r2)
     stfs    f0, 0xcc(r31)
     stw     r28, 0xbc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -134,7 +134,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xd0(r31)
     addi    r3, r30, 0x10c
-    lfs     f0, -0x58c8(rtoc)
+    lfs     f0, -0x58c8(r2)
     stfs    f0, 0xe0(r31)
     stw     r28, 0xd0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -145,7 +145,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xe4(r31)
     addi    r3, r30, 0x120
-    lfs     f0, -0x58cc(rtoc)
+    lfs     f0, -0x58cc(r2)
     stfs    f0, 0xf4(r31)
     stw     r28, 0xe4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -156,7 +156,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xf8(r31)
     addi    r3, r30, 0x138
-    lfs     f0, -0x58bc(rtoc)
+    lfs     f0, -0x58bc(r2)
     stfs    f0, 0x108(r31)
     stw     r28, 0xf8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -167,7 +167,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x10c(r31)
     addi    r3, r30, 0x14c
-    lfs     f0, -0x58c8(rtoc)
+    lfs     f0, -0x58c8(r2)
     stfs    f0, 0x11c(r31)
     stw     r28, 0x10c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -178,7 +178,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x120(r31)
     addi    r3, r30, 0x168
-    lfs     f0, -0x58dc(rtoc)
+    lfs     f0, -0x58dc(r2)
     stfs    f0, 0x130(r31)
     stw     r28, 0x120(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -189,7 +189,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x134(r31)
     addi    r3, r30, 0x17c
-    lfs     f0, -0x58b8(rtoc)
+    lfs     f0, -0x58b8(r2)
     stfs    f0, 0x144(r31)
     stw     r28, 0x134(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -200,7 +200,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x148(r31)
     addi    r3, r30, 0x190
-    lfs     f0, -0x58b4(rtoc)
+    lfs     f0, -0x58b4(r2)
     stfs    f0, 0x158(r31)
     stw     r28, 0x148(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -211,7 +211,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x15c(r31)
     addi    r3, r30, 0x1a4
-    lfs     f0, -0x58c8(rtoc)
+    lfs     f0, -0x58c8(r2)
     stfs    f0, 0x16c(r31)
     stw     r28, 0x15c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -222,7 +222,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x170(r31)
     addi    r3, r30, 0x1b4
-    lfs     f0, -0x58b0(rtoc)
+    lfs     f0, -0x58b0(r2)
     stfs    f0, 0x180(r31)
     stw     r28, 0x170(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -233,7 +233,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x184(r31)
     addi    r3, r30, 0x1c4
-    lfs     f0, -0x58ac(rtoc)
+    lfs     f0, -0x58ac(r2)
     stfs    f0, 0x194(r31)
     stw     r28, 0x184(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -242,13 +242,13 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     addi    r3, r31, 0x198
     addi    r6, r30, 0x1c4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r26, r3, 0x2f04
+    lis     r3, __vvt__10TParamT_s_@ha
+    addi    r26, r3, __vvt__10TParamT_s_@l
     stw     r26, 0x198(r31)
     li      r0, 0x7d0
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TParamRT_s_@ha
     sth     r0, 0x1a8(r31)
-    subi    r25, r3, 0x2f10
+    addi    r25, r3, __vvt__11TParamRT_s_@l
     addi    r3, r30, 0x1d4
     stw     r25, 0x198(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -279,13 +279,13 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     addi    r3, r31, 0x1d4
     addi    r6, r30, 0x1fc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r25, r3, 0x2f1c
+    lis     r3, __vvt__11TParamT_Uc_@ha
+    addi    r25, r3, __vvt__11TParamT_Uc_@l
     stw     r25, 0x1d4(r31)
     li      r26, 0xa
-    lis     r3, 0x803b
+    lis     r3, __vvt__12TParamRT_Uc_@ha
     stb     r26, 0x1e4(r31)
-    subi    r27, r3, 0x2f28
+    addi    r27, r3, __vvt__12TParamRT_Uc_@l
     addi    r3, r30, 0x214
     stw     r27, 0x1d4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -337,7 +337,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x238(r31)
     addi    r3, r30, 0x27c
-    lfs     f0, -0x58a8(rtoc)
+    lfs     f0, -0x58a8(r2)
     stfs    f0, 0x248(r31)
     stw     r28, 0x238(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -348,7 +348,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x24c(r31)
     addi    r3, r30, 0x290
-    lfs     f0, -0x58ac(rtoc)
+    lfs     f0, -0x58ac(r2)
     stfs    f0, 0x25c(r31)
     stw     r28, 0x24c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -359,7 +359,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x260(r31)
     addi    r3, r30, 0x2a4
-    lfs     f0, -0x58a4(rtoc)
+    lfs     f0, -0x58a4(r2)
     stfs    f0, 0x270(r31)
     stw     r28, 0x260(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -370,7 +370,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x274(r31)
     addi    r3, r30, 0x2b8
-    lfs     f0, -0x58a0(rtoc)
+    lfs     f0, -0x58a0(r2)
     stfs    f0, 0x284(r31)
     stw     r28, 0x274(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -381,7 +381,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x288(r31)
     addi    r3, r30, 0x2d0
-    lfs     f0, -0x58a4(rtoc)
+    lfs     f0, -0x58a4(r2)
     stfs    f0, 0x298(r31)
     stw     r28, 0x288(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -392,7 +392,7 @@ __ct__29TBossHanachanChangeSaveParamsFPCc: # 0x800f4ed4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x29c(r31)
     mr      r3, r31
-    lfs     f0, -0x589c(rtoc)
+    lfs     f0, -0x589c(r2)
     stfs    f0, 0x2ac(r31)
     stw     r28, 0x29c(r31)
     lwz     r4, 0x0(r31)
@@ -417,8 +417,8 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     stw     r4, 0x0(r3)
-    lis     r3, 0x8038
-    addi    r30, r3, 0x20a0
+    lis     r3, unk_803820a0@h
+    addi    r30, r3, unk_803820a0@l
     stw     r0, 0x4(r31)
     addi    r3, r30, 0x2e0
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -427,12 +427,12 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     addi    r3, r31, 0x8
     addi    r6, r30, 0x2e0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r29, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r29, r3, __vvt__10TParamT_f_@l
     stw     r29, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r28, r3, 0x42d0
-    lfs     f0, -0x5898(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r28, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x5898(r2)
     addi    r3, r30, 0x2f0
     stfs    f0, 0x18(r31)
     stw     r28, 0x8(r31)
@@ -444,7 +444,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1c(r31)
     addi    r3, r30, 0x304
-    lfs     f0, -0x5894(rtoc)
+    lfs     f0, -0x5894(r2)
     stfs    f0, 0x2c(r31)
     stw     r28, 0x1c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -455,7 +455,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x30(r31)
     addi    r3, r30, 0x318
-    lfs     f0, -0x5890(rtoc)
+    lfs     f0, -0x5890(r2)
     stfs    f0, 0x40(r31)
     stw     r28, 0x30(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -466,7 +466,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x44(r31)
     addi    r3, r30, 0x32c
-    lfs     f0, -0x588c(rtoc)
+    lfs     f0, -0x588c(r2)
     stfs    f0, 0x54(r31)
     stw     r28, 0x44(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -477,7 +477,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x58(r31)
     addi    r3, r30, 0x340
-    lfs     f0, -0x5888(rtoc)
+    lfs     f0, -0x5888(r2)
     stfs    f0, 0x68(r31)
     stw     r28, 0x58(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -488,7 +488,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x6c(r31)
     addi    r3, r30, 0x354
-    lfs     f0, -0x5884(rtoc)
+    lfs     f0, -0x5884(r2)
     stfs    f0, 0x7c(r31)
     stw     r28, 0x6c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -499,7 +499,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x80(r31)
     addi    r3, r30, 0x368
-    lfs     f0, -0x5880(rtoc)
+    lfs     f0, -0x5880(r2)
     stfs    f0, 0x90(r31)
     stw     r28, 0x80(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -510,7 +510,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x94(r31)
     addi    r3, r30, 0x37c
-    lfs     f0, -0x58b0(rtoc)
+    lfs     f0, -0x58b0(r2)
     stfs    f0, 0xa4(r31)
     stw     r28, 0x94(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -521,7 +521,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xa8(r31)
     addi    r3, r30, 0x390
-    lfs     f0, -0x587c(rtoc)
+    lfs     f0, -0x587c(r2)
     stfs    f0, 0xb8(r31)
     stw     r28, 0xa8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -532,7 +532,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xbc(r31)
     addi    r3, r30, 0x3a4
-    lfs     f0, -0x5878(rtoc)
+    lfs     f0, -0x5878(r2)
     stfs    f0, 0xcc(r31)
     stw     r28, 0xbc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -543,7 +543,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xd0(r31)
     addi    r3, r30, 0x3b8
-    lfs     f0, -0x58a0(rtoc)
+    lfs     f0, -0x58a0(r2)
     stfs    f0, 0xe0(r31)
     stw     r28, 0xd0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -554,7 +554,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xe4(r31)
     addi    r3, r30, 0x3cc
-    lfs     f0, -0x58a0(rtoc)
+    lfs     f0, -0x58a0(r2)
     stfs    f0, 0xf4(r31)
     stw     r28, 0xe4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -565,7 +565,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xf8(r31)
     addi    r3, r30, 0x3e0
-    lfs     f0, -0x5874(rtoc)
+    lfs     f0, -0x5874(r2)
     stfs    f0, 0x108(r31)
     stw     r28, 0xf8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -576,7 +576,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x10c(r31)
     addi    r3, r30, 0x3f4
-    lfs     f0, -0x589c(rtoc)
+    lfs     f0, -0x589c(r2)
     stfs    f0, 0x11c(r31)
     stw     r28, 0x10c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -587,7 +587,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x120(r31)
     addi    r3, r30, 0x408
-    lfs     f0, -0x58b0(rtoc)
+    lfs     f0, -0x58b0(r2)
     stfs    f0, 0x130(r31)
     stw     r28, 0x120(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -598,7 +598,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x134(r31)
     addi    r3, r30, 0x41c
-    lfs     f0, -0x5870(rtoc)
+    lfs     f0, -0x5870(r2)
     stfs    f0, 0x144(r31)
     stw     r28, 0x134(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -609,7 +609,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x148(r31)
     addi    r3, r30, 0x430
-    lfs     f0, -0x5870(rtoc)
+    lfs     f0, -0x5870(r2)
     stfs    f0, 0x158(r31)
     stw     r28, 0x148(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -620,7 +620,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x15c(r31)
     addi    r3, r30, 0x440
-    lfs     f0, -0x586c(rtoc)
+    lfs     f0, -0x586c(r2)
     stfs    f0, 0x16c(r31)
     stw     r28, 0x15c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -631,7 +631,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x170(r31)
     addi    r3, r30, 0x450
-    lfs     f0, -0x5868(rtoc)
+    lfs     f0, -0x5868(r2)
     stfs    f0, 0x180(r31)
     stw     r28, 0x170(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -642,7 +642,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x184(r31)
     addi    r3, r30, 0x464
-    lfs     f0, -0x5864(rtoc)
+    lfs     f0, -0x5864(r2)
     stfs    f0, 0x194(r31)
     stw     r28, 0x184(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -653,7 +653,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x198(r31)
     addi    r3, r30, 0x478
-    lfs     f0, -0x5860(rtoc)
+    lfs     f0, -0x5860(r2)
     stfs    f0, 0x1a8(r31)
     stw     r28, 0x198(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -664,7 +664,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1ac(r31)
     addi    r3, r30, 0x490
-    lfs     f0, -0x585c(rtoc)
+    lfs     f0, -0x585c(r2)
     stfs    f0, 0x1bc(r31)
     stw     r28, 0x1ac(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -675,7 +675,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1c0(r31)
     addi    r3, r30, 0x4a8
-    lfs     f0, -0x5858(rtoc)
+    lfs     f0, -0x5858(r2)
     stfs    f0, 0x1d0(r31)
     stw     r28, 0x1c0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -686,7 +686,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1d4(r31)
     addi    r3, r30, 0x4c0
-    lfs     f0, -0x5854(rtoc)
+    lfs     f0, -0x5854(r2)
     stfs    f0, 0x1e4(r31)
     stw     r28, 0x1d4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -697,7 +697,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1e8(r31)
     addi    r3, r30, 0x4d8
-    lfs     f0, -0x58c4(rtoc)
+    lfs     f0, -0x58c4(r2)
     stfs    f0, 0x1f8(r31)
     stw     r28, 0x1e8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -708,7 +708,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1fc(r31)
     addi    r3, r30, 0x4f0
-    lfs     f0, -0x5870(rtoc)
+    lfs     f0, -0x5870(r2)
     stfs    f0, 0x20c(r31)
     stw     r28, 0x1fc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -719,7 +719,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x210(r31)
     addi    r3, r30, 0x504
-    lfs     f0, -0x5850(rtoc)
+    lfs     f0, -0x5850(r2)
     stfs    f0, 0x220(r31)
     stw     r28, 0x210(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -730,7 +730,7 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x224(r31)
     addi    r3, r30, 0x518
-    lfs     f0, -0x5880(rtoc)
+    lfs     f0, -0x5880(r2)
     stfs    f0, 0x234(r31)
     stw     r28, 0x224(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -739,13 +739,13 @@ __ct__29TBossHanachanCommonSaveParamsFPCc: # 0x800f551c
     addi    r3, r31, 0x238
     addi    r6, r30, 0x518
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2f04
+    lis     r3, __vvt__10TParamT_s_@ha
+    addi    r0, r3, __vvt__10TParamT_s_@l
     stw     r0, 0x238(r31)
     li      r0, 0x14
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TParamRT_s_@ha
     sth     r0, 0x248(r31)
-    subi    r0, r3, 0x2f10
+    addi    r0, r3, __vvt__11TParamRT_s_@l
     addi    r3, r31, 0x0
     stw     r0, 0x238(r31)
     lwz     r4, 0x0(r31)

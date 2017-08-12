@@ -9,8 +9,8 @@ __dt__Q26JDrama7TCameraFv: # 0x802f70b4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f7134
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1c64
+    lis     r3, __vvt__Q26JDrama7TCamera@h
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x20
@@ -19,12 +19,12 @@ __dt__Q26JDrama7TCameraFv: # 0x802f70b4
     bl      __dt__Q26JStage7TCameraFv
     cmplwi  r30, 0x0
     beq-    branch_0x802f7124
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f7124
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -147,12 +147,12 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     lfs     f0, 0x2c(r28)
     stfs    f0, 0xec(r30)
     lfs     f0, 0x40(r28)
-    lfs     f31, 0x3f0(rtoc)
+    lfs     f31, 0x3f0(r2)
     fneg    f0, f0
-    lfs     f1, 0x3f8(rtoc)
+    lfs     f1, 0x3f8(r2)
     lfs     f2, 0x44(r28)
     fmr     f30, f31
-    lfs     f29, 0x3f4(rtoc)
+    lfs     f29, 0x3f4(r2)
     fmuls   f23, f1, f0
     fneg    f28, f2
     fmr     f1, f23
@@ -166,9 +166,9 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     stfs    f0, 0xd8(sp)
     stfs    f22, 0xe4(sp)
     stfs    f1, 0xe8(sp)
-    lfs     f1, 0x3f4(rtoc)
+    lfs     f1, 0x3f4(r2)
     stfs    f1, 0xfc(sp)
-    lfs     f0, 0x3f0(rtoc)
+    lfs     f0, 0x3f0(r2)
     stfs    f0, 0xf8(sp)
     stfs    f0, 0xec(sp)
     stfs    f0, 0xf4(sp)
@@ -229,7 +229,7 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     fadds   f8, f0, f8
     bl      set__Q29JGeometry13SMatrix34C_f_Fffffffffffff
     lfs     f0, 0x3c(r28)
-    lfs     f1, 0x3f8(rtoc)
+    lfs     f1, 0x3f8(r2)
     fneg    f0, f0
     fmuls   f22, f1, f0
     fmr     f1, f22
@@ -237,7 +237,7 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     fmr     f31, f1
     fmr     f1, f22
     bl      cosf
-    lfs     f10, 0x3f0(rtoc)
+    lfs     f10, 0x3f0(r2)
     fmr     f0, f1
     lfs     f2, 0xc8(sp)
     fneg    f21, f31
@@ -246,7 +246,7 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     lfs     f8, 0xc4(sp)
     fmuls   f1, f2, f0
     fmuls   f4, f2, f21
-    lfs     f2, 0x3f4(rtoc)
+    lfs     f2, 0x3f4(r2)
     lfs     f12, 0xb8(sp)
     fmadds  f23, f8, f10, f1
     lfs     f3, 0xcc(sp)
@@ -295,7 +295,7 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     fmadds  f7, f7, f0, f12
     fadds   f8, f8, f11
     bl      set__Q29JGeometry13SMatrix34C_f_Fffffffffffff
-    lfs     f1, 0x3f8(rtoc)
+    lfs     f1, 0x3f8(r2)
     lfs     f0, 0x38(r28)
     fmuls   f22, f1, f0
     fmr     f1, f22
@@ -305,7 +305,7 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     bl      cosf
     lfs     f2, 0xf8(sp)
     fneg    f4, f31
-    lfs     f6, 0x3f0(rtoc)
+    lfs     f6, 0x3f0(r2)
     addi    r3, sp, 0xa4
     lfs     f12, 0xe8(sp)
     fmuls   f3, f2, f31
@@ -324,7 +324,7 @@ perform__Q26JDrama12TPolarCameraFUlPQ26JDrama9TGraphics: # 0x802f71e8
     lfs     f0, 0x100(sp)
     fmuls   f30, f9, f31
     fmadds  f11, f22, f6, f5
-    lfs     f7, 0x3f4(rtoc)
+    lfs     f7, 0x3f4(r2)
     fmuls   f5, f12, f1
     lfs     f8, 0xf0(sp)
     fmadds  f31, f2, f6, f27
@@ -698,14 +698,14 @@ __dt__Q26JDrama10TOrthoProjFv: # 0x802f7944
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f79dc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x19c0
+    lis     r3, __vvt__Q26JDrama10TOrthoProj@h
+    addi    r3, r3, __vvt__Q26JDrama10TOrthoProj@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x802f79cc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1c64
+    lis     r3, __vvt__Q26JDrama7TCamera@h
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x20
@@ -714,12 +714,12 @@ __dt__Q26JDrama10TOrthoProjFv: # 0x802f7944
     bl      __dt__Q26JStage7TCameraFv
     cmplwi  r30, 0x0
     beq-    branch_0x802f79cc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f79cc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -749,14 +749,14 @@ __dt__Q26JDrama12TPolarCameraFv: # 0x802f79f8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f7a90
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1b88
+    lis     r3, __vvt__Q26JDrama12TPolarCamera@h
+    addi    r3, r3, __vvt__Q26JDrama12TPolarCamera@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x802f7a80
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1c64
+    lis     r3, __vvt__Q26JDrama7TCamera@h
+    addi    r3, r3, __vvt__Q26JDrama7TCamera@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x20
@@ -765,12 +765,12 @@ __dt__Q26JDrama12TPolarCameraFv: # 0x802f79f8
     bl      __dt__Q26JStage7TCameraFv
     cmplwi  r30, 0x0
     beq-    branch_0x802f7a80
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f7a80
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -790,86 +790,86 @@ branch_0x802f7a90:
     blr
 
 
-.globl _32___dt__Q26JDrama7TCameraFv
-_32___dt__Q26JDrama7TCameraFv: # 0x802f7aac
-    subi    r3, r3, 0x20
+.globl unk_802f7aac
+unk_802f7aac: # 0x802f7aac
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama7TCameraFv
 
 
-.globl _32_JSGSetProjectionAspect__Q26JDrama12TPolarCameraFf
-_32_JSGSetProjectionAspect__Q26JDrama12TPolarCameraFf: # 0x802f7ab4
-    subi    r3, r3, 0x20
+.globl unk_802f7ab4
+unk_802f7ab4: # 0x802f7ab4
+    addi    r3, r3, -0x20
     b       JSGSetProjectionAspect__Q26JDrama12TPolarCameraFf
 
 
-.globl _32_JSGGetProjectionAspect__Q26JDrama12TPolarCameraCFv
-_32_JSGGetProjectionAspect__Q26JDrama12TPolarCameraCFv: # 0x802f7abc
-    subi    r3, r3, 0x20
+.globl unk_802f7abc
+unk_802f7abc: # 0x802f7abc
+    addi    r3, r3, -0x20
     b       JSGGetProjectionAspect__Q26JDrama12TPolarCameraCFv
 
 
-.globl _32_JSGSetProjectionFovy__Q26JDrama12TPolarCameraFf
-_32_JSGSetProjectionFovy__Q26JDrama12TPolarCameraFf: # 0x802f7ac4
-    subi    r3, r3, 0x20
+.globl unk_802f7ac4
+unk_802f7ac4: # 0x802f7ac4
+    addi    r3, r3, -0x20
     b       JSGSetProjectionFovy__Q26JDrama12TPolarCameraFf
 
 
-.globl _32_JSGGetProjectionFovy__Q26JDrama12TPolarCameraCFv
-_32_JSGGetProjectionFovy__Q26JDrama12TPolarCameraCFv: # 0x802f7acc
-    subi    r3, r3, 0x20
+.globl unk_802f7acc
+unk_802f7acc: # 0x802f7acc
+    addi    r3, r3, -0x20
     b       JSGGetProjectionFovy__Q26JDrama12TPolarCameraCFv
 
 
-.globl _32_JSGSetProjectionType__Q26JDrama12TPolarCameraFQ26JStage18TECameraProjection
-_32_JSGSetProjectionType__Q26JDrama12TPolarCameraFQ26JStage18TECameraProjection: # 0x802f7ad4
-    subi    r3, r3, 0x20
+.globl unk_802f7ad4
+unk_802f7ad4: # 0x802f7ad4
+    addi    r3, r3, -0x20
     b       JSGSetProjectionType__Q26JDrama12TPolarCameraFQ26JStage18TECameraProjection
 
 
-.globl _32_JSGGetProjectionType__Q26JDrama12TPolarCameraCFv
-_32_JSGGetProjectionType__Q26JDrama12TPolarCameraCFv: # 0x802f7adc
-    subi    r3, r3, 0x20
+.globl unk_802f7adc
+unk_802f7adc: # 0x802f7adc
+    addi    r3, r3, -0x20
     b       JSGGetProjectionType__Q26JDrama12TPolarCameraCFv
 
 
-.globl _32___dt__Q26JDrama12TPolarCameraFv
-_32___dt__Q26JDrama12TPolarCameraFv: # 0x802f7ae4
-    subi    r3, r3, 0x20
+.globl unk_802f7ae4
+unk_802f7ae4: # 0x802f7ae4
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama12TPolarCameraFv
 
 
-.globl _32___dt__Q26JDrama13TLookAtCameraFv
-_32___dt__Q26JDrama13TLookAtCameraFv: # 0x802f7aec
-    subi    r3, r3, 0x20
+.globl unk_802f7aec
+unk_802f7aec: # 0x802f7aec
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama13TLookAtCameraFv
 
 
-.globl _32_JSGSetProjectionField__Q26JDrama10TOrthoProjFPCf
-_32_JSGSetProjectionField__Q26JDrama10TOrthoProjFPCf: # 0x802f7af4
-    subi    r3, r3, 0x20
+.globl unk_802f7af4
+unk_802f7af4: # 0x802f7af4
+    addi    r3, r3, -0x20
     b       JSGSetProjectionField__Q26JDrama10TOrthoProjFPCf
 
 
-.globl _32_JSGGetProjectionField__Q26JDrama10TOrthoProjCFPf
-_32_JSGGetProjectionField__Q26JDrama10TOrthoProjCFPf: # 0x802f7afc
-    subi    r3, r3, 0x20
+.globl unk_802f7afc
+unk_802f7afc: # 0x802f7afc
+    addi    r3, r3, -0x20
     b       JSGGetProjectionField__Q26JDrama10TOrthoProjCFPf
 
 
-.globl _32_JSGSetProjectionType__Q26JDrama10TOrthoProjFQ26JStage18TECameraProjection
-_32_JSGSetProjectionType__Q26JDrama10TOrthoProjFQ26JStage18TECameraProjection: # 0x802f7b04
-    subi    r3, r3, 0x20
+.globl unk_802f7b04
+unk_802f7b04: # 0x802f7b04
+    addi    r3, r3, -0x20
     b       JSGSetProjectionType__Q26JDrama10TOrthoProjFQ26JStage18TECameraProjection
 
 
-.globl _32_JSGGetProjectionType__Q26JDrama10TOrthoProjCFv
-_32_JSGGetProjectionType__Q26JDrama10TOrthoProjCFv: # 0x802f7b0c
-    subi    r3, r3, 0x20
+.globl unk_802f7b0c
+unk_802f7b0c: # 0x802f7b0c
+    addi    r3, r3, -0x20
     b       JSGGetProjectionType__Q26JDrama10TOrthoProjCFv
 
 
-.globl _32___dt__Q26JDrama10TOrthoProjFv
-_32___dt__Q26JDrama10TOrthoProjFv: # 0x802f7b14
-    subi    r3, r3, 0x20
+.globl unk_802f7b14
+unk_802f7b14: # 0x802f7b14
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama10TOrthoProjFv
 

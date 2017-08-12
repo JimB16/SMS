@@ -9,12 +9,12 @@ __dt__11TSilhouetteFv: # 0x80225968
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802259c0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x59c8
+    lis     r3, __vvt__11TSilhouette@ha
+    addi    r0, r3, __vvt__11TSilhouette@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802259b0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -90,7 +90,7 @@ branch_0x80225a6c:
 SMS_CalcMatAnmAndMakeDL__FP8J3DModelUs: # 0x80225a90
     mflr    r0
     stw     r0, 0x4(sp)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000000@h
     stwu    sp, -0x50(sp)
     stw     r31, 0x4c(sp)
     clrlwi  r31, r4, 16
@@ -108,7 +108,7 @@ SMS_CalcMatAnmAndMakeDL__FP8J3DModelUs: # 0x80225a90
     b       branch_0x80225adc
 
 branch_0x80225ad8:
-    li      r3, 0x0
+    addi    r3, r0, unk_c0000000@l
 branch_0x80225adc:
     lwz     r12, 0x0(r3)
     mr      r4, r30
@@ -117,9 +117,9 @@ branch_0x80225adc:
     blrl
     mulli   r0, r31, 0x48
     lwz     r4, 0x80(r29)
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     add     r0, r4, r0
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     stw     r0, 0x3c(r3)
     mr      r3, r30
     bl      makeDisplayList__11J3DMaterialFv
@@ -149,8 +149,9 @@ branch_0x80225b4c:
     bne+    branch_0x80225b38
     blr
 
+branch_0x80225b58:
+    b       branch_0x80225b70
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x220558, 0x80225b5c - 0x80225b58
 branch_0x80225b5c:
     lwz     r4, 0x4(r3)
     lwz     r0, 0x8(r4)
@@ -166,9 +167,9 @@ branch_0x80225b70:
 .globl SMS_DrawInit__Fv
 SMS_DrawInit__Fv: # 0x80225b7c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     stwu    sp, -0x8(sp)
     bl      drawInit__6J3DSysFv
     bl      SMS_ResetTexCacheRegion__Fv
@@ -188,8 +189,8 @@ SMS_MakeDLAndLock__FP8J3DModel: # 0x80225ba8
     stw     r29, 0x24(sp)
     mr      r29, r3
     bl      prepareShapePackets__8J3DModelFv
-    lis     r3, 0x803e
-    addi    r31, r3, 0x7a8
+    lis     r3, j3dDefaultMtx@h
+    addi    r31, r3, j3dDefaultMtx@l
     li      r30, 0x0
     b       branch_0x80225bf0
 
@@ -266,9 +267,9 @@ SMS_SettingDrawShape__FP12J3DModelDataUs: # 0x80225c94
     lwz     r3, 0x28(r5)
     mr      r31, r5
     bl      GXCallDisplayList
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lwz     r0, 0x4c(r30)
-    addi    r4, r3, 0x45dc
+    addi    r4, r3, j3dSys@l
     stw     r0, 0x10c(r4)
     mr      r3, r31
     lwz     r0, 0x50(r30)
@@ -384,9 +385,9 @@ SMS_DrawCube__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_: # 0x80225d00
 
 .globl SMS_CountPolygonNumInShape__FP8J3DShape
 SMS_CountPolygonNumInShape__FP8J3DShape: # 0x80225e80
-    lis     r4, 0x803a
+    lis     r4, unk_8039d834@ha
     stwu    sp, -0x48(sp)
-    subi    r6, r4, 0x27cc
+    addi    r6, r4, unk_8039d834@l
     lwz     r5, 0x0(r6)
     addi    r4, sp, 0x34
     lwz     r0, 0x4(r6)
@@ -434,7 +435,7 @@ branch_0x80225f18:
     mullw   r0, r9, r4
     add     r8, r4, r8
     add     r11, r11, r0
-    subi    r8, r8, 0x2
+    addi    r8, r8, -0x2
     addi    r11, r11, 0x3
 branch_0x80225f30:
     lwz     r0, 0x4(r7)
@@ -462,9 +463,9 @@ ViewFrustumClipCheck__FPQ26JDrama9TGraphicsP3Vecf: # 0x80225f5c
     fmr     f31, f1
     addi    r5, sp, 0x18
     bl      PSMTXMultVec
-    lis     r3, 0x8040
+    lis     r3, sViewPlane@ha
     lfs     f4, 0x1c(sp)
-    subi    r3, r3, 0x4d60
+    addi    r3, r3, sViewPlane@l
     lfs     f5, 0x18(sp)
     lfs     f0, 0x4(r3)
     fneg    f7, f31
@@ -585,7 +586,7 @@ SetViewFrustumClipCheckPerspective__Fffff: # 0x802260cc
     fcmpu   cr0, f31, f0
     beq-    branch_0x80226158
 branch_0x80226120:
-    lfs     f0, -0x17f8(rtoc)
+    lfs     f0, -0x17f8(r2)
     stfs    f1, -0x612c(r13)
     fmuls   f1, f0, f1
     stfs    f29, -0x6128(r13)
@@ -614,7 +615,7 @@ SetViewFrustumClipCheck__Fffffff: # 0x80226174
     fdivs   f9, f6, f5
     mflr    r0
     stw     r0, 0x4(sp)
-    lis     r4, 0x8040
+    lis     r4, sViewPlane@ha
     stwu    sp, -0xc8(sp)
     stmw    r24, 0xa8(sp)
     fneg    f0, f5
@@ -623,7 +624,7 @@ SetViewFrustumClipCheck__Fffffff: # 0x80226174
     fmuls   f5, f1, f9
     fneg    f6, f6
     fmuls   f8, f4, f9
-    subi    r31, r4, 0x4d60
+    addi    r31, r4, sViewPlane@l
     fmuls   f9, f2, f9
     mr      r3, r30
     addi    r29, sp, 0x5c
@@ -840,7 +841,7 @@ SMS_ResetDamageFogEffect__FP12J3DModelData: # 0x802264d8
     li      r31, 0x0
     stw     r30, 0x40(sp)
     addi    r30, r3, 0x0
-    lfs     f31, -0x1804(rtoc)
+    lfs     f31, -0x1804(r2)
     b       branch_0x80226550
 
 branch_0x80226500:
@@ -852,11 +853,11 @@ branch_0x80226500:
     lwz     r12, 0x1c(r12)
     mtlr    r12
     blrl
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r31, r31, 0x1
     lfs     f0, 0x28(r4)
     stfs    f0, 0xc(r3)
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     lfs     f0, 0x2c(r4)
     stfs    f0, 0x10(r3)
     lfs     f0, 0x10(r3)
@@ -900,18 +901,18 @@ SMS_AddDamageFogEffect__FP12J3DModelDataRCQ29JGeometry8TVec3_f_PQ26JDrama9TGraph
     addi    r30, r3, 0x0
     mr      r3, r0
     bl      PSMTXMultVec
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r31, 0x0
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     lwz     r3, 0x58(r3)
-    lfs     f31, -0x17f4(rtoc)
+    lfs     f31, -0x17f4(r2)
     mulli   r3, r3, 0x888
-    lfs     f1, -0x17ec(rtoc)
-    lfs     f30, -0x17f0(rtoc)
-    lfs     f0, -0x17e8(rtoc)
+    lfs     f1, -0x17ec(r2)
+    lfs     f30, -0x17f0(r2)
+    lfs     f0, -0x17e8(r2)
     fsubs   f1, f1, f31
     clrlwi  r3, r3, 16
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     sraw    r0, r3, r0
     fsubs   f0, f0, f30
     slwi    r0, r0, 2
@@ -940,10 +941,10 @@ branch_0x80226608:
     fadds   f0, f0, f30
     fadds   f0, f0, f28
     stfs    f0, 0x8(r3)
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     lfs     f0, 0x28(r4)
     stfs    f0, 0xc(r3)
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     lfs     f0, 0x2c(r4)
     stfs    f0, 0x10(r3)
 branch_0x8022666c:
@@ -1029,7 +1030,7 @@ branch_0x80226760:
 branch_0x80226778:
     lwz     r7, 0x4(r31)
     li      r8, 0x0
-    lfs     f0, -0x1808(rtoc)
+    lfs     f0, -0x1808(r2)
     li      r3, 0x0
     b       branch_0x8022680c
 
@@ -1117,7 +1118,7 @@ movement__19TTrembleModelEffectFv: # 0x80226884
     cmpwi   r0, 0x4
     beq-    branch_0x802268e0
     lwz     r3, 0x10(r29)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x10(r29)
     lwz     r0, 0x10(r29)
     cmpwi   r0, 0x0
@@ -1458,7 +1459,7 @@ clash__19TTrembleModelEffectFf: # 0x80226d7c
     stw     r30, 0xc0(sp)
     mr      r30, r3
     stw     r29, 0xbc(sp)
-    lfs     f2, -0x1808(rtoc)
+    lfs     f2, -0x1808(r2)
     fmr     f3, f2
     bl      tremble__19TTrembleModelEffectFfffi
     lbz     r0, 0x8(r30)
@@ -1650,7 +1651,7 @@ branch_0x80227024:
 branch_0x80227030:
     lha     r0, 0xc(r27)
     lis     r31, 0x4330
-    lfd     f28, -0x1810(rtoc)
+    lfd     f28, -0x1810(r2)
     li      r29, 0x0
     xoris   r0, r0, 0x8000
     stw     r0, 0xac(sp)
@@ -1675,9 +1676,9 @@ branch_0x80227030:
     lwz     r0, 0x94(sp)
     sth     r0, 0x24(r27)
     lwz     r30, 0x4(r27)
-    lfs     f29, -0x17e4(rtoc)
-    lfs     f30, -0x1800(rtoc)
-    lfs     f31, -0x1804(rtoc)
+    lfs     f29, -0x17e4(r2)
+    lfs     f30, -0x1800(r2)
+    lfs     f31, -0x1804(r2)
     b       branch_0x80227204
 
 branch_0x802270ac:
@@ -1782,10 +1783,10 @@ branch_0x8022721c:
     stfs    f3, 0x38(r27)
     lis     r31, 0x4330
     lwz     r29, 0x4(r27)
-    lfd     f31, -0x1810(rtoc)
-    lfs     f30, -0x17e4(rtoc)
-    lfs     f29, -0x1800(rtoc)
-    lfs     f28, -0x1804(rtoc)
+    lfd     f31, -0x1810(r2)
+    lfs     f30, -0x17e4(r2)
+    lfs     f29, -0x1800(r2)
+    lfs     f28, -0x1804(r2)
     b       branch_0x80227340
 
 branch_0x80227248:
@@ -1958,8 +1959,8 @@ branch_0x80227498:
     mulli   r27, r25, 0x6
     addi    r3, r27, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x801f
-    subi    r26, r4, 0x6784
+    lis     r4, __ct__Q29JGeometry8TVec3_s_Fv@ha
+    addi    r26, r4, __ct__Q29JGeometry8TVec3_s_Fv@l
     addi    r4, r26, 0x0
     addi    r7, r25, 0x0
     li      r5, 0x0
@@ -2095,8 +2096,8 @@ branch_0x802276a8:
     mulli   r30, r25, 0xc
     addi    r3, r30, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8002
-    addi    r27, r4, 0x10dc
+    lis     r4, __ct__Q29JGeometry8TVec3_f_Fv@h
+    addi    r27, r4, __ct__Q29JGeometry8TVec3_f_Fv@l
     addi    r4, r27, 0x0
     addi    r7, r25, 0x0
     li      r5, 0x0
@@ -2132,7 +2133,7 @@ branch_0x802276a8:
     stw     r3, 0x34(r31)
     cmplwi  r29, 0x0
     addi    r3, r29, 0x0
-    lfs     f0, -0x1808(rtoc)
+    lfs     f0, -0x1808(r2)
     li      r4, 0x0
     stfs    f0, 0x38(r31)
     fmr     f1, f0
@@ -2265,10 +2266,9 @@ perform__11TSilhouetteFUlPQ26JDrama9TGraphics: # 0x80227914
     stw     r29, 0x17c(sp)
     addi    r29, r3, 0x0
     beq-    branch_0x80227998
-
-    lwz     r3, MarioFlags(r13)
+    lwz     r3, R13Off_m0x6094(r13)
     lwz     r0, 0x0(r3)
-    clrlwi. r0, r0, 31 # MARIOFLAG_1
+    clrlwi. r0, r0, 31
     beq-    branch_0x80227958
     li      r0, 0x1
     b       branch_0x8022795c
@@ -2282,7 +2282,7 @@ branch_0x8022795c:
     b       branch_0x80227970
 
 branch_0x8022796c:
-    lfs     f0, -0x1808(rtoc)
+    lfs     f0, -0x1808(r2)
 branch_0x80227970:
     lfs     f1, 0x48(r29)
     lfs     f2, 0x4c(r29)
@@ -2328,7 +2328,7 @@ branch_0x80227a08:
     beq-    branch_0x80227a44
     lwz     r0, 0x12(r29)
     addi    r4, sp, 0x3c
-    lwz     r5, gpSunManager(r13)
+    lwz     r5, R13Off_m0x7100(r13)
     li      r3, 0x4
     stw     r0, 0x168(sp)
     lbz     r0, 0x1b(r5)
@@ -2342,22 +2342,22 @@ branch_0x80227a08:
 branch_0x80227a44:
     rlwinm. r0, r30, 0, 27, 27
     beq-    branch_0x80227cf0
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lwz     r0, 0x10(r3)
     cmpwi   r0, 0x0
     beq-    branch_0x80227cf0
-    lfs     f6, -0x17fc(rtoc)
+    lfs     f6, -0x17fc(r2)
     addi    r3, sp, 0x108
     stfs    f6, 0x8(sp)
     fmr     f7, f6
     fmr     f8, f6
-    lfs     f1, -0x17e0(rtoc)
-    lfs     f2, -0x1804(rtoc)
+    lfs     f1, -0x17e0(r2)
+    lfs     f2, -0x1804(r2)
     fmr     f3, f1
-    lfs     f5, -0x17dc(rtoc)
+    lfs     f5, -0x17dc(r2)
     fmr     f4, f2
     bl      C_MTXLightFrustum
-    lfs     f1, -0x17d8(rtoc)
+    lfs     f1, -0x17d8(r2)
     addi    r3, sp, 0xd8
     li      r4, 0x58
     bl      PSMTXRotRad
@@ -2370,17 +2370,17 @@ branch_0x80227a44:
     fmr     f2, f1
     fmr     f3, f1
     bl      PSMTXScale
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     addi    r3, sp, 0x78
-    lfs     f2, -0x1808(rtoc)
+    lfs     f2, -0x1808(r2)
     lfs     f1, 0x0(r4)
     lfs     f0, 0x8(r4)
     fneg    f1, f1
     fneg    f3, f0
     bl      PSMTXTrans
-    lfs     f1, -0x17fc(rtoc)
+    lfs     f1, -0x17fc(r2)
     addi    r3, sp, 0x48
-    lfs     f3, -0x1808(rtoc)
+    lfs     f3, -0x1808(r2)
     fmr     f2, f1
     bl      PSMTXTrans
     addi    r3, sp, 0xa8
@@ -2531,7 +2531,7 @@ setting__11TSilhouetteFPA4_f: # 0x80227d0c
     stw     r30, 0x88(sp)
     addi    r30, r3, 0x0
     addi    r3, sp, 0x1c
-    lwz     r0, -0x1818(rtoc)
+    lwz     r0, R2Off_m0x1818(r2)
     addi    r4, r3, 0x0
     li      r3, 0x4
     stw     r0, 0x20(sp)
@@ -2544,7 +2544,7 @@ setting__11TSilhouetteFPA4_f: # 0x80227d0c
     lwz     r0, 0x20(sp)
     stw     r0, 0x1c(sp)
     bl      GXSetChanAmbColor
-    lwz     r7, MarioHitActorPos(r13)
+    lwz     r7, R13Off_m0x60b4(r13)
     addi    r3, r31, 0x0
     addi    r4, sp, 0x24
     lwz     r6, 0x0(r7)
@@ -2565,9 +2565,9 @@ setting__11TSilhouetteFPA4_f: # 0x80227d0c
     lfs     f2, 0x34(r30)
     lfs     f3, 0x38(r30)
     bl      GXInitLightAttnK
-    lfs     f2, -0x1808(rtoc)
+    lfs     f2, -0x1808(r2)
     addi    r3, sp, 0x3c
-    lfs     f1, -0x1804(rtoc)
+    lfs     f1, -0x1804(r2)
     fmr     f3, f2
     bl      GXInitLightAttnA
     lwz     r0, 0x12(r30)
@@ -2641,17 +2641,17 @@ loadAfter__11TSilhouetteFv: # 0x80227ea8
     stw     r29, 0x74(sp)
     stw     r28, 0x70(sp)
     sth     r0, 0x10(r3)
-    lis     r3, 0x803a
-    lwz     r4, gpSunManager(r13)
+    lis     r3, unk_8039d828@ha
+    lwz     r4, R13Off_m0x7100(r13)
     lwz     r0, 0x18(r4)
-    subi    r4, r3, 0x27d8
+    addi    r4, r3, unk_8039d828@l
     stw     r0, 0x12(r31)
     stb     r30, 0x15(r31)
-    lfs     f0, -0x17d4(rtoc)
+    lfs     f0, -0x17d4(r2)
     stfs    f0, 0x24(r31)
-    lfs     f0, -0x17d0(rtoc)
+    lfs     f0, -0x17d0(r2)
     stfs    f0, 0x28(r31)
-    lfs     f0, -0x17cc(rtoc)
+    lfs     f0, -0x17cc(r2)
     stfs    f0, 0x2c(r31)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
@@ -2725,9 +2725,9 @@ loadAfter__11TSilhouetteFv: # 0x80227ea8
     fmadds  f0, f2, f1, f0
     fsubs   f0, f3, f0
     stfs    f0, 0x30(r31)
-    lfs     f0, -0x17c8(rtoc)
+    lfs     f0, -0x17c8(r2)
     stfs    f0, 0x3c(r31)
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lwz     r0, 0x10(r3)
     cmpwi   r0, 0x0
     ble-    branch_0x80228070
@@ -2746,8 +2746,8 @@ loadAfter__11TSilhouetteFv: # 0x80227ea8
 branch_0x8022806c:
     stw     r28, 0x40(r31)
 branch_0x80228070:
-    lis     r3, 0x803a
-    subi    r3, r3, 0x27bc
+    lis     r3, unk_8039d844@ha
+    addi    r3, r3, unk_8039d844@l
     bl      getGlbResource__13JKRFileLoaderFPCc
     addi    r29, r3, 0x0
     li      r3, 0x54
@@ -2762,11 +2762,11 @@ branch_0x80228070:
     stb     r30, 0x50(r28)
 branch_0x802280a8:
     stw     r28, 0x44(r31)
-    lfs     f0, -0x1808(rtoc)
+    lfs     f0, -0x1808(r2)
     stfs    f0, 0x48(r31)
-    lfs     f0, -0x17c4(rtoc)
+    lfs     f0, -0x17c4(r2)
     stfs    f0, 0x4c(r31)
-    lfs     f0, -0x17c0(rtoc)
+    lfs     f0, -0x17c0(r2)
     stfs    f0, 0x50(r31)
     lwz     r0, 0x84(sp)
     lwz     r31, 0x7c(sp)
@@ -2786,19 +2786,19 @@ load__11TSilhouetteFR20JSUMemoryInputStream: # 0x802280e4
     stw     r31, 0x24(sp)
     mr      r31, r3
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
-    lwz     r0, -0x1820(rtoc)
+    lwz     r0, R2Off_m0x1820(r2)
     stw     r0, 0x1c(sp)
     lwz     r0, 0x1c(sp)
     stw     r0, 0x12(r31)
-    lwz     r0, -0x181c(rtoc)
+    lwz     r0, R2Off_m0x181c(r2)
     stw     r0, 0x18(sp)
     lwz     r0, 0x18(sp)
     stw     r0, 0x16(r31)
-    lfs     f0, -0x17bc(rtoc)
+    lfs     f0, -0x17bc(r2)
     stfs    f0, 0x1c(r31)
-    lfs     f0, -0x17b8(rtoc)
+    lfs     f0, -0x17b8(r2)
     stfs    f0, 0x20(r31)
-    stw     r31, -0x6130(r13)
+    stw     r31, R13Off_m0x6130(r13)
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)
     addi    sp, sp, 0x28

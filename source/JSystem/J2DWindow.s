@@ -11,8 +11,8 @@ __ct__9J2DWindowFP7J2DPaneP20JSURandomInputStreamb: # 0x802d0fc4
     lwz     r3, 0x8(sp)
     bl      __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb
     lwz     r28, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x750
+    lis     r3, __vvt__9J2DWindow@h
+    addi    r0, r3, __vvt__9J2DWindow@l
     stw     r0, 0x0(r28)
     addi    r3, r28, 0xec
     li      r4, 0x0
@@ -68,13 +68,13 @@ __ct__9J2DWindowFP7J2DPaneP20JSURandomInputStreamb: # 0x802d0fc4
     stw     r0, 0xf4(r28)
     bl      read__14JSUInputStreamFPvl
     lwz     r6, 0xf0(r28)
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     lhz     r0, 0x132(sp)
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
     add     r0, r6, r0
     stw     r0, 0xf8(r28)
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r28, r3
@@ -87,18 +87,18 @@ __ct__9J2DWindowFP7J2DPaneP20JSURandomInputStreamb: # 0x802d0fc4
     mr      r3, r27
     mr      r4, r28
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r29, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d112c:
     lwz     r3, 0x8(sp)
     stw     r27, 0x100(r3)
 branch_0x802d1134:
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r29, r3
@@ -112,18 +112,18 @@ branch_0x802d1134:
     addi    r3, r27, 0x0
     mr      r4, r29
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r28, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d1188:
     lwz     r3, 0x8(sp)
     stw     r27, 0x104(r3)
 branch_0x802d1190:
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r29, r3
@@ -137,18 +137,18 @@ branch_0x802d1190:
     addi    r3, r27, 0x0
     mr      r4, r29
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r28, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d11e4:
     lwz     r3, 0x8(sp)
     stw     r27, 0x108(r3)
 branch_0x802d11ec:
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r29, r3
@@ -162,18 +162,18 @@ branch_0x802d11ec:
     addi    r3, r27, 0x0
     mr      r4, r29
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r28, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d1240:
     lwz     r3, 0x8(sp)
     stw     r27, 0x10c(r3)
 branch_0x802d1248:
-    lis     r5, 0x544c
+    lis     r5, unk_544c5554@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x5554
+    addi    r5, r5, unk_544c5554@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r28, r3
@@ -220,16 +220,16 @@ branch_0x802d1290:
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lwz     r3, 0xd4(sp)
-    subi    r30, r30, 0xe
+    addi    r30, r30, -0xe
     clrlwi. r0, r30, 24
     stw     r3, 0x124(r29)
     li      r28, 0x0
     stw     r28, 0x110(r29)
     beq-    branch_0x802d137c
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r29, r3
@@ -242,15 +242,15 @@ branch_0x802d1290:
     mr      r3, r27
     mr      r4, r29
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r28, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d1370:
     lwz     r3, 0x8(sp)
     stw     r27, 0x110(r3)
 branch_0x802d1378:
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
 branch_0x802d137c:
     li      r0, 0x0
     lwz     r28, 0x8(sp)
@@ -268,7 +268,7 @@ branch_0x802d137c:
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lwz     r0, 0x11c(sp)
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
     stw     r0, 0x148(sp)
     lwz     r0, 0x148(sp)
     stw     r0, 0x12c(r28)
@@ -316,13 +316,13 @@ branch_0x802d1408:
     stw     r0, 0xf4(r28)
     bl      read__14JSUInputStreamFPvl
     lwz     r6, 0xf0(r28)
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     lhz     r0, 0x106(sp)
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
     add     r0, r6, r0
     stw     r0, 0xf8(r28)
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r28, r3
@@ -335,18 +335,18 @@ branch_0x802d1408:
     mr      r3, r27
     mr      r4, r28
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r29, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d14c8:
     lwz     r3, 0x8(sp)
     stw     r27, 0x100(r3)
 branch_0x802d14d0:
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r29, r3
@@ -360,18 +360,18 @@ branch_0x802d14d0:
     addi    r3, r27, 0x0
     mr      r4, r29
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r28, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d1524:
     lwz     r3, 0x8(sp)
     stw     r27, 0x104(r3)
 branch_0x802d152c:
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r29, r3
@@ -385,18 +385,18 @@ branch_0x802d152c:
     addi    r3, r27, 0x0
     mr      r4, r29
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r28, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d1580:
     lwz     r3, 0x8(sp)
     stw     r27, 0x108(r3)
 branch_0x802d1588:
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r29, r3
@@ -410,18 +410,18 @@ branch_0x802d1588:
     addi    r3, r27, 0x0
     mr      r4, r29
     bl      storeTIMG__10JUTTextureFPC7ResTIMG
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
     stb     r28, 0x50(r27)
-    addi    r0, r3, 0x77c
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r27)
 branch_0x802d15dc:
     lwz     r3, 0x8(sp)
     stw     r27, 0x10c(r3)
 branch_0x802d15e4:
-    lis     r5, 0x544c
+    lis     r5, unk_544c5554@h
     addi    r4, r31, 0x0
     addi    r3, sp, 0x154
-    addi    r5, r5, 0x5554
+    addi    r5, r5, unk_544c5554@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     mr.     r28, r3
@@ -531,8 +531,8 @@ __dt__9J2DWindowFv: # 0x802d1760
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802d186c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x750
+    lis     r3, __vvt__9J2DWindow@h
+    addi    r0, r3, __vvt__9J2DWindow@l
     stw     r0, 0x0(r30)
     lwz     r3, 0x100(r30)
     cmplwi  r3, 0x0
@@ -616,8 +616,8 @@ __dt__Q29J2DWindow7TextureFv: # 0x802d1888
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802d18d0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x77c
+    lis     r3, __vvt__Q29J2DWindow7Texture@h
+    addi    r0, r3, __vvt__Q29J2DWindow7Texture@l
     stw     r0, 0x54(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -794,8 +794,8 @@ draw_private__9J2DWindowFRC7JUTRectRC7JUTRectPA3_A4_f: # 0x802d18ec
     lwz     r4, 0x114(r31)
     rlwinm. r0, r4, 0, 26, 26
     beq-    branch_0x802d1b68
-    lis     r3, 0x1
-    subi    r3, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r3, r3, unk_00008000@l
     b       branch_0x802d1b6c
 
 branch_0x802d1b68:
@@ -809,8 +809,8 @@ branch_0x802d1b6c:
     b       branch_0x802d1b8c
 
 branch_0x802d1b84:
-    lis     r3, 0x1
-    subi    r3, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r3, r3, unk_00008000@l
 branch_0x802d1b8c:
     lwz     r0, 0x128(r31)
     subf    r26, r29, r28
@@ -835,8 +835,8 @@ branch_0x802d1b8c:
     lwz     r4, 0x114(r31)
     rlwinm. r0, r4, 0, 30, 30
     beq-    branch_0x802d1bf4
-    lis     r3, 0x1
-    subi    r10, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r10, r3, unk_00008000@l
     b       branch_0x802d1bf8
 
 branch_0x802d1bf4:
@@ -848,8 +848,8 @@ branch_0x802d1bf8:
     b       branch_0x802d1c10
 
 branch_0x802d1c08:
-    lis     r3, 0x1
-    subi    r9, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r9, r3, unk_00008000@l
 branch_0x802d1c10:
     lwz     r0, 0x128(r31)
     xori     r25, r9, 0x8000
@@ -877,14 +877,14 @@ branch_0x802d1c10:
     b       branch_0x802d1c78
 
 branch_0x802d1c70:
-    lis     r3, 0x1
-    subi    r8, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r8, r3, unk_00008000@l
 branch_0x802d1c78:
     rlwinm. r0, r4, 0, 29, 29
     xori     r10, r8, 0x8000
     beq-    branch_0x802d1c90
-    lis     r3, 0x1
-    subi    r29, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r29, r3, unk_00008000@l
     b       branch_0x802d1c94
 
 branch_0x802d1c90:
@@ -916,14 +916,14 @@ branch_0x802d1c94:
     b       branch_0x802d1cfc
 
 branch_0x802d1cf4:
-    lis     r3, 0x1
-    subi    r8, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r8, r3, unk_00008000@l
 branch_0x802d1cfc:
     clrlwi. r0, r4, 31
     xori     r10, r8, 0x8000
     beq-    branch_0x802d1d14
-    lis     r3, 0x1
-    subi    r29, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r29, r3, unk_00008000@l
     b       branch_0x802d1d18
 
 branch_0x802d1d14:
@@ -997,7 +997,7 @@ resize__9J2DWindowFii: # 0x802d1da8
     lwz     r29, 0xd0(r27)
     cmplwi  r29, 0x0
     beq-    branch_0x802d1e6c
-    subi    r29, r29, 0xc
+    addi    r29, r29, -0xc
     b       branch_0x802d1e6c
 
 branch_0x802d1e18:
@@ -1022,7 +1022,7 @@ branch_0x802d1e5c:
     lwz     r29, 0x18(r29)
     cmplwi  r29, 0x0
     beq-    branch_0x802d1e6c
-    subi    r29, r29, 0xc
+    addi    r29, r29, -0xc
 branch_0x802d1e6c:
     cmplwi  r29, 0x0
     bne+    branch_0x802d1e18
@@ -1192,8 +1192,8 @@ branch_0x802d20a0:
     cmplwi  r5, 0xff
     beq-    branch_0x802d2160
     lbz     r0, 0x5f(sp)
-    lis     r3, 0x8081
-    subi    r4, r3, 0x7f7f
+    lis     r3, unk_80808081@ha
+    addi    r4, r3, unk_80808081@l
     mullw   r0, r0, r5
     mulhw   r3, r4, r0
     add     r0, r3, r0
@@ -1382,8 +1382,8 @@ draw__Q29J2DWindow7TextureFiibbUcQ28JUtility6TColorQ28JUtility6TColor: # 0x802d2
     lwz     r0, 0x0(r9)
     stw     r0, 0x34(sp)
     beq-    branch_0x802d23ac
-    lis     r9, 0x1
-    subi    r12, r9, 0x8000
+    lis     r9, unk_00008000@ha
+    addi    r12, r9, unk_00008000@l
     b       branch_0x802d23b0
 
 branch_0x802d23ac:
@@ -1391,8 +1391,8 @@ branch_0x802d23ac:
 branch_0x802d23b0:
     clrlwi. r0, r6, 24
     beq-    branch_0x802d23c4
-    lis     r9, 0x1
-    subi    r31, r9, 0x8000
+    lis     r9, unk_00008000@ha
+    addi    r31, r9, unk_00008000@l
     b       branch_0x802d23c8
 
 branch_0x802d23c4:
@@ -1404,8 +1404,8 @@ branch_0x802d23c8:
     b       branch_0x802d23e0
 
 branch_0x802d23d8:
-    lis     r7, 0x1
-    subi    r9, r7, 0x8000
+    lis     r7, unk_00008000@ha
+    addi    r9, r7, unk_00008000@l
 branch_0x802d23e0:
     clrlwi. r0, r6, 24
     beq-    branch_0x802d23f0
@@ -1413,8 +1413,8 @@ branch_0x802d23e0:
     b       branch_0x802d23f8
 
 branch_0x802d23f0:
-    lis     r6, 0x1
-    subi    r30, r6, 0x8000
+    lis     r6, unk_00008000@ha
+    addi    r30, r6, unk_00008000@l
 branch_0x802d23f8:
     lhz     r7, 0x3e(r3)
     clrlwi  r0, r12, 16
@@ -1467,13 +1467,13 @@ drawContentsTexture__Q29J2DWindow7TextureFiiiiUc: # 0x802d243c
     xoris   r0, r0, 0x8000
     stw     r4, 0x64(sp)
     lis     r6, 0x4330
-    lfd     f6, 0x1f0(rtoc)
+    lfd     f6, 0x1f0(r2)
     stw     r3, 0x5c(sp)
     mr      r3, r26
-    lfs     f3, 0x1e8(rtoc)
+    lfs     f3, 0x1e8(r2)
     li      r4, 0x0
     stw     r5, 0x54(sp)
-    lfs     f2, 0x1ec(rtoc)
+    lfs     f2, 0x1ec(r2)
     stw     r0, 0x4c(sp)
     stw     r6, 0x60(sp)
     stw     r6, 0x58(sp)
@@ -1586,7 +1586,7 @@ setTevMode__Q29J2DWindow7TextureFUcQ28JUtility6TColorQ28JUtility6TColor: # 0x802
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, 0x1f8(rtoc)
+    lwz     r0, R2Off_0x1f8(r2)
     addi    r4, sp, 0x64
     li      r3, 0x4
     stw     r0, 0x60(sp)

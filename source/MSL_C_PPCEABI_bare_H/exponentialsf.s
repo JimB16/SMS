@@ -2,21 +2,21 @@
 .globl powf
 powf: # 0x8033c9b8
     stwu    sp, -0x90(sp)
-    lis     r3, 0x803b
-    subi    r3, r3, 0x4cf0
-    lfs     f3, 0xab8(rtoc)
+    lis     r3, unk_803ab310@ha
+    addi    r3, r3, unk_803ab310@l
+    lfs     f3, 0xab8(r2)
     fcmpo   cr0, f1, f3
     ble-    branch_0x8033cbb0
     stfs    f1, 0x60(sp)
-    lwz     r0, 0xaa8(rtoc)
+    lwz     r0, R2Off_0xaa8(r2)
     lwz     r9, 0x60(sp)
     stw     r0, 0x68(sp)
-    lwz     r5, 0xaac(rtoc)
+    lwz     r5, R2Off_0xaac(r2)
     clrlwi. r0, r9, 16
     srwi    r4, r9, 23
     stw     r5, 0x6c(sp)
     clrlwi  r6, r9, 9
-    subi    r8, r4, 0x80
+    addi    r8, r4, -0x80
     extrwi  r7, r9, 7, 9
     beq-    branch_0x8033cab0
     rlwinm  r4, r9, 0, 9, 15
@@ -31,30 +31,30 @@ powf: # 0x8033c9b8
     addis   r0, r4, 0x1
     stw     r0, 0x64(sp)
 branch_0x8033ca2c:
-    lis     r4, 0x803b
+    lis     r4, unk_803ab0c0@ha
     lfs     f3, 0x74(sp)
     lfs     f0, 0x64(sp)
     slwi    r5, r7, 2
-    subi    r0, r4, 0x4f40
+    addi    r0, r4, unk_803ab0c0@l
     lfs     f1, 0x6c(sp)
     add     r4, r0, r5
     fsubs   f8, f3, f0
     lfs     f3, 0x0(r4)
-    addi    r4, rtoc, 0xaa0
+    addi    r4, r2, R2Off_0xaa0
     lfs     f0, 0x68(sp)
     xoris   r0, r8, 0x8000
     fmuls   f8, f8, f3
     lfs     f4, 0x4(r4)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
-    lfs     f5, 0xaa0(rtoc)
+    lfs     f5, 0xaa0(r2)
     fmuls   f3, f8, f8
     stw     r0, 0x88(sp)
     fmadds  f0, f8, f1, f0
-    lfd     f6, 0xad0(rtoc)
+    lfd     f6, 0xad0(r2)
     lfd     f1, 0x88(sp)
     fmuls   f0, f3, f0
-    lfs     f7, 0xabc(rtoc)
+    lfs     f7, 0xabc(r2)
     fsubs   f3, f1, f6
     lfsx    f1, r3, r5
     fmadds  f0, f4, f8, f0
@@ -67,11 +67,11 @@ branch_0x8033ca2c:
 
 branch_0x8033cab0:
     xoris   r0, r8, 0x8000
-    lfd     f3, 0xad0(rtoc)
+    lfd     f3, 0xad0(r2)
     stw     r0, 0x8c(sp)
     lis     r4, 0x4330
     slwi    r0, r7, 2
-    lfs     f4, 0xabc(rtoc)
+    lfs     f4, 0xabc(r2)
     stw     r4, 0x88(sp)
     lfsx    f0, r3, r0
     lfd     f1, 0x88(sp)
@@ -81,7 +81,7 @@ branch_0x8033cab0:
 branch_0x8033cae0:
     fmuls   f2, f2, f0
     lis     r0, 0x4330
-    lfd     f1, 0xad0(rtoc)
+    lfd     f1, 0xad0(r2)
     fctiwz  f0, f2
     stfd    f0, 0x88(sp)
     lwz     r4, 0x8c(sp)
@@ -95,20 +95,20 @@ branch_0x8033cae0:
     fsubs   f0, f0, f1
     fsubs   f9, f2, f0
     ble-    branch_0x8033cb28
-    lfs     f1, 0xab0(rtoc)
+    lfs     f1, 0xab0(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033cb28:
     cmpwi   r5, -0x7f
     bge-    branch_0x8033cb38
-    lfs     f1, 0xab8(rtoc)
+    lfs     f1, 0xab8(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033cb38:
     addi    r0, r5, 0x7f
-    lfs     f6, 0xac4(rtoc)
+    lfs     f6, 0xac4(r2)
     stw     r0, 0x58(sp)
-    lfs     f7, 0xac0(rtoc)
+    lfs     f7, 0xac0(r2)
     lwz     r0, 0x58(sp)
     slwi    r0, r0, 23
     stw     r0, 0x58(sp)
@@ -140,7 +140,7 @@ branch_0x8033cbb0:
     bge-    branch_0x8033cfc8
     fctiwz  f0, f2
     lis     r5, 0x4330
-    lfd     f4, 0xad0(rtoc)
+    lfd     f4, 0xad0(r2)
     stfd    f0, 0x88(sp)
     lwz     r0, 0x8c(sp)
     stfd    f0, 0x80(sp)
@@ -153,7 +153,7 @@ branch_0x8033cbb0:
     fsubs   f0, f2, f0
     fcmpu   cr0, f0, f3
     beq-    branch_0x8033cbf8
-    lfs     f1, 0xab4(rtoc)
+    lfs     f1, 0xab4(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033cbf8:
@@ -163,8 +163,8 @@ branch_0x8033cbf8:
     subfc.  r0, r0, r4
     beq-    branch_0x8033cdec
     fneg    f0, f1
-    lwz     r4, 0xaa8(rtoc)
-    lwz     r0, 0xaac(rtoc)
+    lwz     r4, R2Off_0xaa8(r2)
+    lwz     r0, R2Off_0xaac(r2)
     stw     r4, 0x48(sp)
     stfs    f0, 0x40(sp)
     lwz     r9, 0x40(sp)
@@ -172,7 +172,7 @@ branch_0x8033cbf8:
     srwi    r4, r9, 23
     clrlwi. r0, r9, 16
     clrlwi  r6, r9, 9
-    subi    r8, r4, 0x80
+    addi    r8, r4, -0x80
     extrwi  r7, r9, 7, 9
     beq-    branch_0x8033ccf0
     rlwinm  r4, r9, 0, 9, 15
@@ -187,30 +187,30 @@ branch_0x8033cbf8:
     addis   r0, r4, 0x1
     stw     r0, 0x44(sp)
 branch_0x8033cc6c:
-    lis     r4, 0x803b
+    lis     r4, unk_803ab0c0@ha
     lfs     f3, 0x54(sp)
     lfs     f0, 0x44(sp)
     slwi    r5, r7, 2
-    subi    r0, r4, 0x4f40
+    addi    r0, r4, unk_803ab0c0@l
     lfs     f1, 0x4c(sp)
     add     r4, r0, r5
     fsubs   f8, f3, f0
     lfs     f3, 0x0(r4)
-    addi    r4, rtoc, 0xaa0
+    addi    r4, r2, R2Off_0xaa0
     lfs     f0, 0x48(sp)
     xoris   r0, r8, 0x8000
     fmuls   f8, f8, f3
     lfs     f4, 0x4(r4)
     stw     r0, 0x7c(sp)
     lis     r0, 0x4330
-    lfs     f5, 0xaa0(rtoc)
+    lfs     f5, 0xaa0(r2)
     fmuls   f3, f8, f8
     stw     r0, 0x78(sp)
     fmadds  f0, f8, f1, f0
-    lfd     f6, 0xad0(rtoc)
+    lfd     f6, 0xad0(r2)
     lfd     f1, 0x78(sp)
     fmuls   f0, f3, f0
-    lfs     f7, 0xabc(rtoc)
+    lfs     f7, 0xabc(r2)
     fsubs   f3, f1, f6
     lfsx    f1, r3, r5
     fmadds  f0, f4, f8, f0
@@ -223,7 +223,7 @@ branch_0x8033cc6c:
 
 branch_0x8033ccf0:
     xoris   r0, r8, 0x8000
-    lfs     f3, 0xabc(rtoc)
+    lfs     f3, 0xabc(r2)
     stw     r0, 0x7c(sp)
     slwi    r0, r7, 2
     lfsx    f0, r3, r0
@@ -235,7 +235,7 @@ branch_0x8033ccf0:
 branch_0x8033cd18:
     fmuls   f2, f2, f0
     lis     r0, 0x4330
-    lfd     f1, 0xad0(rtoc)
+    lfd     f1, 0xad0(r2)
     fctiwz  f0, f2
     stfd    f0, 0x78(sp)
     lwz     r4, 0x7c(sp)
@@ -249,20 +249,20 @@ branch_0x8033cd18:
     fsubs   f0, f0, f1
     fsubs   f9, f2, f0
     ble-    branch_0x8033cd60
-    lfs     f0, 0xab0(rtoc)
+    lfs     f0, 0xab0(r2)
     b       branch_0x8033cde4
 
 branch_0x8033cd60:
     cmpwi   r5, -0x7f
     bge-    branch_0x8033cd70
-    lfs     f0, 0xab8(rtoc)
+    lfs     f0, 0xab8(r2)
     b       branch_0x8033cde4
 
 branch_0x8033cd70:
     addi    r0, r5, 0x7f
-    lfs     f6, 0xac4(rtoc)
+    lfs     f6, 0xac4(r2)
     stw     r0, 0x38(sp)
-    lfs     f7, 0xac0(rtoc)
+    lfs     f7, 0xac0(r2)
     lwz     r0, 0x38(sp)
     slwi    r0, r0, 23
     stw     r0, 0x38(sp)
@@ -294,8 +294,8 @@ branch_0x8033cde4:
 
 branch_0x8033cdec:
     fneg    f0, f1
-    lwz     r4, 0xaa8(rtoc)
-    lwz     r0, 0xaac(rtoc)
+    lwz     r4, R2Off_0xaa8(r2)
+    lwz     r0, R2Off_0xaac(r2)
     stw     r4, 0x28(sp)
     stfs    f0, 0x20(sp)
     lwz     r9, 0x20(sp)
@@ -303,7 +303,7 @@ branch_0x8033cdec:
     srwi    r4, r9, 23
     clrlwi. r0, r9, 16
     clrlwi  r6, r9, 9
-    subi    r8, r4, 0x80
+    addi    r8, r4, -0x80
     extrwi  r7, r9, 7, 9
     beq-    branch_0x8033ced0
     rlwinm  r4, r9, 0, 9, 15
@@ -318,30 +318,30 @@ branch_0x8033cdec:
     addis   r0, r4, 0x1
     stw     r0, 0x24(sp)
 branch_0x8033ce4c:
-    lis     r4, 0x803b
+    lis     r4, unk_803ab0c0@ha
     lfs     f3, 0x34(sp)
     lfs     f0, 0x24(sp)
     slwi    r5, r7, 2
-    subi    r0, r4, 0x4f40
+    addi    r0, r4, unk_803ab0c0@l
     lfs     f1, 0x2c(sp)
     add     r4, r0, r5
     fsubs   f8, f3, f0
     lfs     f3, 0x0(r4)
-    addi    r4, rtoc, 0xaa0
+    addi    r4, r2, R2Off_0xaa0
     lfs     f0, 0x28(sp)
     xoris   r0, r8, 0x8000
     fmuls   f8, f8, f3
     lfs     f4, 0x4(r4)
     stw     r0, 0x7c(sp)
     lis     r0, 0x4330
-    lfs     f5, 0xaa0(rtoc)
+    lfs     f5, 0xaa0(r2)
     fmuls   f3, f8, f8
     stw     r0, 0x78(sp)
     fmadds  f0, f8, f1, f0
-    lfd     f6, 0xad0(rtoc)
+    lfd     f6, 0xad0(r2)
     lfd     f1, 0x78(sp)
     fmuls   f0, f3, f0
-    lfs     f7, 0xabc(rtoc)
+    lfs     f7, 0xabc(r2)
     fsubs   f3, f1, f6
     lfsx    f1, r3, r5
     fmadds  f0, f4, f8, f0
@@ -354,7 +354,7 @@ branch_0x8033ce4c:
 
 branch_0x8033ced0:
     xoris   r0, r8, 0x8000
-    lfs     f3, 0xabc(rtoc)
+    lfs     f3, 0xabc(r2)
     stw     r0, 0x7c(sp)
     slwi    r0, r7, 2
     lfsx    f0, r3, r0
@@ -366,7 +366,7 @@ branch_0x8033ced0:
 branch_0x8033cef8:
     fmuls   f2, f2, f0
     lis     r0, 0x4330
-    lfd     f1, 0xad0(rtoc)
+    lfd     f1, 0xad0(r2)
     fctiwz  f0, f2
     stfd    f0, 0x78(sp)
     lwz     r4, 0x7c(sp)
@@ -380,20 +380,20 @@ branch_0x8033cef8:
     fsubs   f0, f0, f1
     fsubs   f9, f2, f0
     ble-    branch_0x8033cf40
-    lfs     f1, 0xab0(rtoc)
+    lfs     f1, 0xab0(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033cf40:
     cmpwi   r5, -0x7f
     bge-    branch_0x8033cf50
-    lfs     f1, 0xab8(rtoc)
+    lfs     f1, 0xab8(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033cf50:
     addi    r0, r5, 0x7f
-    lfs     f6, 0xac4(rtoc)
+    lfs     f6, 0xac4(r2)
     stw     r0, 0x18(sp)
-    lfs     f7, 0xac0(rtoc)
+    lfs     f7, 0xac0(r2)
     lwz     r0, 0x18(sp)
     slwi    r0, r0, 23
     stw     r0, 0x18(sp)
@@ -423,7 +423,7 @@ branch_0x8033cf50:
 
 branch_0x8033cfc8:
     stfs    f1, 0x14(sp)
-    lis     r0, 0x7f80
+    lis     r0, unk_7f800001@h
     lwz     r4, 0x14(sp)
     rlwinm  r3, r4, 0, 1, 8
     cmpw    r3, r0
@@ -436,7 +436,7 @@ branch_0x8033cfc8:
 branch_0x8033cff0:
     clrlwi. r0, r4, 9
     beq-    branch_0x8033d000
-    li      r0, 0x1
+    addi    r0, r0, unk_7f800001@l
     b       branch_0x8033d024
 
 branch_0x8033d000:
@@ -462,7 +462,7 @@ branch_0x8033d024:
 
 branch_0x8033d030:
     stfs    f2, 0x10(sp)
-    lis     r0, 0x7f80
+    lis     r0, unk_7f800001@h
     lwz     r4, 0x10(sp)
     rlwinm  r3, r4, 0, 1, 8
     cmpw    r3, r0
@@ -475,7 +475,7 @@ branch_0x8033d030:
 branch_0x8033d058:
     clrlwi. r0, r4, 9
     beq-    branch_0x8033d068
-    li      r0, 0x1
+    addi    r0, r0, unk_7f800001@l
     b       branch_0x8033d08c
 
 branch_0x8033d068:
@@ -508,30 +508,30 @@ branch_0x8033d0a4:
     b       branch_0x8033d0c0
 
 branch_0x8033d0b0:
-    lfs     f1, 0xac8(rtoc)
+    lfs     f1, 0xac8(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033d0b8:
-    lfs     f1, 0xab4(rtoc)
+    lfs     f1, 0xab4(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033d0c0:
-    lfs     f0, 0xab8(rtoc)
+    lfs     f0, 0xab8(r2)
     fcmpo   cr0, f2, f0
     bge-    branch_0x8033d0ec
-    lfs     f0, 0xacc(rtoc)
+    lfs     f0, 0xacc(r2)
     fcmpu   cr0, f0, f1
     bne-    branch_0x8033d0e4
-    lfs     f0, 0xab0(rtoc)
+    lfs     f0, 0xab0(r2)
     fneg    f1, f0
     b       branch_0x8033d0f0
 
 branch_0x8033d0e4:
-    lfs     f1, 0xab0(rtoc)
+    lfs     f1, 0xab0(r2)
     b       branch_0x8033d0f0
 
 branch_0x8033d0ec:
-    lfs     f1, 0xab8(rtoc)
+    lfs     f1, 0xab8(r2)
 branch_0x8033d0f0:
     addi    sp, sp, 0x90
     blr
@@ -540,30 +540,30 @@ branch_0x8033d0f0:
 .globl expf
 expf: # 0x8033d0f8
     stwu    sp, -0x28(sp)
-    lis     r3, 0x803b
-    subi    r5, r3, 0x4cf0
-    lfs     f0, 0xad8(rtoc)
+    lis     r3, unk_803ab310@ha
+    addi    r5, r3, unk_803ab310@l
+    lfs     f0, 0xad8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8033d118
-    lfs     f1, 0xab0(rtoc)
+    lfs     f1, 0xab0(r2)
     b       branch_0x8033d1d8
 
 branch_0x8033d118:
-    lfs     f0, 0xadc(rtoc)
+    lfs     f0, 0xadc(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8033d12c
-    lfs     f1, 0xab8(rtoc)
+    lfs     f1, 0xab8(r2)
     b       branch_0x8033d1d8
 
 branch_0x8033d12c:
     fctiwz  f0, f1
-    lis     r3, 0x803b
+    lis     r3, unk_803aadf8@ha
     lis     r4, 0x4330
-    lfd     f2, 0xad0(rtoc)
-    lfs     f6, 0xae4(rtoc)
+    lfd     f2, 0xad0(r2)
+    lfs     f6, 0xae4(r2)
     stfd    f0, 0x20(sp)
-    subi    r0, r3, 0x5208
-    lfs     f7, 0xae0(rtoc)
+    addi    r0, r3, unk_803aadf8@l
+    lfs     f7, 0xae0(r2)
     lwz     r6, 0x24(sp)
     xoris   r3, r6, 0x8000
     stw     r3, 0x1c(sp)

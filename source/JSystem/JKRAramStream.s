@@ -6,10 +6,10 @@ create__13JKRAramStreamFl: # 0x802f0cf0
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x5df8(r13)
+    lwz     r0, R13Off_m0x5df8(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802f0d44
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x60
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi
@@ -18,7 +18,7 @@ create__13JKRAramStreamFl: # 0x802f0cf0
     mr      r4, r31
     bl      __ct__13JKRAramStreamFl
 branch_0x802f0d30:
-    stw     r3, -0x5df8(r13)
+    stw     r3, R13Off_m0x5df8(r13)
     li      r3, 0x0
     li      r4, 0x0
     li      r5, 0x0
@@ -27,7 +27,7 @@ branch_0x802f0d44:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
-    lwz     r3, -0x5df8(r13)
+    lwz     r3, R13Off_m0x5df8(r13)
     mtlr    r0
     blr
 
@@ -44,9 +44,9 @@ __ct__13JKRAramStreamFl: # 0x802f0d5c
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__9JKRThreadFUlii
-    lis     r3, 0x803e
+    lis     r3, __vvt__13JKRAramStream@h
     lwz     r31, 0x8(sp)
-    addi    r0, r3, 0x17f8
+    addi    r0, r3, __vvt__13JKRAramStream@l
     stw     r0, 0x0(r31)
     lwz     r3, 0x2c(r31)
     bl      OSResumeThread
@@ -68,8 +68,8 @@ __dt__13JKRAramStreamFv: # 0x802f0db4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f0dfc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x17f8
+    lis     r3, __vvt__13JKRAramStream@h
+    addi    r0, r3, __vvt__13JKRAramStream@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -91,12 +91,12 @@ branch_0x802f0dfc:
 .globl run__13JKRAramStreamFv
 run__13JKRAramStreamFv: # 0x802f0e18
     mflr    r0
-    lis     r3, 0x803e
+    lis     r3, sMessageBuffer__13JKRAramStream@h
     stw     r0, 0x4(sp)
     li      r5, 0x4
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r3, 0x17c8
+    addi    r31, r3, sMessageBuffer__13JKRAramStream@l
     addi    r4, r31, 0x0
     addi    r3, r31, 0x10
     bl      OSInitMessageQueue
@@ -148,8 +148,8 @@ writeToAram__13JKRAramStreamFP20JKRAramStreamCommand: # 0x802f0e88
     beq-    branch_0x802f0eec
     cmplwi  r0, 0x0
     bne-    branch_0x802f0ed8
-    lis     r3, 0x1
-    subi    r25, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r25, r3, unk_00008000@l
     b       branch_0x802f0edc
 
 branch_0x802f0ed8:
@@ -163,8 +163,8 @@ branch_0x802f0edc:
 branch_0x802f0eec:
     cmplwi  r0, 0x0
     bne-    branch_0x802f0f00
-    lis     r3, 0x1
-    subi    r25, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r25, r3, unk_00008000@l
     b       branch_0x802f0f04
 
 branch_0x802f0f00:
@@ -196,7 +196,7 @@ branch_0x802f0f4c:
     bne-    branch_0x802f0fa0
     cmplwi  r27, 0x0
     bne-    branch_0x802f0f74
-    lwz     r3, -0x5f2c(r13)
+    lwz     r3, R13Off_m0x5f2c(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x38(r12)
     mtlr    r12
@@ -210,11 +210,11 @@ branch_0x802f0f74:
     mtlr    r12
     blrl
 branch_0x802f0f88:
-    lis     r3, 0x803b
+    lis     r3, unk_803aa110@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x5ef0
+    addi    r3, r3, unk_803aa110@l
     li      r4, 0xa9
-    addi    r5, rtoc, 0x368
+    addi    r5, r2, R2Off_0x368
     bl      OSPanic
 branch_0x802f0fa0:
     cmplwi  r24, 0x0
@@ -284,7 +284,7 @@ write_StreamToAram_Async__13JKRAramStreamFP18JSUFileInputStreamUlUlUl: # 0x802f1
     addi    r30, r6, 0x0
     li      r3, 0x58
     li      r5, -0x4
-    lwz     r0, -0x5f30(r13)
+    lwz     r0, R13Off_m0x5f30(r13)
     mr      r4, r0
     bl      __nw__FUlP7JKRHeapi
     mr.     r31, r3
@@ -304,15 +304,15 @@ branch_0x802f10a0:
     stw     r27, 0x10(r31)
     stw     r0, 0x28(r31)
     stw     r30, 0x14(r31)
-    lwz     r0, -0x5df4(r13)
+    lwz     r0, R13Off_m0x5df4(r13)
     stw     r0, 0x18(r31)
-    lwz     r0, -0x5dec(r13)
+    lwz     r0, R13Off_m0x5dec(r13)
     stw     r0, 0x20(r31)
-    lwz     r0, -0x5df0(r13)
+    lwz     r0, R13Off_m0x5df0(r13)
     stw     r0, 0x1c(r31)
     bl      OSInitMessageQueue
-    lis     r3, 0x803e
-    addi    r3, r3, 0x17d8
+    lis     r3, sMessageQueue__13JKRAramStream@h
+    addi    r3, r3, sMessageQueue__13JKRAramStream@l
     addi    r4, r31, 0x0
     li      r5, 0x1
     bl      OSSendMessage
@@ -376,22 +376,22 @@ branch_0x802f1194:
 
 .globl setTransBuffer__13JKRAramStreamFPUcUlP7JKRHeap
 setTransBuffer__13JKRAramStreamFPUcUlP7JKRHeap: # 0x802f11a8
-    lis     r6, 0x1
+    lis     r6, unk_00008000@ha
     li      r7, 0x0
-    subi    r0, r6, 0x8000
-    stw     r7, -0x5df4(r13)
+    addi    r0, r6, unk_00008000@l
+    stw     r7, R13Off_m0x5df4(r13)
     cmplwi  r3, 0x0
-    stw     r0, -0x5df0(r13)
-    stw     r7, -0x5dec(r13)
+    stw     r0, R13Off_m0x5df0(r13)
+    stw     r7, R13Off_m0x5dec(r13)
     beq-    branch_0x802f11d4
     addi    r0, r3, 0x1f
     clrrwi  r0, r0, 5
-    stw     r0, -0x5df4(r13)
+    stw     r0, R13Off_m0x5df4(r13)
 branch_0x802f11d4:
     cmplwi  r4, 0x0
     beq-    branch_0x802f11e4
     clrrwi  r0, r4, 5
-    stw     r0, -0x5df0(r13)
+    stw     r0, R13Off_m0x5df0(r13)
 branch_0x802f11e4:
     cmplwi  r5, 0x0
     beqlr-    
@@ -399,7 +399,7 @@ branch_0x802f11e4:
     cmplwi  r3, 0x0
     bnelr-    
 
-    stw     r5, -0x5dec(r13)
+    stw     r5, R13Off_m0x5dec(r13)
     blr
 
 

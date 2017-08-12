@@ -2,10 +2,10 @@
 .globl PushReadedBuffer2
 PushReadedBuffer2: # 0x8001fb3c
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, ReadedBufferQueue2@ha
     stw     r0, 0x4(sp)
     addi    r4, r3, 0x0
-    subi    r3, r5, 0x2a60
+    addi    r3, r5, ReadedBufferQueue2@l
     stwu    sp, -0x8(sp)
     li      r5, 0x1
     bl      OSSendMessage
@@ -18,9 +18,9 @@ PushReadedBuffer2: # 0x8001fb3c
 .globl PopReadedBuffer2
 PopReadedBuffer2: # 0x8001fb6c
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ReadedBufferQueue2@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2a60
+    addi    r3, r3, ReadedBufferQueue2@l
     li      r5, 0x1
     stwu    sp, -0x10(sp)
     addi    r4, sp, 0x8
@@ -35,10 +35,10 @@ PopReadedBuffer2: # 0x8001fb6c
 .globl PushFreeReadBuffer
 PushFreeReadBuffer: # 0x8001fba0
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, FreeReadBufferQueue@ha
     stw     r0, 0x4(sp)
     addi    r4, r3, 0x0
-    subi    r3, r5, 0x2aa0
+    addi    r3, r5, FreeReadBufferQueue@l
     stwu    sp, -0x8(sp)
     li      r5, 0x1
     bl      OSSendMessage
@@ -51,9 +51,9 @@ PushFreeReadBuffer: # 0x8001fba0
 .globl PopReadedBuffer
 PopReadedBuffer: # 0x8001fbd0
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ReadedBufferQueue@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2a80
+    addi    r3, r3, ReadedBufferQueue@l
     li      r5, 0x1
     stwu    sp, -0x10(sp)
     addi    r4, sp, 0x8
@@ -68,13 +68,13 @@ PopReadedBuffer: # 0x8001fbd0
 .globl Reader__FPv
 Reader__FPv: # 0x8001fc04
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r26, 0x20(sp)
-    subi    r28, r3, 0x3ea0
-    lis     r3, 0x803f
-    subi    r27, r3, 0x2aa0
+    addi    r28, r3, ActivePlayer@l
+    lis     r3, FreeReadBufferQueue@ha
+    addi    r27, r3, FreeReadBufferQueue@l
     li      r29, 0x0
     lwz     r31, 0xb8(r28)
     lwz     r30, 0xbc(r28)
@@ -119,7 +119,7 @@ branch_0x8001fc8c:
     lwz     r30, 0x0(r4)
     mullw   r0, r0, r5
     subf    r3, r0, r3
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     cmplw   r3, r0
     bne-    branch_0x8001fcec
     lbz     r0, 0xa6(r28)
@@ -141,14 +141,14 @@ ReadThreadCancel: # 0x8001fcf4
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x7128(r13)
+    lwz     r0, R13Off_m0x7128(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8001fd20
-    lis     r3, 0x803f
-    subi    r3, r3, 0x29c8
+    lis     r3, ReadThread@ha
+    addi    r3, r3, ReadThread@l
     bl      OSCancelThread
     li      r0, 0x0
-    stw     r0, -0x7128(r13)
+    stw     r0, R13Off_m0x7128(r13)
 branch_0x8001fd20:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -161,11 +161,11 @@ ReadThreadStart: # 0x8001fd30
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x7128(r13)
+    lwz     r0, R13Off_m0x7128(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8001fd54
-    lis     r3, 0x803f
-    subi    r3, r3, 0x29c8
+    lis     r3, ReadThread@ha
+    addi    r3, r3, ReadThread@l
     bl      OSResumeThread
 branch_0x8001fd54:
     lwz     r0, 0xc(sp)
@@ -177,7 +177,7 @@ branch_0x8001fd54:
 .globl CreateReadThread
 CreateReadThread: # 0x8001fd64
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, FreeReadBufferQueue@ha
     stw     r0, 0x4(sp)
     addi    r8, r3, 0x0
     li      r5, 0x0
@@ -185,9 +185,9 @@ CreateReadThread: # 0x8001fd64
     li      r7, 0x1000
     li      r9, 0x1
     stw     r31, 0x14(sp)
-    subi    r31, r4, 0x2aa0
-    lis     r4, 0x8002
-    subi    r4, r4, 0x3fc
+    addi    r31, r4, FreeReadBufferQueue@l
+    lis     r4, Reader__FPv@ha
+    addi    r4, r4, Reader__FPv@l
     addi    r3, r31, 0xd8
     addi    r6, r31, 0x13e8
     bl      OSCreateThread
@@ -210,7 +210,7 @@ branch_0x8001fdb0:
     li      r5, 0xa
     bl      OSInitMessageQueue
     li      r0, 0x1
-    stw     r0, -0x7128(r13)
+    stw     r0, R13Off_m0x7128(r13)
     li      r3, 0x1
 branch_0x8001fdec:
     lwz     r0, 0x1c(sp)

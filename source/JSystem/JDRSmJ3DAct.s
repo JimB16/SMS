@@ -9,8 +9,8 @@ load__Q26JDrama9TSmJ3DActFR20JSUMemoryInputStream: # 0x802fbefc
     stw     r30, 0x28(sp)
     bl      load__Q26JDrama6TActorFR20JSUMemoryInputStream
     lwz     r3, 0x3c(r31)
-    lis     r4, 0x803b
-    subi    r4, r4, 0x5b98
+    lis     r4, unk_803aa468@ha
+    addi    r4, r4, unk_803aa468@l
     lwz     r12, 0x0(r3)
     lwz     r12, 0x20(r12)
     mtlr    r12
@@ -29,8 +29,8 @@ load__Q26JDrama9TSmJ3DActFR20JSUMemoryInputStream: # 0x802fbefc
     bl      __ct__8J3DModelFP12J3DModelDataUlUl
 branch_0x802fbf64:
     stw     r30, 0x48(r31)
-    lis     r3, 0x803b
-    subi    r4, r3, 0x5b88
+    lis     r3, unk_803aa478@ha
+    addi    r4, r3, unk_803aa478@l
     lwz     r3, 0x3c(r31)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x20(r12)
@@ -50,8 +50,8 @@ branch_0x802fbf64:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802fbfd4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2eac
+    lis     r3, __vvt__12J3DFrameCtrl@ha
+    addi    r0, r3, __vvt__12J3DFrameCtrl@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -94,7 +94,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     addi    r30, r3, 0x0
     stw     r29, 0x1a4(sp)
     beq-    branch_0x802fc44c
-    lfs     f0, 0x450(rtoc)
+    lfs     f0, 0x450(r2)
     stfs    f0, 0x16c(sp)
     stfs    f0, 0x15c(sp)
     stfs    f0, 0x14c(sp)
@@ -104,7 +104,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     stfs    f0, 0x144(sp)
     stfs    f0, 0x160(sp)
     stfs    f0, 0x150(sp)
-    lfs     f0, 0x454(rtoc)
+    lfs     f0, 0x454(r2)
     stfs    f0, 0x168(sp)
     stfs    f0, 0x154(sp)
     stfs    f0, 0x140(sp)
@@ -114,7 +114,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     stfs    f0, 0x15c(sp)
     lfs     f0, 0x18(r30)
     stfs    f0, 0x16c(sp)
-    lfs     f1, 0x458(rtoc)
+    lfs     f1, 0x458(r2)
     lfs     f0, 0x38(r30)
     fmuls   f22, f1, f0
     fmr     f1, f22
@@ -124,7 +124,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     bl      cosf
     lfs     f3, 0x164(sp)
     fneg    f2, f31
-    lfs     f6, 0x450(rtoc)
+    lfs     f6, 0x450(r2)
     addi    r3, sp, 0x110
     lfs     f12, 0x154(sp)
     fmuls   f4, f3, f31
@@ -143,7 +143,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     lfs     f0, 0x16c(sp)
     fmadds  f25, f3, f6, f26
     fmadds  f11, f29, f6, f5
-    lfs     f7, 0x454(rtoc)
+    lfs     f7, 0x454(r2)
     fmuls   f5, f12, f1
     lfs     f8, 0x15c(sp)
     fmuls   f22, f9, f6
@@ -176,7 +176,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     fmadds  f7, f9, f7, f11
     fadds   f8, f8, f10
     bl      set__Q29JGeometry13SMatrix34C_f_Fffffffffffff
-    lfs     f1, 0x458(rtoc)
+    lfs     f1, 0x458(r2)
     lfs     f0, 0x34(r30)
     fmuls   f22, f1, f0
     fmr     f1, f22
@@ -185,10 +185,10 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     fmr     f1, f22
     bl      cosf
     fmr     f0, f1
-    lfs     f6, 0x450(rtoc)
+    lfs     f6, 0x450(r2)
     lfs     f1, 0x134(sp)
     fneg    f9, f31
-    lfs     f7, 0x454(rtoc)
+    lfs     f7, 0x454(r2)
     fmuls   f5, f1, f6
     lfs     f8, 0x130(sp)
     lfs     f11, 0x114(sp)
@@ -239,7 +239,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     fmadds  f7, f7, f0, f11
     fadds   f8, f8, f10
     bl      set__Q29JGeometry13SMatrix34C_f_Fffffffffffff
-    lfs     f1, 0x458(rtoc)
+    lfs     f1, 0x458(r2)
     lfs     f0, 0x30(r30)
     fmuls   f22, f1, f0
     fmr     f1, f22
@@ -247,7 +247,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     fmr     f31, f1
     fmr     f1, f22
     bl      cosf
-    lfs     f10, 0x450(rtoc)
+    lfs     f10, 0x450(r2)
     fmr     f0, f1
     lfs     f2, 0x164(sp)
     fneg    f21, f31
@@ -256,7 +256,7 @@ perform__Q26JDrama9TSmJ3DActFUlPQ26JDrama9TGraphics: # 0x802fc000
     lfs     f8, 0x160(sp)
     fmuls   f1, f2, f0
     fmuls   f4, f2, f21
-    lfs     f2, 0x454(rtoc)
+    lfs     f2, 0x454(r2)
     lfs     f12, 0x154(sp)
     fmadds  f23, f8, f10, f1
     lfs     f3, 0x168(sp)
@@ -397,8 +397,8 @@ __dt__Q26JDrama9TSmJ3DActFv: # 0x802fc4cc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fc51c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x21b0
+    lis     r3, __vvt__Q26JDrama9TSmJ3DAct@h
+    addi    r3, r3, __vvt__Q26JDrama9TSmJ3DAct@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -419,8 +419,8 @@ branch_0x802fc51c:
     blr
 
 
-.globl _32___dt__Q26JDrama9TSmJ3DActFv
-_32___dt__Q26JDrama9TSmJ3DActFv: # 0x802fc538
-    subi    r3, r3, 0x20
+.globl unk_802fc538
+unk_802fc538: # 0x802fc538
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama9TSmJ3DActFv
 

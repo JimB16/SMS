@@ -10,7 +10,7 @@ perform__10TConductorFUlPQ26JDrama9TGraphics: # 0x80033ed8
     addi    r25, r3, 0x0
     addi    r27, r5, 0x0
     beq-    branch_0x80033f14
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x124(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80033f14
@@ -60,8 +60,9 @@ branch_0x80033f80:
     bne+    branch_0x80033f38
     b       branch_0x80034018
 
+branch_0x80033fa8:
+    b       branch_0x80033ff4
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2e9a8, 0x80033fac - 0x80033fa8
 branch_0x80033fac:
     lwz     r3, 0x21c(sp)
     addi    r3, r3, 0x8
@@ -96,7 +97,7 @@ branch_0x80034018:
     cmplwi  r30, 0x0
     beq-    branch_0x800340cc
     lwz     r0, 0x38(r25)
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     stw     r0, 0x158(sp)
     stw     r29, 0x15c(sp)
     lfs     f4, 0x9c(r25)
@@ -118,7 +119,7 @@ branch_0x80034048:
     b       branch_0x800340a0
 
 branch_0x8003406c:
-    lfs     f1, -0x7510(rtoc)
+    lfs     f1, -0x7510(r2)
     addi    r3, r27, 0x0
     addi    r4, r24, 0x10
     bl      ViewFrustumClipCheck__FPQ26JDrama9TGraphicsP3Vecf
@@ -185,8 +186,9 @@ branch_0x8003412c:
     bne+    branch_0x800340e4
     b       branch_0x800341bc
 
+branch_0x80034150:
+    b       branch_0x8003419c
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2eb50, 0x80034154 - 0x80034150
 branch_0x80034154:
     lwz     r3, 0x218(sp)
     addi    r3, r3, 0x8
@@ -509,7 +511,7 @@ genEnemyFromPollution__10TConductorFv: # 0x8003455c
     lwz     r3, 0xf0(r30)
     cmplwi  r3, 0x0
     beq-    branch_0x80034880
-    lwz     r5, gpMarDirector(r13)
+    lwz     r5, R13Off_m0x6048(r13)
     lwz     r4, 0xd8(r30)
     lwz     r5, 0x58(r5)
     divw    r0, r5, r4
@@ -565,7 +567,7 @@ branch_0x80034658:
     cmplwi  r0, 0x0
     mr      r31, r0
     beq-    branch_0x80034880
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x94(sp)
@@ -576,10 +578,10 @@ branch_0x80034658:
     lfs     f30, 0xb0(r30)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x74f8(rtoc)
+    lfd     f3, -0x74f8(r2)
     stw     r0, 0xbc(sp)
     lis     r28, 0x4330
-    lfs     f1, -0x750c(rtoc)
+    lfs     f1, -0x750c(r2)
     fsubs   f0, f30, f31
     stw     r28, 0xb8(sp)
     lfd     f2, 0xb8(sp)
@@ -588,21 +590,21 @@ branch_0x80034658:
     fmadds  f31, f0, f1, f31
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f4, -0x74f8(rtoc)
+    lfd     f4, -0x74f8(r2)
     stw     r0, 0xb4(sp)
     addi    r4, sp, 0x94
-    lfs     f3, -0x750c(rtoc)
+    lfs     f3, -0x750c(r2)
     addi    r5, sp, 0x8c
     stw     r28, 0xb0(sp)
-    lfs     f1, -0x7504(rtoc)
+    lfs     f1, -0x7504(r2)
     lfd     f0, 0xb0(sp)
-    lfs     f2, -0x7508(rtoc)
+    lfs     f2, -0x7508(r2)
     fsubs   f4, f0, f4
-    lwz     r0, -0x5eac(r13)
-    lwz     r7, -0x5ea8(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r7, R13Off_m0x5ea8(r13)
     lfs     f0, 0x94(sp)
     fmuls   f3, f3, f4
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     fmuls   f1, f1, f3
     fmuls   f1, f2, f1
     fctiwz  f1, f1
@@ -618,12 +620,12 @@ branch_0x80034658:
     lfs     f0, 0x9c(sp)
     fmadds  f0, f31, f1, f0
     stfs    f0, 0x9c(sp)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
-    lfs     f0, -0x7500(rtoc)
+    lfs     f0, -0x7500(r2)
     fadds   f0, f0, f1
     stfs    f0, 0x98(sp)
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lfs     f1, 0x94(sp)
     lfs     f2, 0x98(sp)
     lfs     f3, 0x9c(sp)
@@ -640,9 +642,9 @@ branch_0x80034658:
     lfs     f30, 0xec(r30)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f2, -0x74f8(rtoc)
+    lfd     f2, -0x74f8(r2)
     stw     r0, 0xac(sp)
-    lfs     f0, -0x750c(rtoc)
+    lfs     f0, -0x750c(r2)
     stw     r28, 0xa8(sp)
     lfd     f1, 0xa8(sp)
     fsubs   f1, f1, f2
@@ -654,9 +656,9 @@ branch_0x80034658:
 branch_0x800347b8:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x74f8(rtoc)
+    lfd     f3, -0x74f8(r2)
     stw     r0, 0xac(sp)
-    lfs     f1, -0x750c(rtoc)
+    lfs     f1, -0x750c(r2)
     stw     r28, 0xa8(sp)
     lfs     f0, 0x24(r29)
     lfd     f2, 0xa8(sp)
@@ -670,9 +672,9 @@ branch_0x800347ec:
     lfs     f30, 0xec(r30)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f2, -0x74f8(rtoc)
+    lfd     f2, -0x74f8(r2)
     stw     r0, 0xac(sp)
-    lfs     f0, -0x750c(rtoc)
+    lfs     f0, -0x750c(r2)
     stw     r28, 0xa8(sp)
     lfd     f1, 0xa8(sp)
     fsubs   f1, f1, f2
@@ -731,8 +733,8 @@ killEnemiesWithin__10TConductorFRCQ29JGeometry8TVec3_f_f: # 0x800348a8
     stw     r29, 0x5c(sp)
     mr      r29, r4
     lwz     r5, 0x28(r3)
-    lis     r3, 0x8037
-    addi    r31, r3, 0x6848
+    lis     r3, unk_80376848@h
+    addi    r31, r3, unk_80376848@l
     stw     r5, 0x50(sp)
     stw     r0, 0x4c(sp)
     b       branch_0x80034940
@@ -1076,14 +1078,14 @@ branch_0x80034d2c:
 .globl isBossDefeated__10TConductorFv
 isBossDefeated__10TConductorFv: # 0x80034d40
     mflr    r0
-    lis     r5, 0x8037
+    lis     r5, unk_80376768@h
     stw     r0, 0x4(sp)
     stwu    sp, -0xb8(sp)
     stw     r31, 0xb4(sp)
-    addi    r31, r5, 0x6768
+    addi    r31, r5, unk_80376768@l
     stw     r30, 0xb0(sp)
     addi    r30, r3, 0x0
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r4)
     cmpwi   r0, 0x2
     beq-    branch_0x80034d84
@@ -1305,14 +1307,14 @@ branch_0x80035000:
 .globl init__10TConductorFv
 init__10TConductorFv: # 0x80035010
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, unk_80376768@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x80(sp)
     stw     r31, 0x7c(sp)
     mr      r31, r3
     addi    r0, r31, 0x28
     stw     r30, 0x78(sp)
-    addi    r30, r4, 0x6768
+    addi    r30, r4, unk_80376768@l
     stw     r29, 0x74(sp)
     lwz     r3, 0x28(r3)
     stw     r3, 0x68(sp)
@@ -1988,8 +1990,8 @@ __dt__10TConductorFv: # 0x800358c8
     mr.     r30, r3
     addi    r31, r4, 0x0
     beq-    branch_0x80035cbc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x26a8
+    lis     r3, __vvt__10TConductor@ha
+    addi    r3, r3, __vvt__10TConductor@l
     addic.  r0, r30, 0x70
     stw     r3, 0x0(r30)
     beq-    branch_0x80035974
@@ -2252,8 +2254,8 @@ branch_0x80035c68:
 branch_0x80035c8c:
     cmplwi  r30, 0x0
     beq-    branch_0x80035cac
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2301,7 +2303,7 @@ erase__Q27JGadget62TList_P12TLiveManager_Q27JGadget27TAllocator_P12TLiveManager_
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2348,7 +2350,7 @@ erase__Q27JGadget64TList_P13TEnemyManager_Q27JGadget28TAllocator_P13TEnemyManage
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2395,7 +2397,7 @@ erase__Q27JGadget58TList_P10TLiveActor_Q27JGadget25TAllocator_P10TLiveActor__FQ3
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2442,7 +2444,7 @@ erase__Q27JGadget70TList_PQ26JDrama8TViewObj_Q27JGadget31TAllocator_PQ26JDrama8T
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2489,7 +2491,7 @@ erase__Q27JGadget78TList_P20TAreaCylinderManager_Q27JGadget35TAllocator_P20TArea
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2536,7 +2538,7 @@ erase__Q27JGadget58TList_P10TGenerator_Q27JGadget25TAllocator_P10TGenerator__FQ3
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2583,7 +2585,7 @@ erase__Q27JGadget62TList_P12SDLModelData_Q27JGadget27TAllocator_P12SDLModelData_
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)
@@ -2604,27 +2606,27 @@ __ct__Q37JGadget62TList_P12SDLModelData_Q27JGadget27TAllocator_P12SDLModelData__
 .globl __ct__10TConductorFv
 __ct__10TConductorFv: # 0x800360a8
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, unk_80376768@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stmw    r27, 0x2c(sp)
-    addi    r28, r4, 0x6768
+    addi    r28, r4, unk_80376768@l
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r27, 0x8(sp)
     addi    r3, r28, 0x168
     stw     r0, 0x0(r27)
     stw     r3, 0x4(r27)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r27)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r27)
     li      r29, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__10TConductor@ha
     sth     r29, 0xc(r27)
-    subi    r0, r3, 0x26a8
+    addi    r0, r3, __vvt__10TConductor@l
     addi    r10, r27, 0x18
     stw     r0, 0x0(r27)
     addi    r9, r27, 0x28
@@ -2679,12 +2681,12 @@ __ct__10TConductorFv: # 0x800360a8
     addi    r4, r27, 0x84
     addi    r6, r28, 0x188
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r30, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r30, r3, __vvt__10TParamT_f_@l
     stw     r30, 0x8c(r27)
-    lis     r3, 0x803b
-    subi    r31, r3, 0x42d0
-    lfs     f0, -0x74f0(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r31, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x74f0(r2)
     addi    r3, r28, 0x198
     stfs    f0, 0x9c(r27)
     stw     r31, 0x8c(r27)
@@ -2696,7 +2698,7 @@ __ct__10TConductorFv: # 0x800360a8
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r30, 0xa0(r27)
     addi    r3, r28, 0x1ac
-    lfs     f0, -0x74ec(rtoc)
+    lfs     f0, -0x74ec(r2)
     stfs    f0, 0xb0(r27)
     stw     r31, 0xa0(r27)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2707,7 +2709,7 @@ __ct__10TConductorFv: # 0x800360a8
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r30, 0xb4(r27)
     addi    r3, r28, 0x1c0
-    lfs     f0, -0x74e8(rtoc)
+    lfs     f0, -0x74e8(r2)
     stfs    f0, 0xc4(r27)
     stw     r31, 0xb4(r27)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2716,13 +2718,13 @@ __ct__10TConductorFv: # 0x800360a8
     addi    r4, r27, 0x84
     addi    r6, r28, 0x1c0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x42ac
+    lis     r3, __vvt__10TParamT_l_@ha
+    addi    r0, r3, __vvt__10TParamT_l_@l
     stw     r0, 0xc8(r27)
     li      r0, 0x12c
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TParamRT_l_@ha
     stw     r0, 0xd8(r27)
-    subi    r0, r3, 0x42b8
+    addi    r0, r3, __vvt__11TParamRT_l_@l
     addi    r3, r28, 0x1d0
     stw     r0, 0xc8(r27)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2733,7 +2735,7 @@ __ct__10TConductorFv: # 0x800360a8
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r30, 0xdc(r27)
     addi    r3, r27, 0x84
-    lfs     f0, -0x74e4(rtoc)
+    lfs     f0, -0x74e4(r2)
     stfs    f0, 0xec(r27)
     stw     r31, 0xdc(r27)
     lwz     r4, 0x84(r27)

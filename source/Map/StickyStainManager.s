@@ -9,12 +9,12 @@ __dt__19TStickyStainManagerFv: # 0x801aeac8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801aeb20
-    lis     r3, 0x803c
-    addi    r0, r3, 0x28b0
+    lis     r3, __vvt__19TStickyStainManager@h
+    addi    r0, r3, __vvt__19TStickyStainManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x801aeb10
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

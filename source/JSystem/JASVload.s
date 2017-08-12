@@ -60,55 +60,55 @@ branch_0x80319764:
     lbz     r0, 0x0(r3)
     cmpwi   r0, 0x2f
     beq-    branch_0x8031977c
-    subi    r31, r31, 0x1
-    subi    r3, r3, 0x1
+    addi    r31, r31, -0x1
+    addi    r3, r3, -0x1
     bdnz+      branch_0x80319764
 branch_0x8031977c:
     cmplwi  r31, 0x0
     bne-    branch_0x803197a0
-    lwz     r0, -0x5b14(r13)
-    addi    r4, rtoc, 0x750
-    lwz     r3, -0x5b20(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
+    addi    r4, r2, R2Off_0x750
+    lwz     r3, R13Off_m0x5b20(r13)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     bl      strcpy
     b       branch_0x803197d4
 
 branch_0x803197a0:
-    lwz     r0, -0x5b14(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
     mr      r4, r28
-    lwz     r3, -0x5b20(r13)
+    lwz     r3, R13Off_m0x5b20(r13)
     addi    r5, r31, 0x0
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     bl      strncpy
-    lwz     r0, -0x5b14(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
     li      r4, 0x0
-    lwz     r3, -0x5b20(r13)
+    lwz     r3, R13Off_m0x5b20(r13)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     stbx    r4, r3, r31
 branch_0x803197d4:
-    lwz     r0, -0x5b14(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
     add     r4, r31, r28
-    lwz     r3, -0x5b1c(r13)
+    lwz     r3, R13Off_m0x5b1c(r13)
     addi    r4, r4, 0x1
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     bl      strcpy
-    lwz     r0, -0x5b14(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
     li      r3, 0x1
-    lwz     r4, -0x5b18(r13)
+    lwz     r4, R13Off_m0x5b18(r13)
     slwi    r0, r0, 2
     stwx    r29, r4, r0
-    lwz     r0, -0x5b14(r13)
-    lwz     r4, -0x5b18(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
+    lwz     r4, R13Off_m0x5b18(r13)
     slwi    r0, r0, 2
     lwzx    r4, r4, r0
     stw     r30, 0x8(r4)
-    lwz     r4, -0x5b14(r13)
+    lwz     r4, R13Off_m0x5b14(r13)
     addi    r0, r4, 0x1
-    stw     r0, -0x5b14(r13)
+    stw     r0, R13Off_m0x5b14(r13)
 branch_0x80319824:
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)
@@ -134,7 +134,7 @@ getArchiveHandle__Q28JASystem5VloadFPc: # 0x80319844
     b       branch_0x8031988c
 
 branch_0x8031986c:
-    lwz     r4, -0x5b1c(r13)
+    lwz     r4, R13Off_m0x5b1c(r13)
     mr      r3, r29
     lwzx    r4, r4, r31
     bl      strcmp
@@ -143,11 +143,11 @@ branch_0x8031986c:
     addi    r30, r30, 0x1
     addi    r31, r31, 0x4
 branch_0x8031988c:
-    lwz     r0, -0x5b14(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
     cmplw   r30, r0
     blt+    branch_0x8031986c
 branch_0x80319898:
-    lwz     r0, -0x5b14(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
     cmplw   r30, r0
     beq-    branch_0x803198ac
     slwi    r3, r30, 16
@@ -167,7 +167,7 @@ branch_0x803198b0:
 
 .globl getRealHandle__Q28JASystem5VloadFUl
 getRealHandle__Q28JASystem5VloadFUl: # 0x803198cc
-    lwz     r0, -0x5b14(r13)
+    lwz     r0, R13Off_m0x5b14(r13)
     srwi    r4, r3, 16
     clrlwi  r5, r3, 16
     cmplw   r4, r0
@@ -176,7 +176,7 @@ getRealHandle__Q28JASystem5VloadFUl: # 0x803198cc
     blr
 
 branch_0x803198e8:
-    lwz     r3, -0x5b18(r13)
+    lwz     r3, R13Off_m0x5b18(r13)
     slwi    r0, r4, 2
     lwzx    r4, r3, r0
     cmplwi  r4, 0x0
@@ -241,7 +241,7 @@ loadFile__Q28JASystem5VloadFUlPUcUlUl: # 0x80319978
     srwi    r31, r3, 16
     stw     r0, 0x18(sp)
     bl      getRealHandle__Q28JASystem5VloadFUl
-    lwz     r4, -0x5b20(r13)
+    lwz     r4, R13Off_m0x5b20(r13)
     slwi    r31, r31, 2
     lwz     r30, 0x18(r3)
     addi    r3, sp, 0x1c
@@ -249,9 +249,9 @@ loadFile__Q28JASystem5VloadFUlPUcUlUl: # 0x80319978
     add     r30, r30, r28
     bl      strcpy
     addi    r3, sp, 0x1c
-    addi    r4, rtoc, 0x750
+    addi    r4, r2, R2Off_0x750
     bl      strcat
-    lwz     r4, -0x5b18(r13)
+    lwz     r4, R13Off_m0x5b18(r13)
     addi    r3, sp, 0x1c
     lwzx    r4, r4, r31
     addi    r4, r4, 0x10
@@ -289,7 +289,7 @@ loadFileAsync__Q28JASystem5VloadFUlPUcUlUlPFUl_vUl: # 0x80319a24
     addi    r29, r8, 0x0
     srwi    r31, r3, 16
     bl      getRealHandle__Q28JASystem5VloadFUl
-    lwz     r4, -0x5b20(r13)
+    lwz     r4, R13Off_m0x5b20(r13)
     slwi    r31, r31, 2
     lwz     r30, 0x18(r3)
     addi    r3, sp, 0x20
@@ -297,9 +297,9 @@ loadFileAsync__Q28JASystem5VloadFUlPUcUlUlPFUl_vUl: # 0x80319a24
     add     r30, r30, r26
     bl      strcpy
     addi    r3, sp, 0x20
-    addi    r4, rtoc, 0x750
+    addi    r4, r2, R2Off_0x750
     bl      strcat
-    lwz     r4, -0x5b18(r13)
+    lwz     r4, R13Off_m0x5b18(r13)
     addi    r3, sp, 0x20
     lwzx    r4, r4, r31
     addi    r4, r4, 0x10
@@ -328,44 +328,44 @@ initVloadBuffers__Q28JASystem5VloadFv: # 0x80319ac4
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
-    lwz     r0, -0x73b8(r13)
-    lwz     r4, -0x5b30(r13)
+    lwz     r0, R13Off_m0x73b8(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     slwi    r3, r0, 2
     bl      __nwa__FUlP7JKRHeapi
-    lwz     r0, -0x73b8(r13)
+    lwz     r0, R13Off_m0x73b8(r13)
     li      r5, 0x0
-    stw     r3, -0x5b20(r13)
-    lwz     r4, -0x5b30(r13)
+    stw     r3, R13Off_m0x5b20(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     slwi    r3, r0, 2
     bl      __nwa__FUlP7JKRHeapi
-    lwz     r0, -0x73b8(r13)
+    lwz     r0, R13Off_m0x73b8(r13)
     li      r5, 0x0
-    stw     r3, -0x5b1c(r13)
-    lwz     r4, -0x5b30(r13)
+    stw     r3, R13Off_m0x5b1c(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     slwi    r3, r0, 2
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5b18(r13)
+    stw     r3, R13Off_m0x5b18(r13)
     li      r30, 0x0
     li      r31, 0x0
     b       branch_0x80319b64
 
 branch_0x80319b2c:
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     li      r3, 0x40
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lwz     r4, -0x5b20(r13)
+    lwz     r4, R13Off_m0x5b20(r13)
     li      r5, 0x0
     stwx    r3, r4, r31
     li      r3, 0x20
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     bl      __nwa__FUlP7JKRHeapi
-    lwz     r4, -0x5b1c(r13)
+    lwz     r4, R13Off_m0x5b1c(r13)
     addi    r30, r30, 0x1
     stwx    r3, r4, r31
     addi    r31, r31, 0x4
 branch_0x80319b64:
-    lwz     r0, -0x73b8(r13)
+    lwz     r0, R13Off_m0x73b8(r13)
     cmpw    r30, r0
     blt+    branch_0x80319b2c
     lwz     r0, 0x14(sp)

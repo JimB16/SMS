@@ -62,16 +62,16 @@ __ct__Q26JDrama7TScreenFRCQ26JDrama5TRectPCc: # 0x802fbd04
     sth     r0, 0x18(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__Q26JDrama14TViewConnecterFPQ26JDrama8TViewObjPQ26JDrama8TViewObjQ26JDrama10TFlagT_Us_PCc
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JDrama7TScreen@h
     lwz     r3, 0x8(sp)
-    addi    r0, r4, 0x2168
+    addi    r0, r4, __vvt__Q26JDrama7TScreen@l
     stw     r0, 0x0(r3)
     li      r3, 0x24
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802fbd74
-    lis     r3, 0x803b
-    subi    r5, r3, 0x5bb8
+    lis     r3, unk_803aa448@ha
+    addi    r5, r3, unk_803aa448@l
     addi    r3, r30, 0x0
     addi    r4, r31, 0x0
     bl      __ct__Q26JDrama9TViewportFRCQ26JDrama5TRectPCc
@@ -83,16 +83,16 @@ branch_0x802fbd74:
     mr.     r30, r3
     beq-    branch_0x802fbdbc
     li      r0, 0x0
-    lis     r4, 0x803b
+    lis     r4, unk_803aa454@ha
     sth     r0, 0x14(sp)
-    subi    r7, r4, 0x5bac
+    addi    r7, r4, unk_803aa454@l
     addi    r3, r30, 0x0
     addi    r6, sp, 0x14
     li      r4, 0x0
     li      r5, 0x0
     bl      __ct__Q26JDrama14TViewConnecterFPQ26JDrama8TViewObjPQ26JDrama8TViewObjQ26JDrama10TFlagT_Us_PCc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x218c
+    lis     r3, __vvt__13TCamConnecter@h
+    addi    r0, r3, __vvt__13TCamConnecter@l
     stw     r0, 0x0(r30)
 branch_0x802fbdbc:
     lwz     r3, 0x8(sp)
@@ -129,16 +129,16 @@ __dt__Q26JDrama7TScreenFv: # 0x802fbdf4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fbe5c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2168
+    lis     r3, __vvt__Q26JDrama7TScreen@h
+    addi    r0, r3, __vvt__Q26JDrama7TScreen@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fbe4c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2280
+    lis     r3, __vvt__Q26JDrama14TViewConnecter@h
+    addi    r0, r3, __vvt__Q26JDrama14TViewConnecter@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fbe4c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -168,16 +168,16 @@ __dt__13TCamConnecterFv: # 0x802fbe78
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fbee0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x218c
+    lis     r3, __vvt__13TCamConnecter@h
+    addi    r0, r3, __vvt__13TCamConnecter@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fbed0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2280
+    lis     r3, __vvt__Q26JDrama14TViewConnecter@h
+    addi    r0, r3, __vvt__Q26JDrama14TViewConnecter@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fbed0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

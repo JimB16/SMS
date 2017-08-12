@@ -34,8 +34,8 @@ __dt__29TSpcTypedBinary_10TLiveActor_Fv: # 0x8003db8c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8003dbd4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x1810
+    lis     r3, __vvt__29TSpcTypedBinary_10TLiveActor_@ha
+    addi    r0, r3, __vvt__29TSpcTypedBinary_10TLiveActor_@l
     stw     r0, 0x4(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

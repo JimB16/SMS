@@ -9,12 +9,12 @@ __dt__17TPollutionManagerFv: # 0x8019d47c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8019d4fc
-    lis     r3, 0x803c
-    addi    r0, r3, 0x1e4c
+    lis     r3, __vvt__17TPollutionManager@h
+    addi    r0, r3, __vvt__17TPollutionManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8019d4ec
-    lis     r3, 0x803c
-    addi    r3, r3, 0x1608
+    lis     r3, __vvt__18TJointModelManager@h
+    addi    r3, r3, __vvt__18TJointModelManager@l
     addic.  r0, r30, 0x20
     stw     r3, 0x0(r30)
     beq-    branch_0x8019d4cc
@@ -24,8 +24,8 @@ __dt__17TPollutionManagerFv: # 0x8019d47c
 branch_0x8019d4cc:
     cmplwi  r30, 0x0
     beq-    branch_0x8019d4ec
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -56,8 +56,8 @@ __ct__17TPollutionManagerFPCc: # 0x8019d518
     lwz     r3, 0x8(sp)
     bl      __ct__18TJointModelManagerFPCc
     lwz     r30, 0x8(sp)
-    lis     r3, 0x803c
-    addi    r0, r3, 0x1e4c
+    lis     r3, __vvt__17TPollutionManager@h
+    addi    r0, r3, __vvt__17TPollutionManager@l
     stw     r0, 0x0(r30)
     li      r31, 0x0
     addi    r3, r30, 0x70
@@ -69,7 +69,7 @@ __ct__17TPollutionManagerFPCc: # 0x8019d518
     mr      r3, r30
     stw     r31, 0x208(r30)
     sth     r31, 0x20c(r30)
-    stw     r30, gpPollution(r13)
+    stw     r30, R13Off_m0x62f0(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     lwz     r30, 0x10(sp)
@@ -81,13 +81,13 @@ __ct__17TPollutionManagerFPCc: # 0x8019d518
 .globl load__17TPollutionManagerFR20JSUMemoryInputStream
 load__17TPollutionManagerFR20JSUMemoryInputStream: # 0x8019d58c
     mflr    r0
-    lis     r5, 0x8039
+    lis     r5, unk_80389f70@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x60(sp)
     stw     r31, 0x5c(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x58(sp)
-    subi    r30, r5, 0x6090
+    addi    r30, r5, unk_80389f70@l
     stw     r29, 0x54(sp)
     stw     r28, 0x50(sp)
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
@@ -99,23 +99,23 @@ load__17TPollutionManagerFR20JSUMemoryInputStream: # 0x8019d58c
     mr      r3, r31
     stw     r0, 0x10(r31)
     bl      setDataAddress__17TPollutionManagerFPQ217TPollutionManager14TPollutionInfo
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x9
     bne-    branch_0x8019d60c
     lbz     r0, 0x7d(r3)
     cmplwi  r0, 0x7
     beq-    branch_0x8019d60c
-    lis     r3, 0x803c
-    addi    r5, r3, 0x1dd0
+    lis     r3, mare_name_table_2805@h
+    addi    r5, r3, mare_name_table_2805@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x214
     bl      initJointModel__18TJointModelManagerFPCcPPCc
     b       branch_0x8019d620
 
 branch_0x8019d60c:
-    lis     r3, 0x803c
-    addi    r5, r3, 0x1df8
+    lis     r3, name_table_2816@h
+    addi    r5, r3, name_table_2816@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x214
     bl      initJointModel__18TJointModelManagerFPCcPPCc
@@ -152,7 +152,7 @@ branch_0x8019d688:
     lwz     r0, 0x10(r31)
     cmpw    r28, r0
     blt+    branch_0x8019d668
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     li      r4, 0x1e
     addi    r3, r3, 0x1ec
     bl      init__20TPollutionCounterObjFi
@@ -216,14 +216,13 @@ newJointModel__17TPollutionManagerCFi: # 0x8019d73c
     lhzx    r0, r3, r0
     cmplwi  r0, 0x6
     bgt-    branch_0x8019d8b0
-    lis     r3, 0x803c
-    addi    r3, r3, 0x1e74
+    lis     r3, unk_803c1e74@h
+    addi    r3, r3, unk_803c1e74@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8019D77C:		# jumptable 8019D778 case 0
+    bctr       
+branch_0x8019d77c:
     li      r3, 0xac
     bl      __nw__FUl
     mr.     r31, r3
@@ -234,100 +233,93 @@ branch_0x8019d794:
     mr      r3, r31
     b       branch_0x8019d8b4
 
-branch_0x8019D79C:		# jumptable 8019D778 case 1
-li	  r3, 0xAC
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r31, r3
-beq	  branch_0x8019D7B4
-mr	  r3, r31
-bl	  __ct__15TPollutionLayerFv # TPollutionLayer::TPollutionLayer((void))
+branch_0x8019d79c:
+    li      r3, 0xac
+    bl      __nw__FUl
+    mr.     r31, r3
+    beq-    branch_0x8019d7b4
+    mr      r3, r31
+    bl      __ct__15TPollutionLayerFv
+branch_0x8019d7b4:
+    mr      r3, r31
+    b       branch_0x8019d8b4
 
-branch_0x8019D7B4:
-mr	  r3, r31
-b	  branch_0x8019d8b4
+branch_0x8019d7bc:
+    li      r3, 0xb4
+    bl      __nw__FUl
+    mr.     r31, r3
+    beq-    branch_0x8019d7e0
+    mr      r3, r31
+    bl      __ct__23TPollutionLayerWallBaseFv
+    lis     r3, __vvt__24TPollutionLayerWallPlusZ@h
+    addi    r0, r3, __vvt__24TPollutionLayerWallPlusZ@l
+    stw     r0, 0x0(r31)
+branch_0x8019d7e0:
+    mr      r3, r31
+    b       branch_0x8019d8b4
 
-branch_0x8019D7BC:		# jumptable 8019D778 case 4
-li	  r3, 0xB4
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r31, r3
-beq	  branch_0x8019D7E0
-mr	  r3, r31
-bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
-lis	  r3, unk_803C2274@h
-addi	  r0, r3, unk_803C2274@l
-stw	  r0, 0(r31)
+branch_0x8019d7e8:
+    li      r3, 0xb4
+    bl      __nw__FUl
+    mr.     r31, r3
+    beq-    branch_0x8019d818
+    mr      r3, r31
+    bl      __ct__23TPollutionLayerWallBaseFv
+    lis     r3, __vvt__24TPollutionLayerWallPlusZ@h
+    addi    r0, r3, __vvt__24TPollutionLayerWallPlusZ@l
+    lis     r3, __vvt__25TPollutionLayerWallMinusZ@h
+    stw     r0, 0x0(r31)
+    addi    r0, r3, __vvt__25TPollutionLayerWallMinusZ@l
+    stw     r0, 0x0(r31)
+branch_0x8019d818:
+    mr      r3, r31
+    b       branch_0x8019d8b4
 
-branch_0x8019D7E0:
-mr	  r3, r31
-b	  branch_0x8019d8b4
+branch_0x8019d820:
+    li      r3, 0xb4
+    bl      __nw__FUl
+    mr.     r31, r3
+    beq-    branch_0x8019d844
+    mr      r3, r31
+    bl      __ct__23TPollutionLayerWallBaseFv
+    lis     r3, __vvt__24TPollutionLayerWallPlusX@h
+    addi    r0, r3, __vvt__24TPollutionLayerWallPlusX@l
+    stw     r0, 0x0(r31)
+branch_0x8019d844:
+    mr      r3, r31
+    b       branch_0x8019d8b4
 
-branch_0x8019D7E8:		# jumptable 8019D778 case 5
-li	  r3, 0xB4
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r31, r3
-beq	  branch_0x8019D818
-mr	  r3, r31
-bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
-lis	  r3, unk_803C2274@h
-addi	  r0, r3, unk_803C2274@l
-lis	  r3, unk_803C1EEC@h
-stw	  r0, 0(r31)
-addi	  r0, r3, unk_803C1EEC@l
-stw	  r0, 0(r31)
+branch_0x8019d84c:
+    li      r3, 0xb4
+    bl      __nw__FUl
+    mr.     r31, r3
+    beq-    branch_0x8019d87c
+    mr      r3, r31
+    bl      __ct__23TPollutionLayerWallBaseFv
+    lis     r3, __vvt__24TPollutionLayerWallPlusX@h
+    addi    r0, r3, __vvt__24TPollutionLayerWallPlusX@l
+    lis     r3, __vvt__25TPollutionLayerWallMinusX@h
+    stw     r0, 0x0(r31)
+    addi    r0, r3, __vvt__25TPollutionLayerWallMinusX@l
+    stw     r0, 0x0(r31)
+branch_0x8019d87c:
+    mr      r3, r31
+    b       branch_0x8019d8b4
 
-branch_0x8019D818:
-mr	  r3, r31
-b	  branch_0x8019d8b4
+branch_0x8019d884:
+    li      r3, 0xac
+    bl      __nw__FUl
+    mr.     r31, r3
+    beq-    branch_0x8019d8a8
+    mr      r3, r31
+    bl      __ct__15TPollutionLayerFv
+    lis     r3, __vvt__19TPollutionLayerWave@h
+    addi    r0, r3, __vvt__19TPollutionLayerWave@l
+    stw     r0, 0x0(r31)
+branch_0x8019d8a8:
+    mr      r3, r31
+    b       branch_0x8019d8b4
 
-branch_0x8019D820:		# jumptable 8019D778 case 2
-li	  r3, 0xB4
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r31, r3
-beq	  branch_0x8019D844
-mr	  r3, r31
-bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
-lis	  r3, unk_803C2218@h
-addi	  r0, r3, unk_803C2218@l
-stw	  r0, 0(r31)
-
-branch_0x8019D844:
-mr	  r3, r31
-b	  branch_0x8019d8b4
-
-branch_0x8019D84C:		# jumptable 8019D778 case 3
-li	  r3, 0xB4
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r31, r3
-beq	  branch_0x8019D87C
-mr	  r3, r31
-bl	  __ct__23TPollutionLayerWallBaseFv # TPollutionLayerWallBase::TPollutionLayerWallBase((void))
-lis	  r3, unk_803C2218@h
-addi	  r0, r3, unk_803C2218@l
-lis	  r3, unk_803C1E90@h
-stw	  r0, 0(r31)
-addi	  r0, r3, unk_803C1E90@l
-stw	  r0, 0(r31)
-
-branch_0x8019D87C:
-mr	  r3, r31
-b	  branch_0x8019d8b4
-
-branch_0x8019D884:		# jumptable 8019D778 case 6
-li	  r3, 0xAC
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r31, r3
-beq	  branch_0x8019D8A8
-mr	  r3, r31
-bl	  __ct__15TPollutionLayerFv # TPollutionLayer::TPollutionLayer((void))
-lis	  r3, unk_803C22D0@h
-addi	  r0, r3, unk_803C22D0@l
-stw	  r0, 0(r31)
-
-branch_0x8019D8A8:
-mr	  r3, r31
-b	  branch_0x8019d8b4
-
-def_8019D778:		# jumptable 8019D778 default case
 branch_0x8019d8b0:
     li      r3, 0x0
 branch_0x8019d8b4:
@@ -366,7 +358,7 @@ branch_0x8019d910:
     addi    r4, r30, 0x0
     bl      countTexDegree__22TPollutionCounterLayerFi
     lwz     r3, 0x10(r29)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     cmpw    r30, r0
     bne-    branch_0x8019d944
     mr      r3, r31
@@ -397,7 +389,7 @@ cleanedAll__17TPollutionManagerCFv: # 0x8019d960
     cmpwi   r9, 0x0
     ble-    branch_0x8019da40
     cmpwi   r9, 0x8
-    subi    r5, r9, 0x8
+    addi    r5, r9, -0x8
     ble-    branch_0x8019da14
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -448,7 +440,7 @@ branch_0x8019da28:
     add     r8, r8, r0
     bdnz+      branch_0x8019da28
 branch_0x8019da40:
-    lwz     r0, -0x7b00(r13)
+    lwz     r0, R13Off_m0x7b00(r13)
     cmplw   r8, r0
     bge-    branch_0x8019da54
     li      r3, 0x1
@@ -457,6 +449,8 @@ branch_0x8019da40:
 branch_0x8019da54:
     li      r3, 0x0
     b       branch_0x8019da60
+
+branch_0x8019da5c:
     b       branch_0x8019da14
 
 branch_0x8019da60:
@@ -531,7 +525,7 @@ getPollutionDegree__17TPollutionManagerCFv: # 0x8019db20
     cmpwi   r7, 0x0
     ble-    branch_0x8019dc00
     cmpwi   r7, 0x8
-    subi    r5, r7, 0x8
+    addi    r5, r7, -0x8
     ble-    branch_0x8019dbd4
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -584,6 +578,8 @@ branch_0x8019dbe8:
 branch_0x8019dc00:
     mr      r3, r12
     b       branch_0x8019dc0c
+
+branch_0x8019dc08:
     b       branch_0x8019dbd4
 
 branch_0x8019dc0c:
@@ -730,11 +726,11 @@ clean__17TPollutionManagerFffff: # 0x8019ddb4
     stw     r30, 0x48(sp)
     stw     r29, 0x44(sp)
     mr      r29, r3
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x1
     bne-    branch_0x8019de0c
-    lfs     f0, -0x4188(rtoc)
+    lfs     f0, -0x4188(r2)
     fcmpo   cr0, f29, f0
     blt-    branch_0x8019de58
 branch_0x8019de0c:
@@ -994,7 +990,7 @@ branch_0x8019e10c:
 
 .globl getJ3DModelDataFlag__15TPollutionLayerCFv
 getJ3DModelDataFlag__15TPollutionLayerCFv: # 0x8019e124
-    lis     r3, 0x1122
+    lis     r3, unk_1122005c@h
     blr
 
 
@@ -1010,7 +1006,7 @@ getTexPosS__25TPollutionLayerWallMinusZCFf: # 0x8019e134
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     lfs     f0, 0x3c(r3)
-    addi    r3, r3, 0x5c
+    addi    r3, r3, unk_1122005c@l
     fsubs   f1, f0, f1
     bl      worldToTexSize__13TPollutionPosCFf
     lwz     r0, 0xc(sp)
@@ -1072,205 +1068,205 @@ branch_0x8019e1e8:
 .globl __sinit_PollutionManager_cpp
 __sinit_PollutionManager_cpp: # 0x8019e1f0
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, unk_803f85f0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x7a10
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803f85f0@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e238
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x8019e238:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e268
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x8019e268:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e298
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x8019e298:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e2c8
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x8019e2c8:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e2f8
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x8019e2f8:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e328
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x8019e328:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e358
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x8019e358:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e388
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x8019e388:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e3b8
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x8019e3b8:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e3e8
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x8019e3e8:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e418
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x8019e418:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e448
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x8019e448:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e478
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x8019e478:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e4a8
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x8019e4a8:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x8019e4d8
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x8019e4d8:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

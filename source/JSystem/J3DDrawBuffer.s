@@ -18,9 +18,9 @@ __ct__13J3DDrawBufferFUl: # 0x802ef5c4
     mr      r3, r30
     stw     r4, 0x8(r30)
     stw     r4, 0xc(r30)
-    lfs     f0, 0x340(rtoc)
+    lfs     f0, 0x340(r2)
     stfs    f0, 0x10(r30)
-    lfs     f0, 0x344(rtoc)
+    lfs     f0, 0x344(r2)
     stfs    f0, 0x14(r30)
     stw     r4, 0x1c(r30)
     stw     r4, 0x20(r30)
@@ -29,7 +29,7 @@ __ct__13J3DDrawBufferFUl: # 0x802ef5c4
     stw     r4, 0x14(sp)
     lfs     f0, 0x10(r30)
     stw     r0, 0x10(sp)
-    lfd     f1, 0x348(rtoc)
+    lfd     f1, 0x348(r2)
     fsubs   f2, f2, f0
     lfd     f0, 0x10(sp)
     fsubs   f0, f0, f1
@@ -79,8 +79,8 @@ entryMatSort__13J3DDrawBufferFP12J3DMatPacket: # 0x802ef6a4
     stw     r29, 0x3c(sp)
     stw     r28, 0x38(sp)
     stw     r0, 0x4(r4)
-    lis     r4, 0x8040
-    addi    r3, r4, 0x45dc
+    lis     r4, j3dSys@h
+    addi    r3, r4, j3dSys@l
     stw     r0, 0x8(r31)
     li      r4, 0x0
     lwz     r5, 0x34(r31)
@@ -118,7 +118,7 @@ branch_0x802ef728:
 branch_0x802ef750:
     lwz     r3, 0x4(r30)
     lwz     r4, 0x0(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     and     r0, r5, r0
     slwi    r29, r0, 2
     lwzx    r0, r4, r29
@@ -178,7 +178,7 @@ entryMatAnmSort__13J3DDrawBufferFP12J3DMatPacket: # 0x802ef7fc
     lwz     r7, 0x44(r4)
     lwz     r3, 0x4(r3)
     cmplwi  r7, 0x0
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     and     r3, r7, r0
     bne-    branch_0x802ef830
     mr      r3, r8
@@ -234,7 +234,7 @@ branch_0x802ef8ac:
 .globl entryZSort__13J3DDrawBufferFP12J3DMatPacket
 entryZSort__13J3DDrawBufferFP12J3DMatPacket: # 0x802ef8bc
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, j3dSys@h
     stw     r0, 0x4(sp)
     li      r0, 0x0
     stwu    sp, -0x38(sp)
@@ -242,7 +242,7 @@ entryZSort__13J3DDrawBufferFP12J3DMatPacket: # 0x802ef8bc
     addi    r31, r4, 0x0
     stw     r30, 0x30(sp)
     addi    r30, r3, 0x0
-    addi    r3, r5, 0x45dc
+    addi    r3, r5, j3dSys@l
     stw     r0, 0x4(r4)
     addi    r4, sp, 0x18
     stw     r0, 0x8(r31)
@@ -280,7 +280,7 @@ entryZSort__13J3DDrawBufferFP12J3DMatPacket: # 0x802ef8bc
 
 branch_0x802ef96c:
     lwz     r3, 0x4(r30)
-    subi    r6, r3, 0x1
+    addi    r6, r3, -0x1
     b       branch_0x802ef97c
 
 branch_0x802ef978:
@@ -289,7 +289,7 @@ branch_0x802ef97c:
     lwz     r5, 0x4(r30)
     li      r3, 0x1
     lwz     r4, 0x0(r30)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     subf    r0, r6, r0
     slwi    r5, r0, 2
     lwzx    r0, r4, r5
@@ -391,9 +391,9 @@ entryImm__13J3DDrawBufferFP9J3DPacketUs: # 0x802efa94
 .globl draw__13J3DDrawBufferCFv
 draw__13J3DDrawBufferCFv: # 0x802efab4
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, drawFuncTable__13J3DDrawBuffer@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x1780
+    addi    r0, r4, drawFuncTable__13J3DDrawBuffer@l
     stwu    sp, -0x18(sp)
     lwz     r5, 0x8(r3)
     addi    r12, sp, 0xc
@@ -469,7 +469,7 @@ drawTail__13J3DDrawBufferCFv: # 0x802efb94
     stw     r28, 0x10(sp)
     mr      r28, r3
     lwz     r3, 0x4(r3)
-    subi    r30, r3, 0x1
+    addi    r30, r3, -0x1
     slwi    r31, r30, 2
     b       branch_0x802efbf8
 
@@ -488,8 +488,8 @@ branch_0x802efbd0:
 branch_0x802efbe8:
     cmplwi  r29, 0x0
     bne+    branch_0x802efbd0
-    subi    r30, r30, 0x1
-    subi    r31, r31, 0x4
+    addi    r30, r30, -0x1
+    addi    r31, r31, -0x4
 branch_0x802efbf8:
     cmpwi   r30, 0x0
     bge+    branch_0x802efbc4
@@ -505,8 +505,8 @@ branch_0x802efbf8:
 
 .globl __sinit_J3DDrawBuffer_cpp
 __sinit_J3DDrawBuffer_cpp: # 0x802efc20
-    lis     r3, 0x803e
-    addi    r4, r3, 0x16d8
+    lis     r3, unk_803e16d8@h
+    addi    r4, r3, unk_803e16d8@l
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x48(r4)

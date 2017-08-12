@@ -134,7 +134,7 @@ branch_0x8006fc0c:
     bne-    branch_0x8006fc40
     lwz     r3, 0xac(r30)
     lwz     r0, 0xb0(r30)
-    lfs     f0, -0x6b10(rtoc)
+    lfs     f0, -0x6b10(r2)
     stw     r3, 0x29c(sp)
     stw     r0, 0x2a0(sp)
     lwz     r0, 0xb4(r30)
@@ -151,7 +151,7 @@ branch_0x8006fc40:
     lfs     f1, 0xc0(r30)
     lfs     f0, 0x334(sp)
     fmuls   f2, f2, f1
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
     fadds   f2, f0, f2
@@ -165,7 +165,7 @@ branch_0x8006fc7c:
     lfs     f1, 0xc0(r30)
     lfs     f0, 0x334(sp)
     fmuls   f2, f2, f1
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
     fadds   f2, f0, f2
@@ -173,13 +173,13 @@ branch_0x8006fc7c:
     fmr     f31, f1
 branch_0x8006fca8:
     lbz     r0, 0x30(r28)
-    lfs     f0, -0x6b0c(rtoc)
+    lfs     f0, -0x6b0c(r2)
     cmpwi   r0, 0x2
     fadds   f31, f31, f0
     bne-    branch_0x8006fd94
     lfs     f2, 0x14(r30)
     lfs     f1, 0x334(sp)
-    lfs     f0, -0x6b10(rtoc)
+    lfs     f0, -0x6b10(r2)
     fsubs   f1, f2, f1
     fcmpo   cr0, f1, f0
     ble-    branch_0x8006fd94
@@ -215,7 +215,7 @@ branch_0x8006fd18:
     lfs     f1, 0x148(r30)
     addi    r4, sp, 0x31c
     lfs     f0, 0xc0(r30)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
@@ -227,14 +227,14 @@ branch_0x8006fd54:
     lfs     f1, 0x148(r30)
     addi    r4, sp, 0x31c
     lfs     f0, 0xc0(r30)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0x330(sp)
     lfs     f3, 0x338(sp)
     fadds   f2, f2, f0
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
 branch_0x8006fd78:
-    lfs     f0, -0x6b0c(rtoc)
+    lfs     f0, -0x6b0c(r2)
     fadds   f1, f1, f0
     fcmpo   cr0, f1, f31
     ble-    branch_0x8006fd94
@@ -269,7 +269,7 @@ branch_0x8006fddc:
     stfs    f0, 0x334(sp)
     lwz     r3, 0x20(r28)
     lfs     f31, 0x334(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x20(r28)
     b       branch_0x8006fe00
 
@@ -277,7 +277,7 @@ branch_0x8006fdf8:
     li      r0, 0x1e
     stw     r0, 0x20(r28)
 branch_0x8006fe00:
-    lfs     f0, -0x6b08(rtoc)
+    lfs     f0, -0x6b08(r2)
     lfs     f1, 0x334(sp)
     fadds   f0, f0, f31
     fcmpo   cr0, f1, f0
@@ -310,7 +310,7 @@ branch_0x8006fe5c:
     clrlwi. r0, r0, 24
     bne-    branch_0x8006feac
     stfs    f31, 0x334(sp)
-    lfs     f0, -0x6b10(rtoc)
+    lfs     f0, -0x6b10(r2)
     stfs    f0, 0x290(sp)
     stfs    f0, 0x294(sp)
     stfs    f0, 0x298(sp)
@@ -353,7 +353,7 @@ branch_0x8006fec4:
     lfs     f0, 0x338(sp)
     stfs    f0, 0x2f8(sp)
     stfs    f2, 0x2fc(sp)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     stw     r0, 0x300(sp)
     stw     r31, 0x308(sp)
     bl      isTouchedWallsAndMoveXZ__4TMapCFP18TBGWallCheckRecord
@@ -379,7 +379,7 @@ branch_0x8006ff44:
     li      r6, 0x0
     cmpwi   r3, 0x0
     mtctr   r3
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     ble-    branch_0x8006ff8c
 branch_0x8006ff64:
     subf    r0, r6, r3
@@ -468,9 +468,9 @@ branch_0x80070040:
 branch_0x80070068:
     lwz     r3, 0x34(r29)
     lwz     r0, 0x38(r29)
-    lfs     f4, -0x6b10(rtoc)
+    lfs     f4, -0x6b10(r2)
     stw     r3, 0x2e4(sp)
-    lfs     f2, -0x6b0c(rtoc)
+    lfs     f2, -0x6b0c(r2)
     stw     r0, 0x2e8(sp)
     lwz     r0, 0x3c(r29)
     stw     r0, 0x2ec(sp)
@@ -492,7 +492,7 @@ branch_0x80070068:
     fmuls   f2, f1, f1
     lfs     f3, 0x2d4(sp)
     fmuls   f1, f0, f0
-    lfs     f0, -0x6b04(rtoc)
+    lfs     f0, -0x6b04(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
@@ -506,7 +506,7 @@ branch_0x80070068:
 
 branch_0x800700fc:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, -0x6b0c(rtoc)
+    lfs     f2, -0x6b0c(r2)
     lfs     f0, 0x2cc(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -527,7 +527,7 @@ branch_0x8007012c:
     stw     r0, 0x2c0(sp)
     lwz     r0, 0x344(sp)
     stw     r3, 0x2c4(sp)
-    lfs     f4, -0x6b10(rtoc)
+    lfs     f4, -0x6b10(r2)
     stw     r0, 0x2c8(sp)
     stfs    f4, 0x2c4(sp)
     lfs     f1, 0x2c4(sp)
@@ -566,7 +566,7 @@ branch_0x800701bc:
     lfs     f0, 0x14c(r30)
     lwz     r0, 0x2cc(sp)
     fmuls   f0, f2, f0
-    lfs     f2, -0x6b00(rtoc)
+    lfs     f2, -0x6b00(r2)
     stw     r0, 0x13c(sp)
     lwz     r0, 0x2d0(sp)
     fmadds  f1, f2, f0, f1
@@ -596,7 +596,7 @@ branch_0x800701bc:
     stw     r0, 0x2c0(sp)
     lwz     r0, 0x188(sp)
     stw     r3, 0x2c4(sp)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     stw     r0, 0x2c8(sp)
     lfs     f3, 0x148(r30)
     lfs     f1, 0xc0(r30)
@@ -632,7 +632,7 @@ branch_0x800701bc:
     lfs     f0, 0x14c(r30)
     lwz     r0, 0x2b4(sp)
     fmuls   f0, f2, f0
-    lfs     f2, -0x6b00(rtoc)
+    lfs     f2, -0x6b00(r2)
     stw     r0, 0x130(sp)
     lwz     r0, 0x2b8(sp)
     fmadds  f1, f2, f0, f1
@@ -662,7 +662,7 @@ branch_0x800701bc:
     stw     r0, 0x2c0(sp)
     lwz     r0, 0x17c(sp)
     stw     r3, 0x2c4(sp)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     stw     r0, 0x2c8(sp)
     lfs     f3, 0x148(r30)
     lfs     f1, 0xc0(r30)
@@ -706,7 +706,7 @@ branch_0x800703e4:
     lfs     f0, 0x14c(r30)
     lwz     r0, 0x118(r30)
     fmuls   f0, f2, f0
-    lfs     f2, -0x6b00(rtoc)
+    lfs     f2, -0x6b00(r2)
     cmpwi   r0, 0x0
     fmadds  f1, f2, f0, f1
     bne-    branch_0x8007057c
@@ -928,13 +928,13 @@ __dt__7TWalkerFv: # 0x80070728
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80070784
-    lis     r3, 0x803b
-    addi    r3, r3, 0x2730
+    lis     r3, __vvt__7TWalker@h
+    addi    r3, r3, __vvt__7TWalker@l
     addic.  r0, r30, 0x4
     stw     r3, 0x0(r30)
     beq-    branch_0x80070768
-    lis     r3, 0x803b
-    addi    r0, r3, 0x2740
+    lis     r3, __vvt__29TSolidStack_PC12TBGCheckData_@h
+    addi    r0, r3, __vvt__29TSolidStack_PC12TBGCheckData_@l
     stw     r0, 0x10(r30)
 branch_0x80070768:
     addi    r3, r30, 0x0
@@ -964,12 +964,12 @@ __ct__7TWalkerFv: # 0x800707a0
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__7TBinderFv
-    lis     r3, 0x803b
+    lis     r3, __vvt__7TWalker@h
     lwz     r30, 0x8(sp)
-    addi    r0, r3, 0x2730
-    lis     r3, 0x803b
+    addi    r0, r3, __vvt__7TWalker@l
+    lis     r3, __vvt__29TSolidStack_PC12TBGCheckData_@h
     stw     r0, 0x0(r30)
-    addi    r0, r3, 0x2740
+    addi    r0, r3, __vvt__29TSolidStack_PC12TBGCheckData_@l
     stw     r0, 0x10(r30)
     li      r0, 0x4
     li      r31, 0x0
@@ -984,7 +984,7 @@ __ct__7TWalkerFv: # 0x800707a0
     li      r0, 0x1e
     stw     r31, 0x14(r30)
     mr      r3, r30
-    lfs     f0, -0x6b0c(rtoc)
+    lfs     f0, -0x6b0c(r2)
     stfs    f0, 0x18(r30)
     stw     r31, 0x1c(r30)
     stw     r31, 0x20(r30)
@@ -1013,8 +1013,8 @@ __dt__29TSolidStack_PC12TBGCheckData_Fv: # 0x8007085c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80070890
-    lis     r3, 0x803b
-    addi    r3, r3, 0x2740
+    lis     r3, __vvt__29TSolidStack_PC12TBGCheckData_@h
+    addi    r3, r3, __vvt__29TSolidStack_PC12TBGCheckData_@l
     extsh.  r0, r4
     stw     r3, 0xc(r31)
     ble-    branch_0x80070890
@@ -1035,7 +1035,7 @@ calcFarthestVertex__FPC12TBGCheckDataRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3
     li      r0, 0x1
     lfs     f1, 0x10(r3)
     lfs     f0, 0x0(r4)
-    lfs     f4, -0x6b10(rtoc)
+    lfs     f4, -0x6b10(r2)
     fsubs   f0, f1, f0
     lfs     f2, 0x18(r3)
     lfs     f1, 0x8(r4)
@@ -1145,7 +1145,7 @@ branch_0x80070a2c:
 branch_0x80070a44:
     cmpwi   r0, 0x0
     beq-    branch_0x80070a54
-    lfs     f1, -0x6b10(rtoc)
+    lfs     f1, -0x6b10(r2)
     b       branch_0x80070a68
 
 branch_0x80070a54:

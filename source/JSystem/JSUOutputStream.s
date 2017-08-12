@@ -7,12 +7,12 @@ __dt__15JSUOutputStreamFv: # 0x802c5590
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802c55d4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x148
+    lis     r3, __vvt__15JSUOutputStream@h
+    addi    r0, r3, __vvt__15JSUOutputStream@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802c55c4
-    lis     r3, 0x803b
-    subi    r0, r3, 0xf0c
+    lis     r3, __vvt__10JSUIosBase@ha
+    addi    r0, r3, __vvt__10JSUIosBase@l
     stw     r0, 0x0(r31)
 branch_0x802c55c4:
     extsh.  r0, r4

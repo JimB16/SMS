@@ -15,18 +15,18 @@ branch_0x80157ad8:
     addi    r24, sp, 0x70
     stw     r24, 0x40(sp)
     li      r31, 0x0
-    lis     r4, 0x803b
+    lis     r4, __vvt__10JSUIosBase@ha
     lwz     r3, 0x40(sp)
-    subi    r30, r4, 0xf0c
+    addi    r30, r4, __vvt__10JSUIosBase@l
     stw     r31, 0x88(sp)
-    lis     r6, 0x803e
-    lis     r5, 0x803e
+    lis     r6, __vvt__14JSUInputStream@h
+    lis     r5, __vvt__20JSURandomInputStream@h
     stw     r31, 0x84(sp)
-    addi    r26, r5, 0x160
-    lis     r4, 0x803e
+    addi    r26, r5, __vvt__20JSURandomInputStream@l
+    lis     r4, __vvt__20JSUMemoryInputStream@h
     stw     r30, 0x0(r3)
-    addi    r27, r6, 0x184
-    addi    r25, r4, 0x1c8
+    addi    r27, r6, __vvt__14JSUInputStream@l
+    addi    r25, r4, __vvt__20JSUMemoryInputStream@l
     stb     r31, 0x4(r3)
     addi    r4, r28, 0x0
     li      r5, 0x20
@@ -56,7 +56,7 @@ branch_0x80157ad8:
     addi    r4, r28, 0x20
     slwi    r5, r3, 5
     lwz     r3, 0x3c(sp)
-    subi    r5, r5, 0x20
+    addi    r5, r5, -0x20
     stw     r31, 0x68(sp)
     stw     r30, 0x0(r3)
     li      r30, 0x0
@@ -65,10 +65,10 @@ branch_0x80157ad8:
     stw     r26, 0x0(r3)
     stw     r25, 0x0(r3)
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
-    lis     r3, 0x4441
-    lis     r4, 0x494e
-    addi    r26, r3, 0x5431
-    addi    r25, r4, 0x4631
+    lis     r3, unk_44415431@h
+    lis     r4, unk_494e4631@h
+    addi    r26, r3, unk_44415431@l
+    addi    r25, r4, unk_494e4631@l
     li      r31, 0x0
     b       branch_0x80157cf8
 
@@ -98,11 +98,11 @@ branch_0x80157c04:
     lhz     r0, 0x32(sp)
     cmplw   r29, r0
     blt-    branch_0x80157c4c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x54(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x54(sp)
     addi    r3, sp, 0x54
     li      r4, 0x0
@@ -130,11 +130,11 @@ branch_0x80157c4c:
     lwz     r0, 0x68(sp)
     cmplwi  r0, 0x0
     bne-    branch_0x80157cc4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x54(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x54(sp)
     addi    r3, sp, 0x54
     li      r4, 0x0
@@ -145,20 +145,20 @@ branch_0x80157c4c:
 branch_0x80157cc4:
     subf    r4, r24, r27
     addi    r3, sp, 0x54
-    subi    r4, r4, 0x14
+    addi    r4, r4, -0x14
     bl      skip__20JSURandomInputStreamFl
     b       branch_0x80157cf8
 
 branch_0x80157cd8:
     lwz     r30, 0x64(sp)
     addi    r3, sp, 0x54
-    subi    r4, r27, 0x8
+    addi    r4, r27, -0x8
     bl      skip__20JSURandomInputStreamFl
     b       branch_0x80157cf8
 
 branch_0x80157cec:
     addi    r3, sp, 0x54
-    subi    r4, r27, 0x8
+    addi    r4, r27, -0x8
     bl      skip__20JSURandomInputStreamFl
 branch_0x80157cf8:
     cmpwi   r30, 0x0
@@ -190,11 +190,11 @@ branch_0x80157d40:
     addi    r31, r3, 0x20
     add     r31, r28, r31
 branch_0x80157d60:
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x54(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x54(sp)
     addi    r3, sp, 0x54
     li      r4, 0x0
@@ -223,9 +223,9 @@ SMSMakeTextBuffer__FP10J2DTextBoxi: # 0x80157d9c
     addi    r4, r3, 0x0
     li      r5, 0x0
     ble-    branch_0x80157e4c
-    subi    r0, r31, 0x1
+    addi    r0, r31, -0x1
     cmpwi   r0, 0x8
-    subi    r3, r31, 0x9
+    addi    r3, r31, -0x9
     ble-    branch_0x80157e24
     addi    r0, r3, 0x7
     srwi    r0, r0, 3
@@ -246,7 +246,7 @@ branch_0x80157df8:
     stb     r0, 0x7(r3)
     bdnz+      branch_0x80157df8
 branch_0x80157e24:
-    subi    r3, r31, 0x1
+    addi    r3, r31, -0x1
     subf    r0, r5, r3
     cmpw    r5, r3
     mtctr   r0

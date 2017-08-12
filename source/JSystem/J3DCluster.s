@@ -103,7 +103,7 @@ deform__11J3DDeformerFP8J3DModelUs: # 0x802d3600
     li      r3, 0x0
     ble-    branch_0x802d36f0
     cmplwi  r0, 0x8
-    subi    r0, r30, 0x8
+    addi    r0, r30, -0x8
     ble-    branch_0x802d36bc
     clrlwi  r0, r0, 16
     b       branch_0x802d36b0
@@ -195,7 +195,7 @@ branch_0x802d375c:
 
 .globl getWeight__13J3DAnmClusterCFUs
 getWeight__13J3DAnmClusterCFUs: # 0x802d3770
-    lfs     f1, 0x210(rtoc)
+    lfs     f1, 0x210(r2)
     blr
 
 
@@ -242,7 +242,7 @@ branch_0x802d37c8:
     li      r6, 0x0
     ble-    branch_0x802d38d0
     cmplwi  r7, 0x8
-    subi    r0, r24, 0x8
+    addi    r0, r24, -0x8
     ble-    branch_0x802d38a0
     clrlwi  r0, r0, 16
     b       branch_0x802d3894
@@ -316,10 +316,10 @@ branch_0x802d38d0:
     lwz     r5, 0x18(r28)
     ble-    branch_0x802d3a64
     cmpwi   r26, 0x8
-    subi    r8, r26, 0x8
+    addi    r8, r26, -0x8
     ble-    branch_0x802d3a28
     addi    r3, r8, 0x7
-    lfs     f0, 0x21c(rtoc)
+    lfs     f0, 0x21c(r2)
     srwi    r3, r3, 3
     cmpwi   r8, 0x0
     mtctr   r3
@@ -387,7 +387,7 @@ branch_0x802d3938:
     bdnz+      branch_0x802d3938
 branch_0x802d3a28:
     subf    r3, r6, r26
-    lfs     f0, 0x21c(rtoc)
+    lfs     f0, 0x21c(r2)
     cmpw    r6, r26
     mtctr   r3
     slwi    r3, r6, 1
@@ -403,9 +403,9 @@ branch_0x802d3a40:
     stfs    f0, 0x8(r6)
     bdnz+      branch_0x802d3a40
 branch_0x802d3a64:
-    lwz     r6, 0x214(rtoc)
+    lwz     r6, R2Off_0x214(r2)
     addi    r8, sp, 0x98
-    lwz     r5, 0x218(rtoc)
+    lwz     r5, R2Off_0x218(r2)
     li      r3, 0x0
     stw     r6, 0x98(sp)
     stw     r5, 0x9c(sp)
@@ -485,7 +485,7 @@ branch_0x802d3b5c:
     lwz     r25, 0xc(r4)
     lwz     r30, 0x1c(r3)
     lwz     r26, 0xc(r29)
-    lfs     f26, 0x21c(rtoc)
+    lfs     f26, 0x21c(r2)
     b       branch_0x802d3c5c
 
 branch_0x802d3b90:
@@ -551,14 +551,14 @@ branch_0x802d3c5c:
     clrlwi  r3, r24, 16
     cmplw   r3, r0
     blt+    branch_0x802d3b90
-    lfs     f29, 0x220(rtoc)
+    lfs     f29, 0x220(r2)
     li      r24, 0x0
-    lfs     f28, 0x210(rtoc)
+    lfs     f28, 0x210(r2)
     lis     r30, 0x4330
-    lfs     f30, 0x224(rtoc)
-    lfs     f31, 0x228(rtoc)
-    lfs     f26, 0x21c(rtoc)
-    lfd     f27, 0x230(rtoc)
+    lfs     f30, 0x224(r2)
+    lfs     f31, 0x228(r2)
+    lfs     f26, 0x21c(r2)
+    lfd     f27, 0x230(r2)
     b       branch_0x802d3e8c
 
 branch_0x802d3c90:
@@ -633,7 +633,7 @@ branch_0x802d3d38:
     fmr     f1, f0
     cror    2, 1, 2
     bne-    branch_0x802d3da0
-    lfs     f2, 0x21c(rtoc)
+    lfs     f2, 0x21c(r2)
     b       branch_0x802d3dbc
 
 branch_0x802d3da0:
@@ -645,7 +645,7 @@ branch_0x802d3da0:
     b       branch_0x802d3dbc
 
 branch_0x802d3db8:
-    lfs     f2, 0x224(rtoc)
+    lfs     f2, 0x224(r2)
 branch_0x802d3dbc:
     lfs     f0, 0x4(r28)
     fcmpo   cr0, f2, f0
@@ -732,15 +732,15 @@ normalize__11J3DDeformerFPf: # 0x802d3ec8
     fmuls   f2, f1, f1
     lfs     f3, 0x8(r4)
     fmuls   f1, f0, f0
-    lfs     f0, 0x21c(rtoc)
+    lfs     f0, 0x21c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f4, f3, f1
     fcmpo   cr0, f4, f0
     ble-    branch_0x802d3f44
     frsqrte f1, f4
-    lfd     f3, 0x238(rtoc)
-    lfd     f2, 0x240(rtoc)
+    lfd     f3, 0x238(r2)
+    lfd     f2, 0x240(r2)
     fmul    f0, f1, f1
     fmul    f1, f3, f1
     fnmsub   f0, f4, f0, f2
@@ -758,7 +758,7 @@ normalize__11J3DDeformerFPf: # 0x802d3ec8
     stfs    f0, 0x10(sp)
     lfs     f4, 0x10(sp)
 branch_0x802d3f44:
-    lfs     f1, 0x210(rtoc)
+    lfs     f1, 0x210(r2)
     lfs     f0, 0x0(r4)
     fdivs   f1, f1, f4
     fmuls   f0, f0, f1
@@ -775,7 +775,7 @@ branch_0x802d3f44:
 
 .globl normalizeWeight__11J3DDeformerFiPf
 normalizeWeight__11J3DDeformerFiPf: # 0x802d3f78
-    lfs     f1, 0x21c(rtoc)
+    lfs     f1, 0x21c(r2)
     li      r3, 0x0
     b       branch_0x802d3f94
 
@@ -788,7 +788,7 @@ branch_0x802d3f94:
     clrlwi  r0, r3, 16
     cmpw    r0, r4
     blt+    branch_0x802d3f84
-    lfs     f0, 0x210(rtoc)
+    lfs     f0, 0x210(r2)
     li      r3, 0x0
     fdivs   f1, f0, f1
     b       branch_0x802d3fc4
@@ -808,8 +808,8 @@ branch_0x802d3fc4:
 
 .globl __ct__13J3DSkinDeformFv
 __ct__13J3DSkinDeformFv: # 0x802d3fd4
-    lis     r4, 0x803e
-    addi    r0, r4, 0x7e0
+    lis     r4, __vvt__13J3DSkinDeform@h
+    addi    r0, r4, __vvt__13J3DSkinDeform@l
     stw     r0, 0x0(r3)
     li      r4, 0x0
     li      r0, 0x3
@@ -885,13 +885,13 @@ branch_0x802d40b8:
     bl      __nwa__FUli
     stw     r3, 0xc(r28)
     addi    r0, sp, 0xac
-    lis     r3, 0x803b
+    lis     r3, unk_803a9f58@ha
     stw     r0, 0xc4(sp)
-    subi    r0, r3, 0x60a8
-    lis     r4, 0xaaab
+    addi    r0, r3, unk_803a9f58@l
+    lis     r4, unk_aaaaaaab@ha
     stw     r0, 0xc0(sp)
     li      r0, 0x0
-    subi    r18, r4, 0x5555
+    addi    r18, r4, unk_aaaaaaab@l
     sth     r0, 0xbe(sp)
     addi    r26, sp, 0x90
     b       branch_0x802d4334
@@ -1413,9 +1413,9 @@ branch_0x802d47dc:
     lhzx    r3, r8, r5
     mulli   r3, r3, 0x24
     add     r3, r9, r3
-    lis     r6, 0x803e
+    lis     r6, PSMulUnit01@h
     psq_l   f0, 0x0(10), 0, 0
-    addi    r6, r6, 0x7d8
+    addi    r6, r6, PSMulUnit01@l
     psq_l   f2, 0x0(3), 0, 0
     psq_l   f13, 0x0(6), 0, 0
     psq_l   f1, 0x8(10), 1, 0
@@ -1444,9 +1444,9 @@ branch_0x802d47dc:
     add     r10, r31, r7
     mulli   r3, r3, 0x24
     add     r3, r9, r3
-    lis     r6, 0x803e
+    lis     r6, PSMulUnit01@h
     psq_l   f0, 0x0(10), 0, 0
-    addi    r6, r6, 0x7d8
+    addi    r6, r6, PSMulUnit01@l
     psq_l   f2, 0x0(3), 0, 0
     psq_l   f13, 0x0(6), 0, 0
     psq_l   f1, 0x8(10), 1, 0
@@ -1483,9 +1483,9 @@ branch_0x802d48ec:
     lhzx    r3, r8, r5
     mulli   r3, r3, 0x24
     add     r3, r9, r3
-    lis     r6, 0x803e
+    lis     r6, PSMulUnit01@h
     psq_l   f0, 0x0(10), 0, 0
-    addi    r6, r6, 0x7d8
+    addi    r6, r6, PSMulUnit01@l
     psq_l   f2, 0x0(3), 0, 0
     psq_l   f13, 0x0(6), 0, 0
     psq_l   f1, 0x8(10), 1, 0
@@ -1540,8 +1540,8 @@ __dt__13J3DSkinDeformFv: # 0x802d49ac
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802d49e0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x7e0
+    lis     r3, __vvt__13J3DSkinDeform@h
+    addi    r3, r3, __vvt__13J3DSkinDeform@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802d49e0

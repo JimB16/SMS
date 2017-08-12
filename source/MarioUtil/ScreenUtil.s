@@ -9,12 +9,12 @@ __dt__14TScreenTextureFv: # 0x8022d12c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022d184
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4f78
+    lis     r3, __vvt__14TScreenTexture@ha
+    addi    r0, r3, __vvt__14TScreenTexture@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022d174
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -124,12 +124,12 @@ SMS_FillScreenAlpha__FUc: # 0x8022d1a4
     li      r4, 0x0
     li      r5, 0x4
     bl      GXBegin
-    lfs     f2, -0x16b0(rtoc)
-    lis     r4, 0xcc01
-    lfs     f1, -0x16ac(rtoc)
+    lfs     f2, -0x16b0(r2)
+    lis     r4, unk_cc010000@h
+    lfs     f1, -0x16ac(r2)
     li      r3, 0x1
     stfs    f2, -0x8000(r4)
-    lfs     f0, -0x16a8(rtoc)
+    lfs     f0, -0x16a8(r2)
     stfs    f1, -0x8000(r4)
     stfs    f0, -0x8000(r4)
     stfs    f1, -0x8000(r4)
@@ -161,7 +161,7 @@ replace__14TScreenTextureFP12J3DModelDataPCc: # 0x8022d360
     stwu    sp, -0x58(sp)
     stmw    r27, 0x44(sp)
     addi    r28, r3, 0x0
-    addi    r29, r4, 0x0
+    addi    r29, r4, unk_cc010000@l
     addi    r30, r5, 0x0
     li      r27, 0x0
     li      r31, 0x0
@@ -259,7 +259,7 @@ load__14TScreenTextureFR20JSUMemoryInputStream: # 0x8022d474
     bl      __ct__10JUTTextureFii9_GXTexFmt
 branch_0x8022d4d4:
     stw     r29, 0x10(r30)
-    stw     r30, -0x6104(r13)
+    stw     r30, R13Off_m0x6104(r13)
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
     lwz     r30, 0x18(sp)
@@ -299,8 +299,9 @@ perform__12TAfterEffectFUlPQ26JDrama9TGraphics: # 0x8022d4f8
     beq-    branch_0x8022d568
     b       branch_0x8022d5c0
 
+branch_0x8022d564:
+    b       branch_0x8022d5c0
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x227f64, 0x8022d568 - 0x8022d564
 branch_0x8022d568:
     rlwinm  r0, r3, 0, 31, 29
     stb     r0, 0x14(r28)
@@ -312,10 +313,10 @@ branch_0x8022d568:
     stb     r0, 0x16(r28)
     stb     r0, 0x17(r28)
     stb     r0, 0x18(r28)
-    lfs     f0, -0x16a4(rtoc)
+    lfs     f0, -0x16a4(r2)
     stfs    f0, 0x28(r28)
     stfs    f0, 0x2c(r28)
-    lfs     f0, -0x16a0(rtoc)
+    lfs     f0, -0x16a0(r2)
     stfs    f0, 0x30(r28)
     stfs    f0, 0x34(r28)
     b       branch_0x8022d5c0
@@ -328,7 +329,7 @@ branch_0x8022d5ac:
     stb     r0, 0x14(r28)
 branch_0x8022d5c0:
     li      r31, 0x0
-    lfd     f3, -0x1690(rtoc)
+    lfd     f3, -0x1690(r2)
     stb     r31, 0x40(sp)
     lis     r3, 0x4330
     addi    r30, r29, 0x54
@@ -497,11 +498,11 @@ branch_0x8022d5c0:
     li      r5, 0x5
     li      r6, 0x5
     bl      GXSetBlendMode
-    lfs     f1, -0x1698(rtoc)
+    lfs     f1, -0x1698(r2)
     li      r3, 0xa0
     lfs     f2, 0x40(r28)
     li      r4, 0x0
-    lfs     f5, -0x169c(rtoc)
+    lfs     f5, -0x169c(r2)
     lfs     f8, 0x44(r28)
     li      r5, 0x8
     lfs     f0, 0xe8(r29)
@@ -787,11 +788,11 @@ branch_0x8022dc60:
 .globl calcDashBlurValue__12TAfterEffectFv
 calcDashBlurValue__12TAfterEffectFv: # 0x8022dc98
     lfs     f1, 0x50(r3)
-    lfs     f0, -0x16a4(rtoc)
+    lfs     f0, -0x16a4(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8022dd20
     lfs     f0, 0x5c(r3)
-    lfs     f2, -0x169c(rtoc)
+    lfs     f2, -0x169c(r2)
     fmuls   f0, f0, f1
     fmuls   f0, f2, f0
     stfs    f0, 0x28(r3)
@@ -803,7 +804,7 @@ calcDashBlurValue__12TAfterEffectFv: # 0x8022dc98
     stfs    f0, 0x2c(r3)
     lfs     f1, 0x64(r3)
     lfs     f0, 0x50(r3)
-    lfs     f2, -0x16a0(rtoc)
+    lfs     f2, -0x16a0(r2)
     fmadds  f0, f1, f0, f2
     stfs    f0, 0x30(r3)
     lfs     f1, 0x64(r3)
@@ -826,11 +827,11 @@ branch_0x8022dd20:
     lbz     r4, 0x58(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x8022dd5c
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stb     r0, 0x58(r3)
     stfs    f0, 0x28(r3)
     stfs    f0, 0x2c(r3)
-    lfs     f0, -0x16a0(rtoc)
+    lfs     f0, -0x16a0(r2)
     stfs    f0, 0x30(r3)
     stfs    f0, 0x34(r3)
     lbz     r0, 0x14(r3)
@@ -850,16 +851,16 @@ branch_0x8022dd5c:
 .globl loadAfter__12TAfterEffectFv
 loadAfter__12TAfterEffectFv: # 0x8022dd74
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039daf0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
-    subi    r31, r4, 0x2510
+    addi    r31, r4, unk_8039daf0@l
     stw     r30, 0x38(sp)
     stw     r29, 0x34(sp)
     addi    r29, r3, 0x0
     addi    r3, r31, 0x0
-    lwz     r5, -0x5db8(r13)
+    lwz     r5, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r5)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r30)
@@ -871,7 +872,7 @@ loadAfter__12TAfterEffectFv: # 0x8022dd74
     blrl
     lwz     r0, 0x10(r3)
     stw     r0, 0x10(r29)
-    stw     r29, -0x6108(r13)
+    stw     r29, R13Off_m0x6108(r13)
     lwz     r0, 0x44(sp)
     lwz     r31, 0x3c(sp)
     lwz     r30, 0x38(sp)
@@ -903,7 +904,7 @@ load__12TAfterEffectFR20JSUMemoryInputStream: # 0x8022ddec
     lbz     r3, 0x1a(r31)
     stb     r3, 0x1c(r31)
     lbz     r3, 0x1b(r31)
-    lfd     f1, -0x1690(rtoc)
+    lfd     f1, -0x1690(r2)
     stw     r3, 0x1c(sp)
     stw     r4, 0x18(sp)
     lfd     f0, 0x18(sp)
@@ -918,10 +919,10 @@ load__12TAfterEffectFR20JSUMemoryInputStream: # 0x8022ddec
     stb     r0, 0x16(r31)
     stb     r0, 0x17(r31)
     stb     r0, 0x18(r31)
-    lfs     f1, -0x16a4(rtoc)
+    lfs     f1, -0x16a4(r2)
     stfs    f1, 0x28(r31)
     stfs    f1, 0x2c(r31)
-    lfs     f0, -0x16a0(rtoc)
+    lfs     f0, -0x16a0(r2)
     stfs    f0, 0x30(r31)
     stfs    f0, 0x34(r31)
     lfs     f0, 0x28(r31)
@@ -932,10 +933,10 @@ load__12TAfterEffectFR20JSUMemoryInputStream: # 0x8022ddec
     stfs    f0, 0x40(r31)
     lfs     f0, 0x34(r31)
     stfs    f0, 0x44(r31)
-    lfs     f0, -0x1688(rtoc)
+    lfs     f0, -0x1688(r2)
     stfs    f0, 0x48(r31)
     stfs    f1, 0x50(r31)
-    lfs     f0, -0x1684(rtoc)
+    lfs     f0, -0x1684(r2)
     stfs    f0, 0x54(r31)
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)
@@ -954,12 +955,12 @@ __dt__12TAfterEffectFv: # 0x8022ded8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022df30
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4f54
+    lis     r3, __vvt__12TAfterEffect@ha
+    addi    r0, r3, __vvt__12TAfterEffect@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022df20
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

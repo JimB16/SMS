@@ -101,7 +101,7 @@ timerProcess__Q28JASystem8TIntrMgrFv: # 0x8031db14
     cmplwi  r4, 0x0
     beqlr-    
 
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x4(r3)
     lwz     r0, 0x4(r3)
     cmplwi  r0, 0x0
@@ -117,7 +117,7 @@ branch_0x8031db4c:
     lbz     r4, 0x3(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x8031db78
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stb     r0, 0x3(r3)
     lbz     r0, 0x3(r3)
     cmplwi  r0, 0x0

@@ -9,11 +9,11 @@ __OSResetSWInterruptHandler: # 0x803470e4
     stw     r29, 0x1c(sp)
     bl      __OSGetSystemTime
     lis     r5, 0x8000
-    stw     r4, -0x59c4(r13)
+    stw     r4, R13Off_m0x59c4(r13)
     lwz     r0, 0xf8(r5)
-    lis     r4, 0x431c
-    subi    r4, r4, 0x217d
-    stw     r3, -0x59c8(r13)
+    lis     r4, unk_431bde83@ha
+    addi    r4, r4, unk_431bde83@l
+    stw     r3, R13Off_m0x59c8(r13)
     srwi    r0, r0, 2
     mulhwu  r0, r4, r0
     srwi    r0, r0, 15
@@ -23,9 +23,9 @@ __OSResetSWInterruptHandler: # 0x803470e4
     lis     r31, 0xcc00
 branch_0x80347134:
     bl      __OSGetSystemTime
-    lwz     r6, -0x59c4(r13)
+    lwz     r6, R13Off_m0x59c4(r13)
     xoris   r5, r30, 0x8000
-    lwz     r0, -0x59c8(r13)
+    lwz     r0, R13Off_m0x59c8(r13)
     subfc   r4, r6, r4
     subfe   r0, r0, r3
     xoris   r3, r0, 0x8000
@@ -43,16 +43,16 @@ branch_0x80347170:
     rlwinm. r0, r0, 0, 15, 15
     bne-    branch_0x803471b0
     li      r0, 0x1
-    stw     r0, -0x59dc(r13)
+    stw     r0, R13Off_m0x59dc(r13)
     li      r3, 0x200
-    stw     r0, -0x59d8(r13)
+    stw     r0, R13Off_m0x59d8(r13)
     bl      __OSMaskInterrupts
-    lwz     r12, -0x59e0(r13)
+    lwz     r12, R13Off_m0x59e0(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x803471b0
     li      r0, 0x0
     mtlr    r12
-    stw     r0, -0x59e0(r13)
+    stw     r0, R13Off_m0x59e0(r13)
     blrl
 branch_0x803471b0:
     li      r0, 0x2
@@ -82,16 +82,16 @@ OSGetResetButtonState: # 0x803471d8
     lwz     r0, 0x3000(r5)
     rlwinm. r0, r0, 0, 15, 15
     bne-    branch_0x803472e4
-    lwz     r0, -0x59dc(r13)
+    lwz     r0, R13Off_m0x59dc(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x80347254
-    lwz     r0, -0x59d0(r13)
+    lwz     r0, R13Off_m0x59d0(r13)
     li      r6, 0x0
-    lwz     r5, -0x59cc(r13)
+    lwz     r5, R13Off_m0x59cc(r13)
     li      r7, 0x1
     xor     r0, r0, r6
     xor     r5, r5, r6
-    stw     r7, -0x59dc(r13)
+    stw     r7, R13Off_m0x59dc(r13)
     or.     r0, r5, r0
     beq-    branch_0x80347240
     b       branch_0x80347244
@@ -99,26 +99,26 @@ OSGetResetButtonState: # 0x803471d8
 branch_0x80347240:
     mr      r7, r6
 branch_0x80347244:
-    stw     r4, -0x59c4(r13)
+    stw     r4, R13Off_m0x59c4(r13)
     mr      r29, r7
-    stw     r3, -0x59c8(r13)
+    stw     r3, R13Off_m0x59c8(r13)
     b       branch_0x80347398
 
 branch_0x80347254:
-    lwz     r0, -0x59d0(r13)
+    lwz     r0, R13Off_m0x59d0(r13)
     li      r9, 0x0
-    lwz     r5, -0x59cc(r13)
+    lwz     r5, R13Off_m0x59cc(r13)
     li      r10, 0x1
     xor     r0, r0, r9
     xor     r5, r5, r9
     or.     r0, r5, r0
     bne-    branch_0x803472c8
     lis     r6, 0x8000
-    lwz     r5, -0x59c4(r13)
+    lwz     r5, R13Off_m0x59c4(r13)
     lwz     r7, 0xf8(r6)
-    lis     r6, 0x431c
-    subi    r8, r6, 0x217d
-    lwz     r0, -0x59c8(r13)
+    lis     r6, unk_431bde83@ha
+    addi    r8, r6, unk_431bde83@l
+    lwz     r0, R13Off_m0x59c8(r13)
     srwi    r6, r7, 2
     mulhwu  r6, r8, r6
     srwi    r6, r6, 15
@@ -147,36 +147,36 @@ branch_0x803472dc:
     b       branch_0x80347398
 
 branch_0x803472e4:
-    lwz     r0, -0x59dc(r13)
+    lwz     r0, R13Off_m0x59dc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x80347320
-    lwz     r5, -0x59d8(r13)
+    lwz     r5, R13Off_m0x59d8(r13)
     li      r0, 0x0
-    stw     r0, -0x59dc(r13)
+    stw     r0, R13Off_m0x59dc(r13)
     cmpwi   r5, 0x0
     addi    r29, r5, 0x0
     beq-    branch_0x80347314
-    stw     r4, -0x59cc(r13)
-    stw     r3, -0x59d0(r13)
+    stw     r4, R13Off_m0x59cc(r13)
+    stw     r3, R13Off_m0x59d0(r13)
     b       branch_0x80347398
 
 branch_0x80347314:
-    stw     r0, -0x59cc(r13)
-    stw     r0, -0x59d0(r13)
+    stw     r0, R13Off_m0x59cc(r13)
+    stw     r0, R13Off_m0x59d0(r13)
     b       branch_0x80347398
 
 branch_0x80347320:
-    lwz     r6, -0x59d0(r13)
+    lwz     r6, R13Off_m0x59d0(r13)
     li      r8, 0x0
-    lwz     r7, -0x59cc(r13)
+    lwz     r7, R13Off_m0x59cc(r13)
     xor     r0, r6, r8
     xor     r5, r7, r8
     or.     r0, r5, r0
     beq-    branch_0x80347388
     lis     r5, 0x8000
     lwz     r0, 0xf8(r5)
-    lis     r5, 0x1062
-    addi    r5, r5, 0x4dd3
+    lis     r5, unk_10624dd3@h
+    addi    r5, r5, unk_10624dd3@l
     srwi    r0, r0, 2
     mulhwu  r0, r5, r0
     srwi    r0, r0, 6
@@ -195,19 +195,19 @@ branch_0x80347320:
 
 branch_0x80347388:
     li      r0, 0x0
-    stw     r0, -0x59cc(r13)
+    stw     r0, R13Off_m0x59cc(r13)
     li      r29, 0x0
-    stw     r0, -0x59d0(r13)
+    stw     r0, R13Off_m0x59d0(r13)
 branch_0x80347398:
     lis     r5, 0x8000
-    stw     r29, -0x59d8(r13)
+    stw     r29, R13Off_m0x59d8(r13)
     lbz     r0, 0x30e3(r5)
     clrlwi. r0, r0, 26
     beq-    branch_0x80347448
     mulli   r10, r0, 0x3c
     lwz     r0, 0xf8(r5)
-    lwz     r9, -0x5a44(r13)
-    lwz     r8, -0x5a48(r13)
+    lwz     r9, R13Off_m0x5a44(r13)
+    lwz     r8, R13Off_m0x5a48(r13)
     srwi    r6, r0, 2
     srawi   r0, r10, 31
     mullw   r7, r0, r6

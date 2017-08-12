@@ -38,8 +38,8 @@ PSVECScale: # 0x8034a5b4
 
 .globl PSVECNormalize
 PSVECNormalize: # 0x8034a5d0
-    lfs     f0, 0xb20(rtoc)
-    lfs     f1, 0xb24(rtoc)
+    lfs     f0, 0xb20(r2)
+    lfs     f1, 0xb24(r2)
     psq_l   f2, 0x0(3), 0, 0
     ps_mul  f5, f2, f2
     psq_l   f3, 0x8(3), 1, 0
@@ -63,10 +63,10 @@ PSVECMag: # 0x8034a614
     ps_mul  f0, f0, f0
     lfs     f1, 0x8(r3)
     ps_madd f1, f1, f1, f0
-    lfs     f4, 0xb20(rtoc)
+    lfs     f4, 0xb20(r2)
     ps_sum0 f1, f1, f0, f0
     frsqrte f0, f1
-    lfs     f3, 0xb24(rtoc)
+    lfs     f3, 0xb24(r2)
     fmuls   f2, f0, f0
     fmuls   f0, f0, f4
     fnmsubs  f2, f2, f1, f3
@@ -130,10 +130,10 @@ PSVECDistance: # 0x8034a6d4
     psq_l   f1, 0x0(4), 0, 0
     ps_mul  f2, f2, f2
     ps_sub  f0, f0, f1
-    lfs     f3, 0xb20(rtoc)
+    lfs     f3, 0xb20(r2)
     ps_madd f0, f0, f0, f2
     ps_sum0 f0, f0, f2, f2
-    lfs     f4, 0xb24(rtoc)
+    lfs     f4, 0xb24(r2)
     frsqrte f1, f0
     fmuls   f2, f1, f1
     fmuls   f1, f1, f3

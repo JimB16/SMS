@@ -11,7 +11,7 @@ execMotionBlend__13TNpcInbetweenFP6MActor: # 0x80211d68
     mr      r30, r3
     stw     r29, 0x4c(sp)
     stw     r28, 0x48(sp)
-    lfs     f31, -0x1a68(rtoc)
+    lfs     f31, -0x1a68(r2)
     lfs     f0, 0x28(r3)
     fcmpo   cr0, f0, f31
     ble-    branch_0x80211da8
@@ -39,8 +39,8 @@ branch_0x80211dd4:
     addi    r3, r31, 0x0
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lis     r4, 0x803b
-    subi    r29, r4, 0x2eac
+    lis     r4, __vvt__12J3DFrameCtrl@ha
+    addi    r29, r4, __vvt__12J3DFrameCtrl@l
     stw     r29, 0x20(sp)
     lbz     r0, 0x4(r3)
     stb     r0, 0x24(sp)
@@ -79,7 +79,7 @@ branch_0x80211e60:
     cmpwi   r3, 0x0
     ble-    branch_0x80211e7c
     lwz     r3, 0x24(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x24(r30)
 branch_0x80211e7c:
     lwz     r0, 0x24(r30)
@@ -100,7 +100,7 @@ branch_0x80211ea4:
     lwz     r3, 0xc(r31)
     cmplwi  r3, 0x0
     bne-    branch_0x80211ec0
-    lfs     f1, -0x1a68(rtoc)
+    lfs     f1, -0x1a68(r2)
     b       branch_0x80211ec4
 
 branch_0x80211ec0:
@@ -112,10 +112,10 @@ branch_0x80211ec8:
     lis     r3, 0x4330
     lwz     r4, 0x24(r30)
     xoris   r0, r0, 0x8000
-    lfd     f2, -0x1a60(rtoc)
+    lfd     f2, -0x1a60(r2)
     stw     r0, 0x3c(sp)
     xoris   r0, r4, 0x8000
-    lfs     f1, -0x1a64(rtoc)
+    lfs     f1, -0x1a64(r2)
     stw     r3, 0x38(sp)
     lfd     f0, 0x38(sp)
     stw     r0, 0x44(sp)
@@ -155,16 +155,16 @@ execPosInbetween__13TNpcInbetweenFPQ29JGeometry8TVec3_f_: # 0x80211f44
     lwz     r5, 0x8(r3)
     cmpwi   r5, 0x2
     blt-    branch_0x80211ff8
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stw     r0, 0x8(r3)
-    lis     r5, 0x4330
+    lis     r5, unk_43300000@h
     lwz     r0, 0x0(r3)
     lwz     r6, 0x8(r3)
     xoris   r0, r0, 0x8000
-    lfd     f3, -0x1a60(rtoc)
+    lfd     f3, -0x1a60(r2)
     stw     r0, 0x14(sp)
     xoris   r0, r6, 0x8000
-    lfs     f2, -0x1a64(rtoc)
+    lfs     f2, -0x1a64(r2)
     stw     r5, 0x10(sp)
     lfs     f4, 0x18(r3)
     lfd     f0, 0x10(sp)

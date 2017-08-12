@@ -153,7 +153,7 @@ branch_0x8033f684:
     cmplw   r4, r0
     beq-    branch_0x8033f6c4
     lbz     r0, 0x8(sp)
-    subi    r3, r4, 0x5
+    addi    r3, r4, -0x5
     sth     r3, 0xa(sp)
     cmplwi  r0, 0x0
     bne-    branch_0x8033f6c4
@@ -229,10 +229,10 @@ TRKRequestSend: # 0x8033f788
     stwu    sp, -0x38(sp)
     stmw    r22, 0x10(sp)
     addi    r23, r4, 0x0
-    lis     r4, 0x4c5
+    lis     r4, unk_04c4b3ec@ha
     addi    r27, r6, 0x1
     addi    r22, r3, 0x0
-    subi    r31, r4, 0x4c14
+    addi    r31, r4, unk_04c4b3ec@l
     addi    r24, r5, 0x0
     addi    r25, r7, 0x0
     li      r30, 0x0
@@ -322,7 +322,7 @@ branch_0x8033f8d4:
     li      r0, -0x1
     stw     r0, 0x0(r23)
 branch_0x8033f8e4:
-    subi    r27, r27, 0x1
+    addi    r27, r27, -0x1
 branch_0x8033f8e8:
     cmpwi   r27, 0x0
     beq-    branch_0x8033f904

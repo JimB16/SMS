@@ -15,23 +15,23 @@ checkNextFrameSe__8JAIBasicFv: # 0x80305204
     addi    r3, sp, 0xd0
     bl      __ct__8JAISoundFv
     lfs     f2, -0x7470(r13)
-    lfs     f1, 0x4f8(rtoc)
-    lfs     f0, 0x4fc(rtoc)
+    lfs     f1, 0x4f8(r2)
+    lfs     f0, 0x4fc(r2)
     fmuls   f31, f2, f2
     fdivs   f1, f2, f1
     fcmpu   cr0, f0, f1
     fmr     f30, f1
     bne-    branch_0x8030525c
-    lfs     f30, 0x500(rtoc)
+    lfs     f30, 0x500(r2)
 branch_0x8030525c:
-    lis     r3, 0x803e
-    lfs     f28, 0x508(rtoc)
-    lis     r4, 0x8000
-    lfd     f26, 0x510(rtoc)
-    lfs     f27, 0x4fc(rtoc)
+    lis     r3, dummyZeroVec__8JAIConst@h
+    lfs     f28, 0x508(r2)
+    lis     r4, unk_7fffffff@ha
+    lfd     f26, 0x510(r2)
+    lfs     f27, 0x4fc(r2)
     addi    r31, sp, 0x10
-    addi    r29, r3, 0x2520
-    subi    r28, r4, 0x1
+    addi    r29, r3, dummyZeroVec__8JAIConst@l
+    addi    r28, r4, unk_7fffffff@l
     li      r25, 0x0
     li      r23, 0x0
     li      r22, 0x0
@@ -78,7 +78,7 @@ branch_0x803052fc:
     rlwinm. r0, r0, 0, 20, 21
     beq-    branch_0x80305324
     lbz     r3, 0x2(r18)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x2(r18)
     b       branch_0x80305350
 
@@ -111,10 +111,10 @@ branch_0x80305378:
     cmplwi  r0, 0x0
     beq-    branch_0x803056b4
     lbz     r3, 0x4(r18)
-    lfs     f29, 0x504(rtoc)
+    lfs     f29, 0x504(r2)
     cmplwi  r3, 0x4
     bne-    branch_0x803053a4
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     li      r3, 0x0
     clrlwi  r0, r0, 24
     b       branch_0x803053a8
@@ -227,7 +227,7 @@ branch_0x80305500:
     cmplwi  r0, 0x4
     bne-    branch_0x80305528
     lwz     r3, 0xc(r18)
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     divwu   r0, r3, r0
     stw     r0, 0xc(r18)
 branch_0x80305528:
@@ -239,7 +239,7 @@ branch_0x80305528:
     b       branch_0x80305544
 
 branch_0x80305540:
-    lfs     f0, 0x50c(rtoc)
+    lfs     f0, 0x50c(r2)
 branch_0x80305544:
     fcmpo   cr0, f29, f0
     ble-    branch_0x803055c8
@@ -289,7 +289,7 @@ branch_0x803055c8:
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     lbzx    r6, r3, r6
-    subi    r0, r6, 0x1
+    addi    r0, r6, -0x1
     b       branch_0x803056a8
 
 branch_0x803055f8:
@@ -326,7 +326,7 @@ branch_0x8030564c:
     lwz     r7, -0x8(r9)
     add     r10, r10, r8
     stw     r7, 0x4(r10)
-    subi    r11, r11, 0x1
+    addi    r11, r11, -0x1
     lwz     r7, -0x4(r9)
     stw     r7, 0x8(r10)
     lbz     r7, -0xc(r9)
@@ -556,7 +556,7 @@ branch_0x80305920:
 .globl sendPlayingSeCommand__8JAIBasicFv
 sendPlayingSeCommand__8JAIBasicFv: # 0x80305958
     mflr    r0
-    lis     r4, 0x19
+    lis     r4, unk_0019660d@h
     stw     r0, 0x4(sp)
     stwu    sp, -0xa8(sp)
     stfd    f31, 0xa0(sp)
@@ -567,14 +567,14 @@ sendPlayingSeCommand__8JAIBasicFv: # 0x80305958
     stfd    f26, 0x78(sp)
     stmw    r17, 0x3c(sp)
     mr      r31, r3
-    addi    r29, r4, 0x660d
+    addi    r29, r4, unk_0019660d@l
     li      r23, 0x0
     li      r22, 0x0
-    lfs     f29, 0x4fc(rtoc)
-    lfd     f30, 0x518(rtoc)
-    lfd     f31, 0x520(rtoc)
-    lfs     f27, 0x528(rtoc)
-    lfs     f28, 0x500(rtoc)
+    lfs     f29, 0x4fc(r2)
+    lfd     f30, 0x518(r2)
+    lfd     f31, 0x520(r2)
+    lfs     f27, 0x528(r2)
+    lfs     f28, 0x500(r2)
     b       branch_0x80305ea0
 
 branch_0x803059ac:
@@ -613,7 +613,7 @@ branch_0x803059bc:
     bl      readPortApp__18JAISystemInterfaceFUlUlPUs
     lwz     r4, 0x1c(r24)
     li      r5, 0x0
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     b       branch_0x80305aa0
 
 branch_0x80305a38:
@@ -663,13 +663,13 @@ branch_0x80305aa0:
 branch_0x80305adc:
     rlwinm. r4, r17, 0, 24, 25
     beq-    branch_0x80305b70
-    lwz     r0, -0x5d80(r13)
+    lwz     r0, R13Off_m0x5d80(r13)
     cmpwi   r4, 0x80
     mullw   r3, r0, r29
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
-    stw     r0, -0x5d80(r13)
-    lwz     r0, -0x5d80(r13)
+    addi    r0, r3, -0xca1
+    stw     r0, R13Off_m0x5d80(r13)
+    lwz     r0, R13Off_m0x5d80(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x1c(sp)
@@ -753,13 +753,13 @@ branch_0x80305bcc:
     lwz     r0, 0x10(r24)
     cmplwi  r0, 0x1
     ble-    branch_0x80305c48
-    lfs     f1, 0x4fc(rtoc)
+    lfs     f1, 0x4fc(r2)
     addi    r3, r24, 0x0
     li      r4, 0x6
     li      r5, 0x0
     li      r6, 0x0
     bl      setSeInterVolume__8JAISoundFUcfUlUc
-    lfs     f1, 0x52c(rtoc)
+    lfs     f1, 0x52c(r2)
     mr      r3, r24
     lwz     r5, 0x10(r24)
     li      r4, 0x6
@@ -789,7 +789,7 @@ branch_0x80305c48:
     blrl
     add     r18, r18, r3
 branch_0x80305c98:
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     cmplwi  r0, 0x1
     bne-    branch_0x80305cf8
     addi    r3, r24, 0x0
@@ -971,8 +971,8 @@ setSeqMuteFromSeStart__8JAIBasicFP8JAISound: # 0x80305edc
     li      r31, 0x0
     li      r28, 0x0
     lis     r27, 0x4330
-    lfd     f30, 0x530(rtoc)
-    lfs     f31, 0x52c(rtoc)
+    lfd     f30, 0x530(r2)
+    lfs     f31, 0x52c(r2)
     b       branch_0x80305f94
 
 branch_0x80305f14:
@@ -990,9 +990,9 @@ branch_0x80305f14:
     bl      getSwBit__8JAISoundFv
     rlwinm. r0, r3, 0, 28, 28
     bne-    branch_0x80305f8c
-    lbz     r0, -0x74cd(r13)
+    lbz     r0, R13Off_m0x74cd(r13)
     mr      r3, r26
-    lwz     r5, -0x7454(r13)
+    lwz     r5, R13Off_m0x7454(r13)
     li      r4, 0x9
     stw     r0, 0x14(sp)
     stw     r27, 0x10(sp)
@@ -1010,7 +1010,7 @@ branch_0x80305f8c:
     addi    r31, r31, 0x1
     addi    r28, r28, 0x50
 branch_0x80305f94:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r31, r0
     blt+    branch_0x80305f14
     lmw     r26, 0x18(sp)
@@ -1130,7 +1130,7 @@ sendSeAllParameter__8JAIBasicFP8JAISound: # 0x803060e8
     add     r30, r4, r0
     bl      getSeParameter__8JAISoundFv
     mr      r31, r3
-    lfs     f0, 0x538(rtoc)
+    lfs     f0, 0x538(r2)
     lfs     f1, 0x198(r3)
     fcmpu   cr0, f0, f1
     bne-    branch_0x80306194
@@ -1140,7 +1140,7 @@ sendSeAllParameter__8JAIBasicFP8JAISound: # 0x803060e8
     lfs     f0, 0x0(r3)
     stfs    f0, 0x128(r31)
 branch_0x80306154:
-    lfs     f31, 0x500(rtoc)
+    lfs     f31, 0x500(r2)
     lfs     f1, 0x128(r31)
     lfs     f0, 0x138(r31)
     fmuls   f31, f31, f1
@@ -1196,7 +1196,7 @@ branch_0x80306198:
     add     r3, r3, r0
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
 branch_0x80306224:
-    lfs     f0, 0x538(rtoc)
+    lfs     f0, 0x538(r2)
     lfs     f1, 0x218(r31)
     fcmpu   cr0, f0, f1
     bne-    branch_0x80306308
@@ -1206,9 +1206,9 @@ branch_0x80306224:
     lfs     f0, 0x0(r3)
     stfs    f0, 0x1a8(r31)
 branch_0x80306248:
-    lfs     f2, 0x53c(rtoc)
+    lfs     f2, 0x53c(r2)
     lfs     f0, 0x1a8(r31)
-    lfs     f1, 0x4fc(rtoc)
+    lfs     f1, 0x4fc(r2)
     fcmpu   cr0, f2, f0
     beq-    branch_0x80306264
     fsubs   f0, f0, f2
@@ -1250,8 +1250,8 @@ branch_0x803062c8:
     fsubs   f0, f0, f2
     fadds   f1, f1, f0
 branch_0x803062dc:
-    lfs     f2, 0x53c(rtoc)
-    lfs     f0, 0x4fc(rtoc)
+    lfs     f2, 0x53c(r2)
+    lfs     f0, 0x4fc(r2)
     fadds   f1, f1, f2
     fcmpo   cr0, f1, f0
     bge-    branch_0x803062f8
@@ -1259,7 +1259,7 @@ branch_0x803062dc:
     b       branch_0x80306308
 
 branch_0x803062f8:
-    lfs     f0, 0x500(rtoc)
+    lfs     f0, 0x500(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80306308
     fmr     f1, f0
@@ -1293,7 +1293,7 @@ branch_0x80306308:
     add     r3, r3, r0
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
 branch_0x80306378:
-    lfs     f0, 0x538(rtoc)
+    lfs     f0, 0x538(r2)
     lfs     f1, 0x298(r31)
     fcmpu   cr0, f0, f1
     bne-    branch_0x803063d8
@@ -1303,7 +1303,7 @@ branch_0x80306378:
     lfs     f0, 0x0(r3)
     stfs    f0, 0x228(r31)
 branch_0x8030639c:
-    lfs     f1, 0x500(rtoc)
+    lfs     f1, 0x500(r2)
     lfs     f2, 0x228(r31)
     lfs     f0, 0x238(r31)
     fmuls   f1, f1, f2
@@ -1348,7 +1348,7 @@ branch_0x803063d8:
     add     r3, r3, r0
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
 branch_0x80306448:
-    lfs     f0, 0x538(rtoc)
+    lfs     f0, 0x538(r2)
     lfs     f1, 0x318(r31)
     fcmpu   cr0, f0, f1
     bne-    branch_0x803064a8
@@ -1358,7 +1358,7 @@ branch_0x80306448:
     lfs     f0, 0x0(r3)
     stfs    f0, 0x2a8(r31)
 branch_0x8030646c:
-    lfs     f1, 0x4fc(rtoc)
+    lfs     f1, 0x4fc(r2)
     lfs     f2, 0x2a8(r31)
     lfs     f0, 0x2b8(r31)
     fadds   f1, f1, f2
@@ -1403,7 +1403,7 @@ branch_0x803064a8:
     add     r3, r3, r0
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
 branch_0x80306518:
-    lfs     f0, 0x538(rtoc)
+    lfs     f0, 0x538(r2)
     lfs     f1, 0x418(r31)
     fcmpu   cr0, f0, f1
     bne-    branch_0x803065c8
@@ -1414,7 +1414,7 @@ branch_0x80306518:
     stfs    f0, 0x3a8(r31)
 branch_0x8030653c:
     lfs     f2, -0x7468(r13)
-    lfs     f0, 0x52c(rtoc)
+    lfs     f0, 0x52c(r2)
     lfs     f1, 0x3a8(r31)
     fdivs   f9, f2, f0
     lfs     f0, 0x3b8(r31)
@@ -1422,12 +1422,12 @@ branch_0x8030653c:
     lfs     f5, 0x3d8(r31)
     lfs     f4, 0x3e8(r31)
     fsubs   f8, f1, f9
-    lfs     f1, 0x4fc(rtoc)
+    lfs     f1, 0x4fc(r2)
     fsubs   f7, f0, f9
     lfs     f3, 0x3f8(r31)
     lfs     f2, 0x408(r31)
     fadds   f1, f1, f8
-    lfs     f0, 0x4fc(rtoc)
+    lfs     f0, 0x4fc(r2)
     fsubs   f6, f6, f9
     fsubs   f5, f5, f9
     fadds   f1, f1, f7
@@ -1446,7 +1446,7 @@ branch_0x8030653c:
     b       branch_0x803065c8
 
 branch_0x803065b8:
-    lfs     f0, 0x500(rtoc)
+    lfs     f0, 0x500(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x803065c8
     fmr     f1, f0
@@ -1593,16 +1593,16 @@ branch_0x80306778:
     lwz     r0, 0x30(r29)
     cmplwi  r0, 0x0
     bne-    branch_0x803067f0
-    lfs     f1, 0x500(rtoc)
+    lfs     f1, 0x500(r2)
     mr      r3, r27
-    lwz     r5, -0x7454(r13)
+    lwz     r5, R13Off_m0x7454(r13)
     li      r4, 0x9
     bl      setSeqInterVolume__8JAISoundFUcfUl
 branch_0x803067f0:
     addi    r31, r31, 0x1
     addi    r28, r28, 0x50
 branch_0x803067f8:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r31, r0
     blt+    branch_0x80306778
 branch_0x80306804:

@@ -28,16 +28,16 @@ GXInitLightAttnK: # 0x8035f050
 
 .globl GXInitLightDistAttn
 GXInitLightDistAttn: # 0x8035f060
-    lfs     f0, 0xb58(rtoc)
+    lfs     f0, 0xb58(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8035f070
     li      r4, 0x0
 branch_0x8035f070:
-    lfs     f0, 0xb58(rtoc)
+    lfs     f0, 0xb58(r2)
     fcmpo   cr0, f2, f0
     cror    2, 0, 2
     beq-    branch_0x8035f090
-    lfs     f0, 0xb5c(rtoc)
+    lfs     f0, 0xb5c(r2)
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     bne-    branch_0x8035f094
@@ -58,17 +58,17 @@ branch_0x8035f0b0:
     b       branch_0x8035f0f8
 
 branch_0x8035f0bc:
-    lfs     f5, 0xb5c(rtoc)
+    lfs     f5, 0xb5c(r2)
     fmuls   f0, f2, f1
-    lfs     f4, 0xb58(rtoc)
+    lfs     f4, 0xb58(r2)
     fsubs   f1, f5, f2
     fdivs   f3, f1, f0
     b       branch_0x8035f120
 
 branch_0x8035f0d4:
-    lfs     f5, 0xb5c(rtoc)
+    lfs     f5, 0xb5c(r2)
     fmuls   f4, f2, f1
-    lfs     f3, 0xb60(rtoc)
+    lfs     f3, 0xb60(r2)
     fsubs   f2, f5, f2
     fmuls   f0, f1, f4
     fmuls   f1, f3, f2
@@ -78,16 +78,16 @@ branch_0x8035f0d4:
 
 branch_0x8035f0f8:
     fmuls   f0, f2, f1
-    lfs     f5, 0xb5c(rtoc)
-    lfs     f3, 0xb58(rtoc)
+    lfs     f5, 0xb5c(r2)
+    lfs     f3, 0xb58(r2)
     fsubs   f2, f5, f2
     fmuls   f0, f1, f0
     fdivs   f4, f2, f0
     b       branch_0x8035f120
 
 branch_0x8035f114:
-    lfs     f3, 0xb58(rtoc)
-    lfs     f5, 0xb5c(rtoc)
+    lfs     f3, 0xb58(r2)
+    lfs     f5, 0xb5c(r2)
     fmr     f4, f3
 branch_0x8035f120:
     stfs    f5, 0x1c(r3)
@@ -109,9 +109,9 @@ GXInitSpecularDir: # 0x8035f140
     stwu    sp, -0x20(sp)
     fneg    f0, f1
     fneg    f1, f2
-    lfs     f5, 0xb5c(rtoc)
+    lfs     f5, 0xb5c(r2)
     fmuls   f6, f0, f0
-    lfs     f4, 0xb58(rtoc)
+    lfs     f4, 0xb58(r2)
     fsubs   f2, f5, f3
     fmuls   f5, f1, f1
     fmuls   f7, f2, f2
@@ -120,8 +120,8 @@ GXInitSpecularDir: # 0x8035f140
     fcmpo   cr0, f8, f4
     ble-    branch_0x8035f1cc
     frsqrte f5, f8
-    lfd     f7, 0xb68(rtoc)
-    lfd     f6, 0xb70(rtoc)
+    lfd     f7, 0xb68(r2)
+    lfd     f6, 0xb70(r2)
     fmul    f4, f5, f5
     fmul    f5, f7, f5
     fmul    f4, f8, f4
@@ -142,7 +142,7 @@ GXInitSpecularDir: # 0x8035f140
     stfs    f4, 0x18(sp)
     lfs     f8, 0x18(sp)
 branch_0x8035f1cc:
-    lfs     f4, 0xb5c(rtoc)
+    lfs     f4, 0xb5c(r2)
     fneg    f3, f3
     fdivs   f6, f4, f8
     fmuls   f5, f0, f6
@@ -151,7 +151,7 @@ branch_0x8035f1cc:
     stfs    f5, 0x34(r3)
     stfs    f4, 0x38(r3)
     stfs    f2, 0x3c(r3)
-    lfs     f4, 0xb78(rtoc)
+    lfs     f4, 0xb78(r2)
     fmuls   f2, f4, f0
     fmuls   f1, f4, f1
     fmuls   f0, f4, f3
@@ -261,7 +261,7 @@ branch_0x8035f30c:
     li      r0, 0x0
 branch_0x8035f310:
     slwi    r5, r0, 4
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     addi    r0, r5, 0x600
     li      r5, 0x10
     lis     r6, 0xcc01
@@ -323,7 +323,7 @@ branch_0x8035f3d8:
     b       branch_0x8035f480
 
 branch_0x8035f3e8:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x0
     lbz     r6, 0x2(r4)
     lwz     r7, 0xa8(r5)
@@ -338,7 +338,7 @@ branch_0x8035f3e8:
     b       branch_0x8035f4e4
 
 branch_0x8035f41c:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x1
     lbz     r6, 0x2(r4)
     lwz     r7, 0xac(r5)
@@ -353,7 +353,7 @@ branch_0x8035f41c:
     b       branch_0x8035f4e4
 
 branch_0x8035f450:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x0
     lbz     r7, 0x3(r4)
     lwz     r0, 0xa8(r5)
@@ -361,7 +361,7 @@ branch_0x8035f450:
     b       branch_0x8035f4e4
 
 branch_0x8035f468:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x1
     lbz     r7, 0x3(r4)
     lwz     r0, 0xac(r5)
@@ -396,11 +396,12 @@ branch_0x8035f4b0:
     insrwi  r7, r4, 24, 8
     b       branch_0x8035f4e4
 
+branch_0x8035f4e0:
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x359ee0, 0x8035f4e4 - 0x8035f4e0
 branch_0x8035f4e4:
     li      r0, 0x10
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lis     r6, 0xcc01
     stb     r0, -0x8000(r6)
     addi    r0, r3, 0x100a
@@ -409,7 +410,7 @@ branch_0x8035f4e4:
     slwi    r0, r3, 2
     stw     r7, -0x8000(r6)
     sth     r5, 0x2(r4)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     add     r3, r3, r0
     stw     r7, 0xa8(r3)
     blr
@@ -435,7 +436,7 @@ branch_0x8035f540:
     b       branch_0x8035f5e8
 
 branch_0x8035f550:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x0
     lbz     r6, 0x2(r4)
     lwz     r7, 0xb0(r5)
@@ -450,7 +451,7 @@ branch_0x8035f550:
     b       branch_0x8035f64c
 
 branch_0x8035f584:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x1
     lbz     r6, 0x2(r4)
     lwz     r7, 0xb4(r5)
@@ -465,7 +466,7 @@ branch_0x8035f584:
     b       branch_0x8035f64c
 
 branch_0x8035f5b8:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x0
     lbz     r7, 0x3(r4)
     lwz     r0, 0xb0(r5)
@@ -473,7 +474,7 @@ branch_0x8035f5b8:
     b       branch_0x8035f64c
 
 branch_0x8035f5d0:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x1
     lbz     r7, 0x3(r4)
     lwz     r0, 0xb4(r5)
@@ -508,11 +509,12 @@ branch_0x8035f618:
     insrwi  r7, r4, 24, 8
     b       branch_0x8035f64c
 
+branch_0x8035f648:
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x35a048, 0x8035f64c - 0x8035f648
 branch_0x8035f64c:
     li      r0, 0x10
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lis     r6, 0xcc01
     stb     r0, -0x8000(r6)
     addi    r0, r3, 0x100c
@@ -521,7 +523,7 @@ branch_0x8035f64c:
     slwi    r0, r3, 2
     stw     r7, -0x8000(r6)
     sth     r5, 0x2(r4)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     add     r3, r3, r0
     stw     r7, 0xb0(r3)
     blr
@@ -529,7 +531,7 @@ branch_0x8035f64c:
 
 .globl GXSetNumChans
 GXSetNumChans: # 0x8035f684
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     clrlwi  r7, r3, 24
     clrlslwi  r0, r3, 24, 4
     addi    r6, r4, 0x204
@@ -541,7 +543,7 @@ GXSetNumChans: # 0x8035f684
     stw     r0, 0x0(r6)
     li      r0, 0x1009
     stb     r3, -0x8000(r4)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stw     r0, -0x8000(r4)
     stw     r7, -0x8000(r4)
     lwz     r0, 0x4f4(r3)
@@ -637,7 +639,7 @@ branch_0x8035f708:
     li      r8, 0x0
 branch_0x8035f808:
     subfic  r5, r9, 0x2
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     subic   r0, r5, 0x1
     subfe   r10, r0, r5
     neg     r5, r9

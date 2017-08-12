@@ -18,13 +18,13 @@ __ct__17JPAEmitterManagerFP18JPAResourceManagerlllP7JKRHeap: # 0x80324ad0
     bl      initiate__10JSUPtrListFv
     addi    r3, r26, 0x28
     bl      initiate__10JSUPtrListFv
-    lfs     f0, 0x850(rtoc)
-    lis     r4, 0x8032
-    lis     r3, 0x8032
+    lfs     f0, 0x850(r2)
+    lis     r4, __ct__25JSUList_14JPABaseEmitter_Fv@h
+    lis     r3, __dt__25JSUList_14JPABaseEmitter_Fv@h
     stfs    f0, 0x3c(r26)
-    addi    r5, r3, 0x4dd8
-    addi    r4, r4, 0x4da8
-    lfs     f0, 0x854(rtoc)
+    addi    r5, r3, __dt__25JSUList_14JPABaseEmitter_Fv@l
+    addi    r4, r4, __ct__25JSUList_14JPABaseEmitter_Fv@l
+    lfs     f0, 0x854(r2)
     addi    r3, r26, 0x44
     li      r6, 0xc
     stfs    f0, 0x40(r26)
@@ -32,7 +32,7 @@ __ct__17JPAEmitterManagerFP18JPAResourceManagerlllP7JKRHeap: # 0x80324ad0
     bl      __construct_array
     cmplwi  r28, 0x0
     bne-    branch_0x80324b50
-    lwz     r28, -0x5f2c(r13)
+    lwz     r28, R13Off_m0x5f2c(r13)
 branch_0x80324b50:
     mulli   r3, r31, 0xdc
     addi    r0, r3, 0x1f
@@ -297,7 +297,7 @@ branch_0x80324ec4:
     fadds   f0, f1, f0
     stfs    f0, 0x3c(r29)
     lfs     f1, 0x3c(r29)
-    lfs     f0, 0x850(rtoc)
+    lfs     f0, 0x850(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80324ef0
     stfs    f0, 0x3c(r29)

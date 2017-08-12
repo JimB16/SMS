@@ -199,9 +199,9 @@ branch_0x802e8aec:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802e8b60
-    lis     r4, 0x803e
+    lis     r4, __vvt__11J3DShapeMtx@h
     lhz     r5, 0x0(r31)
-    addi    r0, r4, 0x125c
+    addi    r0, r4, __vvt__11J3DShapeMtx@l
     stw     r0, 0x0(r3)
     sth     r5, 0x4(r3)
     b       branch_0x802e8b60
@@ -212,15 +212,15 @@ branch_0x802e8b14:
     cmplwi  r3, 0x0
     beq-    branch_0x802e8b60
     lwz     r5, 0x4(r31)
-    lis     r4, 0x803e
+    lis     r4, __vvt__11J3DShapeMtx@h
     lwz     r6, 0xc(r30)
-    addi    r0, r4, 0x125c
+    addi    r0, r4, __vvt__11J3DShapeMtx@l
     lhz     r8, 0x2(r31)
     lhz     r7, 0x0(r31)
-    lis     r4, 0x803e
+    lis     r4, __vvt__16J3DShapeMtxMulti@h
     slwi    r5, r5, 1
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0x121c
+    addi    r0, r4, __vvt__16J3DShapeMtxMulti@l
     add     r4, r6, r5
     sth     r7, 0x4(r3)
     stw     r0, 0x0(r3)

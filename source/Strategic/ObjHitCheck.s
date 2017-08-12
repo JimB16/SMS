@@ -10,20 +10,20 @@ __ct__13TObjCheckListFv: # 0x8021b2f8
 .globl __ct__12TObjHitCheckFv
 __ct__12TObjHitCheckFv: # 0x8021b308
     mflr    r0
-    lis     r4, 0x8022
+    lis     r4, __ct__13TObjCheckListFv@ha
     stw     r0, 0x4(sp)
     li      r5, 0x0
     li      r6, 0x8
     stwu    sp, -0x20(sp)
     li      r7, 0x100
     stw     r31, 0x1c(sp)
-    subi    r31, r4, 0x4d08
+    addi    r31, r4, __ct__13TObjCheckListFv@l
     addi    r4, r31, 0x0
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
     bl      __construct_array
-    lis     r3, 0x1
-    subi    r3, r3, 0x2538
+    lis     r3, unk_0000dac8@ha
+    addi    r3, r3, unk_0000dac8@l
     bl      __nwa__FUl
     addi    r4, r31, 0x0
     li      r5, 0x0
@@ -121,7 +121,7 @@ branch_0x8021b374:
     li      r0, 0x0
     stw     r0, 0x804(r30)
     mr      r3, r30
-    stw     r30, -0x6150(r13)
+    stw     r30, R13Off_m0x6150(r13)
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
     lwz     r30, 0x18(sp)
@@ -136,7 +136,7 @@ clearHitNum__12TObjHitCheckFv: # 0x8021b4e0
     stw     r0, 0x4(sp)
     stwu    sp, -0x228(sp)
     stw     r31, 0x224(sp)
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 23, 23
     bne-    branch_0x8021b598
@@ -182,7 +182,7 @@ branch_0x8021b584:
     cmplw   r3, r0
     bne+    branch_0x8021b56c
 branch_0x8021b598:
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 22, 22
     bne-    branch_0x8021b640
@@ -228,7 +228,7 @@ branch_0x8021b62c:
     cmplw   r3, r0
     bne+    branch_0x8021b614
 branch_0x8021b640:
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 21, 21
     bne-    branch_0x8021b6e8
@@ -274,7 +274,7 @@ branch_0x8021b6d4:
     cmplw   r3, r0
     bne+    branch_0x8021b6bc
 branch_0x8021b6e8:
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 25, 25
     bne-    branch_0x8021b790
@@ -320,7 +320,7 @@ branch_0x8021b77c:
     cmplw   r3, r0
     bne+    branch_0x8021b764
 branch_0x8021b790:
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 24, 24
     bne-    branch_0x8021b838
@@ -366,7 +366,7 @@ branch_0x8021b824:
     cmplw   r3, r0
     bne+    branch_0x8021b80c
 branch_0x8021b838:
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 20, 20
     bne-    branch_0x8021b8e0
@@ -523,7 +523,7 @@ branch_0x8021b92c:
     bdnz+      branch_0x8021b92c
     li      r0, 0x0
     stw     r0, 0x804(r30)
-    lwz     r4, gpStrategy(r13)
+    lwz     r4, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r4)
     rlwinm. r0, r0, 0, 20, 20
     bne-    branch_0x8021ba94
@@ -531,7 +531,7 @@ branch_0x8021b92c:
     lwz     r4, 0x1c(r4)
     bl      entryGroup__12TObjHitCheckFP12TIdxGroupObj
 branch_0x8021ba94:
-    lwz     r4, gpStrategy(r13)
+    lwz     r4, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r4)
     rlwinm. r0, r0, 0, 23, 23
     bne-    branch_0x8021bab0
@@ -539,7 +539,7 @@ branch_0x8021ba94:
     lwz     r4, 0x2c(r4)
     bl      checkAndEntryGroup__12TObjHitCheckFP12TIdxGroupObj
 branch_0x8021bab0:
-    lwz     r4, gpStrategy(r13)
+    lwz     r4, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r4)
     rlwinm. r0, r0, 0, 22, 22
     bne-    branch_0x8021bacc
@@ -547,7 +547,7 @@ branch_0x8021bab0:
     lwz     r4, 0x30(r4)
     bl      checkAndEntryGroup__12TObjHitCheckFP12TIdxGroupObj
 branch_0x8021bacc:
-    lwz     r4, gpStrategy(r13)
+    lwz     r4, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r4)
     rlwinm. r0, r0, 0, 21, 21
     bne-    branch_0x8021bae8
@@ -555,7 +555,7 @@ branch_0x8021bacc:
     lwz     r4, 0x34(r4)
     bl      checkAndEntryGroup__12TObjHitCheckFP12TIdxGroupObj
 branch_0x8021bae8:
-    lwz     r4, gpStrategy(r13)
+    lwz     r4, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r4)
     rlwinm. r0, r0, 0, 25, 25
     bne-    branch_0x8021bb04
@@ -563,18 +563,18 @@ branch_0x8021bae8:
     lwz     r4, 0x28(r4)
     bl      checkAndEntryGroup__12TObjHitCheckFP12TIdxGroupObj
 branch_0x8021bb04:
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 24, 24
     bne-    branch_0x8021bb2c
-    lwz     r3, gpModelWaterManager(r13)
+    lwz     r3, R13Off_m0x6088(r13)
     bl      askDoWaterHitCheck__18TModelWaterManagerFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8021bb2c
     mr      r3, r30
     bl      checkWater__12TObjHitCheckFv
 branch_0x8021bb2c:
-    lwz     r3, gpStrategy(r13)
+    lwz     r3, R13Off_m0x6140(r13)
     lhz     r0, 0x50(r3)
     rlwinm. r0, r0, 0, 20, 20
     bne-    branch_0x8021bc30
@@ -590,7 +590,7 @@ branch_0x8021bb2c:
     bl      __ct__Q37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorFRCQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iterator
     lwz     r0, 0x9c(sp)
     mr      r4, r29
-    lwz     r31, MarioHitActor(r13)
+    lwz     r31, R13Off_m0x60b8(r13)
     addi    r3, sp, 0x60
     stw     r0, 0x94(sp)
     bl      begin__Q27JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__Fv
@@ -679,7 +679,7 @@ entryGroup__12TObjHitCheckFP12TIdxGroupObj: # 0x8021bc4c
     lwz     r4, 0x8(r28)
     bl      __ct__Q37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorFPQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__6TNode_
     lwz     r0, 0x68(sp)
-    lfs     f31, -0x18c0(rtoc)
+    lfs     f31, -0x18c0(r2)
     stw     r0, 0x64(sp)
     lwz     r0, 0x64(sp)
     stw     r0, 0xa8(sp)
@@ -810,7 +810,7 @@ checkAndEntryGroup__12TObjHitCheckFP12TIdxGroupObj: # 0x8021be24
     lwz     r4, 0x8(r26)
     bl      __ct__Q37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorFPQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__6TNode_
     lwz     r0, 0xb4(sp)
-    lfs     f31, -0x18c0(rtoc)
+    lfs     f31, -0x18c0(r2)
     stw     r0, 0xb0(sp)
     lwz     r0, 0xb0(sp)
     stw     r0, 0xf4(sp)
@@ -992,7 +992,7 @@ branch_0x8021c0a0:
 .globl checkWater__12TObjHitCheckFv
 checkWater__12TObjHitCheckFv: # 0x8021c0e4
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, mStaticHitActor__18TModelWaterManager@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0xb8(sp)
     stfd    f31, 0xb0(sp)
@@ -1000,14 +1000,14 @@ checkWater__12TObjHitCheckFv: # 0x8021c0e4
     stfd    f29, 0xa0(sp)
     stfd    f28, 0x98(sp)
     stmw    r20, 0x68(sp)
-    subi    r31, r4, 0x3d4c
+    addi    r31, r4, mStaticHitActor__18TModelWaterManager@l
     addi    r26, r3, 0x0
     li      r27, 0x0
     li      r25, 0x0
     li      r24, 0x0
     li      r23, 0x0
-    lwz     r5, gpModelWaterManager(r13)
-    lfs     f31, -0x18c0(rtoc)
+    lwz     r5, R13Off_m0x6088(r13)
+    lfs     f31, -0x18c0(r2)
     lfs     f29, 0x60(r31)
     addi    r29, r5, 0x814
     addi    r28, r5, 0x2514
@@ -1104,7 +1104,7 @@ branch_0x8021c258:
     addi    r24, r24, 0xc
     addi    r23, r23, 0x2
 branch_0x8021c268:
-    lwz     r3, gpModelWaterManager(r13)
+    lwz     r3, R13Off_m0x6088(r13)
     lhz     r0, 0x12(r3)
     cmpw    r27, r0
     blt+    branch_0x8021c138

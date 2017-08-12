@@ -17,28 +17,28 @@ update__7TExPaneFv: # 0x8013ebf0
     stb     r0, 0x4e(r31)
 branch_0x8013ec28:
     lfs     f1, 0x18(r31)
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8013ec40
-    lfs     f0, -0x4cc4(rtoc)
+    lfs     f0, -0x4cc4(r2)
     b       branch_0x8013ec44
 
 branch_0x8013ec40:
-    lfs     f0, -0x4cc0(rtoc)
+    lfs     f0, -0x4cc0(r2)
 branch_0x8013ec44:
     fadds   f1, f1, f0
     lfs     f2, 0x14(r31)
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x38(sp)
     lwz     r4, 0x3c(sp)
     ble-    branch_0x8013ec6c
-    lfs     f0, -0x4cc4(rtoc)
+    lfs     f0, -0x4cc4(r2)
     b       branch_0x8013ec70
 
 branch_0x8013ec6c:
-    lfs     f0, -0x4cc0(rtoc)
+    lfs     f0, -0x4cc0(r2)
 branch_0x8013ec70:
     fadds   f0, f2, f0
     lwz     r3, 0x0(r31)
@@ -65,28 +65,28 @@ branch_0x8013eca4:
     stb     r0, 0x4f(r31)
 branch_0x8013ecc8:
     lfs     f1, 0x30(r31)
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8013ece0
-    lfs     f0, -0x4cc4(rtoc)
+    lfs     f0, -0x4cc4(r2)
     b       branch_0x8013ece4
 
 branch_0x8013ece0:
-    lfs     f0, -0x4cc0(rtoc)
+    lfs     f0, -0x4cc0(r2)
 branch_0x8013ece4:
     fadds   f1, f1, f0
     lfs     f2, 0x2c(r31)
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     fctiwz  f1, f1
     fcmpo   cr0, f2, f0
     stfd    f1, 0x38(sp)
     lwz     r5, 0x3c(sp)
     ble-    branch_0x8013ed0c
-    lfs     f0, -0x4cc4(rtoc)
+    lfs     f0, -0x4cc4(r2)
     b       branch_0x8013ed10
 
 branch_0x8013ed0c:
-    lfs     f0, -0x4cc0(rtoc)
+    lfs     f0, -0x4cc0(r2)
 branch_0x8013ed10:
     fadds   f0, f2, f0
     lwz     r3, 0x0(r31)
@@ -102,12 +102,12 @@ branch_0x8013ed34:
     cmplwi  r0, 0x0
     beq-    branch_0x8013ee28
     lfs     f3, 0x48(r31)
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     fcmpo   cr0, f3, f0
     bge-    branch_0x8013ed80
     lha     r3, 0x4c(r31)
     lis     r0, 0x4330
-    lfd     f1, -0x4cb8(rtoc)
+    lfd     f1, -0x4cb8(r2)
     xoris   r3, r3, 0x8000
     lfs     f2, 0x44(r31)
     stw     r3, 0x3c(sp)
@@ -118,13 +118,13 @@ branch_0x8013ed34:
     cror    2, 0, 2
     beq-    branch_0x8013edc0
 branch_0x8013ed80:
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     fcmpo   cr0, f3, f0
     cror    2, 1, 2
     bne-    branch_0x8013edc8
     lha     r3, 0x4c(r31)
     lis     r0, 0x4330
-    lfd     f1, -0x4cb8(rtoc)
+    lfd     f1, -0x4cb8(r2)
     xoris   r3, r3, 0x8000
     lfs     f2, 0x44(r31)
     stw     r3, 0x3c(sp)
@@ -143,7 +143,7 @@ branch_0x8013edc8:
     fadds   f0, f1, f0
     stfs    f0, 0x44(r31)
     lfs     f1, 0x44(r31)
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8013edec
     b       branch_0x8013edf0
@@ -267,9 +267,9 @@ __ct__7TExPaneFP9J2DScreenUl: # 0x8013eed4
     lwz     r5, 0x20(r7)
     stw     r6, 0xc(r29)
     stw     r5, 0x10(r29)
-    lfs     f0, -0x4cb0(rtoc)
+    lfs     f0, -0x4cb0(r2)
     stfs    f0, 0x44(r29)
-    lfs     f0, -0x4cc8(rtoc)
+    lfs     f0, -0x4cc8(r2)
     stfs    f0, 0x48(r29)
     sth     r4, 0x4c(r29)
     stb     r0, 0x4e(r29)

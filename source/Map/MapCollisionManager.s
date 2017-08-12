@@ -64,15 +64,16 @@ branch_0x8018e3c8:
     crxor   6, 6, 6
     addi    r3, sp, 0x1c
     li      r4, 0x100
-    subi    r5, rtoc, 0x43f0
+    addi    r5, r2, R2Off_m0x43f0
     bl      snprintf
     addi    r6, sp, 0x1c
     b       branch_0x8018e41c
 
+branch_0x8018e414:
+    b       branch_0x8018e41c
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x188e14, 0x8018e418 - 0x8018e414
 branch_0x8018e418:
-    subi    r6, rtoc, 0x43ec
+    addi    r6, r2, R2Off_m0x43ec
 branch_0x8018e41c:
     lbz     r0, 0x0(r28)
     cmpwi   r0, 0x2f
@@ -81,7 +82,7 @@ branch_0x8018e41c:
     crxor   6, 6, 6
     addi    r6, r28, 0x0
     addi    r3, sp, 0x11c
-    subi    r4, rtoc, 0x43e8
+    addi    r4, r2, R2Off_m0x43e8
     bl      sprintf
     b       branch_0x8018e45c
 
@@ -90,7 +91,7 @@ branch_0x8018e444:
     crxor   6, 6, 6
     addi    r6, r28, 0x0
     addi    r3, sp, 0x11c
-    subi    r4, rtoc, 0x43e0
+    addi    r4, r2, R2Off_m0x43e0
     bl      sprintf
 branch_0x8018e45c:
     lhz     r0, 0x6(r30)

@@ -2,11 +2,11 @@
 .globl getNameRef_Enemy__14TMarNameRefGenCFPCc
 getNameRef_Enemy__14TMarNameRefGenCFPCc: # 0x802aa718
     mflr    r0
-    lis     r3, 0x803a
+    lis     r3, unk_803a49b0@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    addi    r31, r3, 0x49b0
+    addi    r31, r3, unk_803a49b0@l
     stw     r30, 0x20(sp)
     addi    r30, r4, 0x0
     addi    r3, r30, 0x0
@@ -19,7 +19,7 @@ getNameRef_Enemy__14TMarNameRefGenCFPCc: # 0x802aa718
     mr.     r30, r3
     beq-    branch_0x802aa768
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x348
+    addi    r4, r2, R2Off_m0x348
     bl      __ct__13TTypicalEnemyFPCc
 branch_0x802aa768:
     mr      r3, r30
@@ -53,7 +53,7 @@ branch_0x802aa7a8:
     mr.     r30, r3
     beq-    branch_0x802aa7d8
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x340
+    addi    r4, r2, R2Off_m0x340
     bl      __ct__10TRiccoHookFPCc
 branch_0x802aa7d8:
     mr      r3, r30
@@ -243,10 +243,10 @@ branch_0x802aaa20:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802aaa58
-    lis     r4, 0x80
+    lis     r4, unk_00800001@h
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x1
-    subi    r5, rtoc, 0x338
+    addi    r4, r4, unk_00800001@l
+    addi    r5, r2, R2Off_m0x338
     bl      __ct__11TAnimalBaseFUlPCc
 branch_0x802aaa58:
     mr      r3, r30
@@ -263,10 +263,10 @@ branch_0x802aaa60:
     mr.     r30, r3
     beq-    branch_0x802aaa9c
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x338
+    addi    r4, r2, R2Off_m0x338
     bl      __ct__18TAnimalManagerBaseFPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x4378
+    lis     r3, __vvt__11TMewManager@ha
+    addi    r0, r3, __vvt__11TMewManager@l
     stw     r0, 0x0(r30)
 branch_0x802aaa9c:
     mr      r3, r30
@@ -397,7 +397,7 @@ branch_0x802aac34:
 
 branch_0x802aac3c:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x334
+    addi    r4, r2, R2Off_m0x334
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802aac74
@@ -441,7 +441,7 @@ branch_0x802aacac:
     beq-    branch_0x802aace0
     addi    r3, r30, 0x0
     li      r4, 0x0
-    subi    r5, rtoc, 0x32c
+    addi    r5, r2, R2Off_m0x32c
     bl      __ct__12TButterfloidFiPCc
 branch_0x802aace0:
     mr      r3, r30
@@ -459,7 +459,7 @@ branch_0x802aace8:
     beq-    branch_0x802aad1c
     addi    r3, r30, 0x0
     li      r4, 0x1
-    subi    r5, rtoc, 0x324
+    addi    r5, r2, R2Off_m0x324
     bl      __ct__12TButterfloidFiPCc
 branch_0x802aad1c:
     mr      r3, r30
@@ -477,7 +477,7 @@ branch_0x802aad24:
     beq-    branch_0x802aad58
     addi    r3, r30, 0x0
     li      r4, 0x2
-    subi    r5, rtoc, 0x31c
+    addi    r5, r2, R2Off_m0x31c
     bl      __ct__12TButterfloidFiPCc
 branch_0x802aad58:
     mr      r3, r30
@@ -494,7 +494,7 @@ branch_0x802aad60:
     mr.     r30, r3
     beq-    branch_0x802aad90
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x314
+    addi    r4, r2, R2Off_m0x314
     bl      __ct__19TButterfloidManagerFPCc
 branch_0x802aad90:
     mr      r3, r30
@@ -632,8 +632,8 @@ branch_0x802aaf20:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x4cc
     bl      __ct__18TSmallEnemyManagerFPCc
-    lis     r3, 0x803c
-    subi    r0, r3, 0x3bd8
+    lis     r3, __vvt__19TEffectEnemyManager@ha
+    addi    r0, r3, __vvt__19TEffectEnemyManager@l
     stw     r0, 0x0(r30)
 branch_0x802aaf5c:
     mr      r3, r30
@@ -958,8 +958,8 @@ branch_0x802ab354:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x7bc
     bl      __ct__16TNameKuriManagerFPCc
-    lis     r3, 0x803b
-    addi    r0, r3, 0x19c8
+    lis     r3, __vvt__25TDiffusionNameKuriManager@h
+    addi    r0, r3, __vvt__25TDiffusionNameKuriManager@l
     stw     r0, 0x0(r30)
 branch_0x802ab390:
     mr      r3, r30
@@ -984,7 +984,7 @@ branch_0x802ab3c8:
 
 branch_0x802ab3d0:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x310
+    addi    r4, r2, R2Off_m0x310
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ab408
@@ -1012,8 +1012,8 @@ branch_0x802ab408:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x818
     bl      __ct__7TPakkunFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x1e30
+    lis     r3, __vvt__11TStayPakkun@h
+    addi    r3, r3, __vvt__11TStayPakkun@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -1119,8 +1119,8 @@ branch_0x802ab56c:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x8f0
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803c
-    subi    r0, r3, 0x5bc8
+    lis     r3, __vvt__19TSamboFlowerManager@ha
+    addi    r0, r3, __vvt__19TSamboFlowerManager@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
     stw     r0, 0x54(r30)
@@ -1167,7 +1167,7 @@ branch_0x802ab62c:
 
 branch_0x802ab634:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x308
+    addi    r4, r2, R2Off_m0x308
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ab66c
@@ -1176,7 +1176,7 @@ branch_0x802ab634:
     mr.     r30, r3
     beq-    branch_0x802ab664
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x300
+    addi    r4, r2, R2Off_m0x300
     bl      __ct__5TPopoFPCc
 branch_0x802ab664:
     mr      r3, r30
@@ -1218,7 +1218,7 @@ branch_0x802ab6d4:
 
 branch_0x802ab6dc:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2f8
+    addi    r4, r2, R2Off_m0x2f8
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ab714
@@ -1246,8 +1246,8 @@ branch_0x802ab714:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x9b0
     bl      __ct__6TGessoFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x90c
+    lis     r3, __vvt__10TSurfGesso@ha
+    addi    r3, r3, __vvt__10TSurfGesso@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -1268,8 +1268,8 @@ branch_0x802ab760:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x9cc
     bl      __ct__6TGessoFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0xac4
+    lis     r3, __vvt__10TLandGesso@ha
+    addi    r3, r3, __vvt__10TLandGesso@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -1364,7 +1364,7 @@ branch_0x802ab8bc:
 
 branch_0x802ab8c4:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2f0
+    addi    r4, r2, R2Off_m0x2f0
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ab8fc
@@ -1373,7 +1373,7 @@ branch_0x802ab8c4:
     mr.     r30, r3
     beq-    branch_0x802ab8f4
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2e8
+    addi    r4, r2, R2Off_m0x2e8
     bl      __ct__7TTelesaFPCc
 branch_0x802ab8f4:
     mr      r3, r30
@@ -1500,7 +1500,7 @@ branch_0x802aba7c:
 
 branch_0x802aba84:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2e0
+    addi    r4, r2, R2Off_m0x2e0
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ababc
@@ -1528,8 +1528,8 @@ branch_0x802ababc:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xb94
     bl      __ct__8TPoiHanaFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x71c0
+    lis     r3, __vvt__11TPoiHanaRed@h
+    addi    r3, r3, __vvt__11TPoiHanaRed@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -1652,8 +1652,8 @@ branch_0x802abc58:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xcb0
     bl      __ct__25TTobiPukuLaunchPadManagerFPCc
-    lis     r3, 0x803b
-    addi    r0, r3, 0x5500
+    lis     r3, __vvt__24TMoePukuLaunchPadManager@h
+    addi    r0, r3, __vvt__24TMoePukuLaunchPadManager@l
     stw     r0, 0x0(r30)
 branch_0x802abc94:
     mr      r3, r30
@@ -1672,8 +1672,8 @@ branch_0x802abc9c:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xce0
     bl      __ct__18TTobiPukuLaunchPadFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x50f8
+    lis     r3, __vvt__17TMoePukuLaunchPad@h
+    addi    r3, r3, __vvt__17TMoePukuLaunchPad@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -1711,8 +1711,8 @@ branch_0x802abd20:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xd28
     bl      __ct__16TTobiPukuManagerFPCc
-    lis     r3, 0x803b
-    addi    r0, r3, 0x5450
+    lis     r3, __vvt__15TMoePukuManager@h
+    addi    r0, r3, __vvt__15TMoePukuManager@l
     stw     r0, 0x0(r30)
 branch_0x802abd5c:
     mr      r3, r30
@@ -1737,7 +1737,7 @@ branch_0x802abd94:
 
 branch_0x802abd9c:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2d8
+    addi    r4, r2, R2Off_m0x2d8
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802abde8
@@ -1748,8 +1748,8 @@ branch_0x802abd9c:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xd58
     bl      __ct__9TTobiPukuFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x4af8
+    lis     r3, __vvt__8TMoePuku@h
+    addi    r3, r3, __vvt__8TMoePuku@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -1844,7 +1844,7 @@ branch_0x802abef8:
 
 branch_0x802abf00:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2d0
+    addi    r4, r2, R2Off_m0x2d0
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802abf38
@@ -1861,7 +1861,7 @@ branch_0x802abf30:
 
 branch_0x802abf38:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2c8
+    addi    r4, r2, R2Off_m0x2c8
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802abf70
@@ -1870,7 +1870,7 @@ branch_0x802abf38:
     mr.     r30, r3
     beq-    branch_0x802abf68
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2c0
+    addi    r4, r2, R2Off_m0x2c0
     bl      __ct__6TYumboFPCc
 branch_0x802abf68:
     mr      r3, r30
@@ -1895,7 +1895,7 @@ branch_0x802abfa0:
 
 branch_0x802abfa8:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2b8
+    addi    r4, r2, R2Off_m0x2b8
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802abfe0
@@ -1904,7 +1904,7 @@ branch_0x802abfa8:
     mr.     r30, r3
     beq-    branch_0x802abfd8
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2b0
+    addi    r4, r2, R2Off_m0x2b0
     bl      __ct__7TCannonFPCc
 branch_0x802abfd8:
     mr      r3, r30
@@ -1929,7 +1929,7 @@ branch_0x802ac010:
 
 branch_0x802ac018:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2a8
+    addi    r4, r2, R2Off_m0x2a8
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac050
@@ -1938,7 +1938,7 @@ branch_0x802ac018:
     mr.     r30, r3
     beq-    branch_0x802ac048
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x2a0
+    addi    r4, r2, R2Off_m0x2a0
     bl      __ct__8TBombHeiFPCc
 branch_0x802ac048:
     mr      r3, r30
@@ -1963,7 +1963,7 @@ branch_0x802ac080:
 
 branch_0x802ac088:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x298
+    addi    r4, r2, R2Off_m0x298
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac0c0
@@ -1972,7 +1972,7 @@ branch_0x802ac088:
     mr.     r30, r3
     beq-    branch_0x802ac0b8
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x290
+    addi    r4, r2, R2Off_m0x290
     bl      __ct__7TKillerFPCc
 branch_0x802ac0b8:
     mr      r3, r30
@@ -1997,7 +1997,7 @@ branch_0x802ac0f0:
 
 branch_0x802ac0f8:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x288
+    addi    r4, r2, R2Off_m0x288
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac130
@@ -2025,8 +2025,8 @@ branch_0x802ac130:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xef0
     bl      __ct__18TSmallEnemyManagerFPCc
-    lis     r3, 0x803b
-    addi    r0, r3, 0x34f8
+    lis     r3, __vvt__23TKageMarioModokiManager@h
+    addi    r0, r3, __vvt__23TKageMarioModokiManager@l
     stw     r0, 0x0(r30)
 branch_0x802ac16c:
     mr      r3, r30
@@ -2045,8 +2045,8 @@ branch_0x802ac174:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xf20
     bl      __ct__12TWalkerEnemyFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x3340
+    lis     r3, __vvt__16TKageMarioModoki@h
+    addi    r3, r3, __vvt__16TKageMarioModoki@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -2133,7 +2133,7 @@ branch_0x802ac2a0:
     mr.     r30, r3
     beq-    branch_0x802ac2d0
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x280
+    addi    r4, r2, R2Off_m0x280
     bl      __ct__5TSealFPCc
 branch_0x802ac2d0:
     mr      r3, r30
@@ -2169,8 +2169,8 @@ branch_0x802ac310:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x1024
     bl      __ct__9TLauncherFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0xe80
+    lis     r3, __vvt__17THamuKuriLauncher@h
+    addi    r3, r3, __vvt__17THamuKuriLauncher@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -2191,8 +2191,8 @@ branch_0x802ac35c:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x1050
     bl      __ct__16TLauncherManagerFPCc
-    lis     r3, 0x803e
-    subi    r0, r3, 0xa5c
+    lis     r3, __vvt__24THamuKuriLauncherManager@ha
+    addi    r0, r3, __vvt__24THamuKuriLauncherManager@l
     stw     r0, 0x0(r30)
 branch_0x802ac398:
     mr      r3, r30
@@ -2211,8 +2211,8 @@ branch_0x802ac3a0:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x1084
     bl      __ct__9TLauncherFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x1c40
+    lis     r3, __vvt__17TNameKuriLauncher@h
+    addi    r3, r3, __vvt__17TNameKuriLauncher@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -2233,8 +2233,8 @@ branch_0x802ac3ec:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x10b0
     bl      __ct__16TLauncherManagerFPCc
-    lis     r3, 0x803e
-    subi    r0, r3, 0xab0
+    lis     r3, __vvt__24TNameKuriLauncherManager@ha
+    addi    r0, r3, __vvt__24TNameKuriLauncherManager@l
     stw     r0, 0x0(r30)
 branch_0x802ac428:
     mr      r3, r30
@@ -2305,7 +2305,7 @@ branch_0x802ac4d8:
     addi    r4, r31, 0x1144
     bl      __ct__12TBeamManagerFPCc
 branch_0x802ac508:
-    stw     r30, -0x68f0(r13)
+    stw     r30, R13Off_m0x68f0(r13)
     mr      r3, r30
     b       branch_0x802ac7c8
 
@@ -2328,7 +2328,7 @@ branch_0x802ac544:
 
 branch_0x802ac54c:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x278
+    addi    r4, r2, R2Off_m0x278
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac584
@@ -2337,7 +2337,7 @@ branch_0x802ac54c:
     mr.     r30, r3
     beq-    branch_0x802ac57c
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x270
+    addi    r4, r2, R2Off_m0x270
     bl      __ct__6TKukkuFPCc
 branch_0x802ac57c:
     mr      r3, r30
@@ -2362,7 +2362,7 @@ branch_0x802ac5b4:
 
 branch_0x802ac5bc:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x268
+    addi    r4, r2, R2Off_m0x268
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac5f4
@@ -2396,7 +2396,7 @@ branch_0x802ac624:
 
 branch_0x802ac62c:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x260
+    addi    r4, r2, R2Off_m0x260
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac664
@@ -2430,7 +2430,7 @@ branch_0x802ac694:
 
 branch_0x802ac69c:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x258
+    addi    r4, r2, R2Off_m0x258
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac6d4
@@ -2460,8 +2460,8 @@ branch_0x802ac6d4:
     lwz     r3, 0x14(sp)
     bl      __ct__Q26JDrama6TActorFPCc
     lwz     r4, 0x14(sp)
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1cf8
+    lis     r3, __vvt__13TSimpleEffect@ha
+    addi    r3, r3, __vvt__13TSimpleEffect@l
     stw     r3, 0x0(r4)
     addi    r3, r3, 0x24
     li      r0, 0x1
@@ -2469,8 +2469,8 @@ branch_0x802ac6d4:
     addi    r3, r4, 0x48
     stb     r0, 0x44(r4)
     bl      __ct__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___Fv
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1d9c
+    lis     r3, __vvt__18TEffectPinnaFunsui@ha
+    addi    r3, r3, __vvt__18TEffectPinnaFunsui@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -2493,8 +2493,8 @@ branch_0x802ac74c:
     lwz     r3, 0x10(sp)
     bl      __ct__Q26JDrama6TActorFPCc
     lwz     r4, 0x10(sp)
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1cf8
+    lis     r3, __vvt__13TSimpleEffect@ha
+    addi    r3, r3, __vvt__13TSimpleEffect@l
     stw     r3, 0x0(r4)
     addi    r3, r3, 0x24
     li      r0, 0x1
@@ -2502,8 +2502,8 @@ branch_0x802ac74c:
     addi    r3, r4, 0x48
     stb     r0, 0x44(r4)
     bl      __ct__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___Fv
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1e40
+    lis     r3, __vvt__19TEffectBiancoFunsui@ha
+    addi    r3, r3, __vvt__19TEffectBiancoFunsui@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
@@ -2530,9 +2530,9 @@ __ct__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_
 .globl __ct__Q26JDrama6TActorFPCc
 __ct__Q26JDrama6TActorFPCc: # 0x802ac7e4
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -2541,22 +2541,22 @@ __ct__Q26JDrama6TActorFPCc: # 0x802ac7e4
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r7, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
     sth     r7, 0xc(r31)
-    addi    r0, r3, 0x2140
-    lis     r6, 0x803e
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
+    lis     r6, __vvt__Q26JStage7TObject@h
     stw     r0, 0x0(r31)
-    lis     r5, 0x803e
-    lis     r3, 0x803e
-    lfs     f1, -0x250(rtoc)
-    addi    r4, r3, 0x1920
-    addi    r6, r6, 0x4718
+    lis     r5, __vvt__Q26JStage6TActor@h
+    lis     r3, __vvt__Q26JDrama6TActor@h
+    lfs     f1, -0x250(r2)
+    addi    r4, r3, __vvt__Q26JDrama6TActor@l
+    addi    r6, r6, __vvt__Q26JStage7TObject@l
     stfs    f1, 0x10(r31)
-    addi    r5, r5, 0x4650
+    addi    r5, r5, __vvt__Q26JStage6TActor@l
     addi    r0, r4, 0x24
     stfs    f1, 0x14(r31)
     mr      r3, r31
@@ -2566,7 +2566,7 @@ __ct__Q26JDrama6TActorFPCc: # 0x802ac7e4
     stw     r5, 0x20(r31)
     stw     r4, 0x0(r31)
     stw     r0, 0x20(r31)
-    lfs     f0, -0x24c(rtoc)
+    lfs     f0, -0x24c(r2)
     stfs    f0, 0x24(r31)
     stfs    f0, 0x28(r31)
     stfs    f0, 0x2c(r31)
@@ -2592,12 +2592,12 @@ __dt__24TNameKuriLauncherManagerFv: # 0x802ac8b0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802ac908
-    lis     r3, 0x803e
-    subi    r0, r3, 0xab0
+    lis     r3, __vvt__24TNameKuriLauncherManager@ha
+    addi    r0, r3, __vvt__24TNameKuriLauncherManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802ac8f8
-    lis     r3, 0x803b
-    addi    r0, r3, 0x5d50
+    lis     r3, __vvt__16TLauncherManager@h
+    addi    r0, r3, __vvt__16TLauncherManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2627,12 +2627,12 @@ __dt__24THamuKuriLauncherManagerFv: # 0x802ac924
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802ac97c
-    lis     r3, 0x803e
-    subi    r0, r3, 0xa5c
+    lis     r3, __vvt__24THamuKuriLauncherManager@ha
+    addi    r0, r3, __vvt__24THamuKuriLauncherManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802ac96c
-    lis     r3, 0x803b
-    addi    r0, r3, 0x5d50
+    lis     r3, __vvt__16TLauncherManager@h
+    addi    r0, r3, __vvt__16TLauncherManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

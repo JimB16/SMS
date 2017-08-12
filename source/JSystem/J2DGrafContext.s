@@ -2,9 +2,9 @@
 .globl __ct__14J2DGrafContextFRC7JUTRect
 __ct__14J2DGrafContextFRC7JUTRect: # 0x802eb460
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__14J2DGrafContext@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x1448
+    addi    r0, r5, __vvt__14J2DGrafContext@l
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     addi    r31, r4, 0x0
@@ -53,9 +53,9 @@ __ct__14J2DGrafContextFRC7JUTRect: # 0x802eb460
 .globl __ct__14J2DGrafContextFiiii
 __ct__14J2DGrafContextFiiii: # 0x802eb51c
     mflr    r0
-    lis     r8, 0x803e
+    lis     r8, __vvt__14J2DGrafContext@h
     stw     r0, 0x4(sp)
-    addi    r0, r8, 0x1448
+    addi    r0, r8, __vvt__14J2DGrafContext@l
     stwu    sp, -0x58(sp)
     stmw    r27, 0x44(sp)
     addi    r28, r4, 0x0
@@ -127,11 +127,11 @@ setPort__14J2DGrafContextFv: # 0x802eb5f0
     stw     r0, 0x2c(sp)
     xoris   r3, r3, 0x8000
     xoris   r0, r6, 0x8000
-    lfd     f4, 0x300(rtoc)
+    lfd     f4, 0x300(r2)
     stw     r3, 0x1c(sp)
-    lfs     f5, 0x2f8(rtoc)
+    lfs     f5, 0x2f8(r2)
     stw     r0, 0x14(sp)
-    lfs     f6, 0x2fc(rtoc)
+    lfs     f6, 0x2fc(r2)
     stw     r5, 0x20(sp)
     stw     r5, 0x28(sp)
     lfd     f0, 0x20(sp)

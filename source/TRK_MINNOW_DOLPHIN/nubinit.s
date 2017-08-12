@@ -28,11 +28,11 @@ branch_0x8033d5e8:
 branch_0x8033d5f8:
     cmpwi   r30, 0x0
     bne-    branch_0x8033d63c
-    lis     r3, 0x8040
-    addi    r31, r3, 0x1fd4
-    lis     r3, 0x1
+    lis     r3, gTRKInputPendingPtr@h
+    addi    r31, r3, gTRKInputPendingPtr@l
+    lis     r3, unk_0000e100@ha
     addi    r6, r31, 0x0
-    subi    r3, r3, 0x1f00
+    addi    r3, r3, unk_0000e100@l
     li      r4, 0x1
     li      r5, 0x0
     bl      TRKInitializeIntDrivenUART
@@ -79,9 +79,9 @@ TRKTerminateNub: # 0x8033d678
 .globl TRKNubWelcome
 TRKNubWelcome: # 0x8033d69c
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803ab558@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x4aa8
+    addi    r3, r3, unk_803ab558@l
     stwu    sp, -0x8(sp)
     bl      TRK_board_display
     addi    sp, sp, 0x8
@@ -92,9 +92,9 @@ TRKNubWelcome: # 0x8033d69c
 
 .globl TRKInitializeEndian
 TRKInitializeEndian: # 0x8033d6c4
-    lis     r3, 0x8040
+    lis     r3, gTRKBigEndian@h
     stwu    sp, -0x10(sp)
-    addi    r5, r3, 0x608
+    addi    r5, r3, gTRKBigEndian@l
     li      r6, 0x1
     stw     r6, 0x0(r5)
     li      r0, 0x12

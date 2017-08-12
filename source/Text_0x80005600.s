@@ -1,5 +1,10 @@
 
-.include "source/Ram_2.s"
+# .include "source/Ram_2.s"
+.include "source/macros.s"
+.include "source/offsets.s"
+.include "source/constants.s"
+.include "source/values.s"
+
 
 /* start at 0x2540 */
 

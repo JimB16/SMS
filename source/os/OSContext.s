@@ -222,7 +222,7 @@ OSSaveContext: # 0x80343f64
     mfxer   r0
     stw     r0, 0x8c(r3)
     stw     sp, 0x4(r3)
-    stw     rtoc, 0x8(r3)
+    stw     r2, 0x8(r3)
     li      r0, 0x1
     stw     r0, 0xc(r3)
     li      r3, 0x0
@@ -231,20 +231,20 @@ OSSaveContext: # 0x80343f64
 
 .globl OSLoadContext
 OSLoadContext: # 0x80343fe4
-    lis     r4, 0x8034
+    lis     r4, OSDisableInterrupts@h
     lwz     r6, 0x198(r3)
-    addi    r5, r4, 0x58ac
+    addi    r5, r4, OSDisableInterrupts@l
     cmplw   r6, r5
     blt-    branch_0x8034400c
-    lis     r4, 0x8034
-    addi    r0, r4, 0x58bc
+    lis     r4, unk_803458bc@h
+    addi    r0, r4, unk_803458bc@l
     cmplw   r6, r0
     bgt-    branch_0x8034400c
     stw     r5, 0x198(r3)
 branch_0x8034400c:
     lwz     r0, 0x0(r3)
     lwz     sp, 0x4(r3)
-    lwz     rtoc, 0x8(r3)
+    lwz     r2, 0x8(r3)
     lhz     r4, 0x1a2(r3)
     rlwinm. r5, r4, 0, 30, 30
     beq-    branch_0x80344034
@@ -321,7 +321,7 @@ OSInitContext: # 0x803440e8
     li      r0, 0x0
     stw     r0, 0x80(r3)
     stw     r0, 0x8c(r3)
-    stw     rtoc, 0x8(r3)
+    stw     r2, 0x8(r3)
     stw     r13, 0x34(r3)
     stw     r0, 0xc(r3)
     stw     r0, 0x10(r3)
@@ -369,9 +369,9 @@ OSDumpContext: # 0x803441a4
     stwu    sp, -0x2f8(sp)
     stmw    r25, 0x2dc(sp)
     mr      r28, r3
-    lis     r3, 0x803e
+    lis     r3, unk_803e7148@h
     crxor   6, 6, 6
-    addi    r31, r3, 0x7148
+    addi    r31, r3, unk_803e7148@l
     mr      r3, r31
     mr      r4, r28
     bl      OSReport
@@ -615,16 +615,16 @@ __OSContextInit: # 0x803444d0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lis     r3, 0x8034
-    addi    r4, r3, 0x444c
+    lis     r3, OSSwitchFPUContext@h
+    addi    r4, r3, OSSwitchFPUContext@l
     li      r3, 0x7
     bl      __OSSetExceptionHandler
     li      r0, 0x0
     crxor   6, 6, 6
     lis     r4, 0x8000
-    lis     r3, 0x803e
+    lis     r3, unk_803e72fc@h
     stw     r0, 0xd8(r4)
-    addi    r3, r3, 0x72fc
+    addi    r3, r3, unk_803e72fc@l
     bl      DBPrintf
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8

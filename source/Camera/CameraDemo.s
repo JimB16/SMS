@@ -32,7 +32,7 @@ execDeadDemoProc___15CPolarSubCameraFv: # 0x8003266c
     lhz     r4, 0x27c(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x800326b4
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     sth     r0, 0x27c(r3)
     lhz     r0, 0x27c(r3)
     cmplwi  r0, 0x0
@@ -51,9 +51,9 @@ execDeadDemoProc___15CPolarSubCameraFv: # 0x8003266c
     blr
 
 branch_0x800326b4:
-    lwz     r4, MarioFlags(r13)
+    lwz     r4, R13Off_m0x6094(r13)
     lwz     r0, 0x0(r4)
-    rlwinm. r0, r0, 0, 21, 21 # MARIOFLAG_400
+    rlwinm. r0, r0, 0, 21, 21
     beq-    branch_0x800326cc
     li      r0, 0x1
     b       branch_0x800326d0
@@ -64,7 +64,7 @@ branch_0x800326d0:
     clrlwi. r0, r0, 24
     beqlr-    
 
-    lwz     r6, gpMarDirector(r13)
+    lwz     r6, R13Off_m0x6048(r13)
     li      r4, 0x1
     addi    r5, r4, 0x0
     lbz     r0, 0x124(r6)
@@ -106,36 +106,36 @@ ctrlNormalDeadDemo___15CPolarSubCameraFv: # 0x80032740
     addi    r4, r31, 0x10
     stw     r30, 0x48(sp)
     addi    r5, r31, 0x8c
-    lwz     r6, -0x7110(r13)
+    lwz     r6, R13Off_m0x7110(r13)
     lfs     f0, 0x0(r6)
     stfs    f0, 0x8c(r3)
     lfs     f0, 0x4(r6)
     stfs    f0, 0x90(r3)
     lfs     f0, 0x8(r6)
     stfs    f0, 0x94(r3)
-    lwz     r6, MarioHitActorPos(r13)
+    lwz     r6, R13Off_m0x60b4(r13)
     lwz     r3, 0x6c(r3)
     bl      execCameraInbetween__16TCameraInbetweenFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     lwz     r4, 0x6c(r31)
     addi    r3, r31, 0x3c
-    lfs     f2, -0x7568(rtoc)
+    lfs     f2, -0x7568(r2)
     addi    r30, r4, 0x24
-    lfs     f3, -0x7564(rtoc)
+    lfs     f3, -0x7564(r2)
     lfs     f1, 0x24(r4)
     bl      CLBChaseDecrease__FPffff
     lfs     f1, 0x4(r30)
     addi    r3, r31, 0x40
-    lfs     f2, -0x7568(rtoc)
-    lfs     f3, -0x7564(rtoc)
+    lfs     f2, -0x7568(r2)
+    lfs     f3, -0x7564(r2)
     bl      CLBChaseDecrease__FPffff
     lfs     f1, 0x8(r30)
     addi    r3, r31, 0x44
-    lfs     f2, -0x7568(rtoc)
-    lfs     f3, -0x7564(rtoc)
+    lfs     f2, -0x7568(r2)
+    lfs     f3, -0x7564(r2)
     bl      CLBChaseDecrease__FPffff
-    lwz     r3, MarioActor(r13)
-    lwz     r0, MarioActor_Flags(r3)
-    rlwinm. r0, r0, 0, 19, 19 # MARIOFLAG_1000
+    lwz     r3, R13Off_m0x60d8(r13)
+    lwz     r0, 0x118(r3)
+    rlwinm. r0, r0, 0, 19, 19
     beq-    branch_0x800327e4
     li      r0, 0x1
     b       branch_0x800327e8
@@ -148,7 +148,7 @@ branch_0x800327e8:
     lhz     r3, 0x27e(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x8003281c
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x27e(r31)
     lhz     r0, 0x27e(r31)
     cmplwi  r0, 0x0
@@ -161,7 +161,7 @@ branch_0x8003281c:
     lhz     r3, 0x280(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x800328cc
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x280(r31)
     addi    r3, sp, 0x30
     lfs     f1, 0x3c(r31)
@@ -177,13 +177,13 @@ branch_0x8003281c:
     fsubs   f0, f1, f0
     stfs    f0, 0x38(sp)
     bl      MsVECMag2__FP3Vec
-    lfs     f0, -0x7560(rtoc)
+    lfs     f0, -0x7560(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800328cc
-    lfs     f0, -0x7558(rtoc)
-    lfs     f2, -0x755c(rtoc)
+    lfs     f0, -0x7558(r2)
+    lfs     f2, -0x755c(r2)
     fdivs   f1, f0, f1
-    lfs     f0, -0x7554(rtoc)
+    lfs     f0, -0x7554(r2)
     fmuls   f1, f2, f1
     fcmpo   cr0, f1, f0
     ble-    branch_0x80032898
@@ -191,14 +191,14 @@ branch_0x8003281c:
     b       branch_0x800328a8
 
 branch_0x80032898:
-    lfs     f0, -0x7550(rtoc)
+    lfs     f0, -0x7550(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800328a8
     fmr     f1, f0
 branch_0x800328a8:
     lhz     r3, 0x280(r31)
     lis     r0, 0x4330
-    lfd     f2, -0x7548(rtoc)
+    lfd     f2, -0x7548(r2)
     stw     r3, 0x44(sp)
     addi    r3, r31, 0x48
     stw     r0, 0x40(sp)
@@ -407,7 +407,7 @@ branch_0x80032b38:
     mr      r3, r26
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     mr      r4, r3
-    lwz     r3, -0x70c0(r13)
+    lwz     r3, R13Off_m0x70c0(r13)
     mr      r5, r26
     lwz     r12, 0x0(r3)
     lwz     r12, 0x1c(r12)
@@ -463,14 +463,14 @@ startGateDemoCamera__15CPolarSubCameraFPCQ26JDrama6TActor: # 0x80032bdc
     addi    r30, r3, 0x0
     addi    r3, sp, 0x14
     lwz     r6, 0x4(r4)
-    lis     r4, 0x8037
-    addi    r5, r4, 0x5ad8
+    lis     r4, unk_80375ad8@h
+    addi    r5, r4, unk_80375ad8@l
     li      r4, 0x80
     bl      snprintf
     addi    r3, sp, 0x14
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     mr      r4, r3
-    lwz     r3, -0x70c0(r13)
+    lwz     r3, R13Off_m0x70c0(r13)
     addi    r5, sp, 0x14
     lwz     r12, 0x0(r3)
     lwz     r12, 0x1c(r12)
@@ -490,7 +490,7 @@ startGateDemoCamera__15CPolarSubCameraFPCQ26JDrama6TActor: # 0x80032bdc
     ori     r0, r0, 0x200
     sth     r0, 0x64(r30)
     lwz     r3, 0x2b0(r30)
-    lwz     r4, -0x7fd0(r13)
+    lwz     r4, R13Off_m0x7fd0(r13)
     bl      startDemo__10TCameraBckFPCcPCQ29JGeometry8TVec3_f_
     lwz     r3, 0x2b0(r30)
     bl      getTotalDemoFrames__10TCameraBckCFv
@@ -498,9 +498,9 @@ startGateDemoCamera__15CPolarSubCameraFPCQ26JDrama6TActor: # 0x80032bdc
     stw     r3, 0x10(r4)
     stw     r3, 0x14(r4)
 branch_0x80032c8c:
-    lis     r3, 0x8037
+    lis     r3, unk_80375ae4@h
     lwz     r6, 0x4(r31)
-    addi    r5, r3, 0x5ae4
+    addi    r5, r3, unk_80375ae4@l
     crxor   6, 6, 6
     addi    r3, sp, 0x14
     li      r4, 0x80
@@ -508,7 +508,7 @@ branch_0x80032c8c:
     addi    r3, sp, 0x14
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     mr      r4, r3
-    lwz     r3, -0x70c0(r13)
+    lwz     r3, R13Off_m0x70c0(r13)
     addi    r5, sp, 0x14
     lwz     r12, 0x0(r3)
     lwz     r12, 0x1c(r12)
@@ -550,7 +550,7 @@ updateGateDemoCamera___15CPolarSubCameraFv: # 0x80032cf4
     cmpwi   r3, 0x0
     ble-    branch_0x80032d70
     xoris   r0, r3, 0x8000
-    lfd     f2, -0x7540(rtoc)
+    lfd     f2, -0x7540(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
     lfs     f1, 0x1c(sp)
@@ -622,14 +622,14 @@ branch_0x80032e18:
     addi    r7, r30, 0x48
     bl      updateDemo__10TCameraBckFPQ29JGeometry8TVec3_f_PQ29JGeometry8TVec3_f_PQ29JGeometry8TVec3_f_Pf
     lwz     r3, 0x2b4(r30)
-    lfs     f0, -0x7564(rtoc)
+    lfs     f0, -0x7564(r2)
     lfs     f1, 0x4(r3)
     fcmpu   cr0, f0, f1
     beq-    branch_0x8003306c
-    lfs     f0, -0x7538(rtoc)
+    lfs     f0, -0x7538(r2)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
-    lfs     f0, -0x7564(rtoc)
+    lfs     f0, -0x7564(r2)
     stfs    f0, 0xa0(sp)
     stfs    f0, 0xa4(sp)
     stfs    f0, 0xa8(sp)
@@ -659,12 +659,12 @@ branch_0x80032e90:
     fsubs   f0, f1, f31
     stfs    f2, 0x98(sp)
     stfs    f0, 0x9c(sp)
-    lwz     r5, -0x5eac(r13)
-    lwz     r0, -0x5ea8(r13)
+    lwz     r5, R13Off_m0x5eac(r13)
+    lwz     r0, R13Off_m0x5ea8(r13)
     sraw    r5, r31, r5
     lfs     f4, 0x94(sp)
     slwi    r6, r5, 2
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     add     r7, r0, r6
     lfs     f1, 0x9c(sp)
     lfs     f0, 0x0(r7)
@@ -705,12 +705,12 @@ branch_0x80032e90:
     stfs    f0, 0x88(sp)
     stfs    f1, 0x8c(sp)
     stfs    f2, 0x90(sp)
-    lwz     r5, -0x5eac(r13)
-    lwz     r0, -0x5ea8(r13)
+    lwz     r5, R13Off_m0x5eac(r13)
+    lwz     r0, R13Off_m0x5ea8(r13)
     sraw    r5, r31, r5
     lfs     f4, 0x88(sp)
     slwi    r6, r5, 2
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     add     r7, r0, r6
     lfs     f1, 0x90(sp)
     lfs     f0, 0x0(r7)
@@ -739,25 +739,25 @@ branch_0x80032e90:
     stw     r0, 0x14c(r30)
     lwz     r0, 0x54(sp)
     stw     r0, 0x150(r30)
-    lwz     r0, -0x5eac(r13)
-    lwz     r3, -0x5ea8(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     sraw    r0, r31, r0
     lfs     f2, 0x30(r30)
     slwi    r0, r0, 2
     lfs     f1, 0x38(r30)
     lfsx    f0, r3, r0
     fneg    f3, f2
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     fmuls   f0, f1, f0
     lfsx    f1, r3, r0
     fmadds  f0, f2, f1, f0
     stfs    f0, 0x30(r30)
-    lwz     r0, -0x5eac(r13)
-    lwz     r3, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     sraw    r0, r31, r0
     lfs     f1, 0x38(r30)
     slwi    r0, r0, 2
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     lfsx    f0, r3, r0
     lfsx    f2, r4, r0
     fmuls   f0, f1, f0
@@ -783,7 +783,7 @@ branch_0x800330a0:
     lwz     r3, 0x14(r3)
     cmpwi   r3, 0x0
     ble-    branch_0x8003310c
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x0(r4)
     lwz     r3, 0x2b4(r30)
     lwz     r0, 0x14(r3)

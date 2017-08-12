@@ -22,30 +22,30 @@ THPVideoDecode: # 0x8036b644
     bl      PPCMfhid2
     rlwinm. r0, r3, 0, 3, 3
     beq-    branch_0x8036b868
-    lwz     r0, -0x562c(r13)
+    lwz     r0, R13Off_m0x562c(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8036b870
-    stw     r31, -0x5634(r13)
+    stw     r31, R13Off_m0x5634(r13)
     li      r4, 0x6bc
-    lwz     r3, -0x5634(r13)
+    lwz     r3, R13Off_m0x5634(r13)
     addi    r0, r3, 0x1f
     clrrwi  r3, r0, 5
-    stw     r3, -0x5630(r13)
+    stw     r3, R13Off_m0x5630(r13)
     addi    r0, r3, 0x6bc
-    stw     r0, -0x5634(r13)
-    lwz     r3, -0x5630(r13)
+    stw     r0, R13Off_m0x5634(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     bl      DCZeroRange
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r4, 0x21
     li      r0, 0x0
     stw     r4, 0x6a4(r3)
     li      r31, 0x0
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     sth     r0, 0x698(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     stw     r27, 0x69c(r3)
 branch_0x8036b6f0:
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x69c(r4)
@@ -59,7 +59,7 @@ branch_0x8036b710:
     addi    r0, r3, 0x1
     stw     r0, 0x0(r4)
 branch_0x8036b71c:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     addi    r4, r3, 0x69c
     lwz     r3, 0x69c(r3)
     lbz     r0, 0x0(r3)
@@ -127,7 +127,7 @@ branch_0x8036b7ec:
     cmplwi  r0, 0xfe
     bne-    branch_0x8036b850
 branch_0x8036b7f4:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x69c(r3)
     addi    r5, r3, 0x69c
     lbz     r3, 0x0(r4)
@@ -186,9 +186,9 @@ branch_0x8036b874:
 
 .globl __THPSetupBuffers
 __THPSetupBuffers: # 0x8036b888
-    lwz     r4, -0x5634(r13)
-    lis     r3, 0x8040
-    addi    r5, r3, 0x4278
+    lwz     r4, R13Off_m0x5634(r13)
+    lis     r3, __THPMCUBuffer@h
+    addi    r5, r3, __THPMCUBuffer@l
     addi    r0, r4, 0x1f
     clrrwi  r6, r0, 5
     stw     r6, 0x0(r5)
@@ -207,11 +207,11 @@ __THPSetupBuffers: # 0x8036b888
 
 .globl __THPReadFrameHeader
 __THPReadFrameHeader: # 0x8036b8cc
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x2
     stw     r0, 0x69c(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x69c(r4)
@@ -222,27 +222,27 @@ __THPReadFrameHeader: # 0x8036b8cc
     blr
 
 branch_0x8036b900:
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lwz     r4, 0x69c(r5)
     lbz     r3, 0x0(r4)
     lbz     r0, 0x1(r4)
     insrwi  r0, r3, 8, 16
     sth     r0, 0x694(r5)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x2
     stw     r0, 0x69c(r4)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lwz     r4, 0x69c(r5)
     lbz     r3, 0x0(r4)
     lbz     r0, 0x1(r4)
     insrwi  r0, r3, 8, 16
     sth     r0, 0x692(r5)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x2
     stw     r0, 0x69c(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x69c(r4)
@@ -258,12 +258,12 @@ branch_0x8036b974:
     b       branch_0x8036b9f4
 
 branch_0x8036b980:
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     clrlwi. r0, r7, 24
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x69c(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x69c(r4)
@@ -281,7 +281,7 @@ branch_0x8036b9c4:
     blr
 
 branch_0x8036b9cc:
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     addi    r0, r6, 0x680
     addi    r6, r6, 0x6
     lwz     r4, 0x69c(r5)
@@ -289,7 +289,7 @@ branch_0x8036b9cc:
     addi    r3, r4, 0x1
     stw     r3, 0x69c(r5)
     lbz     r4, 0x0(r4)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     stbx    r4, r3, r0
 branch_0x8036b9f4:
     clrlwi  r0, r7, 24
@@ -301,11 +301,11 @@ branch_0x8036b9f4:
 
 .globl __THPReadScaneHeader
 __THPReadScaneHeader: # 0x8036ba08
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x2
     stw     r0, 0x69c(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x69c(r4)
@@ -321,26 +321,26 @@ branch_0x8036ba3c:
     b       branch_0x8036bacc
 
 branch_0x8036ba48:
-    lwz     r6, -0x5630(r13)
+    lwz     r6, R13Off_m0x5630(r13)
     addi    r0, r8, 0x681
     addi    r4, r8, 0x682
     lwz     r5, 0x69c(r6)
     li      r3, 0x1
     addi    r5, r5, 0x1
     stw     r5, 0x69c(r6)
-    lwz     r7, -0x5630(r13)
+    lwz     r7, R13Off_m0x5630(r13)
     lwz     r6, 0x69c(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x69c(r7)
     lbz     r7, 0x0(r6)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     srawi   r6, r7, 4
     stbx    r6, r5, r0
     clrlwi  r7, r7, 28
     slw     r0, r3, r6
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     stbx    r7, r5, r4
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lbz     r4, 0x6a8(r4)
     and.    r0, r4, r0
     bne-    branch_0x8036baac
@@ -362,23 +362,23 @@ branch_0x8036bacc:
     clrlwi  r0, r9, 24
     cmplwi  r0, 0x3
     blt+    branch_0x8036ba48
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     li      r0, 0x0
     li      r3, 0x0
     lwz     r4, 0x69c(r5)
     addi    r4, r4, 0x3
     stw     r4, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lhz     r4, 0x692(r5)
     addi    r4, r4, 0xf
     srawi   r4, r4, 4
     addze   r4, r4
     sth     r4, 0x696(r5)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     sth     r0, 0x684(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     sth     r0, 0x68a(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     sth     r0, 0x690(r4)
     blr
 
@@ -386,11 +386,11 @@ branch_0x8036bacc:
 .globl __THPReadQuantizationTable
 __THPReadQuantizationTable: # 0x8036bb24
     stwu    sp, -0x188(sp)
-    lis     r4, 0x803b
-    subi    r4, r4, 0x4a38
+    lis     r4, unk_803ab5c8@ha
+    addi    r4, r4, unk_803ab5c8@l
     stmw    r21, 0x15c(sp)
     addi    r6, r4, 0x50
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r5, 0x69c(r3)
     addi    r8, r3, 0x69c
     addi    r3, sp, 0x14
@@ -401,10 +401,10 @@ __THPReadQuantizationTable: # 0x8036bb24
     stw     r0, 0x0(r8)
     clrlwi  r7, r5, 16
     lis     r0, 0x4330
-    lfd     f0, 0xc28(rtoc)
-    subi    r7, r7, 0x2
+    lfd     f0, 0xc28(r2)
+    addi    r7, r7, -0x2
 branch_0x8036bb6c:
-    lwz     r11, -0x5630(r13)
+    lwz     r11, R13Off_m0x5630(r13)
     addi    r5, r4, 0x0
     li      r9, 0x0
     lwz     r10, 0x69c(r11)
@@ -414,7 +414,7 @@ branch_0x8036bb6c:
     b       branch_0x8036bd4c
 
 branch_0x8036bb8c:
-    lwz     r30, -0x5630(r13)
+    lwz     r30, R13Off_m0x5630(r13)
     addi    r28, r9, 0x1
     addi    r29, r9, 0x2
     lwz     r27, 0x69c(r30)
@@ -436,7 +436,7 @@ branch_0x8036bb8c:
     lfd     f1, 0x150(sp)
     fsubs   f1, f1, f0
     stfsx   f1, r3, r27
-    lwz     r27, -0x5630(r13)
+    lwz     r27, R13Off_m0x5630(r13)
     lwz     r31, 0x69c(r27)
     addi    r30, r31, 0x1
     stw     r30, 0x69c(r27)
@@ -448,7 +448,7 @@ branch_0x8036bb8c:
     lfd     f1, 0x148(sp)
     fsubs   f1, f1, f0
     stfsx   f1, r3, r28
-    lwz     r28, -0x5630(r13)
+    lwz     r28, R13Off_m0x5630(r13)
     lwz     r31, 0x69c(r28)
     addi    r30, r31, 0x1
     stw     r30, 0x69c(r28)
@@ -460,7 +460,7 @@ branch_0x8036bb8c:
     lfd     f1, 0x140(sp)
     fsubs   f1, f1, f0
     stfsx   f1, r3, r29
-    lwz     r31, -0x5630(r13)
+    lwz     r31, R13Off_m0x5630(r13)
     lwz     r30, 0x69c(r31)
     addi    r29, r30, 0x1
     stw     r29, 0x69c(r31)
@@ -472,7 +472,7 @@ branch_0x8036bb8c:
     lfd     f1, 0x138(sp)
     fsubs   f1, f1, f0
     stfsx   f1, r3, r12
-    lwz     r30, -0x5630(r13)
+    lwz     r30, R13Off_m0x5630(r13)
     lwz     r29, 0x69c(r30)
     addi    r12, r29, 0x1
     stw     r12, 0x69c(r30)
@@ -484,7 +484,7 @@ branch_0x8036bb8c:
     lfd     f1, 0x130(sp)
     fsubs   f1, f1, f0
     stfsx   f1, r3, r11
-    lwz     r29, -0x5630(r13)
+    lwz     r29, R13Off_m0x5630(r13)
     lwz     r12, 0x69c(r29)
     addi    r11, r12, 0x1
     stw     r11, 0x69c(r29)
@@ -496,7 +496,7 @@ branch_0x8036bb8c:
     lfd     f1, 0x128(sp)
     fsubs   f1, f1, f0
     stfsx   f1, r3, r10
-    lwz     r30, -0x5630(r13)
+    lwz     r30, R13Off_m0x5630(r13)
     addi    r11, r9, 0x6
     addi    r10, r9, 0x7
     lwz     r29, 0x69c(r30)
@@ -514,7 +514,7 @@ branch_0x8036bb8c:
     lfd     f1, 0x120(sp)
     fsubs   f1, f1, f0
     stfsx   f1, r3, r11
-    lwz     r29, -0x5630(r13)
+    lwz     r29, R13Off_m0x5630(r13)
     lwz     r12, 0x69c(r29)
     addi    r11, r12, 0x1
     stw     r11, 0x69c(r29)
@@ -530,7 +530,7 @@ branch_0x8036bd4c:
     clrlwi  r10, r9, 16
     cmplwi  r10, 0x40
     blt+    branch_0x8036bb8c
-    lwz     r29, -0x5630(r13)
+    lwz     r29, R13Off_m0x5630(r13)
     addi    r27, r6, 0x0
     slwi    r28, r8, 8
     li      r5, 0x0
@@ -624,7 +624,7 @@ branch_0x8036beb8:
     clrlwi  r9, r8, 16
     cmplwi  r9, 0x8
     blt+    branch_0x8036bd70
-    subi    r7, r7, 0x41
+    addi    r7, r7, -0x41
     clrlwi. r5, r7, 16
     bne+    branch_0x8036bb6c
     lmw     r21, 0x15c(sp)
@@ -641,12 +641,12 @@ __THPReadHuffmanTableSpecification: # 0x8036bee0
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
-    lwz     r4, -0x5634(r13)
-    lwz     r3, -0x5630(r13)
+    lwz     r4, R13Off_m0x5634(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     addi    r0, r4, 0x101
-    stw     r4, -0x5698(r13)
+    stw     r4, R13Off_m0x5698(r13)
     addi    r5, r3, 0x69c
-    stw     r0, -0x5694(r13)
+    stw     r0, R13Off_m0x5694(r13)
     lwz     r3, 0x69c(r3)
     lbz     r4, 0x0(r3)
     addi    r0, r3, 0x2
@@ -654,68 +654,68 @@ __THPReadHuffmanTableSpecification: # 0x8036bee0
     insrwi  r3, r4, 8, 16
     clrlwi  r30, r3, 16
     stw     r0, 0x0(r5)
-    subi    r30, r30, 0x2
+    addi    r30, r30, -0x2
 branch_0x8036bf30:
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     li      r29, 0x0
     li      r3, 0x0
     lwz     r4, 0x69c(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
     lbz     r6, 0x0(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     srawi   r0, r6, 4
     lwz     r5, 0x69c(r4)
     clrlslwi  r4, r6, 28, 1
     clrlwi  r0, r0, 24
     add     r0, r4, r0
-    stw     r5, -0x569c(r13)
+    stw     r5, R13Off_m0x569c(r13)
     clrlwi  r31, r0, 24
     b       branch_0x8036c034
 
 branch_0x8036bf70:
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     addi    r3, r3, 0x8
     lwz     r4, 0x69c(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x0(r4)
     lwz     r4, 0x69c(r5)
     add     r29, r29, r0
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x0(r4)
     lwz     r4, 0x69c(r5)
     add     r29, r29, r0
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x0(r4)
     lwz     r4, 0x69c(r5)
     add     r29, r29, r0
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x0(r4)
     lwz     r4, 0x69c(r5)
     add     r29, r29, r0
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x0(r4)
     lwz     r4, 0x69c(r5)
     add     r29, r29, r0
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x0(r4)
     lwz     r4, 0x69c(r5)
     add     r29, r29, r0
     addi    r0, r4, 0x1
     stw     r0, 0x69c(r5)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x0(r4)
     lwz     r4, 0x69c(r5)
     add     r29, r29, r0
@@ -728,12 +728,12 @@ branch_0x8036c034:
     cmplwi  r0, 0x10
     blt+    branch_0x8036bf70
     mulli   r3, r31, 0xe0
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lwz     r4, 0x69c(r5)
     addi    r0, r3, 0x340
     stwx    r4, r5, r0
     clrlwi  r0, r29, 16
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     add     r0, r3, r0
     stw     r0, 0x69c(r4)
@@ -741,7 +741,7 @@ branch_0x8036c034:
     bl      __THPHuffGenerateCodeTable
     mr      r3, r31
     bl      __THPHuffGenerateDecoderTables
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     addi    r0, r29, 0x11
     subf    r30, r0, r30
     li      r0, 0x1
@@ -766,8 +766,8 @@ __THPHuffGenerateSizeTable: # 0x8036c0c0
     li      r6, 0x0
     li      r7, 0x1
 branch_0x8036c0c8:
-    lwz     r3, -0x569c(r13)
-    subi    r0, r7, 0x1
+    lwz     r3, R13Off_m0x569c(r13)
+    addi    r0, r7, -0x1
     clrlwi  r5, r7, 24
     lbzx    r8, r3, r0
     cmpwi   r8, 0x0
@@ -777,37 +777,37 @@ branch_0x8036c0c8:
     mtctr   r0
     beq-    branch_0x8036c17c
 branch_0x8036c0f0:
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     mr      r0, r6
     addi    r6, r6, 0x1
     stbx    r5, r4, r0
     addi    r0, r6, 0x0
     addi    r6, r6, 0x1
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     stbx    r5, r4, r0
     addi    r0, r6, 0x0
     addi    r6, r6, 0x1
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     stbx    r5, r4, r0
     addi    r0, r6, 0x0
     addi    r6, r6, 0x1
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     stbx    r5, r4, r0
     addi    r0, r6, 0x0
     addi    r6, r6, 0x1
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     stbx    r5, r4, r0
     addi    r0, r6, 0x0
     addi    r6, r6, 0x1
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     stbx    r5, r4, r0
     addi    r0, r6, 0x0
     addi    r6, r6, 0x1
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     stbx    r5, r4, r0
     addi    r0, r6, 0x0
     addi    r6, r6, 0x1
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     stbx    r5, r4, r0
     bdnz+      branch_0x8036c0f0
     andi.   r3, r3, 0x7
@@ -815,7 +815,7 @@ branch_0x8036c0f0:
 branch_0x8036c17c:
     mtctr   r3
 branch_0x8036c180:
-    lwz     r4, -0x5698(r13)
+    lwz     r4, R13Off_m0x5698(r13)
     mr      r0, r6
     addi    r6, r6, 0x1
     stbx    r5, r4, r0
@@ -824,7 +824,7 @@ branch_0x8036c194:
     addi    r7, r7, 0x1
     cmpwi   r7, 0x10
     ble+    branch_0x8036c0c8
-    lwz     r3, -0x5698(r13)
+    lwz     r3, R13Off_m0x5698(r13)
     li      r0, 0x0
     stbx    r0, r3, r6
     blr
@@ -832,9 +832,9 @@ branch_0x8036c194:
 
 .globl __THPHuffGenerateCodeTable
 __THPHuffGenerateCodeTable: # 0x8036c1b0
-    lwz     r6, -0x5698(r13)
+    lwz     r6, R13Off_m0x5698(r13)
     li      r8, 0x0
-    lwz     r5, -0x5694(r13)
+    lwz     r5, R13Off_m0x5694(r13)
     li      r9, 0x0
     lbz     r7, 0x0(r6)
     li      r3, 0x1
@@ -869,7 +869,7 @@ branch_0x8036c204:
 .globl __THPHuffGenerateDecoderTables
 __THPHuffGenerateDecoderTables: # 0x8036c218
     clrlwi  r0, r3, 24
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     mulli   r3, r0, 0xe0
     addi    r7, r3, 0x300
     li      r0, 0x4
@@ -879,22 +879,22 @@ __THPHuffGenerateDecoderTables: # 0x8036c218
     li      r8, 0x0
     li      r9, 0x1
 branch_0x8036c240:
-    lwz     r3, -0x569c(r13)
-    subi    r5, r9, 0x1
+    lwz     r3, R13Off_m0x569c(r13)
+    addi    r5, r9, -0x1
     lbzx    r0, r3, r5
     cmplwi  r0, 0x0
     beq-    branch_0x8036c28c
-    lwz     r3, -0x5694(r13)
+    lwz     r3, R13Off_m0x5694(r13)
     slwi    r0, r8, 1
     lhzx    r0, r3, r0
     subf    r0, r0, r8
     stw     r0, 0x8c(r6)
-    lwz     r3, -0x569c(r13)
-    lwz     r4, -0x5694(r13)
+    lwz     r3, R13Off_m0x569c(r13)
+    lwz     r4, R13Off_m0x5694(r13)
     lbzx    r0, r3, r5
     add     r8, r8, r0
     slwi    r3, r8, 1
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     lhzx    r0, r4, r0
     stw     r0, 0x44(r6)
     b       branch_0x8036c298
@@ -904,24 +904,24 @@ branch_0x8036c28c:
     stw     r0, 0x44(r6)
     stw     r0, 0x8c(r6)
 branch_0x8036c298:
-    lwz     r3, -0x569c(r13)
+    lwz     r3, R13Off_m0x569c(r13)
     addi    r5, r9, 0x0
     addi    r9, r9, 0x1
     lbzx    r0, r3, r5
     addi    r6, r6, 0x4
     cmplwi  r0, 0x0
     beq-    branch_0x8036c2ec
-    lwz     r3, -0x5694(r13)
+    lwz     r3, R13Off_m0x5694(r13)
     slwi    r0, r8, 1
     lhzx    r0, r3, r0
     subf    r0, r0, r8
     stw     r0, 0x8c(r6)
-    lwz     r3, -0x569c(r13)
-    lwz     r4, -0x5694(r13)
+    lwz     r3, R13Off_m0x569c(r13)
+    lwz     r4, R13Off_m0x5694(r13)
     lbzx    r0, r3, r5
     add     r8, r8, r0
     slwi    r3, r8, 1
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     lhzx    r0, r4, r0
     stw     r0, 0x44(r6)
     b       branch_0x8036c2f8
@@ -931,24 +931,24 @@ branch_0x8036c2ec:
     stw     r0, 0x44(r6)
     stw     r0, 0x8c(r6)
 branch_0x8036c2f8:
-    lwz     r3, -0x569c(r13)
+    lwz     r3, R13Off_m0x569c(r13)
     addi    r5, r9, 0x0
     addi    r9, r9, 0x1
     lbzx    r0, r3, r5
     addi    r6, r6, 0x4
     cmplwi  r0, 0x0
     beq-    branch_0x8036c34c
-    lwz     r3, -0x5694(r13)
+    lwz     r3, R13Off_m0x5694(r13)
     slwi    r0, r8, 1
     lhzx    r0, r3, r0
     subf    r0, r0, r8
     stw     r0, 0x8c(r6)
-    lwz     r3, -0x569c(r13)
-    lwz     r4, -0x5694(r13)
+    lwz     r3, R13Off_m0x569c(r13)
+    lwz     r4, R13Off_m0x5694(r13)
     lbzx    r0, r3, r5
     add     r8, r8, r0
     slwi    r3, r8, 1
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     lhzx    r0, r4, r0
     stw     r0, 0x44(r6)
     b       branch_0x8036c358
@@ -958,24 +958,24 @@ branch_0x8036c34c:
     stw     r0, 0x44(r6)
     stw     r0, 0x8c(r6)
 branch_0x8036c358:
-    lwz     r3, -0x569c(r13)
+    lwz     r3, R13Off_m0x569c(r13)
     addi    r5, r9, 0x0
     addi    r9, r9, 0x1
     lbzx    r0, r3, r5
     addi    r6, r6, 0x4
     cmplwi  r0, 0x0
     beq-    branch_0x8036c3ac
-    lwz     r3, -0x5694(r13)
+    lwz     r3, R13Off_m0x5694(r13)
     slwi    r0, r8, 1
     lhzx    r0, r3, r0
     subf    r0, r0, r8
     stw     r0, 0x8c(r6)
-    lwz     r3, -0x569c(r13)
-    lwz     r4, -0x5694(r13)
+    lwz     r3, R13Off_m0x569c(r13)
+    lwz     r4, R13Off_m0x5694(r13)
     lbzx    r0, r3, r5
     add     r8, r8, r0
     slwi    r3, r8, 1
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     lhzx    r0, r4, r0
     stw     r0, 0x44(r6)
     b       branch_0x8036c3b8
@@ -988,32 +988,32 @@ branch_0x8036c3b8:
     addi    r6, r6, 0x4
     addi    r9, r9, 0x1
     bdnz+      branch_0x8036c240
-    lis     r3, 0x10
-    subi    r0, r3, 0x1
+    lis     r3, unk_000fffff@ha
+    addi    r0, r3, unk_000fffff@l
     stw     r0, 0x88(r7)
     blr
 
 
 .globl __THPRestartDefinition
 __THPRestartDefinition: # 0x8036c3d4
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r0, 0x1
     stb     r0, 0x6a9(r3)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x2
     stw     r0, 0x69c(r4)
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lwz     r4, 0x69c(r5)
     lbz     r3, 0x0(r4)
     lbz     r0, 0x1(r4)
     insrwi  r0, r3, 8, 16
     sth     r0, 0x6aa(r5)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x69c(r4)
     addi    r0, r3, 0x2
     stw     r0, 0x69c(r4)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lhz     r0, 0x6aa(r3)
     sth     r0, 0x6ac(r3)
     blr
@@ -1023,7 +1023,7 @@ __THPRestartDefinition: # 0x8036c3d4
 __THPPrepBitStream: # 0x8036c428
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r0, 0x69c(r3)
     addi    r4, r3, 0x6a4
     lwz     r3, 0x6a4(r3)
@@ -1042,15 +1042,15 @@ branch_0x8036c464:
     addi    r0, r3, 0x1
     stw     r0, 0x0(r4)
 branch_0x8036c470:
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     li      r3, 0x0
     li      r8, 0x0
     stw     r5, 0x69c(r4)
     lwz     r0, 0x0(r5)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     stw     r0, 0x6a0(r4)
 branch_0x8036c48c:
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     li      r0, 0x1
     slw     r0, r0, r3
     lbz     r4, 0x6a8(r4)
@@ -1061,7 +1061,7 @@ branch_0x8036c48c:
     addi    r7, r8, 0x0
     li      r12, 0x0
 branch_0x8036c4b4:
-    lwz     r0, -0x5630(r13)
+    lwz     r0, R13Off_m0x5630(r13)
     li      r5, 0xff
     li      r31, 0x0
     add     r4, r0, r12
@@ -1070,7 +1070,7 @@ branch_0x8036c4b4:
     b       branch_0x8036c524
 
 branch_0x8036c4d0:
-    lwz     r11, -0x5630(r13)
+    lwz     r11, R13Off_m0x5630(r13)
     subfic  r4, r31, 0x4
     slwi    r0, r31, 2
     add     r5, r8, r11
@@ -1087,7 +1087,7 @@ branch_0x8036c4d0:
     add     r4, r4, r6
     lbzx    r4, r9, r4
     stbx    r4, r7, r0
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     addi    r0, r4, 0x320
     stbx    r5, r7, r0
 branch_0x8036c520:
@@ -1095,7 +1095,7 @@ branch_0x8036c520:
 branch_0x8036c524:
     cmplwi  r31, 0x5
     blt+    branch_0x8036c4d0
-    lwz     r0, -0x5630(r13)
+    lwz     r0, R13Off_m0x5630(r13)
     addi    r12, r12, 0x1
     li      r5, 0xff
     add     r4, r0, r12
@@ -1106,7 +1106,7 @@ branch_0x8036c524:
     b       branch_0x8036c5a4
 
 branch_0x8036c550:
-    lwz     r11, -0x5630(r13)
+    lwz     r11, R13Off_m0x5630(r13)
     subfic  r4, r31, 0x4
     slwi    r0, r31, 2
     add     r5, r8, r11
@@ -1123,7 +1123,7 @@ branch_0x8036c550:
     add     r4, r4, r6
     lbzx    r4, r9, r4
     stbx    r4, r7, r0
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     addi    r0, r4, 0x320
     stbx    r5, r7, r0
 branch_0x8036c5a0:
@@ -1139,7 +1139,7 @@ branch_0x8036c5b8:
     cmplwi  r3, 0x4
     addi    r8, r8, 0xe0
     blt+    branch_0x8036c48c
-    lwz     r9, -0x5630(r13)
+    lwz     r9, R13Off_m0x5630(r13)
     lbz     r4, 0x682(r9)
     lbz     r0, 0x688(r9)
     lbz     r3, 0x68e(r9)
@@ -1169,16 +1169,16 @@ branch_0x8036c5b8:
     addi    r0, r3, 0x300
     add     r8, r9, r8
     add     r3, r9, r7
-    stw     r8, -0x5740(r13)
+    stw     r8, R13Off_m0x5740(r13)
     add     r6, r9, r6
     add     r5, r9, r5
-    stw     r3, -0x5720(r13)
+    stw     r3, R13Off_m0x5720(r13)
     add     r3, r9, r4
     add     r0, r9, r0
-    stw     r6, -0x5700(r13)
-    stw     r5, -0x56e0(r13)
-    stw     r3, -0x56c0(r13)
-    stw     r0, -0x56a0(r13)
+    stw     r6, R13Off_m0x5700(r13)
+    stw     r5, R13Off_m0x56e0(r13)
+    stw     r3, R13Off_m0x56c0(r13)
+    stw     r0, R13Off_m0x56a0(r13)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
     blr
@@ -1191,19 +1191,19 @@ __THPDecompressYUV: # 0x8036c674
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
-    lwz     r6, -0x5630(r13)
+    lwz     r6, R13Off_m0x5630(r13)
     stw     r3, 0x6b0(r6)
-    lwz     r6, -0x5630(r13)
+    lwz     r6, R13Off_m0x5630(r13)
     stw     r4, 0x6b4(r6)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     stw     r5, 0x6b8(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lhz     r31, 0x698(r4)
     lhz     r30, 0x694(r4)
     mfspr   r4, 917
     mfspr   r0, 918
-    stw     r4, -0x563c(r13)
-    stw     r0, -0x5638(r13)
+    stw     r4, R13Off_m0x563c(r13)
+    stw     r0, R13Off_m0x5638(r13)
     li      r3, 0x7
     oris    r3, r3, 0x7
     mtspr   917, r3
@@ -1211,7 +1211,7 @@ __THPDecompressYUV: # 0x8036c674
     oris    r3, r3, 0x3d04
     mtspr   918, r3
     bl      __THPPrepBitStream
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lhz     r0, 0x692(r4)
     cmplwi  r0, 0x200
     bne-    branch_0x8036c70c
@@ -1229,7 +1229,7 @@ branch_0x8036c6fc:
     b       branch_0x8036c758
 
 branch_0x8036c70c:
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lhz     r0, 0x692(r4)
     cmplwi  r0, 0x280
     bne-    branch_0x8036c74c
@@ -1246,8 +1246,9 @@ branch_0x8036c730:
     blt+    branch_0x8036c728
     b       branch_0x8036c758
 
+branch_0x8036c740:
+    b       branch_0x8036c74c
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x367140, 0x8036c744 - 0x8036c740
 branch_0x8036c744:
     bl      __THPDecompressiMCURowNxN
     addi    r31, r31, 0x10
@@ -1256,8 +1257,8 @@ branch_0x8036c74c:
     cmplw   r0, r30
     blt+    branch_0x8036c744
 branch_0x8036c758:
-    lwz     r4, -0x563c(r13)
-    lwz     r0, -0x5638(r13)
+    lwz     r4, R13Off_m0x563c(r13)
+    lwz     r0, R13Off_m0x5638(r13)
     mtspr   917, r4
     mtspr   918, r0
     lwz     r0, 0x24(sp)
@@ -1271,7 +1272,7 @@ branch_0x8036c758:
 .globl __THPDecompressiMCURow512x448
 __THPDecompressiMCURow512x448: # 0x8036c780
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, __THPIDCTWorkspace@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stfd    f31, 0x30(sp)
@@ -1280,50 +1281,50 @@ __THPDecompressiMCURow512x448: # 0x8036c780
     stfd    f28, 0x18(sp)
     stfd    f27, 0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x4160
+    addi    r31, r3, __THPIDCTWorkspace@l
     li      r3, 0x3
     stw     r30, 0x8(sp)
     bl      LCQueueWait
-    lfs     f27, 0xc30(rtoc)
+    lfs     f27, 0xc30(r2)
     li      r30, 0x0
-    lfs     f28, 0xc34(rtoc)
-    lfs     f29, 0xc38(rtoc)
-    lfs     f30, 0xc3c(rtoc)
-    lfs     f31, 0xc40(rtoc)
+    lfs     f28, 0xc34(r2)
+    lfs     f29, 0xc38(r2)
+    lfs     f30, 0xc3c(r2)
+    lfs     f31, 0xc40(r2)
     b       branch_0x8036e160
 
 branch_0x8036c7d4:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x118(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x11c(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x120(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x124(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x128(r31)
     bl      __THPHuffDecodeDCTCompU
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x12c(r31)
     bl      __THPHuffDecodeDCTCompV
     lwz     r3, 0x100(r31)
     li      r0, 0x200
-    lwz     r4, -0x5630(r13)
-    subi    r9, r31, 0x8
-    stw     r3, -0x5680(r13)
+    lwz     r4, R13Off_m0x5630(r13)
+    addi    r9, r31, -0x8
+    stw     r3, R13Off_m0x5680(r13)
     clrlslwi  r3, r30, 24, 4
-    stw     r0, -0x5660(r13)
+    stw     r0, R13Off_m0x5660(r13)
     lbz     r0, 0x680(r4)
     slwi    r0, r0, 8
     add     r0, r4, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r8, 0x118(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r4, 0x8
     mtctr   r4
 branch_0x8036c858:
@@ -1476,9 +1477,9 @@ branch_0x8036c9c4:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036c878
 branch_0x8036ca8c:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r4, r3, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -1591,9 +1592,9 @@ branch_0x8036cae4:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r8, 0x11c(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     addi    r10, r3, 0x8
-    subi    r9, r31, 0x8
+    addi    r9, r31, -0x8
     li      r4, 0x8
     mtctr   r4
 branch_0x8036cc68:
@@ -1746,9 +1747,9 @@ branch_0x8036cdd4:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036cc88
 branch_0x8036ce9c:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r10, r10, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -1861,8 +1862,8 @@ branch_0x8036cef4:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r8, 0x120(r31)
-    lwz     r7, -0x5640(r13)
-    subi    r9, r31, 0x8
+    lwz     r7, R13Off_m0x5640(r13)
+    addi    r9, r31, -0x8
     li      r4, 0x8
     mtctr   r4
 branch_0x8036d074:
@@ -2015,9 +2016,9 @@ branch_0x8036d1e0:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036d094
 branch_0x8036d2a8:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r7, r0, 3
     psq_l   f6, 0x80(9), 0, 0
@@ -2131,9 +2132,9 @@ branch_0x8036d304:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r8, 0x124(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     addi    r9, r3, 0x8
-    subi    r10, r31, 0x8
+    addi    r10, r31, -0x8
     li      r4, 0x8
     mtctr   r4
 branch_0x8036d488:
@@ -2286,9 +2287,9 @@ branch_0x8036d5f4:
     psq_stu f4, 0x8(10), 0, 0
     bdnz+      branch_0x8036d4a8
 branch_0x8036d6bc:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r10, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(10), 0, 0
     slwi    r7, r0, 3
     psq_l   f6, 0x80(10), 0, 0
@@ -2403,17 +2404,17 @@ branch_0x8036d718:
     psq_st  f2, 0x8(4), 0, 6
     lwz     r4, 0x104(r31)
     li      r0, 0x100
-    lwz     r5, -0x5630(r13)
-    stw     r4, -0x5680(r13)
+    lwz     r5, R13Off_m0x5630(r13)
+    stw     r4, R13Off_m0x5680(r13)
     srwi    r3, r3, 1
-    subi    r9, r31, 0x8
-    stw     r0, -0x5660(r13)
+    addi    r9, r31, -0x8
+    stw     r0, R13Off_m0x5660(r13)
     lbz     r0, 0x686(r5)
     slwi    r0, r0, 8
     add     r0, r5, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r8, 0x128(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r4, 0x8
     mtctr   r4
 branch_0x8036d8c0:
@@ -2566,9 +2567,9 @@ branch_0x8036da2c:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036d8e0
 branch_0x8036daf4:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r4, r3, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -2681,15 +2682,15 @@ branch_0x8036db4c:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r0, 0x108(r31)
-    lwz     r4, -0x5630(r13)
-    subi    r8, r31, 0x8
-    stw     r0, -0x5680(r13)
+    lwz     r4, R13Off_m0x5630(r13)
+    addi    r8, r31, -0x8
+    stw     r0, R13Off_m0x5680(r13)
     lbz     r0, 0x68c(r4)
     slwi    r0, r0, 8
     add     r0, r4, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r9, 0x12c(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r4, 0x8
     mtctr   r4
 branch_0x8036dce8:
@@ -2842,9 +2843,9 @@ branch_0x8036de54:
     psq_stu f4, 0x8(8), 0, 0
     bdnz+      branch_0x8036dd08
 branch_0x8036df1c:
-    lwz     r7, -0x5680(r13)
+    lwz     r7, R13Off_m0x5680(r13)
     mr      r8, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(8), 0, 0
     slwi    r3, r3, 2
     psq_l   f6, 0x80(8), 0, 0
@@ -2956,42 +2957,42 @@ branch_0x8036df74:
     ps_sub  f2, f13, f10
     psq_st  f3, 0x0(3), 0, 6
     psq_st  f2, 0x8(3), 0, 6
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lbz     r0, 0x6a9(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x8036e15c
     lhz     r3, 0x6ac(r4)
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     clrlwi. r0, r3, 16
     sth     r3, 0x6ac(r4)
     bne-    branch_0x8036e15c
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lhz     r0, 0x6aa(r3)
     sth     r0, 0x6ac(r3)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6a4(r4)
     addi    r0, r3, 0x6
     clrrwi  r3, r0, 3
     addi    r0, r3, 0x1
     stw     r0, 0x6a4(r4)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r0, 0x6a4(r3)
     cmplwi  r0, 0x21
     ble-    branch_0x8036e140
     li      r0, 0x21
     stw     r0, 0x6a4(r3)
 branch_0x8036e140:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r0, 0x0
     sth     r0, 0x684(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     sth     r0, 0x68a(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     sth     r0, 0x690(r3)
 branch_0x8036e15c:
     addi    r30, r30, 0x1
 branch_0x8036e160:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     clrlwi  r4, r30, 24
     lhz     r0, 0x696(r3)
     cmpw    r4, r0
@@ -3000,25 +3001,25 @@ branch_0x8036e160:
     li      r5, 0x2000
     lwz     r4, 0x100(r31)
     bl      LCStoreData
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r5, 0x800
     lwz     r4, 0x104(r31)
     lwz     r3, 0x6b4(r3)
     bl      LCStoreData
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r5, 0x800
     lwz     r4, 0x108(r31)
     lwz     r3, 0x6b8(r3)
     bl      LCStoreData
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6b0(r4)
     addi    r0, r3, 0x2000
     stw     r0, 0x6b0(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6b4(r4)
     addi    r0, r3, 0x800
     stw     r0, 0x6b4(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6b8(r4)
     addi    r0, r3, 0x800
     stw     r0, 0x6b8(r4)
@@ -3038,7 +3039,7 @@ branch_0x8036e160:
 .globl __THPDecompressiMCURow640x480
 __THPDecompressiMCURow640x480: # 0x8036e208
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, __THPIDCTWorkspace@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stfd    f31, 0x30(sp)
@@ -3047,50 +3048,50 @@ __THPDecompressiMCURow640x480: # 0x8036e208
     stfd    f28, 0x18(sp)
     stfd    f27, 0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x4160
+    addi    r31, r3, __THPIDCTWorkspace@l
     li      r3, 0x3
     stw     r30, 0x8(sp)
     bl      LCQueueWait
-    lfs     f27, 0xc30(rtoc)
+    lfs     f27, 0xc30(r2)
     li      r30, 0x0
-    lfs     f28, 0xc34(rtoc)
-    lfs     f29, 0xc38(rtoc)
-    lfs     f30, 0xc3c(rtoc)
-    lfs     f31, 0xc40(rtoc)
+    lfs     f28, 0xc34(r2)
+    lfs     f29, 0xc38(r2)
+    lfs     f30, 0xc3c(r2)
+    lfs     f31, 0xc40(r2)
     b       branch_0x8036fbec
 
 branch_0x8036e25c:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x118(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x11c(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x120(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x124(r31)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x128(r31)
     bl      __THPHuffDecodeDCTCompU
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x12c(r31)
     bl      __THPHuffDecodeDCTCompV
     lwz     r3, 0x10c(r31)
     li      r0, 0x280
-    lwz     r4, -0x5630(r13)
-    subi    r9, r31, 0x8
-    stw     r3, -0x5680(r13)
+    lwz     r4, R13Off_m0x5630(r13)
+    addi    r9, r31, -0x8
+    stw     r3, R13Off_m0x5680(r13)
     clrlslwi  r3, r30, 24, 4
-    stw     r0, -0x5660(r13)
+    stw     r0, R13Off_m0x5660(r13)
     lbz     r0, 0x680(r4)
     slwi    r0, r0, 8
     add     r0, r4, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r8, 0x118(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r4, 0x8
     mtctr   r4
 branch_0x8036e2e0:
@@ -3243,9 +3244,9 @@ branch_0x8036e44c:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036e300
 branch_0x8036e514:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r4, r3, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -3358,9 +3359,9 @@ branch_0x8036e56c:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r8, 0x11c(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     addi    r10, r3, 0x8
-    subi    r9, r31, 0x8
+    addi    r9, r31, -0x8
     li      r4, 0x8
     mtctr   r4
 branch_0x8036e6f0:
@@ -3513,9 +3514,9 @@ branch_0x8036e85c:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036e710
 branch_0x8036e924:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r10, r10, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -3628,8 +3629,8 @@ branch_0x8036e97c:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r8, 0x120(r31)
-    lwz     r7, -0x5640(r13)
-    subi    r9, r31, 0x8
+    lwz     r7, R13Off_m0x5640(r13)
+    addi    r9, r31, -0x8
     li      r4, 0x8
     mtctr   r4
 branch_0x8036eafc:
@@ -3782,9 +3783,9 @@ branch_0x8036ec68:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036eb1c
 branch_0x8036ed30:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r7, r0, 3
     psq_l   f6, 0x80(9), 0, 0
@@ -3898,9 +3899,9 @@ branch_0x8036ed8c:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r8, 0x124(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     addi    r9, r3, 0x8
-    subi    r10, r31, 0x8
+    addi    r10, r31, -0x8
     li      r4, 0x8
     mtctr   r4
 branch_0x8036ef10:
@@ -4053,9 +4054,9 @@ branch_0x8036f07c:
     psq_stu f4, 0x8(10), 0, 0
     bdnz+      branch_0x8036ef30
 branch_0x8036f144:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r10, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(10), 0, 0
     slwi    r7, r0, 3
     psq_l   f6, 0x80(10), 0, 0
@@ -4170,17 +4171,17 @@ branch_0x8036f1a0:
     psq_st  f2, 0x8(4), 0, 6
     lwz     r4, 0x110(r31)
     li      r0, 0x140
-    lwz     r5, -0x5630(r13)
-    stw     r4, -0x5680(r13)
+    lwz     r5, R13Off_m0x5630(r13)
+    stw     r4, R13Off_m0x5680(r13)
     srwi    r3, r3, 1
-    subi    r9, r31, 0x8
-    stw     r0, -0x5660(r13)
+    addi    r9, r31, -0x8
+    stw     r0, R13Off_m0x5660(r13)
     lbz     r0, 0x686(r5)
     slwi    r0, r0, 8
     add     r0, r5, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r8, 0x128(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r4, 0x8
     mtctr   r4
 branch_0x8036f348:
@@ -4333,9 +4334,9 @@ branch_0x8036f4b4:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x8036f368
 branch_0x8036f57c:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r4, r3, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -4448,15 +4449,15 @@ branch_0x8036f5d4:
     psq_st  f3, 0x0(4), 0, 6
     psq_st  f2, 0x8(4), 0, 6
     lwz     r0, 0x114(r31)
-    lwz     r4, -0x5630(r13)
-    subi    r8, r31, 0x8
-    stw     r0, -0x5680(r13)
+    lwz     r4, R13Off_m0x5630(r13)
+    addi    r8, r31, -0x8
+    stw     r0, R13Off_m0x5680(r13)
     lbz     r0, 0x68c(r4)
     slwi    r0, r0, 8
     add     r0, r4, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r9, 0x12c(r31)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r4, 0x8
     mtctr   r4
 branch_0x8036f770:
@@ -4609,9 +4610,9 @@ branch_0x8036f8dc:
     psq_stu f4, 0x8(8), 0, 0
     bdnz+      branch_0x8036f790
 branch_0x8036f9a4:
-    lwz     r7, -0x5680(r13)
+    lwz     r7, R13Off_m0x5680(r13)
     mr      r8, r31
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(8), 0, 0
     slwi    r3, r3, 2
     psq_l   f6, 0x80(8), 0, 0
@@ -4723,43 +4724,43 @@ branch_0x8036f9fc:
     ps_sub  f2, f13, f10
     psq_st  f3, 0x0(3), 0, 6
     psq_st  f2, 0x8(3), 0, 6
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lbz     r0, 0x6a9(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x8036fbe8
     lhz     r3, 0x6ac(r4)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x6ac(r4)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lhz     r0, 0x6ac(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8036fbe8
     lhz     r0, 0x6aa(r3)
     sth     r0, 0x6ac(r3)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6a4(r4)
     addi    r0, r3, 0x6
     clrrwi  r3, r0, 3
     addi    r0, r3, 0x1
     stw     r0, 0x6a4(r4)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r0, 0x6a4(r3)
     cmplwi  r0, 0x20
     ble-    branch_0x8036fbcc
     li      r0, 0x21
     stw     r0, 0x6a4(r3)
 branch_0x8036fbcc:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r0, 0x0
     sth     r0, 0x684(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     sth     r0, 0x68a(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     sth     r0, 0x690(r3)
 branch_0x8036fbe8:
     addi    r30, r30, 0x1
 branch_0x8036fbec:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     clrlwi  r4, r30, 24
     lhz     r0, 0x696(r3)
     cmpw    r4, r0
@@ -4768,25 +4769,25 @@ branch_0x8036fbec:
     li      r5, 0x2800
     lwz     r4, 0x10c(r31)
     bl      LCStoreData
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r5, 0xa00
     lwz     r4, 0x110(r31)
     lwz     r3, 0x6b4(r3)
     bl      LCStoreData
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r5, 0xa00
     lwz     r4, 0x114(r31)
     lwz     r3, 0x6b8(r3)
     bl      LCStoreData
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6b0(r4)
     addi    r0, r3, 0x2800
     stw     r0, 0x6b0(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6b4(r4)
     addi    r0, r3, 0xa00
     stw     r0, 0x6b4(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6b8(r4)
     addi    r0, r3, 0xa00
     stw     r0, 0x6b8(r4)
@@ -4806,7 +4807,7 @@ branch_0x8036fbec:
 .globl __THPDecompressiMCURowNxN
 __THPDecompressiMCURowNxN: # 0x8036fc94
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, __THPIDCTWorkspace@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stfd    f31, 0x38(sp)
@@ -4816,53 +4817,53 @@ __THPDecompressiMCURowNxN: # 0x8036fc94
     stfd    f27, 0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    addi    r30, r4, 0x4160
+    addi    r30, r4, __THPIDCTWorkspace@l
     stw     r29, 0xc(sp)
     stw     r28, 0x8(sp)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lhz     r28, 0x692(r3)
     li      r3, 0x3
     bl      LCQueueWait
-    lfs     f27, 0xc30(rtoc)
+    lfs     f27, 0xc30(r2)
     srwi    r31, r28, 1
-    lfs     f28, 0xc34(rtoc)
+    lfs     f28, 0xc34(r2)
     li      r29, 0x0
-    lfs     f29, 0xc38(rtoc)
-    lfs     f30, 0xc3c(rtoc)
-    lfs     f31, 0xc40(rtoc)
+    lfs     f29, 0xc38(r2)
+    lfs     f30, 0xc3c(r2)
+    lfs     f31, 0xc40(r2)
     b       branch_0x80371684
 
 branch_0x8036fcfc:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x118(r30)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x11c(r30)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x120(r30)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x124(r30)
     bl      __THPHuffDecodeDCTCompY
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x128(r30)
     bl      __THPHuffDecodeDCTCompU
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r4, 0x12c(r30)
     bl      __THPHuffDecodeDCTCompV
     lwz     r0, 0x10c(r30)
     clrlslwi  r4, r29, 24, 4
-    lwz     r5, -0x5630(r13)
-    subi    r3, r30, 0x8
-    stw     r0, -0x5680(r13)
-    stw     r28, -0x5660(r13)
+    lwz     r5, R13Off_m0x5630(r13)
+    addi    r3, r30, -0x8
+    stw     r0, R13Off_m0x5680(r13)
+    stw     r28, R13Off_m0x5660(r13)
     lbz     r0, 0x680(r5)
     slwi    r0, r0, 8
     add     r0, r5, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r9, 0x118(r30)
-    lwz     r8, -0x5640(r13)
+    lwz     r8, R13Off_m0x5640(r13)
     li      r5, 0x8
     mtctr   r5
 branch_0x8036fd7c:
@@ -5015,9 +5016,9 @@ branch_0x8036fee8:
     psq_stu f4, 0x8(3), 0, 0
     bdnz+      branch_0x8036fd9c
 branch_0x8036ffb0:
-    lwz     r9, -0x5680(r13)
+    lwz     r9, R13Off_m0x5680(r13)
     mr      r3, r30
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(3), 0, 0
     slwi    r5, r4, 2
     psq_l   f6, 0x80(3), 0, 0
@@ -5130,9 +5131,9 @@ branch_0x80370008:
     psq_st  f3, 0x0(5), 0, 6
     psq_st  f2, 0x8(5), 0, 6
     lwz     r8, 0x11c(r30)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     addi    r10, r4, 0x8
-    subi    r9, r30, 0x8
+    addi    r9, r30, -0x8
     li      r3, 0x8
     mtctr   r3
 branch_0x8037018c:
@@ -5285,9 +5286,9 @@ branch_0x803702f8:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x803701ac
 branch_0x803703c0:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r30
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r10, r10, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -5400,8 +5401,8 @@ branch_0x80370418:
     psq_st  f3, 0x0(3), 0, 6
     psq_st  f2, 0x8(3), 0, 6
     lwz     r8, 0x120(r30)
-    lwz     r7, -0x5640(r13)
-    subi    r9, r30, 0x8
+    lwz     r7, R13Off_m0x5640(r13)
+    addi    r9, r30, -0x8
     li      r3, 0x8
     mtctr   r3
 branch_0x80370598:
@@ -5554,9 +5555,9 @@ branch_0x80370704:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x803705b8
 branch_0x803707cc:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r30
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r7, r0, 3
     psq_l   f6, 0x80(9), 0, 0
@@ -5670,9 +5671,9 @@ branch_0x80370828:
     psq_st  f3, 0x0(3), 0, 6
     psq_st  f2, 0x8(3), 0, 6
     lwz     r8, 0x124(r30)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     addi    r9, r4, 0x8
-    subi    r10, r30, 0x8
+    addi    r10, r30, -0x8
     li      r3, 0x8
     mtctr   r3
 branch_0x803709ac:
@@ -5825,9 +5826,9 @@ branch_0x80370b18:
     psq_stu f4, 0x8(10), 0, 0
     bdnz+      branch_0x803709cc
 branch_0x80370be0:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r10, r30
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(10), 0, 0
     slwi    r7, r0, 3
     psq_l   f6, 0x80(10), 0, 0
@@ -5941,17 +5942,17 @@ branch_0x80370c3c:
     psq_st  f3, 0x0(3), 0, 6
     psq_st  f2, 0x8(3), 0, 6
     lwz     r0, 0x110(r30)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     srwi    r4, r4, 1
-    stw     r0, -0x5680(r13)
-    subi    r9, r30, 0x8
-    stw     r31, -0x5660(r13)
+    stw     r0, R13Off_m0x5680(r13)
+    addi    r9, r30, -0x8
+    stw     r31, R13Off_m0x5660(r13)
     lbz     r0, 0x686(r3)
     slwi    r0, r0, 8
     add     r0, r3, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r8, 0x128(r30)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r3, 0x8
     mtctr   r3
 branch_0x80370de0:
@@ -6104,9 +6105,9 @@ branch_0x80370f4c:
     psq_stu f4, 0x8(9), 0, 0
     bdnz+      branch_0x80370e00
 branch_0x80371014:
-    lwz     r8, -0x5680(r13)
+    lwz     r8, R13Off_m0x5680(r13)
     mr      r9, r30
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(9), 0, 0
     slwi    r3, r4, 2
     psq_l   f6, 0x80(9), 0, 0
@@ -6219,15 +6220,15 @@ branch_0x8037106c:
     psq_st  f3, 0x0(3), 0, 6
     psq_st  f2, 0x8(3), 0, 6
     lwz     r0, 0x114(r30)
-    lwz     r3, -0x5630(r13)
-    subi    r8, r30, 0x8
-    stw     r0, -0x5680(r13)
+    lwz     r3, R13Off_m0x5630(r13)
+    addi    r8, r30, -0x8
+    stw     r0, R13Off_m0x5680(r13)
     lbz     r0, 0x68c(r3)
     slwi    r0, r0, 8
     add     r0, r3, r0
-    stw     r0, -0x5640(r13)
+    stw     r0, R13Off_m0x5640(r13)
     lwz     r9, 0x12c(r30)
-    lwz     r7, -0x5640(r13)
+    lwz     r7, R13Off_m0x5640(r13)
     li      r3, 0x8
     mtctr   r3
 branch_0x80371208:
@@ -6380,9 +6381,9 @@ branch_0x80371374:
     psq_stu f4, 0x8(8), 0, 0
     bdnz+      branch_0x80371228
 branch_0x8037143c:
-    lwz     r7, -0x5680(r13)
+    lwz     r7, R13Off_m0x5680(r13)
     mr      r8, r30
-    lwz     r0, -0x5660(r13)
+    lwz     r0, R13Off_m0x5660(r13)
     psq_l   f7, 0x0(8), 0, 0
     slwi    r3, r4, 2
     psq_l   f6, 0x80(8), 0, 0
@@ -6494,43 +6495,43 @@ branch_0x80371494:
     ps_sub  f2, f13, f10
     psq_st  f3, 0x0(3), 0, 6
     psq_st  f2, 0x8(3), 0, 6
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     lbz     r0, 0x6a9(r5)
     cmplwi  r0, 0x0
     beq-    branch_0x80371680
     lhz     r4, 0x6ac(r5)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     sth     r0, 0x6ac(r5)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lhz     r0, 0x6ac(r4)
     cmplwi  r0, 0x0
     bne-    branch_0x80371680
     lhz     r0, 0x6aa(r4)
     sth     r0, 0x6ac(r4)
-    lwz     r4, -0x5630(r13)
+    lwz     r4, R13Off_m0x5630(r13)
     lwz     r3, 0x6a4(r4)
     addi    r0, r3, 0x6
     clrrwi  r3, r0, 3
     addi    r0, r3, 0x1
     stw     r0, 0x6a4(r4)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r0, 0x6a4(r3)
     cmplwi  r0, 0x20
     ble-    branch_0x80371664
     li      r0, 0x21
     stw     r0, 0x6a4(r3)
 branch_0x80371664:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     li      r0, 0x0
     sth     r0, 0x684(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     sth     r0, 0x68a(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     sth     r0, 0x690(r3)
 branch_0x80371680:
     addi    r29, r29, 0x1
 branch_0x80371684:
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     clrlwi  r4, r29, 24
     lhz     r0, 0x696(r3)
     cmpw    r4, r0
@@ -6540,27 +6541,27 @@ branch_0x80371684:
     lwz     r4, 0x10c(r30)
     extlwi  r5, r28, 24, 4
     bl      LCStoreData
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     slwi    r5, r29, 6
     lwz     r4, 0x110(r30)
     lwz     r3, 0x6b4(r3)
     bl      LCStoreData
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     slwi    r5, r29, 6
     lwz     r4, 0x114(r30)
     lwz     r3, 0x6b8(r3)
     bl      LCStoreData
-    lwz     r5, -0x5630(r13)
+    lwz     r5, R13Off_m0x5630(r13)
     slwi    r0, r29, 8
     slwi    r4, r29, 6
     lwz     r3, 0x6b0(r5)
     add     r0, r3, r0
     stw     r0, 0x6b0(r5)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r0, 0x6b4(r3)
     add     r0, r0, r4
     stw     r0, 0x6b4(r3)
-    lwz     r3, -0x5630(r13)
+    lwz     r3, R13Off_m0x5630(r13)
     lwz     r0, 0x6b8(r3)
     add     r0, r0, r4
     stw     r0, 0x6b8(r3)
@@ -6586,7 +6587,7 @@ __THPHuffDecodeDCTCompY: # 0x80371740
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     dcbz    r0, r4
-    lwz     r12, -0x5740(r13)
+    lwz     r12, R13Off_m0x5740(r13)
     lwz     r11, 0x6a4(r3)
     addi    r9, r12, 0x20
     lwz     r10, 0x6a0(r3)
@@ -6788,7 +6789,7 @@ branch_0x803719d8:
     subfic  r8, r7, 0x21
     lwz     r6, 0x6a0(r3)
     subfc.  r9, r8, r5
-    subi    r10, r7, 0x1
+    addi    r10, r7, -0x1
     bgt-    branch_0x80371a24
     add     r0, r7, r5
     slw     r7, r6, r10
@@ -6826,13 +6827,13 @@ branch_0x80371a74:
     add     r0, r0, r7
     sth     r0, 0x684(r3)
     sth     r0, 0x0(r4)
-    lwz     r8, -0x56e0(r13)
+    lwz     r8, R13Off_m0x56e0(r13)
     lwz     r6, 0x6a4(r3)
     addi    r7, r8, 0x20
     lwz     r0, 0x6a0(r3)
     li      r5, 0x1
-    lis     r9, 0x803b
-    subi    r10, r9, 0x4a38
+    lis     r9, unk_803ab5c8@ha
+    addi    r10, r9, unk_803ab5c8@l
     b       branch_0x80371d98
 
 branch_0x80371aac:
@@ -7018,7 +7019,7 @@ branch_0x80371cf8:
     add     r5, r5, r30
     subfic  r31, r6, 0x21
     subfc.  r12, r31, r29
-    subi    r9, r6, 0x1
+    addi    r9, r6, -0x1
     bgt-    branch_0x80371d2c
     add     r6, r6, r29
     slw     r11, r0, r9
@@ -7078,7 +7079,7 @@ __THPHuffDecodeDCTCompU: # 0x80371dbc
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     dcbz    r0, r4
-    lwz     r12, -0x5720(r13)
+    lwz     r12, R13Off_m0x5720(r13)
     lwz     r11, 0x6a4(r3)
     addi    r9, r12, 0x20
     lwz     r10, 0x6a0(r3)
@@ -7280,7 +7281,7 @@ branch_0x80372050:
     subfic  r10, r9, 0x21
     lwz     r7, 0x6a0(r3)
     subfc.  r11, r10, r5
-    subi    r12, r9, 0x1
+    addi    r12, r9, -0x1
     bgt-    branch_0x8037209c
     add     r0, r9, r5
     slw     r9, r7, r12
@@ -7315,8 +7316,8 @@ branch_0x803720ec:
     li      r0, 0x60
     dcbz    r4, r0
     lha     r0, 0x68a(r3)
-    lis     r5, 0x803b
-    subi    r8, r5, 0x4a38
+    lis     r5, unk_803ab5c8@ha
+    addi    r8, r5, unk_803ab5c8@l
     add     r0, r0, r7
     sth     r0, 0x68a(r3)
     li      r6, 0x1
@@ -7324,7 +7325,7 @@ branch_0x803720ec:
     b       branch_0x8037244c
 
 branch_0x80372114:
-    lwz     r30, -0x56c0(r13)
+    lwz     r30, R13Off_m0x56c0(r13)
     lwz     r31, 0x6a4(r3)
     addi    r11, r30, 0x20
     lwz     r12, 0x6a0(r3)
@@ -7523,7 +7524,7 @@ branch_0x80372398:
     subfic  r10, r9, 0x21
     lwz     r7, 0x6a0(r3)
     subf.   r11, r10, r30
-    subi    r12, r9, 0x1
+    addi    r12, r9, -0x1
     bgt-    branch_0x803723d8
     add     r0, r9, r30
     slw     r9, r7, r12
@@ -7583,7 +7584,7 @@ __THPHuffDecodeDCTCompV: # 0x80372464
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     dcbz    r0, r4
-    lwz     r12, -0x5700(r13)
+    lwz     r12, R13Off_m0x5700(r13)
     lwz     r11, 0x6a4(r3)
     addi    r9, r12, 0x20
     lwz     r10, 0x6a0(r3)
@@ -7785,7 +7786,7 @@ branch_0x803726f8:
     subfic  r10, r9, 0x21
     lwz     r7, 0x6a0(r3)
     subf.   r11, r10, r5
-    subi    r12, r9, 0x1
+    addi    r12, r9, -0x1
     bgt-    branch_0x80372744
     add     r0, r9, r5
     slw     r9, r7, r12
@@ -7820,8 +7821,8 @@ branch_0x80372794:
     li      r0, 0x60
     dcbz    r4, r0
     lha     r0, 0x690(r3)
-    lis     r5, 0x803b
-    subi    r8, r5, 0x4a38
+    lis     r5, unk_803ab5c8@ha
+    addi    r8, r5, unk_803ab5c8@l
     add     r0, r0, r7
     sth     r0, 0x690(r3)
     li      r6, 0x1
@@ -7829,7 +7830,7 @@ branch_0x80372794:
     b       branch_0x80372af4
 
 branch_0x803727bc:
-    lwz     r30, -0x56a0(r13)
+    lwz     r30, R13Off_m0x56a0(r13)
     lwz     r31, 0x6a4(r3)
     addi    r11, r30, 0x20
     lwz     r12, 0x6a0(r3)
@@ -8028,7 +8029,7 @@ branch_0x80372a40:
     subfic  r10, r9, 0x21
     lwz     r7, 0x6a0(r3)
     subf.   r11, r10, r30
-    subi    r12, r9, 0x1
+    addi    r12, r9, -0x1
     bgt-    branch_0x80372a80
     add     r0, r9, r30
     slw     r9, r7, r12
@@ -8084,17 +8085,17 @@ branch_0x80372afc:
 
 .globl THPInit
 THPInit: # 0x80372b0c
-    lis     r4, 0x8040
-    addi    r4, r4, 0x4160
-    lis     r5, 0xe000
+    lis     r4, __THPIDCTWorkspace@h
+    addi    r4, r4, __THPIDCTWorkspace@l
+    lis     r5, unk_e0002000@h
     stw     r5, 0x100(r4)
-    addi    r5, r5, 0x2000
+    addi    r5, r5, unk_e0002000@l
     stw     r5, 0x104(r4)
     addi    r5, r5, 0x800
     stw     r5, 0x108(r4)
-    lis     r5, 0xe000
+    lis     r5, unk_e0002800@h
     stw     r5, 0x10c(r4)
-    addi    r5, r5, 0x2800
+    addi    r5, r5, unk_e0002800@l
     stw     r5, 0x110(r4)
     addi    r5, r5, 0xa00
     stw     r5, 0x114(r4)
@@ -8111,7 +8112,7 @@ THPInit: # 0x80372b0c
     oris    r3, r3, 0x7
     mtspr   917, r3
     li      r0, 0x1
-    stw     r0, -0x562c(r13)
+    stw     r0, R13Off_m0x562c(r13)
     li      r3, 0x1
     blr
 

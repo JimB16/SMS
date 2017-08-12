@@ -9,12 +9,12 @@ __dt__18TSunflowerSManagerFv: # 0x80208b90
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80208be8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7910
+    lis     r3, __vvt__18TSunflowerSManager@ha
+    addi    r0, r3, __vvt__18TSunflowerSManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80208bd8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -37,9 +37,9 @@ branch_0x80208be8:
 .globl createModelData__18TSunflowerSManagerFv
 createModelData__18TSunflowerSManagerFv: # 0x80208c04
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2371@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x500c
+    addi    r4, r4, entry_2371@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -54,9 +54,9 @@ createModelData__18TSunflowerSManagerFv: # 0x80208c04
 .globl createModelData__18TSunflowerLManagerFv
 createModelData__18TSunflowerLManagerFv: # 0x80208c38
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2369@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4fe4
+    addi    r4, r4, entry_2369@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -71,9 +71,9 @@ createModelData__18TSunflowerLManagerFv: # 0x80208c38
 .globl createModelData__18TRaccoonDogManagerFv
 createModelData__18TRaccoonDogManagerFv: # 0x80208c6c
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2367@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4fbc
+    addi    r4, r4, entry_2367@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -88,9 +88,9 @@ createModelData__18TRaccoonDogManagerFv: # 0x80208c6c
 .globl createModelData__13TPeachManagerFv
 createModelData__13TPeachManagerFv: # 0x80208ca0
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2365@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4f98
+    addi    r4, r4, entry_2365@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -105,9 +105,9 @@ createModelData__13TPeachManagerFv: # 0x80208ca0
 .globl createModelData__15TKinojiiManagerFv
 createModelData__15TKinojiiManagerFv: # 0x80208cd4
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2363@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4f70
+    addi    r4, r4, entry_2363@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -122,9 +122,9 @@ createModelData__15TKinojiiManagerFv: # 0x80208cd4
 .globl createModelData__15TKinopioManagerFv
 createModelData__15TKinopioManagerFv: # 0x80208d08
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2361@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4f48
+    addi    r4, r4, entry_2361@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r3
@@ -137,11 +137,11 @@ createModelData__15TKinopioManagerFv: # 0x80208d08
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x80208d64
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x80208d64:
@@ -155,12 +155,12 @@ branch_0x80208d64:
 .globl createModelData__17TMareWBaseManagerFv
 createModelData__17TMareWBaseManagerFv: # 0x80208d78
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2359@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x8039
-    addi    r4, r4, 0x4f1c
+    lis     r5, unk_80394bf8@h
+    addi    r4, r4, entry_2359@l
     stwu    sp, -0x20(sp)
-    addi    r5, r5, 0x4bf8
+    addi    r5, r5, unk_80394bf8@l
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bl      createModelDataArrayBase__11TObjManagerFPC19TModelDataLoadEntryPCc
@@ -169,11 +169,11 @@ createModelData__17TMareWBaseManagerFv: # 0x80208d78
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x80208dd0
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x80208dd0:
@@ -187,12 +187,12 @@ branch_0x80208dd0:
 .globl createModelData__17TMareMBaseManagerFv
 createModelData__17TMareMBaseManagerFv: # 0x80208de4
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2357@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x8039
-    addi    r4, r4, 0x4ef8
+    lis     r5, unk_80394be8@h
+    addi    r4, r4, entry_2357@l
     stwu    sp, -0x20(sp)
-    addi    r5, r5, 0x4be8
+    addi    r5, r5, unk_80394be8@l
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bl      createModelDataArrayBase__11TObjManagerFPC19TModelDataLoadEntryPCc
@@ -201,11 +201,11 @@ createModelData__17TMareMBaseManagerFv: # 0x80208de4
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x80208e3c
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x80208e3c:
@@ -219,12 +219,12 @@ branch_0x80208e3c:
 .globl createModelData__15TMonteWCManagerFv
 createModelData__15TMonteWCManagerFv: # 0x80208e50
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2356@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x8039
-    addi    r4, r4, 0x4ed4
+    lis     r5, unk_80395024@h
+    addi    r4, r4, entry_2356@l
     stwu    sp, -0x20(sp)
-    addi    r5, r5, 0x5024
+    addi    r5, r5, unk_80395024@l
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bl      createModelDataArrayBase__11TObjManagerFPC19TModelDataLoadEntryPCc
@@ -233,9 +233,9 @@ createModelData__15TMonteWCManagerFv: # 0x80208e50
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x779c(r13)
+    lwz     r3, R13Off_m0x779c(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a4(r13)
+    lwz     r4, R13Off_m0x77a4(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -249,9 +249,9 @@ createModelData__15TMonteWCManagerFv: # 0x80208e50
 .globl createModelData__15TMonteWBManagerFv
 createModelData__15TMonteWBManagerFv: # 0x80208eb8
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2354@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4ebc
+    addi    r4, r4, entry_2354@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r3
@@ -264,9 +264,9 @@ createModelData__15TMonteWBManagerFv: # 0x80208eb8
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x779c(r13)
+    lwz     r3, R13Off_m0x779c(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a4(r13)
+    lwz     r4, R13Off_m0x77a4(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -280,9 +280,9 @@ createModelData__15TMonteWBManagerFv: # 0x80208eb8
 .globl createModelData__15TMonteWAManagerFv
 createModelData__15TMonteWAManagerFv: # 0x80208f24
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2352@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4e94
+    addi    r4, r4, entry_2352@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
@@ -296,9 +296,9 @@ createModelData__15TMonteWAManagerFv: # 0x80208f24
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x779c(r13)
+    lwz     r3, R13Off_m0x779c(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a4(r13)
+    lwz     r4, R13Off_m0x77a4(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -307,11 +307,11 @@ createModelData__15TMonteWAManagerFv: # 0x80208f24
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x80208fb0
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x80208fb0:
@@ -326,9 +326,9 @@ branch_0x80208fb0:
 .globl createModelData__14TMonteWManagerFv
 createModelData__14TMonteWManagerFv: # 0x80208fc8
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2350@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4e6c
+    addi    r4, r4, entry_2350@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
@@ -342,9 +342,9 @@ createModelData__14TMonteWManagerFv: # 0x80208fc8
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x779c(r13)
+    lwz     r3, R13Off_m0x779c(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a4(r13)
+    lwz     r4, R13Off_m0x77a4(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -353,11 +353,11 @@ createModelData__14TMonteWManagerFv: # 0x80208fc8
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x80209054
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x80209054:
@@ -372,12 +372,12 @@ branch_0x80209054:
 .globl createModelData__15TMonteMHManagerFv
 createModelData__15TMonteMHManagerFv: # 0x8020906c
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2349@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x8039
-    addi    r4, r4, 0x4e44
+    lis     r5, unk_80395034@h
+    addi    r4, r4, entry_2349@l
     stwu    sp, -0x20(sp)
-    addi    r5, r5, 0x5034
+    addi    r5, r5, unk_80395034@l
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bl      createModelDataArrayBase__11TObjManagerFPC19TModelDataLoadEntryPCc
@@ -386,9 +386,9 @@ createModelData__15TMonteMHManagerFv: # 0x8020906c
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -402,12 +402,12 @@ createModelData__15TMonteMHManagerFv: # 0x8020906c
 .globl createModelData__15TMonteMGManagerFv
 createModelData__15TMonteMGManagerFv: # 0x802090d4
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2348@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x8039
-    addi    r4, r4, 0x4e2c
+    lis     r5, unk_80395044@h
+    addi    r4, r4, entry_2348@l
     stwu    sp, -0x20(sp)
-    addi    r5, r5, 0x5044
+    addi    r5, r5, unk_80395044@l
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bl      createModelDataArrayBase__11TObjManagerFPC19TModelDataLoadEntryPCc
@@ -416,9 +416,9 @@ createModelData__15TMonteMGManagerFv: # 0x802090d4
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -432,12 +432,12 @@ createModelData__15TMonteMGManagerFv: # 0x802090d4
 .globl createModelData__15TMonteMFManagerFv
 createModelData__15TMonteMFManagerFv: # 0x8020913c
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2347@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x8039
-    addi    r4, r4, 0x4e14
+    lis     r5, unk_80395054@h
+    addi    r4, r4, entry_2347@l
     stwu    sp, -0x20(sp)
-    addi    r5, r5, 0x5054
+    addi    r5, r5, unk_80395054@l
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     bl      createModelDataArrayBase__11TObjManagerFPC19TModelDataLoadEntryPCc
@@ -446,9 +446,9 @@ createModelData__15TMonteMFManagerFv: # 0x8020913c
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -462,9 +462,9 @@ createModelData__15TMonteMFManagerFv: # 0x8020913c
 .globl createModelData__15TMonteMEManagerFv
 createModelData__15TMonteMEManagerFv: # 0x802091a4
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2345@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4dfc
+    addi    r4, r4, entry_2345@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -479,9 +479,9 @@ createModelData__15TMonteMEManagerFv: # 0x802091a4
 .globl createModelData__15TMonteMDManagerFv
 createModelData__15TMonteMDManagerFv: # 0x802091d8
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2343@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4dd4
+    addi    r4, r4, entry_2343@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r3
@@ -494,9 +494,9 @@ createModelData__15TMonteMDManagerFv: # 0x802091d8
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -510,9 +510,9 @@ createModelData__15TMonteMDManagerFv: # 0x802091d8
 .globl createModelData__15TMonteMCManagerFv
 createModelData__15TMonteMCManagerFv: # 0x80209244
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2341@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4dac
+    addi    r4, r4, entry_2341@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
@@ -526,9 +526,9 @@ createModelData__15TMonteMCManagerFv: # 0x80209244
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -537,11 +537,11 @@ createModelData__15TMonteMCManagerFv: # 0x80209244
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x802092d0
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x802092d0:
@@ -556,9 +556,9 @@ branch_0x802092d0:
 .globl createModelData__15TMonteMBManagerFv
 createModelData__15TMonteMBManagerFv: # 0x802092e8
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2339@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4d84
+    addi    r4, r4, entry_2339@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r3
@@ -571,9 +571,9 @@ createModelData__15TMonteMBManagerFv: # 0x802092e8
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -587,9 +587,9 @@ createModelData__15TMonteMBManagerFv: # 0x802092e8
 .globl createModelData__15TMonteMAManagerFv
 createModelData__15TMonteMAManagerFv: # 0x80209354
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2337@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4d5c
+    addi    r4, r4, entry_2337@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
@@ -603,9 +603,9 @@ createModelData__15TMonteMAManagerFv: # 0x80209354
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -614,11 +614,11 @@ createModelData__15TMonteMAManagerFv: # 0x80209354
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x802093e0
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x802093e0:
@@ -633,9 +633,9 @@ branch_0x802093e0:
 .globl createModelData__14TMonteMManagerFv
 createModelData__14TMonteMManagerFv: # 0x802093f8
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2335@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4d34
+    addi    r4, r4, entry_2335@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
@@ -649,9 +649,9 @@ createModelData__14TMonteMManagerFv: # 0x802093f8
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77a0(r13)
+    lwz     r3, R13Off_m0x77a0(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x77a8(r13)
+    lwz     r4, R13Off_m0x77a8(r13)
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -660,11 +660,11 @@ createModelData__14TMonteMManagerFv: # 0x802093f8
     li      r4, 0x0
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r31, 0x0(r3)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x80209484
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r31
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x80209484:
@@ -684,9 +684,9 @@ load__18TSunflowerLManagerFR20JSUMemoryInputStream: # 0x8020949c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     stfs    f0, 0x3c(r31)
-    lfs     f0, -0x1ce4(rtoc)
+    lfs     f0, -0x1ce4(r2)
     stfs    f0, 0x3c(r31)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -704,7 +704,7 @@ load__18TRaccoonDogManagerFR20JSUMemoryInputStream: # 0x802094d8
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -738,7 +738,7 @@ load__13TPeachManagerFR20JSUMemoryInputStream: # 0x8020954c
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -772,7 +772,7 @@ load__15TKinojiiManagerFR20JSUMemoryInputStream: # 0x802095c0
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -806,7 +806,7 @@ load__15TKinopioManagerFR20JSUMemoryInputStream: # 0x80209634
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -840,7 +840,7 @@ load__14TMareWBManagerFR20JSUMemoryInputStream: # 0x802096a8
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -874,7 +874,7 @@ load__14TMareWAManagerFR20JSUMemoryInputStream: # 0x8020971c
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -908,7 +908,7 @@ load__14TMareMDManagerFR20JSUMemoryInputStream: # 0x80209790
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -942,7 +942,7 @@ load__14TMareMCManagerFR20JSUMemoryInputStream: # 0x80209804
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -976,7 +976,7 @@ load__14TMareMBManagerFR20JSUMemoryInputStream: # 0x80209878
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -1010,7 +1010,7 @@ load__14TMareMAManagerFR20JSUMemoryInputStream: # 0x802098ec
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -1044,7 +1044,7 @@ load__15TMonteWCManagerFR20JSUMemoryInputStream: # 0x80209960
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -1078,7 +1078,7 @@ load__15TMonteMHManagerFR20JSUMemoryInputStream: # 0x802099d4
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -1112,7 +1112,7 @@ load__15TMonteMGManagerFR20JSUMemoryInputStream: # 0x80209a48
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -1146,7 +1146,7 @@ load__15TMonteMFManagerFR20JSUMemoryInputStream: # 0x80209abc
     mr      r31, r3
     stw     r30, 0x20(sp)
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     li      r3, 0x14
     stfs    f0, 0x3c(r31)
     bl      __nw__FUl
@@ -1210,7 +1210,7 @@ createAnmData__18TMonteWBaseManagerFv: # 0x80209b70
     mr      r3, r30
     bl      __ct__13MActorAnmDataFv
 branch_0x80209ba0:
-    lwz     r4, -0x7784(r13)
+    lwz     r4, R13Off_m0x7784(r13)
     mr      r3, r30
     li      r5, 0x0
     bl      init__13MActorAnmDataFPCcPPCc
@@ -1238,7 +1238,7 @@ createAnmData__18TMonteMBaseManagerFv: # 0x80209bcc
     mr      r3, r30
     bl      __ct__13MActorAnmDataFv
 branch_0x80209bfc:
-    lwz     r4, -0x7788(r13)
+    lwz     r4, R13Off_m0x7788(r13)
     mr      r3, r30
     li      r5, 0x0
     bl      init__13MActorAnmDataFPCcPPCc
@@ -1255,11 +1255,11 @@ branch_0x80209bfc:
 getBmt___16TMareBaseManagerFb: # 0x80209c28
     clrlwi. r0, r4, 24
     beq-    branch_0x80209c38
-    lwz     r3, -0x61fc(r13)
+    lwz     r3, R13Off_m0x61fc(r13)
     blr
 
 branch_0x80209c38:
-    lwz     r3, -0x6200(r13)
+    lwz     r3, R13Off_m0x6200(r13)
     blr
 
 
@@ -1273,8 +1273,8 @@ __dt__11TNPCManagerFv: # 0x80209c40
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80209c88
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1305,32 +1305,32 @@ __ct__17TMareWBaseManagerFPCc: # 0x80209ca4
     stw     r0, 0x10(sp)
     lwz     r3, 0x10(sp)
     bl      __ct__11TNPCManagerFPCc
-    lis     r4, 0x803e
+    lis     r4, __vvt__16TMareBaseManager@ha
     lwz     r3, 0x10(sp)
-    subi    r0, r4, 0x6e30
+    addi    r0, r4, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r3)
-    lwz     r0, -0x6200(r13)
+    lwz     r0, R13Off_m0x6200(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x80209cf8
-    lwz     r3, -0x7778(r13)
+    lwz     r3, R13Off_m0x7778(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     bl      loadMaterialTable__22J3DModelLoaderDataBaseFPCv
-    stw     r3, -0x6200(r13)
+    stw     r3, R13Off_m0x6200(r13)
 branch_0x80209cf8:
-    lwz     r0, -0x61fc(r13)
+    lwz     r0, R13Off_m0x61fc(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x80209d14
-    lwz     r3, -0x7774(r13)
+    lwz     r3, R13Off_m0x7774(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     bl      loadMaterialTable__22J3DModelLoaderDataBaseFPCv
-    stw     r3, -0x61fc(r13)
+    stw     r3, R13Off_m0x61fc(r13)
 branch_0x80209d14:
-    lis     r4, 0x803e
+    lis     r4, __vvt__17TMareWBaseManager@ha
     lwz     r3, 0x8(sp)
-    subi    r0, r4, 0x7880
+    addi    r0, r4, __vvt__17TMareWBaseManager@l
     stw     r0, 0x0(r3)
-    lwz     r31, -0x777c(r13)
-    lwz     r0, -0x6204(r13)
+    lwz     r31, R13Off_m0x777c(r13)
+    lwz     r0, R13Off_m0x6204(r13)
     stw     r0, 0x5c(r3)
     lwz     r0, 0x5c(r3)
     cmplwi  r0, 0x0
@@ -1349,7 +1349,7 @@ branch_0x80209d58:
     stw     r30, 0x5c(r3)
     addi    r6, r3, 0x5c
     lwz     r0, 0x5c(r3)
-    stw     r0, -0x6204(r13)
+    stw     r0, R13Off_m0x6204(r13)
     lwz     r6, 0x0(r6)
     bl      makePartsModelData___11TNPCManagerFUlUlP16TModelDataKeeper
 branch_0x80209d7c:
@@ -1372,12 +1372,12 @@ __dt__16TMareBaseManagerFv: # 0x80209d98
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80209df0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80209de0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1409,32 +1409,32 @@ __ct__17TMareMBaseManagerFPCc: # 0x80209e0c
     stw     r0, 0x10(sp)
     lwz     r3, 0x10(sp)
     bl      __ct__11TNPCManagerFPCc
-    lis     r4, 0x803e
+    lis     r4, __vvt__16TMareBaseManager@ha
     lwz     r3, 0x10(sp)
-    subi    r0, r4, 0x6e30
+    addi    r0, r4, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r3)
-    lwz     r0, -0x6200(r13)
+    lwz     r0, R13Off_m0x6200(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x80209e60
-    lwz     r3, -0x7778(r13)
+    lwz     r3, R13Off_m0x7778(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     bl      loadMaterialTable__22J3DModelLoaderDataBaseFPCv
-    stw     r3, -0x6200(r13)
+    stw     r3, R13Off_m0x6200(r13)
 branch_0x80209e60:
-    lwz     r0, -0x61fc(r13)
+    lwz     r0, R13Off_m0x61fc(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x80209e7c
-    lwz     r3, -0x7774(r13)
+    lwz     r3, R13Off_m0x7774(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     bl      loadMaterialTable__22J3DModelLoaderDataBaseFPCv
-    stw     r3, -0x61fc(r13)
+    stw     r3, R13Off_m0x61fc(r13)
 branch_0x80209e7c:
-    lis     r4, 0x803e
+    lis     r4, __vvt__17TMareMBaseManager@ha
     lwz     r3, 0x8(sp)
-    subi    r0, r4, 0x7828
+    addi    r0, r4, __vvt__17TMareMBaseManager@l
     stw     r0, 0x0(r3)
-    lwz     r31, -0x7780(r13)
-    lwz     r0, -0x6208(r13)
+    lwz     r31, R13Off_m0x7780(r13)
+    lwz     r0, R13Off_m0x6208(r13)
     stw     r0, 0x5c(r3)
     lwz     r0, 0x5c(r3)
     cmplwi  r0, 0x0
@@ -1453,7 +1453,7 @@ branch_0x80209ec0:
     stw     r30, 0x5c(r3)
     addi    r6, r3, 0x5c
     lwz     r0, 0x5c(r3)
-    stw     r0, -0x6208(r13)
+    stw     r0, R13Off_m0x6208(r13)
     lwz     r6, 0x0(r6)
     bl      makePartsModelData___11TNPCManagerFUlUlP16TModelDataKeeper
 branch_0x80209ee4:
@@ -1476,12 +1476,12 @@ __ct__18TMonteWBaseManagerFPCc: # 0x80209f00
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__11TNPCManagerFPCc
-    lis     r4, 0x803e
+    lis     r4, __vvt__18TMonteWBaseManager@ha
     lwz     r3, 0x8(sp)
-    subi    r0, r4, 0x6ee0
+    addi    r0, r4, __vvt__18TMonteWBaseManager@l
     stw     r0, 0x0(r3)
-    lwz     r31, -0x7784(r13)
-    lwz     r0, -0x620c(r13)
+    lwz     r31, R13Off_m0x7784(r13)
+    lwz     r0, R13Off_m0x620c(r13)
     stw     r0, 0x5c(r3)
     lwz     r0, 0x5c(r3)
     cmplwi  r0, 0x0
@@ -1500,7 +1500,7 @@ branch_0x80209f64:
     stw     r30, 0x5c(r3)
     addi    r6, r3, 0x5c
     lwz     r0, 0x5c(r3)
-    stw     r0, -0x620c(r13)
+    stw     r0, R13Off_m0x620c(r13)
     lwz     r6, 0x0(r6)
     bl      makePartsModelData___11TNPCManagerFUlUlP16TModelDataKeeper
 branch_0x80209f88:
@@ -1523,12 +1523,12 @@ __ct__18TMonteMBaseManagerFPCc: # 0x80209fa4
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__11TNPCManagerFPCc
-    lis     r4, 0x803e
+    lis     r4, __vvt__18TMonteMBaseManager@ha
     lwz     r3, 0x8(sp)
-    subi    r0, r4, 0x6e88
+    addi    r0, r4, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r3)
-    lwz     r31, -0x7788(r13)
-    lwz     r0, -0x6210(r13)
+    lwz     r31, R13Off_m0x7788(r13)
+    lwz     r0, R13Off_m0x6210(r13)
     stw     r0, 0x5c(r3)
     lwz     r0, 0x5c(r3)
     cmplwi  r0, 0x0
@@ -1547,7 +1547,7 @@ branch_0x8020a008:
     stw     r30, 0x5c(r3)
     addi    r6, r3, 0x5c
     lwz     r0, 0x5c(r3)
-    stw     r0, -0x6210(r13)
+    stw     r0, R13Off_m0x6210(r13)
     lwz     r6, 0x0(r6)
     bl      makePartsModelData___11TNPCManagerFUlUlP16TModelDataKeeper
 branch_0x8020a02c:
@@ -1576,7 +1576,7 @@ perform__11TNPCManagerFUlPQ26JDrama9TGraphics: # 0x8020a048
     cmpwi   r6, 0x0
     ble-    branch_0x8020a194
     cmpwi   r6, 0x8
-    subi    r9, r6, 0x8
+    addi    r9, r6, -0x8
     ble-    branch_0x8020a164
     addi    r0, r9, 0x7
     srwi    r0, r0, 3
@@ -1669,14 +1669,14 @@ clipEnemies__11TNPCManagerFPQ26JDrama9TGraphics: # 0x8020a1b4
     stmw    r26, 0x68(sp)
     mr      r27, r3
     mr      r28, r4
-    lwz     r5, gpMarDirector(r13)
+    lwz     r5, R13Off_m0x6048(r13)
     lwz     r3, 0x58(r3)
     lbz     r0, 0x7c(r5)
     lfs     f31, 0x54(r27)
     cmplwi  r0, 0x1
     lfs     f30, 0x0(r3)
     bne-    branch_0x8020a290
-    lwz     r26, gpCamera(r13)
+    lwz     r26, R13Off_m0x7118(r13)
     li      r29, 0x1
     addi    r3, r26, 0x0
     bl      isSimpleDemoCamera__15CPolarSubCameraCFv
@@ -1705,7 +1705,7 @@ branch_0x8020a23c:
 branch_0x8020a240:
     clrlwi. r0, r0, 24
     bne-    branch_0x8020a280
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0xd
     beq-    branch_0x8020a280
@@ -1715,17 +1715,17 @@ branch_0x8020a240:
     bl      isNowInbetween__15CPolarSubCameraCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x8020a280
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0x13
     bne-    branch_0x8020a290
 branch_0x8020a280:
-    lfs     f0, -0x1ce0(rtoc)
+    lfs     f0, -0x1ce0(r2)
     fcmpo   cr0, f30, f0
     bge-    branch_0x8020a290
     fmr     f30, f0
 branch_0x8020a290:
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     fmr     f3, f31
     fmr     f4, f30
     lfs     f2, 0x4c(r3)
@@ -1733,7 +1733,7 @@ branch_0x8020a290:
     bl      SetViewFrustumClipCheckPerspective__Fffff
     lwz     r31, 0x14(r27)
     li      r29, 0x0
-    lfs     f31, -0x1cdc(rtoc)
+    lfs     f31, -0x1cdc(r2)
     li      r26, 0x0
     b       branch_0x8020a350
 
@@ -1871,7 +1871,7 @@ branch_0x8020a450:
     addi    r3, sp, 0x20
     crxor   6, 6, 6
     li      r4, 0x100
-    subi    r5, rtoc, 0x1cd8
+    addi    r5, r2, R2Off_m0x1cd8
     bl      snprintf
     addi    r3, sp, 0x20
     bl      getGlbResource__13JKRFileLoaderFPCc
@@ -1903,11 +1903,11 @@ branch_0x8020a4e0:
     cmplwi  r0, 0x0
     beq-    branch_0x8020a50c
     lwz     r21, 0x0(r21)
-    lwz     r3, -0x77ac(r13)
+    lwz     r3, R13Off_m0x77ac(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     mr.     r5, r3
     beq-    branch_0x8020a50c
-    lwz     r4, -0x77b0(r13)
+    lwz     r4, R13Off_m0x77b0(r13)
     mr      r3, r21
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
 branch_0x8020a50c:
@@ -1935,7 +1935,7 @@ load__11TNPCManagerFR20JSUMemoryInputStream: # 0x8020a540
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      load__13TEnemyManagerFR20JSUMemoryInputStream
-    lfs     f0, -0x1ce8(rtoc)
+    lfs     f0, -0x1ce8(r2)
     stfs    f0, 0x3c(r31)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -1952,90 +1952,88 @@ __ct__11TNPCManagerFPCc: # 0x8020a574
     stw     r31, 0x64(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
-    lfs     f0, -0x1cd0(rtoc)
+    lfs     f0, -0x1cd0(r2)
     stfs    f0, 0x54(r31)
     stw     r0, 0x58(r31)
     stw     r0, 0x5c(r31)
     stw     r0, 0x60(r31)
-    lwz     r3, gpMarDirector(r13)
-    lwz     r4, -0x70b0(r13)
+    lwz     r3, R13Off_m0x6048(r13)
+    lwz     r4, R13Off_m0x70b0(r13)
     lbz     r0, 0x7c(r3)
     lwz     r3, 0xf4(r4)
     cmplwi  r0, 0xd
     lwz     r4, 0x0(r3)
     bgt-    branch_0x8020a674
-    lis     r3, 0x803e
-    subi    r3, r3, 0x78b8
+    lis     r3, unk_803d8748@ha
+    addi    r3, r3, unk_803d8748@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8020A5E4:		# jumptable 8020A5E0 case 0
+    bctr       
+branch_0x8020a5e4:
     addi    r0, r4, 0x18
     stw     r0, 0x58(r31)
     b       branch_0x8020a67c
 
-branch_0x8020A5F0:		# jumptable 8020A5E0 case 1
-addi	  r0, r4, 0x2C
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a5f0:
+    addi    r0, r4, 0x2c
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A5FC:		# jumptable 8020A5E0 case 2
-addi	  r0, r4, 0x40
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a5fc:
+    addi    r0, r4, 0x40
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A608:		# jumptable 8020A5E0 case 3
-addi	  r0, r4, 0x54
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a608:
+    addi    r0, r4, 0x54
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A614:		# jumptable 8020A5E0 case 4
-addi	  r0, r4, 0x68
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a614:
+    addi    r0, r4, 0x68
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A620:		# jumptable 8020A5E0 case 5
-addi	  r0, r4, 0x7C
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a620:
+    addi    r0, r4, 0x7c
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A62C:		# jumptable 8020A5E0 case 13
-addi	  r0, r4, 0x90
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a62c:
+    addi    r0, r4, 0x90
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A638:		# jumptable 8020A5E0 case 6
-addi	  r0, r4, 0xA4
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a638:
+    addi    r0, r4, 0xa4
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A644:		# jumptable 8020A5E0 case 7
-addi	  r0, r4, 0xB8
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a644:
+    addi    r0, r4, 0xb8
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A650:		# jumptable 8020A5E0 case 9
-addi	  r0, r4, 0xCC
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a650:
+    addi    r0, r4, 0xcc
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A65C:		# jumptable 8020A5E0 case 8
-addi	  r0, r4, 0xE0
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a65c:
+    addi    r0, r4, 0xe0
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-branch_0x8020A668:		# jumptable 8020A5E0 case 10
-addi	  r0, r4, 0xF4
-stw	  r0, 0x58(r31)
-b	  branch_0x8020a67c
+branch_0x8020a668:
+    addi    r0, r4, 0xf4
+    stw     r0, 0x58(r31)
+    b       branch_0x8020a67c
 
-def_8020A5E0:		# jumptable 8020A5E0 default case
 branch_0x8020a674:
     addi    r0, r4, 0x108
     stw     r0, 0x58(r31)
@@ -2051,9 +2049,9 @@ branch_0x8020a67c:
 .globl createModelData__21TMareJellyFishManagerFv
 createModelData__21TMareJellyFishManagerFv: # 0x8020a694
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2231@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4cd0
+    addi    r4, r4, entry_2231@l
     stwu    sp, -0x60(sp)
     stmw    r26, 0x48(sp)
     mr      r26, r3
@@ -2061,11 +2059,11 @@ createModelData__21TMareJellyFishManagerFv: # 0x8020a694
     lwz     r12, 0x2c(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x778c(r13)
+    lwz     r3, R13Off_m0x778c(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r29, r3
-    lwz     r31, -0x7798(r13)
+    lwz     r31, R13Off_m0x7798(r13)
     lwz     r30, 0x4(r4)
     mr      r3, r31
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2092,10 +2090,10 @@ branch_0x8020a71c:
     bl      getNthData__16TModelDataKeeperCFi
     lwz     r28, 0x0(r3)
     mr      r5, r29
-    lwz     r4, -0x7790(r13)
+    lwz     r4, R13Off_m0x7790(r13)
     mr      r3, r28
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
-    lwz     r4, -0x7794(r13)
+    lwz     r4, R13Off_m0x7794(r13)
     addi    r3, r28, 0x0
     addi    r5, r30, 0x0
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
@@ -2123,11 +2121,11 @@ __ct__21TMareJellyFishManagerFPCc: # 0x8020a774
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TObjManagerFPCc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6d80
+    lis     r3, __vvt__21TMareJellyFishManager@ha
+    addi    r0, r3, __vvt__21TMareJellyFishManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
-    stw     r31, -0x61f8(r13)
+    stw     r31, R13Off_m0x61f8(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
@@ -2145,12 +2143,12 @@ __dt__11TObjManagerFv: # 0x8020a7b4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020a80c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6058
+    lis     r3, __vvt__11TObjManager@ha
+    addi    r0, r3, __vvt__11TObjManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020a7fc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2173,9 +2171,9 @@ branch_0x8020a80c:
 .globl createModelData__16TBoardNpcManagerFv
 createModelData__16TBoardNpcManagerFv: # 0x8020a828
     mflr    r0
-    lis     r4, 0x8039
+    lis     r4, entry_2229@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x4c58
+    addi    r4, r4, entry_2229@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -2192,8 +2190,8 @@ clipActors__16TBoardNpcManagerFPQ26JDrama9TGraphics: # 0x8020a85c
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r5, -0x70b0(r13)
-    lfs     f2, -0x1ccc(rtoc)
+    lwz     r5, R13Off_m0x70b0(r13)
+    lfs     f2, -0x1ccc(r2)
     lfs     f1, 0x9c(r5)
     bl      clipActorsAux__12TLiveManagerFPQ26JDrama9TGraphicsff
     lwz     r0, 0xc(sp)
@@ -2212,16 +2210,16 @@ __dt__17TMareWBaseManagerFv: # 0x8020a888
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020a8f0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7880
+    lis     r3, __vvt__17TMareWBaseManager@ha
+    addi    r0, r3, __vvt__17TMareWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020a8e0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020a8e0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2251,16 +2249,16 @@ __dt__17TMareMBaseManagerFv: # 0x8020a90c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020a974
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7828
+    lis     r3, __vvt__17TMareMBaseManager@ha
+    addi    r0, r3, __vvt__17TMareMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020a964
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020a964
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2290,16 +2288,16 @@ __dt__15TMonteWBManagerFv: # 0x8020a990
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020a9f8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x77d0
+    lis     r3, __vvt__15TMonteWBManager@ha
+    addi    r0, r3, __vvt__15TMonteWBManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020a9e8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6ee0
+    lis     r3, __vvt__18TMonteWBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020a9e8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2329,16 +2327,16 @@ __dt__15TMonteWAManagerFv: # 0x8020aa14
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020aa7c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7778
+    lis     r3, __vvt__15TMonteWAManager@ha
+    addi    r0, r3, __vvt__15TMonteWAManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020aa6c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6ee0
+    lis     r3, __vvt__18TMonteWBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020aa6c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2368,16 +2366,16 @@ __dt__14TMonteWManagerFv: # 0x8020aa98
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ab00
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7720
+    lis     r3, __vvt__14TMonteWManager@ha
+    addi    r0, r3, __vvt__14TMonteWManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020aaf0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6ee0
+    lis     r3, __vvt__18TMonteWBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020aaf0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2407,20 +2405,20 @@ __dt__15TMonteMEManagerFv: # 0x8020ab1c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ab94
-    lis     r3, 0x803e
-    subi    r0, r3, 0x76c8
+    lis     r3, __vvt__15TMonteMEManager@ha
+    addi    r0, r3, __vvt__15TMonteMEManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ab84
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6f38
+    lis     r3, __vvt__21TMonteMSpecialManager@ha
+    addi    r0, r3, __vvt__21TMonteMSpecialManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ab84
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ab84
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2450,16 +2448,16 @@ __dt__15TMonteMDManagerFv: # 0x8020abb0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ac18
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7670
+    lis     r3, __vvt__15TMonteMDManager@ha
+    addi    r0, r3, __vvt__15TMonteMDManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ac08
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ac08
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2489,16 +2487,16 @@ __dt__15TMonteMCManagerFv: # 0x8020ac34
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ac9c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7618
+    lis     r3, __vvt__15TMonteMCManager@ha
+    addi    r0, r3, __vvt__15TMonteMCManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ac8c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ac8c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2528,16 +2526,16 @@ __dt__15TMonteMBManagerFv: # 0x8020acb8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ad20
-    lis     r3, 0x803e
-    subi    r0, r3, 0x75c0
+    lis     r3, __vvt__15TMonteMBManager@ha
+    addi    r0, r3, __vvt__15TMonteMBManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ad10
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ad10
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2567,16 +2565,16 @@ __dt__15TMonteMAManagerFv: # 0x8020ad3c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ada4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7568
+    lis     r3, __vvt__15TMonteMAManager@ha
+    addi    r0, r3, __vvt__15TMonteMAManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ad94
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ad94
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2606,16 +2604,16 @@ __dt__14TMonteMManagerFv: # 0x8020adc0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ae28
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7510
+    lis     r3, __vvt__14TMonteMManager@ha
+    addi    r0, r3, __vvt__14TMonteMManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ae18
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ae18
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2645,12 +2643,12 @@ __dt__18TSunflowerLManagerFv: # 0x8020ae44
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020ae9c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x74b8
+    lis     r3, __vvt__18TSunflowerLManager@ha
+    addi    r0, r3, __vvt__18TSunflowerLManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020ae8c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2680,12 +2678,12 @@ __dt__18TRaccoonDogManagerFv: # 0x8020aeb8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020af10
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7460
+    lis     r3, __vvt__18TRaccoonDogManager@ha
+    addi    r0, r3, __vvt__18TRaccoonDogManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020af00
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2715,12 +2713,12 @@ __dt__13TPeachManagerFv: # 0x8020af2c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020af84
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7408
+    lis     r3, __vvt__13TPeachManager@ha
+    addi    r0, r3, __vvt__13TPeachManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020af74
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2750,12 +2748,12 @@ __dt__15TKinojiiManagerFv: # 0x8020afa0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020aff8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x73b0
+    lis     r3, __vvt__15TKinojiiManager@ha
+    addi    r0, r3, __vvt__15TKinojiiManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020afe8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2785,12 +2783,12 @@ __dt__15TKinopioManagerFv: # 0x8020b014
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b06c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7358
+    lis     r3, __vvt__15TKinopioManager@ha
+    addi    r0, r3, __vvt__15TKinopioManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b05c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2820,20 +2818,20 @@ __dt__14TMareWBManagerFv: # 0x8020b088
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b100
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7300
+    lis     r3, __vvt__14TMareWBManager@ha
+    addi    r0, r3, __vvt__14TMareWBManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b0f0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7880
+    lis     r3, __vvt__17TMareWBaseManager@ha
+    addi    r0, r3, __vvt__17TMareWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b0f0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b0f0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2863,20 +2861,20 @@ __dt__14TMareWAManagerFv: # 0x8020b11c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b194
-    lis     r3, 0x803e
-    subi    r0, r3, 0x72a8
+    lis     r3, __vvt__14TMareWAManager@ha
+    addi    r0, r3, __vvt__14TMareWAManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b184
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7880
+    lis     r3, __vvt__17TMareWBaseManager@ha
+    addi    r0, r3, __vvt__17TMareWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b184
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b184
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2906,20 +2904,20 @@ __dt__14TMareMDManagerFv: # 0x8020b1b0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b228
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7250
+    lis     r3, __vvt__14TMareMDManager@ha
+    addi    r0, r3, __vvt__14TMareMDManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b218
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7828
+    lis     r3, __vvt__17TMareMBaseManager@ha
+    addi    r0, r3, __vvt__17TMareMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b218
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b218
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2949,20 +2947,20 @@ __dt__14TMareMCManagerFv: # 0x8020b244
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b2bc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x71f8
+    lis     r3, __vvt__14TMareMCManager@ha
+    addi    r0, r3, __vvt__14TMareMCManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b2ac
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7828
+    lis     r3, __vvt__17TMareMBaseManager@ha
+    addi    r0, r3, __vvt__17TMareMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b2ac
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b2ac
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2992,20 +2990,20 @@ __dt__14TMareMBManagerFv: # 0x8020b2d8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b350
-    lis     r3, 0x803e
-    subi    r0, r3, 0x71a0
+    lis     r3, __vvt__14TMareMBManager@ha
+    addi    r0, r3, __vvt__14TMareMBManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b340
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7828
+    lis     r3, __vvt__17TMareMBaseManager@ha
+    addi    r0, r3, __vvt__17TMareMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b340
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b340
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3035,20 +3033,20 @@ __dt__14TMareMAManagerFv: # 0x8020b36c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b3e4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7148
+    lis     r3, __vvt__14TMareMAManager@ha
+    addi    r0, r3, __vvt__14TMareMAManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b3d4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7828
+    lis     r3, __vvt__17TMareMBaseManager@ha
+    addi    r0, r3, __vvt__17TMareMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b3d4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e30
+    lis     r3, __vvt__16TMareBaseManager@ha
+    addi    r0, r3, __vvt__16TMareBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b3d4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3078,20 +3076,20 @@ __dt__15TMonteWCManagerFv: # 0x8020b400
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b478
-    lis     r3, 0x803e
-    subi    r0, r3, 0x70f0
+    lis     r3, __vvt__15TMonteWCManager@ha
+    addi    r0, r3, __vvt__15TMonteWCManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b468
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6f90
+    lis     r3, __vvt__21TMonteWSpecialManager@ha
+    addi    r0, r3, __vvt__21TMonteWSpecialManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b468
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6ee0
+    lis     r3, __vvt__18TMonteWBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b468
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3121,20 +3119,20 @@ __dt__15TMonteMHManagerFv: # 0x8020b494
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b50c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7098
+    lis     r3, __vvt__15TMonteMHManager@ha
+    addi    r0, r3, __vvt__15TMonteMHManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b4fc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6f38
+    lis     r3, __vvt__21TMonteMSpecialManager@ha
+    addi    r0, r3, __vvt__21TMonteMSpecialManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b4fc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b4fc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3164,20 +3162,20 @@ __dt__15TMonteMGManagerFv: # 0x8020b528
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b5a0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x7040
+    lis     r3, __vvt__15TMonteMGManager@ha
+    addi    r0, r3, __vvt__15TMonteMGManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b590
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6f38
+    lis     r3, __vvt__21TMonteMSpecialManager@ha
+    addi    r0, r3, __vvt__21TMonteMSpecialManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b590
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b590
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3207,20 +3205,20 @@ __dt__15TMonteMFManagerFv: # 0x8020b5bc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b634
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6fe8
+    lis     r3, __vvt__15TMonteMFManager@ha
+    addi    r0, r3, __vvt__15TMonteMFManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b624
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6f38
+    lis     r3, __vvt__21TMonteMSpecialManager@ha
+    addi    r0, r3, __vvt__21TMonteMSpecialManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b624
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b624
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3250,16 +3248,16 @@ __dt__21TMonteWSpecialManagerFv: # 0x8020b650
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b6b8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6f90
+    lis     r3, __vvt__21TMonteWSpecialManager@ha
+    addi    r0, r3, __vvt__21TMonteWSpecialManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b6a8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6ee0
+    lis     r3, __vvt__18TMonteWBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b6a8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3289,16 +3287,16 @@ __dt__21TMonteMSpecialManagerFv: # 0x8020b6d4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b73c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6f38
+    lis     r3, __vvt__21TMonteMSpecialManager@ha
+    addi    r0, r3, __vvt__21TMonteMSpecialManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b72c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b72c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3328,12 +3326,12 @@ __dt__18TMonteWBaseManagerFv: # 0x8020b758
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b7b0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6ee0
+    lis     r3, __vvt__18TMonteWBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteWBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b7a0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3363,12 +3361,12 @@ __dt__18TMonteMBaseManagerFv: # 0x8020b7cc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b824
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6e88
+    lis     r3, __vvt__18TMonteMBaseManager@ha
+    addi    r0, r3, __vvt__18TMonteMBaseManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b814
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6dd8
+    lis     r3, __vvt__11TNPCManager@ha
+    addi    r0, r3, __vvt__11TNPCManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3398,16 +3396,16 @@ __dt__21TMareJellyFishManagerFv: # 0x8020b840
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b8a8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6d80
+    lis     r3, __vvt__21TMareJellyFishManager@ha
+    addi    r0, r3, __vvt__21TMareJellyFishManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b898
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6058
+    lis     r3, __vvt__11TObjManager@ha
+    addi    r0, r3, __vvt__11TObjManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b898
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -3437,20 +3435,20 @@ __dt__16TBoardNpcManagerFv: # 0x8020b8c4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8020b93c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6d50
+    lis     r3, __vvt__16TBoardNpcManager@ha
+    addi    r0, r3, __vvt__16TBoardNpcManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b92c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6098
+    lis     r3, __vvt__12TLiveManager@ha
+    addi    r0, r3, __vvt__12TLiveManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b92c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6058
+    lis     r3, __vvt__11TObjManager@ha
+    addi    r0, r3, __vvt__11TObjManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8020b92c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

@@ -41,9 +41,9 @@ branch_0x802934c8:
 branch_0x802934d4:
     li      r3, 0x0
     bl      OSSetSoundMode
-    lis     r4, 0x7
+    lis     r4, unk_00070001@h
     addi    r3, r30, 0x0
-    addi    r5, r4, 0x1
+    addi    r5, r4, unk_00070001@l
     li      r4, 0x0
     bl      setBool__12TFlagManagerFbUl
     b       branch_0x80293530
@@ -51,9 +51,9 @@ branch_0x802934d4:
 branch_0x802934f4:
     li      r3, 0x1
     bl      OSSetSoundMode
-    lis     r4, 0x7
+    lis     r4, unk_00070001@h
     addi    r3, r30, 0x0
-    addi    r5, r4, 0x1
+    addi    r5, r4, unk_00070001@l
     li      r4, 0x0
     bl      setBool__12TFlagManagerFbUl
     b       branch_0x80293530
@@ -61,28 +61,28 @@ branch_0x802934f4:
 branch_0x80293514:
     li      r3, 0x1
     bl      OSSetSoundMode
-    lis     r4, 0x7
+    lis     r4, unk_00070001@h
     addi    r3, r30, 0x0
-    addi    r5, r4, 0x1
+    addi    r5, r4, unk_00070001@l
     li      r4, 0x1
     bl      setBool__12TFlagManagerFbUl
 branch_0x80293530:
-    lis     r4, 0xa
+    lis     r4, unk_000a0001@h
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_000a0001@l
     bl      getFlag__12TFlagManagerCFUl
     addi    r5, r3, 0x0
     addi    r3, r30, 0x0
     lis     r4, 0x8
     bl      setFlag__12TFlagManagerFUll
-    lis     r4, 0x9
+    lis     r4, unk_00090001@h
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_00090001@l
     bl      getBool__12TFlagManagerCFUl
-    lis     r5, 0x7
+    lis     r5, unk_00070002@h
     addi    r4, r3, 0x0
     addi    r3, r30, 0x0
-    addi    r5, r5, 0x2
+    addi    r5, r5, unk_00070002@l
     bl      setBool__12TFlagManagerFbUl
     addi    r3, r31, 0x0
     addi    r4, r30, 0x284
@@ -147,9 +147,9 @@ branch_0x80293610:
     b       branch_0x80293684
 
 branch_0x80293654:
-    lis     r4, 0x7
+    lis     r4, unk_00070001@h
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_00070001@l
     bl      getBool__12TFlagManagerCFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80293674
@@ -166,19 +166,19 @@ branch_0x80293684:
     addi    r3, r30, 0x0
     lis     r4, 0x8
     bl      getFlag__12TFlagManagerCFUl
-    lis     r4, 0xa
+    lis     r4, unk_000a0001@h
     addi    r5, r3, 0x0
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_000a0001@l
     bl      setFlag__12TFlagManagerFUll
-    lis     r4, 0x7
+    lis     r4, unk_00070002@h
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x2
+    addi    r4, r4, unk_00070002@l
     bl      getBool__12TFlagManagerCFUl
-    lis     r5, 0x9
+    lis     r5, unk_00090001@h
     addi    r4, r3, 0x0
     addi    r3, r30, 0x0
-    addi    r5, r5, 0x1
+    addi    r5, r5, unk_00090001@l
     bl      setBool__12TFlagManagerFbUl
     lwz     r0, 0x3c(sp)
     lwz     r31, 0x34(sp)
@@ -213,9 +213,9 @@ correctOptFlag__12TFlagManagerFv: # 0x802936e0
     b       branch_0x80293764
 
 branch_0x80293734:
-    lis     r4, 0x7
+    lis     r4, unk_00070001@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_00070001@l
     bl      getBool__12TFlagManagerCFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80293754
@@ -232,19 +232,19 @@ branch_0x80293764:
     addi    r3, r31, 0x0
     lis     r4, 0x8
     bl      getFlag__12TFlagManagerCFUl
-    lis     r4, 0xa
+    lis     r4, unk_000a0001@h
     addi    r5, r3, 0x0
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_000a0001@l
     bl      setFlag__12TFlagManagerFUll
-    lis     r4, 0x7
+    lis     r4, unk_00070002@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x2
+    addi    r4, r4, unk_00070002@l
     bl      getBool__12TFlagManagerCFUl
-    lis     r5, 0x9
+    lis     r5, unk_00090001@h
     addi    r4, r3, 0x0
     addi    r3, r31, 0x0
-    addi    r5, r5, 0x1
+    addi    r5, r5, unk_00090001@l
     bl      setBool__12TFlagManagerFbUl
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -417,8 +417,8 @@ correctFlag__12TFlagManagerFv: # 0x802939f0
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    lis     r31, 0x2
-    addi    r4, r31, 0x1
+    lis     r31, unk_00020001@h
+    addi    r4, r31, unk_00020001@l
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
@@ -431,9 +431,9 @@ correctFlag__12TFlagManagerFv: # 0x802939f0
     li      r5, 0x3
     bl      setFlag__12TFlagManagerFUll
 branch_0x80293a34:
-    lis     r31, 0x2
+    lis     r31, unk_00020002@h
     addi    r3, r28, 0x0
-    addi    r4, r31, 0x2
+    addi    r4, r31, unk_00020002@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80293a5c
@@ -442,9 +442,9 @@ branch_0x80293a34:
     li      r5, 0xdac
     bl      setFlag__12TFlagManagerFUll
 branch_0x80293a5c:
-    lis     r31, 0x2
+    lis     r31, unk_00020003@h
     addi    r3, r28, 0x0
-    addi    r4, r31, 0x3
+    addi    r4, r31, unk_00020003@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80293a84
@@ -453,9 +453,9 @@ branch_0x80293a5c:
     li      r5, 0xbb8
     bl      setFlag__12TFlagManagerFUll
 branch_0x80293a84:
-    lis     r31, 0x2
+    lis     r31, unk_00020014@h
     addi    r3, r28, 0x0
-    addi    r4, r31, 0x14
+    addi    r4, r31, unk_00020014@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80293aac
@@ -464,9 +464,9 @@ branch_0x80293a84:
     li      r5, 0xfa0
     bl      setFlag__12TFlagManagerFUll
 branch_0x80293aac:
-    lis     r31, 0x2
+    lis     r31, unk_00020004@h
     addi    r3, r28, 0x0
-    addi    r4, r31, 0x4
+    addi    r4, r31, unk_00020004@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80293ad4
@@ -475,9 +475,9 @@ branch_0x80293aac:
     li      r5, 0xbb8
     bl      setFlag__12TFlagManagerFUll
 branch_0x80293ad4:
-    lis     r31, 0x1
+    lis     r31, unk_0001039a@h
     addi    r3, r28, 0x0
-    addi    r5, r31, 0x39a
+    addi    r5, r31, unk_0001039a@l
     li      r4, 0x1
     bl      setBool__12TFlagManagerFbUl
     addi    r3, r28, 0x0
@@ -486,12 +486,12 @@ branch_0x80293ad4:
     bl      setBool__12TFlagManagerFbUl
     addi    r31, r31, 0x77
     li      r30, 0x0
-    lis     r29, 0x1
+    lis     r29, unk_00010000@h
     b       branch_0x80293b24
 
 branch_0x80293b08:
     addi    r3, r28, 0x0
-    addi    r4, r29, 0x0
+    addi    r4, r29, unk_00010000@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     beq-    branch_0x80293b20
@@ -505,8 +505,8 @@ branch_0x80293b24:
     addi    r5, r30, 0x0
     lis     r4, 0x4
     bl      setFlag__12TFlagManagerFUll
-    lis     r3, 0x1
-    addi    r30, r3, 0x78
+    lis     r3, unk_00010078@h
+    addi    r30, r3, unk_00010078@l
     addi    r31, r3, 0x365
     li      r29, 0x0
     b       branch_0x80293b6c
@@ -523,10 +523,10 @@ branch_0x80293b68:
 branch_0x80293b6c:
     cmplw   r30, r31
     ble+    branch_0x80293b50
-    lis     r4, 0x4
+    lis     r4, unk_00040001@h
     addi    r3, r28, 0x0
     addi    r5, r29, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_00040001@l
     bl      setFlag__12TFlagManagerFUll
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
@@ -1100,7 +1100,7 @@ branch_0x802943d4:
     li      r31, 0x0
 branch_0x802943e4:
     clrlwi  r3, r3, 24
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     slwi    r3, r0, 1
     addis   r0, r3, 0x1
     clrlwi  r4, r31, 24
@@ -1148,7 +1148,7 @@ branch_0x80294474:
     li      r31, 0x0
 branch_0x80294484:
     clrlwi  r3, r3, 24
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     slwi    r3, r0, 1
     addis   r0, r3, 0x1
     clrlwi  r4, r31, 24
@@ -1191,7 +1191,7 @@ branch_0x80294504:
     li      r31, 0x0
 branch_0x80294514:
     clrlwi  r3, r3, 24
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     mulli   r3, r0, 0x32
     addis   r0, r3, 0x1
     clrlwi  r4, r31, 24
@@ -1202,9 +1202,9 @@ branch_0x80294514:
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80294568
-    lis     r4, 0x4
+    lis     r4, unk_00040001@h
     addi    r3, r30, 0x0
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_00040001@l
     li      r5, 0x1
     bl      incFlag__12TFlagManagerFUll
     addi    r3, r30, 0x0
@@ -1244,7 +1244,7 @@ branch_0x802945b8:
     li      r31, 0x0
 branch_0x802945c8:
     clrlwi  r3, r3, 24
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     mulli   r3, r0, 0x32
     addis   r0, r3, 0x1
     clrlwi  r4, r31, 24
@@ -1270,10 +1270,10 @@ incGoldCoinFlag__12TFlagManagerFUcl: # 0x80294610
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
-    lis     r30, 0x4
+    lis     r30, unk_00040002@h
     stw     r29, 0x1c(sp)
     addi    r29, r4, 0x0
-    addi    r4, r30, 0x2
+    addi    r4, r30, unk_00040002@l
     stw     r28, 0x18(sp)
     addi    r28, r3, 0x0
     bl      incFlag__12TFlagManagerFUll
@@ -1373,8 +1373,8 @@ incMario__12TFlagManagerFl: # 0x8029476c
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    lis     r31, 0x2
-    addi    r4, r31, 0x1
+    lis     r31, unk_00020001@h
+    addi    r4, r31, unk_00020001@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      incFlag__12TFlagManagerFUll
@@ -1416,16 +1416,15 @@ incFlag__12TFlagManagerFUll: # 0x802947f4
     clrlwi  r7, r4, 16
     bgtlr-    
 
-    lis     r6, 0x803e
-    subi    r6, r6, 0x1248
+    lis     r6, unk_803dedb8@ha
+    addi    r6, r6, unk_803dedb8@l
     slwi    r0, r0, 2
     lwzx    r0, r6, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8029481C:		# jumptable 80294818 case 2
-    lis     r6, 0x2
-    addi    r0, r6, 0x15
+    bctr       
+branch_0x8029481c:
+    lis     r6, unk_00020015@h
+    addi    r0, r6, unk_00020015@l
     cmplw   r4, r0
     bgelr-    
 
@@ -1436,55 +1435,57 @@ branch_0x8029481C:		# jumptable 80294818 case 2
     stw     r0, 0x78(r3)
     blr
 
-branch_0x80294844:		# jumptable 80294818 case 4
-lis	  r6, 4	# 0x40005
-addi	  r0, r6, 5 # 0x40005
-cmplw	  r4, r0
-bgelr
-slwi	  r0, r7, 2
-add	  r3, r3, r0
-lwz	  r0, 0xD0(r3)
-add	  r0, r0, r5
-stw	  r0, 0xD0(r3)
-blr
+branch_0x80294844:
+    lis     r6, unk_00040005@h
+    addi    r0, r6, unk_00040005@l
+    cmplw   r4, r0
+    bgelr-    
 
-branch_0x8029486C:		# jumptable 80294818 case 6
-lis	  r6, 6	# 0x60064
-addi	  r0, r6, 0x64 # 0x60064
-cmplw	  r4, r0
-bgelr
-slwi	  r0, r7, 2
-add	  r3, r3, r0
-lwz	  r0, 0xF4(r3)
-add	  r0, r0, r5
-stw	  r0, 0xF4(r3)
-blr
+    slwi    r0, r7, 2
+    add     r3, r3, r0
+    lwz     r0, 0xd0(r3)
+    add     r0, r0, r5
+    stw     r0, 0xd0(r3)
+    blr
 
-branch_0x80294894:		# jumptable 80294818 case 8
-lis	  r6, 8	# 0x80001
-addi	  r0, r6, 1 # 0x80001
-cmplw	  r4, r0
-bgelr
-slwi	  r0, r7, 2
-add	  r3, r3, r0
-lwz	  r0, 0x288(r3)
-add	  r0, r0, r5
-stw	  r0, 0x288(r3)
-blr
+branch_0x8029486c:
+    lis     r6, unk_00060064@h
+    addi    r0, r6, unk_00060064@l
+    cmplw   r4, r0
+    bgelr-    
 
-branch_0x802948BC:		# jumptable 80294818 case 10
-lis	  r6, 0xA # 0xA0002
-addi	  r0, r6, 2 # 0xA0002
-cmplw	  r4, r0
-bgelr
-slwi	  r0, r7, 2
-add	  r3, r3, r0
-lwz	  r0, 0x290(r3)
-add	  r0, r0, r5
-stw	  r0, 0x290(r3)
+    slwi    r0, r7, 2
+    add     r3, r3, r0
+    lwz     r0, 0xf4(r3)
+    add     r0, r0, r5
+    stw     r0, 0xf4(r3)
+    blr
 
-locret_802948E0:	# jumptable 80294818 cases 0,1,3,5,7,9
-blr
+branch_0x80294894:
+    lis     r6, unk_00080001@h
+    addi    r0, r6, unk_00080001@l
+    cmplw   r4, r0
+    bgelr-    
+
+    slwi    r0, r7, 2
+    add     r3, r3, r0
+    lwz     r0, 0x288(r3)
+    add     r0, r0, r5
+    stw     r0, 0x288(r3)
+    blr
+
+branch_0x802948bc:
+    lis     r6, unk_000a0002@h
+    addi    r0, r6, unk_000a0002@l
+    cmplw   r4, r0
+    bgelr-    
+
+    slwi    r0, r7, 2
+    add     r3, r3, r0
+    lwz     r0, 0x290(r3)
+    add     r0, r0, r5
+    stw     r0, 0x290(r3)
+    blr
 
 
 .globl setBool__12TFlagManagerFbUl
@@ -1495,16 +1496,15 @@ setBool__12TFlagManagerFbUl: # 0x802948e4
     cmplwi  r0, 0xa
     stwu    sp, -0x8(sp)
     bgt-    branch_0x80294a14
-    lis     r6, 0x803e
-    subi    r6, r6, 0x121c
+    lis     r6, unk_803dede4@ha
+    addi    r6, r6, unk_803dede4@l
     slwi    r0, r0, 2
     lwzx    r0, r6, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80294914:		# jumptable 80294910 case 1
-    lis     r6, 0x1
-    addi    r0, r6, 0x3b4
+    bctr       
+branch_0x80294914:
+    lis     r6, unk_000103b4@h
+    addi    r0, r6, unk_000103b4@l
     cmplw   r5, r0
     bge-    branch_0x80294a14
     clrlwi. r0, r4, 24
@@ -1520,82 +1520,76 @@ branch_0x80294938:
     bl      setFlag__12TFlagManagerFUll
     b       branch_0x80294a14
 
-branch_0x80294948:		# jumptable 80294910 case 3
-lis	  r6, 3	# 0x3001D
-addi	  r0, r6, 0x1D # 0x3001D
-cmplw	  r5, r0
-bge	  def_80294910	# jumptable 80294910 default case
-clrlwi.	  r0, r4, 24
-beq	  branch_0x80294968
-li	  r0, 1
-b	  branch_0x8029496C
+branch_0x80294948:
+    lis     r6, unk_0003001d@h
+    addi    r0, r6, unk_0003001d@l
+    cmplw   r5, r0
+    bge-    branch_0x80294a14
+    clrlwi. r0, r4, 24
+    beq-    branch_0x80294968
+    li      r0, 0x1
+    b       branch_0x8029496c
 
 branch_0x80294968:
-li	  r0, 0
+    li      r0, 0x0
+branch_0x8029496c:
+    addi    r4, r5, 0x0
+    mr      r5, r0
+    bl      setFlag__12TFlagManagerFUll
+    b       branch_0x80294a14
 
-branch_0x8029496C:
-addi	  r4, r5, 0
-mr	  r5, r0
-bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
-b	  def_80294910	# jumptable 80294910 default case
+branch_0x8029497c:
+    lis     r6, unk_00050064@h
+    addi    r0, r6, unk_00050064@l
+    cmplw   r5, r0
+    bge-    branch_0x80294a14
+    clrlwi. r0, r4, 24
+    beq-    branch_0x8029499c
+    li      r0, 0x1
+    b       branch_0x802949a0
 
-branch_0x8029497C:		# jumptable 80294910 case 5
-lis	  r6, 5	# 0x50064
-addi	  r0, r6, 0x64 # 0x50064
-cmplw	  r5, r0
-bge	  def_80294910	# jumptable 80294910 default case
-clrlwi.	  r0, r4, 24
-beq	  branch_0x8029499C
-li	  r0, 1
-b	  branch_0x802949A0
+branch_0x8029499c:
+    li      r0, 0x0
+branch_0x802949a0:
+    addi    r4, r5, 0x0
+    mr      r5, r0
+    bl      setFlag__12TFlagManagerFUll
+    b       branch_0x80294a14
 
-branch_0x8029499C:
-li	  r0, 0
+branch_0x802949b0:
+    lis     r6, unk_00070003@h
+    addi    r0, r6, unk_00070003@l
+    cmplw   r5, r0
+    bge-    branch_0x80294a14
+    clrlwi. r0, r4, 24
+    beq-    branch_0x802949d0
+    li      r0, 0x1
+    b       branch_0x802949d4
 
-branch_0x802949A0:
-addi	  r4, r5, 0
-mr	  r5, r0
-bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
-b	  def_80294910	# jumptable 80294910 default case
+branch_0x802949d0:
+    li      r0, 0x0
+branch_0x802949d4:
+    addi    r4, r5, 0x0
+    mr      r5, r0
+    bl      setFlag__12TFlagManagerFUll
+    b       branch_0x80294a14
 
-branch_0x802949B0:		# jumptable 80294910 case 7
-lis	  r6, 7	# 0x70003
-addi	  r0, r6, 3 # 0x70003
-cmplw	  r5, r0
-bge	  def_80294910	# jumptable 80294910 default case
-clrlwi.	  r0, r4, 24
-beq	  branch_0x802949D0
-li	  r0, 1
-b	  branch_0x802949D4
+branch_0x802949e4:
+    lis     r6, unk_00090002@h
+    addi    r0, r6, unk_00090002@l
+    cmplw   r5, r0
+    bge-    branch_0x80294a14
+    clrlwi. r0, r4, 24
+    beq-    branch_0x80294a04
+    li      r0, 0x1
+    b       branch_0x80294a08
 
-branch_0x802949D0:
-li	  r0, 0
-
-branch_0x802949D4:
-addi	  r4, r5, 0
-mr	  r5, r0
-bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
-b	  def_80294910	# jumptable 80294910 default case
-
-branch_0x802949E4:		# jumptable 80294910 case 9
-lis	  r6, 9	# 0x90002
-addi	  r0, r6, 2 # 0x90002
-cmplw	  r5, r0
-bge	  def_80294910	# jumptable 80294910 default case
-clrlwi.	  r0, r4, 24
-beq	  branch_0x80294A04
-li	  r0, 1
-b	  branch_0x80294A08
-
-branch_0x80294A04:
-li	  r0, 0
-
-branch_0x80294A08:
-addi	  r4, r5, 0
-mr	  r5, r0
-bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
-
-def_80294910:		# jumptable 80294910 default case
+branch_0x80294a04:
+    li      r0, 0x0
+branch_0x80294a08:
+    addi    r4, r5, 0x0
+    mr      r5, r0
+    bl      setFlag__12TFlagManagerFUll
 branch_0x80294a14:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1611,16 +1605,15 @@ getBool__12TFlagManagerCFUl: # 0x80294a24
     cmplwi  r0, 0x9
     stwu    sp, -0x8(sp)
     bgt-    branch_0x80294b08
-    lis     r5, 0x803e
-    subi    r5, r5, 0x11f0
+    lis     r5, unk_803dee10@ha
+    addi    r5, r5, unk_803dee10@l
     slwi    r0, r0, 2
     lwzx    r0, r5, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80294A54:		# jumptable 80294A50 case 1
-    lis     r5, 0x1
-    addi    r0, r5, 0x3b4
+    bctr       
+branch_0x80294a54:
+    lis     r5, unk_000103b4@h
+    addi    r0, r5, unk_000103b4@l
     cmplw   r4, r0
     bge-    branch_0x80294b08
     bl      getFlag__12TFlagManagerCFUl
@@ -1629,51 +1622,50 @@ branch_0x80294A54:		# jumptable 80294A50 case 1
     subfe   r3, r0, r3
     b       branch_0x80294b0c
 
-branch_0x80294A78:		# jumptable 80294A50 case 3
-lis	  r5, 3	# 0x3001D
-addi	  r0, r5, 0x1D # 0x3001D
-cmplw	  r4, r0
-bge	  def_80294A50	# jumptable 80294A50 default case
-bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
-neg	  r3, r3
-addic	  r0, r3, -1
-subfe	  r3, r0, r3
-b	  branch_0x80294b0c
+branch_0x80294a78:
+    lis     r5, unk_0003001d@h
+    addi    r0, r5, unk_0003001d@l
+    cmplw   r4, r0
+    bge-    branch_0x80294b08
+    bl      getFlag__12TFlagManagerCFUl
+    neg     r3, r3
+    subic   r0, r3, 0x1
+    subfe   r3, r0, r3
+    b       branch_0x80294b0c
 
-branch_0x80294A9C:		# jumptable 80294A50 case 5
-lis	  r5, 5	# 0x50064
-addi	  r0, r5, 0x64 # 0x50064
-cmplw	  r4, r0
-bge	  def_80294A50	# jumptable 80294A50 default case
-bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
-neg	  r3, r3
-addic	  r0, r3, -1
-subfe	  r3, r0, r3
-b	  branch_0x80294b0c
+branch_0x80294a9c:
+    lis     r5, unk_00050064@h
+    addi    r0, r5, unk_00050064@l
+    cmplw   r4, r0
+    bge-    branch_0x80294b08
+    bl      getFlag__12TFlagManagerCFUl
+    neg     r3, r3
+    subic   r0, r3, 0x1
+    subfe   r3, r0, r3
+    b       branch_0x80294b0c
 
-branch_0x80294AC0:		# jumptable 80294A50 case 7
-lis	  r5, 7	# 0x70003
-addi	  r0, r5, 3 # 0x70003
-cmplw	  r4, r0
-bge	  def_80294A50	# jumptable 80294A50 default case
-bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
-neg	  r3, r3
-addic	  r0, r3, -1
-subfe	  r3, r0, r3
-b	  branch_0x80294b0c
+branch_0x80294ac0:
+    lis     r5, unk_00070003@h
+    addi    r0, r5, unk_00070003@l
+    cmplw   r4, r0
+    bge-    branch_0x80294b08
+    bl      getFlag__12TFlagManagerCFUl
+    neg     r3, r3
+    subic   r0, r3, 0x1
+    subfe   r3, r0, r3
+    b       branch_0x80294b0c
 
-branch_0x80294AE4:		# jumptable 80294A50 case 9
-lis	  r5, 9	# 0x90002
-addi	  r0, r5, 2 # 0x90002
-cmplw	  r4, r0
-bge	  def_80294A50	# jumptable 80294A50 default case
-bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
-neg	  r3, r3
-addic	  r0, r3, -1
-subfe	  r3, r0, r3
-b	  branch_0x80294b0c
+branch_0x80294ae4:
+    lis     r5, unk_00090002@h
+    addi    r0, r5, unk_00090002@l
+    cmplw   r4, r0
+    bge-    branch_0x80294b08
+    bl      getFlag__12TFlagManagerCFUl
+    neg     r3, r3
+    subic   r0, r3, 0x1
+    subfe   r3, r0, r3
+    b       branch_0x80294b0c
 
-def_80294A50:		# jumptable 80294A50 default case
 branch_0x80294b08:
     li      r3, 0x0
 branch_0x80294b0c:
@@ -1690,16 +1682,15 @@ setFlag__12TFlagManagerFUll: # 0x80294b1c
     clrlwi  r0, r4, 16
     bgtlr-    
 
-    lis     r6, 0x803e
-    subi    r7, r6, 0x11c8
+    lis     r6, unk_803dee38@ha
+    addi    r7, r6, unk_803dee38@l
     slwi    r6, r8, 2
     lwzx    r6, r7, r6
     mtctr   r6
-    bctr			# switch jump
-
-branch_0x80294B44:		# jumptable 80294B40 case 1
-    lis     r6, 0x1
-    addi    r6, r6, 0x3b4
+    bctr       
+branch_0x80294b44:
+    lis     r6, unk_000103b4@h
+    addi    r6, r6, unk_000103b4@l
     cmplw   r4, r6
     bgelr-    
 
@@ -1718,137 +1709,144 @@ branch_0x80294B44:		# jumptable 80294B40 case 1
     stb     r0, 0x0(r6)
     blr
 
-branch_0x80294B8C:		# jumptable 80294B40 case 2
-lis	  r6, 2	# 0x20015
-addi	  r6, r6, 0x15 # 0x20015
-cmplw	  r4, r6
-bgelr
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-stw	  r5, 0x78(r3)
-blr
+branch_0x80294b8c:
+    lis     r6, unk_00020015@h
+    addi    r6, r6, unk_00020015@l
+    cmplw   r4, r6
+    bgelr-    
 
-branch_0x80294BAC:		# jumptable 80294B40 case 3
-lis	  r6, 3	# 0x3001D
-addi	  r6, r6, 0x1D # 0x3001D
-cmplw	  r4, r6
-bgelr
-srwi	  r4, r0, 3
-add	  r6, r3, r4
-clrlwi	  r4, r0, 29
-lbz	  r3, 0xCC(r6)
-li	  r0, 1
-slw	  r0, r0, r4
-andc	  r0, r3, r0
-stb	  r0, 0xCC(r6)
-clrlwi	  r0, r5, 31
-slw	  r0, r0, r4
-lbz	  r3, 0xCC(r6)
-or	  r0, r3, r0
-stb	  r0, 0xCC(r6)
-blr
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    stw     r5, 0x78(r3)
+    blr
 
-branch_0x80294BF4:		# jumptable 80294B40 case 4
-lis	  r6, 4	# 0x40005
-addi	  r6, r6, 5 # 0x40005
-cmplw	  r4, r6
-bgelr
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-stw	  r5, 0xD0(r3)
-blr
+branch_0x80294bac:
+    lis     r6, unk_0003001d@h
+    addi    r6, r6, unk_0003001d@l
+    cmplw   r4, r6
+    bgelr-    
 
-branch_0x80294C14:		# jumptable 80294B40 case 5
-lis	  r6, 5	# 0x50064
-addi	  r6, r6, 0x64 # 0x50064
-cmplw	  r4, r6
-bgelr
-srwi	  r4, r0, 3
-add	  r6, r3, r4
-clrlwi	  r4, r0, 29
-lbz	  r3, 0xE4(r6)
-li	  r0, 1
-slw	  r0, r0, r4
-andc	  r0, r3, r0
-stb	  r0, 0xE4(r6)
-clrlwi	  r0, r5, 31
-slw	  r0, r0, r4
-lbz	  r3, 0xE4(r6)
-or	  r0, r3, r0
-stb	  r0, 0xE4(r6)
-blr
+    srwi    r4, r0, 3
+    add     r6, r3, r4
+    clrlwi  r4, r0, 29
+    lbz     r3, 0xcc(r6)
+    li      r0, 0x1
+    slw     r0, r0, r4
+    andc    r0, r3, r0
+    stb     r0, 0xcc(r6)
+    clrlwi  r0, r5, 31
+    slw     r0, r0, r4
+    lbz     r3, 0xcc(r6)
+    or      r0, r3, r0
+    stb     r0, 0xcc(r6)
+    blr
 
-branch_0x80294C5C:		# jumptable 80294B40 case 6
-lis	  r6, 6	# 0x60064
-addi	  r6, r6, 0x64 # 0x60064
-cmplw	  r4, r6
-bgelr
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-stw	  r5, 0xF4(r3)
-blr
+branch_0x80294bf4:
+    lis     r6, unk_00040005@h
+    addi    r6, r6, unk_00040005@l
+    cmplw   r4, r6
+    bgelr-    
 
-branch_0x80294C7C:		# jumptable 80294B40 case 7
-lis	  r6, 7	# 0x70003
-addi	  r6, r6, 3 # 0x70003
-cmplw	  r4, r6
-bgelr
-srwi	  r4, r0, 3
-add	  r6, r3, r4
-clrlwi	  r4, r0, 29
-lbz	  r3, 0x284(r6)
-li	  r0, 1
-slw	  r0, r0, r4
-andc	  r0, r3, r0
-stb	  r0, 0x284(r6)
-clrlwi	  r0, r5, 31
-slw	  r0, r0, r4
-lbz	  r3, 0x284(r6)
-or	  r0, r3, r0
-stb	  r0, 0x284(r6)
-blr
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    stw     r5, 0xd0(r3)
+    blr
 
-branch_0x80294CC4:		# jumptable 80294B40 case 8
-lis	  r6, 8	# 0x80001
-addi	  r6, r6, 1 # 0x80001
-cmplw	  r4, r6
-bgelr
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-stw	  r5, 0x288(r3)
-blr
+branch_0x80294c14:
+    lis     r6, unk_00050064@h
+    addi    r6, r6, unk_00050064@l
+    cmplw   r4, r6
+    bgelr-    
 
-branch_0x80294CE4:		# jumptable 80294B40 case 9
-lis	  r6, 9	# 0x90002
-addi	  r6, r6, 2 # 0x90002
-cmplw	  r4, r6
-bgelr
-srwi	  r4, r0, 3
-add	  r6, r3, r4
-clrlwi	  r4, r0, 29
-lbz	  r3, 0x28C(r6)
-li	  r0, 1
-slw	  r0, r0, r4
-andc	  r0, r3, r0
-stb	  r0, 0x28C(r6)
-clrlwi	  r0, r5, 31
-slw	  r0, r0, r4
-lbz	  r3, 0x28C(r6)
-or	  r0, r3, r0
-stb	  r0, 0x28C(r6)
-blr
+    srwi    r4, r0, 3
+    add     r6, r3, r4
+    clrlwi  r4, r0, 29
+    lbz     r3, 0xe4(r6)
+    li      r0, 0x1
+    slw     r0, r0, r4
+    andc    r0, r3, r0
+    stb     r0, 0xe4(r6)
+    clrlwi  r0, r5, 31
+    slw     r0, r0, r4
+    lbz     r3, 0xe4(r6)
+    or      r0, r3, r0
+    stb     r0, 0xe4(r6)
+    blr
 
-branch_0x80294D2C:		# jumptable 80294B40 case 10
-lis	  r6, 0xA # 0xA0002
-addi	  r6, r6, 2 # 0xA0002
-cmplw	  r4, r6
-bgelr
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-stw	  r5, 0x290(r3)
+branch_0x80294c5c:
+    lis     r6, unk_00060064@h
+    addi    r6, r6, unk_00060064@l
+    cmplw   r4, r6
+    bgelr-    
 
-locret_80294D48:	# jumptable 80294B40 case 0
-blr
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    stw     r5, 0xf4(r3)
+    blr
+
+branch_0x80294c7c:
+    lis     r6, unk_00070003@h
+    addi    r6, r6, unk_00070003@l
+    cmplw   r4, r6
+    bgelr-    
+
+    srwi    r4, r0, 3
+    add     r6, r3, r4
+    clrlwi  r4, r0, 29
+    lbz     r3, 0x284(r6)
+    li      r0, 0x1
+    slw     r0, r0, r4
+    andc    r0, r3, r0
+    stb     r0, 0x284(r6)
+    clrlwi  r0, r5, 31
+    slw     r0, r0, r4
+    lbz     r3, 0x284(r6)
+    or      r0, r3, r0
+    stb     r0, 0x284(r6)
+    blr
+
+branch_0x80294cc4:
+    lis     r6, unk_00080001@h
+    addi    r6, r6, unk_00080001@l
+    cmplw   r4, r6
+    bgelr-    
+
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    stw     r5, 0x288(r3)
+    blr
+
+branch_0x80294ce4:
+    lis     r6, unk_00090002@h
+    addi    r6, r6, unk_00090002@l
+    cmplw   r4, r6
+    bgelr-    
+
+    srwi    r4, r0, 3
+    add     r6, r3, r4
+    clrlwi  r4, r0, 29
+    lbz     r3, 0x28c(r6)
+    li      r0, 0x1
+    slw     r0, r0, r4
+    andc    r0, r3, r0
+    stb     r0, 0x28c(r6)
+    clrlwi  r0, r5, 31
+    slw     r0, r0, r4
+    lbz     r3, 0x28c(r6)
+    or      r0, r3, r0
+    stb     r0, 0x28c(r6)
+    blr
+
+branch_0x80294d2c:
+    lis     r6, unk_000a0002@h
+    addi    r6, r6, unk_000a0002@l
+    cmplw   r4, r6
+    bgelr-    
+
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    stw     r5, 0x290(r3)
+    blr
 
 
 .globl getFlag__12TFlagManagerCFUl
@@ -1857,16 +1855,15 @@ getFlag__12TFlagManagerCFUl: # 0x80294d4c
     cmplwi  r7, 0xa
     clrlwi  r0, r4, 16
     bgt-    branch_0x80294eec
-    lis     r5, 0x803e
-    subi    r6, r5, 0x119c
+    lis     r5, unk_803dee64@ha
+    addi    r6, r5, unk_803dee64@l
     slwi    r5, r7, 2
     lwzx    r5, r6, r5
     mtctr   r5
-    bctr			# switch jump
-
-branch_0x80294D74:		# jumptable 80294D70 case 1
-    lis     r5, 0x1
-    addi    r5, r5, 0x3b4
+    bctr       
+branch_0x80294d74:
+    lis     r5, unk_000103b4@h
+    addi    r5, r5, unk_000103b4@l
     cmplw   r4, r5
     bge-    branch_0x80294eec
     srwi    r4, r0, 3
@@ -1876,109 +1873,108 @@ branch_0x80294D74:		# jumptable 80294D70 case 1
     clrlwi  r3, r0, 31
     blr
 
-branch_0x80294D9C:		# jumptable 80294D70 case 2
-lis	  r5, 2	# 0x20015
-addi	  r5, r5, 0x15 # 0x20015
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-lwz	  r3, 0x78(r3)
-blr
+branch_0x80294d9c:
+    lis     r5, unk_00020015@h
+    addi    r5, r5, unk_00020015@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    lwz     r3, 0x78(r3)
+    blr
 
-branch_0x80294DBC:		# jumptable 80294D70 case 3
-lis	  r5, 3	# 0x3001D
-addi	  r5, r5, 0x1D # 0x3001D
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-srwi	  r4, r0, 3
-add	  r3, r3, r4
-lbz	  r3, 0xCC(r3)
-clrlwi	  r0, r0, 29
-sraw	  r0, r3, r0
-clrlwi	  r3, r0, 31
-blr
+branch_0x80294dbc:
+    lis     r5, unk_0003001d@h
+    addi    r5, r5, unk_0003001d@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    srwi    r4, r0, 3
+    add     r3, r3, r4
+    lbz     r3, 0xcc(r3)
+    clrlwi  r0, r0, 29
+    sraw    r0, r3, r0
+    clrlwi  r3, r0, 31
+    blr
 
-branch_0x80294DE8:		# jumptable 80294D70 case 4
-lis	  r5, 4	# 0x40005
-addi	  r5, r5, 5 # 0x40005
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-lwz	  r3, 0xD0(r3)
-blr
+branch_0x80294de8:
+    lis     r5, unk_00040005@h
+    addi    r5, r5, unk_00040005@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    lwz     r3, 0xd0(r3)
+    blr
 
-branch_0x80294E08:		# jumptable 80294D70 case 5
-lis	  r5, 5	# 0x50064
-addi	  r5, r5, 0x64 # 0x50064
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-srwi	  r4, r0, 3
-add	  r3, r3, r4
-lbz	  r3, 0xE4(r3)
-clrlwi	  r0, r0, 29
-sraw	  r0, r3, r0
-clrlwi	  r3, r0, 31
-blr
+branch_0x80294e08:
+    lis     r5, unk_00050064@h
+    addi    r5, r5, unk_00050064@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    srwi    r4, r0, 3
+    add     r3, r3, r4
+    lbz     r3, 0xe4(r3)
+    clrlwi  r0, r0, 29
+    sraw    r0, r3, r0
+    clrlwi  r3, r0, 31
+    blr
 
-branch_0x80294E34:		# jumptable 80294D70 case 6
-lis	  r5, 6	# 0x60064
-addi	  r5, r5, 0x64 # 0x60064
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-lwz	  r3, 0xF4(r3)
-blr
+branch_0x80294e34:
+    lis     r5, unk_00060064@h
+    addi    r5, r5, unk_00060064@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    lwz     r3, 0xf4(r3)
+    blr
 
-branch_0x80294E54:		# jumptable 80294D70 case 7
-lis	  r5, 7	# 0x70003
-addi	  r5, r5, 3 # 0x70003
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-srwi	  r4, r0, 3
-add	  r3, r3, r4
-lbz	  r3, 0x284(r3)
-clrlwi	  r0, r0, 29
-sraw	  r0, r3, r0
-clrlwi	  r3, r0, 31
-blr
+branch_0x80294e54:
+    lis     r5, unk_00070003@h
+    addi    r5, r5, unk_00070003@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    srwi    r4, r0, 3
+    add     r3, r3, r4
+    lbz     r3, 0x284(r3)
+    clrlwi  r0, r0, 29
+    sraw    r0, r3, r0
+    clrlwi  r3, r0, 31
+    blr
 
-branch_0x80294E80:		# jumptable 80294D70 case 8
-lis	  r5, 8	# 0x80001
-addi	  r5, r5, 1 # 0x80001
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-lwz	  r3, 0x288(r3)
-blr
+branch_0x80294e80:
+    lis     r5, unk_00080001@h
+    addi    r5, r5, unk_00080001@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    lwz     r3, 0x288(r3)
+    blr
 
-branch_0x80294EA0:		# jumptable 80294D70 case 9
-lis	  r5, 9	# 0x90002
-addi	  r5, r5, 2 # 0x90002
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-srwi	  r4, r0, 3
-add	  r3, r3, r4
-lbz	  r3, 0x28C(r3)
-clrlwi	  r0, r0, 29
-sraw	  r0, r3, r0
-clrlwi	  r3, r0, 31
-blr
+branch_0x80294ea0:
+    lis     r5, unk_00090002@h
+    addi    r5, r5, unk_00090002@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    srwi    r4, r0, 3
+    add     r3, r3, r4
+    lbz     r3, 0x28c(r3)
+    clrlwi  r0, r0, 29
+    sraw    r0, r3, r0
+    clrlwi  r3, r0, 31
+    blr
 
-branch_0x80294ECC:		# jumptable 80294D70 case 10
-lis	  r5, 0xA # 0xA0002
-addi	  r5, r5, 2 # 0xA0002
-cmplw	  r4, r5
-bge	  def_80294D70	# jumptable 80294D70 default case
-slwi	  r0, r0, 2
-add	  r3, r3, r0
-lwz	  r3, 0x290(r3)
-blr
+branch_0x80294ecc:
+    lis     r5, unk_000a0002@h
+    addi    r5, r5, unk_000a0002@l
+    cmplw   r4, r5
+    bge-    branch_0x80294eec
+    slwi    r0, r0, 2
+    add     r3, r3, r0
+    lwz     r3, 0x290(r3)
+    blr
 
-def_80294D70:		# jumptable 80294D70 default case
 branch_0x80294eec:
     li      r3, 0x0
     blr
@@ -2373,7 +2369,7 @@ start__12TFlagManagerFP7JKRHeap: # 0x80295484
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    lwz     r0, -0x6060(r13)
+    lwz     r0, R13Off_m0x6060(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8029550c
     addi    r4, r3, 0x0
@@ -2403,11 +2399,12 @@ start__12TFlagManagerFP7JKRHeap: # 0x80295484
     mr      r3, r31
     bl      correctOptFlag__12TFlagManagerFv
 branch_0x80295508:
-    stw     r31, -0x6060(r13)
+    stw     r31, R13Off_m0x6060(r13)
 branch_0x8029550c:
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)
     addi    sp, sp, 0x28
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     mtlr    r0
     blr
+

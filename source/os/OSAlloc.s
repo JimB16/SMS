@@ -58,7 +58,7 @@ branch_0x80342cb4:
 .globl OSAllocFromHeap
 OSAllocFromHeap: # 0x80342cbc
     mulli   r0, r3, 0xc
-    lwz     r3, -0x5a38(r13)
+    lwz     r3, R13Off_m0x5a38(r13)
     add     r5, r3, r0
     addi    r0, r4, 0x3f
     lwz     r6, 0x4(r5)
@@ -142,12 +142,12 @@ branch_0x80342dac:
 .globl OSFreeToHeap
 OSFreeToHeap: # 0x80342db8
     mflr    r0
-    subi    r6, r4, 0x20
+    addi    r6, r4, -0x20
     stw     r0, 0x4(sp)
     mulli   r0, r3, 0xc
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    lwz     r4, -0x5a38(r13)
+    lwz     r4, R13Off_m0x5a38(r13)
     lwz     r3, 0x4(r6)
     add     r31, r4, r0
     cmplwi  r3, 0x0
@@ -181,8 +181,8 @@ branch_0x80342e10:
 .globl OSInitAlloc
 OSInitAlloc: # 0x80342e34
     mulli   r7, r5, 0xc
-    stw     r3, -0x5a38(r13)
-    stw     r5, -0x5a34(r13)
+    stw     r3, R13Off_m0x5a38(r13)
+    stw     r5, R13Off_m0x5a34(r13)
     li      r6, 0x0
     addi    r3, r6, 0x0
     li      r8, 0x0
@@ -190,7 +190,7 @@ OSInitAlloc: # 0x80342e34
     b       branch_0x80342e70
 
 branch_0x80342e54:
-    lwz     r0, -0x5a38(r13)
+    lwz     r0, R13Off_m0x5a38(r13)
     addi    r8, r8, 0x1
     add     r9, r0, r6
     stw     r5, 0x0(r9)
@@ -198,26 +198,26 @@ branch_0x80342e54:
     stw     r3, 0x8(r9)
     stw     r3, 0x4(r9)
 branch_0x80342e70:
-    lwz     r0, -0x5a34(r13)
+    lwz     r0, R13Off_m0x5a34(r13)
     cmpw    r8, r0
     blt+    branch_0x80342e54
-    lwz     r3, -0x5a38(r13)
+    lwz     r3, R13Off_m0x5a38(r13)
     clrrwi  r0, r4, 5
     li      r4, -0x1
-    stw     r0, -0x5a2c(r13)
+    stw     r0, R13Off_m0x5a2c(r13)
     add     r3, r3, r7
     addi    r0, r3, 0x1f
-    stw     r4, -0x7380(r13)
+    stw     r4, R13Off_m0x7380(r13)
     clrrwi  r3, r0, 5
-    stw     r3, -0x5a30(r13)
+    stw     r3, R13Off_m0x5a30(r13)
     blr
 
 
 .globl OSCreateHeap
 OSCreateHeap: # 0x80342ea4
-    lwz     r6, -0x5a34(r13)
+    lwz     r6, R13Off_m0x5a34(r13)
     addi    r0, r3, 0x1f
-    lwz     r5, -0x5a38(r13)
+    lwz     r5, R13Off_m0x5a38(r13)
     clrrwi  r7, r0, 5
     cmpwi   r6, 0x0
     mtctr   r6
@@ -251,7 +251,7 @@ branch_0x80342f08:
 .globl OSDestroyHeap
 OSDestroyHeap: # 0x80342f10
     mulli   r0, r3, 0xc
-    lwz     r3, -0x5a38(r13)
+    lwz     r3, R13Off_m0x5a38(r13)
     li      r4, -0x1
     stwx    r4, r3, r0
     blr
@@ -260,13 +260,13 @@ OSDestroyHeap: # 0x80342f10
 .globl OSCheckHeap
 OSCheckHeap: # 0x80342f24
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, unk_803e6b00@h
     stw     r0, 0x4(sp)
-    addi    r6, r4, 0x6b00
+    addi    r6, r4, unk_803e6b00@l
     li      r0, 0x0
     stwu    sp, -0x8(sp)
     li      r4, 0x0
-    lwz     r7, -0x5a38(r13)
+    lwz     r7, R13Off_m0x5a38(r13)
     cmplwi  r7, 0x0
     bne-    branch_0x80342f64
     addi    r3, r6, 0x0
@@ -279,7 +279,7 @@ OSCheckHeap: # 0x80342f24
 branch_0x80342f64:
     cmpwi   r3, 0x0
     blt-    branch_0x80342f78
-    lwz     r5, -0x5a34(r13)
+    lwz     r5, R13Off_m0x5a34(r13)
     cmpw    r3, r5
     blt-    branch_0x80342f90
 branch_0x80342f78:
@@ -318,9 +318,9 @@ branch_0x80342fbc:
     b       branch_0x80343274
 
 branch_0x80342fec:
-    lwz     r9, -0x5a30(r13)
+    lwz     r9, R13Off_m0x5a30(r13)
     mr      r8, r7
-    lwz     r10, -0x5a2c(r13)
+    lwz     r10, R13Off_m0x5a2c(r13)
     b       branch_0x803430e8
 
 branch_0x80342ffc:
@@ -413,8 +413,9 @@ branch_0x803430e8:
     li      r3, -0x1
     b       branch_0x80343274
 
+branch_0x80343120:
+    b       branch_0x80343244
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33db20, 0x80343124 - 0x80343120
 branch_0x80343124:
     cmplw   r9, r11
     bgt-    branch_0x80343134
@@ -489,7 +490,7 @@ branch_0x803431e0:
 branch_0x8034320c:
     add.    r0, r0, r8
     add     r4, r8, r4
-    subi    r4, r4, 0x20
+    addi    r4, r4, -0x20
     ble-    branch_0x80343228
     lwz     r3, 0x0(r5)
     cmpw    r0, r3
@@ -529,19 +530,19 @@ branch_0x80343274:
 .globl OSReferentSize
 OSReferentSize: # 0x80343284
     lwz     r3, -0x18(r3)
-    subi    r3, r3, 0x20
+    addi    r3, r3, -0x20
     blr
 
 
 .globl OSDumpHeap
 OSDumpHeap: # 0x80343290
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, unk_803e6b00@h
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r4, 0x6b00
+    addi    r31, r4, unk_803e6b00@l
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
@@ -549,7 +550,7 @@ OSDumpHeap: # 0x80343290
     addi    r3, r31, 0x31c
     bl      OSReport
     mulli   r0, r29, 0xc
-    lwz     r3, -0x5a38(r13)
+    lwz     r3, R13Off_m0x5a38(r13)
     add     r30, r3, r0
     lwz     r0, 0x0(r30)
     cmpwi   r0, 0x0

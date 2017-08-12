@@ -1,8 +1,8 @@
 
 .globl PSMTXIdentity
 PSMTXIdentity: # 0x80349990
-    lfs     f0, 0xaf4(rtoc)
-    lfs     f1, 0xaf0(rtoc)
+    lfs     f0, 0xaf4(r2)
+    lfs     f1, 0xaf0(r2)
     psq_st  f0, 0x8(3), 0, 0
     ps_merge01 f2, f0, f1
     psq_st  f0, 0x18(3), 0, 0
@@ -37,10 +37,10 @@ PSMTXConcat: # 0x803499f0
     psq_l   f0, 0x0(3), 0, 0
     stfd    f14, 0x8(sp)
     psq_l   f6, 0x0(4), 0, 0
-    lis     r6, 0x8041
+    lis     r6, Unit01_8040ce60@ha
     psq_l   f7, 0x8(4), 0, 0
     stfd    f15, 0x10(sp)
-    subi    r6, r6, 0x31a0
+    addi    r6, r6, Unit01_8040ce60@l
     stfd    f31, 0x28(sp)
     psq_l   f8, 0x10(4), 0, 0
     ps_muls0 f12, f6, f0
@@ -188,8 +188,8 @@ PSMTXRotRad: # 0x80349bb4
 
 .globl PSMTXRotTrig
 PSMTXRotTrig: # 0x80349c24
-    lfs     f0, 0xaf4(rtoc)
-    lfs     f3, 0xaf0(rtoc)
+    lfs     f0, 0xaf4(r2)
+    lfs     f3, 0xaf0(r2)
     ori     r0, r4, 0x20
     ps_neg  f4, f1
     cmplwi  r0, 0x78
@@ -256,14 +256,14 @@ PSMTXRotAxisRad: # 0x80349ccc
     mr      r29, r3
     mr      r30, r4
     fmr     f1, f27
-    lfs     f28, 0xaf4(rtoc)
+    lfs     f28, 0xaf4(r2)
     addi    r31, sp, 0x14
     bl      sinf
     fmr     f30, f1
     fmr     f1, f27
     bl      cosf
     fmr     f31, f1
-    lfs     f0, 0xaf0(rtoc)
+    lfs     f0, 0xaf0(r2)
     mr      r3, r30
     mr      r4, r31
     fsubs   f29, f0, f31
@@ -310,8 +310,8 @@ PSMTXRotAxisRad: # 0x80349ccc
 
 .globl PSMTXTrans
 PSMTXTrans: # 0x80349dd0
-    lfs     f0, 0xaf4(rtoc)
-    lfs     f4, 0xaf0(rtoc)
+    lfs     f0, 0xaf4(r2)
+    lfs     f4, 0xaf0(r2)
     stfs    f1, 0xc(r3)
     stfs    f2, 0x1c(r3)
     psq_st  f0, 0x4(3), 0, 0
@@ -347,7 +347,7 @@ PSMTXTransApply: # 0x80349e04
 
 .globl PSMTXScale
 PSMTXScale: # 0x80349e44
-    lfs     f0, 0xaf4(rtoc)
+    lfs     f0, 0xaf4(r2)
     stfs    f1, 0x0(r3)
     psq_st  f0, 0x4(3), 0, 0
     psq_st  f0, 0xc(3), 0, 0
@@ -384,7 +384,7 @@ PSMTXScaleApply: # 0x80349e6c
 
 .globl PSMTXQuat
 PSMTXQuat: # 0x80349eb8
-    lfs     f1, 0xaf0(rtoc)
+    lfs     f1, 0xaf0(r2)
     psq_l   f4, 0x0(4), 0, 0
     psq_l   f5, 0x8(4), 0, 0
     fsubs   f0, f1, f1
@@ -535,9 +535,9 @@ C_MTXLightFrustum: # 0x8034a0e8
     stwu    sp, -0x30(sp)
     lfs     f12, 0x38(sp)
     fsubs   f10, f4, f3
-    lfs     f11, 0xaf0(rtoc)
+    lfs     f11, 0xaf0(r2)
     fsubs   f0, f1, f2
-    lfs     f9, 0xaf8(rtoc)
+    lfs     f9, 0xaf8(r2)
     fadds   f3, f4, f3
     fdivs   f10, f11, f10
     fmuls   f5, f9, f5
@@ -551,7 +551,7 @@ C_MTXLightFrustum: # 0x8034a0e8
     stfs    f1, 0x0(r3)
     fmuls   f1, f5, f9
     fsubs   f2, f2, f8
-    lfs     f3, 0xaf4(rtoc)
+    lfs     f3, 0xaf4(r2)
     fmuls   f0, f7, f0
     stfs    f3, 0x4(r3)
     fmuls   f1, f7, f1
@@ -564,7 +564,7 @@ C_MTXLightFrustum: # 0x8034a0e8
     stfs    f3, 0x1c(r3)
     stfs    f3, 0x20(r3)
     stfs    f3, 0x24(r3)
-    lfs     f0, 0xafc(rtoc)
+    lfs     f0, 0xafc(r2)
     stfs    f0, 0x28(r3)
     stfs    f3, 0x2c(r3)
     addi    sp, sp, 0x30
@@ -588,12 +588,12 @@ C_MTXLightPerspective: # 0x8034a17c
     fmr     f29, f4
     fmr     f30, f5
     fmr     f31, f6
-    lfs     f2, 0xb00(rtoc)
-    lfs     f0, 0xb04(rtoc)
+    lfs     f2, 0xb00(r2)
+    lfs     f0, 0xb04(r2)
     fmuls   f1, f2, f1
     fmuls   f1, f0, f1
     bl      tanf
-    lfs     f3, 0xaf0(rtoc)
+    lfs     f3, 0xaf0(r2)
     fneg    f2, f30
     fneg    f0, f31
     fdivs   f4, f3, f1
@@ -601,7 +601,7 @@ C_MTXLightPerspective: # 0x8034a17c
     fmuls   f3, f28, f1
     fmuls   f1, f4, f29
     stfs    f3, 0x0(r31)
-    lfs     f3, 0xaf4(rtoc)
+    lfs     f3, 0xaf4(r2)
     stfs    f3, 0x4(r31)
     stfs    f2, 0x8(r31)
     stfs    f3, 0xc(r31)
@@ -611,7 +611,7 @@ C_MTXLightPerspective: # 0x8034a17c
     stfs    f3, 0x1c(r31)
     stfs    f3, 0x20(r31)
     stfs    f3, 0x24(r31)
-    lfs     f0, 0xafc(rtoc)
+    lfs     f0, 0xafc(r2)
     stfs    f0, 0x28(r31)
     stfs    f3, 0x2c(r31)
     lwz     r0, 0x5c(sp)
@@ -629,9 +629,9 @@ C_MTXLightPerspective: # 0x8034a17c
 .globl C_MTXLightOrtho
 C_MTXLightOrtho: # 0x8034a248
     fsubs   f10, f4, f3
-    lfs     f11, 0xaf0(rtoc)
+    lfs     f11, 0xaf0(r2)
     fsubs   f0, f1, f2
-    lfs     f9, 0xaf8(rtoc)
+    lfs     f9, 0xaf8(r2)
     fadds   f3, f4, f3
     fdivs   f12, f11, f10
     fdivs   f10, f11, f0
@@ -644,7 +644,7 @@ C_MTXLightOrtho: # 0x8034a248
     stfs    f1, 0x0(r3)
     fmuls   f1, f9, f10
     fmuls   f2, f5, f2
-    lfs     f3, 0xaf4(rtoc)
+    lfs     f3, 0xaf4(r2)
     fmuls   f0, f10, f0
     stfs    f3, 0x4(r3)
     fadds   f2, f7, f2

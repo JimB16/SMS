@@ -23,6 +23,7 @@ MEMORY {
 	ram_803ab660 : ORIGIN = 0x803ab660, LENGTH = 24M
 	ram_803E9700 : ORIGIN = 0x803E9700, LENGTH = 24M
 	ram_8040c1c0 : ORIGIN = 0x8040c1c0, LENGTH = 24M
+	ram_8040cf00 : ORIGIN = 0x8040cf00, LENGTH = 24M
 	ram_8040eba0 : ORIGIN = 0x8040eba0, LENGTH = 24M
 }
 
@@ -44,6 +45,8 @@ __ram_803ab660_start	=	ORIGIN(ram_803ab660);
 __ram_803ab660_top	=	ORIGIN(ram_803ab660) + LENGTH(ram_803ab660);;
 __ram_8040c1c0_start	=	ORIGIN(ram_8040c1c0);
 __ram_8040c1c0_top	=	ORIGIN(ram_8040c1c0) + LENGTH(ram_8040c1c0);;
+__ram_8040cf00_start	=	ORIGIN(ram_8040cf00);
+__ram_8040cf00_top	=	ORIGIN(ram_8040cf00) + LENGTH(ram_8040cf00);;
 __ram_8040eba0_start	=	ORIGIN(ram_8040eba0);
 __ram_8040eba0_top	=	ORIGIN(ram_8040eba0) + LENGTH(ram_8040eba0);;
 
@@ -172,7 +175,7 @@ SECTIONS
   Data1_Size = SIZEOF (.ram800055a0);
 
   temp5 = temp4 + Data1_Size;
-  .ram803730c0 __ram_803730c0_start : AT (temp5) { *(.ram803730c0) *(.data) . = ALIGN(1); } > ram_803730c0 = 0xff
+  .ram803730c0 __ram_803730c0_start : AT (temp5) { *(.ram803730c0) . = ALIGN(1); } > ram_803730c0 = 0xff
   Data2_Offset = temp5 - 0x80000000;
   Data2_Start = ADDR (.ram803730c0);
   Data2_Size = SIZEOF (.ram803730c0);
@@ -181,42 +184,58 @@ SECTIONS
   .ram80373480 __ram_80373480_start : AT (temp6) { *(.ram80373480) } > ram_80373480 = 0xff
   Data3_Offset = temp6 - 0x80000000;
   Data3_Start = ADDR (.ram80373480);
-  Data3_Size = (Data3_End - Data3_Start);
+  Data3_Size = SIZEOF (.ram80373480);
 
   temp7 = temp6 + Data3_Size;
   .ram803734a0 __ram_803734a0_start : AT (temp7) { *(.ram803734a0) . = ALIGN(1); } > ram_803734a0 = 0x22
-  Data4_Offset = Data3_Offset + (Data3_End - Data3_Start);
-  Data4_Start = Data3_Start + (Data3_End - Data3_Start);
-  Data4_Size = (Data4_End - Data4_Start);
+  Data4_Offset = temp7 - 0x80000000;
+  Data4_Start = ADDR (.ram803734a0);
+  Data4_Size = SIZEOF (.ram803734a0);
 
   temp8 = temp7 + Data4_Size;
   .ram803ab660 __ram_803ab660_start : AT (temp8) { *(.ram803ab660) . = ALIGN(1); } = 0x33
-  Data5_Offset = Data4_Offset + (Data4_End - Data4_Start);
-  Data5_Start = Data4_Start + (Data4_End - Data4_Start);
-  Data5_Size = (Data5_End - Data5_Start);
+  Data5_Offset = temp8 - 0x80000000;
+  Data5_Start = ADDR (.ram803ab660);
+  Data5_Size = SIZEOF (.ram803ab660);
 
-  __ram_803E9700_start	=	0x803e9700; /*ADDR(.ram803ab660) + SIZEOF(.ram803ab660);*/
-  .bss (__ram_803E9700_start) (NOLOAD) :
+  __ram_803E9700_start = 0x803e9700;
+  .ram803e9700 (__ram_803E9700_start) (NOLOAD) :
   {
-    *(.bss)
-    __bss_end = ABSOLUTE(.);
-  }>bss = 0xff
-  __bss_size = SIZEOF(.bss);
-  bss_mem_start = ADDR (.bss);
-  bss_mem_size = SIZEOF (.bss);
+    *(.ram803e9700)
+  }>ram_803E9700 = 0xff
+  __bss_size = SIZEOF(.ram803e9700);
+  bss_mem_start = ADDR (.ram803e9700);
+  bss_mem_size = SIZEOF (.ram803e9700);
 
   temp9 = temp8 + Data5_Size;
   .ram8040c1c0 __ram_8040c1c0_start : AT (temp9) { *(.ram8040c1c0) . = ALIGN(1); } > ram_8040c1c0 = 0xff
-  Data6_Offset = Data5_Offset + (Data5_End - Data5_Start);
+  Data6_Offset = temp9 - 0x80000000;
   Data6_Start = ADDR (.ram8040c1c0);
   Data6_Size = SIZEOF (.ram8040c1c0);
 
+  __ram_8040cf00_start = 0x8040cf00;
+  .ram8040cf00 (__ram_8040cf00_start) (NOLOAD) :
+  {
+    *(.ram8040cf00)
+  }>ram_8040cf00 = 0xff
+  __sbss_size = SIZEOF(.ram8040cf00);
+  sbss_mem_start = ADDR (.ram8040cf00);
+  sbss_mem_size = SIZEOF (.ram8040cf00);
+
   temp10 = temp9 + Data6_Size;
   .ram8040eba0 __ram_8040eba0_start : AT (temp10) { *(.ram8040eba0) . = ALIGN(1); } > ram_8040eba0 = 0xff
-  Data7_Offset = Data6_Offset + (Data6_End - Data6_Start);
+  Data7_Offset = temp10 - 0x80000000;
   Data7_Start = ADDR (.ram8040eba0);
   Data7_Size = SIZEOF (.ram8040eba0);
-
+  Data7_Stop = temp10 + Data7_Size;
+	/*
+	.fillend :
+	{
+		FILL(0x00);
+		. = . + ((((Data7_Stop) + 0x100 - 1) & ~(0x100 - 1)) - (Data7_Stop)) - 1;
+	    BYTE(0x00);
+	} > ram_8040eba0 = 0x00
+*/
  text_mem_size = . - text_mem_start;
   data_mem_start = .;
 

@@ -218,7 +218,7 @@ branch_0x802f6a90:
     addi    r5, r3, 0x0
     ble-    branch_0x802f6ab8
     subf    r3, r30, r29
-    subi    r4, r3, 0x1
+    addi    r4, r3, -0x1
 branch_0x802f6ab8:
     cmplwi  r4, 0x0
     mtctr   r4
@@ -269,7 +269,7 @@ branch_0x802f6b34:
     b       branch_0x802f6b6c
 
 branch_0x802f6b58:
-    subi    r27, r29, 0x1
+    addi    r27, r29, -0x1
 branch_0x802f6b5c:
     lwz     r3, 0x82c(r28)
     lwz     r4, 0x828(r28)

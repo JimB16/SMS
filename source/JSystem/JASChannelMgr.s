@@ -3,7 +3,7 @@
 init__Q28JASystem11TChannelMgrFv: # 0x80313378
     li      r12, 0x0
     stw     r12, 0x8(r3)
-    lis     r4, 0x2
+    lis     r4, unk_00020103@h
     li      r11, 0x1
     stw     r12, 0xc(r3)
     li      r10, 0x7fff
@@ -13,18 +13,18 @@ init__Q28JASystem11TChannelMgrFv: # 0x80313378
     li      r7, 0x352
     stw     r12, 0x14(r3)
     li      r6, 0x412
-    addi    r5, r4, 0x103
+    addi    r5, r4, unk_00020103@l
     stw     r12, 0x4(r3)
     li      r4, 0x258
     li      r0, 0xd
     stw     r12, 0x0(r3)
     stw     r11, 0x70(r3)
-    lfs     f0, 0x6b0(rtoc)
+    lfs     f0, 0x6b0(r2)
     stfs    f0, 0x18(r3)
     stfs    f0, 0x1c(r3)
-    lfs     f0, 0x6b4(rtoc)
+    lfs     f0, 0x6b4(r2)
     stfs    f0, 0x20(r3)
-    lfs     f0, 0x6b8(rtoc)
+    lfs     f0, 0x6b8(r2)
     stfs    f0, 0x24(r3)
     stfs    f0, 0x28(r3)
     sth     r12, 0x2c(r3)
@@ -216,8 +216,9 @@ branch_0x803135f4:
     mr      r5, r0
     b       branch_0x803135d8
 
+branch_0x803135fc:
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x30dffc, 0x80313600 - 0x803135fc
 
 .globl getListHead__Q28JASystem11TChannelMgrFUl
 getListHead__Q28JASystem11TChannelMgrFUl: # 0x80313600
@@ -428,7 +429,7 @@ branch_0x80313870:
     li      r0, 0x0
     addi    r3, r30, 0x0
     stw     r0, 0x18(r30)
-    lfs     f1, 0x6b0(rtoc)
+    lfs     f1, 0x6b0(r2)
     fmr     f2, f1
     fmr     f3, f1
     fmr     f4, f1
@@ -549,10 +550,10 @@ branch_0x803139b4:
 .globl checkLimitStart__Q28JASystem11TChannelMgrFUl
 checkLimitStart__Q28JASystem11TChannelMgrFUl: # 0x80313a04
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, unk_803aa5c8@ha
     stw     r0, 0x4(sp)
     extrwi  r6, r4, 4, 4
-    subi    r0, r5, 0x5a38
+    addi    r0, r5, unk_803aa5c8@l
     stwu    sp, -0x8(sp)
     add     r5, r0, r6
     srwi    r7, r4, 24
@@ -686,8 +687,8 @@ checkLimitStop__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl: # 0x80313b88
     srwi    r7, r5, 24
     stwu    sp, -0x8(sp)
     lwz     r3, 0x4(r4)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x5a38
+    lis     r4, unk_803aa5c8@ha
+    addi    r0, r4, unk_803aa5c8@l
     add     r4, r0, r6
     lwz     r3, 0xc(r3)
     lbz     r0, 0x0(r4)

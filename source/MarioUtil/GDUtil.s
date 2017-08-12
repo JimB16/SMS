@@ -25,8 +25,8 @@ make__10TGDLStaticFv: # 0x80236924
     mr      r3, r31
     lwz     r5, 0x18(r31)
     bl      GDInitGDLObj
-    lis     r3, 0x8023
-    addi    r3, r3, 0x6c2c
+    lis     r3, TGDLStaticOverFlow__Fv@h
+    addi    r3, r3, TGDLStaticOverFlow__Fv@l
     bl      GDSetOverflowCallback
     li      r0, 0x0
     stb     r0, 0x10(r31)
@@ -36,24 +36,24 @@ make__10TGDLStaticFv: # 0x80236924
     beq-    branch_0x802369c0
     mr      r3, r27
     bl      __ct__11JKRDisposerFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x44b0
+    lis     r3, __vvt__Q210TGDLStatic12TGDLSentinel@ha
+    addi    r0, r3, __vvt__Q210TGDLStatic12TGDLSentinel@l
     stw     r0, 0x0(r27)
     stw     r31, 0x18(r27)
 branch_0x802369c0:
     stw     r27, 0x1c(r31)
 branch_0x802369c4:
-    lis     r4, 0x8023
-    lwz     r27, -0x5778(r13)
-    lis     r3, 0x803e
-    addi    r29, r4, 0x6c2c
-    subi    r30, r3, 0x44b0
+    lis     r4, TGDLStaticOverFlow__Fv@h
+    lwz     r27, R13Off_m0x5778(r13)
+    lis     r3, __vvt__Q210TGDLStatic12TGDLSentinel@ha
+    addi    r29, r4, TGDLStaticOverFlow__Fv@l
+    addi    r30, r3, __vvt__Q210TGDLStatic12TGDLSentinel@l
 branch_0x802369d8:
     li      r28, 0x0
     stb     r28, 0x11(r31)
     mr      r3, r31
-    stw     r31, -0x60e8(r13)
-    stw     r31, -0x5778(r13)
+    stw     r31, R13Off_m0x60e8(r13)
+    stw     r31, R13Off_m0x5778(r13)
     lwz     r12, 0x20(r31)
     lwz     r12, 0xc(r12)
     mtlr    r12
@@ -103,7 +103,7 @@ branch_0x80236a94:
     b       branch_0x802369d8
 
 branch_0x80236a9c:
-    stw     r27, -0x5778(r13)
+    stw     r27, R13Off_m0x5778(r13)
     lmw     r27, 0x1c(sp)
     lwz     r0, 0x34(sp)
     addi    sp, sp, 0x30
@@ -134,8 +134,8 @@ alloc__10TGDLStaticFUl: # 0x80236ab4
     mr      r3, r31
     lwz     r5, 0x18(r31)
     bl      GDInitGDLObj
-    lis     r3, 0x8023
-    addi    r3, r3, 0x6c2c
+    lis     r3, TGDLStaticOverFlow__Fv@h
+    addi    r3, r3, TGDLStaticOverFlow__Fv@l
     bl      GDSetOverflowCallback
     li      r0, 0x0
     stb     r0, 0x10(r31)
@@ -145,8 +145,8 @@ alloc__10TGDLStaticFUl: # 0x80236ab4
     beq-    branch_0x80236b44
     mr      r3, r30
     bl      __ct__11JKRDisposerFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x44b0
+    lis     r3, __vvt__Q210TGDLStatic12TGDLSentinel@ha
+    addi    r0, r3, __vvt__Q210TGDLStatic12TGDLSentinel@l
     stw     r0, 0x0(r30)
     stw     r31, 0x18(r30)
 branch_0x80236b44:
@@ -167,8 +167,8 @@ __dt__10TGDLStaticFv: # 0x80236b60
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80236b9c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x44c0
+    lis     r3, __vvt__10TGDLStatic@ha
+    addi    r0, r3, __vvt__10TGDLStatic@l
     stw     r0, 0x20(r31)
     li      r3, 0x0
     extsh.  r0, r4
@@ -195,8 +195,8 @@ __dt__Q210TGDLStatic12TGDLSentinelFv: # 0x80236bb4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80236c10
-    lis     r3, 0x803e
-    subi    r0, r3, 0x44b0
+    lis     r3, __vvt__Q210TGDLStatic12TGDLSentinel@ha
+    addi    r0, r3, __vvt__Q210TGDLStatic12TGDLSentinel@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
     addi    r3, r30, 0x0
@@ -222,7 +222,7 @@ branch_0x80236c10:
 
 .globl TGDLStaticOverFlow__Fv
 TGDLStaticOverFlow__Fv: # 0x80236c2c
-    lwz     r3, -0x60e8(r13)
+    lwz     r3, R13Off_m0x60e8(r13)
     li      r0, 0x1
     stb     r0, 0x11(r3)
     blr

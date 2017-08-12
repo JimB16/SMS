@@ -1,7 +1,7 @@
 
 .globl OSRegisterResetFunction
 OSRegisterResetFunction: # 0x80346d00
-    lwz     r5, -0x59e8(r13)
+    lwz     r5, R13Off_m0x59e8(r13)
     b       branch_0x80346d0c
 
 branch_0x80346d08:
@@ -16,11 +16,11 @@ branch_0x80346d0c:
 branch_0x80346d24:
     cmplwi  r5, 0x0
     bne-    branch_0x80346d5c
-    subi    r5, r13, 0x59e8
+    addi    r5, r13, R13Off_m0x59e8
     lwzu    r4, 0x4(r5)
     cmplwi  r4, 0x0
     bne-    branch_0x80346d44
-    stw     r3, -0x59e8(r13)
+    stw     r3, R13Off_m0x59e8(r13)
     b       branch_0x80346d48
 
 branch_0x80346d44:
@@ -39,7 +39,7 @@ branch_0x80346d5c:
     cmplwi  r4, 0x0
     stw     r4, 0xc(r3)
     bne-    branch_0x80346d7c
-    stw     r3, -0x59e8(r13)
+    stw     r3, R13Off_m0x59e8(r13)
     blr
 
 branch_0x80346d7c:
@@ -77,8 +77,8 @@ branch_0x80346dc4:
     b       branch_0x80346de4
 
 branch_0x80346dc8:
-    lis     r8, 0xcc00
-    ori     r8, r8, 0x3000
+    lis     r8, unk_cc003000@h
+    ori     r8, r8, unk_cc003000@l
     li      r4, 0x3
     stw     r4, 0x24(r8)
     stw     r3, 0x24(r8)
@@ -104,8 +104,8 @@ __OSDoHotReset: # 0x80346df4
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      OSDisableInterrupts
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x2000
+    lis     r3, unk_cc002000@h
+    addi    r3, r3, unk_cc002000@l
     li      r0, 0x0
     sth     r0, 0x2(r3)
     bl      ICFlashInvalidate
@@ -141,7 +141,7 @@ branch_0x80346e78:
     b       branch_0x80346e7c
 
 branch_0x80346e7c:
-    lwz     r27, -0x59e8(r13)
+    lwz     r27, R13Off_m0x59e8(r13)
     li      r28, 0x0
     b       branch_0x80346e88
 
@@ -198,7 +198,7 @@ branch_0x80346f14:
     beq+    branch_0x80346f14
 branch_0x80346f20:
     bl      OSDisableInterrupts
-    lwz     r28, -0x59e8(r13)
+    lwz     r28, R13Off_m0x59e8(r13)
     li      r27, 0x0
     b       branch_0x80346f30
 
@@ -225,8 +225,8 @@ branch_0x80346f58:
     cmpwi   r26, 0x1
     bne-    branch_0x80346f94
     bl      OSDisableInterrupts
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x2000
+    lis     r3, unk_cc002000@h
+    addi    r3, r3, unk_cc002000@l
     li      r0, 0x0
     sth     r0, 0x2(r3)
     bl      ICFlashInvalidate
@@ -296,8 +296,8 @@ branch_0x80347028:
 branch_0x8034702c:
     cmplwi  r3, 0x0
     bne+    branch_0x80347004
-    lis     r29, 0x8000
-    addi    r3, r29, 0x40
+    lis     r29, unk_80000040@h
+    addi    r3, r29, unk_80000040@l
     li      r4, 0x0
     li      r5, 0x8c
     bl      memset
@@ -340,8 +340,8 @@ OSGetResetCode: # 0x803470b4
     b       branch_0x803470e0
 
 branch_0x803470cc:
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x3000
+    lis     r3, unk_cc003000@h
+    addi    r3, r3, unk_cc003000@l
     lwz     r0, 0x24(r3)
     clrrwi  r0, r0, 3
     srwi    r3, r0, 3

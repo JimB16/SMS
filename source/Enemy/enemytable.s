@@ -9,8 +9,8 @@ __dt__15TStageEnemyInfoFv: # 0x8008eec4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8008ef0c
-    lis     r3, 0x803b
-    addi    r0, r3, 0x4240
+    lis     r3, __vvt__15TStageEnemyInfo@h
+    addi    r0, r3, __vvt__15TStageEnemyInfo@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -66,11 +66,11 @@ branch_0x8008ef7c:
 branch_0x8008ef94:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x6768(rtoc)
+    lfd     f3, -0x6768(r2)
     stw     r0, 0x8c(sp)
     lis     r3, 0x4330
     xoris   r0, r28, 0x8000
-    lfs     f1, -0x6770(rtoc)
+    lfs     f1, -0x6770(r2)
     stw     r3, 0x88(sp)
     lwz     r6, 0x0(r30)
     stw     r0, 0x84(sp)
@@ -122,8 +122,8 @@ __ct__20TStageEnemyInfoTableFPCc: # 0x8008f03c
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r30, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r30, 0x14(sp)
@@ -135,14 +135,14 @@ __ct__20TStageEnemyInfoTableFPCc: # 0x8008f03c
     addi    r3, r31, 0xc
     addi    r4, sp, 0x10
     bl      __ct__Q27JGadget20TVector_pointer_voidFRCQ27JGadget14TAllocator_Pv_
-    lis     r3, 0x803b
-    addi    r0, r3, 0x4280
-    lis     r3, 0x803b
+    lis     r3, __vvt__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_@h
+    addi    r0, r3, __vvt__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_@l
+    lis     r3, __vvt__20TStageEnemyInfoTable@h
     stw     r0, 0x0(r31)
-    addi    r0, r3, 0x4260
+    addi    r0, r3, __vvt__20TStageEnemyInfoTable@l
     stw     r0, 0x0(r30)
     mr      r4, r30
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      registerEnemyInfoTable__10TConductorFP20TStageEnemyInfoTable
     lwz     r0, 0x24(sp)
     mr      r3, r30
@@ -163,8 +163,8 @@ __dt__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_Fv: # 0x8008f0c8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8008f124
-    lis     r3, 0x803b
-    addi    r3, r3, 0x4280
+    lis     r3, __vvt__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_@h
+    addi    r3, r3, __vvt__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_@l
     addic.  r0, r30, 0xc
     stw     r3, 0x0(r30)
     beq-    branch_0x8008f108
@@ -238,12 +238,12 @@ __dt__20TStageEnemyInfoTableFv: # 0x8008f1cc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8008f238
-    lis     r3, 0x803b
-    addi    r0, r3, 0x4260
+    lis     r3, __vvt__20TStageEnemyInfoTable@h
+    addi    r0, r3, __vvt__20TStageEnemyInfoTable@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8008f228
-    lis     r3, 0x803b
-    addi    r3, r3, 0x4280
+    lis     r3, __vvt__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_@h
+    addi    r3, r3, __vvt__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_@l
     addic.  r0, r30, 0xc
     stw     r3, 0x0(r30)
     beq-    branch_0x8008f21c
@@ -369,15 +369,15 @@ load__53TNameRefPtrAryT_15TStageEnemyInfo_Q26JDrama8TNameRef_FR20JSUMemoryInputS
     addi    r3, r24, 0x0
     addi    r4, r31, 0x0
     bl      reserve__Q27JGadget20TVector_pointer_voidFUl
-    lis     r6, 0x803b
-    lis     r5, 0x803e
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r6, __vvt__10JSUIosBase@ha
+    lis     r5, __vvt__14JSUInputStream@h
+    lis     r4, __vvt__20JSURandomInputStream@h
+    lis     r3, __vvt__20JSUMemoryInputStream@h
     addi    r25, sp, 0x24
-    subi    r26, r6, 0xf0c
-    addi    r27, r5, 0x184
-    addi    r28, r4, 0x160
-    addi    r29, r3, 0x1c8
+    addi    r26, r6, __vvt__10JSUIosBase@l
+    addi    r27, r5, __vvt__14JSUInputStream@l
+    addi    r28, r4, __vvt__20JSURandomInputStream@l
+    addi    r29, r3, __vvt__20JSUMemoryInputStream@l
     li      r23, 0x0
     b       branch_0x8008f444
 

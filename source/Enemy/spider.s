@@ -95,14 +95,14 @@ branch_0x8006e954:
     fmuls   f0, f1, f0
     lfs     f28, 0x10c(sp)
     fmr     f3, f27
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x108(sp)
     fadds   f2, f28, f0
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
     lfs     f4, 0x14(r31)
-    lfs     f3, -0x6b58(rtoc)
+    lfs     f3, -0x6b58(r2)
     fsubs   f2, f4, f28
-    lfs     f0, -0x6b54(rtoc)
+    lfs     f0, -0x6b54(r2)
     fadds   f28, f1, f3
     fcmpo   cr0, f2, f0
     ble-    branch_0x8006e9dc
@@ -110,12 +110,12 @@ branch_0x8006e954:
     fmr     f3, f27
     lfs     f0, 0xc0(r31)
     addi    r4, sp, 0xf4
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fmuls   f0, f1, f0
     lfs     f1, 0x108(sp)
     fadds   f2, f4, f0
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
-    lfs     f0, -0x6b58(rtoc)
+    lfs     f0, -0x6b58(r2)
     fadds   f0, f1, f0
     fcmpo   cr0, f0, f28
     ble-    branch_0x8006e9dc
@@ -150,7 +150,7 @@ branch_0x8006ea24:
     stfs    f0, 0x10c(sp)
     lwz     r3, 0x4(r30)
     lfs     f28, 0x10c(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     b       branch_0x8006ea48
 
@@ -163,7 +163,7 @@ branch_0x8006ea48:
     cror    2, 0, 2
     bne-    branch_0x8006eaa0
     stfs    f28, 0x10c(sp)
-    lfs     f0, -0x6b54(rtoc)
+    lfs     f0, -0x6b54(r2)
     stfs    f0, 0x98(sp)
     stfs    f0, 0x9c(sp)
     stfs    f0, 0xa0(sp)
@@ -199,7 +199,7 @@ branch_0x8006eaac:
     lfs     f2, 0x10c(sp)
     lfs     f0, 0x108(sp)
     fmuls   f3, f4, f3
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f1, f2, f1
     stfs    f0, 0xc8(sp)
     stfs    f1, 0xcc(sp)
@@ -220,7 +220,7 @@ branch_0x8006eaac:
     lwz     r3, 0x8(r30)
     cmpwi   r3, 0x0
     ble-    branch_0x8006eb84
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x8(r30)
     lwz     r0, 0xf0(r31)
     lfs     f29, 0x140(r31)
@@ -229,7 +229,7 @@ branch_0x8006eaac:
     lwz     r0, 0xf0(r31)
     rlwinm  r0, r0, 0, 17, 15
     stw     r0, 0xf0(r31)
-    lfs     f0, -0x6b54(rtoc)
+    lfs     f0, -0x6b54(r2)
     stfs    f0, 0x8c(sp)
     stfs    f0, 0x90(sp)
     stfs    f0, 0x94(sp)
@@ -244,14 +244,14 @@ branch_0x8006eaac:
 branch_0x8006eb84:
     stw     r29, 0xc(r30)
     stw     r29, 0x138(r31)
-    lfs     f29, -0x6b54(rtoc)
+    lfs     f29, -0x6b54(r2)
 branch_0x8006eb90:
     lfs     f1, 0x10(r30)
-    lfs     f0, -0x6b50(rtoc)
+    lfs     f0, -0x6b50(r2)
     fsubs   f0, f1, f0
     stfs    f0, 0x10(r30)
     lfs     f1, 0x10(r30)
-    lfs     f0, -0x6b54(rtoc)
+    lfs     f0, -0x6b54(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8006ece0
     stfs    f0, 0x10(r30)
@@ -262,7 +262,7 @@ branch_0x8006ebb8:
     lfs     f2, 0x114(sp)
     lwz     r3, 0x34(r4)
     lwz     r0, 0x38(r4)
-    lfs     f0, -0x6b54(rtoc)
+    lfs     f0, -0x6b54(r2)
     stw     r3, 0xb0(sp)
     stw     r0, 0xb4(sp)
     lwz     r0, 0x3c(r4)
@@ -313,7 +313,7 @@ branch_0x8006ebb8:
     stfs    f0, 0xb8(sp)
     lfs     f2, 0xbc(sp)
     lfs     f1, 0xb0(sp)
-    lfs     f0, -0x6b50(rtoc)
+    lfs     f0, -0x6b50(r2)
     fsubs   f1, f2, f1
     stfs    f1, 0xbc(sp)
     lfs     f2, 0xc0(sp)
@@ -328,7 +328,7 @@ branch_0x8006ebb8:
     fadds   f0, f1, f0
     stfs    f0, 0x10(r30)
     lfs     f1, 0x10(r30)
-    lfs     f0, -0x6b58(rtoc)
+    lfs     f0, -0x6b58(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8006ece0
     stfs    f0, 0x10(r30)
@@ -385,8 +385,8 @@ __dt__7TSpiderFv: # 0x8006ed80
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8006edc8
-    lis     r3, 0x803b
-    addi    r0, r3, 0x25a8
+    lis     r3, __vvt__7TSpider@h
+    addi    r0, r3, __vvt__7TSpider@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -413,15 +413,15 @@ __ct__7TSpiderFv: # 0x8006ede4
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__7TBinderFv
-    lis     r3, 0x803b
-    addi    r0, r3, 0x25a8
+    lis     r3, __vvt__7TSpider@h
+    addi    r0, r3, __vvt__7TSpider@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0
     stw     r0, 0x4(r31)
     stw     r0, 0x8(r31)
     stw     r0, 0xc(r31)
-    lfs     f0, -0x6b54(rtoc)
+    lfs     f0, -0x6b54(r2)
     stfs    f0, 0x10(r31)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)

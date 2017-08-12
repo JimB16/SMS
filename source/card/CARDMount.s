@@ -47,9 +47,9 @@ branch_0x8035805c:
     blr
 
 branch_0x80358064:
-    lis     r4, 0x803f
+    lis     r4, SectorSizeTable@ha
     rlwinm  r3, r3, 23, 27, 29
-    subi    r0, r4, 0x7280
+    addi    r0, r4, SectorSizeTable@l
     add     r3, r0, r3
     lwz     r3, 0x0(r3)
     cmpwi   r3, 0x0
@@ -96,8 +96,8 @@ branch_0x803580d8:
 
 branch_0x803580f0:
     mulli   r4, r27, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r30, r0, r4
     bl      OSDisableInterrupts
     addi    r29, r3, 0x0
@@ -170,8 +170,8 @@ branch_0x803581d4:
     cmplwi  r31, 0x0
     beq-    branch_0x803581f8
     lwz     r4, 0x14(sp)
-    lis     r3, 0x803f
-    subi    r0, r3, 0x7280
+    lis     r3, SectorSizeTable@ha
+    addi    r0, r3, SectorSizeTable@l
     rlwinm  r3, r4, 23, 27, 29
     add     r3, r0, r3
     lwz     r0, 0x0(r3)
@@ -205,8 +205,8 @@ DoMount: # 0x80358224
     addi    r29, r3, 0x0
     mulli   r4, r29, 0x110
     stw     r28, 0x20(sp)
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r3, r0, r4
     lwz     r0, 0x24(r3)
     addi    r31, r3, 0x0
@@ -235,11 +235,11 @@ branch_0x803582a0:
     cmpwi   r30, 0x0
     blt-    branch_0x803585e8
     lwz     r0, 0x18(sp)
-    lis     r4, 0x803f
-    subi    r4, r4, 0x7280
+    lis     r4, SectorSizeTable@ha
+    addi    r4, r4, SectorSizeTable@l
     stw     r0, 0x108(r31)
-    lis     r3, 0x803f
-    subi    r0, r3, 0x7260
+    lis     r3, LatencyTable@ha
+    addi    r0, r3, LatencyTable@l
     lwz     r5, 0x18(sp)
     addi    r3, r29, 0x0
     rlwinm  r5, r5, 0, 24, 29
@@ -430,22 +430,22 @@ branch_0x80358558:
     bl      __CARDEnableInterrupt
     mr.     r30, r3
     blt-    branch_0x803585e8
-    lis     r3, 0x8035
-    addi    r4, r3, 0x443c
+    lis     r3, __CARDExiHandler@h
+    addi    r4, r3, __CARDExiHandler@l
     addi    r3, r29, 0x0
     bl      EXISetExiCallback
     mr      r3, r29
     bl      EXIUnlock
-    lis     r4, 0x1
+    lis     r4, unk_0000a000@ha
     lwz     r3, 0x80(r31)
-    subi    r4, r4, 0x6000
+    addi    r4, r4, unk_0000a000@l
     bl      DCInvalidateRange
 branch_0x8035859c:
     lwz     r4, 0x24(r31)
-    lis     r3, 0x8036
+    lis     r3, __CARDMountCallback@ha
     lwz     r0, 0xc(r31)
-    subi    r7, r3, 0x79cc
-    subi    r3, r4, 0x2
+    addi    r7, r3, __CARDMountCallback@l
+    addi    r3, r4, -0x2
     mullw   r4, r0, r3
     lwz     r5, 0x80(r31)
     slwi    r0, r3, 13
@@ -503,8 +503,8 @@ __CARDMountCallback: # 0x80358634
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
     mulli   r5, r28, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     beq-    branch_0x803586e4
     bge-    branch_0x80358680
@@ -599,8 +599,8 @@ branch_0x80358770:
 
 branch_0x80358788:
     mulli   r4, r30, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r4
     bl      OSDisableInterrupts
     lwz     r0, 0x4(r31)
@@ -636,8 +636,8 @@ branch_0x803587e8:
     b       branch_0x80358810
 
 branch_0x80358808:
-    lis     r3, 0x8035
-    addi    r0, r3, 0x432c
+    lis     r3, __CARDDefaultApiCallback@h
+    addi    r0, r3, __CARDDefaultApiCallback@l
 branch_0x80358810:
     stw     r0, 0xd0(r31)
     li      r0, 0x0
@@ -645,8 +645,8 @@ branch_0x80358810:
     lwz     r0, 0x0(r31)
     cmpwi   r0, 0x0
     bne-    branch_0x80358858
-    lis     r3, 0x8035
-    addi    r4, r3, 0x4364
+    lis     r3, __CARDExtHandler@h
+    addi    r4, r3, __CARDExtHandler@l
     addi    r3, r30, 0x0
     bl      EXIAttach
     cmpwi   r3, 0x0
@@ -672,11 +672,11 @@ branch_0x80358858:
     mr      r3, r28
     stw     r29, 0x88(r31)
     bl      OSRestoreInterrupts
-    lis     r3, 0x8036
-    subi    r0, r3, 0x79cc
-    lis     r3, 0x8035
+    lis     r3, __CARDMountCallback@ha
+    addi    r0, r3, __CARDMountCallback@l
+    lis     r3, __CARDUnlockedHandler@h
     stw     r0, 0xdc(r31)
-    addi    r5, r3, 0x45fc
+    addi    r5, r3, __CARDUnlockedHandler@l
     addi    r3, r30, 0x0
     li      r4, 0x0
     bl      EXILock
@@ -700,9 +700,9 @@ branch_0x803588c8:
 .globl CARDMount
 CARDMount: # 0x803588dc
     mflr    r0
-    lis     r6, 0x8035
+    lis     r6, __CARDSyncCallback@h
     stw     r0, 0x4(sp)
-    addi    r6, r6, 0x4330
+    addi    r6, r6, __CARDSyncCallback@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -734,8 +734,8 @@ DoUnmount: # 0x80358924
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
     mulli   r5, r28, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     bl      OSDisableInterrupts
     lwz     r0, 0x0(r31)
@@ -783,8 +783,8 @@ CARDUnmount: # 0x803589c0
 
 branch_0x803589f0:
     mulli   r4, r29, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r30, r0, r4
     bl      OSDisableInterrupts
     lwz     r0, 0x0(r30)

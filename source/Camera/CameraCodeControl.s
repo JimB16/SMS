@@ -16,7 +16,7 @@ controlByCameraCode___15CPolarSubCameraFPi: # 0x80022de4
     lwz     r0, 0x50(r29)
     cmpwi   r0, 0x42
     bne-    branch_0x80022e58
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     lwz     r0, 0x18(r3)
     cmplwi  r0, 0x78
     bne-    branch_0x80022e58
@@ -24,7 +24,7 @@ controlByCameraCode___15CPolarSubCameraFPi: # 0x80022de4
     li      r4, 0x14
     li      r5, 0x1
     bl      changeCamModeSpecifyFrame___15CPolarSubCameraFii
-    lwz     r4, -0x60ac(r13)
+    lwz     r4, R13Off_m0x60ac(r13)
     mr      r3, r29
     lfs     f1, 0xa8(r29)
     lha     r4, 0x0(r4)
@@ -37,13 +37,13 @@ branch_0x80022e58:
     b       branch_0x80022f34
 
 branch_0x80022e68:
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     li      r31, 0x0
-    lwz     r5, -0x70f0(r13)
+    lwz     r5, R13Off_m0x70f0(r13)
     lwz     r3, 0x0(r4)
     lbz     r27, 0x10(r5)
     lwz     r0, 0x4(r4)
-    lfs     f0, -0x7968(rtoc)
+    lfs     f0, -0x7968(r2)
     stw     r3, 0x54(sp)
     stw     r0, 0x58(sp)
     lwz     r0, 0x8(r4)
@@ -54,13 +54,13 @@ branch_0x80022e68:
     b       branch_0x80022f2c
 
 branch_0x80022ea4:
-    lwz     r3, -0x70f0(r13)
+    lwz     r3, R13Off_m0x70f0(r13)
     addi    r5, r31, 0x0
     addi    r4, sp, 0x54
     bl      isInCube__16TCubeManagerBaseCFRC3Vecl
     clrlwi. r0, r3, 24
     beq-    branch_0x80022f28
-    lwz     r3, -0x70f0(r13)
+    lwz     r3, R13Off_m0x70f0(r13)
     slwi    r0, r31, 2
     lwz     r4, 0x14(r3)
     lwz     r4, 0x10(r4)

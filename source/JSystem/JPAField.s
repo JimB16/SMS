@@ -2,9 +2,9 @@
 .globl __ct__12JPABaseFieldFv
 __ct__12JPABaseFieldFv: # 0x80325464
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, __vvt__12JPABaseField@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x3dd8
+    addi    r0, r4, __vvt__12JPABaseField@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
@@ -14,7 +14,7 @@ __ct__12JPABaseFieldFv: # 0x80325464
     li      r0, 0x0
     sth     r0, 0x54(r31)
     mr      r3, r31
-    lfs     f1, 0x858(rtoc)
+    lfs     f1, 0x858(r2)
     stfs    f1, 0x20(r31)
     stfs    f1, 0x1c(r31)
     stfs    f1, 0x18(r31)
@@ -22,10 +22,10 @@ __ct__12JPABaseFieldFv: # 0x80325464
     stfs    f1, 0x80(r31)
     stfs    f1, 0x7c(r31)
     stfs    f1, 0x24(r31)
-    lfs     f0, 0x85c(rtoc)
+    lfs     f0, 0x85c(r2)
     stfs    f0, 0x28(r31)
     stfs    f1, 0x2c(r31)
-    lfs     f0, 0x860(rtoc)
+    lfs     f0, 0x860(r2)
     stfs    f0, 0x10(r31)
     stfs    f1, 0x14(r31)
     stfs    f1, 0x40(r31)
@@ -51,8 +51,8 @@ __dt__12JPABaseFieldFv: # 0x803254fc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80325548
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80325538
     addi    r3, r30, 0x0
@@ -109,7 +109,7 @@ branch_0x803255b8:
 calcFieldFadeScale__12JPABaseFieldFf: # 0x803255c0
     lhz     r0, 0x54(r3)
     li      r4, 0x0
-    lfs     f4, 0x860(rtoc)
+    lfs     f4, 0x860(r2)
     rlwinm. r0, r0, 0, 28, 28
     beq-    branch_0x803255dc
     li      r0, 0x1
@@ -123,7 +123,7 @@ branch_0x803255e0:
     lfs     f0, 0x48(r3)
     fcmpo   cr0, f1, f0
     bge-    branch_0x803255fc
-    lfs     f4, 0x858(rtoc)
+    lfs     f4, 0x858(r2)
     li      r4, 0x1
 branch_0x803255fc:
     lhz     r0, 0x54(r3)
@@ -141,7 +141,7 @@ branch_0x80325614:
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x80325634
-    lfs     f4, 0x858(rtoc)
+    lfs     f4, 0x858(r2)
     li      r4, 0x1
 branch_0x80325634:
     clrlwi. r0, r4, 24
@@ -162,7 +162,7 @@ branch_0x80325654:
     cror    2, 1, 2
     bne-    branch_0x80325690
     lfs     f2, 0x4c(r3)
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     fsubs   f3, f2, f3
     fcmpo   cr0, f3, f0
     ble-    branch_0x803256dc
@@ -187,7 +187,7 @@ branch_0x803256a8:
     fcmpo   cr0, f1, f3
     bge-    branch_0x803256dc
     lfs     f2, 0x48(r3)
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     fsubs   f3, f3, f2
     fcmpo   cr0, f3, f0
     ble-    branch_0x803256dc
@@ -228,7 +228,7 @@ branch_0x80325730:
     lfs     f1, 0x48(r31)
     mr      r3, r30
     bl      calcFieldFadeScale__12JPABaseFieldFf
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80325764
@@ -238,7 +238,7 @@ branch_0x80325730:
     b       branch_0x80325794
 
 branch_0x80325764:
-    lfs     f0, 0x860(rtoc)
+    lfs     f0, 0x860(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80325794
     lfs     f0, 0x14(sp)
@@ -325,17 +325,17 @@ affect__12JPABaseFieldFP11JPAParticle: # 0x80325854
 .globl loadFieldBlock__12JPABaseFieldFP12JPADataBlock
 loadFieldBlock__12JPABaseFieldFP12JPADataBlock: # 0x80325874
     mflr    r0
-    lis     r9, 0x803b
+    lis     r9, __vvt__10JSUIosBase@ha
     stw     r0, 0x4(sp)
-    subi    r0, r9, 0xf0c
-    lis     r8, 0x803e
+    addi    r0, r9, __vvt__10JSUIosBase@l
+    lis     r8, __vvt__14JSUInputStream@h
     stwu    sp, -0x50(sp)
-    lis     r7, 0x803e
-    lis     r6, 0x803e
+    lis     r7, __vvt__20JSURandomInputStream@h
+    lis     r6, __vvt__20JSUMemoryInputStream@h
     stw     r31, 0x4c(sp)
-    addi    r31, r6, 0x1c8
+    addi    r31, r6, __vvt__20JSUMemoryInputStream@l
     stw     r30, 0x48(sp)
-    addi    r30, r7, 0x160
+    addi    r30, r7, __vvt__20JSURandomInputStream@l
     stw     r29, 0x44(sp)
     addi    r29, sp, 0x20
     stw     r28, 0x40(sp)
@@ -348,7 +348,7 @@ loadFieldBlock__12JPABaseFieldFP12JPADataBlock: # 0x80325874
     li      r0, 0x0
     addi    r9, r10, 0x0
     stb     r0, 0x4(r10)
-    addi    r0, r8, 0x184
+    addi    r0, r8, __vvt__14JSUInputStream@l
     addi    r3, r10, 0x0
     stw     r0, 0x0(r10)
     stw     r30, 0x0(r10)
@@ -485,8 +485,8 @@ __ct__15JPAGravityFieldFv: # 0x80325ad0
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dc0
+    lis     r3, __vvt__15JPAGravityField@h
+    addi    r0, r3, __vvt__15JPAGravityField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0
@@ -508,12 +508,12 @@ __dt__15JPAGravityFieldFv: # 0x80325b14
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80325b70
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dc0
+    lis     r3, __vvt__15JPAGravityField@h
+    addi    r0, r3, __vvt__15JPAGravityField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80325b60
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80325b60
     addi    r3, r30, 0x0
@@ -589,8 +589,8 @@ __ct__11JPAAirFieldFv: # 0x80325c28
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3da8
+    lis     r3, __vvt__11JPAAirField@h
+    addi    r0, r3, __vvt__11JPAAirField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x1
     addi    r3, r31, 0x0
@@ -655,11 +655,11 @@ branch_0x80325d10:
 branch_0x80325d14:
     clrlwi. r0, r0, 24
     beq-    branch_0x80325d9c
-    lfs     f1, 0x864(rtoc)
+    lfs     f1, 0x864(r2)
     lfs     f0, 0x30(r30)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f0, f1, f0
-    lwz     r4, -0x5ea4(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     fctiwz  f0, f0
     stfd    f0, 0x18(sp)
     lwz     r3, 0x1c(sp)
@@ -757,20 +757,20 @@ branch_0x80325e40:
     fsubs   f29, f1, f0
 branch_0x80325e64:
     fmuls   f1, f30, f30
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmadds  f1, f31, f31, f1
     fmadds  f1, f29, f29, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80325e90
-    lfs     f5, 0x858(rtoc)
+    lfs     f5, 0x858(r2)
     fmr     f1, f5
     fmr     f4, f1
     b       branch_0x80325ea8
 
 branch_0x80325e90:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, 0x860(rtoc)
+    lfs     f0, 0x860(r2)
     fmuls   f0, f0, f1
     fmuls   f4, f31, f0
     fmuls   f1, f30, f0
@@ -818,7 +818,7 @@ branch_0x80325f04:
     fmuls   f2, f1, f1
     lfs     f3, 0x30(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f4, f3, f1
@@ -829,8 +829,8 @@ branch_0x80325f04:
 
 branch_0x80325f58:
     frsqrte f3, f4
-    lfs     f2, 0x86c(rtoc)
-    lfs     f0, 0x870(rtoc)
+    lfs     f2, 0x86c(r2)
+    lfs     f0, 0x870(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -888,8 +888,8 @@ __ct__14JPAMagnetFieldFv: # 0x80326008
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d90
+    lis     r3, __vvt__14JPAMagnetField@h
+    addi    r0, r3, __vvt__14JPAMagnetField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x2
     addi    r3, r31, 0x0
@@ -911,12 +911,12 @@ __dt__14JPAMagnetFieldFv: # 0x8032604c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x803260a8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d90
+    lis     r3, __vvt__14JPAMagnetField@h
+    addi    r0, r3, __vvt__14JPAMagnetField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80326098
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80326098
     addi    r3, r30, 0x0
@@ -1031,7 +1031,7 @@ branch_0x803261e0:
     fmuls   f2, f1, f1
     lfs     f3, 0x84(r30)
     fmuls   f1, f0, f0
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     lfs     f31, 0x10(r30)
@@ -1039,7 +1039,7 @@ branch_0x803261e0:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80326228
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x84(r30)
     stfs    f0, 0x80(r30)
     stfs    f0, 0x7c(r30)
@@ -1078,8 +1078,8 @@ __ct__14JPANewtonFieldFv: # 0x8032627c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d78
+    lis     r3, __vvt__14JPANewtonField@h
+    addi    r0, r3, __vvt__14JPANewtonField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x3
     addi    r3, r31, 0x0
@@ -1101,12 +1101,12 @@ __dt__14JPANewtonFieldFv: # 0x803262c0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8032631c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d78
+    lis     r3, __vvt__14JPANewtonField@h
+    addi    r0, r3, __vvt__14JPANewtonField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x8032630c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x8032630c
     addi    r3, r30, 0x0
@@ -1235,7 +1235,7 @@ branch_0x80326478:
     fmuls   f2, f1, f1
     lfs     f3, 0x84(r30)
     fmuls   f1, f0, f0
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     lfs     f31, 0x10(r30)
@@ -1243,7 +1243,7 @@ branch_0x80326478:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x803264c8
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x84(r30)
     stfs    f0, 0x80(r30)
     stfs    f0, 0x7c(r30)
@@ -1275,21 +1275,21 @@ branch_0x803264f8:
     fadds   f1, f2, f0
     fcmpo   cr0, f1, f3
     ble-    branch_0x80326534
-    lfs     f0, 0x874(rtoc)
+    lfs     f0, 0x874(r2)
     fmuls   f0, f0, f3
     fdivs   f3, f0, f1
     b       branch_0x80326538
 
 branch_0x80326534:
-    lfs     f3, 0x874(rtoc)
+    lfs     f3, 0x874(r2)
 branch_0x80326538:
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     lfs     f2, 0x10(r30)
     fcmpo   cr0, f1, f0
     fmuls   f31, f2, f3
     cror    2, 0, 2
     bne-    branch_0x80326564
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x84(r30)
     stfs    f0, 0x80(r30)
     stfs    f0, 0x7c(r30)
@@ -1328,14 +1328,14 @@ __ct__14JPAVortexFieldFv: # 0x803265b8
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d60
+    lis     r3, __vvt__14JPAVortexField@h
+    addi    r0, r3, __vvt__14JPAVortexField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x4
     addi    r3, r31, 0x0
-    lfs     f1, 0x858(rtoc)
+    lfs     f1, 0x858(r2)
     stfs    f1, 0x24(r31)
-    lfs     f0, 0x860(rtoc)
+    lfs     f0, 0x860(r2)
     stfs    f0, 0x28(r31)
     stfs    f1, 0x2c(r31)
     stb     r0, 0x50(r31)
@@ -1356,12 +1356,12 @@ __dt__14JPAVortexFieldFv: # 0x80326610
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8032666c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d60
+    lis     r3, __vvt__14JPAVortexField@h
+    addi    r0, r3, __vvt__14JPAVortexField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x8032665c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x8032665c
     addi    r3, r30, 0x0
@@ -1397,7 +1397,7 @@ set__14JPAVortexFieldFv: # 0x80326688
     lfs     f0, 0x20(r31)
     fmuls   f0, f0, f0
     stfs    f0, 0x30(r31)
-    lfs     f1, 0x860(rtoc)
+    lfs     f1, 0x860(r2)
     lfs     f0, 0x30(r31)
     fdivs   f0, f1, f0
     stfs    f0, 0x34(r31)
@@ -1446,9 +1446,9 @@ affect__14JPAVortexFieldFP11JPAParticle: # 0x803266e0
     fmr     f3, f7
 branch_0x80326768:
     lfs     f2, 0x34(r30)
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmuls   f5, f3, f2
-    lfs     f4, 0x860(rtoc)
+    lfs     f4, 0x860(r2)
     lfs     f2, 0x14(r30)
     fcmpo   cr0, f1, f0
     lfs     f3, 0x10(r30)
@@ -1457,14 +1457,14 @@ branch_0x80326768:
     cror    2, 0, 2
     fmadds  f28, f4, f3, f0
     bne-    branch_0x803267a8
-    lfs     f3, 0x858(rtoc)
+    lfs     f3, 0x858(r2)
     fmr     f2, f3
     fmr     f4, f2
     b       branch_0x803267c0
 
 branch_0x803267a8:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, 0x860(rtoc)
+    lfs     f0, 0x860(r2)
     fmuls   f0, f0, f1
     fmuls   f4, f31, f0
     fmuls   f2, f30, f0
@@ -1520,15 +1520,15 @@ __ct__18JPAConvectionFieldFv: # 0x80326850
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d48
+    lis     r3, __vvt__18JPAConvectionField@h
+    addi    r0, r3, __vvt__18JPAConvectionField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x7
     addi    r3, r31, 0x0
     stb     r0, 0x50(r31)
-    lfs     f1, 0x858(rtoc)
+    lfs     f1, 0x858(r2)
     stfs    f1, 0x24(r31)
-    lfs     f0, 0x860(rtoc)
+    lfs     f0, 0x860(r2)
     stfs    f0, 0x28(r31)
     stfs    f1, 0x2c(r31)
     stfs    f0, 0x18(r31)
@@ -1551,12 +1551,12 @@ __dt__18JPAConvectionFieldFv: # 0x803268b4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80326910
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d48
+    lis     r3, __vvt__18JPAConvectionField@h
+    addi    r0, r3, __vvt__18JPAConvectionField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80326900
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80326900
     addi    r3, r30, 0x0
@@ -1623,13 +1623,13 @@ set__18JPAConvectionFieldFv: # 0x8032692c
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80326a08
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x20(r30)
     stfs    f0, 0x1c(r30)
     stfs    f0, 0x18(r30)
@@ -1637,7 +1637,7 @@ set__18JPAConvectionFieldFv: # 0x8032692c
 
 branch_0x80326a08:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x860(rtoc)
+    lfs     f2, 0x860(r2)
     lfs     f0, 0x18(r30)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1667,14 +1667,14 @@ branch_0x80326a38:
     fmuls   f2, f1, f1
     lfs     f3, 0x60(r30)
     fmuls   f1, f0, f0
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80326ab0
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x60(r30)
     stfs    f0, 0x5c(r30)
     stfs    f0, 0x58(r30)
@@ -1682,7 +1682,7 @@ branch_0x80326a38:
 
 branch_0x80326ab0:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x860(rtoc)
+    lfs     f2, 0x860(r2)
     lfs     f0, 0x58(r30)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1699,14 +1699,14 @@ branch_0x80326ae0:
     fmuls   f2, f1, f1
     lfs     f3, 0x6c(r30)
     fmuls   f1, f0, f0
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80326b24
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x6c(r30)
     stfs    f0, 0x68(r30)
     stfs    f0, 0x64(r30)
@@ -1714,7 +1714,7 @@ branch_0x80326ae0:
 
 branch_0x80326b24:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x860(rtoc)
+    lfs     f2, 0x860(r2)
     lfs     f0, 0x64(r30)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1731,14 +1731,14 @@ branch_0x80326b54:
     fmuls   f2, f1, f1
     lfs     f3, 0x78(r30)
     fmuls   f1, f0, f0
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80326b98
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x78(r30)
     stfs    f0, 0x74(r30)
     stfs    f0, 0x70(r30)
@@ -1746,7 +1746,7 @@ branch_0x80326b54:
 
 branch_0x80326b98:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x860(rtoc)
+    lfs     f2, 0x860(r2)
     lfs     f0, 0x70(r30)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1781,14 +1781,14 @@ affect__18JPAConvectionFieldFP11JPAParticle: # 0x80326be0
     stw     r30, 0xe8(sp)
     mr      r30, r3
     mr      r0, r4
-    lfs     f1, 0x858(rtoc)
+    lfs     f1, 0x858(r2)
     lfs     f0, 0x64(r3)
     lfs     f2, 0x28(r31)
     fcmpu   cr0, f1, f0
     lfs     f0, 0x20(r31)
     lfs     f1, 0x24(r31)
     bne-    branch_0x80326c44
-    lfs     f4, 0x860(rtoc)
+    lfs     f4, 0x860(r2)
     lfs     f3, 0x68(r30)
     fcmpu   cr0, f4, f3
     bne-    branch_0x80326c44
@@ -1796,7 +1796,7 @@ affect__18JPAConvectionFieldFP11JPAParticle: # 0x80326be0
 branch_0x80326c44:
     clrlwi. r0, r0, 24
     beq-    branch_0x80326c60
-    lfs     f4, 0x858(rtoc)
+    lfs     f4, 0x858(r2)
     lfs     f3, 0x6c(r30)
     fcmpu   cr0, f4, f3
     bne-    branch_0x80326c60
@@ -1805,7 +1805,7 @@ branch_0x80326c60:
     clrlwi. r0, r4, 24
     beq-    branch_0x80326c78
     fmr     f8, f0
-    lfs     f9, 0x858(rtoc)
+    lfs     f9, 0x858(r2)
     fmr     f10, f2
     b       branch_0x80326ccc
 
@@ -1833,20 +1833,20 @@ branch_0x80326c78:
     fadds   f10, f4, f3
 branch_0x80326ccc:
     fmuls   f4, f9, f9
-    lfs     f3, 0x868(rtoc)
+    lfs     f3, 0x868(r2)
     lfs     f6, 0x30(r30)
     fmadds  f4, f8, f8, f4
     fmadds  f11, f10, f10, f4
     fcmpo   cr0, f11, f3
     cror    2, 0, 2
     bne-    branch_0x80326cfc
-    lfs     f4, 0x858(rtoc)
+    lfs     f4, 0x858(r2)
     fmr     f5, f4
     fmr     f6, f5
     b       branch_0x80326d40
 
 branch_0x80326cfc:
-    lfs     f3, 0x858(rtoc)
+    lfs     f3, 0x858(r2)
     fcmpo   cr0, f11, f3
     cror    2, 0, 2
     bne-    branch_0x80326d10
@@ -1854,8 +1854,8 @@ branch_0x80326cfc:
 
 branch_0x80326d10:
     frsqrte f7, f11
-    lfs     f5, 0x86c(rtoc)
-    lfs     f3, 0x870(rtoc)
+    lfs     f5, 0x86c(r2)
+    lfs     f3, 0x870(r2)
     frsp    f7, f7
     fmuls   f4, f7, f7
     fmuls   f5, f5, f7
@@ -1893,7 +1893,7 @@ branch_0x80326d40:
     fmuls   f2, f1, f1
     lfs     f3, 0x84(r30)
     fmuls   f1, f0, f0
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     lfs     f28, 0x10(r30)
@@ -1901,7 +1901,7 @@ branch_0x80326d40:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80326ddc
-    lfs     f0, 0x858(rtoc)
+    lfs     f0, 0x858(r2)
     stfs    f0, 0x84(r30)
     stfs    f0, 0x80(r30)
     stfs    f0, 0x7c(r30)
@@ -1920,12 +1920,12 @@ branch_0x80326ddc:
     fmuls   f0, f0, f1
     stfs    f0, 0x84(r30)
 branch_0x80326e08:
-    lfs     f2, 0x858(rtoc)
+    lfs     f2, 0x858(r2)
     lfs     f4, 0x34(r30)
     fcmpu   cr0, f2, f4
     beq-    branch_0x80326ea4
     fmuls   f1, f30, f30
-    lfs     f0, 0x868(rtoc)
+    lfs     f0, 0x868(r2)
     fmadds  f1, f31, f31, f1
     fmadds  f5, f29, f29, f1
     fcmpo   cr0, f5, f0
@@ -1943,8 +1943,8 @@ branch_0x80326e40:
 
 branch_0x80326e50:
     frsqrte f3, f5
-    lfs     f2, 0x86c(rtoc)
-    lfs     f0, 0x870(rtoc)
+    lfs     f2, 0x86c(r2)
+    lfs     f0, 0x870(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -1995,8 +1995,8 @@ __ct__14JPARandomFieldFv: # 0x80326ee0
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d30
+    lis     r3, __vvt__14JPARandomField@h
+    addi    r0, r3, __vvt__14JPARandomField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x5
     addi    r3, r31, 0x0
@@ -2018,12 +2018,12 @@ __dt__14JPARandomFieldFv: # 0x80326f24
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80326f80
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d30
+    lis     r3, __vvt__14JPARandomField@h
+    addi    r0, r3, __vvt__14JPARandomField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80326f70
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80326f70
     addi    r3, r30, 0x0
@@ -2073,34 +2073,34 @@ branch_0x80326fcc:
 branch_0x80326ff4:
     clrlwi. r0, r7, 24
     beq-    branch_0x803270cc
-    lis     r5, 0x19
-    lwz     r0, -0x5ae0(r13)
-    addi    r6, r5, 0x660d
-    lfs     f3, 0x860(rtoc)
+    lis     r5, unk_0019660d@h
+    lwz     r0, R13Off_m0x5ae0(r13)
+    addi    r6, r5, unk_0019660d@l
+    lfs     f3, 0x860(r2)
     mullw   r5, r0, r6
-    lfs     f2, 0x86c(rtoc)
+    lfs     f2, 0x86c(r2)
     addis   r5, r5, 0x3c6f
-    subi    r0, r5, 0xca1
-    stw     r0, -0x5ae0(r13)
-    lwz     r7, -0x5ae0(r13)
+    addi    r0, r5, -0xca1
+    stw     r0, R13Off_m0x5ae0(r13)
+    lwz     r7, R13Off_m0x5ae0(r13)
     mullw   r5, r7, r6
     addis   r5, r5, 0x3c6f
-    subi    r0, r5, 0xca1
-    stw     r0, -0x5ae0(r13)
+    addi    r0, r5, -0xca1
+    stw     r0, R13Off_m0x5ae0(r13)
     srwi    r0, r7, 9
     oris    r0, r0, 0x3f80
-    lwz     r7, -0x5ae0(r13)
+    lwz     r7, R13Off_m0x5ae0(r13)
     stw     r0, 0x54(sp)
     mullw   r5, r7, r6
     lfs     f0, 0x54(sp)
     fsubs   f0, f0, f3
     addis   r5, r5, 0x3c6f
-    subi    r0, r5, 0xca1
+    addi    r0, r5, -0xca1
     fsubs   f4, f0, f2
-    stw     r0, -0x5ae0(r13)
+    stw     r0, R13Off_m0x5ae0(r13)
     srwi    r0, r7, 9
     oris    r5, r0, 0x3f80
-    lwz     r0, -0x5ae0(r13)
+    lwz     r0, R13Off_m0x5ae0(r13)
     stw     r5, 0x50(sp)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
@@ -2140,8 +2140,8 @@ __ct__12JPADragFieldFv: # 0x803270dc
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12JPABaseFieldFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d18
+    lis     r3, __vvt__12JPADragField@h
+    addi    r0, r3, __vvt__12JPADragField@l
     stw     r0, 0x8c(r31)
     li      r0, 0x6
     addi    r3, r31, 0x0
@@ -2163,12 +2163,12 @@ __dt__12JPADragFieldFv: # 0x80327120
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8032717c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3d18
+    lis     r3, __vvt__12JPADragField@h
+    addi    r0, r3, __vvt__12JPADragField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x8032716c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x8032716c
     addi    r3, r30, 0x0
@@ -2214,16 +2214,16 @@ branch_0x803271c8:
     lwz     r0, 0x34(sp)
     cmpwi   r0, 0x0
     bne-    branch_0x80327244
-    lis     r4, 0x19
-    lwz     r5, -0x5ae0(r13)
-    addi    r0, r4, 0x660d
-    lfs     f3, 0x860(rtoc)
+    lis     r4, unk_0019660d@h
+    lwz     r5, R13Off_m0x5ae0(r13)
+    addi    r0, r4, unk_0019660d@l
+    lfs     f3, 0x860(r2)
     mullw   r4, r5, r0
-    lfs     f1, 0x86c(rtoc)
+    lfs     f1, 0x86c(r2)
     addis   r4, r4, 0x3c6f
-    subi    r0, r4, 0xca1
-    stw     r0, -0x5ae0(r13)
-    lwz     r0, -0x5ae0(r13)
+    addi    r0, r4, -0xca1
+    stw     r0, R13Off_m0x5ae0(r13)
+    lwz     r0, R13Off_m0x5ae0(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x28(sp)
@@ -2247,7 +2247,7 @@ branch_0x80327244:
     lwz     r12, 0x44(r12)
     mtlr    r12
     blrl
-    lfs     f2, 0x860(rtoc)
+    lfs     f2, 0x860(r2)
     lfs     f0, 0x84(r31)
     fsubs   f1, f2, f1
     fnmsubs  f1, f31, f1, f2
@@ -2455,53 +2455,50 @@ setField__15JPAFieldManagerFUc: # 0x803274c8
     cmplwi  r0, 0x7
     stwu    sp, -0x8(sp)
     bgt-    branch_0x80327558
-    lis     r4, 0x803e
-    addi    r4, r4, 0x3cf8
+    lis     r4, unk_803e3cf8@h
+    addi    r4, r4, unk_803e3cf8@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x803274FC:		# jumptable 803274F8 case 0
+    bctr       
+branch_0x803274fc:
     bl      setGravityField__15JPAFieldManagerFv
     mr      r5, r3
     b       branch_0x80327558
 
-branch_0x80327508:		# jumptable 803274F8 case 1
-bl	  setAirField__15JPAFieldManagerFv
-mr	  r5, r3
-b	  def_803274F8	# jumptable 803274F8 default case
+branch_0x80327508:
+    bl      setAirField__15JPAFieldManagerFv
+    mr      r5, r3
+    b       branch_0x80327558
 
-branch_0x80327514:		# jumptable 803274F8 case 2
-bl	  setMagnetField__15JPAFieldManagerFv
-mr	  r5, r3
-b	  def_803274F8	# jumptable 803274F8 default case
+branch_0x80327514:
+    bl      setMagnetField__15JPAFieldManagerFv
+    mr      r5, r3
+    b       branch_0x80327558
 
-branch_0x80327520:		# jumptable 803274F8 case 3
-bl	  setNewtonField__15JPAFieldManagerFv
-mr	  r5, r3
-b	  def_803274F8	# jumptable 803274F8 default case
+branch_0x80327520:
+    bl      setNewtonField__15JPAFieldManagerFv
+    mr      r5, r3
+    b       branch_0x80327558
 
-branch_0x8032752C:		# jumptable 803274F8 case 4
-bl	  setVortexField__15JPAFieldManagerFv
-mr	  r5, r3
-b	  def_803274F8	# jumptable 803274F8 default case
+branch_0x8032752c:
+    bl      setVortexField__15JPAFieldManagerFv
+    mr      r5, r3
+    b       branch_0x80327558
 
-branch_0x80327538:		# jumptable 803274F8 case 5
-bl	  setRandomField__15JPAFieldManagerFv
-mr	  r5, r3
-b	  def_803274F8	# jumptable 803274F8 default case
+branch_0x80327538:
+    bl      setRandomField__15JPAFieldManagerFv
+    mr      r5, r3
+    b       branch_0x80327558
 
-branch_0x80327544:		# jumptable 803274F8 case 6
-bl	  setDragField__15JPAFieldManagerFv
-mr	  r5, r3
-b	  def_803274F8	# jumptable 803274F8 default case
+branch_0x80327544:
+    bl      setDragField__15JPAFieldManagerFv
+    mr      r5, r3
+    b       branch_0x80327558
 
-branch_0x80327550:		# jumptable 803274F8 case 7
-bl	  setConvectionField__15JPAFieldManagerFv
-mr	  r5, r3
-
-def_803274F8:		# jumptable 803274F8 default case
+branch_0x80327550:
+    bl      setConvectionField__15JPAFieldManagerFv
+    mr      r5, r3
 branch_0x80327558:
     lwz     r0, 0xc(sp)
     mr      r3, r5
@@ -2800,12 +2797,12 @@ __dt__11JPAAirFieldFv: # 0x8032790c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80327968
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3da8
+    lis     r3, __vvt__11JPAAirField@h
+    addi    r0, r3, __vvt__11JPAAirField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80327958
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3dd8
+    lis     r3, __vvt__12JPABaseField@h
+    addi    r0, r3, __vvt__12JPABaseField@l
     stw     r0, 0x8c(r30)
     beq-    branch_0x80327958
     addi    r3, r30, 0x0
@@ -2829,7 +2826,7 @@ branch_0x80327968:
 .globl __sinit_JPAField_cpp
 __sinit_JPAField_cpp: # 0x80327984
     mflr    r0
-    subi    r3, r13, 0x5ae0
+    addi    r3, r13, R13Off_m0x5ae0
     stw     r0, 0x4(sp)
     li      r4, 0x0
     stwu    sp, -0x8(sp)

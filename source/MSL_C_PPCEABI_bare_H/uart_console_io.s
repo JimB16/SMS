@@ -15,16 +15,16 @@ __write_console: # 0x8033ba90
     addi    r31, r5, 0x0
     stw     r30, 0x20(sp)
     addi    r30, r4, 0x0
-    lwz     r0, -0x5a80(r13)
+    lwz     r0, R13Off_m0x5a80(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8033bad8
-    lis     r3, 0x1
-    subi    r3, r3, 0x1f00
+    lis     r3, unk_0000e100@ha
+    addi    r3, r3, unk_0000e100@l
     bl      InitializeUART
     cmpwi   r3, 0x0
     bne-    branch_0x8033bad8
     li      r0, 0x1
-    stw     r0, -0x5a80(r13)
+    stw     r0, R13Off_m0x5a80(r13)
 branch_0x8033bad8:
     cmpwi   r3, 0x0
     beq-    branch_0x8033bae8
@@ -64,16 +64,16 @@ __read_console: # 0x8033bb28
     addi    r30, r5, 0x0
     stw     r29, 0x24(sp)
     addi    r29, r4, 0x0
-    lwz     r0, -0x5a80(r13)
+    lwz     r0, R13Off_m0x5a80(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8033bb74
-    lis     r3, 0x1
-    subi    r3, r3, 0x1f00
+    lis     r3, unk_0000e100@ha
+    addi    r3, r3, unk_0000e100@l
     bl      InitializeUART
     cmpwi   r3, 0x0
     bne-    branch_0x8033bb74
     li      r0, 0x1
-    stw     r0, -0x5a80(r13)
+    stw     r0, R13Off_m0x5a80(r13)
 branch_0x8033bb74:
     cmpwi   r3, 0x0
     beq-    branch_0x8033bb84

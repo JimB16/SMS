@@ -1,8 +1,4 @@
 
-/* JDrama::TNameRef::calcKeyCode((char const *))
-Input:
-r3: Ptr to string
-*/
 .globl calcKeyCode__Q26JDrama8TNameRefFPCc
 calcKeyCode__Q26JDrama8TNameRefFPCc: # 0x802fa4d8
     li      r4, 0x0
@@ -17,7 +13,6 @@ branch_0x802fa4f0:
     lbz     r0, 0x0(r3)
     cmpwi   r0, 0x0
     bne+    branch_0x802fa4e0
-
     clrlwi  r3, r4, 16
     blr
 
@@ -39,12 +34,12 @@ getType__Q26JDrama8TNameRefFR20JSUMemoryInputStreamR20JSUMemoryInputStream: # 0x
     mr      r3, r30
     lwz     r4, 0x8(r29)
     lwz     r0, 0x10(r29)
-    subi    r5, r31, 0x4
+    addi    r5, r31, -0x4
     add     r4, r4, r0
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
     mr      r3, r29
     lwz     r12, 0x0(r29)
-    subi    r4, r31, 0x4
+    addi    r4, r31, -0x4
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
@@ -80,12 +75,12 @@ genObject__Q26JDrama8TNameRefFR20JSUMemoryInputStreamR20JSUMemoryInputStream: # 
     mr      r3, r30
     lwz     r4, 0x8(r29)
     lwz     r0, 0x10(r29)
-    subi    r5, r31, 0x4
+    addi    r5, r31, -0x4
     add     r4, r4, r0
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
     mr      r3, r29
     lwz     r12, 0x0(r29)
-    subi    r4, r31, 0x4
+    addi    r4, r31, -0x4
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
@@ -95,7 +90,7 @@ genObject__Q26JDrama8TNameRefFR20JSUMemoryInputStreamR20JSUMemoryInputStream: # 
     bl      read__14JSUInputStreamFPvl
     mr      r3, r30
     bl      readString__14JSUInputStreamFv
-    lwz     r0, -0x5db8(r13)
+    lwz     r0, R13Off_m0x5db8(r13)
     addi    r4, r3, 0x0
     mr      r3, r0
     lwz     r12, 0x0(r3)
@@ -119,8 +114,8 @@ __dt__Q26JDrama8TNameRefFv: # 0x802fa648
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802fa67c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r3, r3, __vvt__Q26JDrama8TNameRef@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802fa67c

@@ -6,9 +6,9 @@ CreateCallbackFat: # 0x80359558
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r28, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     mulli   r5, r28, 0x110
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     lwz     r29, 0xd0(r31)
     li      r27, 0x0
@@ -121,8 +121,8 @@ branch_0x803596fc:
     b       branch_0x80359894
 
 branch_0x80359704:
-    lis     r4, 0x1
-    subi    r30, r4, 0x1
+    lis     r4, unk_0000ffff@ha
+    addi    r30, r4, unk_0000ffff@l
     bl      __CARDGetDirBlock
     addi    r31, r3, 0x0
     addi    r24, r31, 0x0
@@ -201,8 +201,8 @@ branch_0x80359800:
     b       branch_0x80359818
 
 branch_0x80359810:
-    lis     r3, 0x8035
-    addi    r0, r3, 0x432c
+    lis     r3, __CARDDefaultApiCallback@h
+    addi    r0, r3, __CARDDefaultApiCallback@l
 branch_0x80359818:
     stw     r0, 0xd0(r4)
     clrlslwi  r0, r30, 16, 6
@@ -219,8 +219,8 @@ branch_0x80359818:
     sth     r0, 0x38(r7)
     bl      strncpy
     lwz     r4, 0x1c(sp)
-    lis     r3, 0x8036
-    subi    r5, r3, 0x6aa8
+    lis     r3, CreateCallbackFat@ha
+    addi    r5, r3, CreateCallbackFat@l
     stw     r28, 0xc0(r4)
     mr      r3, r25
     stw     r25, 0x0(r28)
@@ -248,9 +248,9 @@ branch_0x80359894:
 .globl CARDCreate
 CARDCreate: # 0x803598a8
     mflr    r0
-    lis     r7, 0x8035
+    lis     r7, __CARDSyncCallback@h
     stw     r0, 0x4(sp)
-    addi    r7, r7, 0x4330
+    addi    r7, r7, __CARDSyncCallback@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0

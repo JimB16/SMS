@@ -103,7 +103,7 @@ GetRenderModeYScale__6JDramaFRC16_GXRenderModeObj: # 0x802fb944
     stfd    f31, 0x10(sp)
     lbz     r0, 0x19(r3)
     li      r3, 0x0
-    lfs     f31, 0x448(rtoc)
+    lfs     f31, 0x448(r2)
     cmplwi  r0, 0x1
     bne-    branch_0x802fb998
     lwz     r0, 0x14(r5)
@@ -121,11 +121,11 @@ branch_0x802fb98c:
 branch_0x802fb998:
     clrlwi. r0, r3, 24
     beq-    branch_0x802fb9c0
-    lis     r3, 0x803b
+    lis     r3, unk_803aa400@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x5bec
-    subi    r3, r3, 0x5c00
+    lis     r4, unk_803aa414@ha
+    addi    r5, r4, unk_803aa414@l
+    addi    r3, r3, unk_803aa400@l
     li      r4, 0x37
     bl      OSPanic
     b       branch_0x802fb9d0
@@ -173,11 +173,11 @@ branch_0x802fba38:
 branch_0x802fba44:
     clrlwi. r0, r3, 24
     beq-    branch_0x802fba68
-    lis     r3, 0x803b
+    lis     r3, unk_803aa400@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x5bd4
-    subi    r3, r3, 0x5c00
+    lis     r4, unk_803aa42c@ha
+    addi    r5, r4, unk_803aa42c@l
+    addi    r3, r3, unk_803aa400@l
     li      r4, 0x48
     bl      OSPanic
 branch_0x802fba68:

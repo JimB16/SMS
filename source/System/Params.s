@@ -13,19 +13,19 @@ load__7TParamsFPCc: # 0x802a4594
     bne-    branch_0x802a45c0
     addi    r26, r26, 0x1
 branch_0x802a45c0:
-    lwz     r3, -0x604c(r13)
+    lwz     r3, R13Off_m0x604c(r13)
     li      r31, 0x0
     cmplwi  r3, 0x0
     beq-    branch_0x802a460c
     lwz     r12, 0x0(r3)
-    lis     r4, 0x803a
-    addi    r4, r4, 0x3ed0
+    lis     r4, SceneParamsDir@h
+    addi    r4, r4, SceneParamsDir@l
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
     clrlwi. r0, r3, 24
     beq-    branch_0x802a460c
-    lwz     r3, -0x604c(r13)
+    lwz     r3, R13Off_m0x604c(r13)
     mr      r4, r26
     lwz     r12, 0x0(r3)
     lwz     r12, 0x14(r12)
@@ -35,7 +35,7 @@ branch_0x802a45c0:
 branch_0x802a460c:
     cmplwi  r31, 0x0
     beq-    branch_0x802a46a8
-    lwz     r3, -0x604c(r13)
+    lwz     r3, R13Off_m0x604c(r13)
     mr      r4, r31
     lwz     r12, 0x0(r3)
     lwz     r12, 0x30(r12)
@@ -43,20 +43,20 @@ branch_0x802a460c:
     blrl
     addi    r27, sp, 0x34
     stw     r27, 0x1c(sp)
-    lis     r5, 0x803b
-    subi    r0, r5, 0xf0c
+    lis     r5, __vvt__10JSUIosBase@ha
+    addi    r0, r5, __vvt__10JSUIosBase@l
     lwz     r6, 0x1c(sp)
-    lis     r5, 0x803e
-    addi    r29, r5, 0x160
+    lis     r5, __vvt__20JSURandomInputStream@h
+    addi    r29, r5, __vvt__20JSURandomInputStream@l
     stw     r0, 0x0(r6)
     li      r0, 0x0
     addi    r5, r3, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__14JSUInputStream@h
     stb     r0, 0x4(r6)
-    addi    r0, r4, 0x184
+    addi    r0, r4, __vvt__14JSUInputStream@l
     stw     r0, 0x0(r6)
-    lis     r4, 0x803e
-    addi    r28, r4, 0x1c8
+    lis     r4, __vvt__20JSUMemoryInputStream@h
+    addi    r28, r4, __vvt__20JSUMemoryInputStream@l
     stw     r29, 0x0(r6)
     addi    r3, r6, 0x0
     mr      r4, r31
@@ -74,15 +74,15 @@ branch_0x802a460c:
     b       branch_0x802a4778
 
 branch_0x802a46a8:
-    lwz     r3, -0x6050(r13)
+    lwz     r3, R13Off_m0x6050(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802a4778
     lwz     r12, 0x0(r3)
-    subi    r4, rtoc, 0x438
+    addi    r4, r2, R2Off_m0x438
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x6050(r13)
+    lwz     r3, R13Off_m0x6050(r13)
     mr      r4, r26
     lwz     r12, 0x0(r3)
     lwz     r12, 0x14(r12)
@@ -90,7 +90,7 @@ branch_0x802a46a8:
     blrl
     mr.     r26, r3
     beq-    branch_0x802a4778
-    lwz     r3, -0x6050(r13)
+    lwz     r3, R13Off_m0x6050(r13)
     mr      r4, r26
     lwz     r12, 0x0(r3)
     lwz     r12, 0x30(r12)
@@ -98,20 +98,20 @@ branch_0x802a46a8:
     blrl
     addi    r28, sp, 0x20
     stw     r28, 0x18(sp)
-    lis     r5, 0x803b
-    subi    r0, r5, 0xf0c
+    lis     r5, __vvt__10JSUIosBase@ha
+    addi    r0, r5, __vvt__10JSUIosBase@l
     lwz     r6, 0x18(sp)
-    lis     r5, 0x803e
-    addi    r29, r5, 0x160
+    lis     r5, __vvt__20JSURandomInputStream@h
+    addi    r29, r5, __vvt__20JSURandomInputStream@l
     stw     r0, 0x0(r6)
     li      r0, 0x0
     addi    r5, r3, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__14JSUInputStream@h
     stb     r0, 0x4(r6)
-    addi    r0, r4, 0x184
+    addi    r0, r4, __vvt__14JSUInputStream@l
     stw     r0, 0x0(r6)
-    lis     r4, 0x803e
-    addi    r31, r4, 0x1c8
+    lis     r4, __vvt__20JSUMemoryInputStream@h
+    addi    r31, r4, __vvt__20JSUMemoryInputStream@l
     stw     r29, 0x0(r6)
     addi    r3, r6, 0x0
     mr      r4, r26
@@ -138,22 +138,22 @@ branch_0x802a4778:
 .globl finalize__7TParamsFv
 finalize__7TParamsFv: # 0x802a4790
     li      r0, 0x0
-    stw     r0, -0x6050(r13)
-    stw     r0, -0x604c(r13)
+    stw     r0, R13Off_m0x6050(r13)
+    stw     r0, R13Off_m0x604c(r13)
     blr
 
 
 .globl init__7TParamsFv
 init__7TParamsFv: # 0x802a47a0
     mflr    r0
-    subi    r3, rtoc, 0x434
+    addi    r3, r2, R2Off_m0x434
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      getVolume__13JKRFileLoaderFPCc
-    stw     r3, -0x6050(r13)
-    subi    r3, rtoc, 0x42c
+    stw     r3, R13Off_m0x6050(r13)
+    addi    r3, r2, R2Off_m0x42c
     bl      getVolume__13JKRFileLoaderFPCc
-    stw     r3, -0x604c(r13)
+    stw     r3, R13Off_m0x604c(r13)
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
     mtlr    r0

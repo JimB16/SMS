@@ -11,8 +11,8 @@ __ct__13J2DOrthoGraphFRC7JUTRect: # 0x802ecfcc
     lwz     r3, 0x8(sp)
     bl      __ct__14J2DGrafContextFRC7JUTRect
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0xd8
     li      r4, 0x0
@@ -39,9 +39,9 @@ __ct__13J2DOrthoGraphFRC7JUTRect: # 0x802ecfcc
     lwz     r0, 0x28(sp)
     stw     r4, 0xe0(r31)
     stw     r0, 0xe4(r31)
-    lfs     f0, 0x308(rtoc)
+    lfs     f0, 0x308(r2)
     stfs    f0, 0xe8(r31)
-    lfs     f0, 0x30c(rtoc)
+    lfs     f0, 0x30c(r2)
     stfs    f0, 0xec(r31)
     lwz     r12, 0x0(r31)
     lwz     r12, 0x20(r12)
@@ -72,8 +72,8 @@ __ct__13J2DOrthoGraphFiiii: # 0x802ed0a8
     lwz     r3, 0x8(sp)
     bl      __ct__14J2DGrafContextFiiii
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0xd8
     li      r4, 0x0
@@ -96,9 +96,9 @@ __ct__13J2DOrthoGraphFiiii: # 0x802ed0a8
     lwz     r0, 0x2c(sp)
     stw     r4, 0xe0(r31)
     stw     r0, 0xe4(r31)
-    lfs     f0, 0x308(rtoc)
+    lfs     f0, 0x308(r2)
     stfs    f0, 0xe8(r31)
-    lfs     f0, 0x30c(rtoc)
+    lfs     f0, 0x30c(r2)
     stfs    f0, 0xec(r31)
     lwz     r12, 0x0(r31)
     lwz     r12, 0x20(r12)
@@ -136,12 +136,12 @@ setPort__13J2DOrthoGraphFv: # 0x802ed180
     stw     r5, 0x20(sp)
     xoris   r4, r4, 0x8000
     xoris   r0, r0, 0x8000
-    lfd     f4, 0x318(rtoc)
+    lfd     f4, 0x318(r2)
     stw     r6, 0x2c(sp)
     lfd     f0, 0x20(sp)
     stw     r4, 0x1c(sp)
     fsubs   f0, f0, f4
-    lfs     f1, 0x310(rtoc)
+    lfs     f1, 0x310(r2)
     stw     r0, 0x14(sp)
     lfs     f5, 0xe8(r31)
     stw     r5, 0x28(sp)
@@ -201,11 +201,11 @@ scissorBounds__13J2DOrthoGraphFP7JUTRectP7JUTRect: # 0x802ed274
     xoris   r6, r6, 0x8000
     lwz     r7, 0x0(r5)
     stw     r6, 0xcc(sp)
-    lfd     f1, 0x318(rtoc)
+    lfd     f1, 0x318(r2)
     subf    r6, r9, r7
     stw     r0, 0xd0(sp)
     xoris   r6, r6, 0x8000
-    lfs     f2, 0x320(rtoc)
+    lfs     f2, 0x320(r2)
     stw     r0, 0xc8(sp)
     lfd     f3, 0xd0(sp)
     lfd     f0, 0xc8(sp)
@@ -240,7 +240,7 @@ scissorBounds__13J2DOrthoGraphFP7JUTRectP7JUTRect: # 0x802ed274
     lwz     r7, 0x8(r5)
     stw     r6, 0xa4(sp)
     subf    r6, r9, r7
-    lfs     f0, 0x324(rtoc)
+    lfs     f0, 0x324(r2)
     stw     r0, 0xa8(sp)
     xoris   r6, r6, 0x8000
     stw     r0, 0xa0(sp)
@@ -386,8 +386,8 @@ J2DFillBox__F7JUTRectQ28JUtility6TColor: # 0x802ed534
     lwz     r3, 0x20(sp)
     bl      __ct__14J2DGrafContextFiiii
     lwz     r29, 0x20(sp)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x14b0
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r31, r3, __vvt__13J2DOrthoGraph@l
     stw     r31, 0x0(r29)
     addi    r3, r29, 0xd8
     li      r4, 0x0
@@ -418,9 +418,9 @@ J2DFillBox__F7JUTRectQ28JUtility6TColor: # 0x802ed534
     addi    r3, r30, 0x0
     addi    r4, r27, 0x0
     bl      fillBox__14J2DGrafContextFRC7JUTRect
-    lis     r3, 0x803e
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r31, 0x28(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x28(sp)
     lwz     r0, 0x134(sp)
     lmw     r27, 0x11c(sp)

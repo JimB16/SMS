@@ -85,7 +85,7 @@ branch_0x80282bf4:
     clrlwi  r0, r4, 24
     cmplwi  r0, 0x1
     bne-    branch_0x80282c30
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x180c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -142,7 +142,7 @@ branch_0x80282ca4:
     clrlwi. r0, r0, 24
     beq-    branch_0x80282cdc
 branch_0x80282cac:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x193d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -160,7 +160,7 @@ branch_0x80282cdc:
     cmplwi  r0, 0x15
     bne-    branch_0x80282cf8
     addi    r3, r31, 0x0
-    li      r4, SOUND_78cf
+    li      r4, 0x78cf
     bl      startVoice__6TMarioFUl
 branch_0x80282cf8:
     lwz     r0, 0x4c(r29)
@@ -174,20 +174,20 @@ branch_0x80282d0c:
 branch_0x80282d10:
     clrlwi. r0, r0, 24
     beq-    branch_0x80282d38
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x0
     bl      getMarioVoiceID__6MSoundFUc
-    cmplwi  r3, SOUND_78d3
+    cmplwi  r3, 0x78d3
     beq-    branch_0x80282d38
     addi    r3, r31, 0x0
-    li      r4, SOUND_78d3
+    li      r4, 0x78d3
     bl      startVoice__6TMarioFUl
 branch_0x80282d38:
     mr      r3, r31
     bl      onYoshi__6TMarioCFv
     cmpwi   r3, 0x0
     beq-    branch_0x80282d78
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x791c
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -200,9 +200,9 @@ branch_0x80282d38:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x80282d78:
-    lis     r4, 0x2
+    lis     r4, unk_000208b8@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b8
+    addi    r4, r4, unk_000208b8@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -222,17 +222,16 @@ branch_0x80282db0:
     clrlwi. r0, r0, 24
     beq-    branch_0x80283570
     addis   r4, r5, 0xe000
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
     cmplwi  r4, 0x3b
     bgt-    branch_0x80283570
-    lis     r3, 0x803e
-    subi    r3, r3, 0x14a0
+    lis     r3, unk_803deb60@ha
+    addi    r3, r3, unk_803deb60@l
     slwi    r4, r4, 2
     lwzx    r0, r3, r4
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80282DE0:		# jumptable 80282DDC case 0
+    bctr       
+branch_0x80282de0:
     cmplwi  r30, 0xe
     bne-    branch_0x80283570
     lwz     r0, 0x118(r31)
@@ -269,594 +268,560 @@ branch_0x80282e4c:
     li      r3, 0x1
     b       branch_0x80284d9c
 
-branch_0x80282E5C:		# jumptable 80282DDC case 1
-cmplwi	  r30, 0xE
-bne	  def_80282DDC	# jumptable 80282DDC default case
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x80282E78
-li	  r0, 1
-b	  branch_0x80282E7C
+branch_0x80282e5c:
+    cmplwi  r30, 0xe
+    bne-    branch_0x80283570
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x80282e78
+    li      r0, 0x1
+    b       branch_0x80282e7c
 
-branch_0x80282E78:
-li	  r0, 0
+branch_0x80282e78:
+    li      r0, 0x0
+branch_0x80282e7c:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80282ec0
+    lwz     r3, 0x3e4(r31)
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r29, 0x3e4(r31)
+    lwz     r0, 0xcc(r3)
+    lwz     r4, 0x1c80(r29)
+    addi    r3, r29, 0x0
+    add     r0, r4, r0
+    stw     r0, 0x1c80(r29)
+    bl      getCurrentNozzle__9TWaterGunCFv
+    addi    r3, r3, 0xbc
+    lwz     r0, 0x1c80(r29)
+    lwz     r3, 0x10(r3)
+    cmpw    r0, r3
+    ble-    branch_0x80282ec0
+    stw     r3, 0x1c80(r29)
+branch_0x80282ec0:
+    mr      r3, r31
+    bl      emitGetWaterEffect__6TMarioFv
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x80282E7C:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80282EC0
-lwz	  r3, 0x3E4(r31)
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r29, 0x3E4(r31)
-lwz	  r0, 0xCC(r3)
-lwz	  r4, 0x1C80(r29)
-addi	  r3, r29, 0
-add	  r0, r4, r0
-stw	  r0, 0x1C80(r29)
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-addi	  r3, r3, 0xBC
-lwz	  r0, 0x1C80(r29)
-lwz	  r3, 0x10(r3)
-cmpw	  r0, r3
-ble	  branch_0x80282EC0
-stw	  r3, 0x1C80(r29)
+branch_0x80282ed0:
+    cmplwi  r30, 0xe
+    bne-    branch_0x80283570
+    addi    r3, r31, 0x0
+    li      r4, 0x8
+    bl      incHP__6TMarioFi
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x80282EC0:
-mr	  r3, r31
-bl	  emitGetWaterEffect__6TMarioFv	# TMario::emitGetWaterEffect((void))
-li	  r3, 1
-b	  branch_0x80284d9c
+branch_0x80282ef4:
+    cmplwi  r30, 0xe
+    bne-    branch_0x80283570
+    addi    r3, r31, 0x0
+    li      r4, 0x4
+    bl      incHP__6TMarioFi
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x80282f1c
+    li      r0, 0x1
+    b       branch_0x80282f20
 
-branch_0x80282ED0:		# jumptable 80282DDC case 43
-cmplwi	  r30, 0xE
-bne	  def_80282DDC	# jumptable 80282DDC default case
-addi	  r3, r31, 0
-li	  r4, 8
-bl	  incHP__6TMarioFi # TMario::incHP((int))
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r3, 1
-b	  branch_0x80284d9c
+branch_0x80282f1c:
+    li      r0, 0x0
+branch_0x80282f20:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80282f64
+    lwz     r3, 0x3e4(r31)
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r29, 0x3e4(r31)
+    lwz     r0, 0xcc(r3)
+    lwz     r4, 0x1c80(r29)
+    addi    r3, r29, 0x0
+    add     r0, r4, r0
+    stw     r0, 0x1c80(r29)
+    bl      getCurrentNozzle__9TWaterGunCFv
+    addi    r3, r3, 0xbc
+    lwz     r0, 0x1c80(r29)
+    lwz     r3, 0x10(r3)
+    cmpw    r0, r3
+    ble-    branch_0x80282f64
+    stw     r3, 0x1c80(r29)
+branch_0x80282f64:
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x80282EF4:		# jumptable 80282DDC case 2
-cmplwi	  r30, 0xE
-bne	  def_80282DDC	# jumptable 80282DDC default case
-addi	  r3, r31, 0
-li	  r4, 4
-bl	  incHP__6TMarioFi # TMario::incHP((int))
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x80282F1C
-li	  r0, 1
-b	  branch_0x80282F20
+branch_0x80282f74:
+    cmplwi  r30, 0xe
+    bne-    branch_0x80283570
+    addi    r3, r31, 0x0
+    li      r4, 0x1
+    bl      incHP__6TMarioFi
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x80282F1C:
-li	  r0, 0
+branch_0x80282f98:
+    cmplwi  r30, 0xe
+    bne-    branch_0x80283570
+    lbz     r0, 0x13a(r29)
+    extsb.  r0, r0
+    bne-    branch_0x80282fc0
+    lwz     r0, 0x13c(r29)
+    cmpwi   r0, 0x78
+    bge-    branch_0x80282fc0
+    li      r0, 0x1
+    b       branch_0x80282fc4
 
-branch_0x80282F20:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80282F64
-lwz	  r3, 0x3E4(r31)
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r29, 0x3E4(r31)
-lwz	  r0, 0xCC(r3)
-lwz	  r4, 0x1C80(r29)
-addi	  r3, r29, 0
-add	  r0, r4, r0
-stw	  r0, 0x1C80(r29)
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-addi	  r3, r3, 0xBC
-lwz	  r0, 0x1C80(r29)
-lwz	  r3, 0x10(r3)
-cmpw	  r0, r3
-ble	  branch_0x80282F64
-stw	  r3, 0x1C80(r29)
+branch_0x80282fc0:
+    li      r0, 0x0
+branch_0x80282fc4:
+    clrlwi. r0, r0, 24
+    bne-    branch_0x8028304c
+    lha     r0, 0x58c(r31)
+    sth     r0, 0x120(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x80282fe8
+    li      r0, 0x1
+    b       branch_0x80282fec
 
-branch_0x80282F64:
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r3, 1
-b	  branch_0x80284d9c
-
-branch_0x80282F74:		# jumptable 80282DDC case 3
-cmplwi	  r30, 0xE
-bne	  def_80282DDC	# jumptable 80282DDC default case
-addi	  r3, r31, 0
-li	  r4, 1
-bl	  incHP__6TMarioFi # TMario::incHP((int))
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r3, 1
-b	  branch_0x80284d9c
-
-branch_0x80282F98:		# jumptable 80282DDC cases 4-6
-cmplwi	  r30, 0xE
-bne	  def_80282DDC	# jumptable 80282DDC default case
-lbz	  r0, 0x13A(r29)
-extsb.	  r0, r0
-bne	  branch_0x80282FC0
-lwz	  r0, 0x13C(r29)
-cmpwi	  r0, 0x78
-bge	  branch_0x80282FC0
-li	  r0, 1
-b	  branch_0x80282FC4
-
-branch_0x80282FC0:
-li	  r0, 0
-
-branch_0x80282FC4:
-clrlwi.	  r0, r0, 24
-bne	  branch_0x8028304C
-lha	  r0, 0x58C(r31)
-sth	  r0, 0x120(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x80282FE8
-li	  r0, 1
-b	  branch_0x80282FEC
-
-branch_0x80282FE8:
-li	  r0, 0
-
-branch_0x80282FEC:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80283030
-lwz	  r3, 0x3E4(r31)
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r29, 0x3E4(r31)
-lwz	  r0, 0xCC(r3)
-lwz	  r4, 0x1C80(r29)
-addi	  r3, r29, 0
-add	  r0, r4, r0
-stw	  r0, 0x1C80(r29)
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-addi	  r3, r3, 0xBC
-lwz	  r0, 0x1C80(r29)
-lwz	  r3, 0x10(r3)
-cmpw	  r0, r3
-ble	  branch_0x80283030
-stw	  r3, 0x1C80(r29)
-
+branch_0x80282fe8:
+    li      r0, 0x0
+branch_0x80282fec:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80283030
+    lwz     r3, 0x3e4(r31)
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r29, 0x3e4(r31)
+    lwz     r0, 0xcc(r3)
+    lwz     r4, 0x1c80(r29)
+    addi    r3, r29, 0x0
+    add     r0, r4, r0
+    stw     r0, 0x1c80(r29)
+    bl      getCurrentNozzle__9TWaterGunCFv
+    addi    r3, r3, 0xbc
+    lwz     r0, 0x1c80(r29)
+    lwz     r3, 0x10(r3)
+    cmpw    r0, r3
+    ble-    branch_0x80283030
+    stw     r3, 0x1c80(r29)
 branch_0x80283030:
-lwz	  r3, -0x6060(r13)
-li	  r4, 1
-bl	  incMario__12TFlagManagerFl # TFlagManager::incMario((long))
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r3, 1
-b	  branch_0x80284d9c
+    lwz     r3, R13Off_m0x6060(r13)
+    li      r4, 0x1
+    bl      incMario__12TFlagManagerFl
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x8028304C:
-li	  r3, 0
-b	  branch_0x80284d9c
+branch_0x8028304c:
+    li      r3, 0x0
+    b       branch_0x80284d9c
 
-branch_0x80283054:		# jumptable 80282DDC case 33
-mr	  r3, r31
-bl	  onYoshi__6TMarioCFv #	TMario::onYoshi(const(void))
-cmpwi	  r3, 0
-beq	  branch_0x8028306C
-li	  r0, 0
-b	  branch_0x802830FC
+branch_0x80283054:
+    mr      r3, r31
+    bl      onYoshi__6TMarioCFv
+    cmpwi   r3, 0x0
+    beq-    branch_0x8028306c
+    li      r0, 0x0
+    b       branch_0x802830fc
 
-branch_0x8028306C:
-lwz	  r0, 0x118(r31)
-ori	  r0, r0, 0x8000
-stw	  r0, 0x118(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x8028308C
-li	  r0, 1
-b	  branch_0x80283090
+branch_0x8028306c:
+    lwz     r0, 0x118(r31)
+    ori     r0, r0, 0x8000
+    stw     r0, 0x118(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x8028308c
+    li      r0, 0x1
+    b       branch_0x80283090
 
-branch_0x8028308C:
-li	  r0, 0
-
+branch_0x8028308c:
+    li      r0, 0x0
 branch_0x80283090:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x802830A8
-lwz	  r3, 0x3E4(r31)
-li	  r4, 1
-li	  r5, 1
-bl	  changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb #	TWaterGun::changeNozzle((TWaterGun::TNozzleType,bool))
+    clrlwi. r0, r0, 24
+    beq-    branch_0x802830a8
+    lwz     r3, 0x3e4(r31)
+    li      r4, 0x1
+    li      r5, 0x1
+    bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
+branch_0x802830a8:
+    li      r0, 0xe10
+    stw     r0, 0x144(r31)
+    mr      r3, r31
+    bl      resetNozzle__6TMarioFv
+    stw     r29, 0x148(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x802830d0
+    li      r0, 0x1
+    b       branch_0x802830d4
 
-branch_0x802830A8:
-li	  r0, 0xE10
-stw	  r0, 0x144(r31)
-mr	  r3, r31
-bl	  resetNozzle__6TMarioFv # TMario::resetNozzle((void))
-stw	  r29, 0x148(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x802830D0
-li	  r0, 1
-b	  branch_0x802830D4
+branch_0x802830d0:
+    li      r0, 0x0
+branch_0x802830d4:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x802830f0
+    lwz     r29, 0x3e4(r31)
+    mr      r3, r29
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r0, 0xcc(r3)
+    stw     r0, 0x1c80(r29)
+branch_0x802830f0:
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r0, 0x1
+branch_0x802830fc:
+    clrlwi  r3, r0, 24
+    b       branch_0x80284d9c
 
-branch_0x802830D0:
-li	  r0, 0
+branch_0x80283104:
+    mr      r3, r31
+    bl      onYoshi__6TMarioCFv
+    cmpwi   r3, 0x0
+    beq-    branch_0x8028311c
+    li      r0, 0x0
+    b       branch_0x802831ac
 
-branch_0x802830D4:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x802830F0
-lwz	  r29, 0x3E4(r31)
-mr	  r3, r29
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r0, 0xCC(r3)
-stw	  r0, 0x1C80(r29)
+branch_0x8028311c:
+    lwz     r0, 0x118(r31)
+    ori     r0, r0, 0x8000
+    stw     r0, 0x118(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x8028313c
+    li      r0, 0x1
+    b       branch_0x80283140
 
-branch_0x802830F0:
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r0, 1
-
-branch_0x802830FC:
-clrlwi	  r3, r0, 24
-b	  branch_0x80284d9c
-
-branch_0x80283104:		# jumptable 80282DDC case 37
-mr	  r3, r31
-bl	  onYoshi__6TMarioCFv #	TMario::onYoshi(const(void))
-cmpwi	  r3, 0
-beq	  branch_0x8028311C
-li	  r0, 0
-b	  branch_0x802831AC
-
-branch_0x8028311C:
-lwz	  r0, 0x118(r31)
-ori	  r0, r0, 0x8000
-stw	  r0, 0x118(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x8028313C
-li	  r0, 1
-b	  branch_0x80283140
-
-branch_0x8028313C:
-li	  r0, 0
-
+branch_0x8028313c:
+    li      r0, 0x0
 branch_0x80283140:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80283158
-lwz	  r3, 0x3E4(r31)
-li	  r4, 4
-li	  r5, 1
-bl	  changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb #	TWaterGun::changeNozzle((TWaterGun::TNozzleType,bool))
-
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80283158
+    lwz     r3, 0x3e4(r31)
+    li      r4, 0x4
+    li      r5, 0x1
+    bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
 branch_0x80283158:
-li	  r0, 0xE10
-stw	  r0, 0x144(r31)
-mr	  r3, r31
-bl	  resetNozzle__6TMarioFv # TMario::resetNozzle((void))
-stw	  r29, 0x148(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x80283180
-li	  r0, 1
-b	  branch_0x80283184
+    li      r0, 0xe10
+    stw     r0, 0x144(r31)
+    mr      r3, r31
+    bl      resetNozzle__6TMarioFv
+    stw     r29, 0x148(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x80283180
+    li      r0, 0x1
+    b       branch_0x80283184
 
 branch_0x80283180:
-li	  r0, 0
-
+    li      r0, 0x0
 branch_0x80283184:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x802831A0
-lwz	  r29, 0x3E4(r31)
-mr	  r3, r29
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r0, 0xCC(r3)
-stw	  r0, 0x1C80(r29)
+    clrlwi. r0, r0, 24
+    beq-    branch_0x802831a0
+    lwz     r29, 0x3e4(r31)
+    mr      r3, r29
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r0, 0xcc(r3)
+    stw     r0, 0x1c80(r29)
+branch_0x802831a0:
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r0, 0x1
+branch_0x802831ac:
+    clrlwi  r3, r0, 24
+    b       branch_0x80284d9c
 
-branch_0x802831A0:
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r0, 1
+branch_0x802831b4:
+    mr      r3, r31
+    bl      onYoshi__6TMarioCFv
+    cmpwi   r3, 0x0
+    beq-    branch_0x802831cc
+    li      r0, 0x0
+    b       branch_0x8028325c
 
-branch_0x802831AC:
-clrlwi	  r3, r0, 24
-b	  branch_0x80284d9c
+branch_0x802831cc:
+    lwz     r0, 0x118(r31)
+    ori     r0, r0, 0x8000
+    stw     r0, 0x118(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x802831ec
+    li      r0, 0x1
+    b       branch_0x802831f0
 
-branch_0x802831B4:		# jumptable 80282DDC case 41
-mr	  r3, r31
-bl	  onYoshi__6TMarioCFv #	TMario::onYoshi(const(void))
-cmpwi	  r3, 0
-beq	  branch_0x802831CC
-li	  r0, 0
-b	  branch_0x8028325C
-
-branch_0x802831CC:
-lwz	  r0, 0x118(r31)
-ori	  r0, r0, 0x8000
-stw	  r0, 0x118(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x802831EC
-li	  r0, 1
-b	  branch_0x802831F0
-
-branch_0x802831EC:
-li	  r0, 0
-
-branch_0x802831F0:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80283208
-lwz	  r3, 0x3E4(r31)
-li	  r4, 5
-li	  r5, 1
-bl	  changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb #	TWaterGun::changeNozzle((TWaterGun::TNozzleType,bool))
-
+branch_0x802831ec:
+    li      r0, 0x0
+branch_0x802831f0:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80283208
+    lwz     r3, 0x3e4(r31)
+    li      r4, 0x5
+    li      r5, 0x1
+    bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
 branch_0x80283208:
-li	  r0, 0xE10
-stw	  r0, 0x144(r31)
-mr	  r3, r31
-bl	  resetNozzle__6TMarioFv # TMario::resetNozzle((void))
-stw	  r29, 0x148(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x80283230
-li	  r0, 1
-b	  branch_0x80283234
+    li      r0, 0xe10
+    stw     r0, 0x144(r31)
+    mr      r3, r31
+    bl      resetNozzle__6TMarioFv
+    stw     r29, 0x148(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x80283230
+    li      r0, 0x1
+    b       branch_0x80283234
 
 branch_0x80283230:
-li	  r0, 0
-
+    li      r0, 0x0
 branch_0x80283234:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80283250
-lwz	  r29, 0x3E4(r31)
-mr	  r3, r29
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r0, 0xCC(r3)
-stw	  r0, 0x1C80(r29)
-
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80283250
+    lwz     r29, 0x3e4(r31)
+    mr      r3, r29
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r0, 0xcc(r3)
+    stw     r0, 0x1c80(r29)
 branch_0x80283250:
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r0, 1
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r0, 0x1
+branch_0x8028325c:
+    clrlwi  r3, r0, 24
+    b       branch_0x80284d9c
 
-branch_0x8028325C:
-clrlwi	  r3, r0, 24
-b	  branch_0x80284d9c
-
-branch_0x80283264:		# jumptable 80282DDC case 42
-addi	  r3, r31, 0
-li	  r4, 0x891
-li	  r5, 0
-li	  r6, 0
-bl	  changePlayerStatus__6TMarioFUlUlb # TMario::changePlayerStatus((ulong,ulong,bool))
-mr	  r3, r31
-bl	  onYoshi__6TMarioCFv #	TMario::onYoshi(const(void))
-cmpwi	  r3, 0
-beq	  branch_0x80283290
-li	  r0, 0
-b	  branch_0x80283320
+branch_0x80283264:
+    addi    r3, r31, 0x0
+    li      r4, 0x891
+    li      r5, 0x0
+    li      r6, 0x0
+    bl      changePlayerStatus__6TMarioFUlUlb
+    mr      r3, r31
+    bl      onYoshi__6TMarioCFv
+    cmpwi   r3, 0x0
+    beq-    branch_0x80283290
+    li      r0, 0x0
+    b       branch_0x80283320
 
 branch_0x80283290:
-lwz	  r0, 0x118(r31)
-ori	  r0, r0, 0x8000
-stw	  r0, 0x118(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x802832B0
-li	  r0, 1
-b	  branch_0x802832B4
+    lwz     r0, 0x118(r31)
+    ori     r0, r0, 0x8000
+    stw     r0, 0x118(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x802832b0
+    li      r0, 0x1
+    b       branch_0x802832b4
 
-branch_0x802832B0:
-li	  r0, 0
+branch_0x802832b0:
+    li      r0, 0x0
+branch_0x802832b4:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x802832cc
+    lwz     r3, 0x3e4(r31)
+    li      r4, 0x2
+    li      r5, 0x1
+    bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
+branch_0x802832cc:
+    li      r0, 0xe10
+    stw     r0, 0x144(r31)
+    mr      r3, r31
+    bl      resetNozzle__6TMarioFv
+    stw     r29, 0x148(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x802832f4
+    li      r0, 0x1
+    b       branch_0x802832f8
 
-branch_0x802832B4:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x802832CC
-lwz	  r3, 0x3E4(r31)
-li	  r4, 2
-li	  r5, 1
-bl	  changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb #	TWaterGun::changeNozzle((TWaterGun::TNozzleType,bool))
-
-branch_0x802832CC:
-li	  r0, 0xE10
-stw	  r0, 0x144(r31)
-mr	  r3, r31
-bl	  resetNozzle__6TMarioFv # TMario::resetNozzle((void))
-stw	  r29, 0x148(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x802832F4
-li	  r0, 1
-b	  branch_0x802832F8
-
-branch_0x802832F4:
-li	  r0, 0
-
-branch_0x802832F8:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80283314
-lwz	  r29, 0x3E4(r31)
-mr	  r3, r29
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r0, 0xCC(r3)
-stw	  r0, 0x1C80(r29)
-
+branch_0x802832f4:
+    li      r0, 0x0
+branch_0x802832f8:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80283314
+    lwz     r29, 0x3e4(r31)
+    mr      r3, r29
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r0, 0xcc(r3)
+    stw     r0, 0x1c80(r29)
 branch_0x80283314:
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r0, 1
-
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+    li      r0, 0x1
 branch_0x80283320:
-clrlwi	  r3, r0, 24
-b	  branch_0x80284d9c
+    clrlwi  r3, r0, 24
+    b       branch_0x80284d9c
 
-branch_0x80283328:		# jumptable 80282DDC case 30
-mr	  r3, r31
-bl	  onYoshi__6TMarioCFv #	TMario::onYoshi(const(void))
-cmpwi	  r3, 0
-bne	  branch_0x802833C4
-lwz	  r0, 0x118(r31)
-ori	  r0, r0, 0x8000
-stw	  r0, 0x118(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x80283358
-li	  r0, 1
-b	  branch_0x8028335C
+branch_0x80283328:
+    mr      r3, r31
+    bl      onYoshi__6TMarioCFv
+    cmpwi   r3, 0x0
+    bne-    branch_0x802833c4
+    lwz     r0, 0x118(r31)
+    ori     r0, r0, 0x8000
+    stw     r0, 0x118(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x80283358
+    li      r0, 0x1
+    b       branch_0x8028335c
 
 branch_0x80283358:
-li	  r0, 0
-
-branch_0x8028335C:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80283374
-lwz	  r3, 0x3E4(r31)
-li	  r4, 0
-li	  r5, 1
-bl	  changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb #	TWaterGun::changeNozzle((TWaterGun::TNozzleType,bool))
-
+    li      r0, 0x0
+branch_0x8028335c:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80283374
+    lwz     r3, 0x3e4(r31)
+    li      r4, 0x0
+    li      r5, 0x1
+    bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
 branch_0x80283374:
-li	  r0, 0xE10
-stw	  r0, 0x144(r31)
-mr	  r3, r31
-bl	  resetNozzle__6TMarioFv # TMario::resetNozzle((void))
-stw	  r29, 0x148(r31)
-lwz	  r0, 0x118(r31)
-rlwinm.	  r0, r0, 0,16,16
-beq	  branch_0x8028339C
-li	  r0, 1
-b	  branch_0x802833A0
+    li      r0, 0xe10
+    stw     r0, 0x144(r31)
+    mr      r3, r31
+    bl      resetNozzle__6TMarioFv
+    stw     r29, 0x148(r31)
+    lwz     r0, 0x118(r31)
+    rlwinm. r0, r0, 0, 16, 16
+    beq-    branch_0x8028339c
+    li      r0, 0x1
+    b       branch_0x802833a0
 
-branch_0x8028339C:
-li	  r0, 0
+branch_0x8028339c:
+    li      r0, 0x0
+branch_0x802833a0:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x802833bc
+    lwz     r29, 0x3e4(r31)
+    mr      r3, r29
+    bl      getCurrentNozzle__9TWaterGunCFv
+    lwz     r0, 0xcc(r3)
+    stw     r0, 0x1c80(r29)
+branch_0x802833bc:
+    mr      r3, r31
+    bl      emitGetEffect__6TMarioFv
+branch_0x802833c4:
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x802833A0:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x802833BC
-lwz	  r29, 0x3E4(r31)
-mr	  r3, r29
-bl	  getCurrentNozzle__9TWaterGunCFv # TWaterGun::getCurrentNozzle(const(void))
-lwz	  r0, 0xCC(r3)
-stw	  r0, 0x1C80(r29)
+branch_0x802833cc:
+    lwz     r4, 0x3e0(r31)
+    mr      r3, r31
+    lhz     r0, 0x4(r4)
+    ori     r0, r0, 0x1
+    sth     r0, 0x4(r4)
+    lha     r0, 0x58c(r31)
+    sth     r0, 0x120(r31)
+    bl      emitGetEffect__6TMarioFv
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x802833BC:
-mr	  r3, r31
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-
-branch_0x802833C4:
-li	  r3, 1
-b	  branch_0x80284d9c
-
-branch_0x802833CC:		# jumptable 80282DDC case 59
-lwz	  r4, 0x3E0(r31)
-mr	  r3, r31
-lhz	  r0, 4(r4)
-ori	  r0, r0, 1
-sth	  r0, 4(r4)
-lha	  r0, 0x58C(r31)
-sth	  r0, 0x120(r31)
-bl	  emitGetEffect__6TMarioFv # TMario::emitGetEffect((void))
-li	  r3, 1
-b	  branch_0x80284d9c
-
-branch_0x802833F4:		# jumptable 80282DDC case 13
-lwz	  r5, 0x558(r31)
-addi	  r3, r31, 0
-addi	  r4, r31, 0x10
-addi	  r0, r5, 1
-stw	  r0, 0x558(r31)
-bl	  emitGetCoinEffect__6TMarioFPQ29JGeometry8TVec3_f_
-addi	  r3, r31, 0
-li	  r4, 1
-bl	  incHP__6TMarioFi # TMario::incHP((int))
-lis	  r4, 4	# 0x40002
-lwz	  r3, -0x6060(r13)
-addi	  r4, r4, 2 # 0x40002
-bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
-lis	  r4, 0x51EC # 0x51EB851F
-addi	  r0, r4, -0x7AE1 # 0x51EB851F
-mulhw	  r0, r0, r3
-srawi	  r0, r0, 4
-srwi	  r4, r0, 31
-add	  r0, r0, r4
-mulli	  r0, r0, 0x32
-subf.	  r0, r0, r3
-bne	  branch_0x80283480
-lwz	  r3, -0x6060(r13)
-li	  r4, 1
-bl	  incMario__12TFlagManagerFl # TFlagManager::incMario((long))
-lwz	  r3, gpMSound(r13)
-li	  r4, 0x4841
-bl	  gateCheck__6MSoundFUl	# MSound::gateCheck((ulong))
-clrlwi.	  r0, r3, 24
-beq	  branch_0x80283480
-li	  r3, 0x4841
-li	  r4, 0
-li	  r5, 0
-li	  r6, 0
-bl	  startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl # MSoundSESystem::MSoundSE::startSoundSystemSE((ulong,ulong,JAISound **,ulong))
-
+branch_0x802833f4:
+    lwz     r5, 0x558(r31)
+    addi    r3, r31, 0x0
+    addi    r4, r31, 0x10
+    addi    r0, r5, 0x1
+    stw     r0, 0x558(r31)
+    bl      emitGetCoinEffect__6TMarioFPQ29JGeometry8TVec3_f_
+    addi    r3, r31, 0x0
+    li      r4, 0x1
+    bl      incHP__6TMarioFi
+    lis     r4, unk_00040002@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r4, unk_00040002@l
+    bl      getFlag__12TFlagManagerCFUl
+    lis     r4, unk_51eb851f@ha
+    addi    r0, r4, unk_51eb851f@l
+    mulhw   r0, r0, r3
+    srawi   r0, r0, 4
+    srwi    r4, r0, 31
+    add     r0, r0, r4
+    mulli   r0, r0, 0x32
+    subf.   r0, r0, r3
+    bne-    branch_0x80283480
+    lwz     r3, R13Off_m0x6060(r13)
+    li      r4, 0x1
+    bl      incMario__12TFlagManagerFl
+    lwz     r3, R13Off_m0x6044(r13)
+    li      r4, 0x4841
+    bl      gateCheck__6MSoundFUl
+    clrlwi. r0, r3, 24
+    beq-    branch_0x80283480
+    li      r3, 0x4841
+    li      r4, 0x0
+    li      r5, 0x0
+    li      r6, 0x0
+    bl      startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl
 branch_0x80283480:
-li	  r3, 1
-b	  branch_0x80284d9c
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x80283488:		# jumptable 80282DDC case 14
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  incHP__6TMarioFi # TMario::incHP((int))
-addi	  r3, r31, 0
-addi	  r4, r31, 0x10
-bl	  emitGetCoinEffect__6TMarioFPQ29JGeometry8TVec3_f_
-lwz	  r3, -0x6060(r13)
-lis	  r4, 6
-bl	  getFlag__12TFlagManagerCFUl #	TFlagManager::getFlag(const(ulong))
-addi	  r4, r3, 0x46
-lwz	  r3, gpMarioParticleManager(r13)
-addi	  r7, r31, 0
-addi	  r5, r31, 0x10
-li	  r6, 0
-bl	  emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-li	  r3, 1
-b	  branch_0x80284d9c
+branch_0x80283488:
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      incHP__6TMarioFi
+    addi    r3, r31, 0x0
+    addi    r4, r31, 0x10
+    bl      emitGetCoinEffect__6TMarioFPQ29JGeometry8TVec3_f_
+    lwz     r3, R13Off_m0x6060(r13)
+    lis     r4, 0x6
+    bl      getFlag__12TFlagManagerCFUl
+    addi    r4, r3, 0x46
+    lwz     r3, R13Off_m0x6070(r13)
+    addi    r7, r31, 0x0
+    addi    r5, r31, 0x10
+    li      r6, 0x0
+    bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x802834CC:		# jumptable 80282DDC case 15
-addi	  r3, r31, 0
-li	  r4, 2
-bl	  incHP__6TMarioFi # TMario::incHP((int))
-addi	  r3, r31, 0
-addi	  r4, r31, 0x10
-bl	  emitGetCoinEffect__6TMarioFPQ29JGeometry8TVec3_f_
-li	  r3, 1
-b	  branch_0x80284d9c
+branch_0x802834cc:
+    addi    r3, r31, 0x0
+    li      r4, 0x2
+    bl      incHP__6TMarioFi
+    addi    r3, r31, 0x0
+    addi    r4, r31, 0x10
+    bl      emitGetCoinEffect__6TMarioFPQ29JGeometry8TVec3_f_
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-branch_0x802834EC:		# jumptable 80282DDC case 18
-cmplwi	  r30, 0xE
-bne	  def_80282DDC	# jumptable 80282DDC default case
-lwz	  r0, 0x7C(r31)
-cmplwi	  r0, 0x1302
-beq	  def_80282DDC	# jumptable 80282DDC default case
-stw	  r29, 0x384(r31)
-mr	  r3, r31
-lfs	  f0, 0x10(r29)
-stfs	  f0, 0x10(r31)
-lfs	  f0, 0x18(r29)
-stfs	  f0, 0x18(r31)
-lfs	  f1, -0x6F0(r2)
-lfs	  f0, 0x11C(r29)
-fmuls	  f0, f1, f0
-fctiwz	  f0, f0
-stfd	  f0, 0x208(r1)
-lwz	  r0, 0x20C(r1)
-sth	  r0, 0x96(r31)
-lha	  r0, 0x96(r31)
-sth	  r0, 0x9A(r31)
-lfs	  f1, -0x6EC(r2)
-bl	  setPlayerVelocity__6TMarioFf # TMario::setPlayerVelocity((float))
-lha	  r0, 0x58C(r31)
-addi	  r3, r31, 0
-li	  r4, 0x1302
-sth	  r0, 0x120(r31)
-li	  r5, 0
-li	  r6, 1
-lfs	  f0, 0x130(r31)
-stfs	  f0, 0x12C(r31)
-bl	  changePlayerStatus__6TMarioFUlUlb # TMario::changePlayerStatus((ulong,ulong,bool))
-li	  r3, 1
-b	  branch_0x80284d9c
+branch_0x802834ec:
+    cmplwi  r30, 0xe
+    bne-    branch_0x80283570
+    lwz     r0, 0x7c(r31)
+    cmplwi  r0, 0x1302
+    beq-    branch_0x80283570
+    stw     r29, 0x384(r31)
+    mr      r3, r31
+    lfs     f0, 0x10(r29)
+    stfs    f0, 0x10(r31)
+    lfs     f0, 0x18(r29)
+    stfs    f0, 0x18(r31)
+    lfs     f1, -0x6f0(r2)
+    lfs     f0, 0x11c(r29)
+    fmuls   f0, f1, f0
+    fctiwz  f0, f0
+    stfd    f0, 0x208(sp)
+    lwz     r0, 0x20c(sp)
+    sth     r0, 0x96(r31)
+    lha     r0, 0x96(r31)
+    sth     r0, 0x9a(r31)
+    lfs     f1, -0x6ec(r2)
+    bl      setPlayerVelocity__6TMarioFf
+    lha     r0, 0x58c(r31)
+    addi    r3, r31, 0x0
+    li      r4, 0x1302
+    sth     r0, 0x120(r31)
+    li      r5, 0x0
+    li      r6, 0x1
+    lfs     f0, 0x130(r31)
+    stfs    f0, 0x12c(r31)
+    bl      changePlayerStatus__6TMarioFUlUlb
+    li      r3, 0x1
+    b       branch_0x80284d9c
 
-def_80282DDC:		# jumptable 80282DDC default case
 branch_0x80283570:
     rlwinm. r0, r5, 0, 1, 1
     beq-    branch_0x80283580
@@ -868,8 +833,8 @@ branch_0x80283580:
 branch_0x80283584:
     clrlwi. r0, r0, 24
     beq-    branch_0x80283a3c
-    lis     r3, 0x4000
-    addi    r0, r3, 0xc5
+    lis     r3, unk_400000c5@h
+    addi    r0, r3, unk_400000c5@l
     cmpw    r5, r0
     bge-    branch_0x802835cc
     addi    r0, r3, 0x1e
@@ -925,13 +890,13 @@ branch_0x802835fc:
     lbz     r5, 0x0(r5)
     lbz     r8, 0x0(r8)
     blrl
-    lis     r4, 0x2
+    lis     r4, unk_000208b7@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b7
+    addi    r4, r4, unk_000208b7@l
     li      r5, 0x1
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x1813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -944,7 +909,7 @@ branch_0x802835fc:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x80283698:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0x6
     li      r6, 0x0
@@ -1020,11 +985,11 @@ branch_0x80283750:
     lbz     r8, 0x0(r8)
     blrl
     addi    r3, r31, 0x0
-    li      r4, SOUND_78cf
+    li      r4, 0x78cf
     bl      startVoice__6TMarioFUl
-    lis     r4, 0x2
+    lis     r4, unk_000208b8@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b8
+    addi    r4, r4, unk_000208b8@l
     li      r5, 0x1
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1043,7 +1008,7 @@ branch_0x802837d8:
     cmplwi  r3, 0x892
     bne-    branch_0x80283808
     lfs     f1, 0xa8(r31)
-    lfs     f0, -0x6ec(rtoc)
+    lfs     f0, -0x6ec(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80283808
     li      r3, 0x0
@@ -1053,7 +1018,7 @@ branch_0x80283808:
     cmplwi  r3, 0x893
     bne-    branch_0x80283828
     lfs     f1, 0xa8(r31)
-    lfs     f0, -0x6ec(rtoc)
+    lfs     f0, -0x6ec(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80283828
     li      r3, 0x0
@@ -1084,7 +1049,7 @@ branch_0x80283854:
     bl      getPosInWire__13TMapWireActorCFv
     stfs    f1, 0x440(r31)
     mr      r3, r31
-    lfs     f1, -0x6ec(rtoc)
+    lfs     f1, -0x6ec(r2)
     bl      wireMove__6TMarioFf
     lwz     r0, 0x118(r31)
     addi    r3, sp, 0x150
@@ -1110,12 +1075,12 @@ branch_0x80283854:
     lfs     f0, 0xa8(r31)
     lha     r0, 0x96(r31)
     fneg    f0, f0
-    lfs     f1, -0x6e8(rtoc)
+    lfs     f1, -0x6e8(r2)
     subf    r0, r0, r3
     extsh   r4, r0
     fmuls   f0, f1, f0
     stfs    f0, 0x444(r31)
-    lfs     f1, -0x6ec(rtoc)
+    lfs     f1, -0x6ec(r2)
     stfs    f1, 0x44c(r31)
     lwz     r3, 0x7c(r31)
     cmplwi  r3, 0x893
@@ -1160,7 +1125,7 @@ branch_0x80283934:
     stw     r0, 0x438(r31)
     lwz     r0, 0x1a8(sp)
     stw     r0, 0x43c(r31)
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     lfs     f0, 0x440(r31)
     fsubs   f0, f1, f0
     stfs    f0, 0x440(r31)
@@ -1194,7 +1159,7 @@ branch_0x802839c0:
     stw     r0, 0x438(r31)
     lwz     r0, 0x19c(sp)
     stw     r0, 0x43c(r31)
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     lfs     f0, 0x440(r31)
     fsubs   f0, f1, f0
     stfs    f0, 0x440(r31)
@@ -1223,8 +1188,8 @@ branch_0x80283a50:
 branch_0x80283a54:
     clrlwi. r3, r3, 24
     beq-    branch_0x80284184
-    lis     r5, 0x1000
-    addi    r3, r5, 0x1f
+    lis     r5, unk_1000001f@h
+    addi    r3, r5, unk_1000001f@l
     cmpw    r0, r3
     beq-    branch_0x80283e10
     bge-    branch_0x80283b50
@@ -1240,8 +1205,8 @@ branch_0x80283a54:
     cmpw    r0, r3
     beq-    branch_0x80283cf4
     bge-    branch_0x80283c24
-    lis     r3, 0x800
-    addi    r4, r3, 0x13
+    lis     r3, unk_08000013@h
+    addi    r4, r3, unk_08000013@l
     cmpw    r0, r4
     bge-    branch_0x80284184
     addi    r3, r3, 0xf
@@ -1336,8 +1301,8 @@ branch_0x80283bc0:
     b       branch_0x80283ed4
 
 branch_0x80283bd0:
-    lis     r3, 0x4000
-    addi    r4, r3, 0x53
+    lis     r3, unk_40000053@h
+    addi    r4, r3, unk_40000053@l
     cmpw    r0, r4
     beq-    branch_0x80283f54
     bge-    branch_0x80283c14
@@ -1477,9 +1442,9 @@ branch_0x80283dac:
     bne-    branch_0x80283dec
     mr      r3, r31
     bl      elecEffect__6TMarioFv
-    lis     r4, 0x2
+    lis     r4, unk_00020338@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x338
+    addi    r4, r4, unk_00020338@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -1489,9 +1454,9 @@ branch_0x80283dac:
 branch_0x80283dec:
     lfs     f1, 0x58(r29)
     mr      r3, r31
-    lfs     f0, -0x6e0(rtoc)
+    lfs     f0, -0x6e0(r2)
     addi    r4, r29, 0x10
-    lfs     f2, -0x6ec(rtoc)
+    lfs     f2, -0x6ec(r2)
     fadds   f1, f0, f1
     bl      keepDistance__6TMarioFRCQ29JGeometry8TVec3_f_ff
     li      r3, 0x1
@@ -1522,13 +1487,13 @@ branch_0x80283e20:
     lbz     r5, 0x0(r5)
     lbz     r8, 0x0(r8)
     blrl
-    lis     r4, 0x2
+    lis     r4, unk_000208b7@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b7
+    addi    r4, r4, unk_000208b7@l
     li      r5, 0x1
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x1813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1541,7 +1506,7 @@ branch_0x80283e20:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x80283eb4:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0x6
     li      r6, 0x0
@@ -1578,9 +1543,9 @@ branch_0x80283ed4:
 branch_0x80283f30:
     lfs     f1, 0x58(r29)
     mr      r3, r31
-    lfs     f0, -0x6e0(rtoc)
+    lfs     f0, -0x6e0(r2)
     addi    r4, r29, 0x10
-    lfs     f2, -0x6ec(rtoc)
+    lfs     f2, -0x6ec(r2)
     fadds   f1, f0, f1
     bl      keepDistance__6TMarioFRCQ29JGeometry8TVec3_f_ff
     li      r3, 0x1
@@ -1693,7 +1658,7 @@ branch_0x80284068:
     b       branch_0x80284d9c
 
 branch_0x802840c4:
-    subi    r0, r30, 0x9
+    addi    r0, r30, -0x9
     cmplwi  r0, 0x1
     bgt-    branch_0x80284184
     mr      r3, r31
@@ -1715,13 +1680,13 @@ branch_0x802840c4:
     lbz     r5, 0x0(r5)
     lbz     r8, 0x0(r8)
     blrl
-    lis     r4, 0x2
+    lis     r4, unk_000208b7@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b7
+    addi    r4, r4, unk_000208b7@l
     li      r5, 0x1
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x1813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1734,7 +1699,7 @@ branch_0x802840c4:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x80284164:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0x6
     li      r6, 0x0
@@ -1744,9 +1709,9 @@ branch_0x80284164:
     b       branch_0x80284d9c
 
 branch_0x80284184:
-    lis     r4, 0x800
+    lis     r4, unk_080000c0@h
     lwz     r0, 0x4c(r29)
-    addi    r3, r4, 0xc0
+    addi    r3, r4, unk_080000c0@l
     cmpw    r0, r3
     beq-    branch_0x80284c94
     bge-    branch_0x8028429c
@@ -1761,8 +1726,8 @@ branch_0x80284184:
     cmpw    r0, r3
     beq-    branch_0x802844a0
     bge-    branch_0x802841dc
-    lis     r3, 0x8000
-    addi    r3, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r3, r3, unk_80000001@l
     cmpw    r0, r3
     beq-    branch_0x80284b64
     b       branch_0x80284d98
@@ -1830,15 +1795,15 @@ branch_0x8028428c:
     b       branch_0x80284444
 
 branch_0x8028429c:
-    lis     r5, 0x4000
-    addi    r3, r5, 0x3b
+    lis     r5, unk_4000003b@h
+    addi    r3, r5, unk_4000003b@l
     cmpw    r0, r3
     bge-    branch_0x80284320
     addi    r3, r5, 0x2f
     cmpw    r0, r3
     bge-    branch_0x802842f0
-    lis     r3, 0x1000
-    addi    r4, r3, 0x35
+    lis     r3, unk_10000035@h
+    addi    r4, r3, unk_10000035@l
     cmpw    r0, r4
     beq-    branch_0x80284728
     bge-    branch_0x802842dc
@@ -1922,13 +1887,13 @@ branch_0x80284380:
     lbz     r5, 0x0(r5)
     lbz     r8, 0x0(r8)
     blrl
-    lis     r4, 0x2
+    lis     r4, unk_000208b7@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b7
+    addi    r4, r4, unk_000208b7@l
     li      r5, 0x1
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x1813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1941,7 +1906,7 @@ branch_0x80284380:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x8028441c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0x6
     li      r6, 0x0
@@ -2054,10 +2019,10 @@ branch_0x8028457c:
     lwz     r0, 0x68(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x80284d98
-    lis     r4, 0xc40
+    lis     r4, unk_0c400201@h
     stw     r29, 0x68(r31)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, unk_0c400201@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2107,9 +2072,9 @@ branch_0x80284624:
     b       branch_0x8028465c
 
 branch_0x80284644:
-    lis     r4, 0xc40
+    lis     r4, unk_0c400201@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, unk_0c400201@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2141,13 +2106,13 @@ branch_0x8028466c:
     lbz     r5, 0x0(r5)
     lbz     r8, 0x0(r8)
     blrl
-    lis     r4, 0x2
+    lis     r4, unk_000208b7@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b7
+    addi    r4, r4, unk_000208b7@l
     li      r5, 0x1
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x1813
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2160,7 +2125,7 @@ branch_0x8028466c:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x80284708:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0x6
     li      r6, 0x0
@@ -2193,10 +2158,10 @@ branch_0x8028474c:
     lwz     r0, 0x68(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x80284d98
-    lis     r4, 0x1002
+    lis     r4, unk_10020370@h
     stw     r29, 0x68(r31)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x370
+    addi    r4, r4, unk_10020370@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2246,9 +2211,9 @@ branch_0x80284804:
     b       branch_0x8028483c
 
 branch_0x80284824:
-    lis     r4, 0xc40
+    lis     r4, unk_0c400201@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, unk_0c400201@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2288,9 +2253,9 @@ branch_0x80284880:
     lbz     r5, 0x0(r5)
     lbz     r8, 0x0(r8)
     blrl
-    lis     r4, 0x2
+    lis     r4, unk_000208b8@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b8
+    addi    r4, r4, unk_000208b8@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2337,9 +2302,9 @@ branch_0x80284938:
     ble-    branch_0x80284d98
     cmpwi   r0, 0x2000
     bge-    branch_0x80284d98
-    lfs     f1, -0x6d8(rtoc)
+    lfs     f1, -0x6d8(r2)
     lfs     f0, 0x34(r29)
-    lfs     f2, -0x6dc(rtoc)
+    lfs     f2, -0x6dc(r2)
     fmuls   f0, f1, f0
     fmuls   f0, f2, f0
     fctiwz  f0, f0
@@ -2381,18 +2346,18 @@ branch_0x802849fc:
     stw     r0, 0x380(r31)
     addi    r3, r31, 0x0
     li      r4, 0xe9
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     bl      setAnimation__6TMarioFif
     b       branch_0x80284a30
 
 branch_0x80284a20:
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     addi    r3, r31, 0x0
     li      r4, 0x5f
     bl      setAnimation__6TMarioFif
 branch_0x80284a30:
     addi    r3, r31, 0x0
-    li      r4, SOUND_78e5
+    li      r4, 0x78e5
     bl      startVoice__6TMarioFUl
     li      r3, 0x1
     b       branch_0x80284d9c
@@ -2408,7 +2373,7 @@ branch_0x80284a54:
     lwz     r4, 0x10(r29)
     addis   r3, r7, 0x1
     lwz     r6, 0x14(r29)
-    subi    r0, r3, 0x8000
+    addi    r0, r3, -0x8000
     addi    r3, r31, 0x0
     stw     r4, 0x10(r31)
     li      r4, 0x1321
@@ -2434,18 +2399,18 @@ branch_0x80284aac:
     stw     r0, 0x380(r31)
     addi    r3, r31, 0x0
     li      r4, 0xe9
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     bl      setAnimation__6TMarioFif
     b       branch_0x80284ae0
 
 branch_0x80284ad0:
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     addi    r3, r31, 0x0
     li      r4, 0x60
     bl      setAnimation__6TMarioFif
 branch_0x80284ae0:
     addi    r3, r31, 0x0
-    li      r4, SOUND_78e5
+    li      r4, 0x78e5
     bl      startVoice__6TMarioFUl
     li      r3, 0x1
     b       branch_0x80284d9c
@@ -2465,7 +2430,7 @@ branch_0x80284b0c:
     lwz     r4, 0x10(r29)
     addis   r3, r7, 0x1
     lwz     r6, 0x14(r29)
-    subi    r0, r3, 0x8000
+    addi    r0, r3, -0x8000
     addi    r3, r31, 0x0
     stw     r4, 0x10(r31)
     li      r4, 0x1321
@@ -2476,7 +2441,7 @@ branch_0x80284b0c:
     stw     r7, 0x18(r31)
     sth     r0, 0x96(r31)
     bl      changePlayerStatus__6TMarioFUlUlb
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     addi    r3, r31, 0x0
     li      r4, 0x139
     bl      setAnimation__6TMarioFif
@@ -2509,10 +2474,10 @@ branch_0x80284ba0:
     lwz     r0, 0x68(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x80284d98
-    lis     r4, 0x1002
+    lis     r4, unk_10020370@h
     stw     r29, 0x68(r31)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x370
+    addi    r4, r4, unk_10020370@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2521,17 +2486,17 @@ branch_0x80284ba0:
 
 branch_0x80284bdc:
     li      r0, 0x0
-    lis     r4, 0x200
+    lis     r4, unk_02000880@h
     stw     r0, 0x68(r31)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x880
+    addi    r4, r4, unk_02000880@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
     mr      r3, r31
-    lfs     f1, -0x6d4(rtoc)
+    lfs     f1, -0x6d4(r2)
     bl      setPlayerVelocity__6TMarioFf
-    lfs     f0, -0x6d0(rtoc)
+    lfs     f0, -0x6d0(r2)
     li      r3, 0x1
     stfs    f0, 0xa8(r31)
     lwz     r0, 0x78(r31)
@@ -2561,9 +2526,9 @@ branch_0x80284c24:
 branch_0x80284c68:
     cmplwi  r30, 0x8
     bne-    branch_0x80284d98
-    lis     r4, 0xc40
+    lis     r4, unk_0c400201@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, unk_0c400201@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -2589,7 +2554,7 @@ branch_0x80284cc0:
 branch_0x80284cc4:
     clrlwi. r0, r0, 24
     bne-    branch_0x80284d10
-    lfs     f1, -0x6e4(rtoc)
+    lfs     f1, -0x6e4(r2)
     addi    r3, r31, 0x0
     li      r4, 0x4d
     bl      setAnimation__6TMarioFif
@@ -2599,7 +2564,7 @@ branch_0x80284cc4:
     mr      r3, r31
     bl      getMotionFrameCtrl__6TMarioFv
     xoris   r0, r29, 0x8000
-    lfd     f1, -0x6c8(rtoc)
+    lfd     f1, -0x6c8(r2)
     stw     r0, 0x204(sp)
     lis     r0, 0x4330
     stw     r0, 0x200(sp)
@@ -2619,9 +2584,9 @@ branch_0x80284d28:
     bne-    branch_0x80284d98
     lfs     f1, 0x58(r29)
     mr      r3, r31
-    lfs     f0, -0x6e0(rtoc)
+    lfs     f0, -0x6e0(r2)
     addi    r4, r29, 0x10
-    lfs     f2, -0x6ec(rtoc)
+    lfs     f2, -0x6ec(r2)
     fadds   f1, f0, f1
     bl      keepDistance__6TMarioFRCQ29JGeometry8TVec3_f_ff
     li      r3, 0x1
@@ -2671,11 +2636,11 @@ getGesso__6TMarioFP9THitActor: # 0x80284db8
     addis   r0, r3, 0xffff
     cmplwi  r0, 0x0
     beq-    branch_0x80284ec4
-    lfs     f1, -0x6f0(rtoc)
-    lis     r4, 0x81
+    lfs     f1, -0x6f0(r2)
+    lis     r4, unk_00810446@h
     lfs     f0, 0x34(r30)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x446
+    addi    r4, r4, unk_00810446@l
     fmuls   f0, f1, f0
     li      r5, 0x0
     li      r6, 0x0
@@ -2690,9 +2655,9 @@ getGesso__6TMarioFP9THitActor: # 0x80284db8
     mr      r3, r31
     sth     r0, 0x86(r31)
     bl      emitGetEffect__6TMarioFv
-    lis     r3, 0x4000
+    lis     r3, unk_400000c6@h
     lwz     r4, 0x4c(r30)
-    addi    r0, r3, 0xc6
+    addi    r0, r3, unk_400000c6@l
     cmpw    r4, r0
     beq-    branch_0x80284e74
     bge-    branch_0x80284e8c
@@ -2700,10 +2665,12 @@ getGesso__6TMarioFP9THitActor: # 0x80284db8
     cmpw    r4, r0
     bge-    branch_0x80284e5c
     b       branch_0x80284e8c
+
+branch_0x80284e58:
     b       branch_0x80284e8c
 
 branch_0x80284e5c:
-    lwz     r3, -0x62b8(r13)
+    lwz     r3, R13Off_m0x62b8(r13)
     li      r0, 0x0
     lwz     r3, 0x9c(r3)
     stw     r3, 0x3f4(r31)
@@ -2711,7 +2678,7 @@ branch_0x80284e5c:
     b       branch_0x80284ea0
 
 branch_0x80284e74:
-    lwz     r3, -0x62b8(r13)
+    lwz     r3, R13Off_m0x62b8(r13)
     li      r0, 0x1
     lwz     r3, 0xa0(r3)
     stw     r3, 0x3f4(r31)
@@ -2721,18 +2688,18 @@ branch_0x80284e74:
 branch_0x80284e8c:
     li      r0, 0x2
     stb     r0, 0x389(r31)
-    lwz     r3, -0x62b8(r13)
+    lwz     r3, R13Off_m0x62b8(r13)
     lwz     r0, 0xa4(r3)
     stw     r0, 0x3f4(r31)
 branch_0x80284ea0:
-    lis     r4, 0x803a
+    lis     r4, unk_803a1e60@h
     lwz     r3, 0x3f4(r31)
-    addi    r4, r4, 0x1e60
+    addi    r4, r4, unk_803a1e60@l
     bl      setBck__6MActorFPCc
     lwz     r3, 0x3f4(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x6c0(rtoc)
+    lfs     f0, -0x6c0(r2)
     stfs    f0, 0xc(r3)
 branch_0x80284ec4:
     lwz     r0, 0x54(sp)
@@ -2746,208 +2713,209 @@ branch_0x80284ec4:
 .globl __sinit_MarioReceiveMsg_cpp
 __sinit_MarioReceiveMsg_cpp: # 0x80284edc
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, unk_803fc4b8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x3b48
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803fc4b8@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x80284f24
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x80284f24:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x80284f54
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x80284f54:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x80284f84
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x80284f84:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x80284fb4
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x80284fb4:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x80284fe4
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x80284fe4:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x80285014
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x80285014:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x80285044
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x80285044:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x80285074
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x80285074:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x802850a4
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x802850a4:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x802850d4
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x802850d4:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x80285104
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x80285104:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x80285134
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x80285134:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x80285164
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x80285164:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x80285194
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x80285194:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x802851c4
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x802851c4:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
     addi    sp, sp, 0x10
     mtlr    r0
     blr
+

@@ -9,12 +9,12 @@ __dt__14TMovieSubTitleFv: # 0x80182f34
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80182f8c
-    lis     r3, 0x803c
-    addi    r0, r3, 0x1488
+    lis     r3, __vvt__14TMovieSubTitle@h
+    addi    r0, r3, __vvt__14TMovieSubTitle@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80182f7c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -47,9 +47,9 @@ setCurMessage__14TMovieSubTitleFv: # 0x80182fa8
     lhz     r3, 0x0(r3)
     cmplw   r3, r0
     ble-    branch_0x80182fec
-    lis     r4, 0x9
-    lwz     r3, -0x6060(r13)
-    addi    r4, r4, 0x1
+    lis     r4, unk_00090001@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r4, unk_00090001@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80182ff4
@@ -71,14 +71,14 @@ branch_0x80183000:
     crxor   6, 6, 6
     addi    r6, r31, 0x0
     li      r4, 0x100
-    subi    r5, rtoc, 0x44e8
+    addi    r5, r2, R2Off_m0x44e8
     bl      snprintf
     lwz     r3, 0x1c(r30)
     bl      getStringPtr__10J2DTextBoxCFv
     crxor   6, 6, 6
     addi    r6, r31, 0x0
     li      r4, 0x100
-    subi    r5, rtoc, 0x44e8
+    addi    r5, r2, R2Off_m0x44e8
     bl      snprintf
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)
@@ -112,9 +112,9 @@ perform__14TMovieSubTitleFUlPQ26JDrama9TGraphics: # 0x80183060
     lwz     r30, 0x20(r4)
     cmplw   r3, r0
     ble-    branch_0x801830d0
-    lis     r4, 0x9
-    lwz     r3, -0x6060(r13)
-    addi    r4, r4, 0x1
+    lis     r4, unk_00090001@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r4, unk_00090001@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x801830d8
@@ -134,9 +134,9 @@ branch_0x801830e4:
     lhz     r3, 0x0(r3)
     cmplw   r3, r0
     ble-    branch_0x80183118
-    lis     r4, 0x9
-    lwz     r3, -0x6060(r13)
-    addi    r4, r4, 0x1
+    lis     r4, unk_00090001@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r4, unk_00090001@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80183120
@@ -169,9 +169,9 @@ branch_0x80183158:
     lwz     r30, 0x20(r4)
     cmplw   r3, r0
     ble-    branch_0x8018318c
-    lis     r4, 0x9
-    lwz     r3, -0x6060(r13)
-    addi    r4, r4, 0x1
+    lis     r4, unk_00090001@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r4, unk_00090001@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x80183194
@@ -191,9 +191,9 @@ branch_0x801831a0:
     lhz     r3, 0x0(r3)
     cmplw   r3, r0
     ble-    branch_0x801831d4
-    lis     r4, 0x9
-    lwz     r3, -0x6060(r13)
-    addi    r4, r4, 0x1
+    lis     r4, unk_00090001@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r4, unk_00090001@l
     bl      getFlag__12TFlagManagerCFUl
     cmpwi   r3, 0x0
     bne-    branch_0x801831dc
@@ -228,11 +228,11 @@ branch_0x8018320c:
     li      r4, 0x0
     li      r5, 0x0
     bl      draw__9J2DScreenFiiPC14J2DGrafContext
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r0, 0x54(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x54(sp)
 branch_0x80183254:
     lwz     r0, 0x15c(sp)
@@ -248,18 +248,18 @@ branch_0x80183254:
 .globl setupResource__14TMovieSubTitleFPCcP10JKRArchive
 setupResource__14TMovieSubTitleFPCcP10JKRArchive: # 0x80183274
     mflr    r0
-    lis     r6, 0x803f
+    lis     r6, gpApplication@ha
     stw     r0, 0x4(sp)
-    subi    r6, r6, 0x6900
-    lis     r7, 0x8039
+    addi    r6, r6, gpApplication@l
+    lis     r7, unk_80388928@ha
     stwu    sp, -0x140(sp)
     stmw    r27, 0x12c(sp)
     addi    r31, r3, 0x0
     addi    r27, r4, 0x0
     addi    r29, r5, 0x0
-    subi    r28, r7, 0x76d8
+    addi    r28, r7, unk_80388928@l
     lwz     r8, 0x18(r6)
-    subi    r6, rtoc, 0x44f8
+    addi    r6, r2, R2Off_m0x44f8
     addi    r3, r6, 0x8
     b       branch_0x801832b4
 
@@ -300,8 +300,8 @@ branch_0x80183318:
 branch_0x8018331c:
     li      r29, 0x0
     stb     r29, 0x28(r31)
-    lis     r30, 0x6d65
-    addi    r4, r30, 0x5f61
+    lis     r30, unk_6d655f61@h
+    addi    r4, r30, unk_6d655f61@l
     lwz     r3, 0x14(r31)
     stb     r29, 0xc(r3)
     lwz     r3, 0x14(r31)
@@ -346,7 +346,7 @@ branch_0x801833b4:
     addi    r3, sp, 0x28
     li      r4, 0x2e
     bl      strrchr
-    subi    r4, rtoc, 0x44f0
+    addi    r4, r2, R2Off_m0x44f0
     bl      strcpy
     lwz     r3, 0x20(r31)
     addi    r4, sp, 0x28
@@ -363,27 +363,27 @@ branch_0x801833b4:
 .globl __ct__14TMovieSubTitleFPC10TTHPRender
 __ct__14TMovieSubTitleFPC10TTHPRender: # 0x80183408
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r4
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x8039
+    lis     r3, unk_80388970@ha
     stw     r0, 0x0(r30)
-    subi    r3, r3, 0x7690
+    addi    r3, r3, unk_80388970@l
     stw     r3, 0x4(r30)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r4, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__14TMovieSubTitle@h
     sth     r4, 0xc(r30)
-    addi    r0, r3, 0x1488
+    addi    r0, r3, __vvt__14TMovieSubTitle@l
     addi    r3, r30, 0x0
     stw     r0, 0x0(r30)
     stw     r31, 0x10(r30)

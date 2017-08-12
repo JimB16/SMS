@@ -10,7 +10,7 @@ calcSpline__11TSplinePathFfPfPfPf: # 0x8006ee38
 branch_0x8006ee4c:
     cmpwi   r3, 0x2
     bne-    branch_0x8006ee70
-    lfs     f2, -0x6b48(rtoc)
+    lfs     f2, -0x6b48(r2)
     lfs     f0, 0x4(r5)
     fsubs   f2, f2, f1
     lfs     f3, 0x0(r5)
@@ -19,7 +19,7 @@ branch_0x8006ee4c:
     blr
 
 branch_0x8006ee70:
-    subi    r8, r3, 0x1
+    addi    r8, r3, -0x1
     li      r7, 0x0
     b       branch_0x8006eea4
 
@@ -41,10 +41,10 @@ branch_0x8006eea4:
     blt+    branch_0x8006ee7c
     cmpwi   r7, 0x0
     ble-    branch_0x8006eeb8
-    subi    r7, r7, 0x1
+    addi    r7, r7, -0x1
 branch_0x8006eeb8:
     slwi    r0, r7, 2
-    lfs     f0, -0x6b40(rtoc)
+    lfs     f0, -0x6b40(r2)
     add     r3, r6, r0
     lfsx    f4, r4, r0
     lfsx    f5, r6, r0
@@ -58,7 +58,7 @@ branch_0x8006eeb8:
     fmadds  f1, f0, f5, f6
     lfs     f0, 0x4(r3)
     fsubs   f4, f3, f4
-    lfs     f3, -0x6b44(rtoc)
+    lfs     f3, -0x6b44(r2)
     fmuls   f2, f8, f2
     fsubs   f0, f0, f7
     fdivs   f2, f2, f4
@@ -87,7 +87,7 @@ calcTable__11TSplinePathFv: # 0x8006ef1c
     b       branch_0x8006f060
 
 branch_0x8006ef50:
-    lfs     f0, -0x6b3c(rtoc)
+    lfs     f0, -0x6b3c(r2)
     li      r29, 0x1
     lwz     r3, 0x1c(r31)
     li      r30, 0x4
@@ -133,7 +133,7 @@ branch_0x8006efd4:
 branch_0x8006efec:
     slwi    r4, r0, 2
     lwz     r5, 0x1c(r31)
-    subi    r0, r4, 0x4
+    addi    r0, r4, -0x4
     lfsx    f1, r5, r3
     addi    r6, r6, 0x1
     lfsx    f0, r5, r0
@@ -173,7 +173,7 @@ branch_0x8006f060:
 
 .globl makeTable__11TSplinePathFPfPfPf
 makeTable__11TSplinePathFPfPfPf: # 0x8006f07c
-    lfs     f3, -0x6b3c(rtoc)
+    lfs     f3, -0x6b3c(r2)
     li      r10, 0x0
     li      r7, 0x0
     stfs    f3, 0x0(r6)
@@ -181,7 +181,7 @@ makeTable__11TSplinePathFPfPfPf: # 0x8006f07c
     slwi    r0, r0, 2
     add     r8, r6, r0
     stfs    f3, -0x4(r8)
-    lfs     f2, -0x6b38(rtoc)
+    lfs     f2, -0x6b38(r2)
     b       branch_0x8006f108
 
 branch_0x8006f0a4:
@@ -215,7 +215,7 @@ branch_0x8006f100:
     addi    r7, r7, 0x4
 branch_0x8006f108:
     lwz     r8, 0x0(r3)
-    subi    r0, r8, 0x1
+    addi    r0, r8, -0x1
     cmpw    r10, r0
     blt+    branch_0x8006f0a4
     lwz     r8, 0x24(r3)
@@ -231,12 +231,12 @@ branch_0x8006f108:
     stfs    f0, 0x4(r6)
     lfs     f1, 0x8(r4)
     lfs     f0, 0x0(r4)
-    lfs     f4, -0x6b40(rtoc)
+    lfs     f4, -0x6b40(r2)
     fsubs   f0, f1, f0
     lwz     r7, 0x24(r3)
     fmuls   f0, f4, f0
     stfs    f0, 0x4(r7)
-    lfs     f3, -0x6b38(rtoc)
+    lfs     f3, -0x6b38(r2)
     b       branch_0x8006f1e8
 
 branch_0x8006f168:
@@ -275,7 +275,7 @@ branch_0x8006f180:
     stfsx   f0, r7, r0
 branch_0x8006f1e8:
     lwz     r7, 0x0(r3)
-    subi    r0, r7, 0x2
+    addi    r0, r7, -0x2
     cmpw    r11, r0
     blt+    branch_0x8006f168
     lwz     r0, 0x20(r3)
@@ -304,7 +304,7 @@ branch_0x8006f23c:
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     fnmsubs  f1, f3, f2, f1
     fdivs   f0, f1, f0
     stfs    f0, 0x0(r9)
@@ -313,7 +313,7 @@ branch_0x8006f23c:
     lwz     r7, 0x24(r3)
     lfsx    f3, r8, r5
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     fnmsubs  f1, f3, f2, f1
@@ -324,7 +324,7 @@ branch_0x8006f23c:
     lwz     r7, 0x24(r3)
     lfsx    f3, r8, r5
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     fnmsubs  f1, f3, f2, f1
@@ -335,7 +335,7 @@ branch_0x8006f23c:
     lwz     r7, 0x24(r3)
     lfsx    f3, r8, r5
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     fnmsubs  f1, f3, f2, f1
@@ -346,7 +346,7 @@ branch_0x8006f23c:
     lwz     r7, 0x24(r3)
     lfsx    f3, r8, r5
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     fnmsubs  f1, f3, f2, f1
@@ -357,7 +357,7 @@ branch_0x8006f23c:
     lwz     r7, 0x24(r3)
     lfsx    f3, r8, r5
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     fnmsubs  f1, f3, f2, f1
@@ -368,7 +368,7 @@ branch_0x8006f23c:
     lwz     r7, 0x24(r3)
     lfsx    f3, r8, r5
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     fnmsubs  f1, f3, f2, f1
@@ -379,7 +379,7 @@ branch_0x8006f23c:
     lwz     r7, 0x24(r3)
     lfsx    f3, r8, r5
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     fnmsubs  f1, f3, f2, f1
@@ -399,7 +399,7 @@ branch_0x8006f3ac:
     lfs     f2, 0x4(r9)
     lfs     f1, 0x0(r9)
     lfsx    f0, r7, r5
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     fnmsubs  f1, f3, f2, f1
     fdivs   f0, f1, f0
     stfs    f0, 0x0(r9)
@@ -455,7 +455,7 @@ __ct__11TSplinePathFi: # 0x8006f3e0
     li      r6, 0x0
     stw     r5, 0x28(r31)
     lis     r4, 0x4330
-    lfd     f1, -0x6b30(rtoc)
+    lfd     f1, -0x6b30(r2)
     b       branch_0x8006f4d4
 
 branch_0x8006f4a0:

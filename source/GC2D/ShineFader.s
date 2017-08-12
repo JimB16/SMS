@@ -9,20 +9,20 @@ __dt__11TShineFaderFv: # 0x8017d760
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8017d7d8
-    lis     r3, 0x803c
-    addi    r0, r3, 0x10f0
+    lis     r3, __vvt__11TShineFader@h
+    addi    r0, r3, __vvt__11TShineFader@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d7c8
-    lis     r3, 0x803c
-    addi    r0, r3, 0x111c
+    lis     r3, __vvt__10TSmplFader@h
+    addi    r0, r3, __vvt__10TSmplFader@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d7c8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x38
+    lis     r3, __vvt__9TSMSFader@ha
+    addi    r0, r3, __vvt__9TSMSFader@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d7c8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -163,7 +163,7 @@ branch_0x8017d94c:
     cmplw   r5, r4
     blelr-    
 
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     subf    r0, r4, r0
     clrlwi  r0, r0, 16
     mulli   r0, r0, 0xff
@@ -182,16 +182,16 @@ __dt__10TSmplFaderFv: # 0x8017d970
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8017d9d8
-    lis     r3, 0x803c
-    addi    r0, r3, 0x111c
+    lis     r3, __vvt__10TSmplFader@h
+    addi    r0, r3, __vvt__10TSmplFader@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d9c8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x38
+    lis     r3, __vvt__9TSMSFader@ha
+    addi    r0, r3, __vvt__9TSMSFader@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017d9c8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

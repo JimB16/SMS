@@ -4,7 +4,7 @@ __ct__Q38JASystem6TTrack11TOuterParamFv: # 0x80319c58
     li      r0, 0x0
     sth     r0, 0x0(r3)
     sth     r0, 0x2(r3)
-    lfs     f0, 0x758(rtoc)
+    lfs     f0, 0x758(r2)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
     stfs    f0, 0xc(r3)
@@ -122,8 +122,9 @@ branch_0x80319d74:
     addi    r5, r3, 0x18
     b       branch_0x80319d80
 
+branch_0x80319d7c:
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x31477c, 0x80319d80 - 0x80319d7c
 branch_0x80319d80:
     stfs    f1, 0x0(r5)
     clrlwi  r0, r4, 24

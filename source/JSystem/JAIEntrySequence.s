@@ -178,7 +178,7 @@ branch_0x80305058:
     bl      getSwBit__8JAISoundFv
     rlwinm. r0, r3, 0, 30, 30
     bne-    branch_0x803050b8
-    lfs     f1, 0x4f0(rtoc)
+    lfs     f1, 0x4f0(r2)
     addi    r3, r21, 0x0
     li      r4, 0xa
     li      r5, 0xa
@@ -192,7 +192,7 @@ branch_0x803050b8:
     addi    r20, r20, 0x1
     addi    r18, r18, 0x50
 branch_0x803050c0:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r20, r0
     blt+    branch_0x80305058
 branch_0x803050cc:

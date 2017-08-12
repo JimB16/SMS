@@ -7,12 +7,12 @@ __dt__14JSUInputStreamFv: # 0x802c5714
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802c5758
-    lis     r3, 0x803e
-    addi    r0, r3, 0x184
+    lis     r3, __vvt__14JSUInputStream@h
+    addi    r0, r3, __vvt__14JSUInputStream@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802c5748
-    lis     r3, 0x803b
-    subi    r0, r3, 0xf0c
+    lis     r3, __vvt__10JSUIosBase@ha
+    addi    r0, r3, __vvt__10JSUIosBase@l
     stw     r0, 0x0(r31)
 branch_0x802c5748:
     extsh.  r0, r4
@@ -28,12 +28,6 @@ branch_0x802c5758:
     blr
 
 
-/* Input:
-r3:
-r4:
-r5: length
-*/
-# JSUInputStream::read((void *,long))
 .globl read__14JSUInputStreamFPvl
 read__14JSUInputStreamFPvl: # 0x802c5770
     mflr    r0
@@ -43,7 +37,6 @@ read__14JSUInputStreamFPvl: # 0x802c5770
     mr      r31, r5
     stw     r30, 0x18(sp)
     mr      r30, r3
-
     lwz     r12, 0x0(r30)
     lwz     r12, 0x14(r12)
     mtlr    r12
@@ -54,7 +47,6 @@ read__14JSUInputStreamFPvl: # 0x802c5770
     ori     r0, r0, 0x1
     stb     r0, 0x4(r30)
 branch_0x802c57b0:
-
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
     lwz     r30, 0x18(sp)
@@ -173,7 +165,7 @@ branch_0x802c5900:
 branch_0x802c5934:
     mr      r3, r28
     lwz     r12, 0x0(r28)
-    subi    r30, r4, 0x1
+    addi    r30, r4, -0x1
     addi    r4, r29, 0x0
     lwz     r12, 0x14(r12)
     addi    r5, r30, 0x0
@@ -268,8 +260,8 @@ align__20JSURandomInputStreamFl: # 0x802c5a44
     mtlr    r12
     blrl
     add     r4, r31, r3
-    subi    r4, r4, 0x1
-    subi    r0, r31, 0x1
+    addi    r4, r4, -0x1
+    addi    r0, r31, -0x1
     andc    r0, r4, r0
     subf.   r31, r3, r0
     mr      r4, r0
@@ -395,3 +387,4 @@ seek__20JSURandomInputStreamFl17JSUStreamSeekFrom: # 0x802c5bec
     addi    sp, sp, 0x20
     mtlr    r0
     blr
+

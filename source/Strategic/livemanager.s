@@ -63,7 +63,7 @@ perform__12TLiveManagerFUlPQ26JDrama9TGraphics: # 0x8021ae88
     clrlwi. r0, r0, 31
     beq-    branch_0x8021aefc
     li      r0, 0xff
-    lwz     r27, -0x5ff8(r13)
+    lwz     r27, R13Off_m0x5ff8(r13)
     stb     r0, 0x34(sp)
     cmplwi  r27, 0x0
     stb     r0, 0x35(sp)
@@ -94,7 +94,7 @@ branch_0x8021aefc:
     lwz     r0, 0x30(r29)
     clrlwi. r0, r0, 31
     beq-    branch_0x8021af60
-    lwz     r27, -0x5ff8(r13)
+    lwz     r27, R13Off_m0x5ff8(r13)
     cmplwi  r27, 0x0
     beq-    branch_0x8021af60
     bl      OSGetTick
@@ -130,13 +130,13 @@ setFlagOutOfCube__12TLiveManagerFv: # 0x8021af84
     li      r29, 0x0
     stw     r28, 0x28(sp)
     addi    r28, r3, 0x0
-    lfs     f31, -0x18d0(rtoc)
+    lfs     f31, -0x18d0(r2)
     b       branch_0x8021b01c
 
 branch_0x8021afb8:
     lwz     r5, 0x18(r28)
     addi    r4, sp, 0x14
-    lwz     r3, -0x70dc(r13)
+    lwz     r3, R13Off_m0x70dc(r13)
     lwzx    r30, r5, r31
     lwz     r5, 0x10(r30)
     lwz     r0, 0x14(r30)
@@ -182,8 +182,8 @@ clipActors__12TLiveManagerFPQ26JDrama9TGraphics: # 0x8021b04c
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lfs     f1, -0x18cc(rtoc)
-    lfs     f2, -0x18c8(rtoc)
+    lfs     f1, -0x18cc(r2)
+    lfs     f2, -0x18c8(r2)
     bl      clipActorsAux__12TLiveManagerFPQ26JDrama9TGraphicsff
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -203,13 +203,13 @@ clipActorsAux__12TLiveManagerFPQ26JDrama9TGraphicsff: # 0x8021b074
     stmw    r27, 0x44(sp)
     mr      r29, r4
     mr      r28, r3
-    lwz     r5, gpCamera(r13)
+    lwz     r5, R13Off_m0x7118(r13)
     lfs     f3, 0xe8(r4)
     lfs     f0, 0x4c(r5)
     lfs     f1, 0x48(r5)
     fmr     f2, f0
     bl      SetViewFrustumClipCheckPerspective__Fffff
-    lfs     f31, -0x18d0(rtoc)
+    lfs     f31, -0x18d0(r2)
     li      r30, 0x0
     li      r27, 0x0
     b       branch_0x8021b174
@@ -317,9 +317,9 @@ load__12TLiveManagerFR20JSUMemoryInputStream: # 0x8021b1c8
 .globl createSpcBinary__12TLiveManagerFv
 createSpcBinary__12TLiveManagerFv: # 0x8021b208
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d1f8@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2e08
+    addi    r4, r4, unk_8039d1f8@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
@@ -336,8 +336,8 @@ createSpcBinary__12TLiveManagerFv: # 0x8021b208
     addi    r3, r29, 0x0
     addi    r4, r31, 0x0
     bl      __ct__10TSpcBinaryFPv
-    lis     r3, 0x803b
-    subi    r0, r3, 0x1810
+    lis     r3, __vvt__29TSpcTypedBinary_10TLiveActor_@ha
+    addi    r0, r3, __vvt__29TSpcTypedBinary_10TLiveActor_@l
     stw     r0, 0x4(r29)
 branch_0x8021b264:
     stw     r29, 0x34(r30)
@@ -363,15 +363,15 @@ __ct__12TLiveManagerFPCc: # 0x8021b28c
     lwz     r3, 0x8(sp)
     bl      __ct__11TObjManagerFPCc
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6098
+    lis     r3, __vvt__12TLiveManager@ha
+    addi    r0, r3, __vvt__12TLiveManager@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r4, r31, 0x0
     stw     r0, 0x34(r31)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      registerManager__10TConductorFP12TLiveManager
-    lwz     r4, -0x610c(r13)
+    lwz     r4, R13Off_m0x610c(r13)
     li      r0, 0x1
     addi    r3, r31, 0x0
     lwz     r4, 0x14(r4)

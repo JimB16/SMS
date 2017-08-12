@@ -4,7 +4,7 @@ verifySuffix__12MActorAnmBlkFPCc: # 0x8023a964
     mflr    r0
     addi    r3, r4, 0x0
     stw     r0, 0x4(sp)
-    subi    r4, rtoc, 0x1548
+    addi    r4, r2, R2Off_m0x1548
     stwu    sp, -0x8(sp)
     bl      strstr
     lwz     r0, 0xc(sp)
@@ -75,11 +75,11 @@ updateIn__12MActorAnmBlkFv: # 0x8023aa34
     lis     r0, 0x4330
     stwu    sp, -0x30(sp)
     lwz     r3, 0x24(r3)
-    lfs     f2, -0x1540(rtoc)
+    lfs     f2, -0x1540(r2)
     lha     r3, 0x2(r3)
     lfs     f0, 0x14(r4)
     xoris   r3, r3, 0x8000
-    lfd     f1, -0x1538(rtoc)
+    lfd     f1, -0x1538(r2)
     stw     r3, 0x2c(sp)
     fadds   f2, f2, f0
     stw     r0, 0x28(sp)
@@ -88,7 +88,7 @@ updateIn__12MActorAnmBlkFv: # 0x8023aa34
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     bne-    branch_0x8023aa88
-    lfs     f0, -0x153c(rtoc)
+    lfs     f0, -0x153c(r2)
     stfs    f0, 0x14(r4)
 branch_0x8023aa88:
     lfs     f0, 0x14(r4)
@@ -202,11 +202,11 @@ setTevKColorAnmKeyPtr__12MActorAnmBrkFv: # 0x8023abb0
     lwz     r29, 0x0(r3)
     slwi    r3, r29, 2
     bl      __nwa__FUl
-    lis     r4, 0x8024
+    lis     r4, __ct__15J3DTevKColorAnmFv@ha
     stw     r3, 0x2c(r27)
-    lis     r3, 0x8024
-    subi    r30, r4, 0x5300
-    subi    r31, r3, 0x5340
+    lis     r3, __dt__15J3DTevKColorAnmFv@ha
+    addi    r30, r4, __ct__15J3DTevKColorAnmFv@l
+    addi    r31, r3, __dt__15J3DTevKColorAnmFv@l
     li      r28, 0x0
     li      r26, 0x0
     b       branch_0x8023aca4
@@ -314,11 +314,11 @@ setTevColorAnmKeyPtr__12MActorAnmBrkFv: # 0x8023ad10
     lwz     r29, 0x0(r3)
     slwi    r3, r29, 2
     bl      __nwa__FUl
-    lis     r4, 0x8024
+    lis     r4, __ct__14J3DTevColorAnmFv@ha
     stw     r3, 0x28(r27)
-    lis     r3, 0x8024
-    subi    r30, r4, 0x51a0
-    subi    r31, r3, 0x51e0
+    lis     r3, __dt__14J3DTevColorAnmFv@ha
+    addi    r30, r4, __ct__14J3DTevColorAnmFv@l
+    addi    r31, r3, __dt__14J3DTevColorAnmFv@l
     li      r28, 0x0
     li      r26, 0x0
     b       branch_0x8023ae04
@@ -464,11 +464,11 @@ setMatColorAnmKeyPtr__12MActorAnmBpkFv: # 0x8023aee8
     lwz     r29, 0x0(r3)
     slwi    r3, r29, 2
     bl      __nwa__FUl
-    lis     r4, 0x8024
+    lis     r4, __ct__14J3DMatColorAnmFv@ha
     stw     r3, 0x28(r27)
-    lis     r3, 0x8024
-    subi    r30, r4, 0x4fc8
-    subi    r31, r3, 0x5008
+    lis     r3, __dt__14J3DMatColorAnmFv@ha
+    addi    r30, r4, __ct__14J3DMatColorAnmFv@l
+    addi    r31, r3, __dt__14J3DMatColorAnmFv@l
     li      r28, 0x0
     li      r26, 0x0
     b       branch_0x8023afdc
@@ -725,13 +725,13 @@ setTexMtxAnmKeyPtr__12MActorAnmBtkFv: # 0x8023b204
     lwz     r28, 0x0(r3)
     slwi    r3, r28, 2
     bl      __nwa__FUl
-    lis     r5, 0x5555
+    lis     r5, unk_55555556@h
     stw     r3, 0x28(r26)
-    lis     r4, 0x8024
-    lis     r3, 0x8024
-    addi    r29, r5, 0x5556
-    subi    r30, r4, 0x4c94
-    subi    r31, r3, 0x4cd4
+    lis     r4, __ct__12J3DTexMtxAnmFv@ha
+    lis     r3, __dt__12J3DTexMtxAnmFv@ha
+    addi    r29, r5, unk_55555556@l
+    addi    r30, r4, __ct__12J3DTexMtxAnmFv@l
+    addi    r31, r3, __dt__12J3DTexMtxAnmFv@l
     li      r27, 0x0
     li      r25, 0x0
     b       branch_0x8023b310
@@ -843,8 +843,8 @@ checkUseMaterialID__12MActorAnmBtkFPUs: # 0x8023b37c
     blr
 
 branch_0x8023b394:
-    lis     r5, 0x5555
-    addi    r6, r5, 0x5556
+    lis     r5, unk_55555556@h
+    addi    r6, r5, unk_55555556@l
     li      r9, 0x0
     b       branch_0x8023b3c4
 
@@ -874,13 +874,13 @@ branch_0x8023b3c4:
 .globl checkUseMaterialIDInit__12MActorAnmBtkFPUs
 checkUseMaterialIDInit__12MActorAnmBtkFPUs: # 0x8023b3ec
     mflr    r0
-    lis     r5, 0x5555
+    lis     r5, unk_55555556@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x78(sp)
     stmw    r22, 0x50(sp)
     addi    r27, r3, 0x0
     addi    r28, r4, 0x0
-    addi    r25, r5, 0x5556
+    addi    r25, r5, unk_55555556@l
     li      r30, 0x0
     li      r26, 0x0
     b       branch_0x8023b4c8
@@ -1116,11 +1116,11 @@ setTexNoAnmFullPtr__12MActorAnmBtpFv: # 0x8023b6b0
     lwz     r29, 0x0(r3)
     slwi    r3, r29, 2
     bl      __nwa__FUl
-    lis     r4, 0x8004
+    lis     r4, __ct__11J3DTexNoAnmFv@h
     stw     r3, 0x28(r27)
-    lis     r3, 0x8004
-    addi    r30, r4, 0x4c88
-    addi    r31, r3, 0x4c3c
+    lis     r3, __dt__11J3DTexNoAnmFv@h
+    addi    r30, r4, __ct__11J3DTexNoAnmFv@l
+    addi    r31, r3, __dt__11J3DTexNoAnmFv@l
     li      r28, 0x0
     li      r26, 0x0
     b       branch_0x8023b7a8
@@ -1437,19 +1437,19 @@ __ct__18J3DMtxCalcBasicAnmFP15J3DAnmTransform: # 0x8023baa8
     beq-    branch_0x8023bae4
     addi    r4, r30, 0x68
     stw     r4, 0x0(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0xf38
+    lis     r3, __vvt__10J3DMtxCalc@ha
+    addi    r0, r3, __vvt__10J3DMtxCalc@l
     stw     r4, 0x50(r30)
     stw     r0, 0x68(r30)
 branch_0x8023bae4:
     addi    r3, r30, 0x0
     li      r4, 0x0
     bl      __ct__15J3DMtxCalcBasicFv
-    lis     r3, 0x803e
-    addi    r5, r3, 0x938
+    lis     r3, __vvt__13J3DMtxCalcAnm@h
+    addi    r5, r3, __vvt__13J3DMtxCalcAnm@l
     stw     r5, 0x54(r30)
-    lis     r3, 0x803e
-    subi    r4, r3, 0x4ed0
+    lis     r3, __vvt__18J3DMtxCalcBasicAnm@ha
+    addi    r4, r3, __vvt__18J3DMtxCalcBasicAnm@l
     lwz     r3, 0x50(r30)
     addi    r0, r5, 0x10
     addi    r8, r30, 0x68
@@ -1462,7 +1462,7 @@ branch_0x8023bae4:
     subf    r7, r9, r8
     stw     r7, 0x4(r9)
     stw     r6, 0x58(r30)
-    lfs     f0, -0x1540(rtoc)
+    lfs     f0, -0x1540(r2)
     stfs    f0, 0x60(r30)
     stw     r6, 0x5c(r30)
     stfs    f0, 0x64(r30)
@@ -1494,7 +1494,7 @@ getOldMotionBlendFrame__12MActorAnmBckCFv: # 0x8023bb7c
     b       branch_0x8023bba0
 
 branch_0x8023bb9c:
-    lfs     f1, -0x153c(rtoc)
+    lfs     f1, -0x153c(r2)
 branch_0x8023bba0:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1562,7 +1562,7 @@ getMotionBlendRatio__12MActorAnmBckCFv: # 0x8023bc3c
     lwz     r3, 0x34(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x8023bc5c
-    lfs     f1, -0x153c(rtoc)
+    lfs     f1, -0x153c(r2)
     b       branch_0x8023bc60
 
 branch_0x8023bc5c:
@@ -1671,7 +1671,7 @@ verifySuffix__12MActorAnmBrkFPCc: # 0x8023bd88
     mflr    r0
     addi    r3, r4, 0x0
     stw     r0, 0x4(sp)
-    subi    r4, rtoc, 0x1530
+    addi    r4, r2, R2Off_m0x1530
     stwu    sp, -0x8(sp)
     bl      strstr
     lwz     r0, 0xc(sp)
@@ -1685,7 +1685,7 @@ verifySuffix__12MActorAnmBpkFPCc: # 0x8023bdb0
     mflr    r0
     addi    r3, r4, 0x0
     stw     r0, 0x4(sp)
-    subi    r4, rtoc, 0x1528
+    addi    r4, r2, R2Off_m0x1528
     stwu    sp, -0x8(sp)
     bl      strstr
     lwz     r0, 0xc(sp)
@@ -1699,7 +1699,7 @@ verifySuffix__12MActorAnmBtkFPCc: # 0x8023bdd8
     mflr    r0
     addi    r3, r4, 0x0
     stw     r0, 0x4(sp)
-    subi    r4, rtoc, 0x1520
+    addi    r4, r2, R2Off_m0x1520
     stwu    sp, -0x8(sp)
     bl      strstr
     lwz     r0, 0xc(sp)
@@ -1713,7 +1713,7 @@ verifySuffix__12MActorAnmBtpFPCc: # 0x8023be00
     mflr    r0
     addi    r3, r4, 0x0
     stw     r0, 0x4(sp)
-    subi    r4, rtoc, 0x1518
+    addi    r4, r2, R2Off_m0x1518
     stwu    sp, -0x8(sp)
     bl      strstr
     lwz     r0, 0xc(sp)
@@ -1727,7 +1727,7 @@ verifySuffix__12MActorAnmBckFPCc: # 0x8023be28
     mflr    r0
     addi    r3, r4, 0x0
     stw     r0, 0x4(sp)
-    subi    r4, rtoc, 0x1510
+    addi    r4, r2, R2Off_m0x1510
     stwu    sp, -0x8(sp)
     bl      strstr
     lwz     r0, 0xc(sp)

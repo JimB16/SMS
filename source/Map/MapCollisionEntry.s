@@ -2,9 +2,9 @@
 .globl __ct__17TMapCollisionWarpFv
 __ct__17TMapCollisionWarpFv: # 0x8018d8bc
     mflr    r0
-    lis     r4, 0x803c
+    lis     r4, __vvt__17TMapCollisionBase@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x1744
+    addi    r0, r4, __vvt__17TMapCollisionBase@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     li      r31, 0x0
@@ -21,9 +21,9 @@ __ct__17TMapCollisionWarpFv: # 0x8018d8bc
     stw     r31, 0x1c(r30)
     sth     r31, 0x5c(r30)
     bl      PSMTXIdentity
-    lfs     f0, -0x4400(rtoc)
-    lis     r3, 0x803c
-    addi    r0, r3, 0x16d8
+    lfs     f0, -0x4400(r2)
+    lis     r3, __vvt__17TMapCollisionWarp@h
+    addi    r0, r3, __vvt__17TMapCollisionWarp@l
     stfs    f0, 0x50(r30)
     mr      r3, r30
     stfs    f0, 0x54(r30)
@@ -98,7 +98,7 @@ branch_0x8018d9f4:
     lhz     r0, 0x5c(r5)
     ori     r0, r0, 0x1
     sth     r0, 0x5c(r5)
-    lwz     r3, -0x6320(r13)
+    lwz     r3, R13Off_m0x6320(r13)
     lhz     r4, 0x60(r5)
     lwz     r5, 0x64(r5)
     bl      removeCheckListData__17TMapCollisionDataFUsl
@@ -132,14 +132,14 @@ branch_0x8018da5c:
     lhz     r0, 0x5c(r30)
     clrrwi  r0, r0, 1
     sth     r0, 0x5c(r30)
-    lwz     r3, -0x6320(r13)
+    lwz     r3, R13Off_m0x6320(r13)
     bl      getEntryID__17TMapCollisionDataFv
     sth     r3, 0x60(r30)
     addi    r3, r30, 0x0
     addi    r4, r31, 0x0
     bl      updateTrans__17TMapCollisionBaseFRCQ29JGeometry8TVec3_f_
     lhz     r0, 0x60(r30)
-    lwz     r4, -0x6320(r13)
+    lwz     r4, R13Off_m0x6320(r13)
     slwi    r0, r0, 1
     add     r3, r4, r0
     lhz     r0, 0x40(r4)
@@ -176,7 +176,7 @@ branch_0x8018daec:
     lhz     r0, 0x5c(r31)
     clrrwi  r0, r0, 1
     sth     r0, 0x5c(r31)
-    lwz     r3, -0x6320(r13)
+    lwz     r3, R13Off_m0x6320(r13)
     bl      getEntryID__17TMapCollisionDataFv
     sth     r3, 0x60(r31)
     lhz     r0, 0x5c(r31)
@@ -206,7 +206,7 @@ branch_0x8018db54:
     bl      update__17TMapCollisionBaseFv
 branch_0x8018db5c:
     lhz     r0, 0x60(r31)
-    lwz     r4, -0x6320(r13)
+    lwz     r4, R13Off_m0x6320(r13)
     slwi    r0, r0, 1
     add     r3, r4, r0
     lhz     r0, 0x40(r4)
@@ -224,9 +224,9 @@ branch_0x8018db7c:
 .globl __ct__17TMapCollisionMoveFv
 __ct__17TMapCollisionMoveFv: # 0x8018db90
     mflr    r0
-    lis     r4, 0x803c
+    lis     r4, __vvt__17TMapCollisionBase@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x1744
+    addi    r0, r4, __vvt__17TMapCollisionBase@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
@@ -242,9 +242,9 @@ __ct__17TMapCollisionMoveFv: # 0x8018db90
     stw     r0, 0x1c(r31)
     sth     r0, 0x5c(r31)
     bl      PSMTXIdentity
-    lfs     f0, -0x4400(rtoc)
-    lis     r3, 0x803c
-    addi    r0, r3, 0x16fc
+    lfs     f0, -0x4400(r2)
+    lis     r3, __vvt__17TMapCollisionMove@h
+    addi    r0, r3, __vvt__17TMapCollisionMove@l
     stfs    f0, 0x50(r31)
     mr      r3, r31
     stfs    f0, 0x54(r31)
@@ -305,7 +305,7 @@ init__17TMapCollisionMoveFUlUssPC10TLiveActor: # 0x8018dc7c
     stw     r0, 0x8(r3)
     stw     r4, 0xc(r3)
     lwz     r4, 0xc(r3)
-    lwz     r3, -0x6320(r13)
+    lwz     r3, R13Off_m0x6320(r13)
     bl      allocCheckData__17TMapCollisionDataFUl
     stw     r3, 0x4(r28)
     li      r6, 0x0
@@ -437,9 +437,9 @@ branch_0x8018de1c:
 .globl __ct__19TMapCollisionStaticFv
 __ct__19TMapCollisionStaticFv: # 0x8018de2c
     mflr    r0
-    lis     r4, 0x803c
+    lis     r4, __vvt__17TMapCollisionBase@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x1744
+    addi    r0, r4, __vvt__17TMapCollisionBase@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     li      r31, 0x0
@@ -456,9 +456,9 @@ __ct__19TMapCollisionStaticFv: # 0x8018de2c
     stw     r31, 0x1c(r30)
     sth     r31, 0x5c(r30)
     bl      PSMTXIdentity
-    lfs     f0, -0x4400(rtoc)
-    lis     r3, 0x803c
-    addi    r0, r3, 0x1720
+    lfs     f0, -0x4400(r2)
+    lis     r3, __vvt__19TMapCollisionStatic@h
+    addi    r0, r3, __vvt__19TMapCollisionStatic@l
     stfs    f0, 0x50(r30)
     mr      r3, r30
     stfs    f0, 0x54(r30)
@@ -548,12 +548,12 @@ init__17TMapCollisionBaseFPCcUsPC10TLiveActor: # 0x8018df88
     stw     r30, 0x128(sp)
     stw     r29, 0x124(sp)
     addi    r29, r4, 0x0
-    lis     r4, 0x8039
+    lis     r4, unk_80388ee8@ha
     stw     r28, 0x120(sp)
-    subi    r30, r4, 0x7118
+    addi    r30, r4, unk_80388ee8@l
     addi    r28, r5, 0x0
     addi    r3, r29, 0x0
-    subi    r4, rtoc, 0x43fc
+    addi    r4, r2, R2Off_m0x43fc
     bl      strstr
     cmplwi  r3, 0x0
     bne-    branch_0x8018e00c
@@ -737,7 +737,7 @@ setVertexData__17TMapCollisionBaseFUlRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3
     bl      setVertex__12TBGCheckDataFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_
     lwz     r0, 0x4(r30)
     lwz     r5, 0x8(r30)
-    lwz     r3, -0x6320(r13)
+    lwz     r3, R13Off_m0x6320(r13)
     add     r4, r0, r31
     bl      addCheckDataToGrid__17TMapCollisionDataFP12TBGCheckDatai
     lwz     r0, 0x2c(sp)

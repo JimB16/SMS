@@ -61,7 +61,7 @@ getParamByExp__7JALCalcFffffffQ27JALCalc9CurveSign: # 0x802fcf9c
     stfd    f28, 0x88(sp)
     fmr     f28, f4
     bne-    branch_0x802fd010
-    lfs     f4, 0x468(rtoc)
+    lfs     f4, 0x468(r2)
     fsubs   f0, f3, f2
     fsubs   f2, f1, f2
     fsubs   f1, f28, f4
@@ -71,7 +71,7 @@ getParamByExp__7JALCalcFffffffQ27JALCalc9CurveSign: # 0x802fcf9c
     fmr     f29, f1
     fmr     f1, f28
     bl      expf
-    lfs     f3, 0x46c(rtoc)
+    lfs     f3, 0x46c(r2)
     fsubs   f2, f31, f30
     fsubs   f0, f1, f3
     fsubs   f1, f29, f3
@@ -82,7 +82,7 @@ getParamByExp__7JALCalcFffffffQ27JALCalc9CurveSign: # 0x802fcf9c
 branch_0x802fd010:
     cmpwi   r3, 0x0
     bne-    branch_0x802fd05c
-    lfs     f4, 0x468(rtoc)
+    lfs     f4, 0x468(r2)
     fsubs   f0, f3, f2
     fsubs   f2, f1, f2
     fsubs   f1, f4, f28
@@ -92,7 +92,7 @@ branch_0x802fd010:
     fmr     f29, f1
     fmr     f1, f28
     bl      expf
-    lfs     f0, 0x46c(rtoc)
+    lfs     f0, 0x46c(r2)
     fsubs   f2, f31, f30
     fsubs   f3, f29, f1
     fsubs   f0, f0, f1
@@ -163,10 +163,10 @@ getRandom__7JALCalcFfff: # 0x802fd0f0
     fmr     f28, f2
     stfd    f27, 0x18(sp)
     fmr     f27, f1
-    lfs     f0, 0x46c(rtoc)
-    lfs     f3, 0x470(rtoc)
+    lfs     f0, 0x46c(r2)
+    lfs     f3, 0x470(r2)
     fsubs   f0, f0, f29
-    lfs     f1, 0x474(rtoc)
+    lfs     f1, 0x474(r2)
     fmuls   f31, f3, f29
     fmuls   f30, f1, f0
     bl      getRandom_0_1__7JALCalcFv
@@ -199,24 +199,24 @@ getRandom_0_1__7JALCalcFv: # 0x802fd184
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
-    lbz     r0, -0x5da8(r13)
+    lbz     r0, R13Off_m0x5da8(r13)
     extsb.  r0, r0
     bne-    branch_0x802fd1b0
-    subi    r3, r13, 0x5da4
+    addi    r3, r13, R13Off_m0x5da4
     li      r4, 0x0
     bl      __ct__Q25JMath13TRandom_fast_FUl
     li      r0, 0x1
-    stb     r0, -0x5da8(r13)
+    stb     r0, R13Off_m0x5da8(r13)
 branch_0x802fd1b0:
-    lis     r3, 0x19
-    lwz     r4, -0x5da4(r13)
-    addi    r0, r3, 0x660d
-    lfs     f0, 0x46c(rtoc)
+    lis     r3, unk_0019660d@h
+    lwz     r4, R13Off_m0x5da4(r13)
+    addi    r0, r3, unk_0019660d@l
+    lfs     f0, 0x46c(r2)
     mullw   r3, r4, r0
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
-    stw     r0, -0x5da4(r13)
-    lwz     r0, -0x5da4(r13)
+    addi    r0, r3, -0xca1
+    stw     r0, R13Off_m0x5da4(r13)
+    lwz     r0, R13Off_m0x5da4(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x10(sp)
@@ -234,12 +234,12 @@ getDist__7JALCalcFP3VecP3Vec: # 0x802fd1f8
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     bl      getDistPow__7JALCalcFP3VecP3Vec
-    lfs     f0, 0x468(rtoc)
+    lfs     f0, 0x468(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x802fd260
     frsqrte f2, f1
-    lfd     f4, 0x478(rtoc)
-    lfd     f3, 0x480(rtoc)
+    lfd     f4, 0x478(r2)
+    lfd     f3, 0x480(r2)
     fmul    f0, f2, f2
     fmul    f2, f4, f2
     fnmsub   f0, f1, f0, f3
@@ -277,19 +277,19 @@ getDistPow__7JALCalcFP3VecP3Vec: # 0x802fd270
     beq-    branch_0x802fd2e8
     lfs     f1, 0x4(r30)
     lfs     f0, 0x4(r31)
-    lfs     f2, 0x470(rtoc)
+    lfs     f2, 0x470(r2)
     fsubs   f1, f1, f0
     bl      powf
     lfs     f3, 0x0(r30)
     fmr     f31, f1
     lfs     f0, 0x0(r31)
-    lfs     f2, 0x470(rtoc)
+    lfs     f2, 0x470(r2)
     fsubs   f1, f3, f0
     bl      powf
     lfs     f3, 0x8(r30)
     fmr     f30, f1
     lfs     f0, 0x8(r31)
-    lfs     f2, 0x470(rtoc)
+    lfs     f2, 0x470(r2)
     fsubs   f1, f3, f0
     bl      powf
     fadds   f0, f30, f31
@@ -298,16 +298,16 @@ getDistPow__7JALCalcFP3VecP3Vec: # 0x802fd270
 
 branch_0x802fd2e8:
     lfs     f1, 0x4(r30)
-    lfs     f2, 0x470(rtoc)
+    lfs     f2, 0x470(r2)
     bl      powf
     lfs     f0, 0x0(r30)
     fmr     f30, f1
-    lfs     f2, 0x470(rtoc)
+    lfs     f2, 0x470(r2)
     fmr     f1, f0
     bl      powf
     lfs     f0, 0x8(r30)
     fmr     f31, f1
-    lfs     f2, 0x470(rtoc)
+    lfs     f2, 0x470(r2)
     fmr     f1, f0
     bl      powf
     fadds   f0, f31, f30

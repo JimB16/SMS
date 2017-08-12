@@ -51,13 +51,13 @@ branch_0x802a8e54:
     clrlwi. r0, r0, 31
     bne-    branch_0x802a8ea0
     lwz     r0, 0x814(r3)
-    lwz     r6, -0x5ff0(r13)
+    lwz     r6, R13Off_m0x5ff0(r13)
     mulli   r4, r0, 0x408
     lhz     r5, 0x81a(r3)
     addi    r0, r4, 0x408
     lwzx    r3, r3, r0
     cmplwi  r6, 0x0
-    subi    r31, r3, 0x1
+    addi    r31, r3, -0x1
     add     r31, r5, r31
     beq-    branch_0x802a8e98
     mr      r3, r6
@@ -75,7 +75,7 @@ branch_0x802a8ea0:
 
 .globl flip__8TTimeRecFv
 flip__8TTimeRecFv: # 0x802a8eb4
-    lwz     r5, -0x5ff8(r13)
+    lwz     r5, R13Off_m0x5ff8(r13)
     lwz     r0, 0x814(r5)
     mulli   r4, r0, 0x408
     addi    r4, r4, 0x4
@@ -90,7 +90,7 @@ flip__8TTimeRecFv: # 0x802a8eb4
     lwzx    r5, r6, r4
     ble-    branch_0x802a8f10
 branch_0x802a8eec:
-    subi    r4, r4, 0x8
+    addi    r4, r4, -0x8
     add     r7, r6, r4
     lwz     r0, 0x0(r7)
     cmplwi  r0, 0x0
@@ -133,21 +133,21 @@ start__8TTimeRecFUs: # 0x802a8f50
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x10(sp)
-    lwz     r0, -0x5ff8(r13)
+    lwz     r0, R13Off_m0x5ff8(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802a8fd0
     li      r3, 0x820
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802a8fcc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2e6c
-    lis     r3, 0x803e
+    lis     r3, __vvt__17TDrawSyncCallback@ha
+    addi    r0, r3, __vvt__17TDrawSyncCallback@l
+    lis     r3, __vvt__8TTimeRec@ha
     stw     r0, 0x0(r30)
-    subi    r0, r3, 0xae8
-    lis     r3, 0x802b
+    addi    r0, r3, __vvt__8TTimeRec@l
+    lis     r3, __ct__10TTimeArrayFv@ha
     stw     r0, 0x0(r30)
-    subi    r4, r3, 0x70bc
+    addi    r4, r3, __ct__10TTimeArrayFv@l
     addi    r3, r30, 0x4
     li      r5, 0x0
     li      r6, 0x204
@@ -159,10 +159,10 @@ start__8TTimeRecFUs: # 0x802a8f50
     sth     r31, 0x81a(r30)
     sth     r0, 0x81c(r30)
 branch_0x802a8fcc:
-    stw     r30, -0x5ff8(r13)
+    stw     r30, R13Off_m0x5ff8(r13)
 branch_0x802a8fd0:
     lwz     r0, 0x1c(sp)
-    lwz     r3, -0x5ff8(r13)
+    lwz     r3, R13Off_m0x5ff8(r13)
     lwz     r31, 0x14(sp)
     mtlr    r0
     lwz     r30, 0x10(sp)
@@ -186,3 +186,4 @@ append__10TTimeArrayFUlUl: # 0x802a8fec
 branch_0x802a9018:
     mr      r3, r0
     blr
+

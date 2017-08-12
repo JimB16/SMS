@@ -10,7 +10,7 @@ create__12JKRSolidHeapFUlP7JKRHeapb: # 0x802c46cc
     stw     r29, 0x1c(sp)
     mr.     r29, r4
     bne-    branch_0x802c46f4
-    lwz     r29, -0x5f28(r13)
+    lwz     r29, R13Off_m0x5f28(r13)
 branch_0x802c46f4:
     clrrwi  r31, r3, 4
     addi    r3, r31, 0x0
@@ -27,7 +27,7 @@ branch_0x802c471c:
     beq-    branch_0x802c4730
     addi    r6, r29, 0x0
     addi    r7, r30, 0x0
-    subi    r5, r31, 0x80
+    addi    r5, r31, -0x80
     bl      __ct__12JKRSolidHeapFPvUlP7JKRHeapb
 branch_0x802c4730:
     lwz     r0, 0x2c(sp)
@@ -47,8 +47,8 @@ __ct__12JKRSolidHeapFPvUlP7JKRHeapb: # 0x802c474c
     stw     r31, 0x24(sp)
     mr      r31, r3
     bl      __ct__7JKRHeapFPvUlP7JKRHeapb
-    lis     r3, 0x803e
-    addi    r0, r3, 0x70
+    lis     r3, __vvt__12JKRSolidHeap@h
+    addi    r0, r3, __vvt__12JKRSolidHeap@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0
@@ -76,8 +76,8 @@ __dt__12JKRSolidHeapFv: # 0x802c47a8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c47f8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x70
+    lis     r3, __vvt__12JKRSolidHeap@h
+    addi    r0, r3, __vvt__12JKRSolidHeap@l
     stw     r0, 0x0(r30)
     mr      r3, r30
     bl      dispose__7JKRHeapFv
@@ -161,7 +161,7 @@ allocFromHead__12JKRSolidHeapFUli: # 0x802c48c4
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r5, 0x0
-    subi    r5, r31, 0x1
+    addi    r5, r31, -0x1
     stw     r30, 0x20(sp)
     mr      r30, r3
     add     r4, r31, r4
@@ -172,9 +172,9 @@ allocFromHead__12JKRSolidHeapFUli: # 0x802c48c4
     lwz     r6, 0x6c(r3)
     lwz     r0, 0x68(r3)
     add     r3, r31, r6
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     and     r7, r5, r3
-    subi    r3, r4, 0x1
+    addi    r3, r4, -0x1
     and     r28, r5, r3
     subf    r3, r6, r7
     add     r3, r28, r3
@@ -191,14 +191,14 @@ allocFromHead__12JKRSolidHeapFUli: # 0x802c48c4
     b       branch_0x802c4984
 
 branch_0x802c4948:
-    lis     r3, 0x803b
+    lis     r3, unk_803a98c0@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x6740
+    addi    r3, r3, unk_803a98c0@l
     bl      JUTWarningConsole_f
     lbz     r0, 0x64(r30)
     cmplwi  r0, 0x1
     bne-    branch_0x802c4984
-    lwz     r12, -0x5f24(r13)
+    lwz     r12, R13Off_m0x5f24(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x802c4984
     mtlr    r12
@@ -229,13 +229,13 @@ allocFromTail__12JKRSolidHeapFUli: # 0x802c49a8
     li      r30, 0x0
     stw     r29, 0x1c(sp)
     addi    r29, r5, 0x0
-    subi    r5, r29, 0x1
+    addi    r5, r29, -0x1
     stw     r28, 0x18(sp)
     lwz     r6, 0x70(r3)
     add     r3, r29, r4
     not     r4, r5
     lwz     r0, 0x68(r31)
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     and     r28, r4, r3
     subf    r3, r28, r6
     and     r3, r4, r3
@@ -251,14 +251,14 @@ allocFromTail__12JKRSolidHeapFUli: # 0x802c49a8
     b       branch_0x802c4a58
 
 branch_0x802c4a1c:
-    lis     r3, 0x803b
+    lis     r3, unk_803a98f4@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x670c
+    addi    r3, r3, unk_803a98f4@l
     bl      JUTWarningConsole_f
     lbz     r0, 0x64(r31)
     cmplwi  r0, 0x1
     bne-    branch_0x802c4a58
-    lwz     r12, -0x5f24(r13)
+    lwz     r12, R13Off_m0x5f24(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x802c4a58
     mtlr    r12
@@ -281,10 +281,10 @@ branch_0x802c4a58:
 .globl free__12JKRSolidHeapFPv
 free__12JKRSolidHeapFPv: # 0x802c4a7c
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9928@ha
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    subi    r3, r3, 0x66d8
+    addi    r3, r3, unk_803a9928@l
     stwu    sp, -0x8(sp)
     bl      JUTWarningConsole_f
     lwz     r0, 0xc(sp)
@@ -367,10 +367,10 @@ branch_0x802c4b70:
 .globl resize__12JKRSolidHeapFPvUl
 resize__12JKRSolidHeapFPvUl: # 0x802c4b94
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9950@ha
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    subi    r3, r3, 0x66b0
+    addi    r3, r3, unk_803a9950@l
     stwu    sp, -0x8(sp)
     bl      JUTWarningConsole_f
     lwz     r0, 0xc(sp)
@@ -383,10 +383,10 @@ resize__12JKRSolidHeapFPvUl: # 0x802c4b94
 .globl getSize__12JKRSolidHeapFPv
 getSize__12JKRSolidHeapFPv: # 0x802c4bc4
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9980@ha
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    subi    r3, r3, 0x6680
+    addi    r3, r3, unk_803a9980@l
     stwu    sp, -0x8(sp)
     bl      JUTWarningConsole_f
     lwz     r0, 0xc(sp)
@@ -420,9 +420,9 @@ check__12JKRSolidHeapFv: # 0x802c4bf4
     cmplw   r0, r4
     mr      r5, r0
     beq-    branch_0x802c4c60
-    lis     r3, 0x803b
+    lis     r3, unk_803a99b0@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x6650
+    addi    r3, r3, unk_803a99b0@l
     li      r31, 0x0
     bl      JUTWarningConsole_f
 branch_0x802c4c60:
@@ -440,13 +440,13 @@ branch_0x802c4c60:
 .globl dump__12JKRSolidHeapFv
 dump__12JKRSolidHeapFv: # 0x802c4c84
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, unk_803a98c0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x28(sp)
-    subi    r30, r4, 0x6740
+    addi    r30, r4, unk_803a98c0@l
     addi    r3, r30, 0x124
     stw     r29, 0x24(sp)
     stw     r28, 0x20(sp)
@@ -486,10 +486,10 @@ dump__12JKRSolidHeapFv: # 0x802c4c84
     lis     r0, 0x4330
     stw     r28, 0x1c(sp)
     mr      r4, r28
-    lfd     f2, 0xa0(rtoc)
+    lfd     f2, 0xa0(r2)
     stw     r5, 0x14(sp)
     addi    r3, r30, 0x178
-    lfs     f3, 0x98(rtoc)
+    lfs     f3, 0x98(r2)
     creqv   6, 6, 6
     stw     r0, 0x18(sp)
     stw     r0, 0x10(sp)
@@ -584,7 +584,7 @@ branch_0x802c4e58:
 
 .globl getHeapType__12JKRSolidHeapFv
 getHeapType__12JKRSolidHeapFv: # 0x802c4e70
-    lis     r3, 0x534c
-    addi    r3, r3, 0x4944
+    lis     r3, unk_534c4944@h
+    addi    r3, r3, unk_534c4944@l
     blr
 

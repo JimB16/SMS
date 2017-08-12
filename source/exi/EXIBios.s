@@ -2,10 +2,10 @@
 .globl SetExiInterruptMask
 SetExiInterruptMask: # 0x80369b00
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, Ecb@h
     stw     r0, 0x4(sp)
     cmpwi   r3, 0x1
-    addi    r5, r5, 0x40a0
+    addi    r5, r5, Ecb@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r4, 0x0
@@ -55,7 +55,7 @@ branch_0x80369b98:
     b       branch_0x80369be0
 
 branch_0x80369ba4:
-    lis     r3, 0x8
+    lis     r3, unk_00080000@h
     bl      __OSUnmaskInterrupts
     b       branch_0x80369be0
 
@@ -89,10 +89,10 @@ EXIImm: # 0x80369bf4
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stmw    r19, 0x24(sp)
-    addi    r28, r3, 0x0
-    lis     r3, 0x8040
+    addi    r28, r3, unk_00080000@l
+    lis     r3, Ecb@h
     slwi    r8, r28, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     addi    r29, r4, 0x0
     addi    r30, r5, 0x0
     addi    r31, r6, 0x0
@@ -123,7 +123,7 @@ branch_0x80369c58:
     li      r6, 0x0
     bl      EXIClearInterrupts
     mulli   r0, r28, 0x3
-    lis     r3, 0x20
+    lis     r3, unk_00200007@h
     srw     r3, r3, r0
     bl      __OSUnmaskInterrupts
 branch_0x80369c8c:
@@ -137,9 +137,9 @@ branch_0x80369c8c:
     li      r25, 0x0
     bge-    branch_0x80369dcc
     cmpwi   r30, 0x8
-    subi    r3, r30, 0x8
+    addi    r3, r30, -0x8
     ble-    branch_0x80369e34
-    addi    r0, r3, 0x7
+    addi    r0, r3, unk_00200007@l
     srwi    r0, r0, 3
     cmpwi   r3, 0x0
     mtctr   r0
@@ -213,8 +213,8 @@ branch_0x80369dac:
     bdnz+      branch_0x80369dac
 branch_0x80369dcc:
     mulli   r0, r28, 0x14
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6800
+    lis     r3, unk_cc006800@h
+    addi    r3, r3, unk_cc006800@l
     add     r3, r3, r0
     stw     r25, 0x10(r3)
 branch_0x80369de0:
@@ -230,9 +230,9 @@ branch_0x80369df8:
     mulli   r0, r28, 0x14
     stw     r3, 0x10(r27)
     slwi    r5, r31, 2
-    subi    r4, r30, 0x1
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6800
+    addi    r4, r30, -0x1
+    lis     r3, unk_cc006800@h
+    addi    r3, r3, unk_cc006800@l
     ori     r5, r5, 0x1
     slwi    r4, r4, 4
     or      r4, r5, r4
@@ -317,9 +317,9 @@ EXIDma: # 0x80369ef0
     stwu    sp, -0x40(sp)
     stmw    r25, 0x24(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     slwi    r8, r27, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     addi    r28, r4, 0x0
     addi    r29, r5, 0x0
     addi    r30, r6, 0x0
@@ -355,10 +355,10 @@ branch_0x80369f54:
     bl      __OSUnmaskInterrupts
 branch_0x80369f88:
     lwz     r0, 0xc(r26)
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006800@h
     mulli   r5, r27, 0x14
     ori     r4, r0, 0x1
-    addi    r0, r3, 0x6800
+    addi    r0, r3, unk_cc006800@l
     stw     r4, 0xc(r26)
     rlwinm  r3, r28, 0, 6, 26
     add     r4, r0, r5
@@ -381,14 +381,14 @@ branch_0x80369fc8:
 .globl EXISync
 EXISync: # 0x80369fdc
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, Ecb@h
     stw     r0, 0x4(sp)
-    lis     r4, 0xcc00
-    addi    r0, r5, 0x40a0
+    lis     r4, unk_cc006800@h
+    addi    r0, r5, Ecb@l
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
     mulli   r30, r3, 0x14
-    addi    r29, r4, 0x6800
+    addi    r29, r4, unk_cc006800@l
     slwi    r3, r3, 6
     add     r31, r0, r3
     add     r29, r29, r30
@@ -413,15 +413,15 @@ branch_0x8036a014:
     lwz     r4, 0x10(r31)
     cmpwi   r4, 0x0
     beq-    branch_0x8036a164
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006800@h
     lwz     r7, 0x14(r31)
-    addi    r0, r3, 0x6800
+    addi    r0, r3, unk_cc006800@l
     add     r3, r0, r30
     lwz     r6, 0x10(r3)
     li      r5, 0x0
     ble-    branch_0x8036a164
     cmpwi   r4, 0x8
-    subi    r3, r4, 0x8
+    addi    r3, r4, -0x8
     ble-    branch_0x8036a138
     addi    r0, r3, 0x7
     srwi    r0, r0, 3
@@ -497,8 +497,8 @@ branch_0x8036a170:
     lwz     r0, 0x0(r29)
     rlwinm. r0, r0, 0, 25, 27
     bne-    branch_0x8036a1e0
-    lis     r3, 0xcc00
-    addi    r0, r3, 0x6800
+    lis     r3, unk_cc006800@h
+    addi    r0, r3, unk_cc006800@l
     add     r4, r0, r30
     lwzu    r3, 0x10(r4)
     addis   r0, r3, 0xfeff
@@ -540,8 +540,8 @@ branch_0x8036a1fc:
 .globl EXIClearInterrupts
 EXIClearInterrupts: # 0x8036a214
     mulli   r0, r3, 0x14
-    lis     r3, 0xcc00
-    addi    r7, r3, 0x6800
+    lis     r3, unk_cc006800@h
+    addi    r7, r3, unk_cc006800@l
     add     r7, r7, r0
     lwz     r0, 0x0(r7)
     mr      r3, r0
@@ -569,9 +569,9 @@ EXISetExiCallback: # 0x8036a25c
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     slwi    r0, r27, 6
-    addi    r31, r3, 0x40a0
+    addi    r31, r3, Ecb@l
     add     r30, r31, r0
     addi    r28, r4, 0x0
     bl      OSDisableInterrupts
@@ -607,10 +607,10 @@ __EXIProbe: # 0x8036a2d8
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r28, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     cmpwi   r28, 0x2
     slwi    r4, r28, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     add     r31, r0, r4
     bne-    branch_0x8036a30c
     li      r3, 0x1
@@ -621,8 +621,8 @@ branch_0x8036a30c:
     bl      OSDisableInterrupts
     mulli   r5, r28, 0x14
     lwz     r0, 0xc(r31)
-    lis     r4, 0xcc00
-    addi    r6, r4, 0x6800
+    lis     r4, unk_cc006800@h
+    addi    r6, r4, unk_cc006800@l
     add     r6, r6, r5
     rlwinm. r0, r0, 0, 28, 28
     lwz     r7, 0x0(r6)
@@ -631,11 +631,11 @@ branch_0x8036a30c:
     rlwinm. r0, r7, 0, 20, 20
     beq-    branch_0x8036a368
     lwz     r5, 0x0(r6)
-    lis     r3, 0x8000
+    lis     r3, unk_800030c0@h
     li      r4, 0x0
     andi.   r5, r5, 0x7f5
     slwi    r0, r28, 2
-    addi    r3, r3, 0x30c0
+    addi    r3, r3, unk_800030c0@l
     ori     r5, r5, 0x800
     stw     r5, 0x0(r6)
     stw     r4, 0x20(r31)
@@ -643,10 +643,10 @@ branch_0x8036a30c:
 branch_0x8036a368:
     rlwinm. r0, r7, 0, 19, 19
     beq-    branch_0x8036a3e0
-    lis     r31, 0x8000
+    lis     r31, unk_800030c0@h
     lwz     r0, 0xf8(r31)
-    lis     r3, 0x1062
-    addi    r3, r3, 0x4dd3
+    lis     r3, unk_10624dd3@h
+    addi    r3, r3, unk_10624dd3@l
     srwi    r0, r0, 2
     mulhwu  r0, r3, r0
     srwi    r27, r0, 6
@@ -658,7 +658,7 @@ branch_0x8036a368:
     li      r6, 0x64
     bl      __div2i
     slwi    r0, r28, 2
-    addi    r3, r31, 0x30c0
+    addi    r3, r31, unk_800030c0@l
     add     r3, r3, r0
     lwz     r0, 0x0(r3)
     addi    r4, r4, 0x1
@@ -675,10 +675,10 @@ branch_0x8036a3c8:
 
 branch_0x8036a3e0:
     li      r4, 0x0
-    lis     r3, 0x8000
+    lis     r3, unk_800030c0@h
     stw     r4, 0x20(r31)
     slwi    r0, r28, 2
-    addi    r3, r3, 0x30c0
+    addi    r3, r3, unk_800030c0@l
     stwx    r4, r3, r0
     li      r29, 0x0
     b       branch_0x8036a42c
@@ -690,10 +690,10 @@ branch_0x8036a400:
     beq-    branch_0x8036a42c
 branch_0x8036a410:
     li      r4, 0x0
-    lis     r3, 0x8000
+    lis     r3, unk_800030c0@h
     stw     r4, 0x20(r31)
     slwi    r0, r28, 2
-    addi    r3, r3, 0x30c0
+    addi    r3, r3, unk_800030c0@l
     stwx    r4, r3, r0
     li      r29, 0x0
 branch_0x8036a42c:
@@ -716,8 +716,8 @@ EXIProbe: # 0x8036a44c
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x8040
-    addi    r0, r3, 0x40a0
+    lis     r3, Ecb@h
+    addi    r0, r3, Ecb@l
     slwi    r4, r30, 6
     addi    r3, r30, 0x0
     add     r31, r0, r4
@@ -755,8 +755,8 @@ EXIProbeEx: # 0x8036a4cc
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x8040
-    addi    r0, r3, 0x40a0
+    lis     r3, Ecb@h
+    addi    r0, r3, Ecb@l
     slwi    r4, r30, 6
     addi    r3, r30, 0x0
     add     r31, r0, r4
@@ -784,9 +784,9 @@ branch_0x8036a534:
     b       branch_0x8036a568
 
 branch_0x8036a544:
-    lis     r3, 0x8000
+    lis     r3, unk_800030c0@h
     slwi    r0, r30, 2
-    addi    r3, r3, 0x30c0
+    addi    r3, r3, unk_800030c0@l
     lwzx    r0, r3, r0
     cmpwi   r0, 0x0
     beq-    branch_0x8036a564
@@ -811,8 +811,8 @@ EXIAttach: # 0x8036a580
     stwu    sp, -0x40(sp)
     stmw    r27, 0x2c(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0x8040
-    addi    r0, r3, 0x40a0
+    lis     r3, Ecb@h
+    addi    r0, r3, Ecb@l
     slwi    r5, r27, 6
     addi    r28, r4, 0x0
     addi    r3, r27, 0x0
@@ -862,7 +862,7 @@ branch_0x8036a62c:
     bl      EXIClearInterrupts
     mulli   r0, r27, 0x3
     stw     r28, 0x8(r30)
-    lis     r3, 0x10
+    lis     r3, unk_00100000@h
     srw     r3, r3, r0
     bl      __OSUnmaskInterrupts
     lwz     r0, 0xc(r30)
@@ -891,10 +891,10 @@ EXIDetach: # 0x8036a68c
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
-    addi    r29, r3, 0x0
-    lis     r3, 0x8040
+    addi    r29, r3, unk_00100000@l
+    lis     r3, Ecb@h
     slwi    r4, r29, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     add     r31, r0, r4
     bl      OSDisableInterrupts
     lwz     r0, 0xc(r31)
@@ -922,7 +922,7 @@ branch_0x8036a704:
     lwz     r3, 0xc(r31)
     mulli   r0, r29, 0x3
     rlwinm  r4, r3, 0, 29, 27
-    lis     r3, 0x70
+    lis     r3, unk_00700000@h
     stw     r4, 0xc(r31)
     srw     r3, r3, r0
     bl      __OSMaskInterrupts
@@ -945,10 +945,10 @@ EXISelect: # 0x8036a748
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
-    addi    r27, r3, 0x0
-    lis     r3, 0x8040
+    addi    r27, r3, unk_00700000@l
+    lis     r3, Ecb@h
     slwi    r6, r27, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     addi    r28, r4, 0x0
     addi    r29, r5, 0x0
     add     r31, r0, r6
@@ -983,10 +983,10 @@ branch_0x8036a7cc:
 
 branch_0x8036a7dc:
     lwz     r4, 0xc(r31)
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006800@h
     mulli   r0, r27, 0x14
     ori     r4, r4, 0x4
-    addi    r5, r3, 0x6800
+    addi    r5, r3, unk_cc006800@l
     stw     r4, 0xc(r31)
     add     r5, r5, r0
     lwz     r4, 0x0(r5)
@@ -1014,7 +1014,7 @@ branch_0x8036a840:
     b       branch_0x8036a854
 
 branch_0x8036a84c:
-    lis     r3, 0x2
+    lis     r3, unk_00020000@h
     bl      __OSMaskInterrupts
 branch_0x8036a854:
     mr      r3, r30
@@ -1034,11 +1034,11 @@ EXIDeselect: # 0x8036a874
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r3, 0x0
-    lis     r3, 0x8040
+    addi    r31, r3, unk_00020000@l
+    lis     r3, Ecb@h
     stw     r30, 0x18(sp)
     slwi    r4, r31, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     stw     r29, 0x14(sp)
     add     r30, r0, r4
     stw     r28, 0x10(sp)
@@ -1054,10 +1054,10 @@ EXIDeselect: # 0x8036a874
 
 branch_0x8036a8c8:
     lwz     r4, 0xc(r30)
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006800@h
     mulli   r0, r31, 0x14
     rlwinm  r4, r4, 0, 30, 28
-    addi    r3, r3, 0x6800
+    addi    r3, r3, unk_cc006800@l
     stw     r4, 0xc(r30)
     add     r3, r3, r0
     lwz     r29, 0x0(r3)
@@ -1117,9 +1117,9 @@ EXIIntrruptHandler: # 0x8036a984
     mflr    r0
     extsh   r5, r3
     stw     r0, 0x4(sp)
-    lis     r3, 0x5555
-    subi    r0, r5, 0x9
-    addi    r3, r3, 0x5556
+    lis     r3, unk_55555556@h
+    addi    r0, r5, -0x9
+    addi    r3, r3, unk_55555556@l
     stwu    sp, -0x2f8(sp)
     mulhw   r3, r3, r0
     stw     r31, 0x2f4(sp)
@@ -1127,15 +1127,15 @@ EXIIntrruptHandler: # 0x8036a984
     srwi    r0, r3, 31
     stw     r29, 0x2ec(sp)
     add     r31, r3, r0
-    lis     r3, 0xcc00
-    addi    r7, r3, 0x6800
+    lis     r3, unk_cc006800@h
+    addi    r7, r3, unk_cc006800@l
     mulli   r0, r31, 0x14
     add     r7, r7, r0
     lwz     r6, 0x0(r7)
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     slwi    r5, r31, 6
     andi.   r6, r6, 0x7f5
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     add     r3, r0, r5
     ori     r6, r6, 0x2
     stw     r6, 0x0(r7)
@@ -1172,28 +1172,28 @@ TCIntrruptHandler: # 0x8036aa4c
     mflr    r0
     extsh   r6, r3
     stw     r0, 0x4(sp)
-    lis     r3, 0x5555
-    subi    r0, r6, 0xa
+    lis     r3, unk_55555556@h
+    addi    r0, r6, -0xa
     stwu    sp, -0x2f8(sp)
-    addi    r3, r3, 0x5556
+    addi    r3, r3, unk_55555556@l
     mulhw   r3, r3, r0
     stw     r31, 0x2f4(sp)
     stw     r30, 0x2f0(sp)
     stw     r29, 0x2ec(sp)
     srwi    r0, r3, 31
     add     r30, r3, r0
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     stw     r28, 0x2e8(sp)
     lis     r0, 0x8000
     slwi    r5, r30, 6
-    addi    r3, r3, 0x40a0
+    addi    r3, r3, Ecb@l
     add     r31, r3, r5
     addi    r28, r4, 0x0
     srw     r3, r0, r6
     bl      __OSMaskInterrupts
     mulli   r6, r30, 0x14
-    lis     r3, 0xcc00
-    addi    r4, r3, 0x6800
+    lis     r3, unk_cc006800@h
+    addi    r4, r3, unk_cc006800@l
     add     r4, r4, r6
     lwz     r0, 0x0(r4)
     andi.   r0, r0, 0x7f5
@@ -1220,7 +1220,7 @@ TCIntrruptHandler: # 0x8036aa4c
     lwz     r6, 0x10(r3)
     ble-    branch_0x8036ac04
     cmpwi   r4, 0x8
-    subi    r3, r4, 0x8
+    addi    r3, r4, -0x8
     ble-    branch_0x8036abd8
     addi    r0, r3, 0x7
     srwi    r0, r0, 3
@@ -1316,9 +1316,9 @@ EXTIntrruptHandler: # 0x8036ac64
     mflr    r0
     extsh   r5, r3
     stw     r0, 0x4(sp)
-    lis     r3, 0x5555
-    subi    r0, r5, 0xb
-    addi    r3, r3, 0x5556
+    lis     r3, unk_55555556@h
+    addi    r0, r5, -0xb
+    addi    r3, r3, unk_55555556@l
     stwu    sp, -0x2f0(sp)
     mulhw   r3, r3, r0
     stmw    r27, 0x2dc(sp)
@@ -1330,13 +1330,13 @@ EXTIntrruptHandler: # 0x8036ac64
     srw     r3, r3, r0
     bl      __OSMaskInterrupts
     mulli   r0, r30, 0x14
-    lis     r4, 0xcc00
-    lis     r3, 0x8040
-    addi    r4, r4, 0x6800
+    lis     r4, unk_cc006800@h
+    lis     r3, Ecb@h
+    addi    r4, r4, unk_cc006800@l
     li      r31, 0x0
     stwx    r31, r4, r0
     slwi    r4, r30, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     add     r29, r0, r4
     lwz     r28, 0x8(r29)
     lwz     r0, 0xc(r29)
@@ -1369,9 +1369,9 @@ branch_0x8036ad18:
 .globl EXIInit
 EXIInit: # 0x8036ad2c
     mflr    r0
-    lis     r3, 0x80
+    lis     r3, unk_007f8000@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x8000
+    addi    r3, r3, unk_007f8000@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
@@ -1382,21 +1382,21 @@ EXIInit: # 0x8036ad2c
     li      r31, 0x0
     stw     r31, 0x6800(r5)
     li      r0, 0x2000
-    lis     r3, 0x8037
+    lis     r3, EXIIntrruptHandler@ha
     stw     r31, 0x6814(r5)
-    subi    r28, r3, 0x567c
+    addi    r28, r3, EXIIntrruptHandler@l
     addi    r4, r28, 0x0
     stw     r31, 0x6828(r5)
     li      r3, 0x9
     stw     r0, 0x6800(r5)
     bl      __OSSetInterruptHandler
-    lis     r3, 0x8037
-    subi    r29, r3, 0x55b4
+    lis     r3, TCIntrruptHandler@ha
+    addi    r29, r3, TCIntrruptHandler@l
     addi    r4, r29, 0x0
     li      r3, 0xa
     bl      __OSSetInterruptHandler
-    lis     r3, 0x8037
-    subi    r30, r3, 0x539c
+    lis     r3, EXTIntrruptHandler@ha
+    addi    r30, r3, EXTIntrruptHandler@l
     addi    r4, r30, 0x0
     li      r3, 0xb
     bl      __OSSetInterruptHandler
@@ -1418,10 +1418,10 @@ EXIInit: # 0x8036ad2c
     bl      OSGetConsoleType
     rlwinm. r0, r3, 0, 3, 3
     beq-    branch_0x8036ae20
-    lis     r5, 0x8000
+    lis     r5, unk_80000000@h
     stw     r31, 0x30c4(r5)
-    lis     r3, 0x8040
-    addi    r4, r3, 0x40a0
+    lis     r3, Ecb@h
+    addi    r4, r3, Ecb@l
     stw     r31, 0x30c0(r5)
     li      r3, 0x0
     stw     r31, 0x60(r4)
@@ -1447,12 +1447,12 @@ EXILock: # 0x8036ae40
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     slwi    r6, r27, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     add     r31, r0, r6
     addi    r28, r4, 0x0
-    addi    r29, r5, 0x0
+    addi    r29, r5, unk_80000000@l
     bl      OSDisableInterrupts
     lwz     r0, 0xc(r31)
     addi    r30, r3, 0x0
@@ -1523,9 +1523,9 @@ EXIUnlock: # 0x8036af34
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     slwi    r4, r28, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     add     r31, r0, r4
     bl      OSDisableInterrupts
     lwz     r0, 0xc(r31)
@@ -1579,9 +1579,9 @@ branch_0x8036aff0:
 
 .globl EXIGetState
 EXIGetState: # 0x8036b010
-    lis     r4, 0x8040
+    lis     r4, Ecb@h
     slwi    r3, r3, 6
-    addi    r0, r4, 0x40a0
+    addi    r0, r4, Ecb@l
     add     r3, r0, r3
     lwz     r3, 0xc(r3)
     blr
@@ -1608,10 +1608,10 @@ EXIGetID: # 0x8036b050
     stwu    sp, -0x40(sp)
     stmw    r24, 0x20(sp)
     addi    r26, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, Ecb@h
     cmpwi   r26, 0x2
     slwi    r6, r26, 6
-    addi    r0, r3, 0x40a0
+    addi    r0, r3, Ecb@l
     add     r31, r0, r6
     addi    r27, r4, 0x0
     addi    r28, r5, 0x0
@@ -1626,10 +1626,10 @@ EXIGetID: # 0x8036b050
     b       branch_0x8036b3b8
 
 branch_0x8036b0a4:
-    lis     r3, 0x8000
+    lis     r3, unk_800030c0@h
     lwz     r4, 0x20(r31)
     slwi    r0, r26, 2
-    addi    r30, r3, 0x30c0
+    addi    r30, r3, unk_800030c0@l
     add     r30, r30, r0
     lwz     r0, 0x0(r30)
     cmpw    r4, r0
@@ -1691,8 +1691,8 @@ branch_0x8036b160:
 branch_0x8036b178:
     cmpwi   r0, 0x0
     beq-    branch_0x8036b18c
-    lis     r3, 0x8037
-    subi    r5, r3, 0x4fd8
+    lis     r3, UnlockedHandler@ha
+    addi    r5, r3, UnlockedHandler@l
     b       branch_0x8036b190
 
 branch_0x8036b18c:
@@ -1823,9 +1823,9 @@ branch_0x8036b330:
     bl      OSRestoreInterrupts
 branch_0x8036b354:
     bl      OSDisableInterrupts
-    lis     r4, 0x8000
+    lis     r4, unk_800030c0@h
     slwi    r0, r26, 2
-    addi    r4, r4, 0x30c0
+    addi    r4, r4, unk_800030c0@l
     lwzx    r0, r4, r0
     subf    r4, r29, r0
     subic   r0, r4, 0x1

@@ -6,10 +6,10 @@ create__12JUTExceptionFP14JUTDirectPrint: # 0x802c662c
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x5f08(r13)
+    lwz     r0, R13Off_m0x5f08(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802c6678
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x84
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi
@@ -18,14 +18,14 @@ create__12JUTExceptionFP14JUTDirectPrint: # 0x802c662c
     mr      r4, r31
     bl      __ct__12JUTExceptionFP14JUTDirectPrint
 branch_0x802c666c:
-    stw     r3, -0x5f08(r13)
+    stw     r3, R13Off_m0x5f08(r13)
     lwz     r3, 0x2c(r3)
     bl      OSResumeThread
 branch_0x802c6678:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
-    lwz     r3, -0x5f08(r13)
+    lwz     r3, R13Off_m0x5f08(r13)
     mtlr    r0
     blr
 
@@ -33,22 +33,22 @@ branch_0x802c6678:
 .globl run__12JUTExceptionFv
 run__12JUTExceptionFv: # 0x802c6690
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, sMessageQueue__12JUTException@h
     stw     r0, 0x4(sp)
     li      r5, 0x1
     stwu    sp, -0x40(sp)
     stmw    r25, 0x24(sp)
-    addi    r31, r4, 0x218
+    addi    r31, r4, sMessageQueue__12JUTException@l
     addi    r25, r3, 0x0
     addi    r3, r31, 0x0
-    subi    r4, r13, 0x75b8
+    addi    r4, r13, R13Off_m0x75b8
     bl      OSInitMessageQueue
 branch_0x802c66bc:
     addi    r3, r31, 0x0
     addi    r4, sp, 0x1c
     li      r5, 0x1
     bl      OSReceiveMessage
-    lwz     r3, -0x5f08(r13)
+    lwz     r3, R13Off_m0x5f08(r13)
     lwz     r4, 0x1c(sp)
     lwz     r3, 0x64(r3)
     lwz     r30, 0x0(r4)
@@ -58,7 +58,7 @@ branch_0x802c66bc:
     lwz     r26, 0x10(r4)
     lwz     r0, 0x0(r3)
     stw     r0, 0x60(r25)
-    lwz     r3, -0x5f08(r13)
+    lwz     r3, R13Off_m0x5f08(r13)
     lwz     r4, 0x64(r3)
     lwz     r0, 0x0(r4)
     cmplwi  r0, 0x0
@@ -76,7 +76,7 @@ branch_0x802c670c:
     blrl
 branch_0x802c6730:
     bl      OSDisableInterrupts
-    lwz     r3, -0x5f08(r13)
+    lwz     r3, R13Off_m0x5f08(r13)
     addi    r4, r29, 0x0
     addi    r5, r28, 0x0
     addi    r6, r27, 0x0
@@ -100,12 +100,12 @@ __ct__12JUTExceptionFP14JUTDirectPrint: # 0x802c6750
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__9JKRThreadFUlii
-    lis     r3, 0x803e
+    lis     r3, __vvt__12JUTException@h
     lwz     r30, 0x8(sp)
-    addi    r0, r3, 0x278
+    addi    r0, r3, __vvt__12JUTException@l
     stw     r0, 0x0(r30)
-    lis     r3, 0x802c
-    addi    r31, r3, 0x6830
+    lis     r3, errorHandler__12JUTExceptionFUsP9OSContextUlUl@h
+    addi    r31, r3, errorHandler__12JUTExceptionFUsP9OSContextUlUl@l
     stw     r29, 0x64(r30)
     addi    r4, r31, 0x0
     li      r3, 0x2
@@ -123,10 +123,10 @@ __ct__12JUTExceptionFP14JUTDirectPrint: # 0x802c6750
     li      r3, 0xf
     bl      OSSetErrorHandler
     li      r6, 0x0
-    stw     r6, -0x5f04(r13)
+    stw     r6, R13Off_m0x5f04(r13)
     li      r5, -0x1
     li      r4, 0xa
-    stw     r6, -0x5f00(r13)
+    stw     r6, R13Off_m0x5f00(r13)
     li      r0, 0xff
     addi    r3, r30, 0x0
     stw     r6, 0x68(r30)
@@ -148,19 +148,19 @@ __ct__12JUTExceptionFP14JUTDirectPrint: # 0x802c6750
 .globl errorHandler__12JUTExceptionFUsP9OSContextUlUl
 errorHandler__12JUTExceptionFUsP9OSContextUlUl: # 0x802c6830
     mflr    r0
-    lis     r7, 0x8040
+    lis     r7, exCallbackObject@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
-    subi    r31, r7, 0x2a68
+    addi    r31, r7, exCallbackObject@l
     addi    r27, r3, 0x0
     addi    r28, r4, 0x0
     addi    r29, r5, 0x0
     addi    r30, r6, 0x0
     bl      PPCMfmsr
-    stw     r3, -0x5ef0(r13)
+    stw     r3, R13Off_m0x5ef0(r13)
     bl      getFpscr__12JUTExceptionFv
-    stw     r3, -0x5eec(r13)
+    stw     r3, R13Off_m0x5eec(r13)
     mr      r3, r28
     bl      OSFillFPUContext
     addi    r3, r27, 0x0
@@ -190,9 +190,9 @@ errorHandler__12JUTExceptionFUsP9OSContextUlUl: # 0x802c6830
     li      r6, 0x3
     bl      OSProtectRange
 branch_0x802c68d8:
-    lwz     r0, -0x5f04(r13)
-    lis     r3, 0x803e
-    addi    r3, r3, 0x218
+    lwz     r0, R13Off_m0x5f04(r13)
+    lis     r3, sMessageQueue__12JUTException@h
+    addi    r3, r3, sMessageQueue__12JUTException@l
     stw     r0, 0x0(r31)
     mr      r4, r31
     li      r5, 0x1
@@ -213,19 +213,19 @@ branch_0x802c68d8:
 .globl showFloat__12JUTExceptionFP9OSContext
 showFloat__12JUTExceptionFP9OSContext: # 0x802c6920
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, unk_803a9b00@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x48(sp)
     stfd    f31, 0x40(sp)
     stmw    r27, 0x2c(sp)
     addi    r27, r4, 0x0
-    subi    r30, r5, 0x6500
-    lwz     r3, -0x5ef4(r13)
+    addi    r30, r5, unk_803a9b00@l
+    lwz     r3, R13Off_m0x5ef4(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802c6d50
     addi    r4, r30, 0x138
     bl      print__10JUTConsoleFPCc
-    lfs     f31, 0xc0(rtoc)
+    lfs     f31, 0xc0(r2)
     li      r28, 0x0
     li      r31, 0x0
 branch_0x802c6960:
@@ -237,7 +237,7 @@ branch_0x802c6960:
     bl      __fpclassifyf__Ff
     cmpwi   r3, 0x1
     bne-    branch_0x802c6998
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r5, r28, 0x0
     addi    r4, r30, 0xe4
     crxor   6, 6, 6
@@ -252,7 +252,7 @@ branch_0x802c6998:
     lbz     r0, 0x20(sp)
     rlwinm. r0, r0, 0, 24, 24
     beq-    branch_0x802c69cc
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r5, r28, 0x0
     addi    r4, r30, 0xf8
     crxor   6, 6, 6
@@ -260,7 +260,7 @@ branch_0x802c6998:
     b       branch_0x802c6a1c
 
 branch_0x802c69cc:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r5, r28, 0x0
     addi    r4, r30, 0x108
     crxor   6, 6, 6
@@ -271,7 +271,7 @@ branch_0x802c69e4:
     lfs     f1, 0x20(sp)
     fcmpu   cr0, f31, f1
     bne-    branch_0x802c6a08
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r5, r28, 0x0
     addi    r4, r30, 0x118
     crxor   6, 6, 6
@@ -279,14 +279,14 @@ branch_0x802c69e4:
     b       branch_0x802c6a1c
 
 branch_0x802c6a08:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r5, r28, 0x0
     creqv   6, 6, 6
     addi    r4, r30, 0x12c
     bl      print_f__10JUTConsoleFPCce
 branch_0x802c6a1c:
-    lwz     r3, -0x5ef4(r13)
-    addi    r4, rtoc, 0xc4
+    lwz     r3, R13Off_m0x5ef4(r13)
+    addi    r4, r2, R2Off_0xc4
     bl      print__10JUTConsoleFPCc
     lfd     f0, 0xe8(r29)
     frsp    f0, f0
@@ -295,7 +295,7 @@ branch_0x802c6a1c:
     bl      __fpclassifyf__Ff
     cmpwi   r3, 0x1
     bne-    branch_0x802c6a5c
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xe4
     addi    r5, r28, 0xb
     crxor   6, 6, 6
@@ -310,7 +310,7 @@ branch_0x802c6a5c:
     lbz     r0, 0x1c(sp)
     rlwinm. r0, r0, 0, 24, 24
     beq-    branch_0x802c6a90
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xf8
     addi    r5, r28, 0xb
     crxor   6, 6, 6
@@ -318,7 +318,7 @@ branch_0x802c6a5c:
     b       branch_0x802c6ae0
 
 branch_0x802c6a90:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x108
     addi    r5, r28, 0xb
     crxor   6, 6, 6
@@ -329,7 +329,7 @@ branch_0x802c6aa8:
     lfs     f1, 0x1c(sp)
     fcmpu   cr0, f31, f1
     bne-    branch_0x802c6acc
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x118
     addi    r5, r28, 0xb
     crxor   6, 6, 6
@@ -337,14 +337,14 @@ branch_0x802c6aa8:
     b       branch_0x802c6ae0
 
 branch_0x802c6acc:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x12c
     creqv   6, 6, 6
     addi    r5, r28, 0xb
     bl      print_f__10JUTConsoleFPCce
 branch_0x802c6ae0:
-    lwz     r3, -0x5ef4(r13)
-    addi    r4, rtoc, 0xc4
+    lwz     r3, R13Off_m0x5ef4(r13)
+    addi    r4, r2, R2Off_0xc4
     bl      print__10JUTConsoleFPCc
     lfd     f0, 0x140(r29)
     frsp    f0, f0
@@ -353,7 +353,7 @@ branch_0x802c6ae0:
     bl      __fpclassifyf__Ff
     cmpwi   r3, 0x1
     bne-    branch_0x802c6b20
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xe4
     addi    r5, r28, 0x16
     crxor   6, 6, 6
@@ -368,7 +368,7 @@ branch_0x802c6b20:
     lbz     r0, 0x18(sp)
     rlwinm. r0, r0, 0, 24, 24
     beq-    branch_0x802c6b54
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xf8
     addi    r5, r28, 0x16
     crxor   6, 6, 6
@@ -376,7 +376,7 @@ branch_0x802c6b20:
     b       branch_0x802c6ba4
 
 branch_0x802c6b54:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x108
     addi    r5, r28, 0x16
     crxor   6, 6, 6
@@ -387,7 +387,7 @@ branch_0x802c6b6c:
     lfs     f1, 0x18(sp)
     fcmpu   cr0, f31, f1
     bne-    branch_0x802c6b90
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x118
     addi    r5, r28, 0x16
     crxor   6, 6, 6
@@ -395,14 +395,14 @@ branch_0x802c6b6c:
     b       branch_0x802c6ba4
 
 branch_0x802c6b90:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x12c
     creqv   6, 6, 6
     addi    r5, r28, 0x16
     bl      print_f__10JUTConsoleFPCce
 branch_0x802c6ba4:
-    lwz     r3, -0x5ef4(r13)
-    addi    r4, rtoc, 0xc8
+    lwz     r3, R13Off_m0x5ef4(r13)
+    addi    r4, r2, R2Off_0xc8
     bl      print__10JUTConsoleFPCc
     addi    r28, r28, 0x1
     cmpwi   r28, 0xa
@@ -415,7 +415,7 @@ branch_0x802c6ba4:
     bl      __fpclassifyf__Ff
     cmpwi   r3, 0x1
     bne-    branch_0x802c6bf4
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xe4
     crxor   6, 6, 6
     li      r5, 0xa
@@ -430,7 +430,7 @@ branch_0x802c6bf4:
     lbz     r0, 0x14(sp)
     rlwinm. r0, r0, 0, 24, 24
     beq-    branch_0x802c6c28
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xf8
     crxor   6, 6, 6
     li      r5, 0xa
@@ -438,7 +438,7 @@ branch_0x802c6bf4:
     b       branch_0x802c6c7c
 
 branch_0x802c6c28:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x108
     crxor   6, 6, 6
     li      r5, 0xa
@@ -446,11 +446,11 @@ branch_0x802c6c28:
     b       branch_0x802c6c7c
 
 branch_0x802c6c40:
-    lfs     f0, 0xc0(rtoc)
+    lfs     f0, 0xc0(r2)
     lfs     f1, 0x14(sp)
     fcmpu   cr0, f0, f1
     bne-    branch_0x802c6c68
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x118
     crxor   6, 6, 6
     li      r5, 0xa
@@ -458,14 +458,14 @@ branch_0x802c6c40:
     b       branch_0x802c6c7c
 
 branch_0x802c6c68:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x12c
     creqv   6, 6, 6
     li      r5, 0xa
     bl      print_f__10JUTConsoleFPCce
 branch_0x802c6c7c:
-    lwz     r3, -0x5ef4(r13)
-    addi    r4, rtoc, 0xc4
+    lwz     r3, R13Off_m0x5ef4(r13)
+    addi    r4, r2, R2Off_0xc4
     bl      print__10JUTConsoleFPCc
     lfd     f0, 0x138(r27)
     frsp    f0, f0
@@ -474,7 +474,7 @@ branch_0x802c6c7c:
     bl      __fpclassifyf__Ff
     cmpwi   r3, 0x1
     bne-    branch_0x802c6cbc
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xe4
     crxor   6, 6, 6
     li      r5, 0x15
@@ -489,7 +489,7 @@ branch_0x802c6cbc:
     lbz     r0, 0x10(sp)
     rlwinm. r0, r0, 0, 24, 24
     beq-    branch_0x802c6cf0
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0xf8
     crxor   6, 6, 6
     li      r5, 0x15
@@ -497,7 +497,7 @@ branch_0x802c6cbc:
     b       branch_0x802c6d44
 
 branch_0x802c6cf0:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x108
     crxor   6, 6, 6
     li      r5, 0x15
@@ -505,11 +505,11 @@ branch_0x802c6cf0:
     b       branch_0x802c6d44
 
 branch_0x802c6d08:
-    lfs     f0, 0xc0(rtoc)
+    lfs     f0, 0xc0(r2)
     lfs     f1, 0x10(sp)
     fcmpu   cr0, f0, f1
     bne-    branch_0x802c6d30
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x118
     crxor   6, 6, 6
     li      r5, 0x15
@@ -517,14 +517,14 @@ branch_0x802c6d08:
     b       branch_0x802c6d44
 
 branch_0x802c6d30:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x12c
     creqv   6, 6, 6
     li      r5, 0x15
     bl      print_f__10JUTConsoleFPCce
 branch_0x802c6d44:
-    lwz     r3, -0x5ef4(r13)
-    addi    r4, rtoc, 0xc8
+    lwz     r3, R13Off_m0x5ef4(r13)
+    addi    r4, r2, R2Off_0xc8
     bl      print__10JUTConsoleFPCc
 branch_0x802c6d50:
     lmw     r27, 0x2c(sp)
@@ -538,7 +538,7 @@ branch_0x802c6d50:
 .globl __fpclassifyf__Ff
 __fpclassifyf__Ff: # 0x802c6d68
     stwu    sp, -0x10(sp)
-    lis     r0, 0x7f80
+    lis     r0, unk_7f800001@h
     stfs    f1, 0x8(sp)
     lwz     r4, 0x8(sp)
     rlwinm  r3, r4, 0, 1, 8
@@ -552,7 +552,7 @@ __fpclassifyf__Ff: # 0x802c6d68
 branch_0x802c6d94:
     clrlwi. r0, r4, 9
     beq-    branch_0x802c6da4
-    li      r3, 0x1
+    addi    r3, r0, unk_7f800001@l
     b       branch_0x802c6dc8
 
 branch_0x802c6da4:
@@ -687,23 +687,23 @@ branch_0x802c6efc:
 .globl showStack__12JUTExceptionFP9OSContext
 showStack__12JUTExceptionFP9OSContext: # 0x802c6f08
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, unk_803a9b00@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r5, 0x6500
+    addi    r31, r5, unk_803a9b00@l
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     addi    r29, r4, 0x0
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
-    lwz     r0, -0x5ef4(r13)
+    lwz     r0, R13Off_m0x5ef4(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802c6fe8
     mr      r3, r0
     addi    r4, r31, 0x160
     bl      print__10JUTConsoleFPCc
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r31, 0x188
     crxor   6, 6, 6
     bl      print_f__10JUTConsoleFPCce
@@ -715,13 +715,13 @@ branch_0x802c6f68:
     lwz     r0, 0x78(r28)
     cmplw   r30, r0
     ble-    branch_0x802c6f84
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r31, 0x1a8
     bl      print__10JUTConsoleFPCc
     b       branch_0x802c6fe8
 
 branch_0x802c6f84:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     mr      r5, r29
     lwz     r6, 0x0(r29)
     addi    r4, r31, 0x1bc
@@ -732,7 +732,7 @@ branch_0x802c6f84:
     addi    r3, r28, 0x0
     li      r5, 0x0
     bl      showMapInfo_subroutine__12JUTExceptionFUlb
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     lwz     r3, 0x74(r28)
@@ -761,16 +761,16 @@ branch_0x802c6fe8:
 .globl showGPR__12JUTExceptionFP9OSContext
 showGPR__12JUTExceptionFP9OSContext: # 0x802c7008
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, unk_803a9b00@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
-    subi    r30, r5, 0x6500
+    addi    r30, r5, unk_803a9b00@l
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     addi    r28, r4, 0x0
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802c70a8
     addi    r4, r30, 0x22c
@@ -779,7 +779,7 @@ showGPR__12JUTExceptionFP9OSContext: # 0x802c7008
     li      r31, 0x0
 branch_0x802c704c:
     add     r7, r28, r31
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     lwz     r6, 0x0(r7)
     mr      r5, r29
     lwz     r8, 0x2c(r7)
@@ -793,7 +793,7 @@ branch_0x802c704c:
     cmpwi   r29, 0xa
     addi    r31, r31, 0x4
     blt+    branch_0x802c704c
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x27c
     lwz     r6, 0x28(r28)
     crxor   6, 6, 6
@@ -816,7 +816,7 @@ branch_0x802c70a8:
 showMapInfo_subroutine__12JUTExceptionFUlb: # 0x802c70c8
     mflr    r0
     stw     r0, 0x4(sp)
-    lis     r0, 0x8000
+    lis     r0, unk_80000000@h
     stwu    sp, -0x170(sp)
     stw     r31, 0x16c(sp)
     stw     r30, 0x168(sp)
@@ -826,19 +826,19 @@ showMapInfo_subroutine__12JUTExceptionFUlb: # 0x802c70c8
     addi    r28, r4, 0x0
     cmplw   r28, r0
     blt-    branch_0x802c7108
-    lis     r3, 0x8300
-    subi    r0, r3, 0x1
+    lis     r3, unk_82ffffff@ha
+    addi    r0, r3, unk_82ffffff@l
     cmplw   r0, r28
     bge-    branch_0x802c7110
 branch_0x802c7108:
-    li      r3, 0x0
+    addi    r3, r0, unk_80000000@l
     b       branch_0x802c7208
 
 branch_0x802c7110:
     clrlwi. r0, r29, 24
-    addi    r30, rtoc, 0xc8
+    addi    r30, r2, R2Off_0xc8
     bne-    branch_0x802c7120
-    addi    r30, rtoc, 0xcc
+    addi    r30, r2, R2Off_0xcc
 branch_0x802c7120:
     addi    r3, r28, 0x0
     addi    r4, sp, 0x158
@@ -854,10 +854,10 @@ branch_0x802c7120:
     addi    r4, sp, 0x12c
     li      r5, 0x20
     bl      search_name_part__FPUcPUci
-    lis     r4, 0x803b
-    lwz     r3, -0x5ef4(r13)
+    lis     r4, unk_803a9d98@ha
+    lwz     r3, R13Off_m0x5ef4(r13)
     lwz     r7, 0x150(sp)
-    subi    r4, r4, 0x6268
+    addi    r4, r4, unk_803a9d98@l
     lwz     r8, 0x154(sp)
     addi    r5, r30, 0x0
     crxor   6, 6, 6
@@ -865,7 +865,7 @@ branch_0x802c7120:
     bl      print_f__10JUTConsoleFPCce
     li      r29, 0x0
 branch_0x802c7180:
-    lis     r3, 0x8040
+    lis     r3, unk_80400000@h
     lwz     r0, 0x42cc(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x802c7204
@@ -918,22 +918,22 @@ branch_0x802c7208:
 .globl showGPRMap__12JUTExceptionFP9OSContext
 showGPRMap__12JUTExceptionFP9OSContext: # 0x802c7228
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, unk_803a9b00@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r23, 0x14(sp)
-    addi    r23, r3, 0x0
+    addi    r23, r3, unk_80400000@l
     addi    r24, r4, 0x0
-    subi    r28, r5, 0x6500
-    lwz     r0, -0x5ef4(r13)
+    addi    r28, r5, unk_803a9b00@l
+    lwz     r0, R13Off_m0x5ef4(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802c7304
     mr      r3, r0
     addi    r4, r28, 0x2b0
     li      r27, 0x0
     bl      print__10JUTConsoleFPCc
-    lis     r3, 0x8300
-    subi    r30, r3, 0x1
+    lis     r3, unk_82ffffff@ha
+    addi    r30, r3, unk_82ffffff@l
     li      r26, 0x0
     li      r31, 0x0
     lis     r29, 0x8000
@@ -943,7 +943,7 @@ branch_0x802c7278:
     blt-    branch_0x802c72e0
     cmplw   r30, r25
     blt-    branch_0x802c72e0
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r5, r26, 0x0
     addi    r6, r25, 0x0
     crxor   6, 6, 6
@@ -956,11 +956,11 @@ branch_0x802c7278:
     bl      showMapInfo_subroutine__12JUTExceptionFUlb
     clrlwi. r0, r3, 24
     bne-    branch_0x802c72cc
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r28, 0x2ec
     bl      print__10JUTConsoleFPCc
 branch_0x802c72cc:
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     lwz     r3, 0x74(r23)
@@ -972,7 +972,7 @@ branch_0x802c72e0:
     blt+    branch_0x802c7278
     clrlwi. r0, r27, 24
     bne-    branch_0x802c7304
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r28, 0x300
     bl      print__10JUTConsoleFPCc
 branch_0x802c7304:
@@ -996,8 +996,8 @@ readPad__12JUTExceptionFPUlPUl: # 0x802c7318
     bl      OSGetTime
     lis     r5, 0x8000
     lwz     r0, 0xf8(r5)
-    lis     r5, 0x1062
-    addi    r5, r5, 0x4dd3
+    lis     r5, unk_10624dd3@h
+    addi    r5, r5, unk_10624dd3@l
     srwi    r0, r0, 2
     mulhwu  r0, r5, r0
     addi    r23, r4, 0x0
@@ -1134,8 +1134,8 @@ printContext__12JUTExceptionFUsP9OSContextUlUl: # 0x802c7504
     addi    r28, r6, 0x0
     addi    r29, r7, 0x0
     lwz     r8, 0x68(r3)
-    lis     r3, 0x803b
-    subi    r30, r3, 0x6500
+    lis     r3, unk_803a9b00@ha
+    addi    r30, r3, unk_803a9b00@l
     addis   r0, r8, 0x1
     cmplwi  r0, 0xffff
     bne-    branch_0x802c7548
@@ -1166,26 +1166,26 @@ branch_0x802c7570:
 branch_0x802c7580:
     li      r22, 0x1
 branch_0x802c7584:
-    lwz     r3, -0x5f08(r13)
+    lwz     r3, R13Off_m0x5f08(r13)
     lwz     r3, 0x64(r3)
     lwz     r0, 0x0(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x802c7994
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802c7994
     lwz     r5, 0x60(r31)
     addi    r4, r30, 0x344
     crxor   6, 6, 6
     bl      print_f__10JUTConsoleFPCce
-    lis     r3, 0x803e
+    lis     r3, sCpuExpName__12JUTException@h
     clrlslwi  r4, r26, 16, 2
-    addi    r0, r3, 0x238
+    addi    r0, r3, sCpuExpName__12JUTException@l
     add     r24, r0, r4
     clrlwi  r25, r22, 24
     li      r23, 0x0
 branch_0x802c75cc:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802c761c
     lwz     r6, 0x0(r24)
@@ -1193,20 +1193,20 @@ branch_0x802c75cc:
     crxor   6, 6, 6
     addi    r4, r30, 0x1d4
     bl      print_f__10JUTConsoleFPCce
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x1f4
     lwz     r5, 0x198(r27)
     crxor   6, 6, 6
     lwz     r6, 0x19c(r27)
     bl      print_f__10JUTConsoleFPCce
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r5, r28, 0x0
     addi    r6, r29, 0x0
     crxor   6, 6, 6
     addi    r4, r30, 0x210
     bl      print_f__10JUTConsoleFPCce
 branch_0x802c761c:
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     lwz     r3, 0x70(r31)
@@ -1217,7 +1217,7 @@ branch_0x802c761c:
     addi    r3, r31, 0x0
     addi    r4, r27, 0x0
     bl      showGPR__12JUTExceptionFP9OSContext
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     lwz     r3, 0x70(r31)
@@ -1229,7 +1229,7 @@ branch_0x802c765c:
     addi    r3, r31, 0x0
     addi    r4, r27, 0x0
     bl      showGPRMap__12JUTExceptionFP9OSContext
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     lwz     r3, 0x70(r31)
@@ -1241,16 +1241,16 @@ branch_0x802c7688:
     addi    r3, r31, 0x0
     addi    r4, r27, 0x0
     bl      showFloat__12JUTExceptionFP9OSContext
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802c76c0
-    lwz     r5, -0x5ef0(r13)
+    lwz     r5, R13Off_m0x5ef0(r13)
     addi    r4, r30, 0x328
-    lwz     r6, -0x5eec(r13)
+    lwz     r6, R13Off_m0x5eec(r13)
     crxor   6, 6, 6
     bl      print_f__10JUTConsoleFPCce
 branch_0x802c76c0:
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     lwz     r3, 0x70(r31)
@@ -1262,25 +1262,25 @@ branch_0x802c76d4:
     addi    r3, r31, 0x0
     addi    r4, r27, 0x0
     bl      showStack__12JUTExceptionFP9OSContext
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     lwz     r3, 0x74(r31)
     bl      waitTime__12JUTExceptionFl
 branch_0x802c7700:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r30, 0x37c
     bl      print__10JUTConsoleFPCc
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     cmpwi   r23, 0x0
     bne-    branch_0x802c775c
-    lwz     r0, -0x5f00(r13)
+    lwz     r0, R13Off_m0x5f00(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802c775c
     bl      OSEnableInterrupts
-    lwz     r12, -0x5f00(r13)
+    lwz     r12, R13Off_m0x5f00(r13)
     addi    r21, r3, 0x0
     addi    r3, r26, 0x0
     mtlr    r12
@@ -1297,7 +1297,7 @@ branch_0x802c775c:
     beq-    branch_0x802c7784
     cmplwi  r25, 0x0
     beq-    branch_0x802c7784
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     lwzu    r0, 0x58(r3)
     clrlwi  r0, r0, 31
     stw     r0, 0x0(r3)
@@ -1318,7 +1318,7 @@ branch_0x802c7798:
     li      r3, 0x0
     cmplwi  r0, 0x100
     bne-    branch_0x802c77c8
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     lwz     r4, 0x24(r3)
     bl      scroll__10JUTConsoleFi
     li      r3, 0x1
@@ -1326,7 +1326,7 @@ branch_0x802c77c8:
     lwz     r0, 0x48(sp)
     cmplwi  r0, 0x200
     bne-    branch_0x802c77e8
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     lwz     r0, 0x24(r3)
     neg     r4, r0
     bl      scroll__10JUTConsoleFi
@@ -1355,7 +1355,7 @@ branch_0x802c7814:
 branch_0x802c7824:
     li      r4, -0x8
 branch_0x802c7828:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     bl      scroll__10JUTConsoleFi
     li      r3, 0x1
     li      r23, 0x0
@@ -1385,7 +1385,7 @@ branch_0x802c7868:
 branch_0x802c7878:
     li      r4, 0x8
 branch_0x802c787c:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     bl      scroll__10JUTConsoleFi
     li      r3, 0x1
     li      r21, 0x0
@@ -1405,7 +1405,7 @@ branch_0x802c78b0:
     bl      VIGetRetraceCount
     cmplw   r22, r3
     beq+    branch_0x802c78b0
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
 branch_0x802c78c8:
@@ -1414,28 +1414,28 @@ branch_0x802c78c8:
     b       branch_0x802c7798
 
 branch_0x802c78d4:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     lwz     r0, 0x24(r3)
     neg     r4, r0
     bl      scroll__10JUTConsoleFi
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
     li      r3, 0x7d0
     bl      waitTime__12JUTExceptionFl
 branch_0x802c78f8:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     lwz     r21, 0x48(r3)
     b       branch_0x802c7954
 
 branch_0x802c7904:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     li      r4, 0x1
     bl      scroll__10JUTConsoleFi
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     li      r4, 0x1
     bl      drawDirect__17JUTConsoleManagerCFb
-    lwz     r24, -0x5ef4(r13)
+    lwz     r24, R13Off_m0x5ef4(r13)
     lwz     r23, 0x48(r24)
     mr      r3, r24
     bl      getLineOffset__10JUTConsoleCFv
@@ -1448,14 +1448,14 @@ branch_0x802c7904:
     ble-    branch_0x802c795c
     li      r3, 0x14
     bl      waitTime__12JUTExceptionFl
-    subi    r21, r21, 0x1
+    addi    r21, r21, -0x1
 branch_0x802c7954:
     cmplwi  r21, 0x0
     bne+    branch_0x802c7904
 branch_0x802c795c:
     li      r3, 0xbb8
     bl      waitTime__12JUTExceptionFl
-    lwz     r24, -0x5ef4(r13)
+    lwz     r24, R13Off_m0x5ef4(r13)
     lwz     r23, 0x48(r24)
     mr      r3, r24
     bl      getLineOffset__10JUTConsoleCFv
@@ -1487,8 +1487,8 @@ waitTime__12JUTExceptionFl: # 0x802c79a8
     bl      OSGetTime
     lis     r5, 0x8000
     lwz     r0, 0xf8(r5)
-    lis     r5, 0x1062
-    addi    r5, r5, 0x4dd3
+    lis     r5, unk_10624dd3@h
+    addi    r5, r5, unk_10624dd3@l
     srwi    r0, r0, 2
     mulhwu  r0, r5, r0
     addi    r29, r4, 0x0
@@ -1520,13 +1520,13 @@ branch_0x802c7a20:
 .globl createFB__12JUTExceptionFv
 createFB__12JUTExceptionFv: # 0x802c7a34
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, GXNtsc480Int@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x18(sp)
-    subi    r30, r4, 0x6f8c
+    addi    r30, r4, GXNtsc480Int@l
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     bl      OSGetArenaHi
@@ -1538,7 +1538,7 @@ createFB__12JUTExceptionFv: # 0x802c7a34
     slwi    r4, r0, 1
     subf    r0, r4, r3
     clrrwi  r5, r0, 5
-    subi    r0, r5, 0x14
+    addi    r0, r5, -0x14
     clrrwi. r3, r0, 5
     addi    r7, r4, 0x0
     addi    r29, r5, 0x0
@@ -1588,8 +1588,8 @@ getFpscr__12JUTExceptionFv: # 0x802c7afc
 
 .globl setPreUserCallback__12JUTExceptionFPFUsP9OSContextUlUl_v
 setPreUserCallback__12JUTExceptionFPFUsP9OSContextUlUl_v: # 0x802c7b24
-    lwz     r0, -0x5f04(r13)
-    stw     r3, -0x5f04(r13)
+    lwz     r0, R13Off_m0x5f04(r13)
+    stw     r3, R13Off_m0x5f04(r13)
     mr      r3, r0
     blr
 
@@ -1627,8 +1627,8 @@ branch_0x802c7b78:
     bl      __ct__10JSUPtrLinkFPv
     stw     r30, 0x0(r31)
 branch_0x802c7ba0:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42cc
+    lis     r3, sMapFileList__12JUTException@h
+    addi    r3, r3, sMapFileList__12JUTException@l
     addi    r4, r31, 0x4
     bl      append__10JSUPtrListFP10JSUPtrLink
 branch_0x802c7bb0:
@@ -1660,7 +1660,7 @@ queryMapAddress__12JUTExceptionFPcUllPUlPUlPcUlbb: # 0x802c7bc8
     mr      r4, r0
     bl      strcpy
     addi    r3, sp, 0x48
-    addi    r4, rtoc, 0xd0
+    addi    r4, r2, R2Off_0xd0
     bl      strcat
     stw     r31, 0x8(sp)
     addi    r4, r24, 0x0
@@ -1679,8 +1679,8 @@ queryMapAddress__12JUTExceptionFPcUllPUlPUlPcUlbb: # 0x802c7bc8
     b       branch_0x802c7cac
 
 branch_0x802c7c54:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42cc
+    lis     r3, sMapFileList__12JUTException@h
+    addi    r3, r3, sMapFileList__12JUTException@l
     lwz     r3, 0x0(r3)
     cmplwi  r3, 0x0
     beq-    branch_0x802c7ca8
@@ -1746,15 +1746,15 @@ branch_0x802c7d00:
     b       branch_0x802c7ff8
 
 branch_0x802c7d34:
-    lis     r3, 0x803b
+    lis     r3, unk_803a9ea0@ha
     lbz     r17, 0xaa8(sp)
-    subi    r24, r14, 0x1
+    addi    r24, r14, -0x1
     addi    r26, sp, 0x39
     addi    r27, sp, 0x4b
     addi    r28, sp, 0x43
     addi    r16, sp, 0x56
     addi    r25, sp, 0x28
-    subi    r15, r3, 0x6160
+    addi    r15, r3, unk_803a9ea0@l
     li      r14, 0x0
 branch_0x802c7d5c:
     li      r29, 0x0
@@ -1834,7 +1834,7 @@ branch_0x802c7e28:
     li      r4, 0x0
     li      r5, 0x10
     extsb   r6, r0
-    subi    r0, r6, 0x30
+    addi    r0, r6, -0x30
     slwi    r0, r0, 28
     or      r31, r0, r3
     addi    r3, r28, 0x0
@@ -1898,7 +1898,7 @@ branch_0x802c7f34:
     lbz     r0, -0x1(r4)
     cmpwi   r0, 0x20
     bne-    branch_0x802c7f4c
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
 branch_0x802c7f4c:
     li      r0, 0x0
     cmplwi  r17, 0x0
@@ -1906,11 +1906,11 @@ branch_0x802c7f4c:
     beq-    branch_0x802c7f98
     clrlwi. r0, r18, 24
     beq-    branch_0x802c7f70
-    lwz     r3, -0x5ef4(r13)
-    addi    r4, rtoc, 0xc8
+    lwz     r3, R13Off_m0x5ef4(r13)
+    addi    r4, r2, R2Off_0xc8
     bl      print__10JUTConsoleFPCc
 branch_0x802c7f70:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     addi    r4, r15, 0x0
     addi    r5, r30, 0x0
     crxor   6, 6, 6
@@ -1932,8 +1932,8 @@ branch_0x802c7f9c:
     beq-    branch_0x802c7fcc
     clrlwi. r0, r18, 24
     beq-    branch_0x802c7fcc
-    lwz     r3, -0x5ef4(r13)
-    addi    r4, rtoc, 0xc8
+    lwz     r3, R13Off_m0x5ef4(r13)
+    addi    r4, r2, R2Off_0xc8
     bl      print__10JUTConsoleFPCc
 branch_0x802c7fcc:
     addi    r3, sp, 0x238
@@ -1978,28 +1978,28 @@ branch_0x802c8038:
     bl      getLineFromObjectSize__10JUTConsoleFUlUi
     cmplwi  r3, 0x0
     beq-    branch_0x802c80d4
-    stw     r30, -0x5efc(r13)
+    stw     r30, R13Off_m0x5efc(r13)
     li      r3, 0x32
-    stw     r31, -0x5ef8(r13)
-    lwz     r4, -0x5efc(r13)
-    lwz     r5, -0x5ef8(r13)
+    stw     r31, R13Off_m0x5ef8(r13)
+    lwz     r4, R13Off_m0x5efc(r13)
+    lwz     r5, R13Off_m0x5ef8(r13)
     bl      create__10JUTConsoleFUiPvUl
-    stw     r3, -0x5ef4(r13)
-    lwz     r3, -0x5dc8(r13)
-    lwz     r4, -0x5ef4(r13)
+    stw     r3, R13Off_m0x5ef4(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
+    lwz     r4, R13Off_m0x5ef4(r13)
     bl      setDirectConsole__17JUTConsoleManagerFP10JUTConsole
-    lwz     r5, -0x5ef4(r13)
+    lwz     r5, R13Off_m0x5ef4(r13)
     li      r4, 0xf
-    lfs     f0, 0xd8(rtoc)
+    lfs     f0, 0xd8(r2)
     li      r3, 0x1a
     li      r0, 0x17
     stfs    f0, 0x50(r5)
-    lfs     f0, 0xdc(rtoc)
+    lfs     f0, 0xdc(r2)
     stfs    f0, 0x54(r5)
-    lwz     r5, -0x5ef4(r13)
+    lwz     r5, R13Off_m0x5ef4(r13)
     stw     r4, 0x40(r5)
     stw     r3, 0x44(r5)
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     stw     r0, 0x48(r3)
     lwz     r0, 0x48(r3)
     lwz     r4, 0x24(r3)
@@ -2007,11 +2007,11 @@ branch_0x802c8038:
     ble-    branch_0x802c80bc
     stw     r4, 0x48(r3)
 branch_0x802c80bc:
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     li      r4, 0x1
     li      r0, 0x3
     stb     r4, 0x64(r3)
-    lwz     r3, -0x5ef4(r13)
+    lwz     r3, R13Off_m0x5ef4(r13)
     stw     r0, 0x58(r3)
 branch_0x802c80d4:
     lwz     r0, 0x24(sp)
@@ -2044,8 +2044,8 @@ __dt__12JUTExceptionFv: # 0x802c810c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c8154
-    lis     r3, 0x803e
-    addi    r0, r3, 0x278
+    lis     r3, __vvt__12JUTException@h
+    addi    r0, r3, __vvt__12JUTException@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2067,18 +2067,18 @@ branch_0x802c8154:
 .globl __sinit_JUTException_cpp
 __sinit_JUTException_cpp: # 0x802c8170
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sMapFileList__12JUTException@h
     stw     r0, 0x4(sp)
     li      r4, 0x0
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x42cc
+    addi    r31, r3, sMapFileList__12JUTException@l
     addi    r3, r31, 0x0
     bl      __ct__10JSUPtrListFb
-    lis     r4, 0x802d
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2a54
-    subi    r4, r4, 0x7e40
+    lis     r4, __dt__39JSUList_Q212JUTException12JUTExMapFile_Fv@ha
+    lis     r3, unk_803fd5ac@ha
+    addi    r5, r3, unk_803fd5ac@l
+    addi    r4, r4, __dt__39JSUList_Q212JUTException12JUTExMapFile_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

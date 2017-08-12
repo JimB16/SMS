@@ -122,8 +122,8 @@ ReadArrayUnlock: # 0x80355734
     stwu    sp, -0x40(sp)
     stmw    r26, 0x28(sp)
     addi    r29, r3, 0x0
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     mulli   r8, r29, 0x110
     addi    r26, r4, 0x0
     addi    r30, r5, 0x0
@@ -219,14 +219,14 @@ DummyLen: # 0x80355878
     stw     r29, 0x1c(sp)
     li      r29, 0x0
     bl      OSGetTick
-    stw     r3, -0x7308(r13)
-    lis     r3, 0x41c6
-    addi    r31, r3, 0x4e6d
-    lwz     r0, -0x7308(r13)
+    stw     r3, R13Off_m0x7308(r13)
+    lis     r3, unk_41c64e6d@h
+    addi    r31, r3, unk_41c64e6d@l
+    lwz     r0, R13Off_m0x7308(r13)
     mullw   r3, r0, r31
     addi    r0, r3, 0x3039
-    stw     r0, -0x7308(r13)
-    lwz     r0, -0x7308(r13)
+    stw     r0, R13Off_m0x7308(r13)
+    lwz     r0, R13Off_m0x7308(r13)
     extrwi  r3, r0, 5, 11
     addi    r3, r3, 0x1
     b       branch_0x80355904
@@ -239,13 +239,13 @@ branch_0x803558c8:
     ble-    branch_0x803558e0
     li      r30, 0x1
 branch_0x803558e0:
-    stw     r0, -0x7308(r13)
+    stw     r0, R13Off_m0x7308(r13)
     addi    r29, r29, 0x1
-    lwz     r0, -0x7308(r13)
+    lwz     r0, R13Off_m0x7308(r13)
     mullw   r3, r0, r31
     addi    r0, r3, 0x3039
-    stw     r0, -0x7308(r13)
-    lwz     r0, -0x7308(r13)
+    stw     r0, R13Off_m0x7308(r13)
+    lwz     r0, R13Off_m0x7308(r13)
     extrwi  r3, r0, 5, 11
     addi    r3, r3, 0x1
 branch_0x80355904:
@@ -274,9 +274,9 @@ __CARDUnlock: # 0x8035593c
     stwu    sp, -0x120(sp)
     stmw    r22, 0xf8(sp)
     addi    r24, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     mulli   r5, r24, 0x110
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     addi    r23, r4, 0x0
     addi    r30, r31, 0x30
@@ -286,16 +286,16 @@ __CARDUnlock: # 0x8035593c
     addi    r29, r3, 0x0
     addi    r22, r28, 0x20
     bl      OSGetTick
-    stw     r3, -0x7308(r13)
-    lis     r3, 0x41c6
-    lis     r5, 0x7fed
-    lwz     r4, -0x7308(r13)
-    addi    r0, r3, 0x4e6d
-    subi    r25, r5, 0x8000
+    stw     r3, R13Off_m0x7308(r13)
+    lis     r3, unk_41c64e6d@h
+    lis     r5, unk_7fec8000@ha
+    lwz     r4, R13Off_m0x7308(r13)
+    addi    r0, r3, unk_41c64e6d@l
+    addi    r25, r5, unk_7fec8000@l
     mullw   r3, r4, r0
     addi    r0, r3, 0x3039
-    stw     r0, -0x7308(r13)
-    lwz     r0, -0x7308(r13)
+    stw     r0, R13Off_m0x7308(r13)
+    lwz     r0, R13Off_m0x7308(r13)
     extrwi  r0, r0, 15, 1
     or      r25, r25, r0
     clrrwi  r25, r25, 12
@@ -319,7 +319,7 @@ branch_0x803559e4:
     li      r3, 0x0
     ble-    branch_0x80355b5c
     cmplwi  r4, 0x8
-    subi    r5, r4, 0x8
+    addi    r5, r4, -0x8
     ble-    branch_0x80355b24
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -769,7 +769,7 @@ branch_0x80355f94:
     xor     r5, r5, r6
     ble-    branch_0x8035623c
     cmplwi  r4, 0x8
-    subi    r8, r4, 0x8
+    addi    r8, r4, -0x8
     ble-    branch_0x80356204
     addi    r7, r8, 0x7
     srwi    r7, r7, 3
@@ -985,19 +985,19 @@ branch_0x803563b4:
     li      r4, 0x10
     bl      DCFlushRange
     li      r0, 0xff
-    lis     r3, 0x803f
+    lis     r3, CardData@ha
     stw     r0, 0x4(r30)
-    subi    r3, r3, 0x73e0
+    addi    r3, r3, CardData@l
     addis   r0, r3, 0x8000
     stw     r0, 0xc(r30)
     li      r0, 0x160
-    lis     r4, 0x8035
+    lis     r4, InitCallback@h
     stw     r0, 0x10(r30)
-    lis     r3, 0x8035
+    lis     r3, DoneCallback@h
     li      r5, 0x10
     stw     r27, 0x14(r30)
-    addi    r4, r4, 0x6494
-    addi    r0, r3, 0x6504
+    addi    r4, r4, InitCallback@l
+    addi    r0, r3, DoneCallback@l
     sth     r5, 0x24(r30)
     mr      r3, r30
     stw     r4, 0x28(r30)
@@ -1020,9 +1020,9 @@ branch_0x80356480:
 .globl InitCallback
 InitCallback: # 0x80356494
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, __CARDBlock@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x3460
+    addi    r4, r4, __CARDBlock@l
     addi    r0, r4, 0x30
     stwu    sp, -0x18(sp)
     cmplw   r0, r3
@@ -1055,9 +1055,9 @@ branch_0x803564e4:
 .globl DoneCallback
 DoneCallback: # 0x80356504
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, __CARDBlock@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x3460
+    addi    r4, r4, __CARDBlock@l
     addi    r0, r4, 0x30
     stwu    sp, -0x88(sp)
     cmplw   r0, r3
@@ -1110,7 +1110,7 @@ branch_0x803565b0:
     cmplwi  r4, 0x0
     ble-    branch_0x80356738
     cmplwi  r4, 0x8
-    subi    r6, r4, 0x8
+    addi    r6, r4, -0x8
     ble-    branch_0x80356700
     addi    r5, r6, 0x7
     srwi    r5, r5, 3

@@ -34,7 +34,7 @@ branch_0x8033b21c:
     cmpwi   r0, 0x0
     bne-    branch_0x8033b238
     lwz     r5, 0x0(r3)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stw     r0, 0x0(r3)
     b       branch_0x8033b240
 

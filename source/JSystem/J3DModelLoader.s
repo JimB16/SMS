@@ -32,13 +32,13 @@ branch_0x802e6f50:
     addis   r0, r4, 0x9d93
     cmplwi  r0, 0x6432
     bne-    branch_0x802e6fac
-    lis     r4, 0x803e
-    addi    r31, r4, 0x13bc
+    lis     r4, __vvt__14J3DModelLoader@h
+    addi    r31, r4, __vvt__14J3DModelLoader@l
     stw     r31, 0x28(sp)
     li      r0, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__18J3DModelLoader_v21@h
     stw     r0, 0x2c(sp)
-    addi    r30, r4, 0x1360
+    addi    r30, r4, __vvt__18J3DModelLoader_v21@l
     addi    r4, r3, 0x0
     stw     r0, 0x34(sp)
     addi    r3, sp, 0x28
@@ -57,13 +57,13 @@ branch_0x802e6fac:
     addis   r0, r4, 0x9d93
     cmplwi  r0, 0x6433
     bne-    branch_0x802e7008
-    lis     r4, 0x803e
-    addi    r30, r4, 0x13bc
+    lis     r4, __vvt__14J3DModelLoader@h
+    addi    r30, r4, __vvt__14J3DModelLoader@l
     stw     r30, 0x18(sp)
     li      r0, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__18J3DModelLoader_v26@h
     stw     r0, 0x1c(sp)
-    addi    r31, r4, 0x1388
+    addi    r31, r4, __vvt__18J3DModelLoader_v26@l
     addi    r4, r3, 0x0
     stw     r0, 0x24(sp)
     addi    r3, sp, 0x18
@@ -93,12 +93,12 @@ __dt__18J3DModelLoader_v26Fv: # 0x802e7024
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e7068
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1388
+    lis     r3, __vvt__18J3DModelLoader_v26@h
+    addi    r0, r3, __vvt__18J3DModelLoader_v26@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802e7058
-    lis     r3, 0x803e
-    addi    r0, r3, 0x13bc
+    lis     r3, __vvt__14J3DModelLoader@h
+    addi    r0, r3, __vvt__14J3DModelLoader@l
     stw     r0, 0x0(r31)
 branch_0x802e7058:
     extsh.  r0, r4
@@ -122,12 +122,12 @@ __dt__18J3DModelLoader_v21Fv: # 0x802e7080
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e70c4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1360
+    lis     r3, __vvt__18J3DModelLoader_v21@h
+    addi    r0, r3, __vvt__18J3DModelLoader_v21@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802e70b4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x13bc
+    lis     r3, __vvt__14J3DModelLoader@h
+    addi    r0, r3, __vvt__14J3DModelLoader@l
     stw     r0, 0x0(r31)
 branch_0x802e70b4:
     extsh.  r0, r4
@@ -151,8 +151,8 @@ __dt__14J3DModelLoaderFv: # 0x802e70dc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e7110
-    lis     r3, 0x803e
-    addi    r3, r3, 0x13bc
+    lis     r3, __vvt__14J3DModelLoader@h
+    addi    r3, r3, __vvt__14J3DModelLoader@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802e7110
@@ -199,13 +199,13 @@ branch_0x802e7174:
     addis   r0, r4, 0x9d93
     cmplwi  r0, 0x7432
     bne-    branch_0x802e71d0
-    lis     r4, 0x803e
-    addi    r31, r4, 0x13bc
+    lis     r4, __vvt__14J3DModelLoader@h
+    addi    r31, r4, __vvt__14J3DModelLoader@l
     stw     r31, 0x24(sp)
     li      r0, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__18J3DModelLoader_v21@h
     stw     r0, 0x28(sp)
-    addi    r30, r4, 0x1360
+    addi    r30, r4, __vvt__18J3DModelLoader_v21@l
     addi    r4, r3, 0x0
     stw     r0, 0x30(sp)
     addi    r3, sp, 0x24
@@ -224,13 +224,13 @@ branch_0x802e71d0:
     addis   r0, r4, 0x9d93
     cmplwi  r0, 0x7433
     bne-    branch_0x802e722c
-    lis     r4, 0x803e
-    addi    r30, r4, 0x13bc
+    lis     r4, __vvt__14J3DModelLoader@h
+    addi    r30, r4, __vvt__14J3DModelLoader@l
     stw     r30, 0x14(sp)
     li      r0, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__18J3DModelLoader_v26@h
     stw     r0, 0x18(sp)
-    addi    r31, r4, 0x1388
+    addi    r31, r4, __vvt__18J3DModelLoader_v26@l
     addi    r4, r3, 0x0
     stw     r0, 0x20(sp)
     addi    r3, sp, 0x14
@@ -272,24 +272,24 @@ branch_0x802e727c:
     lwz     r3, 0x4(r25)
     bl      clear__12J3DModelDataFv
     lwz     r4, 0x4(r25)
-    lis     r10, 0x4d41
-    lis     r3, 0x5654
-    lis     r5, 0x5445
+    lis     r10, unk_4d415432@h
+    lis     r3, unk_56545831@h
+    lis     r5, unk_54455831@h
     stw     r26, 0x4(r4)
-    lis     r4, 0x5348
-    lis     r6, 0x4a4e
-    lis     r7, 0x4452
-    lis     r9, 0x494e
-    lis     r8, 0x4556
+    lis     r4, unk_53485031@h
+    lis     r6, unk_4a4e5431@h
+    lis     r7, unk_44525731@h
+    lis     r9, unk_494e4631@h
+    lis     r8, unk_45565031@h
     addi    r29, r26, 0x20
-    addi    r24, r3, 0x5831
-    addi    r21, r5, 0x5831
-    addi    r22, r4, 0x5031
-    addi    r20, r6, 0x5431
-    addi    r19, r7, 0x5731
-    addi    r31, r10, 0x5432
-    addi    r17, r9, 0x4631
-    addi    r18, r8, 0x5031
+    addi    r24, r3, unk_56545831@l
+    addi    r21, r5, unk_54455831@l
+    addi    r22, r4, unk_53485031@l
+    addi    r20, r6, unk_4a4e5431@l
+    addi    r19, r7, unk_44525731@l
+    addi    r31, r10, unk_4d415432@l
+    addi    r17, r9, unk_494e4631@l
+    addi    r18, r8, unk_45565031@l
     addi    r23, r10, 0x5434
     li      r30, 0x0
     li      r28, 0x0
@@ -440,7 +440,7 @@ loadMaterialTable__14J3DModelLoaderFPCv: # 0x802e7474
     stmw    r24, 0x10(sp)
     addi    r31, r3, 0x0
     addi    r24, r4, 0x0
-    lis     r27, 0x5510
+    lis     r27, unk_55100000@h
     li      r3, 0x18
     bl      __nw__FUl
     mr.     r25, r3
@@ -451,11 +451,11 @@ branch_0x802e74a8:
     stw     r25, 0x8(r31)
     lwz     r3, 0x8(r31)
     bl      clear__16J3DMaterialTableFv
-    lis     r4, 0x4d41
-    lis     r3, 0x5445
+    lis     r4, unk_4d415433@h
+    lis     r3, unk_54455831@h
     addi    r26, r24, 0x20
-    addi    r30, r3, 0x5831
-    addi    r28, r4, 0x5433
+    addi    r30, r3, unk_54455831@l
+    addi    r28, r4, unk_4d415433@l
     addi    r29, r4, 0x5432
     li      r25, 0x0
     b       branch_0x802e7554
@@ -478,7 +478,7 @@ branch_0x802e74fc:
     mr      r3, r31
     lwz     r12, 0x0(r31)
     addi    r4, r26, 0x0
-    addi    r5, r27, 0x0
+    addi    r5, r27, unk_55100000@l
     lwz     r12, 0x20(r12)
     mtlr    r12
     blrl
@@ -514,8 +514,8 @@ branch_0x802e7554:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802e7598
-    lis     r4, 0x803e
-    addi    r0, r4, 0x13b0
+    lis     r4, __vvt__10J3DTexture@h
+    addi    r0, r4, __vvt__10J3DTexture@l
     stw     r0, 0x8(r3)
     li      r0, 0x0
     sth     r0, 0x0(r3)
@@ -697,15 +697,15 @@ branch_0x802e77a8:
     mr.     r28, r3
     beq-    branch_0x802e77fc
     addi    r29, r28, 0x50
-    lis     r3, 0x803b
+    lis     r3, __vvt__10J3DMtxCalc@ha
     stw     r29, 0x0(r28)
-    subi    r0, r3, 0xf38
+    addi    r0, r3, __vvt__10J3DMtxCalc@l
     stw     r0, 0x50(r28)
     addi    r3, r28, 0x0
     li      r4, 0x0
     bl      __ct__15J3DMtxCalcBasicFv
-    lis     r3, 0x803e
-    addi    r3, r3, 0x8b0
+    lis     r3, __vvt__19J3DMtxCalcSoftimage@h
+    addi    r3, r3, __vvt__19J3DMtxCalcSoftimage@l
     stw     r3, 0x4c(r28)
     addi    r0, r3, 0x24
     lwz     r3, 0x0(r28)
@@ -729,15 +729,15 @@ branch_0x802e7818:
     mr.     r28, r3
     beq-    branch_0x802e786c
     addi    r29, r28, 0x50
-    lis     r3, 0x803b
+    lis     r3, __vvt__10J3DMtxCalc@ha
     stw     r29, 0x0(r28)
-    subi    r0, r3, 0xf38
+    addi    r0, r3, __vvt__10J3DMtxCalc@l
     stw     r0, 0x50(r28)
     addi    r3, r28, 0x0
     li      r4, 0x0
     bl      __ct__15J3DMtxCalcBasicFv
-    lis     r3, 0x803e
-    addi    r3, r3, 0x86c
+    lis     r3, __vvt__14J3DMtxCalcMaya@h
+    addi    r3, r3, __vvt__14J3DMtxCalcMaya@l
     stw     r3, 0x4c(r28)
     addi    r0, r3, 0x24
     lwz     r3, 0x0(r28)
@@ -859,9 +859,9 @@ branch_0x802e79d4:
 branch_0x802e79ec:
     cmplwi  r4, 0x0
     beq-    branch_0x802e7a14
-    lis     r3, 0xaaab
+    lis     r3, unk_aaaaaaab@ha
     subf    r0, r0, r4
-    subi    r3, r3, 0x5555
+    addi    r3, r3, unk_aaaaaaab@l
     mulhwu  r0, r3, r0
     srwi    r3, r0, 3
     addi    r0, r3, 0x1
@@ -870,9 +870,9 @@ branch_0x802e79ec:
 
 branch_0x802e7a14:
     lwz     r4, 0x10(r30)
-    lis     r3, 0xaaab
+    lis     r3, unk_aaaaaaab@ha
     lwz     r0, 0x4(r30)
-    subi    r3, r3, 0x5555
+    addi    r3, r3, unk_aaaaaaab@l
     subf    r0, r4, r0
     mulhwu  r0, r3, r0
     srwi    r3, r0, 3
@@ -1137,10 +1137,10 @@ branch_0x802e7d6c:
     slwi    r3, r28, 6
     addi    r3, r3, 0x8
     bl      __nwa__FUli
-    lis     r4, 0x802e
-    lis     r5, 0x802e
-    addi    r4, r4, 0x7f78
-    addi    r5, r5, 0x7f38
+    lis     r4, __ct__11J3DMaterialFv@h
+    lis     r5, __dt__11J3DMaterialFv@h
+    addi    r4, r4, __ct__11J3DMaterialFv@l
+    addi    r5, r5, __dt__11J3DMaterialFv@l
     addi    r7, r28, 0x0
     li      r6, 0x40
     bl      __construct_new_array
@@ -1351,10 +1351,10 @@ branch_0x802e8034:
     slwi    r3, r28, 6
     addi    r3, r3, 0x8
     bl      __nwa__FUli
-    lis     r4, 0x802e
-    lis     r5, 0x802e
-    addi    r4, r4, 0x7f78
-    addi    r5, r5, 0x7f38
+    lis     r4, __ct__11J3DMaterialFv@h
+    lis     r5, __dt__11J3DMaterialFv@h
+    addi    r4, r4, __ct__11J3DMaterialFv@l
+    addi    r5, r5, __dt__11J3DMaterialFv@l
     addi    r7, r28, 0x0
     li      r6, 0x40
     bl      __construct_new_array
@@ -1450,7 +1450,7 @@ branch_0x802e81a0:
 
 branch_0x802e81b8:
     li      r6, 0x0
-    lis     r4, 0xc000
+    lis     r4, unk_c0000000@h
     b       branch_0x802e81d8
 
 branch_0x802e81c4:
@@ -1479,7 +1479,7 @@ readShape__14J3DModelLoaderFPC13J3DShapeBlockUl: # 0x802e8200
     stw     r0, 0x4(sp)
     stwu    sp, -0x50(sp)
     stw     r31, 0x4c(sp)
-    addi    r31, r4, 0x0
+    addi    r31, r4, unk_c0000000@l
     stw     r30, 0x48(sp)
     addi    r30, r5, 0x0
     stw     r29, 0x44(sp)
@@ -1607,8 +1607,8 @@ branch_0x802e83c0:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802e83e4
-    lis     r4, 0x803e
-    addi    r0, r4, 0x13b0
+    lis     r4, __vvt__10J3DTexture@h
+    addi    r0, r4, __vvt__10J3DTexture@l
     stw     r0, 0x8(r3)
     sth     r30, 0x0(r3)
     stw     r31, 0x4(r3)
@@ -1852,8 +1852,8 @@ branch_0x802e8700:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802e8724
-    lis     r4, 0x803e
-    addi    r0, r4, 0x13b0
+    lis     r4, __vvt__10J3DTexture@h
+    addi    r0, r4, __vvt__10J3DTexture@l
     stw     r0, 0x8(r3)
     sth     r30, 0x0(r3)
     stw     r31, 0x4(r3)
@@ -1875,8 +1875,8 @@ __dt__10J3DTextureFv: # 0x802e8740
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e8774
-    lis     r3, 0x803e
-    addi    r3, r3, 0x13b0
+    lis     r3, __vvt__10J3DTexture@h
+    addi    r3, r3, __vvt__10J3DTexture@l
     extsh.  r0, r4
     stw     r3, 0x8(r31)
     ble-    branch_0x802e8774

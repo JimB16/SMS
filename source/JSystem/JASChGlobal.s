@@ -8,7 +8,7 @@ getChannelHandle__Q28JASystem8ChGlobalFUl: # 0x80313c54
 
 branch_0x80313c64:
     mulli   r0, r3, 0xe0
-    lwz     r3, -0x5c34(r13)
+    lwz     r3, R13Off_m0x5c34(r13)
     add     r3, r3, r0
     blr
 
@@ -21,36 +21,36 @@ init__Q28JASystem8ChGlobalFv: # 0x80313c74
     li      r5, 0x20
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     bl      __nw__FUlP7JKRHeapi
     mr      r31, r3
-    stw     r31, -0x5c38(r13)
+    stw     r31, R13Off_m0x5c38(r13)
     bl      init__Q28JASystem11TChannelMgrFv
-    lis     r29, 0x1
-    lwz     r4, -0x5b30(r13)
-    subi    r3, r29, 0x1ff8
+    lis     r29, unk_0000e008@ha
+    lwz     r4, R13Off_m0x5b30(r13)
+    addi    r3, r29, unk_0000e008@l
     li      r5, 0x20
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8031
-    lis     r5, 0x8031
-    addi    r4, r4, 0x3e4c
-    addi    r5, r5, 0x3e0c
+    lis     r4, __ct__Q28JASystem8TChannelFv@h
+    lis     r5, __dt__Q28JASystem8TChannelFv@h
+    addi    r4, r4, __ct__Q28JASystem8TChannelFv@l
+    addi    r5, r5, __dt__Q28JASystem8TChannelFv@l
     li      r6, 0xe0
     li      r7, 0x100
     bl      __construct_new_array
-    stw     r3, -0x5c34(r13)
-    subi    r3, r29, 0x7ff8
-    lwz     r4, -0x5b30(r13)
+    stw     r3, R13Off_m0x5c34(r13)
+    addi    r3, r29, -0x7ff8
+    lwz     r4, R13Off_m0x5b30(r13)
     li      r5, 0x20
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8031
-    lis     r5, 0x8031
-    addi    r4, r4, 0x3ddc
-    addi    r5, r5, 0x3d9c
+    lis     r4, __ct__Q28JASystem11TOscillatorFv@h
+    lis     r5, __dt__Q28JASystem11TOscillatorFv@h
+    addi    r4, r4, __ct__Q28JASystem11TOscillatorFv@l
+    addi    r5, r5, __dt__Q28JASystem11TOscillatorFv@l
     li      r6, 0x20
     li      r7, 0x400
     bl      __construct_new_array
-    stw     r3, -0x5c30(r13)
+    stw     r3, R13Off_m0x5c30(r13)
     li      r28, 0x0
     li      r30, 0x0
     li      r29, 0x0
@@ -58,8 +58,8 @@ branch_0x80313d10:
     li      r27, 0x0
 branch_0x80313d14:
     add     r0, r27, r29
-    lwz     r3, -0x5c34(r13)
-    lwz     r5, -0x5c30(r13)
+    lwz     r3, R13Off_m0x5c34(r13)
+    lwz     r5, R13Off_m0x5c30(r13)
     slwi    r0, r0, 5
     addi    r4, r27, 0x0
     add     r3, r3, r30
@@ -68,16 +68,16 @@ branch_0x80313d14:
     addi    r27, r27, 0x1
     cmplwi  r27, 0x4
     blt+    branch_0x80313d14
-    lwz     r0, -0x5c34(r13)
+    lwz     r0, R13Off_m0x5c34(r13)
     add     r3, r0, r30
     bl      init__Q28JASystem8TChannelFv
-    lwz     r0, -0x5c34(r13)
+    lwz     r0, R13Off_m0x5c34(r13)
     addi    r3, r31, 0x0
     li      r5, 0x0
     add     r4, r0, r30
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
     addi    r28, r28, 0x1
-    lwz     r3, -0x5c34(r13)
+    lwz     r3, R13Off_m0x5c34(r13)
     addi    r0, r30, 0x4
     cmpwi   r28, 0x100
     stwx    r31, r3, r0
@@ -180,7 +180,7 @@ alloc__Q28JASystem8ChGlobalFPQ28JASystem11TChannelMgrUl: # 0x80313e74
     b       branch_0x80313ed4
 
 branch_0x80313ea0:
-    lwz     r3, -0x5c38(r13)
+    lwz     r3, R13Off_m0x5c38(r13)
     li      r4, 0x0
     bl      getListHead__Q28JASystem11TChannelMgrFUl
     mr.     r30, r3
@@ -201,7 +201,7 @@ branch_0x80313edc:
     addi    r3, r31, 0x0
     add     r0, r0, r31
     stw     r0, 0x0(r28)
-    lwz     r4, -0x5c38(r13)
+    lwz     r4, R13Off_m0x5c38(r13)
     lwz     r0, 0x0(r4)
     subf    r0, r31, r0
     stw     r0, 0x0(r4)
@@ -224,18 +224,18 @@ release__Q28JASystem8ChGlobalFPQ28JASystem8TChannel: # 0x80313f1c
     stw     r31, 0x14(sp)
     mr      r31, r3
     addi    r4, r31, 0x0
-    lwz     r3, -0x5c38(r13)
+    lwz     r3, R13Off_m0x5c38(r13)
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
     lwz     r5, 0x4(r31)
     li      r3, 0x0
     lwz     r4, 0x0(r5)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x0(r5)
-    lwz     r5, -0x5c38(r13)
+    lwz     r5, R13Off_m0x5c38(r13)
     lwz     r4, 0x0(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x0(r5)
-    lwz     r0, -0x5c38(r13)
+    lwz     r0, R13Off_m0x5c38(r13)
     stw     r0, 0x4(r31)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -259,11 +259,11 @@ branch_0x80313f9c:
     bl      getListHead__Q28JASystem11TChannelMgrFUl
     mr.     r29, r3
     beq-    branch_0x80313fcc
-    lwz     r3, -0x5c38(r13)
+    lwz     r3, R13Off_m0x5c38(r13)
     addi    r4, r29, 0x0
     li      r5, 0x0
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
-    lwz     r0, -0x5c38(r13)
+    lwz     r0, R13Off_m0x5c38(r13)
     stw     r0, 0x4(r29)
     b       branch_0x80313f9c
 
@@ -275,11 +275,11 @@ branch_0x80313fd0:
     bl      getListHead__Q28JASystem11TChannelMgrFUl
     mr.     r29, r3
     beq-    branch_0x80314004
-    lwz     r3, -0x5c38(r13)
+    lwz     r3, R13Off_m0x5c38(r13)
     addi    r4, r29, 0x0
     li      r5, 0x1
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
-    lwz     r0, -0x5c38(r13)
+    lwz     r0, R13Off_m0x5c38(r13)
     stw     r0, 0x4(r29)
     stw     r30, 0xd0(r29)
     b       branch_0x80313fd0
@@ -292,11 +292,11 @@ branch_0x80314008:
     bl      getListHead__Q28JASystem11TChannelMgrFUl
     mr.     r29, r3
     beq-    branch_0x8031403c
-    lwz     r3, -0x5c38(r13)
+    lwz     r3, R13Off_m0x5c38(r13)
     addi    r4, r29, 0x0
     li      r5, 0x2
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
-    lwz     r0, -0x5c38(r13)
+    lwz     r0, R13Off_m0x5c38(r13)
     stw     r0, 0x4(r29)
     stw     r30, 0xd0(r29)
     b       branch_0x80314008
@@ -311,24 +311,24 @@ branch_0x8031403c:
     bl      deleteQueue__Q38JASystem6Driver8DSPQueueFPQ28JASystem8TChannel
     cmpwi   r3, 0x0
     beq-    branch_0x80314074
-    lwz     r3, -0x5c38(r13)
+    lwz     r3, R13Off_m0x5c38(r13)
     addi    r4, r30, 0x0
     li      r5, 0x0
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
     b       branch_0x80314084
 
 branch_0x80314074:
-    lwz     r3, -0x5c38(r13)
+    lwz     r3, R13Off_m0x5c38(r13)
     addi    r4, r30, 0x0
     li      r5, 0x3
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
 branch_0x80314084:
-    lwz     r0, -0x5c38(r13)
+    lwz     r0, R13Off_m0x5c38(r13)
     stw     r0, 0x4(r30)
     b       branch_0x8031403c
 
 branch_0x80314090:
-    lwz     r6, -0x5c38(r13)
+    lwz     r6, R13Off_m0x5c38(r13)
     li      r0, 0x0
     lwz     r4, 0x0(r31)
     li      r3, 0x0

@@ -125,8 +125,8 @@ __dt__9J3DPacketFv: # 0x802ed9c8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802ed9fc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1548
+    lis     r3, __vvt__9J3DPacket@h
+    addi    r3, r3, __vvt__9J3DPacket@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802ed9fc
@@ -149,12 +149,12 @@ __dt__13J3DDrawPacketFv: # 0x802eda14
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802eda58
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1518
+    lis     r3, __vvt__13J3DDrawPacket@h
+    addi    r0, r3, __vvt__13J3DDrawPacket@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802eda48
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1548
+    lis     r3, __vvt__9J3DPacket@h
+    addi    r0, r3, __vvt__9J3DPacket@l
     stw     r0, 0x0(r31)
 branch_0x802eda48:
     extsh.  r0, r4
@@ -198,14 +198,14 @@ beginDL__13J3DDrawPacketFv: # 0x802eda9c
     stw     r0, 0x0(r4)
     stw     r3, 0x4(r4)
     bl      OSDisableInterrupts
-    stw     r3, -0x5e08(r13)
+    stw     r3, R13Off_m0x5e08(r13)
     addi    r3, r31, 0x20
     lwz     r5, 0x30(r31)
     lwz     r4, 0x0(r5)
     lwz     r5, 0xc(r5)
     bl      GDInitGDLObj
     addi    r0, r31, 0x20
-    stw     r0, -0x5778(r13)
+    stw     r0, R13Off_m0x5778(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
@@ -221,7 +221,7 @@ endDL__13J3DDrawPacketFv: # 0x802edafc
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      GDPadCurr32
-    lwz     r3, -0x5e08(r13)
+    lwz     r3, R13Off_m0x5e08(r13)
     bl      OSRestoreInterrupts
     lwz     r4, 0x20(r31)
     lwz     r0, 0x28(r31)
@@ -230,7 +230,7 @@ endDL__13J3DDrawPacketFv: # 0x802edafc
     stw     r0, 0x8(r3)
     bl      GDFlushCurrToMem
     li      r0, 0x0
-    stw     r0, -0x5778(r13)
+    stw     r0, R13Off_m0x5778(r13)
     lwz     r3, 0x30(r31)
     lwz     r3, 0x8(r3)
     lwz     r0, 0x1c(sp)
@@ -242,16 +242,16 @@ endDL__13J3DDrawPacketFv: # 0x802edafc
 
 .globl __ct__12J3DMatPacketFv
 __ct__12J3DMatPacketFv: # 0x802edb58
-    lis     r4, 0x803e
-    addi    r0, r4, 0x1548
+    lis     r4, __vvt__9J3DPacket@h
+    addi    r0, r4, __vvt__9J3DPacket@l
     stw     r0, 0x0(r3)
     li      r6, 0x0
-    lis     r5, 0x803e
+    lis     r5, __vvt__13J3DDrawPacket@h
     stw     r6, 0x4(r3)
-    lis     r4, 0x803e
-    addi    r5, r5, 0x1518
+    lis     r4, __vvt__12J3DMatPacket@h
+    addi    r5, r5, __vvt__13J3DDrawPacket@l
     stw     r6, 0x8(r3)
-    addi    r4, r4, 0x1500
+    addi    r4, r4, __vvt__12J3DMatPacket@l
     li      r0, -0x1
     stw     r6, 0xc(r3)
     stw     r5, 0x0(r3)
@@ -273,16 +273,16 @@ __dt__12J3DMatPacketFv: # 0x802edbac
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802edc00
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1500
+    lis     r3, __vvt__12J3DMatPacket@h
+    addi    r0, r3, __vvt__12J3DMatPacket@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802edbf0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1518
+    lis     r3, __vvt__13J3DDrawPacket@h
+    addi    r0, r3, __vvt__13J3DDrawPacket@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802edbf0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1548
+    lis     r3, __vvt__9J3DPacket@h
+    addi    r0, r3, __vvt__9J3DPacket@l
     stw     r0, 0x0(r31)
 branch_0x802edbf0:
     extsh.  r0, r4
@@ -338,9 +338,9 @@ branch_0x802edc70:
 branch_0x802edc78:
     clrlwi. r0, r4, 24
     bne-    branch_0x802edcc4
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lwz     r0, 0x40(r31)
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     stw     r0, 0x54(r3)
     stw     r31, 0x3c(r3)
     lwz     r3, 0x38(r31)
@@ -368,17 +368,17 @@ branch_0x802edcc4:
 
 .globl __ct__14J3DShapePacketFv
 __ct__14J3DShapePacketFv: # 0x802edcd8
-    lis     r4, 0x803e
-    addi    r0, r4, 0x1548
+    lis     r4, __vvt__9J3DPacket@h
+    addi    r0, r4, __vvt__9J3DPacket@l
     stw     r0, 0x0(r3)
     li      r7, 0x0
-    lis     r5, 0x803e
+    lis     r5, __vvt__17J3DCallBackPacket@h
     stw     r7, 0x4(r3)
-    addi    r6, r5, 0x1530
-    lis     r4, 0x803e
+    addi    r6, r5, __vvt__17J3DCallBackPacket@l
+    lis     r4, __vvt__14J3DShapePacket@h
     stw     r7, 0x8(r3)
-    addi    r5, r4, 0x14e8
-    subi    r4, r13, 0x5e88
+    addi    r5, r4, __vvt__14J3DShapePacket@l
+    addi    r4, r13, R13Off_m0x5e88
     stw     r7, 0xc(r3)
     li      r0, 0x1
     stw     r6, 0x0(r3)
@@ -403,12 +403,12 @@ __dt__17J3DCallBackPacketFv: # 0x802edd3c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802edd80
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1530
+    lis     r3, __vvt__17J3DCallBackPacket@h
+    addi    r0, r3, __vvt__17J3DCallBackPacket@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802edd70
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1548
+    lis     r3, __vvt__9J3DPacket@h
+    addi    r0, r3, __vvt__9J3DPacket@l
     stw     r0, 0x0(r31)
 branch_0x802edd70:
     extsh.  r0, r4
@@ -432,16 +432,16 @@ __dt__14J3DShapePacketFv: # 0x802edd98
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802eddec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14e8
+    lis     r3, __vvt__14J3DShapePacket@h
+    addi    r0, r3, __vvt__14J3DShapePacket@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802edddc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1530
+    lis     r3, __vvt__17J3DCallBackPacket@h
+    addi    r0, r3, __vvt__17J3DCallBackPacket@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802edddc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1548
+    lis     r3, __vvt__9J3DPacket@h
+    addi    r0, r3, __vvt__9J3DPacket@l
     stw     r0, 0x0(r31)
 branch_0x802edddc:
     extsh.  r0, r4
@@ -478,9 +478,9 @@ draw__14J3DShapePacketFv: # 0x802ede04
     li      r4, 0x0
     blrl
 branch_0x802ede4c:
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lwz     r0, 0x24(r31)
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     stw     r0, 0x10c(r3)
     lwz     r0, 0x28(r31)
     stw     r0, 0x110(r3)

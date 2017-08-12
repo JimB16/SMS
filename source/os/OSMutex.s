@@ -30,7 +30,7 @@ OSLockMutex: # 0x80346710
     bl      OSDisableInterrupts
     mr      r29, r3
     bl      OSGetCurrentThread
-    addi    r30, r3, 0x0
+    addi    r30, r3, unk_08000000@l
     li      r31, 0x0
 branch_0x80346744:
     lwz     r0, 0x8(r28)

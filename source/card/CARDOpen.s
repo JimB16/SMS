@@ -53,9 +53,9 @@ __CARDAccess: # 0x803592c4
     b       branch_0x80359344
 
 branch_0x803592f4:
-    lis     r3, 0x8040
+    lis     r3, __CARDDiskNone@h
     lwz     r4, 0x10c(r30)
-    addi    r0, r3, 0x3680
+    addi    r0, r3, __CARDDiskNone@l
     cmplw   r4, r0
     beq-    branch_0x80359338
     addi    r3, r31, 0x0
@@ -133,9 +133,9 @@ branch_0x803593c4:
 branch_0x803593dc:
     mr      r3, r31
     bl      __CARDGetDirBlock
-    lis     r4, 0x8040
+    lis     r4, __CARDDiskNone@h
     addi    r23, r3, 0x0
-    addi    r26, r4, 0x3680
+    addi    r26, r4, __CARDDiskNone@l
     li      r25, 0x0
 branch_0x803593f4:
     lbz     r0, 0x0(r23)

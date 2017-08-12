@@ -14,7 +14,7 @@ GDFlushCurrToMem: # 0x80364710
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x0(r4)
     lwz     r4, 0x4(r4)
     bl      DCFlushRange
@@ -26,7 +26,7 @@ GDFlushCurrToMem: # 0x80364710
 
 .globl GDPadCurr32
 GDPadCurr32: # 0x8036473c
-    lwz     r3, -0x5778(r13)
+    lwz     r3, R13Off_m0x5778(r13)
     lwz     r0, 0x8(r3)
     clrlwi. r0, r0, 27
     beqlr-    
@@ -40,42 +40,42 @@ GDPadCurr32: # 0x8036473c
     mtctr   r0
     beq-    branch_0x80364814
 branch_0x80364768:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -87,7 +87,7 @@ branch_0x80364768:
 branch_0x80364814:
     mtctr   r3
 branch_0x80364818:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -101,7 +101,7 @@ GDOverflowed: # 0x80364834
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r12, -0x5774(r13)
+    lwz     r12, R13Off_m0x5774(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x80364854
     mtlr    r12
@@ -115,6 +115,6 @@ branch_0x80364854:
 
 .globl GDSetOverflowCallback
 GDSetOverflowCallback: # 0x80364864
-    stw     r3, -0x5774(r13)
+    stw     r3, R13Off_m0x5774(r13)
     blr
 

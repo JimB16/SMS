@@ -1,24 +1,24 @@
 
 .globl DBInit
 DBInit: # 0x80341b1c
-    lis     r4, 0x8000
-    addi    r0, r4, 0x40
-    lis     r3, 0x8034
-    stw     r0, -0x5a78(r13)
-    addi    r3, r3, 0x1b8c
+    lis     r4, unk_80000040@h
+    addi    r0, r4, unk_80000040@l
+    lis     r3, __DBExceptionDestination@h
+    stw     r0, R13Off_m0x5a78(r13)
+    addi    r3, r3, __DBExceptionDestination@l
     addis   r0, r3, 0x8000
     stw     r0, 0x48(r4)
     li      r0, 0x1
-    stw     r0, -0x5a74(r13)
+    stw     r0, R13Off_m0x5a74(r13)
     blr
 
 
 .globl __DBExceptionDestinationAux
 __DBExceptionDestinationAux: # 0x80341b44
     mflr    r0
-    lis     r3, 0x803e
+    lis     r3, unk_803e6928@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x6928
+    addi    r3, r3, unk_803e6928@l
     crxor   6, 6, 6
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
@@ -45,7 +45,7 @@ __DBExceptionDestination: # 0x80341b8c
 
 .globl __DBIsExceptionMarked
 __DBIsExceptionMarked: # 0x80341b9c
-    lwz     r4, -0x5a78(r13)
+    lwz     r4, R13Off_m0x5a78(r13)
     clrlwi  r0, r3, 24
     li      r3, 0x1
     lwz     r4, 0x4(r4)

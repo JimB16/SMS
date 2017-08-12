@@ -9,12 +9,12 @@ __dt__22TLightWithDBSetManagerFv: # 0x80228144
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022819c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x59a0
+    lis     r3, __vvt__22TLightWithDBSetManager@ha
+    addi    r0, r3, __vvt__22TLightWithDBSetManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022818c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -36,7 +36,7 @@ branch_0x8022819c:
 
 .globl getLightPos__22TLightWithDBSetManagerCFv
 getLightPos__22TLightWithDBSetManagerCFv: # 0x802281b8
-    lwz     r3, -0x6110(r13)
+    lwz     r3, R13Off_m0x6110(r13)
     blr
 
 
@@ -263,16 +263,16 @@ branch_0x8022847c:
 .globl loadAfter__22TLightWithDBSetManagerFv
 loadAfter__22TLightWithDBSetManagerFv: # 0x80228490
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d9b8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x50(sp)
     stw     r31, 0x4c(sp)
-    subi    r31, r4, 0x2648
+    addi    r31, r4, unk_8039d9b8@l
     stw     r30, 0x48(sp)
     stw     r29, 0x44(sp)
     addi    r29, r3, 0x0
     addi    r3, r31, 0x0
-    lwz     r5, -0x5db8(r13)
+    lwz     r5, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r5)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r30)
@@ -308,30 +308,30 @@ loadAfter__22TLightWithDBSetManagerFv: # 0x80228490
 .globl __ct__22TLightWithDBSetManagerFPCc
 __ct__22TLightWithDBSetManagerFPCc: # 0x80228534
     mflr    r0
-    lis     r5, 0x803a
+    lis     r5, unk_8039d868@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x80(sp)
     stw     r31, 0x7c(sp)
-    subi    r31, r5, 0x2798
+    addi    r31, r5, unk_8039d868@l
     stw     r30, 0x78(sp)
     stw     r29, 0x74(sp)
     stw     r28, 0x70(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r28, 0x8(sp)
     mr      r3, r4
     stw     r0, 0x0(r28)
     stw     r4, 0x4(r28)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r28)
-    lis     r3, 0x803b
-    subi    r29, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r29, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r29, 0x0(r28)
     li      r30, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__22TLightWithDBSetManager@ha
     sth     r30, 0xc(r28)
-    subi    r3, r3, 0x59a0
+    addi    r3, r3, __vvt__22TLightWithDBSetManager@l
     li      r0, 0x1
     stw     r3, 0x0(r28)
     li      r3, 0x10
@@ -354,13 +354,13 @@ __ct__22TLightWithDBSetManagerFPCc: # 0x80228534
     stw     r29, 0x0(r3)
     addi    r3, r3, 0xc
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r28)
-    lis     r3, 0x803e
+    lis     r3, __vvt__21TPlayerLightWithDBSet@ha
     li      r4, 0x2
     stw     r30, 0x10(r28)
-    subi    r0, r3, 0x5904
+    addi    r0, r3, __vvt__21TPlayerLightWithDBSet@l
     stw     r30, 0x14(r28)
     stw     r30, 0x18(r28)
     stw     r4, 0x1c(r28)
@@ -379,20 +379,20 @@ branch_0x80228620:
     lwz     r3, 0x18(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x18(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r28)
     li      r5, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__21TObjectLightWithDBSet@ha
     stw     r5, 0x10(r28)
     li      r4, 0x2
-    subi    r0, r3, 0x592c
+    addi    r0, r3, __vvt__21TObjectLightWithDBSet@l
     stw     r5, 0x14(r28)
     stw     r5, 0x18(r28)
     stw     r4, 0x1c(r28)
@@ -411,20 +411,20 @@ branch_0x8022869c:
     lwz     r3, 0x14(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x14(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r28)
     li      r5, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__24TMapObjectLightWithDBSet@ha
     stw     r5, 0x10(r28)
     li      r4, 0x2
-    subi    r0, r3, 0x5954
+    addi    r0, r3, __vvt__24TMapObjectLightWithDBSet@l
     stw     r5, 0x14(r28)
     stw     r5, 0x18(r28)
     stw     r4, 0x1c(r28)
@@ -443,20 +443,20 @@ branch_0x80228718:
     lwz     r3, 0x10(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x10(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r28)
     li      r5, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__23TIndirectLightWithDBSet@ha
     stw     r5, 0x10(r28)
     li      r4, 0x2
-    subi    r0, r3, 0x597c
+    addi    r0, r3, __vvt__23TIndirectLightWithDBSet@l
     stw     r5, 0x14(r28)
     stw     r5, 0x18(r28)
     stw     r4, 0x1c(r28)
@@ -466,26 +466,26 @@ branch_0x80228794:
     lwz     r4, 0x8(sp)
     lwz     r3, 0x14(r4)
     stw     r28, 0xc(r3)
-    stw     r4, -0x610c(r13)
-    lfs     f0, -0x17a4(rtoc)
+    stw     r4, R13Off_m0x610c(r13)
+    lfs     f0, -0x17a4(r2)
     stfs    f0, 0x48(r4)
     stfs    f0, 0x4c(r4)
     stfs    f0, 0x50(r4)
-    lfs     f0, -0x17a8(rtoc)
+    lfs     f0, -0x17a8(r2)
     stfs    f0, 0x28(r4)
-    lfs     f0, -0x1798(rtoc)
+    lfs     f0, -0x1798(r2)
     stfs    f0, 0x2c(r4)
-    lfs     f0, -0x1794(rtoc)
+    lfs     f0, -0x1794(r2)
     stfs    f0, 0x30(r4)
-    lfs     f0, -0x17a0(rtoc)
+    lfs     f0, -0x17a0(r2)
     stfs    f0, 0x34(r4)
-    lfs     f0, -0x1790(rtoc)
+    lfs     f0, -0x1790(r2)
     stfs    f0, 0x38(r4)
-    lfs     f0, -0x178c(rtoc)
+    lfs     f0, -0x178c(r2)
     stfs    f0, 0x3c(r4)
-    lfs     f0, -0x1788(rtoc)
+    lfs     f0, -0x1788(r2)
     stfs    f0, 0x40(r4)
-    lfs     f0, -0x1784(rtoc)
+    lfs     f0, -0x1784(r2)
     stfs    f0, 0x44(r4)
     lwz     r3, 0x144(r31)
     lwz     r0, 0x148(r31)
@@ -580,12 +580,12 @@ __dt__15TLightWithDBSetFv: # 0x80228938
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80228990
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80228980
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -608,14 +608,14 @@ branch_0x80228990:
 .globl makeDrawBuffer__23TIndirectLightWithDBSetFv
 makeDrawBuffer__23TIndirectLightWithDBSetFv: # 0x802289ac
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d868@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x98(sp)
     stmw    r25, 0x7c(sp)
     li      r30, 0x0
     addi    r27, r3, 0x0
     addi    r26, r30, 0x0
-    subi    r31, r4, 0x2798
+    addi    r31, r4, unk_8039d868@l
     b       branch_0x802289fc
 
 branch_0x802289d4:
@@ -632,7 +632,7 @@ branch_0x802289f4:
     addi    r30, r30, 0x1
     addi    r26, r26, 0x6c
 branch_0x802289fc:
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     lwz     r0, 0x14(r3)
     cmpw    r30, r0
     blt+    branch_0x802289d4
@@ -656,7 +656,7 @@ branch_0x80228a3c:
     addi    r29, r29, 0x1
     addi    r26, r26, 0x18
 branch_0x80228a44:
-    lwz     r3, -0x6118(r13)
+    lwz     r3, R13Off_m0x6118(r13)
     lwz     r0, 0x14(r3)
     cmpw    r29, r0
     blt+    branch_0x80228a1c
@@ -675,7 +675,7 @@ branch_0x80228a74:
     bl      __nw__FUl
     mr.     r25, r3
     beq-    branch_0x80228a9c
-    subi    r3, r13, 0x7710
+    addi    r3, r13, R13Off_m0x7710
     lwzx    r6, r3, r26
     addi    r3, r25, 0x0
     addi    r4, r28, 0x0
@@ -747,14 +747,14 @@ setLight__16TLightDrawBufferFP12TLightCommon: # 0x80228b40
 .globl makeDrawBuffer__24TMapObjectLightWithDBSetFv
 makeDrawBuffer__24TMapObjectLightWithDBSetFv: # 0x80228b74
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d868@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x98(sp)
     stmw    r25, 0x7c(sp)
     li      r30, 0x0
     addi    r27, r3, 0x0
     addi    r26, r30, 0x0
-    subi    r31, r4, 0x2798
+    addi    r31, r4, unk_8039d868@l
     b       branch_0x80228bc4
 
 branch_0x80228b9c:
@@ -771,7 +771,7 @@ branch_0x80228bbc:
     addi    r30, r30, 0x1
     addi    r26, r26, 0x6c
 branch_0x80228bc4:
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     lwz     r0, 0x14(r3)
     cmpw    r30, r0
     blt+    branch_0x80228b9c
@@ -795,7 +795,7 @@ branch_0x80228c04:
     addi    r29, r29, 0x1
     addi    r26, r26, 0x18
 branch_0x80228c0c:
-    lwz     r3, -0x6118(r13)
+    lwz     r3, R13Off_m0x6118(r13)
     lwz     r0, 0x14(r3)
     cmpw    r29, r0
     blt+    branch_0x80228be4
@@ -814,7 +814,7 @@ branch_0x80228c3c:
     bl      __nw__FUl
     mr.     r25, r3
     beq-    branch_0x80228c64
-    subi    r3, r13, 0x7718
+    addi    r3, r13, R13Off_m0x7718
     lwzx    r6, r3, r26
     addi    r3, r25, 0x0
     addi    r4, r28, 0x0
@@ -869,14 +869,14 @@ branch_0x80228ce8:
 .globl makeDrawBuffer__21TObjectLightWithDBSetFv
 makeDrawBuffer__21TObjectLightWithDBSetFv: # 0x80228d08
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d868@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0xa8(sp)
     stmw    r25, 0x8c(sp)
     li      r30, 0x0
     addi    r27, r3, 0x0
     addi    r26, r30, 0x0
-    subi    r31, r4, 0x2798
+    addi    r31, r4, unk_8039d868@l
     b       branch_0x80228d58
 
 branch_0x80228d30:
@@ -893,7 +893,7 @@ branch_0x80228d50:
     addi    r30, r30, 0x1
     addi    r26, r26, 0x6c
 branch_0x80228d58:
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     lwz     r0, 0x14(r3)
     cmpw    r30, r0
     blt+    branch_0x80228d30
@@ -917,7 +917,7 @@ branch_0x80228d98:
     addi    r29, r29, 0x1
     addi    r26, r26, 0x18
 branch_0x80228da0:
-    lwz     r3, -0x6118(r13)
+    lwz     r3, R13Off_m0x6118(r13)
     lwz     r0, 0x14(r3)
     cmpw    r29, r0
     blt+    branch_0x80228d78
@@ -937,7 +937,7 @@ branch_0x80228dd0:
     mr.     r25, r3
     beq-    branch_0x80228e08
     add     r0, r29, r28
-    lwz     r4, -0x6118(r13)
+    lwz     r4, R13Off_m0x6118(r13)
     mulli   r3, r0, 0x18
     lwz     r4, 0x10(r4)
     addi    r0, r3, 0x4
@@ -995,14 +995,14 @@ branch_0x80228e8c:
 .globl makeDrawBuffer__21TPlayerLightWithDBSetFv
 makeDrawBuffer__21TPlayerLightWithDBSetFv: # 0x80228eac
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d868@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0xa8(sp)
     stmw    r24, 0x88(sp)
     li      r29, 0x0
     addi    r26, r3, 0x0
     addi    r25, r29, 0x0
-    subi    r30, r4, 0x2798
+    addi    r30, r4, unk_8039d868@l
     b       branch_0x80228efc
 
 branch_0x80228ed4:
@@ -1019,7 +1019,7 @@ branch_0x80228ef4:
     addi    r29, r29, 0x1
     addi    r25, r25, 0x6c
 branch_0x80228efc:
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     lwz     r0, 0x14(r3)
     cmpw    r29, r0
     blt+    branch_0x80228ed4
@@ -1043,7 +1043,7 @@ branch_0x80228f3c:
     addi    r28, r28, 0x1
     addi    r25, r25, 0x18
 branch_0x80228f44:
-    lwz     r3, -0x6118(r13)
+    lwz     r3, R13Off_m0x6118(r13)
     lwz     r0, 0x14(r3)
     cmpw    r28, r0
     blt+    branch_0x80228f1c
@@ -1052,9 +1052,9 @@ branch_0x80228f58:
     lwz     r0, 0x1c(r26)
     slwi    r3, r0, 2
     bl      __nwa__FUl
-    lis     r4, 0x803e
+    lis     r4, __vvt__11TLightMario@ha
     stw     r3, 0x10(r26)
-    subi    r31, r4, 0x588c
+    addi    r31, r4, __vvt__11TLightMario@l
     li      r27, 0x0
     li      r25, 0x0
     b       branch_0x8022903c
@@ -1065,7 +1065,7 @@ branch_0x80228f7c:
     mr.     r24, r3
     beq-    branch_0x80228fb4
     add     r0, r28, r27
-    lwz     r4, -0x6118(r13)
+    lwz     r4, R13Off_m0x6118(r13)
     mulli   r3, r0, 0x18
     lwz     r4, 0x10(r4)
     addi    r0, r3, 0x4
@@ -1131,12 +1131,12 @@ __dt__12TLightCommonFv: # 0x8022905c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802290b4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5824
+    lis     r3, __vvt__12TLightCommon@ha
+    addi    r0, r3, __vvt__12TLightCommon@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802290a4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1166,8 +1166,8 @@ resetLightDrawBuffer__15TLightWithDBSetFv: # 0x802290d0
     cmplwi  r0, 0x0
     beqlr-    
 
-    lis     r4, 0x8040
-    addi    r5, r4, 0x45dc
+    lis     r4, j3dSys@h
+    addi    r5, r4, j3dSys@l
     stw     r6, 0x44(r5)
     li      r0, 0x0
     lwz     r4, 0x18(r3)
@@ -1187,8 +1187,8 @@ changeLightDrawBuffer__15TLightWithDBSetFi: # 0x8022910c
     ble-    branch_0x80229128
     li      r4, 0x0
 branch_0x80229128:
-    lis     r5, 0x8040
-    addi    r5, r5, 0x45dc
+    lis     r5, j3dSys@h
+    addi    r5, r5, j3dSys@l
     addi    r6, r5, 0x44
     lwz     r0, 0x44(r5)
     addi    r7, r5, 0x48
@@ -1340,30 +1340,30 @@ __ct__16TLightDrawBufferFiUlPCc: # 0x80229304
     stw     r28, 0x20(sp)
     addi    r28, r4, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     mr      r3, r30
     stw     r0, 0x0(r31)
     stw     r30, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     crxor   6, 6, 6
     stw     r0, 0x0(r31)
     li      r8, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__16TLightDrawBuffer@ha
     sth     r8, 0xc(r31)
-    subi    r0, r3, 0x58b4
+    addi    r0, r3, __vvt__16TLightDrawBuffer@l
     stw     r0, 0x0(r31)
     addi    r6, r30, 0x0
     addi    r3, r31, 0x1c
     stw     r8, 0x10(r31)
     li      r4, 0x32
-    subi    r5, rtoc, 0x1780
+    addi    r5, r2, R2Off_m0x1780
     stw     r8, 0x14(r31)
-    subi    r7, rtoc, 0x1778
+    addi    r7, r2, R2Off_m0x1778
     stw     r8, 0x18(r31)
     stw     r28, 0x80(r31)
     bl      snprintf
@@ -1383,8 +1383,8 @@ branch_0x802293c0:
     li      r4, 0x32
     stw     r28, 0x14(r31)
     addi    r3, r31, 0x4e
-    subi    r5, rtoc, 0x1780
-    subi    r7, rtoc, 0x1774
+    addi    r5, r2, R2Off_m0x1780
+    addi    r7, r2, R2Off_m0x1774
     bl      snprintf
     li      r3, 0x1c
     bl      __nw__FUl
@@ -1430,9 +1430,9 @@ branch_0x80229458:
 branch_0x8022946c:
     lwz     r4, 0x20(r3)
     lis     r0, 0x4330
-    lwz     r5, -0x6118(r13)
+    lwz     r5, R13Off_m0x6118(r13)
     add     r6, r6, r4
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     mulli   r4, r6, 0x18
     lwz     r5, 0x10(r5)
     addi    r4, r4, 0x14
@@ -1454,7 +1454,7 @@ branch_0x8022946c:
 branch_0x802294c8:
     lwz     r4, 0x2c(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     stw     r4, 0x30(sp)
     lbz     r4, 0x33(sp)
     lfs     f0, 0x14(r3)
@@ -1496,7 +1496,7 @@ branch_0x80229544:
 
 branch_0x80229558:
     add     r0, r0, r3
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     mulli   r0, r0, 0x6c
     lwz     r3, 0x10(r3)
     add     r3, r3, r0
@@ -1505,7 +1505,7 @@ branch_0x80229558:
     bl      GXGetLightColor
     lwz     r3, 0x20(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     stw     r3, 0x28(sp)
     lbz     r3, 0x2b(sp)
     lfs     f0, 0x1c(r31)
@@ -1523,7 +1523,7 @@ branch_0x80229558:
 branch_0x802295bc:
     lwz     r3, 0x2c(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     stw     r3, 0x30(sp)
     lbz     r3, 0x33(sp)
     lfs     f0, 0x14(r31)
@@ -1582,9 +1582,9 @@ setLight__11TLightMarioFPCQ26JDrama9TGraphicsi: # 0x80229610
     addi    r4, sp, 0x38
     addi    r3, sp, 0x48
     bl      GXInitLightColor
-    lfs     f2, -0x17a4(rtoc)
+    lfs     f2, -0x17a4(r2)
     addi    r3, sp, 0x48
-    lfs     f1, -0x17a8(rtoc)
+    lfs     f1, -0x17a8(r2)
     fmr     f3, f2
     fmr     f4, f1
     fmr     f5, f2
@@ -1593,7 +1593,7 @@ setLight__11TLightMarioFPCQ26JDrama9TGraphicsi: # 0x80229610
     addi    r3, sp, 0x48
     li      r4, 0x1
     bl      GXLoadLightObjImm
-    lwz     r27, -0x610c(r13)
+    lwz     r27, R13Off_m0x610c(r13)
     lbz     r0, 0x54(r27)
     cmplwi  r0, 0x0
     beq-    branch_0x80229790
@@ -1611,7 +1611,7 @@ setLight__11TLightMarioFPCQ26JDrama9TGraphicsi: # 0x80229610
     bl      GXInitLightPos
     lwz     r3, 0x18(r27)
     lis     r0, 0x4330
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     addi    r4, sp, 0x2c
     stw     r3, 0x1c(sp)
     addi    r3, sp, 0x48
@@ -1629,14 +1629,14 @@ setLight__11TLightMarioFPCQ26JDrama9TGraphicsi: # 0x80229610
     lwz     r0, 0x1c(sp)
     stw     r0, 0x2c(sp)
     bl      GXInitLightColor
-    lfs     f2, -0x17a4(rtoc)
+    lfs     f2, -0x17a4(r2)
     addi    r3, sp, 0x48
-    lfs     f1, -0x17a8(rtoc)
+    lfs     f1, -0x17a8(r2)
     fmr     f3, f2
     bl      GXInitLightAttnA
-    lfs     f1, -0x17a0(rtoc)
+    lfs     f1, -0x17a0(r2)
     addi    r3, sp, 0x48
-    lfs     f2, -0x179c(rtoc)
+    lfs     f2, -0x179c(r2)
     li      r4, 0x3
     bl      GXInitLightDistAttn
     addi    r3, sp, 0x48
@@ -1677,10 +1677,10 @@ branch_0x80229790:
     bl      GXInitLightColor
     lfs     f2, 0x10(r29)
     addi    r3, sp, 0x48
-    lfs     f0, -0x179c(rtoc)
-    lfs     f1, -0x17a4(rtoc)
+    lfs     f0, -0x179c(r2)
+    lfs     f1, -0x17a4(r2)
     fmuls   f4, f2, f0
-    lfs     f3, -0x17a8(rtoc)
+    lfs     f3, -0x17a8(r2)
     fmr     f2, f1
     fmr     f5, f1
     fsubs   f6, f3, f4
@@ -1714,7 +1714,7 @@ perform__11TLightMarioFUlPQ26JDrama9TGraphics: # 0x80229880
     beq-    branch_0x802298b0
     lwz     r12, 0x0(r3)
     mr      r4, r5
-    lwz     r6, -0x6098(r13)
+    lwz     r6, R13Off_m0x6098(r13)
     lwz     r12, 0x30(r12)
     lha     r5, 0x0(r6)
     mtlr    r12
@@ -1794,7 +1794,7 @@ perform__12TLightCommonFUlPQ26JDrama9TGraphics: # 0x802298fc
     addi    r4, sp, 0x14
     addi    r3, sp, 0x24
     bl      GXInitLightColor
-    lfs     f1, -0x17a4(rtoc)
+    lfs     f1, -0x17a4(r2)
     addi    r3, sp, 0x24
     fmr     f2, f1
     fmr     f3, f1
@@ -1867,9 +1867,9 @@ setLight__12TLightCommonFPCQ26JDrama9TGraphicsi: # 0x80229a30
     addi    r4, sp, 0x38
     addi    r3, sp, 0x48
     bl      GXInitLightColor
-    lfs     f2, -0x17a4(rtoc)
+    lfs     f2, -0x17a4(r2)
     addi    r3, sp, 0x48
-    lfs     f1, -0x17a8(rtoc)
+    lfs     f1, -0x17a8(r2)
     fmr     f3, f2
     fmr     f4, f1
     fmr     f5, f2
@@ -1878,7 +1878,7 @@ setLight__12TLightCommonFPCQ26JDrama9TGraphicsi: # 0x80229a30
     addi    r3, sp, 0x48
     li      r4, 0x1
     bl      GXLoadLightObjImm
-    lwz     r27, -0x610c(r13)
+    lwz     r27, R13Off_m0x610c(r13)
     lbz     r0, 0x54(r27)
     cmplwi  r0, 0x0
     beq-    branch_0x80229bb0
@@ -1896,7 +1896,7 @@ setLight__12TLightCommonFPCQ26JDrama9TGraphicsi: # 0x80229a30
     bl      GXInitLightPos
     lwz     r3, 0x18(r27)
     lis     r0, 0x4330
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     addi    r4, sp, 0x2c
     stw     r3, 0x1c(sp)
     addi    r3, sp, 0x48
@@ -1914,14 +1914,14 @@ setLight__12TLightCommonFPCQ26JDrama9TGraphicsi: # 0x80229a30
     lwz     r0, 0x1c(sp)
     stw     r0, 0x2c(sp)
     bl      GXInitLightColor
-    lfs     f2, -0x17a4(rtoc)
+    lfs     f2, -0x17a4(r2)
     addi    r3, sp, 0x48
-    lfs     f1, -0x17a8(rtoc)
+    lfs     f1, -0x17a8(r2)
     fmr     f3, f2
     bl      GXInitLightAttnA
-    lfs     f1, -0x17a0(rtoc)
+    lfs     f1, -0x17a0(r2)
     addi    r3, sp, 0x48
-    lfs     f2, -0x179c(rtoc)
+    lfs     f2, -0x179c(r2)
     li      r4, 0x3
     bl      GXInitLightDistAttn
     addi    r3, sp, 0x48
@@ -1962,10 +1962,10 @@ branch_0x80229bb0:
     bl      GXInitLightColor
     lfs     f2, 0x10(r29)
     addi    r3, sp, 0x48
-    lfs     f0, -0x179c(rtoc)
-    lfs     f1, -0x17a4(rtoc)
+    lfs     f0, -0x179c(r2)
+    lfs     f1, -0x17a4(r2)
     fmuls   f4, f2, f0
-    lfs     f3, -0x17a8(rtoc)
+    lfs     f3, -0x17a8(r2)
     fmr     f2, f1
     fmr     f5, f1
     fsubs   f6, f3, f4
@@ -2007,7 +2007,7 @@ branch_0x80229cbc:
 
 branch_0x80229ccc:
     lwz     r0, 0x24(r5)
-    lwz     r5, -0x6114(r13)
+    lwz     r5, R13Off_m0x6114(r13)
     add     r4, r4, r0
     mulli   r3, r4, 0x6c
     lwz     r0, 0x10(r5)
@@ -2034,9 +2034,9 @@ branch_0x80229d08:
 branch_0x80229d18:
     lwz     r6, 0x20(r3)
     lis     r0, 0x4330
-    lwz     r5, -0x6118(r13)
+    lwz     r5, R13Off_m0x6118(r13)
     add     r4, r4, r6
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     mulli   r4, r4, 0x18
     lwz     r5, 0x10(r5)
     addi    r4, r4, 0x14
@@ -2082,7 +2082,7 @@ branch_0x80229da8:
 branch_0x80229db8:
     lwz     r0, 0x24(r31)
     addi    r4, sp, 0x20
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     add     r5, r5, r0
     mulli   r0, r5, 0x6c
     lwz     r3, 0x10(r3)
@@ -2091,7 +2091,7 @@ branch_0x80229db8:
     bl      GXGetLightColor
     lwz     r3, 0x20(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x17b0(rtoc)
+    lfd     f2, -0x17b0(r2)
     stw     r3, 0x28(sp)
     lbz     r3, 0x2b(sp)
     lfs     f0, 0x1c(r31)
@@ -2116,7 +2116,7 @@ branch_0x80229e1c:
 .globl loadAfter__12TLightCommonFv
 loadAfter__12TLightCommonFv: # 0x80229e30
     mflr    r0
-    lis     r5, 0x803a
+    lis     r5, unk_8039d868@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0xa0(sp)
     stw     r31, 0x9c(sp)
@@ -2124,9 +2124,9 @@ loadAfter__12TLightCommonFv: # 0x80229e30
     addi    r30, r3, 0x0
     stw     r29, 0x94(sp)
     stw     r28, 0x90(sp)
-    subi    r28, r5, 0x2798
+    addi    r28, r5, unk_8039d868@l
     addi    r3, r28, 0x1e4
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -2136,9 +2136,9 @@ loadAfter__12TLightCommonFv: # 0x80229e30
     addi    r5, r28, 0x1e4
     mtlr    r12
     blrl
-    stw     r3, -0x6118(r13)
+    stw     r3, R13Off_m0x6118(r13)
     addi    r3, r28, 0x150
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -2148,20 +2148,20 @@ loadAfter__12TLightCommonFv: # 0x80229e30
     addi    r5, r28, 0x150
     mtlr    r12
     blrl
-    stw     r3, -0x6114(r13)
+    stw     r3, R13Off_m0x6114(r13)
     li      r31, 0x0
-    lfs     f0, -0x1770(rtoc)
+    lfs     f0, -0x1770(r2)
     li      r29, 0x0
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     li      r28, 0x0
     lwz     r3, 0x10(r3)
     addi    r0, r3, 0x10
-    stw     r0, -0x6110(r13)
+    stw     r0, R13Off_m0x6110(r13)
     stfs    f0, 0x10(r30)
 branch_0x80229edc:
     lwz     r0, 0x24(r30)
     addi    r4, sp, 0x80
-    lwz     r3, -0x6114(r13)
+    lwz     r3, R13Off_m0x6114(r13)
     add     r0, r31, r0
     mulli   r0, r0, 0x6c
     lwz     r3, 0x10(r3)
@@ -2175,7 +2175,7 @@ branch_0x80229edc:
     addi    r29, r29, 0xc
     addi    r28, r28, 0x4
     lwz     r0, 0x24(r30)
-    lwz     r4, -0x6114(r13)
+    lwz     r4, R13Off_m0x6114(r13)
     add     r0, r31, r0
     mulli   r3, r0, 0x6c
     lwz     r4, 0x10(r4)
@@ -2191,7 +2191,7 @@ branch_0x80229edc:
     stw     r0, 0x4c(r5)
     blt+    branch_0x80229edc
     lwz     r0, 0x20(r30)
-    lwz     r4, -0x6118(r13)
+    lwz     r4, R13Off_m0x6118(r13)
     mulli   r3, r0, 0x18
     lwz     r4, 0x10(r4)
     addi    r0, r3, 0x14
@@ -2200,7 +2200,7 @@ branch_0x80229edc:
     lwz     r0, 0x18(sp)
     stw     r0, 0x29(r30)
     lwz     r3, 0x20(r30)
-    lwz     r4, -0x6118(r13)
+    lwz     r4, R13Off_m0x6118(r13)
     addi    r0, r3, 0x1
     mulli   r3, r0, 0x18
     lwz     r4, 0x10(r4)
@@ -2225,31 +2225,31 @@ __ct__12TLightCommonFPCc: # 0x80229fbc
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r30, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r0, 0x0(r30)
     stw     r4, 0x4(r30)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r31, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__12TLightCommon@ha
     sth     r31, 0xc(r30)
-    subi    r0, r3, 0x5824
-    lis     r3, 0x8002
+    addi    r0, r3, __vvt__12TLightCommon@l
+    lis     r3, __ct__Q29JGeometry8TVec3_f_Fv@h
     stw     r0, 0x0(r30)
-    addi    r4, r3, 0x10dc
+    addi    r4, r3, __ct__Q29JGeometry8TVec3_f_Fv@l
     addi    r3, r30, 0x44
-    lfs     f0, -0x17a4(rtoc)
+    lfs     f0, -0x17a4(r2)
     li      r5, 0x0
     li      r6, 0xc
     stfs    f0, 0x10(r30)
     li      r7, 0x4
-    lfs     f0, -0x17a8(rtoc)
+    lfs     f0, -0x17a8(r2)
     stfs    f0, 0x14(r30)
     stfs    f0, 0x18(r30)
     stfs    f0, 0x1c(r30)
@@ -2258,11 +2258,11 @@ __ct__12TLightCommonFPCc: # 0x80229fbc
     stb     r31, 0x28(r30)
     stb     r31, 0x41(r30)
     bl      __construct_array
-    stw     r31, -0x6118(r13)
+    stw     r31, R13Off_m0x6118(r13)
     mr      r3, r30
-    lfs     f0, -0x1770(rtoc)
-    stw     r31, -0x6114(r13)
-    stw     r31, -0x6110(r13)
+    lfs     f0, -0x1770(r2)
+    stw     r31, R13Off_m0x6114(r13)
+    stw     r31, R13Off_m0x6110(r13)
     stfs    f0, 0x10(r30)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -2282,16 +2282,16 @@ __dt__23TIndirectLightWithDBSetFv: # 0x8022a088
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022a0f0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x597c
+    lis     r3, __vvt__23TIndirectLightWithDBSet@ha
+    addi    r0, r3, __vvt__23TIndirectLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a0e0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a0e0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2321,16 +2321,16 @@ __dt__24TMapObjectLightWithDBSetFv: # 0x8022a10c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022a174
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5954
+    lis     r3, __vvt__24TMapObjectLightWithDBSet@ha
+    addi    r0, r3, __vvt__24TMapObjectLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a164
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a164
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2360,16 +2360,16 @@ __dt__21TObjectLightWithDBSetFv: # 0x8022a190
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022a1f8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x592c
+    lis     r3, __vvt__21TObjectLightWithDBSet@ha
+    addi    r0, r3, __vvt__21TObjectLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a1e8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a1e8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2399,16 +2399,16 @@ __dt__21TPlayerLightWithDBSetFv: # 0x8022a214
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022a27c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5904
+    lis     r3, __vvt__21TPlayerLightWithDBSet@ha
+    addi    r0, r3, __vvt__21TPlayerLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a26c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58dc
+    lis     r3, __vvt__15TLightWithDBSet@ha
+    addi    r0, r3, __vvt__15TLightWithDBSet@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a26c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2438,12 +2438,12 @@ __dt__16TLightDrawBufferFv: # 0x8022a298
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022a2f0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x58b4
+    lis     r3, __vvt__16TLightDrawBuffer@ha
+    addi    r0, r3, __vvt__16TLightDrawBuffer@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a2e0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2473,16 +2473,16 @@ __dt__11TLightMarioFv: # 0x8022a30c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022a374
-    lis     r3, 0x803e
-    subi    r0, r3, 0x588c
+    lis     r3, __vvt__11TLightMario@ha
+    addi    r0, r3, __vvt__11TLightMario@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a364
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5824
+    lis     r3, __vvt__12TLightCommon@ha
+    addi    r0, r3, __vvt__12TLightCommon@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a364
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2512,16 +2512,16 @@ __dt__12TLightShadowFv: # 0x8022a390
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8022a3f8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5858
+    lis     r3, __vvt__12TLightShadow@ha
+    addi    r0, r3, __vvt__12TLightShadow@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a3e8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5824
+    lis     r3, __vvt__12TLightCommon@ha
+    addi    r0, r3, __vvt__12TLightCommon@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8022a3e8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

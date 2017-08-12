@@ -9,12 +9,12 @@ __dt__11TTalkCursorFv: # 0x802a55c8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802a5620
-    lis     r3, 0x803e
-    subi    r0, r3, 0xc80
+    lis     r3, __vvt__11TTalkCursor@ha
+    addi    r0, r3, __vvt__11TTalkCursor@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802a5610
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -102,12 +102,12 @@ branch_0x802a56f8:
 .globl loadAfter__11TTalkCursorFv
 loadAfter__11TTalkCursorFv: # 0x802a5708
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_803a3ee0@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
     addi    r28, r3, 0x0
-    addi    r31, r4, 0x3ee0
+    addi    r31, r4, unk_803a3ee0@l
     li      r3, 0x4c
     bl      __nw__FUl
     mr.     r29, r3
@@ -138,7 +138,7 @@ branch_0x802a576c:
     mr.     r27, r3
     beq-    branch_0x802a57b0
     addi    r3, r29, 0x0
-    lis     r4, 0x1002
+    lis     r4, unk_10020000@h
     bl      load__22J3DModelLoaderDataBaseFPCvUl
     addi    r4, r3, 0x0
     addi    r3, r27, 0x0

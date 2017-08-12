@@ -1,13 +1,13 @@
 
 .globl __ct__Q28JASystem10TBasicBankFv
 __ct__Q28JASystem10TBasicBankFv: # 0x8030e2ac
-    lis     r4, 0x803e
-    addi    r0, r4, 0x2644
+    lis     r4, __vvt__Q28JASystem5TBank@h
+    addi    r0, r4, __vvt__Q28JASystem5TBank@l
     stw     r0, 0x0(r3)
     li      r5, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q28JASystem10TBasicBank@h
     stw     r5, 0x4(r3)
-    addi    r0, r4, 0x2630
+    addi    r0, r4, __vvt__Q28JASystem10TBasicBank@l
     stw     r0, 0x0(r3)
     stw     r5, 0x8(r3)
     stw     r5, 0xc(r3)
@@ -22,8 +22,8 @@ __dt__Q28JASystem5TBankFv: # 0x8030e2d8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8030e30c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x2644
+    lis     r3, __vvt__Q28JASystem5TBank@h
+    addi    r3, r3, __vvt__Q28JASystem5TBank@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8030e30c
@@ -48,15 +48,15 @@ __dt__Q28JASystem10TBasicBankFv: # 0x8030e324
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8030e37c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2630
+    lis     r3, __vvt__Q28JASystem10TBasicBank@h
+    addi    r0, r3, __vvt__Q28JASystem10TBasicBank@l
     stw     r0, 0x0(r30)
     lwz     r3, 0x8(r30)
     bl      __dla__FPv
     cmplwi  r30, 0x0
     beq-    branch_0x8030e36c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2644
+    lis     r3, __vvt__Q28JASystem5TBank@h
+    addi    r0, r3, __vvt__Q28JASystem5TBank@l
     stw     r0, 0x0(r30)
 branch_0x8030e36c:
     extsh.  r0, r31
@@ -127,7 +127,7 @@ branch_0x8030e420:
 
 .globl getType__Q28JASystem10TBasicBankCFv
 getType__Q28JASystem10TBasicBankCFv: # 0x8030e430
-    lis     r3, 0x4253
-    addi    r3, r3, 0x4943
+    lis     r3, unk_42534943@h
+    addi    r3, r3, unk_42534943@l
     blr
 

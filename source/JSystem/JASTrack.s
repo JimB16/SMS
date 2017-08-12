@@ -10,8 +10,8 @@ __ct__Q28JASystem6TTrackFv: # 0x8031a2ec
     lwz     r31, 0x8(sp)
     addi    r3, r31, 0x160
     bl      __ct__Q38JASystem6TTrack12AInnerParam_Fv
-    lis     r3, 0x8032
-    subi    r4, r3, 0x5af4
+    lis     r3, __ct__Q38JASystem6TTrack10MoveParam_Fv@ha
+    addi    r4, r3, __ct__Q38JASystem6TTrack10MoveParam_Fv@l
     addi    r3, r31, 0x160
     li      r5, 0x0
     li      r6, 0x10
@@ -21,11 +21,11 @@ __ct__Q28JASystem6TTrackFv: # 0x8031a2ec
     bl      __ct__Q28JASystem14TRegisterParamFv
     li      r30, 0x0
     stw     r30, 0x2c0(r31)
-    lis     r4, 0x8031
-    lis     r3, 0x8031
+    lis     r4, __ct__Q28JASystem11TOscillatorFv@h
+    lis     r3, __dt__Q28JASystem11TOscillatorFv@h
     stw     r30, 0x304(r31)
-    addi    r5, r3, 0x3d9c
-    addi    r4, r4, 0x3ddc
+    addi    r5, r3, __dt__Q28JASystem11TOscillatorFv@l
+    addi    r4, r4, __ct__Q28JASystem11TOscillatorFv@l
     stw     r30, 0x308(r31)
     addi    r3, r31, 0x33c
     li      r6, 0x20
@@ -33,13 +33,13 @@ __ct__Q28JASystem6TTrackFv: # 0x8031a2ec
     bl      __construct_array
     stw     r30, 0x3a8(r31)
     li      r6, 0x8
-    lis     r3, 0x803e
-    lfs     f0, 0x778(rtoc)
+    lis     r3, sAdsTable__Q28JASystem6Player@h
+    lfs     f0, 0x778(r2)
     subfic  r0, r6, 0xc
     li      r4, 0x78
     mtctr   r0
     stfs    f0, 0x3ac(r31)
-    addi    r5, r3, 0x35e8
+    addi    r5, r3, sAdsTable__Q28JASystem6Player@l
     stfs    f0, 0x3b0(r31)
     cmpwi   r6, 0xc
     slwi    r3, r6, 1
@@ -105,9 +105,9 @@ branch_0x8031a46c:
     sthx    r4, r31, r0
     bdnz+      branch_0x8031a46c
 branch_0x8031a484:
-    lis     r3, 0x803e
+    lis     r3, sRelTable__Q28JASystem6Player@h
     lwz     r31, 0x8(sp)
-    addi    r5, r3, 0x3600
+    addi    r5, r3, sRelTable__Q28JASystem6Player@l
     lha     r4, 0x0(r5)
     li      r0, 0xf
     addi    r3, r31, 0xec
@@ -143,7 +143,7 @@ branch_0x8031a484:
 
 .globl __ct__Q38JASystem6TTrack10MoveParam_Fv
 __ct__Q38JASystem6TTrack10MoveParam_Fv: # 0x8031a50c
-    lfs     f0, 0x778(rtoc)
+    lfs     f0, 0x778(r2)
     stfs    f0, 0x0(r3)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
@@ -161,9 +161,9 @@ __ct__Q38JASystem6TTrack12AInnerParam_Fv: # 0x8031a524
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8032
-    lfs     f0, 0x778(rtoc)
-    subi    r4, r3, 0x5af4
+    lis     r3, __ct__Q38JASystem6TTrack10MoveParam_Fv@ha
+    lfs     f0, 0x778(r2)
+    addi    r4, r3, __ct__Q38JASystem6TTrack10MoveParam_Fv@l
     addi    r3, r31, 0xc0
     stfs    f0, 0x0(r31)
     stfs    f0, 0x4(r31)
@@ -214,7 +214,7 @@ __ct__Q38JASystem6TTrack12AInnerParam_Fv: # 0x8031a524
     stfs    f0, 0xb8(r31)
     stfs    f0, 0xbc(r31)
     bl      __construct_array
-    lfs     f0, 0x778(rtoc)
+    lfs     f0, 0x778(r2)
     mr      r3, r31
     stfs    f0, 0x100(r31)
     stfs    f0, 0x104(r31)
@@ -300,9 +300,9 @@ flushAll__Q28JASystem6TTrackFv: # 0x8031a6c0
 
 .globl initTimed__Q28JASystem6TTrackFv
 initTimed__Q28JASystem6TTrackFv: # 0x8031a6f8
-    lfs     f1, 0x778(rtoc)
+    lfs     f1, 0x778(r2)
     li      r7, 0x0
-    lfs     f0, 0x77c(rtoc)
+    lfs     f0, 0x77c(r2)
     li      r0, 0xa
     b       branch_0x8031a780
 
@@ -340,8 +340,8 @@ branch_0x8031a780:
     clrlwi  r4, r7, 24
     cmplw   r4, r0
     blt+    branch_0x8031a70c
-    lfs     f1, 0x778(rtoc)
-    lfs     f0, 0x77c(rtoc)
+    lfs     f1, 0x778(r2)
+    lfs     f0, 0x77c(r2)
     b       branch_0x8031a7b0
 
 branch_0x8031a798:
@@ -355,10 +355,10 @@ branch_0x8031a7b0:
     clrlwi  r0, r7, 24
     cmplwi  r0, 0x12
     blt+    branch_0x8031a798
-    lfs     f1, 0x778(rtoc)
+    lfs     f1, 0x778(r2)
     stfs    f1, 0x170(r3)
     stfs    f1, 0x174(r3)
-    lfs     f0, 0x780(rtoc)
+    lfs     f0, 0x780(r2)
     stfs    f0, 0x190(r3)
     stfs    f0, 0x194(r3)
     stfs    f0, 0x260(r3)
@@ -454,7 +454,7 @@ branch_0x8031a8e0:
     lwz     r5, 0x0(r30)
     addi    r4, r23, 0x0
     addi    r3, r26, 0xec
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stw     r0, 0x0(r30)
     li      r5, 0x0
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
@@ -478,7 +478,7 @@ branch_0x8031a934:
     lwz     r5, 0x0(r30)
     addi    r3, r25, 0x0
     addi    r4, r24, 0x0
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stw     r0, 0x0(r30)
     li      r5, 0x0
     bl      addListHead__Q28JASystem11TChannelMgrFPQ28JASystem8TChannelUl
@@ -522,7 +522,7 @@ branch_0x8031a9c8:
     lhz     r6, 0x292(r26)
     lhz     r7, 0x290(r26)
     stw     r6, 0x3c(sp)
-    lfd     f4, 0x788(rtoc)
+    lfd     f4, 0x788(r2)
     stw     r7, 0x44(sp)
     stw     r5, 0x34(sp)
     stw     r4, 0x2c(sp)
@@ -554,7 +554,7 @@ branch_0x8031aa4c:
     beq-    branch_0x8031ab08
     cmplwi  r28, 0x8
     blt-    branch_0x8031aaac
-    subi    r28, r28, 0x8
+    addi    r28, r28, -0x8
     addi    r3, r30, 0x0
     addi    r4, r28, 0x0
     bl      isOsc__Q28JASystem8TChannelFUl
@@ -573,7 +573,7 @@ branch_0x8031aaac:
     blt-    branch_0x8031aaf0
     mulli   r0, r24, 0x18
     add     r25, r26, r0
-    subi    r28, r28, 0x4
+    addi    r28, r28, -0x4
     lwz     r29, 0x318(r25)
     addi    r27, r25, 0x318
     addi    r3, r30, 0x0
@@ -599,7 +599,7 @@ branch_0x8031ab0c:
     clrlwi  r0, r23, 24
     cmplwi  r0, 0x2
     blt+    branch_0x8031aa4c
-    lbz     r0, -0x5b10(r13)
+    lbz     r0, R13Off_m0x5b10(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8031ab30
     addi    r3, r26, 0x0
@@ -731,8 +731,8 @@ branch_0x8031ac9c:
     clrlwi. r4, r7, 24
     beq-    branch_0x8031ad00
     mulli   r12, r0, 0x18
-    lis     r4, 0x803e
-    addi    r8, r4, 0x35a0
+    lis     r4, sEnvelopeDef__Q28JASystem6Player@h
+    addi    r8, r4, sEnvelopeDef__Q28JASystem6Player@l
     lwz     r7, 0x0(r8)
     add     r11, r3, r12
     lwz     r4, 0x4(r8)
@@ -752,7 +752,7 @@ branch_0x8031ac9c:
     b       branch_0x8031ad00
 
 branch_0x8031acf4:
-    lfs     f0, 0x77c(rtoc)
+    lfs     f0, 0x77c(r2)
     add     r4, r3, r12
     stfs    f0, 0x320(r4)
 branch_0x8031ad00:
@@ -776,8 +776,8 @@ branch_0x8031ad34:
     cmplwi  r6, 0x0
     bne-    branch_0x8031ad58
     mulli   r4, r0, 0x18
-    lis     r5, 0x803e
-    addi    r5, r5, 0x3600
+    lis     r5, sRelTable__Q28JASystem6Player@h
+    addi    r5, r5, sRelTable__Q28JASystem6Player@l
     add     r4, r3, r4
     stw     r5, 0x318(r4)
 branch_0x8031ad58:
@@ -802,8 +802,8 @@ oscSetupSimpleEnv__Q28JASystem6TTrackFUcUl: # 0x8031ad78
     cmpwi   r0, 0x0
     bltlr-    
 
-    lis     r4, 0x803e
-    addi    r6, r4, 0x35a0
+    lis     r4, sEnvelopeDef__Q28JASystem6Player@h
+    addi    r6, r4, sEnvelopeDef__Q28JASystem6Player@l
     lwz     r4, 0x0(r6)
     lwz     r0, 0x4(r6)
     stw     r4, 0x30c(r3)
@@ -890,8 +890,8 @@ branch_0x8031ae6c:
     b       branch_0x8031aef0
 
 branch_0x8031ae78:
-    lis     r4, 0x803e
-    addi    r5, r4, 0x35b8
+    lis     r4, sVibratoDef__Q28JASystem6Player@h
+    addi    r5, r4, sVibratoDef__Q28JASystem6Player@l
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0x324(r3)
@@ -907,8 +907,8 @@ branch_0x8031ae78:
     blr
 
 branch_0x8031aeb4:
-    lis     r4, 0x803e
-    addi    r5, r4, 0x35d0
+    lis     r4, sTremoroDef__Q28JASystem6Player@h
+    addi    r5, r4, sTremoroDef__Q28JASystem6Player@l
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0x30c(r3)
@@ -924,8 +924,8 @@ branch_0x8031aeb4:
     blr
 
 branch_0x8031aef0:
-    lis     r4, 0x803e
-    addi    r5, r4, 0x35d0
+    lis     r4, sTremoroDef__Q28JASystem6Player@h
+    addi    r5, r4, sTremoroDef__Q28JASystem6Player@l
     lwz     r4, 0x0(r5)
     lwz     r0, 0x4(r5)
     stw     r4, 0x324(r3)
@@ -959,10 +959,10 @@ updateTrackAll__Q28JASystem6TTrackFv: # 0x8031af2c
     lis     r3, 0x4330
     lbz     r0, 0x3bc(r31)
     stw     r4, 0x1c(sp)
-    lfd     f3, 0x788(rtoc)
+    lfd     f3, 0x788(r2)
     cmplwi  r0, 0x4
     stw     r3, 0x18(sp)
-    lfs     f0, 0x790(rtoc)
+    lfs     f0, 0x790(r2)
     lfd     f2, 0x18(sp)
     fsubs   f2, f2, f3
     fdivs   f31, f2, f0
@@ -974,7 +974,7 @@ updateTrackAll__Q28JASystem6TTrackFv: # 0x8031af2c
     stw     r0, 0x154(r31)
     li      r5, 0x0
     sth     r4, 0x158(r31)
-    lfs     f2, 0x794(rtoc)
+    lfs     f2, 0x794(r2)
     lfs     f0, 0x270(r31)
     fmuls   f0, f2, f0
     stfs    f0, 0x10(sp)
@@ -1000,11 +1000,11 @@ branch_0x8031affc:
     lbz     r0, 0x3c2(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x8031b00c
-    lfs     f30, 0x778(rtoc)
+    lfs     f30, 0x778(r2)
 branch_0x8031b00c:
     lhz     r3, 0x28e(r31)
     lis     r0, 0x4330
-    lfd     f2, 0x788(rtoc)
+    lfd     f2, 0x788(r2)
     stw     r3, 0x1c(sp)
     lfs     f1, 0x170(r31)
     stw     r0, 0x18(sp)
@@ -1097,10 +1097,10 @@ branch_0x8031b154:
     lfs     f0, 0x104(r3)
     fmr     f1, f26
     stw     r4, 0x1c(sp)
-    lfd     f4, 0x788(rtoc)
+    lfd     f4, 0x788(r2)
     fmuls   f0, f0, f30
     stw     r0, 0x18(sp)
-    lfs     f2, 0x790(rtoc)
+    lfs     f2, 0x790(r2)
     mr      r3, r31
     lfd     f3, 0x18(sp)
     stfs    f0, 0x104(r31)
@@ -1157,7 +1157,7 @@ branch_0x8031b234:
     li      r0, 0x8
     stb     r0, 0x14d(r31)
 branch_0x8031b248:
-    lfs     f2, 0x790(rtoc)
+    lfs     f2, 0x790(r2)
     li      r4, 0x0
     b       branch_0x8031b280
 
@@ -1180,7 +1180,7 @@ branch_0x8031b280:
     lbz     r0, 0x14d(r31)
     ori     r0, r0, 0x20
     stb     r0, 0x14d(r31)
-    lfs     f2, 0x790(rtoc)
+    lfs     f2, 0x790(r2)
     lfs     f0, 0x1b0(r31)
     fmuls   f0, f2, f0
     fctiwz  f0, f0
@@ -1220,17 +1220,17 @@ updateTrack__Q28JASystem6TTrackFUl: # 0x8031b2e4
     lis     r3, 0x4330
     lbz     r0, 0x3bc(r30)
     stw     r5, 0x1c(sp)
-    lfd     f3, 0x788(rtoc)
+    lfd     f3, 0x788(r2)
     cmplwi  r0, 0x4
     stw     r3, 0x18(sp)
-    lfs     f0, 0x790(rtoc)
+    lfs     f0, 0x790(r2)
     lfd     f2, 0x18(sp)
     fsubs   f2, f2, f3
     fdivs   f26, f2, f0
     beq-    branch_0x8031b7e8
     rlwinm. r0, r31, 0, 14, 14
     beq-    branch_0x8031b390
-    lfs     f2, 0x794(rtoc)
+    lfs     f2, 0x794(r2)
     addi    r3, sp, 0x10
     lfs     f0, 0x270(r30)
     li      r4, 0x0
@@ -1268,7 +1268,7 @@ branch_0x8031b3c8:
     lbz     r0, 0x3c2(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x8031b3d8
-    lfs     f31, 0x778(rtoc)
+    lfs     f31, 0x778(r2)
 branch_0x8031b3d8:
     lwz     r3, 0x304(r30)
     cmplwi  r3, 0x0
@@ -1294,7 +1294,7 @@ branch_0x8031b420:
     beq-    branch_0x8031b478
     lhz     r3, 0x28e(r30)
     lis     r0, 0x4330
-    lfd     f2, 0x788(rtoc)
+    lfd     f2, 0x788(r2)
     stw     r3, 0x1c(sp)
     lfs     f1, 0x170(r30)
     stw     r0, 0x18(sp)
@@ -1372,7 +1372,7 @@ branch_0x8031b508:
 branch_0x8031b550:
     rlwinm. r0, r31, 0, 16, 19
     beq-    branch_0x8031b5a8
-    lfs     f2, 0x790(rtoc)
+    lfs     f2, 0x790(r2)
     li      r4, 0x0
     b       branch_0x8031b590
 
@@ -1427,7 +1427,7 @@ branch_0x8031b5f0:
 branch_0x8031b60c:
     rlwinm. r0, r31, 0, 26, 26
     beq-    branch_0x8031b630
-    lfs     f2, 0x790(rtoc)
+    lfs     f2, 0x790(r2)
     lfs     f0, 0x1b0(r30)
     fmuls   f0, f2, f0
     fctiwz  f0, f0
@@ -1518,10 +1518,10 @@ branch_0x8031b710:
 branch_0x8031b720:
     lhz     r5, 0x298(r30)
     lis     r3, 0x4330
-    lfd     f3, 0x788(rtoc)
+    lfd     f3, 0x788(r2)
     clrlwi. r0, r31, 31
     stw     r5, 0x1c(sp)
-    lfs     f0, 0x790(rtoc)
+    lfs     f0, 0x790(r2)
     stw     r3, 0x18(sp)
     lfd     f2, 0x18(sp)
     fsubs   f2, f2, f3
@@ -1598,7 +1598,7 @@ updateTempo__Q28JASystem6TTrackFv: # 0x8031b814
     bne-    branch_0x8031b8d8
     lhz     r0, 0x3ba(r29)
     lis     r3, 0x4330
-    lfd     f2, 0x788(rtoc)
+    lfd     f2, 0x788(r2)
     li      r4, 0x40
     stw     r0, 0x2c(sp)
     stw     r3, 0x28(sp)
@@ -1618,11 +1618,11 @@ updateTempo__Q28JASystem6TTrackFv: # 0x8031b814
     fdivs   f0, f1, f0
     stfs    f0, 0x3b0(r29)
     lfs     f1, 0x3b0(r29)
-    lfs     f0, 0x798(rtoc)
+    lfs     f0, 0x798(r2)
     fmuls   f0, f1, f0
     stfs    f0, 0x3b0(r29)
     lfs     f1, 0x3b0(r29)
-    lfs     f0, 0x79c(rtoc)
+    lfs     f0, 0x79c(r2)
     fdivs   f0, f1, f0
     stfs    f0, 0x3b0(r29)
     lwz     r3, 0x304(r29)
@@ -1821,9 +1821,9 @@ mainProc__Q28JASystem6TTrackFv: # 0x8031bb08
     lis     r3, 0x4330
     lhz     r0, 0x3b8(r5)
     stw     r4, 0x24(sp)
-    lfd     f3, 0x788(rtoc)
+    lfd     f3, 0x788(r2)
     stw     r0, 0x1c(sp)
-    lfs     f0, 0x77c(rtoc)
+    lfs     f0, 0x77c(r2)
     stw     r3, 0x20(sp)
     stw     r3, 0x18(sp)
     lfd     f2, 0x20(sp)
@@ -1839,7 +1839,7 @@ branch_0x8031bb78:
     fadds   f0, f0, f2
     stfs    f0, 0x3ac(r30)
     lfs     f1, 0x3ac(r30)
-    lfs     f0, 0x77c(rtoc)
+    lfs     f0, 0x77c(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8031bb9c
     li      r3, 0x0
@@ -1869,7 +1869,7 @@ branch_0x8031bba4:
     addi    r0, r3, 0xec
     stw     r0, 0x4(r28)
     lwz     r3, 0xec(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xec(r30)
     lwz     r4, 0x2c0(r30)
     lwz     r3, 0xec(r4)
@@ -1891,8 +1891,8 @@ branch_0x8031bc30:
     bl      request__Q28JASystem8TIntrMgrFUl
     addi    r3, r30, 0x88
     bl      timerProcess__Q28JASystem8TIntrMgrFv
-    lis     r3, 0x8041
-    subi    r29, r3, 0x40e0
+    lis     r3, sParser__Q28JASystem6TTrack@ha
+    addi    r29, r3, sParser__Q28JASystem6TTrack@l
 branch_0x8031bc4c:
     lwz     r0, 0x44(r30)
     cmplwi  r0, 0x0
@@ -1969,9 +1969,9 @@ branch_0x8031bd30:
     beq+    branch_0x8031bc4c
 branch_0x8031bd38:
     li      r0, 0x9
-    lfs     f1, 0x77c(rtoc)
+    lfs     f1, 0x77c(r2)
     mtctr   r0
-    lfs     f3, 0x778(rtoc)
+    lfs     f3, 0x778(r2)
     li      r31, 0x0
     li      r5, 0x0
     li      r3, 0x0
@@ -2110,8 +2110,8 @@ branch_0x8031becc:
     addi    r3, r3, 0x10
     bdnz+      branch_0x8031bd54
     lwz     r0, 0x3a0(r30)
-    lis     r3, 0x803e
-    addi    r4, r3, 0x3658
+    lis     r3, sOscTable__Q28JASystem6TTrack@h
+    addi    r4, r3, sOscTable__Q28JASystem6TTrack@l
     cmpwi   r0, 0xe
     bne-    branch_0x8031befc
     lbz     r0, 0x30c(r30)
@@ -2178,15 +2178,15 @@ seqTimeToDspTime__Q28JASystem6TTrackFlUc: # 0x8031bfac
     lis     r5, 0x4330
     lbz     r0, 0x3cb(r3)
     stw     r4, 0x24(sp)
-    lfd     f4, 0x7b0(rtoc)
+    lfd     f4, 0x7b0(r2)
     cmplwi  r0, 0x0
     stw     r5, 0x28(sp)
-    lfd     f2, 0x788(rtoc)
+    lfd     f2, 0x788(r2)
     stw     r5, 0x20(sp)
     lfd     f3, 0x28(sp)
     lfd     f1, 0x20(sp)
     fsubs   f3, f3, f4
-    lfs     f0, 0x7a0(rtoc)
+    lfs     f0, 0x7a0(r2)
     fsubs   f1, f1, f2
     fmuls   f3, f3, f1
     fdivs   f3, f3, f0
@@ -2197,9 +2197,9 @@ seqTimeToDspTime__Q28JASystem6TTrackFlUc: # 0x8031bfac
 
 branch_0x8031c008:
     lhz     r0, 0x3ba(r3)
-    lfs     f0, 0x7a4(rtoc)
+    lfs     f0, 0x7a4(r2)
     stw     r0, 0x24(sp)
-    lwz     r0, -0x5b38(r13)
+    lwz     r0, R13Off_m0x5b38(r13)
     fmuls   f1, f0, f3
     stw     r5, 0x20(sp)
     cmpwi   r0, 0x0
@@ -2207,8 +2207,8 @@ branch_0x8031c008:
     fsubs   f0, f0, f2
     fdivs   f3, f1, f0
     bne-    branch_0x8031c054
-    lwz     r0, -0x73cc(r13)
-    lfs     f0, 0x7a8(rtoc)
+    lwz     r0, R13Off_m0x73cc(r13)
+    lfs     f0, 0x7a8(r2)
     stw     r0, 0x24(sp)
     stw     r5, 0x20(sp)
     lfd     f1, 0x20(sp)
@@ -2241,14 +2241,13 @@ writeTimeParam__Q28JASystem6TTrackFUc: # 0x8031c068
     stw     r3, 0x4(r28)
     lbz     r31, 0x0(r5)
     bgt-    branch_0x8031c13c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3660
+    lis     r3, unk_803e3660@h
+    addi    r3, r3, unk_803e3660@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8031C0C0:		# jumptable 8031C0BC case 0
+    bctr       
+branch_0x8031c0c0:
     lwz     r4, 0x4(r28)
     addi    r3, r28, 0x0
     addi    r0, r4, 0x1
@@ -2258,38 +2257,36 @@ branch_0x8031C0C0:		# jumptable 8031C0BC case 0
     mr      r29, r3
     b       branch_0x8031c13c
 
-branch_0x8031C0E0:		# jumptable 8031C0BC case 4
-lwz	  r3, 4(r28)
-addi	  r0, r3, 1
-stw	  r0, 4(r28)
-lbz	  r29, 0(r3)
-b	  def_8031C0BC	# jumptable 8031C0BC default case
+branch_0x8031c0e0:
+    lwz     r3, 0x4(r28)
+    addi    r0, r3, 0x1
+    stw     r0, 0x4(r28)
+    lbz     r29, 0x0(r3)
+    b       branch_0x8031c13c
 
-branch_0x8031C0F4:		# jumptable 8031C0BC case 8
-lwz	  r3, 4(r28)
-addi	  r0, r3, 1
-stw	  r0, 4(r28)
-lbz	  r0, 0(r3)
-clrlwi	  r4, r0, 16
-rlwinm.	  r0, r0, 0,24,24
-beq	  branch_0x8031C11C
-slwi	  r0, r4, 8
-extsh	  r29, r0
-b	  def_8031C0BC	# jumptable 8031C0BC default case
+branch_0x8031c0f4:
+    lwz     r3, 0x4(r28)
+    addi    r0, r3, 0x1
+    stw     r0, 0x4(r28)
+    lbz     r0, 0x0(r3)
+    clrlwi  r4, r0, 16
+    rlwinm. r0, r0, 0, 24, 24
+    beq-    branch_0x8031c11c
+    slwi    r0, r4, 8
+    extsh   r29, r0
+    b       branch_0x8031c13c
 
-branch_0x8031C11C:
-slwi	  r3, r4, 8
-slwi	  r0, r4, 1
-or	  r0, r3, r0
-extsh	  r29, r0
-b	  def_8031C0BC	# jumptable 8031C0BC default case
+branch_0x8031c11c:
+    slwi    r3, r4, 8
+    slwi    r0, r4, 1
+    or      r0, r3, r0
+    extsh   r29, r0
+    b       branch_0x8031c13c
 
-branch_0x8031C130:		# jumptable 8031C0BC case 12
-mr	  r3, r28
-bl	  read16__Q28JASystem8TSeqCtrlFv # JASystem::TSeqCtrl::read16((void))
-mr	  r29, r3
-
-def_8031C0BC:		# jumptable 8031C0BC default case
+branch_0x8031c130:
+    mr      r3, r28
+    bl      read16__Q28JASystem8TSeqCtrlFv
+    mr      r29, r3
 branch_0x8031c13c:
     clrlwi  r0, r30, 30
     cmpwi   r0, 0x2
@@ -2333,11 +2330,11 @@ branch_0x8031c1a8:
     clrlwi  r5, r3, 16
 branch_0x8031c1b4:
     extsh   r0, r29
-    lfd     f2, 0x7b0(rtoc)
+    lfd     f2, 0x7b0(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, 0x7b8(rtoc)
+    lfs     f0, 0x7b8(r2)
     stw     r0, 0x1c(sp)
-    lis     r3, 0x4330
+    lis     r3, unk_43300000@h
     slwi    r4, r31, 4
     stw     r3, 0x18(sp)
     addi    r4, r4, 0x160
@@ -2350,9 +2347,9 @@ branch_0x8031c1b4:
     bgt-    branch_0x8031c210
     lfs     f0, 0x4(r4)
     stfs    f0, 0x0(r4)
-    lfs     f0, 0x778(rtoc)
+    lfs     f0, 0x778(r2)
     stfs    f0, 0xc(r4)
-    lfs     f0, 0x77c(rtoc)
+    lfs     f0, 0x77c(r2)
     stfs    f0, 0x8(r4)
     b       branch_0x8031c24c
 
@@ -2391,7 +2388,7 @@ writeRegParam__Q28JASystem6TTrackFUc: # 0x8031c26c
     cmpwi   r0, 0xb
     stwu    sp, -0x48(sp)
     stmw    r23, 0x24(sp)
-    addi    r30, r3, 0x0
+    addi    r30, r3, unk_43300000@l
     rlwinm  r28, r4, 0, 28, 29
     clrlwi  r27, r4, 30
     bne-    branch_0x8031c29c
@@ -2439,14 +2436,13 @@ branch_0x8031c2f8:
 branch_0x8031c32c:
     cmplwi  r28, 0x10
     bgt-    branch_0x8031c3d0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3694
+    lis     r3, unk_803e3694@h
+    addi    r3, r3, unk_803e3694@l
     slwi    r0, r28, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8031C34C:		# jumptable 8031C348 case 0
+    bctr       
+branch_0x8031c34c:
     lwz     r4, 0x4(r30)
     addi    r3, r30, 0x0
     addi    r0, r4, 0x1
@@ -2456,42 +2452,40 @@ branch_0x8031C34C:		# jumptable 8031C348 case 0
     mr      r24, r3
     b       branch_0x8031c3d0
 
-branch_0x8031C36C:		# jumptable 8031C348 case 4
-lwz	  r3, 4(r30)
-addi	  r0, r3, 1
-stw	  r0, 4(r30)
-lbz	  r24, 0(r3)
-b	  def_8031C348	# jumptable 8031C348 default case
+branch_0x8031c36c:
+    lwz     r3, 0x4(r30)
+    addi    r0, r3, 0x1
+    stw     r0, 0x4(r30)
+    lbz     r24, 0x0(r3)
+    b       branch_0x8031c3d0
 
-branch_0x8031C380:		# jumptable 8031C348 case 8
-lwz	  r3, 4(r30)
-addi	  r0, r3, 1
-stw	  r0, 4(r30)
-lbz	  r0, 0(r3)
-clrlwi	  r4, r0, 16
-rlwinm.	  r0, r0, 0,24,24
-beq	  branch_0x8031C3A8
-slwi	  r0, r4, 8
-extsh	  r24, r0
-b	  def_8031C348	# jumptable 8031C348 default case
+branch_0x8031c380:
+    lwz     r3, 0x4(r30)
+    addi    r0, r3, 0x1
+    stw     r0, 0x4(r30)
+    lbz     r0, 0x0(r3)
+    clrlwi  r4, r0, 16
+    rlwinm. r0, r0, 0, 24, 24
+    beq-    branch_0x8031c3a8
+    slwi    r0, r4, 8
+    extsh   r24, r0
+    b       branch_0x8031c3d0
 
-branch_0x8031C3A8:
-slwi	  r3, r4, 8
-slwi	  r0, r4, 1
-or	  r0, r3, r0
-extsh	  r24, r0
-b	  def_8031C348	# jumptable 8031C348 default case
+branch_0x8031c3a8:
+    slwi    r3, r4, 8
+    slwi    r0, r4, 1
+    or      r0, r3, r0
+    extsh   r24, r0
+    b       branch_0x8031c3d0
 
-branch_0x8031C3BC:		# jumptable 8031C348 case 12
-mr	  r3, r30
-bl	  read16__Q28JASystem8TSeqCtrlFv # JASystem::TSeqCtrl::read16((void))
-mr	  r24, r3
-b	  def_8031C348	# jumptable 8031C348 default case
+branch_0x8031c3bc:
+    mr      r3, r30
+    bl      read16__Q28JASystem8TSeqCtrlFv
+    mr      r24, r3
+    b       branch_0x8031c3d0
 
-branch_0x8031C3CC:		# jumptable 8031C348 case 16
-li	  r24, -1
-
-def_8031C348:		# jumptable 8031C348 default case
+branch_0x8031c3cc:
+    li      r24, -0x1
 branch_0x8031c3d0:
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
@@ -2822,10 +2816,10 @@ branch_0x8031c7ac:
     addi    r3, r29, 0xec
     li      r4, 0x0
     bl      initAllocChannel__Q28JASystem11TChannelMgrFUl
-    lfs     f0, 0x778(rtoc)
+    lfs     f0, 0x778(r2)
     mr      r3, r29
     stfs    f0, 0x3ac(r29)
-    lfs     f0, 0x77c(rtoc)
+    lfs     f0, 0x77c(r2)
     stfs    f0, 0x3b0(r29)
     bl      updateTrackAll__Q28JASystem6TTrackFv
     li      r0, 0x2
@@ -2877,8 +2871,8 @@ branch_0x8031c86c:
     li      r0, 0x1
     stb     r0, 0x3c4(r4)
 branch_0x8031c874:
-    lis     r3, 0x8032
-    subi    r3, r3, 0x27c4
+    lis     r3, rootCallback__Q28JASystem6TTrackFPv@ha
+    addi    r3, r3, rootCallback__Q28JASystem6TTrackFPv@l
     bl      registerSubframeCallback__Q28JASystem6KernelFPFPv_lPv
     li      r3, 0x1
 branch_0x8031c884:
@@ -3236,13 +3230,13 @@ branch_0x8031cd10:
     clrlwi  r0, r5, 24
     cmplwi  r0, 0x10
     blt+    branch_0x8031cce0
-    lis     r3, 0x803e
-    addi    r7, r3, 0x35a0
+    lis     r3, sEnvelopeDef__Q28JASystem6Player@h
+    addi    r7, r3, sEnvelopeDef__Q28JASystem6Player@l
     lwz     r6, 0x0(r7)
-    lis     r3, 0x803e
+    lis     r3, sVibratoDef__Q28JASystem6Player@h
     lwz     r4, 0x4(r7)
     li      r0, 0xf
-    addi    r5, r3, 0x35b8
+    addi    r5, r3, sVibratoDef__Q28JASystem6Player@l
     stw     r6, 0x30c(r31)
     addi    r3, r31, 0x35c
     stw     r4, 0x310(r31)
@@ -3512,7 +3506,7 @@ branch_0x8031d08c:
     b       branch_0x8031d0a4
 
 branch_0x8031d094:
-    subi    r0, r4, 0x40
+    addi    r0, r4, -0x40
     clrlslwi  r0, r0, 24, 1
     add     r3, r30, r0
     lhz     r3, 0x68(r3)
@@ -3530,7 +3524,7 @@ readRegDirect__Q28JASystem6TTrackFUc: # 0x8031d0bc
     mflr    r0
     clrlwi  r5, r4, 24
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0x20
+    addi    r0, r5, -0x20
     cmplwi  r0, 0x10
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
@@ -3539,161 +3533,151 @@ readRegDirect__Q28JASystem6TTrackFUc: # 0x8031d0bc
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     bgt-    branch_0x8031d2c8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x36d8
+    lis     r3, unk_803e36d8@h
+    addi    r3, r3, unk_803e36d8@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8031D104:		# jumptable 8031D100 case 0
+    bctr       
+branch_0x8031d104:
     addi    r3, r31, 0x280
     bl      getBankNumber__Q28JASystem14TRegisterParamCFv
     clrlwi  r28, r3, 24
     b       branch_0x8031d2d4
 
-branch_0x8031D114:		# jumptable 8031D100 case 1
-addi	  r3, r31, 0x280
-bl	  getProgramNumber__Q28JASystem14TRegisterParamCFv # JASystem::TRegisterParam::getProgramNumber(const(void))
-clrlwi	  r28, r3, 24
-b	  branch_0x8031d2d4
+branch_0x8031d114:
+    addi    r3, r31, 0x280
+    bl      getProgramNumber__Q28JASystem14TRegisterParamCFv
+    clrlwi  r28, r3, 24
+    b       branch_0x8031d2d4
 
-branch_0x8031D124:		# jumptable 8031D100 case 2
-addi	  r3, r31, 0
-li	  r4, 0
-bl	  readRegDirect__Q28JASystem6TTrackFUc # JASystem::TTrack::readRegDirect((uchar))
-clrlwi	  r3, r3, 16
-li	  r0, 8
-slw	  r0, r3, r0
-addi	  r3, r31, 0
-clrlwi	  r28, r0, 16
-li	  r4, 1
-bl	  readRegDirect__Q28JASystem6TTrackFUc # JASystem::TTrack::readRegDirect((uchar))
-or	  r28, r28, r3
-b	  branch_0x8031d2d4
+branch_0x8031d124:
+    addi    r3, r31, 0x0
+    li      r4, 0x0
+    bl      readRegDirect__Q28JASystem6TTrackFUc
+    clrlwi  r3, r3, 16
+    li      r0, 0x8
+    slw     r0, r3, r0
+    addi    r3, r31, 0x0
+    clrlwi  r28, r0, 16
+    li      r4, 0x1
+    bl      readRegDirect__Q28JASystem6TTrackFUc
+    or      r28, r28, r3
+    b       branch_0x8031d2d4
 
-branch_0x8031D154:		# jumptable 8031D100 case 12
-li	  r0, 4
-mtctr	  r0
-li	  r28, 0
-li	  r6, 0xF
-li	  r3, 0x3C
-li	  r4, 1
+branch_0x8031d154:
+    li      r0, 0x4
+    mtctr   r0
+    li      r28, 0x0
+    li      r6, 0xf
+    li      r3, 0x3c
+    li      r4, 0x1
+branch_0x8031d16c:
+    addi    r0, r3, 0x2c4
+    lwzx    r5, r31, r0
+    clrlwi  r0, r28, 16
+    slw     r0, r0, r4
+    cmplwi  r5, 0x0
+    clrlwi  r28, r0, 16
+    beq-    branch_0x8031d198
+    lbz     r0, 0x3c4(r5)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8031d198
+    ori     r28, r28, 0x1
+branch_0x8031d198:
+    addi    r0, r3, 0x2c0
+    lwzx    r5, r31, r0
+    clrlwi  r0, r28, 16
+    slw     r0, r0, r4
+    cmplwi  r5, 0x0
+    clrlwi  r28, r0, 16
+    addi    r3, r3, -0x4
+    beq-    branch_0x8031d1c8
+    lbz     r0, 0x3c4(r5)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8031d1c8
+    ori     r28, r28, 0x1
+branch_0x8031d1c8:
+    addi    r0, r3, 0x2c0
+    lwzx    r5, r31, r0
+    clrlwi  r0, r28, 16
+    slw     r0, r0, r4
+    cmplwi  r5, 0x0
+    clrlwi  r28, r0, 16
+    addi    r3, r3, -0x4
+    addi    r6, r6, -0x1
+    beq-    branch_0x8031d1fc
+    lbz     r0, 0x3c4(r5)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8031d1fc
+    ori     r28, r28, 0x1
+branch_0x8031d1fc:
+    addi    r0, r3, 0x2c0
+    lwzx    r5, r31, r0
+    clrlwi  r0, r28, 16
+    slw     r0, r0, r4
+    cmplwi  r5, 0x0
+    clrlwi  r28, r0, 16
+    addi    r3, r3, -0x4
+    addi    r6, r6, -0x1
+    beq-    branch_0x8031d230
+    lbz     r0, 0x3c4(r5)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8031d230
+    ori     r28, r28, 0x1
+branch_0x8031d230:
+    addi    r6, r6, -0x1
+    addi    r3, r3, -0x4
+    bdnz+      branch_0x8031d16c
+    b       branch_0x8031d2d4
 
-branch_0x8031D16C:
-addi	  r0, r3, 0x2C4
-lwzx	  r5, r31, r0
-clrlwi	  r0, r28, 16
-slw	  r0, r0, r4
-cmplwi	  r5, 0
-clrlwi	  r28, r0, 16
-beq	  branch_0x8031D198
-lbz	  r0, 0x3C4(r5)
-cmplwi	  r0, 0
-beq	  branch_0x8031D198
-ori	  r28, r28, 1
+branch_0x8031d240:
+    li      r28, 0x0
+    li      r29, 0x7
+    li      r30, 0x1
+branch_0x8031d24c:
+    clrlwi  r0, r28, 16
+    slw     r0, r0, r30
+    addi    r4, r29, 0x0
+    clrlwi  r28, r0, 16
+    addi    r3, r31, 0xb4
+    bl      getChannel__Q38JASystem6TTrack8TNoteMgrFi
+    cmplwi  r3, 0x0
+    bne-    branch_0x8031d274
+    li      r0, 0x1
+    b       branch_0x8031d28c
 
-branch_0x8031D198:
-addi	  r0, r3, 0x2C0
-lwzx	  r5, r31, r0
-clrlwi	  r0, r28, 16
-slw	  r0, r0, r4
-cmplwi	  r5, 0
-clrlwi	  r28, r0, 16
-addi	  r3, r3, -4
-beq	  branch_0x8031D1C8
-lbz	  r0, 0x3C4(r5)
-cmplwi	  r0, 0
-beq	  branch_0x8031D1C8
-ori	  r28, r28, 1
+branch_0x8031d274:
+    lbz     r0, 0x1(r3)
+    cmplwi  r0, 0xff
+    bne-    branch_0x8031d288
+    li      r0, 0x1
+    b       branch_0x8031d28c
 
-branch_0x8031D1C8:
-addi	  r0, r3, 0x2C0
-lwzx	  r5, r31, r0
-clrlwi	  r0, r28, 16
-slw	  r0, r0, r4
-cmplwi	  r5, 0
-clrlwi	  r28, r0, 16
-addi	  r3, r3, -4
-addi	  r6, r6, -1
-beq	  branch_0x8031D1FC
-lbz	  r0, 0x3C4(r5)
-cmplwi	  r0, 0
-beq	  branch_0x8031D1FC
-ori	  r28, r28, 1
+branch_0x8031d288:
+    li      r0, 0x0
+branch_0x8031d28c:
+    subic.  r29, r29, 0x1
+    clrlwi  r0, r0, 24
+    or      r28, r28, r0
+    bge+    branch_0x8031d24c
+    b       branch_0x8031d2d4
 
-branch_0x8031D1FC:
-addi	  r0, r3, 0x2C0
-lwzx	  r5, r31, r0
-clrlwi	  r0, r28, 16
-slw	  r0, r0, r4
-cmplwi	  r5, 0
-clrlwi	  r28, r0, 16
-addi	  r3, r3, -4
-addi	  r6, r6, -1
-beq	  branch_0x8031D230
-lbz	  r0, 0x3C4(r5)
-cmplwi	  r0, 0
-beq	  branch_0x8031D230
-ori	  r28, r28, 1
+branch_0x8031d2a0:
+    lwz     r0, 0xc(r31)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8031d2b4
+    li      r0, 0x0
+    b       branch_0x8031d2c0
 
-branch_0x8031D230:
-addi	  r6, r6, -1
-addi	  r3, r3, -4
-bdnz	  branch_0x8031D16C
-b	  branch_0x8031d2d4
+branch_0x8031d2b4:
+    slwi    r0, r0, 1
+    add     r3, r31, r0
+    lhz     r0, 0x2e(r3)
+branch_0x8031d2c0:
+    mr      r28, r0
+    b       branch_0x8031d2d4
 
-branch_0x8031D240:		# jumptable 8031D100 case 13
-li	  r28, 0
-li	  r29, 7
-li	  r30, 1
-
-branch_0x8031D24C:
-clrlwi	  r0, r28, 16
-slw	  r0, r0, r30
-addi	  r4, r29, 0
-clrlwi	  r28, r0, 16
-addi	  r3, r31, 0xB4
-bl	  getChannel__Q38JASystem6TTrack8TNoteMgrFi # JASystem::TTrack::TNoteMgr::getChannel((int))
-cmplwi	  r3, 0
-bne	  branch_0x8031D274
-li	  r0, 1
-b	  branch_0x8031D28C
-
-branch_0x8031D274:
-lbz	  r0, 1(r3)
-cmplwi	  r0, 0xFF
-bne	  branch_0x8031D288
-li	  r0, 1
-b	  branch_0x8031D28C
-
-branch_0x8031D288:
-li	  r0, 0
-
-branch_0x8031D28C:
-addic.	  r29, r29, -1
-clrlwi	  r0, r0, 24
-or	  r28, r28, r0
-bge	  branch_0x8031D24C
-b	  branch_0x8031d2d4
-
-branch_0x8031D2A0:		# jumptable 8031D100 case 16
-lwz	  r0, 0xC(r31)
-cmplwi	  r0, 0
-bne	  branch_0x8031D2B4
-li	  r0, 0
-b	  branch_0x8031D2C0
-
-branch_0x8031D2B4:
-slwi	  r0, r0, 1
-add	  r3, r31, r0
-lhz	  r0, 0x2E(r3)
-
-branch_0x8031D2C0:
-mr	  r28, r0
-b	  branch_0x8031d2d4
-
-def_8031D100:		# jumptable 8031D100 default case
 branch_0x8031d2c8:
     clrlslwi  r0, r4, 24, 1
     add     r3, r31, r0
@@ -3743,6 +3727,8 @@ branch_0x8031d350:
     bl      extend8to16__Q28JASystem6PlayerFUc
     mr      r4, r3
     b       branch_0x8031d394
+
+branch_0x8031d364:
     b       branch_0x8031d3a4
 
 branch_0x8031d368:
@@ -4142,6 +4128,8 @@ branch_0x8031d80c:
     cmpwi   r0, 0x3
     bge-    branch_0x8031d834
     b       branch_0x8031d824
+
+branch_0x8031d818:
     blr
 
 branch_0x8031d81c:
@@ -4149,7 +4137,7 @@ branch_0x8031d81c:
     blr
 
 branch_0x8031d824:
-    lfs     f4, 0x77c(rtoc)
+    lfs     f4, 0x77c(r2)
     fmuls   f0, f2, f3
     fsubs   f2, f4, f3
     fmadds  f0, f1, f2, f0
@@ -4193,7 +4181,7 @@ branch_0x8031d8a4:
     fadds   f0, f1, f0
     stfs    f0, 0x3ac(r28)
     lfs     f0, 0x3ac(r28)
-    lfs     f31, 0x77c(rtoc)
+    lfs     f31, 0x77c(r2)
     fcmpo   cr0, f0, f31
     bge-    branch_0x8031d920
     addi    r3, r28, 0x0
@@ -4280,7 +4268,7 @@ branch_0x8031d9a8:
 
 .globl registerTrackCallback__Q28JASystem6TTrackFPFPQ28JASystem6TTrackUs_Us
 registerTrackCallback__Q28JASystem6TTrackFPFPQ28JASystem6TTrackUs_Us: # 0x8031d9cc
-    stw     r3, -0x5b0c(r13)
+    stw     r3, R13Off_m0x5b0c(r13)
     li      r3, 0x1
     blr
 
@@ -4288,9 +4276,9 @@ registerTrackCallback__Q28JASystem6TTrackFPFPQ28JASystem6TTrackUs_Us: # 0x8031d9
 .globl __sinit_JASTrack_cpp
 __sinit_JASTrack_cpp: # 0x8031d9d8
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, oRandom__Q28JASystem6Player@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2050
+    addi    r3, r3, oRandom__Q28JASystem6Player@l
     li      r4, 0x0
     stwu    sp, -0x8(sp)
     bl      setSeed__Q25JMath15TRandom_enough_FUl

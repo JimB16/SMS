@@ -8,7 +8,7 @@ __ct__Q27JGadget20TVector_pointer_voidFRCQ27JGadget14TAllocator_Pv_: # 0x802effc
     lwz     r0, 0x4(r3)
     stw     r0, 0x8(r3)
     stw     r4, 0xc(r3)
-    lfs     f0, 0x350(rtoc)
+    lfs     f0, 0x350(r2)
     stfs    f0, 0x10(r3)
     stw     r4, 0x14(r3)
     blr
@@ -236,7 +236,7 @@ branch_0x802f0280:
 branch_0x802f0290:
     stw     r3, 0x7c(sp)
     lis     r0, 0x4330
-    lfd     f2, 0x358(rtoc)
+    lfd     f2, 0x358(r2)
     add     r30, r3, r28
     stw     r0, 0x78(sp)
     lfs     f0, 0x10(r27)

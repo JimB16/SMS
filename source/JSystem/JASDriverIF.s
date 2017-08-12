@@ -9,7 +9,7 @@ init__Q28JASystem6DriverFv: # 0x803140cc
     bl      initBuffer__Q28JASystem12DSPInterfaceFv
     bl      initAll__Q28JASystem11TDSPChannelFv
     bl      init__Q28JASystem8ChGlobalFv
-    lwz     r3, -0x7414(r13)
+    lwz     r3, R13Off_m0x7414(r13)
     bl      init__Q38JASystem6Driver8DSPQueueFUl
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -22,7 +22,7 @@ setMixerLevel__Q28JASystem6DriverFff: # 0x80314104
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
-    lfs     f0, 0x6c0(rtoc)
+    lfs     f0, 0x6c0(r2)
     fmuls   f0, f0, f1
     fmr     f1, f2
     fctiwz  f0, f0
@@ -44,18 +44,18 @@ getMixerLevel__Q28JASystem6DriverFv: # 0x80314140
 
 .globl setOutputMode__Q28JASystem6DriverFUl
 setOutputMode__Q28JASystem6DriverFUl: # 0x80314148
-    stw     r3, -0x741c(r13)
+    stw     r3, R13Off_m0x741c(r13)
     blr
 
 
 .globl getOutputMode__Q28JASystem6DriverFv
 getOutputMode__Q28JASystem6DriverFv: # 0x80314150
-    lwz     r3, -0x741c(r13)
+    lwz     r3, R13Off_m0x741c(r13)
     blr
 
 
 .globl getUpdateInterval__Q28JASystem6DriverFv
 getUpdateInterval__Q28JASystem6DriverFv: # 0x80314158
-    lbz     r3, -0x7418(r13)
+    lbz     r3, R13Off_m0x7418(r13)
     blr
 

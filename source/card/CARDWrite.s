@@ -7,11 +7,11 @@ WriteCallback_80359d68: # 0x80359d68
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stw     r29, 0x14(sp)
     mulli   r5, r30, 0x110
     stw     r28, 0x10(sp)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     mr.     r28, r4
     add     r31, r0, r5
     blt-    branch_0x80359e8c
@@ -73,8 +73,8 @@ branch_0x80359e60:
 
 branch_0x80359e68:
     lwz     r0, 0xc(r31)
-    lis     r3, 0x8036
-    subi    r5, r3, 0x6128
+    lis     r3, EraseCallback_80359ed8@ha
+    addi    r5, r3, EraseCallback_80359ed8@l
     mullw   r4, r0, r4
     addi    r3, r30, 0x0
     bl      __CARDEraseSector
@@ -117,13 +117,13 @@ EraseCallback_80359ed8: # 0x80359ed8
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
     mulli   r5, r28, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     blt-    branch_0x80359f3c
     lwz     r4, 0xc0(r31)
-    lis     r3, 0x8036
-    subi    r7, r3, 0x6298
+    lis     r3, WriteCallback_80359d68@ha
+    addi    r7, r3, WriteCallback_80359d68@l
     lwz     r5, 0xc(r31)
     lhz     r0, 0x10(r4)
     lwz     r6, 0xb4(r31)
@@ -177,7 +177,7 @@ CARDWriteAsync: # 0x80359f88
 branch_0x80359fc8:
     lwz     r3, 0x1c(sp)
     lwz     r4, 0xc(r3)
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
     and.    r0, r28, r4
     bne-    branch_0x80359fe4
     and.    r0, r27, r4
@@ -210,12 +210,12 @@ branch_0x8035a01c:
     b       branch_0x8035a040
 
 branch_0x8035a038:
-    lis     r3, 0x8035
-    addi    r0, r3, 0x432c
+    lis     r3, __CARDDefaultApiCallback@h
+    addi    r0, r3, __CARDDefaultApiCallback@l
 branch_0x8035a040:
     lwz     r4, 0x1c(sp)
-    lis     r3, 0x8036
-    subi    r5, r3, 0x6128
+    lis     r3, EraseCallback_80359ed8@ha
+    addi    r5, r3, EraseCallback_80359ed8@l
     stw     r0, 0xd0(r4)
     lwz     r3, 0x1c(sp)
     stw     r31, 0xb4(r3)
@@ -243,9 +243,9 @@ branch_0x8035a088:
 .globl CARDWrite
 CARDWrite: # 0x8035a09c
     mflr    r0
-    lis     r7, 0x8035
+    lis     r7, __CARDSyncCallback@h
     stw     r0, 0x4(sp)
-    addi    r7, r7, 0x4330
+    addi    r7, r7, __CARDSyncCallback@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0

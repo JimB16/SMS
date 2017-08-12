@@ -9,20 +9,20 @@ __dt__16TSwitchHelpActorFv: # 0x801575bc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8015763c
-    lis     r3, 0x803c
-    addi    r3, r3, 0x578
+    lis     r3, __vvt__16TSwitchHelpActor@h
+    addi    r3, r3, __vvt__16TSwitchHelpActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x8015762c
-    lis     r3, 0x803c
-    addi    r3, r3, 0x620
+    lis     r3, __vvt__10THelpActor@h
+    addi    r3, r3, __vvt__10THelpActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x8015762c
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -74,14 +74,14 @@ __ct__16TSwitchHelpActorFPCc: # 0x8015768c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
-    addi    r3, r3, 0x620
+    lis     r3, __vvt__10THelpActor@h
+    addi    r3, r3, __vvt__10THelpActor@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803c
+    lis     r3, __vvt__16TSwitchHelpActor@h
     stw     r0, 0x20(r31)
     li      r0, -0x1
-    addi    r4, r3, 0x578
+    addi    r4, r3, __vvt__16TSwitchHelpActor@l
     stw     r0, 0x68(r31)
     li      r5, 0x0
     addi    r0, r4, 0x24
@@ -108,14 +108,14 @@ __dt__10THelpActorFv: # 0x801576fc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80157764
-    lis     r3, 0x803c
-    addi    r3, r3, 0x620
+    lis     r3, __vvt__10THelpActor@h
+    addi    r3, r3, __vvt__10THelpActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x80157754
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -192,7 +192,7 @@ branch_0x80157824:
 branch_0x80157828:
     cmpwi   r0, -0x1
     bne-    branch_0x801578e4
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r5, 0x0
     lwz     r4, 0x68(r31)
     lwz     r3, 0x74(r3)
@@ -235,7 +235,7 @@ branch_0x801578b4:
 branch_0x801578b8:
     cmpwi   r0, -0x1
     beq-    branch_0x801578e4
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r5, 0x0
     lwz     r4, 0x68(r31)
     lwz     r3, 0x74(r3)
@@ -262,7 +262,7 @@ loadAfter__10THelpActorFv: # 0x801578f8
     stw     r29, 0x44(sp)
     mr      r29, r3
     bl      loadAfter__Q26JDrama8TNameRefFv
-    lwz     r3, -0x5db8(r13)
+    lwz     r3, R13Off_m0x5db8(r13)
     lwz     r31, 0x6c(r29)
     lwz     r30, 0x4(r3)
     mr      r3, r31
@@ -275,9 +275,9 @@ loadAfter__10THelpActorFv: # 0x801578f8
     mtlr    r12
     blrl
     stw     r3, 0x70(r29)
-    lis     r3, 0x8038
-    addi    r31, r3, 0x7f78
-    lwz     r4, -0x5db8(r13)
+    lis     r3, unk_80387f78@h
+    addi    r31, r3, unk_80387f78@l
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r31
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -320,11 +320,11 @@ load__10THelpActorFR20JSUMemoryInputStream: # 0x801579a4
     mr      r3, r31
     bl      readString__14JSUInputStreamFv
     stw     r3, 0x6c(r30)
-    lis     r4, 0x4000
+    lis     r4, unk_40000320@h
     addi    r3, r30, 0x0
-    lfs     f3, -0x4a54(rtoc)
-    addi    r4, r4, 0x320
-    lfs     f2, -0x4a58(rtoc)
+    lfs     f3, -0x4a54(r2)
+    addi    r4, r4, unk_40000320@l
+    lfs     f2, -0x4a58(r2)
     li      r5, 0x1
     lfs     f1, 0x24(r30)
     lfs     f0, 0x28(r30)
@@ -352,8 +352,8 @@ __ct__10THelpActorFPCc: # 0x80157a48
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
-    addi    r3, r3, 0x620
+    lis     r3, __vvt__10THelpActor@h
+    addi    r3, r3, __vvt__10THelpActor@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     li      r4, -0x1
@@ -371,14 +371,14 @@ __ct__10THelpActorFPCc: # 0x80157a48
     blr
 
 
-.globl _32___dt__10THelpActorFv
-_32___dt__10THelpActorFv: # 0x80157aa4
-    subi    r3, r3, 0x20
+.globl unk_80157aa4
+unk_80157aa4: # 0x80157aa4
+    addi    r3, r3, -0x20
     b       __dt__10THelpActorFv
 
 
-.globl _32___dt__16TSwitchHelpActorFv
-_32___dt__16TSwitchHelpActorFv: # 0x80157aac
-    subi    r3, r3, 0x20
+.globl unk_80157aac
+unk_80157aac: # 0x80157aac
+    addi    r3, r3, -0x20
     b       __dt__16TSwitchHelpActorFv
 

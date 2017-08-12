@@ -3,13 +3,13 @@
 initialize__21J3DColorBlockLightOffFv: # 0x802d63f0
     li      r0, 0x0
     stb     r0, 0xc(r3)
-    lis     r4, 0x1
-    subi    r7, r13, 0x7548
-    lbz     r6, -0x7548(r13)
-    subi    r8, r13, 0x7548
-    subi    r0, r4, 0x1
+    lis     r4, unk_0000ffff@ha
+    addi    r7, r13, R13Off_m0x7548
+    lbz     r6, R13Off_m0x7548(r13)
+    addi    r8, r13, R13Off_m0x7548
+    addi    r0, r4, unk_0000ffff@l
     stb     r6, 0x4(r3)
-    subi    r9, r13, 0x7548
+    addi    r9, r13, R13Off_m0x7548
     lbz     r5, 0x1(r7)
     stb     r5, 0x5(r3)
     lbz     r4, 0x2(r8)
@@ -34,20 +34,20 @@ initialize__21J3DColorBlockLightOffFv: # 0x802d63f0
 initialize__20J3DColorBlockLightOnFv: # 0x802d645c
     li      r6, 0x0
     stb     r6, 0x14(r3)
-    subi    r7, r13, 0x7548
-    subi    r8, r13, 0x7548
-    lbz     r5, -0x7548(r13)
-    subi    r9, r13, 0x7548
-    lis     r4, 0x1
+    addi    r7, r13, R13Off_m0x7548
+    addi    r8, r13, R13Off_m0x7548
+    lbz     r5, R13Off_m0x7548(r13)
+    addi    r9, r13, R13Off_m0x7548
+    lis     r4, unk_0000ffff@ha
     stb     r5, 0x4(r3)
-    subi    r10, r13, 0x7544
-    subi    r11, r13, 0x7544
+    addi    r10, r13, R13Off_m0x7544
+    addi    r11, r13, R13Off_m0x7544
     lbz     r0, 0x1(r7)
-    subi    r12, r13, 0x7544
+    addi    r12, r13, R13Off_m0x7544
     stb     r0, 0x5(r3)
     lbz     r0, 0x2(r8)
     stb     r0, 0x6(r3)
-    subi    r0, r4, 0x1
+    addi    r0, r4, unk_0000ffff@l
     lbz     r4, 0x3(r9)
     stb     r4, 0x7(r3)
     stb     r5, 0x8(r3)
@@ -57,7 +57,7 @@ initialize__20J3DColorBlockLightOnFv: # 0x802d645c
     stb     r4, 0xa(r3)
     lbz     r4, 0x3(r9)
     stb     r4, 0xb(r3)
-    lbz     r5, -0x7544(r13)
+    lbz     r5, R13Off_m0x7544(r13)
     stb     r5, 0xc(r3)
     lbz     r4, 0x1(r10)
     stb     r4, 0xd(r3)
@@ -89,26 +89,26 @@ initialize__20J3DColorBlockLightOnFv: # 0x802d645c
 
 .globl initialize__12J3DTevBlock2Fv
 initialize__12J3DTevBlock2Fv: # 0x802d6530
-    lis     r4, 0x1
-    subi    r0, r4, 0x1
+    lis     r4, unk_0000ffff@ha
+    addi    r0, r4, unk_0000ffff@l
     sth     r0, 0x4(r3)
     li      r7, 0xc
-    subi    r8, r13, 0x7534
+    addi    r8, r13, R13Off_m0x7534
     sth     r0, 0x6(r3)
     li      r0, 0x1
-    subi    r9, r13, 0x7534
+    addi    r9, r13, R13Off_m0x7534
     stb     r0, 0x30(r3)
     li      r0, 0xc0
-    subi    r10, r13, 0x7534
+    addi    r10, r13, R13Off_m0x7534
     stb     r0, 0x31(r3)
     li      r0, 0xc1
-    subi    r4, r13, 0x7528
+    addi    r4, r13, R13Off_m0x7528
     stb     r0, 0x35(r3)
     li      r0, 0xc2
-    subi    r5, r13, 0x7528
+    addi    r5, r13, R13Off_m0x7528
     stb     r0, 0x39(r3)
     li      r0, 0xc3
-    subi    r6, r13, 0x7528
+    addi    r6, r13, R13Off_m0x7528
     stb     r0, 0x3d(r3)
     li      r0, 0x1c
     stb     r7, 0x51(r3)
@@ -137,7 +137,7 @@ initialize__12J3DTevBlock2Fv: # 0x802d6530
     sth     r0, 0x24(r3)
     lha     r0, 0x6(r10)
     sth     r0, 0x26(r3)
-    lbz     r7, -0x7528(r13)
+    lbz     r7, R13Off_m0x7528(r13)
     stb     r7, 0x41(r3)
     lbz     r0, 0x1(r4)
     stb     r0, 0x42(r3)
@@ -172,8 +172,8 @@ initialize__12J3DTevBlock2Fv: # 0x802d6530
 .globl initialize__12J3DTevBlock4Fv
 initialize__12J3DTevBlock4Fv: # 0x802d6668
     stwu    sp, -0x30(sp)
-    lis     r4, 0x1
-    subi    r0, r4, 0x1
+    lis     r4, unk_0000ffff@ha
+    addi    r0, r4, unk_0000ffff@l
     stw     r31, 0x2c(sp)
     li      r7, 0x1
     li      r8, 0xc1
@@ -182,16 +182,16 @@ initialize__12J3DTevBlock4Fv: # 0x802d6668
     li      r10, 0xc5
     sth     r0, 0x4(r3)
     li      r9, 0xc6
-    subi    r12, r13, 0x7534
+    addi    r12, r13, R13Off_m0x7534
     sth     r0, 0x6(r3)
-    subi    r31, r13, 0x7534
-    subi    r30, r13, 0x7534
+    addi    r31, r13, R13Off_m0x7534
+    addi    r30, r13, R13Off_m0x7534
     sth     r0, 0x8(r3)
-    subi    r4, r13, 0x7528
-    subi    r5, r13, 0x7528
+    addi    r4, r13, R13Off_m0x7528
+    addi    r5, r13, R13Off_m0x7528
     sth     r0, 0xa(r3)
     li      r0, 0xc0
-    subi    r6, r13, 0x7528
+    addi    r6, r13, R13Off_m0x7528
     stb     r7, 0x1c(r3)
     li      r7, 0xc2
     stb     r0, 0x1d(r3)
@@ -236,7 +236,7 @@ initialize__12J3DTevBlock4Fv: # 0x802d6668
     sth     r0, 0x52(r3)
     lha     r0, 0x6(r30)
     sth     r0, 0x54(r3)
-    lbz     r7, -0x7528(r13)
+    lbz     r7, R13Off_m0x7528(r13)
     stb     r7, 0x5e(r3)
     lbz     r0, 0x1(r4)
     stb     r0, 0x5f(r3)
@@ -274,19 +274,19 @@ initialize__12J3DTevBlock4Fv: # 0x802d6668
 .globl initialize__13J3DTevBlock16Fv
 initialize__13J3DTevBlock16Fv: # 0x802d67f0
     stwu    sp, -0x50(sp)
-    lis     r4, 0x1
-    subi    r8, r4, 0x1
+    lis     r4, unk_0000ffff@ha
+    addi    r8, r4, unk_0000ffff@l
     stw     r31, 0x4c(sp)
     li      r0, 0x1
-    subi    r12, r13, 0x7534
+    addi    r12, r13, R13Off_m0x7534
     stw     r30, 0x48(sp)
-    subi    r31, r13, 0x7534
-    subi    r30, r13, 0x7534
+    addi    r31, r13, R13Off_m0x7534
+    addi    r30, r13, R13Off_m0x7534
     sth     r8, 0x4(r3)
-    subi    r4, r13, 0x7528
-    subi    r5, r13, 0x7528
+    addi    r4, r13, R13Off_m0x7528
+    addi    r5, r13, R13Off_m0x7528
     sth     r8, 0x6(r3)
-    subi    r6, r13, 0x7528
+    addi    r6, r13, R13Off_m0x7528
     li      r9, 0xc
     sth     r8, 0x8(r3)
     sth     r8, 0xa(r3)
@@ -318,7 +318,7 @@ initialize__13J3DTevBlock16Fv: # 0x802d67f0
     sth     r10, 0xea(r3)
     lha     r10, 0x6(r30)
     sth     r10, 0xec(r3)
-    lbz     r11, -0x7528(r13)
+    lbz     r11, R13Off_m0x7528(r13)
     stb     r11, 0xf6(r3)
     lbz     r10, 0x1(r4)
     stb     r10, 0xf7(r3)
@@ -490,23 +490,23 @@ createColorBlock__11J3DMaterialFi: # 0x802d6b14
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x802d6ba4
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J3DColorBlock@h
     stw     r31, 0x10(sp)
-    addi    r0, r3, 0x10a8
+    addi    r0, r3, __vvt__13J3DColorBlock@l
     stw     r0, 0x0(r31)
-    lis     r4, 0x803e
-    addi    r0, r4, 0xd38
+    lis     r4, __vvt__21J3DColorBlockLightOff@h
+    addi    r0, r4, __vvt__21J3DColorBlockLightOff@l
     lwz     r30, 0x10(sp)
-    lis     r3, 0x802d
-    addi    r4, r3, 0x6e38
+    lis     r3, __ct__10J3DGXColorFv@h
+    addi    r4, r3, __ct__10J3DGXColorFv@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x4
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x2
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x6c58
+    lis     r3, __ct__12J3DColorChanFv@h
+    addi    r4, r3, __ct__12J3DColorChanFv@l
     addi    r3, r30, 0xe
     li      r5, 0x0
     li      r6, 0x2
@@ -523,15 +523,15 @@ branch_0x802d6bac:
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x802d6c38
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J3DColorBlock@h
     stw     r29, 0xc(sp)
-    addi    r0, r3, 0x10a8
+    addi    r0, r3, __vvt__13J3DColorBlock@l
     stw     r0, 0x0(r29)
-    lis     r4, 0x803e
-    lis     r3, 0x802d
+    lis     r4, __vvt__20J3DColorBlockLightOn@h
+    lis     r3, __ct__10J3DGXColorFv@h
     lwz     r30, 0xc(sp)
-    addi    r0, r4, 0xcd4
-    addi    r31, r3, 0x6e38
+    addi    r0, r4, __vvt__20J3DColorBlockLightOn@l
+    addi    r31, r3, __ct__10J3DGXColorFv@l
     stw     r0, 0x0(r30)
     addi    r4, r31, 0x0
     addi    r3, r30, 0x4
@@ -545,8 +545,8 @@ branch_0x802d6bac:
     li      r6, 0x4
     li      r7, 0x2
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x6c58
+    lis     r3, __ct__12J3DColorChanFv@h
+    addi    r4, r3, __ct__12J3DColorChanFv@l
     addi    r3, r30, 0x16
     li      r5, 0x0
     li      r6, 0x2
@@ -569,7 +569,7 @@ branch_0x802d6c3c:
 .globl __ct__12J3DColorChanFv
 __ct__12J3DColorChanFv: # 0x802d6c58
     mflr    r0
-    subi    r4, r13, 0x7518
+    addi    r4, r13, R13Off_m0x7518
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
@@ -580,8 +580,8 @@ __ct__12J3DColorChanFv: # 0x802d6c58
     bne-    branch_0x802d6c84
     li      r8, 0x0
 branch_0x802d6c84:
-    subi    r7, r13, 0x7518
-    lbz     r3, -0x7518(r13)
+    addi    r7, r13, R13Off_m0x7518
+    lbz     r3, R13Off_m0x7518(r13)
     lbz     r4, 0x1(r7)
     lbz     r5, 0x2(r7)
     lbz     r6, 0x3(r7)
@@ -711,8 +711,8 @@ __dt__13J3DColorBlockFv: # 0x802d6e3c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802d6e70
-    lis     r3, 0x803e
-    addi    r3, r3, 0x10a8
+    lis     r3, __vvt__13J3DColorBlock@h
+    addi    r3, r3, __vvt__13J3DColorBlock@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802d6e70
@@ -738,23 +738,23 @@ createTexGenBlock__11J3DMaterialFi: # 0x802d6e88
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802d6f3c
-    lis     r3, 0x803e
+    lis     r3, __vvt__14J3DTexGenBlock@h
     stw     r30, 0x18(sp)
-    addi    r0, r3, 0x1058
+    addi    r0, r3, __vvt__14J3DTexGenBlock@l
     stw     r0, 0x0(r30)
-    lis     r4, 0x803e
-    addi    r0, r4, 0xc84
+    lis     r4, __vvt__19J3DTexGenBlockBasic@h
+    addi    r0, r4, __vvt__19J3DTexGenBlockBasic@l
     lwz     r31, 0x18(sp)
-    lis     r3, 0x802d
-    addi    r4, r3, 0x6f58
+    lis     r3, __ct__11J3DTexCoordFv@h
+    addi    r4, r3, __ct__11J3DTexCoordFv@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x8
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x8
     bl      __construct_array
-    lis     r3, 0x803e
-    addi    r4, r3, 0x16c4
+    lis     r3, j3dDefaultNBTScaleInfo@h
+    addi    r4, r3, j3dDefaultNBTScaleInfo@l
     lbz     r3, 0x0(r4)
     li      r0, 0x0
     stb     r3, 0x48(r31)
@@ -804,8 +804,8 @@ __dt__14J3DTexGenBlockFv: # 0x802d6f78
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802d6fac
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1058
+    lis     r3, __vvt__14J3DTexGenBlock@h
+    addi    r3, r3, __vvt__14J3DTexGenBlock@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802d6fac
@@ -834,37 +834,37 @@ createTevBlock__11J3DMaterialFi: # 0x802d6fc4
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x802d7084
-    lis     r3, 0x803e
+    lis     r3, __vvt__11J3DTevBlock@h
     stw     r31, 0x18(sp)
-    addi    r0, r3, 0xfbc
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
-    lis     r4, 0x803e
-    addi    r0, r4, 0xbe8
+    lis     r4, __vvt__12J3DTevBlock1@h
+    addi    r0, r4, __vvt__12J3DTevBlock1@l
     lwz     r30, 0x18(sp)
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7508
+    lis     r3, __ct__11J3DTevOrderFv@h
+    addi    r4, r3, __ct__11J3DTevOrderFv@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x6
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x1
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x73d4
+    lis     r3, __ct__11J3DTevStageFv@h
+    addi    r4, r3, __ct__11J3DTevStageFv@l
     addi    r3, r30, 0xa
     li      r5, 0x0
     li      r6, 0x8
     li      r7, 0x1
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7384
+    lis     r3, __ct__14J3DIndTevStageFv@h
+    addi    r4, r3, __ct__14J3DIndTevStageFv@l
     addi    r3, r30, 0x12
     li      r5, 0x0
     li      r6, 0xc
     li      r7, 0x1
     bl      __construct_array
-    lis     r3, 0x1
-    subi    r0, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r0, r3, unk_0000ffff@l
     sth     r0, 0x4(r30)
     li      r3, 0xc0
     li      r0, 0xc1
@@ -881,51 +881,51 @@ branch_0x802d708c:
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x802d7174
-    lis     r3, 0x803e
+    lis     r3, __vvt__11J3DTevBlock@h
     stw     r31, 0x14(sp)
-    addi    r0, r3, 0xfbc
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
-    lis     r4, 0x803e
-    addi    r0, r4, 0xb4c
+    lis     r4, __vvt__12J3DTevBlock2@h
+    addi    r0, r4, __vvt__12J3DTevBlock2@l
     lwz     r30, 0x14(sp)
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7508
+    lis     r3, __ct__11J3DTevOrderFv@h
+    addi    r4, r3, __ct__11J3DTevOrderFv@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x8
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x2
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7380
+    lis     r3, __ct__13J3DGXColorS10Fv@h
+    addi    r4, r3, __ct__13J3DGXColorS10Fv@l
     addi    r3, r30, 0x10
     li      r5, 0x0
     li      r6, 0x8
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x73d4
+    lis     r3, __ct__11J3DTevStageFv@h
+    addi    r4, r3, __ct__11J3DTevStageFv@l
     addi    r3, r30, 0x31
     li      r5, 0x0
     li      r6, 0x8
     li      r7, 0x2
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x6e38
+    lis     r3, __ct__10J3DGXColorFv@h
+    addi    r4, r3, __ct__10J3DGXColorFv@l
     addi    r3, r30, 0x41
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7374
+    lis     r3, __ct__19J3DTevSwapModeTableFv@h
+    addi    r4, r3, __ct__19J3DTevSwapModeTableFv@l
     addi    r3, r30, 0x55
     li      r5, 0x0
     li      r6, 0x1
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7384
+    lis     r3, __ct__14J3DIndTevStageFv@h
+    addi    r4, r3, __ct__14J3DIndTevStageFv@l
     addi    r3, r30, 0x59
     li      r5, 0x0
     li      r6, 0xc
@@ -944,51 +944,51 @@ branch_0x802d717c:
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x802d7264
-    lis     r3, 0x803e
+    lis     r3, __vvt__11J3DTevBlock@h
     stw     r31, 0x10(sp)
-    addi    r0, r3, 0xfbc
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
-    lis     r4, 0x803e
-    addi    r0, r4, 0xab0
+    lis     r4, __vvt__12J3DTevBlock4@h
+    addi    r0, r4, __vvt__12J3DTevBlock4@l
     lwz     r30, 0x10(sp)
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7508
+    lis     r3, __ct__11J3DTevOrderFv@h
+    addi    r4, r3, __ct__11J3DTevOrderFv@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0xc
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x73d4
+    lis     r3, __ct__11J3DTevStageFv@h
+    addi    r4, r3, __ct__11J3DTevStageFv@l
     addi    r3, r30, 0x1d
     li      r5, 0x0
     li      r6, 0x8
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7380
+    lis     r3, __ct__13J3DGXColorS10Fv@h
+    addi    r4, r3, __ct__13J3DGXColorS10Fv@l
     addi    r3, r30, 0x3e
     li      r5, 0x0
     li      r6, 0x8
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x6e38
+    lis     r3, __ct__10J3DGXColorFv@h
+    addi    r4, r3, __ct__10J3DGXColorFv@l
     addi    r3, r30, 0x5e
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7374
+    lis     r3, __ct__19J3DTevSwapModeTableFv@h
+    addi    r4, r3, __ct__19J3DTevSwapModeTableFv@l
     addi    r3, r30, 0x76
     li      r5, 0x0
     li      r6, 0x1
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7384
+    lis     r3, __ct__14J3DIndTevStageFv@h
+    addi    r4, r3, __ct__14J3DIndTevStageFv@l
     addi    r3, r30, 0x7a
     li      r5, 0x0
     li      r6, 0xc
@@ -1007,51 +1007,51 @@ branch_0x802d726c:
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x802d7354
-    lis     r3, 0x803e
+    lis     r3, __vvt__11J3DTevBlock@h
     stw     r31, 0xc(sp)
-    addi    r0, r3, 0xfbc
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
-    lis     r4, 0x803e
-    addi    r0, r4, 0xa14
+    lis     r4, __vvt__13J3DTevBlock16@h
+    addi    r0, r4, __vvt__13J3DTevBlock16@l
     lwz     r30, 0xc(sp)
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7508
+    lis     r3, __ct__11J3DTevOrderFv@h
+    addi    r4, r3, __ct__11J3DTevOrderFv@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x14
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x10
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x73d4
+    lis     r3, __ct__11J3DTevStageFv@h
+    addi    r4, r3, __ct__11J3DTevStageFv@l
     addi    r3, r30, 0x55
     li      r5, 0x0
     li      r6, 0x8
     li      r7, 0x10
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7380
+    lis     r3, __ct__13J3DGXColorS10Fv@h
+    addi    r4, r3, __ct__13J3DGXColorS10Fv@l
     addi    r3, r30, 0xd6
     li      r5, 0x0
     li      r6, 0x8
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x6e38
+    lis     r3, __ct__10J3DGXColorFv@h
+    addi    r4, r3, __ct__10J3DGXColorFv@l
     addi    r3, r30, 0xf6
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7374
+    lis     r3, __ct__19J3DTevSwapModeTableFv@h
+    addi    r4, r3, __ct__19J3DTevSwapModeTableFv@l
     addi    r3, r30, 0x126
     li      r5, 0x0
     li      r6, 0x1
     li      r7, 0x4
     bl      __construct_array
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7384
+    lis     r3, __ct__14J3DIndTevStageFv@h
+    addi    r4, r3, __ct__14J3DIndTevStageFv@l
     addi    r3, r30, 0x12a
     li      r5, 0x0
     li      r6, 0xc
@@ -1073,7 +1073,7 @@ branch_0x802d7358:
 
 .globl __ct__19J3DTevSwapModeTableFv
 __ct__19J3DTevSwapModeTableFv: # 0x802d7374
-    lbz     r0, -0x7510(r13)
+    lbz     r0, R13Off_m0x7510(r13)
     stb     r0, 0x0(r3)
     blr
 
@@ -1110,11 +1110,11 @@ __ct__14J3DIndTevStageFv: # 0x802d7384
 .globl __ct__11J3DTevStageFv
 __ct__11J3DTevStageFv: # 0x802d73d4
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, j3dDefaultTevStageInfo@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r4, 0x1678
+    addi    r31, r4, j3dDefaultTevStageInfo@l
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
     lbz     r4, 0x5(r31)
@@ -1167,7 +1167,7 @@ __ct__11J3DTevStageFv: # 0x802d73d4
     lbz     r7, 0x11(r31)
     lbz     r8, 0x12(r31)
     bl      setTevAlphaOp__11J3DTevStageFUcUcUcUcUc
-    subi    r3, r13, 0x7524
+    addi    r3, r13, R13Off_m0x7524
     lbz     r4, 0x7(r30)
     lbz     r0, 0x1(r3)
     addi    r3, r30, 0x0
@@ -1176,7 +1176,7 @@ __ct__11J3DTevStageFv: # 0x802d73d4
     or      r0, r4, r0
     stb     r0, 0x7(r30)
     lbz     r4, 0x7(r30)
-    lbz     r0, -0x7524(r13)
+    lbz     r0, R13Off_m0x7524(r13)
     clrrwi  r4, r4, 2
     or      r0, r4, r0
     stb     r0, 0x7(r30)
@@ -1190,8 +1190,8 @@ __ct__11J3DTevStageFv: # 0x802d73d4
 
 .globl __ct__11J3DTevOrderFv
 __ct__11J3DTevOrderFv: # 0x802d7508
-    lbz     r0, -0x753c(r13)
-    subi    r4, r13, 0x753c
+    lbz     r0, R13Off_m0x753c(r13)
+    addi    r4, r13, R13Off_m0x753c
     stb     r0, 0x0(r3)
     lbz     r0, 0x1(r4)
     stb     r0, 0x1(r3)
@@ -1208,8 +1208,8 @@ __dt__11J3DTevBlockFv: # 0x802d7528
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802d755c
-    lis     r3, 0x803e
-    addi    r3, r3, 0xfbc
+    lis     r3, __vvt__11J3DTevBlock@h
+    addi    r3, r3, __vvt__11J3DTevBlock@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802d755c
@@ -1237,33 +1237,33 @@ createIndBlock__11J3DMaterialFi: # 0x802d7574
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802d7624
-    lis     r3, 0x803e
+    lis     r3, __vvt__11J3DIndBlock@h
     stw     r30, 0x10(sp)
-    addi    r0, r3, 0xf74
+    addi    r0, r3, __vvt__11J3DIndBlock@l
     stw     r0, 0x0(r30)
-    lis     r4, 0x803e
-    addi    r0, r4, 0x9cc
+    lis     r4, __vvt__15J3DIndBlockFull@h
+    addi    r0, r4, __vvt__15J3DIndBlockFull@l
     lwz     r31, 0x10(sp)
-    lis     r3, 0x802d
-    addi    r4, r3, 0x7744
+    lis     r3, __ct__14J3DIndTexOrderFv@h
+    addi    r4, r3, __ct__14J3DIndTexOrderFv@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x5
     li      r5, 0x0
     li      r6, 0x4
     li      r7, 0x4
     bl      __construct_array
-    lis     r4, 0x802d
-    lis     r3, 0x802d
-    addi    r5, r3, 0x76c4
-    addi    r4, r4, 0x7704
+    lis     r4, __ct__12J3DIndTexMtxFv@h
+    lis     r3, __dt__12J3DIndTexMtxFv@h
+    addi    r5, r3, __dt__12J3DIndTexMtxFv@l
+    addi    r4, r4, __ct__12J3DIndTexMtxFv@l
     addi    r3, r31, 0x18
     li      r6, 0x1c
     li      r7, 0x3
     bl      __construct_array
-    lis     r4, 0x802d
-    lis     r3, 0x802d
-    addi    r5, r3, 0x766c
-    addi    r4, r4, 0x76ac
+    lis     r4, __ct__19J3DIndTexCoordScaleFv@h
+    lis     r3, __dt__19J3DIndTexCoordScaleFv@h
+    addi    r5, r3, __dt__19J3DIndTexCoordScaleFv@l
+    addi    r4, r4, __ct__19J3DIndTexCoordScaleFv@l
     addi    r3, r31, 0x6c
     li      r6, 0x4
     li      r7, 0x4
@@ -1279,11 +1279,11 @@ branch_0x802d762c:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802d7654
-    lis     r4, 0x803e
-    addi    r0, r4, 0xf74
-    lis     r4, 0x803e
+    lis     r4, __vvt__11J3DIndBlock@h
+    addi    r0, r4, __vvt__11J3DIndBlock@l
+    lis     r4, __vvt__15J3DIndBlockNull@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0xf2c
+    addi    r0, r4, __vvt__15J3DIndBlockNull@l
     stw     r0, 0x0(r3)
 branch_0x802d7654:
     lwz     r0, 0x24(sp)
@@ -1317,8 +1317,8 @@ branch_0x802d7694:
 
 .globl __ct__19J3DIndTexCoordScaleFv
 __ct__19J3DIndTexCoordScaleFv: # 0x802d76ac
-    lbz     r0, -0x752c(r13)
-    subi    r4, r13, 0x752c
+    lbz     r0, R13Off_m0x752c(r13)
+    addi    r4, r13, R13Off_m0x752c
     stb     r0, 0x0(r3)
     lbz     r0, 0x1(r4)
     stb     r0, 0x1(r3)
@@ -1368,8 +1368,8 @@ __ct__12J3DIndTexMtxFv: # 0x802d7704
 
 .globl __ct__14J3DIndTexOrderFv
 __ct__14J3DIndTexOrderFv: # 0x802d7744
-    lbz     r0, -0x7538(r13)
-    subi    r4, r13, 0x7538
+    lbz     r0, R13Off_m0x7538(r13)
+    addi    r4, r13, R13Off_m0x7538
     stb     r0, 0x0(r3)
     lbz     r0, 0x1(r4)
     stb     r0, 0x1(r3)
@@ -1384,8 +1384,8 @@ __dt__11J3DIndBlockFv: # 0x802d775c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802d7790
-    lis     r3, 0x803e
-    addi    r3, r3, 0xf74
+    lis     r3, __vvt__11J3DIndBlock@h
+    addi    r3, r3, __vvt__11J3DIndBlock@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802d7790
@@ -1413,11 +1413,11 @@ createPEBlock__11J3DMaterialFiUl: # 0x802d77a8
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802d78e0
-    lis     r4, 0x803e
-    addi    r0, r4, 0xec8
-    lis     r4, 0x803e
+    lis     r4, __vvt__10J3DPEBlock@h
+    addi    r0, r4, __vvt__10J3DPEBlock@l
+    lis     r4, __vvt__13J3DPEBlockOpa@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0xe64
+    addi    r0, r4, __vvt__13J3DPEBlockOpa@l
     stw     r0, 0x0(r3)
     b       branch_0x802d78e0
 
@@ -1428,11 +1428,11 @@ branch_0x802d77f0:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802d78e0
-    lis     r4, 0x803e
-    addi    r0, r4, 0xec8
-    lis     r4, 0x803e
+    lis     r4, __vvt__10J3DPEBlock@h
+    addi    r0, r4, __vvt__10J3DPEBlock@l
+    lis     r4, __vvt__17J3DPEBlockTexEdge@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0xe00
+    addi    r0, r4, __vvt__17J3DPEBlockTexEdge@l
     stw     r0, 0x0(r3)
     b       branch_0x802d78e0
 
@@ -1443,11 +1443,11 @@ branch_0x802d7824:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802d78e0
-    lis     r4, 0x803e
-    addi    r0, r4, 0xec8
-    lis     r4, 0x803e
+    lis     r4, __vvt__10J3DPEBlock@h
+    addi    r0, r4, __vvt__10J3DPEBlock@l
+    lis     r4, __vvt__13J3DPEBlockXlu@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0xd9c
+    addi    r0, r4, __vvt__13J3DPEBlockXlu@l
     stw     r0, 0x0(r3)
     b       branch_0x802d78e0
 
@@ -1456,22 +1456,22 @@ branch_0x802d7858:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802d78e0
-    lis     r4, 0x803e
-    addi    r0, r4, 0xec8
-    lis     r4, 0x803e
+    lis     r4, __vvt__10J3DPEBlock@h
+    addi    r0, r4, __vvt__10J3DPEBlock@l
+    lis     r4, __vvt__14J3DPEBlockFull@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0x968
+    addi    r0, r4, __vvt__14J3DPEBlockFull@l
     stw     r0, 0x0(r3)
-    lis     r4, 0x1
+    lis     r4, unk_0000ffff@ha
     li      r7, 0x0
     lhz     r0, -0x750e(r13)
-    subi    r6, r13, 0x751c
-    subi    r4, r4, 0x1
+    addi    r6, r13, R13Off_m0x751c
+    addi    r4, r4, unk_0000ffff@l
     sth     r0, 0x8(r3)
     li      r0, 0xff
     stb     r7, 0xa(r3)
     stb     r7, 0xb(r3)
-    lbz     r5, -0x751c(r13)
+    lbz     r5, R13Off_m0x751c(r13)
     stb     r5, 0xc(r3)
     lbz     r5, 0x1(r6)
     stb     r5, 0xd(r3)
@@ -1501,8 +1501,8 @@ __dt__10J3DPEBlockFv: # 0x802d78f0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802d7924
-    lis     r3, 0x803e
-    addi    r3, r3, 0xec8
+    lis     r3, __vvt__10J3DPEBlock@h
+    addi    r3, r3, __vvt__10J3DPEBlock@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802d7924
@@ -1521,10 +1521,10 @@ branch_0x802d7924:
 initialize__11J3DMaterialFv: # 0x802d793c
     li      r6, 0x0
     stw     r6, 0x4(r3)
-    lis     r4, 0x1
+    lis     r4, unk_0000ffff@ha
     li      r5, 0x1
     stw     r6, 0x0(r3)
-    subi    r0, r4, 0x1
+    addi    r0, r4, unk_0000ffff@l
     stw     r5, 0x8(r3)
     sth     r0, 0xc(r3)
     stw     r6, 0x10(r3)
@@ -1689,8 +1689,8 @@ branch_0x802d7ac8:
     cmplwi  r26, 0x2
     addi    r27, r27, 0x4
     blt+    branch_0x802d7ac8
-    lis     r3, 0x803b
-    subi    r31, r3, 0x6070
+    lis     r3, unk_803a9f90@ha
+    addi    r31, r3, unk_803a9f90@l
     addi    r25, sp, 0x10
     addi    r26, sp, 0x14
     li      r30, 0x0
@@ -1700,7 +1700,7 @@ branch_0x802d7b0c:
     lwz     r5, 0x0(r31)
     addi    r0, r27, 0xe
     lwz     r4, 0x4(r31)
-    lwz     r3, 0x250(rtoc)
+    lwz     r3, R2Off_0x250(r2)
     stw     r5, 0x14(sp)
     stw     r4, 0x18(sp)
     lwz     r5, 0x8(r31)
@@ -1772,8 +1772,8 @@ branch_0x802d7bf4:
     cmplwi  r26, 0x2
     addi    r27, r27, 0x4
     blt+    branch_0x802d7bf4
-    lis     r3, 0x803b
-    subi    r31, r3, 0x6070
+    lis     r3, unk_803a9f90@ha
+    addi    r31, r3, unk_803a9f90@l
     addi    r25, sp, 0x10
     addi    r26, sp, 0x14
     li      r30, 0x0
@@ -1783,7 +1783,7 @@ branch_0x802d7c38:
     lwz     r5, 0x0(r31)
     addi    r0, r27, 0x16
     lwz     r4, 0x4(r31)
-    lwz     r3, 0x250(rtoc)
+    lwz     r3, R2Off_0x250(r2)
     stw     r5, 0x14(sp)
     stw     r4, 0x18(sp)
     lwz     r5, 0x8(r31)
@@ -1861,7 +1861,7 @@ branch_0x802d7d48:
     lwz     r0, 0x4(r29)
     cmplw   r30, r0
     blt+    branch_0x802d7d24
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r30, 0x0
     li      r31, 0x0
     lwz     r3, 0x0(r4)
@@ -1901,12 +1901,12 @@ patch__19J3DTexGenBlockBasicFv: # 0x802d7db4
     li      r29, 0x0
     stw     r28, 0x18(sp)
     mr      r28, r3
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r0, 0x58(r3)
     lwz     r3, 0x0(r4)
     add     r0, r3, r0
     stw     r0, 0x8(r4)
-    lwz     r3, -0x5778(r13)
+    lwz     r3, R13Off_m0x5778(r13)
     lwz     r30, 0x8(r3)
 branch_0x802d7df8:
     addi    r0, r31, 0x28
@@ -1920,7 +1920,7 @@ branch_0x802d7e10:
     cmplwi  r29, 0x8
     addi    r31, r31, 0x4
     blt+    branch_0x802d7df8
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     mr      r3, r30
     lwz     r0, 0x8(r4)
     subf    r4, r30, r0
@@ -1959,8 +1959,8 @@ branch_0x802d7e80:
     li      r9, 0xff
     bl      JRNISetTevOrder__F13_GXTevStageID13_GXTexCoordID11_GXTexMapID12_GXChannelID13_GXTexCoordID11_GXTexMapID12_GXChannelID
     lbz     r5, 0x7(r31)
-    lis     r4, 0x8040
-    addi    r0, r4, 0x47d0
+    lis     r4, sTexCoordScaleTable__6J3DSys@h
+    addi    r0, r4, sTexCoordScaleTable__6J3DSys@l
     lbz     r3, 0x6(r31)
     clrlslwi  r4, r5, 29, 3
     add     r7, r0, r4
@@ -1977,7 +1977,7 @@ branch_0x802d7e80:
     srwi    r5, r5, 5
     srwi    r8, r0, 5
     bl      J3DGDSetTexCoordScale2__F13_GXTexCoordIDUsUcUcUsUcUc
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0xa
@@ -1985,7 +1985,7 @@ branch_0x802d7e80:
     ble-    branch_0x802d7f0c
     bl      GDOverflowed
 branch_0x802d7f0c:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     li      r9, 0x61
     lwz     r10, 0xa(r31)
     li      r3, 0x0
@@ -1996,27 +1996,27 @@ branch_0x802d7f0c:
     extrwi  r7, r10, 8, 8
     extrwi  r6, r10, 8, 16
     stb     r9, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r8, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r7, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r10, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r10, 0xe(r31)
     lwz     r4, 0x8(r5)
     srwi    r8, r10, 24
@@ -2025,22 +2025,22 @@ branch_0x802d7f0c:
     extrwi  r7, r10, 8, 8
     extrwi  r6, r10, 8, 16
     stb     r9, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r8, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r7, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -2098,8 +2098,8 @@ branch_0x802d807c:
     lbz     r9, 0x2(r9)
     bl      JRNISetTevOrder__F13_GXTevStageID13_GXTexCoordID11_GXTexMapID12_GXChannelID13_GXTexCoordID11_GXTexMapID12_GXChannelID
     lbz     r0, 0x9(r31)
-    lis     r4, 0x8040
-    addi    r26, r4, 0x47d0
+    lis     r4, sTexCoordScaleTable__6J3DSys@h
+    addi    r26, r4, sTexCoordScaleTable__6J3DSys@l
     lbz     r3, 0x8(r31)
     clrlslwi  r0, r0, 29, 3
     add     r7, r26, r0
@@ -2171,7 +2171,7 @@ branch_0x802d8194:
     b       branch_0x802d8320
 
 branch_0x802d81cc:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0xa
@@ -2179,7 +2179,7 @@ branch_0x802d81cc:
     ble-    branch_0x802d81e8
     bl      GDOverflowed
 branch_0x802d81e8:
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     addi    r4, r29, 0x31
     add     r4, r31, r4
     lwz     r5, 0x8(r6)
@@ -2193,27 +2193,27 @@ branch_0x802d81e8:
     stb     r0, 0x0(r5)
     extrwi  r8, r12, 8, 16
     mr      r3, r28
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r11, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r9, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r8, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r12, 0x0(r6)
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     lwz     r9, 0x4(r4)
     lwz     r5, 0x8(r6)
     srwi    r8, r9, 24
@@ -2222,22 +2222,22 @@ branch_0x802d81e8:
     extrwi  r7, r9, 8, 8
     extrwi  r6, r9, 8, 16
     stb     r0, 0x0(r5)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r8, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r7, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -2260,12 +2260,12 @@ branch_0x802d81e8:
 branch_0x802d8320:
     cmplw   r28, r27
     blt+    branch_0x802d81cc
-    lis     r3, 0x8040
-    addi    r30, r3, 0x6d50
+    lis     r3, j3dTevSwapTableTable@h
+    addi    r30, r3, j3dTevSwapTableTable@l
     li      r26, 0x0
 branch_0x802d8334:
     srwi    r3, r26, 2
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     addi    r27, r3, 0x55
     lbz     r28, 0x54(r31)
     add     r27, r31, r27
@@ -2284,7 +2284,7 @@ branch_0x802d8334:
     ble-    branch_0x802d8380
     bl      GDOverflowed
 branch_0x802d8380:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     srawi   r3, r26, 1
     addze   r3, r3
     lwz     r4, 0x8(r5)
@@ -2297,7 +2297,7 @@ branch_0x802d8380:
     stb     r5, 0x0(r4)
     or      r0, r23, r0
     slwi    r5, r24, 9
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     or      r0, r3, r0
     or      r0, r5, r0
     slwi    r6, r29, 14
@@ -2313,22 +2313,22 @@ branch_0x802d8380:
     stb     r0, 0x0(r3)
     extrwi  r6, r8, 8, 8
     extrwi  r5, r8, 8, 16
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lbz     r0, 0x0(r27)
     lwz     r3, 0x8(r5)
     slwi    r4, r0, 2
@@ -2345,7 +2345,7 @@ branch_0x802d8380:
     ble-    branch_0x802d8470
     bl      GDOverflowed
 branch_0x802d8470:
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     addi    r3, r26, 0x2
     srawi   r3, r3, 1
     lwz     r5, 0x8(r6)
@@ -2358,7 +2358,7 @@ branch_0x802d8470:
     stb     r4, 0x0(r5)
     addi    r26, r26, 0x4
     slwi    r3, r22, 4
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     or      r0, r24, r0
     or      r0, r3, r0
     lwz     r3, 0x8(r4)
@@ -2376,18 +2376,18 @@ branch_0x802d8470:
     stb     r0, 0x0(r3)
     extrwi  r6, r7, 8, 8
     extrwi  r5, r7, 8, 16
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     cmplwi  r26, 0x10
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
@@ -2423,8 +2423,8 @@ branch_0x802d8580:
     cmplwi  r21, 0x4
     addi    r25, r25, 0x2
     blt+    branch_0x802d8564
-    lis     r3, 0x8040
-    addi    r30, r3, 0x47d0
+    lis     r3, sTexCoordScaleTable__6J3DSys@h
+    addi    r30, r3, sTexCoordScaleTable__6J3DSys@l
     li      r29, 0x0
     li      r25, 0x0
     b       branch_0x802d8674
@@ -2522,7 +2522,7 @@ branch_0x802d86c8:
     b       branch_0x802d8854
 
 branch_0x802d8700:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0xa
@@ -2530,7 +2530,7 @@ branch_0x802d8700:
     ble-    branch_0x802d871c
     bl      GDOverflowed
 branch_0x802d871c:
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     addi    r4, r28, 0x1d
     add     r4, r31, r4
     lwz     r5, 0x8(r6)
@@ -2544,27 +2544,27 @@ branch_0x802d871c:
     stb     r0, 0x0(r5)
     extrwi  r8, r12, 8, 16
     mr      r3, r27
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r11, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r9, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r8, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r12, 0x0(r6)
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     lwz     r9, 0x4(r4)
     lwz     r5, 0x8(r6)
     srwi    r8, r9, 24
@@ -2573,22 +2573,22 @@ branch_0x802d871c:
     extrwi  r7, r9, 8, 8
     extrwi  r6, r9, 8, 16
     stb     r0, 0x0(r5)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r8, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r7, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -2611,12 +2611,12 @@ branch_0x802d871c:
 branch_0x802d8854:
     cmplw   r27, r26
     blt+    branch_0x802d8700
-    lis     r3, 0x8040
-    addi    r30, r3, 0x6d50
+    lis     r3, j3dTevSwapTableTable@h
+    addi    r30, r3, j3dTevSwapTableTable@l
     li      r25, 0x0
 branch_0x802d8868:
     srwi    r3, r25, 2
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     addi    r27, r3, 0x76
     add     r27, r31, r27
     lwz     r3, 0x8(r5)
@@ -2636,7 +2636,7 @@ branch_0x802d8868:
     ble-    branch_0x802d88b8
     bl      GDOverflowed
 branch_0x802d88b8:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     srawi   r3, r25, 1
     addze   r3, r3
     lwz     r4, 0x8(r5)
@@ -2649,7 +2649,7 @@ branch_0x802d88b8:
     stb     r5, 0x0(r4)
     or      r0, r22, r0
     slwi    r5, r23, 9
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     or      r0, r3, r0
     or      r0, r5, r0
     slwi    r6, r29, 14
@@ -2665,23 +2665,23 @@ branch_0x802d88b8:
     stb     r0, 0x0(r3)
     extrwi  r6, r8, 8, 8
     extrwi  r5, r8, 8, 16
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
     lbz     r0, 0x0(r27)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     slwi    r4, r0, 2
     lbz     r27, 0x75(r26)
     add     r4, r30, r4
@@ -2697,7 +2697,7 @@ branch_0x802d88b8:
     ble-    branch_0x802d89a8
     bl      GDOverflowed
 branch_0x802d89a8:
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     addi    r3, r25, 0x2
     srawi   r3, r3, 1
     lwz     r5, 0x8(r6)
@@ -2710,7 +2710,7 @@ branch_0x802d89a8:
     stb     r4, 0x0(r5)
     addi    r25, r25, 0x4
     slwi    r3, r21, 4
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     or      r0, r22, r0
     or      r0, r3, r0
     lwz     r3, 0x8(r4)
@@ -2728,18 +2728,18 @@ branch_0x802d89a8:
     stb     r0, 0x0(r3)
     extrwi  r6, r7, 8, 8
     extrwi  r5, r7, 8, 16
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     cmplwi  r25, 0x10
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
@@ -2775,8 +2775,8 @@ branch_0x802d8ab8:
     cmplwi  r21, 0x8
     addi    r25, r25, 0x2
     blt+    branch_0x802d8a9c
-    lis     r3, 0x8040
-    addi    r30, r3, 0x47d0
+    lis     r3, sTexCoordScaleTable__6J3DSys@h
+    addi    r30, r3, sTexCoordScaleTable__6J3DSys@l
     li      r29, 0x0
     li      r25, 0x0
     b       branch_0x802d8bac
@@ -2874,7 +2874,7 @@ branch_0x802d8c00:
     b       branch_0x802d8d8c
 
 branch_0x802d8c38:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0xa
@@ -2882,7 +2882,7 @@ branch_0x802d8c38:
     ble-    branch_0x802d8c54
     bl      GDOverflowed
 branch_0x802d8c54:
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     addi    r4, r28, 0x55
     add     r4, r31, r4
     lwz     r5, 0x8(r6)
@@ -2896,27 +2896,27 @@ branch_0x802d8c54:
     stb     r0, 0x0(r5)
     extrwi  r8, r12, 8, 16
     mr      r3, r27
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r11, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r9, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r8, 0x0(r6)
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r6, 0x8(r7)
     addi    r5, r6, 0x1
     stw     r5, 0x8(r7)
     stb     r12, 0x0(r6)
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     lwz     r9, 0x4(r4)
     lwz     r5, 0x8(r6)
     srwi    r8, r9, 24
@@ -2925,22 +2925,22 @@ branch_0x802d8c54:
     extrwi  r7, r9, 8, 8
     extrwi  r6, r9, 8, 16
     stb     r0, 0x0(r5)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r8, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r7, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -2963,12 +2963,12 @@ branch_0x802d8c54:
 branch_0x802d8d8c:
     cmplw   r27, r26
     blt+    branch_0x802d8c38
-    lis     r3, 0x8040
-    addi    r30, r3, 0x6d50
+    lis     r3, j3dTevSwapTableTable@h
+    addi    r30, r3, j3dTevSwapTableTable@l
     li      r25, 0x0
 branch_0x802d8da0:
     srwi    r3, r25, 2
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     addi    r27, r3, 0x126
     add     r27, r31, r27
     lwz     r3, 0x8(r5)
@@ -2988,7 +2988,7 @@ branch_0x802d8da0:
     ble-    branch_0x802d8df0
     bl      GDOverflowed
 branch_0x802d8df0:
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     srawi   r3, r25, 1
     addze   r3, r3
     lwz     r4, 0x8(r5)
@@ -3001,7 +3001,7 @@ branch_0x802d8df0:
     stb     r5, 0x0(r4)
     or      r0, r22, r0
     slwi    r5, r23, 9
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     or      r0, r3, r0
     or      r0, r5, r0
     slwi    r6, r29, 14
@@ -3017,23 +3017,23 @@ branch_0x802d8df0:
     stb     r0, 0x0(r3)
     extrwi  r6, r8, 8, 8
     extrwi  r5, r8, 8, 16
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
     lbz     r0, 0x0(r27)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     slwi    r4, r0, 2
     lbz     r27, 0x119(r26)
     add     r4, r30, r4
@@ -3049,7 +3049,7 @@ branch_0x802d8df0:
     ble-    branch_0x802d8ee0
     bl      GDOverflowed
 branch_0x802d8ee0:
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     addi    r3, r25, 0x2
     srawi   r3, r3, 1
     lwz     r5, 0x8(r6)
@@ -3062,7 +3062,7 @@ branch_0x802d8ee0:
     stb     r4, 0x0(r5)
     addi    r25, r25, 0x4
     slwi    r3, r21, 4
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     or      r0, r22, r0
     or      r0, r3, r0
     lwz     r3, 0x8(r4)
@@ -3080,18 +3080,18 @@ branch_0x802d8ee0:
     stb     r0, 0x0(r3)
     extrwi  r6, r7, 8, 8
     extrwi  r5, r7, 8, 16
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     cmplwi  r25, 0x10
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
@@ -3148,8 +3148,8 @@ branch_0x802d9038:
     cmplw   r28, r29
     blt+    branch_0x802d9014
     lbz     r0, 0x6(r31)
-    lis     r4, 0x8040
-    addi    r30, r4, 0x47d0
+    lis     r4, sTexCoordScaleTable__6J3DSys@h
+    addi    r30, r4, sTexCoordScaleTable__6J3DSys@l
     lbz     r3, 0x5(r31)
     clrlslwi  r0, r0, 29, 3
     add     r7, r30, r0
@@ -3258,7 +3258,7 @@ load__13J3DPEBlockOpaFv: # 0x802d91a4
     li      r4, 0x3
     li      r5, 0x1
     bl      GDSetZMode
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x5
@@ -3266,7 +3266,7 @@ load__13J3DPEBlockOpaFv: # 0x802d91a4
     ble-    branch_0x802d9208
     bl      GDOverflowed
 branch_0x802d9208:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r8, 0x61
     li      r7, 0xfe
     lwz     r3, 0x8(r4)
@@ -3275,27 +3275,27 @@ branch_0x802d9208:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r7, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x5
@@ -3303,7 +3303,7 @@ branch_0x802d9208:
     ble-    branch_0x802d9298
     bl      GDOverflowed
 branch_0x802d9298:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r8, 0x61
     li      r7, 0x43
     lwz     r3, 0x8(r4)
@@ -3312,22 +3312,22 @@ branch_0x802d9298:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r7, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
@@ -3358,7 +3358,7 @@ load__17J3DPEBlockTexEdgeFv: # 0x802d931c
     li      r4, 0x3
     li      r5, 0x1
     bl      GDSetZMode
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x5
@@ -3366,7 +3366,7 @@ load__17J3DPEBlockTexEdgeFv: # 0x802d931c
     ble-    branch_0x802d9380
     bl      GDOverflowed
 branch_0x802d9380:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r8, 0x61
     li      r7, 0xfe
     lwz     r3, 0x8(r4)
@@ -3375,27 +3375,27 @@ branch_0x802d9380:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r7, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x5
@@ -3403,7 +3403,7 @@ branch_0x802d9380:
     ble-    branch_0x802d9410
     bl      GDOverflowed
 branch_0x802d9410:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r7, 0x61
     li      r6, 0x43
     lwz     r3, 0x8(r4)
@@ -3411,22 +3411,22 @@ branch_0x802d9410:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r7, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
@@ -3457,7 +3457,7 @@ load__13J3DPEBlockXluFv: # 0x802d9490
     li      r4, 0x3
     li      r5, 0x0
     bl      GDSetZMode
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x5
@@ -3465,7 +3465,7 @@ load__13J3DPEBlockXluFv: # 0x802d9490
     ble-    branch_0x802d94f4
     bl      GDOverflowed
 branch_0x802d94f4:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r8, 0x61
     li      r7, 0xfe
     lwz     r3, 0x8(r4)
@@ -3474,27 +3474,27 @@ branch_0x802d94f4:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r7, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x5
@@ -3502,7 +3502,7 @@ branch_0x802d94f4:
     ble-    branch_0x802d9584
     bl      GDOverflowed
 branch_0x802d9584:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r8, 0x61
     li      r7, 0x43
     lwz     r3, 0x8(r4)
@@ -3511,22 +3511,22 @@ branch_0x802d9584:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r7, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
@@ -3568,8 +3568,8 @@ branch_0x802d9660:
     mulli   r5, r0, 0x3
     lbz     r7, 0xb(r31)
     lbz     r4, 0xa(r31)
-    lis     r3, 0x8040
-    addi    r0, r3, 0x7150
+    lis     r3, j3dAlphaCmpTable@h
+    addi    r0, r3, j3dAlphaCmpTable@l
     add     r3, r0, r5
     lbz     r6, 0x2(r3)
     lbz     r5, 0x1(r3)
@@ -3585,8 +3585,8 @@ branch_0x802d9694:
     cmplwi  r0, 0xffff
     beq-    branch_0x802d96d4
     mulli   r4, r0, 0x3
-    lis     r3, 0x8040
-    addi    r0, r3, 0x7450
+    lis     r3, j3dZModeTable@h
+    addi    r0, r3, j3dZModeTable@l
     add     r3, r0, r4
     lbz     r5, 0x2(r3)
     lbz     r4, 0x1(r3)
@@ -3600,8 +3600,8 @@ branch_0x802d96d4:
     bl      GDOverflowCheck_802d97b8
     li      r3, 0x61
     bl      __GDWrite
-    lis     r3, 0xfe00
-    addi    r3, r3, 0x40
+    lis     r3, unk_fe000040@h
+    addi    r3, r3, unk_fe000040@l
     bl      J3DGDWrite_u32__FUl
     li      r3, 0x5
     bl      GDOverflowCheck_802d97b8
@@ -3626,7 +3626,7 @@ branch_0x802d9728:
 
 .globl J3DGDWrite_u32__FUl
 J3DGDWrite_u32__FUl: # 0x802d9740
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     srwi    r8, r3, 24
     extrwi  r7, r3, 8, 8
     lwz     r4, 0x8(r5)
@@ -3634,17 +3634,17 @@ J3DGDWrite_u32__FUl: # 0x802d9740
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r8, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r7, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
     stb     r6, 0x0(r4)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -3654,7 +3654,7 @@ J3DGDWrite_u32__FUl: # 0x802d9740
 
 .globl __GDWrite
 __GDWrite: # 0x802d97a0
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     addi    r0, r4, 0x1
     stw     r0, 0x8(r5)
@@ -3667,7 +3667,7 @@ GDOverflowCheck_802d97b8: # 0x802d97b8
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r4, 0x8(r5)
     lwz     r0, 0xc(r5)
     add     r3, r4, r3
@@ -3811,8 +3811,8 @@ branch_0x802d99b8:
     cmplwi  r27, 0x2
     addi    r29, r29, 0x4
     blt+    branch_0x802d9974
-    lis     r3, 0x803e
-    addi    r28, r3, 0x15a4
+    lis     r3, j3dDefaultLightInfo@h
+    addi    r28, r3, j3dDefaultLightInfo@l
     li      r26, 0x0
     li      r29, 0x0
 branch_0x802d99d8:
@@ -3935,8 +3935,8 @@ branch_0x802d9b40:
     lbz     r0, 0x2(r3)
     stb     r0, 0xa(r4)
     blt+    branch_0x802d9b40
-    lis     r3, 0x803e
-    addi    r30, r3, 0x15f8
+    lis     r3, j3dDefaultTexMtxInfo@h
+    addi    r30, r3, j3dDefaultTexMtxInfo@l
     li      r28, 0x0
     li      r31, 0x0
 branch_0x802d9b94:
@@ -4985,8 +4985,8 @@ reset__14J3DPEBlockFullFP10J3DPEBlock: # 0x802daad0
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x802dab38
-    lis     r3, 0x803e
-    addi    r4, r3, 0x1698
+    lis     r3, j3dDefaultFogInfo@h
+    addi    r4, r3, j3dDefaultFogInfo@l
     addi    r3, r29, 0x0
     bl      __as__10J3DFogInfoFRC10J3DFogInfo
 branch_0x802dab38:
@@ -5010,8 +5010,8 @@ branch_0x802dab6c:
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
-    lis     r4, 0x5045
-    addi    r0, r4, 0x4f50
+    lis     r4, unk_50454f50@h
+    addi    r0, r4, unk_50454f50@l
     cmpw    r3, r0
     beq-    branch_0x802dabc4
     bge-    branch_0x802dabb4
@@ -5031,12 +5031,12 @@ branch_0x802dabb4:
     b       branch_0x802dae2c
 
 branch_0x802dabc4:
-    lwz     r4, 0x254(rtoc)
+    lwz     r4, R2Off_0x254(r2)
     li      r0, 0x1
-    lwz     r3, 0x25c(rtoc)
+    lwz     r3, R2Off_0x25c(r2)
     stw     r4, 0x78(sp)
-    lwz     r5, 0x258(rtoc)
-    lwz     r4, 0x260(rtoc)
+    lwz     r5, R2Off_0x258(r2)
+    lwz     r4, R2Off_0x260(r2)
     stw     r5, 0x7c(sp)
     stw     r3, 0x74(sp)
     lbz     r3, 0x79(sp)
@@ -5072,12 +5072,12 @@ branch_0x802dabc4:
     b       branch_0x802dae2c
 
 branch_0x802dac60:
-    lwz     r4, 0x264(rtoc)
+    lwz     r4, R2Off_0x264(r2)
     li      r0, 0x0
-    lwz     r3, 0x26c(rtoc)
+    lwz     r3, R2Off_0x26c(r2)
     stw     r4, 0x64(sp)
-    lwz     r5, 0x268(rtoc)
-    lwz     r4, 0x270(rtoc)
+    lwz     r5, R2Off_0x268(r2)
+    lwz     r4, R2Off_0x270(r2)
     stw     r5, 0x68(sp)
     stw     r3, 0x60(sp)
     lbz     r3, 0x65(sp)
@@ -5113,12 +5113,12 @@ branch_0x802dac60:
     b       branch_0x802dae2c
 
 branch_0x802dacfc:
-    lwz     r4, 0x274(rtoc)
+    lwz     r4, R2Off_0x274(r2)
     li      r0, 0x1
-    lwz     r3, 0x27c(rtoc)
+    lwz     r3, R2Off_0x27c(r2)
     stw     r4, 0x50(sp)
-    lwz     r5, 0x278(rtoc)
-    lwz     r4, 0x280(rtoc)
+    lwz     r5, R2Off_0x278(r2)
+    lwz     r4, R2Off_0x280(r2)
     stw     r5, 0x54(sp)
     stw     r3, 0x4c(sp)
     lbz     r3, 0x51(sp)
@@ -5278,9 +5278,9 @@ branch_0x802daf10:
 .globl makeDisplayList__11J3DMaterialFv
 makeDisplayList__11J3DMaterialFv: # 0x802daf28
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, j3dSys@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x45dc
+    addi    r4, r4, j3dSys@l
     stwu    sp, -0x30(sp)
     stmw    r26, 0x18(sp)
     addi    r27, r4, 0x3c
@@ -5379,9 +5379,9 @@ load__11J3DMaterialFv: # 0x802db08c
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lwz     r0, 0x8(r31)
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     stw     r0, 0x50(r3)
     lwz     r0, 0x34(r3)
     rlwinm. r0, r0, 0, 30, 30
@@ -5394,8 +5394,8 @@ branch_0x802db0c4:
 branch_0x802db0c8:
     cmpwi   r0, 0x0
     bne-    branch_0x802db0fc
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     lwz     r3, 0x3c(r3)
     lwz     r3, 0x30(r3)
     bl      callDL__17J3DDisplayListObjFv
@@ -5416,9 +5416,9 @@ branch_0x802db0fc:
 .globl safeMakeDisplayList__11J3DMaterialFv
 safeMakeDisplayList__11J3DMaterialFv: # 0x802db110
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, j3dSys@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x45dc
+    addi    r4, r4, j3dSys@l
     stwu    sp, -0x30(sp)
     stmw    r26, 0x18(sp)
     addi    r27, r4, 0x3c
@@ -5513,9 +5513,9 @@ branch_0x802db260:
 .globl calc__19J3DTexGenBlockBasicFPA4_f
 calc__19J3DTexGenBlockBasicFPA4_f: # 0x802db274
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, j3dSys@h
     stw     r0, 0x4(sp)
-    addi    r5, r5, 0x45dc
+    addi    r5, r5, j3dSys@l
     stwu    sp, -0x108(sp)
     stfd    f31, 0x100(sp)
     stmw    r25, 0xe4(sp)
@@ -5543,9 +5543,9 @@ branch_0x802db2cc:
     cmpwi   r0, 0x0
     bne-    branch_0x802db3f4
 branch_0x802db2d4:
-    lis     r3, 0x8040
-    lfs     f31, 0x284(rtoc)
-    addi    r28, r3, 0x45dc
+    lis     r3, j3dSys@h
+    lfs     f31, 0x284(r2)
+    addi    r28, r3, j3dSys@l
     li      r26, 0x0
     li      r29, 0x0
 branch_0x802db2e8:
@@ -5604,7 +5604,7 @@ branch_0x802db37c:
     b       branch_0x802db3d8
 
 branch_0x802db3a0:
-    subi    r0, r3, 0xa
+    addi    r0, r3, -0xa
     cmplwi  r0, 0x1
     ble-    branch_0x802db3b4
     cmplwi  r3, 0x5
@@ -5630,11 +5630,11 @@ branch_0x802db3e0:
     b       branch_0x802db4ec
 
 branch_0x802db3f4:
-    lis     r4, 0x8040
-    lfs     f31, 0x284(rtoc)
-    lis     r3, 0x803e
-    addi    r27, r4, 0x45dc
-    addi    r29, r3, 0x7a8
+    lis     r4, j3dSys@h
+    lfs     f31, 0x284(r2)
+    lis     r3, j3dDefaultMtx@h
+    addi    r27, r4, j3dSys@l
+    addi    r29, r3, j3dDefaultMtx@l
     addi    r28, r27, 0x0
     li      r25, 0x0
     li      r31, 0x0
@@ -5688,7 +5688,7 @@ branch_0x802db4a4:
     b       branch_0x802db4d4
 
 branch_0x802db4b4:
-    subi    r0, r3, 0xa
+    addi    r0, r3, -0xa
     cmplwi  r0, 0x1
     ble-    branch_0x802db4c8
     cmplwi  r3, 0x5
@@ -5943,8 +5943,8 @@ branch_0x802db7c8:
 
 .globl getType__14J3DPEBlockFullFv
 getType__14J3DPEBlockFullFv: # 0x802db7e4
-    lis     r3, 0x5045
-    addi    r3, r3, 0x464c
+    lis     r3, unk_5045464c@h
+    addi    r3, r3, unk_5045464c@l
     blr
 
 
@@ -6094,12 +6094,12 @@ __dt__14J3DPEBlockFullFv: # 0x802db8f8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802db93c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x968
+    lis     r3, __vvt__14J3DPEBlockFull@h
+    addi    r0, r3, __vvt__14J3DPEBlockFull@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802db92c
-    lis     r3, 0x803e
-    addi    r0, r3, 0xec8
+    lis     r3, __vvt__10J3DPEBlock@h
+    addi    r0, r3, __vvt__10J3DPEBlock@l
     stw     r0, 0x0(r31)
 branch_0x802db92c:
     extsh.  r0, r4
@@ -6117,8 +6117,8 @@ branch_0x802db93c:
 
 .globl getType__15J3DIndBlockFullFv
 getType__15J3DIndBlockFullFv: # 0x802db954
-    lis     r3, 0x4942
-    addi    r3, r3, 0x4c46
+    lis     r3, unk_49424c46@h
+    addi    r3, r3, unk_49424c46@l
     blr
 
 
@@ -6247,25 +6247,25 @@ __dt__15J3DIndBlockFullFv: # 0x802dba7c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802dbafc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x9cc
-    lis     r3, 0x802d
+    lis     r3, __vvt__15J3DIndBlockFull@h
+    addi    r0, r3, __vvt__15J3DIndBlockFull@l
+    lis     r3, __dt__19J3DIndTexCoordScaleFv@h
     stw     r0, 0x0(r30)
-    addi    r4, r3, 0x766c
+    addi    r4, r3, __dt__19J3DIndTexCoordScaleFv@l
     addi    r3, r30, 0x6c
     li      r5, 0x4
     li      r6, 0x4
     bl      __destroy_arr
-    lis     r3, 0x802d
-    addi    r4, r3, 0x76c4
+    lis     r3, __dt__12J3DIndTexMtxFv@h
+    addi    r4, r3, __dt__12J3DIndTexMtxFv@l
     addi    r3, r30, 0x18
     li      r5, 0x1c
     li      r6, 0x3
     bl      __destroy_arr
     cmplwi  r30, 0x0
     beq-    branch_0x802dbaec
-    lis     r3, 0x803e
-    addi    r0, r3, 0xf74
+    lis     r3, __vvt__11J3DIndBlock@h
+    addi    r0, r3, __vvt__11J3DIndBlock@l
     stw     r0, 0x0(r30)
 branch_0x802dbaec:
     extsh.  r0, r31
@@ -6284,8 +6284,8 @@ branch_0x802dbafc:
 
 .globl getType__13J3DTevBlock16Fv
 getType__13J3DTevBlock16Fv: # 0x802dbb18
-    lis     r3, 0x5456
-    addi    r3, r3, 0x3136
+    lis     r3, unk_54563136@h
+    addi    r3, r3, unk_54563136@l
     blr
 
 
@@ -6644,12 +6644,12 @@ __dt__13J3DTevBlock16Fv: # 0x802dbe90
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dbed4
-    lis     r3, 0x803e
-    addi    r0, r3, 0xa14
+    lis     r3, __vvt__13J3DTevBlock16@h
+    addi    r0, r3, __vvt__13J3DTevBlock16@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dbec4
-    lis     r3, 0x803e
-    addi    r0, r3, 0xfbc
+    lis     r3, __vvt__11J3DTevBlock@h
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dbec4:
     extsh.  r0, r4
@@ -6667,8 +6667,8 @@ branch_0x802dbed4:
 
 .globl getType__12J3DTevBlock4Fv
 getType__12J3DTevBlock4Fv: # 0x802dbeec
-    lis     r3, 0x5456
-    addi    r3, r3, 0x4234
+    lis     r3, unk_54564234@h
+    addi    r3, r3, unk_54564234@l
     blr
 
 
@@ -7027,12 +7027,12 @@ __dt__12J3DTevBlock4Fv: # 0x802dc264
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dc2a8
-    lis     r3, 0x803e
-    addi    r0, r3, 0xab0
+    lis     r3, __vvt__12J3DTevBlock4@h
+    addi    r0, r3, __vvt__12J3DTevBlock4@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dc298
-    lis     r3, 0x803e
-    addi    r0, r3, 0xfbc
+    lis     r3, __vvt__11J3DTevBlock@h
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dc298:
     extsh.  r0, r4
@@ -7050,8 +7050,8 @@ branch_0x802dc2a8:
 
 .globl getType__12J3DTevBlock2Fv
 getType__12J3DTevBlock2Fv: # 0x802dc2c0
-    lis     r3, 0x5456
-    addi    r3, r3, 0x4232
+    lis     r3, unk_54564232@h
+    addi    r3, r3, unk_54564232@l
     blr
 
 
@@ -7410,12 +7410,12 @@ __dt__12J3DTevBlock2Fv: # 0x802dc638
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dc67c
-    lis     r3, 0x803e
-    addi    r0, r3, 0xb4c
+    lis     r3, __vvt__12J3DTevBlock2@h
+    addi    r0, r3, __vvt__12J3DTevBlock2@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dc66c
-    lis     r3, 0x803e
-    addi    r0, r3, 0xfbc
+    lis     r3, __vvt__11J3DTevBlock@h
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dc66c:
     extsh.  r0, r4
@@ -7433,8 +7433,8 @@ branch_0x802dc67c:
 
 .globl getType__12J3DTevBlock1Fv
 getType__12J3DTevBlock1Fv: # 0x802dc694
-    lis     r3, 0x5456
-    addi    r3, r3, 0x4231
+    lis     r3, unk_54564231@h
+    addi    r3, r3, unk_54564231@l
     blr
 
 
@@ -7718,12 +7718,12 @@ __dt__12J3DTevBlock1Fv: # 0x802dc8e0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dc924
-    lis     r3, 0x803e
-    addi    r0, r3, 0xbe8
+    lis     r3, __vvt__12J3DTevBlock1@h
+    addi    r0, r3, __vvt__12J3DTevBlock1@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dc914
-    lis     r3, 0x803e
-    addi    r0, r3, 0xfbc
+    lis     r3, __vvt__11J3DTevBlock@h
+    addi    r0, r3, __vvt__11J3DTevBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dc914:
     extsh.  r0, r4
@@ -7741,8 +7741,8 @@ branch_0x802dc924:
 
 .globl getType__19J3DTexGenBlockBasicFv
 getType__19J3DTexGenBlockBasicFv: # 0x802dc93c
-    lis     r3, 0x5447
-    addi    r3, r3, 0x4243
+    lis     r3, unk_54474243@h
+    addi    r3, r3, unk_54474243@l
     blr
 
 
@@ -7852,12 +7852,12 @@ __dt__19J3DTexGenBlockBasicFv: # 0x802dca20
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dca64
-    lis     r3, 0x803e
-    addi    r0, r3, 0xc84
+    lis     r3, __vvt__19J3DTexGenBlockBasic@h
+    addi    r0, r3, __vvt__19J3DTexGenBlockBasic@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dca54
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1058
+    lis     r3, __vvt__14J3DTexGenBlock@h
+    addi    r0, r3, __vvt__14J3DTexGenBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dca54:
     extsh.  r0, r4
@@ -7875,8 +7875,8 @@ branch_0x802dca64:
 
 .globl getType__20J3DColorBlockLightOnFv
 getType__20J3DColorBlockLightOnFv: # 0x802dca7c
-    lis     r3, 0x434c
-    addi    r3, r3, 0x4f4e
+    lis     r3, unk_434c4f4e@h
+    addi    r3, r3, unk_434c4f4e@l
     blr
 
 
@@ -8032,12 +8032,12 @@ __dt__20J3DColorBlockLightOnFv: # 0x802dcba8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dcbec
-    lis     r3, 0x803e
-    addi    r0, r3, 0xcd4
+    lis     r3, __vvt__20J3DColorBlockLightOn@h
+    addi    r0, r3, __vvt__20J3DColorBlockLightOn@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dcbdc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x10a8
+    lis     r3, __vvt__13J3DColorBlock@h
+    addi    r0, r3, __vvt__13J3DColorBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dcbdc:
     extsh.  r0, r4
@@ -8055,8 +8055,8 @@ branch_0x802dcbec:
 
 .globl getType__21J3DColorBlockLightOffFv
 getType__21J3DColorBlockLightOffFv: # 0x802dcc04
-    lis     r3, 0x434c
-    addi    r3, r3, 0x4f46
+    lis     r3, unk_434c4f46@h
+    addi    r3, r3, unk_434c4f46@l
     blr
 
 
@@ -8193,12 +8193,12 @@ __dt__21J3DColorBlockLightOffFv: # 0x802dcce4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dcd28
-    lis     r3, 0x803e
-    addi    r0, r3, 0xd38
+    lis     r3, __vvt__21J3DColorBlockLightOff@h
+    addi    r0, r3, __vvt__21J3DColorBlockLightOff@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dcd18
-    lis     r3, 0x803e
-    addi    r0, r3, 0x10a8
+    lis     r3, __vvt__13J3DColorBlock@h
+    addi    r0, r3, __vvt__13J3DColorBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dcd18:
     extsh.  r0, r4
@@ -8216,8 +8216,8 @@ branch_0x802dcd28:
 
 .globl getType__13J3DPEBlockXluFv
 getType__13J3DPEBlockXluFv: # 0x802dcd40
-    lis     r3, 0x5045
-    addi    r3, r3, 0x584c
+    lis     r3, unk_5045584c@h
+    addi    r3, r3, unk_5045584c@l
     blr
 
 
@@ -8229,12 +8229,12 @@ __dt__13J3DPEBlockXluFv: # 0x802dcd4c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dcd90
-    lis     r3, 0x803e
-    addi    r0, r3, 0xd9c
+    lis     r3, __vvt__13J3DPEBlockXlu@h
+    addi    r0, r3, __vvt__13J3DPEBlockXlu@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dcd80
-    lis     r3, 0x803e
-    addi    r0, r3, 0xec8
+    lis     r3, __vvt__10J3DPEBlock@h
+    addi    r0, r3, __vvt__10J3DPEBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dcd80:
     extsh.  r0, r4
@@ -8319,8 +8319,8 @@ getDither__10J3DPEBlockCFv: # 0x802dcddc
 
 .globl getType__17J3DPEBlockTexEdgeFv
 getType__17J3DPEBlockTexEdgeFv: # 0x802dcde4
-    lis     r3, 0x5045
-    addi    r3, r3, 0x4544
+    lis     r3, unk_50454544@h
+    addi    r3, r3, unk_50454544@l
     blr
 
 
@@ -8332,12 +8332,12 @@ __dt__17J3DPEBlockTexEdgeFv: # 0x802dcdf0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dce34
-    lis     r3, 0x803e
-    addi    r0, r3, 0xe00
+    lis     r3, __vvt__17J3DPEBlockTexEdge@h
+    addi    r0, r3, __vvt__17J3DPEBlockTexEdge@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dce24
-    lis     r3, 0x803e
-    addi    r0, r3, 0xec8
+    lis     r3, __vvt__10J3DPEBlock@h
+    addi    r0, r3, __vvt__10J3DPEBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dce24:
     extsh.  r0, r4
@@ -8355,8 +8355,8 @@ branch_0x802dce34:
 
 .globl getType__13J3DPEBlockOpaFv
 getType__13J3DPEBlockOpaFv: # 0x802dce4c
-    lis     r3, 0x5045
-    addi    r3, r3, 0x4f50
+    lis     r3, unk_50454f50@h
+    addi    r3, r3, unk_50454f50@l
     blr
 
 
@@ -8368,12 +8368,12 @@ __dt__13J3DPEBlockOpaFv: # 0x802dce58
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dce9c
-    lis     r3, 0x803e
-    addi    r0, r3, 0xe64
+    lis     r3, __vvt__13J3DPEBlockOpa@h
+    addi    r0, r3, __vvt__13J3DPEBlockOpa@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dce8c
-    lis     r3, 0x803e
-    addi    r0, r3, 0xec8
+    lis     r3, __vvt__10J3DPEBlock@h
+    addi    r0, r3, __vvt__10J3DPEBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dce8c:
     extsh.  r0, r4
@@ -8402,8 +8402,8 @@ countDLSize__15J3DIndBlockNullFv: # 0x802dceb8
 
 .globl getType__15J3DIndBlockNullFv
 getType__15J3DIndBlockNullFv: # 0x802dcec0
-    lis     r3, 0x4942
-    addi    r3, r3, 0x4c4e
+    lis     r3, unk_49424c4e@h
+    addi    r3, r3, unk_49424c4e@l
     blr
 
 
@@ -8474,12 +8474,12 @@ __dt__15J3DIndBlockNullFv: # 0x802dcf08
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dcf4c
-    lis     r3, 0x803e
-    addi    r0, r3, 0xf2c
+    lis     r3, __vvt__15J3DIndBlockNull@h
+    addi    r0, r3, __vvt__15J3DIndBlockNull@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802dcf3c
-    lis     r3, 0x803e
-    addi    r0, r3, 0xf74
+    lis     r3, __vvt__11J3DIndBlock@h
+    addi    r0, r3, __vvt__11J3DIndBlock@l
     stw     r0, 0x0(r31)
 branch_0x802dcf3c:
     extsh.  r0, r4

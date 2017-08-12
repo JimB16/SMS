@@ -10,7 +10,7 @@ incTimer__15JPABaseParticleFv: # 0x80328954
 
 branch_0x8032896c:
     lfs     f1, 0x44(r3)
-    lfs     f0, 0x8b4(rtoc)
+    lfs     f0, 0x8b4(r2)
     fadds   f0, f1, f0
     stfs    f0, 0x44(r3)
 branch_0x8032897c:
@@ -19,7 +19,7 @@ branch_0x8032897c:
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x803289a8
-    lfs     f0, 0x8b4(rtoc)
+    lfs     f0, 0x8b4(r2)
     stfs    f0, 0x48(r3)
     lwz     r0, 0x10(r3)
     ori     r0, r0, 0x80
@@ -75,17 +75,17 @@ branch_0x80328a1c:
 .globl __ct__11JPAParticleFv
 __ct__11JPAParticleFv: # 0x80328a2c
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, __vvt__15JPABaseParticle@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x3e48
+    addi    r0, r4, __vvt__15JPABaseParticle@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
     addi    r4, r31, 0x0
     stw     r0, 0x58(r3)
     bl      __ct__10JSUPtrLinkFPv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x3df0
+    lis     r3, __vvt__11JPAParticle@h
+    addi    r0, r3, __vvt__11JPAParticle@l
     stw     r0, 0x58(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -99,14 +99,14 @@ __ct__11JPAParticleFv: # 0x80328a2c
 init__11JPAParticleFv: # 0x80328a78
     li      r0, 0x0
     stw     r0, 0x10(r3)
-    lfs     f1, 0x8b0(rtoc)
+    lfs     f1, 0x8b0(r2)
     stfs    f1, 0x28(r3)
     stfs    f1, 0x24(r3)
     stfs    f1, 0x20(r3)
     stfs    f1, 0x44(r3)
     stw     r0, 0x50(r3)
     stfs    f1, 0x78(r3)
-    lfs     f0, 0x8b4(rtoc)
+    lfs     f0, 0x8b4(r2)
     stfs    f0, 0x80(r3)
     stfs    f0, 0x84(r3)
     stfs    f1, 0x9c(r3)
@@ -174,7 +174,7 @@ calcVelocity__11JPAParticleFv: # 0x80328b74
     stw     r31, 0x1c(sp)
     mr      r31, r3
     bl      JPAGetEmitterInfoPtr__Fv
-    lfs     f0, 0x8b0(rtoc)
+    lfs     f0, 0x8b0(r2)
     stfs    f0, 0x90(r31)
     stfs    f0, 0x8c(r31)
     stfs    f0, 0x88(r31)
@@ -196,7 +196,7 @@ branch_0x80328bb4:
     lfs     f0, 0x2c(r3)
     stfs    f0, 0x1c(r31)
 branch_0x80328bd4:
-    lfs     f0, 0x8b0(rtoc)
+    lfs     f0, 0x8b0(r2)
     lfs     f2, 0x78(r31)
     fcmpu   cr0, f0, f2
     beq-    branch_0x80328c14
@@ -229,7 +229,7 @@ branch_0x80328c2c:
     bl      affectField__15JPAFieldManagerFP11JPAParticle
 branch_0x80328c40:
     lfs     f1, 0x7c(r31)
-    lfs     f0, 0x8b4(rtoc)
+    lfs     f0, 0x8b4(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80328c74
     lfs     f0, 0x5c(r31)
@@ -380,7 +380,7 @@ checkCreateChildParticle__11JPAParticleFv: # 0x80328e28
     cmplwi  r0, 0x0
     beq-    branch_0x80328ed0
     lfs     f1, 0x4c(r30)
-    lfs     f0, 0x8b4(rtoc)
+    lfs     f0, 0x8b4(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80328e78
     fsubs   f0, f1, f0
@@ -474,10 +474,10 @@ getDrawParamCPtr__11JPAParticleFv: # 0x80328f24
 
 .globl getWidth__11JPAParticleFv
 getWidth__11JPAParticleFv: # 0x80328f2c
-    lfs     f2, 0x8b8(rtoc)
-    lis     r4, 0x8041
+    lfs     f2, 0x8b8(r2)
+    lis     r4, cb__7JPADraw@ha
     lfs     f1, 0xb0(r3)
-    subi    r3, r4, 0x3ef0
+    addi    r3, r4, cb__7JPADraw@l
     lfs     f0, 0x4(r3)
     fmuls   f1, f2, f1
     fmuls   f1, f1, f0
@@ -486,10 +486,10 @@ getWidth__11JPAParticleFv: # 0x80328f2c
 
 .globl getHeight__11JPAParticleFv
 getHeight__11JPAParticleFv: # 0x80328f4c
-    lfs     f2, 0x8b8(rtoc)
-    lis     r4, 0x8041
+    lfs     f2, 0x8b8(r2)
+    lis     r4, cb__7JPADraw@ha
     lfs     f1, 0xb4(r3)
-    subi    r3, r4, 0x3ef0
+    addi    r3, r4, cb__7JPADraw@l
     lfs     f0, 0x8(r3)
     fmuls   f1, f2, f1
     fmuls   f1, f1, f0

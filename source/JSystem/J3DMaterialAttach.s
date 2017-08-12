@@ -12,8 +12,8 @@ clear__16J3DMaterialTableFv: # 0x80321c08
 
 .globl __ct__16J3DMaterialTableFv
 __ct__16J3DMaterialTableFv: # 0x80321c24
-    lis     r4, 0x803e
-    addi    r0, r4, 0x3ca0
+    lis     r4, __vvt__16J3DMaterialTable@h
+    addi    r0, r4, __vvt__16J3DMaterialTable@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     sth     r0, 0x4(r3)
@@ -32,8 +32,8 @@ __dt__16J3DMaterialTableFv: # 0x80321c4c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80321c80
-    lis     r3, 0x803e
-    addi    r3, r3, 0x3ca0
+    lis     r3, __vvt__16J3DMaterialTable@h
+    addi    r3, r3, __vvt__16J3DMaterialTable@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x80321c80

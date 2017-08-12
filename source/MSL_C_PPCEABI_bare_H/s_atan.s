@@ -2,12 +2,12 @@
 .globl atan
 atan: # 0x8033bf28
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803aac98@ha
     stw     r0, 0x4(sp)
     lis     r0, 0x4410
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r3, 0x5368
+    addi    r31, r3, unk_803aac98@l
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     stfd    f1, 0x8(sp)
@@ -51,9 +51,9 @@ branch_0x8033bfbc:
     lis     r0, 0x3e20
     cmpw    r29, r0
     bge-    branch_0x8033bff0
-    lfd     f2, 0xa38(rtoc)
+    lfd     f2, 0xa38(r2)
     lfd     f1, 0x8(sp)
-    lfd     f0, 0xa40(rtoc)
+    lfd     f0, 0xa40(r2)
     fadd    f2, f2, f1
     fcmpo   cr0, f2, f0
     ble-    branch_0x8033bff0
@@ -70,13 +70,13 @@ branch_0x8033bff8:
     stfd    f1, 0x8(sp)
     cmpw    r29, r0
     bge-    branch_0x8033c060
-    lis     r0, 0x3fe6
+    lis     r0, unk_3fe60000@h
     cmpw    r29, r0
     bge-    branch_0x8033c040
     lfd     f3, 0x8(sp)
-    li      r0, 0x0
-    lfd     f2, 0xa48(rtoc)
-    lfd     f1, 0xa40(rtoc)
+    addi    r0, r0, unk_3fe60000@l
+    lfd     f2, 0xa48(r2)
+    lfd     f1, 0xa40(r2)
     fadd    f0, f2, f3
     fmsub   f1, f2, f3, f1
     fdiv    f0, f1, f0
@@ -86,7 +86,7 @@ branch_0x8033bff8:
 branch_0x8033c040:
     lfd     f2, 0x8(sp)
     li      r0, 0x1
-    lfd     f0, 0xa40(rtoc)
+    lfd     f0, 0xa40(r2)
     fsub    f1, f2, f0
     fadd    f0, f0, f2
     fdiv    f0, f1, f0
@@ -94,14 +94,14 @@ branch_0x8033c040:
     b       branch_0x8033c0a8
 
 branch_0x8033c060:
-    lis     r3, 0x4004
-    subi    r0, r3, 0x8000
+    lis     r3, unk_40038000@ha
+    addi    r0, r3, unk_40038000@l
     cmpw    r29, r0
     bge-    branch_0x8033c094
     lfd     f3, 0x8(sp)
     li      r0, 0x2
-    lfd     f2, 0xa50(rtoc)
-    lfd     f0, 0xa40(rtoc)
+    lfd     f2, 0xa50(r2)
+    lfd     f0, 0xa40(r2)
     fsub    f1, f3, f2
     fmadd    f0, f2, f3, f0
     fdiv    f0, f1, f0
@@ -109,7 +109,7 @@ branch_0x8033c060:
     b       branch_0x8033c0a8
 
 branch_0x8033c094:
-    lfd     f1, 0xa58(rtoc)
+    lfd     f1, 0xa58(r2)
     li      r0, 0x3
     lfd     f0, 0x8(sp)
     fdiv    f0, f1, f0

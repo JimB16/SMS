@@ -6,8 +6,8 @@ __unregister_fragment: # 0x8033822c
     cmpwi   r3, 0x1
     bge-    branch_0x8033825c
     mulli   r4, r3, 0xc
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3d0
+    lis     r3, fragmentinfo@h
+    addi    r0, r3, fragmentinfo@l
     add     r3, r0, r4
     li      r0, 0x0
     stw     r0, 0x0(r3)
@@ -19,8 +19,8 @@ branch_0x8033825c:
 
 .globl __register_fragment
 __register_fragment: # 0x80338260
-    lis     r5, 0x8040
-    addi    r5, r5, 0x3d0
+    lis     r5, fragmentinfo@h
+    addi    r5, r5, fragmentinfo@l
     b       branch_0x8033826c
 
 branch_0x8033826c:

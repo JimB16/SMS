@@ -1,7 +1,7 @@
 
 .globl isTurnToMarioWhenApproach__8TBaseNPCCFv
 isTurnToMarioWhenApproach__8TBaseNPCCFv: # 0x802169e4
-    lfs     f1, -0x19b0(rtoc)
+    lfs     f1, -0x19b0(r2)
     lfs     f0, 0x178(r3)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80216a00
@@ -13,9 +13,9 @@ branch_0x80216a00:
     blr
 
 branch_0x80216a08:
-    lis     r4, 0x400
+    lis     r4, unk_04000019@h
     lwz     r5, 0x4c(r3)
-    addi    r0, r4, 0x19
+    addi    r0, r4, unk_04000019@l
     cmpw    r5, r0
     li      r3, 0x1
     bge-    branch_0x80216a40
@@ -38,9 +38,9 @@ branch_0x80216a40:
 
 .globl isTurnToMarioWhenTalk__8TBaseNPCCFv
 isTurnToMarioWhenTalk__8TBaseNPCCFv: # 0x80216a48
-    lis     r4, 0x400
+    lis     r4, unk_0400001c@h
     lwz     r5, 0x4c(r3)
-    addi    r0, r4, 0x1c
+    addi    r0, r4, unk_0400001c@l
     cmpw    r5, r0
     li      r6, 0x1
     beq-    branch_0x80216aa4
@@ -86,7 +86,7 @@ isNeedTurnToFirstState__8TBaseNPCCFv: # 0x80216abc
     stw     r30, 0x20(sp)
     stw     r29, 0x1c(sp)
     mr      r29, r3
-    lfs     f1, -0x19b0(rtoc)
+    lfs     f1, -0x19b0(r2)
     lfs     f0, 0x178(r3)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80216af4
@@ -98,9 +98,9 @@ branch_0x80216af4:
     b       branch_0x80216b88
 
 branch_0x80216afc:
-    lis     r3, 0x400
+    lis     r3, unk_0400001c@h
     lwz     r4, 0x4c(r29)
-    addi    r0, r3, 0x1c
+    addi    r0, r3, unk_0400001c@l
     cmpw    r4, r0
     li      r30, 0x0
     bge-    branch_0x80216b24
@@ -170,18 +170,18 @@ execTurnToFirstState__8TBaseNPCFv: # 0x80216ba4
     b       branch_0x80216c6c
 
 branch_0x80216bd8:
-    lfs     f0, -0x19ac(rtoc)
+    lfs     f0, -0x19ac(r2)
     li      r31, 0x0
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
     sth     r3, 0x30(sp)
-    lfs     f0, -0x19ac(rtoc)
+    lfs     f0, -0x19ac(r2)
     lfs     f1, 0x1a4(r29)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
     lwz     r4, 0x228(r29)
     mr      r30, r3
-    lfs     f0, -0x19ac(rtoc)
+    lfs     f0, -0x19ac(r2)
     lfs     f1, 0x2c0(r4)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
@@ -199,9 +199,9 @@ branch_0x80216bd8:
 branch_0x80216c3c:
     lha     r3, 0x30(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x19a0(rtoc)
+    lfd     f1, -0x19a0(r2)
     xoris   r3, r3, 0x8000
-    lfs     f2, -0x19a8(rtoc)
+    lfs     f2, -0x19a8(r2)
     stw     r3, 0x3c(sp)
     stw     r0, 0x38(sp)
     lfd     f0, 0x38(sp)
@@ -267,7 +267,7 @@ branch_0x80216cb8:
     b       branch_0x80216e50
 
 branch_0x80216d28:
-    lfs     f1, -0x19b0(rtoc)
+    lfs     f1, -0x19b0(r2)
     lfs     f0, 0x178(r30)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80216d44
@@ -280,7 +280,7 @@ branch_0x80216d44:
 
 branch_0x80216d4c:
     fmr     f1, f2
-    lfs     f0, -0x1998(rtoc)
+    lfs     f0, -0x1998(r2)
     li      r31, 0x0
     b       branch_0x80216d60
 
@@ -290,8 +290,8 @@ branch_0x80216d60:
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     beq+    branch_0x80216d5c
-    lfs     f2, -0x1998(rtoc)
-    lfs     f0, -0x19b0(rtoc)
+    lfs     f2, -0x1998(r2)
+    lfs     f0, -0x19b0(r2)
     b       branch_0x80216d7c
 
 branch_0x80216d78:
@@ -299,7 +299,7 @@ branch_0x80216d78:
 branch_0x80216d7c:
     fcmpo   cr0, f1, f0
     blt+    branch_0x80216d78
-    lfs     f0, -0x1998(rtoc)
+    lfs     f0, -0x1998(r2)
     b       branch_0x80216d90
 
 branch_0x80216d8c:
@@ -308,8 +308,8 @@ branch_0x80216d90:
     fcmpo   cr0, f3, f0
     cror    2, 1, 2
     beq+    branch_0x80216d8c
-    lfs     f2, -0x1998(rtoc)
-    lfs     f0, -0x19b0(rtoc)
+    lfs     f2, -0x1998(r2)
+    lfs     f0, -0x19b0(r2)
     b       branch_0x80216dac
 
 branch_0x80216da8:
@@ -324,7 +324,7 @@ branch_0x80216dac:
     lfs     f2, 0x34(r30)
     fcmpo   cr0, f2, f1
     ble-    branch_0x80216df8
-    lfs     f0, -0x1998(rtoc)
+    lfs     f0, -0x1998(r2)
     fsubs   f0, f2, f0
     stfs    f0, 0x34(r30)
     b       branch_0x80216df8
@@ -333,7 +333,7 @@ branch_0x80216de0:
     lfs     f2, 0x34(r30)
     fcmpo   cr0, f2, f1
     bge-    branch_0x80216df8
-    lfs     f0, -0x1998(rtoc)
+    lfs     f0, -0x1998(r2)
     fadds   f0, f2, f0
     stfs    f0, 0x34(r30)
 branch_0x80216df8:
@@ -342,7 +342,7 @@ branch_0x80216df8:
     lfs     f2, 0x2d4(r4)
     bl      CLBChaseGeneralConstantSpecifySpeed_f___FPfff
     lfs     f2, 0x34(r30)
-    lfs     f0, -0x1998(rtoc)
+    lfs     f0, -0x1998(r2)
     b       branch_0x80216e18
 
 branch_0x80216e14:
@@ -351,8 +351,8 @@ branch_0x80216e18:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x80216e14
-    lfs     f1, -0x1998(rtoc)
-    lfs     f0, -0x19b0(rtoc)
+    lfs     f1, -0x1998(r2)
+    lfs     f0, -0x19b0(r2)
     b       branch_0x80216e34
 
 branch_0x80216e30:
@@ -387,7 +387,7 @@ execWalk__8TBaseNPCFb: # 0x80216e68
     lhz     r0, 0x1e2(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80216ef0
-    lwz     r6, gpMarDirector(r13)
+    lwz     r6, R13Off_m0x6048(r13)
     li      r3, 0x1
     addi    r5, r3, 0x0
     lbz     r0, 0x124(r6)
@@ -406,7 +406,7 @@ branch_0x80216eb4:
 branch_0x80216ecc:
     clrlwi. r0, r3, 24
     bne-    branch_0x80216ef0
-    lfs     f1, -0x19b0(rtoc)
+    lfs     f1, -0x19b0(r2)
     lfs     f0, 0x178(r31)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80216ef0
@@ -414,7 +414,7 @@ branch_0x80216ecc:
     rlwinm. r0, r5, 0, 22, 22
     beq-    branch_0x80216f00
 branch_0x80216ef0:
-    lfs     f0, -0x19b0(rtoc)
+    lfs     f0, -0x19b0(r2)
     stfs    f0, 0x140(r31)
     stfs    f0, 0x144(r31)
     b       branch_0x8021722c
@@ -426,9 +426,9 @@ branch_0x80216f00:
     clrlwi. r0, r0, 31
     beq-    branch_0x802170dc
     rlwinm. r0, r5, 0, 28, 28
-    lfs     f1, -0x1994(rtoc)
+    lfs     f1, -0x1994(r2)
     beq-    branch_0x80216f24
-    lfs     f1, -0x1990(rtoc)
+    lfs     f1, -0x1990(r2)
 branch_0x80216f24:
     lwz     r4, 0xf4(r31)
     addi    r3, r31, 0xf4
@@ -455,7 +455,7 @@ branch_0x80216f64:
 branch_0x80216f68:
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
-    lfs     f0, -0x19b0(rtoc)
+    lfs     f0, -0x19b0(r2)
     stw     r3, 0xdc(sp)
     stw     r0, 0xe0(sp)
     lwz     r0, 0x8(r4)
@@ -491,11 +491,11 @@ branch_0x80216f68:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     bne-    branch_0x80217008
-    lfs     f2, -0x198c(rtoc)
+    lfs     f2, -0x198c(r2)
     b       branch_0x80217084
 
 branch_0x80217008:
-    lfs     f2, -0x1988(rtoc)
+    lfs     f2, -0x1988(r2)
     b       branch_0x80217084
 
 branch_0x80217010:
@@ -504,9 +504,9 @@ branch_0x80217010:
     bne-    branch_0x8021704c
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x19a0(rtoc)
+    lfd     f2, -0x19a0(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x19a8(rtoc)
+    lfs     f0, -0x19a8(r2)
     stw     r0, 0x11c(sp)
     lis     r0, 0x4330
     stw     r0, 0x118(sp)
@@ -519,12 +519,12 @@ branch_0x8021704c:
     fneg    f1, f1
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f3, -0x19a0(rtoc)
+    lfd     f3, -0x19a0(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x19a8(rtoc)
+    lfs     f1, -0x19a8(r2)
     stw     r0, 0x11c(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x1984(rtoc)
+    lfs     f0, -0x1984(r2)
     stw     r0, 0x118(sp)
     lfd     f2, 0x118(sp)
     fsubs   f2, f2, f3
@@ -532,7 +532,7 @@ branch_0x8021704c:
     fsubs   f2, f0, f1
 branch_0x80217084:
     lfs     f1, 0x34(r31)
-    lfs     f0, -0x1998(rtoc)
+    lfs     f0, -0x1998(r2)
     fsubs   f1, f1, f2
     fabs    f2, f1
     b       branch_0x8021709c
@@ -543,8 +543,8 @@ branch_0x8021709c:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x80217098
-    lfs     f1, -0x1998(rtoc)
-    lfs     f0, -0x19b0(rtoc)
+    lfs     f1, -0x1998(r2)
+    lfs     f0, -0x19b0(r2)
     b       branch_0x802170b8
 
 branch_0x802170b4:
@@ -552,7 +552,7 @@ branch_0x802170b4:
 branch_0x802170b8:
     fcmpo   cr0, f2, f0
     blt+    branch_0x802170b4
-    lfs     f0, -0x1980(rtoc)
+    lfs     f0, -0x1980(r2)
     fcmpo   cr0, f2, f0
     bge-    branch_0x8021722c
     lbz     r0, 0x1da(r31)
@@ -584,7 +584,7 @@ branch_0x80217118:
     lfs     f1, 0xe0(r4)
     lfs     f2, 0xf4(r4)
     beq-    branch_0x80217138
-    lwz     r3, -0x6220(r13)
+    lwz     r3, R13Off_m0x6220(r13)
     lfs     f0, 0x270(r3)
     fmuls   f1, f1, f0
     fmuls   f2, f2, f0
@@ -596,12 +596,12 @@ branch_0x80217138:
 branch_0x80217144:
     lwz     r4, 0x228(r31)
     addi    r3, r31, 0x140
-    lfs     f1, -0x19b0(rtoc)
+    lfs     f1, -0x19b0(r2)
     lfs     f2, 0x11c(r4)
     bl      CLBChaseGeneralConstantSpecifySpeed_f___FPfff
 branch_0x80217158:
     lfs     f1, 0x140(r31)
-    lfs     f0, -0x1980(rtoc)
+    lfs     f0, -0x1980(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80217178
     lwz     r3, 0x228(r31)
@@ -627,7 +627,7 @@ branch_0x802171a0:
     lwz     r4, 0x0(r5)
     addi    r3, sp, 0x9c
     lwz     r0, 0x4(r5)
-    lfs     f2, -0x19b0(rtoc)
+    lfs     f2, -0x19b0(r2)
     stw     r4, 0x90(sp)
     stw     r0, 0x94(sp)
     lwz     r0, 0x8(r5)
@@ -644,7 +644,7 @@ branch_0x802171a0:
     fmuls   f2, f1, f1
     lfs     f3, 0xa4(sp)
     fmuls   f0, f0, f0
-    lfs     f1, -0x197c(rtoc)
+    lfs     f1, -0x197c(r2)
     fmuls   f3, f3, f3
     fadds   f0, f2, f0
     fadds   f31, f3, f0
@@ -658,7 +658,7 @@ branch_0x80217210:
     lfs     f1, 0x140(r31)
     mr      r3, r31
     lfs     f2, 0x144(r31)
-    lfs     f3, -0x19b0(rtoc)
+    lfs     f3, -0x19b0(r2)
     bl      walkToCurPathNode__11TSpineEnemyFfff
 branch_0x8021722c:
     lwz     r0, 0x134(sp)

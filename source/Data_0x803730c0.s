@@ -2,245 +2,245 @@
 .section .ram803730c0, "ax"
 
 
-.globl __init_cpp_table
-__init_cpp_table:
-.long __init_cpp_exceptions
-.long __sinit_main_cpp
-.long __sinit_AnimalBase_cpp
-.long __sinit_AnimalManager_cpp
-.long __sinit_Bird_cpp
-.long __sinit_BeeHive_cpp
-.long __sinit_MAnmSound_cpp
-.long __sinit_MSound_cpp
-.long __sinit_MSoundBGM_cpp
-.long __sinit_MSoundDebug_cpp
-.long __sinit_MSoundScene_cpp
-.long __sinit_MSoundSE_cpp
-.long __sinit_MSoundStruct_cpp
-.long __sinit_MSHandle_cpp
-.long __sinit_MSModBgm_cpp
-.long __sinit_CameraChange_cpp
-.long __sinit_cameralib_cpp
-.long __sinit_sunmgr_cpp
-.long __sinit_CameraJetCoaster_cpp
-.long __sinit_effectObj_cpp
-.long __sinit_emario_cpp
-.long __sinit_enemy_cpp
-.long __sinit_enemymanager_cpp
-.long __sinit_enemyMario_cpp
-.long __sinit_gesso_cpp
-.long __sinit_hamukuri_cpp
-.long __sinit_hinokuri2_cpp
-.long __sinit_mameGesso_cpp
-.long __sinit_namekuri_cpp
-.long __sinit_pakkun_cpp
-.long __sinit_smallEnemy_cpp
-.long __sinit_walkerEnemy_cpp
-.long __sinit_bossgesso_cpp
-.long __sinit_elecNokonoko_cpp
-.long __sinit_telesa_cpp
-.long __sinit_fireWanwan_cpp
-.long __sinit_bosspakkun_cpp
-.long __sinit_tobiPuku_cpp
-.long __sinit_tinkoopa_cpp
-.long __sinit_launcher_cpp
-.long __sinit_bosswanwan_cpp
-.long __sinit_chuuhana_cpp
-.long __sinit_igaiga_cpp
-.long __sinit_poihana_cpp
-.long __sinit_tamaNoko_cpp
-.long __sinit_bosstelesa_cpp
-.long __sinit_riccohook_cpp
-.long __sinit_bombhei_cpp
-.long __sinit_cannon_cpp
-.long __sinit_bosseel_cpp
-.long __sinit_killer_cpp
-.long __sinit_hanasambo_cpp
-.long __sinit_popo_cpp
-.long __sinit_fruitsboat_cpp
-.long __sinit_BossHanachanMain_cpp
-.long __sinit_BossHanachanNerve_cpp
-.long __sinit_BossHanachanParts_cpp
-.long __sinit_amiNoko_cpp
-.long __sinit_gatekeeper_cpp
-.long __sinit_BossHanachanEffect_cpp
-.long __sinit_seal_cpp
-.long __sinit_bgpoldrop_cpp
-.long __sinit_bgtentacle_cpp
-.long __sinit_effectEnemy_cpp
-.long __sinit_hauntLeg_cpp
-.long __sinit_wireTrap_cpp
-.long __sinit_rocket_cpp
-.long __sinit_Kazekun_cpp
-.long __sinit_bossManta_cpp
-.long __sinit_yunbo_cpp
-.long __sinit_koopajr_cpp
-.long __sinit_Koopa_cpp
-.long __sinit_Kukku_cpp
-.long __sinit_BathtubPeach_cpp
-.long __sinit_BathtubKiller_cpp
-.long __sinit_coasterkiller_cpp
-.long __sinit_DebuTelesa_cpp
-.long __sinit_TabePuku_cpp
-.long __sinit_limitkoopa_cpp
-.long __sinit_limitkoopajr_cpp
-.long __sinit_ScrnFader_cpp
-.long __sinit_GCConsole2_cpp
-.long __sinit_Talk2D2_cpp
-.long __sinit_PauseMenu2_cpp
-.long __sinit_CardSave_cpp
-.long __sinit_CardLoad_cpp
-.long __sinit_ConsoleStr_cpp
-.long __sinit_SelectMenu_cpp
-.long __sinit_SelectDir_cpp
-.long __sinit_SelectShine2_cpp
-.long __sinit_Guide_cpp
-.long __sinit_Option_cpp
-.long __sinit_JointModel_cpp
-.long __sinit_JointModelManager_cpp
-.long __sinit_JointObj_cpp
-.long __sinit_Map_cpp
-.long __sinit_MapCheck_cpp
-.long __sinit_MapCollisionData_cpp
-.long __sinit_MapDraw_cpp
-.long __sinit_MapEvent_cpp
-.long __sinit_MapEventSink_cpp
-.long __sinit_MapMakeData_cpp
-.long __sinit_MapMirror_cpp
-.long __sinit_MapModel_cpp
-.long __sinit_MapWarp_cpp
-.long __sinit_MapStaticObject_cpp
-.long __sinit_MapWire_cpp
-.long __sinit_MapWireManager_cpp
-.long __sinit_MapXlu_cpp
-.long __sinit_PollutionAction_cpp
-.long __sinit_PollutionCount_cpp
-.long __sinit_PollutionManager_cpp
-.long __sinit_PollutionObj_cpp
-.long __sinit_PollutionPos_cpp
-.long __sinit_Shimmer_cpp
-.long __sinit_Sky_cpp
-.long __sinit_MapEventSirena_cpp
-.long __sinit_PollutionLayer_cpp
-.long __sinit_PollutionEvent_cpp
-.long __sinit_MapCollisionPlane_cpp
-.long __sinit_MapData_cpp
-.long __sinit_MapEventDolpic_cpp
-.long __sinit_MapEventMare_cpp
-.long __sinit_BathWaterManager_cpp
-.long __sinit_WoodBarrel_cpp
-.long __sinit_MapObjBase_cpp
-.long __sinit_MapObjInit_cpp
-.long __sinit_MapObjGeneral_cpp
-.long __sinit_MapObjManager_cpp
-.long __sinit_MapObjLib_cpp
-.long __sinit_Item_cpp
-.long __sinit_ItemManager_cpp
-.long __sinit_MapObjTown_cpp
-.long __sinit_MapObjBlock_cpp
-.long __sinit_MapObjBianco_cpp
-.long __sinit_MapObjSirena_cpp
-.long __sinit_MapObjRicco_cpp
-.long __sinit_MapObjMamma_cpp
-.long __sinit_MapObjPinna_cpp
-.long __sinit_MapObjSample_cpp
-.long __sinit_MapObjMare_cpp
-.long __sinit_MapObjFlag_cpp
-.long __sinit_MapObjWave_cpp
-.long __sinit_MapObjFloat_cpp
-.long __sinit_MapObjPlane_cpp
-.long __sinit_MapObjCloud_cpp
-.long __sinit_MapObjBall_cpp
-.long __sinit_MapObjAirport_cpp
-.long __sinit_MapObjDolpic_cpp
-.long __sinit_MapObjPollution_cpp
-.long __sinit_MapObjGrass_cpp
-.long __sinit_MapObjPole_cpp
-.long __sinit_MapObjWater_cpp
-.long __sinit_ModelGate_cpp
-.long __sinit_MapObjFence_cpp
-.long __sinit_MapObjOption_cpp
-.long __sinit_MapObjMonte_cpp
-.long __sinit_MapObjTree_cpp
-.long __sinit_MapObjEx_cpp
-.long __sinit_Pool_cpp
-.long __sinit_MapObjCorona_cpp
-.long __sinit_MapObjItem2_cpp
-.long __sinit_MapObjHide_cpp
-.long __sinit_MapObjTrap_cpp
-.long __sinit_NpcAnm_cpp
-.long __sinit_NpcBase_cpp
-.long __sinit_NpcEvent_cpp
-.long __sinit_NpcInitData_cpp
-.long __sinit_NpcChange_cpp
-.long __sinit_NpcCoin_cpp
-.long __sinit_liveactor_cpp
-.long __sinit_MirrorActor_cpp
-.long __sinit_MarioAction_cpp
-.long __sinit_MarioAutodemo_cpp
-.long __sinit_MarioCollision_cpp
-.long __sinit_MarioDraw_cpp
-.long __sinit_MarioJump_cpp
-.long __sinit_MarioMain_cpp
-.long __sinit_MarioMove_cpp
-.long __sinit_MarioPhysics_cpp
-.long __sinit_MarioRun_cpp
-.long __sinit_MarioSpecial_cpp
-.long __sinit_MarioUpper_cpp
-.long __sinit_MarioParticle_cpp
-.long __sinit_MarioWait_cpp
-.long __sinit_SplashManager_cpp
-.long __sinit_Tongue_cpp
-.long __sinit_WaterGun_cpp
-.long __sinit_Yoshi_cpp
-.long __sinit_MarioEffect_cpp
-.long __sinit_MarioSwim_cpp
-.long __sinit_MarioInit_cpp
-.long __sinit_ModelWaterManager_cpp
-.long __sinit_MarioCheckCol_cpp
-.long __sinit_MarioReceiveMsg_cpp
-.long __sinit_MarioSound_cpp
-.long __sinit_EmitterViewObj_cpp
-.long __sinit_EventWatcher_cpp
-.long __sinit_GCLogoDir_cpp
-.long __sinit_MarDirector_cpp
-.long __sinit_MarDirectorDirect_cpp
-.long __sinit_MarDirectorEvent_cpp
-.long __sinit_MarDirectorSetup2_cpp
-.long __sinit_MarNameRefGen_cpp
-.long __sinit_MenuDir_cpp
-.long __sinit_Application_cpp
-.long __sinit_MarioGamePad_cpp
-.long __sinit_MarNameRefGen_BossEnemy_cpp
-.long __sinit_MarDirectorLoadResource_cpp
-.long __sinit_MovieDirector_cpp
-.long __sinit_MarDirectorSetupObjects_cpp
-.long __sinit_MSoundMainSide_cpp
-.long __sinit_JKRAramHeap_cpp
-.long __sinit_JKRAram_cpp
-.long __sinit_JKRDvdFile_cpp
-.long __sinit_JKRFileLoader_cpp
-.long __sinit_JKRThread_cpp
-.long __sinit_JUTException_cpp
-.long __sinit_JUTGamePad_cpp
-.long __sinit_J3DShape_cpp
-.long __sinit_J3DSys_cpp
-.long __sinit_JKRDvdRipper_cpp
-.long __sinit_JKRDvdAramRipper_cpp
-.long __sinit_J3DDrawBuffer_cpp
-.long __sinit_JKRAramPiece_cpp
-.long __sinit_JALModSe_cpp
-.long __sinit_JAIBasic_cpp
-.long __sinit_JAIConst_cpp
-.long __sinit_JAIGFrameStream_cpp
-.long __sinit_JAISystemInterface_cpp
-.long __sinit_JASWaveArcLoader_cpp
-.long __sinit_JASHardStream_cpp
-.long __sinit_JASSystemHeap_cpp
-.long __sinit_JASTrack_cpp
-.long __sinit_JASSeqParser_cpp
-.long __sinit_JPAEmitter_cpp
-.long __sinit_JPAField_cpp
-.long __sinit_JPADraw_cpp
-.long __sinit_trigf_c
-.long	 0
+.globl __init_cpp_exceptions_reference
+__init_cpp_exceptions_reference: # 0x803730c0 /Runtime_PPCEABI_H/__init_cpp_exceptions.s
+.long __init_cpp_exceptions # 0x803730c0
+.long __sinit_main_cpp # 0x803730c4
+.long __sinit_AnimalBase_cpp # 0x803730c8
+.long __sinit_AnimalManager_cpp # 0x803730cc
+.long __sinit_Bird_cpp # 0x803730d0
+.long __sinit_BeeHive_cpp # 0x803730d4
+.long __sinit_MAnmSound_cpp # 0x803730d8
+.long __sinit_MSound_cpp # 0x803730dc
+.long __sinit_MSoundBGM_cpp # 0x803730e0
+.long __sinit_MSoundDebug_cpp # 0x803730e4
+.long __sinit_MSoundScene_cpp # 0x803730e8
+.long __sinit_MSoundSE_cpp # 0x803730ec
+.long __sinit_MSoundStruct_cpp # 0x803730f0
+.long __sinit_MSHandle_cpp # 0x803730f4
+.long __sinit_MSModBgm_cpp # 0x803730f8
+.long __sinit_CameraChange_cpp # 0x803730fc
+.long __sinit_cameralib_cpp # 0x80373100
+.long __sinit_sunmgr_cpp # 0x80373104
+.long __sinit_CameraJetCoaster_cpp # 0x80373108
+.long __sinit_effectObj_cpp # 0x8037310c
+.long __sinit_emario_cpp # 0x80373110
+.long __sinit_enemy_cpp # 0x80373114
+.long __sinit_enemymanager_cpp # 0x80373118
+.long __sinit_enemyMario_cpp # 0x8037311c
+.long __sinit_gesso_cpp # 0x80373120
+.long __sinit_hamukuri_cpp # 0x80373124
+.long __sinit_hinokuri2_cpp # 0x80373128
+.long __sinit_mameGesso_cpp # 0x8037312c
+.long __sinit_namekuri_cpp # 0x80373130
+.long __sinit_pakkun_cpp # 0x80373134
+.long __sinit_smallEnemy_cpp # 0x80373138
+.long __sinit_walkerEnemy_cpp # 0x8037313c
+.long __sinit_bossgesso_cpp # 0x80373140
+.long __sinit_elecNokonoko_cpp # 0x80373144
+.long __sinit_telesa_cpp # 0x80373148
+.long __sinit_fireWanwan_cpp # 0x8037314c
+.long __sinit_bosspakkun_cpp # 0x80373150
+.long __sinit_tobiPuku_cpp # 0x80373154
+.long __sinit_tinkoopa_cpp # 0x80373158
+.long __sinit_launcher_cpp # 0x8037315c
+.long __sinit_bosswanwan_cpp # 0x80373160
+.long __sinit_chuuhana_cpp # 0x80373164
+.long __sinit_igaiga_cpp # 0x80373168
+.long __sinit_poihana_cpp # 0x8037316c
+.long __sinit_tamaNoko_cpp # 0x80373170
+.long __sinit_bosstelesa_cpp # 0x80373174
+.long __sinit_riccohook_cpp # 0x80373178
+.long __sinit_bombhei_cpp # 0x8037317c
+.long __sinit_cannon_cpp # 0x80373180
+.long __sinit_bosseel_cpp # 0x80373184
+.long __sinit_killer_cpp # 0x80373188
+.long __sinit_hanasambo_cpp # 0x8037318c
+.long __sinit_popo_cpp # 0x80373190
+.long __sinit_fruitsboat_cpp # 0x80373194
+.long __sinit_BossHanachanMain_cpp # 0x80373198
+.long __sinit_BossHanachanNerve_cpp # 0x8037319c
+.long __sinit_BossHanachanParts_cpp # 0x803731a0
+.long __sinit_amiNoko_cpp # 0x803731a4
+.long __sinit_gatekeeper_cpp # 0x803731a8
+.long __sinit_BossHanachanEffect_cpp # 0x803731ac
+.long __sinit_seal_cpp # 0x803731b0
+.long __sinit_bgpoldrop_cpp # 0x803731b4
+.long __sinit_bgtentacle_cpp # 0x803731b8
+.long __sinit_effectEnemy_cpp # 0x803731bc
+.long __sinit_hauntLeg_cpp # 0x803731c0
+.long __sinit_wireTrap_cpp # 0x803731c4
+.long __sinit_rocket_cpp # 0x803731c8
+.long __sinit_Kazekun_cpp # 0x803731cc
+.long __sinit_bossManta_cpp # 0x803731d0
+.long __sinit_yunbo_cpp # 0x803731d4
+.long __sinit_koopajr_cpp # 0x803731d8
+.long __sinit_Koopa_cpp # 0x803731dc
+.long __sinit_Kukku_cpp # 0x803731e0
+.long __sinit_BathtubPeach_cpp # 0x803731e4
+.long __sinit_BathtubKiller_cpp # 0x803731e8
+.long __sinit_coasterkiller_cpp # 0x803731ec
+.long __sinit_DebuTelesa_cpp # 0x803731f0
+.long __sinit_TabePuku_cpp # 0x803731f4
+.long __sinit_limitkoopa_cpp # 0x803731f8
+.long __sinit_limitkoopajr_cpp # 0x803731fc
+.long __sinit_ScrnFader_cpp # 0x80373200
+.long __sinit_GCConsole2_cpp # 0x80373204
+.long __sinit_Talk2D2_cpp # 0x80373208
+.long __sinit_PauseMenu2_cpp # 0x8037320c
+.long __sinit_CardSave_cpp # 0x80373210
+.long __sinit_CardLoad_cpp # 0x80373214
+.long __sinit_ConsoleStr_cpp # 0x80373218
+.long __sinit_SelectMenu_cpp # 0x8037321c
+.long __sinit_SelectDir_cpp # 0x80373220
+.long __sinit_SelectShine2_cpp # 0x80373224
+.long __sinit_Guide_cpp # 0x80373228
+.long __sinit_Option_cpp # 0x8037322c
+.long __sinit_JointModel_cpp # 0x80373230
+.long __sinit_JointModelManager_cpp # 0x80373234
+.long __sinit_JointObj_cpp # 0x80373238
+.long __sinit_Map_cpp # 0x8037323c
+.long __sinit_MapCheck_cpp # 0x80373240
+.long __sinit_MapCollisionData_cpp # 0x80373244
+.long __sinit_MapDraw_cpp # 0x80373248
+.long __sinit_MapEvent_cpp # 0x8037324c
+.long __sinit_MapEventSink_cpp # 0x80373250
+.long __sinit_MapMakeData_cpp # 0x80373254
+.long __sinit_MapMirror_cpp # 0x80373258
+.long __sinit_MapModel_cpp # 0x8037325c
+.long __sinit_MapWarp_cpp # 0x80373260
+.long __sinit_MapStaticObject_cpp # 0x80373264
+.long __sinit_MapWire_cpp # 0x80373268
+.long __sinit_MapWireManager_cpp # 0x8037326c
+.long __sinit_MapXlu_cpp # 0x80373270
+.long __sinit_PollutionAction_cpp # 0x80373274
+.long __sinit_PollutionCount_cpp # 0x80373278
+.long __sinit_PollutionManager_cpp # 0x8037327c
+.long __sinit_PollutionObj_cpp # 0x80373280
+.long __sinit_PollutionPos_cpp # 0x80373284
+.long __sinit_Shimmer_cpp # 0x80373288
+.long __sinit_Sky_cpp # 0x8037328c
+.long __sinit_MapEventSirena_cpp # 0x80373290
+.long __sinit_PollutionLayer_cpp # 0x80373294
+.long __sinit_PollutionEvent_cpp # 0x80373298
+.long __sinit_MapCollisionPlane_cpp # 0x8037329c
+.long __sinit_MapData_cpp # 0x803732a0
+.long __sinit_MapEventDolpic_cpp # 0x803732a4
+.long __sinit_MapEventMare_cpp # 0x803732a8
+.long __sinit_BathWaterManager_cpp # 0x803732ac
+.long __sinit_WoodBarrel_cpp # 0x803732b0
+.long __sinit_MapObjBase_cpp # 0x803732b4
+.long __sinit_MapObjInit_cpp # 0x803732b8
+.long __sinit_MapObjGeneral_cpp # 0x803732bc
+.long __sinit_MapObjManager_cpp # 0x803732c0
+.long __sinit_MapObjLib_cpp # 0x803732c4
+.long __sinit_Item_cpp # 0x803732c8
+.long __sinit_ItemManager_cpp # 0x803732cc
+.long __sinit_MapObjTown_cpp # 0x803732d0
+.long __sinit_MapObjBlock_cpp # 0x803732d4
+.long __sinit_MapObjBianco_cpp # 0x803732d8
+.long __sinit_MapObjSirena_cpp # 0x803732dc
+.long __sinit_MapObjRicco_cpp # 0x803732e0
+.long __sinit_MapObjMamma_cpp # 0x803732e4
+.long __sinit_MapObjPinna_cpp # 0x803732e8
+.long __sinit_MapObjSample_cpp # 0x803732ec
+.long __sinit_MapObjMare_cpp # 0x803732f0
+.long __sinit_MapObjFlag_cpp # 0x803732f4
+.long __sinit_MapObjWave_cpp # 0x803732f8
+.long __sinit_MapObjFloat_cpp # 0x803732fc
+.long __sinit_MapObjPlane_cpp # 0x80373300
+.long __sinit_MapObjCloud_cpp # 0x80373304
+.long __sinit_MapObjBall_cpp # 0x80373308
+.long __sinit_MapObjAirport_cpp # 0x8037330c
+.long __sinit_MapObjDolpic_cpp # 0x80373310
+.long __sinit_MapObjPollution_cpp # 0x80373314
+.long __sinit_MapObjGrass_cpp # 0x80373318
+.long __sinit_MapObjPole_cpp # 0x8037331c
+.long __sinit_MapObjWater_cpp # 0x80373320
+.long __sinit_ModelGate_cpp # 0x80373324
+.long __sinit_MapObjFence_cpp # 0x80373328
+.long __sinit_MapObjOption_cpp # 0x8037332c
+.long __sinit_MapObjMonte_cpp # 0x80373330
+.long __sinit_MapObjTree_cpp # 0x80373334
+.long __sinit_MapObjEx_cpp # 0x80373338
+.long __sinit_Pool_cpp # 0x8037333c
+.long __sinit_MapObjCorona_cpp # 0x80373340
+.long __sinit_MapObjItem2_cpp # 0x80373344
+.long __sinit_MapObjHide_cpp # 0x80373348
+.long __sinit_MapObjTrap_cpp # 0x8037334c
+.long __sinit_NpcAnm_cpp # 0x80373350
+.long __sinit_NpcBase_cpp # 0x80373354
+.long __sinit_NpcEvent_cpp # 0x80373358
+.long __sinit_NpcInitData_cpp # 0x8037335c
+.long __sinit_NpcChange_cpp # 0x80373360
+.long __sinit_NpcCoin_cpp # 0x80373364
+.long __sinit_liveactor_cpp # 0x80373368
+.long __sinit_MirrorActor_cpp # 0x8037336c
+.long __sinit_MarioAction_cpp # 0x80373370
+.long __sinit_MarioAutodemo_cpp # 0x80373374
+.long __sinit_MarioCollision_cpp # 0x80373378
+.long __sinit_MarioDraw_cpp # 0x8037337c
+.long __sinit_MarioJump_cpp # 0x80373380
+.long __sinit_MarioMain_cpp # 0x80373384
+.long __sinit_MarioMove_cpp # 0x80373388
+.long __sinit_MarioPhysics_cpp # 0x8037338c
+.long __sinit_MarioRun_cpp # 0x80373390
+.long __sinit_MarioSpecial_cpp # 0x80373394
+.long __sinit_MarioUpper_cpp # 0x80373398
+.long __sinit_MarioParticle_cpp # 0x8037339c
+.long __sinit_MarioWait_cpp # 0x803733a0
+.long __sinit_SplashManager_cpp # 0x803733a4
+.long __sinit_Tongue_cpp # 0x803733a8
+.long __sinit_WaterGun_cpp # 0x803733ac
+.long __sinit_Yoshi_cpp # 0x803733b0
+.long __sinit_MarioEffect_cpp # 0x803733b4
+.long __sinit_MarioSwim_cpp # 0x803733b8
+.long __sinit_MarioInit_cpp # 0x803733bc
+.long __sinit_ModelWaterManager_cpp # 0x803733c0
+.long __sinit_MarioCheckCol_cpp # 0x803733c4
+.long __sinit_MarioReceiveMsg_cpp # 0x803733c8
+.long __sinit_MarioSound_cpp # 0x803733cc
+.long __sinit_EmitterViewObj_cpp # 0x803733d0
+.long __sinit_EventWatcher_cpp # 0x803733d4
+.long __sinit_GCLogoDir_cpp # 0x803733d8
+.long __sinit_MarDirector_cpp # 0x803733dc
+.long __sinit_MarDirectorDirect_cpp # 0x803733e0
+.long __sinit_MarDirectorEvent_cpp # 0x803733e4
+.long __sinit_MarDirectorSetup2_cpp # 0x803733e8
+.long __sinit_MarNameRefGen_cpp # 0x803733ec
+.long __sinit_MenuDir_cpp # 0x803733f0
+.long __sinit_Application_cpp # 0x803733f4
+.long __sinit_MarioGamePad_cpp # 0x803733f8
+.long __sinit_MarNameRefGen_BossEnemy_cpp # 0x803733fc
+.long __sinit_MarDirectorLoadResource_cpp # 0x80373400
+.long __sinit_MovieDirector_cpp # 0x80373404
+.long __sinit_MarDirectorSetupObjects_cpp # 0x80373408
+.long __sinit_MSoundMainSide_cpp # 0x8037340c
+.long __sinit_JKRAramHeap_cpp # 0x80373410
+.long __sinit_JKRAram_cpp # 0x80373414
+.long __sinit_JKRDvdFile_cpp # 0x80373418
+.long __sinit_JKRFileLoader_cpp # 0x8037341c
+.long __sinit_JKRThread_cpp # 0x80373420
+.long __sinit_JUTException_cpp # 0x80373424
+.long __sinit_JUTGamePad_cpp # 0x80373428
+.long __sinit_J3DShape_cpp # 0x8037342c
+.long __sinit_J3DSys_cpp # 0x80373430
+.long __sinit_JKRDvdRipper_cpp # 0x80373434
+.long __sinit_JKRDvdAramRipper_cpp # 0x80373438
+.long __sinit_J3DDrawBuffer_cpp # 0x8037343c
+.long __sinit_JKRAramPiece_cpp # 0x80373440
+.long __sinit_JALModSe_cpp # 0x80373444
+.long __sinit_JAIBasic_cpp # 0x80373448
+.long __sinit_JAIConst_cpp # 0x8037344c
+.long __sinit_JAIGFrameStream_cpp # 0x80373450
+.long __sinit_JAISystemInterface_cpp # 0x80373454
+.long __sinit_JASWaveArcLoader_cpp # 0x80373458
+.long __sinit_JASHardStream_cpp # 0x8037345c
+.long __sinit_JASSystemHeap_cpp # 0x80373460
+.long __sinit_JASTrack_cpp # 0x80373464
+.long __sinit_JASSeqParser_cpp # 0x80373468
+.long __sinit_JPAEmitter_cpp # 0x8037346c
+.long __sinit_JPAField_cpp # 0x80373470
+.long __sinit_JPADraw_cpp # 0x80373474
+.long __sinit_trigf_c # 0x80373478
+.long 0x0 # 0x8037347c

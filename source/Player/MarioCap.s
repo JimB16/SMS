@@ -95,7 +95,7 @@ perform__9TMarioCapFUlPQ26JDrama9TGraphics: # 0x80241a84
     bne-    branch_0x80241bd8
     bl      getMotionFrameCtrl__6TMarioFv
     lfs     f1, 0x10(r3)
-    lfs     f0, -0x1428(rtoc)
+    lfs     f0, -0x1428(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80241b54
     lwz     r0, 0x14(r29)
@@ -269,7 +269,7 @@ branch_0x80241c68:
     addis   r0, r3, 0xff7f
     cmplwi  r0, 0x446
     bne-    branch_0x80241d28
-    lfs     f0, -0x1424(rtoc)
+    lfs     f0, -0x1424(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80241d28
     li      r31, 0x1
@@ -294,7 +294,7 @@ branch_0x80241d58:
 branch_0x80241d5c:
     clrlwi. r0, r0, 24
     beq-    branch_0x80241d74
-    lfs     f0, -0x1424(rtoc)
+    lfs     f0, -0x1424(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80241d74
     li      r31, 0x1
@@ -313,7 +313,7 @@ branch_0x80241d80:
 
 branch_0x80241d9c:
     lwz     r3, 0x30(r29)
-    lfs     f1, -0x1420(rtoc)
+    lfs     f1, -0x1420(r2)
     bl      clash__19TTrembleModelEffectFf
     b       branch_0x80241e2c
 
@@ -589,12 +589,12 @@ branch_0x802420ec:
 .globl createMirrorCap__9TMarioCapFv
 createMirrorCap__9TMarioCapFv: # 0x80242108
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039decc@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r28, r3, 0x0
-    subi    r30, r4, 0x2134
+    addi    r30, r4, unk_8039decc@l
     li      r29, 0x0
     li      r31, 0x0
 branch_0x8024212c:
@@ -627,15 +627,15 @@ branch_0x80242148:
 .globl __ct__9TMarioCapFP6TMario
 __ct__9TMarioCapFP6TMario: # 0x80242188
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__9TMarioCap@ha
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0x40c0
+    addi    r0, r5, __vvt__9TMarioCap@l
     stwu    sp, -0x180(sp)
     stmw    r27, 0x16c(sp)
     addi    r31, r3, 0x0
     stw     r0, 0x0(r3)
-    lis     r3, 0x803a
-    subi    r30, r3, 0x2188
+    lis     r3, unk_8039de78@ha
+    addi    r30, r3, unk_8039de78@l
     stw     r4, 0x8(r31)
     addi    r3, r30, 0x64
     bl      getGlbResource__13JKRFileLoaderFPCc
@@ -896,7 +896,7 @@ branch_0x80242420:
     lwz     r3, 0x30(r4)
     lwz     r4, 0x10(r4)
     bl      init__19TTrembleModelEffectFP8J3DModel
-    lfs     f0, -0x141c(rtoc)
+    lfs     f0, -0x141c(r2)
     li      r27, 0x0
     li      r29, 0x0
     stfs    f0, 0x34(r31)

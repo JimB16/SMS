@@ -38,13 +38,13 @@ branch_0x80372bec:
     bne-    branch_0x80372d48
     addi    r3, sp, 0x14
     bl      __THPAudioInitialize
-    lis     r25, 0x1
+    lis     r25, unk_0000ffff@ha
     lha     r21, 0x48(r31)
-    lis     r23, 0x8000
+    lis     r23, unk_7fffffff@ha
     lha     r20, 0x4a(r31)
     slwi    r27, r26, 1
-    subi    r26, r25, 0x1
-    subi    r24, r23, 0x1
+    addi    r26, r25, unk_0000ffff@l
+    addi    r24, r23, unk_7fffffff@l
     li      r22, 0x0
     b       branch_0x80372d38
 
@@ -100,7 +100,7 @@ branch_0x80372cc4:
     subfe   r5, r6, r6
     neg.    r5, r5
     beq-    branch_0x80372cec
-    subi    r4, r23, 0x1
+    addi    r4, r23, -0x1
     li      r3, 0x0
 branch_0x80372cec:
     li      r0, -0x1
@@ -111,14 +111,14 @@ branch_0x80372cec:
     subfe   r5, r6, r6
     neg.    r5, r5
     beq-    branch_0x80372d14
-    lis     r4, 0x8000
+    lis     r4, unk_80000000@h
     li      r3, -0x1
 branch_0x80372d14:
     li      r5, 0x10
     bl      __shr2i
     sth     r4, 0x0(r29)
     mr      r20, r21
-    addi    r21, r4, 0x0
+    addi    r21, r4, unk_80000000@l
     sth     r4, 0x0(r30)
     add     r29, r29, r27
     add     r30, r30, r27
@@ -132,13 +132,13 @@ branch_0x80372d38:
 branch_0x80372d48:
     addi    r3, sp, 0x14
     bl      __THPAudioInitialize
-    lis     r24, 0x1
+    lis     r24, unk_0000ffff@ha
     lha     r22, 0x48(r31)
-    lis     r25, 0x8000
+    lis     r25, unk_7fffffff@ha
     lha     r20, 0x4a(r31)
     slwi    r28, r26, 1
-    subi    r23, r24, 0x1
-    subi    r26, r25, 0x1
+    addi    r23, r24, unk_0000ffff@l
+    addi    r26, r25, unk_7fffffff@l
     li      r21, 0x0
     b       branch_0x80372e80
 
@@ -194,7 +194,7 @@ branch_0x80372e14:
     subfe   r5, r6, r6
     neg.    r5, r5
     beq-    branch_0x80372e3c
-    subi    r4, r25, 0x1
+    addi    r4, r25, -0x1
     addi    r3, r7, 0x0
 branch_0x80372e3c:
     li      r7, -0x1
@@ -205,14 +205,14 @@ branch_0x80372e3c:
     subfe   r5, r6, r6
     neg.    r5, r5
     beq-    branch_0x80372e64
-    lis     r4, 0x8000
+    lis     r4, unk_80000000@h
     addi    r3, r7, 0x0
 branch_0x80372e64:
     li      r5, 0x10
     bl      __shr2i
     sth     r4, 0x0(r29)
     addi    r20, r22, 0x0
-    addi    r22, r4, 0x0
+    addi    r22, r4, unk_80000000@l
     add     r29, r29, r28
     addi    r21, r21, 0x1
 branch_0x80372e80:
@@ -222,12 +222,12 @@ branch_0x80372e80:
     addi    r3, sp, 0x14
     addi    r4, r27, 0x0
     bl      __THPAudioInitialize
-    lis     r26, 0x1
+    lis     r26, unk_0000ffff@ha
     lha     r23, 0x4c(r31)
-    lis     r27, 0x8000
+    lis     r27, unk_7fffffff@ha
     lha     r21, 0x4e(r31)
-    subi    r25, r26, 0x1
-    subi    r29, r27, 0x1
+    addi    r25, r26, unk_0000ffff@l
+    addi    r29, r27, unk_7fffffff@l
     li      r22, 0x0
     b       branch_0x80372fc4
 
@@ -283,7 +283,7 @@ branch_0x80372f58:
     subfe   r5, r6, r6
     neg.    r5, r5
     beq-    branch_0x80372f80
-    subi    r4, r27, 0x1
+    addi    r4, r27, -0x1
     addi    r3, r7, 0x0
 branch_0x80372f80:
     li      r7, -0x1
@@ -294,14 +294,14 @@ branch_0x80372f80:
     subfe   r5, r6, r6
     neg.    r5, r5
     beq-    branch_0x80372fa8
-    lis     r4, 0x8000
+    lis     r4, unk_80000000@h
     addi    r3, r7, 0x0
 branch_0x80372fa8:
     li      r5, 0x10
     bl      __shr2i
     sth     r4, 0x0(r30)
     addi    r21, r23, 0x0
-    addi    r23, r4, 0x0
+    addi    r23, r4, unk_80000000@l
     add     r30, r30, r28
     addi    r22, r22, 0x1
 branch_0x80372fc4:
@@ -380,5 +380,7 @@ __THPAudioInitialize: # 0x80373078
     stw     r0, 0x0(r3)
     blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x36dab4, 0x803730c0 - 0x803730b4
+branch_0x803730b4:
+    .long 0x0
+    .long 0x0
+    .long 0x0

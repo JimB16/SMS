@@ -1,8 +1,8 @@
 
 .globl __ct__7J3DNodeFv
 __ct__7J3DNodeFv: # 0x802dfa08
-    lis     r4, 0x803e
-    addi    r0, r4, 0x1188
+    lis     r4, __vvt__7J3DNode@h
+    addi    r0, r4, __vvt__7J3DNode@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0x4(r3)
@@ -20,8 +20,8 @@ __dt__7J3DNodeFv: # 0x802dfa2c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802dfa60
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1188
+    lis     r3, __vvt__7J3DNode@h
+    addi    r3, r3, __vvt__7J3DNode@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802dfa60

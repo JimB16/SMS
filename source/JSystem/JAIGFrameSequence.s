@@ -32,7 +32,7 @@ branch_0x8030690c:
     bl      getSwBit__8JAISoundFv
     rlwinm. r0, r3, 0, 30, 30
     bne-    branch_0x80306974
-    lfs     f1, 0x540(rtoc)
+    lfs     f1, 0x540(r2)
     addi    r3, r27, 0x0
     li      r4, 0xa
     li      r5, 0xa
@@ -46,7 +46,7 @@ branch_0x80306974:
     addi    r28, r28, 0x1
     addi    r29, r29, 0x50
 branch_0x8030697c:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r28, r0
     blt+    branch_0x8030690c
 branch_0x80306988:
@@ -93,12 +93,12 @@ branch_0x803069c0:
 .globl checkEntriedSeq__8JAIBasicFv
 checkEntriedSeq__8JAIBasicFv: # 0x80306a1c
     mflr    r0
-    lis     r4, 0x8031
+    lis     r4, checkDvdLoadArc__8JAIBasicFUl@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x50(sp)
     stmw    r20, 0x20(sp)
     addi    r24, r3, 0x0
-    subi    r31, r4, 0x7d70
+    addi    r31, r4, checkDvdLoadArc__8JAIBasicFUl@l
     li      r28, 0x0
     li      r23, 0x0
     b       branch_0x80306d88
@@ -172,7 +172,7 @@ branch_0x80306b40:
     lwz     r3, 0x0(r24)
     bl      checkUsefulAutoHeapPosition__7JAIDataFv
     stb     r3, 0x18(sp)
-    lwz     r0, -0x74a8(r13)
+    lwz     r0, R13Off_m0x74a8(r13)
     lbz     r3, 0x18(sp)
     cmplw   r3, r0
     blt-    branch_0x80306c14
@@ -188,7 +188,7 @@ branch_0x80306b68:
     addis   r0, r4, 0x1
     cmplwi  r0, 0xffff
     beq-    branch_0x80306be4
-    lwz     r8, -0x74b8(r13)
+    lwz     r8, R13Off_m0x74b8(r13)
     addi    r5, r22, 0x8
     li      r9, 0x0
     b       branch_0x80306bc8
@@ -220,7 +220,7 @@ branch_0x80306be4:
     addi    r25, r25, 0x1
     addi    r22, r22, 0x14
 branch_0x80306bec:
-    lwz     r3, -0x74a8(r13)
+    lwz     r3, R13Off_m0x74a8(r13)
     cmplw   r25, r3
     blt+    branch_0x80306b68
     lbz     r0, 0x18(sp)
@@ -232,7 +232,7 @@ branch_0x80306bec:
     b       branch_0x80306d94
 
 branch_0x80306c14:
-    lwz     r0, -0x74a0(r13)
+    lwz     r0, R13Off_m0x74a0(r13)
     cmplw   r26, r0
     blt-    branch_0x80306c30
     lwz     r3, 0x0(r29)
@@ -338,7 +338,7 @@ branch_0x80306d80:
     addi    r28, r28, 0x1
     addi    r23, r23, 0x50
 branch_0x80306d88:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r28, r0
     blt+    branch_0x80306a44
 branch_0x80306d94:
@@ -385,7 +385,7 @@ branch_0x80306e18:
     stwx    r5, r29, r0
     addi    r6, r6, 0x1
 branch_0x80306e24:
-    lwz     r3, -0x74bc(r13)
+    lwz     r3, R13Off_m0x74bc(r13)
     clrlwi  r4, r6, 24
     addi    r0, r3, 0x1
     cmplw   r4, r0
@@ -417,7 +417,7 @@ branch_0x80306e74:
     b       branch_0x80307c1c
 
 branch_0x80306e94:
-    lfs     f1, 0x544(rtoc)
+    lfs     f1, 0x544(r2)
     li      r4, 0x6
     bl      setSeqInterVolume__8JAISoundFUcfUl
     lwz     r3, 0x0(r31)
@@ -436,7 +436,7 @@ branch_0x80306eb8:
     lbz     r3, 0x4(r3)
     cmplwi  r3, 0x4
     bne-    branch_0x80306ee8
-    lwz     r23, -0x7450(r13)
+    lwz     r23, R13Off_m0x7450(r13)
     li      r0, 0x0
     b       branch_0x80306ef0
 
@@ -445,13 +445,13 @@ branch_0x80306ee8:
     addi    r23, r3, 0x1
 branch_0x80306ef0:
     mr      r24, r0
-    lfs     f29, 0x544(rtoc)
+    lfs     f29, 0x544(r2)
     mulli   r20, r24, 0x1c
-    lfd     f30, 0x548(rtoc)
-    lfd     f31, 0x550(rtoc)
-    lfs     f27, 0x558(rtoc)
+    lfd     f30, 0x548(r2)
+    lfd     f31, 0x550(r2)
+    lfs     f27, 0x558(r2)
     mulli   r21, r24, 0xc
-    lfd     f28, 0x560(rtoc)
+    lfd     f28, 0x560(r2)
     lis     r19, 0x4330
     b       branch_0x80307090
 
@@ -510,7 +510,7 @@ branch_0x80306fc4:
     blrl
     fmuls   f0, f27, f1
     lwz     r3, 0x0(r31)
-    lbz     r5, -0x74d0(r13)
+    lbz     r5, R13Off_m0x74d0(r13)
     li      r4, 0x4
     fctiwz  f0, f0
     stfd    f0, 0x30(sp)
@@ -528,7 +528,7 @@ branch_0x80306fc4:
     blrl
     fctiwz  f0, f1
     lwz     r3, 0x0(r31)
-    lbz     r5, -0x74d0(r13)
+    lbz     r5, R13Off_m0x74d0(r13)
     li      r4, 0x4
     stfd    f0, 0x20(sp)
     lwz     r0, 0x24(sp)
@@ -546,7 +546,7 @@ branch_0x80306fc4:
     blrl
     lwz     r3, 0x0(r31)
     li      r4, 0x4
-    lwz     r5, -0x745c(r13)
+    lwz     r5, R13Off_m0x745c(r13)
     bl      setSeqInterPitch__8JAISoundFUcfUl
     addi    r24, r24, 0x1
     addi    r21, r21, 0xc
@@ -565,11 +565,11 @@ branch_0x803070b0:
     lwz     r0, 0x0(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x80307c1c
-    lwz     r3, -0x74b8(r13)
+    lwz     r3, R13Off_m0x74b8(r13)
     rlwinm. r0, r0, 0, 13, 13
     addi    r22, r3, 0xc
     beq-    branch_0x80307190
-    lfs     f27, 0x540(rtoc)
+    lfs     f27, 0x540(r2)
     clrlwi  r20, r22, 24
     li      r23, 0x0
     li      r21, 0x1
@@ -607,11 +607,11 @@ branch_0x8030712c:
     fmr     f1, f27
     li      r5, 0x2
     lwz     r3, 0x0(r28)
-    lwz     r4, -0x74bc(r13)
+    lwz     r4, R13Off_m0x74bc(r13)
     lwz     r0, 0x180(r3)
     add     r3, r0, r25
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     slwi    r3, r0, 2
     lwzx    r0, r29, r3
     ori     r0, r0, 0x1
@@ -627,9 +627,9 @@ branch_0x80307190:
     lwz     r0, 0x0(r30)
     rlwinm. r0, r0, 0, 12, 12
     beq-    branch_0x80307294
-    lfs     f27, 0x544(rtoc)
+    lfs     f27, 0x544(r2)
     clrlwi  r20, r22, 24
-    lfs     f29, 0x55c(rtoc)
+    lfs     f29, 0x55c(r2)
     li      r23, 0x0
     li      r21, 0x1
     b       branch_0x80307204
@@ -660,8 +660,8 @@ branch_0x80307204:
     clrlwi  r0, r23, 24
     cmplw   r0, r20
     blt+    branch_0x803071b4
-    lfs     f1, 0x55c(rtoc)
-    lfs     f0, 0x540(rtoc)
+    lfs     f1, 0x55c(r2)
+    lfs     f0, 0x540(r2)
     fadds   f27, f27, f1
     fcmpo   cr0, f27, f0
     ble-    branch_0x8030722c
@@ -669,7 +669,7 @@ branch_0x80307204:
     b       branch_0x8030723c
 
 branch_0x8030722c:
-    lfs     f0, 0x544(rtoc)
+    lfs     f0, 0x544(r2)
     fcmpo   cr0, f27, f0
     bge-    branch_0x8030723c
     fmr     f27, f0
@@ -681,11 +681,11 @@ branch_0x8030723c:
     fmr     f1, f27
     li      r5, 0x4
     lwz     r3, 0x0(r28)
-    lwz     r4, -0x74bc(r13)
+    lwz     r4, R13Off_m0x74bc(r13)
     lwz     r0, 0x180(r3)
     add     r3, r0, r25
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     slwi    r3, r0, 2
     lwzx    r0, r29, r3
     ori     r0, r0, 0x4
@@ -701,7 +701,7 @@ branch_0x80307294:
     lwz     r0, 0x0(r30)
     rlwinm. r0, r0, 0, 11, 11
     beq-    branch_0x80307364
-    lfs     f27, 0x540(rtoc)
+    lfs     f27, 0x540(r2)
     clrlwi  r20, r22, 24
     li      r23, 0x0
     li      r21, 0x1
@@ -739,11 +739,11 @@ branch_0x80307300:
     fmr     f1, f27
     li      r5, 0x3
     lwz     r3, 0x0(r28)
-    lwz     r4, -0x74bc(r13)
+    lwz     r4, R13Off_m0x74bc(r13)
     lwz     r0, 0x180(r3)
     add     r3, r0, r25
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     slwi    r3, r0, 2
     lwzx    r0, r29, r3
     ori     r0, r0, 0x2
@@ -759,7 +759,7 @@ branch_0x80307364:
     lwz     r0, 0x0(r30)
     rlwinm. r0, r0, 0, 10, 10
     beq-    branch_0x80307444
-    lfs     f27, 0x544(rtoc)
+    lfs     f27, 0x544(r2)
     clrlwi  r20, r22, 24
     li      r23, 0x0
     li      r21, 0x1
@@ -791,7 +791,7 @@ branch_0x803073d0:
     clrlwi  r0, r23, 24
     cmplw   r0, r20
     blt+    branch_0x80307384
-    lfs     f0, 0x540(rtoc)
+    lfs     f0, 0x540(r2)
     fcmpo   cr0, f27, f0
     ble-    branch_0x803073ec
     fmr     f27, f0
@@ -803,11 +803,11 @@ branch_0x803073ec:
     fmr     f1, f27
     li      r5, 0x5
     lwz     r3, 0x0(r28)
-    lwz     r4, -0x74bc(r13)
+    lwz     r4, R13Off_m0x74bc(r13)
     lwz     r0, 0x180(r3)
     add     r3, r0, r25
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     slwi    r3, r0, 2
     lwzx    r0, r29, r3
     ori     r0, r0, 0x8
@@ -823,7 +823,7 @@ branch_0x80307444:
     lwz     r0, 0x0(r30)
     rlwinm. r0, r0, 0, 9, 9
     beq-    branch_0x80307514
-    lfs     f27, 0x540(rtoc)
+    lfs     f27, 0x540(r2)
     clrlwi  r20, r22, 24
     li      r22, 0x0
     li      r21, 0x1
@@ -862,11 +862,11 @@ branch_0x803074b0:
     fmr     f1, f27
     li      r5, 0x6
     lwz     r3, 0x0(r28)
-    lwz     r4, -0x74bc(r13)
+    lwz     r4, R13Off_m0x74bc(r13)
     lwz     r0, 0x180(r3)
     add     r3, r0, r25
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     slwi    r3, r0, 2
     lwzx    r0, r29, r3
     ori     r0, r0, 0x10
@@ -898,12 +898,12 @@ branch_0x80307540:
     stfs    f1, 0x20(r26)
     li      r5, 0x9
     lwz     r3, 0x0(r28)
-    lwz     r4, -0x74bc(r13)
+    lwz     r4, R13Off_m0x74bc(r13)
     lwz     r0, 0x180(r3)
     lfs     f1, 0x8(r27)
     add     r3, r0, r25
     bl      setSeqPortargsF32__18JAISystemInterfaceFP16JAISeqUpdateDataUlUcf
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     slwi    r3, r0, 2
     lwzx    r0, r29, r3
     ori     r0, r0, 0x80
@@ -1012,7 +1012,7 @@ branch_0x803076a8:
 branch_0x803076f0:
     addi    r22, r22, 0x1
 branch_0x803076f4:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r4, r22, 24
     cmplw   r4, r0
     blt+    branch_0x80307664
@@ -1058,7 +1058,7 @@ branch_0x80307784:
 branch_0x80307790:
     addi    r22, r22, 0x1
 branch_0x80307794:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r3, r22, 24
     cmplw   r3, r0
     blt+    branch_0x80307738
@@ -1109,7 +1109,7 @@ branch_0x803077fc:
 branch_0x80307844:
     addi    r22, r22, 0x1
 branch_0x80307848:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r4, r22, 24
     cmplw   r4, r0
     blt+    branch_0x803077b8
@@ -1166,7 +1166,7 @@ branch_0x803078c8:
 branch_0x80307910:
     addi    r22, r22, 0x1
 branch_0x80307914:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r4, r22, 24
     cmplw   r4, r0
     blt+    branch_0x80307884
@@ -1223,7 +1223,7 @@ branch_0x80307994:
 branch_0x803079dc:
     addi    r22, r22, 0x1
 branch_0x803079e0:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r4, r22, 24
     cmplw   r4, r0
     blt+    branch_0x80307950
@@ -1280,7 +1280,7 @@ branch_0x80307a60:
 branch_0x80307aa8:
     addi    r22, r22, 0x1
 branch_0x80307aac:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r4, r22, 24
     cmplw   r4, r0
     blt+    branch_0x80307a1c
@@ -1321,7 +1321,7 @@ branch_0x80307af4:
 branch_0x80307b38:
     addi    r21, r21, 0x1
 branch_0x80307b3c:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r3, r21, 24
     cmplw   r3, r0
     blt+    branch_0x80307af4
@@ -1376,7 +1376,7 @@ branch_0x80307be4:
 branch_0x80307bf0:
     addi    r22, r22, 0x1
 branch_0x80307bf4:
-    lwz     r0, -0x74bc(r13)
+    lwz     r0, R13Off_m0x74bc(r13)
     clrlwi  r4, r22, 24
     cmplw   r4, r0
     blt+    branch_0x80307b60
@@ -1458,7 +1458,7 @@ branch_0x80307ca0:
 branch_0x80307d0c:
     addi    r30, r30, 0x1
 branch_0x80307d10:
-    lwz     r3, -0x74bc(r13)
+    lwz     r3, R13Off_m0x74bc(r13)
     clrlwi  r4, r30, 24
     addi    r0, r3, 0x1
     cmplw   r4, r0
@@ -1467,7 +1467,7 @@ branch_0x80307d24:
     addi    r31, r31, 0x1
     addi    r28, r28, 0x50
 branch_0x80307d2c:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r31, r0
     blt+    branch_0x80307c64
     lmw     r27, 0x14(sp)
@@ -1524,7 +1524,7 @@ branch_0x80307de4:
     addi    r29, r29, 0x1
     addi    r31, r31, 0x50
 branch_0x80307dec:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r29, r0
     blt+    branch_0x80307d78
     lwz     r0, 0x24(sp)
@@ -1578,7 +1578,7 @@ branch_0x80307e9c:
     addi    r29, r29, 0x1
     addi    r31, r31, 0x50
 branch_0x80307ea4:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r29, r0
     blt+    branch_0x80307e44
     lwz     r0, 0x24(sp)
@@ -1604,7 +1604,7 @@ checkFadeoutSeq__8JAIBasicFv: # 0x80307ed0
     li      r29, 0x0
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
-    lfs     f31, 0x544(rtoc)
+    lfs     f31, 0x544(r2)
     b       branch_0x80307f7c
 
 branch_0x80307f04:
@@ -1640,7 +1640,7 @@ branch_0x80307f74:
     addi    r29, r29, 0x1
     addi    r31, r31, 0x50
 branch_0x80307f7c:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r29, r0
     blt+    branch_0x80307f04
     lwz     r0, 0x2c(sp)
@@ -1664,7 +1664,7 @@ checkReadSeq__8JAIBasicFv: # 0x80307fac
     addi    r28, r3, 0x0
     li      r30, 0x0
     li      r27, 0x0
-    lfs     f31, 0x568(rtoc)
+    lfs     f31, 0x568(r2)
     b       branch_0x80308154
 
 branch_0x80307fd4:
@@ -1724,13 +1724,13 @@ branch_0x80307fd4:
     lwz     r0, 0x10(r3)
     cmplwi  r0, 0x1
     ble-    branch_0x803080d8
-    lfs     f1, 0x544(rtoc)
+    lfs     f1, 0x544(r2)
     li      r4, 0x6
     li      r5, 0x0
     bl      setSeqInterVolume__8JAISoundFUcfUl
     lwz     r3, 0x0(r31)
     li      r4, 0x6
-    lfs     f1, 0x540(rtoc)
+    lfs     f1, 0x540(r2)
     lwz     r5, 0x10(r3)
     bl      setSeqInterVolume__8JAISoundFUcfUl
 branch_0x803080d8:
@@ -1770,7 +1770,7 @@ branch_0x8030814c:
     addi    r30, r30, 0x1
     addi    r27, r27, 0x50
 branch_0x80308154:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r30, r0
     blt+    branch_0x80307fd4
     lmw     r26, 0x10(sp)
@@ -1848,7 +1848,7 @@ branch_0x8030825c:
     addi    r31, r31, 0x1
     addi    r29, r29, 0x50
 branch_0x80308264:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r31, r0
     blt+    branch_0x803081a4
     lwz     r0, 0x2c(sp)
@@ -1874,7 +1874,7 @@ checkDvdLoadArc__8JAIBasicFUl: # 0x80308290
     stw     r29, 0x14(sp)
     extrwi  r29, r3, 10, 6
     beq-    branch_0x803082d0
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     addi    r4, r31, 0x0
     li      r5, 0x0
     lwz     r3, 0x0(r3)
@@ -1882,7 +1882,7 @@ checkDvdLoadArc__8JAIBasicFUl: # 0x80308290
 branch_0x803082d0:
     cmplwi  r30, 0xfe
     bge-    branch_0x8030833c
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     mulli   r4, r30, 0x50
     lwz     r3, 0x0(r3)
     li      r0, 0x0
@@ -1904,7 +1904,7 @@ branch_0x803082d0:
     b       branch_0x80308350
 
 branch_0x80308328:
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     mr      r4, r31
     lwz     r3, 0x0(r3)
     bl      releaseAutoHeapPointer__7JAIDataFUc
@@ -1912,7 +1912,7 @@ branch_0x80308328:
 
 branch_0x8030833c:
     bne-    branch_0x80308350
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     mr      r4, r31
     lwz     r3, 0x0(r3)
     bl      releaseAutoHeapPointer__7JAIDataFUc

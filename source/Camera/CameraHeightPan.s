@@ -9,7 +9,7 @@ killHeightPan___15CPolarSubCameraFv: # 0x80026430
     sth     r0, 0x64(r3)
     lfs     f0, 0x9c(r3)
     stfs    f0, 0x84(r3)
-    lfs     f0, -0x78e8(rtoc)
+    lfs     f0, -0x78e8(r2)
     stfs    f0, 0x24c(r3)
     blr
 
@@ -26,7 +26,7 @@ execHeightPan___15CPolarSubCameraFv: # 0x8002645c
     stw     r29, 0x2c(sp)
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi  r0, r3, 24
-    lfs     f1, -0x78e8(rtoc)
+    lfs     f1, -0x78e8(r2)
     neg     r0, r0
     cntlzw  r0, r0
     srwi    r31, r0, 5
@@ -54,7 +54,7 @@ branch_0x800264a4:
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi. r0, r3, 24
     bne-    branch_0x80026520
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioGoDown__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x80026520
@@ -63,7 +63,7 @@ branch_0x800264a4:
     bne-    branch_0x80026520
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xffe0
-    cmplwi  r0, MARIOSTATUS_345
+    cmplwi  r0, 0x345
     beq-    branch_0x80026520
     li      r29, 0x1
 branch_0x80026520:
@@ -81,7 +81,7 @@ branch_0x80026520:
     lwz     r4, 0x68(r30)
     lfs     f1, 0x9c(r30)
     lfs     f2, 0x34(r4)
-    lfs     f3, -0x78e8(rtoc)
+    lfs     f3, -0x78e8(r2)
     bl      CLBChaseDecrease__FPffff
     lfs     f1, 0xa8(r30)
     lfs     f0, 0xdc(r30)
@@ -205,20 +205,17 @@ branch_0x800266e8:
 
 branch_0x800266f0:
     lwz     r3, 0x50(r30)
-    subi    r0, r3, 0x8
+    addi    r0, r3, -0x8
     cmplwi  r0, 0x39
     bgt-    branch_0x8002671c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3120
+    lis     r3, unk_803acee0@ha
+    addi    r3, r3, unk_803acee0@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80026718:		# jumptable 80026714 cases 0,5,7,10,11,35,41,43,54,57
+    bctr       
+branch_0x80026718:
     li      r31, 0x1
-
-def_80026714:		# jumptable 80026714 default case
 branch_0x8002671c:
     lwz     r0, 0x1c(sp)
     mr      r3, r31
@@ -255,20 +252,17 @@ branch_0x80026780:
 
 branch_0x80026788:
     lwz     r3, 0x50(r29)
-    subi    r0, r3, 0x8
+    addi    r0, r3, -0x8
     cmplwi  r0, 0x39
     bgt-    branch_0x800267b4
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3038
+    lis     r3, unk_803acfc8@ha
+    addi    r3, r3, unk_803acfc8@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x800267B0:		# jumptable 800267AC cases 0,5,7,10,11,35,41,43,54,57
+    bctr       
+branch_0x800267b0:
     li      r31, 0x1
-
-def_800267AC:		# jumptable 800267AC default case
 branch_0x800267b4:
     clrlwi. r0, r31, 24
     beq-    branch_0x800267c0
@@ -295,7 +289,7 @@ branch_0x800267e0:
     sth     r0, 0x64(r29)
     lfs     f0, 0x9c(r29)
     stfs    f0, 0x84(r29)
-    lfs     f0, -0x78e8(rtoc)
+    lfs     f0, -0x78e8(r2)
     stfs    f0, 0x24c(r29)
 branch_0x80026810:
     lwz     r0, 0x24(sp)

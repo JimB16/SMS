@@ -9,20 +9,20 @@ __dt__10TWoodBlockFv: # 0x801ef7ec
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801ef86c
-    lis     r3, 0x803d
-    addi    r3, r3, 0x4b98
+    lis     r3, __vvt__10TWoodBlock@h
+    addi    r3, r3, __vvt__10TWoodBlock@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801ef85c
-    lis     r3, 0x803d
-    addi    r3, r3, 0x4fdc
+    lis     r3, __vvt__11TNormalLift@h
+    addi    r3, r3, __vvt__11TNormalLift@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801ef85c
-    lis     r3, 0x803d
-    addi    r3, r3, 0x514c
+    lis     r3, __vvt__11TRailMapObj@h
+    addi    r3, r3, __vvt__11TRailMapObj@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -60,7 +60,7 @@ load__10TWoodBlockFR20JSUMemoryInputStream: # 0x801ef888
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lfs     f1, 0x154(r29)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x801ef90c
     lwz     r3, 0xec(r29)
@@ -188,16 +188,16 @@ branch_0x801efa6c:
     lha     r3, 0x14a(r31)
     lis     r5, 0x4330
     li      r0, 0x1
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     sth     r3, 0x14a(r31)
     li      r3, 0x1
     lha     r6, 0x14a(r31)
     lha     r4, 0x15c(r31)
     xoris   r6, r6, 0x8000
-    lfd     f2, -0x21a8(rtoc)
+    lfd     f2, -0x21a8(r2)
     stw     r6, 0x8c(sp)
     xoris   r4, r4, 0x8000
-    lfs     f0, -0x21b4(rtoc)
+    lfs     f0, -0x21b4(r2)
     stw     r5, 0x88(sp)
     lfd     f1, 0x88(sp)
     stw     r4, 0x84(sp)
@@ -252,7 +252,7 @@ branch_0x801efa6c:
     b       branch_0x801efc08
 
 branch_0x801efb7c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0x6d
     li      r6, 0x0
@@ -264,16 +264,16 @@ branch_0x801efb7c:
     lfs     f0, 0x28(r31)
     lfs     f2, 0x2c(r31)
     fadds   f1, f1, f0
-    lfs     f0, -0x21b0(rtoc)
+    lfs     f0, -0x21b0(r2)
     fadds   f1, f2, f1
     fdivs   f0, f1, f0
     stfs    f0, 0x154(r3)
     stfs    f0, 0x158(r3)
     stfs    f0, 0x15c(r3)
-    lfs     f0, -0x21ac(rtoc)
+    lfs     f0, -0x21ac(r2)
     stfs    f0, 0x174(r3)
     stfs    f0, 0x178(r3)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     stfs    f0, 0x17c(r3)
 branch_0x801efbd8:
     mr      r3, r31
@@ -306,22 +306,22 @@ __ct__10TWoodBlockFPCc: # 0x801efc1c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TRailMapObjFPCc
-    lis     r3, 0x803d
-    addi    r3, r3, 0x4fdc
+    lis     r3, __vvt__11TNormalLift@h
+    addi    r3, r3, __vvt__11TNormalLift@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803d
+    lis     r3, __vvt__10TWoodBlock@h
     stw     r0, 0x20(r31)
     li      r5, 0x0
-    addi    r4, r3, 0x4b98
+    addi    r4, r3, __vvt__10TWoodBlock@l
     sth     r5, 0x150(r31)
     addi    r0, r4, 0x24
     addi    r3, r31, 0x0
     sth     r5, 0x152(r31)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     stfs    f0, 0x154(r31)
     stb     r5, 0x158(r31)
-    lfs     f0, -0x21ac(rtoc)
+    lfs     f0, -0x21ac(r2)
     stfs    f0, 0x144(r31)
     stw     r4, 0x0(r31)
     stw     r0, 0x20(r31)
@@ -350,20 +350,20 @@ __dt__11TNormalLiftFv: # 0x801efcb4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801efd34
-    lis     r3, 0x803d
-    addi    r3, r3, 0x4fdc
+    lis     r3, __vvt__11TNormalLift@h
+    addi    r3, r3, __vvt__11TNormalLift@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801efd24
-    lis     r3, 0x803d
-    addi    r3, r3, 0x514c
+    lis     r3, __vvt__11TRailMapObj@h
+    addi    r3, r3, __vvt__11TRailMapObj@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801efd24
-    lis     r3, 0x803c
-    addi    r3, r3, 0x2ab8
+    lis     r3, __vvt__11TMapObjBase@h
+    addi    r3, r3, __vvt__11TMapObjBase@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -398,7 +398,7 @@ control__10TRollBlockFv: # 0x801efd50
     fadds   f0, f1, f0
     stfs    f0, 0x138(r31)
     lfs     f2, 0x138(r31)
-    lfs     f0, -0x21a0(rtoc)
+    lfs     f0, -0x21a0(r2)
     b       branch_0x801efd88
 
 branch_0x801efd84:
@@ -407,8 +407,8 @@ branch_0x801efd88:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x801efd84
-    lfs     f1, -0x21a0(rtoc)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f1, -0x21a0(r2)
+    lfs     f0, -0x21b8(r2)
     b       branch_0x801efda4
 
 branch_0x801efda0:
@@ -436,7 +436,7 @@ calcRootMatrix__10TRollBlockFv: # 0x801efdc4
     bl      getModel__10TLiveActorCFv
     lfs     f0, 0x120(r29)
     mr      r31, r3
-    lfs     f2, -0x219c(rtoc)
+    lfs     f2, -0x219c(r2)
     addi    r30, r31, 0x20
     lfs     f1, 0x11c(r29)
     fmuls   f0, f2, f0
@@ -468,15 +468,15 @@ calcRootMatrix__10TRollBlockFv: # 0x801efdc4
     stw     r0, 0x18(r31)
     lwz     r0, 0x2c(r29)
     stw     r0, 0x1c(r31)
-    lfs     f1, -0x219c(rtoc)
+    lfs     f1, -0x219c(r2)
     lfs     f0, 0x138(r29)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f0, f1, f0
-    lwz     r8, -0x5ea8(r13)
-    lwz     r6, -0x5ea4(r13)
-    lfs     f1, -0x21b8(rtoc)
+    lwz     r8, R13Off_m0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
+    lfs     f1, -0x21b8(r2)
     fctiwz  f2, f0
-    lfs     f0, -0x21ac(rtoc)
+    lfs     f0, -0x21ac(r2)
     stfd    f2, 0x60(sp)
     lwz     r7, 0x64(sp)
     clrlwi  r7, r7, 16
@@ -568,11 +568,11 @@ load__10TRollBlockFR20JSUMemoryInputStream: # 0x801eff84
     bl      read__14JSUInputStreamFPvl
     lwz     r4, 0x10(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x21a8(rtoc)
+    lfd     f1, -0x21a8(r2)
     addi    r3, r30, 0x0
     xoris   r4, r4, 0x8000
     stw     r4, 0x1c(sp)
-    lfs     f2, -0x2198(rtoc)
+    lfs     f2, -0x2198(r2)
     stw     r0, 0x18(sp)
     lfd     f0, 0x18(sp)
     fsubs   f0, f0, f1
@@ -603,13 +603,13 @@ __ct__10TRollBlockFPCc: # 0x801f002c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TMapObjBaseFPCc
-    lis     r3, 0x803d
-    addi    r3, r3, 0x4d08
+    lis     r3, __vvt__10TRollBlock@h
+    addi    r3, r3, __vvt__10TRollBlock@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     addi    r3, r31, 0x0
     stw     r0, 0x20(r31)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     stfs    f0, 0x138(r31)
     stfs    f0, 0x13c(r31)
     lwz     r0, 0x1c(sp)
@@ -631,10 +631,10 @@ control__10TRailBlockFv: # 0x801f007c
     mr      r30, r3
     stw     r29, 0x194(sp)
     bl      control__11TMapObjBaseFv
-    lfs     f0, -0x2194(rtoc)
+    lfs     f0, -0x2194(r2)
     mr      r3, r30
     stfs    f0, 0x58(r30)
-    lfs     f0, -0x2190(rtoc)
+    lfs     f0, -0x2190(r2)
     stfs    f0, 0x5c(r30)
     bl      calcEntryRadius__9THitActorFv
     mr      r3, r30
@@ -696,9 +696,9 @@ branch_0x801f0148:
     beq-    branch_0x801f01b4
     stw     r0, 0x18c(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x2188(rtoc)
+    lfd     f1, -0x2188(r2)
     stw     r0, 0x188(sp)
-    lfs     f2, -0x2198(rtoc)
+    lfs     f2, -0x2198(r2)
     lfd     f0, 0x188(sp)
     fsubs   f0, f0, f1
     fmuls   f0, f2, f0
@@ -737,7 +737,7 @@ branch_0x801f021c:
     beq-    branch_0x801f0240
     addi    r3, r30, 0x174
     bl      PSMTXIdentity
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     stfs    f0, 0x170(r30)
     stfs    f0, 0x16c(r30)
     stfs    f0, 0x168(r30)
@@ -759,7 +759,7 @@ branch_0x801f0240:
     addi    r5, r4, 0x0
     addi    r3, sp, 0x140
     bl      PSMTXConcat
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     addi    r3, sp, 0x134
     addi    r4, r3, 0x0
     stfs    f0, 0x170(r30)
@@ -791,7 +791,7 @@ branch_0x801f0240:
     addi    r4, r3, 0x0
     bl      PSVECNormalize
     lfs     f0, 0x134(sp)
-    lfs     f1, -0x21ac(rtoc)
+    lfs     f1, -0x21ac(r2)
     fsubs   f0, f0, f1
     stfs    f0, 0x134(sp)
     lfs     f0, 0x12c(sp)
@@ -801,7 +801,7 @@ branch_0x801f0240:
     fsubs   f0, f0, f1
     stfs    f0, 0x124(sp)
     lfs     f1, 0x134(sp)
-    lfs     f0, -0x218c(rtoc)
+    lfs     f0, -0x218c(r2)
     fabs    f1, f1
     fcmpo   cr0, f1, f0
     bge-    branch_0x801f03bc
@@ -860,7 +860,7 @@ branch_0x801f03bc:
     stw     r0, 0x17c(sp)
     lhz     r0, 0x10(r5)
     stw     r3, 0x184(sp)
-    lfd     f3, -0x2188(rtoc)
+    lfd     f3, -0x2188(r2)
     stw     r4, 0x178(sp)
     stw     r0, 0x18c(sp)
     lfd     f0, 0x178(sp)
@@ -875,7 +875,7 @@ branch_0x801f03bc:
     stfs    f1, 0x160(r30)
     stfs    f0, 0x164(r30)
     lfs     f30, 0x15c(r30)
-    lfs     f0, -0x21b4(rtoc)
+    lfs     f0, -0x21b4(r2)
     lfs     f1, 0x168(r30)
     fsubs   f2, f30, f0
     fadds   f3, f0, f30
@@ -884,7 +884,7 @@ branch_0x801f03bc:
     fdivs   f0, f0, f31
     stfs    f0, 0x150(r30)
     lfs     f30, 0x160(r30)
-    lfs     f0, -0x21b4(rtoc)
+    lfs     f0, -0x21b4(r2)
     lfs     f1, 0x16c(r30)
     fsubs   f2, f30, f0
     fadds   f3, f0, f30
@@ -893,7 +893,7 @@ branch_0x801f03bc:
     fdivs   f0, f0, f31
     stfs    f0, 0x154(r30)
     lfs     f30, 0x164(r30)
-    lfs     f0, -0x21b4(rtoc)
+    lfs     f0, -0x21b4(r2)
     lfs     f1, 0x170(r30)
     fsubs   f2, f30, f0
     fadds   f3, f0, f30
@@ -929,7 +929,7 @@ branch_0x801f04b4:
     fadds   f0, f1, f0
     stfs    f0, 0x170(r30)
     lfs     f2, 0x30(r30)
-    lfs     f0, -0x21a0(rtoc)
+    lfs     f0, -0x21a0(r2)
     b       branch_0x801f0524
 
 branch_0x801f0520:
@@ -938,8 +938,8 @@ branch_0x801f0524:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x801f0520
-    lfs     f1, -0x21a0(rtoc)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f1, -0x21a0(r2)
+    lfs     f0, -0x21b8(r2)
     b       branch_0x801f0540
 
 branch_0x801f053c:
@@ -949,7 +949,7 @@ branch_0x801f0540:
     blt+    branch_0x801f053c
     stfs    f2, 0x30(r30)
     lfs     f2, 0x34(r30)
-    lfs     f0, -0x21a0(rtoc)
+    lfs     f0, -0x21a0(r2)
     b       branch_0x801f055c
 
 branch_0x801f0558:
@@ -958,8 +958,8 @@ branch_0x801f055c:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x801f0558
-    lfs     f1, -0x21a0(rtoc)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f1, -0x21a0(r2)
+    lfs     f0, -0x21b8(r2)
     b       branch_0x801f0578
 
 branch_0x801f0574:
@@ -969,7 +969,7 @@ branch_0x801f0578:
     blt+    branch_0x801f0574
     stfs    f2, 0x34(r30)
     lfs     f2, 0x38(r30)
-    lfs     f0, -0x21a0(rtoc)
+    lfs     f0, -0x21a0(r2)
     b       branch_0x801f0594
 
 branch_0x801f0590:
@@ -978,8 +978,8 @@ branch_0x801f0594:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x801f0590
-    lfs     f1, -0x21a0(rtoc)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f1, -0x21a0(r2)
+    lfs     f0, -0x21b8(r2)
     b       branch_0x801f05b0
 
 branch_0x801f05ac:
@@ -1008,8 +1008,9 @@ MsWrap_f___Ffff_801f05e0: # 0x801f05e0
     fmr     f1, f2
     blr
 
+branch_0x801f05f4:
+    b       branch_0x801f05fc
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1eaff4, 0x801f05f8 - 0x801f05f4
 branch_0x801f05f8:
     fsubs   f1, f1, f0
 branch_0x801f05fc:
@@ -1029,8 +1030,9 @@ branch_0x801f061c:
     fsubs   f0, f3, f2
     b       branch_0x801f05fc
 
+branch_0x801f0624:
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x1eb024, 0x801f0628 - 0x801f0624
 
 .globl calcRootMatrix__10TRailBlockFv
 calcRootMatrix__10TRailBlockFv: # 0x801f0628
@@ -1133,14 +1135,14 @@ __ct__10TRailBlockFPCc: # 0x801f0764
     lwz     r31, 0x8(sp)
     mr      r3, r31
     bl      __ct__11TMapObjBaseFPCc
-    lis     r3, 0x803d
-    addi    r3, r3, 0x514c
+    lis     r3, __vvt__11TRailMapObj@h
+    addi    r3, r3, __vvt__11TRailMapObj@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803d
+    lis     r3, __vvt__10TRailBlock@h
     stw     r0, 0x20(r31)
     li      r7, 0x0
-    addi    r4, r3, 0x4e6c
+    addi    r4, r3, __vvt__10TRailBlock@l
     stw     r7, 0x138(r31)
     li      r6, 0xb4
     li      r5, 0x1
@@ -1148,14 +1150,14 @@ __ct__10TRailBlockFPCc: # 0x801f0764
     addi    r0, r4, 0x24
     addi    r3, r31, 0x174
     stw     r7, 0x140(r31)
-    lfs     f0, -0x2180(rtoc)
+    lfs     f0, -0x2180(r2)
     stfs    f0, 0x144(r31)
     stb     r7, 0x148(r31)
     sth     r6, 0x14a(r31)
     stb     r5, 0x14c(r31)
     stw     r4, 0x0(r31)
     stw     r0, 0x20(r31)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     stfs    f0, 0x150(r31)
     stfs    f0, 0x154(r31)
     stfs    f0, 0x158(r31)
@@ -1275,7 +1277,7 @@ control__11TNormalLiftFv: # 0x801f0938
     lhz     r3, 0x152(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x801f0998
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x152(r31)
     lhz     r0, 0x152(r31)
     cmplwi  r0, 0x0
@@ -1288,7 +1290,7 @@ branch_0x801f0998:
     lhz     r3, 0x150(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x801f09b0
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x150(r31)
     b       branch_0x801f0ad0
 
@@ -1341,9 +1343,9 @@ branch_0x801f09c8:
     beq-    branch_0x801f0a80
     stw     r0, 0x64(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x2188(rtoc)
+    lfd     f1, -0x2188(r2)
     stw     r0, 0x60(sp)
-    lfs     f2, -0x2198(rtoc)
+    lfs     f2, -0x2198(r2)
     lfd     f0, 0x60(sp)
     fsubs   f0, f0, f1
     fmuls   f0, f2, f0
@@ -1506,7 +1508,7 @@ load__11TNormalLiftFR20JSUMemoryInputStream: # 0x801f0c24
     stw     r0, 0x128(r30)
     lwz     r0, 0x2c(r30)
     stw     r0, 0x12c(r30)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      getGraphByName__10TConductorFPCc
     addi    r4, r3, 0x0
     addi    r3, r30, 0x0
@@ -1526,7 +1528,7 @@ load__11TNormalLiftFR20JSUMemoryInputStream: # 0x801f0c24
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lfs     f1, 0x154(r30)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x801f0d48
     lwz     r3, 0xec(r30)
@@ -1612,14 +1614,14 @@ __ct__11TNormalLiftFPCc: # 0x801f0e18
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TMapObjBaseFPCc
-    lis     r3, 0x803d
-    addi    r3, r3, 0x514c
+    lis     r3, __vvt__11TRailMapObj@h
+    addi    r3, r3, __vvt__11TRailMapObj@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803d
+    lis     r3, __vvt__11TNormalLift@h
     stw     r0, 0x20(r31)
     li      r7, 0x0
-    addi    r4, r3, 0x4fdc
+    addi    r4, r3, __vvt__11TNormalLift@l
     stw     r7, 0x138(r31)
     li      r6, 0xb4
     li      r5, 0x1
@@ -1627,7 +1629,7 @@ __ct__11TNormalLiftFPCc: # 0x801f0e18
     addi    r0, r4, 0x24
     addi    r3, r31, 0x0
     stw     r7, 0x140(r31)
-    lfs     f0, -0x2180(rtoc)
+    lfs     f0, -0x2180(r2)
     stfs    f0, 0x144(r31)
     stb     r7, 0x148(r31)
     sth     r6, 0x14a(r31)
@@ -1636,10 +1638,10 @@ __ct__11TNormalLiftFPCc: # 0x801f0e18
     stw     r0, 0x20(r31)
     sth     r7, 0x150(r31)
     sth     r7, 0x152(r31)
-    lfs     f0, -0x21b8(rtoc)
+    lfs     f0, -0x21b8(r2)
     stfs    f0, 0x154(r31)
     stb     r7, 0x158(r31)
-    lfs     f0, -0x21ac(rtoc)
+    lfs     f0, -0x21ac(r2)
     stfs    f0, 0x144(r31)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -1861,7 +1863,7 @@ load__11TRailMapObjFR20JSUMemoryInputStream: # 0x801f1108
     stw     r0, 0x128(r30)
     lwz     r0, 0x2c(r30)
     stw     r0, 0x12c(r30)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      getGraphByName__10TConductorFPCc
     addi    r4, r3, 0x0
     addi    r3, r30, 0x0
@@ -2001,12 +2003,12 @@ branch_0x801f1358:
     cmpwi   r0, 0x0
     ble-    branch_0x801f13f8
     lha     r3, 0x14a(r5)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x14a(r5)
     lha     r0, 0x14a(r5)
     cmpwi   r0, 0x5a
     bge-    branch_0x801f13b8
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r0, 0x58(r3)
     srawi   r3, r0, 2
     addze   r3, r3
@@ -2025,7 +2027,7 @@ branch_0x801f13ac:
     b       branch_0x801f13f0
 
 branch_0x801f13b8:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r0, 0x58(r3)
     srawi   r3, r0, 2
     addze   r3, r3
@@ -2232,7 +2234,7 @@ branch_0x801f1658:
     lwz     r3, 0x13c(r31)
     cmpwi   r3, 0x0
     ble-    branch_0x801f166c
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x13c(r31)
 branch_0x801f166c:
     mr      r3, r30
@@ -2268,7 +2270,7 @@ branch_0x801f1674:
     fmuls   f3, f2, f2
     fmuls   f4, f4, f4
     fmuls   f2, f1, f1
-    lfs     f1, -0x2180(rtoc)
+    lfs     f1, -0x2180(r2)
     fmuls   f0, f1, f0
     fadds   f1, f3, f2
     fadds   f1, f4, f1
@@ -2321,7 +2323,7 @@ branch_0x801f1744:
     lwz     r3, 0x13c(r31)
     cmpwi   r3, 0x0
     ble-    branch_0x801f17b8
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x13c(r31)
 branch_0x801f17b8:
     li      r3, 0x0
@@ -2480,8 +2482,8 @@ __ct__11TRailMapObjFPCc: # 0x801f19cc
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TMapObjBaseFPCc
-    lis     r3, 0x803d
-    addi    r3, r3, 0x514c
+    lis     r3, __vvt__11TRailMapObj@h
+    addi    r3, r3, __vvt__11TRailMapObj@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     li      r5, 0x0
@@ -2492,7 +2494,7 @@ __ct__11TRailMapObjFPCc: # 0x801f19cc
     mr      r3, r31
     stw     r5, 0x13c(r31)
     stw     r5, 0x140(r31)
-    lfs     f0, -0x2180(rtoc)
+    lfs     f0, -0x2180(r2)
     stfs    f0, 0x144(r31)
     stb     r5, 0x148(r31)
     sth     r4, 0x14a(r31)
@@ -2514,14 +2516,14 @@ __dt__10TRollBlockFv: # 0x801f1a3c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801f1aa4
-    lis     r3, 0x803d
-    addi    r3, r3, 0x4d08
+    lis     r3, __vvt__10TRollBlock@h
+    addi    r3, r3, __vvt__10TRollBlock@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801f1a94
-    lis     r3, 0x803c
-    addi    r3, r3, 0x2ab8
+    lis     r3, __vvt__11TMapObjBase@h
+    addi    r3, r3, __vvt__11TMapObjBase@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -2553,20 +2555,20 @@ __dt__10TRailBlockFv: # 0x801f1ac0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801f1b40
-    lis     r3, 0x803d
-    addi    r3, r3, 0x4e6c
+    lis     r3, __vvt__10TRailBlock@h
+    addi    r3, r3, __vvt__10TRailBlock@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801f1b30
-    lis     r3, 0x803d
-    addi    r3, r3, 0x514c
+    lis     r3, __vvt__11TRailMapObj@h
+    addi    r3, r3, __vvt__11TRailMapObj@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x801f1b30
-    lis     r3, 0x803c
-    addi    r3, r3, 0x2ab8
+    lis     r3, __vvt__11TMapObjBase@h
+    addi    r3, r3, __vvt__11TMapObjBase@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -2588,32 +2590,32 @@ branch_0x801f1b40:
     blr
 
 
-.globl _32___dt__11TRailMapObjFv
-_32___dt__11TRailMapObjFv: # 0x801f1b5c
-    subi    r3, r3, 0x20
+.globl unk_801f1b5c
+unk_801f1b5c: # 0x801f1b5c
+    addi    r3, r3, -0x20
     b       __dt__11TRailMapObjFv
 
 
-.globl _32___dt__11TNormalLiftFv
-_32___dt__11TNormalLiftFv: # 0x801f1b64
-    subi    r3, r3, 0x20
+.globl unk_801f1b64
+unk_801f1b64: # 0x801f1b64
+    addi    r3, r3, -0x20
     b       __dt__11TNormalLiftFv
 
 
-.globl _32___dt__10TRailBlockFv
-_32___dt__10TRailBlockFv: # 0x801f1b6c
-    subi    r3, r3, 0x20
+.globl unk_801f1b6c
+unk_801f1b6c: # 0x801f1b6c
+    addi    r3, r3, -0x20
     b       __dt__10TRailBlockFv
 
 
-.globl _32___dt__10TRollBlockFv
-_32___dt__10TRollBlockFv: # 0x801f1b74
-    subi    r3, r3, 0x20
+.globl unk_801f1b74
+unk_801f1b74: # 0x801f1b74
+    addi    r3, r3, -0x20
     b       __dt__10TRollBlockFv
 
 
-.globl _32___dt__10TWoodBlockFv
-_32___dt__10TWoodBlockFv: # 0x801f1b7c
-    subi    r3, r3, 0x20
+.globl unk_801f1b7c
+unk_801f1b7c: # 0x801f1b7c
+    addi    r3, r3, -0x20
     b       __dt__10TWoodBlockFv
 

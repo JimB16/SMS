@@ -22,7 +22,7 @@ branch_0x8004b0e0:
     beq-    branch_0x8004b12c
     lwz     r6, 0x8(r4)
     lwz     r3, 0x8(r31)
-    subi    r0, r6, 0x1
+    addi    r0, r6, -0x1
     cmpw    r3, r0
     bne-    branch_0x8004b12c
     lwz     r0, 0x4(r31)
@@ -43,7 +43,7 @@ branch_0x8004b12c:
     bne-    branch_0x8004b168
     lwz     r4, 0x8(r4)
     lwz     r3, 0x4(r31)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     cmpw    r3, r0
     bne-    branch_0x8004b168
     lwz     r3, 0x0(r5)
@@ -63,7 +63,7 @@ branch_0x8004b178:
     lwz     r3, 0x1c(r3)
     lfsx    f4, r3, r0
 branch_0x8004b188:
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x8004b1b0
@@ -74,7 +74,7 @@ branch_0x8004b188:
     cror    2, 0, 2
     beq-    branch_0x8004b1d4
 branch_0x8004b1b0:
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8004b1dc
     fcmpo   cr0, f3, f4
@@ -96,7 +96,7 @@ branch_0x8004b1e0:
     lwz     r4, 0x0(r5)
     lwz     r3, 0x0(r4)
     lwz     r4, 0x1c(r4)
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     slwi    r0, r0, 2
     lfs     f2, 0x4(r4)
     lfsx    f3, r4, r0
@@ -121,8 +121,9 @@ MsWrap_f___Ffff_8004b22c: # 0x8004b22c
     fmr     f1, f2
     blr
 
+branch_0x8004b240:
+    b       branch_0x8004b248
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x45c40, 0x8004b244 - 0x8004b240
 branch_0x8004b244:
     fsubs   f1, f1, f0
 branch_0x8004b248:
@@ -142,8 +143,9 @@ branch_0x8004b268:
     fsubs   f0, f3, f2
     b       branch_0x8004b248
 
+branch_0x8004b270:
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x45c70, 0x8004b274 - 0x8004b270
 
 .globl calcSplineSpeed__12TGraphTracerFf
 calcSplineSpeed__12TGraphTracerFf: # 0x8004b274
@@ -158,14 +160,14 @@ calcSplineSpeed__12TGraphTracerFf: # 0x8004b274
     lwz     r0, 0x14(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8004b2a8
-    lfs     f1, -0x6f24(rtoc)
+    lfs     f1, -0x6f24(r2)
     b       branch_0x8004b4cc
 
 branch_0x8004b2a8:
     lwz     r0, 0x8(r31)
     cmpwi   r0, 0x0
     bge-    branch_0x8004b2bc
-    lfs     f1, -0x6f24(rtoc)
+    lfs     f1, -0x6f24(r2)
     b       branch_0x8004b4cc
 
 branch_0x8004b2bc:
@@ -175,7 +177,7 @@ branch_0x8004b2bc:
     addi    r3, sp, 0x10c
     slwi    r0, r0, 4
     lwzx    r4, r4, r0
-    lfd     f1, -0x6f20(rtoc)
+    lfd     f1, -0x6f20(r2)
     lha     r0, 0x0(r4)
     xoris   r0, r0, 0x8000
     stw     r0, 0x144(sp)
@@ -255,7 +257,7 @@ branch_0x8004b2bc:
     beq-    branch_0x8004b440
     lwz     r3, 0x8(r6)
     lwz     r4, 0x8(r31)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     cmpw    r4, r0
     bne-    branch_0x8004b440
     lwz     r0, 0x4(r31)
@@ -275,7 +277,7 @@ branch_0x8004b440:
     bne-    branch_0x8004b488
     lwz     r6, 0x8(r6)
     lwz     r3, 0x4(r31)
-    subi    r0, r6, 0x1
+    addi    r0, r6, -0x1
     cmpw    r3, r0
     bne-    branch_0x8004b488
     lwz     r4, 0x0(r5)
@@ -335,9 +337,9 @@ branch_0x8004b4f8:
     lwz     r6, 0x0(r3)
     slwi    r5, r0, 4
     lis     r0, 0x4330
-    lfd     f1, -0x6f10(rtoc)
+    lfd     f1, -0x6f10(r2)
     lwz     r6, 0x0(r6)
-    lfs     f2, -0x6f18(rtoc)
+    lfs     f2, -0x6f18(r2)
     lwzx    r5, r6, r5
     lhz     r5, 0xc(r5)
     stw     r5, 0x5c(sp)
@@ -349,7 +351,7 @@ branch_0x8004b4f8:
     b       branch_0x8004b554
 
 branch_0x8004b54c:
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     stfs    f0, 0x10(r3)
 branch_0x8004b554:
     lwz     r0, 0x8(r3)
@@ -358,9 +360,9 @@ branch_0x8004b554:
     lwz     r6, 0x0(r3)
     slwi    r5, r0, 4
     lis     r0, 0x4330
-    lfd     f1, -0x6f10(rtoc)
+    lfd     f1, -0x6f10(r2)
     lwz     r6, 0x0(r6)
-    lfs     f2, -0x6f14(rtoc)
+    lfs     f2, -0x6f14(r2)
     lwzx    r5, r6, r5
     lhz     r5, 0xe(r5)
     stw     r5, 0x5c(sp)
@@ -388,9 +390,9 @@ setTo__12TGraphTracerFi: # 0x8004b5a4
     lwz     r5, 0x0(r3)
     slwi    r4, r0, 4
     lis     r0, 0x4330
-    lfd     f1, -0x6f10(rtoc)
+    lfd     f1, -0x6f10(r2)
     lwz     r5, 0x0(r5)
-    lfs     f2, -0x6f18(rtoc)
+    lfs     f2, -0x6f18(r2)
     lwzx    r4, r5, r4
     lhz     r4, 0xc(r4)
     stw     r4, 0x5c(sp)
@@ -402,7 +404,7 @@ setTo__12TGraphTracerFi: # 0x8004b5a4
     b       branch_0x8004b604
 
 branch_0x8004b5fc:
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     stfs    f0, 0x10(r3)
 branch_0x8004b604:
     lwz     r0, 0x8(r3)
@@ -411,9 +413,9 @@ branch_0x8004b604:
     lwz     r5, 0x0(r3)
     slwi    r4, r0, 4
     lis     r0, 0x4330
-    lfd     f1, -0x6f10(rtoc)
+    lfd     f1, -0x6f10(r2)
     lwz     r5, 0x0(r5)
-    lfs     f2, -0x6f14(rtoc)
+    lfs     f2, -0x6f14(r2)
     lwzx    r4, r5, r4
     lhz     r4, 0xe(r4)
     stw     r4, 0x5c(sp)
@@ -434,11 +436,11 @@ __ct__12TGraphTracerFv: # 0x8004b650
     li      r0, -0x1
     stw     r0, 0x4(r3)
     stw     r0, 0x8(r3)
-    lfs     f0, -0x6f08(rtoc)
+    lfs     f0, -0x6f08(r2)
     stfs    f0, 0xc(r3)
-    lfs     f0, -0x6f04(rtoc)
+    lfs     f0, -0x6f04(r2)
     stfs    f0, 0x10(r3)
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     stfs    f0, 0x14(r3)
     blr
 
@@ -451,7 +453,7 @@ perform__11TGraphGroupFUlPQ26JDrama9TGraphics: # 0x8004b680
     blelr-    
 
     cmpwi   r6, 0x8
-    subi    r5, r6, 0x8
+    addi    r5, r6, -0x8
     ble-    branch_0x8004b6b8
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -471,8 +473,12 @@ branch_0x8004b6c8:
     bdnz-      branch_0x8004b6c8
     blr
 
+branch_0x8004b6d0:
+    b       branch_0x8004b6b8
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x460d0, 0x8004b6d8 - 0x8004b6d0
+branch_0x8004b6d4:
+    blr
+
 
 .globl getGraphByName__11TGraphGroupFPCc
 getGraphByName__11TGraphGroupFPCc: # 0x8004b6d8
@@ -540,8 +546,8 @@ initGraphGroup__11TGraphGroupFv: # 0x8004b77c
     li      r26, 0x0
     li      r24, 0x0
     lis     r31, 0x4330
-    lfd     f31, -0x6f20(rtoc)
-    lfs     f30, -0x6f28(rtoc)
+    lfd     f31, -0x6f20(r2)
+    lfs     f30, -0x6f28(r2)
     b       branch_0x8004b938
 
 branch_0x8004b7b4:
@@ -623,7 +629,7 @@ branch_0x8004b868:
     fsubs   f0, f0, f31
     stfs    f1, 0x48(sp)
     stfs    f0, 0x4c(sp)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
     stfs    f1, 0x48(sp)
     lwz     r3, 0x50(sp)
@@ -684,8 +690,8 @@ __ct__11TGraphGroupFPv: # 0x8004b960
     bl      __nw__FUl
     mr.     r28, r3
     beq-    branch_0x8004b9b8
-    lis     r3, 0x8038
-    subi    r5, r3, 0x7db0
+    lis     r3, unk_80378250@ha
+    addi    r5, r3, unk_80378250@l
     addi    r3, r28, 0x0
     li      r4, 0x0
     li      r6, -0x1
@@ -749,8 +755,8 @@ branch_0x8004ba68:
     bl      __nw__FUl
     mr.     r27, r3
     beq-    branch_0x8004ba90
-    lis     r3, 0x8038
-    subi    r5, r3, 0x7db0
+    lis     r3, unk_80378250@ha
+    addi    r5, r3, unk_80378250@l
     addi    r3, r27, 0x0
     li      r4, 0x0
     li      r6, -0x1
@@ -809,11 +815,11 @@ branch_0x8004bb24:
 branch_0x8004bb34:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x6f20(rtoc)
+    lfd     f3, -0x6f20(r2)
     stw     r0, 0x6c(sp)
     lis     r4, 0x4330
     xoris   r0, r31, 0x8000
-    lfs     f1, -0x6f00(rtoc)
+    lfs     f1, -0x6f00(r2)
     stw     r4, 0x68(sp)
     addi    r3, sp, 0x30
     stw     r0, 0x64(sp)
@@ -851,11 +857,11 @@ getNearestPosOnGraphLink__9TGraphWebCFRCQ29JGeometry8TVec3_f_: # 0x8004bba0
     stw     r29, 0x84(sp)
     lwz     r6, 0x0(r5)
     lwz     r0, 0x4(r5)
-    lfd     f2, -0x6f20(rtoc)
+    lfd     f2, -0x6f20(r2)
     stw     r6, 0x58(sp)
-    lfs     f1, -0x6f28(rtoc)
+    lfs     f1, -0x6f28(r2)
     stw     r0, 0x5c(sp)
-    lfs     f0, -0x6f04(rtoc)
+    lfs     f0, -0x6f04(r2)
     lwz     r0, 0x8(r5)
     stw     r0, 0x60(sp)
     lwz     r0, 0x8(r4)
@@ -1031,9 +1037,9 @@ branch_0x8004be2c:
 
 .globl isDummy__9TGraphWebCFv
 isDummy__9TGraphWebCFv: # 0x8004be68
-    lis     r4, 0x803b
+    lis     r4, grDummyRail@ha
     lwz     r3, 0x4(r3)
-    subi    r0, r4, 0x4b8
+    addi    r0, r4, grDummyRail@l
     cmplw   r3, r0
     bne-    branch_0x8004be84
     li      r3, 0x1
@@ -1050,7 +1056,7 @@ indexToPoint__9TGraphWebCFi: # 0x8004be8c
     slwi    r0, r5, 4
     lwz     r6, 0x0(r4)
     lis     r4, 0x4330
-    lfd     f1, -0x6f20(rtoc)
+    lfd     f1, -0x6f20(r2)
     lwzx    r5, r6, r0
     lha     r0, 0x0(r5)
     xoris   r0, r0, 0x8000
@@ -1092,7 +1098,7 @@ startIsEnd__9TGraphWebCFv: # 0x8004bf18
     bgt-    branch_0x8004bf4c
     lwz     r3, 0x8(r3)
     lhz     r0, 0x14(r5)
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     cmpw    r0, r3
     beq-    branch_0x8004bf54
     lhz     r0, 0x16(r5)
@@ -1165,7 +1171,7 @@ branch_0x8004bff4:
     addi    r0, r4, 0x1
     stwx    r0, r6, r5
     lwz     r0, 0x10(r31)
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     slwi    r4, r0, 4
     lwz     r5, 0x0(r31)
     addi    r0, r4, 0x8
@@ -1256,9 +1262,9 @@ findNearestVisibleIndex__9TGraphWebCFRCQ29JGeometry8TVec3_f_fffUl: # 0x8004c108
     li      r30, 0x0
     li      r25, 0x0
     lis     r24, 0x4330
-    lfs     f30, -0x6efc(rtoc)
-    lfs     f26, -0x6f28(rtoc)
-    lfd     f31, -0x6f20(rtoc)
+    lfs     f30, -0x6efc(r2)
+    lfs     f26, -0x6f28(r2)
+    lfd     f31, -0x6f20(r2)
     b       branch_0x8004c284
 
 branch_0x8004c16c:
@@ -1301,7 +1307,7 @@ branch_0x8004c188:
     lfd     f0, 0x40(sp)
     fsubs   f0, f0, f31
     stfs    f0, 0x38(sp)
-    lfs     f4, -0x6f28(rtoc)
+    lfs     f4, -0x6f28(r2)
     bl      MsIsInSight__FRCQ29JGeometry8TVec3_f_fRCQ29JGeometry8TVec3_f_fff
     cmpwi   r3, 0x0
     beq-    branch_0x8004c27c
@@ -1363,11 +1369,11 @@ findNearestNodeIndex__9TGraphWebCFRCQ29JGeometry8TVec3_f_Ul: # 0x8004c2c0
     li      r6, 0x0
     lwz     r0, 0x8(r3)
     lis     r8, 0x4330
-    lfs     f8, -0x6efc(rtoc)
+    lfs     f8, -0x6efc(r2)
     cmpwi   r0, 0x0
     mtctr   r0
-    lfd     f5, -0x6f20(rtoc)
-    lfs     f0, -0x6f28(rtoc)
+    lfd     f5, -0x6f20(r2)
+    lfs     f0, -0x6f28(r2)
     ble-    branch_0x8004c3ac
 branch_0x8004c2f8:
     cmplwi  r10, 0xffff
@@ -1491,7 +1497,7 @@ branch_0x8004c480:
     addi    r3, sp, 0x88
     lwz     r0, 0x4(r23)
     mr      r4, r3
-    lwz     r6, MarioHitActorPos(r13)
+    lwz     r6, R13Off_m0x60b4(r13)
     stw     r5, 0x88(sp)
     stw     r0, 0x8c(sp)
     lwz     r0, 0x8(r23)
@@ -1518,9 +1524,9 @@ branch_0x8004c480:
     fsubs   f0, f1, f0
     stfs    f0, 0x84(sp)
     bl      MsVECNormalize__FP3VecP3Vec
-    lfd     f30, -0x6f20(rtoc)
+    lfd     f30, -0x6f20(r2)
     li      r28, -0x1
-    lfs     f31, -0x6ef8(rtoc)
+    lfs     f31, -0x6ef8(r2)
     li      r27, 0x0
     li      r23, 0x0
     lis     r31, 0x4330
@@ -1649,7 +1655,7 @@ branch_0x8004c6cc:
     b       branch_0x8004c810
 
 branch_0x8004c6e8:
-    lfd     f31, -0x6f20(rtoc)
+    lfd     f31, -0x6f20(r2)
     li      r31, -0x1
     li      r27, 0x0
     li      r28, 0x0
@@ -1813,12 +1819,12 @@ branch_0x8004c900:
     lwz     r0, 0x8(r22)
     stw     r0, 0x74(sp)
     bl      MsVECNormalize__FP3VecP3Vec
-    lfd     f28, -0x6f20(rtoc)
+    lfd     f28, -0x6f20(r2)
     li      r28, 0x0
-    lfs     f29, -0x6f00(rtoc)
+    lfs     f29, -0x6f00(r2)
     li      r30, -0x1
-    lfs     f31, -0x6f04(rtoc)
-    lfs     f27, -0x6ef8(rtoc)
+    lfs     f31, -0x6f04(r2)
+    lfs     f27, -0x6ef8(r2)
     li      r27, 0x0
     li      r23, 0x0
     lis     r22, 0x4330
@@ -1944,9 +1950,9 @@ branch_0x8004caf0:
     b       branch_0x8004cc38
 
 branch_0x8004cb0c:
-    lfs     f30, -0x6f28(rtoc)
+    lfs     f30, -0x6f28(r2)
     li      r30, -0x1
-    lfd     f31, -0x6f20(rtoc)
+    lfd     f31, -0x6f20(r2)
     li      r27, 0x0
     li      r28, 0x0
     lis     r23, 0x4330
@@ -2105,9 +2111,9 @@ branch_0x8004cd18:
     lwz     r0, 0x8(r23)
     stw     r0, 0x3c(sp)
     bl      MsVECNormalize__FP3VecP3Vec
-    lfs     f30, -0x6f28(rtoc)
+    lfs     f30, -0x6f28(r2)
     li      r29, -0x1
-    lfd     f31, -0x6f20(rtoc)
+    lfd     f31, -0x6f20(r2)
     li      r28, 0x0
     li      r24, 0x0
     lis     r23, 0x4330
@@ -2252,7 +2258,7 @@ branch_0x8004cf2c:
     b       branch_0x8004d0b8
 
 branch_0x8004cf34:
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     addi    r3, sp, 0x40
     addi    r4, r3, 0x0
     lfs     f2, 0x8(r5)
@@ -2274,9 +2280,9 @@ branch_0x8004cf34:
     fsubs   f0, f1, f0
     stfs    f0, 0x48(sp)
     bl      MsVECNormalize__FP3VecP3Vec
-    lfs     f30, -0x6f28(rtoc)
+    lfs     f30, -0x6f28(r2)
     li      r29, -0x1
-    lfd     f31, -0x6f20(rtoc)
+    lfd     f31, -0x6f20(r2)
     li      r28, 0x0
     li      r24, 0x0
     lis     r23, 0x4330
@@ -2422,11 +2428,11 @@ branch_0x8004d178:
 branch_0x8004d180:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x6f20(rtoc)
+    lfd     f3, -0x6f20(r2)
     stw     r0, 0x7c(sp)
     lis     r3, 0x4330
     xoris   r0, r30, 0x8000
-    lfs     f1, -0x6f00(rtoc)
+    lfs     f1, -0x6f00(r2)
     stw     r3, 0x78(sp)
     stw     r0, 0x74(sp)
     lfd     f0, 0x78(sp)
@@ -2446,7 +2452,7 @@ branch_0x8004d180:
     cmpw    r0, r31
     bne-    branch_0x8004d200
     lha     r3, 0x6(r29)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     cmpw    r4, r0
     bne-    branch_0x8004d1fc
     li      r3, 0x0
@@ -2529,7 +2535,7 @@ branch_0x8004d2d8:
 branch_0x8004d2e0:
     lwz     r7, 0x0(r29)
     lis     r8, 0x4330
-    lfd     f2, -0x6f20(rtoc)
+    lfd     f2, -0x6f20(r2)
     cmpwi   r6, 0x0
     lha     r5, 0x0(r7)
     lha     r3, 0x2(r7)
@@ -2539,7 +2545,7 @@ branch_0x8004d2e0:
     xoris   r5, r3, 0x8000
     xoris   r0, r0, 0x8000
     stw     r6, 0x94(sp)
-    lfs     f8, -0x6f28(rtoc)
+    lfs     f8, -0x6f28(r2)
     li      r3, -0x1
     stw     r5, 0x8c(sp)
     li      r5, 0x0
@@ -2625,7 +2631,7 @@ branch_0x8004d424:
     li      r0, 0x8
     mtctr   r0
     addi    r11, sp, 0x4c
-    subi    r10, r6, 0x8
+    addi    r10, r6, -0x8
 branch_0x8004d444:
     lwzu    r9, 0x8(r10)
     lwz     r0, 0x4(r10)
@@ -2671,7 +2677,7 @@ branch_0x8004d4c8:
     li      r0, 0x8
     sth     r9, 0x5a(sp)
     mtctr   r0
-    subi    r11, r6, 0x8
+    addi    r11, r6, -0x8
     addi    r10, sp, 0x4c
 branch_0x8004d4ec:
     lwzu    r9, 0x8(r10)
@@ -2688,7 +2694,7 @@ branch_0x8004d508:
     li      r0, 0x8
     mtctr   r0
     addi    r11, sp, 0x8
-    subi    r10, r6, 0x8
+    addi    r10, r6, -0x8
 branch_0x8004d524:
     lwzu    r9, 0x8(r10)
     lwz     r0, 0x4(r10)
@@ -2731,7 +2737,7 @@ branch_0x8004d59c:
     li      r0, 0x8
     sth     r9, 0x16(sp)
     mtctr   r0
-    subi    r10, r6, 0x8
+    addi    r10, r6, -0x8
     addi    r9, sp, 0x8
 branch_0x8004d5c0:
     lwzu    r6, 0x8(r9)
@@ -2766,8 +2772,8 @@ filterRailNode__9TGraphWebCFUlPC9TRailNodePC9TRailNodeP9TRailNode: # 0x8004d5fc
     beq-    branch_0x8004d64c
     li      r0, 0x8
     mtctr   r0
-    subi    r6, r7, 0x8
-    subi    r4, r5, 0x8
+    addi    r6, r7, -0x8
+    addi    r4, r5, -0x8
 branch_0x8004d630:
     lwzu    r3, 0x8(r4)
     lwz     r0, 0x4(r4)
@@ -2784,7 +2790,7 @@ branch_0x8004d654:
     li      r0, 0x8
     mtctr   r0
     addi    r9, sp, 0x14
-    subi    r8, r5, 0x8
+    addi    r8, r5, -0x8
 branch_0x8004d664:
     lwzu    r3, 0x8(r8)
     lwz     r0, 0x4(r8)
@@ -2834,7 +2840,7 @@ branch_0x8004d6f4:
     li      r0, 0x8
     sth     r4, 0x22(sp)
     mtctr   r0
-    subi    r6, r7, 0x8
+    addi    r6, r7, -0x8
     addi    r5, sp, 0x14
 branch_0x8004d718:
     lwzu    r4, 0x8(r5)
@@ -2860,8 +2866,8 @@ __dt__9TGraphWebFv: # 0x8004d748
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8004d77c
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3ec
+    lis     r3, __vvt__9TGraphWeb@ha
+    addi    r3, r3, __vvt__9TGraphWeb@l
     extsh.  r0, r4
     stw     r3, 0x18(r31)
     ble-    branch_0x8004d77c
@@ -2879,9 +2885,9 @@ branch_0x8004d77c:
 .globl __ct__9TGraphWebFP9TRailNodePCci
 __ct__9TGraphWebFP9TRailNodePCci: # 0x8004d794
     mflr    r0
-    lis     r7, 0x803b
+    lis     r7, unk_803afb10@ha
     stw     r0, 0x4(sp)
-    subi    r7, r7, 0x4f0
+    addi    r7, r7, unk_803afb10@l
     addi    r0, r7, 0x104
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
@@ -2928,8 +2934,8 @@ branch_0x8004d830:
     slwi    r3, r28, 4
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8005
-    subi    r4, r4, 0x1dd4
+    lis     r4, __ct__10TGraphNodeFv@ha
+    addi    r4, r4, __ct__10TGraphNodeFv@l
     addi    r7, r28, 0x0
     li      r5, 0x0
     li      r6, 0x10
@@ -3004,17 +3010,17 @@ getPosAndRot__11TSplineRailFfPQ29JGeometry8TVec3_f_PQ29JGeometry8TVec3_f_: # 0x8
     lwz     r4, 0x0(r29)
     lwz     r3, 0x0(r4)
     lwz     r4, 0x1c(r4)
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     slwi    r0, r0, 2
     lfs     f2, 0x4(r4)
     lfsx    f3, r4, r0
     bl      MsWrap_f___Ffff_8004b22c
 branch_0x8004d960:
     fmr     f30, f1
-    lfs     f31, -0x6f14(rtoc)
-    lfs     f27, -0x6ef4(rtoc)
-    lfs     f28, -0x6ef0(rtoc)
-    lfs     f29, -0x6f04(rtoc)
+    lfs     f31, -0x6f14(r2)
+    lfs     f27, -0x6ef4(r2)
+    lfs     f28, -0x6ef0(r2)
+    lfs     f29, -0x6f04(r2)
 branch_0x8004d974:
     fadds   f0, f30, f31
     fcmpo   cr0, f0, f29
@@ -3028,7 +3034,7 @@ branch_0x8004d984:
     lwz     r4, 0x0(r29)
     lwz     r3, 0x0(r4)
     lwz     r4, 0x1c(r4)
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     slwi    r0, r0, 2
     lfs     f2, 0x4(r4)
     lfsx    f3, r4, r0
@@ -3050,7 +3056,7 @@ branch_0x8004d9b4:
     lwz     r4, 0x0(r29)
     lwz     r3, 0x0(r4)
     lwz     r4, 0x1c(r4)
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     slwi    r0, r0, 2
     lfs     f2, 0x4(r4)
     lfsx    f3, r4, r0
@@ -3097,7 +3103,7 @@ branch_0x8004da08:
     stw     r0, 0x4(r30)
     lwz     r0, 0xb8(sp)
     stw     r0, 0x8(r30)
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     stfs    f0, 0x0(r31)
     stfs    f0, 0x4(r31)
     stfs    f0, 0x8(r31)
@@ -3153,12 +3159,12 @@ getPoint__11TSplinePathFf: # 0x8004db2c
     mr      r3, r31
     bl      calcTable__11TSplinePathFv
 branch_0x8004db6c:
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     fcmpo   cr0, f29, f0
     bge-    branch_0x8004db7c
     fmr     f29, f0
 branch_0x8004db7c:
-    lfs     f0, -0x6f04(rtoc)
+    lfs     f0, -0x6f04(r2)
     fcmpo   cr0, f0, f29
     bge-    branch_0x8004db8c
     fmr     f29, f0
@@ -3218,7 +3224,7 @@ __ct__11TSplineRailFPC9TGraphWeb: # 0x8004dc0c
     bgt-    branch_0x8004dc70
     lwz     r3, 0x8(r31)
     lhz     r0, 0x14(r5)
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     cmpw    r0, r3
     beq-    branch_0x8004dc78
     lhz     r0, 0x16(r5)
@@ -3264,8 +3270,8 @@ branch_0x8004dce0:
     lis     r3, 0x4330
     lwz     r4, 0x8(r31)
     lwz     r5, 0x0(r31)
-    subi    r0, r4, 0x1
-    lfd     f1, -0x6f20(rtoc)
+    addi    r0, r4, -0x1
+    lfd     f1, -0x6f20(r2)
     slwi    r0, r0, 4
     lwzx    r4, r5, r0
     lha     r0, 0x0(r4)
@@ -3311,7 +3317,7 @@ branch_0x8004dce0:
     stfs    f0, 0x0(r3)
     stw     r0, 0x28(r4)
 branch_0x8004dda8:
-    lfd     f1, -0x6f20(rtoc)
+    lfd     f1, -0x6f20(r2)
     li      r9, 0x0
     li      r3, 0x0
     li      r4, 0x0
@@ -3377,7 +3383,7 @@ branch_0x8004de8c:
     blt+    branch_0x8004ddc0
     lwz     r4, 0x0(r31)
     lis     r3, 0x4330
-    lfd     f1, -0x6f20(rtoc)
+    lfd     f1, -0x6f20(r2)
     addic.  r5, r5, 0x1
     lwz     r4, 0x0(r4)
     lha     r0, 0x0(r4)
@@ -3427,7 +3433,7 @@ branch_0x8004de8c:
 branch_0x8004df5c:
     lwz     r4, 0x0(r31)
     lis     r3, 0x4330
-    lfd     f1, -0x6f20(rtoc)
+    lfd     f1, -0x6f20(r2)
     lwz     r4, 0x10(r4)
     lha     r0, 0x0(r4)
     xoris   r0, r0, 0x8000
@@ -3489,7 +3495,7 @@ branch_0x8004e044:
     stw     r29, 0x0(r30)
     li      r8, 0x0
     li      r3, 0x0
-    lfd     f1, -0x6f20(rtoc)
+    lfd     f1, -0x6f20(r2)
     li      r4, 0x0
     lis     r6, 0x4330
     b       branch_0x8004e124
@@ -3551,7 +3557,7 @@ branch_0x8004e124:
     blt+    branch_0x8004e060
 branch_0x8004e130:
     lwz     r31, 0x0(r30)
-    lfs     f31, -0x6f28(rtoc)
+    lfs     f31, -0x6f28(r2)
     lwz     r0, 0x28(r31)
     cmpwi   r0, 0x0
     bne-    branch_0x8004e14c
@@ -3592,7 +3598,7 @@ getPoint__10TGraphNodeCFP3Vec: # 0x8004e1b8
     stwu    sp, -0x28(sp)
     lis     r6, 0x4330
     lwz     r5, 0x0(r3)
-    lfd     f1, -0x6f20(rtoc)
+    lfd     f1, -0x6f20(r2)
     lha     r0, 0x0(r5)
     xoris   r0, r0, 0x8000
     stw     r0, 0x24(sp)
@@ -3626,7 +3632,7 @@ __ct__10TGraphNodeFv: # 0x8004e22c
     stw     r4, 0x0(r3)
     li      r0, -0x7fff
     stw     r4, 0x4(r3)
-    lfs     f0, -0x6f28(rtoc)
+    lfs     f0, -0x6f28(r2)
     stfs    f0, 0x8(r3)
     sth     r0, 0xc(r3)
     blr

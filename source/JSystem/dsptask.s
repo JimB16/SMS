@@ -1,6 +1,4 @@
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x331e68, 0x80337480 - 0x80337468
-
 .globl DspHandShake__FPv
 DspHandShake__FPv: # 0x80337480
     mflr    r0
@@ -20,35 +18,35 @@ branch_0x8033748c:
     mtlr    r0
     blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x331ebc, 0x803374c0 - 0x803374bc
+branch_0x803374bc:
+    .long 0x0
 
 .globl DspBoot__FPFPv_v
 DspBoot__FPFPv_v: # 0x803374c0
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, audio_task@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stmw    r30, 0x10(sp)
     addi    r30, r3, 0x0
-    subi    r31, r4, 0x1d20
+    addi    r31, r4, audio_task@l
     bl      DspInitWork__Fv
     li      r0, 0xf0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x47a0
+    lis     r3, jdsp@h
+    addi    r3, r3, jdsp@l
     stw     r0, 0x4(r31)
     addis   r0, r3, 0x8000
     addis   r4, r31, 0x8000
     stw     r0, 0xc(r31)
     li      r0, 0x1ce0
-    lis     r3, 0x8033
+    lis     r3, DspHandShake__FPv@h
     li      r7, 0x0
     stw     r0, 0x10(r31)
     addi    r6, r4, 0x60
     li      r5, 0x2000
     li      r4, 0x10
     stw     r7, 0x14(r31)
-    addi    r0, r3, 0x7480
+    addi    r0, r3, DspHandShake__FPv@l
     stw     r6, 0x18(r31)
     stw     r5, 0x1c(r31)
     stw     r7, 0x20(r31)
@@ -67,8 +65,14 @@ DspBoot__FPFPv_v: # 0x803374c0
     mtlr    r0
     blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x331f64, 0x80337580 - 0x80337564
+branch_0x80337564:
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
 
 .globl DSPSendCommands2__FPUlUlPFUs_v
 DSPSendCommands2__FPUlUlPFUs_v: # 0x80337580
@@ -138,16 +142,17 @@ branch_0x80337644:
     mtlr    r0
     blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x332058, 0x80337660 - 0x80337658
+branch_0x80337658:
+    .long 0x0
+    .long 0x0
 
 .globl DspInitWork__Fv
 DspInitWork__Fv: # 0x80337660
     li      r3, 0x0
-    lis     r4, 0x8040
+    lis     r4, taskwork@h
     li      r0, 0x10
     addi    r6, r3, 0x0
-    addi    r5, r4, 0x340
+    addi    r5, r4, taskwork@l
     mtctr   r0
 branch_0x80337678:
     add     r4, r5, r3
@@ -156,13 +161,17 @@ branch_0x80337678:
     bdnz+      branch_0x80337678
     blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x33208c, 0x803376a0 - 0x8033768c
+branch_0x8033768c:
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
 
 .globl DspStartWork__FUlPFUs_v
 DspStartWork__FUlPFUs_v: # 0x803376a0
-    lwz     r8, -0x5ac4(r13)
-    lwz     r0, -0x5ac8(r13)
+    lwz     r8, R13Off_m0x5ac4(r13)
+    lwz     r0, R13Off_m0x5ac8(r13)
     addi    r5, r8, 0x1
     clrlwi  r7, r5, 28
     addi    r9, r5, 0x0
@@ -172,29 +181,33 @@ DspStartWork__FUlPFUs_v: # 0x803376a0
     blr
 
 branch_0x803376c4:
-    lis     r5, 0x8040
+    lis     r5, taskwork@h
     srwi    r6, r3, 16
     slwi    r3, r8, 3
-    addi    r0, r5, 0x340
+    addi    r0, r5, taskwork@l
     add     r5, r0, r3
     addi    r3, r9, 0x0
     sth     r6, 0x0(r5)
     stw     r4, 0x4(r5)
-    stw     r7, -0x5ac4(r13)
+    stw     r7, R13Off_m0x5ac4(r13)
     blr
 
-
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3320ec, 0x80337700 - 0x803376ec
+branch_0x803376ec:
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
 
 .globl DspFinishWork__FUs
 DspFinishWork__FUs: # 0x80337700
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, taskwork@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x340
+    addi    r0, r4, taskwork@l
     clrlwi  r4, r3, 16
     stwu    sp, -0x8(sp)
-    lwz     r5, -0x5ac8(r13)
+    lwz     r5, R13Off_m0x5ac8(r13)
     slwi    r3, r5, 3
     add     r3, r0, r3
     lhz     r0, 0x0(r3)
@@ -207,13 +220,20 @@ DspFinishWork__FUs: # 0x80337700
     mtlr    r12
     blrl
 branch_0x80337748:
-    lwz     r3, -0x5ac8(r13)
+    lwz     r3, R13Off_m0x5ac8(r13)
     addi    r0, r3, 0x1
     clrlwi  r0, r0, 28
-    stw     r0, -0x5ac8(r13)
+    stw     r0, R13Off_m0x5ac8(r13)
 branch_0x80337758:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
     mtlr    r0
     blr
 
+branch_0x80337768:
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0

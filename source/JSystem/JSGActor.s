@@ -9,8 +9,8 @@ __dt__Q26JStage6TActorFv: # 0x8033705c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x803370a4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4650
+    lis     r3, __vvt__Q26JStage6TActor@h
+    addi    r0, r3, __vvt__Q26JStage6TActor@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -89,7 +89,7 @@ JSGSetAnimation__Q26JStage6TActorFUl: # 0x803370f4
 
 .globl JSGGetAnimationFrame__Q26JStage6TActorCFv
 JSGGetAnimationFrame__Q26JStage6TActorCFv: # 0x803370f8
-    lfs     f1, 0x998(rtoc)
+    lfs     f1, 0x998(r2)
     blr
 
 
@@ -100,6 +100,6 @@ JSGSetAnimationFrame__Q26JStage6TActorFf: # 0x80337100
 
 .globl JSGGetAnimationFrameMax__Q26JStage6TActorCFv
 JSGGetAnimationFrameMax__Q26JStage6TActorCFv: # 0x80337104
-    lfs     f1, 0x998(rtoc)
+    lfs     f1, 0x998(r2)
     blr
 

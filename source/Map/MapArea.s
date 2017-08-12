@@ -19,7 +19,7 @@ polygonIsInGrid__17TMapCollisionDataFffffP12TBGCheckData: # 0x8018ab54
     stw     r30, 0x288(sp)
     stw     r29, 0x284(sp)
     stw     r28, 0x280(sp)
-    lfs     f0, -0x4458(rtoc)
+    lfs     f0, -0x4458(r2)
     lfs     f5, 0x38(r4)
     fcmpo   cr0, f5, f0
     bge-    branch_0x8018abb4
@@ -99,7 +99,7 @@ branch_0x8018ac98:
 
 branch_0x8018aca0:
     fsubs   f8, f3, f29
-    lfs     f12, -0x4458(rtoc)
+    lfs     f12, -0x4458(r2)
     fsubs   f7, f1, f0
     fsubs   f6, f0, f28
     fsubs   f27, f4, f3
@@ -141,7 +141,7 @@ branch_0x8018ad24:
     clrlwi. r0, r0, 24
     bne-    branch_0x8018ae98
     fsubs   f8, f0, f30
-    lfs     f13, -0x4458(rtoc)
+    lfs     f13, -0x4458(r2)
     fmuls   f8, f8, f27
     fsubs   f9, f26, f8
     fcmpo   cr0, f9, f13
@@ -179,7 +179,7 @@ branch_0x8018ada0:
     clrlwi. r0, r0, 24
     bne-    branch_0x8018ae98
     fsubs   f9, f3, f31
-    lfs     f11, -0x4458(rtoc)
+    lfs     f11, -0x4458(r2)
     fmuls   f12, f9, f7
     fsubs   f6, f12, f6
     fcmpo   cr0, f6, f11
@@ -217,7 +217,7 @@ branch_0x8018ae1c:
     clrlwi. r0, r0, 24
     bne-    branch_0x8018ae98
     fsubs   f6, f12, f8
-    lfs     f9, -0x4458(rtoc)
+    lfs     f9, -0x4458(r2)
     fcmpo   cr0, f6, f9
     bge-    branch_0x8018ae3c
     li      r0, 0x0
@@ -479,7 +479,7 @@ checkLinesCollision__Fffffffff: # 0x8018b18c
     stfd    f31, 0x30(sp)
     fsubs   f9, f8, f4
     fmuls   f11, f13, f10
-    lfs     f0, -0x4458(rtoc)
+    lfs     f0, -0x4458(r2)
     fsubs   f31, f4, f2
     fsubs   f12, f5, f3
     fsubs   f10, f7, f3
@@ -493,7 +493,7 @@ checkLinesCollision__Fffffffff: # 0x8018b18c
     cror    2, 1, 2
     beq-    branch_0x8018b1ec
 branch_0x8018b1d8:
-    lfs     f0, -0x4458(rtoc)
+    lfs     f0, -0x4458(r2)
     fcmpo   cr0, f11, f0
     bge-    branch_0x8018b1f4
     fcmpo   cr0, f9, f0
@@ -504,7 +504,7 @@ branch_0x8018b1ec:
 
 branch_0x8018b1f4:
     fsubs   f9, f7, f5
-    lfs     f0, -0x4458(rtoc)
+    lfs     f0, -0x4458(r2)
     fsubs   f5, f2, f8
     fsubs   f2, f4, f8
     fsubs   f8, f8, f6
@@ -521,7 +521,7 @@ branch_0x8018b1f4:
     cror    2, 1, 2
     beq-    branch_0x8018b24c
 branch_0x8018b238:
-    lfs     f0, -0x4458(rtoc)
+    lfs     f0, -0x4458(r2)
     fcmpo   cr0, f2, f0
     bge-    branch_0x8018b254
     fcmpo   cr0, f1, f0

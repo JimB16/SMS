@@ -1,8 +1,8 @@
 
 .globl __ct__8JAISoundFv
 __ct__8JAISoundFv: # 0x8030a388
-    lis     r4, 0x803e
-    addi    r0, r4, 0x25d0
+    lis     r4, __vvt__8JAISound@h
+    addi    r0, r4, __vvt__8JAISound@l
     stw     r0, 0x40(r3)
     li      r4, 0x0
     li      r0, 0xa
@@ -57,7 +57,7 @@ branch_0x8030a424:
     lfs     f3, 0x4(r4)
     stw     r0, 0x18(sp)
     lfs     f2, 0x0(r4)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x18(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -77,7 +77,7 @@ getSeCategoryNumber__8JAISoundFv: # 0x8030a460
     mr      r4, r3
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x8(r4)
     bl      changeIDToCategory__8JAIBasicFUl
     lwz     r0, 0xc(sp)
@@ -92,7 +92,7 @@ getSwBit__8JAISoundFv: # 0x8030a48c
     mr      r4, r3
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r4)
     bl      getSoundSwBit__8JAIBasicFPv
     lwz     r0, 0xc(sp)
@@ -109,7 +109,7 @@ checkSwBit__8JAISoundFUl: # 0x8030a4b8
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r4
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r5)
     bl      getSoundSwBit__8JAIBasicFPv
     lwz     r0, 0x1c(sp)
@@ -126,7 +126,7 @@ getInfoPriority__8JAISoundFv: # 0x8030a4f4
     mr      r4, r3
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r4)
     bl      getSoundPrioity__8JAIBasicFPv
     lwz     r0, 0xc(sp)
@@ -163,7 +163,7 @@ stop__8JAISoundFUl: # 0x8030a54c
     mr      r0, r3
     mr      r4, r0
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     bl      stopSoundHandle__8JAIBasicFP8JAISoundUl
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -176,15 +176,15 @@ setVolume__8JAISoundFfUlUc: # 0x8030a57c
     mflr    r0
     addi    r7, r4, 0x0
     stw     r0, 0x4(sp)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000000@h
     stwu    sp, -0x8(sp)
     lwz     r6, 0x8(r3)
     clrrwi  r6, r6, 30
     cmpw    r6, r0
     beq-    branch_0x8030a5e8
     bge-    branch_0x8030a5b8
-    lis     r4, 0x8000
-    addi    r0, r4, 0x1
+    lis     r4, unk_80000001@h
+    addi    r0, r4, unk_80000001@l
     cmpw    r6, r0
     bge-    branch_0x8030a5f4
     b       branch_0x8030a5c4
@@ -203,7 +203,7 @@ branch_0x8030a5c4:
 branch_0x8030a5d4:
     addi    r4, r5, 0x0
     addi    r5, r7, 0x0
-    li      r6, 0x0
+    addi    r6, r0, unk_c0000000@l
     bl      setSeInterVolume__8JAISoundFUcfUlUc
     b       branch_0x8030a5f4
 
@@ -223,15 +223,15 @@ setPan__8JAISoundFfUlUc: # 0x8030a604
     mflr    r0
     addi    r7, r4, 0x0
     stw     r0, 0x4(sp)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000000@h
     stwu    sp, -0x8(sp)
     lwz     r6, 0x8(r3)
     clrrwi  r6, r6, 30
     cmpw    r6, r0
     beq-    branch_0x8030a670
     bge-    branch_0x8030a640
-    lis     r4, 0x8000
-    addi    r0, r4, 0x1
+    lis     r4, unk_80000001@h
+    addi    r0, r4, unk_80000001@l
     cmpw    r6, r0
     bge-    branch_0x8030a67c
     b       branch_0x8030a64c
@@ -250,7 +250,7 @@ branch_0x8030a64c:
 branch_0x8030a65c:
     addi    r4, r5, 0x0
     addi    r5, r7, 0x0
-    li      r6, 0x0
+    addi    r6, r0, unk_c0000000@l
     bl      setSeInterPan__8JAISoundFUcfUlUc
     b       branch_0x8030a67c
 
@@ -277,8 +277,8 @@ setPitch__8JAISoundFfUlUc: # 0x8030a68c
     cmpw    r6, r0
     beq-    branch_0x8030a6f8
     bge-    branch_0x8030a6c8
-    lis     r4, 0x8000
-    addi    r0, r4, 0x1
+    lis     r4, unk_80000001@h
+    addi    r0, r4, unk_80000001@l
     cmpw    r6, r0
     bge-    branch_0x8030a704
     b       branch_0x8030a6d4
@@ -295,7 +295,7 @@ branch_0x8030a6d4:
     b       branch_0x8030a704
 
 branch_0x8030a6e4:
-    lfs     f2, 0x5b8(rtoc)
+    lfs     f2, 0x5b8(r2)
     addi    r4, r5, 0x0
     addi    r5, r7, 0x0
     bl      setSeInterPitch__8JAISoundFUcfUlf
@@ -317,15 +317,15 @@ setFxmix__8JAISoundFfUlUc: # 0x8030a714
     mflr    r0
     addi    r7, r4, 0x0
     stw     r0, 0x4(sp)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000000@h
     stwu    sp, -0x8(sp)
     lwz     r6, 0x8(r3)
     clrrwi  r6, r6, 30
     cmpw    r6, r0
     beq-    branch_0x8030a77c
     bge-    branch_0x8030a750
-    lis     r4, 0x8000
-    addi    r0, r4, 0x1
+    lis     r4, unk_80000001@h
+    addi    r0, r4, unk_80000001@l
     cmpw    r6, r0
     bge-    branch_0x8030a77c
     b       branch_0x8030a75c
@@ -344,7 +344,7 @@ branch_0x8030a75c:
 branch_0x8030a76c:
     addi    r4, r5, 0x0
     addi    r5, r7, 0x0
-    li      r6, 0x0
+    addi    r6, r0, unk_c0000000@l
     bl      setSeInterFxmix__8JAISoundFUcfUlUc
 branch_0x8030a77c:
     lwz     r0, 0xc(sp)
@@ -358,15 +358,15 @@ setDolby__8JAISoundFfUlUc: # 0x8030a78c
     mflr    r0
     addi    r7, r4, 0x0
     stw     r0, 0x4(sp)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000000@h
     stwu    sp, -0x8(sp)
     lwz     r6, 0x8(r3)
     clrrwi  r6, r6, 30
     cmpw    r6, r0
     beq-    branch_0x8030a7f4
     bge-    branch_0x8030a7c8
-    lis     r4, 0x8000
-    addi    r0, r4, 0x1
+    lis     r4, unk_80000001@h
+    addi    r0, r4, unk_80000001@l
     cmpw    r6, r0
     bge-    branch_0x8030a7f4
     b       branch_0x8030a7d4
@@ -385,7 +385,7 @@ branch_0x8030a7d4:
 branch_0x8030a7e4:
     addi    r4, r5, 0x0
     addi    r5, r7, 0x0
-    li      r6, 0x0
+    addi    r6, r0, unk_c0000000@l
     bl      setSeInterDolby__8JAISoundFUcfUlUc
 branch_0x8030a7f4:
     lwz     r0, 0xc(sp)
@@ -405,8 +405,8 @@ setTempoProportion__8JAISoundFfUl: # 0x8030a804
     cmpw    r6, r0
     beq-    branch_0x8030a84c
     bge-    branch_0x8030a83c
-    lis     r5, 0x8000
-    addi    r0, r5, 0x1
+    lis     r5, unk_80000001@h
+    addi    r0, r5, unk_80000001@l
     cmpw    r6, r0
     bge-    branch_0x8030a84c
     b       branch_0x8030a848
@@ -429,15 +429,15 @@ branch_0x8030a84c:
 setPortData__8JAISoundFUcUs: # 0x8030a85c
     mflr    r0
     stw     r0, 0x4(sp)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000000@h
     stwu    sp, -0x8(sp)
     lwz     r6, 0x8(r3)
     clrrwi  r7, r6, 30
     cmpw    r7, r0
     beq-    branch_0x8030a8b0
     bge-    branch_0x8030a894
-    lis     r6, 0x8000
-    addi    r0, r6, 0x1
+    lis     r6, unk_80000001@h
+    addi    r0, r6, unk_80000001@l
     cmpw    r7, r0
     bge-    branch_0x8030a8b0
     b       branch_0x8030a8a0
@@ -448,7 +448,7 @@ branch_0x8030a894:
     b       branch_0x8030a8b0
 
 branch_0x8030a8a0:
-    li      r6, 0x0
+    addi    r6, r0, unk_c0000000@l
     bl      setSeqPortData__8JAISoundFUcUsUl
     b       branch_0x8030a8b0
 
@@ -476,7 +476,7 @@ setDistanceVolumeCommon__8JAISoundFfUc: # 0x8030a8c0
 branch_0x8030a8e4:
     lwz     r6, 0x1c(r3)
     li      r7, 0x1
-    lwz     r5, -0x7450(r13)
+    lwz     r5, R13Off_m0x7450(r13)
     lfs     f2, 0x18(r6)
     b       branch_0x8030a918
 
@@ -498,7 +498,7 @@ branch_0x8030a924:
     lfs     f0, -0x746c(r13)
     fcmpo   cr0, f2, f0
     bge-    branch_0x8030a938
-    lfs     f1, 0x5bc(rtoc)
+    lfs     f1, 0x5bc(r2)
     b       branch_0x8030aa0c
 
 branch_0x8030a938:
@@ -508,7 +508,7 @@ branch_0x8030a938:
     fsubs   f3, f1, f0
     ble-    branch_0x8030a980
     clrlwi  r3, r0, 30
-    lfd     f1, 0x5c0(rtoc)
+    lfd     f1, 0x5c0(r2)
     addi    r0, r3, 0x1
     li      r3, 0x1
     slw     r0, r3, r0
@@ -525,7 +525,7 @@ branch_0x8030a980:
     cmplwi  r0, 0x0
     beq-    branch_0x8030a9b4
     clrlwi  r0, r0, 30
-    lfd     f1, 0x5c0(rtoc)
+    lfd     f1, 0x5c0(r2)
     li      r3, 0x1
     slw     r0, r3, r0
     xoris   r0, r0, 0x8000
@@ -542,13 +542,13 @@ branch_0x8030a9b4:
     cmplwi  r0, 0x3
     ble-    branch_0x8030a9d8
     fdivs   f0, f2, f3
-    lfs     f1, 0x5bc(rtoc)
+    lfs     f1, 0x5bc(r2)
     fsubs   f1, f1, f0
     b       branch_0x8030aa0c
 
 branch_0x8030a9d8:
     fdivs   f0, f2, f3
-    lfs     f2, 0x5bc(rtoc)
+    lfs     f2, 0x5bc(r2)
     lfs     f3, -0x5cc4(r13)
     fsubs   f1, f2, f3
     fsubs   f0, f2, f0
@@ -559,7 +559,7 @@ branch_0x8030a9f4:
     clrlwi  r0, r4, 24
     cmplwi  r0, 0x3
     ble-    branch_0x8030aa08
-    lfs     f1, 0x5b8(rtoc)
+    lfs     f1, 0x5b8(r2)
     b       branch_0x8030aa0c
 
 branch_0x8030aa08:
@@ -572,11 +572,11 @@ branch_0x8030aa0c:
 .globl setDistancePanCommon__8JAISoundFv
 setDistancePanCommon__8JAISoundFv: # 0x8030aa14
     stwu    sp, -0x20(sp)
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     cmplwi  r0, 0x1
     bne-    branch_0x8030ab2c
     lwz     r3, 0x1c(r3)
-    lfs     f0, 0x5bc(rtoc)
+    lfs     f0, 0x5bc(r2)
     lfs     f1, 0x0(r3)
     lfs     f2, 0x8(r3)
     fabs    f1, f1
@@ -587,7 +587,7 @@ setDistancePanCommon__8JAISoundFv: # 0x8030aa14
     bge-    branch_0x8030aa5c
     fcmpo   cr0, f2, f0
     bge-    branch_0x8030aa5c
-    lfs     f1, 0x5c8(rtoc)
+    lfs     f1, 0x5c8(r2)
     b       branch_0x8030ab60
 
 branch_0x8030aa5c:
@@ -600,18 +600,18 @@ branch_0x8030aa6c:
     bge-    branch_0x8030aa78
     fmr     f3, f0
 branch_0x8030aa78:
-    lfs     f1, 0x5b8(rtoc)
+    lfs     f1, 0x5b8(r2)
     lfs     f2, 0x0(r3)
     fcmpu   cr0, f1, f2
     bne-    branch_0x8030aa9c
     lfs     f0, 0x8(r3)
     fcmpu   cr0, f1, f0
     bne-    branch_0x8030aa9c
-    lfs     f0, 0x5c8(rtoc)
+    lfs     f0, 0x5c8(r2)
     b       branch_0x8030ab24
 
 branch_0x8030aa9c:
-    lfs     f0, 0x5b8(rtoc)
+    lfs     f0, 0x5b8(r2)
     fcmpo   cr0, f2, f0
     ble-    branch_0x8030aad8
     fcmpo   cr0, f4, f3
@@ -620,7 +620,7 @@ branch_0x8030aa9c:
     lfs     f2, -0x7440(r13)
     lfs     f1, -0x743c(r13)
     fsubs   f0, f2, f3
-    lfs     f3, 0x5bc(rtoc)
+    lfs     f3, 0x5bc(r2)
     fsubs   f2, f2, f4
     fmuls   f0, f1, f0
     fdivs   f0, f2, f0
@@ -628,7 +628,7 @@ branch_0x8030aa9c:
     b       branch_0x8030ab24
 
 branch_0x8030aad8:
-    lfs     f0, 0x5b8(rtoc)
+    lfs     f0, 0x5b8(r2)
     fcmpo   cr0, f2, f0
     cror    2, 0, 2
     bne-    branch_0x8030ab10
@@ -645,7 +645,7 @@ branch_0x8030aad8:
 
 branch_0x8030ab10:
     lfs     f0, -0x7438(r13)
-    lfs     f1, 0x5c8(rtoc)
+    lfs     f1, 0x5c8(r2)
     fmuls   f0, f0, f3
     fdivs   f0, f2, f0
     fadds   f0, f1, f0
@@ -658,7 +658,7 @@ branch_0x8030ab2c:
     cmplwi  r0, 0x4
     beq-    branch_0x8030ab5c
     clrlwi  r0, r0, 31
-    lfd     f1, 0x5c0(rtoc)
+    lfd     f1, 0x5c0(r2)
     xoris   r0, r0, 0x8000
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
@@ -668,7 +668,7 @@ branch_0x8030ab2c:
     b       branch_0x8030ab60
 
 branch_0x8030ab5c:
-    lfs     f1, 0x5c8(rtoc)
+    lfs     f1, 0x5c8(r2)
 branch_0x8030ab60:
     addi    sp, sp, 0x20
     blr
@@ -679,7 +679,7 @@ setPositionDopplarCommon__8JAISoundFUl: # 0x8030ab68
     stwu    sp, -0x38(sp)
     stfd    f31, 0x30(sp)
     stfd    f30, 0x28(sp)
-    lwz     r5, -0x5cc0(r13)
+    lwz     r5, R13Off_m0x5cc0(r13)
     lwz     r6, 0x1c(r3)
     lwz     r3, 0x8(r5)
     lfs     f12, 0x4(r6)
@@ -703,7 +703,7 @@ setPositionDopplarCommon__8JAISoundFUl: # 0x8030ab68
     lfs     f5, 0x8(r3)
     lfs     f4, 0x14(r6)
     fmadds  f30, f2, f2, f3
-    lfs     f3, 0x5b8(rtoc)
+    lfs     f3, 0x5b8(r2)
     fsubs   f6, f12, f6
     fsubs   f8, f10, f8
     fsubs   f9, f11, f9
@@ -716,8 +716,8 @@ setPositionDopplarCommon__8JAISoundFUl: # 0x8030ab68
     fsubs   f9, f5, f4
     ble-    branch_0x8030ac54
     frsqrte f4, f10
-    lfd     f6, 0x5d0(rtoc)
-    lfd     f5, 0x5d8(rtoc)
+    lfd     f6, 0x5d0(r2)
+    lfd     f5, 0x5d8(r2)
     fmul    f3, f4, f4
     fmul    f4, f6, f4
     fnmsub   f3, f10, f3, f5
@@ -740,7 +740,7 @@ branch_0x8030ac54:
     fmr     f4, f10
 branch_0x8030ac58:
     fadds   f5, f1, f7
-    lfs     f1, 0x5b8(rtoc)
+    lfs     f1, 0x5b8(r2)
     fadds   f3, f0, f8
     fadds   f2, f2, f9
     fmuls   f0, f5, f5
@@ -750,8 +750,8 @@ branch_0x8030ac58:
     fmr     f5, f0
     ble-    branch_0x8030acd0
     frsqrte f1, f5
-    lfd     f3, 0x5d0(rtoc)
-    lfd     f2, 0x5d8(rtoc)
+    lfd     f3, 0x5d0(r2)
+    lfd     f2, 0x5d8(r2)
     fmul    f0, f1, f1
     fmul    f1, f3, f1
     fnmsub   f0, f5, f0, f2
@@ -776,10 +776,10 @@ branch_0x8030acd4:
     srwi    r0, r4, 8
     fsubs   f4, f4, f0
     mullw   r0, r0, r0
-    lfd     f2, 0x5b0(rtoc)
+    lfd     f2, 0x5b0(r2)
     lfs     f3, -0x7434(r13)
-    lfs     f5, 0x5bc(rtoc)
-    lfs     f0, 0x5e0(rtoc)
+    lfs     f5, 0x5bc(r2)
+    lfs     f0, 0x5e0(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
     stw     r0, 0x20(sp)
@@ -795,7 +795,7 @@ branch_0x8030acd4:
     b       branch_0x8030ad34
 
 branch_0x8030ad24:
-    lfs     f0, 0x5e4(rtoc)
+    lfs     f0, 0x5e4(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8030ad34
     fmr     f1, f0
@@ -1109,14 +1109,14 @@ setSeqInterDolby__8JAISoundFUcfUl: # 0x8030b144
     bl      getSeqParameter__8JAISoundFv
     cmplwi  r3, 0x0
     beq-    branch_0x8030b25c
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lbz     r0, 0x14(r3)
     cmplwi  r0, 0x2
     beq-    branch_0x8030b1d4
     mr      r3, r31
     bl      getSeqParameter__8JAISoundFv
     clrlslwi  r4, r28, 24, 4
-    lfs     f0, 0x5b8(rtoc)
+    lfs     f0, 0x5b8(r2)
     addi    r0, r4, 0x618
     lfsx    f1, r3, r0
     fcmpu   cr0, f0, f1
@@ -1124,8 +1124,9 @@ setSeqInterDolby__8JAISoundFUcfUl: # 0x8030b144
     fmr     f31, f0
     b       branch_0x8030b1d4
 
+branch_0x8030b1d0:
+    b       branch_0x8030b25c
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x305bd0, 0x8030b1d4 - 0x8030b1d0
 branch_0x8030b1d4:
     mr      r3, r31
     bl      getSeqParameter__8JAISoundFv
@@ -1246,7 +1247,7 @@ setSeqPortData__8JAISoundFUcUsUl: # 0x8030b330
     mr      r3, r30
     bl      getSeqParameter__8JAISoundFv
     clrlwi  r28, r31, 24
-    lfs     f0, 0x5b8(rtoc)
+    lfs     f0, 0x5b8(r2)
     clrlslwi  r27, r31, 24, 4
     addi    r29, r27, 0x18
     lfsx    f1, r3, r29
@@ -1263,7 +1264,7 @@ setSeqPortData__8JAISoundFUcUsUl: # 0x8030b330
     bl      readPortApp__18JAISystemInterfaceFUlUlPUs
     lhz     r4, 0x14(sp)
     lis     r0, 0x4330
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     mr      r3, r30
     stw     r4, 0x1c(sp)
     stw     r0, 0x18(sp)
@@ -1275,7 +1276,7 @@ branch_0x8030b3e8:
     mr      r3, r30
     bl      getSeqParameter__8JAISoundFv
     clrlwi  r0, r25, 16
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
     addi    r4, r3, 0x0
@@ -1341,7 +1342,7 @@ setWaveReadMode__8JAISoundFll: # 0x8030b49c
     bl      getSeqParameter__8JAISoundFv
     cmplwi  r3, 0x0
     beq-    branch_0x8030b520
-    lwz     r5, -0x5cc0(r13)
+    lwz     r5, R13Off_m0x5cc0(r13)
     slwi    r0, r31, 16
     slwi    r4, r31, 2
     lwz     r3, 0x60(r5)
@@ -1522,22 +1523,22 @@ setSeInterVolume__8JAISoundFUcfUlUc: # 0x8030b700
     clrlwi. r5, r29, 24
     stfs    f31, 0x0(r31)
     beq-    branch_0x8030b854
-    lis     r3, 0x19
-    lwz     r4, -0x5d80(r13)
-    addi    r0, r3, 0x660d
-    lfs     f0, 0x5bc(rtoc)
+    lis     r3, unk_0019660d@h
+    lwz     r4, R13Off_m0x5d80(r13)
+    addi    r0, r3, unk_0019660d@l
+    lfs     f0, 0x5bc(r2)
     mullw   r3, r4, r0
-    lfs     f2, 0x5e8(rtoc)
+    lfs     f2, 0x5e8(r2)
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
-    stw     r0, -0x5d80(r13)
-    lis     r3, 0x204
+    addi    r0, r3, -0xca1
+    stw     r0, R13Off_m0x5d80(r13)
+    lis     r3, unk_02040811@h
     mulli   r4, r5, 0x3e8
-    lwz     r0, -0x5d80(r13)
+    lwz     r0, R13Off_m0x5d80(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x30(sp)
-    addi    r0, r3, 0x811
+    addi    r0, r3, unk_02040811@l
     mulhwu  r3, r0, r4
     lfs     f1, 0x30(sp)
     fsubs   f0, f1, f0
@@ -1550,10 +1551,10 @@ setSeInterVolume__8JAISoundFUcfUlUc: # 0x8030b700
     slwi    r4, r29, 1
     stw     r29, 0x3c(sp)
     divwu   r0, r3, r4
-    lfd     f4, 0x5b0(rtoc)
-    lfs     f1, 0x5ec(rtoc)
+    lfd     f4, 0x5b0(r2)
+    lfs     f1, 0x5ec(r2)
     lfs     f5, 0x0(r31)
-    lfs     f0, 0x5bc(rtoc)
+    lfs     f0, 0x5bc(r2)
     mullw   r0, r0, r4
     subf    r3, r0, r3
     addi    r3, r3, 0x1
@@ -1574,7 +1575,7 @@ setSeInterVolume__8JAISoundFUcfUlUc: # 0x8030b700
     b       branch_0x8030b854
 
 branch_0x8030b838:
-    lfs     f1, 0x5b8(rtoc)
+    lfs     f1, 0x5b8(r2)
     fsubs   f0, f1, f3
     fcmpo   cr0, f5, f0
     bge-    branch_0x8030b850
@@ -1600,7 +1601,7 @@ branch_0x8030b874:
     stw     r0, 0x38(sp)
     lfs     f3, 0x0(r31)
     lfs     f2, 0x4(r31)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x38(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -1648,22 +1649,22 @@ setSeInterPan__8JAISoundFUcfUlUc: # 0x8030b8c8
     clrlwi. r5, r29, 24
     stfs    f31, 0x0(r31)
     beq-    branch_0x8030ba1c
-    lis     r3, 0x19
-    lwz     r4, -0x5d80(r13)
-    addi    r0, r3, 0x660d
-    lfs     f0, 0x5bc(rtoc)
+    lis     r3, unk_0019660d@h
+    lwz     r4, R13Off_m0x5d80(r13)
+    addi    r0, r3, unk_0019660d@l
+    lfs     f0, 0x5bc(r2)
     mullw   r3, r4, r0
-    lfs     f2, 0x5e8(rtoc)
+    lfs     f2, 0x5e8(r2)
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
-    stw     r0, -0x5d80(r13)
-    lis     r3, 0x204
+    addi    r0, r3, -0xca1
+    stw     r0, R13Off_m0x5d80(r13)
+    lis     r3, unk_02040811@h
     mulli   r4, r5, 0x3e8
-    lwz     r0, -0x5d80(r13)
+    lwz     r0, R13Off_m0x5d80(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x30(sp)
-    addi    r0, r3, 0x811
+    addi    r0, r3, unk_02040811@l
     mulhwu  r3, r0, r4
     lfs     f1, 0x30(sp)
     fsubs   f0, f1, f0
@@ -1676,10 +1677,10 @@ setSeInterPan__8JAISoundFUcfUlUc: # 0x8030b8c8
     slwi    r4, r29, 1
     stw     r29, 0x3c(sp)
     divwu   r0, r3, r4
-    lfd     f4, 0x5b0(rtoc)
-    lfs     f1, 0x5ec(rtoc)
+    lfd     f4, 0x5b0(r2)
+    lfs     f1, 0x5ec(r2)
     lfs     f5, 0x0(r31)
-    lfs     f0, 0x5bc(rtoc)
+    lfs     f0, 0x5bc(r2)
     mullw   r0, r0, r4
     subf    r3, r0, r3
     addi    r3, r3, 0x1
@@ -1700,7 +1701,7 @@ setSeInterPan__8JAISoundFUcfUlUc: # 0x8030b8c8
     b       branch_0x8030ba1c
 
 branch_0x8030ba00:
-    lfs     f1, 0x5b8(rtoc)
+    lfs     f1, 0x5b8(r2)
     fsubs   f0, f1, f3
     fcmpo   cr0, f5, f0
     bge-    branch_0x8030ba18
@@ -1726,7 +1727,7 @@ branch_0x8030ba3c:
     stw     r0, 0x38(sp)
     lfs     f3, 0x0(r31)
     lfs     f2, 0x4(r31)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x38(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -1774,22 +1775,22 @@ setSeInterFxmix__8JAISoundFUcfUlUc: # 0x8030ba90
     clrlwi. r5, r29, 24
     stfs    f31, 0x0(r31)
     beq-    branch_0x8030bbe4
-    lis     r3, 0x19
-    lwz     r4, -0x5d80(r13)
-    addi    r0, r3, 0x660d
-    lfs     f0, 0x5bc(rtoc)
+    lis     r3, unk_0019660d@h
+    lwz     r4, R13Off_m0x5d80(r13)
+    addi    r0, r3, unk_0019660d@l
+    lfs     f0, 0x5bc(r2)
     mullw   r3, r4, r0
-    lfs     f2, 0x5e8(rtoc)
+    lfs     f2, 0x5e8(r2)
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
-    stw     r0, -0x5d80(r13)
-    lis     r3, 0x204
+    addi    r0, r3, -0xca1
+    stw     r0, R13Off_m0x5d80(r13)
+    lis     r3, unk_02040811@h
     mulli   r4, r5, 0x3e8
-    lwz     r0, -0x5d80(r13)
+    lwz     r0, R13Off_m0x5d80(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x30(sp)
-    addi    r0, r3, 0x811
+    addi    r0, r3, unk_02040811@l
     mulhwu  r3, r0, r4
     lfs     f1, 0x30(sp)
     fsubs   f0, f1, f0
@@ -1802,10 +1803,10 @@ setSeInterFxmix__8JAISoundFUcfUlUc: # 0x8030ba90
     slwi    r4, r29, 1
     stw     r29, 0x3c(sp)
     divwu   r0, r3, r4
-    lfd     f4, 0x5b0(rtoc)
-    lfs     f1, 0x5ec(rtoc)
+    lfd     f4, 0x5b0(r2)
+    lfs     f1, 0x5ec(r2)
     lfs     f5, 0x0(r31)
-    lfs     f0, 0x5bc(rtoc)
+    lfs     f0, 0x5bc(r2)
     mullw   r0, r0, r4
     subf    r3, r0, r3
     addi    r3, r3, 0x1
@@ -1826,7 +1827,7 @@ setSeInterFxmix__8JAISoundFUcfUlUc: # 0x8030ba90
     b       branch_0x8030bbe4
 
 branch_0x8030bbc8:
-    lfs     f1, 0x5b8(rtoc)
+    lfs     f1, 0x5b8(r2)
     fsubs   f0, f1, f3
     fcmpo   cr0, f5, f0
     bge-    branch_0x8030bbe0
@@ -1852,7 +1853,7 @@ branch_0x8030bc04:
     stw     r0, 0x38(sp)
     lfs     f3, 0x0(r31)
     lfs     f2, 0x4(r31)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x38(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -1900,22 +1901,22 @@ setSeInterDolby__8JAISoundFUcfUlUc: # 0x8030bc58
     clrlwi. r5, r29, 24
     stfs    f31, 0x0(r31)
     beq-    branch_0x8030bdac
-    lis     r3, 0x19
-    lwz     r4, -0x5d80(r13)
-    addi    r0, r3, 0x660d
-    lfs     f0, 0x5bc(rtoc)
+    lis     r3, unk_0019660d@h
+    lwz     r4, R13Off_m0x5d80(r13)
+    addi    r0, r3, unk_0019660d@l
+    lfs     f0, 0x5bc(r2)
     mullw   r3, r4, r0
-    lfs     f2, 0x5e8(rtoc)
+    lfs     f2, 0x5e8(r2)
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
-    stw     r0, -0x5d80(r13)
-    lis     r3, 0x204
+    addi    r0, r3, -0xca1
+    stw     r0, R13Off_m0x5d80(r13)
+    lis     r3, unk_02040811@h
     mulli   r4, r5, 0x3e8
-    lwz     r0, -0x5d80(r13)
+    lwz     r0, R13Off_m0x5d80(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x30(sp)
-    addi    r0, r3, 0x811
+    addi    r0, r3, unk_02040811@l
     mulhwu  r3, r0, r4
     lfs     f1, 0x30(sp)
     fsubs   f0, f1, f0
@@ -1928,10 +1929,10 @@ setSeInterDolby__8JAISoundFUcfUlUc: # 0x8030bc58
     slwi    r4, r29, 1
     stw     r29, 0x3c(sp)
     divwu   r0, r3, r4
-    lfd     f4, 0x5b0(rtoc)
-    lfs     f1, 0x5ec(rtoc)
+    lfd     f4, 0x5b0(r2)
+    lfs     f1, 0x5ec(r2)
     lfs     f5, 0x0(r31)
-    lfs     f0, 0x5bc(rtoc)
+    lfs     f0, 0x5bc(r2)
     mullw   r0, r0, r4
     subf    r3, r0, r3
     addi    r3, r3, 0x1
@@ -1952,7 +1953,7 @@ setSeInterDolby__8JAISoundFUcfUlUc: # 0x8030bc58
     b       branch_0x8030bdac
 
 branch_0x8030bd90:
-    lfs     f1, 0x5b8(rtoc)
+    lfs     f1, 0x5b8(r2)
     fsubs   f0, f1, f3
     fcmpo   cr0, f5, f0
     bge-    branch_0x8030bda8
@@ -1978,7 +1979,7 @@ branch_0x8030bdcc:
     stw     r0, 0x38(sp)
     lfs     f3, 0x0(r31)
     lfs     f2, 0x4(r31)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x38(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2024,23 +2025,23 @@ setSeInterPitch__8JAISoundFUcfUlf: # 0x8030be20
     addi    r31, r4, 0x224
     add     r31, r3, r31
     stfs    f30, 0x0(r31)
-    lfs     f0, 0x5b8(rtoc)
+    lfs     f0, 0x5b8(r2)
     fcmpu   cr0, f0, f31
     beq-    branch_0x8030bf68
-    lfs     f0, 0x5ec(rtoc)
+    lfs     f0, 0x5ec(r2)
     fmuls   f1, f0, f31
     bl      __cvt_fp2unsigned
-    lis     r4, 0x19
-    lwz     r5, -0x5d80(r13)
-    addi    r0, r4, 0x660d
-    lfs     f0, 0x5bc(rtoc)
+    lis     r4, unk_0019660d@h
+    lwz     r5, R13Off_m0x5d80(r13)
+    addi    r0, r4, unk_0019660d@l
+    lfs     f0, 0x5bc(r2)
     mullw   r4, r5, r0
-    lfs     f2, 0x5e8(rtoc)
+    lfs     f2, 0x5e8(r2)
     addis   r4, r4, 0x3c6f
-    subi    r0, r4, 0xca1
-    stw     r0, -0x5d80(r13)
+    addi    r0, r4, -0xca1
+    stw     r0, R13Off_m0x5d80(r13)
     mr      r29, r3
-    lwz     r0, -0x5d80(r13)
+    lwz     r0, R13Off_m0x5d80(r13)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x30(sp)
@@ -2051,10 +2052,10 @@ setSeInterPitch__8JAISoundFUcfUlf: # 0x8030be20
     slwi    r4, r29, 1
     stw     r29, 0x3c(sp)
     divwu   r0, r3, r4
-    lfd     f4, 0x5b0(rtoc)
-    lfs     f1, 0x5ec(rtoc)
+    lfd     f4, 0x5b0(r2)
+    lfs     f1, 0x5ec(r2)
     lfs     f5, 0x0(r31)
-    lfs     f0, 0x5f0(rtoc)
+    lfs     f0, 0x5f0(r2)
     mullw   r0, r0, r4
     subf    r3, r0, r3
     addi    r3, r3, 0x1
@@ -2075,7 +2076,7 @@ setSeInterPitch__8JAISoundFUcfUlf: # 0x8030be20
     b       branch_0x8030bf68
 
 branch_0x8030bf4c:
-    lfs     f1, 0x5e0(rtoc)
+    lfs     f1, 0x5e0(r2)
     fsubs   f0, f1, f3
     fcmpo   cr0, f5, f0
     bge-    branch_0x8030bf64
@@ -2101,7 +2102,7 @@ branch_0x8030bf88:
     stw     r0, 0x38(sp)
     lfs     f3, 0x0(r31)
     lfs     f2, 0x4(r31)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x38(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2153,7 +2154,7 @@ setSePortData__8JAISoundFUcUs: # 0x8030bfdc
     b       branch_0x8030c148
 
 branch_0x8030c054:
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lbz     r31, 0x0(r30)
     lwz     r30, 0x38(r3)
     lwz     r0, 0x8(r30)
@@ -2274,25 +2275,25 @@ branch_0x8030c188:
     lwz     r12, 0x1c(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 21, 21
     bne-    branch_0x8030c2a0
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x18(r30)
     lwz     r12, 0x4(r3)
     lwz     r12, 0x18(r12)
     mtlr    r12
     blrl
     lwz     r3, 0x8(r30)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000002@h
     clrrwi  r4, r3, 30
     cmpw    r4, r0
     beq-    branch_0x8030c2a0
     bge-    branch_0x8030c26c
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x8030c2a0
     b       branch_0x8030c278
@@ -2304,7 +2305,7 @@ branch_0x8030c26c:
 
 branch_0x8030c278:
     addi    r3, r30, 0x0
-    li      r4, 0x2
+    addi    r4, r0, unk_c0000002@l
     li      r5, 0x0
     bl      setSeqInterFxmix__8JAISoundFUcfUl
     b       branch_0x8030c2a0
@@ -2340,12 +2341,12 @@ setSeDistanceVolume__8JAISoundFUc: # 0x8030c2d0
     mr      r31, r4
     stw     r30, 0x20(sp)
     mr      r30, r3
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 30, 30
     bne-    branch_0x8030c338
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     lwz     r12, 0x40(r30)
@@ -2360,7 +2361,7 @@ setSeDistanceVolume__8JAISoundFUc: # 0x8030c2d0
     b       branch_0x8030c33c
 
 branch_0x8030c338:
-    lfs     f31, 0x5bc(rtoc)
+    lfs     f31, 0x5bc(r2)
 branch_0x8030c33c:
     lwz     r0, 0x8(r30)
     clrrwi. r0, r0, 30
@@ -2388,7 +2389,7 @@ branch_0x8030c384:
     stw     r0, 0x18(sp)
     lfs     f3, 0x0(r3)
     lfs     f2, 0x4(r3)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x18(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2445,7 +2446,7 @@ branch_0x8030c44c:
     stw     r0, 0x18(sp)
     lfs     f3, 0x0(r3)
     lfs     f2, 0x4(r3)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x18(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2471,25 +2472,25 @@ setSeDistancePitch__8JAISoundFUc: # 0x8030c498
     mr      r31, r4
     stw     r30, 0x40(sp)
     mr      r30, r3
-    lfs     f31, 0x5bc(rtoc)
-    lwz     r3, -0x5cc0(r13)
+    lfs     f31, 0x5bc(r2)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 27, 27
     beq-    branch_0x8030c548
-    lis     r3, 0x19
-    lwz     r4, -0x5d80(r13)
-    addi    r0, r3, 0x660d
-    lfs     f4, 0x5bc(rtoc)
+    lis     r3, unk_0019660d@h
+    lwz     r4, R13Off_m0x5d80(r13)
+    addi    r0, r3, unk_0019660d@l
+    lfs     f4, 0x5bc(r2)
     mullw   r3, r4, r0
-    lfs     f3, 0x5f0(rtoc)
-    lfd     f2, 0x5c0(rtoc)
-    lfs     f0, 0x5f4(rtoc)
+    lfs     f3, 0x5f0(r2)
+    lfd     f2, 0x5c0(r2)
+    lfs     f0, 0x5f4(r2)
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
-    stw     r0, -0x5d80(r13)
+    addi    r0, r3, -0xca1
+    stw     r0, R13Off_m0x5d80(r13)
     lis     r0, 0x4330
-    lwz     r3, -0x5d80(r13)
+    lwz     r3, R13Off_m0x5d80(r13)
     srwi    r3, r3, 9
     oris    r3, r3, 0x3f80
     stw     r3, 0x24(sp)
@@ -2508,22 +2509,22 @@ setSeDistancePitch__8JAISoundFUc: # 0x8030c498
     fdivs   f0, f1, f0
     fsubs   f31, f4, f0
 branch_0x8030c548:
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 17, 17
     beq-    branch_0x8030c5c0
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 30, 30
     bne-    branch_0x8030c5c0
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 22, 23
     bne-    branch_0x8030c5c0
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     cmplwi  r0, 0x1
     bne-    branch_0x8030c5c0
     lwz     r3, 0x1c(r30)
@@ -2541,16 +2542,16 @@ branch_0x8030c5b4:
     lfs     f1, -0x742c(r13)
     fmadds  f31, f1, f0, f31
 branch_0x8030c5c0:
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 24, 25
     beq-    branch_0x8030c5fc
     lbz     r3, 0x3(r30)
     lis     r0, 0x4330
-    lfd     f2, 0x5b0(rtoc)
+    lfd     f2, 0x5b0(r2)
     stw     r3, 0x34(sp)
-    lfs     f0, 0x5f4(rtoc)
+    lfs     f0, 0x5f4(r2)
     stw     r0, 0x30(sp)
     lfd     f1, 0x30(sp)
     fsubs   f1, f1, f2
@@ -2583,7 +2584,7 @@ branch_0x8030c644:
     stw     r0, 0x30(sp)
     lfs     f3, 0x0(r3)
     lfs     f2, 0x4(r3)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x30(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2609,17 +2610,17 @@ setSePositionDopplar__8JAISoundFv: # 0x8030c690
     stw     r30, 0x20(sp)
     mr      r30, r3
     lbz     r0, 0x1(r3)
-    lwz     r31, -0x745c(r13)
+    lwz     r31, R13Off_m0x745c(r13)
     cmplwi  r0, 0x2
     bne-    branch_0x8030c6c0
     li      r31, 0x1
 branch_0x8030c6c0:
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r30)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r4, r3, 0, 22, 23
     beq-    branch_0x8030c770
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     cmplwi  r0, 0x1
     bne-    branch_0x8030c770
     lwz     r12, 0x40(r30)
@@ -2654,7 +2655,7 @@ branch_0x8030c740:
     stw     r0, 0x18(sp)
     lfs     f3, 0x0(r3)
     lfs     f2, 0x4(r3)
-    lfd     f1, 0x5b0(rtoc)
+    lfd     f1, 0x5b0(r2)
     lfd     f0, 0x18(sp)
     fsubs   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2681,12 +2682,12 @@ setSeDistanceFxmix__8JAISoundFUc: # 0x8030c78c
     stw     r29, 0x24(sp)
     mr      r29, r3
     lhz     r31, -0x5cd0(r13)
-    lwz     r3, -0x5cc0(r13)
+    lwz     r3, R13Off_m0x5cc0(r13)
     lwz     r4, 0x3c(r29)
     bl      getSoundSwBit__8JAIBasicFPv
     rlwinm. r0, r3, 0, 29, 29
     bne-    branch_0x8030c81c
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     cmplwi  r0, 0x1
     bne-    branch_0x8030c81c
     lwz     r3, 0x1c(r29)
@@ -2697,7 +2698,7 @@ setSeDistanceFxmix__8JAISoundFUc: # 0x8030c78c
     fdivs   f0, f0, f1
     lhz     r3, -0x74cc(r13)
     lis     r0, 0x4330
-    lfd     f2, 0x5b0(rtoc)
+    lfd     f2, 0x5b0(r2)
     stw     r3, 0x1c(sp)
     stw     r0, 0x18(sp)
     lfd     f1, 0x18(sp)
@@ -2717,10 +2718,10 @@ branch_0x8030c81c:
     li      r31, 0x7f
 branch_0x8030c82c:
     clrlwi  r0, r31, 24
-    lfd     f2, 0x5b0(rtoc)
+    lfd     f2, 0x5b0(r2)
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
-    lfs     f0, 0x5f8(rtoc)
+    lfs     f0, 0x5f8(r2)
     mr      r3, r29
     stw     r0, 0x10(sp)
     clrlwi  r5, r30, 24
@@ -2758,11 +2759,11 @@ setSeDistanceDolby__8JAISoundFUc: # 0x8030c884
     fcmpo   cr0, f1, f2
     bge-    branch_0x8030c8b8
 branch_0x8030c8b0:
-    lfs     f0, 0x5b8(rtoc)
+    lfs     f0, 0x5b8(r2)
     b       branch_0x8030c900
 
 branch_0x8030c8b8:
-    lfs     f0, 0x5b8(rtoc)
+    lfs     f0, 0x5b8(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8030c8d8
     fsubs   f0, f2, f1
@@ -2777,19 +2778,19 @@ branch_0x8030c8d8:
     bge-    branch_0x8030c8fc
     fdivs   f0, f1, f0
     lfs     f2, -0x7468(r13)
-    lfs     f1, 0x5f8(rtoc)
+    lfs     f1, 0x5f8(r2)
     fsubs   f1, f1, f2
     fmadds  f0, f1, f0, f2
     b       branch_0x8030c900
 
 branch_0x8030c8fc:
-    lfs     f0, 0x5f8(rtoc)
+    lfs     f0, 0x5f8(r2)
 branch_0x8030c900:
     fctiwz  f1, f0
     clrlwi  r5, r4, 24
     lis     r0, 0x4330
-    lfd     f2, 0x5b0(rtoc)
-    lfs     f0, 0x5f8(rtoc)
+    lfd     f2, 0x5b0(r2)
+    lfs     f0, 0x5f8(r2)
     stfd    f1, 0x18(sp)
     li      r4, 0x4
     li      r6, 0x0
@@ -3021,7 +3022,7 @@ branch_0x8030cc2c:
 setPauseMode__8JAISoundFUcUc: # 0x8030cc50
     mflr    r0
     stw     r0, 0x4(sp)
-    lis     r0, 0xc000
+    lis     r0, unk_c0000004@h
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r4, 0x0
@@ -3034,8 +3035,8 @@ setPauseMode__8JAISoundFUcUc: # 0x8030cc50
     cmpw    r4, r0
     beq-    branch_0x8030ce18
     bge-    branch_0x8030cfe4
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x8030cfe4
     mr      r3, r30
@@ -3045,7 +3046,7 @@ setPauseMode__8JAISoundFUcUc: # 0x8030cc50
     clrlwi  r0, r31, 24
     cmplwi  r0, 0x3
     bne-    branch_0x8030ccbc
-    li      r31, 0x4
+    addi    r31, r0, unk_c0000004@l
 branch_0x8030ccbc:
     clrlwi. r0, r31, 24
     beq-    branch_0x8030cd2c
@@ -3058,10 +3059,10 @@ branch_0x8030ccbc:
 
 branch_0x8030ccdc:
     clrlwi  r0, r29, 24
-    lfd     f2, 0x5b0(rtoc)
+    lfd     f2, 0x5b0(r2)
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
-    lfs     f0, 0x5f8(rtoc)
+    lfs     f0, 0x5f8(r2)
     mr      r3, r30
     stw     r0, 0x10(sp)
     li      r4, 0xb
@@ -3106,7 +3107,7 @@ branch_0x8030cd58:
     mr      r3, r30
     bl      getSeqParameter__8JAISoundFv
     mr      r4, r3
-    lfs     f1, 0x5bc(rtoc)
+    lfs     f1, 0x5bc(r2)
     addi    r3, r30, 0x0
     addi    r4, r4, 0x1c4
     li      r5, 0x1
@@ -3174,11 +3175,11 @@ branch_0x8030ce48:
     mr      r3, r30
     bl      getStreamParameter__8JAISoundFv
     clrlwi  r0, r29, 24
-    lfd     f2, 0x5b0(rtoc)
+    lfd     f2, 0x5b0(r2)
     stw     r0, 0x14(sp)
     addi    r4, r3, 0x0
     lis     r0, 0x4330
-    lfs     f0, 0x5f8(rtoc)
+    lfs     f0, 0x5f8(r2)
     stw     r0, 0x10(sp)
     mr      r3, r30
     lfd     f1, 0x10(sp)
@@ -3240,7 +3241,7 @@ branch_0x8030cf34:
     mr      r3, r30
     bl      getStreamParameter__8JAISoundFv
     mr      r4, r3
-    lfs     f1, 0x5bc(rtoc)
+    lfs     f1, 0x5bc(r2)
     addi    r3, r30, 0x0
     addi    r4, r4, 0xc4
     li      r5, 0x1
@@ -3306,7 +3307,7 @@ branch_0x8030d028:
     b       branch_0x8030d040
 
 branch_0x8030d03c:
-    lfs     f1, 0x5fc(rtoc)
+    lfs     f1, 0x5fc(r2)
 branch_0x8030d040:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -3347,11 +3348,11 @@ branch_0x8030d0a8:
     b       branch_0x8030d0cc
 
 branch_0x8030d0c0:
-    lfs     f1, 0x5fc(rtoc)
+    lfs     f1, 0x5fc(r2)
     b       branch_0x8030d0cc
 
 branch_0x8030d0c8:
-    lfs     f1, 0x5fc(rtoc)
+    lfs     f1, 0x5fc(r2)
 branch_0x8030d0cc:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)

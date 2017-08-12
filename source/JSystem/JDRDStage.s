@@ -17,31 +17,31 @@ __ct__Q26JDrama11TDStageDispFPCcQ26JDrama10TFlagT_Us_: # 0x802f83b0
     sth     r0, 0x38(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__Q26JDrama14TViewConnecterFPQ26JDrama8TViewObjPQ26JDrama8TViewObjQ26JDrama10TFlagT_Us_PCc
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JDrama11TDStageDisp@h
     lwz     r3, 0x8(sp)
-    addi    r0, r4, 0x1df8
+    addi    r0, r4, __vvt__Q26JDrama11TDStageDisp@l
     stw     r0, 0x0(r3)
     li      r3, 0x24
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x802f8480
     lhz     r30, 0x0(r30)
-    lis     r3, 0x803b
-    subi    r4, r3, 0x5d88
+    lis     r3, unk_803aa278@ha
+    addi    r4, r3, unk_803aa278@l
     stw     r29, 0x20(sp)
     stw     r29, 0x28(sp)
     lwz     r3, 0x20(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x20(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
     lwz     r31, 0x28(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1e98
+    lis     r3, __vvt__Q26JDrama8TEfbCtrl@h
+    addi    r0, r3, __vvt__Q26JDrama8TEfbCtrl@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x10
     li      r4, 0x0
@@ -49,9 +49,9 @@ __ct__Q26JDrama11TDStageDispFPCcQ26JDrama10TFlagT_Us_: # 0x802f83b0
     li      r6, 0x0
     li      r7, 0x0
     bl      set__7JUTRectFiiii
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama12TEfbCtrlDisp@h
     sth     r30, 0x20(r31)
-    addi    r0, r3, 0x1e74
+    addi    r0, r3, __vvt__Q26JDrama12TEfbCtrlDisp@l
     stw     r0, 0x0(r29)
 branch_0x802f8480:
     lwz     r4, 0x8(sp)
@@ -61,14 +61,14 @@ branch_0x802f8480:
     mr.     r29, r3
     beq-    branch_0x802f84e8
     stw     r29, 0x1c(sp)
-    lis     r3, 0x803b
-    subi    r4, r3, 0x5d78
+    lis     r3, unk_803aa288@ha
+    addi    r4, r3, unk_803aa288@l
     stw     r29, 0x24(sp)
     lwz     r3, 0x1c(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x1c(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
@@ -77,8 +77,8 @@ branch_0x802f8480:
     addi    r4, sp, 0x18
     addi    r3, r31, 0x10
     bl      __ct__Q27JGadget18TList_pointer_voidFRCQ27JGadget14TAllocator_Pv_
-    lis     r3, 0x803c
-    addi    r0, r3, 0xf5c
+    lis     r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@h
+    addi    r0, r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@l
     stw     r0, 0x0(r31)
 branch_0x802f84e8:
     lwz     r3, 0x8(sp)
@@ -102,12 +102,12 @@ __dt__Q26JDrama14TViewConnecterFv: # 0x802f850c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f8564
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2280
+    lis     r3, __vvt__Q26JDrama14TViewConnecter@h
+    addi    r0, r3, __vvt__Q26JDrama14TViewConnecter@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f8554
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -143,16 +143,16 @@ __dt__Q26JDrama11TDStageDispFv: # 0x802f8588
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f85f0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1df8
+    lis     r3, __vvt__Q26JDrama11TDStageDisp@h
+    addi    r0, r3, __vvt__Q26JDrama11TDStageDisp@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f85e0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2280
+    lis     r3, __vvt__Q26JDrama14TViewConnecter@h
+    addi    r0, r3, __vvt__Q26JDrama14TViewConnecter@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f85e0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

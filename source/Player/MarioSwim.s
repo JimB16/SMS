@@ -19,9 +19,9 @@ branch_0x80272608:
 branch_0x8027260c:
     clrlwi. r0, r0, 24
     beq-    branch_0x8027262c
-    lis     r4, 0x2
+    lis     r4, unk_000224e1@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x24e1
+    addi    r4, r4, unk_000224e1@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -35,7 +35,7 @@ branch_0x8027262c:
 
 branch_0x80272644:
     lfs     f1, 0x8c(r31)
-    lfs     f0, -0xad8(rtoc)
+    lfs     f0, -0xad8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x802726f0
     lwz     r3, 0xd8(r31)
@@ -66,17 +66,17 @@ branch_0x80272678:
     ble-    branch_0x802726f0
 branch_0x802726b0:
     addis   r3, r3, 0x1
-    subi    r0, r3, 0x8000
+    addi    r0, r3, -0x8000
     sth     r0, 0x96(r31)
-    lis     r4, 0x3000
+    lis     r4, unk_3000036b@h
     addi    r3, r31, 0x0
     lha     r0, 0x96(r31)
-    addi    r4, r4, 0x36b
+    addi    r4, r4, unk_3000036b@l
     li      r5, 0x0
     sth     r0, 0x9a(r31)
     li      r6, 0x0
     lfs     f1, 0x14(r31)
-    lfs     f0, -0xad4(rtoc)
+    lfs     f0, -0xad4(r2)
     fadds   f0, f1, f0
     stfs    f0, 0x14(r31)
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -141,8 +141,8 @@ branch_0x8027279c:
     b       branch_0x8027295c
 
 branch_0x802727ac:
-    lis     r30, 0x2
-    addi    r29, r30, 0x24e0
+    lis     r30, unk_000224e0@h
+    addi    r29, r30, unk_000224e0@l
     cmpw    r4, r29
     beq-    branch_0x80272c70
     bge-    branch_0x802727d8
@@ -177,7 +177,7 @@ branch_0x80272808:
     b       branch_0x80272cb4
 
 branch_0x80272818:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x115
     bl      setAnimation__6TMarioFif
@@ -195,7 +195,7 @@ branch_0x8027284c:
     b       branch_0x80272cb4
 
 branch_0x80272854:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x116
     bl      setAnimation__6TMarioFif
@@ -227,11 +227,11 @@ branch_0x802728a8:
     b       branch_0x80272cb4
 
 branch_0x802728b8:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x116
     bl      setAnimation__6TMarioFif
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x1950
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -244,7 +244,7 @@ branch_0x802728e8:
     b       branch_0x80272cb4
 
 branch_0x802728f0:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x117
     bl      setAnimation__6TMarioFif
@@ -279,7 +279,7 @@ branch_0x80272954:
     b       branch_0x80272cb4
 
 branch_0x8027295c:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x118
     bl      setAnimation__6TMarioFif
@@ -327,7 +327,7 @@ branch_0x802729e8:
     b       branch_0x80272cb4
 
 branch_0x802729f4:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x11a
     bl      setAnimation__6TMarioFif
@@ -364,7 +364,7 @@ branch_0x80272a5c:
     b       branch_0x80272cb4
 
 branch_0x80272a64:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x11b
     bl      setAnimation__6TMarioFif
@@ -401,7 +401,7 @@ branch_0x80272acc:
     b       branch_0x80272cb4
 
 branch_0x80272ad4:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x11c
     bl      setAnimation__6TMarioFif
@@ -413,7 +413,7 @@ branch_0x80272ad4:
     bl      isLast1AnimeFrame__6TMarioFv
     cmpwi   r3, 0x0
     beq-    branch_0x80272b2c
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x116
     bl      setAnimation__6TMarioFif
@@ -446,13 +446,13 @@ branch_0x80272b5c:
     b       branch_0x80272cb4
 
 branch_0x80272b64:
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x128
     bl      setAnimation__6TMarioFif
     mr      r3, r31
     bl      getMotionFrameCtrl__6TMarioFv
-    lfs     f1, -0xacc(rtoc)
+    lfs     f1, -0xacc(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x80272b94
@@ -462,7 +462,7 @@ branch_0x80272b94:
     lha     r3, 0x366(r31)
     cmpwi   r3, 0x0
     ble-    branch_0x80272bb8
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x366(r31)
     lfs     f1, 0xa8(r31)
     lfs     f0, 0x1258(r31)
@@ -473,7 +473,7 @@ branch_0x80272bb8:
     bl      isLast1AnimeFrame__6TMarioFv
     cmpwi   r3, 0x0
     beq-    branch_0x80272bf0
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     addi    r3, r31, 0x0
     li      r4, 0x116
     bl      setAnimation__6TMarioFif
@@ -508,7 +508,7 @@ branch_0x80272c20:
 branch_0x80272c28:
     mr      r3, r31
     bl      doSwimming__6TMarioFv
-    lfs     f1, -0xad8(rtoc)
+    lfs     f1, -0xad8(r2)
     addi    r3, r31, 0x0
     li      r4, 0x24da
     li      r5, 0x12a
@@ -529,7 +529,7 @@ branch_0x80272c68:
 branch_0x80272c70:
     mr      r3, r31
     bl      doSwimming__6TMarioFv
-    lfs     f1, -0xad8(rtoc)
+    lfs     f1, -0xad8(r2)
     addi    r3, r31, 0x0
     addi    r4, r29, 0x0
     li      r5, 0x10c
@@ -540,7 +540,7 @@ branch_0x80272c70:
 branch_0x80272c94:
     mr      r3, r31
     bl      doSwimming__6TMarioFv
-    lfs     f1, -0xad8(rtoc)
+    lfs     f1, -0xad8(r2)
     addi    r3, r31, 0x0
     addi    r4, r30, 0x24e1
     li      r5, 0x12b
@@ -564,7 +564,7 @@ swimPaddle__6TMarioFv: # 0x80272cd0
     stw     r31, 0x1c(sp)
     mr      r31, r3
     lwz     r0, 0x118(r3)
-    lfs     f1, -0xac8(rtoc)
+    lfs     f1, -0xac8(r2)
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x80272cfc
     li      r0, 0x1
@@ -575,7 +575,7 @@ branch_0x80272cfc:
 branch_0x80272d00:
     clrlwi. r0, r0, 24
     beq-    branch_0x80272d0c
-    lfs     f1, -0xac4(rtoc)
+    lfs     f1, -0xac4(r2)
 branch_0x80272d0c:
     addi    r3, r31, 0x0
     li      r4, 0x119
@@ -601,7 +601,7 @@ branch_0x80272d30:
     li      r4, 0x117d
     bl      startSoundActor__6TMarioFUl
 branch_0x80272d5c:
-    lfs     f1, -0xad8(rtoc)
+    lfs     f1, -0xad8(r2)
     lfs     f0, 0x8c(r31)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80272d80
@@ -680,7 +680,7 @@ branch_0x80272e38:
     bl      isUnderWater__6TMarioCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x80272e80
-    lfs     f1, -0xad0(rtoc)
+    lfs     f1, -0xad0(r2)
     mr      r3, r31
     lfs     f0, 0xf0(r31)
     li      r4, 0x828
@@ -700,7 +700,7 @@ branch_0x80272e80:
     fsubs   f2, f1, f2
     fcmpo   cr0, f2, f0
     bge-    branch_0x80272f18
-    lfs     f2, -0xad8(rtoc)
+    lfs     f2, -0xad8(r2)
     li      r4, 0x0
     lfs     f0, 0x8c(r31)
     fcmpu   cr0, f2, f0
@@ -728,9 +728,9 @@ branch_0x80272ee4:
     bne-    branch_0x80272f18
     mr      r3, r31
     bl      inOutWaterEffect__6TMarioFf
-    lis     r4, 0x200
+    lis     r4, unk_02000880@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x880
+    addi    r4, r4, unk_02000880@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -738,7 +738,7 @@ branch_0x80272ee4:
     b       branch_0x80272f5c
 
 branch_0x80272f18:
-    lfs     f1, -0xad8(rtoc)
+    lfs     f1, -0xad8(r2)
     lfs     f0, 0x8c(r31)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80272f40
@@ -791,9 +791,9 @@ branch_0x80272fa8:
     fadds   f1, f2, f1
     fcmpo   cr0, f1, f0
     ble-    branch_0x80272fdc
-    lis     r4, 0xc40
+    lis     r4, unk_0c400201@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x201
+    addi    r4, r4, unk_0c400201@l
     li      r5, 0x0
     li      r6, 0x0
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -802,7 +802,7 @@ branch_0x80272fa8:
 branch_0x80272fdc:
     lfs     f1, 0x8c(r31)
     lfs     f0, 0x1078(r31)
-    lfs     f2, -0xac0(rtoc)
+    lfs     f2, -0xac0(r2)
     fmuls   f1, f1, f0
     lfs     f0, 0xb0(r31)
     fmadds  f0, f2, f1, f0
@@ -829,7 +829,7 @@ branch_0x80273028:
     lis     r3, 0x4330
     lha     r0, 0x10dc(r31)
     xoris   r4, r4, 0x8000
-    lfd     f2, -0xaa8(rtoc)
+    lfd     f2, -0xaa8(r2)
     xoris   r0, r0, 0x8000
     stw     r4, 0x5c(sp)
     stw     r0, 0x54(sp)
@@ -846,7 +846,7 @@ branch_0x8027306c:
     lis     r3, 0x4330
     lha     r0, 0x10b4(r31)
     xoris   r4, r4, 0x8000
-    lfd     f2, -0xaa8(rtoc)
+    lfd     f2, -0xaa8(r2)
     xoris   r0, r0, 0x8000
     stw     r4, 0x54(sp)
     stw     r0, 0x5c(sp)
@@ -859,7 +859,7 @@ branch_0x8027306c:
 branch_0x802730a4:
     fsubs   f0, f0, f3
     lfs     f1, 0xb0(r31)
-    lfs     f2, -0xac0(rtoc)
+    lfs     f2, -0xac0(r2)
     li      r4, 0x0
     lha     r3, 0x96(r31)
     fmuls   f0, f1, f0
@@ -887,13 +887,13 @@ branch_0x802730a4:
     lfs     f0, 0x14(r31)
     lfs     f1, 0x1168(r31)
     fsubs   f2, f2, f0
-    lfs     f0, -0xad8(rtoc)
+    lfs     f0, -0xad8(r2)
     fdivs   f1, f2, f1
     fcmpo   cr0, f1, f0
     bge-    branch_0x80273130
     fmr     f1, f0
 branch_0x80273130:
-    lfs     f0, -0xad0(rtoc)
+    lfs     f0, -0xad0(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80273140
     fmr     f1, f0
@@ -948,7 +948,7 @@ branch_0x802731c4:
     beq-    branch_0x80273208
     lfs     f0, 0xb0(r31)
     mr      r3, r31
-    lfs     f1, -0xabc(rtoc)
+    lfs     f1, -0xabc(r2)
     li      r4, 0x24da
     fneg    f0, f0
     li      r5, 0x0
@@ -959,35 +959,35 @@ branch_0x802731c4:
     b       branch_0x80273254
 
 branch_0x80273208:
-    lis     r4, 0x2
+    lis     r4, unk_000208b3@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x8b3
+    addi    r4, r4, unk_000208b3@l
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
     lfs     f0, 0xb0(r31)
-    lfs     f1, -0xabc(rtoc)
+    lfs     f1, -0xabc(r2)
     fneg    f0, f0
     fmuls   f0, f1, f0
     stfs    f0, 0xb0(r31)
-    lfs     f0, -0xab8(rtoc)
+    lfs     f0, -0xab8(r2)
     stfs    f0, 0xa8(r31)
     b       branch_0x80273254
 
 branch_0x80273240:
     mr      r3, r31
-    lfs     f1, -0xad8(rtoc)
+    lfs     f1, -0xad8(r2)
     bl      setPlayerVelocity__6TMarioFf
-    lfs     f0, -0xad8(rtoc)
+    lfs     f0, -0xad8(r2)
     stfs    f0, 0xa8(r31)
 branch_0x80273254:
-    lfs     f0, -0xab4(rtoc)
+    lfs     f0, -0xab4(r2)
     lfs     f2, 0xec(r31)
     lfs     f1, 0xf0(r31)
     fadds   f0, f0, f2
     fcmpo   cr0, f1, f0
     ble-    branch_0x802732c4
-    lfs     f0, -0xad4(rtoc)
+    lfs     f0, -0xad4(r2)
     lfs     f1, 0x14(r31)
     fadds   f0, f0, f2
     fcmpo   cr0, f1, f0
@@ -1007,10 +1007,10 @@ branch_0x80273254:
     stw     r0, 0x1b0(r31)
     lfs     f0, 0xec(r31)
     stfs    f0, 0x1ac(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x802732c4:
-    lfs     f1, -0xab0(rtoc)
+    lfs     f1, -0xab0(r2)
     lfs     f0, 0xec(r31)
     lfs     f2, 0x14(r31)
     fadds   f0, f1, f0
@@ -1028,208 +1028,209 @@ branch_0x802732e0:
 .globl __sinit_MarioSwim_cpp
 __sinit_MarioSwim_cpp: # 0x802732f4
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, unk_803fc130@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x3ed0
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803fc130@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x8027333c
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x8027333c:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x8027336c
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x8027336c:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x8027339c
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x8027339c:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x802733cc
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x802733cc:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x802733fc
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x802733fc:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x8027342c
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x8027342c:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x8027345c
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x8027345c:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x8027348c
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x8027348c:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x802734bc
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x802734bc:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x802734ec
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x802734ec:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x8027351c
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x8027351c:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x8027354c
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x8027354c:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x8027357c
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x8027357c:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x802735ac
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x802735ac:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x802735dc
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x802735dc:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
     addi    sp, sp, 0x10
     mtlr    r0
     blr
+

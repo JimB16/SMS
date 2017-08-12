@@ -12,7 +12,7 @@ __ct__Q38JASystem6Kernel8TPortCmdFv: # 0x80316ea0
 .globl addPortCmdOnce__Q38JASystem6Kernel8TPortCmdFv
 addPortCmdOnce__Q38JASystem6Kernel8TPortCmdFv: # 0x80316eb8
     mflr    r0
-    subi    r4, r13, 0x5bc8
+    addi    r4, r13, R13Off_m0x5bc8
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      addPortCmd__Q38JASystem6Kernel8TPortCmdFPQ38JASystem6Kernel9TPortHead
@@ -77,17 +77,17 @@ branch_0x80316f5c:
 .globl portCmdInit__Q28JASystem6KernelFv
 portCmdInit__Q28JASystem6KernelFv: # 0x80316f74
     mflr    r0
-    lis     r3, 0x8031
+    lis     r3, portCmdMain__Q28JASystem6KernelFPv@h
     stw     r0, 0x4(sp)
     li      r0, 0x0
-    subi    r4, r13, 0x5bc8
+    addi    r4, r13, R13Off_m0x5bc8
     stwu    sp, -0x8(sp)
-    subi    r5, r13, 0x5bc0
-    addi    r3, r3, 0x6ffc
-    stw     r0, -0x5bc8(r13)
+    addi    r5, r13, R13Off_m0x5bc0
+    addi    r3, r3, portCmdMain__Q28JASystem6KernelFPv@l
+    stw     r0, R13Off_m0x5bc8(r13)
     stw     r0, 0x4(r4)
     li      r4, 0x0
-    stw     r0, -0x5bc0(r13)
+    stw     r0, R13Off_m0x5bc0(r13)
     stw     r0, 0x4(r5)
     bl      registerAiCallback__Q28JASystem6KernelFPFPv_lPv
     lwz     r0, 0xc(sp)
@@ -125,7 +125,7 @@ portCmdMain__Q28JASystem6KernelFPv: # 0x80316ffc
     stwu    sp, -0x48(sp)
     stw     r31, 0x44(sp)
 branch_0x8031700c:
-    subi    r3, r13, 0x5bc8
+    addi    r3, r13, R13Off_m0x5bc8
     bl      getPortCmd__Q28JASystem6KernelFPQ38JASystem6Kernel9TPortHead
     cmplwi  r3, 0x0
     beq-    branch_0x80317030
@@ -136,7 +136,7 @@ branch_0x8031700c:
     b       branch_0x8031700c
 
 branch_0x80317030:
-    lwz     r31, -0x5bc0(r13)
+    lwz     r31, R13Off_m0x5bc0(r13)
 branch_0x80317034:
     cmplwi  r31, 0x0
     beq-    branch_0x80317054

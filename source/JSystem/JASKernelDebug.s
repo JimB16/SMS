@@ -6,18 +6,18 @@ stackInit__Q28JASystem6KernelFPUxUl: # 0x80319424
     li      r5, 0x8
     blelr-    
 
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     cmplwi  r0, 0x8
-    subi    r8, r4, 0x8
+    addi    r8, r4, -0x8
     ble-    branch_0x803194b8
     addi    r0, r8, 0x6
     srwi    r0, r0, 3
-    lis     r7, 0x1234
+    lis     r7, unk_12345678@h
     mtctr   r0
-    lis     r6, 0xfadf
+    lis     r6, unk_fadebabe@ha
     cmplwi  r8, 0x1
-    addi    r7, r7, 0x5678
-    subi    r0, r6, 0x4542
+    addi    r7, r7, unk_12345678@l
+    addi    r0, r6, unk_fadebabe@l
     ble-    branch_0x803194b8
 branch_0x80319468:
     add     r6, r3, r5
@@ -42,12 +42,12 @@ branch_0x80319468:
     bdnz+      branch_0x80319468
 branch_0x803194b8:
     subf    r0, r9, r4
-    lis     r6, 0x1234
+    lis     r6, unk_12345678@h
     mtctr   r0
-    lis     r5, 0xfadf
+    lis     r5, unk_fadebabe@ha
     cmplw   r9, r4
-    addi    r6, r6, 0x5678
-    subi    r0, r5, 0x4542
+    addi    r6, r6, unk_12345678@l
+    addi    r0, r5, unk_fadebabe@l
     slwi    r4, r9, 3
     bgelr-    
 

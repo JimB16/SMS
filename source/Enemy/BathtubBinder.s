@@ -72,7 +72,7 @@ float___14TBathtubBinderFP10TLiveActor: # 0x80139aa0
     fmadds  f8, f4, f4, f1
     fcmpo   cr0, f8, f0
     ble-    branch_0x80139be0
-    lfs     f0, -0x4dd8(rtoc)
+    lfs     f0, -0x4dd8(r2)
     fcmpo   cr0, f8, f0
     cror    2, 0, 2
     bne-    branch_0x80139bb0
@@ -80,8 +80,8 @@ float___14TBathtubBinderFP10TLiveActor: # 0x80139aa0
 
 branch_0x80139bb0:
     frsqrte f6, f8
-    lfs     f2, -0x4dd4(rtoc)
-    lfs     f0, -0x4dd0(rtoc)
+    lfs     f2, -0x4dd4(r2)
+    lfs     f0, -0x4dd0(r2)
     frsp    f6, f6
     fmuls   f1, f6, f6
     fmuls   f2, f2, f6
@@ -139,7 +139,7 @@ branch_0x80139be0:
     fmadds  f8, f4, f4, f1
     fcmpo   cr0, f8, f0
     ble-    branch_0x80139cdc
-    lfs     f0, -0x4dd8(rtoc)
+    lfs     f0, -0x4dd8(r2)
     fcmpo   cr0, f8, f0
     cror    2, 0, 2
     bne-    branch_0x80139cac
@@ -147,8 +147,8 @@ branch_0x80139be0:
 
 branch_0x80139cac:
     frsqrte f6, f8
-    lfs     f2, -0x4dd4(rtoc)
-    lfs     f0, -0x4dd0(rtoc)
+    lfs     f2, -0x4dd4(r2)
+    lfs     f0, -0x4dd0(r2)
     frsp    f6, f6
     fmuls   f1, f6, f6
     fmuls   f2, f2, f6
@@ -172,7 +172,7 @@ branch_0x80139cdc:
     fmuls   f6, f4, f4
     lfs     f3, 0x14(r31)
     fsubs   f2, f28, f1
-    lfs     f4, -0x4dcc(rtoc)
+    lfs     f4, -0x4dcc(r2)
     fmuls   f5, f5, f5
     fmadds  f0, f0, f2, f1
     fsubs   f1, f0, f3
@@ -180,12 +180,12 @@ branch_0x80139cdc:
     fmadds  f3, f4, f1, f3
     fadds   f1, f5, f0
     stfs    f3, 0x14(r31)
-    lfs     f0, -0x4dc8(rtoc)
+    lfs     f0, -0x4dc8(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     beq-    branch_0x80139ee8
     fadds   f5, f6, f5
-    lfs     f0, -0x4dd8(rtoc)
+    lfs     f0, -0x4dd8(r2)
     fcmpo   cr0, f5, f0
     cror    2, 0, 2
     bne-    branch_0x80139d54
@@ -193,8 +193,8 @@ branch_0x80139cdc:
 
 branch_0x80139d54:
     frsqrte f4, f5
-    lfs     f3, -0x4dd4(rtoc)
-    lfs     f0, -0x4dd0(rtoc)
+    lfs     f3, -0x4dd4(r2)
+    lfs     f0, -0x4dd0(r2)
     frsp    f4, f4
     fmuls   f1, f4, f4
     fmuls   f3, f3, f4
@@ -205,12 +205,12 @@ branch_0x80139d78:
     fmr     f1, f5
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x4db0(rtoc)
+    lfd     f2, -0x4db0(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x4dc4(rtoc)
+    lfs     f0, -0x4dc4(r2)
     stw     r0, 0x134(sp)
     lis     r0, 0x4330
-    lfs     f3, -0x4dc0(rtoc)
+    lfs     f3, -0x4dc0(r2)
     stw     r0, 0x130(sp)
     lfd     f1, 0x130(sp)
     fsubs   f1, f1, f2
@@ -220,7 +220,7 @@ branch_0x80139d78:
     b       branch_0x80139dcc
 
 branch_0x80139db8:
-    lfs     f3, -0x4dbc(rtoc)
+    lfs     f3, -0x4dbc(r2)
     fcmpo   cr0, f0, f3
     ble-    branch_0x80139dc8
     b       branch_0x80139dcc
@@ -229,17 +229,17 @@ branch_0x80139dc8:
     fmr     f3, f0
 branch_0x80139dcc:
     lfs     f1, 0x30(r31)
-    lfs     f2, -0x4db8(rtoc)
+    lfs     f2, -0x4db8(r2)
     fsubs   f0, f3, f1
     fmadds  f0, f2, f0, f1
     stfs    f0, 0x30(r31)
-    lfs     f0, -0x4dd8(rtoc)
+    lfs     f0, -0x4dd8(r2)
     stfs    f0, 0x38(r31)
     lfs     f1, 0x10(r29)
     lfs     f0, 0x18(r29)
     lwz     r3, 0x4(r29)
     fadds   f0, f1, f0
-    lfs     f1, -0x4dd4(rtoc)
+    lfs     f1, -0x4dd4(r2)
     cmplwi  r3, 0x0
     fmuls   f26, f1, f0
     beq-    branch_0x80139ee8
@@ -275,7 +275,7 @@ branch_0x80139dcc:
     fmadds  f8, f4, f4, f1
     fcmpo   cr0, f8, f0
     ble-    branch_0x80139ed4
-    lfs     f0, -0x4dd8(rtoc)
+    lfs     f0, -0x4dd8(r2)
     fcmpo   cr0, f8, f0
     cror    2, 0, 2
     bne-    branch_0x80139e9c
@@ -283,8 +283,8 @@ branch_0x80139dcc:
 
 branch_0x80139e9c:
     frsqrte f6, f8
-    lfs     f2, -0x4dd4(rtoc)
-    lfs     f0, -0x4dd0(rtoc)
+    lfs     f2, -0x4dd4(r2)
+    lfs     f0, -0x4dd0(r2)
     frsp    f6, f6
     fmuls   f1, f6, f6
     fmuls   f2, f2, f6
@@ -342,7 +342,7 @@ branch_0x80139f44:
 .globl init__14TBathtubBinderFfffff
 init__14TBathtubBinderFfffff: # 0x80139f54
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_80387000@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x88(sp)
     stfd    f31, 0x80(sp)
@@ -356,12 +356,12 @@ init__14TBathtubBinderFfffff: # 0x80139f54
     stfd    f27, 0x60(sp)
     fmr     f27, f1
     stw     r31, 0x5c(sp)
-    addi    r31, r5, 0x7000
+    addi    r31, r5, unk_80387000@l
     stw     r30, 0x58(sp)
     stw     r29, 0x54(sp)
     mr      r29, r3
     addi    r3, r31, 0xe0
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r30)
@@ -373,7 +373,7 @@ init__14TBathtubBinderFfffff: # 0x80139f54
     blrl
     stw     r3, 0x4(r29)
     addi    r3, r31, 0xec
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r30)
@@ -428,8 +428,8 @@ __dt__14TBathtubBinderFv: # 0x8013a07c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8013a0c4
-    lis     r3, 0x803c
-    subi    r0, r3, 0x958
+    lis     r3, __vvt__14TBathtubBinder@ha
+    addi    r0, r3, __vvt__14TBathtubBinder@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -456,8 +456,8 @@ __ct__14TBathtubBinderFv: # 0x8013a0e0
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__7TBinderFv
-    lis     r3, 0x803c
-    subi    r0, r3, 0x958
+    lis     r3, __vvt__14TBathtubBinder@ha
+    addi    r0, r3, __vvt__14TBathtubBinder@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0

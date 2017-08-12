@@ -2,16 +2,16 @@
 .globl __ct__13JPAExTexShapeFPCUc
 __ct__13JPAExTexShapeFPCUc: # 0x80335170
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__12JPADataBlock@h
     stw     r0, 0x4(sp)
-    addi    r5, r5, 0x4474
+    addi    r5, r5, __vvt__12JPADataBlock@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r4
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4468
+    lis     r3, __vvt__13JPAExTexShape@h
+    addi    r0, r3, __vvt__13JPAExTexShape@l
     lwz     r31, 0x8(sp)
     stw     r5, 0x0(r31)
     stw     r0, 0x0(r31)
@@ -92,8 +92,8 @@ __dt__12JPADataBlockFv: # 0x80335290
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x803352c4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4474
+    lis     r3, __vvt__12JPADataBlock@h
+    addi    r3, r3, __vvt__12JPADataBlock@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x803352c4
@@ -116,12 +116,12 @@ __dt__13JPAExTexShapeFv: # 0x803352dc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80335320
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4468
+    lis     r3, __vvt__13JPAExTexShape@h
+    addi    r0, r3, __vvt__13JPAExTexShape@l
     stw     r0, 0x0(r31)
     beq-    branch_0x80335310
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4474
+    lis     r3, __vvt__12JPADataBlock@h
+    addi    r0, r3, __vvt__12JPADataBlock@l
     stw     r0, 0x0(r31)
 branch_0x80335310:
     extsh.  r0, r4

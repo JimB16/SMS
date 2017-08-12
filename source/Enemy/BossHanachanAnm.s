@@ -23,7 +23,7 @@ branch_0x800f2180:
     cmplw   r29, r3
     bne-    branch_0x800f2230
     lwz     r3, 0x170(r30)
-    lfs     f0, -0x5960(rtoc)
+    lfs     f0, -0x5960(r2)
     lwz     r3, 0x110(r3)
     stfs    f0, 0x28(r3)
     lwz     r3, 0x150(r30)
@@ -81,7 +81,7 @@ branch_0x800f224c:
     fcmpo   cr0, f3, f1
     cror    2, 0, 2
     bne-    branch_0x800f2344
-    lfs     f0, -0x5960(rtoc)
+    lfs     f0, -0x5960(r2)
     lwz     r3, 0x110(r3)
     stfs    f0, 0x28(r3)
     lwz     r3, 0x150(r30)
@@ -148,7 +148,7 @@ branch_0x800f2344:
     fcmpo   cr0, f3, f2
     cror    2, 1, 2
     bne-    branch_0x800f2434
-    lfs     f0, -0x5960(rtoc)
+    lfs     f0, -0x5960(r2)
     lwz     r3, 0x110(r3)
     stfs    f0, 0x28(r3)
     lwz     r3, 0x150(r30)
@@ -242,7 +242,7 @@ branch_0x800f2488:
     cmpwi   r28, 0x8
     addi    r29, r29, 0x4
     blt+    branch_0x800f2488
-    lfs     f0, -0x595c(rtoc)
+    lfs     f0, -0x595c(r2)
     fsubs   f31, f0, f31
 branch_0x800f24ac:
     lwz     r3, 0x170(r30)
@@ -278,7 +278,7 @@ branch_0x800f251c:
     lwz     r0, 0xf8(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800f2534
-    lfs     f0, -0x595c(rtoc)
+    lfs     f0, -0x595c(r2)
     fsubs   f31, f0, f31
     b       branch_0x800f2570
 
@@ -330,7 +330,7 @@ branch_0x800f2570:
     b       branch_0x800f265c
 
 branch_0x800f25e0:
-    lfs     f0, -0x5960(rtoc)
+    lfs     f0, -0x5960(r2)
     mr      r3, r30
     lwz     r6, 0x110(r4)
     li      r4, 0x0
@@ -375,7 +375,7 @@ branch_0x800f265c:
     b       branch_0x800f26fc
 
 branch_0x800f2688:
-    lfs     f0, -0x5960(rtoc)
+    lfs     f0, -0x5960(r2)
     lwz     r3, 0x110(r3)
     stfs    f0, 0x28(r3)
     lwz     r3, 0x150(r30)
@@ -885,7 +885,7 @@ setTumbleAnm__13TBossHanachanF36EnumBossHanachanStopMotionBlendOnOff: # 0x800f2c
     stmw    r25, 0x1c(sp)
     mr      r25, r3
     mr      r26, r4
-    lfs     f0, -0x5958(rtoc)
+    lfs     f0, -0x5958(r2)
     lfs     f1, 0x194(r3)
     fcmpu   cr0, f0, f1
     bne-    branch_0x800f2d00
@@ -893,14 +893,15 @@ setTumbleAnm__13TBossHanachanF36EnumBossHanachanStopMotionBlendOnOff: # 0x800f2c
     b       branch_0x800f2d18
 
 branch_0x800f2d00:
-    lfs     f0, -0x5954(rtoc)
+    lfs     f0, -0x5954(r2)
     fcmpu   cr0, f0, f1
     bne-    branch_0x800f2e38
     li      r28, 0x10
     b       branch_0x800f2d18
 
+branch_0x800f2d14:
+    b       branch_0x800f2e38
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0xed714, 0x800f2d18 - 0x800f2d14
 branch_0x800f2d18:
     lwz     r3, 0x170(r25)
     addi    r4, r28, 0x0
@@ -916,7 +917,7 @@ branch_0x800f2d18:
     lfs     f2, 0x194(r25)
     mr      r30, r3
     lfs     f1, 0x38(r31)
-    lfs     f0, -0x5960(rtoc)
+    lfs     f0, -0x5960(r2)
     fsubs   f2, f2, f1
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
@@ -926,22 +927,22 @@ branch_0x800f2d18:
 branch_0x800f2d68:
     fneg    f2, f2
 branch_0x800f2d6c:
-    lfs     f1, -0x595c(rtoc)
+    lfs     f1, -0x595c(r2)
     lfs     f0, 0x198(r25)
     fdivs   f0, f1, f0
     fmuls   f29, f0, f2
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f30, -0x595c(rtoc)
+    lfs     f30, -0x595c(r2)
     li      r27, 0x0
-    lfs     f28, -0x594c(rtoc)
+    lfs     f28, -0x594c(r2)
     li      r31, 0x0
     fdivs   f0, f30, f29
-    lfs     f29, -0x5950(rtoc)
+    lfs     f29, -0x5950(r2)
     fmuls   f1, f28, f1
     fmuls   f1, f29, f1
     fmuls   f0, f0, f1
     stfs    f0, 0xc(r30)
-    lfs     f31, -0x5960(rtoc)
+    lfs     f31, -0x5960(r2)
 branch_0x800f2dac:
     addi    r29, r31, 0x150
     add     r29, r25, r29
@@ -1010,7 +1011,7 @@ setHeadAndBodyAnm__13TBossHanachanF23EnumBossHanachanAnmKind36EnumBossHanachanSt
     lwz     r12, 0xfc(r12)
     mtlr    r12
     blrl
-    lfd     f31, -0x5948(rtoc)
+    lfd     f31, -0x5948(r2)
     li      r31, 0x0
     li      r26, 0x0
     lis     r25, 0x4330

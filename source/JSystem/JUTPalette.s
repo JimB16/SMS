@@ -11,11 +11,11 @@ storeTLUT__10JUTPaletteF7_GXTlutP7ResTLUT: # 0x802ca0b0
     stw     r29, 0x1c(sp)
     addi    r29, r3, 0x0
     bne-    branch_0x802ca0f4
-    lis     r3, 0x803b
+    lis     r3, unk_803a9ed0@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x6120
-    subi    r3, r3, 0x6130
+    lis     r4, unk_803a9ee0@ha
+    addi    r5, r4, unk_803a9ee0@l
+    addi    r3, r3, unk_803a9ed0@l
     li      r4, 0x23
     bl      OSPanic
 branch_0x802ca0f4:

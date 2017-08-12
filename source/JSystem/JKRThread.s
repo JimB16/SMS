@@ -15,8 +15,8 @@ __ct__9JKRThreadFUlii: # 0x802c52b0
     lwz     r3, 0x8(sp)
     bl      __ct__11JKRDisposerFv
     lwz     r29, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x110
+    lis     r3, __vvt__9JKRThread@h
+    addi    r0, r3, __vvt__9JKRThread@l
     stw     r0, 0x0(r29)
     addi    r3, r29, 0x18
     addi    r4, r29, 0x0
@@ -28,7 +28,7 @@ __ct__9JKRThreadFUlii: # 0x802c52b0
     lwz     r0, 0x28(r29)
     cmplwi  r0, 0x0
     bne-    branch_0x802c5324
-    lwz     r0, -0x5f30(r13)
+    lwz     r0, R13Off_m0x5f30(r13)
     stw     r0, 0x0(r3)
 branch_0x802c5324:
     lwz     r29, 0x8(sp)
@@ -44,8 +44,8 @@ branch_0x802c5324:
     lwz     r5, 0x28(r29)
     bl      alloc__7JKRHeapFUliP7JKRHeap
     stw     r3, 0x2c(r29)
-    lis     r3, 0x802c
-    addi    r4, r3, 0x54b8
+    lis     r3, start__9JKRThreadFPv@h
+    addi    r4, r3, start__9JKRThreadFPv@l
     lwz     r7, 0x5c(r29)
     addi    r5, r29, 0x0
     lwz     r0, 0x58(r29)
@@ -65,8 +65,8 @@ branch_0x802c5324:
     lwz     r4, 0x50(r29)
     lwz     r5, 0x54(r29)
     bl      OSInitMessageQueue
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42c0
+    lis     r3, sThreadList__9JKRThread@h
+    addi    r3, r3, sThreadList__9JKRThread@l
     addi    r4, r29, 0x18
     bl      append__10JSUPtrListFP10JSUPtrLink
     lwz     r0, 0x3c(sp)
@@ -90,11 +90,11 @@ __dt__9JKRThreadFv: # 0x802c53e0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c549c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x110
-    lis     r3, 0x8040
+    lis     r3, __vvt__9JKRThread@h
+    addi    r0, r3, __vvt__9JKRThread@l
+    lis     r3, sThreadList__9JKRThread@h
     stw     r0, 0x0(r30)
-    addi    r3, r3, 0x42c0
+    addi    r3, r3, sThreadList__9JKRThread@l
     addi    r4, r30, 0x18
     bl      remove__10JSUPtrListFP10JSUPtrLink
     lwz     r0, 0x28(r30)
@@ -166,17 +166,17 @@ run__9JKRThreadFv: # 0x802c54e4
 .globl __sinit_JKRThread_cpp
 __sinit_JKRThread_cpp: # 0x802c54ec
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sThreadList__9JKRThread@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x42c0
+    addi    r31, r3, sThreadList__9JKRThread@l
     addi    r3, r31, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x802c
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2a78
-    addi    r4, r4, 0x5538
+    lis     r4, __dt__19JSUList_9JKRThread_Fv@h
+    lis     r3, unk_803fd588@ha
+    addi    r5, r3, unk_803fd588@l
+    addi    r4, r4, __dt__19JSUList_9JKRThread_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

@@ -8,8 +8,8 @@ __dt__15TMtxCalcFootInvFv: # 0x800452e0
     addi    r31, r4, 0x0
     stw     r30, 0x10(sp)
     mr.     r30, r3
-    lis     r3, 0x803b
-    subi    r3, r3, 0xe00
+    lis     r3, unk_803af200@ha
+    addi    r3, r3, unk_803af200@l
     beq-    branch_0x80045390
     addi    r0, r3, 0x28
     stw     r0, 0x4c(r30)
@@ -23,8 +23,8 @@ __dt__15TMtxCalcFootInvFv: # 0x800452e0
     subf    r0, r3, r0
     stw     r0, 0x4(r3)
     beq-    branch_0x80045380
-    lis     r3, 0x803b
-    subi    r3, r3, 0xd64
+    lis     r3, __vvt__22J3DMtxCalcSoftimageAnm@ha
+    addi    r3, r3, __vvt__22J3DMtxCalcSoftimageAnm@l
     stw     r3, 0x4c(r30)
     addi    r6, r3, 0x34
     addi    r5, r3, 0x24
@@ -64,8 +64,8 @@ __dt__13J3DMtxCalcAnmFv: # 0x800453ac
     stw     r31, 0x24(sp)
     mr.     r31, r3
     beq-    branch_0x80045414
-    lis     r3, 0x803e
-    addi    r3, r3, 0x938
+    lis     r3, __vvt__13J3DMtxCalcAnm@h
+    addi    r3, r3, __vvt__13J3DMtxCalcAnm@l
     stw     r3, 0x4(r31)
     addi    r7, r3, 0x10
     addi    r5, r31, 0x18
@@ -77,7 +77,7 @@ __dt__13J3DMtxCalcAnmFv: # 0x800453ac
     subf    r0, r4, r5
     stw     r0, 0x4(r4)
     stw     r3, 0x8(r31)
-    lfs     f0, -0x7018(rtoc)
+    lfs     f0, -0x7018(r2)
     stfs    f0, 0x10(r31)
     stw     r3, 0xc(r31)
     stfs    f0, 0x14(r31)
@@ -96,15 +96,15 @@ branch_0x80045414:
 .globl init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf
 init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf: # 0x8004542c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, mCurrentS__6J3DSys@h
     stw     r0, 0x4(sp)
-    addi    r7, r3, 0x47b8
-    lis     r3, 0x8040
+    addi    r7, r3, mCurrentS__6J3DSys@l
+    lis     r3, mCurrentMtx__6J3DSys@h
     stwu    sp, -0x8(sp)
     lwz     r0, 0x0(r4)
     lwz     r6, 0x4(r4)
     stw     r0, 0x0(r7)
-    addi    r0, r3, 0x4788
+    addi    r0, r3, mCurrentMtx__6J3DSys@l
     mr      r3, r5
     stw     r6, 0x4(r7)
     lwz     r5, 0x8(r4)
@@ -132,9 +132,9 @@ calc__15TMtxCalcFootInvFUs: # 0x8004547c
     clrlwi  r0, r31, 16
     cmplw   r6, r0
     bne-    branch_0x800454cc
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lhz     r4, 0x68(r30)
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     lhz     r5, 0x6a(r30)
     lwz     r3, 0x38(r3)
     lfs     f1, 0x74(r30)
@@ -144,9 +144,9 @@ branch_0x800454cc:
     clrlwi  r0, r31, 16
     cmplw   r6, r0
     bne-    branch_0x800454f8
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lhz     r4, 0x6e(r30)
-    addi    r3, r3, 0x45dc
+    addi    r3, r3, j3dSys@l
     lhz     r5, 0x70(r30)
     lwz     r3, 0x38(r3)
     lfs     f1, 0x74(r30)
@@ -165,7 +165,7 @@ __ct__15TMtxCalcFootInvFUsUsUsUsUsUsf: # 0x80045510
     mflr    r0
     stw     r0, 0x4(sp)
     extsh.  r0, r4
-    lis     r4, 0x803b
+    lis     r4, unk_803af200@ha
     stwu    sp, -0x58(sp)
     stfd    f31, 0x50(sp)
     fmr     f31, f1
@@ -177,12 +177,12 @@ __ct__15TMtxCalcFootInvFUsUsUsUsUsUsf: # 0x80045510
     addi    r27, r8, 0x0
     addi    r28, r9, 0x0
     addi    r29, r10, 0x0
-    subi    r30, r4, 0xe00
+    addi    r30, r4, unk_803af200@l
     beq-    branch_0x8004556c
     addi    r4, r23, 0x78
     stw     r4, 0x0(r23)
-    lis     r3, 0x803b
-    subi    r0, r3, 0xf38
+    lis     r3, __vvt__10J3DMtxCalc@ha
+    addi    r0, r3, __vvt__10J3DMtxCalc@l
     stw     r4, 0x50(r23)
     stw     r0, 0x78(r23)
 branch_0x8004556c:
@@ -190,8 +190,8 @@ branch_0x8004556c:
     mr      r3, r23
     li      r4, 0x0
     bl      __ct__15J3DMtxCalcBasicFv
-    lis     r3, 0x803e
-    addi    r3, r3, 0x8b0
+    lis     r3, __vvt__19J3DMtxCalcSoftimage@h
+    addi    r3, r3, __vvt__19J3DMtxCalcSoftimage@l
     stw     r3, 0x4c(r23)
     addi    r6, r3, 0x24
     addi    r0, r23, 0x50
@@ -205,8 +205,8 @@ branch_0x8004556c:
     lwz     r31, 0x20(sp)
     addi    r3, r31, 0x50
     bl      __ct__13J3DMtxCalcAnmFP15J3DAnmTransform
-    lis     r3, 0x803b
-    subi    r3, r3, 0xd64
+    lis     r3, __vvt__22J3DMtxCalcSoftimageAnm@ha
+    addi    r3, r3, __vvt__22J3DMtxCalcSoftimageAnm@l
     stw     r3, 0x4c(r31)
     addi    r4, r3, 0x34
     addi    r0, r3, 0x24
@@ -252,8 +252,8 @@ __dt__22J3DMtxCalcSoftimageAnmFv: # 0x8004564c
     stw     r31, 0x24(sp)
     mr.     r31, r3
     beq-    branch_0x80045740
-    lis     r3, 0x803b
-    subi    r3, r3, 0xd64
+    lis     r3, __vvt__22J3DMtxCalcSoftimageAnm@ha
+    addi    r3, r3, __vvt__22J3DMtxCalcSoftimageAnm@l
     stw     r3, 0x4c(r31)
     addi    r7, r3, 0x34
     addi    r3, r3, 0x24
@@ -266,8 +266,8 @@ __dt__22J3DMtxCalcSoftimageAnmFv: # 0x8004564c
     subf    r0, r3, r6
     stw     r0, 0x4(r3)
     beq-    branch_0x800456d8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x938
+    lis     r3, __vvt__13J3DMtxCalcAnm@h
+    addi    r3, r3, __vvt__13J3DMtxCalcAnm@l
     stw     r3, 0x54(r31)
     addi    r5, r3, 0x10
     li      r0, 0x0
@@ -277,15 +277,15 @@ __dt__22J3DMtxCalcSoftimageAnmFv: # 0x8004564c
     subf    r3, r5, r6
     stw     r3, 0x4(r5)
     stw     r0, 0x58(r31)
-    lfs     f0, -0x7018(rtoc)
+    lfs     f0, -0x7018(r2)
     stfs    f0, 0x60(r31)
     stw     r0, 0x5c(r31)
     stfs    f0, 0x64(r31)
 branch_0x800456d8:
     cmplwi  r31, 0x0
     beq-    branch_0x80045730
-    lis     r3, 0x803e
-    addi    r3, r3, 0x8b0
+    lis     r3, __vvt__19J3DMtxCalcSoftimage@h
+    addi    r3, r3, __vvt__19J3DMtxCalcSoftimage@l
     stw     r3, 0x4c(r31)
     addi    r0, r3, 0x24
     addi    r5, r31, 0x50
@@ -295,8 +295,8 @@ branch_0x800456d8:
     subf    r0, r3, r5
     stw     r0, 0x4(r3)
     beq-    branch_0x80045730
-    lis     r3, 0x803e
-    addi    r3, r3, 0x8f4
+    lis     r3, __vvt__15J3DMtxCalcBasic@h
+    addi    r3, r3, __vvt__15J3DMtxCalcBasic@l
     stw     r3, 0x4c(r31)
     addi    r0, r3, 0x24
     lwz     r3, 0x0(r31)
@@ -323,13 +323,13 @@ __ct__13J3DMtxCalcAnmFP15J3DAnmTransform: # 0x80045758
     extsh.  r0, r4
     beq-    branch_0x80045774
     addi    r0, r3, 0x18
-    lis     r4, 0x803b
+    lis     r4, __vvt__10J3DMtxCalc@ha
     stw     r0, 0x0(r3)
-    subi    r0, r4, 0xf38
+    addi    r0, r4, __vvt__10J3DMtxCalc@l
     stw     r0, 0x18(r3)
 branch_0x80045774:
-    lis     r4, 0x803e
-    addi    r4, r4, 0x938
+    lis     r4, __vvt__13J3DMtxCalcAnm@h
+    addi    r4, r4, __vvt__13J3DMtxCalcAnm@l
     stw     r4, 0x4(r3)
     addi    r7, r4, 0x10
     addi    r4, r3, 0x18
@@ -340,7 +340,7 @@ branch_0x80045774:
     subf    r4, r6, r4
     stw     r4, 0x4(r6)
     stw     r0, 0x8(r3)
-    lfs     f0, -0x7018(rtoc)
+    lfs     f0, -0x7018(r2)
     stfs    f0, 0x10(r3)
     stw     r0, 0xc(r3)
     stfs    f0, 0x14(r3)
@@ -407,7 +407,7 @@ FeetInvCalc__FP8J3DModelUsUsUsf: # 0x800457bc
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, -0x7014(rtoc)
+    lfs     f0, -0x7014(r2)
     fadds   f1, f2, f1
     fadds   f31, f3, f1
     fcmpo   cr0, f31, f0
@@ -417,8 +417,8 @@ FeetInvCalc__FP8J3DModelUsUsUsf: # 0x800457bc
 
 branch_0x800458bc:
     frsqrte f3, f31
-    lfs     f2, -0x7010(rtoc)
-    lfs     f0, -0x700c(rtoc)
+    lfs     f2, -0x7010(r2)
+    lfs     f0, -0x700c(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -428,7 +428,7 @@ branch_0x800458bc:
 branch_0x800458e0:
     lfs     f29, 0x228(sp)
     addi    r4, sp, 0x214
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f29, f31
     lfs     f1, 0x224(sp)
     lfs     f3, 0x22c(sp)
@@ -470,7 +470,7 @@ branch_0x800458e0:
     fmuls   f4, f2, f2
     lfs     f1, 0x204(sp)
     fmuls   f3, f0, f0
-    lfs     f2, -0x7014(rtoc)
+    lfs     f2, -0x7014(r2)
     fmuls   f5, f1, f1
     fadds   f3, f4, f3
     fadds   f30, f5, f3
@@ -481,8 +481,8 @@ branch_0x800458e0:
 
 branch_0x800459b0:
     frsqrte f5, f30
-    lfs     f4, -0x7010(rtoc)
-    lfs     f2, -0x700c(rtoc)
+    lfs     f4, -0x7010(r2)
+    lfs     f2, -0x700c(r2)
     frsp    f5, f5
     fmuls   f3, f5, f5
     fmuls   f4, f4, f5
@@ -511,7 +511,7 @@ branch_0x800459d4:
     fmuls   f4, f2, f2
     lfs     f7, 0x1f4(sp)
     fmuls   f3, f6, f6
-    lfs     f2, -0x7014(rtoc)
+    lfs     f2, -0x7014(r2)
     fmuls   f5, f7, f7
     fadds   f3, f4, f3
     fadds   f29, f5, f3
@@ -522,8 +522,8 @@ branch_0x800459d4:
 
 branch_0x80045a48:
     frsqrte f5, f29
-    lfs     f4, -0x7010(rtoc)
-    lfs     f2, -0x700c(rtoc)
+    lfs     f4, -0x7010(r2)
+    lfs     f2, -0x700c(r2)
     frsp    f5, f5
     fmuls   f3, f5, f5
     fmuls   f4, f4, f5
@@ -551,9 +551,9 @@ branch_0x80045a6c:
     fmr     f1, f28
     bl      matan__Fff
     fmuls   f1, f31, f31
-    lfs     f0, -0x7004(rtoc)
+    lfs     f0, -0x7004(r2)
     extsh   r0, r3
-    lfd     f5, -0x6fd8(rtoc)
+    lfd     f5, -0x6fd8(r2)
     fmuls   f0, f0, f30
     fmadds  f1, f30, f30, f1
     xoris   r0, r0, 0x8000
@@ -562,23 +562,23 @@ branch_0x80045a6c:
     lis     r28, 0x4330
     fnmsubs  f2, f29, f29, f1
     stw     r28, 0x248(sp)
-    lfs     f3, -0x7008(rtoc)
+    lfs     f3, -0x7008(r2)
     lfd     f4, 0x248(sp)
     fdivs   f2, f2, f0
-    lfs     f1, -0x7018(rtoc)
+    lfs     f1, -0x7018(r2)
     fsubs   f0, f4, f5
     fcmpu   cr0, f1, f2
     fmuls   f0, f3, f0
     fabs    f28, f0
     bne-    branch_0x80045b14
-    lfs     f1, -0x7014(rtoc)
+    lfs     f1, -0x7014(r2)
     b       branch_0x80045b70
 
 branch_0x80045b14:
-    lfs     f0, -0x7000(rtoc)
+    lfs     f0, -0x7000(r2)
     fcmpu   cr0, f0, f2
     bne-    branch_0x80045b28
-    lfs     f1, -0x6ffc(rtoc)
+    lfs     f1, -0x6ffc(r2)
     b       branch_0x80045b70
 
 branch_0x80045b28:
@@ -590,22 +590,22 @@ branch_0x80045b28:
     lfs     f1, 0xb8(sp)
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f3, -0x6fd8(rtoc)
+    lfd     f3, -0x6fd8(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x7008(rtoc)
+    lfs     f1, -0x7008(r2)
     stw     r0, 0x24c(sp)
-    lfs     f0, -0x6ff8(rtoc)
+    lfs     f0, -0x6ff8(r2)
     stw     r28, 0x248(sp)
     lfd     f2, 0x248(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
     fsubs   f1, f0, f1
 branch_0x80045b70:
-    lfs     f0, -0x6ff4(rtoc)
-    lwz     r0, -0x5eac(r13)
+    lfs     f0, -0x6ff4(r2)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f0, f0, f1
-    lwz     r4, -0x5ea8(r13)
-    lfs     f1, -0x7018(rtoc)
+    lwz     r4, R13Off_m0x5ea8(r13)
+    lfs     f1, -0x7018(r2)
     fctiwz  f0, f0
     stfd    f0, 0x248(sp)
     lwz     r3, 0x24c(sp)
@@ -618,14 +618,14 @@ branch_0x80045b70:
     fcmpu   cr0, f1, f0
     fmr     f2, f0
     bne-    branch_0x80045bbc
-    lfs     f0, -0x6ff8(rtoc)
+    lfs     f0, -0x6ff8(r2)
     b       branch_0x80045c14
 
 branch_0x80045bbc:
-    lfs     f0, -0x7000(rtoc)
+    lfs     f0, -0x7000(r2)
     fcmpu   cr0, f0, f2
     bne-    branch_0x80045bd0
-    lfs     f0, -0x6ff0(rtoc)
+    lfs     f0, -0x6ff0(r2)
     b       branch_0x80045c14
 
 branch_0x80045bd0:
@@ -637,9 +637,9 @@ branch_0x80045bd0:
     lfs     f1, 0xb4(sp)
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x6fd8(rtoc)
+    lfd     f2, -0x6fd8(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x7008(rtoc)
+    lfs     f0, -0x7008(r2)
     stw     r0, 0x24c(sp)
     lis     r0, 0x4330
     stw     r0, 0x248(sp)
@@ -648,15 +648,15 @@ branch_0x80045bd0:
     fmuls   f0, f0, f1
 branch_0x80045c14:
     fsubs   f0, f0, f28
-    lfs     f3, -0x6ff4(rtoc)
-    lwz     r0, -0x5eac(r13)
+    lfs     f3, -0x6ff4(r2)
+    lwz     r0, R13Off_m0x5eac(r13)
     mr      r3, r29
-    lwz     r8, -0x5ea8(r13)
+    lwz     r8, R13Off_m0x5ea8(r13)
     fneg    f2, f0
-    lwz     r6, -0x5ea4(r13)
-    lfs     f1, -0x7014(rtoc)
+    lwz     r6, R13Off_m0x5ea4(r13)
+    lfs     f1, -0x7014(r2)
     mr      r5, r29
-    lfs     f0, -0x7018(rtoc)
+    lfs     f0, -0x7018(r2)
     fmuls   f2, f3, f2
     addi    r4, sp, 0x1ac
     fctiwz  f2, f2
@@ -693,13 +693,13 @@ branch_0x80045c14:
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, -0x6fec(rtoc)
+    lfs     f0, -0x6fec(r2)
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80045cf8
-    lfs     f0, -0x7014(rtoc)
+    lfs     f0, -0x7014(r2)
     stfs    f0, 0x1a8(sp)
     stfs    f0, 0x1a4(sp)
     stfs    f0, 0x1a0(sp)
@@ -707,7 +707,7 @@ branch_0x80045c14:
 
 branch_0x80045cf8:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, -0x7018(rtoc)
+    lfs     f2, -0x7018(r2)
     lfs     f0, 0x1a0(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -754,7 +754,7 @@ branch_0x80045d28:
     stw     r0, 0x194(sp)
     lwz     r0, 0x22c(sp)
     stw     r3, 0x198(sp)
-    lfs     f2, -0x7014(rtoc)
+    lfs     f2, -0x7014(r2)
     stw     r0, 0x19c(sp)
     lfs     f4, 0x8(r31)
     lfs     f3, 0x18(r31)
@@ -767,8 +767,8 @@ branch_0x80045d28:
     fcmpo   cr0, f28, f2
     ble-    branch_0x80045e10
     frsqrte f5, f28
-    lfd     f4, -0x6fe8(rtoc)
-    lfd     f2, -0x6fe0(rtoc)
+    lfd     f4, -0x6fe8(r2)
+    lfd     f2, -0x6fe0(r2)
     fmul    f3, f5, f5
     fmul    f4, f4, f5
     fnmsub   f2, f28, f3, f2
@@ -783,15 +783,15 @@ branch_0x80045e10:
     fmuls   f4, f3, f3
     lfs     f5, 0x20(r31)
     fmuls   f3, f2, f2
-    lfs     f2, -0x7014(rtoc)
+    lfs     f2, -0x7014(r2)
     fmuls   f5, f5, f5
     fadds   f3, f4, f3
     fadds   f29, f5, f3
     fcmpo   cr0, f29, f2
     ble-    branch_0x80045e68
     frsqrte f5, f29
-    lfd     f4, -0x6fe8(rtoc)
-    lfd     f2, -0x6fe0(rtoc)
+    lfd     f4, -0x6fe8(r2)
+    lfd     f2, -0x6fe0(r2)
     fmul    f3, f5, f5
     fmul    f4, f4, f5
     fnmsub   f2, f29, f3, f2
@@ -816,14 +816,14 @@ branch_0x80045e68:
     fmuls   f2, f1, f1
     lfs     f3, 0x19c(sp)
     fmuls   f1, f0, f0
-    lfs     f0, -0x6fec(rtoc)
+    lfs     f0, -0x6fec(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80045ed4
-    lfs     f0, -0x7014(rtoc)
+    lfs     f0, -0x7014(r2)
     stfs    f0, 0x19c(sp)
     stfs    f0, 0x198(sp)
     stfs    f0, 0x194(sp)
@@ -831,7 +831,7 @@ branch_0x80045e68:
 
 branch_0x80045ed4:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, -0x7018(rtoc)
+    lfs     f2, -0x7018(r2)
     lfs     f0, 0x194(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -864,7 +864,7 @@ branch_0x80045f04:
     fmuls   f2, f9, f6
     lfs     f5, 0x14(r31)
     fmuls   f1, f8, f4
-    lfs     f0, -0x6fec(rtoc)
+    lfs     f0, -0x6fec(r2)
     fmuls   f3, f7, f5
     fmsubs  f30, f7, f4, f2
     fmsubs  f31, f9, f5, f1
@@ -875,14 +875,14 @@ branch_0x80045f04:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80045f94
-    lfs     f0, -0x7014(rtoc)
+    lfs     f0, -0x7014(r2)
     fmr     f2, f0
     fmr     f1, f2
     b       branch_0x80045fac
 
 branch_0x80045f94:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x7018(rtoc)
+    lfs     f0, -0x7018(r2)
     fmuls   f0, f0, f1
     fmuls   f1, f29, f0
     fmuls   f2, f30, f0
@@ -901,7 +901,7 @@ branch_0x80045fac:
     lfs     f0, 0x22c(sp)
     stfs    f0, 0x2c(r30)
     lwz     r4, 0x214(sp)
-    lfs     f1, -0x7014(rtoc)
+    lfs     f1, -0x7014(r2)
     lwz     r3, 0x34(r4)
     lwz     r0, 0x38(r4)
     stw     r3, 0x164(sp)
@@ -919,8 +919,8 @@ branch_0x80045fac:
     fcmpo   cr0, f0, f1
     ble-    branch_0x80046050
     frsqrte f4, f0
-    lfd     f3, -0x6fe8(rtoc)
-    lfd     f1, -0x6fe0(rtoc)
+    lfd     f3, -0x6fe8(r2)
+    lfd     f1, -0x6fe0(r2)
     fmul    f2, f4, f4
     fmul    f3, f3, f4
     fnmsub   f1, f0, f2, f1
@@ -935,15 +935,15 @@ branch_0x80046050:
     fmuls   f3, f2, f2
     lfs     f4, 0x20(r30)
     fmuls   f2, f1, f1
-    lfs     f1, -0x7014(rtoc)
+    lfs     f1, -0x7014(r2)
     fmuls   f4, f4, f4
     fadds   f2, f3, f2
     fadds   f28, f4, f2
     fcmpo   cr0, f28, f1
     ble-    branch_0x800460a8
     frsqrte f4, f28
-    lfd     f3, -0x6fe8(rtoc)
-    lfd     f1, -0x6fe0(rtoc)
+    lfd     f3, -0x6fe8(r2)
+    lfd     f1, -0x6fe0(r2)
     fmul    f2, f4, f4
     fmul    f3, f3, f4
     fnmsub   f1, f28, f2, f1
@@ -983,7 +983,7 @@ branch_0x800460a8:
     fmuls   f2, f9, f6
     lfs     f5, 0x18(r30)
     fmuls   f1, f8, f4
-    lfs     f0, -0x6fec(rtoc)
+    lfs     f0, -0x6fec(r2)
     fmuls   f3, f7, f5
     fmsubs  f30, f7, f4, f2
     fmsubs  f31, f9, f5, f1
@@ -994,14 +994,14 @@ branch_0x800460a8:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x8004615c
-    lfs     f0, -0x7014(rtoc)
+    lfs     f0, -0x7014(r2)
     fmr     f2, f0
     fmr     f1, f2
     b       branch_0x80046174
 
 branch_0x8004615c:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x7018(rtoc)
+    lfs     f0, -0x7018(r2)
     fmuls   f0, f0, f1
     fmuls   f1, f29, f0
     fmuls   f2, f30, f0
@@ -1041,134 +1041,134 @@ calc__22J3DMtxCalcSoftimageAnmFUs: # 0x800461bc
     blr
 
 
-.globl _104_4_calc__22J3DMtxCalcSoftimageAnmFUs
-_104_4_calc__22J3DMtxCalcSoftimageAnmFUs: # 0x800461e0
+.globl unk_800461e0
+unk_800461e0: # 0x800461e0
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       calc__22J3DMtxCalcSoftimageAnmFUs
 
 
-.globl _104_4_calcTransform__19J3DMtxCalcSoftimageFUsRC16J3DTransformInfo
-_104_4_calcTransform__19J3DMtxCalcSoftimageFUsRC16J3DTransformInfo: # 0x800461f4
+.globl unk_800461f4
+unk_800461f4: # 0x800461f4
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       calcTransform__19J3DMtxCalcSoftimageFUsRC16J3DTransformInfo
 
 
-.globl _104_4_recursiveEntry__15J3DMtxCalcBasicFP7J3DNode
-_104_4_recursiveEntry__15J3DMtxCalcBasicFP7J3DNode: # 0x80046208
+.globl unk_80046208
+unk_80046208: # 0x80046208
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       recursiveEntry__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _104_4_recursiveCalc__15J3DMtxCalcBasicFP7J3DNode
-_104_4_recursiveCalc__15J3DMtxCalcBasicFP7J3DNode: # 0x8004621c
+.globl unk_8004621c
+unk_8004621c: # 0x8004621c
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       recursiveCalc__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _104_4_recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode
-_104_4_recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode: # 0x80046230
+.globl unk_80046230
+unk_80046230: # 0x80046230
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _104_4_init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf
-_104_4_init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf: # 0x80046244
+.globl unk_80046244
+unk_80046244: # 0x80046244
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     b       init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf
 
 
-.globl _80_calc__22J3DMtxCalcSoftimageAnmFUs
-_80_calc__22J3DMtxCalcSoftimageAnmFUs: # 0x80046258
-    subi    r3, r3, 0x50
+.globl unk_80046258
+unk_80046258: # 0x80046258
+    addi    r3, r3, -0x50
     b       calc__22J3DMtxCalcSoftimageAnmFUs
 
 
-.globl _80___dt__22J3DMtxCalcSoftimageAnmFv
-_80___dt__22J3DMtxCalcSoftimageAnmFv: # 0x80046260
-    subi    r3, r3, 0x50
+.globl unk_80046260
+unk_80046260: # 0x80046260
+    addi    r3, r3, -0x50
     b       __dt__22J3DMtxCalcSoftimageAnmFv
 
 
-.globl _120_4_calc__15TMtxCalcFootInvFUs
-_120_4_calc__15TMtxCalcFootInvFUs: # 0x80046268
+.globl unk_80046268
+unk_80046268: # 0x80046268
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x78
+    addi    r3, r3, -0x78
     b       calc__15TMtxCalcFootInvFUs
 
 
-.globl _120_4_calcTransform__19J3DMtxCalcSoftimageFUsRC16J3DTransformInfo
-_120_4_calcTransform__19J3DMtxCalcSoftimageFUsRC16J3DTransformInfo: # 0x8004627c
+.globl unk_8004627c
+unk_8004627c: # 0x8004627c
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x78
+    addi    r3, r3, -0x78
     b       calcTransform__19J3DMtxCalcSoftimageFUsRC16J3DTransformInfo
 
 
-.globl _120_4_recursiveEntry__15J3DMtxCalcBasicFP7J3DNode
-_120_4_recursiveEntry__15J3DMtxCalcBasicFP7J3DNode: # 0x80046290
+.globl unk_80046290
+unk_80046290: # 0x80046290
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x78
+    addi    r3, r3, -0x78
     b       recursiveEntry__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _120_4_recursiveCalc__15J3DMtxCalcBasicFP7J3DNode
-_120_4_recursiveCalc__15J3DMtxCalcBasicFP7J3DNode: # 0x800462a4
+.globl unk_800462a4
+unk_800462a4: # 0x800462a4
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x78
+    addi    r3, r3, -0x78
     b       recursiveCalc__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _120_4_recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode
-_120_4_recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode: # 0x800462b8
+.globl unk_800462b8
+unk_800462b8: # 0x800462b8
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x78
+    addi    r3, r3, -0x78
     b       recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _120_4_init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf
-_120_4_init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf: # 0x800462cc
+.globl unk_800462cc
+unk_800462cc: # 0x800462cc
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x78
+    addi    r3, r3, -0x78
     b       init__19J3DMtxCalcSoftimageFRC3VecRA3_A4_Cf
 
 
-.globl _80_calc__15TMtxCalcFootInvFUs
-_80_calc__15TMtxCalcFootInvFUs: # 0x800462e0
-    subi    r3, r3, 0x50
+.globl unk_800462e0
+unk_800462e0: # 0x800462e0
+    addi    r3, r3, -0x50
     b       calc__15TMtxCalcFootInvFUs
 
 
-.globl _80___dt__15TMtxCalcFootInvFv
-_80___dt__15TMtxCalcFootInvFv: # 0x800462e8
-    subi    r3, r3, 0x50
+.globl unk_800462e8
+unk_800462e8: # 0x800462e8
+    addi    r3, r3, -0x50
     b       __dt__15TMtxCalcFootInvFv
 

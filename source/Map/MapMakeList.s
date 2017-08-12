@@ -275,9 +275,9 @@ addCheckDataToGrid__17TMapCollisionDataFP12TBGCheckDatai: # 0x80192300
     beq-    branch_0x80192850
     mulli   r24, r26, 0xc
     lwz     r25, 0x54(sp)
-    lfd     f30, -0x4390(rtoc)
-    lfs     f31, -0x4398(rtoc)
-    lfs     f27, -0x4394(rtoc)
+    lfd     f30, -0x4390(r2)
+    lfs     f31, -0x4398(r2)
+    lfs     f27, -0x4394(r2)
     lis     r27, 0x4330
     b       branch_0x80192844
 
@@ -751,14 +751,14 @@ branch_0x80192954:
 branch_0x8019295c:
     cmpwi   r5, 0x2
     bne-    branch_0x80192978
-    lfs     f0, -0x4394(rtoc)
+    lfs     f0, -0x4394(r2)
     fsubs   f1, f1, f0
     fsubs   f2, f2, f0
     fadds   f8, f8, f0
     fadds   f5, f5, f0
 branch_0x80192978:
     fadds   f0, f1, f3
-    lfs     f1, -0x4388(rtoc)
+    lfs     f1, -0x4388(r2)
     fmuls   f0, f1, f0
     fctiwz  f0, f0
     stfd    f0, 0xd8(sp)
@@ -771,7 +771,7 @@ branch_0x80192978:
     stw     r0, 0x0(r6)
 branch_0x801929a8:
     lfs     f0, 0x0(r3)
-    lfs     f1, -0x4388(rtoc)
+    lfs     f1, -0x4388(r2)
     fadds   f0, f8, f0
     fmuls   f0, f1, f0
     fctiwz  f0, f0
@@ -782,11 +782,11 @@ branch_0x801929a8:
     lwz     r4, 0x8(r3)
     cmpw    r0, r4
     blt-    branch_0x801929e0
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x0(r8)
 branch_0x801929e0:
     lfs     f0, 0x4(r3)
-    lfs     f1, -0x4388(rtoc)
+    lfs     f1, -0x4388(r2)
     fadds   f0, f2, f0
     fmuls   f0, f1, f0
     fctiwz  f0, f0
@@ -800,7 +800,7 @@ branch_0x801929e0:
     stw     r0, 0x0(r7)
 branch_0x80192a14:
     lfs     f0, 0x4(r3)
-    lfs     f1, -0x4388(rtoc)
+    lfs     f1, -0x4388(r2)
     fadds   f0, f5, f0
     fmuls   f0, f1, f0
     fctiwz  f0, f0
@@ -811,7 +811,7 @@ branch_0x80192a14:
     lwz     r3, 0xc(r3)
     cmpw    r0, r3
     blt-    branch_0x80192a4c
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x0(r9)
 branch_0x80192a4c:
     li      r3, 0x1

@@ -48,21 +48,21 @@ branch_0x802a5a24:
     slwi    r3, r3, 4
     lwz     r4, 0x10(r5)
     addi    r0, r3, 0xc
-    lis     r3, 0x803a
+    lis     r3, unk_803a4030@h
     lwzx    r28, r4, r0
-    addi    r3, r3, 0x4030
+    addi    r3, r3, unk_803a4030@l
     bl      DVDChangeDir
-    lwz     r29, -0x5f2c(r13)
+    lwz     r29, R13Off_m0x5f2c(r13)
     addi    r4, r28, 0x0
     addi    r3, sp, 0x54
     li      r30, 0x0
     bl      strcpy
     addi    r3, sp, 0x54
-    subi    r4, rtoc, 0x414
+    addi    r4, r2, R2Off_m0x414
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x802a5ab4
-    subi    r4, rtoc, 0x40c
+    addi    r4, r2, R2Off_m0x40c
     bl      strcpy
     addi    r3, sp, 0x54
     bl      DVDConvertPathToEntrynum
@@ -107,7 +107,7 @@ branch_0x802a5b04:
     bl      mountFixed__13JKRMemArchiveFPv15JKRMemBreakFlag
     mr      r31, r29
 branch_0x802a5b18:
-    subi    r3, rtoc, 0x404
+    addi    r3, r2, R2Off_m0x404
     bl      DVDChangeDir
 branch_0x802a5b20:
     lwz     r0, 0xbc(sp)
@@ -123,109 +123,87 @@ branch_0x802a5b20:
 
 .globl drawDVDErr__12TApplicationFv
 drawDVDErr__12TApplicationFv: # 0x802a5b44
-
-.set var_2EC, -0x2EC
-.set var_2E8, -0x2E8
-.set var_2DC, -0x2DC
-.set var_2D8, -0x2D8
-.set var_2D4, -0x2D4
-.set var_2D0, -0x2D0
-.set var_2C4, -0x2C4
-.set var_280, -0x280
-.set var_27C, -0x27C
-.set var_260, -0x260
-.set var_220, -0x220
-.set var_20, -0x20
-.set var_18, -0x18
-.set var_C, -0xC
-.set var_8, -8
-.set var_4, -4
-.set arg_4,  4
-
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_803a4010@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x318(sp)
     stw     r31, 0x314(sp)
     li      r31, 0x0
     stw     r30, 0x310(sp)
-    addi    r30, r4, 0x4010
+    addi    r30, r4, unk_803a4010@l
     stw     r29, 0x30c(sp)
     addi    r29, r3, 0x0
     bl      DVDGetDriveStatus
     addi    r0, r3, 0x1
     cmplwi  r0, 0xc
     bgt-    branch_0x802a5c5c
-    lis     r3, 0x803e
-    subi    r3, r3, 0xc10
+    lis     r3, unk_803df3f0@ha
+    addi    r3, r3, unk_803df3f0@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x802A5B94:		# jumptable 802A5B90 case 0
+    bctr       
+branch_0x802a5b94:
     addi    r3, sp, 0xf8
     crxor   6, 6, 6
     addi    r5, r30, 0x2c
     li      r4, 0x200
     bl      snprintf
-    lis     r3, 0x656d
-    addi    r31, r3, 0x5f31
+    lis     r3, unk_656d5f31@h
+    addi    r31, r3, unk_656d5f31@l
     b       branch_0x802a5c5c
 
-branch_0x802A5BB4:		# jumptable 802A5B90 case 12
-addi	  r3, r1, 0x318+var_220
-crclr	  4*cr1+eq
-addi	  r5, r30, 0xA8
-li	  r4, 0x200
-bl	  snprintf
-lis	  r3, 0x656D # 0x656D5F32
-addi	  r31, r3, 0x5F32 # 0x656D5F32
-b	  def_802A5B90	# jumptable 802A5B90 default case
+branch_0x802a5bb4:
+    addi    r3, sp, 0xf8
+    crxor   6, 6, 6
+    addi    r5, r30, 0xa8
+    li      r4, 0x200
+    bl      snprintf
+    lis     r3, unk_656d5f32@h
+    addi    r31, r3, unk_656d5f32@l
+    b       branch_0x802a5c5c
 
-branch_0x802A5BD4:		# jumptable 802A5B90 case 2
-bl	  DVDCheckDisk
-cmpwi	  r3, 0
-bne	  def_802A5B90	# jumptable 802A5B90 default case
-addi	  r3, r1, 0x318+var_220
-crclr	  4*cr1+eq
-addi	  r5, r30, 0x114
-li	  r4, 0x200
-bl	  snprintf
-lis	  r3, 0x656D # 0x656D5F33
-addi	  r31, r3, 0x5F33 # 0x656D5F33
-b	  def_802A5B90	# jumptable 802A5B90 default case
+branch_0x802a5bd4:
+    bl      DVDCheckDisk
+    cmpwi   r3, 0x0
+    bne-    branch_0x802a5c5c
+    addi    r3, sp, 0xf8
+    crxor   6, 6, 6
+    addi    r5, r30, 0x114
+    li      r4, 0x200
+    bl      snprintf
+    lis     r3, unk_656d5f33@h
+    addi    r31, r3, unk_656d5f33@l
+    b       branch_0x802a5c5c
 
-branch_0x802A5C00:		# jumptable 802A5B90 case 6
-addi	  r3, r1, 0x318+var_220
-crclr	  4*cr1+eq
-addi	  r5, r30, 0x124
-li	  r4, 0x200
-bl	  snprintf
-lis	  r3, 0x656D # 0x656D5F34
-addi	  r31, r3, 0x5F34 # 0x656D5F34
-b	  def_802A5B90	# jumptable 802A5B90 default case
+branch_0x802a5c00:
+    addi    r3, sp, 0xf8
+    crxor   6, 6, 6
+    addi    r5, r30, 0x124
+    li      r4, 0x200
+    bl      snprintf
+    lis     r3, unk_656d5f34@h
+    addi    r31, r3, unk_656d5f34@l
+    b       branch_0x802a5c5c
 
-branch_0x802A5C20:		# jumptable 802A5B90 case 5
-addi	  r3, r1, 0x318+var_220
-crclr	  4*cr1+eq
-addi	  r5, r30, 0x170
-li	  r4, 0x200
-bl	  snprintf
-lis	  r3, 0x656D # 0x656D5F35
-addi	  r31, r3, 0x5F35 # 0x656D5F35
-b	  def_802A5B90	# jumptable 802A5B90 default case
+branch_0x802a5c20:
+    addi    r3, sp, 0xf8
+    crxor   6, 6, 6
+    addi    r5, r30, 0x170
+    li      r4, 0x200
+    bl      snprintf
+    lis     r3, unk_656d5f35@h
+    addi    r31, r3, unk_656d5f35@l
+    b       branch_0x802a5c5c
 
-branch_0x802A5C40:		# jumptable 802A5B90 case 7
-addi	  r3, r1, 0x318+var_220
-crclr	  4*cr1+eq
-addi	  r5, r30, 0x1A0
-li	  r4, 0x200
-bl	  snprintf
-lis	  r3, 0x656D # 0x656D5F36
-addi	  r31, r3, 0x5F36 # 0x656D5F36
-
-def_802A5B90:		# jumptable 802A5B90 default case
+branch_0x802a5c40:
+    addi    r3, sp, 0xf8
+    crxor   6, 6, 6
+    addi    r5, r30, 0x1a0
+    li      r4, 0x200
+    bl      snprintf
+    lis     r3, unk_656d5f36@h
+    addi    r31, r3, unk_656d5f36@l
 branch_0x802a5c5c:
     cmplwi  r31, 0x0
     beq-    branch_0x802a5f30
@@ -233,16 +211,16 @@ branch_0x802a5c5c:
     bl      SMS_DrawInit__Fv
     lwz     r4, 0x1c(r29)
     lis     r3, 0x4330
-    lfs     f1, -0x400(rtoc)
+    lfs     f1, -0x400(r2)
     lwz     r4, 0x60(r4)
-    lfd     f4, -0x3e0(rtoc)
+    lfd     f4, -0x3e0(r2)
     fmr     f2, f1
     addi    r5, r4, 0x3c
     fmr     f5, f1
     lhz     r4, 0x40(r4)
     lhz     r0, 0x6(r5)
     stw     r4, 0x304(sp)
-    lfs     f6, -0x3fc(rtoc)
+    lfs     f6, -0x3fc(r2)
     stw     r0, 0x2fc(sp)
     stw     r3, 0x300(sp)
     stw     r3, 0x2f8(sp)
@@ -251,13 +229,13 @@ branch_0x802a5c5c:
     fsubs   f3, f3, f4
     fsubs   f4, f0, f4
     bl      GXSetViewport
-    lfs     f1, -0x3f8(rtoc)
+    lfs     f1, -0x3f8(r2)
     addi    r3, sp, 0xb8
-    lfs     f2, -0x3f4(rtoc)
-    lfs     f3, -0x400(rtoc)
-    lfs     f4, -0x3f0(rtoc)
-    lfs     f5, -0x3ec(rtoc)
-    lfs     f6, -0x3fc(rtoc)
+    lfs     f2, -0x3f4(r2)
+    lfs     f3, -0x400(r2)
+    lfs     f4, -0x3f0(r2)
+    lfs     f5, -0x3ec(r2)
+    lfs     f6, -0x3fc(r2)
     bl      C_MTXOrtho
     addi    r3, sp, 0xb8
     li      r4, 0x1
@@ -307,7 +285,7 @@ branch_0x802a5c5c:
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, -0x420(rtoc)
+    lwz     r0, R2Off_m0x420(r2)
     addi    r4, sp, 0x48
     li      r3, 0x4
     stw     r0, 0x44(sp)
@@ -327,9 +305,9 @@ branch_0x802a5c5c:
     li      r5, 0x6
     bl      GXBegin
     li      r9, 0x0
-    lwz     r10, gpSystemFont(r13)
+    lwz     r10, R13Off_m0x6038(r13)
     lis     r8, 0xcc01
-    lwz     r4, gpRomFont(r13)
+    lwz     r4, R13Off_m0x6034(r13)
     sth     r9, -0x8000(r8)
     li      r7, 0xa6
     li      r6, 0xff
@@ -378,9 +356,9 @@ branch_0x802a5ea8:
     addi    r3, sp, 0x54
     li      r5, 0x0
     bl      __ct__8J2DPrintFP7JUTFonti
-    lwz     r5, -0x41c(rtoc)
+    lwz     r5, R2Off_m0x41c(r2)
     addi    r3, sp, 0x54
-    lwz     r0, -0x418(rtoc)
+    lwz     r0, R2Off_m0x418(r2)
     addi    r4, sp, 0xf8
     stw     r5, 0x3c(sp)
     crxor   6, 6, 6
@@ -394,9 +372,9 @@ branch_0x802a5ea8:
     stw     r5, 0x98(sp)
     stw     r0, 0x9c(sp)
     bl      getWidth__8J2DPrintFPCce
-    lfs     f0, -0x3f0(rtoc)
+    lfs     f0, -0x3f0(r2)
     addi    r3, sp, 0x54
-    lfs     f2, -0x3e8(rtoc)
+    lfs     f2, -0x3e8(r2)
     addi    r6, sp, 0xf8
     fsubs   f0, f0, f1
     crxor   6, 6, 6
@@ -423,12 +401,12 @@ branch_0x802a5f30:
 .globl gameLoop__12TApplicationFv
 gameLoop__12TApplicationFv: # 0x802a5f50
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, gSetupThread@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x268(sp)
     stfd    f31, 0x260(sp)
     stmw    r19, 0x22c(sp)
-    subi    r30, r4, 0x3418
+    addi    r30, r4, gSetupThread@l
     addi    r31, r3, 0x0
     addi    r23, sp, 0x140
     addi    r24, sp, 0x150
@@ -438,7 +416,7 @@ gameLoop__12TApplicationFv: # 0x802a5f50
     addi    r22, sp, 0xac
     li      r29, 0x1
     lis     r28, 0x4330
-    lfd     f31, -0x3e0(rtoc)
+    lfd     f31, -0x3e0(r2)
     b       branch_0x802a635c
 
 branch_0x802a5f98:
@@ -448,7 +426,7 @@ branch_0x802a5f98:
     mtlr    r12
     blrl
     lwz     r3, 0x1c(r31)
-    lwz     r20, -0x5ff8(r13)
+    lwz     r20, R13Off_m0x5ff8(r13)
     lwz     r3, 0x60(r3)
     cmplwi  r20, 0x0
     lwz     r21, 0x80(r3)
@@ -467,7 +445,7 @@ branch_0x802a5f98:
     addi    r3, r3, 0x204
     bl      append__10TTimeArrayFUlUl
 branch_0x802a5ff8:
-    lwz     r3, -0x5ff8(r13)
+    lwz     r3, R13Off_m0x5ff8(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802a600c
     li      r4, 0x0
@@ -493,7 +471,7 @@ branch_0x802a6018:
     bl      drawDVDErr__12TApplicationFv
     mr.     r21, r3
     beq-    branch_0x802a60a0
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     bl      reset__9RumbleMgrFv
     addis   r0, r21, 0x9a93
     cmplwi  r0, 0x5f31
@@ -530,7 +508,7 @@ branch_0x802a60a0:
 branch_0x802a60d4:
     cmplwi  r0, 0x3
     bne-    branch_0x802a615c
-    lwz     r0, -0x6030(r13)
+    lwz     r0, R13Off_m0x6030(r13)
     li      r29, 0x0
     clrlwi. r0, r0, 31
     bne-    branch_0x802a6114
@@ -541,11 +519,11 @@ branch_0x802a60d4:
     blrl
     cmpwi   r3, 0x4
     bne-    branch_0x802a6114
-    lwz     r0, -0x6030(r13)
+    lwz     r0, R13Off_m0x6030(r13)
     ori     r0, r0, 0x1
-    stw     r0, -0x6030(r13)
+    stw     r0, R13Off_m0x6030(r13)
 branch_0x802a6114:
-    lwz     r0, -0x6030(r13)
+    lwz     r0, R13Off_m0x6030(r13)
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x802a6148
     mr      r3, r30
@@ -555,11 +533,11 @@ branch_0x802a6114:
     addi    r3, r30, 0x0
     addi    r4, sp, 0x1fc
     bl      OSJoinThread
-    lwz     r0, -0x6030(r13)
+    lwz     r0, R13Off_m0x6030(r13)
     ori     r0, r0, 0x2
-    stw     r0, -0x6030(r13)
+    stw     r0, R13Off_m0x6030(r13)
 branch_0x802a6148:
-    lwz     r0, -0x6030(r13)
+    lwz     r0, R13Off_m0x6030(r13)
     cmpwi   r0, 0x3
     bne-    branch_0x802a6174
     li      r29, 0x4
@@ -599,10 +577,10 @@ branch_0x802a6174:
     stw     r0, 0x1f0(sp)
     li      r0, 0x0
     sth     r0, 0x1f8(sp)
-    lfs     f1, -0x400(rtoc)
+    lfs     f1, -0x400(r2)
     sth     r0, 0xfc(sp)
     fmr     f2, f1
-    lfs     f6, -0x3fc(rtoc)
+    lfs     f6, -0x3fc(r2)
     lwz     r3, 0x1c(r31)
     fmr     f5, f1
     lwz     r3, 0x60(r3)
@@ -627,12 +605,12 @@ branch_0x802a6174:
     addi    r3, sp, 0xbc
     lhz     r0, 0x4(r21)
     stw     r4, 0x214(sp)
-    lfs     f1, -0x400(rtoc)
+    lfs     f1, -0x400(r2)
     stw     r0, 0x20c(sp)
     fmr     f3, f1
-    lfs     f5, -0x3ec(rtoc)
+    lfs     f5, -0x3ec(r2)
     stw     r28, 0x210(sp)
-    lfs     f6, -0x3fc(rtoc)
+    lfs     f6, -0x3fc(r2)
     stw     r28, 0x208(sp)
     lfd     f2, 0x210(sp)
     lfd     f0, 0x208(sp)
@@ -659,13 +637,13 @@ branch_0x802a6174:
     lwz     r12, 0x28(r12)
     mtlr    r12
     blrl
-    lwz     r0, gpMSound(r13)
+    lwz     r0, R13Off_m0x6044(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802a62e0
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      mainLoop__6MSoundFv
 branch_0x802a62e0:
-    lwz     r20, -0x5ff8(r13)
+    lwz     r20, R13Off_m0x5ff8(r13)
     cmplwi  r20, 0x0
     beq-    branch_0x802a630c
     bl      OSGetTick
@@ -683,7 +661,7 @@ branch_0x802a630c:
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    lwz     r3, -0x5ff8(r13)
+    lwz     r3, R13Off_m0x5ff8(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802a6334
     bl      flip__8TTimeRecFv
@@ -694,7 +672,7 @@ branch_0x802a6334:
     cmplwi  r4, 0x0
     beq-    branch_0x802a635c
     lhz     r5, 0x4(r6)
-    lwz     r3, -0x5ee8(r13)
+    lwz     r3, R13Off_m0x5ee8(r13)
     lhz     r6, 0x8(r6)
     bl      changeFrameBuffer__14JUTDirectPrintFPvUsUs
     bl      flushMessage__12JUTAssertionFv
@@ -723,15 +701,15 @@ crTimeAry__8TTimeRecFv: # 0x802a6380
 .globl proc__12TApplicationFv
 proc__12TApplicationFv: # 0x802a6398
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, gpApplication@ha
     stw     r0, 0x4(sp)
-    lis     r5, 0x803e
+    lis     r5, unk_803df424@ha
     stwu    sp, -0xc8(sp)
     stmw    r25, 0xac(sp)
     addi    r31, r3, 0x0
-    subi    r26, r4, 0x6900
-    subi    r28, r5, 0xbdc
-    lis     r27, 0x2
+    addi    r26, r4, gpApplication@l
+    addi    r28, r5, unk_803df424@l
+    lis     r27, unk_00020001@h
     b       branch_0x802a67c8
 
 branch_0x802a63c4:
@@ -742,189 +720,178 @@ branch_0x802a63c4:
     slwi    r0, r0, 2
     lwzx    r0, r28, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x802A63E4:		# jumptable 802A63E0 case 2
+    bctr       
+branch_0x802a63e4:
     lwz     r3, 0x1c(r31)
     bl      SMSSetupGCLogoRenderingInfo__FPQ26JDrama8TDisplay
     b       branch_0x802a6644
 
-branch_0x802A63F0:		# jumptable 802A63E0 case 3
-lwz	  r3, 0x1C(r31)
-bl	  SMSSetupGCLogoRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupGCLogoRenderingInfo(JDrama::TDisplay *)
-li	  r3, 0x48
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r25, r3
-beq	  branch_0x802A6410
-mr	  r3, r25
-bl	  __ct__10TGCLogoDirFv # TGCLogoDir::TGCLogoDir((void))
+branch_0x802a63f0:
+    lwz     r3, 0x1c(r31)
+    bl      SMSSetupGCLogoRenderingInfo__FPQ26JDrama8TDisplay
+    li      r3, 0x48
+    bl      __nw__FUl
+    mr.     r25, r3
+    beq-    branch_0x802a6410
+    mr      r3, r25
+    bl      __ct__10TGCLogoDirFv
+branch_0x802a6410:
+    stw     r25, 0x4(r31)
+    mr      r3, r25
+    lwz     r4, 0x1c(r31)
+    lwz     r5, 0x20(r31)
+    bl      setup__10TGCLogoDirFPQ26JDrama8TDisplayP13TMarioGamePad
+    b       branch_0x802a6644
 
-branch_0x802A6410:
-stw	  r25, 4(r31)
-mr	  r3, r25
-lwz	  r4, 0x1C(r31)
-lwz	  r5, 0x20(r31)
-bl	  setup__10TGCLogoDirFPQ26JDrama8TDisplayP13TMarioGamePad # TGCLogoDir::setup((JDrama::TDisplay	*,TMarioGamePad	*))
-b	  def_802A63E0	# jumptable 802A63E0 default case
+branch_0x802a6428:
+    lwz     r3, 0x1c(r31)
+    bl      SMSSetupTitleRenderingInfo__FPQ26JDrama8TDisplay
+    bl      SMSGetTitleRenderHeight__Fv
+    clrlwi  r25, r3, 16
+    bl      SMSGetTitleRenderWidth__Fv
+    clrlwi  r4, r3, 16
+    lwz     r3, 0x34(r31)
+    mr      r5, r25
+    bl      setDisplaySize__9TSMSFaderFii
+    li      r3, 0x58
+    bl      __nw__FUl
+    mr.     r25, r3
+    beq-    branch_0x802a6464
+    mr      r3, r25
+    bl      __ct__13TMenuDirectorFv
+branch_0x802a6464:
+    stw     r25, 0x4(r31)
+    mr      r3, r25
+    lwz     r4, 0x1c(r31)
+    lwz     r5, 0x20(r31)
+    bl      setup__13TMenuDirectorFPQ26JDrama8TDisplayP13TMarioGamePad
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r27, unk_00020001@l
+    li      r5, 0x3
+    bl      setFlag__12TFlagManagerFUll
+    li      r0, 0x1
+    stb     r0, 0xe(r31)
+    li      r0, 0x0
+    stb     r0, 0xf(r31)
+    sth     r0, 0x10(r31)
+    b       branch_0x802a6644
 
-branch_0x802A6428:		# jumptable 802A63E0 case 9
-lwz	  r3, 0x1C(r31)
-bl	  SMSSetupTitleRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupTitleRenderingInfo(JDrama::TDisplay *)
-bl	  SMSGetTitleRenderHeight__Fv #	SMSGetTitleRenderHeight(void)
-clrlwi	  r25, r3, 16
-bl	  SMSGetTitleRenderWidth__Fv # SMSGetTitleRenderWidth(void)
-clrlwi	  r4, r3, 16
-lwz	  r3, 0x34(r31)
-mr	  r5, r25
-bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
-li	  r3, 0x58
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r25, r3
-beq	  branch_0x802A6464
-mr	  r3, r25
-bl	  __ct__13TMenuDirectorFv # TMenuDirector::TMenuDirector((void))
+branch_0x802a64a0:
+    mr      r3, r31
+    bl      checkAdditionalMovie__12TApplicationFv
+    clrlwi. r0, r3, 24
+    beq-    branch_0x802a6504
+    lwz     r3, 0x1c(r31)
+    bl      SMSSetupMovieRenderingInfo__FPQ26JDrama8TDisplay
+    bl      SMSGetGameRenderHeight__Fv
+    clrlwi  r25, r3, 16
+    bl      SMSGetGameRenderWidth__Fv
+    clrlwi  r4, r3, 16
+    lwz     r3, 0x34(r31)
+    mr      r5, r25
+    bl      setDisplaySize__9TSMSFaderFii
+    li      r3, 0x3c
+    bl      __nw__FUl
+    mr.     r25, r3
+    beq-    branch_0x802a64ec
+    mr      r3, r25
+    bl      __ct__14TMovieDirectorFv
+branch_0x802a64ec:
+    stw     r25, 0x4(r31)
+    mr      r3, r25
+    lwz     r4, 0x1c(r31)
+    lwz     r5, 0x20(r31)
+    bl      setup__14TMovieDirectorFPQ26JDrama8TDisplayP13TMarioGamePad
+    b       branch_0x802a6644
 
-branch_0x802A6464:
-stw	  r25, 4(r31)
-mr	  r3, r25
-lwz	  r4, 0x1C(r31)
-lwz	  r5, 0x20(r31)
-bl	  setup__13TMenuDirectorFPQ26JDrama8TDisplayP13TMarioGamePad # TMenuDirector::setup((JDrama::TDisplay *,TMarioGamePad *))
-lwz	  r3, -0x6060(r13)
-addi	  r4, r27, 1 # 0x20001
-li	  r5, 3
-bl	  setFlag__12TFlagManagerFUll #	TFlagManager::setFlag((ulong,long))
-li	  r0, 1
-stb	  r0, 0xE(r31)
-li	  r0, 0
-stb	  r0, 0xF(r31)
-sth	  r0, 0x10(r31)
-b	  def_802A63E0	# jumptable 802A63E0 default case
+branch_0x802a6504:
+    lhz     r0, 0x44(r31)
+    lwz     r3, 0x1c(r31)
+    clrlwi  r0, r0, 31
+    neg     r4, r0
+    subic   r0, r4, 0x1
+    subfe   r4, r0, r4
+    bl      SMSSetupGameRenderingInfo__FPQ26JDrama8TDisplayb
+    bl      SMSGetGameRenderHeight__Fv
+    clrlwi  r25, r3, 16
+    bl      SMSGetGameRenderWidth__Fv
+    clrlwi  r4, r3, 16
+    lwz     r3, 0x34(r31)
+    mr      r5, r25
+    bl      setDisplaySize__9TSMSFaderFii
+    li      r3, 0x268
+    bl      __nw__FUl
+    mr.     r25, r3
+    beq-    branch_0x802a6554
+    mr      r3, r25
+    bl      __ct__12TMarDirectorFv
+branch_0x802a6554:
+    stw     r25, 0x4(r31)
+    mr      r3, r25
+    addi    r5, r31, 0x20
+    lbz     r7, 0xf(r31)
+    lbz     r6, 0xe(r31)
+    lwz     r4, 0x1c(r31)
+    bl      setup__12TMarDirectorFPQ26JDrama8TDisplayPP13TMarioGamePadUcUc
+    mr.     r29, r3
+    beq-    branch_0x802a6644
+    li      r30, 0x4
+    b       branch_0x802a6644
 
-branch_0x802A64A0:		# jumptable 802A63E0 case 5
-mr	  r3, r31
-bl	  checkAdditionalMovie__12TApplicationFv # TApplication::checkAdditionalMovie((void))
-clrlwi.	  r0, r3, 24
-beq	  branch_0x802A6504
-lwz	  r3, 0x1C(r31)
-bl	  SMSSetupMovieRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupMovieRenderingInfo(JDrama::TDisplay *)
-bl	  SMSGetGameRenderHeight__Fv # SMSGetGameRenderHeight(void)
-clrlwi	  r25, r3, 16
-bl	  SMSGetGameRenderWidth__Fv # SMSGetGameRenderWidth(void)
-clrlwi	  r4, r3, 16
-lwz	  r3, 0x34(r31)
-mr	  r5, r25
-bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
-li	  r3, 0x3C
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r25, r3
-beq	  branch_0x802A64EC
-mr	  r3, r25
-bl	  __ct__14TMovieDirectorFv # TMovieDirector::TMovieDirector((void))
+branch_0x802a6580:
+    lwz     r3, 0x1c(r31)
+    bl      SMSSetupTitleRenderingInfo__FPQ26JDrama8TDisplay
+    bl      SMSGetTitleRenderHeight__Fv
+    clrlwi  r25, r3, 16
+    bl      SMSGetTitleRenderWidth__Fv
+    clrlwi  r4, r3, 16
+    lwz     r3, 0x34(r31)
+    mr      r5, r25
+    bl      setDisplaySize__9TSMSFaderFii
+    li      r3, 0x50
+    bl      __nw__FUl
+    mr.     r25, r3
+    beq-    branch_0x802a65bc
+    mr      r3, r25
+    bl      __ct__10TSelectDirFv
+branch_0x802a65bc:
+    stw     r25, 0x4(r31)
+    mr      r3, r25
+    lbz     r6, 0xe(r31)
+    lwz     r4, 0x1c(r31)
+    lwz     r5, 0x20(r31)
+    bl      setup__10TSelectDirFPQ26JDrama8TDisplayP13TMarioGamePadUc
+    b       branch_0x802a6644
 
-branch_0x802A64EC:
-stw	  r25, 4(r31)
-mr	  r3, r25
-lwz	  r4, 0x1C(r31)
-lwz	  r5, 0x20(r31)
-bl	  setup__14TMovieDirectorFPQ26JDrama8TDisplayP13TMarioGamePad #	TMovieDirector::setup((JDrama::TDisplay	*,TMarioGamePad	*))
-b	  def_802A63E0	# jumptable 802A63E0 default case
-
-branch_0x802A6504:
-lhz	  r0, 0x44(r31)
-lwz	  r3, 0x1C(r31)
-clrlwi	  r0, r0, 31
-neg	  r4, r0
-addic	  r0, r4, -1
-subfe	  r4, r0, r4
-bl	  SMSSetupGameRenderingInfo__FPQ26JDrama8TDisplayb # SMSSetupGameRenderingInfo(JDrama::TDisplay	*,bool)
-bl	  SMSGetGameRenderHeight__Fv # SMSGetGameRenderHeight(void)
-clrlwi	  r25, r3, 16
-bl	  SMSGetGameRenderWidth__Fv # SMSGetGameRenderWidth(void)
-clrlwi	  r4, r3, 16
-lwz	  r3, 0x34(r31)
-mr	  r5, r25
-bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
-li	  r3, 0x268
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r25, r3
-beq	  branch_0x802A6554
-mr	  r3, r25
-bl	  __ct__12TMarDirectorFv # TMarDirector::TMarDirector((void))
-
-branch_0x802A6554:
-stw	  r25, 4(r31)
-mr	  r3, r25
-addi	  r5, r31, 0x20
-lbz	  r7, 0xF(r31)
-lbz	  r6, 0xE(r31)
-lwz	  r4, 0x1C(r31)
-bl	  setup__12TMarDirectorFPQ26JDrama8TDisplayPP13TMarioGamePadUcUc # TMarDirector::setup((JDrama::TDisplay *,TMarioGamePad **,uchar,uchar))
-mr.	  r29, r3
-beq	  def_802A63E0	# jumptable 802A63E0 default case
-li	  r30, 4
-b	  def_802A63E0	# jumptable 802A63E0 default case
-
-branch_0x802A6580:		# jumptable 802A63E0 case 8
-lwz	  r3, 0x1C(r31)
-bl	  SMSSetupTitleRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupTitleRenderingInfo(JDrama::TDisplay *)
-bl	  SMSGetTitleRenderHeight__Fv #	SMSGetTitleRenderHeight(void)
-clrlwi	  r25, r3, 16
-bl	  SMSGetTitleRenderWidth__Fv # SMSGetTitleRenderWidth(void)
-clrlwi	  r4, r3, 16
-lwz	  r3, 0x34(r31)
-mr	  r5, r25
-bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
-li	  r3, 0x50
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r25, r3
-beq	  branch_0x802A65BC
-mr	  r3, r25
-bl	  __ct__10TSelectDirFv # TSelectDir::TSelectDir((void))
-
-branch_0x802A65BC:
-stw	  r25, 4(r31)
-mr	  r3, r25
-lbz	  r6, 0xE(r31)
-lwz	  r4, 0x1C(r31)
-lwz	  r5, 0x20(r31)
-bl	  setup__10TSelectDirFPQ26JDrama8TDisplayP13TMarioGamePadUc # TSelectDir::setup((JDrama::TDisplay *,TMarioGamePad *,uchar))
-b	  def_802A63E0	# jumptable 802A63E0 default case
-
-branch_0x802A65D8:		# jumptable 802A63E0 case 4
-li	  r0, 9
-stw	  r0, 0x18(r26) #(dword_803E9718 -	unk_803E9700)(r26)
-li	  r3, 0xF
-li	  r0, 0
-stb	  r3, 0x12(r31)
-stb	  r0, 0x13(r31)
-sth	  r0, 0x14(r31)
-
-branch_0x802A65F4:		# jumptable 802A63E0 case 6
-lwz	  r3, 0x1C(r31)
-bl	  SMSSetupMovieRenderingInfo__FPQ26JDrama8TDisplay # SMSSetupMovieRenderingInfo(JDrama::TDisplay *)
-bl	  SMSGetGameRenderHeight__Fv # SMSGetGameRenderHeight(void)
-clrlwi	  r25, r3, 16
-bl	  SMSGetGameRenderWidth__Fv # SMSGetGameRenderWidth(void)
-clrlwi	  r4, r3, 16
-lwz	  r3, 0x34(r31)
-mr	  r5, r25
-bl	  setDisplaySize__9TSMSFaderFii	# TSMSFader::setDisplaySize((int,int))
-li	  r3, 0x3C
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r25, r3
-beq	  branch_0x802A6630
-mr	  r3, r25
-bl	  __ct__14TMovieDirectorFv # TMovieDirector::TMovieDirector((void))
-
-branch_0x802A6630:
-stw	  r25, 4(r31)
-mr	  r3, r25
-lwz	  r4, 0x1C(r31)
-lwz	  r5, 0x20(r31)
-bl	  setup__14TMovieDirectorFPQ26JDrama8TDisplayP13TMarioGamePad #	TMovieDirector::setup((JDrama::TDisplay	*,TMarioGamePad	*))
-
-def_802A63E0:		# jumptable 802A63E0 default case
+branch_0x802a65d8:
+    li      r0, 0x9
+    stw     r0, 0x18(r26)
+    li      r3, 0xf
+    li      r0, 0x0
+    stb     r3, 0x12(r31)
+    stb     r0, 0x13(r31)
+    sth     r0, 0x14(r31)
+    lwz     r3, 0x1c(r31)
+    bl      SMSSetupMovieRenderingInfo__FPQ26JDrama8TDisplay
+    bl      SMSGetGameRenderHeight__Fv
+    clrlwi  r25, r3, 16
+    bl      SMSGetGameRenderWidth__Fv
+    clrlwi  r4, r3, 16
+    lwz     r3, 0x34(r31)
+    mr      r5, r25
+    bl      setDisplaySize__9TSMSFaderFii
+    li      r3, 0x3c
+    bl      __nw__FUl
+    mr.     r25, r3
+    beq-    branch_0x802a6630
+    mr      r3, r25
+    bl      __ct__14TMovieDirectorFv
+branch_0x802a6630:
+    stw     r25, 0x4(r31)
+    mr      r3, r25
+    lwz     r4, 0x1c(r31)
+    lwz     r5, 0x20(r31)
+    bl      setup__14TMovieDirectorFPQ26JDrama8TDisplayP13TMarioGamePad
 branch_0x802a6644:
     cmpwi   r29, 0x0
     bne-    branch_0x802a6658
@@ -984,7 +951,7 @@ branch_0x802a66f4:
     mtlr    r12
     blrl
 branch_0x802a6708:
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     bl      reset__9RumbleMgrFv
     lwz     r3, 0x20(r31)
     li      r4, 0x1
@@ -1022,7 +989,7 @@ branch_0x802a677c:
     cmplwi  r0, 0x7
     beq-    branch_0x802a6794
     li      r30, 0x4
-    lwz     r3, -0x603c(r13)
+    lwz     r3, R13Off_m0x603c(r13)
     bl      unmount__12TCardManagerFv
 branch_0x802a6794:
     stb     r30, 0x8(r31)
@@ -1052,9 +1019,9 @@ branch_0x802a67c8:
 .globl checkAdditionalMovie__12TApplicationFv
 checkAdditionalMovie__12TApplicationFv: # 0x802a67e8
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, gpApplication@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x6900
+    addi    r4, r4, gpApplication@l
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
     li      r31, 0x0
@@ -1068,15 +1035,15 @@ checkAdditionalMovie__12TApplicationFv: # 0x802a67e8
     clrlwi  r0, r3, 24
     cmplwi  r0, 0xff
     beq-    branch_0x802a687c
-    lwz     r0, -0x6060(r13)
+    lwz     r0, R13Off_m0x6060(r13)
     addi    r4, r3, 0x0
     mr      r3, r0
     bl      getShineFlag__12TFlagManagerCFUc
     clrlwi. r0, r3, 24
     bne-    branch_0x802a69ac
-    lis     r29, 0x3
-    lwz     r3, -0x6060(r13)
-    addi    r4, r29, 0xd
+    lis     r29, unk_0003000d@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r29, unk_0003000d@l
     bl      getBool__12TFlagManagerCFUl
     clrlwi. r0, r3, 24
     bne-    branch_0x802a69ac
@@ -1084,7 +1051,7 @@ checkAdditionalMovie__12TApplicationFv: # 0x802a67e8
     stw     r0, 0x18(r30)
     addi    r5, r29, 0xd
     li      r4, 0x1
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     bl      setBool__12TFlagManagerFbUl
     li      r31, 0x1
     b       branch_0x802a69ac
@@ -1107,9 +1074,9 @@ branch_0x802a68a4:
     lbz     r0, 0x1(r29)
     cmplwi  r0, 0x0
     bne-    branch_0x802a69ac
-    lis     r29, 0x3
-    lwz     r3, -0x6060(r13)
-    addi    r4, r29, 0x9
+    lis     r29, unk_00030009@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r29, unk_00030009@l
     bl      getBool__12TFlagManagerCFUl
     clrlwi. r0, r3, 24
     bne-    branch_0x802a69ac
@@ -1117,7 +1084,7 @@ branch_0x802a68a4:
     stw     r0, 0x18(r30)
     addi    r5, r29, 0x9
     li      r4, 0x1
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     bl      setBool__12TFlagManagerFbUl
     li      r31, 0x1
     b       branch_0x802a69ac
@@ -1126,9 +1093,9 @@ branch_0x802a68e8:
     lbz     r0, 0x1(r29)
     cmplwi  r0, 0x0
     bne-    branch_0x802a692c
-    lis     r29, 0x3
-    lwz     r3, -0x6060(r13)
-    addi    r4, r29, 0xb
+    lis     r29, unk_0003000b@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r29, unk_0003000b@l
     bl      getBool__12TFlagManagerCFUl
     clrlwi. r0, r3, 24
     bne-    branch_0x802a69ac
@@ -1136,7 +1103,7 @@ branch_0x802a68e8:
     stw     r0, 0x18(r30)
     addi    r5, r29, 0xb
     li      r4, 0x1
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     bl      setBool__12TFlagManagerFbUl
     li      r31, 0x1
     b       branch_0x802a69ac
@@ -1144,9 +1111,9 @@ branch_0x802a68e8:
 branch_0x802a692c:
     cmplwi  r0, 0x1
     bne-    branch_0x802a69ac
-    lis     r29, 0x3
-    lwz     r3, -0x6060(r13)
-    addi    r4, r29, 0xc
+    lis     r29, unk_0003000c@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r29, unk_0003000c@l
     bl      getBool__12TFlagManagerCFUl
     clrlwi. r0, r3, 24
     bne-    branch_0x802a69ac
@@ -1154,7 +1121,7 @@ branch_0x802a692c:
     stw     r0, 0x18(r30)
     addi    r5, r29, 0xc
     li      r4, 0x1
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     bl      setBool__12TFlagManagerFbUl
     li      r31, 0x1
     b       branch_0x802a69ac
@@ -1163,9 +1130,9 @@ branch_0x802a696c:
     lbz     r0, 0x1(r29)
     cmplwi  r0, 0x2
     bne-    branch_0x802a69ac
-    lis     r29, 0x3
-    lwz     r3, -0x6060(r13)
-    addi    r4, r29, 0xd
+    lis     r29, unk_0003000d@h
+    lwz     r3, R13Off_m0x6060(r13)
+    addi    r4, r29, unk_0003000d@l
     bl      getBool__12TFlagManagerCFUl
     clrlwi. r0, r3, 24
     bne-    branch_0x802a69ac
@@ -1173,7 +1140,7 @@ branch_0x802a696c:
     stw     r0, 0x18(r30)
     addi    r5, r29, 0xd
     li      r4, 0x1
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     bl      setBool__12TFlagManagerFbUl
     li      r31, 0x1
 branch_0x802a69ac:
@@ -1194,16 +1161,16 @@ finalize__12TApplicationFv: # 0x802a69cc
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     bl      reset__9RumbleMgrFv
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802a69fc
     li      r4, 0x3c
     bl      resetAudioAll__6MSoundFUs
 branch_0x802a69fc:
     bl      clearForReset__10JUTGamePadFv
-    lwz     r3, -0x603c(r13)
+    lwz     r3, R13Off_m0x603c(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802a6a14
     li      r4, -0x1
@@ -1213,7 +1180,7 @@ branch_0x802a6a14:
     bl      VISetBlack
     bl      VIFlush
     bl      VIWaitForRetrace
-    lwz     r0, gpMSound(r13)
+    lwz     r0, R13Off_m0x6044(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802a6a4c
     b       branch_0x802a6a38
@@ -1221,7 +1188,7 @@ branch_0x802a6a14:
 branch_0x802a6a34:
     bl      VIWaitForRetrace
 branch_0x802a6a38:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x3c
     bl      resetAudioAll__6MSoundFUs
     clrlwi. r0, r3, 24
@@ -1249,11 +1216,11 @@ branch_0x802a6a64:
 .globl initialize_nlogoAfter__12TApplicationFv
 initialize_nlogoAfter__12TApplicationFv: # 0x802a6a84
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_803a4010@h
     stw     r0, 0x4(sp)
     stwu    sp, -0xa0(sp)
     stmw    r24, 0x80(sp)
-    addi    r30, r4, 0x4010
+    addi    r30, r4, unk_803a4010@l
     addi    r31, r3, 0x0
     addi    r3, r30, 0x1f8
     bl      getVolume__13JKRFileLoaderFPCc
@@ -1268,68 +1235,68 @@ initialize_nlogoAfter__12TApplicationFv: # 0x802a6a84
     mtlr    r12
     blrl
 branch_0x802a6ad0:
-    lwz     r3, -0x5f28(r13)
+    lwz     r3, R13Off_m0x5f28(r13)
     bl      becomeCurrentHeap__7JKRHeapFv
     li      r3, 0x6c
     bl      __nw__FUl
     mr.     r24, r3
     beq-    branch_0x802a6afc
-    lwz     r4, -0x6024(r13)
+    lwz     r4, R13Off_m0x6024(r13)
     addi    r3, r24, 0x0
     li      r5, 0x0
     li      r6, 0x0
     bl      __ct__13JKRMemArchiveFPvUl15JKRMemBreakFlag
 branch_0x802a6afc:
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     addi    r27, r24, 0x0
     li      r3, 0x8
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi
     cmplwi  r3, 0x0
     beq-    branch_0x802a6b30
-    lis     r4, 0x803e
-    addi    r0, r4, 0x2130
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JDrama11TNameRefGen@h
+    addi    r0, r4, __vvt__Q26JDrama11TNameRefGen@l
+    lis     r4, __vvt__14TMarNameRefGen@ha
     stw     r0, 0x0(r3)
-    subi    r0, r4, 0xec8
+    addi    r0, r4, __vvt__14TMarNameRefGen@l
     stw     r0, 0x0(r3)
 branch_0x802a6b30:
-    lwz     r0, -0x5f28(r13)
-    stw     r3, -0x5db8(r13)
+    lwz     r0, R13Off_m0x5f28(r13)
+    stw     r3, R13Off_m0x5db8(r13)
     mr      r3, r0
-    lwz     r4, -0x6020(r13)
+    lwz     r4, R13Off_m0x6020(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x20(r12)
     mtlr    r12
     blrl
     addi    r28, sp, 0x68
-    lwz     r4, -0x6020(r13)
+    lwz     r4, R13Off_m0x6020(r13)
     stw     r28, 0x4c(sp)
-    lis     r5, 0x803b
-    subi    r0, r5, 0xf0c
+    lis     r5, __vvt__10JSUIosBase@ha
+    addi    r0, r5, __vvt__10JSUIosBase@l
     lwz     r7, 0x4c(sp)
-    lis     r5, 0x803e
-    addi    r25, r5, 0x160
+    lis     r5, __vvt__20JSURandomInputStream@h
+    addi    r25, r5, __vvt__20JSURandomInputStream@l
     stw     r0, 0x0(r7)
     li      r29, 0x0
-    lis     r6, 0x803e
+    lis     r6, __vvt__14JSUInputStream@h
     stb     r29, 0x4(r7)
-    addi    r0, r6, 0x184
-    lis     r6, 0x803e
+    addi    r0, r6, __vvt__14JSUInputStream@l
+    lis     r6, __vvt__20JSUMemoryInputStream@h
     stw     r0, 0x0(r7)
     addi    r5, r3, 0x0
-    addi    r26, r6, 0x1c8
+    addi    r26, r6, __vvt__20JSUMemoryInputStream@l
     stw     r25, 0x0(r7)
     addi    r3, r7, 0x0
     stw     r26, 0x0(r7)
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
-    lwz     r3, -0x5db8(r13)
+    lwz     r3, R13Off_m0x5db8(r13)
     mr      r4, r28
     lwz     r12, 0x0(r3)
     lwz     r12, 0x8(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x204
     lwz     r24, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -1341,19 +1308,19 @@ branch_0x802a6b30:
     mtlr    r12
     blrl
     stw     r3, 0x30(r31)
-    lwz     r3, -0x5db8(r13)
+    lwz     r3, R13Off_m0x5db8(r13)
     bl      __dl__FPv
     stw     r26, 0x68(sp)
     addi    r3, r28, 0x0
     li      r4, 0x0
-    stw     r29, -0x5db8(r13)
+    stw     r29, R13Off_m0x5db8(r13)
     stw     r25, 0x68(sp)
     bl      __dt__14JSUInputStreamFv
-    stw     r29, gpRomFont(r13)
+    stw     r29, R13Off_m0x6034(r13)
     lwz     r3, 0x40(r31)
     bl      destroy__10JKRExpHeapFv
-    lwz     r3, -0x5f28(r13)
-    lwz     r4, -0x601c(r13)
+    lwz     r3, R13Off_m0x5f28(r13)
+    lwz     r4, R13Off_m0x601c(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
     mtlr    r12
@@ -1362,7 +1329,7 @@ branch_0x802a6b30:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x802a6c50
-    lwz     r4, -0x6028(r13)
+    lwz     r4, R13Off_m0x6028(r13)
     li      r5, 0x0
     li      r6, 0x0
     bl      __ct__13JKRMemArchiveFPvUl15JKRMemBreakFlag
@@ -1373,7 +1340,7 @@ branch_0x802a6c50:
     lwz     r12, 0x14(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x603c(r13)
+    lwz     r4, R13Off_m0x603c(r13)
     addi    r0, r3, 0x20
     addi    r3, r27, 0x0
     stw     r0, 0x4(r4)
@@ -1382,7 +1349,7 @@ branch_0x802a6c50:
     lwz     r12, 0x14(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x603c(r13)
+    lwz     r4, R13Off_m0x603c(r13)
     addi    r0, r3, 0x20
     stw     r0, 0x8(r4)
     b       branch_0x802a6ca0
@@ -1390,7 +1357,7 @@ branch_0x802a6c50:
 branch_0x802a6c9c:
     bl      OSYieldThread
 branch_0x802a6ca0:
-    lwz     r3, -0x603c(r13)
+    lwz     r3, R13Off_m0x603c(r13)
     bl      getLastStatus__12TCardManagerFv
     cmpwi   r3, -0x1
     beq+    branch_0x802a6c9c
@@ -1398,28 +1365,28 @@ branch_0x802a6ca0:
     bne-    branch_0x802a6d34
     addi    r29, sp, 0x54
     stw     r29, 0x40(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0xf0c
+    lis     r4, __vvt__10JSUIosBase@ha
+    addi    r0, r4, __vvt__10JSUIosBase@l
     lwz     r3, 0x40(sp)
-    lis     r5, 0x803e
-    addi    r28, r5, 0x160
+    lis     r5, __vvt__20JSURandomInputStream@h
+    addi    r28, r5, __vvt__20JSURandomInputStream@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
-    lis     r4, 0x803e
-    lis     r6, 0x803e
+    lis     r4, __vvt__20JSUMemoryInputStream@h
+    lis     r6, __vvt__14JSUInputStream@h
     stb     r0, 0x4(r3)
-    addi    r0, r6, 0x184
+    addi    r0, r6, __vvt__14JSUInputStream@l
     stw     r0, 0x0(r3)
-    addi    r27, r4, 0x1c8
+    addi    r27, r4, __vvt__20JSUMemoryInputStream@l
     li      r4, 0x0
     stw     r28, 0x0(r3)
     li      r5, 0x0
     stw     r27, 0x0(r3)
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
-    lwz     r3, -0x603c(r13)
+    lwz     r3, R13Off_m0x603c(r13)
     mr      r4, r29
     bl      getOptionReadStream__12TCardManagerFP20JSUMemoryInputStream
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     mr      r4, r29
     bl      loadOption__12TFlagManagerFR20JSUMemoryInputStream
     stw     r27, 0x54(sp)
@@ -1428,9 +1395,9 @@ branch_0x802a6ca0:
     stw     r28, 0x54(sp)
     bl      __dt__14JSUInputStreamFv
 branch_0x802a6d34:
-    lwz     r3, -0x603c(r13)
+    lwz     r3, R13Off_m0x603c(r13)
     bl      unmount__12TCardManagerFv
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     li      r24, 0x1
     lis     r4, 0xa
     bl      getFlag__12TFlagManagerCFUl
@@ -1457,7 +1424,7 @@ branch_0x802a6d7c:
     bl      setParamSoundOutputMode__18JAIGlobalParameterFUl
     li      r3, 0xc
     bl      JMANewSinTable__FUc
-    lwz     r24, -0x5f2c(r13)
+    lwz     r24, R13Off_m0x5f2c(r13)
     lwz     r12, 0x0(r24)
     mr      r3, r24
     lwz     r12, 0x24(r12)
@@ -1479,16 +1446,16 @@ branch_0x802a6d7c:
 .globl initialize_bootAfter__12TApplicationFv
 initialize_bootAfter__12TApplicationFv: # 0x802a6dd0
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_803a4010@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r31, r3, 0x0
-    addi    r30, r4, 0x4010
-    lwz     r0, -0x5f28(r13)
+    addi    r30, r4, unk_803a4010@l
+    lwz     r0, R13Off_m0x5f28(r13)
     mr      r3, r0
     bl      becomeCurrentHeap__7JKRHeapFv
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x6c
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi
@@ -1496,13 +1463,13 @@ initialize_bootAfter__12TApplicationFv: # 0x802a6dd0
     beq-    branch_0x802a6e14
     bl      __ct__13JKRMemArchiveFv
 branch_0x802a6e14:
-    lwz     r4, -0x602c(r13)
+    lwz     r4, R13Off_m0x602c(r13)
     mr      r29, r3
     li      r5, 0x0
     bl      mountFixed__13JKRMemArchiveFPv15JKRMemBreakFlag
     mr      r3, r29
     lwz     r12, 0x0(r29)
-    subi    r4, rtoc, 0x3d8
+    addi    r4, r2, R2Off_m0x3d8
     lwz     r12, 0x10(r12)
     mtlr    r12
     blrl
@@ -1541,9 +1508,9 @@ branch_0x802a6e14:
     li      r5, 0x0
     bl      __ct__10JUTResFontFPC7ResFONTP10JKRArchive
 branch_0x802a6ec4:
-    stw     r28, gpSystemFont(r13)
+    stw     r28, R13Off_m0x6038(r13)
     addi    r3, r29, 0x0
-    subi    r4, rtoc, 0x3d0
+    addi    r4, r2, R2Off_m0x3d0
     lwz     r12, 0x0(r29)
     lwz     r12, 0x10(r12)
     mtlr    r12
@@ -1573,7 +1540,7 @@ branch_0x802a6ec4:
     addi    r6, r30, 0x268
     mtlr    r12
     blrl
-    lwz     r27, -0x5f2c(r13)
+    lwz     r27, R13Off_m0x5f2c(r13)
     li      r3, 0xd8
     bl      __nw__FUl
     mr.     r29, r3
@@ -1587,7 +1554,7 @@ branch_0x802a6ec4:
     lis     r9, 0xb0
     bl      __ct__6MSoundFP7JKRHeapP7JKRHeapUlPUcPUcUl
 branch_0x802a6f78:
-    stw     r29, gpMSound(r13)
+    stw     r29, R13Off_m0x6044(r13)
     bl      OSGetSoundMode
     cmplwi  r3, 0x0
     bne-    branch_0x802a6f90
@@ -1598,10 +1565,10 @@ branch_0x802a6f90:
     li      r3, 0x1
 branch_0x802a6f94:
     bl      setParamSoundOutputMode__18JAIGlobalParameterFUl
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x0
     bl      loadWave__6MSoundF13MS_SCENE_WAVE
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x210
     bl      loadWave__6MSoundF13MS_SCENE_WAVE
     mr      r3, r27
@@ -1610,9 +1577,9 @@ branch_0x802a6f94:
     li      r3, 0x2000
     li      r4, 0x20
     bl      __nwa__FUli
-    lis     r4, 0x1
+    lis     r4, unk_0000a000@ha
     addi    r27, r3, 0x0
-    subi    r3, r4, 0x6000
+    addi    r3, r4, unk_0000a000@l
     li      r4, 0x20
     bl      __nwa__FUli
     addi    r28, r3, 0x0
@@ -1633,16 +1600,16 @@ branch_0x802a6f94:
     li      r9, 0x1000
     bl      __ct__12TCardManagerFPvPvllPvUl
 branch_0x802a7020:
-    stw     r30, -0x603c(r13)
-    lwz     r3, -0x603c(r13)
+    stw     r30, R13Off_m0x603c(r13)
+    lwz     r3, R13Off_m0x603c(r13)
     bl      readOptionBlock__12TCardManagerFv
     lwz     r3, 0x40(r31)
     bl      becomeCurrentHeap__7JKRHeapFv
-    lwz     r6, -0x6040(r13)
-    lis     r4, 0x8040
-    lis     r3, 0x802a
-    subi    r30, r4, 0x3418
-    addi    r4, r3, 0x7080
+    lwz     r6, R13Off_m0x6040(r13)
+    lis     r4, gSetupThread@ha
+    lis     r3, SetupThreadFuncLogo__FPv@h
+    addi    r30, r4, gSetupThread@l
+    addi    r4, r3, SetupThreadFuncLogo__FPv@l
     addi    r3, r30, 0x0
     addi    r5, r31, 0x0
     addis   r6, r6, 0x1
@@ -1674,11 +1641,11 @@ SetupThreadFuncLogo__FPv: # 0x802a7080
 .globl setupThreadFuncLogo__12TApplicationFv
 setupThreadFuncLogo__12TApplicationFv: # 0x802a70a0
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_803a4010@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x140(sp)
     stw     r31, 0x13c(sp)
-    addi    r31, r4, 0x4010
+    addi    r31, r4, unk_803a4010@l
     stw     r30, 0x138(sp)
     addi    r30, r3, 0x0
     stw     r29, 0x134(sp)
@@ -1688,7 +1655,7 @@ setupThreadFuncLogo__12TApplicationFv: # 0x802a70a0
 branch_0x802a70cc:
     bl      OSYieldThread
 branch_0x802a70d0:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x0
     bl      checkWaveOnAram__6MSoundF13MS_SCENE_WAVE
     clrlwi. r0, r3, 24
@@ -1698,26 +1665,26 @@ branch_0x802a70d0:
 branch_0x802a70e8:
     bl      OSYieldThread
 branch_0x802a70ec:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x210
     bl      checkWaveOnAram__6MSoundF13MS_SCENE_WAVE
     clrlwi. r0, r3, 24
     beq+    branch_0x802a70e8
-    lwz     r28, -0x5f28(r13)
+    lwz     r28, R13Off_m0x5f28(r13)
     cmplwi  r28, 0x0
     bne-    branch_0x802a7110
-    lwz     r28, -0x5f2c(r13)
+    lwz     r28, R13Off_m0x5f2c(r13)
 branch_0x802a7110:
     addi    r3, sp, 0xe8
     addi    r4, r31, 0x274
     li      r29, 0x0
     bl      strcpy
     addi    r3, sp, 0xe8
-    subi    r4, rtoc, 0x414
+    addi    r4, r2, R2Off_m0x414
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x802a7174
-    subi    r4, rtoc, 0x40c
+    addi    r4, r2, R2Off_m0x40c
     bl      strcpy
     addi    r3, sp, 0xe8
     bl      DVDConvertPathToEntrynum
@@ -1747,22 +1714,22 @@ branch_0x802a7174:
     bl      loadToMainRAM__12JKRDvdRipperFPCcPUc15JKRExpandSwitchUlP7JKRHeapQ212JKRDvdRipper15EAllocDirectionUlPi
     mr      r29, r3
 branch_0x802a71a4:
-    lwz     r28, -0x5f28(r13)
-    stw     r29, -0x6028(r13)
+    lwz     r28, R13Off_m0x5f28(r13)
+    stw     r29, R13Off_m0x6028(r13)
     cmplwi  r28, 0x0
     bne-    branch_0x802a71b8
-    lwz     r28, -0x5f2c(r13)
+    lwz     r28, R13Off_m0x5f2c(r13)
 branch_0x802a71b8:
     addi    r3, sp, 0xa4
     addi    r4, r31, 0x284
     li      r29, 0x0
     bl      strcpy
     addi    r3, sp, 0xa4
-    subi    r4, rtoc, 0x414
+    addi    r4, r2, R2Off_m0x414
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x802a721c
-    subi    r4, rtoc, 0x40c
+    addi    r4, r2, R2Off_m0x40c
     bl      strcpy
     addi    r3, sp, 0xa4
     bl      DVDConvertPathToEntrynum
@@ -1792,7 +1759,7 @@ branch_0x802a721c:
     bl      loadToMainRAM__12JKRDvdRipperFPCcPUc15JKRExpandSwitchUlP7JKRHeapQ212JKRDvdRipper15EAllocDirectionUlPi
     mr      r29, r3
 branch_0x802a724c:
-    stw     r29, -0x6024(r13)
+    stw     r29, R13Off_m0x6024(r13)
     addi    r3, r31, 0x298
     li      r4, 0x0
     lwz     r7, 0x40(r30)
@@ -1802,16 +1769,16 @@ branch_0x802a724c:
     li      r9, 0x0
     li      r10, 0x0
     bl      loadToMainRAM__12JKRDvdRipperFPCcPUc15JKRExpandSwitchUlP7JKRHeapQ212JKRDvdRipper15EAllocDirectionUlPi
-    stw     r3, -0x6020(r13)
+    stw     r3, R13Off_m0x6020(r13)
     addi    r3, sp, 0x64
     addi    r4, r31, 0x2ac
     bl      strcpy
     addi    r3, sp, 0x64
-    subi    r4, rtoc, 0x414
+    addi    r4, r2, R2Off_m0x414
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x802a72d8
-    subi    r4, rtoc, 0x40c
+    addi    r4, r2, R2Off_m0x40c
     bl      strcpy
     addi    r3, sp, 0x64
     bl      DVDConvertPathToEntrynum
@@ -1823,12 +1790,12 @@ branch_0x802a724c:
     li      r6, 0x0
     li      r7, 0x0
     bl      loadToAram__16JKRDvdAramRipperFPcUl15JKRExpandSwitchUlUl
-    stw     r3, -0x6018(r13)
+    stw     r3, R13Off_m0x6018(r13)
     li      r0, 0x1
-    subi    r3, r13, 0x6018
+    addi    r3, r13, R13Off_m0x6018
     stb     r0, 0x4(r3)
 branch_0x802a72d8:
-    lwz     r0, -0x6018(r13)
+    lwz     r0, R13Off_m0x6018(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802a730c
     addi    r3, r31, 0x2ac
@@ -1837,20 +1804,20 @@ branch_0x802a72d8:
     li      r6, 0x0
     li      r7, 0x0
     bl      loadToAram__16JKRDvdAramRipperFPcUl15JKRExpandSwitchUlUl
-    stw     r3, -0x6018(r13)
+    stw     r3, R13Off_m0x6018(r13)
     li      r0, 0x0
-    subi    r3, r13, 0x6018
+    addi    r3, r13, R13Off_m0x6018
     stb     r0, 0x4(r3)
 branch_0x802a730c:
     addi    r3, sp, 0x24
     addi    r4, r31, 0x2c0
     bl      strcpy
     addi    r3, sp, 0x24
-    subi    r4, rtoc, 0x414
+    addi    r4, r2, R2Off_m0x414
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x802a736c
-    subi    r4, rtoc, 0x40c
+    addi    r4, r2, R2Off_m0x40c
     bl      strcpy
     addi    r3, sp, 0x24
     bl      DVDConvertPathToEntrynum
@@ -1862,12 +1829,12 @@ branch_0x802a730c:
     li      r6, 0x0
     li      r7, 0x0
     bl      loadToAram__16JKRDvdAramRipperFPcUl15JKRExpandSwitchUlUl
-    stw     r3, -0x6010(r13)
+    stw     r3, R13Off_m0x6010(r13)
     li      r0, 0x1
-    subi    r3, r13, 0x6010
+    addi    r3, r13, R13Off_m0x6010
     stb     r0, 0x4(r3)
 branch_0x802a736c:
-    lwz     r0, -0x6010(r13)
+    lwz     r0, R13Off_m0x6010(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802a73a0
     addi    r3, r31, 0x2c0
@@ -1876,9 +1843,9 @@ branch_0x802a736c:
     li      r6, 0x0
     li      r7, 0x0
     bl      loadToAram__16JKRDvdAramRipperFPcUl15JKRExpandSwitchUlUl
-    stw     r3, -0x6010(r13)
+    stw     r3, R13Off_m0x6010(r13)
     li      r0, 0x0
-    subi    r3, r13, 0x6010
+    addi    r3, r13, R13Off_m0x6010
     stb     r0, 0x4(r3)
 branch_0x802a73a0:
     lwz     r0, 0x144(sp)
@@ -1924,23 +1891,23 @@ initialize__12TApplicationFv: # 0x802a73c4
     oris    r3, r3, 0x7
     mtspr   917, r3
     li      r0, 0x1000
-    stw     r0, -0x7594(r13)
+    stw     r0, R13Off_m0x7594(r13)
     li      r3, 0x1
     li      r4, 0x0
-    stw     r0, -0x758c(r13)
+    stw     r0, R13Off_m0x758c(r13)
     bl      createRoot__10JKRExpHeapFib
-    lwz     r4, -0x5f28(r13)
+    lwz     r4, R13Off_m0x5f28(r13)
     lis     r3, 0x2
     li      r5, 0x0
     bl      create__10JKRExpHeapFUlP7JKRHeapb
     bl      becomeSystemHeap__7JKRHeapFv
-    lwz     r3, -0x5f28(r13)
+    lwz     r3, R13Off_m0x5f28(r13)
     bl      becomeCurrentHeap__7JKRHeapFv
     bl      DVDInit
     bl      MarErrInit__Fv
     bl      VIInit
     bl      init__10JUTGamePadFv
-    lis     r3, 0x8
+    lis     r3, unk_00080000@h
     li      r4, 0x20
     li      r5, 0x0
     bl      alloc__7JKRHeapFUliP7JKRHeap
@@ -1949,11 +1916,11 @@ initialize__12TApplicationFv: # 0x802a73c4
     bl      SMS_ResetTexCacheRegion__Fv
     li      r3, 0x2
     bl      GXPokeAlphaRead
-    lis     r4, 0xa
-    addi    r3, r4, 0x5000
+    lis     r4, unk_000a5000@h
+    addi    r3, r4, unk_000a5000@l
     li      r4, 0x20
     bl      __nwa__FUli
-    addi    r30, r3, 0x0
+    addi    r30, r3, unk_00080000@l
     addi    r3, sp, 0x28
     bl      SMSSetupTitleRenderMode__FP16_GXRenderModeObj
     li      r3, 0x68
@@ -1970,24 +1937,24 @@ branch_0x802a74e4:
     stw     r29, 0x1c(r31)
     lis     r3, 0x50
     li      r4, -0x20
-    lwz     r30, -0x5f2c(r13)
+    lwz     r30, R13Off_m0x5f2c(r13)
     bl      __nwa__FUli
-    stw     r3, -0x601c(r13)
+    stw     r3, R13Off_m0x601c(r13)
     lis     r4, 0x50
-    lwz     r5, -0x5f2c(r13)
+    lwz     r5, R13Off_m0x5f2c(r13)
     li      r6, 0x1
-    lwz     r3, -0x601c(r13)
+    lwz     r3, R13Off_m0x601c(r13)
     bl      create__10JKRExpHeapFPvUlP7JKRHeapb
     stw     r3, 0x40(r31)
     li      r3, 0x1c
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x802a7530
-    lwz     r4, -0x5f2c(r13)
+    lwz     r4, R13Off_m0x5f2c(r13)
     mr      r3, r29
     bl      __ct__10JUTRomFontFP7JKRHeap
 branch_0x802a7530:
-    stw     r29, gpRomFont(r13)
+    stw     r29, R13Off_m0x6034(r13)
     mr      r3, r30
     bl      becomeCurrentHeap__7JKRHeapFv
     lis     r3, 0xf4
@@ -1996,19 +1963,19 @@ branch_0x802a7530:
     li      r6, 0x8
     li      r7, 0x8
     bl      create__7JKRAramFUlUllll
-    lis     r30, 0x1
-    subi    r3, r30, 0x8000
+    lis     r30, unk_00008000@ha
+    addi    r3, r30, unk_00008000@l
     li      r4, 0x20
     bl      __nwa__FUli
-    subi    r4, r30, 0x8000
+    addi    r4, r30, -0x8000
     li      r5, 0x0
     bl      setTransBuffer__13JKRAramStreamFPUcUlP7JKRHeap
     li      r3, 0x5
     li      r4, 0x28
     li      r5, 0xf
     bl      start__16TDrawSyncManagerFUlUll
-    lis     r4, 0x802b
-    subi    r3, r4, 0x6ce8
+    lis     r4, drawSyncCallback__16TDrawSyncManagerFUs@ha
+    addi    r3, r4, drawSyncCallback__16TDrawSyncManagerFUs@l
     bl      GXSetDrawSyncCallback
     li      r3, 0xf0
     bl      __nw__FUl
@@ -2018,9 +1985,9 @@ branch_0x802a7530:
     li      r4, 0x0
     lwz     r3, 0x1c(sp)
     bl      __ct__10JUTGamePadFQ210JUTGamePad8EPadPort
-    lis     r4, 0x803e
+    lis     r4, __vvt__13TMarioGamePad@ha
     lwz     r3, 0x1c(sp)
-    subi    r0, r4, 0xbb4
+    addi    r0, r4, __vvt__13TMarioGamePad@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0xd0(r3)
@@ -2041,9 +2008,9 @@ branch_0x802a75e0:
     li      r4, 0x1
     lwz     r3, 0x18(sp)
     bl      __ct__10JUTGamePadFQ210JUTGamePad8EPadPort
-    lis     r4, 0x803e
+    lis     r4, __vvt__13TMarioGamePad@ha
     lwz     r3, 0x18(sp)
-    subi    r0, r4, 0xbb4
+    addi    r0, r4, __vvt__13TMarioGamePad@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0xd0(r3)
@@ -2064,9 +2031,9 @@ branch_0x802a7638:
     li      r4, 0x2
     lwz     r3, 0x14(sp)
     bl      __ct__10JUTGamePadFQ210JUTGamePad8EPadPort
-    lis     r4, 0x803e
+    lis     r4, __vvt__13TMarioGamePad@ha
     lwz     r3, 0x14(sp)
-    subi    r0, r4, 0xbb4
+    addi    r0, r4, __vvt__13TMarioGamePad@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0xd0(r3)
@@ -2087,9 +2054,9 @@ branch_0x802a7690:
     li      r4, 0x3
     lwz     r3, 0x10(sp)
     bl      __ct__10JUTGamePadFQ210JUTGamePad8EPadPort
-    lis     r4, 0x803e
+    lis     r4, __vvt__13TMarioGamePad@ha
     lwz     r3, 0x10(sp)
-    subi    r0, r4, 0xbb4
+    addi    r0, r4, __vvt__13TMarioGamePad@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0xd0(r3)
@@ -2113,8 +2080,8 @@ branch_0x802a76e8:
     li      r7, 0x1
     bl      __ct__9RumbleMgrFbbbb
 branch_0x802a7714:
-    stw     r29, -0x60f0(r13)
-    lwz     r3, -0x60f0(r13)
+    stw     r29, R13Off_m0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     bl      init__9RumbleMgrFv
     li      r3, 0x38
     bl      __nw__FUl
@@ -2123,10 +2090,10 @@ branch_0x802a7714:
     bl      SMSGetVSyncTimesPerSec__Fv
     li      r0, 0x0
     stb     r0, 0x20(sp)
-    lis     r5, 0x803a
+    lis     r5, unk_803a42e0@h
     addi    r4, sp, 0xc
     stb     r0, 0x21(sp)
-    addi    r5, r5, 0x42e0
+    addi    r5, r5, unk_803a42e0@l
     mr      r3, r29
     stb     r0, 0x22(sp)
     li      r0, 0xff
@@ -2136,8 +2103,8 @@ branch_0x802a7714:
     lwz     r0, 0x24(sp)
     stw     r0, 0xc(sp)
     bl      __ct__9TSMSFaderFQ28JUtility6TColorfPCc
-    lis     r4, 0x803c
-    addi    r0, r4, 0x111c
+    lis     r4, __vvt__10TSmplFader@h
+    addi    r0, r4, __vvt__10TSmplFader@l
     stw     r0, 0x0(r29)
 branch_0x802a777c:
     stw     r29, 0x34(r31)
@@ -2148,21 +2115,21 @@ branch_0x802a777c:
     lwz     r3, 0x34(r31)
     mr      r5, r30
     bl      setDisplaySize__9TSMSFaderFii
-    lwz     r3, -0x5f2c(r13)
+    lwz     r3, R13Off_m0x5f2c(r13)
     bl      start__12TFlagManagerFP7JKRHeap
-    lis     r30, 0x1
-    subi    r3, r30, 0x2040
+    lis     r30, unk_0000dfc0@ha
+    addi    r3, r30, unk_0000dfc0@l
     bl      start__8TTimeRecFUs
-    lwz     r4, -0x5ff8(r13)
-    subi    r5, r30, 0x2040
-    subi    r6, r30, 0x2001
+    lwz     r4, R13Off_m0x5ff8(r13)
+    addi    r5, r30, -0x2040
+    addi    r6, r30, -0x2001
     lhz     r0, 0x81c(r4)
     addi    r7, r4, 0x81c
     li      r4, 0x0
     ori     r0, r0, 0x1
     sth     r0, 0x0(r7)
-    lwz     r7, -0x5ff8(r13)
-    lwz     r3, -0x5ff0(r13)
+    lwz     r7, R13Off_m0x5ff8(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      setCallback__16TDrawSyncManagerFUlUsUsP17TDrawSyncCallback
     li      r3, 0x20
     bl      __nw__FUl
@@ -2178,16 +2145,16 @@ branch_0x802a77f8:
     lis     r3, 0x1
     li      r4, 0x20
     bl      __nwa__FUli
-    stw     r3, -0x6040(r13)
+    stw     r3, R13Off_m0x6040(r13)
     li      r0, 0x2
     stb     r0, 0x8(r31)
     lwz     r3, 0x40(r31)
     bl      becomeCurrentHeap__7JKRHeapFv
-    lwz     r6, -0x6040(r13)
-    lis     r5, 0x8040
-    subi    r30, r5, 0x3418
-    lis     r4, 0x802a
-    addi    r4, r4, 0x7878
+    lwz     r6, R13Off_m0x6040(r13)
+    lis     r5, gSetupThread@ha
+    addi    r30, r5, gSetupThread@l
+    lis     r4, SetupThreadFuncBoot__FPv@h
+    addi    r4, r4, SetupThreadFuncBoot__FPv@l
     addi    r3, r30, 0x0
     addi    r5, r31, 0x0
     addis   r6, r6, 0x1
@@ -2209,15 +2176,15 @@ branch_0x802a77f8:
 .globl SetupThreadFuncBoot__FPv
 SetupThreadFuncBoot__FPv: # 0x802a7878
     mflr    r0
-    lis     r3, 0x803a
+    lis     r3, unk_803a42f4@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x42f4
+    addi    r3, r3, unk_803a42f4@l
     li      r4, 0x0
     stwu    sp, -0x8(sp)
     li      r5, 0x0
     li      r6, 0x0
     bl      SMSLoadArchive__FPCcPvUlP7JKRHeap
-    stw     r3, -0x602c(r13)
+    stw     r3, R13Off_m0x602c(r13)
     li      r3, 0x0
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -2239,11 +2206,11 @@ SMSSwitch2DArchive__FPCcR10TARAMBlock: # 0x802a78b4
     lbz     r0, 0x4(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x802a791c
-    lwz     r4, gpMarDirector(r13)
-    lis     r3, 0x6
+    lwz     r4, R13Off_m0x6048(r13)
+    lis     r3, unk_00064000@h
     li      r0, 0x0
     lwz     r4, 0xd4(r4)
-    addi    r8, r3, 0x4000
+    addi    r8, r3, unk_00064000@l
     li      r5, 0x0
     stw     r0, 0x8(sp)
     li      r6, 0x0
@@ -2255,7 +2222,7 @@ SMSSwitch2DArchive__FPCcR10TARAMBlock: # 0x802a78b4
     b       branch_0x802a794c
 
 branch_0x802a791c:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r0, 0x0
     li      r5, 0x0
     lwz     r4, 0xd4(r3)
@@ -2268,7 +2235,7 @@ branch_0x802a791c:
     li      r10, -0x1
     bl      aramToMainRam__7JKRAramFP12JKRAramBlockPUcUlUl15JKRExpandSwitchUlP7JKRHeapiPUl
 branch_0x802a794c:
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     addi    r3, r31, 0x0
     li      r5, 0x0
     lwz     r4, 0xd4(r4)
@@ -2292,11 +2259,11 @@ SMSMountAramArchive__FP13JKRMemArchiveR10TARAMBlock: # 0x802a797c
     lbz     r0, 0x4(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x802a79d8
-    lwz     r5, gpMarDirector(r13)
-    lis     r3, 0x6
+    lwz     r5, R13Off_m0x6048(r13)
+    lis     r3, unk_00064000@h
     li      r0, 0x0
     lwz     r9, 0xd4(r5)
-    addi    r8, r3, 0x4000
+    addi    r8, r3, unk_00064000@l
     li      r5, 0x0
     stw     r0, 0x8(sp)
     li      r6, 0x0
@@ -2309,7 +2276,7 @@ SMSMountAramArchive__FP13JKRMemArchiveR10TARAMBlock: # 0x802a797c
     b       branch_0x802a7a0c
 
 branch_0x802a79d8:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r0, 0x0
     li      r5, 0x0
     lwz     r10, 0xd4(r3)
@@ -2323,7 +2290,7 @@ branch_0x802a79d8:
     li      r10, -0x1
     bl      aramToMainRam__7JKRAramFP12JKRAramBlockPUcUlUl15JKRExpandSwitchUlP7JKRHeapiPUl
 branch_0x802a7a0c:
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     addi    r3, r31, 0x0
     li      r5, 0x0
     lwz     r4, 0xd4(r4)
@@ -2346,18 +2313,18 @@ SMSLoadArchive__FPCcPvUlP7JKRHeap: # 0x802a7a34
     addi    r28, r4, 0x0
     addi    r29, r5, 0x0
     bne-    branch_0x802a7a5c
-    lwz     r30, -0x5f2c(r13)
+    lwz     r30, R13Off_m0x5f2c(r13)
 branch_0x802a7a5c:
     addi    r4, r27, 0x0
     addi    r3, sp, 0x1c
     li      r31, 0x0
     bl      strcpy
     addi    r3, sp, 0x1c
-    subi    r4, rtoc, 0x414
+    addi    r4, r2, R2Off_m0x414
     bl      strstr
     cmplwi  r3, 0x0
     beq-    branch_0x802a7ac0
-    subi    r4, rtoc, 0x40c
+    addi    r4, r2, R2Off_m0x40c
     bl      strcpy
     addi    r3, sp, 0x1c
     bl      DVDConvertPathToEntrynum
@@ -2457,7 +2424,7 @@ SMSGetAnmFrameRate__Fv: # 0x802a7bd8
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stfd    f31, 0x10(sp)
-    lfs     f31, -0x3c8(rtoc)
+    lfs     f31, -0x3c8(r2)
     bl      VIGetTvFormat
     cmpwi   r3, 0x2
     beq-    branch_0x802a7c18
@@ -2473,14 +2440,14 @@ branch_0x802a7c0c:
     b       branch_0x802a7c24
 
 branch_0x802a7c18:
-    lfs     f31, -0x3c8(rtoc)
+    lfs     f31, -0x3c8(r2)
     b       branch_0x802a7c24
 
 branch_0x802a7c20:
-    lfs     f31, -0x3c4(rtoc)
+    lfs     f31, -0x3c4(r2)
 branch_0x802a7c24:
-    lfs     f0, -0x3e8(rtoc)
-    lfs     f1, -0x3c8(rtoc)
+    lfs     f0, -0x3e8(r2)
+    lfs     f1, -0x3c8(r2)
     fmuls   f0, f31, f0
     fdivs   f1, f1, f0
     lwz     r0, 0x1c(sp)
@@ -2496,7 +2463,7 @@ SMSGetVSyncTimesPerSec__Fv: # 0x802a7c48
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stfd    f31, 0x8(sp)
-    lfs     f31, -0x3c8(rtoc)
+    lfs     f31, -0x3c8(r2)
     bl      VIGetTvFormat
     cmpwi   r3, 0x2
     beq-    branch_0x802a7c88
@@ -2512,13 +2479,13 @@ branch_0x802a7c7c:
     b       branch_0x802a7c94
 
 branch_0x802a7c88:
-    lfs     f31, -0x3c8(rtoc)
+    lfs     f31, -0x3c8(r2)
     b       branch_0x802a7c94
 
 branch_0x802a7c90:
-    lfs     f31, -0x3c4(rtoc)
+    lfs     f31, -0x3c4(r2)
 branch_0x802a7c94:
-    lfs     f0, -0x3e8(rtoc)
+    lfs     f0, -0x3e8(r2)
     lwz     r0, 0x14(sp)
     fmuls   f1, f31, f0
     lfd     f31, 0x8(sp)
@@ -2537,8 +2504,8 @@ __dt__13TMarioGamePadFv: # 0x802a7cb0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802a7cf8
-    lis     r3, 0x803e
-    subi    r0, r3, 0xbb4
+    lis     r3, __vvt__13TMarioGamePad@ha
+    addi    r0, r3, __vvt__13TMarioGamePad@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -2560,208 +2527,209 @@ branch_0x802a7cf8:
 .globl __sinit_Application_cpp
 __sinit_Application_cpp: # 0x802a7d14
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gSetupThread@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x3418
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, gSetupThread@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7d5c
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x310
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x802a7d5c:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7d8c
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0x31c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x802a7d8c:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7dbc
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x328
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x802a7dbc:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7dec
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x334
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x802a7dec:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7e1c
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x340
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x802a7e1c:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7e4c
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x34c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x802a7e4c:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7e7c
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x358
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x802a7e7c:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7eac
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x364
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x802a7eac:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7edc
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x370
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x802a7edc:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7f0c
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x37c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x802a7f0c:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7f3c
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x388
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x802a7f3c:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7f6c
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x394
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x802a7f6c:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7f9c
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x3a0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x802a7f9c:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7fcc
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x3ac
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x802a7fcc:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x802a7ffc
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0x3b8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x802a7ffc:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
     addi    sp, sp, 0x10
     mtlr    r0
     blr
+

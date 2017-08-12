@@ -2,16 +2,16 @@
 .globl __ct__13JPASweepShapeFPCUc
 __ct__13JPASweepShapeFPCUc: # 0x803367cc
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__12JPADataBlock@h
     stw     r0, 0x4(sp)
-    addi    r5, r5, 0x4474
+    addi    r5, r5, __vvt__12JPADataBlock@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r4
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4570
+    lis     r3, __vvt__13JPASweepShape@h
+    addi    r0, r3, __vvt__13JPASweepShape@l
     lwz     r31, 0x8(sp)
     stw     r5, 0x0(r31)
     stw     r0, 0x0(r31)
@@ -94,12 +94,12 @@ __dt__13JPASweepShapeFv: # 0x80336918
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8033695c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4570
+    lis     r3, __vvt__13JPASweepShape@h
+    addi    r0, r3, __vvt__13JPASweepShape@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8033694c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4474
+    lis     r3, __vvt__12JPADataBlock@h
+    addi    r0, r3, __vvt__12JPADataBlock@l
     stw     r0, 0x0(r31)
 branch_0x8033694c:
     extsh.  r0, r4

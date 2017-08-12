@@ -1,15 +1,15 @@
 
 .globl isMarioClimb__16TCameraMarioDataCFUl
 isMarioClimb__16TCameraMarioDataCFUl: # 0x80028e38
-    lis     r3, 0x1810
-    addi    r0, r3, 0x340
+    lis     r3, unk_18100340@h
+    addi    r0, r3, unk_18100340@l
     cmpw    r4, r0
     li      r3, 0x0
     beq-    branch_0x80028e6c
     bgelr-    
 
-    lis     r5, 0x1010
-    addi    r0, r5, 0x344
+    lis     r5, unk_10100344@h
+    addi    r0, r5, unk_10100344@l
     cmpw    r4, r0
     bgelr-    
 
@@ -101,7 +101,7 @@ isMarioIndoor__16TCameraMarioDataCFv: # 0x80028f38
     beq-    branch_0x80028f80
     cmplwi  r3, 0x105
     beq-    branch_0x80028f80
-    subi    r0, r3, 0x108
+    addi    r0, r3, -0x108
     clrlwi  r0, r0, 16
     cmplwi  r0, 0x1
     bgt-    branch_0x80028f88
@@ -130,15 +130,15 @@ isMarioRocketing__16TCameraMarioDataCFv: # 0x80028fa8
     stw     r31, 0x14(sp)
     li      r31, 0x0
     bl      SMS_GetMarioStatus__Fv
-    cmpwi   r3, MARIOSTATUS_88c
+    cmpwi   r3, 0x88c
     beq-    branch_0x80028fe4
     bge-    branch_0x80028fd8
-    cmpwi   r3, MARIOSTATUS_88b
+    cmpwi   r3, 0x88b
     bge-    branch_0x80028fe0
     b       branch_0x80028fe4
 
 branch_0x80028fd8:
-    cmpwi   r3, MARIOSTATUS_88e
+    cmpwi   r3, 0x88e
     bge-    branch_0x80028fe4
 branch_0x80028fe0:
     li      r31, 0x1
@@ -153,16 +153,15 @@ branch_0x80028fe4:
 
 .globl isMarioGoDown__16TCameraMarioDataCFv
 isMarioGoDown__16TCameraMarioDataCFv: # 0x80028ffc
-    lfs     f2, -0x7868(rtoc)
+    lfs     f2, -0x7868(r2)
     li      r0, 0x0
     lfs     f0, 0x10(r3)
     fcmpu   cr0, f2, f0
     beq-    branch_0x80029030
-
-    lwz     r4, MarioHitActorPos(r13)
-    lwz     r3, MarioActor(r13)
-    lfs     f1, PositionY(r4)
-    lfs     f0, MarioActor_2a0(r3)
+    lwz     r4, R13Off_m0x60b4(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
+    lfs     f1, 0x4(r4)
+    lfs     f0, 0x2a0(r3)
     fsubs   f0, f1, f0
     fcmpo   cr0, f0, f2
     bge-    branch_0x80029030
@@ -181,33 +180,33 @@ calcAndSetMarioData__16TCameraMarioDataFv: # 0x80029038
     mr      r31, r3
     stw     r30, 0x48(sp)
     bl      SMS_GetMarioStatus__Fv
-    lis     r4, 0x3800
-    addi    r0, r4, MARIOSTATUS_34b
+    lis     r4, unk_3800034b@h
+    addi    r0, r4, unk_3800034b@l
     cmpw    r3, r0
     beq-    branch_0x8002907c
     bge-    branch_0x8002908c
-    lis     r4, 0x3000
-    addi    r0, r4, 0x54c
+    lis     r4, unk_3000054c@h
+    addi    r0, r4, unk_3000054c@l
     cmpw    r3, r0
     beq-    branch_0x8002907c
     b       branch_0x8002908c
 
 branch_0x8002907c:
-    lfs     f0, -0x7868(rtoc)
+    lfs     f0, -0x7868(r2)
     stfs    f0, 0xc(r31)
     stfs    f0, 0x10(r31)
     b       branch_0x800290f8
 
 branch_0x8002908c:
-    lwz     r4, MarioActor(r13)
-    lwz     r5, MarioHitActorPos(r13)
-    addi    r4, r4, MarioActor_29c
-    lfs     f1, PositionZ(r5)
+    lwz     r4, R13Off_m0x60d8(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
+    addi    r4, r4, 0x29c
+    lfs     f1, 0x8(r5)
     lfs     f0, 0x8(r4)
-    lfs     f3, PositionX(r5)
+    lfs     f3, 0x0(r5)
     fsubs   f4, f1, f0
     lfs     f0, 0x0(r4)
-    lfs     f2, PositionY(r5)
+    lfs     f2, 0x4(r5)
     lfs     f1, 0x4(r4)
     fsubs   f3, f3, f0
     fmuls   f0, f4, f4
@@ -217,13 +216,13 @@ branch_0x8002908c:
     stfs    f1, 0xc(r31)
     stfs    f0, 0x10(r31)
     lfs     f1, 0xc(r31)
-    lfs     f0, -0x7864(rtoc)
+    lfs     f0, -0x7864(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800290e4
     stfs    f0, 0xc(r31)
 branch_0x800290e4:
     lfs     f1, 0x10(r31)
-    lfs     f0, -0x7864(rtoc)
+    lfs     f0, -0x7864(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800290f8
     stfs    f0, 0x10(r31)
@@ -256,14 +255,14 @@ branch_0x80029120:
     bl      CLBCalcRatio_s___Fsss
     stfs    f1, 0x1c(r31)
     lfs     f1, 0x1c(r31)
-    lfs     f0, -0x7860(rtoc)
+    lfs     f0, -0x7860(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80029170
     fmr     f1, f0
     b       branch_0x80029180
 
 branch_0x80029170:
-    lfs     f0, -0x7868(rtoc)
+    lfs     f0, -0x7868(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80029180
     fmr     f1, f0
@@ -285,7 +284,7 @@ getGunAngle__11TNozzleBaseFv: # 0x8002919c
 
 .globl __ct__16TCameraMarioDataFv
 __ct__16TCameraMarioDataFv: # 0x800291a4
-    lfs     f0, -0x7868(rtoc)
+    lfs     f0, -0x7868(r2)
     li      r0, 0x0
     stfs    f0, 0x0(r3)
     stfs    f0, 0x4(r3)

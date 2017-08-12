@@ -167,8 +167,8 @@ branch_0x802f7e8c:
     blr
 
 
-.globl _12___dt__Q26JDrama9TDirectorFv
-_12___dt__Q26JDrama9TDirectorFv: # 0x802f7ea4
-    subi    r3, r3, 0xc
+.globl unk_802f7ea4
+unk_802f7ea4: # 0x802f7ea4
+    addi    r3, r3, -0xc
     b       __dt__Q26JDrama9TDirectorFv
 

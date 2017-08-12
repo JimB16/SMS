@@ -5,7 +5,7 @@ start__14JUTDirectPrintFv: # 0x802c8218
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    lwz     r0, -0x5ee8(r13)
+    lwz     r0, R13Off_m0x5ee8(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802c8250
     li      r3, 0x18
@@ -15,12 +15,12 @@ start__14JUTDirectPrintFv: # 0x802c8218
     mr      r3, r31
     bl      __ct__14JUTDirectPrintFv
 branch_0x802c824c:
-    stw     r31, -0x5ee8(r13)
+    stw     r31, R13Off_m0x5ee8(r13)
 branch_0x802c8250:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
     addi    sp, sp, 0x10
-    lwz     r3, -0x5ee8(r13)
+    lwz     r3, R13Off_m0x5ee8(r13)
     mtlr    r0
     blr
 
@@ -65,7 +65,7 @@ branch_0x802c82d8:
     lhz     r8, 0x8(r3)
     slwi    r0, r4, 1
     lwz     r9, 0x14(r3)
-    subi    r10, r6, 0x8
+    addi    r10, r6, -0x8
     mullw   r4, r8, r5
     slwi    r4, r4, 1
     add     r4, r4, r0
@@ -125,14 +125,14 @@ drawChar__14JUTDirectPrintFiii: # 0x802c8398
     cmpwi   r6, 0x64
     stmw    r23, 0x2c(sp)
     blt-    branch_0x802c83b0
-    subi    r10, r6, 0x64
+    addi    r10, r6, -0x64
     b       branch_0x802c83b4
 
 branch_0x802c83b0:
     mr      r10, r6
 branch_0x802c83b4:
-    lis     r7, 0x6666
-    addi    r0, r7, 0x6667
+    lis     r7, unk_66666667@h
+    addi    r0, r7, unk_66666667@l
     mulhw   r9, r0, r10
     srawi   r0, r9, 1
     srwi    r7, r0, 31
@@ -146,16 +146,16 @@ branch_0x802c83b4:
     mulli   r0, r8, 0x6
     mulli   r7, r7, 0x7
     bge-    branch_0x802c8404
-    lis     r6, 0x803e
+    lis     r6, sFontData__14JUTDirectPrint@h
     slwi    r7, r7, 2
-    addi    r6, r6, 0x308
+    addi    r6, r6, sFontData__14JUTDirectPrint@l
     add     r6, r6, r7
     b       branch_0x802c8414
 
 branch_0x802c8404:
-    lis     r6, 0x803e
+    lis     r6, sFontData2__14JUTDirectPrint@h
     slwi    r7, r7, 2
-    addi    r6, r6, 0x408
+    addi    r6, r6, sFontData2__14JUTDirectPrint@l
     add     r6, r6, r7
 branch_0x802c8414:
     lhz     r7, 0x4(r3)
@@ -187,9 +187,9 @@ branch_0x802c8444:
     mulli   r31, r9, 0x6
     add     r30, r8, r30
     slwi    r12, r9, 1
-    subi    r11, r9, 0x8
+    addi    r11, r9, -0x8
     li      r29, 0x0
-    lis     r8, 0x1
+    lis     r8, unk_0000eb80@ha
 branch_0x802c847c:
     lwz     r4, 0x0(r6)
     li      r27, 0x0
@@ -198,7 +198,7 @@ branch_0x802c847c:
 branch_0x802c848c:
     clrrwi. r4, r28, 31
     beq-    branch_0x802c849c
-    subi    r4, r8, 0x1480
+    addi    r4, r8, unk_0000eb80@l
     b       branch_0x802c84a0
 
 branch_0x802c849c:
@@ -303,7 +303,7 @@ drawString__14JUTDirectPrintFUsUsPc: # 0x802c85cc
     addi    r7, r6, 0x0
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    addi    r6, rtoc, 0xe0
+    addi    r6, r2, R2Off_0xe0
     stwu    sp, -0x8(sp)
     bl      drawString_f__14JUTDirectPrintFUsUsPCce
     lwz     r0, 0xc(sp)
@@ -342,7 +342,7 @@ branch_0x802c862c:
     lwz     r0, 0x14(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x802c876c
-    lis     r0, 0x400
+    lis     r0, unk_04000100@h
     stw     r0, 0x174(sp)
     addi    r0, sp, 0x1b0
     addi    r3, sp, 0x174
@@ -352,17 +352,17 @@ branch_0x802c862c:
     stw     r0, 0x17c(sp)
     addi    r6, r3, 0x0
     addi    r3, sp, 0x74
-    li      r4, 0x100
+    addi    r4, r0, unk_04000100@l
     bl      vsnprintf
     mr.     r29, r3
     addi    r28, r25, 0x0
     ble-    branch_0x802c8760
-    lis     r4, 0x803e
-    lis     r3, 0x2aab
+    lis     r4, sAsciiTable__14JUTDirectPrint@h
+    lis     r3, unk_2aaaaaab@ha
     addi    r27, sp, 0x74
     clrlwi  r30, r25, 16
-    addi    r31, r4, 0x288
-    subi    r23, r3, 0x5555
+    addi    r31, r4, sAsciiTable__14JUTDirectPrint@l
+    addi    r23, r3, unk_2aaaaaab@l
     b       branch_0x802c8758
 
 branch_0x802c86bc:
@@ -410,7 +410,7 @@ branch_0x802c873c:
     li      r25, 0x10
     addi    r26, r26, 0x8
 branch_0x802c8750:
-    subi    r29, r29, 0x1
+    addi    r29, r29, -0x1
     addi    r27, r27, 0x1
 branch_0x802c8758:
     cmpwi   r29, 0x0

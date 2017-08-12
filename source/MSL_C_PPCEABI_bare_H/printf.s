@@ -17,13 +17,13 @@ sprintf: # 0x803396d0
     stfd    f8, 0x60(sp)
 branch_0x80339708:
     stw     r3, 0x8(sp)
-    lis     r0, 0x200
+    lis     r0, unk_01ffffff@ha
     addi    r30, r3, 0x0
     stw     r4, 0xc(sp)
-    li      r31, -0x1
+    addi    r31, r0, unk_01ffffff@l
     stw     r5, 0x10(sp)
-    lis     r5, 0x8034
-    subi    r3, r5, 0x66a0
+    lis     r5, __StringWrite@ha
+    addi    r3, r5, __StringWrite@l
     stw     r6, 0x14(sp)
     addi    r5, r4, 0x0
     addi    r6, sp, 0x7c
@@ -78,13 +78,13 @@ snprintf: # 0x803397a4
     stfd    f8, 0x60(sp)
 branch_0x803397dc:
     stw     r3, 0x8(sp)
-    lis     r0, 0x300
+    lis     r0, unk_03000000@h
     mr      r30, r3
     stw     r4, 0xc(sp)
     addi    r31, r4, 0x0
-    lis     r4, 0x8034
+    lis     r4, __StringWrite@ha
     stw     r5, 0x10(sp)
-    subi    r3, r4, 0x66a0
+    addi    r3, r4, __StringWrite@l
     addi    r4, sp, 0x74
     stw     r6, 0x14(sp)
     addi    r6, sp, 0x80
@@ -97,7 +97,7 @@ branch_0x803397dc:
     stw     r0, 0x84(sp)
     addi    r0, sp, 0x8
     stw     r0, 0x88(sp)
-    li      r0, 0x0
+    addi    r0, r0, unk_03000000@l
     stw     r30, 0x74(sp)
     stw     r31, 0x78(sp)
     stw     r0, 0x7c(sp)
@@ -108,7 +108,7 @@ branch_0x803397dc:
     b       branch_0x80339854
 
 branch_0x80339850:
-    subi    r4, r31, 0x1
+    addi    r4, r31, -0x1
 branch_0x80339854:
     li      r0, 0x0
     stbx    r0, r30, r4
@@ -131,9 +131,9 @@ vsnprintf: # 0x80339874
     addi    r4, sp, 0x18
     stw     r30, 0x28(sp)
     mr      r30, r3
-    lis     r3, 0x8034
+    lis     r3, __StringWrite@ha
     stw     r30, 0x18(sp)
-    subi    r3, r3, 0x66a0
+    addi    r3, r3, __StringWrite@l
     stw     r31, 0x1c(sp)
     stw     r0, 0x20(sp)
     bl      __pformatter
@@ -143,7 +143,7 @@ vsnprintf: # 0x80339874
     b       branch_0x803398c4
 
 branch_0x803398c0:
-    subi    r4, r31, 0x1
+    addi    r4, r31, -0x1
 branch_0x803398c4:
     li      r0, 0x0
     stbx    r0, r30, r4
@@ -158,9 +158,9 @@ branch_0x803398c4:
 .globl vprintf
 vprintf: # 0x803398e4
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __files@h
     stw     r0, 0x4(sp)
-    addi    r5, r5, 0x6480
+    addi    r5, r5, __files@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r5, 0x48
@@ -177,8 +177,8 @@ vprintf: # 0x803398e4
     b       branch_0x80339944
 
 branch_0x8033992c:
-    lis     r3, 0x8034
-    subi    r3, r3, 0x6634
+    lis     r3, __FileWrite@ha
+    addi    r3, r3, __FileWrite@l
     addi    r4, r31, 0x0
     addi    r5, r29, 0x0
     addi    r6, r30, 0x0
@@ -259,7 +259,7 @@ branch_0x80339a0c:
 .globl __pformatter
 __pformatter: # 0x80339a24
     mflr    r0
-    lis     r7, 0x803b
+    lis     r7, unk_803aac88@ha
     stw     r0, 0x4(sp)
     li      r0, 0x20
     stwu    sp, -0x268(sp)
@@ -270,7 +270,7 @@ __pformatter: # 0x80339a24
     addi    r25, r5, 0x0
     addi    r26, sp, 0x21c
     addi    r23, sp, 0x21b
-    subi    r20, r7, 0x5378
+    addi    r20, r7, unk_803aac88@l
     li      r27, 0x0
     stb     r0, 0x19(sp)
     b       branch_0x8033a030
@@ -511,7 +511,7 @@ branch_0x80339d3c:
     lwz     r4, 0x0(r3)
     cmplwi  r4, 0x0
     bne-    branch_0x80339d64
-    subi    r4, r13, 0x7398
+    addi    r4, r13, R13Off_m0x7398
 branch_0x80339d64:
     addi    r3, sp, 0x1c
     li      r5, 0x200
@@ -679,7 +679,7 @@ branch_0x80339f34:
 
 branch_0x80339f68:
     addi    r19, r19, 0x1
-    subi    r24, r24, 0x1
+    addi    r24, r24, -0x1
     b       branch_0x80339fa0
 
 branch_0x80339f74:
@@ -803,7 +803,7 @@ branch_0x8033a0b8:
 
 branch_0x8033a0e8:
     lbz     r3, 0x20(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x20(sp)
     lha     r3, 0x1e(sp)
     addi    r0, r3, 0x1
@@ -835,21 +835,21 @@ branch_0x8033a140:
     b       branch_0x8033a1b4
 
 branch_0x8033a14c:
-    lfd     f0, 0x9d8(rtoc)
+    lfd     f0, 0x9d8(r2)
     fcmpo   cr0, f31, f0
     bge-    branch_0x8033a174
-    lis     r3, 0x803b
-    subi    r28, r28, 0x5
-    subi    r4, r3, 0x5378
+    lis     r3, unk_803aac88@ha
+    addi    r28, r28, -0x5
+    addi    r4, r3, unk_803aac88@l
     addi    r3, r28, 0x0
     addi    r4, r4, 0x1
     bl      strcpy
     b       branch_0x8033a18c
 
 branch_0x8033a174:
-    lis     r3, 0x803b
-    subi    r28, r28, 0x4
-    subi    r4, r3, 0x5378
+    lis     r3, unk_803aac88@ha
+    addi    r28, r28, -0x4
+    addi    r4, r3, unk_803aac88@l
     addi    r3, r28, 0x0
     addi    r4, r4, 0x6
     bl      strcpy
@@ -858,9 +858,9 @@ branch_0x8033a18c:
     b       branch_0x8033a668
 
 branch_0x8033a194:
-    lis     r3, 0x803b
-    subi    r28, r28, 0x4
-    subi    r4, r3, 0x5378
+    lis     r3, unk_803aac88@ha
+    addi    r28, r28, -0x4
+    addi    r4, r3, unk_803aac88@l
     addi    r3, r28, 0x0
     addi    r4, r4, 0xa
     bl      strcpy
@@ -871,9 +871,9 @@ branch_0x8033a1b4:
     lha     r4, 0x1e(sp)
     li      r0, 0x0
     lbz     r3, 0x20(sp)
-    subi    r30, r28, 0x1
+    addi    r30, r28, -0x1
     add     r3, r3, r4
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     sth     r3, 0x1e(sp)
     stb     r0, -0x1(r28)
     lbz     r0, 0x5(r29)
@@ -917,13 +917,13 @@ branch_0x8033a248:
     cmplwi  r0, 0x0
     beq-    branch_0x8033a264
     lwz     r3, 0xc(r29)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xc(r29)
     b       branch_0x8033a270
 
 branch_0x8033a264:
     lbz     r3, 0x20(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xc(r29)
 branch_0x8033a270:
     lbz     r0, 0x5(r29)
@@ -974,8 +974,8 @@ branch_0x8033a2ec:
     neg     r4, r4
     li      r8, 0x2d
 branch_0x8033a308:
-    lis     r3, 0x6666
-    addi    r5, r3, 0x6667
+    lis     r3, unk_66666667@h
+    addi    r5, r3, unk_66666667@l
     li      r7, 0x0
     b       branch_0x8033a34c
 
@@ -992,7 +992,7 @@ branch_0x8033a318:
     srwi    r3, r0, 31
     add     r4, r0, r3
     addi    r7, r7, 0x1
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
 branch_0x8033a34c:
     cmpwi   r4, 0x0
     bne+    branch_0x8033a318
@@ -1000,7 +1000,7 @@ branch_0x8033a34c:
     blt+    branch_0x8033a318
     extsb   r0, r8
     stb     r0, -0x1(r30)
-    subi    r30, r30, 0x2
+    addi    r30, r30, -0x2
     subf    r0, r30, r28
     lbz     r3, 0x5(r29)
     stb     r3, 0x0(r30)
@@ -1276,14 +1276,14 @@ branch_0x8033a6b4:
     add     r5, r3, r4
     addi    r8, r5, 0x6
     lbzu    r5, -0x1(r8)
-    subi    r5, r5, 0x30
+    addi    r5, r5, -0x30
     extsb   r6, r5
     cmpwi   r6, 0x5
     bne-    branch_0x8033a71c
     add     r5, r3, r0
     addi    r5, r5, 0x5
 branch_0x8033a6e4:
-    subi    r5, r5, 0x1
+    addi    r5, r5, -0x1
     cmplw   r5, r8
     ble-    branch_0x8033a6fc
     lbz     r0, 0x0(r5)
@@ -1314,7 +1314,7 @@ branch_0x8033a71c:
 branch_0x8033a738:
     lbzu    r0, -0x1(r8)
     add     r7, r0, r5
-    subi    r7, r7, 0x30
+    addi    r7, r7, -0x30
     extsb   r5, r7
     eqv     r0, r5, r6
     subfc   r5, r5, r6
@@ -1325,7 +1325,7 @@ branch_0x8033a738:
     extsb.  r0, r7
     bne-    branch_0x8033a770
 branch_0x8033a768:
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
     b       branch_0x8033a780
 
 branch_0x8033a770:
@@ -1366,7 +1366,7 @@ longlong2str: # 0x8033a7c0
     stmw    r22, 0x18(sp)
     addi    r23, r5, 0x0
     xor     r5, r4, r0
-    subi    r27, r23, 0x1
+    addi    r27, r23, -0x1
     addi    r24, r6, 0x0
     addi    r30, r4, 0x0
     addi    r31, r3, 0x0
@@ -1391,17 +1391,16 @@ branch_0x8033a828:
 
 branch_0x8033a830:
     lbz     r5, 0x5(r24)
-    subi    r0, r5, 0x58
+    addi    r0, r5, -0x58
     cmplwi  r0, 0x20
     bgt-    branch_0x8033a8c8
-    lis     r5, 0x803e
-    addi    r5, r5, 0x6558
+    lis     r5, unk_803e6558@h
+    addi    r5, r5, unk_803e6558@l
     slwi    r0, r0, 2
     lwzx    r0, r5, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8033A858:		# jumptable 8033A854 cases 12,17
+    bctr       
+branch_0x8033a858:
     li      r0, 0x0
     xoris   r5, r3, 0x8000
     xoris   r3, r0, 0x8000
@@ -1417,27 +1416,25 @@ branch_0x8033A858:		# jumptable 8033A854 cases 12,17
     li      r25, 0x1
     b       branch_0x8033a8c8
 
-branch_0x8033A890:		# jumptable 8033A854 case 23
-li	  r0, 0
-stb	  r0, 1(r24)
-li	  r28, 8
-li	  r29, 0
-b	  def_8033A854	# jumptable 8033A854 default case
+branch_0x8033a890:
+    li      r0, 0x0
+    stb     r0, 0x1(r24)
+    li      r28, 0x8
+    li      r29, 0x0
+    b       branch_0x8033a8c8
 
-branch_0x8033A8A4:		# jumptable 8033A854 case 29
-li	  r0, 0
-stb	  r0, 1(r24)
-li	  r28, 0xA
-li	  r29, 0
-b	  def_8033A854	# jumptable 8033A854 default case
+branch_0x8033a8a4:
+    li      r0, 0x0
+    stb     r0, 0x1(r24)
+    li      r28, 0xa
+    li      r29, 0x0
+    b       branch_0x8033a8c8
 
-branch_0x8033A8B8:		# jumptable 8033A854 cases 0,32
-li	  r0, 0
-stb	  r0, 1(r24)
-li	  r28, 0x10
-li	  r29, 0
-
-def_8033A854:		# jumptable 8033A854 default case
+branch_0x8033a8b8:
+    li      r0, 0x0
+    stb     r0, 0x1(r24)
+    li      r28, 0x10
+    li      r29, 0x0
 branch_0x8033a8c8:
     addi    r3, r31, 0x0
     addi    r4, r30, 0x0
@@ -1502,7 +1499,7 @@ branch_0x8033a97c:
     beq-    branch_0x8033a9b0
 branch_0x8033a9a4:
     lwz     r3, 0xc(r24)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xc(r24)
 branch_0x8033a9b0:
     li      r3, 0x10
@@ -1515,7 +1512,7 @@ branch_0x8033a9b0:
     cmplwi  r0, 0x0
     beq-    branch_0x8033a9e0
     lwz     r3, 0xc(r24)
-    subi    r0, r3, 0x2
+    addi    r0, r3, -0x2
     stw     r0, 0xc(r24)
 branch_0x8033a9e0:
     lwz     r3, 0xc(r24)
@@ -1585,7 +1582,7 @@ long2str: # 0x8033aaa0
     li      r7, 0x0
     stb     r7, -0x1(r4)
     cmpwi   r3, 0x0
-    subi    r6, r4, 0x1
+    addi    r6, r4, -0x1
     li      r8, 0x0
     li      r7, 0x0
     bne-    branch_0x8033aae8
@@ -1604,17 +1601,16 @@ branch_0x8033aae0:
 
 branch_0x8033aae8:
     lbz     r9, 0x5(r5)
-    subi    r10, r9, 0x58
+    addi    r10, r9, -0x58
     cmplwi  r10, 0x20
     bgt-    branch_0x8033ab54
-    lis     r9, 0x803e
-    addi    r9, r9, 0x65dc
+    lis     r9, unk_803e65dc@h
+    addi    r9, r9, unk_803e65dc@l
     slwi    r10, r10, 2
     lwzx    r9, r9, r10
     mtctr   r9
-    bctr			# switch jump
-
-branch_0x8033AB10:		# jumptable 8033AB0C cases 12,17
+    bctr       
+branch_0x8033ab10:
     cmpwi   r3, 0x0
     li      r0, 0xa
     bge-    branch_0x8033ab54
@@ -1622,24 +1618,22 @@ branch_0x8033AB10:		# jumptable 8033AB0C cases 12,17
     li      r8, 0x1
     b       branch_0x8033ab54
 
-branch_0x8033AB28:		# jumptable 8033AB0C case 23
-li	  r0, 0
-stb	  r0, 1(r5)
-li	  r0, 8
-b	  def_8033AB0C	# jumptable 8033AB0C default case
+branch_0x8033ab28:
+    li      r0, 0x0
+    stb     r0, 0x1(r5)
+    li      r0, 0x8
+    b       branch_0x8033ab54
 
-branch_0x8033AB38:		# jumptable 8033AB0C case 29
-li	  r0, 0
-stb	  r0, 1(r5)
-li	  r0, 0xA
-b	  def_8033AB0C	# jumptable 8033AB0C default case
+branch_0x8033ab38:
+    li      r0, 0x0
+    stb     r0, 0x1(r5)
+    li      r0, 0xa
+    b       branch_0x8033ab54
 
-branch_0x8033AB48:		# jumptable 8033AB0C cases 0,32
-li	  r0, 0
-stb	  r0, 1(r5)
-li	  r0, 0x10
-
-def_8033AB0C:		# jumptable 8033AB0C default case
+branch_0x8033ab48:
+    li      r0, 0x0
+    stb     r0, 0x1(r5)
+    li      r0, 0x10
 branch_0x8033ab54:
     divwu   r9, r3, r0
     mullw   r9, r9, r0
@@ -1663,7 +1657,7 @@ branch_0x8033ab8c:
     extsb   r9, r10
     stb     r9, -0x1(r6)
     cmplwi  r3, 0x0
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
     addi    r7, r7, 0x1
     bne+    branch_0x8033ab54
     cmplwi  r0, 0x8
@@ -1690,7 +1684,7 @@ branch_0x8033abd0:
     beq-    branch_0x8033ac04
 branch_0x8033abf8:
     lwz     r3, 0xc(r5)
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     stw     r3, 0xc(r5)
 branch_0x8033ac04:
     cmplwi  r0, 0x10
@@ -1699,7 +1693,7 @@ branch_0x8033ac04:
     cmplwi  r3, 0x0
     beq-    branch_0x8033ac24
     lwz     r3, 0xc(r5)
-    subi    r3, r3, 0x2
+    addi    r3, r3, -0x2
     stw     r3, 0xc(r5)
 branch_0x8033ac24:
     lwz     r9, 0xc(r5)
@@ -1792,50 +1786,48 @@ parse_format: # 0x8033acc4
     b       branch_0x8033b180
 
 branch_0x8033ad48:
-    lis     r4, 0x803e
-    addi    r4, r4, 0x6730
+    lis     r4, unk_803e6730@h
+    addi    r4, r4, unk_803e6730@l
 branch_0x8033ad50:
-    subi    r0, r3, 0x20
+    addi    r0, r3, -0x20
     cmplwi  r0, 0x10
     li      r5, 0x1
     bgt-    branch_0x8033adc4
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8033AD70:		# jumptable 8033AD6C case 13
+    bctr       
+branch_0x8033ad70:
     li      r0, 0x0
     stb     r0, 0x14(sp)
     b       branch_0x8033adc8
 
-branch_0x8033AD7C:		# jumptable 8033AD6C case 11
-li	  r0, 1
-stb	  r0, 0x38+var_24+1(r1)
-b	  branch_0x8033adc8
+branch_0x8033ad7c:
+    li      r0, 0x1
+    stb     r0, 0x15(sp)
+    b       branch_0x8033adc8
 
-branch_0x8033AD88:		# jumptable 8033AD6C case 0
-lbz	  r0, 0x38+var_24+1(r1)
-cmplwi	  r0, 1
-beq	  branch_0x8033adc8
-li	  r0, 2
-stb	  r0, 0x38+var_24+1(r1)
-b	  branch_0x8033adc8
+branch_0x8033ad88:
+    lbz     r0, 0x15(sp)
+    cmplwi  r0, 0x1
+    beq-    branch_0x8033adc8
+    li      r0, 0x2
+    stb     r0, 0x15(sp)
+    b       branch_0x8033adc8
 
-branch_0x8033ADA0:		# jumptable 8033AD6C case 3
-li	  r0, 1
-stb	  r0, 0x38+var_24+3(r1)
-b	  branch_0x8033adc8
+branch_0x8033ada0:
+    li      r0, 0x1
+    stb     r0, 0x17(sp)
+    b       branch_0x8033adc8
 
-branch_0x8033ADAC:		# jumptable 8033AD6C case 16
-lbz	  r0, 0x38+var_24(r1)
-cmplwi	  r0, 0
-beq	  branch_0x8033adc8
-li	  r0, 2
-stb	  r0, 0x38+var_24(r1)
-b	  branch_0x8033adc8
+branch_0x8033adac:
+    lbz     r0, 0x14(sp)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8033adc8
+    li      r0, 0x2
+    stb     r0, 0x14(sp)
+    b       branch_0x8033adc8
 
-def_8033AD6C:		# jumptable 8033AD6C default case
 branch_0x8033adc4:
     li      r5, 0x0
 branch_0x8033adc8:
@@ -1866,15 +1858,15 @@ branch_0x8033ae14:
     b       branch_0x8033ae5c
 
 branch_0x8033ae20:
-    lis     r4, 0x803b
-    subi    r5, r4, 0x5678
+    lis     r4, unk_803aa988@ha
+    addi    r5, r4, unk_803aa988@l
     b       branch_0x8033ae48
 
 branch_0x8033ae2c:
     lwz     r0, 0x1c(sp)
     mulli   r0, r0, 0xa
     add     r3, r3, r0
-    subi    r0, r3, 0x30
+    addi    r0, r3, -0x30
     stw     r0, 0x1c(sp)
     lbzu    r3, 0x1(r31)
     extsb   r3, r3
@@ -1925,15 +1917,15 @@ branch_0x8033aedc:
     b       branch_0x8033af24
 
 branch_0x8033aee8:
-    lis     r4, 0x803b
-    subi    r5, r4, 0x5678
+    lis     r4, unk_803aa988@ha
+    addi    r5, r4, unk_803aa988@l
     b       branch_0x8033af10
 
 branch_0x8033aef4:
     lwz     r0, 0x20(sp)
     mulli   r0, r0, 0xa
     add     r3, r3, r0
-    subi    r0, r3, 0x30
+    addi    r0, r3, -0x30
     stw     r0, 0x20(sp)
     lbzu    r3, 0x1(r31)
     extsb   r3, r3
@@ -1993,18 +1985,17 @@ branch_0x8033afa8:
     lbzu    r3, 0x1(r31)
     extsb   r3, r3
 branch_0x8033afb8:
-    subi    r0, r3, 0x45
+    addi    r0, r3, -0x45
     stb     r3, 0x19(sp)
     cmplwi  r0, 0x33
     bgt-    branch_0x8033b154
-    lis     r3, 0x803e
-    addi    r3, r3, 0x6660
+    lis     r3, unk_803e6660@h
+    addi    r3, r3, unk_803e6660@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8033AFE0:		# jumptable 8033AFDC cases 19,31,36,42,48,51
+    bctr       
+branch_0x8033afe0:
     lbz     r0, 0x18(sp)
     cmplwi  r0, 0x5
     bne-    branch_0x8033aff8
@@ -2028,110 +2019,105 @@ branch_0x8033b010:
     stb     r0, 0x14(sp)
     b       branch_0x8033b15c
 
-branch_0x8033B028:		# jumptable 8033AFDC case 33
-lbz	  r0, 0x38+var_20(r1)
-cmplwi	  r0, 2
-beq	  branch_0x8033B03C
-cmplwi	  r0, 4
-bne	  branch_0x8033B048
+branch_0x8033b028:
+    lbz     r0, 0x18(sp)
+    cmplwi  r0, 0x2
+    beq-    branch_0x8033b03c
+    cmplwi  r0, 0x4
+    bne-    branch_0x8033b048
+branch_0x8033b03c:
+    li      r0, 0xff
+    stb     r0, 0x19(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B03C:
-li	  r0, 0xFF
-stb	  r0, 0x38+var_20+1(r1)
-b	  branch_0x8033b15c
+branch_0x8033b048:
+    lbz     r0, 0x16(sp)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8033b15c
+    li      r0, 0x6
+    stw     r0, 0x20(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B048:
-lbz	  r0, 0x38+var_24+2(r1)
-cmplwi	  r0, 0
-bne	  branch_0x8033b15c
-li	  r0, 6
-stw	  r0, 0x38+var_18(r1)
-b	  branch_0x8033b15c
+branch_0x8033b060:
+    lwz     r0, 0x20(sp)
+    cmpwi   r0, 0x0
+    bne-    branch_0x8033b074
+    li      r0, 0x1
+    stw     r0, 0x20(sp)
+branch_0x8033b074:
+    lbz     r0, 0x18(sp)
+    cmplwi  r0, 0x2
+    beq-    branch_0x8033b090
+    cmplwi  r0, 0x4
+    beq-    branch_0x8033b090
+    cmplwi  r0, 0x1
+    bne-    branch_0x8033b09c
+branch_0x8033b090:
+    li      r0, 0xff
+    stb     r0, 0x19(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B060:		# jumptable 8033AFDC cases 2,34
-lwz	  r0, 0x38+var_18(r1)
-cmpwi	  r0, 0
-bne	  branch_0x8033B074	# jumptable 8033AFDC cases 0,32
-li	  r0, 1
-stw	  r0, 0x38+var_18(r1)
+branch_0x8033b09c:
+    lbz     r0, 0x16(sp)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8033b15c
+    li      r0, 0x6
+    stw     r0, 0x20(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B074:		# jumptable 8033AFDC cases 0,32
-lbz	  r0, 0x38+var_20(r1)
-cmplwi	  r0, 2
-beq	  branch_0x8033B090
-cmplwi	  r0, 4
-beq	  branch_0x8033B090
-cmplwi	  r0, 1
-bne	  branch_0x8033B09C
+branch_0x8033b0b4:
+    li      r0, 0x78
+    stb     r0, 0x19(sp)
+    li      r0, 0x1
+    li      r3, 0x3
+    stb     r0, 0x17(sp)
+    li      r0, 0x8
+    stb     r3, 0x18(sp)
+    stw     r0, 0x20(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B090:
-li	  r0, 0xFF
-stb	  r0, 0x38+var_20+1(r1)
-b	  branch_0x8033b15c
+branch_0x8033b0d8:
+    lbz     r3, 0x18(sp)
+    cmplwi  r3, 0x3
+    bne-    branch_0x8033b0f0
+    li      r0, 0x6
+    stb     r0, 0x18(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B09C:
-lbz	  r0, 0x38+var_24+2(r1)
-cmplwi	  r0, 0
-bne	  branch_0x8033b15c
-li	  r0, 6
-stw	  r0, 0x38+var_18(r1)
-b	  branch_0x8033b15c
+branch_0x8033b0f0:
+    lbz     r0, 0x16(sp)
+    cmplwi  r0, 0x0
+    bne-    branch_0x8033b104
+    cmplwi  r3, 0x0
+    beq-    branch_0x8033b15c
+branch_0x8033b104:
+    li      r0, 0xff
+    stb     r0, 0x19(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B0B4:		# jumptable 8033AFDC case 43
-li	  r0, 0x78
-stb	  r0, 0x38+var_20+1(r1)
-li	  r0, 1
-li	  r3, 3
-stb	  r0, 0x38+var_24+3(r1)
-li	  r0, 8
-stb	  r3, 0x38+var_20(r1)
-stw	  r0, 0x38+var_18(r1)
-b	  branch_0x8033b15c
+branch_0x8033b110:
+    lbz     r0, 0x18(sp)
+    cmplwi  r0, 0x3
+    bne-    branch_0x8033b128
+    li      r0, 0x6
+    stb     r0, 0x18(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B0D8:		# jumptable 8033AFDC case 30
-lbz	  r3, 0x38+var_20(r1)
-cmplwi	  r3, 3
-bne	  branch_0x8033B0F0
-li	  r0, 6
-stb	  r0, 0x38+var_20(r1)
-b	  branch_0x8033b15c
+branch_0x8033b128:
+    cmplwi  r0, 0x0
+    beq-    branch_0x8033b15c
+    li      r0, 0xff
+    stb     r0, 0x19(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B0F0:
-lbz	  r0, 0x38+var_24+2(r1)
-cmplwi	  r0, 0
-bne	  branch_0x8033B104
-cmplwi	  r3, 0
-beq	  branch_0x8033b15c
+branch_0x8033b13c:
+    lbz     r0, 0x18(sp)
+    cmplwi  r0, 0x5
+    bne-    branch_0x8033b15c
+    li      r0, 0xff
+    stb     r0, 0x19(sp)
+    b       branch_0x8033b15c
 
-branch_0x8033B104:
-li	  r0, 0xFF
-stb	  r0, 0x38+var_20+1(r1)
-b	  branch_0x8033b15c
-
-branch_0x8033B110:		# jumptable 8033AFDC case 46
-lbz	  r0, 0x38+var_20(r1)
-cmplwi	  r0, 3
-bne	  branch_0x8033B128
-li	  r0, 6
-stb	  r0, 0x38+var_20(r1)
-b	  branch_0x8033b15c
-
-branch_0x8033B128:
-cmplwi	  r0, 0
-beq	  branch_0x8033b15c
-li	  r0, 0xFF
-stb	  r0, 0x38+var_20+1(r1)
-b	  branch_0x8033b15c
-
-branch_0x8033B13C:		# jumptable 8033AFDC case 41
-lbz	  r0, 0x38+var_20(r1)
-cmplwi	  r0, 5
-bne	  branch_0x8033b15c
-li	  r0, 0xFF
-stb	  r0, 0x38+var_20+1(r1)
-b	  branch_0x8033b15c
-
-def_8033AFDC:		# jumptable 8033AFDC default case
 branch_0x8033b154:
     li      r0, 0xff
     stb     r0, 0x19(sp)

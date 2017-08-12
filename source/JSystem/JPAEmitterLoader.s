@@ -21,11 +21,11 @@ load__24JPAEmitterLoaderDataBaseFPCUcP7JKRHeapP18JPATextureResource: # 0x803353b
     addi    r3, sp, 0x14
     addi    r4, r31, 0x0
     bl      load__20JPAEmitterLoader_v10FP18JPATextureResource
-    lis     r4, 0x803e
-    addi    r0, r4, 0x4498
-    lis     r4, 0x803e
+    lis     r4, __vvt__20JPAEmitterLoader_v10@h
+    addi    r0, r4, __vvt__20JPAEmitterLoader_v10@l
+    lis     r4, __vvt__16JPAEmitterLoader@h
     stw     r0, 0x14(sp)
-    addi    r0, r4, 0x448c
+    addi    r0, r4, __vvt__16JPAEmitterLoader@l
     stw     r0, 0x14(sp)
     b       branch_0x80335428
 
@@ -47,12 +47,12 @@ __dt__20JPAEmitterLoader_v10Fv: # 0x8033543c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80335480
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4498
+    lis     r3, __vvt__20JPAEmitterLoader_v10@h
+    addi    r0, r3, __vvt__20JPAEmitterLoader_v10@l
     stw     r0, 0x0(r31)
     beq-    branch_0x80335470
-    lis     r3, 0x803e
-    addi    r0, r3, 0x448c
+    lis     r3, __vvt__16JPAEmitterLoader@h
+    addi    r0, r3, __vvt__16JPAEmitterLoader@l
     stw     r0, 0x0(r31)
 branch_0x80335470:
     extsh.  r0, r4
@@ -70,13 +70,13 @@ branch_0x80335480:
 
 .globl __ct__20JPAEmitterLoader_v10FP7JKRHeapPCUcPC15JPABinaryHeader
 __ct__20JPAEmitterLoader_v10FP7JKRHeapPCUcPC15JPABinaryHeader: # 0x80335498
-    lis     r7, 0x803e
-    addi    r0, r7, 0x448c
+    lis     r7, __vvt__16JPAEmitterLoader@h
+    addi    r0, r7, __vvt__16JPAEmitterLoader@l
     stw     r0, 0x0(r3)
-    lis     r7, 0x803e
+    lis     r7, __vvt__20JPAEmitterLoader_v10@h
     li      r8, 0x0
     stw     r5, 0x8(r3)
-    addi    r0, r7, 0x4498
+    addi    r0, r7, __vvt__20JPAEmitterLoader_v10@l
     stw     r6, 0xc(r3)
     stw     r8, 0x10(r3)
     stw     r4, 0x4(r3)
@@ -92,8 +92,8 @@ __dt__16JPAEmitterLoaderFv: # 0x803354c8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x803354fc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x448c
+    lis     r3, __vvt__16JPAEmitterLoader@h
+    addi    r3, r3, __vvt__16JPAEmitterLoader@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x803354fc
@@ -414,8 +414,8 @@ __ct__16JPAKeyFrameAnimeFPCUcP7JKRHeap: # 0x803358fc
     stw     r31, 0x1c(sp)
     mr      r31, r3
     bl      __ct__12JPADataBlockFPCUcP7JKRHeap
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4480
+    lis     r3, __vvt__16JPAKeyFrameAnime@h
+    addi    r0, r3, __vvt__16JPAKeyFrameAnime@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x24(sp)
@@ -433,12 +433,12 @@ __dt__16JPAKeyFrameAnimeFv: # 0x80335938
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8033597c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4480
+    lis     r3, __vvt__16JPAKeyFrameAnime@h
+    addi    r0, r3, __vvt__16JPAKeyFrameAnime@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8033596c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4474
+    lis     r3, __vvt__12JPADataBlock@h
+    addi    r0, r3, __vvt__12JPADataBlock@l
     stw     r0, 0x0(r31)
 branch_0x8033596c:
     extsh.  r0, r4

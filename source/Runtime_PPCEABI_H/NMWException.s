@@ -29,7 +29,7 @@ branch_0x80337e78:
     cmplw   r29, r31
     blt+    branch_0x80337e5c
 branch_0x80337e80:
-    subi    r3, r26, 0x8
+    addi    r3, r26, -0x8
     bl      __dla__FPv
 branch_0x80337e88:
     lmw     r26, 0x10(sp)
@@ -62,7 +62,7 @@ branch_0x80337ed0:
     addi    r3, r31, 0x0
     li      r4, -0x1
     blrl
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
 branch_0x80337eec:
     cmplwi  r30, 0x0
     bne+    branch_0x80337ed0
@@ -134,7 +134,7 @@ branch_0x80337fc0:
     addi    r3, r31, 0x0
     blrl
     lwz     r3, 0x2c(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x2c(sp)
 branch_0x80337fe8:
     lwz     r0, 0x2c(sp)
@@ -184,7 +184,7 @@ branch_0x80338068:
     addi    r3, r31, 0x0
     blrl
     lwz     r3, 0x10(r29)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x10(r29)
 branch_0x80338090:
     lwz     r0, 0x10(r29)
@@ -268,7 +268,7 @@ branch_0x80338188:
     addi    r3, r31, 0x0
     blrl
     lwz     r3, 0x2c(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x2c(sp)
 branch_0x803381b0:
     lwz     r0, 0x2c(sp)

@@ -9,12 +9,12 @@ __dt__12TSnapTimeObjFv: # 0x802a5470
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802a54c8
-    lis     r3, 0x803e
-    subi    r0, r3, 0xca8
+    lis     r3, __vvt__12TSnapTimeObj@ha
+    addi    r0, r3, __vvt__12TSnapTimeObj@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802a54b8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -49,13 +49,13 @@ perform__12TSnapTimeObjFUlPQ26JDrama9TGraphics: # 0x802a54e4
     beq-    branch_0x802a55ac
     rlwinm. r0, r29, 0, 24, 24
     beq-    branch_0x802a5558
-    lwz     r3, -0x5ff8(r13)
+    lwz     r3, R13Off_m0x5ff8(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802a552c
     li      r4, 0x0
     bl      snapGXTime__8TTimeRecFUl
 branch_0x802a552c:
-    lwz     r30, -0x5ff8(r13)
+    lwz     r30, R13Off_m0x5ff8(r13)
     cmplwi  r30, 0x0
     beq-    branch_0x802a5558
     bl      OSGetTick
@@ -70,7 +70,7 @@ branch_0x802a5558:
     rlwinm. r0, r29, 0, 28, 28
     beq-    branch_0x802a55ac
     lwz     r0, 0x10(r31)
-    lwz     r29, -0x5ff8(r13)
+    lwz     r29, R13Off_m0x5ff8(r13)
     stw     r0, 0x38(sp)
     cmplwi  r29, 0x0
     lwz     r30, 0x38(sp)
@@ -84,7 +84,7 @@ branch_0x802a5558:
     add     r3, r29, r3
     bl      append__10TTimeArrayFUlUl
 branch_0x802a5598:
-    lwz     r3, -0x5ff8(r13)
+    lwz     r3, R13Off_m0x5ff8(r13)
     lwz     r4, 0x10(r31)
     cmplwi  r3, 0x0
     beq-    branch_0x802a55ac

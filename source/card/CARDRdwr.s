@@ -6,11 +6,11 @@ BlockReadCallback: # 0x80356828
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stw     r30, 0x18(sp)
     mulli   r5, r31, 0x110
     stw     r29, 0x14(sp)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     mr.     r29, r4
     add     r30, r0, r5
     blt-    branch_0x803568a8
@@ -27,8 +27,8 @@ BlockReadCallback: # 0x80356828
     subic.  r0, r3, 0x1
     stw     r0, 0xac(r30)
     ble-    branch_0x803568a8
-    lis     r3, 0x8035
-    addi    r4, r3, 0x6828
+    lis     r3, BlockReadCallback@h
+    addi    r4, r3, BlockReadCallback@l
     addi    r3, r31, 0x0
     bl      __CARDReadSegment
     mr.     r29, r3
@@ -66,9 +66,9 @@ __CARDRead: # 0x80356904
     mflr    r0
     mulli   r9, r3, 0x110
     stw     r0, 0x4(sp)
-    lis     r8, 0x8040
+    lis     r8, __CARDBlock@h
     stwu    sp, -0x8(sp)
-    addi    r0, r8, 0x3460
+    addi    r0, r8, __CARDBlock@l
     add     r8, r0, r9
     lwz     r0, 0x0(r8)
     cmpwi   r0, 0x0
@@ -79,9 +79,9 @@ __CARDRead: # 0x80356904
 branch_0x80356934:
     stw     r7, 0xd4(r8)
     srwi    r0, r5, 9
-    lis     r5, 0x8035
+    lis     r5, BlockReadCallback@h
     stw     r0, 0xac(r8)
-    addi    r0, r5, 0x6828
+    addi    r0, r5, BlockReadCallback@l
     stw     r4, 0xb0(r8)
     mr      r4, r0
     stw     r6, 0xb4(r8)
@@ -100,11 +100,11 @@ BlockWriteCallback: # 0x80356968
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stw     r30, 0x18(sp)
     mulli   r5, r31, 0x110
     stw     r29, 0x14(sp)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     mr.     r29, r4
     add     r30, r0, r5
     blt-    branch_0x803569e8
@@ -121,8 +121,8 @@ BlockWriteCallback: # 0x80356968
     subic.  r0, r3, 0x1
     stw     r0, 0xac(r30)
     ble-    branch_0x803569e8
-    lis     r3, 0x8035
-    addi    r4, r3, 0x6968
+    lis     r3, BlockWriteCallback@h
+    addi    r4, r3, BlockWriteCallback@l
     addi    r3, r31, 0x0
     bl      __CARDWritePage
     mr.     r29, r3
@@ -160,9 +160,9 @@ __CARDWrite: # 0x80356a44
     mflr    r0
     mulli   r9, r3, 0x110
     stw     r0, 0x4(sp)
-    lis     r8, 0x8040
+    lis     r8, __CARDBlock@h
     stwu    sp, -0x8(sp)
-    addi    r0, r8, 0x3460
+    addi    r0, r8, __CARDBlock@l
     add     r8, r0, r9
     lwz     r0, 0x0(r8)
     cmpwi   r0, 0x0
@@ -173,9 +173,9 @@ __CARDWrite: # 0x80356a44
 branch_0x80356a74:
     stw     r7, 0xd4(r8)
     srwi    r0, r5, 7
-    lis     r5, 0x8035
+    lis     r5, BlockWriteCallback@h
     stw     r0, 0xac(r8)
-    addi    r0, r5, 0x6968
+    addi    r0, r5, BlockWriteCallback@l
     stw     r4, 0xb0(r8)
     mr      r4, r0
     stw     r6, 0xb4(r8)

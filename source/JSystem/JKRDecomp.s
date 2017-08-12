@@ -6,10 +6,10 @@ create__9JKRDecompFl: # 0x802ec920
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x5e10(r13)
+    lwz     r0, R13Off_m0x5e10(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802ec964
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x60
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi
@@ -18,12 +18,12 @@ create__9JKRDecompFl: # 0x802ec920
     mr      r4, r31
     bl      __ct__9JKRDecompFl
 branch_0x802ec960:
-    stw     r3, -0x5e10(r13)
+    stw     r3, R13Off_m0x5e10(r13)
 branch_0x802ec964:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
-    lwz     r3, -0x5e10(r13)
+    lwz     r3, R13Off_m0x5e10(r13)
     mtlr    r0
     blr
 
@@ -40,9 +40,9 @@ __ct__9JKRDecompFl: # 0x802ec97c
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__9JKRThreadFUlii
-    lis     r3, 0x803e
+    lis     r3, __vvt__9JKRDecomp@h
     lwz     r31, 0x8(sp)
-    addi    r0, r3, 0x14a0
+    addi    r0, r3, __vvt__9JKRDecomp@l
     stw     r0, 0x0(r31)
     lwz     r3, 0x2c(r31)
     bl      OSResumeThread
@@ -64,8 +64,8 @@ __dt__9JKRDecompFv: # 0x802ec9d4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802eca1c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14a0
+    lis     r3, __vvt__9JKRDecomp@h
+    addi    r0, r3, __vvt__9JKRDecomp@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -87,12 +87,12 @@ branch_0x802eca1c:
 .globl run__9JKRDecompFv
 run__9JKRDecompFv: # 0x802eca38
     mflr    r0
-    lis     r3, 0x803e
+    lis     r3, sMessageBuffer__9JKRDecomp@h
     stw     r0, 0x4(sp)
     li      r5, 0x4
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r3, 0x1470
+    addi    r31, r3, sMessageBuffer__9JKRDecomp@l
     addi    r4, r31, 0x0
     stw     r30, 0x10(sp)
     addi    r3, r31, 0x10
@@ -146,10 +146,10 @@ branch_0x802ecae4:
 .globl sendCommand__9JKRDecompFP16JKRDecompCommand
 sendCommand__9JKRDecompFP16JKRDecompCommand: # 0x802ecaf8
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, sMessageQueue__9JKRDecomp@h
     stw     r0, 0x4(sp)
     addi    r4, r3, 0x0
-    addi    r3, r5, 0x1480
+    addi    r3, r5, sMessageQueue__9JKRDecomp@l
     stwu    sp, -0x8(sp)
     li      r5, 0x1
     bl      OSSendMessage
@@ -171,7 +171,7 @@ orderSync__9JKRDecompFPUcPUcUlUl: # 0x802ecb28
     addi    r30, r6, 0x0
     li      r3, 0x4c
     li      r5, -0x4
-    lwz     r0, -0x5f30(r13)
+    lwz     r0, R13Off_m0x5f30(r13)
     mr      r4, r0
     bl      __nw__FUlP7JKRHeapi
     mr.     r31, r3
@@ -181,10 +181,10 @@ orderSync__9JKRDecompFPUcPUcUlUl: # 0x802ecb28
     mr      r31, r3
 branch_0x802ecb70:
     stw     r27, 0x4(r31)
-    lis     r3, 0x803e
+    lis     r3, sMessageQueue__9JKRDecomp@h
     li      r0, 0x0
     stw     r28, 0x8(r31)
-    addi    r3, r3, 0x1480
+    addi    r3, r3, sMessageQueue__9JKRDecomp@l
     mr      r4, r31
     stw     r29, 0xc(r31)
     li      r5, 0x1
@@ -311,7 +311,7 @@ branch_0x802ecd1c:
     b       branch_0x802ecdfc
 
 branch_0x802ecd40:
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
 branch_0x802ecd44:
     addi    r8, r8, 0x1
     addi    r30, r30, 0x1
@@ -350,7 +350,7 @@ branch_0x802ecda4:
 branch_0x802ecdb4:
     cmplwi  r6, 0x0
     bne-    branch_0x802ecdd4
-    subi    r28, r26, 0x1
+    addi    r28, r26, -0x1
     lbzx    r28, r4, r28
     subic.  r5, r5, 0x1
     stb     r28, 0x0(r29)
@@ -358,7 +358,7 @@ branch_0x802ecdb4:
     b       branch_0x802ecdfc
 
 branch_0x802ecdd4:
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
 branch_0x802ecdd8:
     addi    r8, r8, 0x1
     addi    r30, r30, 0x1
@@ -368,7 +368,7 @@ branch_0x802ecdd8:
 branch_0x802ecdec:
     cmpw    r8, r0
     slwi    r12, r12, 1
-    subi    r11, r11, 0x1
+    addi    r11, r11, -0x1
     blt+    branch_0x802ecce8
 branch_0x802ecdfc:
     lmw     r25, 0x1c(sp)
@@ -409,7 +409,7 @@ branch_0x802ece44:
     blr
 
 branch_0x802ece6c:
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
 branch_0x802ece70:
     addi    r12, r12, 0x1
     b       branch_0x802eced8
@@ -440,7 +440,7 @@ branch_0x802ecea8:
     blr
 
 branch_0x802ecec8:
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
 branch_0x802ececc:
     subic.  r3, r3, 0x1
     addi    r9, r9, 0x1
@@ -448,7 +448,7 @@ branch_0x802ececc:
 branch_0x802eced8:
     cmplw   r4, r8
     slwi    r11, r11, 1
-    subi    r10, r10, 0x1
+    addi    r10, r10, -0x1
     bne+    branch_0x802ece30
     blr
 

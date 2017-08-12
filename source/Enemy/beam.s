@@ -9,12 +9,12 @@ __dt__12TBeamManagerFv: # 0x800deb4c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800deba4
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6340
+    lis     r3, __vvt__12TBeamManager@ha
+    addi    r0, r3, __vvt__12TBeamManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x800deb94
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -141,7 +141,7 @@ requestCone__12TBeamManagerFRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fbbb: 
     addi    r0, r3, 0x1
     stw     r0, 0x3b0(r31)
     beq-    branch_0x800ded64
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     addi    r4, r27, 0x0
     addi    r5, r28, 0x0
     addi    r7, sp, 0x1c
@@ -254,30 +254,30 @@ __ct__12TBeamManagerFPCc: # 0x800deec0
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r30, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r0, 0x0(r30)
     stw     r4, 0x4(r30)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r31, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__12TBeamManager@ha
     sth     r31, 0xc(r30)
-    subi    r0, r3, 0x6340
-    lis     r3, 0x800e
+    addi    r0, r3, __vvt__12TBeamManager@l
+    lis     r3, __ct__9TConeBeamFv@ha
     stw     r0, 0x0(r30)
-    subi    r4, r3, 0x6bc
+    addi    r4, r3, __ct__9TConeBeamFv@l
     addi    r3, r30, 0x10
     li      r5, 0x0
     li      r6, 0xb8
     li      r7, 0x5
     bl      __construct_array
-    lwz     r4, -0x5c78(rtoc)
+    lwz     r4, R2Off_m0x5c78(r2)
     li      r0, 0xa
     addi    r3, r30, 0x0
     stw     r4, 0x14(sp)
@@ -296,9 +296,9 @@ __ct__12TBeamManagerFPCc: # 0x800deec0
 .globl drawConeBeam__9TConeBeamFRC8_GXColor
 drawConeBeam__9TConeBeamFRC8_GXColor: # 0x800def6c
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, j3dSys@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x45dc
+    addi    r0, r5, j3dSys@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r4, 0x0
@@ -409,8 +409,8 @@ calcVertices__9TConeBeamFi: # 0x800df0e8
     stfd    f23, 0x180(sp)
     stmw    r27, 0x16c(sp)
     mr      r28, r3
-    lfs     f5, -0x5c74(rtoc)
-    lfs     f4, -0x5c70(rtoc)
+    lfs     f5, -0x5c74(r2)
+    lfs     f4, -0x5c70(r2)
     stfs    f5, 0x134(sp)
     stfs    f4, 0x138(sp)
     stfs    f5, 0x13c(sp)
@@ -453,7 +453,7 @@ calcVertices__9TConeBeamFi: # 0x800df0e8
     lfs     f11, 0x148(sp)
     fmuls   f2, f10, f10
     fmuls   f1, f8, f8
-    lfs     f0, -0x5c6c(rtoc)
+    lfs     f0, -0x5c6c(r2)
     fmuls   f3, f11, f11
     fadds   f1, f2, f1
     fadds   f1, f3, f1
@@ -488,25 +488,25 @@ branch_0x800df244:
     lwz     r3, 0x20(r28)
     cmplwi  r3, 0x0
     bne-    branch_0x800df42c
-    lfs     f27, -0x5c68(rtoc)
+    lfs     f27, -0x5c68(r2)
     li      r30, 0x0
-    lfs     f31, -0x5c64(rtoc)
+    lfs     f31, -0x5c64(r2)
     li      r27, 0x0
-    lfd     f30, -0x5c58(rtoc)
-    lfs     f29, -0x5c60(rtoc)
+    lfd     f30, -0x5c58(r2)
+    lfs     f29, -0x5c60(r2)
     lis     r31, 0x4330
-    lfs     f28, -0x5c74(rtoc)
+    lfs     f28, -0x5c74(r2)
     b       branch_0x800df41c
 
 branch_0x800df274:
     xoris   r3, r0, 0x8000
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     stw     r3, 0x15c(sp)
     xoris   r5, r30, 0x8000
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     addi    r3, sp, 0x84
     stw     r31, 0x158(sp)
-    lwz     r4, -0x5ea4(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     lfd     f0, 0x158(sp)
     stw     r5, 0x164(sp)
     fsubs   f0, f0, f30
@@ -622,9 +622,9 @@ branch_0x800df42c:
     lfs     f2, 0x18(r28)
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x5c58(rtoc)
+    lfd     f2, -0x5c58(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x5c5c(rtoc)
+    lfs     f0, -0x5c5c(r2)
     stw     r0, 0x154(sp)
     lis     r31, 0x4330
     addi    r3, sp, 0x128
@@ -634,13 +634,13 @@ branch_0x800df42c:
     fsubs   f1, f1, f2
     fmuls   f30, f0, f1
     bl      PSVECNormalize
-    lfs     f28, -0x5c64(rtoc)
+    lfs     f28, -0x5c64(r2)
     li      r29, 0x0
-    lfd     f29, -0x5c58(rtoc)
+    lfd     f29, -0x5c58(r2)
     li      r27, 0x0
     fmuls   f0, f28, f30
-    lfs     f30, -0x5c60(rtoc)
-    lfs     f31, -0x5c74(rtoc)
+    lfs     f30, -0x5c60(r2)
+    lfs     f31, -0x5c74(r2)
     fctiwz  f0, f0
     stfd    f0, 0x158(sp)
     lwz     r0, 0x15c(sp)
@@ -649,13 +649,13 @@ branch_0x800df42c:
 
 branch_0x800df4b4:
     xoris   r3, r0, 0x8000
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     stw     r3, 0x15c(sp)
     xoris   r5, r29, 0x8000
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     addi    r3, sp, 0x64
     stw     r31, 0x158(sp)
-    lwz     r4, -0x5ea4(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     lfd     f0, 0x158(sp)
     stw     r5, 0x154(sp)
     fsubs   f0, f0, f29
@@ -734,11 +734,11 @@ branch_0x800df4b4:
     lwz     r0, 0xec(sp)
     lwz     r3, 0xf0(sp)
     stw     r0, 0xa8(sp)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     stw     r3, 0xac(sp)
     lwz     r4, 0xf4(sp)
     sraw    r0, r30, r0
-    lwz     r3, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     slwi    r0, r0, 2
     stw     r4, 0xb0(sp)
     lfsx    f1, r3, r0
@@ -968,16 +968,16 @@ __ct__9TConeBeamFv: # 0x800df944
     li      r7, 0xc
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8002
-    lfs     f0, -0x5c74(rtoc)
-    addi    r4, r3, 0x10dc
+    lis     r3, __ct__Q29JGeometry8TVec3_f_Fv@h
+    lfs     f0, -0x5c74(r2)
+    addi    r4, r3, __ct__Q29JGeometry8TVec3_f_Fv@l
     addi    r3, r31, 0x24
     stfs    f0, 0x18(r31)
     stb     r0, 0x1c(r31)
     li      r0, 0x1
     stb     r0, 0x1d(r31)
     bl      __construct_array
-    lfs     f0, -0x5c74(rtoc)
+    lfs     f0, -0x5c74(r2)
     mr      r3, r31
     stfs    f0, 0x8(r31)
     stfs    f0, 0x4(r31)

@@ -10,15 +10,15 @@ __ct__10J2DPictureFP7J2DPaneP20JSURandomInputStreamb: # 0x802cbf30
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb
-    lis     r3, 0x803e
+    lis     r3, __vvt__10J2DPicture@h
     lwz     r29, 0x8(sp)
-    addi    r0, r3, 0x5c8
+    addi    r0, r3, __vvt__10J2DPicture@l
     stw     r0, 0x0(r29)
     li      r30, 0x0
-    lis     r3, 0x8015
+    lis     r3, __ct__Q28JUtility6TColorFv@h
     stw     r30, 0x124(r29)
     li      r31, -0x1
-    addi    r4, r3, 0xd4
+    addi    r4, r3, __ct__Q28JUtility6TColorFv@l
     stw     r31, 0x13c(r29)
     addi    r3, r29, 0x144
     li      r5, 0x0
@@ -37,18 +37,18 @@ __ct__10J2DPictureFP7J2DPaneP20JSURandomInputStreamb: # 0x802cbf30
     addi    r4, sp, 0x93
     li      r5, 0x1
     bl      read__14JSUInputStreamFPvl
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     lbz     r31, 0x93(sp)
     addi    r4, r26, 0x0
     addi    r3, sp, 0xf4
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
-    lis     r5, 0x544c
+    lis     r5, unk_544c5554@h
     addi    r28, r3, 0x0
     addi    r4, r26, 0x0
     addi    r3, sp, 0xf4
-    addi    r5, r5, 0x5554
+    addi    r5, r5, unk_544c5554@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     addi    r27, r3, 0x0
@@ -57,7 +57,7 @@ __ct__10J2DPictureFP7J2DPaneP20JSURandomInputStreamb: # 0x802cbf30
     li      r5, 0x1
     bl      read__14JSUInputStreamFPvl
     lbz     r3, 0x92(sp)
-    subi    r31, r31, 0x3
+    addi    r31, r31, -0x3
     clrlwi. r0, r31, 24
     stw     r3, 0x128(r29)
     beq-    branch_0x802cc058
@@ -66,7 +66,7 @@ __ct__10J2DPictureFP7J2DPaneP20JSURandomInputStreamb: # 0x802cbf30
     li      r5, 0x1
     bl      read__14JSUInputStreamFPvl
     lbz     r4, 0x91(sp)
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     rlwinm  r0, r4, 0, 29, 29
     neg     r3, r0
     clrlwi  r4, r4, 30
@@ -87,7 +87,7 @@ branch_0x802cc060:
     li      r5, 0x1
     bl      read__14JSUInputStreamFPvl
     lbz     r4, 0x90(sp)
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     lwz     r3, 0x8(sp)
     extrwi  r0, r4, 2, 28
     stw     r0, 0x134(r3)
@@ -117,7 +117,7 @@ branch_0x802cc0a8:
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lwz     r0, 0x8c(sp)
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     stw     r0, 0xe4(sp)
     lwz     r0, 0xe4(sp)
     stw     r0, 0x140(r29)
@@ -129,7 +129,7 @@ branch_0x802cc0f8:
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
     lwz     r0, 0x84(sp)
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     lwz     r3, 0x8(sp)
     stw     r0, 0xe0(sp)
     lwz     r0, 0xe0(sp)
@@ -167,7 +167,7 @@ branch_0x802cc184:
     lwz     r0, 0x7c(sp)
     addi    r3, r30, 0x144
     lwz     r4, 0x8(sp)
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     stw     r0, 0xbc(sp)
     addi    r29, r29, 0x1
     lwz     r0, 0xbc(sp)
@@ -185,17 +185,17 @@ branch_0x802cc1c8:
     b       branch_0x802cc2d4
 
 branch_0x802cc1d8:
-    lis     r5, 0x5449
+    lis     r5, unk_54494d47@h
     addi    r4, r26, 0x0
     addi    r3, sp, 0xf4
-    addi    r5, r5, 0x4d47
+    addi    r5, r5, unk_54494d47@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
-    lis     r5, 0x544c
+    lis     r5, unk_544c5554@h
     addi    r28, r3, 0x0
     addi    r4, r26, 0x0
     addi    r3, sp, 0xf4
-    addi    r5, r5, 0x5554
+    addi    r5, r5, unk_544c5554@l
     li      r6, 0x0
     bl      getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive
     addi    r27, r3, 0x0
@@ -291,14 +291,14 @@ branch_0x802cc354:
     bl      attachPalette__10JUTTextureFP10JUTPalette
 branch_0x802cc368:
     lwz     r26, 0x8(sp)
-    lfs     f0, 0x198(rtoc)
+    lfs     f0, 0x198(r2)
     mr      r3, r26
     stfs    f0, 0x104(r26)
     stfs    f0, 0x108(r26)
     stfs    f0, 0x10c(r26)
     stfs    f0, 0x110(r26)
     bl      setBlendKonstColor__10J2DPictureFv
-    lfs     f0, 0x198(rtoc)
+    lfs     f0, 0x198(r2)
     mr      r3, r26
     stfs    f0, 0x114(r26)
     stfs    f0, 0x118(r26)
@@ -325,8 +325,8 @@ __dt__10J2DPictureFv: # 0x802cc3bc
     stw     r28, 0x10(sp)
     mr.     r28, r3
     beq-    branch_0x802cc464
-    lis     r3, 0x803e
-    addi    r0, r3, 0x5c8
+    lis     r3, __vvt__10J2DPicture@h
+    addi    r0, r3, __vvt__10J2DPicture@l
     stw     r0, 0x0(r28)
     li      r30, 0x0
     li      r31, 0x0
@@ -407,7 +407,7 @@ branch_0x802cc4d4:
     addi    r3, r8, 0xfc
     stw     r5, 0xec(r7)
     addi    r0, r8, 0xfd
-    subi    r9, r9, 0x1
+    addi    r9, r9, -0x1
     lfs     f0, 0x100(r7)
     stfs    f0, 0x104(r7)
     lfs     f0, 0x110(r7)
@@ -514,7 +514,7 @@ branch_0x802cc61c:
 branch_0x802cc65c:
     lbz     r3, 0xfc(r31)
     clrlwi  r4, r8, 24
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     cmpw    r4, r0
     blt+    branch_0x802cc61c
     stb     r0, 0xfc(r31)
@@ -686,7 +686,7 @@ drawFullSet__10J2DPictureFiiii10J2DBinding9J2DMirrorb11J2DWrapmode11J2DWrapmodeP
     bne-    branch_0x802cc8b0
     lwz     r4, 0xec(r31)
     lis     r3, 0x4330
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     lhz     r4, 0x3c(r4)
     xoris   r4, r4, 0x8000
     stw     r4, 0x94(sp)
@@ -698,7 +698,7 @@ drawFullSet__10J2DPictureFiiii10J2DBinding9J2DMirrorb11J2DWrapmode11J2DWrapmodeP
 branch_0x802cc8b0:
     lwz     r4, 0xec(r31)
     lis     r3, 0x4330
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     lhz     r4, 0x3e(r4)
     xoris   r4, r4, 0x8000
     stw     r4, 0x94(sp)
@@ -711,7 +711,7 @@ branch_0x802cc8d4:
     rlwinm. r3, r8, 0, 29, 29
     bne-    branch_0x802cc988
     xoris   r3, r30, 0x8000
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     stw     r3, 0x94(sp)
     lis     r3, 0x4330
     stw     r3, 0x90(sp)
@@ -726,7 +726,7 @@ branch_0x802cc8d4:
 
 branch_0x802cc918:
     xoris   r3, r30, 0x8000
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     stw     r3, 0x94(sp)
     lis     r3, 0x4330
     stw     r3, 0x90(sp)
@@ -763,7 +763,7 @@ branch_0x802cc988:
     bne-    branch_0x802cc9c0
     lwz     r3, 0xec(r31)
     lis     r0, 0x4330
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     lhz     r3, 0x3e(r3)
     xoris   r3, r3, 0x8000
     stw     r3, 0x94(sp)
@@ -775,7 +775,7 @@ branch_0x802cc988:
 branch_0x802cc9c0:
     lwz     r3, 0xec(r31)
     lis     r0, 0x4330
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     lhz     r3, 0x3c(r3)
     xoris   r3, r3, 0x8000
     stw     r3, 0x94(sp)
@@ -788,7 +788,7 @@ branch_0x802cc9e4:
     clrlwi. r0, r8, 31
     bne-    branch_0x802cca98
     xoris   r0, r29, 0x8000
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     stw     r0, 0x94(sp)
     lis     r0, 0x4330
     stw     r0, 0x90(sp)
@@ -803,7 +803,7 @@ branch_0x802cc9e4:
 
 branch_0x802cca28:
     xoris   r0, r29, 0x8000
-    lfd     f1, 0x1a8(rtoc)
+    lfd     f1, 0x1a8(r2)
     stw     r0, 0x94(sp)
     lis     r0, 0x4330
     stw     r0, 0x90(sp)
@@ -968,7 +968,7 @@ branch_0x802ccc30:
 branch_0x802ccc44:
     lwz     r7, 0xec(r31)
     clrlwi  r6, r25, 24
-    lfd     f2, 0x1a8(rtoc)
+    lfd     f2, 0x1a8(r2)
     cntlzw  r6, r6
     lhz     r9, 0x3c(r7)
     lhz     r8, 0x3e(r7)
@@ -1002,16 +1002,16 @@ branch_0x802cccb0:
 branch_0x802cccb4:
     clrlwi. r0, r0, 24
     beq-    branch_0x802cccfc
-    lfs     f1, 0x19c(rtoc)
+    lfs     f1, 0x19c(r2)
     clrlwi. r0, r3, 24
     stfs    f1, 0x78(sp)
     beq-    branch_0x802cccd4
-    lfs     f1, 0x198(rtoc)
+    lfs     f1, 0x198(r2)
     b       branch_0x802cccf4
 
 branch_0x802cccd4:
     xoris   r0, r8, 0x8000
-    lfd     f2, 0x1a8(rtoc)
+    lfd     f2, 0x1a8(r2)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
     stw     r0, 0x88(sp)
@@ -1026,10 +1026,10 @@ branch_0x802cccfc:
     clrlwi. r0, r3, 24
     beq-    branch_0x802ccd38
     xoris   r0, r8, 0x8000
-    lfs     f3, 0x198(rtoc)
+    lfs     f3, 0x198(r2)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
-    lfd     f2, 0x1a8(rtoc)
+    lfd     f2, 0x1a8(r2)
     stw     r0, 0x88(sp)
     lfd     f1, 0x88(sp)
     stfs    f3, 0x70(sp)
@@ -1041,10 +1041,10 @@ branch_0x802cccfc:
 
 branch_0x802ccd38:
     xoris   r0, r8, 0x8000
-    lfd     f2, 0x1a8(rtoc)
+    lfd     f2, 0x1a8(r2)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
-    lfs     f3, 0x1a0(rtoc)
+    lfs     f3, 0x1a0(r2)
     stw     r0, 0x88(sp)
     lfd     f1, 0x88(sp)
     fsubs   f1, f1, f2
@@ -1057,16 +1057,16 @@ branch_0x802ccd38:
 branch_0x802ccd70:
     clrlwi. r0, r4, 24
     beq-    branch_0x802ccdb8
-    lfs     f1, 0x19c(rtoc)
+    lfs     f1, 0x19c(r2)
     clrlwi. r0, r5, 24
     stfs    f1, 0x74(sp)
     beq-    branch_0x802ccd90
-    lfs     f0, 0x198(rtoc)
+    lfs     f0, 0x198(r2)
     b       branch_0x802ccdb0
 
 branch_0x802ccd90:
     xoris   r0, r6, 0x8000
-    lfd     f2, 0x1a8(rtoc)
+    lfd     f2, 0x1a8(r2)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
     stw     r0, 0x88(sp)
@@ -1081,10 +1081,10 @@ branch_0x802ccdb8:
     clrlwi. r0, r5, 24
     beq-    branch_0x802ccdf4
     xoris   r0, r6, 0x8000
-    lfs     f3, 0x198(rtoc)
+    lfs     f3, 0x198(r2)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
-    lfd     f2, 0x1a8(rtoc)
+    lfd     f2, 0x1a8(r2)
     stw     r0, 0x88(sp)
     lfd     f1, 0x88(sp)
     stfs    f3, 0x6c(sp)
@@ -1096,10 +1096,10 @@ branch_0x802ccdb8:
 
 branch_0x802ccdf4:
     xoris   r0, r6, 0x8000
-    lfd     f2, 0x1a8(rtoc)
+    lfd     f2, 0x1a8(r2)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
-    lfs     f3, 0x1a0(rtoc)
+    lfs     f3, 0x1a0(r2)
     stw     r0, 0x88(sp)
     lfd     f1, 0x88(sp)
     fsubs   f1, f1, f2
@@ -1245,15 +1245,15 @@ branch_0x802ccf58:
     bne-    branch_0x802cd048
     clrlwi. r0, r29, 24
     beq-    branch_0x802cd01c
-    lis     r3, 0x1
-    subi    r4, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r4, r3, unk_00008000@l
 branch_0x802cd01c:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
     sth     r4, -0x8000(r3)
     beq-    branch_0x802cd038
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
     b       branch_0x802cd03c
 
 branch_0x802cd038:
@@ -1266,8 +1266,8 @@ branch_0x802cd03c:
 branch_0x802cd048:
     clrlwi. r0, r29, 24
     beq-    branch_0x802cd058
-    lis     r3, 0x1
-    subi    r4, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r4, r3, unk_00008000@l
 branch_0x802cd058:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
@@ -1277,8 +1277,8 @@ branch_0x802cd058:
     b       branch_0x802cd078
 
 branch_0x802cd070:
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
 branch_0x802cd078:
     lis     r3, 0xcc01
     sth     r0, -0x8000(r3)
@@ -1298,15 +1298,15 @@ branch_0x802cd080:
     b       branch_0x802cd0bc
 
 branch_0x802cd0b4:
-    lis     r3, 0x1
-    subi    r4, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r4, r3, unk_00008000@l
 branch_0x802cd0bc:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
     sth     r4, -0x8000(r3)
     beq-    branch_0x802cd0d8
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
     b       branch_0x802cd0dc
 
 branch_0x802cd0d8:
@@ -1319,15 +1319,15 @@ branch_0x802cd0dc:
 branch_0x802cd0e8:
     clrlwi. r0, r29, 24
     beq-    branch_0x802cd0f8
-    lis     r3, 0x1
-    subi    r4, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r4, r3, unk_00008000@l
 branch_0x802cd0f8:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
     sth     r4, -0x8000(r3)
     beq-    branch_0x802cd114
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
     b       branch_0x802cd118
 
 branch_0x802cd114:
@@ -1352,8 +1352,8 @@ branch_0x802cd120:
     b       branch_0x802cd160
 
 branch_0x802cd158:
-    lis     r3, 0x1
-    subi    r5, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r5, r3, unk_00008000@l
 branch_0x802cd160:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
@@ -1363,8 +1363,8 @@ branch_0x802cd160:
     b       branch_0x802cd180
 
 branch_0x802cd178:
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
 branch_0x802cd180:
     lis     r3, 0xcc01
     sth     r0, -0x8000(r3)
@@ -1376,15 +1376,15 @@ branch_0x802cd18c:
     b       branch_0x802cd1a0
 
 branch_0x802cd198:
-    lis     r3, 0x1
-    subi    r5, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r5, r3, unk_00008000@l
 branch_0x802cd1a0:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
     sth     r5, -0x8000(r3)
     beq-    branch_0x802cd1bc
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
     b       branch_0x802cd1c0
 
 branch_0x802cd1bc:
@@ -1405,8 +1405,8 @@ branch_0x802cd1c8:
     bne-    branch_0x802cd22c
     clrlwi. r0, r29, 24
     beq-    branch_0x802cd200
-    lis     r3, 0x1
-    subi    r5, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r5, r3, unk_00008000@l
 branch_0x802cd200:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
@@ -1416,8 +1416,8 @@ branch_0x802cd200:
     b       branch_0x802cd220
 
 branch_0x802cd218:
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
 branch_0x802cd220:
     lis     r3, 0xcc01
     sth     r0, -0x8000(r3)
@@ -1429,8 +1429,8 @@ branch_0x802cd22c:
     b       branch_0x802cd240
 
 branch_0x802cd238:
-    lis     r3, 0x1
-    subi    r5, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r5, r3, unk_00008000@l
 branch_0x802cd240:
     lis     r3, 0xcc01
     clrlwi. r0, r30, 24
@@ -1440,8 +1440,8 @@ branch_0x802cd240:
     b       branch_0x802cd260
 
 branch_0x802cd258:
-    lis     r3, 0x1
-    subi    r0, r3, 0x8000
+    lis     r3, unk_00008000@ha
+    addi    r0, r3, unk_00008000@l
 branch_0x802cd260:
     lis     r3, 0xcc01
     sth     r0, -0x8000(r3)
@@ -1653,7 +1653,7 @@ branch_0x802cd52c:
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, 0x1b0(rtoc)
+    lwz     r0, R2Off_0x1b0(r2)
     addi    r4, sp, 0x58
     li      r3, 0x4
     stw     r0, 0x54(sp)
@@ -1931,19 +1931,19 @@ setBlendKonstColor__10J2DPictureFv: # 0x802cd94c
     li      r7, 0x0
     li      r8, 0x1
     lbz     r6, 0xfc(r3)
-    lfs     f3, 0x19c(rtoc)
-    lfs     f2, 0x1b4(rtoc)
-    lfs     f1, 0x198(rtoc)
+    lfs     f3, 0x19c(r2)
+    lfs     f2, 0x1b4(r2)
+    lfs     f1, 0x198(r2)
     b       branch_0x802cda64
 
 branch_0x802cd96c:
     clrlwi  r0, r8, 24
-    lfs     f8, 0x19c(rtoc)
+    lfs     f8, 0x19c(r2)
     cmplwi  r0, 0x0
     li      r5, 0x0
     ble-    branch_0x802cda18
     cmplwi  r0, 0x8
-    subi    r0, r8, 0x8
+    addi    r0, r8, -0x8
     ble-    branch_0x802cd9f0
     clrlwi  r0, r0, 24
     b       branch_0x802cd9e4
@@ -1996,7 +1996,7 @@ branch_0x802cda18:
     fcmpu   cr0, f3, f0
     beq-    branch_0x802cda60
     fdivs   f0, f8, f0
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     slwi    r0, r0, 3
     fsubs   f0, f1, f0
     fmuls   f0, f2, f0
@@ -2025,19 +2025,19 @@ setBlendKonstAlpha__10J2DPictureFv: # 0x802cda84
     li      r7, 0x0
     li      r8, 0x1
     lbz     r6, 0xfc(r3)
-    lfs     f3, 0x19c(rtoc)
-    lfs     f2, 0x1b4(rtoc)
-    lfs     f1, 0x198(rtoc)
+    lfs     f3, 0x19c(r2)
+    lfs     f2, 0x1b4(r2)
+    lfs     f1, 0x198(r2)
     b       branch_0x802cdb9c
 
 branch_0x802cdaa4:
     clrlwi  r0, r8, 24
-    lfs     f8, 0x19c(rtoc)
+    lfs     f8, 0x19c(r2)
     cmplwi  r0, 0x0
     li      r5, 0x0
     ble-    branch_0x802cdb50
     cmplwi  r0, 0x8
-    subi    r0, r8, 0x8
+    addi    r0, r8, -0x8
     ble-    branch_0x802cdb28
     clrlwi  r0, r0, 24
     b       branch_0x802cdb1c
@@ -2090,7 +2090,7 @@ branch_0x802cdb50:
     fcmpu   cr0, f3, f0
     beq-    branch_0x802cdb98
     fdivs   f0, f8, f0
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     slwi    r0, r0, 3
     fsubs   f0, f1, f0
     fmuls   f0, f2, f0

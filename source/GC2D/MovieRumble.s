@@ -9,12 +9,12 @@ __dt__12TMovieRumbleFv: # 0x80187ac4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80187b1c
-    lis     r3, 0x803c
-    addi    r0, r3, 0x15a8
+    lis     r3, __vvt__12TMovieRumble@h
+    addi    r0, r3, __vvt__12TMovieRumble@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80187b0c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -51,7 +51,7 @@ checkRumbleOff__12TMovieRumbleFv: # 0x80187b38
     lwz     r0, 0x20(r3)
     cmpw    r4, r0
     bgt-    branch_0x80187c28
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     bl      stop__9RumbleMgrFv
     lwz     r3, 0x18(r31)
     li      r4, 0x0
@@ -72,14 +72,14 @@ branch_0x80187bac:
     lwz     r0, 0x0(r3)
     cmpw    r29, r0
     bge-    branch_0x80187c18
-    lis     r3, 0x8039
-    subi    r5, r3, 0x7434
+    lis     r3, unk_80388bcc@ha
+    addi    r5, r3, unk_80388bcc@l
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
     addi    r6, r31, 0x1c
     bl      GetValue__Q24Koga8ToolDataCFiPCcRl
-    lis     r3, 0x8039
-    subi    r5, r3, 0x7428
+    lis     r3, unk_80388bd8@ha
+    addi    r5, r3, unk_80388bd8@l
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
     addi    r6, r31, 0x20
@@ -87,7 +87,7 @@ branch_0x80187bac:
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
     addi    r6, sp, 0x2c
-    subi    r5, rtoc, 0x4478
+    addi    r5, r2, R2Off_m0x4478
     bl      GetValue__Q24Koga8ToolDataCFiPCcRPCc
     lwz     r3, 0x2c(sp)
     bl      getIndex__10RumbleTypeFPc
@@ -135,7 +135,7 @@ branch_0x80187c78:
     lwz     r0, 0x20(r3)
     cmpw    r5, r0
     bgt-    branch_0x80187cb0
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     li      r5, -0x1
     li      r6, 0x0
     bl      start__9RumbleMgrFiiPf
@@ -152,7 +152,7 @@ branch_0x80187cb0:
 .globl init__12TMovieRumbleFPCc
 init__12TMovieRumbleFPCc: # 0x80187cc4
     mflr    r0
-    lis     r5, 0x8039
+    lis     r5, unk_80388b98@ha
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
     stwu    sp, -0xc0(sp)
@@ -160,7 +160,7 @@ init__12TMovieRumbleFPCc: # 0x80187cc4
     addi    r31, r3, 0x0
     addi    r3, sp, 0x30
     stw     r30, 0xb8(sp)
-    subi    r30, r5, 0x7468
+    addi    r30, r5, unk_80388b98@l
     addi    r5, r4, 0x0
     stw     r29, 0xb4(sp)
     addi    r4, r30, 0x20
@@ -169,7 +169,7 @@ init__12TMovieRumbleFPCc: # 0x80187cc4
     addi    r3, sp, 0x30
     li      r4, 0x2e
     bl      strrchr
-    subi    r4, rtoc, 0x4480
+    addi    r4, r2, R2Off_m0x4480
     bl      strcpy
     li      r3, 0x8
     bl      __nw__FUl
@@ -226,7 +226,7 @@ branch_0x80187d90:
     addi    r3, r29, 0x0
     addi    r4, r28, 0x0
     addi    r6, sp, 0x28
-    subi    r5, rtoc, 0x4478
+    addi    r5, r2, R2Off_m0x4478
     bl      GetValue__Q24Koga8ToolDataCFiPCcRPCc
     lwz     r3, 0x28(sp)
     bl      getIndex__10RumbleTypeFPc
@@ -252,27 +252,27 @@ branch_0x80187dfc:
 .globl __ct__12TMovieRumbleFPC10TTHPRender
 __ct__12TMovieRumbleFPC10TTHPRender: # 0x80187e24
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r4
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x8039
+    lis     r3, unk_80388be4@ha
     stw     r0, 0x0(r30)
-    subi    r3, r3, 0x741c
+    addi    r3, r3, unk_80388be4@l
     stw     r3, 0x4(r30)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__12TMovieRumble@h
     sth     r0, 0xc(r30)
-    addi    r0, r3, 0x15a8
+    addi    r0, r3, __vvt__12TMovieRumble@l
     addi    r3, r30, 0x0
     stw     r0, 0x0(r30)
     stw     r31, 0x10(r30)

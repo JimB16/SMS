@@ -2,10 +2,10 @@
 .globl calcEffect__Q28JASystem6DriverFPCQ38JASystem6Driver10PanMatrix_PCQ38JASystem6Driver10PanMatrix_Uc
 calcEffect__Q28JASystem6DriverFPCQ38JASystem6Driver10PanMatrix_PCQ38JASystem6Driver10PanMatrix_Uc: # 0x80311844
     clrlwi  r0, r5, 24
-    lfs     f1, 0x690(rtoc)
+    lfs     f1, 0x690(r2)
     mulli   r6, r0, 0x3
-    lis     r5, 0x803e
-    addi    r0, r5, 0x27d0
+    lis     r5, calc_sw_table__Q28JASystem6Driver@h
+    addi    r0, r5, calc_sw_table__Q28JASystem6Driver@l
     add     r5, r0, r6
     lbz     r0, 0x0(r5)
     cmpwi   r0, 0x1
@@ -74,10 +74,10 @@ branch_0x803118f4:
 .globl calcPan__Q28JASystem6DriverFPCQ38JASystem6Driver10PanMatrix_PCQ38JASystem6Driver10PanMatrix_Uc
 calcPan__Q28JASystem6DriverFPCQ38JASystem6Driver10PanMatrix_PCQ38JASystem6Driver10PanMatrix_Uc: # 0x80311904
     clrlwi  r0, r5, 24
-    lfs     f1, 0x690(rtoc)
+    lfs     f1, 0x690(r2)
     mulli   r6, r0, 0x3
-    lis     r5, 0x803e
-    addi    r0, r5, 0x27d0
+    lis     r5, calc_sw_table__Q28JASystem6Driver@h
+    addi    r0, r5, calc_sw_table__Q28JASystem6Driver@l
     add     r5, r0, r6
     lbz     r0, 0x0(r5)
     cmpwi   r0, 0x1
@@ -92,14 +92,14 @@ branch_0x80311930:
 
 branch_0x8031193c:
     lfs     f2, 0x0(r3)
-    lfs     f0, 0x694(rtoc)
+    lfs     f0, 0x694(r2)
     fsubs   f0, f2, f0
     fadds   f1, f1, f0
     b       branch_0x80311964
 
 branch_0x80311950:
     lfs     f3, 0x0(r3)
-    lfs     f2, 0x694(rtoc)
+    lfs     f2, 0x694(r2)
     lfs     f0, 0x0(r4)
     fsubs   f2, f3, f2
     fmadds  f1, f2, f0, f1
@@ -117,14 +117,14 @@ branch_0x80311978:
 
 branch_0x80311984:
     lfs     f2, 0x4(r3)
-    lfs     f0, 0x694(rtoc)
+    lfs     f0, 0x694(r2)
     fsubs   f0, f2, f0
     fadds   f1, f1, f0
     b       branch_0x803119ac
 
 branch_0x80311998:
     lfs     f3, 0x4(r3)
-    lfs     f2, 0x694(rtoc)
+    lfs     f2, 0x694(r2)
     lfs     f0, 0x4(r4)
     fsubs   f2, f3, f2
     fmadds  f1, f2, f0, f1
@@ -142,19 +142,19 @@ branch_0x803119c0:
 
 branch_0x803119cc:
     lfs     f2, 0x8(r3)
-    lfs     f0, 0x694(rtoc)
+    lfs     f0, 0x694(r2)
     fsubs   f0, f2, f0
     fadds   f1, f1, f0
     b       branch_0x803119f4
 
 branch_0x803119e0:
     lfs     f3, 0x8(r3)
-    lfs     f2, 0x694(rtoc)
+    lfs     f2, 0x694(r2)
     lfs     f0, 0x8(r4)
     fsubs   f2, f3, f2
     fmadds  f1, f2, f0, f1
 branch_0x803119f4:
-    lfs     f0, 0x694(rtoc)
+    lfs     f0, 0x694(r2)
     fadds   f1, f1, f0
     blr
 
@@ -360,7 +360,7 @@ branch_0x80311c9c:
     clrlwi  r4, r3, 24
     lis     r0, 0x4330
     stw     r4, 0x14(sp)
-    lfd     f3, 0x698(rtoc)
+    lfd     f3, 0x698(r2)
     stw     r5, 0x1c(sp)
     lfs     f0, 0x50(r31)
     stw     r0, 0x18(sp)
@@ -446,7 +446,7 @@ branch_0x80311db4:
     b       branch_0x80311eb4
 
 branch_0x80311dc4:
-    subi    r0, r29, 0x1
+    addi    r0, r29, -0x1
     cmplwi  r0, 0x1
     ble-    branch_0x80311dd8
     cmplwi  r29, 0x6
@@ -461,7 +461,7 @@ branch_0x80311dd8:
     cmpwi   r3, -0x1
     beq-    branch_0x80311e7c
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     lwz     r3, 0xc8(r31)
     cmplwi  r3, 0x0
@@ -577,9 +577,9 @@ branch_0x80311f4c:
 .globl updateMixer__Q28JASystem6DriverFPQ28JASystem8TChannelffff
 updateMixer__Q28JASystem6DriverFPQ28JASystem8TChannelffff: # 0x80311f78
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, unk_803e2824@h
     stw     r0, 0x4(sp)
-    lis     r5, 0x803e
+    lis     r5, unk_803e2844@h
     stwu    sp, -0xb0(sp)
     stfd    f31, 0xa8(sp)
     stfd    f30, 0xa0(sp)
@@ -599,15 +599,15 @@ updateMixer__Q28JASystem6DriverFPQ28JASystem8TChannelffff: # 0x80311f78
     fmr     f20, f1
     stmw    r25, 0x34(sp)
     addi    r30, r3, 0x0
-    addi    r27, r4, 0x2824
-    addi    r26, r5, 0x2844
+    addi    r27, r4, unk_803e2824@l
+    addi    r26, r5, unk_803e2844@l
     li      r31, 0x0
     li      r29, 0x0
     lis     r28, 0x4330
-    lfs     f29, 0x6a8(rtoc)
-    lfs     f30, 0x690(rtoc)
+    lfs     f29, 0x6a8(r2)
+    lfs     f30, 0x690(r2)
     fsubs   f27, f29, f21
-    lfd     f31, 0x698(rtoc)
+    lfd     f31, 0x698(r2)
     fsubs   f26, f29, f22
     fsubs   f25, f29, f23
 branch_0x80312000:
@@ -631,32 +631,29 @@ branch_0x80312028:
     slwi    r0, r0, 2
     lwzx    r0, r26, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8031204C:		# jumptable 80312048 case 1
+    bctr       
+branch_0x8031204c:
     fmr     f24, f21
     b       branch_0x80312078
 
-branch_0x80312054:		# jumptable 80312048 case 2
-fmr	  f24, f22
-b	  def_80312048	# jumptable 80312048 default case
+branch_0x80312054:
+    fmr     f24, f22
+    b       branch_0x80312078
 
-branch_0x8031205C:		# jumptable 80312048 case 3
-fmr	  f24, f23
-b	  def_80312048	# jumptable 80312048 default case
+branch_0x8031205c:
+    fmr     f24, f23
+    b       branch_0x80312078
 
-branch_0x80312064:		# jumptable 80312048 case 5
-fmr	  f24, f27
-b	  def_80312048	# jumptable 80312048 default case
+branch_0x80312064:
+    fmr     f24, f27
+    b       branch_0x80312078
 
-branch_0x8031206C:		# jumptable 80312048 case 6
-fmr	  f24, f26
-b	  def_80312048	# jumptable 80312048 default case
+branch_0x8031206c:
+    fmr     f24, f26
+    b       branch_0x80312078
 
-branch_0x80312074:		# jumptable 80312048 case 7
-fmr	  f24, f25
-
-def_80312048:		# jumptable 80312048 default case
+branch_0x80312074:
+    fmr     f24, f25
 branch_0x80312078:
     fmr     f1, f24
     bl      sinfT__Q28JASystem4CalcFf
@@ -670,32 +667,29 @@ branch_0x80312084:
     slwi    r0, r3, 2
     lwzx    r0, r27, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x803120A8:		# jumptable 803120A4 case 1
+    bctr       
+branch_0x803120a8:
     fmr     f24, f21
     b       branch_0x803120d4
 
-branch_0x803120B0:		# jumptable 803120A4 case 2
-fmr	  f24, f22
-b	  def_803120A4	# jumptable 803120A4 default case
+branch_0x803120b0:
+    fmr     f24, f22
+    b       branch_0x803120d4
 
-branch_0x803120B8:		# jumptable 803120A4 case 3
-fmr	  f24, f23
-b	  def_803120A4	# jumptable 803120A4 default case
+branch_0x803120b8:
+    fmr     f24, f23
+    b       branch_0x803120d4
 
-branch_0x803120C0:		# jumptable 803120A4 case 5
-fmr	  f24, f27
-b	  def_803120A4	# jumptable 803120A4 default case
+branch_0x803120c0:
+    fmr     f24, f27
+    b       branch_0x803120d4
 
-branch_0x803120C8:		# jumptable 803120A4 case 6
-fmr	  f24, f26
-b	  def_803120A4	# jumptable 803120A4 default case
+branch_0x803120c8:
+    fmr     f24, f26
+    b       branch_0x803120d4
 
-branch_0x803120D0:		# jumptable 803120A4 case 7
-fmr	  f24, f25
-
-def_803120A4:		# jumptable 803120A4 default case
+branch_0x803120d0:
+    fmr     f24, f25
 branch_0x803120d4:
     cmpwi   r3, 0x7
     beq-    branch_0x803120ec
@@ -907,13 +901,13 @@ branch_0x80312364:
 branch_0x80312378:
     cmplwi  r4, 0x0
     bne-    branch_0x803124f0
-    lfs     f0, 0x6a8(rtoc)
+    lfs     f0, 0x6a8(r2)
     li      r29, 0x0
     stfs    f0, 0x8c(r31)
     stfs    f0, 0x90(r31)
-    lfs     f0, 0x694(rtoc)
+    lfs     f0, 0x694(r2)
     stfs    f0, 0x6c(r31)
-    lfs     f0, 0x690(rtoc)
+    lfs     f0, 0x690(r2)
     stfs    f0, 0x78(r31)
     stfs    f0, 0x84(r31)
 branch_0x803123a4:
@@ -1070,12 +1064,12 @@ init__Q28JASystem8TChannelFv: # 0x80312550
     li      r0, 0x150
     sth     r0, 0xa8(r31)
     li      r0, 0x210
-    lis     r3, 0x1
+    lis     r3, unk_00010101@h
     sth     r0, 0xaa(r31)
     li      r4, 0x352
     li      r0, 0x412
     sth     r4, 0xac(r31)
-    addi    r5, r3, 0x101
+    addi    r5, r3, unk_00010101@l
     li      r4, 0x258
     sth     r0, 0xae(r31)
     li      r3, 0x1a
@@ -1277,7 +1271,7 @@ branch_0x80312828:
     b       branch_0x8031283c
 
 branch_0x80312838:
-    lfs     f1, 0x6a8(rtoc)
+    lfs     f1, 0x6a8(r2)
 branch_0x8031283c:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1419,7 +1413,7 @@ branch_0x803129ac:
     b       branch_0x803129c0
 
 branch_0x803129bc:
-    lfs     f1, 0x6a8(rtoc)
+    lfs     f1, 0x6a8(r2)
 branch_0x803129c0:
     lwz     r3, 0x0(r31)
     lwz     r3, 0x0(r3)
@@ -1497,10 +1491,10 @@ branch_0x80312a84:
     ble-    branch_0x80312a90
     li      r0, 0x7f
 branch_0x80312a90:
-    lis     r4, 0x803e
+    lis     r4, C5BASE_PITCHTABLE__Q28JASystem6Driver@h
     lfs     f0, 0x48(r3)
     slwi    r6, r0, 2
-    addi    r0, r4, 0x2880
+    addi    r0, r4, C5BASE_PITCHTABLE__Q28JASystem6Driver@l
     add     r4, r0, r6
     lfs     f1, 0x0(r4)
     cmplwi  r5, 0x0
@@ -1513,8 +1507,8 @@ branch_0x80312a90:
 
 branch_0x80312ac4:
     stfs    f1, 0x94(r3)
-    lis     r4, 0x8031
-    addi    r0, r4, 0x1c50
+    lis     r4, extraUpdate__Q28JASystem6DriverFPQ28JASystem8TChannelUl@h
+    addi    r0, r4, extraUpdate__Q28JASystem6DriverFPQ28JASystem8TChannelUl@l
     sth     r5, 0x9a(r3)
     stw     r0, 0x2c(r3)
     blr
@@ -1537,11 +1531,11 @@ setPauseFlagReq__Q28JASystem8TChannelFUc: # 0x80312ae4
 .globl setPanPower__Q28JASystem8TChannelFffff
 setPanPower__Q28JASystem8TChannelFffff: # 0x80312af4
     fadds   f4, f1, f2
-    lfs     f0, 0x690(rtoc)
+    lfs     f0, 0x690(r2)
     fadds   f4, f3, f4
     fcmpu   cr0, f0, f4
     bne-    branch_0x80312b0c
-    lfs     f4, 0x6a8(rtoc)
+    lfs     f4, 0x6a8(r2)
 branch_0x80312b0c:
     fdivs   f0, f1, f4
     fdivs   f1, f2, f4
@@ -1612,8 +1606,8 @@ play__Q28JASystem8TChannelFUl: # 0x80312bb8
     li      r4, -0x1
 branch_0x80312bd8:
     stw     r4, 0x30(r31)
-    lis     r3, 0x8031
-    addi    r0, r3, 0x1d34
+    lis     r3, updatecallLogicalChannel__Q28JASystem6DriverFPQ28JASystem8TChannelUl@h
+    addi    r0, r3, updatecallLogicalChannel__Q28JASystem6DriverFPQ28JASystem8TChannelUl@l
     lwz     r5, 0x30(r31)
     addi    r4, r31, 0x0
     li      r3, 0x0
@@ -1828,8 +1822,8 @@ branch_0x80312e6c:
     b       branch_0x8031308c
 
 branch_0x80312e7c:
-    lis     r3, 0x8031
-    addi    r0, r3, 0x21ac
+    lis     r3, updatecallDSPChannel__Q28JASystem6DriverFPQ28JASystem11TDSPChannelUl@h
+    addi    r0, r3, updatecallDSPChannel__Q28JASystem6DriverFPQ28JASystem11TDSPChannelUl@l
     stw     r0, 0x10(r4)
     li      r0, 0x1
     lwz     r3, 0x20(r31)
@@ -1941,7 +1935,7 @@ branch_0x80312fc8:
     b       branch_0x80312fdc
 
 branch_0x80312fd8:
-    lfs     f1, 0x6a8(rtoc)
+    lfs     f1, 0x6a8(r2)
 branch_0x80312fdc:
     lwz     r3, 0x0(r29)
     lwz     r3, 0x0(r3)
@@ -2023,7 +2017,7 @@ updateEffectorParam__Q28JASystem8TChannelFv: # 0x803130ac
     mr      r31, r3
     lwz     r0, 0x9c(r3)
     lwz     r3, 0x4(r3)
-    lfs     f29, 0x690(rtoc)
+    lfs     f29, 0x690(r2)
     cmplw   r0, r3
     bne-    branch_0x8031313c
     lfs     f0, 0x1c(r3)
@@ -2064,9 +2058,9 @@ branch_0x80313158:
     b       branch_0x803131c4
 
 branch_0x80313164:
-    lfs     f31, 0x694(rtoc)
+    lfs     f31, 0x694(r2)
     addi    r3, r31, 0x74
-    lfs     f29, 0x690(rtoc)
+    lfs     f29, 0x690(r2)
     addi    r4, r31, 0x5c
     lbz     r5, 0x59(r31)
     bl      calcEffect__Q28JASystem6DriverFPCQ38JASystem6Driver10PanMatrix_PCQ38JASystem6Driver10PanMatrix_Uc
@@ -2077,7 +2071,7 @@ branch_0x80313184:
     lbz     r5, 0x58(r31)
     cmplwi  r5, 0x0
     bne-    branch_0x80313198
-    lfs     f31, 0x694(rtoc)
+    lfs     f31, 0x694(r2)
     b       branch_0x803131a8
 
 branch_0x80313198:
@@ -2091,14 +2085,14 @@ branch_0x803131a8:
     addi    r4, r31, 0x5c
     bl      calcEffect__Q28JASystem6DriverFPCQ38JASystem6Driver10PanMatrix_PCQ38JASystem6Driver10PanMatrix_Uc
     fmr     f30, f1
-    lfs     f29, 0x690(rtoc)
+    lfs     f29, 0x690(r2)
     b       branch_0x80313210
 
 branch_0x803131c4:
     lbz     r5, 0x58(r31)
     cmplwi  r5, 0x0
     bne-    branch_0x803131d8
-    lfs     f31, 0x694(rtoc)
+    lfs     f31, 0x694(r2)
     b       branch_0x803131e8
 
 branch_0x803131d8:
@@ -2118,7 +2112,7 @@ branch_0x803131e8:
     bl      calcEffect__Q28JASystem6DriverFPCQ38JASystem6Driver10PanMatrix_PCQ38JASystem6Driver10PanMatrix_Uc
     fmr     f29, f1
 branch_0x80313210:
-    lfs     f5, 0x690(rtoc)
+    lfs     f5, 0x690(r2)
     lfs     f1, 0x54(r31)
     lfs     f0, 0x90(r31)
     fcmpo   cr0, f31, f5
@@ -2130,7 +2124,7 @@ branch_0x80313210:
     b       branch_0x80313250
 
 branch_0x80313238:
-    lfs     f5, 0x6a8(rtoc)
+    lfs     f5, 0x6a8(r2)
     fcmpo   cr0, f31, f5
     cror    2, 1, 2
     bne-    branch_0x8031324c
@@ -2139,7 +2133,7 @@ branch_0x80313238:
 branch_0x8031324c:
     fmr     f5, f31
 branch_0x80313250:
-    lfs     f6, 0x690(rtoc)
+    lfs     f6, 0x690(r2)
     fmr     f31, f5
     fcmpo   cr0, f30, f6
     cror    2, 0, 2
@@ -2147,7 +2141,7 @@ branch_0x80313250:
     b       branch_0x80313280
 
 branch_0x80313268:
-    lfs     f6, 0x6a8(rtoc)
+    lfs     f6, 0x6a8(r2)
     fcmpo   cr0, f30, f6
     cror    2, 1, 2
     bne-    branch_0x8031327c
@@ -2156,7 +2150,7 @@ branch_0x80313268:
 branch_0x8031327c:
     fmr     f6, f30
 branch_0x80313280:
-    lfs     f4, 0x690(rtoc)
+    lfs     f4, 0x690(r2)
     fmr     f30, f6
     fcmpo   cr0, f29, f4
     cror    2, 0, 2
@@ -2164,7 +2158,7 @@ branch_0x80313280:
     b       branch_0x803132b0
 
 branch_0x80313298:
-    lfs     f4, 0x6a8(rtoc)
+    lfs     f4, 0x6a8(r2)
     fcmpo   cr0, f29, f4
     cror    2, 1, 2
     bne-    branch_0x803132ac
@@ -2177,7 +2171,7 @@ branch_0x803132b0:
     lfs     f0, 0x8c(r31)
     lfs     f3, 0xa0(r31)
     fmuls   f0, f2, f0
-    lfs     f2, 0x6ac(rtoc)
+    lfs     f2, 0x6ac(r2)
     fmuls   f0, f3, f0
     fmuls   f0, f2, f0
     fctiwz  f0, f0
@@ -2194,8 +2188,8 @@ branch_0x803132b0:
     b       branch_0x80313358
 
 branch_0x803132fc:
-    lfs     f0, 0x6a4(rtoc)
-    lfs     f3, 0x6a0(rtoc)
+    lfs     f0, 0x6a4(r2)
+    lfs     f3, 0x6a0(r2)
     fmuls   f2, f0, f5
     lwz     r3, 0x20(r31)
     fmuls   f3, f3, f1

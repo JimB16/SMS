@@ -1,14 +1,14 @@
 
 .globl __ct__8JAIBasicFv
 __ct__8JAIBasicFv: # 0x803009e0
-    lis     r4, 0x803e
-    addi    r0, r4, 0x24e4
+    lis     r4, __vvt__8JAIBasic@h
+    addi    r0, r4, __vvt__8JAIBasic@l
     stw     r0, 0x4(r3)
     li      r6, 0x0
     li      r4, 0x3
-    stw     r3, -0x5d90(r13)
+    stw     r3, R13Off_m0x5d90(r13)
     li      r0, -0x1
-    stw     r3, -0x5cc0(r13)
+    stw     r3, R13Off_m0x5cc0(r13)
     lbz     r5, 0x1c(r3)
     insrwi  r5, r6, 1, 26
     stb     r5, 0x1c(r3)
@@ -88,20 +88,20 @@ initInterfaceMain__8JAIBasicFv: # 0x80300ab8
     bl      setMixerLevel__Q28JASystem6DriverFff
     mr      r3, r31
     bl      initHeap__8JAIBasicFv
-    lwz     r4, -0x5cc8(r13)
+    lwz     r4, R13Off_m0x5cc8(r13)
     li      r0, 0x0
     stb     r0, 0xc(sp)
     cmplwi  r4, 0x0
     beq-    branch_0x80300bf8
     addi    r3, sp, 0xc
     bl      strcat
-    lwz     r3, -0x7488(r13)
+    lwz     r3, R13Off_m0x7488(r13)
     bl      strlen
     mr      r30, r3
-    lwz     r3, -0x5cc8(r13)
+    lwz     r3, R13Off_m0x5cc8(r13)
     bl      strlen
     mr      r4, r3
-    lwz     r3, -0x5b30(r13)
+    lwz     r3, R13Off_m0x5b30(r13)
     addi    r0, r30, 0x1
     lwz     r12, 0x0(r3)
     add     r4, r4, r0
@@ -109,21 +109,21 @@ initInterfaceMain__8JAIBasicFv: # 0x80300ab8
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5cc8(r13)
+    lwz     r5, R13Off_m0x5cc8(r13)
     mr      r30, r3
-    lwz     r6, -0x7488(r13)
+    lwz     r6, R13Off_m0x7488(r13)
     crxor   6, 6, 6
-    addi    r4, rtoc, 0x4b8
+    addi    r4, r2, R2Off_0x4b8
     li      r7, 0x0
     bl      sprintf
-    stw     r30, -0x7488(r13)
-    lwz     r3, -0x7480(r13)
+    stw     r30, R13Off_m0x7488(r13)
+    lwz     r3, R13Off_m0x7480(r13)
     bl      strlen
     mr      r30, r3
-    lwz     r3, -0x5cc8(r13)
+    lwz     r3, R13Off_m0x5cc8(r13)
     bl      strlen
     mr      r4, r3
-    lwz     r3, -0x5b30(r13)
+    lwz     r3, R13Off_m0x5b30(r13)
     addi    r0, r30, 0x1
     lwz     r12, 0x0(r3)
     add     r4, r4, r0
@@ -131,14 +131,14 @@ initInterfaceMain__8JAIBasicFv: # 0x80300ab8
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5cc8(r13)
+    lwz     r5, R13Off_m0x5cc8(r13)
     mr      r30, r3
-    lwz     r6, -0x7480(r13)
+    lwz     r6, R13Off_m0x7480(r13)
     crxor   6, 6, 6
-    addi    r4, rtoc, 0x4b8
+    addi    r4, r2, R2Off_0x4b8
     li      r7, 0x0
     bl      sprintf
-    stw     r30, -0x7480(r13)
+    stw     r30, R13Off_m0x7480(r13)
 branch_0x80300bf8:
     mr      r3, r31
     bl      initReadFile__8JAIBasicFv
@@ -160,10 +160,10 @@ branch_0x80300bf8:
     blrl
 branch_0x80300c40:
     addi    r3, sp, 0xc
-    lwz     r4, -0x7484(r13)
+    lwz     r4, R13Off_m0x7484(r13)
     bl      strcat
     addi    r3, sp, 0xc
-    lwz     r4, -0x747c(r13)
+    lwz     r4, R13Off_m0x747c(r13)
     bl      strcat
     lwz     r3, 0x58(r31)
     cmplwi  r3, 0x0
@@ -179,14 +179,14 @@ branch_0x80300c70:
     bl      initHeaderM__Q28JASystem5VloadFPcPUcPUc
 branch_0x80300c80:
     bl      initRegistTrack__Q28JASystem8TrackMgrFv
-    lwz     r3, -0x747c(r13)
+    lwz     r3, R13Off_m0x747c(r13)
     bl      getArchiveHandle__Q28JASystem5VloadFPc
     stw     r3, 0x2c(r31)
     li      r0, 0x0
-    lis     r4, 0x8000
+    lis     r4, unk_80000800@h
     stw     r0, 0x38(r31)
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x800
+    addi    r4, r4, unk_80000800@l
     addi    r5, r31, 0x38
     li      r6, 0x0
     li      r7, 0x1
@@ -208,7 +208,7 @@ branch_0x80300ccc:
 
 .globl setCameraInfo__8JAIBasicFP3VecP3VecPA4_fUl
 setCameraInfo__8JAIBasicFP3VecP3VecPA4_fUl: # 0x80300ce4
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     cmplw   r0, r7
     blelr-    
 
@@ -245,9 +245,9 @@ initStream__8JAIBasicFv: # 0x80300d18
 .globl setRegisterTrackCallback__8JAIBasicFv
 setRegisterTrackCallback__8JAIBasicFv: # 0x80300d50
     mflr    r0
-    lis     r3, 0x8030
+    lis     r3, setParameterSeqSync__8JAIBasicFPQ28JASystem6TTrackUs@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x29e0
+    addi    r3, r3, setParameterSeqSync__8JAIBasicFPQ28JASystem6TTrackUs@l
     stwu    sp, -0x8(sp)
     bl      registerTrackCallback__Q28JASystem8TrackMgrFPFPQ28JASystem6TTrackUs_Us
     lwz     r0, 0xc(sp)
@@ -326,11 +326,11 @@ branch_0x80300e30:
 .globl checkInitListFile__8JAIBasicFv
 checkInitListFile__8JAIBasicFv: # 0x80300e44
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, unk_803aa550@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r4, 0x5ab0
+    addi    r31, r4, unk_803aa550@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     addi    r3, r31, 0x0
@@ -347,7 +347,7 @@ branch_0x80300e7c:
     mr.     r31, r3
     beq-    branch_0x80300f14
     lhz     r0, 0x0(r31)
-    lwz     r3, -0x747c(r13)
+    lwz     r3, R13Off_m0x747c(r13)
     add     r4, r31, r0
     bl      strcpy
     lhz     r0, 0x2(r31)
@@ -357,17 +357,17 @@ branch_0x80300e7c:
     add     r0, r31, r0
     stw     r0, 0x40(r30)
     lhz     r0, 0x6(r31)
-    lwz     r3, -0x7498(r13)
+    lwz     r3, R13Off_m0x7498(r13)
     add     r4, r31, r0
     bl      strcpy
     lhz     r0, 0x8(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x80300f00
-    lwz     r3, -0x7494(r13)
+    lwz     r3, R13Off_m0x7494(r13)
     add     r4, r31, r0
     bl      strcpy
     lhz     r0, 0xa(r31)
-    lwz     r3, -0x7490(r13)
+    lwz     r3, R13Off_m0x7490(r13)
     add     r4, r31, r0
     bl      strcpy
     lwz     r3, 0x0(r30)
@@ -401,7 +401,7 @@ checkInitDataFile__8JAIBasicFv: # 0x80300f30
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lwz     r3, -0x748c(r13)
+    lwz     r3, R13Off_m0x748c(r13)
     bl      checkFileExsistence__18JAISystemInterfaceFPc
     cmpwi   r3, 0x0
     bne-    branch_0x80300f5c
@@ -409,7 +409,7 @@ checkInitDataFile__8JAIBasicFv: # 0x80300f30
     b       branch_0x80300f8c
 
 branch_0x80300f5c:
-    lwz     r4, -0x748c(r13)
+    lwz     r4, R13Off_m0x748c(r13)
     addi    r3, r31, 0x0
     addi    r5, r31, 0x4c
     bl      loadTmpDVDFile__8JAIBasicFPcPPUc
@@ -434,14 +434,14 @@ branch_0x80300f8c:
 .globl checkInitDataOnMemory__8JAIBasicFv
 checkInitDataOnMemory__8JAIBasicFv: # 0x80300fa0
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, unk_803e24c0@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r25, 0x14(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0xaaab
-    subi    r31, r3, 0x5555
-    addi    r26, r4, 0x24c0
+    lis     r3, unk_aaaaaaab@ha
+    addi    r31, r3, unk_aaaaaaab@l
+    addi    r26, r4, unk_803e24c0@l
     li      r30, 0x0
     li      r29, 0x1
     lwz     r28, 0x0(r27)
@@ -457,283 +457,276 @@ branch_0x80300fd4:
     slwi    r0, r0, 2
     lwzx    r0, r26, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80300FFC:		# jumptable 80300FF8 case 0
+    bctr       
+branch_0x80300ffc:
     li      r29, 0x0
     b       branch_0x803013b8
 
-branch_0x80301004:		# jumptable 80300FF8 case 1
-slwi	  r3, r30, 2
-addi	  r0, r3, 8
-lwzx	  r0, r6, r0
-cmplwi	  r0, 0
-beq	  branch_0x803010D0
-addi	  r30, r30, 1
-lwzx	  r3, r6, r3
-slwi	  r0, r30, 2
-lwzx	  r0, r6, r0
-add	  r4, r6, r3
-addi	  r3, r27, 0
-stw	  r0, 0xB0(r28)
-addi	  r30, r30, 1
-lwz	  r5, 0xB0(r28)
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x100(r28)
-addi	  r3, r30, 0
-addi	  r30, r30, 1
-lwz	  r5, 0x4C(r27)
-slwi	  r0, r30, 2
-slwi	  r3, r3, 2
-lwzx	  r4, r5, r3
-addi	  r3, r27, 0
-lwzx	  r0, r5, r0
-addi	  r30, r30, 1
-add	  r25, r5, r4
-stw	  r0, 0x34(r28)
-mr	  r4, r25
-lwz	  r5, 0x34(r28)
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x84(r28)
-mr	  r3, r30
-addi	  r30, r30, 1
-lwz	  r5, 0x4C(r27)
-slwi	  r3, r3, 2
-slwi	  r0, r30, 2
-lwzx	  r4, r5, r3
-addi	  r3, r27, 0
-addi	  r30, r30, 1
-add	  r4, r5, r4
-stw	  r4, 0x17C(r28)
-mr	  r4, r25
-lwz	  r5, 0x4C(r27)
-lwzx	  r0, r5, r0
-stw	  r0, 0x12C(r28)
-lwz	  r5, 0x12C(r28)
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x17C(r28)
-li	  r0, 1
-stb	  r0, 0x1B0(r28)
-b	  branch_0x803013b8
+branch_0x80301004:
+    slwi    r3, r30, 2
+    addi    r0, r3, 0x8
+    lwzx    r0, r6, r0
+    cmplwi  r0, 0x0
+    beq-    branch_0x803010d0
+    addi    r30, r30, 0x1
+    lwzx    r3, r6, r3
+    slwi    r0, r30, 2
+    lwzx    r0, r6, r0
+    add     r4, r6, r3
+    addi    r3, r27, 0x0
+    stw     r0, 0xb0(r28)
+    addi    r30, r30, 0x1
+    lwz     r5, 0xb0(r28)
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x100(r28)
+    addi    r3, r30, 0x0
+    addi    r30, r30, 0x1
+    lwz     r5, 0x4c(r27)
+    slwi    r0, r30, 2
+    slwi    r3, r3, 2
+    lwzx    r4, r5, r3
+    addi    r3, r27, 0x0
+    lwzx    r0, r5, r0
+    addi    r30, r30, 0x1
+    add     r25, r5, r4
+    stw     r0, 0x34(r28)
+    mr      r4, r25
+    lwz     r5, 0x34(r28)
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x84(r28)
+    mr      r3, r30
+    addi    r30, r30, 0x1
+    lwz     r5, 0x4c(r27)
+    slwi    r3, r3, 2
+    slwi    r0, r30, 2
+    lwzx    r4, r5, r3
+    addi    r3, r27, 0x0
+    addi    r30, r30, 0x1
+    add     r4, r5, r4
+    stw     r4, 0x17c(r28)
+    mr      r4, r25
+    lwz     r5, 0x4c(r27)
+    lwzx    r0, r5, r0
+    stw     r0, 0x12c(r28)
+    lwz     r5, 0x12c(r28)
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x17c(r28)
+    li      r0, 0x1
+    stb     r0, 0x1b0(r28)
+    b       branch_0x803013b8
 
-branch_0x803010D0:
-addi	  r30, r30, 1
-lwzx	  r3, r6, r3
-slwi	  r0, r30, 2
-lwzx	  r0, r6, r0
-add	  r4, r6, r3
-addi	  r3, r27, 0
-stw	  r0, 0xB0(r28)
-addi	  r30, r30, 1
-lwz	  r5, 0xB0(r28)
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x100(r28)
-li	  r0, 0
-addi	  r30, r30, 1
-stb	  r0, 0x1B0(r28)
-b	  branch_0x803013b8
+branch_0x803010d0:
+    addi    r30, r30, 0x1
+    lwzx    r3, r6, r3
+    slwi    r0, r30, 2
+    lwzx    r0, r6, r0
+    add     r4, r6, r3
+    addi    r3, r27, 0x0
+    stw     r0, 0xb0(r28)
+    addi    r30, r30, 0x1
+    lwz     r5, 0xb0(r28)
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x100(r28)
+    li      r0, 0x0
+    addi    r30, r30, 0x1
+    stb     r0, 0x1b0(r28)
+    b       branch_0x803013b8
 
-branch_0x8030110C:		# jumptable 80300FF8 case 2
-slwi	  r0, r30, 2
-add	  r4, r6, r0
-li	  r25, 0
-li	  r3, 0
-b	  branch_0x80301124
+branch_0x8030110c:
+    slwi    r0, r30, 2
+    add     r4, r6, r0
+    li      r25, 0x0
+    li      r3, 0x0
+    b       branch_0x80301124
 
 branch_0x80301120:
-addi	  r3, r3, 3
-
+    addi    r3, r3, 0x3
 branch_0x80301124:
-add	  r0, r30, r3
-slwi	  r0, r0, 2
-lwzx	  r0, r6, r0
-cmplwi	  r0, 0
-bne	  branch_0x80301120
-mulhwu	  r0, r31, r3
-srwi	  r0, r0, 1
-mulli	  r3, r0, 0xC
-addi	  r5, r3, 4
-addi	  r3, r27, 0
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x50(r27)
-slwi	  r3, r30, 2
-b	  branch_0x80301184
+    add     r0, r30, r3
+    slwi    r0, r0, 2
+    lwzx    r0, r6, r0
+    cmplwi  r0, 0x0
+    bne+    branch_0x80301120
+    mulhwu  r0, r31, r3
+    srwi    r0, r0, 1
+    mulli   r3, r0, 0xc
+    addi    r5, r3, 0x4
+    addi    r3, r27, 0x0
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x50(r27)
+    slwi    r3, r30, 2
+    b       branch_0x80301184
 
-branch_0x8030115C:
-clrlwi	  r0, r25, 24
-lwz	  r4, 0x50(r27)
-mulli	  r0, r0, 0xC
-add	  r4, r4, r0
-lwz	  r0, 0(r4)
-addi	  r3, r3, 0xC
-addi	  r25, r25, 1
-add	  r0, r5, r0
-stw	  r0, 0(r4)
-addi	  r30, r30, 3
-
+branch_0x8030115c:
+    clrlwi  r0, r25, 24
+    lwz     r4, 0x50(r27)
+    mulli   r0, r0, 0xc
+    add     r4, r4, r0
+    lwz     r0, 0x0(r4)
+    addi    r3, r3, 0xc
+    addi    r25, r25, 0x1
+    add     r0, r5, r0
+    stw     r0, 0x0(r4)
+    addi    r30, r30, 0x3
 branch_0x80301184:
-lwz	  r5, 0x4C(r27)
-lwzx	  r0, r5, r3
-cmplwi	  r0, 0
-bne	  branch_0x8030115C
-addi	  r30, r30, 1
-b	  branch_0x803013b8
+    lwz     r5, 0x4c(r27)
+    lwzx    r0, r5, r3
+    cmplwi  r0, 0x0
+    bne+    branch_0x8030115c
+    addi    r30, r30, 0x1
+    b       branch_0x803013b8
 
-branch_0x8030119C:		# jumptable 80300FF8 case 3
-slwi	  r0, r30, 2
-li	  r25, 0
-addi	  r3, r25, 0
-add	  r4, r6, r0
-b	  branch_0x803011B4
+branch_0x8030119c:
+    slwi    r0, r30, 2
+    li      r25, 0x0
+    addi    r3, r25, 0x0
+    add     r4, r6, r0
+    b       branch_0x803011b4
 
-branch_0x803011B0:
-addi	  r3, r3, 3
+branch_0x803011b0:
+    addi    r3, r3, 0x3
+branch_0x803011b4:
+    add     r0, r30, r3
+    slwi    r0, r0, 2
+    lwzx    r0, r6, r0
+    cmplwi  r0, 0x0
+    bne+    branch_0x803011b0
+    mulhwu  r0, r31, r3
+    srwi    r0, r0, 1
+    mulli   r3, r0, 0xc
+    addi    r5, r3, 0x4
+    addi    r3, r27, 0x0
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x54(r27)
+    slwi    r3, r30, 2
+    b       branch_0x80301214
 
-branch_0x803011B4:
-add	  r0, r30, r3
-slwi	  r0, r0, 2
-lwzx	  r0, r6, r0
-cmplwi	  r0, 0
-bne	  branch_0x803011B0
-mulhwu	  r0, r31, r3
-srwi	  r0, r0, 1
-mulli	  r3, r0, 0xC
-addi	  r5, r3, 4
-addi	  r3, r27, 0
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x54(r27)
-slwi	  r3, r30, 2
-b	  branch_0x80301214
-
-branch_0x803011EC:
-clrlwi	  r0, r25, 24
-lwz	  r4, 0x54(r27)
-mulli	  r0, r0, 0xC
-add	  r4, r4, r0
-lwz	  r0, 0(r4)
-addi	  r3, r3, 0xC
-addi	  r25, r25, 1
-add	  r0, r5, r0
-stw	  r0, 0(r4)
-addi	  r30, r30, 3
-
+branch_0x803011ec:
+    clrlwi  r0, r25, 24
+    lwz     r4, 0x54(r27)
+    mulli   r0, r0, 0xc
+    add     r4, r4, r0
+    lwz     r0, 0x0(r4)
+    addi    r3, r3, 0xc
+    addi    r25, r25, 0x1
+    add     r0, r5, r0
+    stw     r0, 0x0(r4)
+    addi    r30, r30, 0x3
 branch_0x80301214:
-lwz	  r5, 0x4C(r27)
-lwzx	  r0, r5, r3
-cmplwi	  r0, 0
-bne	  branch_0x803011EC
-clrlslwi  r25, r25, 24,2
-addi	  r3, r27, 0
-addi	  r4, r25, 0
-bl	  allocHeap__8JAIBasicFUl # JAIBasic::allocHeap((ulong))
-stw	  r3, 0x60(r27)
-addi	  r3, r27, 0
-addi	  r4, r25, 0
-bl	  allocHeap__8JAIBasicFUl # JAIBasic::allocHeap((ulong))
-stw	  r3, 0x64(r27)
-addi	  r30, r30, 1
-b	  branch_0x803013b8
+    lwz     r5, 0x4c(r27)
+    lwzx    r0, r5, r3
+    cmplwi  r0, 0x0
+    bne+    branch_0x803011ec
+    clrlslwi  r25, r25, 24, 2
+    addi    r3, r27, 0x0
+    addi    r4, r25, 0x0
+    bl      allocHeap__8JAIBasicFUl
+    stw     r3, 0x60(r27)
+    addi    r3, r27, 0x0
+    addi    r4, r25, 0x0
+    bl      allocHeap__8JAIBasicFUl
+    stw     r3, 0x64(r27)
+    addi    r30, r30, 0x1
+    b       branch_0x803013b8
 
-branch_0x80301250:		# jumptable 80300FF8 case 4
-slwi	  r25, r30, 2
-add	  r4, r6, r25
-addi	  r3, r27, 0
-li	  r5, 8
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x58(r27)
-mr	  r3, r27
-lwz	  r4, 0x4C(r27)
-add	  r5, r4, r25
-lwz	  r0, 0(r5)
-lwz	  r5, 4(r5)
-add	  r4, r4, r0
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-lwz	  r4, 0x58(r27)
-addi	  r30, r30, 3
-stw	  r3, 0(r4)
-b	  branch_0x803013b8
+branch_0x80301250:
+    slwi    r25, r30, 2
+    add     r4, r6, r25
+    addi    r3, r27, 0x0
+    li      r5, 0x8
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x58(r27)
+    mr      r3, r27
+    lwz     r4, 0x4c(r27)
+    add     r5, r4, r25
+    lwz     r0, 0x0(r5)
+    lwz     r5, 0x4(r5)
+    add     r4, r4, r0
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    lwz     r4, 0x58(r27)
+    addi    r30, r30, 0x3
+    stw     r3, 0x0(r4)
+    b       branch_0x803013b8
 
-branch_0x80301294:		# jumptable 80300FF8 case 5
-slwi	  r25, r30, 2
-add	  r4, r6, r25
-addi	  r3, r27, 0
-li	  r5, 8
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x5C(r27)
-mr	  r3, r27
-lwz	  r4, 0x4C(r27)
-add	  r5, r4, r25
-lwz	  r0, 0(r5)
-lwz	  r5, 4(r5)
-add	  r4, r4, r0
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-lwz	  r4, 0x5C(r27)
-addi	  r30, r30, 3
-stw	  r3, 0(r4)
-lwz	  r4, 0x5C(r27)
-lwz	  r3, 0(r27)
-lwz	  r0, 0(r4)
-stw	  r0, 0x1F8(r3)
-b	  branch_0x803013b8
+branch_0x80301294:
+    slwi    r25, r30, 2
+    add     r4, r6, r25
+    addi    r3, r27, 0x0
+    li      r5, 0x8
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x5c(r27)
+    mr      r3, r27
+    lwz     r4, 0x4c(r27)
+    add     r5, r4, r25
+    lwz     r0, 0x0(r5)
+    lwz     r5, 0x4(r5)
+    add     r4, r4, r0
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    lwz     r4, 0x5c(r27)
+    addi    r30, r30, 0x3
+    stw     r3, 0x0(r4)
+    lwz     r4, 0x5c(r27)
+    lwz     r3, 0x0(r27)
+    lwz     r0, 0x0(r4)
+    stw     r0, 0x1f8(r3)
+    b       branch_0x803013b8
 
-branch_0x803012E8:		# jumptable 80300FF8 case 6
-slwi	  r0, r30, 2
-add	  r4, r6, r0
-lwz	  r0, 0(r4)
-mr	  r3, r27
-lwz	  r5, 4(r4)
-add	  r4, r6, r0
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-lwz	  r4, 0(r3)
-addi	  r0, r3, 4
-li	  r6, 0
-stw	  r4, -0x74C8(r13)
-li	  r4, 0
-stw	  r0, 0x68(r27)
-b	  branch_0x80301338
+branch_0x803012e8:
+    slwi    r0, r30, 2
+    add     r4, r6, r0
+    lwz     r0, 0x0(r4)
+    mr      r3, r27
+    lwz     r5, 0x4(r4)
+    add     r4, r6, r0
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    lwz     r4, 0x0(r3)
+    addi    r0, r3, 0x4
+    li      r6, 0x0
+    stw     r4, R13Off_m0x74c8(r13)
+    li      r4, 0x0
+    stw     r0, 0x68(r27)
+    b       branch_0x80301338
 
 branch_0x80301320:
-lwz	  r5, 0x68(r27)
-addi	  r6, r6, 1
-lwzx	  r0, r5, r4
-add	  r0, r0, r3
-stwx	  r0, r5, r4
-addi	  r4, r4, 4
-
+    lwz     r5, 0x68(r27)
+    addi    r6, r6, 0x1
+    lwzx    r0, r5, r4
+    add     r0, r0, r3
+    stwx    r0, r5, r4
+    addi    r4, r4, 0x4
 branch_0x80301338:
-lwz	  r0, -0x74C8(r13)
-cmplw	  r6, r0
-blt	  branch_0x80301320
-addi	  r30, r30, 3
-b	  branch_0x803013b8
+    lwz     r0, R13Off_m0x74c8(r13)
+    cmplw   r6, r0
+    blt+    branch_0x80301320
+    addi    r30, r30, 0x3
+    b       branch_0x803013b8
 
-branch_0x8030134C:		# jumptable 80300FF8 case 7
-slwi	  r0, r30, 2
-add	  r4, r6, r0
-lwz	  r0, 0(r4)
-mr	  r3, r27
-lwz	  r5, 4(r4)
-add	  r4, r6, r0
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x6C(r27)
-addi	  r30, r30, 3
-b	  branch_0x803013b8
+branch_0x8030134c:
+    slwi    r0, r30, 2
+    add     r4, r6, r0
+    lwz     r0, 0x0(r4)
+    mr      r3, r27
+    lwz     r5, 0x4(r4)
+    add     r4, r6, r0
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x6c(r27)
+    addi    r30, r30, 0x3
+    b       branch_0x803013b8
 
-branch_0x80301374:		# jumptable 80300FF8 case 8
-slwi	  r0, r30, 2
-add	  r5, r6, r0
-lwz	  r0, 4(r5)
-mr	  r3, r27
-lwz	  r4, 0(r5)
-rlwinm	  r5, r0, 0,16,27
-add	  r4, r6, r4
-addi	  r5, r5, 0x10
-bl	  transInitDataFile__8JAIBasicFPUcUl # JAIBasic::transInitDataFile((uchar *,ulong))
-stw	  r3, 0x78(r27)
-addi	  r30, r30, 3
-b	  branch_0x803013b8
+branch_0x80301374:
+    slwi    r0, r30, 2
+    add     r5, r6, r0
+    lwz     r0, 0x4(r5)
+    mr      r3, r27
+    lwz     r4, 0x0(r5)
+    rlwinm  r5, r0, 0, 16, 27
+    add     r4, r6, r4
+    addi    r5, r5, 0x10
+    bl      transInitDataFile__8JAIBasicFPUcUl
+    stw     r3, 0x78(r27)
+    addi    r30, r30, 0x3
+    b       branch_0x803013b8
 
-def_80300FF8:		# jumptable 80300FF8 default case
 branch_0x803013a4:
     slwi    r0, r30, 2
     lwzx    r0, r6, r0
@@ -767,7 +760,7 @@ transInitDataFile__8JAIBasicFPUcUl: # 0x803013d4
     li      r6, 0x0
     ble-    branch_0x803014a8
     cmplwi  r31, 0x8
-    subi    r4, r31, 0x8
+    addi    r4, r31, -0x8
     ble-    branch_0x8030147c
     addi    r0, r4, 0x7
     srwi    r0, r0, 3
@@ -824,7 +817,7 @@ initBankWave__8JAIBasicFv: # 0x803014c0
     stwu    sp, -0x28(sp)
     stmw    r26, 0x10(sp)
     mr      r31, r3
-    lwz     r3, -0x7488(r13)
+    lwz     r3, R13Off_m0x7488(r13)
     bl      setCurrentDir__Q28JASystem13WaveArcLoaderFPCc
     li      r3, 0x100
     bl      init__Q28JASystem11WaveBankMgrFi
@@ -1024,10 +1017,10 @@ setSceneSetFinishCallback__8JAIBasicFll: # 0x80301744
     stwu    sp, -0x8(sp)
     stw     r0, 0x34(r3)
     slwi    r0, r4, 2
-    lis     r4, 0x8030
+    lis     r4, finishSceneSet__8JAIBasicFUl@h
     lwz     r6, 0x64(r3)
     add     r3, r8, r5
-    addi    r5, r4, 0x1790
+    addi    r5, r4, finishSceneSet__8JAIBasicFUl@l
     stwx    r7, r6, r0
     li      r4, 0x0
     bl      checkPassDvdT__Q28JASystem3DvdFUlPUlPFUl_v
@@ -1039,11 +1032,11 @@ setSceneSetFinishCallback__8JAIBasicFll: # 0x80301744
 
 .globl finishSceneSet__8JAIBasicFUl
 finishSceneSet__8JAIBasicFUl: # 0x80301790
-    lwz     r4, -0x5d90(r13)
+    lwz     r4, R13Off_m0x5d90(r13)
     rlwinm  r0, r3, 18, 14, 29
     stw     r3, 0x34(r4)
     li      r4, 0x2
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     lwz     r3, 0x64(r3)
     stwx    r4, r3, r0
     blr
@@ -1133,10 +1126,10 @@ loadGroupWave__8JAIBasicFll: # 0x80301884
     slwi    r0, r31, 16
     add     r3, r0, r30
     lwz     r6, 0x64(r29)
-    lis     r4, 0x8030
+    lis     r4, finishSceneSet__8JAIBasicFUl@h
     slwi    r31, r31, 2
     li      r0, 0x1
-    addi    r5, r4, 0x1790
+    addi    r5, r4, finishSceneSet__8JAIBasicFUl@l
     stwx    r0, r6, r31
     li      r4, 0x0
     bl      checkPassDvdT__Q28JASystem3DvdFUlPUlPFUl_v
@@ -1154,29 +1147,29 @@ loadGroupWave__8JAIBasicFll: # 0x80301884
 .globl initNullData__8JAIBasicFv
 initNullData__8JAIBasicFv: # 0x80301908
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, dummyZeroVec__8JAIConst@h
     stw     r0, 0x4(sp)
-    lis     r4, 0x8040
-    addi    r7, r5, 0x2520
+    lis     r4, JAInullCamera@h
+    addi    r7, r5, dummyZeroVec__8JAIConst@l
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
-    addi    r31, r4, 0x74ec
-    lis     r4, 0x8040
+    addi    r31, r4, JAInullCamera@l
+    lis     r4, camMtx__8JAIConst@h
     stw     r30, 0x30(sp)
     addi    r30, r31, 0x4
     stw     r29, 0x2c(sp)
     addi    r29, r3, 0x0
     stw     r28, 0x28(sp)
-    addi    r28, r4, 0x7550
+    addi    r28, r4, camMtx__8JAIConst@l
     addi    r3, r28, 0x0
-    lfs     f1, 0x4c0(rtoc)
+    lfs     f1, 0x4c0(r2)
     lwz     r6, 0x0(r31)
     stfs    f1, 0x0(r6)
     addi    r6, sp, 0xc
     lwz     r5, 0x0(r31)
     stfs    f1, 0x4(r5)
     addi    r5, sp, 0x18
-    lfs     f0, 0x4c4(rtoc)
+    lfs     f0, 0x4c4(r2)
     lwz     r4, 0x0(r31)
     stfs    f0, 0x8(r4)
     lwz     r4, 0x4(r31)
@@ -1186,7 +1179,7 @@ initNullData__8JAIBasicFv: # 0x80301908
     lwz     r4, 0x4(r31)
     stfs    f0, 0x8(r4)
     stfs    f1, 0x18(sp)
-    lfs     f0, 0x4c8(rtoc)
+    lfs     f0, 0x4c8(r2)
     stfs    f0, 0x1c(sp)
     stfs    f1, 0x20(sp)
     lwz     r4, 0x0(r7)
@@ -1218,7 +1211,7 @@ branch_0x803019f4:
     addi    r8, r8, 0x1
     addi    r3, r3, 0xc
 branch_0x803019fc:
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     cmplw   r8, r0
     blt+    branch_0x803019c4
     lwz     r0, 0x3c(sp)
@@ -1246,15 +1239,15 @@ initDriver__8JAIBasicFP12JKRSolidHeapUlUc: # 0x80301a28
     beq-    branch_0x80301a58
     ori     r31, r31, 0x2
 branch_0x80301a58:
-    lbz     r3, -0x74cf(r13)
-    lbz     r4, -0x74ce(r13)
+    lbz     r3, R13Off_m0x74cf(r13)
+    lbz     r4, R13Off_m0x74ce(r13)
     bl      setPriority__Q28JASystem11AudioThreadFUcUc
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
     addi    r5, r31, 0x0
     bl      start__Q28JASystem11AudioThreadFP12JKRSolidHeapUlUl
-    lwz     r3, -0x744c(r13)
-    lwz     r4, -0x7448(r13)
+    lwz     r3, R13Off_m0x744c(r13)
+    lwz     r4, R13Off_m0x7448(r13)
     bl      init__Q28JASystem8TrackMgrFii
     bl      reset__Q28JASystem8TrackMgrFv
     lwz     r0, 0x34(sp)
@@ -1303,13 +1296,13 @@ initAllocParameter__8JAIBasicFv: # 0x80301ac4
     bl      allocHeap__8JAIBasicFUl
     stw     r3, 0x28(r28)
     mr      r3, r28
-    lwz     r0, -0x7450(r13)
+    lwz     r0, R13Off_m0x7450(r13)
     mulli   r4, r0, 0xc
     bl      allocHeap__8JAIBasicFUl
     stw     r3, 0x8(r28)
     li      r31, 0x0
     addi    r30, r31, 0x0
-    lfs     f31, 0x4c8(rtoc)
+    lfs     f31, 0x4c8(r2)
     li      r29, 0x0
     b       branch_0x80301b58
 
@@ -1350,7 +1343,7 @@ initSeqsLoadArea__8JAIBasicFv: # 0x80301b88
 
 branch_0x80301bb0:
     mr      r3, r29
-    lwz     r4, -0x74a0(r13)
+    lwz     r4, R13Off_m0x74a0(r13)
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x0(r29)
     addi    r0, r31, 0x4
@@ -1359,11 +1352,11 @@ branch_0x80301bb0:
     addi    r31, r31, 0x14
     stwx    r3, r4, r0
 branch_0x80301bd4:
-    lwz     r0, -0x74a8(r13)
+    lwz     r0, R13Off_m0x74a8(r13)
     cmplw   r30, r0
     blt+    branch_0x80301bb0
     mr      r3, r29
-    lwz     r4, -0x749c(r13)
+    lwz     r4, R13Off_m0x749c(r13)
     bl      allocHeap__8JAIBasicFUl
     lwz     r4, 0x0(r29)
     lwz     r4, 0x1f0(r4)
@@ -1533,7 +1526,7 @@ checkDummyPositionBuffer__8JAIBasicFv: # 0x80301de8
 branch_0x80301e10:
     lwz     r3, 0xc(r31)
     lwz     r30, 0x4(r31)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xc(r31)
     lwz     r0, 0xc(r31)
     cmplwi  r0, 0x0
@@ -1746,8 +1739,8 @@ startSoundBasic__8JAIBasicFUlPP8JAISoundP8JAIActorUlUcPv: # 0x803020ac
     addi    r31, r9, 0x0
     beq-    branch_0x803021d4
     bge-    branch_0x803020fc
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x80302210
     b       branch_0x80302108
@@ -1858,8 +1851,8 @@ stopSoundHandle__8JAIBasicFP8JAISoundUl: # 0x80302224
     cmpw    r4, r0
     beq-    branch_0x80302378
     bge-    branch_0x80302278
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x803023f8
     b       branch_0x80302284
@@ -1937,7 +1930,7 @@ branch_0x80302358:
     stw     r31, 0x10(r30)
     addi    r3, r30, 0x0
     addi    r5, r31, 0x0
-    lfs     f1, 0x4c0(rtoc)
+    lfs     f1, 0x4c0(r2)
     li      r4, 0x6
     li      r6, 0x0
     bl      setSeInterVolume__8JAISoundFUcfUlUc
@@ -2391,11 +2384,11 @@ branch_0x803028b4:
 getMapInfoFxParameter__8JAIBasicFUl: # 0x803028bc
     cmplwi  r4, 0x0
     bne-    branch_0x803028cc
-    lfs     f1, 0x4c0(rtoc)
+    lfs     f1, 0x4c0(r2)
     blr
 
 branch_0x803028cc:
-    lfs     f1, 0x4c8(rtoc)
+    lfs     f1, 0x4c8(r2)
     blr
 
 
@@ -2406,7 +2399,7 @@ getInfoPointerFromID__8JAIBasicFUl: # 0x803028d4
     cmplwi  r0, 0x0
     bne-    branch_0x803028f0
     addi    r0, r5, 0x88
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
     b       branch_0x80302944
 
 branch_0x803028f0:
@@ -2415,8 +2408,8 @@ branch_0x803028f0:
     cmpw    r4, r0
     beq-    branch_0x8030293c
     bge-    branch_0x80302918
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x80302944
     b       branch_0x80302930
@@ -2428,32 +2421,32 @@ branch_0x80302918:
 
 branch_0x80302924:
     addi    r0, r5, 0x88
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
     b       branch_0x80302944
 
 branch_0x80302930:
     addi    r0, r5, 0xc
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
     b       branch_0x80302944
 
 branch_0x8030293c:
     addi    r0, r5, 0x104
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
 branch_0x80302944:
-    lwz     r3, -0x5d8c(r13)
+    lwz     r3, R13Off_m0x5d8c(r13)
     blr
 
 
 .globl getInfoFormat__8JAIBasicFP13JAISoundTableUl
 getInfoFormat__8JAIBasicFP13JAISoundTableUl: # 0x8030294c
     clrrwi  r6, r5, 30
-    lis     r0, 0xc000
+    lis     r0, unk_c0000000@h
     cmpw    r6, r0
-    li      r3, 0x0
+    addi    r3, r0, unk_c0000000@l
     beq-    branch_0x80302998
     bge-    branch_0x80302978
-    lis     r5, 0x8000
-    addi    r0, r5, 0x1
+    lis     r5, unk_80000001@h
+    addi    r0, r5, unk_80000001@l
     cmpw    r6, r0
     bgelr-    
 
@@ -2484,10 +2477,10 @@ setSeCategoryVolume__8JAIBasicFUcUc: # 0x803029a4
     clrlwi  r0, r5, 24
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
-    lfd     f2, 0x4d0(rtoc)
+    lfd     f2, 0x4d0(r2)
     stw     r0, 0x10(sp)
     clrlslwi  r0, r4, 24, 2
-    lfs     f0, 0x4cc(rtoc)
+    lfs     f0, 0x4cc(r2)
     lfd     f1, 0x10(sp)
     addi    sp, sp, 0x18
     lwz     r3, 0x28(r3)
@@ -2524,7 +2517,7 @@ branch_0x80302a20:
     b       branch_0x80302ae8
 
 branch_0x80302a2c:
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     mulli   r30, r26, 0x50
     lwz     r3, 0x0(r3)
     addi    r27, r30, 0x48
@@ -2539,9 +2532,9 @@ branch_0x80302a2c:
     cmplw   r3, r0
     bne-    branch_0x80302ae4
     lwz     r4, 0x308(r28)
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     bl      routeToTrack__8JAIBasicFUl
-    lwz     r5, -0x5d90(r13)
+    lwz     r5, R13Off_m0x5d90(r13)
     mr      r26, r3
     lwz     r4, 0x0(r5)
     mr      r3, r5
@@ -2549,7 +2542,7 @@ branch_0x80302a2c:
     lwzx    r4, r4, r27
     lwz     r4, 0x8(r4)
     bl      getSoundInfoFromID__8JAIBasicFUl
-    lwz     r6, -0x5d90(r13)
+    lwz     r6, R13Off_m0x5d90(r13)
     mr      r4, r28
     lwz     r0, 0x0(r3)
     mr      r5, r26
@@ -2559,7 +2552,7 @@ branch_0x80302a2c:
     addi    r7, r31, 0x0
     add     r3, r0, r30
     bl      outerInit__18JAISystemInterfaceFP16JAISeqUpdateDataPvUlUsUc
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     li      r0, 0x1
     addi    r4, r30, 0x4
     lwz     r3, 0x0(r3)
@@ -2569,11 +2562,11 @@ branch_0x80302a2c:
     lwzx    r3, r5, r4
     or      r0, r3, r0
     stwx    r0, r5, r4
-    lwz     r26, -0x74b8(r13)
+    lwz     r26, R13Off_m0x74b8(r13)
 branch_0x80302ae4:
     addi    r26, r26, 0x1
 branch_0x80302ae8:
-    lwz     r0, -0x74b8(r13)
+    lwz     r0, R13Off_m0x74b8(r13)
     cmplw   r26, r0
     blt+    branch_0x80302a2c
     b       branch_0x80302b98
@@ -2581,7 +2574,7 @@ branch_0x80302ae8:
 branch_0x80302af8:
     lwz     r0, 0x308(r28)
     li      r4, 0x1
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     clrlwi  r0, r0, 24
     lwz     r26, 0x304(r28)
     lwz     r3, 0x0(r3)
@@ -2603,11 +2596,11 @@ branch_0x80302af8:
     addi    r3, r26, 0x0
     li      r4, 0x4
     bl      setParam__Q38JASystem6TTrack11TOuterParamFUcf
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     lbz     r0, 0x14(r3)
     cmplwi  r0, 0x2
     beq-    branch_0x80302b70
-    lfs     f1, 0x4c0(rtoc)
+    lfs     f1, 0x4c0(r2)
     b       branch_0x80302b74
 
 branch_0x80302b70:
@@ -2619,7 +2612,7 @@ branch_0x80302b74:
     b       branch_0x80302b98
 
 branch_0x80302b84:
-    lwz     r5, -0x5d90(r13)
+    lwz     r5, R13Off_m0x5d90(r13)
     addi    r3, r28, 0x0
     li      r4, 0x0
     lbz     r5, 0x10(r5)
@@ -2636,14 +2629,14 @@ branch_0x80302b98:
 .globl getSoundInfoFromID__8JAIBasicFUl
 getSoundInfoFromID__8JAIBasicFUl: # 0x80302bb0
     mflr    r0
-    subi    r5, r13, 0x5d88
+    addi    r5, r13, R13Off_m0x5d88
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     lwz     r3, 0x0(r3)
     bl      getInfoPointer__7JAIDataFUlPPv
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
-    lwz     r3, -0x5d88(r13)
+    lwz     r3, R13Off_m0x5d88(r13)
     mtlr    r0
     blr
 
@@ -2681,7 +2674,7 @@ setSeExtParameter__8JAIBasicFP8JAISound: # 0x80302bf4
     cmplwi  r0, 0x0
     bne-    branch_0x80302c30
     addi    r0, r5, 0x88
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
     b       branch_0x80302c84
 
 branch_0x80302c30:
@@ -2690,8 +2683,8 @@ branch_0x80302c30:
     cmpw    r4, r0
     beq-    branch_0x80302c7c
     bge-    branch_0x80302c58
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x80302c84
     b       branch_0x80302c70
@@ -2703,28 +2696,28 @@ branch_0x80302c58:
 
 branch_0x80302c64:
     addi    r0, r5, 0x88
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
     b       branch_0x80302c84
 
 branch_0x80302c70:
     addi    r0, r5, 0xc
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
     b       branch_0x80302c84
 
 branch_0x80302c7c:
     addi    r0, r5, 0x104
-    stw     r0, -0x5d8c(r13)
+    stw     r0, R13Off_m0x5d8c(r13)
 branch_0x80302c84:
     lwz     r3, 0x8(r31)
-    lis     r0, 0xc000
-    lwz     r5, -0x5d8c(r13)
-    li      r6, 0x0
+    lis     r0, unk_c0000000@h
+    lwz     r5, R13Off_m0x5d8c(r13)
+    addi    r6, r0, unk_c0000000@l
     clrrwi  r4, r3, 30
     cmpw    r4, r0
     beq-    branch_0x80302cdc
     bge-    branch_0x80302cb8
-    lis     r3, 0x8000
-    addi    r0, r3, 0x1
+    lis     r3, unk_80000001@h
+    addi    r0, r3, unk_80000001@l
     cmpw    r4, r0
     bge-    branch_0x80302ce4
     b       branch_0x80302cd0
@@ -2753,10 +2746,10 @@ branch_0x80302ce4:
     beq-    branch_0x80302d28
     lwz     r4, 0x3c(r31)
     lis     r0, 0x4330
-    lfd     f2, 0x4d0(rtoc)
+    lfd     f2, 0x4d0(r2)
     mr      r3, r31
     lbz     r5, 0xc(r4)
-    lfs     f0, 0x4cc(rtoc)
+    lfs     f0, 0x4cc(r2)
     li      r4, 0x0
     stw     r5, 0x24(sp)
     li      r5, 0x1
@@ -2770,10 +2763,10 @@ branch_0x80302d28:
     beq-    branch_0x80302d68
     lwz     r4, 0x3c(r31)
     lis     r0, 0x4330
-    lfd     f2, 0x4d0(rtoc)
+    lfd     f2, 0x4d0(r2)
     mr      r3, r31
     lbz     r5, 0xd(r4)
-    lfs     f0, 0x4cc(rtoc)
+    lfs     f0, 0x4cc(r2)
     li      r4, 0x0
     stw     r5, 0x24(sp)
     li      r5, 0x1
@@ -2832,10 +2825,10 @@ initHeap__8JAIBasicFv: # 0x80302de0
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x5ccc(r13)
+    lwz     r0, R13Off_m0x5ccc(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80302e14
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     mr      r3, r0
     li      r5, 0x0
     bl      create__12JKRSolidHeapFUlP7JKRHeapb
@@ -2854,7 +2847,7 @@ allocHeap__8JAIBasicFUl: # 0x80302e28
     addi    r5, r4, 0x0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x5ccc(r13)
+    lwz     r0, R13Off_m0x5ccc(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80302e58
     lwz     r4, 0xc(r3)
@@ -2888,8 +2881,8 @@ makeSound__8JAIBasicFUl: # 0x80302e70
     addi    r3, r3, 0x8
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8031
-    subi    r4, r4, 0x5c78
+    lis     r4, __ct__8JAISoundFv@ha
+    addi    r4, r4, __ct__8JAISoundFv@l
     addi    r7, r31, 0x0
     li      r5, 0x0
     li      r6, 0x44
@@ -2898,13 +2891,13 @@ makeSound__8JAIBasicFUl: # 0x80302e70
 
 branch_0x80302ec0:
     mr      r31, r4
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     mulli   r3, r31, 0x44
     addi    r3, r3, 0x8
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8031
-    subi    r4, r4, 0x5c78
+    lis     r4, __ct__8JAISoundFv@ha
+    addi    r4, r4, __ct__8JAISoundFv@l
     addi    r7, r31, 0x0
     li      r5, 0x0
     li      r6, 0x44
@@ -2934,7 +2927,7 @@ loadDVDFile__8JAIBasicFPc: # 0x80302f04
     b       branch_0x80302f70
 
 branch_0x80302f38:
-    lwz     r0, -0x5ccc(r13)
+    lwz     r0, R13Off_m0x5ccc(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80302f58
     lwz     r4, 0xc(r31)
@@ -2978,7 +2971,7 @@ loadTmpDVDFile__8JAIBasicFPcPPUc: # 0x80302f88
     b       branch_0x80302fe8
 
 branch_0x80302fc0:
-    lwz     r3, -0x5b30(r13)
+    lwz     r3, R13Off_m0x5b30(r13)
     li      r5, -0x20
     lwz     r12, 0x0(r3)
     lwz     r12, 0xc(r12)
@@ -3005,7 +2998,7 @@ deleteTmpDVDFile__8JAIBasicFPPUc: # 0x80303000
     lwz     r0, 0x0(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x8030302c
-    lwz     r3, -0x5b30(r13)
+    lwz     r3, R13Off_m0x5b30(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x18(r12)
     mtlr    r12
@@ -3039,9 +3032,9 @@ loadArcSeqData__8JAIBasicFUlb: # 0x8030303c
     lwz     r3, 0x0(r26)
     addi    r4, r25, 0x0
     mr      r29, r0
-    subi    r5, r13, 0x5d88
+    addi    r5, r13, R13Off_m0x5d88
     bl      getInfoPointer__7JAIDataFUlPPv
-    lwz     r3, -0x5d88(r13)
+    lwz     r3, R13Off_m0x5d88(r13)
     cmplwi  r29, 0x0
     lwz     r25, 0x0(r3)
     bne-    branch_0x80303194
@@ -3061,7 +3054,7 @@ branch_0x803030c4:
 branch_0x803030d4:
     lwz     r3, 0x0(r26)
     bl      checkUsefulAutoHeapPosition__7JAIDataFv
-    lwz     r0, -0x74a8(r13)
+    lwz     r0, R13Off_m0x74a8(r13)
     addi    r28, r3, 0x0
     clrlwi  r3, r3, 24
     cmplw   r3, r0
@@ -3070,7 +3063,7 @@ branch_0x803030d4:
     b       branch_0x80303198
 
 branch_0x803030f8:
-    lwz     r0, -0x74a0(r13)
+    lwz     r0, R13Off_m0x74a0(r13)
     cmplw   r30, r0
     blt-    branch_0x8030310c
     li      r3, -0x1
@@ -3089,10 +3082,10 @@ branch_0x80303120:
     addi    r4, r28, 0x0
     li      r5, 0x1
     bl      setAutoHeapLoadedFlag__7JAIDataFUcUc
-    lis     r3, 0x8031
+    lis     r3, checkDvdLoadArc__8JAIBasicFUl@ha
     lwz     r0, 0x2c(r26)
     clrlwi  r4, r27, 24
-    subi    r7, r3, 0x7d70
+    addi    r7, r3, checkDvdLoadArc__8JAIBasicFUl@l
     ori     r3, r4, 0xfe
     insrwi  r3, r31, 16, 0
     addi    r8, r3, 0x0
@@ -3127,16 +3120,16 @@ branch_0x80303198:
 
 .globl __sinit_JAIBasic_cpp
 __sinit_JAIBasic_cpp: # 0x803031ac
-    lis     r5, 0x8040
-    lis     r3, 0x8040
-    lis     r4, 0x8040
-    addi    r0, r5, 0x7580
-    addi    r5, r3, 0x74ec
-    lis     r3, 0x8040
+    lis     r5, camTrans__8JAIConst@h
+    lis     r3, JAInullCamera@h
+    lis     r4, camPreTrans__8JAIConst@h
+    addi    r0, r5, camTrans__8JAIConst@l
+    addi    r5, r3, JAInullCamera@l
+    lis     r3, camMtx__8JAIConst@h
     stw     r0, 0x0(r5)
-    addi    r0, r4, 0x758c
+    addi    r0, r4, camPreTrans__8JAIConst@l
     stw     r0, 0x4(r5)
-    addi    r0, r3, 0x7550
+    addi    r0, r3, camMtx__8JAIConst@l
     stw     r0, 0x8(r5)
     blr
 

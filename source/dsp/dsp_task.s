@@ -133,11 +133,11 @@ branch_0x80354054:
 .globl __DSP_boot_task
 __DSP_boot_task: # 0x8035406c
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, unk_803e8ac0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r4, 0x7540
+    addi    r31, r4, unk_803e8ac0@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
 branch_0x8035408c:
@@ -146,8 +146,8 @@ branch_0x8035408c:
     beq+    branch_0x8035408c
     bl      DSPReadMailFromDSP
     stw     r3, 0xc(sp)
-    lis     r3, 0x80f4
-    subi    r3, r3, 0x5fff
+    lis     r3, unk_80f3a001@ha
+    addi    r3, r3, unk_80f3a001@l
     bl      DSPSendMailToDSP
 branch_0x803540ac:
     bl      DSPCheckMailToDSP
@@ -159,8 +159,8 @@ branch_0x803540c0:
     bl      DSPCheckMailToDSP
     cmplwi  r3, 0x0
     bne+    branch_0x803540c0
-    lis     r3, 0x80f4
-    subi    r3, r3, 0x3ffe
+    lis     r3, unk_80f3c002@ha
+    addi    r3, r3, unk_80f3c002@l
     bl      DSPSendMailToDSP
 branch_0x803540d8:
     bl      DSPCheckMailToDSP
@@ -173,8 +173,8 @@ branch_0x803540f0:
     bl      DSPCheckMailToDSP
     cmplwi  r3, 0x0
     bne+    branch_0x803540f0
-    lis     r3, 0x80f4
-    subi    r3, r3, 0x5ffe
+    lis     r3, unk_80f3a002@ha
+    addi    r3, r3, unk_80f3a002@l
     bl      DSPSendMailToDSP
 branch_0x80354108:
     bl      DSPCheckMailToDSP
@@ -186,8 +186,8 @@ branch_0x8035411c:
     bl      DSPCheckMailToDSP
     cmplwi  r3, 0x0
     bne+    branch_0x8035411c
-    lis     r3, 0x80f4
-    subi    r3, r3, 0x4ffe
+    lis     r3, unk_80f3b002@ha
+    addi    r3, r3, unk_80f3b002@l
     bl      DSPSendMailToDSP
 branch_0x80354134:
     bl      DSPCheckMailToDSP
@@ -199,8 +199,8 @@ branch_0x80354148:
     bl      DSPCheckMailToDSP
     cmplwi  r3, 0x0
     bne+    branch_0x80354148
-    lis     r3, 0x80f4
-    subi    r3, r3, 0x2fff
+    lis     r3, unk_80f3d001@ha
+    addi    r3, r3, unk_80f3d001@l
     bl      DSPSendMailToDSP
 branch_0x80354160:
     bl      DSPCheckMailToDSP
@@ -246,13 +246,13 @@ branch_0x80354174:
 
 .globl __DSP_insert_task
 __DSP_insert_task: # 0x803541f8
-    lwz     r0, -0x57e4(r13)
+    lwz     r0, R13Off_m0x57e4(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x80354220
-    stw     r3, -0x57e0(r13)
+    stw     r3, R13Off_m0x57e0(r13)
     li      r0, 0x0
-    stw     r3, -0x57e8(r13)
-    stw     r3, -0x57e4(r13)
+    stw     r3, R13Off_m0x57e8(r13)
+    stw     r3, R13Off_m0x57e4(r13)
     stw     r0, 0x3c(r3)
     stw     r0, 0x38(r3)
     blr
@@ -273,7 +273,7 @@ branch_0x80354228:
     lwz     r4, 0x3c(r3)
     cmplwi  r4, 0x0
     bne-    branch_0x8035425c
-    stw     r3, -0x57e4(r13)
+    stw     r3, R13Off_m0x57e4(r13)
     b       branch_0x80354270
 
 branch_0x8035425c:
@@ -289,13 +289,13 @@ branch_0x80354270:
     cmplwi  r5, 0x0
     bnelr-    
 
-    lwz     r4, -0x57e8(r13)
+    lwz     r4, R13Off_m0x57e8(r13)
     li      r0, 0x0
     stw     r3, 0x38(r4)
     stw     r0, 0x38(r3)
-    lwz     r0, -0x57e8(r13)
+    lwz     r0, R13Off_m0x57e8(r13)
     stw     r0, 0x3c(r3)
-    stw     r3, -0x57e8(r13)
+    stw     r3, R13Off_m0x57e8(r13)
     blr
 
 
@@ -305,38 +305,38 @@ __DSP_remove_task: # 0x80354298
     stw     r4, 0x8(r3)
     li      r0, 0x3
     stw     r0, 0x0(r3)
-    lwz     r0, -0x57e4(r13)
+    lwz     r0, R13Off_m0x57e4(r13)
     cmplw   r0, r3
     bne-    branch_0x803542e0
     lwz     r0, 0x38(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x803542d0
-    stw     r0, -0x57e4(r13)
+    stw     r0, R13Off_m0x57e4(r13)
     lwz     r3, 0x38(r3)
     stw     r4, 0x3c(r3)
     blr
 
 branch_0x803542d0:
-    stw     r4, -0x57e0(r13)
-    stw     r4, -0x57e8(r13)
-    stw     r4, -0x57e4(r13)
+    stw     r4, R13Off_m0x57e0(r13)
+    stw     r4, R13Off_m0x57e8(r13)
+    stw     r4, R13Off_m0x57e4(r13)
     blr
 
 branch_0x803542e0:
-    lwz     r0, -0x57e8(r13)
+    lwz     r0, R13Off_m0x57e8(r13)
     cmplw   r0, r3
     bne-    branch_0x80354308
     lwz     r0, 0x3c(r3)
-    stw     r0, -0x57e8(r13)
+    stw     r0, R13Off_m0x57e8(r13)
     lwz     r3, 0x3c(r3)
     stw     r4, 0x38(r3)
-    lwz     r0, -0x57e4(r13)
-    stw     r0, -0x57e0(r13)
+    lwz     r0, R13Off_m0x57e4(r13)
+    stw     r0, R13Off_m0x57e0(r13)
     blr
 
 branch_0x80354308:
     lwz     r0, 0x38(r3)
-    stw     r0, -0x57e0(r13)
+    stw     r0, R13Off_m0x57e0(r13)
     lwz     r0, 0x38(r3)
     lwz     r4, 0x3c(r3)
     stw     r0, 0x38(r4)

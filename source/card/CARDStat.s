@@ -367,9 +367,9 @@ branch_0x8035a55c:
 .globl CARDSetStatus
 CARDSetStatus: # 0x8035a57c
     mflr    r0
-    lis     r6, 0x8035
+    lis     r6, __CARDSyncCallback@h
     stw     r0, 0x4(sp)
-    addi    r6, r6, 0x4330
+    addi    r6, r6, __CARDSyncCallback@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0

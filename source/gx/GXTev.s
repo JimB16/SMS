@@ -125,7 +125,7 @@ branch_0x8036123c:
 .globl GXSetTevColorIn
 GXSetTevColorIn: # 0x8036128c
     slwi    r3, r3, 2
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r9, r3, 0x130
     add     r9, r0, r9
     lwz     r3, 0x0(r9)
@@ -151,7 +151,7 @@ GXSetTevColorIn: # 0x8036128c
     or      r4, r4, r7
     stw     r4, 0x0(r9)
     stb     r3, -0x8000(r5)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r4, 0x0(r9)
     stw     r4, -0x8000(r5)
     sth     r0, 0x2(r3)
@@ -161,7 +161,7 @@ GXSetTevColorIn: # 0x8036128c
 .globl GXSetTevAlphaIn
 GXSetTevAlphaIn: # 0x8036130c
     slwi    r3, r3, 2
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r9, r3, 0x170
     add     r9, r0, r9
     lwz     r8, 0x0(r9)
@@ -188,7 +188,7 @@ GXSetTevAlphaIn: # 0x8036130c
     or      r4, r6, r4
     stw     r4, 0x0(r9)
     stb     r3, -0x8000(r5)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r4, 0x0(r9)
     stw     r4, -0x8000(r5)
     sth     r0, 0x2(r3)
@@ -198,7 +198,7 @@ GXSetTevAlphaIn: # 0x8036130c
 .globl GXSetTevColorOp
 GXSetTevColorOp: # 0x80361390
     slwi    r3, r3, 2
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r3, r3, 0x130
     add     r3, r0, r3
     lwz     r0, 0x0(r3)
@@ -243,7 +243,7 @@ branch_0x80361404:
     or      r6, r7, r6
     stw     r6, 0x0(r3)
     stb     r4, -0x8000(r5)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwz     r3, 0x0(r3)
     stw     r3, -0x8000(r5)
     sth     r0, 0x2(r4)
@@ -253,7 +253,7 @@ branch_0x80361404:
 .globl GXSetTevAlphaOp
 GXSetTevAlphaOp: # 0x80361450
     slwi    r3, r3, 2
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r3, r3, 0x170
     add     r3, r0, r3
     lwz     r0, 0x0(r3)
@@ -298,7 +298,7 @@ branch_0x803614c4:
     or      r6, r7, r6
     stw     r6, 0x0(r3)
     stb     r4, -0x8000(r5)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwz     r3, 0x0(r3)
     stw     r3, -0x8000(r5)
     sth     r0, 0x2(r4)
@@ -317,7 +317,7 @@ GXSetTevColor: # 0x80361510
     lbz     r6, 0x1(r4)
     slwi    r7, r7, 24
     li      r5, 0x61
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lis     r4, 0xcc01
     stb     r5, -0x8000(r4)
     insrwi  r7, r9, 20, 12
@@ -350,7 +350,7 @@ GXSetTevColorS10: # 0x80361584
     lha     r6, 0x2(r4)
     slwi    r8, r8, 24
     li      r5, 0x61
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lis     r4, 0xcc01
     stb     r5, -0x8000(r4)
     insrwi  r8, r10, 23, 9
@@ -383,7 +383,7 @@ GXSetTevKColor: # 0x803615f8
     lbz     r9, 0x2(r4)
     rlwinm  r0, r0, 0, 12, 7
     oris    r8, r0, 0x80
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     slwi    r7, r7, 24
     li      r0, 0x61
     lis     r4, 0xcc01
@@ -407,7 +407,7 @@ GXSetTevKColor: # 0x803615f8
 .globl GXSetTevKColorSel
 GXSetTevKColorSel: # 0x8036166c
     srawi   r5, r3, 1
-    lwz     r6, -0x72f8(r13)
+    lwz     r6, R13Off_m0x72f8(r13)
     clrlwi. r0, r3, 31
     slwi    r3, r5, 2
     addi    r7, r3, 0x1b0
@@ -428,7 +428,7 @@ branch_0x803616a0:
     stw     r0, 0x0(r7)
 branch_0x803616b4:
     li      r0, 0x61
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
     stb     r0, -0x8000(r5)
     li      r0, 0x0
@@ -441,7 +441,7 @@ branch_0x803616b4:
 .globl GXSetTevKAlphaSel
 GXSetTevKAlphaSel: # 0x803616d8
     srawi   r5, r3, 1
-    lwz     r6, -0x72f8(r13)
+    lwz     r6, R13Off_m0x72f8(r13)
     clrlwi. r0, r3, 31
     slwi    r3, r5, 2
     addi    r7, r3, 0x1b0
@@ -462,7 +462,7 @@ branch_0x8036170c:
     stw     r0, 0x0(r7)
 branch_0x80361720:
     li      r0, 0x61
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
     stb     r0, -0x8000(r5)
     li      r0, 0x0
@@ -475,7 +475,7 @@ branch_0x80361720:
 .globl GXSetTevSwapMode
 GXSetTevSwapMode: # 0x80361744
     slwi    r3, r3, 2
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r7, r3, 0x170
     add     r7, r0, r7
     lwz     r0, 0x0(r7)
@@ -491,7 +491,7 @@ GXSetTevSwapMode: # 0x80361744
     or      r4, r4, r6
     stw     r4, 0x0(r7)
     stb     r3, -0x8000(r5)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r4, 0x0(r7)
     stw     r4, -0x8000(r5)
     sth     r0, 0x2(r3)
@@ -501,7 +501,7 @@ GXSetTevSwapMode: # 0x80361744
 .globl GXSetTevSwapModeTable
 GXSetTevSwapModeTable: # 0x8036179c
     slwi    r9, r3, 1
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     slwi    r3, r3, 3
     addi    r11, r3, 0x1b0
     add     r11, r0, r11
@@ -522,7 +522,7 @@ GXSetTevSwapModeTable: # 0x8036179c
     slwi    r3, r7, 2
     li      r0, 0x0
     stb     r9, -0x8000(r8)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwz     r5, 0x0(r11)
     add     r10, r4, r10
     stw     r5, -0x8000(r8)
@@ -535,7 +535,7 @@ GXSetTevSwapModeTable: # 0x8036179c
     or      r3, r4, r3
     stw     r3, 0x0(r10)
     stb     r9, -0x8000(r8)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r4, 0x0(r10)
     stw     r4, -0x8000(r8)
     sth     r0, 0x2(r3)
@@ -545,7 +545,7 @@ GXSetTevSwapModeTable: # 0x8036179c
 .globl GXSetAlphaCompare
 GXSetAlphaCompare: # 0x8036183c
     clrlslwi  r7, r7, 24, 8
-    lwz     r8, -0x72f8(r13)
+    lwz     r8, R13Off_m0x72f8(r13)
     insrwi  r7, r4, 8, 24
     slwi    r0, r3, 16
     insrwi  r0, r7, 16, 16
@@ -598,7 +598,7 @@ branch_0x803618d0:
     li      r6, 0x2
 branch_0x803618d4:
     li      r0, 0x61
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
     stb     r0, -0x8000(r5)
     rlwinm  r6, r6, 0, 30, 27
@@ -617,7 +617,7 @@ branch_0x803618d4:
 .globl GXSetTevOrder
 GXSetTevOrder: # 0x80361910
     srawi   r7, r3, 1
-    lwz     r9, -0x72f8(r13)
+    lwz     r9, R13Off_m0x72f8(r13)
     rlwinm  r10, r5, 0, 24, 22
     addze   r7, r7
     slwi    r0, r3, 2
@@ -637,7 +637,7 @@ branch_0x8036194c:
 branch_0x80361950:
     cmpwi   r4, 0x8
     blt-    branch_0x8036197c
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     li      r0, 0x1
     slw     r0, r0, r3
     lwz     r8, 0x4e0(r4)
@@ -648,7 +648,7 @@ branch_0x80361950:
     b       branch_0x80361998
 
 branch_0x8036197c:
-    lwz     r8, -0x72f8(r13)
+    lwz     r8, R13Off_m0x72f8(r13)
     li      r0, 0x1
     slw     r0, r0, r3
     addi    r10, r8, 0x4e0
@@ -674,9 +674,9 @@ branch_0x80361998:
     b       branch_0x803619ec
 
 branch_0x803619d8:
-    lis     r3, 0x803f
+    lis     r3, c2r_71@ha
     slwi    r4, r6, 2
-    subi    r0, r3, 0x6c70
+    addi    r0, r3, c2r_71@l
     add     r3, r0, r4
     lwz     r0, 0x0(r3)
 branch_0x803619ec:
@@ -715,9 +715,9 @@ branch_0x80361a30:
     b       branch_0x80361a78
 
 branch_0x80361a64:
-    lis     r3, 0x803f
+    lis     r3, c2r_71@ha
     slwi    r4, r6, 2
-    subi    r0, r3, 0x6c70
+    addi    r0, r3, c2r_71@l
     add     r3, r0, r4
     lwz     r0, 0x0(r3)
 branch_0x80361a78:
@@ -740,14 +740,14 @@ branch_0x80361aa4:
     stw     r0, 0x0(r7)
 branch_0x80361ab8:
     li      r0, 0x61
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
     stb     r0, -0x8000(r5)
     li      r0, 0x0
     lwz     r4, 0x0(r7)
     stw     r4, -0x8000(r5)
     sth     r0, 0x2(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x4f4(r3)
     ori     r0, r0, 0x1
     stw     r0, 0x4f4(r3)
@@ -757,14 +757,14 @@ branch_0x80361ab8:
 .globl GXSetNumTevStages
 GXSetNumTevStages: # 0x80361aec
     clrlwi  r3, r3, 24
-    lwz     r4, -0x72f8(r13)
-    subi    r0, r3, 0x1
+    lwz     r4, R13Off_m0x72f8(r13)
+    addi    r0, r3, -0x1
     lwzu    r3, 0x204(r4)
     slwi    r0, r0, 10
     rlwinm  r3, r3, 0, 22, 17
     or      r0, r3, r0
     stw     r0, 0x0(r4)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x4f4(r3)
     ori     r0, r0, 0x4
     stw     r0, 0x4f4(r3)

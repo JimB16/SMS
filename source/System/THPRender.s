@@ -9,12 +9,12 @@ __dt__10TTHPRenderFv: # 0x802a983c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802a9894
-    lis     r3, 0x803e
-    subi    r0, r3, 0xad8
+    lis     r3, __vvt__10TTHPRender@ha
+    addi    r0, r3, __vvt__10TTHPRender@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802a9884
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -70,9 +70,9 @@ branch_0x802a9908:
 .globl __ct__10TTHPRenderFPCc
 __ct__10TTHPRenderFPCc: # 0x802a9920
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -81,13 +81,13 @@ __ct__10TTHPRenderFPCc: # 0x802a9920
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__10TTHPRender@ha
     sth     r4, 0xc(r31)
-    subi    r3, r3, 0xad8
+    addi    r3, r3, __vvt__10TTHPRender@l
     li      r0, -0x1
     stw     r3, 0x0(r31)
     mr      r3, r31

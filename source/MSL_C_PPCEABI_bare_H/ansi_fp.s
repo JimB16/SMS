@@ -22,7 +22,7 @@ branch_0x80338ac0:
     li      r0, 0x1
     sth     r3, 0x2(r30)
     stb     r0, 0x4(r30)
-    lfd     f0, 0x9b0(rtoc)
+    lfd     f0, 0x9b0(r2)
     fcmpu   cr0, f0, f31
     bne-    branch_0x80338aec
     li      r0, 0x30
@@ -130,7 +130,7 @@ branch_0x80338bf0:
 branch_0x80338bf8:
     li      r0, 0x0
     stb     r0, 0x4(r30)
-    lfd     f0, 0x9b0(rtoc)
+    lfd     f0, 0x9b0(r2)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80338c18
     li      r0, 0x1
@@ -140,18 +140,18 @@ branch_0x80338c18:
     fmr     f1, f31
     addi    r3, sp, 0x30
     bl      frexp
-    lis     r3, 0x5
+    lis     r3, unk_000497e5@ha
     lwz     r4, 0x30(sp)
-    subi    r0, r3, 0x681b
+    addi    r0, r3, unk_000497e5@l
     mullw   r0, r4, r0
-    lis     r3, 0x431c
-    subi    r3, r3, 0x217d
+    lis     r3, unk_431bde83@ha
+    addi    r3, r3, unk_431bde83@l
     mulhw   r0, r3, r0
     srawi   r0, r0, 18
     srwi    r3, r0, 31
     add.    r4, r0, r3
-    lis     r3, 0x803b
-    subi    r0, r3, 0x5700
+    lis     r3, unk_803aa900@ha
+    addi    r0, r3, unk_803aa900@l
     addi    r3, r4, 0x0
     mr      r5, r0
     bge-    branch_0x80338c8c
@@ -173,7 +173,7 @@ branch_0x80338c80:
 
 branch_0x80338c8c:
     ble-    branch_0x80338cbc
-    lfd     f1, 0x9b8(rtoc)
+    lfd     f1, 0x9b8(r2)
     b       branch_0x80338cb0
 
 branch_0x80338c98:
@@ -189,8 +189,8 @@ branch_0x80338cb0:
     bne+    branch_0x80338c98
     fdiv    f31, f31, f1
 branch_0x80338cbc:
-    lfd     f1, 0x9c8(rtoc)
-    lfd     f0, 0x9b8(rtoc)
+    lfd     f1, 0x9c8(r2)
+    lfd     f0, 0x9b8(r2)
     b       branch_0x80338cd0
 
 branch_0x80338cc8:
@@ -200,22 +200,22 @@ branch_0x80338cd0:
     fcmpo   cr0, f31, f0
     cror    2, 1, 2
     beq+    branch_0x80338cc8
-    lfd     f1, 0x9d0(rtoc)
-    lfd     f0, 0x9c8(rtoc)
+    lfd     f1, 0x9d0(r2)
+    lfd     f0, 0x9c8(r2)
     b       branch_0x80338cf0
 
 branch_0x80338ce8:
     fmul    f31, f31, f1
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
 branch_0x80338cf0:
     fcmpo   cr0, f31, f0
     blt+    branch_0x80338ce8
-    lis     r5, 0x6666
-    lfd     f1, 0x9c0(rtoc)
-    lis     r6, 0x803b
+    lis     r5, unk_66666667@h
+    lfd     f1, 0x9c0(r2)
+    lis     r6, unk_803aa948@ha
     addi    r4, r30, 0x5
-    addi    r7, r5, 0x6667
-    subi    r10, r6, 0x56b8
+    addi    r7, r5, unk_66666667@l
+    addi    r10, r6, unk_803aa948@l
     lis     r9, 0x4330
     b       branch_0x80338dc0
 
@@ -261,7 +261,7 @@ branch_0x80338d84:
     stb     r6, -0x1(r4)
     srwi    r5, r0, 31
     add     r6, r0, r5
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
 branch_0x80338db4:
     subic.  r11, r11, 0x1
     bne+    branch_0x80338d84

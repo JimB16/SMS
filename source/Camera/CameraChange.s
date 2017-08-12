@@ -27,7 +27,7 @@ execCameraModeChangeProc___15CPolarSubCameraFi: # 0x80021120
 branch_0x80021178:
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xff80
-    cmplwi  r0, MARIOSTATUS_447
+    cmplwi  r0, 0x447
     bne-    branch_0x800211bc
     addi    r3, r31, 0x0
     li      r4, 0x2e
@@ -63,7 +63,7 @@ branch_0x800211ec:
     lwz     r0, 0xd4(r3)
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x80021afc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x483d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -83,24 +83,23 @@ branch_0x80021230:
     li      r4, 0x1
     bl      execNoticeOnOffProc___15CPolarSubCameraFQ215CPolarSubCamera19EnumNoticeOnOffMode
 branch_0x80021248:
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     li      r4, 0x1
     lwz     r28, 0x50(r31)
-    lwz     r3, MarioActor_Status(r3)
+    lwz     r3, 0x7c(r3)
     addis   r0, r3, 0xf3c0
-    cmplwi  r0, MARIOSTATUS_202
+    cmplwi  r0, 0x202
     beq-    branch_0x80021274
     addis   r0, r3, 0xf400
-    cmplwi  r0, MARIOSTATUS_203
+    cmplwi  r0, 0x203
     beq-    branch_0x80021274
     li      r4, 0x0
 branch_0x80021274:
     clrlwi. r0, r4, 24
     bne-    branch_0x800212f8
-
-    lwz     r3, MarioFlags(r13)
+    lwz     r3, R13Off_m0x6094(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 30, 30 # MARIOFLAG_2
+    rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x80021294
     li      r0, 0x1
     b       branch_0x80021298
@@ -111,15 +110,15 @@ branch_0x80021298:
     clrlwi. r0, r0, 24
     bne-    branch_0x800212f8
     bl      SMS_GetMarioStatus__Fv
-    rlwinm. r0, r3, 0, 15, 15 # MARIOSTATUS_10000
+    rlwinm. r0, r3, 0, 15, 15
     bne-    branch_0x800212f8
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioRocketing__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     bne-    branch_0x800212f8
-    lwz     r3, MarioActor(r13)
-    lwz     r0, MarioActor_Flags(r3)
-    rlwinm. r0, r0, 0, 17, 17 # MARIOFLAG_4000
+    lwz     r3, R13Off_m0x60d8(r13)
+    lwz     r0, 0x118(r3)
+    rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x800212d4
     li      r0, 0x1
     b       branch_0x800212d8
@@ -131,7 +130,7 @@ branch_0x800212d8:
     bne-    branch_0x800212f8
     bl      SMS_GetMarioStatus__Fv
     mr      r4, r3
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioClimb__16TCameraMarioDataCFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x8002136c
@@ -156,7 +155,7 @@ branch_0x80021330:
     lwz     r0, 0xd4(r3)
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x80021558
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x483d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -175,7 +174,7 @@ branch_0x8002136c:
     clrlwi. r0, r3, 24
     beq-    branch_0x800213e0
     bl      SMS_GetMarioStatus__Fv
-    rlwinm. r0, r3, 0, 14, 14 # MARIOSTATUS_20000
+    rlwinm. r0, r3, 0, 14, 14
     beq-    branch_0x8002139c
     addi    r3, r31, 0x0
     li      r4, 0x1
@@ -188,8 +187,8 @@ branch_0x8002139c:
     clrlwi. r0, r3, 24
     bne-    branch_0x80021558
     lwz     r4, 0x120(r31)
-    lis     r3, 0x1
-    addi    r0, r3, 0x4000
+    lis     r3, unk_00014000@h
+    addi    r0, r3, unk_00014000@l
     lwz     r3, 0xd4(r4)
     and.    r0, r3, r0
     beq-    branch_0x80021558
@@ -230,7 +229,7 @@ branch_0x80021408:
     li      r0, 0x3c
     sth     r0, 0x282(r31)
     li      r4, 0x4824
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80021470
@@ -278,7 +277,7 @@ branch_0x800214c0:
     li      r0, 0x3c
     sth     r0, 0x282(r31)
     li      r4, 0x4824
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80021520
@@ -313,19 +312,19 @@ branch_0x80021558:
     clrlwi. r0, r3, 24
     bne-    branch_0x80021afc
     bl      SMS_GetMarioStatus__Fv
-    lwz     r5, MarioActor(r13)
+    lwz     r5, R13Off_m0x60d8(r13)
     cmpwi   r27, 0x45
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     mr      r29, r3
-    lwz     r28, MarioActor_LastStatus(r5)
+    lwz     r28, 0x80(r5)
     lbz     r30, 0x7c(r4)
     bne-    branch_0x8002159c
     mr      r26, r27
     b       branch_0x80021acc
 
 branch_0x8002159c:
-    lwz     r4, MarioActor_Flags(r5)
-    rlwinm. r0, r4, 0, 19, 19 # MARIOFLAG_1000
+    lwz     r4, 0x118(r5)
+    rlwinm. r0, r4, 0, 19, 19
     beq-    branch_0x800215b0
     li      r0, 0x1
     b       branch_0x800215b4
@@ -339,9 +338,9 @@ branch_0x800215b4:
     b       branch_0x80021acc
 
 branch_0x800215c4:
-    lwz     r3, MarioFlags(r13)
+    lwz     r3, R13Off_m0x6094(r13)
     lwz     r0, 0x0(r3)
-    rlwinm. r0, r0, 0, 30, 30 # MARIOFLAG_2
+    rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x800215dc
     li      r0, 0x1
     b       branch_0x800215e0
@@ -373,11 +372,11 @@ branch_0x80021614:
     beq-    branch_0x8002164c
     cmpwi   r30, 0x7
     beq-    branch_0x80021644
-    rlwinm. r0, r29, 0, 18, 18 # MARIOSTATUS_TYPESWIMMING
+    rlwinm. r0, r29, 0, 18, 18
     bne-    branch_0x8002163c
-    rlwinm. r0, r28, 0, 18, 18 # MARIOSTATUS_TYPESWIMMING
+    rlwinm. r0, r28, 0, 18, 18
     beq-    branch_0x80021644
-    rlwinm. r0, r29, 0, 20, 20 # MARIOSTATUS_TYPEJUMPING
+    rlwinm. r0, r29, 0, 20, 20
     beq-    branch_0x80021644
 branch_0x8002163c:
     li      r26, 0x44
@@ -390,7 +389,7 @@ branch_0x80021644:
 branch_0x8002164c:
     cmpwi   r30, 0x7
     beq-    branch_0x80021664
-    rlwinm. r0, r29, 0, 18, 18 # MARIOSTATUS_TYPESWIMMING
+    rlwinm. r0, r29, 0, 18, 18
     beq-    branch_0x80021664
     li      r26, 0x31
     b       branch_0x80021acc
@@ -400,9 +399,9 @@ branch_0x80021664:
     clrlwi. r0, r3, 24
     beq-    branch_0x80021690
     addis   r3, r29, 0xf000
-    cmplwi  r3, MARIOSTATUS_554
+    cmplwi  r3, 0x554
     beq-    branch_0x80021688
-    subi    r0, r3, 0x357
+    addi    r0, r3, -0x357
     cmplwi  r0, 0x1
     bgt-    branch_0x80021690
 branch_0x80021688:
@@ -413,28 +412,28 @@ branch_0x80021690:
     bl      SMS_IsMarioOnWire__Fv
     clrlwi. r0, r3, 24
     bne-    branch_0x800216b8
-    cmplwi  r29, MARIOSTATUS_892
+    cmplwi  r29, 0x892
     beq-    branch_0x800216b8
-    cmplwi  r28, MARIOSTATUS_892
+    cmplwi  r28, 0x892
     bne-    branch_0x800216c0
     addis   r0, r29, 0xff80
-    cmplwi  r0, MARIOSTATUS_8a9
+    cmplwi  r0, 0x8a9
     bne-    branch_0x800216c0
 branch_0x800216b8:
     li      r26, 0x6
     b       branch_0x80021acc
 
 branch_0x800216c0:
-    rlwinm. r0, r29, 0, 15, 15 # MARIOSTATUS_10000
+    rlwinm. r0, r29, 0, 15, 15
     beq-    branch_0x800216d0
     li      r26, 0x30
     b       branch_0x80021acc
 
 branch_0x800216d0:
-    rlwinm. r0, r29, 0, 2, 2 # MARIOSTATUS_20000000
+    rlwinm. r0, r29, 0, 2, 2
     beq-    branch_0x80021700
-    lwz     r3, MarioActor(r13)
-    lwz     r3, MarioActor_2c0(r3)
+    lwz     r3, R13Off_m0x60d8(r13)
+    lwz     r3, 0x2c0(r3)
     cmplwi  r3, 0x0
     beq-    branch_0x80021700
     lwz     r3, 0x4c(r3)
@@ -447,8 +446,8 @@ branch_0x800216d0:
 branch_0x80021700:
     li      r26, 0x0
     bl      SMS_GetMarioStatus__Fv
-    lis     r4, 0x3000
-    addi    r0, r4, MARIOSTATUS_569
+    lis     r4, unk_30000569@h
+    addi    r0, r4, unk_30000569@l
     cmpw    r3, r0
     beq-    branch_0x8002174c
     bge-    branch_0x80021738
@@ -461,8 +460,8 @@ branch_0x80021700:
     b       branch_0x80021750
 
 branch_0x80021738:
-    lis     r4, 0x3800
-    addi    r0, r4, 0x368
+    lis     r4, unk_38000368@h
+    addi    r0, r4, unk_38000368@l
     cmpw    r3, r0
     beq-    branch_0x8002174c
     b       branch_0x80021750
@@ -482,7 +481,7 @@ branch_0x80021768:
     b       branch_0x80021acc
 
 branch_0x80021770:
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioSlider__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x80021788
@@ -490,7 +489,7 @@ branch_0x80021770:
     b       branch_0x80021acc
 
 branch_0x80021788:
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioLeanMirror__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x800217a0
@@ -498,7 +497,7 @@ branch_0x80021788:
     b       branch_0x80021acc
 
 branch_0x800217a0:
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioIndoor__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x800217e0
@@ -520,7 +519,7 @@ branch_0x800217d8:
     b       branch_0x80021acc
 
 branch_0x800217e0:
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioRocketing__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x80021818
@@ -538,10 +537,10 @@ branch_0x80021810:
     b       branch_0x80021acc
 
 branch_0x80021818:
-    rlwinm. r0, r29, 0, 10, 10 # MARIOSTATUS_200000
+    rlwinm. r0, r29, 0, 10, 10
     beq-    branch_0x80021844
     addis   r0, r29, 0xffe0
-    cmplwi  r0, MARIOSTATUS_345
+    cmplwi  r0, 0x345
     beq-    branch_0x80021844
     cmpwi   r30, 0x8
     bne-    branch_0x8002183c
@@ -561,9 +560,9 @@ branch_0x80021844:
     b       branch_0x80021acc
 
 branch_0x8002185c:
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     li      r4, 0x0
-    lwz     r3, MarioActor_6c(r3)
+    lwz     r3, 0x6c(r3)
     cmplwi  r3, 0x0
     beq-    branch_0x80021884
     lwz     r3, 0x4c(r3)
@@ -580,8 +579,8 @@ branch_0x80021884:
 branch_0x80021894:
     li      r26, 0x0
     bl      SMS_GetMarioGrPlane__Fv
-    lis     r4, 0x4000
-    addi    r4, r4, 0x2c9
+    lis     r4, unk_400002c9@h
+    addi    r4, r4, unk_400002c9@l
     bl      SMS_GetGroundActor__FPC12TBGCheckDataUl
     cmplwi  r3, 0x0
     beq-    branch_0x800218b4
@@ -595,7 +594,7 @@ branch_0x800218b4:
 branch_0x800218c4:
     cmpwi   r30, 0x7
     beq-    branch_0x800218dc
-    cmplwi  r29, MARIOSTATUS_884
+    cmplwi  r29, 0x884
     bne-    branch_0x800218dc
     li      r26, 0x13
     b       branch_0x80021acc
@@ -611,8 +610,8 @@ branch_0x800218dc:
 branch_0x800218f4:
     li      r26, 0x0
     bl      SMS_GetMarioGrPlane__Fv
-    lis     r4, 0x4000
-    addi    r4, r4, 0x12f
+    lis     r4, unk_4000012f@h
+    addi    r4, r4, unk_4000012f@l
     bl      SMS_GetGroundActor__FPC12TBGCheckDataUl
     cmplwi  r3, 0x0
     beq-    branch_0x80021914
@@ -625,7 +624,7 @@ branch_0x80021914:
 
 branch_0x80021924:
     addis   r0, r29, 0xff80
-    cmplwi  r0, MARIOSTATUS_8a9
+    cmplwi  r0, 0x8a9
     bne-    branch_0x80021990
     addi    r3, r31, 0x0
     addi    r4, r27, 0x0
@@ -640,7 +639,7 @@ branch_0x8002194c:
     bl      SMS_isExMap__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x80021978
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmpwi   r0, 0x1f
     bge-    branch_0x80021974
@@ -672,7 +671,7 @@ branch_0x80021990:
     b       branch_0x80021acc
 
 branch_0x800219bc:
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     mr      r4, r29
     bl      isMarioClimb__16TCameraMarioDataCFUl
     clrlwi. r0, r3, 24
@@ -681,17 +680,17 @@ branch_0x800219bc:
     b       branch_0x80021acc
 
 branch_0x800219d8:
-    lis     r3, 0x200
-    addi    r0, r3, 0x886
+    lis     r3, unk_02000886@h
+    addi    r0, r3, unk_02000886@l
     cmpw    r29, r0
     beq-    branch_0x800219f8
     bge-    branch_0x80021a70
-    cmpwi   r29, MARIOSTATUS_8a7
+    cmpwi   r29, 0x8a7
     beq-    branch_0x800219f8
     b       branch_0x80021a70
 
 branch_0x800219f8:
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     mr      r4, r28
     bl      isMarioClimb__16TCameraMarioDataCFUl
     clrlwi. r0, r3, 24
@@ -711,7 +710,7 @@ branch_0x80021a2c:
     bl      SMS_isExMap__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x80021a58
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmpwi   r0, 0x1f
     bge-    branch_0x80021a54
@@ -734,7 +733,7 @@ branch_0x80021a70:
     bl      SMS_isExMap__Fv
     clrlwi. r0, r3, 24
     beq-    branch_0x80021a9c
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmpwi   r0, 0x1f
     bge-    branch_0x80021a98
@@ -788,8 +787,8 @@ isChangeToParallelCameraCByMoveBG___15CPolarSubCameraCFv: # 0x80021b10
     stw     r31, 0x14(sp)
     li      r31, 0x0
     bl      SMS_GetMarioGrPlane__Fv
-    lis     r4, 0x4000
-    addi    r4, r4, 0x12f
+    lis     r4, unk_4000012f@h
+    addi    r4, r4, unk_4000012f@l
     bl      SMS_GetGroundActor__FPC12TBGCheckDataUl
     cmplwi  r3, 0x0
     beq-    branch_0x80021b40
@@ -810,13 +809,13 @@ isChangeToParallelCameraByMoveBG___15CPolarSubCameraCFv: # 0x80021b58
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     li      r31, 0x0
-    lwz     r3, MarioActor(r13)
-    lwz     r4, MarioActor_68(r3)
+    lwz     r3, R13Off_m0x60d8(r13)
+    lwz     r4, 0x68(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x80021ba8
-    lis     r3, 0x4000
+    lis     r3, unk_400000bb@h
     lwz     r4, 0x4c(r4)
-    addi    r0, r3, 0xbb
+    addi    r0, r3, unk_400000bb@l
     cmpw    r4, r0
     beq-    branch_0x80021ba4
     bge-    branch_0x80021ba8
@@ -837,9 +836,9 @@ branch_0x80021ba8:
     lwz     r4, 0x44(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x80021c3c
-    lis     r3, 0x4000
+    lis     r3, unk_4000012e@h
     lwz     r4, 0x4c(r4)
-    addi    r0, r3, 0x12e
+    addi    r0, r3, unk_4000012e@l
     cmpw    r4, r0
     beq-    branch_0x80021c24
     bge-    branch_0x80021c04
@@ -882,9 +881,9 @@ branch_0x80021c3c:
 
 .globl isChangeToCancanCamera___15CPolarSubCameraCFv
 isChangeToCancanCamera___15CPolarSubCameraCFv: # 0x80021c54
-    lwz     r4, MarioActor(r13)
+    lwz     r4, R13Off_m0x60d8(r13)
     li      r3, 0x0
-    lwz     r4, MarioActor_6c(r4)
+    lwz     r4, 0x6c(r4)
     cmplwi  r4, 0x0
     beqlr-    
 
@@ -905,8 +904,8 @@ isChangeToBossGesoCamera___15CPolarSubCameraCFv: # 0x80021c80
     stw     r31, 0x24(sp)
     li      r31, 0x0
     stw     r30, 0x20(sp)
-    lwz     r4, MarioActor(r13)
-    lwz     r4, MarioActor_6c(r4)
+    lwz     r4, R13Off_m0x60d8(r13)
+    lwz     r4, 0x6c(r4)
     cmplwi  r4, 0x0
     beq-    branch_0x80021cf4
     lwz     r4, 0x4c(r4)
@@ -987,7 +986,7 @@ branch_0x80021d6c:
     b       branch_0x80021e04
 
 branch_0x80021dac:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x4825
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1040,7 +1039,7 @@ execFrontRotate___15CPolarSubCameraFv: # 0x80021e38
     bne-    branch_0x80021f08
     bl      SMS_GetMarioStatus__Fv
     addis   r0, r3, 0xff80
-    cmplwi  r0, MARIOSTATUS_8a9
+    cmplwi  r0, 0x8a9
     beq-    branch_0x80021f08
     lhz     r0, 0x64(r31)
     rlwinm  r0, r0, 0, 28, 26
@@ -1048,9 +1047,9 @@ execFrontRotate___15CPolarSubCameraFv: # 0x80021e38
     lhz     r0, 0x64(r31)
     ori     r0, r0, 0x4
     sth     r0, 0x64(r31)
-    lwz     r3, -0x60ac(r13)
+    lwz     r3, R13Off_m0x60ac(r13)
     lha     r3, 0x0(r3)
-    subi    r0, r3, 0x8000
+    addi    r0, r3, -0x8000
     sth     r0, 0x274(r31)
     lwz     r3, 0x120(r31)
     lwz     r3, 0xd4(r3)
@@ -1074,7 +1073,7 @@ branch_0x80021ec0:
     lhz     r0, 0x64(r31)
     rlwinm  r0, r0, 0, 29, 27
     sth     r0, 0x64(r31)
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80021f08
@@ -1195,7 +1194,7 @@ changeCamModeSub___15CPolarSubCameraFiib: # 0x80022020
     b       branch_0x8002207c
 
 branch_0x8002206c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0x8(r4)
     slwi    r0, r0, 2
     add     r3, r3, r0
@@ -1228,7 +1227,7 @@ branch_0x800220ac:
     b       branch_0x80022158
 
 branch_0x800220d0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r4)
     b       branch_0x80022158
 
@@ -1251,7 +1250,7 @@ branch_0x800220fc:
     stw     r0, 0x0(r6)
 branch_0x80022114:
     lwz     r6, 0x0(r5)
-    subi    r0, r6, 0x1
+    addi    r0, r6, -0x1
     cmpw    r4, r0
     blt+    branch_0x800220fc
     lwz     r3, 0x8(r5)
@@ -1277,7 +1276,7 @@ branch_0x80022158:
     bne-    branch_0x80022184
     cmpwi   r31, 0x42
     bne-    branch_0x80022184
-    lfs     f0, -0x7978(rtoc)
+    lfs     f0, -0x7978(r2)
     stfs    f0, 0xa8(r29)
     stfs    f0, 0xdc(r29)
     b       branch_0x80022240
@@ -1287,7 +1286,7 @@ branch_0x80022184:
     bne-    branch_0x800221a4
     cmpwi   r31, 0x3e
     bne-    branch_0x800221a4
-    lfs     f0, -0x7978(rtoc)
+    lfs     f0, -0x7978(r2)
     stfs    f0, 0xa8(r29)
     stfs    f0, 0xdc(r29)
     b       branch_0x80022240
@@ -1314,8 +1313,8 @@ branch_0x800221a4:
     lha     r4, 0x52(sp)
     neg     r5, r0
     bl      CLBCalcRatio_s___Fsss
-    lfs     f2, -0x7974(rtoc)
-    lfs     f3, -0x7978(rtoc)
+    lfs     f2, -0x7974(r2)
+    lfs     f3, -0x7978(r2)
     bl      MsClamp_f___Ffff_80022708
     stfs    f1, 0xa8(r29)
     stfs    f1, 0xdc(r29)
@@ -1465,41 +1464,38 @@ branch_0x80022414:
     bl      calcNowTargetFromPosAndAt___15CPolarSubCameraFRC3VecRC3Vec
 branch_0x80022424:
     lwz     r3, 0x54(r29)
-    subi    r0, r3, 0x9
+    addi    r0, r3, -0x9
     cmplwi  r0, 0x32
     bgt-    branch_0x80022494
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3408
+    lis     r3, unk_803acbf8@ha
+    addi    r3, r3, unk_803acbf8@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8002244C:		# jumptable 80022448 cases 0,14,16,22,24
+    bctr       
+branch_0x8002244c:
     lfs     f1, 0xa8(r29)
     mr      r3, r29
     lha     r4, 0xa6(r29)
     bl      warpPosAndAt__15CPolarSubCameraFfs
     b       branch_0x80022494
 
-branch_0x80022460:		# jumptable 80022448 cases 20,28
-lwz	  r3, -0x60AC(r13)
-lha	  r3, 0(r3)
-addi	  r0, r3, -0x8000
-sth	  r0, 0xA6(r29)
-b	  def_80022448	# jumptable 80022448 default case
+branch_0x80022460:
+    lwz     r3, R13Off_m0x60ac(r13)
+    lha     r3, 0x0(r3)
+    addi    r0, r3, -0x8000
+    sth     r0, 0xa6(r29)
+    b       branch_0x80022494
 
-branch_0x80022474:		# jumptable 80022448 cases 49,50
-lwz	  r4, -0x60AC(r13)
-mr	  r3, r29
-lha	  r4, 0(r4)
-addi	  r0, r4, -0x8000
-sth	  r0, 0xA6(r29)
-lfs	  f1, 0xA8(r29)
-lha	  r4, 0xA6(r29)
-bl	  warpPosAndAt__15CPolarSubCameraFfs # CPolarSubCamera::warpPosAndAt((float,short))
-
-def_80022448:		# jumptable 80022448 default case
+branch_0x80022474:
+    lwz     r4, R13Off_m0x60ac(r13)
+    mr      r3, r29
+    lha     r4, 0x0(r4)
+    addi    r0, r4, -0x8000
+    sth     r0, 0xa6(r29)
+    lfs     f1, 0xa8(r29)
+    lha     r4, 0xa6(r29)
+    bl      warpPosAndAt__15CPolarSubCameraFfs
 branch_0x80022494:
     clrlwi. r0, r31, 24
     beq-    branch_0x80022588
@@ -1635,7 +1631,7 @@ branch_0x80022650:
     lwz     r3, 0x2ac(r29)
     li      r0, 0x0
     sth     r0, 0x0(r3)
-    lfs     f0, -0x7974(rtoc)
+    lfs     f0, -0x7974(r2)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
     stfs    f0, 0xc(r3)
@@ -1725,14 +1721,14 @@ setUpToLButtonCamera___15CPolarSubCameraFi: # 0x80022738
     lha     r4, 0x2e(sp)
     neg     r5, r0
     bl      CLBCalcRatio_s___Fsss
-    lfs     f0, -0x7978(rtoc)
+    lfs     f0, -0x7978(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80022790
     fmr     f1, f0
     b       branch_0x800227a0
 
 branch_0x80022790:
-    lfs     f0, -0x7974(rtoc)
+    lfs     f0, -0x7974(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800227a0
     fmr     f1, f0
@@ -1758,7 +1754,7 @@ getCameraInbetweenFrame___15CPolarSubCameraFi: # 0x800227bc
     b       branch_0x800227ec
 
 branch_0x800227dc:
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     lwz     r4, 0x8(r5)
     slwi    r0, r0, 2
     add     r4, r4, r0
@@ -1776,305 +1772,302 @@ branch_0x800227f0:
     cmplwi  r4, 0x48
     lwz     r6, 0x2d8(r3)
     bgt-    branch_0x80022a78
-    lis     r3, 0x803b
-    subi    r3, r3, 0x333c
+    lis     r3, unk_803accc4@ha
+    addi    r3, r3, unk_803accc4@l
     slwi    r0, r4, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80022834:		# jumptable 80022830 case 0
+    bctr       
+branch_0x80022834:
     lha     r5, 0x3c4(r6)
     b       branch_0x80022a78
 
-branch_0x8002283C:		# jumptable 80022830 case 1
-lha	  r5, 0x3D8(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022844:		# jumptable 80022830 case 2
-lha	  r5, 0x3EC(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002284C:		# jumptable 80022830 case 3
-lha	  r5, 0x400(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022854:		# jumptable 80022830 case 4
-lha	  r5, 0x414(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002285C:		# jumptable 80022830 case 5
-lha	  r5, 0x428(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022864:		# jumptable 80022830 case 6
-lha	  r5, 0x43C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002286C:		# jumptable 80022830 case 7
-lha	  r5, 0x450(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022874:		# jumptable 80022830 case 8
-lha	  r5, 0x464(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002287C:		# jumptable 80022830 case 9
-lha	  r5, 0x478(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022884:		# jumptable 80022830 case 10
-lha	  r5, 0x48C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002288C:		# jumptable 80022830 case 11
-lha	  r5, 0x4A0(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022894:		# jumptable 80022830 case 12
-lha	  r5, 0x4B4(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002289C:		# jumptable 80022830 case 13
-lha	  r5, 0x4C8(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228A4:		# jumptable 80022830 case 14
-lha	  r5, 0x4DC(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228AC:		# jumptable 80022830 case 15
-lha	  r5, 0x4F0(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228B4:		# jumptable 80022830 case 16
-lha	  r5, 0x504(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228BC:		# jumptable 80022830 case 17
-lha	  r5, 0x518(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228C4:		# jumptable 80022830 case 18
-lha	  r5, 0x52C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228CC:		# jumptable 80022830 case 19
-lha	  r5, 0x540(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228D4:		# jumptable 80022830 case 20
-lha	  r5, 0x554(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228DC:		# jumptable 80022830 case 21
-lha	  r5, 0x568(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228E4:		# jumptable 80022830 case 22
-lha	  r5, 0x57C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228EC:		# jumptable 80022830 case 23
-lha	  r5, 0x590(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228F4:		# jumptable 80022830 case 24
-lha	  r5, 0x5A4(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800228FC:		# jumptable 80022830 case 25
-lha	  r5, 0x5B8(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022904:		# jumptable 80022830 case 26
-lha	  r5, 0x5CC(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002290C:		# jumptable 80022830 case 27
-lha	  r5, 0x5E0(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022914:		# jumptable 80022830 case 28
-lha	  r5, 0x5F4(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002291C:		# jumptable 80022830 case 29
-lha	  r5, 0x608(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022924:		# jumptable 80022830 case 30
-lha	  r5, 0x61C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002292C:		# jumptable 80022830 case 31
-lha	  r5, 0x630(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022934:		# jumptable 80022830 case 32
-lha	  r5, 0x644(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002293C:		# jumptable 80022830 case 33
-lha	  r5, 0x658(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022944:		# jumptable 80022830 case 34
-lha	  r5, 0x66C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002294C:		# jumptable 80022830 case 35
-lha	  r5, 0x680(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022954:		# jumptable 80022830 case 36
-lha	  r5, 0x694(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002295C:		# jumptable 80022830 case 37
-lha	  r5, 0x6A8(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022964:		# jumptable 80022830 case 38
-lha	  r5, 0x6BC(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002296C:		# jumptable 80022830 case 39
-lha	  r5, 0x6D0(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022974:		# jumptable 80022830 case 40
-lha	  r5, 0x6E4(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002297C:		# jumptable 80022830 case 41
-lha	  r5, 0x6F8(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022984:		# jumptable 80022830 case 42
-lha	  r5, 0x70C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002298C:		# jumptable 80022830 case 43
-lha	  r5, 0x720(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022994:		# jumptable 80022830 case 44
-lha	  r5, 0x734(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x8002299C:		# jumptable 80022830 case 45
-lha	  r5, 0x748(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229A4:		# jumptable 80022830 case 46
-lha	  r5, 0x75C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229AC:		# jumptable 80022830 case 47
-lha	  r5, 0x770(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229B4:		# jumptable 80022830 case 48
-lha	  r5, 0x784(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229BC:		# jumptable 80022830 case 49
-lha	  r5, 0x798(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229C4:		# jumptable 80022830 case 50
-lha	  r5, 0x7AC(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229CC:		# jumptable 80022830 case 51
-lha	  r5, 0x7C0(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229D4:		# jumptable 80022830 case 52
-lha	  r5, 0x7D4(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229DC:		# jumptable 80022830 case 53
-lha	  r5, 0x7E8(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229E4:		# jumptable 80022830 case 54
-lha	  r5, 0x7FC(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229EC:		# jumptable 80022830 case 55
-lha	  r5, 0x810(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229F4:		# jumptable 80022830 case 56
-lha	  r5, 0x824(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x800229FC:		# jumptable 80022830 case 57
-lha	  r5, 0x838(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A04:		# jumptable 80022830 case 58
-lha	  r5, 0x84C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A0C:		# jumptable 80022830 case 59
-lha	  r5, 0x860(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A14:		# jumptable 80022830 case 60
-lha	  r5, 0x874(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A1C:		# jumptable 80022830 case 61
-lha	  r5, 0x888(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A24:		# jumptable 80022830 case 62
-lha	  r5, 0x89C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A2C:		# jumptable 80022830 case 63
-lha	  r5, 0x8B0(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A34:		# jumptable 80022830 case 64
-lha	  r5, 0x8C4(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A3C:		# jumptable 80022830 case 65
-lha	  r5, 0x8D8(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A44:		# jumptable 80022830 case 66
-lha	  r5, 0x8EC(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A4C:		# jumptable 80022830 case 67
-lha	  r5, 0x900(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A54:		# jumptable 80022830 case 68
-lha	  r5, 0x914(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A5C:		# jumptable 80022830 case 69
-lha	  r5, 0x928(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A64:		# jumptable 80022830 case 70
-lha	  r5, 0x93C(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A6C:		# jumptable 80022830 case 71
-lha	  r5, 0x950(r6)
-b	  def_80022830	# jumptable 80022830 default case
-
-branch_0x80022A74:		# jumptable 80022830 case 72
-lha	  r5, 0x964(r6)
-
-def_80022830:		# jumptable 80022830 default case
+branch_0x8002283c:
+    lha     r5, 0x3d8(r6)
+    b       branch_0x80022a78
+
+branch_0x80022844:
+    lha     r5, 0x3ec(r6)
+    b       branch_0x80022a78
+
+branch_0x8002284c:
+    lha     r5, 0x400(r6)
+    b       branch_0x80022a78
+
+branch_0x80022854:
+    lha     r5, 0x414(r6)
+    b       branch_0x80022a78
+
+branch_0x8002285c:
+    lha     r5, 0x428(r6)
+    b       branch_0x80022a78
+
+branch_0x80022864:
+    lha     r5, 0x43c(r6)
+    b       branch_0x80022a78
+
+branch_0x8002286c:
+    lha     r5, 0x450(r6)
+    b       branch_0x80022a78
+
+branch_0x80022874:
+    lha     r5, 0x464(r6)
+    b       branch_0x80022a78
+
+branch_0x8002287c:
+    lha     r5, 0x478(r6)
+    b       branch_0x80022a78
+
+branch_0x80022884:
+    lha     r5, 0x48c(r6)
+    b       branch_0x80022a78
+
+branch_0x8002288c:
+    lha     r5, 0x4a0(r6)
+    b       branch_0x80022a78
+
+branch_0x80022894:
+    lha     r5, 0x4b4(r6)
+    b       branch_0x80022a78
+
+branch_0x8002289c:
+    lha     r5, 0x4c8(r6)
+    b       branch_0x80022a78
+
+branch_0x800228a4:
+    lha     r5, 0x4dc(r6)
+    b       branch_0x80022a78
+
+branch_0x800228ac:
+    lha     r5, 0x4f0(r6)
+    b       branch_0x80022a78
+
+branch_0x800228b4:
+    lha     r5, 0x504(r6)
+    b       branch_0x80022a78
+
+branch_0x800228bc:
+    lha     r5, 0x518(r6)
+    b       branch_0x80022a78
+
+branch_0x800228c4:
+    lha     r5, 0x52c(r6)
+    b       branch_0x80022a78
+
+branch_0x800228cc:
+    lha     r5, 0x540(r6)
+    b       branch_0x80022a78
+
+branch_0x800228d4:
+    lha     r5, 0x554(r6)
+    b       branch_0x80022a78
+
+branch_0x800228dc:
+    lha     r5, 0x568(r6)
+    b       branch_0x80022a78
+
+branch_0x800228e4:
+    lha     r5, 0x57c(r6)
+    b       branch_0x80022a78
+
+branch_0x800228ec:
+    lha     r5, 0x590(r6)
+    b       branch_0x80022a78
+
+branch_0x800228f4:
+    lha     r5, 0x5a4(r6)
+    b       branch_0x80022a78
+
+branch_0x800228fc:
+    lha     r5, 0x5b8(r6)
+    b       branch_0x80022a78
+
+branch_0x80022904:
+    lha     r5, 0x5cc(r6)
+    b       branch_0x80022a78
+
+branch_0x8002290c:
+    lha     r5, 0x5e0(r6)
+    b       branch_0x80022a78
+
+branch_0x80022914:
+    lha     r5, 0x5f4(r6)
+    b       branch_0x80022a78
+
+branch_0x8002291c:
+    lha     r5, 0x608(r6)
+    b       branch_0x80022a78
+
+branch_0x80022924:
+    lha     r5, 0x61c(r6)
+    b       branch_0x80022a78
+
+branch_0x8002292c:
+    lha     r5, 0x630(r6)
+    b       branch_0x80022a78
+
+branch_0x80022934:
+    lha     r5, 0x644(r6)
+    b       branch_0x80022a78
+
+branch_0x8002293c:
+    lha     r5, 0x658(r6)
+    b       branch_0x80022a78
+
+branch_0x80022944:
+    lha     r5, 0x66c(r6)
+    b       branch_0x80022a78
+
+branch_0x8002294c:
+    lha     r5, 0x680(r6)
+    b       branch_0x80022a78
+
+branch_0x80022954:
+    lha     r5, 0x694(r6)
+    b       branch_0x80022a78
+
+branch_0x8002295c:
+    lha     r5, 0x6a8(r6)
+    b       branch_0x80022a78
+
+branch_0x80022964:
+    lha     r5, 0x6bc(r6)
+    b       branch_0x80022a78
+
+branch_0x8002296c:
+    lha     r5, 0x6d0(r6)
+    b       branch_0x80022a78
+
+branch_0x80022974:
+    lha     r5, 0x6e4(r6)
+    b       branch_0x80022a78
+
+branch_0x8002297c:
+    lha     r5, 0x6f8(r6)
+    b       branch_0x80022a78
+
+branch_0x80022984:
+    lha     r5, 0x70c(r6)
+    b       branch_0x80022a78
+
+branch_0x8002298c:
+    lha     r5, 0x720(r6)
+    b       branch_0x80022a78
+
+branch_0x80022994:
+    lha     r5, 0x734(r6)
+    b       branch_0x80022a78
+
+branch_0x8002299c:
+    lha     r5, 0x748(r6)
+    b       branch_0x80022a78
+
+branch_0x800229a4:
+    lha     r5, 0x75c(r6)
+    b       branch_0x80022a78
+
+branch_0x800229ac:
+    lha     r5, 0x770(r6)
+    b       branch_0x80022a78
+
+branch_0x800229b4:
+    lha     r5, 0x784(r6)
+    b       branch_0x80022a78
+
+branch_0x800229bc:
+    lha     r5, 0x798(r6)
+    b       branch_0x80022a78
+
+branch_0x800229c4:
+    lha     r5, 0x7ac(r6)
+    b       branch_0x80022a78
+
+branch_0x800229cc:
+    lha     r5, 0x7c0(r6)
+    b       branch_0x80022a78
+
+branch_0x800229d4:
+    lha     r5, 0x7d4(r6)
+    b       branch_0x80022a78
+
+branch_0x800229dc:
+    lha     r5, 0x7e8(r6)
+    b       branch_0x80022a78
+
+branch_0x800229e4:
+    lha     r5, 0x7fc(r6)
+    b       branch_0x80022a78
+
+branch_0x800229ec:
+    lha     r5, 0x810(r6)
+    b       branch_0x80022a78
+
+branch_0x800229f4:
+    lha     r5, 0x824(r6)
+    b       branch_0x80022a78
+
+branch_0x800229fc:
+    lha     r5, 0x838(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a04:
+    lha     r5, 0x84c(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a0c:
+    lha     r5, 0x860(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a14:
+    lha     r5, 0x874(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a1c:
+    lha     r5, 0x888(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a24:
+    lha     r5, 0x89c(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a2c:
+    lha     r5, 0x8b0(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a34:
+    lha     r5, 0x8c4(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a3c:
+    lha     r5, 0x8d8(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a44:
+    lha     r5, 0x8ec(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a4c:
+    lha     r5, 0x900(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a54:
+    lha     r5, 0x914(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a5c:
+    lha     r5, 0x928(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a64:
+    lha     r5, 0x93c(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a6c:
+    lha     r5, 0x950(r6)
+    b       branch_0x80022a78
+
+branch_0x80022a74:
+    lha     r5, 0x964(r6)
 branch_0x80022a78:
     mr      r3, r5
     blr
@@ -2086,12 +2079,12 @@ CLBCalcRatio_s___Fsss: # 0x80022a80
     extsh   r6, r3
     extsh   r0, r4
     cmpw    r6, r0
-    lfs     f1, -0x7974(rtoc)
+    lfs     f1, -0x7974(r2)
     beq-    branch_0x80022ae0
     subf    r0, r6, r0
-    lfd     f2, -0x7970(rtoc)
+    lfd     f2, -0x7970(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x7978(rtoc)
+    lfs     f1, -0x7978(r2)
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
     extsh   r3, r5
@@ -2114,205 +2107,205 @@ branch_0x80022ae0:
 .globl __sinit_CameraChange_cpp
 __sinit_CameraChange_cpp: # 0x80022ae8
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803efcb0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x350
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803efcb0@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x80022b30
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x80022b30:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x80022b60
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x80022b60:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x80022b90
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x80022b90:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x80022bc0
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x80022bc0:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x80022bf0
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x80022bf0:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x80022c20
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x80022c20:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x80022c50
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x80022c50:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x80022c80
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x80022c80:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x80022cb0
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x80022cb0:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x80022ce0
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x80022ce0:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x80022d10
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x80022d10:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x80022d40
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x80022d40:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x80022d70
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x80022d70:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x80022da0
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x80022da0:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x80022dd0
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x80022dd0:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

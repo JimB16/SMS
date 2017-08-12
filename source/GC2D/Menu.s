@@ -9,12 +9,12 @@ __dt__10TFlashPaneFv: # 0x8013efa8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8013f000
-    lis     r3, 0x803c
-    subi    r0, r3, 0xa8
+    lis     r3, __vvt__10TFlashPane@ha
+    addi    r0, r3, __vvt__10TFlashPane@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8013eff0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -147,7 +147,7 @@ branch_0x8013f170:
     stw     r0, 0x2c(r3)
 branch_0x8013f194:
     lwz     r4, 0x2c(r3)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x2c(r3)
     b       branch_0x8013f1d0
 
@@ -188,9 +188,9 @@ branch_0x8013f210:
 .globl __ct__10TMenuPlaneFPC13TMarioGamePadP7J2DPaneUlUl
 __ct__10TMenuPlaneFPC13TMarioGamePadP7J2DPaneUlUl: # 0x8013f218
     mflr    r0
-    lis     r8, 0x803e
+    lis     r8, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r8, 0x20f0
+    addi    r0, r8, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x4c0(sp)
     stmw    r27, 0x4ac(sp)
     addi    r27, r4, 0x0
@@ -198,20 +198,20 @@ __ct__10TMenuPlaneFPC13TMarioGamePadP7J2DPaneUlUl: # 0x8013f218
     addi    r29, r6, 0x0
     addi    r30, r7, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x8038
-    addi    r3, r3, 0x7780
+    lis     r3, unk_80387780@h
+    addi    r3, r3, unk_80387780@l
     lwz     r31, 0x8(sp)
     stw     r0, 0x0(r31)
     stw     r3, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r31)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__10TMenuPlane@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x84
+    addi    r0, r3, __vvt__10TMenuPlane@l
     li      r3, 0xff
     stw     r0, 0x0(r31)
     li      r0, 0x3c
@@ -240,7 +240,7 @@ __ct__10TMenuPlaneFPC13TMarioGamePadP7J2DPaneUlUl: # 0x8013f218
     lwz     r7, 0xd0(r3)
     cmplwi  r7, 0x0
     beq-    branch_0x8013f2f0
-    subi    r7, r7, 0xc
+    addi    r7, r7, -0xc
 branch_0x8013f2f0:
     addi    r5, sp, 0xa0
     b       branch_0x8013f384
@@ -282,7 +282,7 @@ branch_0x8013f374:
     lwz     r7, 0x18(r7)
     cmplwi  r7, 0x0
     beq-    branch_0x8013f384
-    subi    r7, r7, 0xc
+    addi    r7, r7, -0xc
 branch_0x8013f384:
     cmplwi  r7, 0x0
     bne+    branch_0x8013f2f8
@@ -342,11 +342,11 @@ perform__9TMenuBaseFUlPQ26JDrama9TGraphics: # 0x8013f3e8
     subf    r6, r4, r5
     subf    r5, r3, r0
     bl      GXSetScissor
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r0, 0x18(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x18(sp)
 branch_0x8013f468:
     lwz     r0, 0x11c(sp)
@@ -365,12 +365,12 @@ __dt__13J2DOrthoGraphFv: # 0x8013f480
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8013f4c4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8013f4b4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1448
+    lis     r3, __vvt__14J2DGrafContext@h
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x0(r31)
 branch_0x8013f4b4:
     extsh.  r0, r4
@@ -396,12 +396,12 @@ __dt__10TMenuPlaneFv: # 0x8013f4dc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8013f534
-    lis     r3, 0x803c
-    subi    r0, r3, 0x84
+    lis     r3, __vvt__10TMenuPlane@ha
+    addi    r0, r3, __vvt__10TMenuPlane@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8013f524
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -431,12 +431,12 @@ __dt__9TMenuBaseFv: # 0x8013f550
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8013f5a8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x60
+    lis     r3, __vvt__9TMenuBase@ha
+    addi    r0, r3, __vvt__9TMenuBase@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8013f598
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

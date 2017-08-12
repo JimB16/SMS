@@ -11,7 +11,7 @@ create__10JUTConsoleFUiPvUl: # 0x802f568c
     stw     r28, 0x20(sp)
     mr      r28, r3
     addi    r3, r5, 0x0
-    lwz     r30, -0x5dc8(r13)
+    lwz     r30, R13Off_m0x5dc8(r13)
     addi    r4, r28, 0x0
     bl      getLineFromObjectSize__10JUTConsoleFUlUi
     cmplwi  r29, 0x0
@@ -56,8 +56,8 @@ __ct__10JUTConsoleFUiUib: # 0x802f5724
     stw     r28, 0x28(sp)
     addi    r28, r4, 0x0
     bl      __ct__11JKRDisposerFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1910
+    lis     r3, __vvt__10JUTConsole@h
+    addi    r0, r3, __vvt__10JUTConsole@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     li      r5, -0x1
@@ -122,11 +122,11 @@ __dt__10JUTConsoleFv: # 0x802f5828
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f587c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1910
+    lis     r3, __vvt__10JUTConsole@h
+    addi    r0, r3, __vvt__10JUTConsole@l
     stw     r0, 0x0(r30)
     mr      r4, r30
-    lwz     r3, -0x5dc8(r13)
+    lwz     r3, R13Off_m0x5dc8(r13)
     bl      removeConsole__17JUTConsoleManagerFP10JUTConsole
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -147,7 +147,7 @@ branch_0x802f587c:
 
 .globl getLineFromObjectSize__10JUTConsoleFUlUi
 getLineFromObjectSize__10JUTConsoleFUlUi: # 0x802f5898
-    subi    r3, r3, 0x68
+    addi    r3, r3, -0x68
     addi    r0, r4, 0x2
     divwu   r3, r3, r0
     blr
@@ -217,12 +217,12 @@ branch_0x802f5954:
 branch_0x802f5970:
     li      r31, 0x0
 branch_0x802f5974:
-    lfs     f1, 0x3d0(rtoc)
+    lfs     f1, 0x3d0(r2)
     cmpwi   r29, 0x2
     lfs     f0, 0x54(r28)
     fadds   f31, f1, f0
     beq-    branch_0x802f5bcc
-    lwz     r3, -0x5de0(r13)
+    lwz     r3, R13Off_m0x5de0(r13)
     cmplwi  r3, 0x0
     bne-    branch_0x802f59d0
     addi    r3, sp, 0x270
@@ -233,11 +233,11 @@ branch_0x802f5974:
     bl      __ct__13J2DOrthoGraphFiiii
     addi    r3, sp, 0x270
     bl      setPort__13J2DOrthoGraphFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r0, 0x270(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x270(sp)
     b       branch_0x802f5a0c
 
@@ -251,11 +251,11 @@ branch_0x802f59d0:
     bl      __ct__13J2DOrthoGraphFiiii
     addi    r3, sp, 0x180
     bl      setPort__13J2DOrthoGraphFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r0, 0x180(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x180(sp)
 branch_0x802f5a0c:
     clrlwi. r0, r31, 24
@@ -268,10 +268,10 @@ branch_0x802f5a1c:
 branch_0x802f5a20:
     lwz     r0, 0x0(r3)
     lis     r4, 0x4330
-    lfd     f5, 0x3d8(rtoc)
+    lfd     f5, 0x3d8(r2)
     addi    r7, sp, 0x12c
     stw     r0, 0x12c(sp)
-    lfd     f3, 0x3e0(rtoc)
+    lfd     f3, 0x3e0(r2)
     lwz     r5, 0x44(r28)
     lwz     r3, 0x20(r28)
     xoris   r5, r5, 0x8000
@@ -281,8 +281,8 @@ branch_0x802f5a20:
     stw     r3, 0x384(sp)
     lwz     r5, 0x40(r28)
     stw     r0, 0x374(sp)
-    lfs     f1, 0x3d4(rtoc)
-    subi    r3, r5, 0x2
+    lfs     f1, 0x3d4(r2)
+    addi    r3, r5, -0x2
     stw     r4, 0x390(sp)
     stw     r4, 0x380(sp)
     lfd     f0, 0x390(sp)
@@ -390,13 +390,13 @@ branch_0x802f5bcc:
     stw     r0, 0x368(sp)
     mulli   r6, r3, 0x6
     lwz     r4, 0x40(r28)
-    lfd     f1, 0x3e0(rtoc)
+    lfd     f1, 0x3e0(r2)
     lfd     f0, 0x368(sp)
     lwz     r5, 0x44(r28)
     fsubs   f0, f0, f1
-    lwz     r3, -0x5ee8(r13)
-    subi    r4, r4, 0x3
-    subi    r5, r5, 0x2
+    lwz     r3, R13Off_m0x5ee8(r13)
+    addi    r4, r4, -0x3
+    addi    r5, r5, -0x2
     fmuls   f0, f31, f0
     addi    r6, r6, 0x6
     fctiwz  f0, f0
@@ -407,7 +407,7 @@ branch_0x802f5bcc:
 branch_0x802f5c1c:
     lwz     r31, 0x30(r28)
     li      r30, 0x0
-    lfd     f30, 0x3d8(rtoc)
+    lfd     f30, 0x3d8(r2)
     lis     r27, 0x4330
 branch_0x802f5c2c:
     lwz     r3, 0x20(r28)
@@ -471,7 +471,7 @@ branch_0x802f5cf8:
     stw     r0, 0x374(sp)
     lwz     r0, 0x40(r28)
     stw     r27, 0x368(sp)
-    lwz     r3, -0x5ee8(r13)
+    lwz     r3, R13Off_m0x5ee8(r13)
     clrlwi  r4, r0, 16
     stw     r27, 0x370(sp)
     lfd     f1, 0x368(sp)
@@ -859,7 +859,7 @@ createManager__17JUTConsoleManagerFP7JKRHeap: # 0x802f61cc
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bne-    branch_0x802f61e4
-    lwz     r3, -0x5f2c(r13)
+    lwz     r3, R13Off_m0x5f2c(r13)
 branch_0x802f61e4:
     addi    r4, r3, 0x0
     li      r3, 0x14
@@ -869,7 +869,7 @@ branch_0x802f61e4:
     beq-    branch_0x802f6200
     bl      __ct__17JUTConsoleManagerFv
 branch_0x802f6200:
-    stw     r3, -0x5dc8(r13)
+    stw     r3, R13Off_m0x5dc8(r13)
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
     mtlr    r0
@@ -954,11 +954,11 @@ branch_0x802f62f0:
     stw     r0, 0xd4(sp)
     lwz     r3, 0xd4(sp)
     lwz     r3, 0x4(r3)
-    subi    r0, r3, 0x18
+    addi    r0, r3, -0x18
     cmplw   r31, r0
     beq-    branch_0x802f6320
     lwz     r3, 0x18(r31)
-    subi    r0, r3, 0x18
+    addi    r0, r3, -0x18
     b       branch_0x802f6338
 
 branch_0x802f6320:
@@ -967,7 +967,7 @@ branch_0x802f6320:
     lwz     r0, 0xc4(sp)
     stw     r0, 0xc0(sp)
     lwz     r3, 0xc0(sp)
-    subi    r0, r3, 0x18
+    addi    r0, r3, -0x18
 branch_0x802f6338:
     stw     r0, 0xc(r30)
 branch_0x802f633c:
@@ -1122,7 +1122,7 @@ branch_0x802f64f0:
     cmplw   r31, r3
     beq-    branch_0x802f6540
     lwz     r3, 0x18(r31)
-    subi    r3, r3, 0x18
+    addi    r3, r3, -0x18
     b       branch_0x802f6574
 
 branch_0x802f6540:
@@ -1177,7 +1177,7 @@ getNext__Q27JGadget13TLinkListNodeCFv: # 0x802f65d0
 
 .globl Element_getValue__Q27JGadget27TLinkList_10JUTConsole__24_FPQ27JGadget13TLinkListNode
 Element_getValue__Q27JGadget27TLinkList_10JUTConsole__24_FPQ27JGadget13TLinkListNode: # 0x802f65d8
-    subi    r3, r3, 0x18
+    addi    r3, r3, -0x18
     blr
 
 
@@ -1201,25 +1201,25 @@ Element_getNode__Q27JGadget27TLinkList_10JUTConsole__24_FP10JUTConsole: # 0x802f
 
 .globl JUTSetReportConsole
 JUTSetReportConsole: # 0x802f65f8
-    stw     r3, -0x5dc4(r13)
+    stw     r3, R13Off_m0x5dc4(r13)
     blr
 
 
 .globl JUTGetReportConsole
 JUTGetReportConsole: # 0x802f6600
-    lwz     r3, -0x5dc4(r13)
+    lwz     r3, R13Off_m0x5dc4(r13)
     blr
 
 
 .globl JUTSetWarningConsole
 JUTSetWarningConsole: # 0x802f6608
-    stw     r3, -0x5dc0(r13)
+    stw     r3, R13Off_m0x5dc0(r13)
     blr
 
 
 .globl JUTGetWarningConsole
 JUTGetWarningConsole: # 0x802f6610
-    lwz     r3, -0x5dc0(r13)
+    lwz     r3, R13Off_m0x5dc0(r13)
     blr
 
 
@@ -1239,7 +1239,7 @@ JUTReportConsole_f: # 0x802f6618
     stfd    f8, 0x60(sp)
 branch_0x802f6648:
     stw     r3, 0x8(sp)
-    lis     r0, 0x100
+    lis     r0, unk_01000100@h
     stw     r4, 0xc(sp)
     addi    r4, sp, 0x198
     stw     r5, 0x10(sp)
@@ -1253,12 +1253,12 @@ branch_0x802f6648:
     addi    r0, sp, 0x8
     stw     r4, 0x188(sp)
     stw     r0, 0x18c(sp)
-    lwz     r4, -0x5dc4(r13)
+    lwz     r4, R13Off_m0x5dc4(r13)
     cmplwi  r4, 0x0
     bne-    branch_0x802f66a4
     addi    r5, r3, 0x0
     addi    r3, sp, 0x80
-    li      r4, 0x100
+    addi    r4, r0, unk_01000100@l
     bl      vsnprintf
     b       branch_0x802f66cc
 
@@ -1270,7 +1270,7 @@ branch_0x802f66a4:
     addi    r3, sp, 0x80
     li      r4, 0x100
     bl      vsnprintf
-    lwz     r3, -0x5dc4(r13)
+    lwz     r3, R13Off_m0x5dc4(r13)
     addi    r4, sp, 0x80
     bl      print__10JUTConsoleFPCc
 branch_0x802f66cc:
@@ -1286,7 +1286,7 @@ JUTReportConsole: # 0x802f66dc
     addi    r4, r3, 0x0
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    addi    r3, rtoc, 0x3e8
+    addi    r3, r2, R2Off_0x3e8
     stwu    sp, -0x8(sp)
     bl      JUTReportConsole_f
     lwz     r0, 0xc(sp)
@@ -1311,7 +1311,7 @@ JUTWarningConsole_f: # 0x802f6708
     stfd    f8, 0x60(sp)
 branch_0x802f6738:
     stw     r3, 0x8(sp)
-    lis     r0, 0x100
+    lis     r0, unk_01000100@h
     stw     r4, 0xc(sp)
     addi    r4, sp, 0x198
     stw     r5, 0x10(sp)
@@ -1325,12 +1325,12 @@ branch_0x802f6738:
     addi    r0, sp, 0x8
     stw     r4, 0x188(sp)
     stw     r0, 0x18c(sp)
-    lwz     r4, -0x5dc4(r13)
+    lwz     r4, R13Off_m0x5dc4(r13)
     cmplwi  r4, 0x0
     bne-    branch_0x802f6794
     addi    r5, r3, 0x0
     addi    r3, sp, 0x80
-    li      r4, 0x100
+    addi    r4, r0, unk_01000100@l
     bl      vsnprintf
     b       branch_0x802f67bc
 
@@ -1342,7 +1342,7 @@ branch_0x802f6794:
     addi    r3, sp, 0x80
     li      r4, 0x100
     bl      vsnprintf
-    lwz     r3, -0x5dc4(r13)
+    lwz     r3, R13Off_m0x5dc4(r13)
     addi    r4, sp, 0x80
     bl      print__10JUTConsoleFPCc
 branch_0x802f67bc:
@@ -1358,7 +1358,7 @@ JUTWarningConsole: # 0x802f67cc
     addi    r4, r3, 0x0
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    addi    r3, rtoc, 0x3e8
+    addi    r3, r2, R2Off_0x3e8
     stwu    sp, -0x8(sp)
     bl      JUTReportConsole_f
     lwz     r0, 0xc(sp)

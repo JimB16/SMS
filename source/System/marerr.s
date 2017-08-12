@@ -15,18 +15,18 @@ MarErrInit__Fv: # 0x8029cfc0
     bl      __nwa__FUl
     li      r4, 0x1400
     bl      createConsole__12JUTExceptionFPvUl
-    lis     r3, 0x803a
-    addi    r3, r3, 0x3158
+    lis     r3, sStrMapFile@h
+    addi    r3, r3, sStrMapFile@l
     bl      appendMapFile__12JUTExceptionFPc
-    lis     r3, 0x802a
-    subi    r3, r3, 0x2fc0
+    lis     r3, MarErrException__FUsP9OSContextUlUl@ha
+    addi    r3, r3, MarErrException__FUsP9OSContextUlUl@l
     bl      setPreUserCallback__12JUTExceptionFPFUsP9OSContextUlUl_v
-    lwz     r4, -0x5f08(r13)
+    lwz     r4, R13Off_m0x5f08(r13)
     li      r3, -0x1
     li      r0, 0x8
     stw     r3, 0x68(r4)
     stw     r3, 0x6c(r4)
-    lwz     r3, -0x5f08(r13)
+    lwz     r3, R13Off_m0x5f08(r13)
     stw     r0, 0x80(r3)
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
@@ -38,11 +38,11 @@ MarErrInit__Fv: # 0x8029cfc0
 .globl MarErrException__FUsP9OSContextUlUl
 MarErrException__FUsP9OSContextUlUl: # 0x8029d040
     mflr    r0
-    lis     r3, 0x803a
+    lis     r3, cDispExceptionCommand__9_unnamed_@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
-    addi    r31, r3, 0x3140
+    addi    r31, r3, cDispExceptionCommand__9_unnamed_@l
     stw     r30, 0x28(sp)
     stw     r29, 0x24(sp)
     li      r29, 0x0
@@ -51,7 +51,7 @@ MarErrException__FUsP9OSContextUlUl: # 0x8029d040
 branch_0x8029d068:
     li      r3, 0x64
     bl      waitTime__12JUTExceptionFl
-    lwz     r3, -0x5f08(r13)
+    lwz     r3, R13Off_m0x5f08(r13)
     addi    r4, sp, 0x18
     li      r5, 0x0
     bl      readPad__12JUTExceptionFPUlPUl

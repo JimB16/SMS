@@ -2,38 +2,38 @@
 .globl DVDInit
 DVDInit: # 0x8034bfcc
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803e85e0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
-    subi    r30, r3, 0x7a20
-    lwz     r0, -0x5908(r13)
+    addi    r30, r3, unk_803e85e0@l
+    lwz     r0, R13Off_m0x5908(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034c0b0
     bl      OSInitAlarm
     li      r31, 0x1
-    stw     r31, -0x5908(r13)
+    stw     r31, R13Off_m0x5908(r13)
     bl      __DVDFSInit
     bl      __DVDClearWaitingQueue
     bl      __DVDInitWA
-    lis     r0, 0x8000
-    lis     r3, 0x8035
-    stw     r0, -0x5940(r13)
-    subi    r4, r3, 0x58a0
-    stw     r0, -0x5944(r13)
-    li      r3, 0x15
+    lis     r0, unk_80000015@h
+    lis     r3, __DVDInterruptHandler@ha
+    stw     r0, R13Off_m0x5940(r13)
+    addi    r4, r3, __DVDInterruptHandler@l
+    stw     r0, R13Off_m0x5944(r13)
+    addi    r3, r0, unk_80000015@l
     bl      __OSSetInterruptHandler
     li      r3, 0x400
     bl      __OSUnmaskInterrupts
-    subi    r3, r13, 0x5950
+    addi    r3, r13, R13Off_m0x5950
     bl      OSInitThreadQueue
     lis     r3, 0xcc00
     li      r0, 0x2a
     stw     r0, 0x6000(r3)
     li      r0, 0x0
     stw     r0, 0x6004(r3)
-    lwz     r3, -0x5940(r13)
+    lwz     r3, R13Off_m0x5940(r13)
     addi    r3, r3, 0x20
     lwz     r3, 0x0(r3)
     addis   r0, r3, 0x1ae0
@@ -58,7 +58,7 @@ branch_0x8034c084:
     b       branch_0x8034c0b0
 
 branch_0x8034c0a0:
-    stw     r31, -0x590c(r13)
+    stw     r31, R13Off_m0x590c(r13)
     addi    r3, r30, 0x40
     crxor   6, 6, 6
     bl      OSReport
@@ -74,16 +74,16 @@ branch_0x8034c0b0:
 .globl stateReadingFST
 stateReadingFST: # 0x8034c0c8
     mflr    r0
-    lis     r3, 0x8035
+    lis     r3, stateReadingFST@ha
     stw     r0, 0x4(sp)
-    subi    r0, r3, 0x3f38
-    lis     r3, 0x8040
+    addi    r0, r3, stateReadingFST@l
+    lis     r3, tmpBuffer@h
     stwu    sp, -0x8(sp)
-    addi    r5, r3, 0x3160
-    lis     r3, 0x8035
-    stw     r0, -0x5904(r13)
-    subi    r6, r3, 0x3ee4
-    lwz     r7, -0x5940(r13)
+    addi    r5, r3, tmpBuffer@l
+    lis     r3, cbForStateReadingFST@ha
+    stw     r0, R13Off_m0x5904(r13)
+    addi    r6, r3, cbForStateReadingFST@l
+    lwz     r7, R13Off_m0x5940(r13)
     lwz     r4, 0x8(r5)
     lwz     r3, 0x38(r7)
     addi    r0, r4, 0x1f
@@ -103,7 +103,7 @@ cbForStateReadingFST: # 0x8034c11c
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bne-    branch_0x8034c144
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, -0x1
     stw     r0, 0xc(r3)
     bl      stateTimeout
@@ -112,12 +112,12 @@ cbForStateReadingFST: # 0x8034c11c
 branch_0x8034c144:
     clrlwi. r0, r3, 31
     beq-    branch_0x8034c188
-    lis     r3, 0x8040
-    lwz     r4, -0x5948(r13)
-    addi    r0, r3, 0x31e0
+    lis     r3, DummyCommandBlock@h
+    lwz     r4, R13Off_m0x5948(r13)
+    addi    r0, r3, DummyCommandBlock@l
     li      r3, 0x0
-    stw     r0, -0x5948(r13)
-    stw     r3, -0x5914(r13)
+    stw     r0, R13Off_m0x5948(r13)
+    stw     r3, R13Off_m0x5914(r13)
     stw     r3, 0xc(r4)
     lwz     r12, 0x28(r4)
     cmplwi  r12, 0x0
@@ -146,19 +146,19 @@ cbForStateError: # 0x8034c19c
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     bne-    branch_0x8034c1c8
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, -0x1
     stw     r0, 0xc(r3)
     bl      stateTimeout
     b       branch_0x8034c230
 
 branch_0x8034c1c8:
-    lis     r3, 0x8040
-    lwz     r31, -0x5948(r13)
-    addi    r0, r3, 0x31e0
+    lis     r3, DummyCommandBlock@h
+    lwz     r31, R13Off_m0x5948(r13)
+    addi    r0, r3, DummyCommandBlock@l
     li      r3, 0x1
-    stw     r0, -0x5948(r13)
-    stw     r3, -0x5930(r13)
+    stw     r0, R13Off_m0x5948(r13)
+    stw     r3, R13Off_m0x5930(r13)
     lwz     r12, 0x28(r31)
     cmplwi  r12, 0x0
     beq-    branch_0x8034c1fc
@@ -167,12 +167,12 @@ branch_0x8034c1c8:
     li      r3, -0x1
     blrl
 branch_0x8034c1fc:
-    lwz     r0, -0x5928(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034c22c
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     li      r0, 0x0
-    stw     r0, -0x5928(r13)
+    stw     r0, R13Off_m0x5928(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034c22c
     mtlr    r12
@@ -192,19 +192,19 @@ branch_0x8034c230:
 .globl stateTimeout
 stateTimeout: # 0x8034c244
     mflr    r0
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     bl      __DVDStoreErrorCode
     bl      DVDReset
-    lis     r3, 0x8040
-    lwz     r31, -0x5948(r13)
-    addi    r0, r3, 0x31e0
+    lis     r3, DummyCommandBlock@h
+    lwz     r31, R13Off_m0x5948(r13)
+    addi    r0, r3, DummyCommandBlock@l
     li      r3, 0x1
-    stw     r0, -0x5948(r13)
-    stw     r3, -0x5930(r13)
+    stw     r0, R13Off_m0x5948(r13)
+    stw     r3, R13Off_m0x5930(r13)
     lwz     r12, 0x28(r31)
     cmplwi  r12, 0x0
     beq-    branch_0x8034c298
@@ -213,12 +213,12 @@ stateTimeout: # 0x8034c244
     li      r3, -0x1
     blrl
 branch_0x8034c298:
-    lwz     r0, -0x5928(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034c2c8
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     li      r0, 0x0
-    stw     r0, -0x5928(r13)
+    stw     r0, R13Off_m0x5928(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034c2c8
     mtlr    r12
@@ -237,9 +237,9 @@ branch_0x8034c2c8:
 .globl stateGettingError
 stateGettingError: # 0x8034c2e0
     mflr    r0
-    lis     r3, 0x8035
+    lis     r3, cbForStateGettingError@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x3c44
+    addi    r3, r3, cbForStateGettingError@l
     stwu    sp, -0x8(sp)
     bl      DVDLowRequestError
     lwz     r0, 0xc(sp)
@@ -253,7 +253,7 @@ CategorizeError: # 0x8034c308
     addis   r0, r3, 0xfffe
     cmplwi  r0, 0x400
     bne-    branch_0x8034c320
-    stw     r3, -0x5918(r13)
+    stw     r3, R13Off_m0x5918(r13)
     li      r3, 0x1
     blr
 
@@ -273,30 +273,30 @@ branch_0x8034c348:
     blr
 
 branch_0x8034c350:
-    lwz     r3, -0x5914(r13)
+    lwz     r3, R13Off_m0x5914(r13)
     addi    r0, r3, 0x1
-    stw     r0, -0x5914(r13)
-    lwz     r0, -0x5914(r13)
+    stw     r0, R13Off_m0x5914(r13)
+    lwz     r0, R13Off_m0x5914(r13)
     cmpwi   r0, 0x2
     bne-    branch_0x8034c38c
-    lwz     r0, -0x5918(r13)
+    lwz     r0, R13Off_m0x5918(r13)
     cmplw   r4, r0
     bne-    branch_0x8034c380
-    stw     r4, -0x5918(r13)
+    stw     r4, R13Off_m0x5918(r13)
     li      r3, 0x1
     blr
 
 branch_0x8034c380:
-    stw     r4, -0x5918(r13)
+    stw     r4, R13Off_m0x5918(r13)
     li      r3, 0x2
     blr
 
 branch_0x8034c38c:
     addis   r0, r4, 0xfffd
-    stw     r4, -0x5918(r13)
+    stw     r4, R13Off_m0x5918(r13)
     cmplwi  r0, 0x1100
     beq-    branch_0x8034c3ac
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     lwz     r0, 0x8(r3)
     cmplwi  r0, 0x5
     bne-    branch_0x8034c3b4
@@ -320,11 +320,11 @@ cbForStateGettingError: # 0x8034c3bc
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
     bne-    branch_0x8034c408
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -334,38 +334,38 @@ cbForStateGettingError: # 0x8034c3bc
 branch_0x8034c408:
     rlwinm. r0, r3, 0, 30, 30
     beq-    branch_0x8034c438
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234567@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4567
+    addi    r3, r3, unk_01234567@l
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
     b       branch_0x8034c630
 
 branch_0x8034c438:
-    lis     r3, 0xcc00
+    lis     r3, unk_cc000000@h
     lwz     r29, 0x6020(r3)
     addi    r3, r29, 0x0
     clrrwi  r28, r29, 24
     bl      CategorizeError
-    addi    r31, r3, 0x0
+    addi    r31, r3, unk_cc000000@l
     cmplwi  r31, 0x1
     bne-    branch_0x8034c47c
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
     addi    r3, r29, 0x0
     stw     r0, 0xc(r4)
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
     b       branch_0x8034c630
 
 branch_0x8034c47c:
-    subi    r0, r31, 0x2
+    addi    r0, r31, -0x2
     cmplwi  r0, 0x1
     bgt-    branch_0x8034c490
     li      r4, 0x0
@@ -395,17 +395,17 @@ branch_0x8034c4b8:
 branch_0x8034c4cc:
     li      r4, 0x5
 branch_0x8034c4d0:
-    lwz     r0, -0x5928(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034c544
-    lis     r3, 0x8040
-    stw     r4, -0x5920(r13)
+    lis     r3, DummyCommandBlock@h
+    stw     r4, R13Off_m0x5920(r13)
     li      r0, 0x0
-    lwz     r30, -0x5948(r13)
-    addi    r3, r3, 0x31e0
-    stw     r0, -0x5928(r13)
+    lwz     r30, R13Off_m0x5948(r13)
+    addi    r3, r3, DummyCommandBlock@l
+    stw     r0, R13Off_m0x5928(r13)
     li      r0, 0xa
-    stw     r3, -0x5948(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r30)
     lwz     r12, 0x28(r30)
     cmplwi  r12, 0x0
@@ -415,7 +415,7 @@ branch_0x8034c4d0:
     li      r3, -0x3
     blrl
 branch_0x8034c51c:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034c538
     mtlr    r12
@@ -446,16 +446,16 @@ branch_0x8034c568:
     addis   r0, r3, 0xfffd
     cmplwi  r0, 0x1100
     bne-    branch_0x8034c598
-    lwz     r5, -0x5948(r13)
-    lis     r3, 0x8035
-    subi    r4, r3, 0x39b0
+    lwz     r5, R13Off_m0x5948(r13)
+    lis     r3, cbForUnrecoveredError@ha
+    addi    r4, r3, cbForUnrecoveredError@l
     lwz     r3, 0x10(r5)
     bl      DVDLowSeek
     b       branch_0x8034c630
 
 branch_0x8034c598:
-    lwz     r12, -0x5904(r13)
-    lwz     r3, -0x5948(r13)
+    lwz     r12, R13Off_m0x5904(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     mtlr    r12
     blrl
     b       branch_0x8034c630
@@ -464,7 +464,7 @@ branch_0x8034c5ac:
     addis   r0, r28, 0xff00
     cmplwi  r0, 0x0
     bne-    branch_0x8034c5cc
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, 0x5
     stw     r0, 0xc(r3)
     bl      stateMotorStopped
@@ -474,7 +474,7 @@ branch_0x8034c5cc:
     addis   r0, r28, 0xfe00
     cmplwi  r0, 0x0
     bne-    branch_0x8034c5ec
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, 0x3
     stw     r0, 0xc(r3)
     bl      stateCoverClosed
@@ -484,21 +484,21 @@ branch_0x8034c5ec:
     addis   r0, r28, 0xfd00
     cmplwi  r0, 0x0
     bne-    branch_0x8034c60c
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, 0x4
     stw     r0, 0xc(r3)
     bl      stateMotorStopped
     b       branch_0x8034c630
 
 branch_0x8034c60c:
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234567@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4567
+    addi    r3, r3, unk_01234567@l
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
 branch_0x8034c630:
     lwz     r0, 0x24(sp)
@@ -518,11 +518,11 @@ cbForUnrecoveredError: # 0x8034c650
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bne-    branch_0x8034c68c
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -536,8 +536,8 @@ branch_0x8034c68c:
     b       branch_0x8034c6a8
 
 branch_0x8034c69c:
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3948
+    lis     r3, cbForUnrecoveredErrorRetry@ha
+    addi    r3, r3, cbForUnrecoveredErrorRetry@l
     bl      DVDLowRequestError
 branch_0x8034c6a8:
     lwz     r0, 0xc(sp)
@@ -553,11 +553,11 @@ cbForUnrecoveredErrorRetry: # 0x8034c6b8
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bne-    branch_0x8034c6f4
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -566,25 +566,25 @@ cbForUnrecoveredErrorRetry: # 0x8034c6b8
 
 branch_0x8034c6f4:
     rlwinm. r0, r3, 0, 30, 30
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r4, -0x1
     stw     r4, 0xc(r3)
     beq-    branch_0x8034c724
-    lis     r3, 0x123
-    addi    r3, r3, 0x4567
+    lis     r3, unk_01234567@h
+    addi    r3, r3, unk_01234567@l
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
     b       branch_0x8034c740
 
 branch_0x8034c724:
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6000
+    lis     r3, unk_cc006000@h
+    addi    r3, r3, unk_cc006000@l
     lwz     r3, 0x20(r3)
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
 branch_0x8034c740:
     lwz     r0, 0xc(sp)
@@ -596,9 +596,9 @@ branch_0x8034c740:
 .globl stateGoToRetry
 stateGoToRetry: # 0x8034c750
     mflr    r0
-    lis     r3, 0x8035
+    lis     r3, cbForStateGoToRetry@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x3888
+    addi    r3, r3, cbForStateGoToRetry@l
     stwu    sp, -0x8(sp)
     bl      DVDLowStopMotor
     lwz     r0, 0xc(sp)
@@ -615,11 +615,11 @@ cbForStateGoToRetry: # 0x8034c778
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     bne-    branch_0x8034c7b8
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -629,48 +629,48 @@ cbForStateGoToRetry: # 0x8034c778
 branch_0x8034c7b8:
     rlwinm. r0, r3, 0, 30, 30
     beq-    branch_0x8034c7e8
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234567@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4567
+    addi    r3, r3, unk_01234567@l
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
     b       branch_0x8034c8bc
 
 branch_0x8034c7e8:
     li      r0, 0x0
-    stw     r0, -0x5914(r13)
-    lwz     r0, -0x592c(r13)
+    stw     r0, R13Off_m0x5914(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x4
     beq-    branch_0x8034c820
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x5
     beq-    branch_0x8034c820
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xd
     beq-    branch_0x8034c820
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xf
     bne-    branch_0x8034c828
 branch_0x8034c820:
     li      r0, 0x1
-    stw     r0, -0x5910(r13)
+    stw     r0, R13Off_m0x5910(r13)
 branch_0x8034c828:
-    lwz     r0, -0x5928(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034c8a0
     li      r0, 0x2
-    lwz     r31, -0x5948(r13)
-    lis     r3, 0x8040
-    stw     r0, -0x5920(r13)
-    addi    r0, r3, 0x31e0
+    lwz     r31, R13Off_m0x5948(r13)
+    lis     r3, DummyCommandBlock@h
+    stw     r0, R13Off_m0x5920(r13)
+    addi    r0, r3, DummyCommandBlock@l
     li      r3, 0x0
-    stw     r0, -0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     li      r0, 0xa
-    stw     r3, -0x5928(r13)
+    stw     r3, R13Off_m0x5928(r13)
     stw     r0, 0xc(r31)
     lwz     r12, 0x28(r31)
     cmplwi  r12, 0x0
@@ -680,7 +680,7 @@ branch_0x8034c828:
     li      r3, -0x3
     blrl
 branch_0x8034c878:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034c894
     mtlr    r12
@@ -697,7 +697,7 @@ branch_0x8034c8a0:
 branch_0x8034c8a4:
     cmpwi   r0, 0x0
     bne-    branch_0x8034c8bc
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, 0xb
     stw     r0, 0xc(r3)
     bl      stateMotorStopped
@@ -712,64 +712,64 @@ branch_0x8034c8bc:
 .globl stateCheckID
 stateCheckID: # 0x8034c8d0
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, tmpBuffer@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x3160
-    lwz     r0, -0x592c(r13)
+    addi    r31, r3, tmpBuffer@l
+    lwz     r0, R13Off_m0x592c(r13)
     cmpwi   r0, 0x3
     beq-    branch_0x8034c8f8
     b       branch_0x8034c964
 
 branch_0x8034c8f8:
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     addi    r3, r31, 0x0
     li      r5, 0x1c
     lwz     r4, 0x24(r4)
     bl      memcmp
     cmpwi   r3, 0x0
     beq-    branch_0x8034c924
-    lis     r3, 0x8035
-    subi    r3, r3, 0x35e0
+    lis     r3, cbForStateCheckID1@ha
+    addi    r3, r3, cbForStateCheckID1@l
     bl      DVDLowStopMotor
     b       branch_0x8034c9a0
 
 branch_0x8034c924:
-    lwz     r3, -0x5944(r13)
+    lwz     r3, R13Off_m0x5944(r13)
     addi    r4, r31, 0x0
     li      r5, 0x20
     bl      memcpy
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, 0x1
     addi    r3, r31, 0x0
     stw     r0, 0xc(r4)
     li      r4, 0x20
     bl      DCInvalidateRange
-    lis     r4, 0x8035
-    lwz     r3, -0x5948(r13)
-    subi    r0, r4, 0x3618
-    stw     r0, -0x5904(r13)
+    lis     r4, stateCheckID2@ha
+    lwz     r3, R13Off_m0x5948(r13)
+    addi    r0, r4, stateCheckID2@l
+    stw     r0, R13Off_m0x5904(r13)
     bl      stateCheckID2
     b       branch_0x8034c9a0
 
 branch_0x8034c964:
-    lwz     r4, -0x5944(r13)
+    lwz     r4, R13Off_m0x5944(r13)
     addi    r3, r31, 0x0
     li      r5, 0x20
     bl      memcmp
     cmpwi   r3, 0x0
     beq-    branch_0x8034c98c
-    lis     r3, 0x8035
-    subi    r3, r3, 0x35e0
+    lis     r3, cbForStateCheckID1@ha
+    addi    r3, r3, cbForStateCheckID1@l
     bl      DVDLowStopMotor
     b       branch_0x8034c9a0
 
 branch_0x8034c98c:
-    lis     r4, 0x8035
-    lwz     r3, -0x5948(r13)
-    subi    r0, r4, 0x364c
-    stw     r0, -0x5904(r13)
+    lis     r4, stateCheckID3@ha
+    lwz     r3, R13Off_m0x5948(r13)
+    addi    r0, r4, stateCheckID3@l
+    stw     r0, R13Off_m0x5904(r13)
     bl      stateCheckID3
 branch_0x8034c9a0:
     lwz     r0, 0x14(sp)
@@ -782,11 +782,11 @@ branch_0x8034c9a0:
 .globl stateCheckID3
 stateCheckID3: # 0x8034c9b4
     mflr    r0
-    lis     r3, 0x8035
+    lis     r3, cbForStateCheckID3@ha
     stw     r0, 0x4(sp)
-    subi    r5, r3, 0x3428
+    addi    r5, r3, cbForStateCheckID3@l
     stwu    sp, -0x8(sp)
-    lwz     r4, -0x5944(r13)
+    lwz     r4, R13Off_m0x5944(r13)
     lbz     r3, 0x8(r4)
     li      r4, 0xa
     bl      DVDLowAudioBufferConfig
@@ -799,12 +799,12 @@ stateCheckID3: # 0x8034c9b4
 .globl stateCheckID2
 stateCheckID2: # 0x8034c9e8
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, tmpBuffer@h
     stw     r0, 0x4(sp)
-    lis     r4, 0x8035
-    subi    r6, r4, 0x34cc
+    lis     r4, cbForStateCheckID2@ha
+    addi    r6, r4, cbForStateCheckID2@l
     stwu    sp, -0x8(sp)
-    addi    r3, r3, 0x3160
+    addi    r3, r3, tmpBuffer@l
     li      r4, 0x20
     li      r5, 0x420
     bl      DVDLowRead
@@ -822,11 +822,11 @@ cbForStateCheckID1: # 0x8034ca20
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     bne-    branch_0x8034ca60
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -836,31 +836,31 @@ cbForStateCheckID1: # 0x8034ca20
 branch_0x8034ca60:
     rlwinm. r0, r3, 0, 30, 30
     beq-    branch_0x8034ca90
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234567@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4567
+    addi    r3, r3, unk_01234567@l
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
     b       branch_0x8034cb20
 
 branch_0x8034ca90:
     li      r4, 0x0
-    stw     r4, -0x5914(r13)
-    lwz     r0, -0x5928(r13)
+    stw     r4, R13Off_m0x5914(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034cb08
     li      r0, 0x1
-    lwz     r31, -0x5948(r13)
-    stw     r0, -0x5920(r13)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x31e0
-    stw     r4, -0x5928(r13)
+    lwz     r31, R13Off_m0x5948(r13)
+    stw     r0, R13Off_m0x5920(r13)
+    lis     r3, DummyCommandBlock@h
+    addi    r3, r3, DummyCommandBlock@l
+    stw     r4, R13Off_m0x5928(r13)
     li      r0, 0xa
-    stw     r3, -0x5948(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r31)
     lwz     r12, 0x28(r31)
     cmplwi  r12, 0x0
@@ -870,7 +870,7 @@ branch_0x8034ca90:
     li      r3, -0x3
     blrl
 branch_0x8034cae4:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034cb00
     mtlr    r12
@@ -883,7 +883,7 @@ branch_0x8034cb00:
 branch_0x8034cb08:
     cmpwi   r4, 0x0
     bne-    branch_0x8034cb20
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, 0x6
     stw     r0, 0xc(r3)
     bl      stateMotorStopped
@@ -902,11 +902,11 @@ cbForStateCheckID2: # 0x8034cb34
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bne-    branch_0x8034cb70
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -916,17 +916,17 @@ cbForStateCheckID2: # 0x8034cb34
 branch_0x8034cb70:
     clrlwi. r0, r3, 31
     beq-    branch_0x8034cbbc
-    lis     r3, 0x8035
-    lwz     r7, -0x5940(r13)
-    subi    r0, r3, 0x3f38
+    lis     r3, stateReadingFST@ha
+    lwz     r7, R13Off_m0x5940(r13)
+    addi    r0, r3, stateReadingFST@l
     li      r4, 0x0
-    stw     r0, -0x5904(r13)
-    lis     r3, 0x8040
-    addi    r5, r3, 0x3160
-    stw     r4, -0x5914(r13)
-    lis     r3, 0x8035
+    stw     r0, R13Off_m0x5904(r13)
+    lis     r3, tmpBuffer@h
+    addi    r5, r3, tmpBuffer@l
+    stw     r4, R13Off_m0x5914(r13)
+    lis     r3, cbForStateReadingFST@ha
     lwz     r4, 0x8(r5)
-    subi    r6, r3, 0x3ee4
+    addi    r6, r3, cbForStateReadingFST@l
     lwz     r3, 0x38(r7)
     addi    r0, r4, 0x1f
     lwz     r5, 0x4(r5)
@@ -935,8 +935,8 @@ branch_0x8034cb70:
     b       branch_0x8034cbc8
 
 branch_0x8034cbbc:
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3c44
+    lis     r3, cbForStateGettingError@ha
+    addi    r3, r3, cbForStateGettingError@l
     bl      DVDLowRequestError
 branch_0x8034cbc8:
     lwz     r0, 0xc(sp)
@@ -953,11 +953,11 @@ cbForStateCheckID3: # 0x8034cbd8
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     bne-    branch_0x8034cc18
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -968,17 +968,17 @@ branch_0x8034cc18:
     clrlwi. r0, r3, 31
     beq-    branch_0x8034ccb4
     li      r4, 0x0
-    stw     r4, -0x5914(r13)
-    lwz     r0, -0x5928(r13)
+    stw     r4, R13Off_m0x5914(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034cc94
-    stw     r4, -0x5920(r13)
-    lis     r3, 0x8040
-    lwz     r31, -0x5948(r13)
-    addi    r3, r3, 0x31e0
-    stw     r4, -0x5928(r13)
+    stw     r4, R13Off_m0x5920(r13)
+    lis     r3, DummyCommandBlock@h
+    lwz     r31, R13Off_m0x5948(r13)
+    addi    r3, r3, DummyCommandBlock@l
+    stw     r4, R13Off_m0x5928(r13)
     li      r0, 0xa
-    stw     r3, -0x5948(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r31)
     lwz     r12, 0x28(r31)
     cmplwi  r12, 0x0
@@ -988,7 +988,7 @@ branch_0x8034cc18:
     li      r3, -0x3
     blrl
 branch_0x8034cc70:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034cc8c
     mtlr    r12
@@ -1001,16 +1001,16 @@ branch_0x8034cc8c:
 branch_0x8034cc94:
     cmpwi   r4, 0x0
     bne-    branch_0x8034ccc0
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r0, 0x1
     stw     r0, 0xc(r3)
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     bl      stateBusy
     b       branch_0x8034ccc0
 
 branch_0x8034ccb4:
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3c44
+    lis     r3, cbForStateGettingError@ha
+    addi    r3, r3, cbForStateGettingError@l
     bl      DVDLowRequestError
 branch_0x8034ccc0:
     lwz     r0, 0x1c(sp)
@@ -1026,14 +1026,14 @@ AlarmHandler_8034ccd4: # 0x8034ccd4
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      DVDReset
-    lis     r3, 0x8040
-    addi    r3, r3, 0x3160
+    lis     r3, tmpBuffer@h
+    addi    r3, r3, tmpBuffer@l
     li      r4, 0x20
     bl      DCInvalidateRange
-    lis     r4, 0x8035
-    lwz     r3, -0x5948(r13)
-    subi    r0, r4, 0x321c
-    stw     r0, -0x5904(r13)
+    lis     r4, stateCoverClosed_CMD@ha
+    lwz     r3, R13Off_m0x5948(r13)
+    addi    r0, r4, stateCoverClosed_CMD@l
+    stw     r0, R13Off_m0x5904(r13)
     bl      stateCoverClosed_CMD
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1044,12 +1044,12 @@ AlarmHandler_8034ccd4: # 0x8034ccd4
 .globl stateCoverClosed
 stateCoverClosed: # 0x8034cd18
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, tmpBuffer@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x3160
-    lwz     r0, -0x592c(r13)
+    addi    r31, r3, tmpBuffer@l
+    lwz     r0, R13Off_m0x592c(r13)
     cmpwi   r0, 0xd
     beq-    branch_0x8034cd60
     bge-    branch_0x8034cd54
@@ -1066,9 +1066,9 @@ branch_0x8034cd54:
 
 branch_0x8034cd60:
     bl      __DVDClearWaitingQueue
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     addi    r0, r31, 0x80
-    stw     r0, -0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     lwz     r12, 0x28(r4)
     cmplwi  r12, 0x0
     beq-    branch_0x8034cd88
@@ -1085,14 +1085,14 @@ branch_0x8034cd90:
     bl      OSCreateAlarm
     lis     r3, 0x8000
     lwz     r0, 0xf8(r3)
-    lis     r4, 0x1062
-    lis     r3, 0x8035
+    lis     r4, unk_10624dd3@h
+    lis     r3, AlarmHandler_8034ccd4@ha
     srwi    r0, r0, 2
-    addi    r4, r4, 0x4dd3
+    addi    r4, r4, unk_10624dd3@l
     mulhwu  r0, r4, r0
     srwi    r0, r0, 6
     mulli   r6, r0, 0x47e
-    subi    r7, r3, 0x332c
+    addi    r7, r3, AlarmHandler_8034ccd4@l
     addi    r3, r31, 0xb0
     li      r5, 0x0
     bl      OSSetAlarm
@@ -1107,12 +1107,12 @@ branch_0x8034cdd0:
 .globl stateCoverClosed_CMD
 stateCoverClosed_CMD: # 0x8034cde4
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, tmpBuffer@h
     stw     r0, 0x4(sp)
-    lis     r4, 0x8035
-    addi    r3, r3, 0x3160
+    lis     r4, cbForStateCoverClosed@ha
+    addi    r3, r3, tmpBuffer@l
     stwu    sp, -0x8(sp)
-    subi    r4, r4, 0x31ec
+    addi    r4, r4, cbForStateCoverClosed@l
     bl      DVDLowReadDiskID
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1127,11 +1127,11 @@ cbForStateCoverClosed: # 0x8034ce14
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bne-    branch_0x8034ce50
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -1142,13 +1142,13 @@ branch_0x8034ce50:
     clrlwi. r0, r3, 31
     beq-    branch_0x8034ce68
     li      r0, 0x0
-    stw     r0, -0x5914(r13)
+    stw     r0, R13Off_m0x5914(r13)
     bl      stateCheckID
     b       branch_0x8034ce74
 
 branch_0x8034ce68:
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3c44
+    lis     r3, cbForStateGettingError@ha
+    addi    r3, r3, cbForStateGettingError@l
     bl      DVDLowRequestError
 branch_0x8034ce74:
     lwz     r0, 0xc(sp)
@@ -1160,9 +1160,9 @@ branch_0x8034ce74:
 .globl stateMotorStopped
 stateMotorStopped: # 0x8034ce84
     mflr    r0
-    lis     r3, 0x8035
+    lis     r3, cbForStateMotorStopped@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x3154
+    addi    r3, r3, cbForStateMotorStopped@l
     stwu    sp, -0x8(sp)
     bl      DVDLowWaitCoverClose
     lwz     r0, 0xc(sp)
@@ -1177,15 +1177,15 @@ cbForStateMotorStopped: # 0x8034ceac
     lis     r3, 0xcc00
     stw     r0, 0x4(sp)
     li      r0, 0x0
-    lis     r4, 0x8040
+    lis     r4, tmpBuffer@h
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x3160
+    addi    r31, r4, tmpBuffer@l
     stw     r0, 0x6004(r3)
     li      r0, 0x3
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r3)
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmpwi   r0, 0xd
     beq-    branch_0x8034cf0c
     bge-    branch_0x8034cf00
@@ -1202,9 +1202,9 @@ branch_0x8034cf00:
 
 branch_0x8034cf0c:
     bl      __DVDClearWaitingQueue
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     addi    r0, r31, 0x80
-    stw     r0, -0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     lwz     r12, 0x28(r4)
     cmplwi  r12, 0x0
     beq-    branch_0x8034cf34
@@ -1221,14 +1221,14 @@ branch_0x8034cf3c:
     bl      OSCreateAlarm
     lis     r3, 0x8000
     lwz     r0, 0xf8(r3)
-    lis     r4, 0x1062
-    lis     r3, 0x8035
+    lis     r4, unk_10624dd3@h
+    lis     r3, AlarmHandler_8034ccd4@ha
     srwi    r0, r0, 2
-    addi    r4, r4, 0x4dd3
+    addi    r4, r4, unk_10624dd3@l
     mulhwu  r0, r4, r0
     srwi    r0, r0, 6
     mulli   r6, r0, 0x47e
-    subi    r7, r3, 0x332c
+    addi    r7, r3, AlarmHandler_8034ccd4@l
     addi    r3, r31, 0xb0
     li      r5, 0x0
     bl      OSSetAlarm
@@ -1243,40 +1243,40 @@ branch_0x8034cf7c:
 .globl stateReady
 stateReady: # 0x8034cf90
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, tmpBuffer@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x3160
+    addi    r31, r3, tmpBuffer@l
     bl      __DVDCheckWaitingQueue
     cmpwi   r3, 0x0
     bne-    branch_0x8034cfc0
     li      r0, 0x0
-    stw     r0, -0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     b       branch_0x8034d1c4
 
 branch_0x8034cfc0:
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034cfe0
     li      r3, 0x1
     li      r0, 0x0
-    stw     r3, -0x5938(r13)
-    stw     r0, -0x5948(r13)
+    stw     r3, R13Off_m0x5938(r13)
+    stw     r0, R13Off_m0x5948(r13)
     b       branch_0x8034d1c4
 
 branch_0x8034cfe0:
     bl      __DVDPopWaitingQueue
-    lwz     r0, -0x5930(r13)
-    stw     r3, -0x5948(r13)
+    lwz     r0, R13Off_m0x5930(r13)
+    stw     r3, R13Off_m0x5948(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034d02c
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     li      r4, -0x1
     addi    r0, r31, 0x80
     stw     r4, 0xc(r3)
-    lwz     r4, -0x5948(r13)
-    stw     r0, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     lwz     r12, 0x28(r4)
     cmplwi  r12, 0x0
     beq-    branch_0x8034d024
@@ -1288,134 +1288,130 @@ branch_0x8034d024:
     b       branch_0x8034d1c4
 
 branch_0x8034d02c:
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     lwz     r0, 0x8(r4)
-    stw     r0, -0x592c(r13)
-    lwz     r0, -0x5920(r13)
+    stw     r0, R13Off_m0x592c(r13)
+    lwz     r0, R13Off_m0x5920(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034d1b4
-    lwz     r0, -0x5920(r13)
+    lwz     r0, R13Off_m0x5920(r13)
     cmplwi  r0, 0x7
     bgt-    branch_0x8034d1a8
-    lis     r3, 0x803f
-    subi    r3, r3, 0x79d4
+    lis     r3, unk_803e862c@ha
+    addi    r3, r3, unk_803e862c@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8034D068:		# jumptable 8034D064 case 1
+    bctr       
+branch_0x8034d068:
     li      r0, 0x6
-    lis     r3, 0x8035
+    lis     r3, cbForStateMotorStopped@ha
     stw     r0, 0xc(r4)
-    subi    r3, r3, 0x3154
+    addi    r3, r3, cbForStateMotorStopped@l
     bl      DVDLowWaitCoverClose
     b       branch_0x8034d1a8
 
-branch_0x8034D080:		# jumptable 8034D064 case 2
-li	  r0, 0xB
-lis	  r3, cbForStateMotorStopped@ha
-stw	  r0, 0xC(r4)
-addi	  r3, r3, cbForStateMotorStopped@l
-bl	  DVDLowWaitCoverClose
-b	  def_8034D064	# jumptable 8034D064 default case
+branch_0x8034d080:
+    li      r0, 0xb
+    lis     r3, cbForStateMotorStopped@ha
+    stw     r0, 0xc(r4)
+    addi    r3, r3, cbForStateMotorStopped@l
+    bl      DVDLowWaitCoverClose
+    b       branch_0x8034d1a8
 
-branch_0x8034D098:		# jumptable 8034D064 case 3
-li	  r0, 4
-lis	  r3, cbForStateMotorStopped@ha
-stw	  r0, 0xC(r4)
-addi	  r3, r3, cbForStateMotorStopped@l
-bl	  DVDLowWaitCoverClose
-b	  def_8034D064	# jumptable 8034D064 default case
+branch_0x8034d098:
+    li      r0, 0x4
+    lis     r3, cbForStateMotorStopped@ha
+    stw     r0, 0xc(r4)
+    addi    r3, r3, cbForStateMotorStopped@l
+    bl      DVDLowWaitCoverClose
+    b       branch_0x8034d1a8
 
-branch_0x8034D0B0:		# jumptable 8034D064 case 7
-li	  r0, 7
-lis	  r3, cbForStateMotorStopped@ha
-stw	  r0, 0xC(r4)
-addi	  r3, r3, cbForStateMotorStopped@l
-bl	  DVDLowWaitCoverClose
-b	  def_8034D064	# jumptable 8034D064 default case
+branch_0x8034d0b0:
+    li      r0, 0x7
+    lis     r3, cbForStateMotorStopped@ha
+    stw     r0, 0xc(r4)
+    addi    r3, r3, cbForStateMotorStopped@l
+    bl      DVDLowWaitCoverClose
+    b       branch_0x8034d1a8
 
-branch_0x8034D0C8:		# jumptable 8034D064 case 4
-li	  r0, 5
-lis	  r3, cbForStateMotorStopped@ha
-stw	  r0, 0xC(r4)
-addi	  r3, r3, cbForStateMotorStopped@l
-bl	  DVDLowWaitCoverClose
-b	  def_8034D064	# jumptable 8034D064 default case
+branch_0x8034d0c8:
+    li      r0, 0x5
+    lis     r3, cbForStateMotorStopped@ha
+    stw     r0, 0xc(r4)
+    addi    r3, r3, cbForStateMotorStopped@l
+    bl      DVDLowWaitCoverClose
+    b       branch_0x8034d1a8
 
-branch_0x8034D0E0:		# jumptable 8034D064 case 6
-li	  r0, 3
-stw	  r0, 0xC(r4)
-lwz	  r0, -0x592C(r13)
-cmpwi	  r0, 0xD
-beq	  branch_0x8034D118
-bge	  branch_0x8034D10C
-cmpwi	  r0, 6
-bge	  branch_0x8034D148
-cmpwi	  r0, 4
-bge	  branch_0x8034D118
-b	  branch_0x8034D148
+branch_0x8034d0e0:
+    li      r0, 0x3
+    stw     r0, 0xc(r4)
+    lwz     r0, R13Off_m0x592c(r13)
+    cmpwi   r0, 0xd
+    beq-    branch_0x8034d118
+    bge-    branch_0x8034d10c
+    cmpwi   r0, 0x6
+    bge-    branch_0x8034d148
+    cmpwi   r0, 0x4
+    bge-    branch_0x8034d118
+    b       branch_0x8034d148
 
-branch_0x8034D10C:
-cmpwi	  r0, 0xF
-beq	  branch_0x8034D118
-b	  branch_0x8034D148
+branch_0x8034d10c:
+    cmpwi   r0, 0xf
+    beq-    branch_0x8034d118
+    b       branch_0x8034d148
 
-branch_0x8034D118:
-bl	  __DVDClearWaitingQueue
-lwz	  r4, -0x5948(r13)
-addi	  r0, r31, 0x80
-stw	  r0, -0x5948(r13)
-lwz	  r12, 0x28(r4)
-cmplwi	  r12, 0
-beq	  branch_0x8034D140
-mtlr	  r12
-li	  r3, -4
-blrl
+branch_0x8034d118:
+    bl      __DVDClearWaitingQueue
+    lwz     r4, R13Off_m0x5948(r13)
+    addi    r0, r31, 0x80
+    stw     r0, R13Off_m0x5948(r13)
+    lwz     r12, 0x28(r4)
+    cmplwi  r12, 0x0
+    beq-    branch_0x8034d140
+    mtlr    r12
+    li      r3, -0x4
+    blrl
+branch_0x8034d140:
+    bl      stateReady
+    b       branch_0x8034d1a8
 
-branch_0x8034D140:
-bl	  stateReady
-b	  def_8034D064	# jumptable 8034D064 default case
+branch_0x8034d148:
+    bl      DVDReset
+    addi    r3, r31, 0xb0
+    bl      OSCreateAlarm
+    lis     r3, 0x8000
+    lwz     r0, 0xf8(r3)
+    lis     r4, unk_10624dd3@h
+    lis     r3, AlarmHandler_8034ccd4@ha
+    srwi    r0, r0, 2
+    addi    r4, r4, unk_10624dd3@l
+    mulhwu  r0, r4, r0
+    srwi    r0, r0, 6
+    mulli   r6, r0, 0x47e
+    addi    r7, r3, AlarmHandler_8034ccd4@l
+    addi    r3, r31, 0xb0
+    li      r5, 0x0
+    bl      OSSetAlarm
+    b       branch_0x8034d1a8
 
-branch_0x8034D148:
-bl	  DVDReset
-addi	  r3, r31, 0xB0
-bl	  OSCreateAlarm
-lis	  r3, -0x8000
-lwz	  r0, 0xF8(r3)
-lis	  r4, 0x1062 # 0x10624DD3
-lis	  r3, AlarmHandler_8034ccd4@ha
-srwi	  r0, r0, 2
-addi	  r4, r4, 0x4DD3 # 0x10624DD3
-mulhwu	  r0, r4, r0
-srwi	  r0, r0, 6
-mulli	  r6, r0, 0x47E
-addi	  r7, r3, AlarmHandler_8034ccd4@l
-addi	  r3, r31, 0xB0
-li	  r5, 0
-bl	  OSSetAlarm
-b	  def_8034D064	# jumptable 8034D064 default case
-
-branch_0x8034D18C:		# jumptable 8034D064 case 5
-li	  r0, -1
-stw	  r0, 0xC(r4)
-lwz	  r3, -0x591C(r13)
-bl	  __DVDStoreErrorCode
-lis	  r3, cbForStateError@ha
-addi	  r3, r3, cbForStateError@l
-bl	  DVDLowStopMotor
-
-def_8034D064:		# jumptable 8034D064 default case
+branch_0x8034d18c:
+    li      r0, -0x1
+    stw     r0, 0xc(r4)
+    lwz     r3, R13Off_m0x591c(r13)
+    bl      __DVDStoreErrorCode
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
+    bl      DVDLowStopMotor
 branch_0x8034d1a8:
     li      r0, 0x0
-    stw     r0, -0x5920(r13)
+    stw     r0, R13Off_m0x5920(r13)
     b       branch_0x8034d1c4
 
 branch_0x8034d1b4:
     li      r0, 0x1
     stw     r0, 0xc(r4)
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     bl      stateBusy
 branch_0x8034d1c4:
     lwz     r0, 0x14(sp)
@@ -1428,213 +1424,209 @@ branch_0x8034d1c4:
 .globl stateBusy
 stateBusy: # 0x8034d1d8
     mflr    r0
-    lis     r4, 0x8035
+    lis     r4, stateBusy@ha
     stw     r0, 0x4(sp)
-    subi    r0, r4, 0x2e28
+    addi    r0, r4, stateBusy@l
     mr      r7, r3
     stwu    sp, -0x8(sp)
-    stw     r0, -0x5904(r13)
+    stw     r0, R13Off_m0x5904(r13)
     lwz     r0, 0x8(r3)
     cmplwi  r0, 0xf
     bgt-    branch_0x8034d488
-    lis     r3, 0x803f
-    subi    r3, r3, 0x79b4
+    lis     r3, unk_803e864c@ha
+    addi    r3, r3, unk_803e864c@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8034D218:		# jumptable 8034D214 case 5
-    lis     r3, 0xcc00
+    bctr       
+branch_0x8034d218:
+    lis     r3, unk_cc006000@h
     lwz     r0, 0x6004(r3)
-    addi    r5, r3, 0x6000
-    lis     r3, 0x8035
+    addi    r5, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
     stw     r0, 0x4(r5)
     li      r0, 0x20
-    subi    r4, r3, 0x2b68
+    addi    r4, r3, cbForStateBusy@l
     stw     r0, 0x1c(r7)
     lwz     r3, 0x18(r7)
     bl      DVDLowReadDiskID
     b       branch_0x8034d488
 
-branch_0x8034D244:		# jumptable 8034D214 cases 1,4
-lis	  r3, -0x3400 #	0xCC006000
-addi	  r3, r3, 0x6000 # 0xCC006000
-lwz	  r0, 4(r3)
-lis	  r4, 8
-stw	  r0, 4(r3)
-lwz	  r3, 0x20(r7)
-lwz	  r0, 0x14(r7)
-subf	  r0, r3, r0
-cmplw	  r0, r4
-ble	  branch_0x8034D270
-b	  branch_0x8034D274
+branch_0x8034d244:
+    lis     r3, unk_cc006000@h
+    addi    r3, r3, unk_cc006000@l
+    lwz     r0, 0x4(r3)
+    lis     r4, 0x8
+    stw     r0, 0x4(r3)
+    lwz     r3, 0x20(r7)
+    lwz     r0, 0x14(r7)
+    subf    r0, r3, r0
+    cmplw   r0, r4
+    ble-    branch_0x8034d270
+    b       branch_0x8034d274
 
-branch_0x8034D270:
-mr	  r4, r0
+branch_0x8034d270:
+    mr      r4, r0
+branch_0x8034d274:
+    stw     r4, 0x1c(r7)
+    lis     r3, cbForStateBusy@ha
+    addi    r6, r3, cbForStateBusy@l
+    lwz     r5, 0x20(r7)
+    lwz     r3, 0x18(r7)
+    lwz     r0, 0x10(r7)
+    add     r3, r3, r5
+    lwz     r4, 0x1c(r7)
+    add     r5, r0, r5
+    bl      DVDLowRead
+    b       branch_0x8034d488
 
-branch_0x8034D274:
-stw	  r4, 0x1C(r7)
-lis	  r3, cbForStateBusy@ha
-addi	  r6, r3, cbForStateBusy@l
-lwz	  r5, 0x20(r7)
-lwz	  r3, 0x18(r7)
-lwz	  r0, 0x10(r7)
-add	  r3, r3, r5
-lwz	  r4, 0x1C(r7)
-add	  r5, r0, r5
-bl	  DVDLowRead
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d2a0:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r5, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r5)
+    addi    r4, r3, cbForStateBusy@l
+    lwz     r3, 0x10(r7)
+    bl      DVDLowSeek
+    b       branch_0x8034d488
 
-branch_0x8034D2A0:		# jumptable 8034D214 case 2
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r5, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r5)
-addi	  r4, r3, cbForStateBusy@l
-lwz	  r3, 0x10(r7)
-bl	  DVDLowSeek
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d2c4:
+    lis     r3, cbForStateBusy@ha
+    addi    r3, r3, cbForStateBusy@l
+    bl      DVDLowStopMotor
+    b       branch_0x8034d488
 
-branch_0x8034D2C4:		# jumptable 8034D214 case 3
-lis	  r3, cbForStateBusy@ha
-addi	  r3, r3, cbForStateBusy@l
-bl	  DVDLowStopMotor
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d2d4:
+    lis     r3, cbForStateBusy@ha
+    addi    r3, r3, cbForStateBusy@l
+    bl      DVDLowStopMotor
+    b       branch_0x8034d488
 
-branch_0x8034D2D4:		# jumptable 8034D214 case 15
-lis	  r3, cbForStateBusy@ha
-addi	  r3, r3, cbForStateBusy@l
-bl	  DVDLowStopMotor
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d2e4:
+    lis     r3, unk_cc006000@h
+    addi    r3, r3, unk_cc006000@l
+    lwz     r0, 0x4(r3)
+    stw     r0, 0x4(r3)
+    lwz     r0, R13Off_m0x5934(r13)
+    cmpwi   r0, 0x0
+    beq-    branch_0x8034d320
+    lwz     r5, R13Off_m0x5948(r13)
+    li      r0, 0x0
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x1c(r5)
+    addi    r4, r3, cbForStateBusy@l
+    li      r3, 0x0
+    bl      DVDLowRequestAudioStatus
+    b       branch_0x8034d488
 
-branch_0x8034D2E4:		# jumptable 8034D214 case 6
-lis	  r3, -0x3400 #	0xCC006000
-addi	  r3, r3, 0x6000 # 0xCC006000
-lwz	  r0, 4(r3)
-stw	  r0, 4(r3)
-lwz	  r0, -0x5934(r13)
-cmpwi	  r0, 0
-beq	  branch_0x8034D320
-lwz	  r5, -0x5948(r13)
-li	  r0, 0
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 0x1C(r5)
-addi	  r4, r3, cbForStateBusy@l
-li	  r3, 0
-bl	  DVDLowRequestAudioStatus
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d320:
+    lwz     r4, R13Off_m0x5948(r13)
+    li      r0, 0x1
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x1c(r4)
+    addi    r6, r3, cbForStateBusy@l
+    li      r3, 0x0
+    lwz     r4, 0x14(r7)
+    lwz     r5, 0x10(r7)
+    bl      DVDLowAudioStream
+    b       branch_0x8034d488
 
-branch_0x8034D320:
-lwz	  r4, -0x5948(r13)
-li	  r0, 1
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 0x1C(r4)
-addi	  r6, r3, cbForStateBusy@l
-li	  r3, 0
-lwz	  r4, 0x14(r7)
-lwz	  r5, 0x10(r7)
-bl	  DVDLowAudioStream
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d348:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r4, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r4)
+    addi    r6, r3, cbForStateBusy@l
+    lis     r3, 0x1
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      DVDLowAudioStream
+    b       branch_0x8034d488
 
-branch_0x8034D348:		# jumptable 8034D214 case 7
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r4, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r4)
-addi	  r6, r3, cbForStateBusy@l
-lis	  r3, 1
-li	  r4, 0
-li	  r5, 0
-bl	  DVDLowAudioStream
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d374:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r4, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r4)
+    li      r0, 0x1
+    addi    r6, r3, cbForStateBusy@l
+    stw     r0, R13Off_m0x5934(r13)
+    li      r3, 0x0
+    li      r4, 0x0
+    li      r5, 0x0
+    bl      DVDLowAudioStream
+    b       branch_0x8034d488
 
-branch_0x8034D374:		# jumptable 8034D214 case 8
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r4, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r4)
-li	  r0, 1
-addi	  r6, r3, cbForStateBusy@l
-stw	  r0, -0x5934(r13)
-li	  r3, 0
-li	  r4, 0
-li	  r5, 0
-bl	  DVDLowAudioStream
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d3a8:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r5, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r5)
+    addi    r4, r3, cbForStateBusy@l
+    li      r3, 0x0
+    bl      DVDLowRequestAudioStatus
+    b       branch_0x8034d488
 
-branch_0x8034D3A8:		# jumptable 8034D214 case 9
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r5, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r5)
-addi	  r4, r3, cbForStateBusy@l
-li	  r3, 0
-bl	  DVDLowRequestAudioStatus
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d3cc:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r5, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r5)
+    addi    r4, r3, cbForStateBusy@l
+    lis     r3, 0x1
+    bl      DVDLowRequestAudioStatus
+    b       branch_0x8034d488
 
-branch_0x8034D3CC:		# jumptable 8034D214 case 10
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r5, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r5)
-addi	  r4, r3, cbForStateBusy@l
-lis	  r3, 1
-bl	  DVDLowRequestAudioStatus
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d3f0:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r5, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r5)
+    addi    r4, r3, cbForStateBusy@l
+    lis     r3, 0x2
+    bl      DVDLowRequestAudioStatus
+    b       branch_0x8034d488
 
-branch_0x8034D3F0:		# jumptable 8034D214 case 11
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r5, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r5)
-addi	  r4, r3, cbForStateBusy@l
-lis	  r3, 2
-bl	  DVDLowRequestAudioStatus
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d414:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r5, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r5)
+    addi    r4, r3, cbForStateBusy@l
+    lis     r3, 0x3
+    bl      DVDLowRequestAudioStatus
+    b       branch_0x8034d488
 
-branch_0x8034D414:		# jumptable 8034D214 case 12
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r5, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r5)
-addi	  r4, r3, cbForStateBusy@l
-lis	  r3, 3
-bl	  DVDLowRequestAudioStatus
-b	  def_8034D214	# jumptable 8034D214 default case
+branch_0x8034d438:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r4, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r4)
+    addi    r5, r3, cbForStateBusy@l
+    lwz     r3, 0x10(r7)
+    lwz     r4, 0x14(r7)
+    bl      DVDLowAudioBufferConfig
+    b       branch_0x8034d488
 
-branch_0x8034D438:		# jumptable 8034D214 case 13
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r4, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r4)
-addi	  r5, r3, cbForStateBusy@l
-lwz	  r3, 0x10(r7)
-lwz	  r4, 0x14(r7)
-bl	  DVDLowAudioBufferConfig
-b	  def_8034D214	# jumptable 8034D214 default case
-
-branch_0x8034D460:		# jumptable 8034D214 case 14
-lis	  r3, -0x3400 #	0xCC006000
-lwz	  r0, 0x6004(r3)
-addi	  r5, r3, 0x6000 # 0xCC006000
-lis	  r3, cbForStateBusy@ha
-stw	  r0, 4(r5)
-li	  r0, 0x20
-addi	  r4, r3, cbForStateBusy@l
-stw	  r0, 0x1C(r7)
-lwz	  r3, 0x18(r7)
-bl	  DVDLowInquiry
-
-def_8034D214:		# jumptable 8034D214 default case
+branch_0x8034d460:
+    lis     r3, unk_cc006000@h
+    lwz     r0, 0x6004(r3)
+    addi    r5, r3, unk_cc006000@l
+    lis     r3, cbForStateBusy@ha
+    stw     r0, 0x4(r5)
+    li      r0, 0x20
+    addi    r4, r3, cbForStateBusy@l
+    stw     r0, 0x1c(r7)
+    lwz     r3, 0x18(r7)
+    bl      DVDLowInquiry
 branch_0x8034d488:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1647,17 +1639,17 @@ cbForStateBusy: # 0x8034d498
     mflr    r0
     cmplwi  r3, 0x10
     stw     r0, 0x4(sp)
-    lis     r4, 0x8040
+    lis     r4, tmpBuffer@h
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x3160
+    addi    r31, r4, tmpBuffer@l
     stw     r30, 0x10(sp)
     bne-    branch_0x8034d4e4
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234568@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4568
+    addi    r3, r3, unk_01234568@l
     bl      __DVDStoreErrorCode
     bl      DVDReset
     li      r3, 0x0
@@ -1665,46 +1657,46 @@ cbForStateBusy: # 0x8034d498
     b       branch_0x8034da54
 
 branch_0x8034d4e4:
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x3
     beq-    branch_0x8034d4fc
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xf
     bne-    branch_0x8034d5e4
 branch_0x8034d4fc:
     rlwinm. r0, r3, 0, 30, 30
     beq-    branch_0x8034d52c
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234567@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4567
+    addi    r3, r3, unk_01234567@l
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
     b       branch_0x8034da54
 
 branch_0x8034d52c:
     li      r0, 0x0
-    stw     r0, -0x5914(r13)
-    lwz     r0, -0x592c(r13)
+    stw     r0, R13Off_m0x5914(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xf
     bne-    branch_0x8034d548
     li      r0, 0x1
-    stw     r0, -0x5910(r13)
+    stw     r0, R13Off_m0x5910(r13)
 branch_0x8034d548:
-    lwz     r0, -0x5928(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034d5bc
     li      r0, 0x7
-    lwz     r30, -0x5948(r13)
-    stw     r0, -0x5920(r13)
+    lwz     r30, R13Off_m0x5948(r13)
+    stw     r0, R13Off_m0x5920(r13)
     addi    r3, r31, 0x80
     li      r0, 0x0
-    stw     r0, -0x5928(r13)
+    stw     r0, R13Off_m0x5928(r13)
     li      r0, 0xa
-    stw     r3, -0x5948(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r30)
     lwz     r12, 0x28(r30)
     cmplwi  r12, 0x0
@@ -1714,7 +1706,7 @@ branch_0x8034d548:
     li      r3, -0x3
     blrl
 branch_0x8034d594:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034d5b0
     mtlr    r12
@@ -1731,31 +1723,31 @@ branch_0x8034d5bc:
 branch_0x8034d5c0:
     cmpwi   r0, 0x0
     bne-    branch_0x8034da54
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, 0x7
-    lis     r3, 0x8035
+    lis     r3, cbForStateMotorStopped@ha
     stw     r0, 0xc(r4)
-    subi    r3, r3, 0x3154
+    addi    r3, r3, cbForStateMotorStopped@l
     bl      DVDLowWaitCoverClose
     b       branch_0x8034da54
 
 branch_0x8034d5e4:
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x1
     beq-    branch_0x8034d614
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x4
     beq-    branch_0x8034d614
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x5
     beq-    branch_0x8034d614
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xe
     bne-    branch_0x8034d638
 branch_0x8034d614:
-    lwz     r6, -0x5948(r13)
-    lis     r4, 0xcc00
-    addi    r4, r4, 0x6000
+    lwz     r6, R13Off_m0x5948(r13)
+    lis     r4, unk_cc006000@h
+    addi    r4, r4, unk_cc006000@l
     lwz     r4, 0x18(r4)
     lwz     r0, 0x1c(r6)
     lwz     r5, 0x20(r6)
@@ -1765,12 +1757,12 @@ branch_0x8034d614:
 branch_0x8034d638:
     rlwinm. r0, r3, 0, 28, 28
     beq-    branch_0x8034d69c
-    lwz     r30, -0x5948(r13)
+    lwz     r30, R13Off_m0x5948(r13)
     addi    r3, r31, 0x80
     li      r0, 0x0
-    stw     r0, -0x5928(r13)
+    stw     r0, R13Off_m0x5928(r13)
     li      r0, 0xa
-    stw     r3, -0x5948(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r30)
     lwz     r12, 0x28(r30)
     cmplwi  r12, 0x0
@@ -1780,7 +1772,7 @@ branch_0x8034d638:
     li      r3, -0x3
     blrl
 branch_0x8034d678:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034d694
     mtlr    r12
@@ -1795,16 +1787,16 @@ branch_0x8034d69c:
     clrlwi. r0, r3, 31
     beq-    branch_0x8034d924
     li      r4, 0x0
-    stw     r4, -0x5914(r13)
-    lwz     r0, -0x5928(r13)
+    stw     r4, R13Off_m0x5914(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034d714
-    stw     r4, -0x5920(r13)
+    stw     r4, R13Off_m0x5920(r13)
     addi    r3, r31, 0x80
-    lwz     r30, -0x5948(r13)
+    lwz     r30, R13Off_m0x5948(r13)
     li      r0, 0xa
-    stw     r4, -0x5928(r13)
-    stw     r3, -0x5948(r13)
+    stw     r4, R13Off_m0x5928(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r30)
     lwz     r12, 0x28(r30)
     cmplwi  r12, 0x0
@@ -1814,7 +1806,7 @@ branch_0x8034d69c:
     li      r3, -0x3
     blrl
 branch_0x8034d6f0:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034d70c
     mtlr    r12
@@ -1827,20 +1819,20 @@ branch_0x8034d70c:
 branch_0x8034d714:
     cmpwi   r4, 0x0
     bne-    branch_0x8034da54
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x1
     beq-    branch_0x8034d74c
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x4
     beq-    branch_0x8034d74c
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x5
     beq-    branch_0x8034d74c
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xe
     bne-    branch_0x8034d79c
 branch_0x8034d74c:
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     lwz     r4, 0x20(r3)
     lwz     r0, 0x14(r3)
     cmplw   r4, r0
@@ -1850,7 +1842,7 @@ branch_0x8034d74c:
 
 branch_0x8034d768:
     addi    r0, r31, 0x80
-    stw     r0, -0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     li      r0, 0x0
     addi    r4, r3, 0x0
     stw     r0, 0xc(r3)
@@ -1865,23 +1857,23 @@ branch_0x8034d794:
     b       branch_0x8034da54
 
 branch_0x8034d79c:
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x9
     beq-    branch_0x8034d7cc
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xa
     beq-    branch_0x8034d7cc
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xb
     beq-    branch_0x8034d7cc
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xc
     bne-    branch_0x8034d830
 branch_0x8034d7cc:
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xb
     beq-    branch_0x8034d7e4
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xa
     bne-    branch_0x8034d7f4
 branch_0x8034d7e4:
@@ -1891,14 +1883,14 @@ branch_0x8034d7e4:
     b       branch_0x8034d800
 
 branch_0x8034d7f4:
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6000
+    lis     r3, unk_cc006000@h
+    addi    r3, r3, unk_cc006000@l
     lwz     r3, 0x20(r3)
 branch_0x8034d800:
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     addi    r5, r31, 0x80
     li      r0, 0x0
-    stw     r5, -0x5948(r13)
+    stw     r5, R13Off_m0x5948(r13)
     stw     r0, 0xc(r4)
     lwz     r12, 0x28(r4)
     cmplwi  r12, 0x0
@@ -1910,10 +1902,10 @@ branch_0x8034d828:
     b       branch_0x8034da54
 
 branch_0x8034d830:
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x6
     bne-    branch_0x8034d8f0
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     addi    r5, r4, 0x1c
     lwz     r0, 0x1c(r4)
     cmplwi  r0, 0x0
@@ -1923,7 +1915,7 @@ branch_0x8034d830:
     clrlwi. r0, r0, 31
     beq-    branch_0x8034d890
     addi    r0, r31, 0x80
-    stw     r0, -0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     li      r0, 0x9
     stw     r0, 0xc(r4)
     lwz     r12, 0x28(r4)
@@ -1938,13 +1930,13 @@ branch_0x8034d888:
 
 branch_0x8034d890:
     li      r0, 0x0
-    stw     r0, -0x5934(r13)
+    stw     r0, R13Off_m0x5934(r13)
     li      r0, 0x1
-    lis     r3, 0x8035
+    lis     r3, cbForStateBusy@ha
     stw     r0, 0x0(r5)
-    subi    r6, r3, 0x2b68
+    addi    r6, r3, cbForStateBusy@l
     li      r3, 0x0
-    lwz     r5, -0x5948(r13)
+    lwz     r5, R13Off_m0x5948(r13)
     lwz     r4, 0x14(r5)
     lwz     r5, 0x10(r5)
     bl      DVDLowAudioStream
@@ -1952,7 +1944,7 @@ branch_0x8034d890:
 
 branch_0x8034d8c0:
     addi    r0, r31, 0x80
-    stw     r0, -0x5948(r13)
+    stw     r0, R13Off_m0x5948(r13)
     li      r0, 0x0
     stw     r0, 0xc(r4)
     lwz     r12, 0x28(r4)
@@ -1966,10 +1958,10 @@ branch_0x8034d8e8:
     b       branch_0x8034da54
 
 branch_0x8034d8f0:
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     addi    r3, r31, 0x80
     li      r0, 0x0
-    stw     r3, -0x5948(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r4)
     lwz     r12, 0x28(r4)
     cmplwi  r12, 0x0
@@ -1982,48 +1974,48 @@ branch_0x8034d91c:
     b       branch_0x8034da54
 
 branch_0x8034d924:
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xe
     bne-    branch_0x8034d958
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     li      r0, -0x1
-    lis     r3, 0x123
+    lis     r3, unk_01234567@h
     stw     r0, 0xc(r4)
-    addi    r3, r3, 0x4567
+    addi    r3, r3, unk_01234567@l
     bl      __DVDStoreErrorCode
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3e64
+    lis     r3, cbForStateError@ha
+    addi    r3, r3, cbForStateError@l
     bl      DVDLowStopMotor
     b       branch_0x8034da54
 
 branch_0x8034d958:
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x1
     beq-    branch_0x8034d988
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x4
     beq-    branch_0x8034d988
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0x5
     beq-    branch_0x8034d988
-    lwz     r0, -0x592c(r13)
+    lwz     r0, R13Off_m0x592c(r13)
     cmplwi  r0, 0xe
     bne-    branch_0x8034da48
 branch_0x8034d988:
-    lwz     r30, -0x5948(r13)
+    lwz     r30, R13Off_m0x5948(r13)
     lwz     r3, 0x20(r30)
     lwz     r0, 0x14(r30)
     cmplw   r3, r0
     bne-    branch_0x8034da48
-    lwz     r0, -0x5928(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034da08
     li      r4, 0x0
-    stw     r4, -0x5920(r13)
+    stw     r4, R13Off_m0x5920(r13)
     addi    r3, r31, 0x80
     li      r0, 0xa
-    stw     r4, -0x5928(r13)
-    stw     r3, -0x5948(r13)
+    stw     r4, R13Off_m0x5928(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r30)
     lwz     r12, 0x28(r30)
     cmplwi  r12, 0x0
@@ -2033,7 +2025,7 @@ branch_0x8034d988:
     li      r3, -0x3
     blrl
 branch_0x8034d9e0:
-    lwz     r12, -0x5924(r13)
+    lwz     r12, R13Off_m0x5924(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034d9fc
     mtlr    r12
@@ -2050,10 +2042,10 @@ branch_0x8034da08:
 branch_0x8034da0c:
     cmpwi   r0, 0x0
     bne-    branch_0x8034da54
-    lwz     r4, -0x5948(r13)
+    lwz     r4, R13Off_m0x5948(r13)
     addi    r3, r31, 0x80
     li      r0, 0x0
-    stw     r3, -0x5948(r13)
+    stw     r3, R13Off_m0x5948(r13)
     stw     r0, 0xc(r4)
     lwz     r12, 0x28(r4)
     cmplwi  r12, 0x0
@@ -2066,8 +2058,8 @@ branch_0x8034da40:
     b       branch_0x8034da54
 
 branch_0x8034da48:
-    lis     r3, 0x8035
-    subi    r3, r3, 0x3c44
+    lis     r3, cbForStateGettingError@ha
+    addi    r3, r3, cbForStateGettingError@l
     bl      DVDLowRequestError
 branch_0x8034da54:
     lwz     r0, 0x1c(sp)
@@ -2096,13 +2088,13 @@ DVDReadAbsAsyncPrio: # 0x8034da6c
     stw     r6, 0x10(r3)
     stw     r0, 0x20(r3)
     stw     r7, 0x28(r3)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034dae4
     lwz     r3, 0x8(r29)
     cmplwi  r3, 0x1
     beq-    branch_0x8034dad8
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034dad8
     cmplwi  r3, 0xe
@@ -2119,11 +2111,11 @@ branch_0x8034dae4:
     addi    r3, r31, 0x0
     addi    r4, r29, 0x0
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034db20
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034db20
     bl      stateReady
@@ -2156,13 +2148,13 @@ DVDReadAbsAsyncForBS: # 0x8034db48
     stw     r6, 0x10(r3)
     stw     r0, 0x20(r3)
     stw     r7, 0x28(r3)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034dbb8
     lwz     r3, 0x8(r31)
     cmplwi  r3, 0x1
     beq-    branch_0x8034dbac
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034dbac
     cmplwi  r3, 0xe
@@ -2179,11 +2171,11 @@ branch_0x8034dbb8:
     addi    r4, r31, 0x0
     li      r3, 0x2
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034dbf4
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034dbf4
     bl      stateReady
@@ -2216,13 +2208,13 @@ DVDReadDiskID: # 0x8034dc18
     stw     r0, 0x10(r31)
     stw     r0, 0x20(r31)
     stw     r5, 0x28(r31)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034dc8c
     lwz     r3, 0x8(r31)
     cmplwi  r3, 0x1
     beq-    branch_0x8034dc80
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034dc80
     cmplwi  r3, 0xe
@@ -2239,11 +2231,11 @@ branch_0x8034dc8c:
     addi    r4, r31, 0x0
     li      r3, 0x2
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034dcc8
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034dcc8
     bl      stateReady
@@ -2272,13 +2264,13 @@ DVDPrepareStreamAbsAsync: # 0x8034dcec
     stw     r4, 0x14(r3)
     stw     r5, 0x10(r3)
     stw     r6, 0x28(r3)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034dd50
     lwz     r3, 0x8(r31)
     cmplwi  r3, 0x1
     beq-    branch_0x8034dd44
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034dd44
     cmplwi  r3, 0xe
@@ -2295,11 +2287,11 @@ branch_0x8034dd50:
     addi    r4, r31, 0x0
     li      r3, 0x1
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034dd8c
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034dd8c
     bl      stateReady
@@ -2326,13 +2318,13 @@ DVDCancelStreamAsync: # 0x8034ddb0
     stw     r30, 0x18(sp)
     stw     r0, 0x8(r3)
     stw     r4, 0x28(r3)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034de0c
     lwz     r3, 0x8(r31)
     cmplwi  r3, 0x1
     beq-    branch_0x8034de00
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034de00
     cmplwi  r3, 0xe
@@ -2349,11 +2341,11 @@ branch_0x8034de0c:
     addi    r4, r31, 0x0
     li      r3, 0x1
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034de48
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034de48
     bl      stateReady
@@ -2380,13 +2372,13 @@ DVDStopStreamAtEndAsync: # 0x8034de6c
     stw     r30, 0x18(sp)
     stw     r0, 0x8(r3)
     stw     r4, 0x28(r3)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034dec8
     lwz     r3, 0x8(r31)
     cmplwi  r3, 0x1
     beq-    branch_0x8034debc
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034debc
     cmplwi  r3, 0xe
@@ -2403,11 +2395,11 @@ branch_0x8034dec8:
     addi    r4, r31, 0x0
     li      r3, 0x1
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034df04
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034df04
     bl      stateReady
@@ -2434,13 +2426,13 @@ DVDGetStreamPlayAddrAsync: # 0x8034df28
     stw     r30, 0x18(sp)
     stw     r0, 0x8(r3)
     stw     r4, 0x28(r3)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034df84
     lwz     r3, 0x8(r31)
     cmplwi  r3, 0x1
     beq-    branch_0x8034df78
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034df78
     cmplwi  r3, 0xe
@@ -2457,11 +2449,11 @@ branch_0x8034df84:
     addi    r4, r31, 0x0
     li      r3, 0x1
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034dfc0
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034dfc0
     bl      stateReady
@@ -2493,13 +2485,13 @@ DVDInquiryAsync: # 0x8034dfe4
     stw     r3, 0x14(r31)
     stw     r0, 0x20(r31)
     stw     r5, 0x28(r31)
-    lwz     r0, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034e054
     lwz     r3, 0x8(r31)
     cmplwi  r3, 0x1
     beq-    branch_0x8034e048
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034e048
     cmplwi  r3, 0xe
@@ -2516,11 +2508,11 @@ branch_0x8034e054:
     addi    r4, r31, 0x0
     li      r3, 0x2
     bl      __DVDPushWaitingQueue
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     addi    r31, r3, 0x0
     cmplwi  r0, 0x0
     bne-    branch_0x8034e090
-    lwz     r0, -0x593c(r13)
+    lwz     r0, R13Off_m0x593c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8034e090
     bl      stateReady
@@ -2542,15 +2534,15 @@ DVDReset: # 0x8034e0b4
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      DVDLowReset
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006000@h
     li      r0, 0x2a
     stw     r0, 0x6000(r3)
-    addi    r4, r3, 0x6000
+    addi    r4, r3, unk_cc006000@l
     li      r0, 0x0
     lwz     r3, 0x6004(r3)
     stw     r3, 0x4(r4)
-    stw     r0, -0x5910(r13)
-    stw     r0, -0x5920(r13)
+    stw     r0, R13Off_m0x5910(r13)
+    stw     r0, R13Off_m0x5920(r13)
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
     mtlr    r0
@@ -2591,7 +2583,7 @@ DVDGetDriveStatus: # 0x8034e144
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     bl      OSDisableInterrupts
-    lwz     r0, -0x5930(r13)
+    lwz     r0, R13Off_m0x5930(r13)
     addi    r30, r3, 0x0
     cmpwi   r0, 0x0
     beq-    branch_0x8034e174
@@ -2599,22 +2591,22 @@ DVDGetDriveStatus: # 0x8034e144
     b       branch_0x8034e1cc
 
 branch_0x8034e174:
-    lwz     r0, -0x5938(r13)
+    lwz     r0, R13Off_m0x5938(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034e188
     li      r31, 0x8
     b       branch_0x8034e1cc
 
 branch_0x8034e188:
-    lwz     r31, -0x5948(r13)
+    lwz     r31, R13Off_m0x5948(r13)
     cmplwi  r31, 0x0
     bne-    branch_0x8034e19c
     li      r31, 0x0
     b       branch_0x8034e1cc
 
 branch_0x8034e19c:
-    lis     r3, 0x8040
-    addi    r0, r3, 0x31e0
+    lis     r3, DummyCommandBlock@h
+    addi    r0, r3, DummyCommandBlock@l
     cmplw   r31, r0
     bne-    branch_0x8034e1b4
     li      r31, 0x0
@@ -2642,8 +2634,8 @@ branch_0x8034e1cc:
 
 .globl DVDSetAutoInvalidation
 DVDSetAutoInvalidation: # 0x8034e1f0
-    lwz     r0, -0x7348(r13)
-    stw     r3, -0x7348(r13)
+    lwz     r0, R13Off_m0x7348(r13)
+    stw     r3, R13Off_m0x7348(r13)
     mr      r3, r0
     blr
 
@@ -2664,14 +2656,13 @@ DVDCancelAsync: # 0x8034e200
     addi    r0, r4, 0x1
     cmplwi  r0, 0xc
     bgt-    branch_0x8034e448
-    lis     r3, 0x803f
-    subi    r3, r3, 0x7974
+    lis     r3, unk_803e868c@ha
+    addi    r3, r3, unk_803e868c@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8034E250:		# jumptable 8034E24C cases 0,1,11
+    bctr       
+branch_0x8034e250:
     cmplwi  r30, 0x0
     beq-    branch_0x8034e448
     addi    r12, r30, 0x0
@@ -2681,169 +2672,157 @@ branch_0x8034E250:		# jumptable 8034E24C cases 0,1,11
     blrl
     b       branch_0x8034e448
 
-branch_0x8034E270:		# jumptable 8034E24C case 2
-lwz	  r0, -0x5928(r13)
-cmplwi	  r0, 0
-beq	  branch_0x8034E28C
-mr	  r3, r31
-bl	  OSRestoreInterrupts
-li	  r3, 0
-b	  branch_0x8034E454
+branch_0x8034e270:
+    lwz     r0, R13Off_m0x5928(r13)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8034e28c
+    mr      r3, r31
+    bl      OSRestoreInterrupts
+    li      r3, 0x0
+    b       branch_0x8034e454
 
-branch_0x8034E28C:
-li	  r0, 1
-stw	  r30, -0x5924(r13)
-stw	  r0, -0x5928(r13)
-lwz	  r0, 8(r29)
-cmplwi	  r0, 4
-beq	  branch_0x8034E2AC
-cmplwi	  r0, 1
-bne	  def_8034E24C	# jumptable 8034E24C default case
+branch_0x8034e28c:
+    li      r0, 0x1
+    stw     r30, R13Off_m0x5924(r13)
+    stw     r0, R13Off_m0x5928(r13)
+    lwz     r0, 0x8(r29)
+    cmplwi  r0, 0x4
+    beq-    branch_0x8034e2ac
+    cmplwi  r0, 0x1
+    bne-    branch_0x8034e448
+branch_0x8034e2ac:
+    bl      DVDLowBreak
+    b       branch_0x8034e448
 
-branch_0x8034E2AC:
-bl	  DVDLowBreak
-b	  def_8034E24C	# jumptable 8034E24C default case
+branch_0x8034e2b4:
+    mr      r3, r29
+    bl      __DVDDequeueWaitingQueue
+    li      r0, 0xa
+    stw     r0, 0xc(r29)
+    lwz     r12, 0x28(r29)
+    cmplwi  r12, 0x0
+    beq-    branch_0x8034e2e0
+    mtlr    r12
+    addi    r4, r29, 0x0
+    li      r3, -0x3
+    blrl
+branch_0x8034e2e0:
+    cmplwi  r30, 0x0
+    beq-    branch_0x8034e448
+    addi    r12, r30, 0x0
+    mtlr    r12
+    addi    r4, r29, 0x0
+    li      r3, 0x0
+    blrl
+    b       branch_0x8034e448
 
-branch_0x8034E2B4:		# jumptable 8034E24C case 3
-mr	  r3, r29
-bl	  __DVDDequeueWaitingQueue
-li	  r0, 0xA
-stw	  r0, 0xC(r29)
-lwz	  r12, 0x28(r29)
-cmplwi	  r12, 0
-beq	  branch_0x8034E2E0
-mtlr	  r12
-addi	  r4, r29, 0
-li	  r3, -3
-blrl
+branch_0x8034e300:
+    lwz     r0, 0x8(r29)
+    cmpwi   r0, 0xd
+    beq-    branch_0x8034e330
+    bge-    branch_0x8034e324
+    cmpwi   r0, 0x6
+    bge-    branch_0x8034e350
+    cmpwi   r0, 0x4
+    bge-    branch_0x8034e330
+    b       branch_0x8034e350
 
-branch_0x8034E2E0:
-cmplwi	  r30, 0
-beq	  def_8034E24C	# jumptable 8034E24C default case
-addi	  r12, r30, 0
-mtlr	  r12
-addi	  r4, r29, 0
-li	  r3, 0
-blrl
-b	  def_8034E24C	# jumptable 8034E24C default case
+branch_0x8034e324:
+    cmpwi   r0, 0xf
+    beq-    branch_0x8034e330
+    b       branch_0x8034e350
 
-branch_0x8034E300:		# jumptable 8034E24C case 4
-lwz	  r0, 8(r29)
-cmpwi	  r0, 0xD
-beq	  branch_0x8034E330
-bge	  branch_0x8034E324
-cmpwi	  r0, 6
-bge	  branch_0x8034E350
-cmpwi	  r0, 4
-bge	  branch_0x8034E330
-b	  branch_0x8034E350
+branch_0x8034e330:
+    cmplwi  r30, 0x0
+    beq-    branch_0x8034e448
+    addi    r12, r30, 0x0
+    mtlr    r12
+    addi    r4, r29, 0x0
+    li      r3, 0x0
+    blrl
+    b       branch_0x8034e448
 
-branch_0x8034E324:
-cmpwi	  r0, 0xF
-beq	  branch_0x8034E330
-b	  branch_0x8034E350
+branch_0x8034e350:
+    lwz     r0, R13Off_m0x5928(r13)
+    cmplwi  r0, 0x0
+    beq-    branch_0x8034e36c
+    mr      r3, r31
+    bl      OSRestoreInterrupts
+    li      r3, 0x0
+    b       branch_0x8034e454
 
-branch_0x8034E330:
-cmplwi	  r30, 0
-beq	  def_8034E24C	# jumptable 8034E24C default case
-addi	  r12, r30, 0
-mtlr	  r12
-addi	  r4, r29, 0
-li	  r3, 0
-blrl
-b	  def_8034E24C	# jumptable 8034E24C default case
+branch_0x8034e36c:
+    li      r0, 0x1
+    stw     r30, R13Off_m0x5924(r13)
+    stw     r0, R13Off_m0x5928(r13)
+    b       branch_0x8034e448
 
-branch_0x8034E350:
-lwz	  r0, -0x5928(r13)
-cmplwi	  r0, 0
-beq	  branch_0x8034E36C
-mr	  r3, r31
-bl	  OSRestoreInterrupts
-li	  r3, 0
-b	  branch_0x8034E454
+branch_0x8034e37c:
+    bl      DVDLowClearCallback
+    lis     r4, cbForStateMotorStopped@ha
+    addi    r0, r4, cbForStateMotorStopped@l
+    cmplw   r3, r0
+    beq-    branch_0x8034e3a0
+    mr      r3, r31
+    bl      OSRestoreInterrupts
+    li      r3, 0x0
+    b       branch_0x8034e454
 
-branch_0x8034E36C:
-li	  r0, 1
-stw	  r30, -0x5924(r13)
-stw	  r0, -0x5928(r13)
-b	  def_8034E24C	# jumptable 8034E24C default case
-
-branch_0x8034E37C:		# jumptable 8034E24C cases 5-8,12
-bl	  DVDLowClearCallback
-lis	  r4, cbForStateMotorStopped@ha
-addi	  r0, r4, cbForStateMotorStopped@l
-cmplw	  r3, r0
-beq	  branch_0x8034E3A0
-mr	  r3, r31
-bl	  OSRestoreInterrupts
-li	  r3, 0
-b	  branch_0x8034E454
-
-branch_0x8034E3A0:
-lwz	  r0, 0xC(r29)
-cmpwi	  r0, 4
-bne	  branch_0x8034E3B4
-li	  r0, 3
-stw	  r0, -0x5920(r13)
-
-branch_0x8034E3B4:
-lwz	  r0, 0xC(r29)
-cmpwi	  r0, 5
-bne	  branch_0x8034E3C8
-li	  r0, 4
-stw	  r0, -0x5920(r13)
-
-branch_0x8034E3C8:
-lwz	  r0, 0xC(r29)
-cmpwi	  r0, 6
-bne	  branch_0x8034E3DC
-li	  r0, 1
-stw	  r0, -0x5920(r13)
-
-branch_0x8034E3DC:
-lwz	  r0, 0xC(r29)
-cmpwi	  r0, 0xB
-bne	  branch_0x8034E3F0
-li	  r0, 2
-stw	  r0, -0x5920(r13)
-
-branch_0x8034E3F0:
-lwz	  r0, 0xC(r29)
-cmpwi	  r0, 7
-bne	  branch_0x8034E404
-li	  r0, 7
-stw	  r0, -0x5920(r13)
-
-branch_0x8034E404:
-li	  r0, 0xA
-stw	  r0, 0xC(r29)
-lwz	  r12, 0x28(r29)
-cmplwi	  r12, 0
-beq	  branch_0x8034E428
-mtlr	  r12
-addi	  r4, r29, 0
-li	  r3, -3
-blrl
-
-branch_0x8034E428:
-cmplwi	  r30, 0
-beq	  branch_0x8034E444
-addi	  r12, r30, 0
-mtlr	  r12
-addi	  r4, r29, 0
-li	  r3, 0
-blrl
-
-branch_0x8034E444:
-bl	  stateReady
-
-def_8034E24C:		# jumptable 8034E24C default case
+branch_0x8034e3a0:
+    lwz     r0, 0xc(r29)
+    cmpwi   r0, 0x4
+    bne-    branch_0x8034e3b4
+    li      r0, 0x3
+    stw     r0, R13Off_m0x5920(r13)
+branch_0x8034e3b4:
+    lwz     r0, 0xc(r29)
+    cmpwi   r0, 0x5
+    bne-    branch_0x8034e3c8
+    li      r0, 0x4
+    stw     r0, R13Off_m0x5920(r13)
+branch_0x8034e3c8:
+    lwz     r0, 0xc(r29)
+    cmpwi   r0, 0x6
+    bne-    branch_0x8034e3dc
+    li      r0, 0x1
+    stw     r0, R13Off_m0x5920(r13)
+branch_0x8034e3dc:
+    lwz     r0, 0xc(r29)
+    cmpwi   r0, 0xb
+    bne-    branch_0x8034e3f0
+    li      r0, 0x2
+    stw     r0, R13Off_m0x5920(r13)
+branch_0x8034e3f0:
+    lwz     r0, 0xc(r29)
+    cmpwi   r0, 0x7
+    bne-    branch_0x8034e404
+    li      r0, 0x7
+    stw     r0, R13Off_m0x5920(r13)
+branch_0x8034e404:
+    li      r0, 0xa
+    stw     r0, 0xc(r29)
+    lwz     r12, 0x28(r29)
+    cmplwi  r12, 0x0
+    beq-    branch_0x8034e428
+    mtlr    r12
+    addi    r4, r29, 0x0
+    li      r3, -0x3
+    blrl
+branch_0x8034e428:
+    cmplwi  r30, 0x0
+    beq-    branch_0x8034e444
+    addi    r12, r30, 0x0
+    mtlr    r12
+    addi    r4, r29, 0x0
+    li      r3, 0x0
+    blrl
+branch_0x8034e444:
+    bl      stateReady
 branch_0x8034e448:
     mr      r3, r31
     bl      OSRestoreInterrupts
     li      r3, 0x1
-
-branch_0x8034E454:
+branch_0x8034e454:
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
     lwz     r30, 0x18(sp)
@@ -2856,9 +2835,9 @@ branch_0x8034E454:
 .globl DVDCancel
 DVDCancel: # 0x8034e470
     mflr    r0
-    lis     r4, 0x8035
+    lis     r4, cbForCancelSync@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x1ae4
+    addi    r4, r4, cbForCancelSync@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
@@ -2882,7 +2861,7 @@ branch_0x8034e4ac:
     cmpwi   r3, 0x3
     bne-    branch_0x8034e4ec
     lwz     r3, 0x8(r30)
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     cmplwi  r0, 0x1
     ble-    branch_0x8034e4f8
     cmplwi  r3, 0xd
@@ -2890,7 +2869,7 @@ branch_0x8034e4ac:
     cmplwi  r3, 0xf
     beq-    branch_0x8034e4f8
 branch_0x8034e4ec:
-    subi    r3, r13, 0x5950
+    addi    r3, r13, R13Off_m0x5950
     bl      OSSleepThread
     b       branch_0x8034e4ac
 
@@ -2910,7 +2889,7 @@ branch_0x8034e504:
 .globl cbForCancelSync
 cbForCancelSync: # 0x8034e51c
     mflr    r0
-    subi    r3, r13, 0x5950
+    addi    r3, r13, R13Off_m0x5950
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      OSWakeupThread
@@ -2933,29 +2912,29 @@ DVDCheckDisk: # 0x8034e548
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     bl      OSDisableInterrupts
-    lwz     r0, -0x5930(r13)
+    lwz     r0, R13Off_m0x5930(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034e570
     li      r4, -0x1
     b       branch_0x8034e5b4
 
 branch_0x8034e570:
-    lwz     r0, -0x5938(r13)
+    lwz     r0, R13Off_m0x5938(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034e584
     li      r4, 0x8
     b       branch_0x8034e5b4
 
 branch_0x8034e584:
-    lwz     r5, -0x5948(r13)
+    lwz     r5, R13Off_m0x5948(r13)
     cmplwi  r5, 0x0
     bne-    branch_0x8034e598
     li      r4, 0x0
     b       branch_0x8034e5b4
 
 branch_0x8034e598:
-    lis     r4, 0x8040
-    addi    r0, r4, 0x31e0
+    lis     r4, DummyCommandBlock@h
+    addi    r0, r4, DummyCommandBlock@l
     cmplw   r5, r0
     bne-    branch_0x8034e5b0
     li      r4, 0x0
@@ -2967,38 +2946,34 @@ branch_0x8034e5b4:
     addi    r0, r4, 0x1
     cmplwi  r0, 0xc
     bgt-    branch_0x8034e610
-    lis     r4, 0x803f
-    subi    r4, r4, 0x7940
+    lis     r4, unk_803e86c0@ha
+    addi    r4, r4, unk_803e86c0@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8034E5D8:		# jumptable 8034E5D4 cases 2,3,10,11
+    bctr       
+branch_0x8034e5d8:
     li      r31, 0x1
     b       branch_0x8034e610
 
-branch_0x8034E5E0:		# jumptable 8034E5D4 cases 0,4-8,12
-li	  r31, 0
-b	  def_8034E5D4	# jumptable 8034E5D4 default case
+branch_0x8034e5e0:
+    li      r31, 0x0
+    b       branch_0x8034e610
 
-branch_0x8034E5E8:		# jumptable 8034E5D4 cases 1,9
-lis	  r4, -0x3400 #	0xCC006000
-addi	  r4, r4, 0x6000 # 0xCC006000
-lwz	  r4, 4(r4)
-extrwi.	  r0, r4, 1,29
-bne	  branch_0x8034E604
-clrlwi.	  r0, r4, 31
-beq	  branch_0x8034E60C
+branch_0x8034e5e8:
+    lis     r4, unk_cc006000@h
+    addi    r4, r4, unk_cc006000@l
+    lwz     r4, 0x4(r4)
+    extrwi. r0, r4, 1, 29
+    bne-    branch_0x8034e604
+    clrlwi. r0, r4, 31
+    beq-    branch_0x8034e60c
+branch_0x8034e604:
+    li      r31, 0x0
+    b       branch_0x8034e610
 
-branch_0x8034E604:
-li	  r31, 0
-b	  def_8034E5D4	# jumptable 8034E5D4 default case
-
-branch_0x8034E60C:
-li	  r31, 1
-
-def_8034E5D4:		# jumptable 8034E5D4 default case
+branch_0x8034e60c:
+    li      r31, 0x1
 branch_0x8034e610:
     bl      OSRestoreInterrupts
     mr      r3, r31
@@ -3021,14 +2996,14 @@ __DVDPrepareResetAsync: # 0x8034e62c
     bl      OSDisableInterrupts
     mr      r29, r3
     bl      __DVDClearWaitingQueue
-    lwz     r0, -0x5928(r13)
+    lwz     r0, R13Off_m0x5928(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034e668
-    stw     r30, -0x5924(r13)
+    stw     r30, R13Off_m0x5924(r13)
     b       branch_0x8034e724
 
 branch_0x8034e668:
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x8034e67c
     li      r0, 0x0
@@ -3037,12 +3012,12 @@ branch_0x8034e67c:
     bl      OSDisableInterrupts
     mr      r31, r3
     bl      OSDisableInterrupts
-    lwz     r0, -0x5948(r13)
+    lwz     r0, R13Off_m0x5948(r13)
     li      r4, 0x1
-    stw     r4, -0x593c(r13)
+    stw     r4, R13Off_m0x593c(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8034e6a0
-    stw     r4, -0x5938(r13)
+    stw     r4, R13Off_m0x5938(r13)
 branch_0x8034e6a0:
     bl      OSRestoreInterrupts
     b       branch_0x8034e6b0
@@ -3054,7 +3029,7 @@ branch_0x8034e6b0:
     bl      __DVDPopWaitingQueue
     cmplwi  r3, 0x0
     bne+    branch_0x8034e6a8
-    lwz     r3, -0x5948(r13)
+    lwz     r3, R13Off_m0x5948(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x8034e6d4
     mr      r4, r30
@@ -3072,12 +3047,12 @@ branch_0x8034e6d4:
 branch_0x8034e6f0:
     bl      OSDisableInterrupts
     li      r4, 0x0
-    stw     r4, -0x593c(r13)
+    stw     r4, R13Off_m0x593c(r13)
     mr      r30, r3
-    lwz     r0, -0x5938(r13)
+    lwz     r0, R13Off_m0x5938(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8034e714
-    stw     r4, -0x5938(r13)
+    stw     r4, R13Off_m0x5938(r13)
     bl      stateReady
 branch_0x8034e714:
     mr      r3, r30

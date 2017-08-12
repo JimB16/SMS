@@ -2,9 +2,9 @@
 .globl __ct__12JKRAramBlockFUlUlUlUcb
 __ct__12JKRAramBlockFUlUlUlUcb: # 0x802f05dc
     mflr    r0
-    lis     r9, 0x803e
+    lis     r9, __vvt__12JKRAramBlock@h
     stw     r0, 0x4(sp)
-    addi    r0, r9, 0x17b8
+    addi    r0, r9, __vvt__12JKRAramBlock@l
     stwu    sp, -0x38(sp)
     stmw    r26, 0x20(sp)
     addi    r26, r3, 0x0
@@ -40,8 +40,8 @@ __dt__12JKRAramBlockFv: # 0x802f0648
     stw     r30, 0x20(sp)
     mr.     r30, r3
     beq-    branch_0x802f06e8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x17b8
+    lis     r3, __vvt__12JKRAramBlock@h
+    addi    r0, r3, __vvt__12JKRAramBlock@l
     stw     r0, 0x0(r30)
     lwz     r4, 0xc(r30)
     lwz     r3, 0x8(r30)

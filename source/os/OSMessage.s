@@ -7,7 +7,7 @@ OSInitMessageQueue: # 0x80346130
     stw     r31, 0x24(sp)
     addi    r31, r5, 0x0
     stw     r30, 0x20(sp)
-    addi    r30, r4, 0x0
+    addi    r30, r4, unk_80000000@l
     stw     r29, 0x1c(sp)
     addi    r29, r3, 0x0
     bl      OSInitThreadQueue
@@ -136,7 +136,7 @@ branch_0x803462d8:
     subf    r0, r0, r5
     stw     r0, 0x18(r31)
     lwz     r4, 0x1c(r31)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x1c(r31)
     bl      OSWakeupThread
     mr      r3, r29

@@ -39,3 +39,4 @@ load__15TStageEventInfoFR20JSUMemoryInputStream: # 0x802a8a00
     mtlr    r0
     addi    sp, sp, 0x28
     blr
+

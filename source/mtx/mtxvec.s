@@ -28,10 +28,10 @@ PSMTXMultVec: # 0x8034a2d0
 PSMTXMultVecArray: # 0x8034a324
     psq_l   f13, 0x0(3), 0, 0
     psq_l   f12, 0x10(3), 0, 0
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
     psq_l   f11, 0x8(3), 0, 0
     ps_merge00 f0, f13, f12
-    subi    r5, r5, 0x4
+    addi    r5, r5, -0x4
     psq_l   f10, 0x18(3), 0, 0
     ps_merge11 f1, f13, f12
     mtctr   r6

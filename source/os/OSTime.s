@@ -5,7 +5,7 @@ OSGetTime: # 0x803494d8
     mftb    r4, 268
     mftb    r5, 269
     cmpw    r3, r5
-    bne-    OSGetTime # ToDo Find out why wrong branch prediction
+    bne+    OSGetTime
     blr
 
 
@@ -46,12 +46,12 @@ __OSGetSystemTime: # 0x803494f8
 
 .globl GetDates
 GetDates: # 0x8034955c
-    lis     r5, 0x9249
-    addi    r0, r5, 0x2493
+    lis     r5, unk_92492493@h
+    addi    r0, r5, unk_92492493@l
     addi    r7, r3, 0x6
     mulhw   r6, r0, r7
-    lis     r5, 0xb38d
-    subi    r0, r5, 0x64f
+    lis     r5, unk_b38cf9b1@ha
+    addi    r0, r5, unk_b38cf9b1@l
     mulhw   r0, r0, r3
     add     r5, r6, r7
     srawi   r5, r5, 2
@@ -68,16 +68,16 @@ GetDates: # 0x8034955c
     b       branch_0x803495ac
 
 branch_0x803495ac:
-    lis     r6, 0x51ec
-    subi    r10, r6, 0x7ae1
+    lis     r6, unk_51eb851f@ha
+    addi    r10, r6, unk_51eb851f@l
     b       branch_0x803495b8
 
 branch_0x803495b8:
     b       branch_0x803495c4
 
 branch_0x803495bc:
-    subi    r11, r11, 0x16d
-    subi    r5, r5, 0x1
+    addi    r11, r11, -0x16d
+    addi    r5, r5, -0x1
 branch_0x803495c4:
     cmpwi   r5, 0x1
     bge-    branch_0x803495d4
@@ -85,7 +85,7 @@ branch_0x803495c4:
     b       branch_0x80349608
 
 branch_0x803495d4:
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     mulhw   r0, r10, r0
     srawi   r8, r0, 7
     srawi   r6, r0, 5
@@ -113,8 +113,8 @@ branch_0x80349608:
     li      r7, 0x1
     li      r8, 0x0
     bne-    branch_0x8034966c
-    lis     r3, 0x51ec
-    subi    r3, r3, 0x7ae1
+    lis     r3, unk_51eb851f@ha
+    addi    r3, r3, unk_51eb851f@l
     mulhw   r3, r3, r5
     srawi   r3, r3, 5
     srwi    r6, r3, 31
@@ -127,8 +127,8 @@ branch_0x80349608:
 branch_0x8034966c:
     cmpwi   r8, 0x0
     bne-    branch_0x803496a0
-    lis     r3, 0x51ec
-    subi    r3, r3, 0x7ae1
+    lis     r3, unk_51eb851f@ha
+    addi    r3, r3, unk_51eb851f@l
     mulhw   r3, r3, r5
     srawi   r3, r3, 7
     srwi    r6, r3, 31
@@ -141,13 +141,13 @@ branch_0x8034966c:
 branch_0x803496a0:
     cmpwi   r7, 0x0
     beq-    branch_0x803496b4
-    lis     r3, 0x803f
-    subi    r6, r3, 0x7e40
+    lis     r3, LeapYearDays@ha
+    addi    r6, r3, LeapYearDays@l
     b       branch_0x803496bc
 
 branch_0x803496b4:
-    lis     r3, 0x803f
-    subi    r6, r3, 0x7e70
+    lis     r3, YearDays@ha
+    addi    r6, r3, YearDays@l
 branch_0x803496bc:
     li      r7, 0xc
     li      r3, 0x30
@@ -157,9 +157,9 @@ branch_0x803496c8:
     b       branch_0x803496cc
 
 branch_0x803496cc:
-    subi    r3, r3, 0x4
+    addi    r3, r3, -0x4
     lwzx    r5, r6, r3
-    subi    r7, r7, 0x1
+    addi    r7, r7, -0x1
     cmpw    r0, r5
     blt+    branch_0x803496cc
     stw     r7, 0x10(r4)
@@ -207,8 +207,8 @@ branch_0x8034976c:
     mulhwu  r0, r25, r4
     lis     r27, 0x8000
     lwz     r6, 0xf8(r27)
-    lis     r5, 0x431c
-    subi    r5, r5, 0x217d
+    lis     r5, unk_431bde83@ha
+    addi    r5, r5, unk_431bde83@l
     srwi    r6, r6, 2
     mulhwu  r5, r5, r6
     srwi    r6, r5, 15
@@ -223,8 +223,8 @@ branch_0x8034976c:
     li      r6, 0x3e8
     bl      __mod2i
     stw     r4, 0x24(r31)
-    lis     r3, 0x1062
-    addi    r5, r3, 0x4dd3
+    lis     r3, unk_10624dd3@h
+    addi    r5, r3, unk_10624dd3@l
     lwz     r0, 0xf8(r27)
     mr      r3, r26
     mr      r4, r25
@@ -240,8 +240,8 @@ branch_0x8034976c:
     subfc   r30, r25, r30
     subfe   r29, r26, r29
     lwz     r0, 0xf8(r27)
-    lis     r5, 0x1
-    addi    r25, r5, 0x5180
+    lis     r5, unk_00015180@h
+    addi    r25, r5, unk_00015180@l
     mr      r3, r29
     srwi    r6, r0, 2
     mr      r4, r30
@@ -250,9 +250,9 @@ branch_0x8034976c:
     mr      r6, r25
     li      r5, 0x0
     bl      __div2i
-    lis     r5, 0xb
+    lis     r5, unk_000b2575@h
     lwz     r0, 0xf8(r27)
-    addi    r5, r5, 0x2575
+    addi    r5, r5, unk_000b2575@l
     addc    r26, r4, r5
     srwi    r6, r0, 2
     adde    r0, r3, r28
@@ -267,14 +267,14 @@ branch_0x8034976c:
     cmpwi   r27, 0x0
     bge-    branch_0x80349878
     addis   r27, r27, 0x1
-    subi    r26, r26, 0x1
+    addi    r26, r26, -0x1
     addi    r27, r27, 0x5180
 branch_0x80349878:
     mr      r3, r26
     mr      r4, r31
     bl      GetDates
-    lis     r3, 0x8889
-    subi    r5, r3, 0x7777
+    lis     r3, unk_88888889@ha
+    addi    r5, r3, unk_88888889@l
     mulhw   r0, r5, r27
     add     r4, r0, r27
     srawi   r0, r4, 5

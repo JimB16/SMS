@@ -9,8 +9,8 @@ __dt__12TPerformListFv: # 0x802a4a7c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802a4af4
-    lis     r3, 0x803e
-    subi    r3, r3, 0xd38
+    lis     r3, __vvt__12TPerformList@ha
+    addi    r3, r3, __vvt__12TPerformList@l
     addic.  r0, r30, 0x10
     stw     r3, 0x0(r30)
     beq-    branch_0x802a4ac4
@@ -22,8 +22,8 @@ __dt__12TPerformListFv: # 0x802a4a7c
 branch_0x802a4ac4:
     cmplwi  r30, 0x0
     beq-    branch_0x802a4ae4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -117,7 +117,7 @@ push_back__12TPerformListFPCcUl: # 0x802a4bd0
     stw     r28, 0x60(sp)
     addi    r28, r3, 0x0
     addi    r3, r29, 0x0
-    lwz     r6, -0x5db8(r13)
+    lwz     r6, R13Off_m0x5db8(r13)
     lwz     r31, 0x4(r6)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r31)
@@ -182,7 +182,7 @@ branch_0x802a4cd4:
     addi    r4, sp, 0x5c
     li      r5, 0x50
     bl      readString__14JSUInputStreamFPcUs
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, sp, 0x5c
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc

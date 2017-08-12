@@ -1,10 +1,10 @@
 
 .globl InitMetroTRK
 InitMetroTRK: # 0x803410f4
-    subi    sp, sp, 0x4
+    addi    sp, sp, -0x4
     stw     r3, 0x0(sp)
-    lis     r3, 0x8040
-    ori     r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    ori     r3, r3, gTRKCPUState@l
     stmw    r0, 0x0(r3)
     lwz     r4, 0x0(sp)
     addi    sp, sp, 0x4
@@ -21,14 +21,14 @@ InitMetroTRK: # 0x803410f4
     mtmsr   r3
     mtspr   27, r4
     bl      TRKSaveExtended1Block
-    lis     r3, 0x8040
-    ori     r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    ori     r3, r3, gTRKCPUState@l
     .long 0xb8030000 # lmw     r0, 0x0(r3)
     li      r0, 0x0
     mtspr   1010, r0
     mtspr   1013, r0
-    lis     sp, 0x8042
-    ori     sp, sp, 0x97e8
+    lis     sp, unk_804297e8@h
+    ori     sp, sp, unk_804297e8@l
     mr      r3, r5
     bl      InitMetroTRKCommTable
     cmpwi   r3, 0x1
@@ -56,16 +56,16 @@ EnableMetroTRKInterrupts: # 0x80341188
 
 .globl TRKTargetTranslate
 TRKTargetTranslate: # 0x803411a8
-    lis     r4, 0x8040
-    addi    r4, r4, 0x2560
+    lis     r4, lc_base@h
+    addi    r4, r4, lc_base@l
     lwz     r4, 0x0(r4)
     cmplw   r3, r4
     blt-    branch_0x803411e4
     addi    r0, r4, 0x4000
     cmplw   r3, r0
     bge-    branch_0x803411e4
-    lis     r4, 0x8040
-    addi    r4, r4, 0x2130
+    lis     r4, gTRKCPUState@h
+    addi    r4, r4, gTRKCPUState@l
     lwz     r0, 0x238(r4)
     clrlwi  r0, r0, 30
     cmplwi  r0, 0x0
@@ -81,36 +81,28 @@ branch_0x803411ec:
 
 .globl TRK_copy_vector
 TRK_copy_vector: # 0x803411f0
-
-.set var_8, -8
-.set var_4, -4
-.set arg_4,  4
-
     mflr    r0
-    stw     r0, arg_4(sp)
+    stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
-    stw     r31, 0x10+var_4(sp)
-    stw     r30, 0x10+var_8(sp)
-
+    stw     r31, 0xc(sp)
+    stw     r30, 0x8(sp)
     mr      r30, r3
     mr      r3, r30
     bl      TRKTargetTranslate
-    lis     r4, gTRKInterruptVectorTable@h
-    addi    r0, r4, gTRKInterruptVectorTable@l
+    lis     r4, unk_80003298@h
+    addi    r0, r4, unk_80003298@l
     mr      r31, r3
     add     r4, r0, r30
     mr      r3, r31
     li      r5, 0x100
     bl      TRK_memcpy
-
     mr      r3, r31
     li      r4, 0x100
     bl      TRK_flush_cache
-
-    lwz     r31, 0x10+var_4(sp)
-    lwz     r30, 0x10+var_8(sp)
+    lwz     r31, 0xc(sp)
+    lwz     r30, 0x8(sp)
     addi    sp, sp, 0x10
-    lwz     r0, arg_4(sp)
+    lwz     r0, 0x4(sp)
     mtlr    r0
     blr
 
@@ -124,14 +116,13 @@ __TRK_copy_vectors: # 0x80341250
     stw     r30, 0x10(sp)
     stw     r29, 0xc(sp)
     stw     r28, 0x8(sp)
-
     li      r3, 0x44
     bl      TRKTargetTranslate
     li      r29, 0x0
     lwz     r28, 0x0(r3)
-    lis     r3, 0x803e
+    lis     r3, TRK_ISR_OFFSETS@h
     slwi    r4, r29, 2
-    addi    r0, r3, 0x68c8
+    addi    r0, r3, TRK_ISR_OFFSETS@l
     add     r30, r0, r4
     b       branch_0x80341290
 
@@ -154,7 +145,6 @@ branch_0x803412b4:
     addi    r29, r29, 0x1
     cmpwi   r29, 0xe
     ble+    branch_0x8034129c
-
     lwz     r31, 0x14(sp)
     lwz     r30, 0x10(sp)
     lwz     r29, 0xc(sp)
@@ -171,17 +161,17 @@ TRKInitializeTarget: # 0x803412e4
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    lis     r3, 0x8040
-    addi    r31, r3, 0x2088
+    lis     r3, gTRKState@h
+    addi    r31, r3, gTRKState@l
     li      r0, 0x1
     stw     r0, 0x98(r31)
     bl      __TRK_get_MSR
     stw     r3, 0x8c(r31)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2560
-    lis     r0, 0xe000
+    lis     r3, lc_base@h
+    addi    r3, r3, lc_base@l
+    lis     r0, unk_e0000000@h
     stw     r0, 0x0(r3)
-    li      r3, 0x0
+    addi    r3, r0, unk_e0000000@l
     lwz     r31, 0xc(sp)
     addi    sp, sp, 0x10
     lwz     r0, 0x4(sp)

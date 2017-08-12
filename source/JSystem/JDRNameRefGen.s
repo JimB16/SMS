@@ -156,18 +156,18 @@ load__Q26JDrama55TNameRefPtrListT_Q26JDrama8TNameRef_Q26JDrama8TNameRef_FR20JSUM
     addi    r4, sp, 0x50
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
-    lis     r6, 0x803b
+    lis     r6, __vvt__10JSUIosBase@ha
     lwz     r28, 0x50(sp)
-    lis     r5, 0x803e
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r5, __vvt__14JSUInputStream@h
+    lis     r4, __vvt__20JSURandomInputStream@h
+    lis     r3, __vvt__20JSUMemoryInputStream@h
     addi    r29, r22, 0xc
     addi    r27, sp, 0x3c
     addi    r30, sp, 0x58
-    subi    r31, r6, 0xf0c
-    addi    r23, r5, 0x184
-    addi    r24, r4, 0x160
-    addi    r25, r3, 0x1c8
+    addi    r31, r6, __vvt__10JSUIosBase@l
+    addi    r23, r5, __vvt__14JSUInputStream@l
+    addi    r24, r4, __vvt__20JSURandomInputStream@l
+    addi    r25, r3, __vvt__20JSUMemoryInputStream@l
     li      r22, 0x0
     b       branch_0x802faa60
 
@@ -423,18 +423,18 @@ load__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_FR20JSUM
     addi    r4, sp, 0x50
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
-    lis     r6, 0x803b
+    lis     r6, __vvt__10JSUIosBase@ha
     lwz     r28, 0x50(sp)
-    lis     r5, 0x803e
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r5, __vvt__14JSUInputStream@h
+    lis     r4, __vvt__20JSURandomInputStream@h
+    lis     r3, __vvt__20JSUMemoryInputStream@h
     addi    r29, r22, 0x10
     addi    r27, sp, 0x3c
     addi    r30, sp, 0x58
-    subi    r31, r6, 0xf0c
-    addi    r23, r5, 0x184
-    addi    r24, r4, 0x160
-    addi    r25, r3, 0x1c8
+    addi    r31, r6, __vvt__10JSUIosBase@l
+    addi    r23, r5, __vvt__14JSUInputStream@l
+    addi    r24, r4, __vvt__20JSURandomInputStream@l
+    addi    r25, r3, __vvt__20JSUMemoryInputStream@l
     li      r22, 0x0
     b       branch_0x802fae04
 
@@ -500,13 +500,13 @@ branch_0x802fae04:
 .globl load__Q26JDrama11TNameRefGenFR20JSUMemoryInputStream
 load__Q26JDrama11TNameRefGenFR20JSUMemoryInputStream: # 0x802fae20
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, __vvt__10JSUIosBase@ha
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0xf0c
-    lis     r7, 0x803e
+    addi    r0, r5, __vvt__10JSUIosBase@l
+    lis     r7, __vvt__14JSUInputStream@h
     stwu    sp, -0x40(sp)
-    lis     r6, 0x803e
-    lis     r5, 0x803e
+    lis     r6, __vvt__20JSURandomInputStream@h
+    lis     r5, __vvt__20JSUMemoryInputStream@h
     stw     r31, 0x3c(sp)
     addi    r31, sp, 0x18
     stw     r30, 0x38(sp)
@@ -520,11 +520,11 @@ load__Q26JDrama11TNameRefGenFR20JSUMemoryInputStream: # 0x802fae20
     li      r0, 0x0
     addi    r3, r8, 0x0
     stb     r0, 0x4(r8)
-    addi    r0, r7, 0x184
+    addi    r0, r7, __vvt__14JSUInputStream@l
     stw     r0, 0x0(r8)
-    addi    r0, r6, 0x160
+    addi    r0, r6, __vvt__20JSURandomInputStream@l
     stw     r0, 0x0(r8)
-    addi    r0, r5, 0x1c8
+    addi    r0, r5, __vvt__20JSUMemoryInputStream@l
     li      r5, 0x0
     stw     r0, 0x0(r8)
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
@@ -541,12 +541,12 @@ load__Q26JDrama11TNameRefGenFR20JSUMemoryInputStream: # 0x802fae20
     mtlr    r12
     blrl
 branch_0x802faec4:
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
     lwz     r31, 0x4(r29)
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x18(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x18(sp)
     addi    r3, sp, 0x18
     li      r4, 0x0
@@ -564,11 +564,11 @@ branch_0x802faec4:
 .globl getNameRef__Q26JDrama11TNameRefGenCFPCc
 getNameRef__Q26JDrama11TNameRefGenCFPCc: # 0x802faf0c
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803aa2b8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x78(sp)
     stw     r31, 0x74(sp)
-    subi    r31, r3, 0x5d48
+    addi    r31, r3, unk_803aa2b8@l
     stw     r30, 0x70(sp)
     addi    r30, r4, 0x0
     addi    r3, r30, 0x0
@@ -586,8 +586,8 @@ getNameRef__Q26JDrama11TNameRefGenCFPCc: # 0x802faf0c
     lwz     r3, 0x34(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x34(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
@@ -596,8 +596,8 @@ getNameRef__Q26JDrama11TNameRefGenCFPCc: # 0x802faf0c
     addi    r4, sp, 0x30
     addi    r3, r31, 0x10
     bl      __ct__Q27JGadget18TList_pointer_voidFRCQ27JGadget14TAllocator_Pv_
-    lis     r3, 0x803c
-    addi    r0, r3, 0xf5c
+    lis     r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@h
+    addi    r0, r3, __vvt__Q26JDrama55TViewObjPtrListT_Q26JDrama8TViewObj_Q26JDrama8TViewObj_@l
     stw     r0, 0x0(r31)
 branch_0x802faf9c:
     mr      r3, r30
@@ -631,26 +631,26 @@ branch_0x802fafe0:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802fb058
-    lfs     f1, 0x410(rtoc)
+    lfs     f1, 0x410(r2)
     mr      r3, r30
-    lfs     f2, 0x414(rtoc)
+    lfs     f2, 0x414(r2)
     addi    r4, r31, 0x50
     bl      __ct__Q26JDrama7TCameraFffPCc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1b88
+    lis     r3, __vvt__Q26JDrama12TPolarCamera@h
+    addi    r3, r3, __vvt__Q26JDrama12TPolarCamera@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
-    lfs     f0, 0x418(rtoc)
+    lfs     f0, 0x418(r2)
     stfs    f0, 0x30(r30)
-    lfs     f0, 0x41c(rtoc)
+    lfs     f0, 0x41c(r2)
     stfs    f0, 0x34(r30)
-    lfs     f1, 0x420(rtoc)
+    lfs     f1, 0x420(r2)
     stfs    f1, 0x38(r30)
     fmr     f0, f1
     stfs    f1, 0x3c(r30)
     stfs    f0, 0x40(r30)
-    lfs     f0, 0x424(rtoc)
+    lfs     f0, 0x424(r2)
     stfs    f0, 0x44(r30)
 branch_0x802fb058:
     mr      r3, r30
@@ -669,8 +669,8 @@ branch_0x802fb060:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x6c
     bl      __ct__Q26JDrama6TActorFPCc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x21b0
+    lis     r3, __vvt__Q26JDrama9TSmJ3DAct@h
+    addi    r3, r3, __vvt__Q26JDrama9TSmJ3DAct@l
     stw     r3, 0x0(r30)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -697,11 +697,11 @@ branch_0x802fb0c4:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x84
     bl      __ct__Q26JDrama8TNameRefFPCc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6028
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TCharacter@ha
+    addi    r0, r3, __vvt__Q26JDrama10TCharacter@l
+    lis     r3, __vvt__Q26JDrama10TSmplChara@h
     stw     r0, 0x0(r30)
-    addi    r0, r3, 0x1d28
+    addi    r0, r3, __vvt__Q26JDrama10TSmplChara@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
     stw     r0, 0xc(r30)
@@ -711,7 +711,7 @@ branch_0x802fb114:
 
 branch_0x802fb11c:
     addi    r3, r30, 0x0
-    addi    r4, rtoc, 0x428
+    addi    r4, r2, R2Off_0x428
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802fb20c
@@ -720,29 +720,29 @@ branch_0x802fb11c:
     mr.     r30, r3
     beq-    branch_0x802fb204
     stw     r30, 0x2c(sp)
-    addi    r4, rtoc, 0x430
+    addi    r4, r2, R2Off_0x430
     stw     r30, 0x48(sp)
     lwz     r3, 0x2c(sp)
     bl      __ct__Q26JDrama8TViewObjFPCc
     lwz     r31, 0x2c(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x10
-    lfs     f1, 0x420(rtoc)
+    lfs     f1, 0x420(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_802fb64c
     li      r0, 0x0
     sth     r0, 0x1c(r31)
-    lis     r6, 0x803e
-    lis     r3, 0x803e
+    lis     r6, __vvt__Q26JStage7TObject@h
+    lis     r3, __vvt__Q26JDrama6TLight@h
     lwz     r31, 0x48(sp)
-    addi    r0, r6, 0x4718
-    addi    r5, r3, 0x2054
-    lis     r4, 0x803e
+    addi    r0, r6, __vvt__Q26JStage7TObject@l
+    addi    r5, r3, __vvt__Q26JDrama6TLight@l
+    lis     r4, __vvt__Q26JStage6TLight@h
     stw     r0, 0x20(r31)
-    addi    r0, r4, 0x46b8
+    addi    r0, r4, __vvt__Q26JStage6TLight@l
     stw     r0, 0x20(r31)
     addi    r4, r5, 0x24
     li      r0, 0x1
@@ -750,8 +750,8 @@ branch_0x802fb11c:
     addi    r3, r31, 0x24
     stw     r4, 0x20(r31)
     stw     r0, 0x64(r31)
-    lfs     f2, 0x420(rtoc)
-    lfs     f1, 0x438(rtoc)
+    lfs     f2, 0x420(r2)
+    lfs     f1, 0x438(r2)
     fmr     f3, f2
     fmr     f4, f1
     fmr     f5, f2
@@ -785,8 +785,8 @@ branch_0x802fb20c:
     addi    r3, r30, 0x0
     addi    r4, r31, 0xa0
     bl      __ct__Q26JDrama6TLightFPCc
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1f94
+    lis     r3, __vvt__Q26JDrama9TIdxLight@h
+    addi    r3, r3, __vvt__Q26JDrama9TIdxLight@l
     stw     r3, 0x0(r30)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -812,15 +812,15 @@ branch_0x802fb260:
     lwz     r3, 0x24(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x24(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JDrama9TLightAry@h
     lwz     r3, 0x44(sp)
-    addi    r0, r4, 0x2030
+    addi    r0, r4, __vvt__Q26JDrama9TLightAry@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     li      r4, 0x0
@@ -847,21 +847,21 @@ branch_0x802fb2e0:
     lwz     r3, 0x20(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x20(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JStage7TObject@h
     lwz     r5, 0x40(sp)
-    addi    r0, r4, 0x4718
-    lis     r3, 0x803e
+    addi    r0, r4, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage13TAmbientLight@h
     stw     r0, 0x10(r5)
-    addi    r0, r3, 0x4590
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage13TAmbientLight@l
+    lis     r3, __vvt__Q26JDrama9TAmbColor@h
     stw     r0, 0x10(r5)
-    addi    r3, r3, 0x1f30
+    addi    r3, r3, __vvt__Q26JDrama9TAmbColor@l
     stw     r3, 0x0(r5)
     addi    r0, r3, 0x24
     addi    r3, r5, 0x14
@@ -877,7 +877,7 @@ branch_0x802fb37c:
 
 branch_0x802fb384:
     addi    r3, r30, 0x0
-    addi    r4, rtoc, 0x43c
+    addi    r4, r2, R2Off_0x43c
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802fb404
@@ -891,15 +891,15 @@ branch_0x802fb384:
     lwz     r3, 0x1c(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x1c(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JDrama7TAmbAry@h
     lwz     r3, 0x3c(sp)
-    addi    r0, r4, 0x1f0c
+    addi    r0, r4, __vvt__Q26JDrama7TAmbAry@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     li      r4, 0x0
@@ -920,9 +920,9 @@ branch_0x802fb404:
     bl      __nw__FUl
     mr.     r30, r3
     beq-    branch_0x802fb464
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
     stw     r30, 0x38(sp)
-    addi    r0, r3, 0x20f0
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     stw     r0, 0x0(r30)
     addi    r3, r31, 0xf4
     lwz     r31, 0x38(sp)
@@ -932,8 +932,8 @@ branch_0x802fb404:
     addi    r3, r31, 0xc
     addi    r4, sp, 0x18
     bl      __ct__Q27JGadget18TList_pointer_voidFRCQ27JGadget14TAllocator_Pv_
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2110
+    lis     r3, __vvt__Q26JDrama55TNameRefPtrListT_Q26JDrama8TNameRef_Q26JDrama8TNameRef_@h
+    addi    r0, r3, __vvt__Q26JDrama55TNameRefPtrListT_Q26JDrama8TNameRef_Q26JDrama8TNameRef_@l
     stw     r0, 0x0(r31)
 branch_0x802fb464:
     mr      r3, r30
@@ -1017,30 +1017,30 @@ __ct__Q26JDrama6TLightFPCc: # 0x802fb554
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r0, 0x0(r31)
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r8, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
     sth     r8, 0xc(r31)
-    addi    r0, r3, 0x2140
-    lis     r6, 0x803e
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
+    lis     r6, __vvt__Q26JStage7TObject@h
     stw     r0, 0x0(r31)
-    lis     r3, 0x803e
-    addi    r5, r3, 0x2054
-    lfs     f3, 0x420(rtoc)
-    addi    r7, r6, 0x4718
-    lis     r4, 0x803e
+    lis     r3, __vvt__Q26JDrama6TLight@h
+    addi    r5, r3, __vvt__Q26JDrama6TLight@l
+    lfs     f3, 0x420(r2)
+    addi    r7, r6, __vvt__Q26JStage7TObject@l
+    lis     r4, __vvt__Q26JStage6TLight@h
     stfs    f3, 0x10(r31)
-    addi    r6, r4, 0x46b8
+    addi    r6, r4, __vvt__Q26JStage6TLight@l
     addi    r4, r5, 0x24
     fmr     f2, f3
     stfs    f3, 0x14(r31)
@@ -1055,7 +1055,7 @@ __ct__Q26JDrama6TLightFPCc: # 0x802fb554
     stw     r5, 0x0(r31)
     stw     r4, 0x20(r31)
     stw     r0, 0x64(r31)
-    lfs     f1, 0x438(rtoc)
+    lfs     f1, 0x438(r2)
     fmr     f4, f1
     bl      GXInitLightAttn
     li      r0, 0xff
@@ -1087,9 +1087,9 @@ set_f___Q29JGeometry8TVec3_f_Ffff_802fb64c: # 0x802fb64c
 .globl __ct__Q26JDrama7TCameraFffPCc
 __ct__Q26JDrama7TCameraFffPCc: # 0x802fb65c
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x38(sp)
     stfd    f31, 0x30(sp)
     fmr     f31, f2
@@ -1102,22 +1102,22 @@ __ct__Q26JDrama7TCameraFffPCc: # 0x802fb65c
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r7, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
     sth     r7, 0xc(r31)
-    addi    r0, r3, 0x2140
-    lis     r6, 0x803e
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
+    lis     r6, __vvt__Q26JStage7TObject@h
     stw     r0, 0x0(r31)
-    lis     r5, 0x803e
-    lis     r3, 0x803e
-    lfs     f0, 0x420(rtoc)
-    addi    r4, r3, 0x1c64
-    addi    r6, r6, 0x4718
+    lis     r5, __vvt__Q26JStage7TCamera@h
+    lis     r3, __vvt__Q26JDrama7TCamera@h
+    lfs     f0, 0x420(r2)
+    addi    r4, r3, __vvt__Q26JDrama7TCamera@l
+    addi    r6, r6, __vvt__Q26JStage7TObject@l
     stfs    f0, 0x10(r31)
-    addi    r5, r5, 0x45c8
+    addi    r5, r5, __vvt__Q26JStage7TCamera@l
     addi    r0, r4, 0x24
     stfs    f0, 0x14(r31)
     addi    r3, r31, 0x0
@@ -1149,8 +1149,8 @@ __dt__Q26JDrama55TNameRefPtrListT_Q26JDrama8TNameRef_Q26JDrama8TNameRef_Fv: # 0x
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fb784
-    lis     r3, 0x803e
-    addi    r3, r3, 0x2110
+    lis     r3, __vvt__Q26JDrama55TNameRefPtrListT_Q26JDrama8TNameRef_Q26JDrama8TNameRef_@h
+    addi    r3, r3, __vvt__Q26JDrama55TNameRefPtrListT_Q26JDrama8TNameRef_Q26JDrama8TNameRef_@l
     addic.  r0, r30, 0xc
     stw     r3, 0x0(r30)
     beq-    branch_0x802fb768

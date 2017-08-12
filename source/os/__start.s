@@ -30,11 +30,11 @@ __start: # 0x8000522c
     stw     r0, 0x0(sp)
     bl      __init_data
     li      r0, 0x0
-    lis     r6, 0x8000
-    addi    r6, r6, 0x44
+    lis     r6, unk_80000044@h
+    addi    r6, r6, unk_80000044@l
     stw     r0, 0x0(r6)
-    lis     r6, 0x8000
-    addi    r6, r6, 0xf4
+    lis     r6, unk_800000f4@h
+    addi    r6, r6, unk_800000f4@l
     lwz     r6, 0x0(r6)
     cmplwi  r6, 0x0
     beq-    branch_0x80005274
@@ -42,13 +42,13 @@ __start: # 0x8000522c
     b       branch_0x80005294
 
 branch_0x80005274:
-    lis     r5, 0x8000
-    addi    r5, r5, 0x34
+    lis     r5, unk_80000034@h
+    addi    r5, r5, unk_80000034@l
     lwz     r5, 0x0(r5)
     cmplwi  r5, 0x0
     beq-    branch_0x800052bc
-    lis     r7, 0x8000
-    addi    r7, r7, 0x30e8
+    lis     r7, unk_800030e8@h
+    addi    r7, r7, unk_800030e8@l
     lwz     r7, 0x0(r7)
 branch_0x80005294:
     li      r5, 0x0
@@ -58,13 +58,13 @@ branch_0x80005294:
     bne-    branch_0x800052bc
     li      r5, 0x1
 branch_0x800052ac:
-    lis     r6, 0x8034
-    addi    r6, r6, 0x10f4
+    lis     r6, InitMetroTRK@h
+    addi    r6, r6, InitMetroTRK@l
     mtlr    r6
     blrl
 branch_0x800052bc:
-    lis     r6, 0x8000
-    addi    r6, r6, 0xf4
+    lis     r6, unk_800000f4@h
+    addi    r6, r6, unk_800000f4@l
     lwz     r5, 0x0(r6)
     cmplwi  r5, 0x0
     beq+    branch_0x8000531c
@@ -83,8 +83,8 @@ branch_0x800052f4:
     add     r7, r7, r5
     stw     r7, 0x0(r6)
     bdnz+      branch_0x800052f4
-    lis     r5, 0x8000
-    addi    r5, r5, 0x34
+    lis     r5, unk_80000034@h
+    addi    r5, r5, unk_80000034@l
     clrrwi  r7, r15, 5
     stw     r7, 0x0(r5)
     b       branch_0x80005324
@@ -95,8 +95,8 @@ branch_0x8000531c:
 branch_0x80005324:
     bl      DBInit
     bl      OSInit
-    lis     r4, 0x8000
-    addi    r4, r4, 0x30e6
+    lis     r4, unk_800030e6@h
+    addi    r4, r4, unk_800030e6@l
     lhz     r3, 0x0(r4)
     andi.   r5, r3, 0x8000
     beq-    branch_0x8000534c
@@ -115,12 +115,12 @@ branch_0x80005350:
 
 .globl __init_registers
 __init_registers: # 0x80005364
-    lis     sp, 0x8042
-    ori     sp, sp, 0x77e8
-    lis     rtoc, 0x8041
-    ori     rtoc, rtoc, 0x6ba0
-    lis     r13, R13Address@h
-    ori     r13, r13, R13Address@l
+    lis     sp, unk_804277e8@h
+    ori     sp, sp, unk_804277e8@l
+    lis     r2, unk_80416ba0@h
+    ori     r2, r2, unk_80416ba0@l
+    lis     r13, unk_804141c0@h
+    ori     r13, r13, unk_804141c0@l
     blr
 
 
@@ -132,40 +132,36 @@ __init_data: # 0x80005380
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     stw     r29, 0xc(sp)
-    lis     r3, _rom_copy_info@h
-    addi    r0, r3, _rom_copy_info@l
+    lis     r3, unk_80005494@h
+    addi    r0, r3, unk_80005494@l
     mr      r29, r0
-    b       branch_romcopyinfo
+    b       branch_0x800053a8
 
-branch_romcopyinfo:
-    b       branch_romcopyinfo_loop
+branch_0x800053a8:
+    b       branch_0x800053ac
 
-branch_romcopyinfo_loop:
+branch_0x800053ac:
     lwz     r30, 0x8(r29)
     cmplwi  r30, 0x0
     beq-    branch_0x800053ec
-
     lwz     r4, 0x0(r29)
     lwz     r31, 0x4(r29)
     beq-    branch_0x800053e4
-
     cmplw   r31, r4
     beq-    branch_0x800053e4
-
     mr      r3, r31
     mr      r5, r30
     bl      memcpy
     mr      r3, r31
     mr      r4, r30
     bl      __flush_cache
-
 branch_0x800053e4:
     addi    r29, r29, 0xc
-    b       branch_romcopyinfo_loop
+    b       branch_0x800053ac
 
 branch_0x800053ec:
-    lis     r3, _bss_init_info@h
-    addi    r0, r3, _bss_init_info@l
+    lis     r3, unk_80005518@h
+    addi    r0, r3, unk_80005518@l
     mr      r29, r0
     b       branch_0x800053fc
 

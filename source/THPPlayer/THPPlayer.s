@@ -2,11 +2,11 @@
 .globl THPPlayerSetVolume
 THPPlayerSetVolume: # 0x8001e608
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    subi    r31, r5, 0x3ea0
+    addi    r31, r5, ActivePlayer@l
     stw     r30, 0x20(sp)
     stw     r29, 0x1c(sp)
     addi    r29, r4, 0x0
@@ -35,8 +35,8 @@ branch_0x8001e670:
     bge-    branch_0x8001e67c
     li      r28, 0x0
 branch_0x8001e67c:
-    lis     r3, 0x1
-    subi    r0, r3, 0x15a0
+    lis     r3, unk_0000ea60@ha
+    addi    r0, r3, unk_0000ea60@l
     cmpw    r29, r0
     ble-    branch_0x8001e690
     mr      r29, r0
@@ -47,7 +47,7 @@ branch_0x8001e690:
 branch_0x8001e69c:
     bl      OSDisableInterrupts
     xoris   r0, r28, 0x8000
-    lfd     f2, -0x79d0(rtoc)
+    lfd     f2, -0x79d0(r2)
     stw     r0, 0x14(sp)
     lis     r4, 0x4330
     cmpwi   r29, 0x0
@@ -98,11 +98,11 @@ branch_0x8001e724:
 .globl MixAudio__FPsPsUl
 MixAudio__FPsPsUl: # 0x8001e744
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r26, 0x20(sp)
-    subi    r30, r4, 0x3ea0
+    addi    r30, r4, ActivePlayer@l
     lwz     r0, 0xa0(r30)
     cmpwi   r0, 0x0
     beq-    branch_0x8001e900
@@ -112,11 +112,11 @@ MixAudio__FPsPsUl: # 0x8001e744
     lbz     r0, 0xa7(r30)
     cmplwi  r0, 0x0
     beq-    branch_0x8001e900
-    lis     r4, 0x803b
+    lis     r4, VolumeTable@ha
     addi    r27, r5, 0x0
     addi    r26, r3, 0x0
     addi    r28, r30, 0xe8
-    subi    r31, r4, 0x3508
+    addi    r31, r4, VolumeTable@l
     addi    r29, r30, 0xfc
 branch_0x8001e798:
     lwz     r0, 0x0(r29)
@@ -158,7 +158,7 @@ branch_0x8001e80c:
     lwz     r3, 0x0(r28)
     cmpwi   r3, 0x0
     beq-    branch_0x8001e834
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x0(r28)
     lfs     f1, 0xdc(r30)
     lfs     f0, 0xe4(r30)
@@ -245,11 +245,11 @@ THPPlayerDrawDone: # 0x8001e920
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     bl      GXDrawDone
-    lwz     r0, -0x7140(r13)
+    lwz     r0, R13Off_m0x7140(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8001e980
-    lis     r3, 0x803f
-    subi    r31, r3, 0x3c60
+    lis     r3, UsedTextureSetQueue@ha
+    addi    r31, r3, UsedTextureSetQueue@l
 branch_0x8001e948:
     addi    r3, r31, 0x0
     addi    r4, sp, 0x8
@@ -279,8 +279,8 @@ branch_0x8001e980:
 
 .globl THPPlayerGetState
 THPPlayerGetState: # 0x8001e994
-    lis     r3, 0x803f
-    subi    r3, r3, 0x3ea0
+    lis     r3, ActivePlayer@ha
+    addi    r3, r3, ActivePlayer@l
     lbz     r3, 0xa4(r3)
     blr
 
@@ -288,9 +288,9 @@ THPPlayerGetState: # 0x8001e994
 .globl THPPlayerGetAudioInfo
 THPPlayerGetAudioInfo: # 0x8001e9a4
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x3ea0
+    addi    r4, r4, ActivePlayer@l
     stwu    sp, -0x8(sp)
     lwz     r0, 0xa0(r4)
     cmpwi   r0, 0x0
@@ -313,9 +313,9 @@ branch_0x8001e9dc:
 .globl THPPlayerGetVideoInfo
 THPPlayerGetVideoInfo: # 0x8001e9ec
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x3ea0
+    addi    r4, r4, ActivePlayer@l
     stwu    sp, -0x8(sp)
     lwz     r0, 0xa0(r4)
     cmpwi   r0, 0x0
@@ -338,11 +338,11 @@ branch_0x8001ea24:
 .globl THPPlayerDrawCurrentFrame
 THPPlayerDrawCurrentFrame: # 0x8001ea34
     mflr    r0
-    lis     r8, 0x803f
+    lis     r8, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stmw    r26, 0x28(sp)
-    subi    r31, r8, 0x3ea0
+    addi    r31, r8, ActivePlayer@l
     addi    r26, r4, 0x0
     addi    r27, r5, 0x0
     addi    r28, r6, 0x0
@@ -396,11 +396,11 @@ branch_0x8001eaec:
 .globl ProperTimingForGettingNextFrame__Fv
 ProperTimingForGettingNextFrame__Fv: # 0x8001eb00
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r3, 0x3ea0
+    addi    r31, r3, ActivePlayer@l
     stw     r30, 0x10(sp)
     lwz     r3, 0x88(r31)
     clrlwi. r0, r3, 31
@@ -421,7 +421,7 @@ branch_0x8001eb3c:
     b       branch_0x8001ec0c
 
 branch_0x8001eb58:
-    lfs     f1, -0x79c8(rtoc)
+    lfs     f1, -0x79c8(r2)
     lfs     f0, 0x4c(r31)
     fmuls   f0, f1, f0
     fctiwz  f0, f0
@@ -483,12 +483,12 @@ branch_0x8001ec0c:
 .globl PlayControl__FUl
 PlayControl__FUl: # 0x8001ec24
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
-    subi    r31, r4, 0x3ea0
-    lwz     r12, -0x7138(r13)
+    addi    r31, r4, ActivePlayer@l
+    lwz     r12, R13Off_m0x7138(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8001ec50
     mtlr    r12
@@ -546,8 +546,9 @@ branch_0x8001ecf0:
     bne-    branch_0x8001ed0c
     b       branch_0x8001ed10
 
+branch_0x8001ed08:
+    b       branch_0x8001ed10
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x19708, 0x8001ed0c - 0x8001ed08
 branch_0x8001ed0c:
     li      r28, 0x0
 branch_0x8001ed10:
@@ -566,7 +567,7 @@ branch_0x8001ed10:
     bl      PopDecodedTextureSet
     lwz     r4, 0xd8(r31)
     addi    r29, r3, 0x0
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0xd8(r31)
     lwz     r3, 0x0(r27)
     addi    r0, r3, 0x1
@@ -614,7 +615,7 @@ branch_0x8001eda8:
     bl      PopDecodedTextureSet
     lwz     r4, 0xd8(r31)
     addi    r29, r3, 0x0
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0xd8(r31)
     lwz     r3, 0x0(r27)
     addi    r0, r3, 0x1
@@ -672,10 +673,10 @@ branch_0x8001ee8c:
 
 branch_0x8001eea8:
     lwz     r3, 0xc0(r31)
-    subi    r4, r3, 0x1
+    addi    r4, r3, -0x1
 branch_0x8001eeb0:
     lwz     r3, 0x50(r31)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     cmplw   r4, r0
     bne-    branch_0x8001eed4
     cmplwi  r29, 0x0
@@ -693,8 +694,8 @@ branch_0x8001eed4:
 
 .globl THPPlayerPause
 THPPlayerPause: # 0x8001eee8
-    lis     r3, 0x803f
-    subi    r3, r3, 0x3ea0
+    lis     r3, ActivePlayer@ha
+    addi    r3, r3, ActivePlayer@l
     lwz     r0, 0xa0(r3)
     cmpwi   r0, 0x0
     beq-    branch_0x8001ef20
@@ -716,11 +717,11 @@ branch_0x8001ef20:
 .globl THPPlayerStop
 THPPlayerStop: # 0x8001ef28
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r3, 0x3ea0
+    addi    r31, r3, ActivePlayer@l
     lwz     r0, 0xa0(r31)
     cmpwi   r0, 0x0
     beq-    branch_0x8001efec
@@ -731,7 +732,7 @@ THPPlayerStop: # 0x8001ef28
     li      r0, 0x0
     stb     r0, 0xa5(r31)
     stb     r0, 0x0(r3)
-    lwz     r3, -0x7138(r13)
+    lwz     r3, R13Off_m0x7138(r13)
     bl      VISetPostRetraceCallback
     lwz     r0, 0xb0(r31)
     cmpwi   r0, 0x0
@@ -779,8 +780,8 @@ branch_0x8001efec:
 
 .globl THPPlayerPlay
 THPPlayerPlay: # 0x8001f000
-    lis     r3, 0x803f
-    subi    r5, r3, 0x3ea0
+    lis     r3, ActivePlayer@ha
+    addi    r5, r3, ActivePlayer@l
     lwz     r0, 0xa0(r5)
     cmpwi   r0, 0x0
     beq-    branch_0x8001f054
@@ -810,11 +811,11 @@ branch_0x8001f054:
 .globl THPPlayerPrepare
 THPPlayerPrepare: # 0x8001f05c
     mflr    r0
-    lis     r6, 0x803f
+    lis     r6, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r26, 0x18(sp)
-    subi    r31, r6, 0x3ea0
+    addi    r31, r6, ActivePlayer@l
     addi    r26, r3, 0x0
     addi    r28, r4, 0x0
     addi    r29, r5, 0x0
@@ -837,7 +838,7 @@ branch_0x8001f0b8:
     lwz     r0, 0x50(r31)
     cmplw   r0, r26
     ble-    branch_0x8001f118
-    subi    r0, r26, 0x1
+    addi    r0, r26, -0x1
     slwi    r0, r0, 2
     add     r6, r3, r0
     addi    r3, r31, 0x0
@@ -974,15 +975,15 @@ branch_0x8001f27c:
     li      r0, 0x1
     stb     r0, 0x0(r30)
     li      r0, 0x0
-    lis     r3, 0x8002
+    lis     r3, PlayControl__FUl@ha
     stb     r0, 0xa5(r31)
-    subi    r3, r3, 0x13dc
+    addi    r3, r3, PlayControl__FUl@l
     stw     r0, 0xf8(r31)
     stw     r0, 0xfc(r31)
     stw     r0, 0xf0(r31)
     stw     r0, 0xf4(r31)
     bl      VISetPostRetraceCallback
-    stw     r3, -0x7138(r13)
+    stw     r3, R13Off_m0x7138(r13)
     li      r3, 0x1
     b       branch_0x8001f2b8
 
@@ -999,10 +1000,10 @@ branch_0x8001f2b8:
 .globl PrepareReady__Fi
 PrepareReady__Fi: # 0x8001f2cc
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, PrepareReadyQueue@ha
     stw     r0, 0x4(sp)
     addi    r4, r3, 0x0
-    subi    r3, r5, 0x3c80
+    addi    r3, r5, PrepareReadyQueue@l
     stwu    sp, -0x8(sp)
     li      r5, 0x1
     bl      OSSendMessage
@@ -1015,12 +1016,12 @@ PrepareReady__Fi: # 0x8001f2cc
 .globl InitAllMessageQueue__Fv
 InitAllMessageQueue__Fv: # 0x8001f2fc
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    subi    r30, r3, 0x3ea0
+    addi    r30, r3, ActivePlayer@l
     stw     r29, 0xc(sp)
     lwz     r0, 0xb0(r30)
     cmpwi   r0, 0x0
@@ -1061,7 +1062,7 @@ branch_0x8001f384:
     blt+    branch_0x8001f384
 branch_0x8001f3a0:
     addi    r3, r30, 0x220
-    subi    r4, r13, 0x713c
+    addi    r4, r13, R13Off_m0x713c
     li      r5, 0x1
     bl      OSInitMessageQueue
     lwz     r0, 0x1c(sp)
@@ -1076,11 +1077,11 @@ branch_0x8001f3a0:
 .globl THPPlayerSetBuffer
 THPPlayerSetBuffer: # 0x8001f3cc
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r25, 0x1c(sp)
-    subi    r31, r4, 0x3ea0
+    addi    r31, r4, ActivePlayer@l
     lwz     r0, 0xa0(r31)
     cmpwi   r0, 0x0
     beq-    branch_0x8001f5e4
@@ -1228,8 +1229,8 @@ branch_0x8001f5e8:
 
 .globl THPPlayerCalcNeedMemory
 THPPlayerCalcNeedMemory: # 0x8001f5fc
-    lis     r3, 0x803f
-    subi    r5, r3, 0x3ea0
+    lis     r3, ActivePlayer@ha
+    addi    r5, r3, ActivePlayer@l
     lwz     r0, 0xa0(r5)
     cmpwi   r0, 0x0
     beq-    branch_0x8001f69c
@@ -1281,9 +1282,9 @@ branch_0x8001f69c:
 .globl THPPlayerClose
 THPPlayerClose: # 0x8001f6a4
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x3ea0
+    addi    r3, r3, ActivePlayer@l
     addi    r4, r3, 0xa0
     stwu    sp, -0x8(sp)
     lwz     r0, 0xa0(r3)
@@ -1310,14 +1311,14 @@ branch_0x8001f6ec:
 .globl THPPlayerOpen
 THPPlayerOpen: # 0x8001f6fc
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stmw    r23, 0x14(sp)
-    subi    r29, r5, 0x3ea0
+    addi    r29, r5, ActivePlayer@l
     addi    r23, r3, 0x0
     addi    r30, r4, 0x0
-    lwz     r0, -0x7140(r13)
+    lwz     r0, R13Off_m0x7140(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x8001f730
     li      r3, 0x0
@@ -1371,7 +1372,7 @@ branch_0x8001f7bc:
     li      r5, 0x30
     bl      memcpy
     addi    r3, r28, 0x0
-    subi    r4, rtoc, 0x79c4
+    addi    r4, r2, R2Off_m0x79c4
     bl      strcmp
     cmpwi   r3, 0x0
     beq-    branch_0x8001f7f4
@@ -1492,7 +1493,7 @@ branch_0x8001f938:
     stb     r4, 0xa6(r29)
     stw     r30, 0xb0(r29)
     stw     r0, 0x0(r31)
-    lfs     f0, -0x79c0(rtoc)
+    lfs     f0, -0x79c0(r2)
     stfs    f0, 0xdc(r29)
     lfs     f0, 0xdc(r29)
     stfs    f0, 0xe0(r29)
@@ -1515,7 +1516,7 @@ THPPlayerQuit: # 0x8001f98c
     li      r4, 0x0
     bl      registerMixCallback__Q28JASystem6KernelFPFl_PsUc
     li      r0, 0x0
-    stw     r0, -0x7140(r13)
+    stw     r0, R13Off_m0x7140(r13)
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
     mtlr    r0
@@ -1525,13 +1526,13 @@ THPPlayerQuit: # 0x8001f98c
 .globl THPPlayerInit
 THPPlayerInit: # 0x8001f9c0
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     stw     r0, 0x4(sp)
     li      r4, 0x0
     li      r5, 0x1d0
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r3, 0x3ea0
+    addi    r31, r3, ActivePlayer@l
     addi    r3, r31, 0x0
     stw     r30, 0x10(sp)
     bl      memset
@@ -1549,13 +1550,13 @@ THPPlayerInit: # 0x8001f9c0
 branch_0x8001fa14:
     bl      OSDisableInterrupts
     li      r5, 0x0
-    lis     r4, 0x8002
-    stw     r5, -0x7134(r13)
-    subi    r0, r4, 0x578
+    lis     r4, audioCallbackWithMSound__Fl@ha
+    stw     r5, R13Off_m0x7134(r13)
+    addi    r0, r4, audioCallbackWithMSound__Fl@l
     mr      r30, r3
-    stw     r5, -0x7130(r13)
+    stw     r5, R13Off_m0x7130(r13)
     mr      r3, r0
-    stw     r5, -0x712c(r13)
+    stw     r5, R13Off_m0x712c(r13)
     li      r4, 0x3
     bl      registerMixCallback__Q28JASystem6KernelFPFl_PsUc
     mr      r3, r30
@@ -1568,7 +1569,7 @@ branch_0x8001fa14:
     li      r4, 0x1180
     bl      DCFlushRange
     li      r0, 0x1
-    stw     r0, -0x7140(r13)
+    stw     r0, R13Off_m0x7140(r13)
     li      r3, 0x1
 branch_0x8001fa70:
     lwz     r0, 0x1c(sp)
@@ -1582,11 +1583,11 @@ branch_0x8001fa70:
 .globl audioCallbackWithMSound__Fl
 audioCallbackWithMSound__Fl: # 0x8001fa88
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r4, 0x3ea0
+    addi    r31, r4, ActivePlayer@l
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
@@ -1605,20 +1606,20 @@ branch_0x8001fad0:
 
 branch_0x8001fad8:
     bl      OSEnableInterrupts
-    lwz     r0, -0x7134(r13)
+    lwz     r0, R13Off_m0x7134(r13)
     addi    r30, r3, 0x0
     addi    r5, r29, 0x0
     xori     r0, r0, 0x1
-    stw     r0, -0x7134(r13)
+    stw     r0, R13Off_m0x7134(r13)
     li      r4, 0x0
-    lwz     r0, -0x7134(r13)
+    lwz     r0, R13Off_m0x7134(r13)
     mulli   r0, r0, 0x8c0
     add     r3, r31, r0
     addi    r3, r3, 0x280
     bl      MixAudio__FPsPsUl
     mr      r3, r30
     bl      OSRestoreInterrupts
-    lwz     r0, -0x7134(r13)
+    lwz     r0, R13Off_m0x7134(r13)
     mulli   r0, r0, 0x8c0
     add     r3, r31, r0
     addi    r3, r3, 0x280

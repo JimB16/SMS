@@ -15,9 +15,9 @@ emitParticle___8TBaseNPCFv: # 0x8021529c
     lwz     r0, 0x170(r31)
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x802153ec
-    lis     r3, 0x400
+    lis     r3, unk_04000018@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x18
+    addi    r0, r3, unk_04000018@l
     cmpw    r4, r0
     bge-    branch_0x80215310
     addi    r0, r3, 0x16
@@ -26,7 +26,7 @@ emitParticle___8TBaseNPCFv: # 0x8021529c
     b       branch_0x80215310
 
 branch_0x802152f8:
-    lfs     f1, -0x19f0(rtoc)
+    lfs     f1, -0x19f0(r2)
     addi    r3, sp, 0xa8
     fmr     f2, f1
     fmr     f3, f1
@@ -103,8 +103,8 @@ branch_0x802153ec:
     cmpwi   r0, 0x5
     beq-    branch_0x802154d8
 branch_0x80215418:
-    lis     r3, 0x400
-    addi    r0, r3, 0x18
+    lis     r3, unk_04000018@h
+    addi    r0, r3, unk_04000018@l
     cmpw    r4, r0
     bge-    branch_0x80215450
     addi    r0, r3, 0x16
@@ -113,7 +113,7 @@ branch_0x80215418:
     b       branch_0x80215450
 
 branch_0x80215438:
-    lfs     f1, -0x19f0(rtoc)
+    lfs     f1, -0x19f0(r2)
     addi    r3, sp, 0x9c
     fmr     f2, f1
     fmr     f3, f1
@@ -137,7 +137,7 @@ branch_0x80215468:
     addi    r6, sp, 0xb4
     stw     r3, 0xb8(sp)
     li      r3, 0x18b
-    lfs     f1, -0x19ec(rtoc)
+    lfs     f1, -0x19ec(r2)
     stw     r0, 0xbc(sp)
     lfs     f0, 0xb4(sp)
     fmuls   f0, f0, f1
@@ -161,14 +161,14 @@ branch_0x802154d8:
     addis   r0, r4, 0xfc00
     cmplwi  r0, 0x7
     beq-    branch_0x802154f8
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r3)
     cmplwi  r0, 0x4
     bne-    branch_0x80215644
 branch_0x802154f8:
-    lis     r3, 0x400
-    lfs     f31, -0x19e8(rtoc)
-    addi    r0, r3, 0x18
+    lis     r3, unk_04000018@h
+    lfs     f31, -0x19e8(r2)
+    addi    r0, r3, unk_04000018@l
     cmpw    r4, r0
     li      r30, 0x0
     bge-    branch_0x80215538
@@ -178,7 +178,7 @@ branch_0x802154f8:
     b       branch_0x80215538
 
 branch_0x80215520:
-    lfs     f1, -0x19f0(rtoc)
+    lfs     f1, -0x19f0(r2)
     addi    r3, sp, 0x84
     fmr     f2, f1
     fmr     f3, f1
@@ -205,7 +205,7 @@ branch_0x80215550:
     bne-    branch_0x802155a8
     lfs     f0, 0x78(sp)
     li      r30, 0x1
-    lfs     f1, -0x19e4(rtoc)
+    lfs     f1, -0x19e4(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x78(sp)
     lfs     f0, 0x7c(sp)
@@ -218,11 +218,11 @@ branch_0x80215550:
 
 branch_0x802155a8:
     lfs     f1, 0x14(r31)
-    lfs     f0, -0x19e0(rtoc)
+    lfs     f0, -0x19e0(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80215600
-    lfs     f1, -0x19e8(rtoc)
+    lfs     f1, -0x19e8(r2)
     lfs     f0, 0x94(r31)
     fcmpu   cr0, f1, f0
     bne-    branch_0x802155d8
@@ -230,7 +230,7 @@ branch_0x802155a8:
     fcmpu   cr0, f1, f0
     beq-    branch_0x80215600
 branch_0x802155d8:
-    lwz     r3, gpMapObjWave(r13)
+    lwz     r3, R13Off_m0x626c(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      getWaveHeight__11TMapObjWaveCFff
@@ -309,7 +309,7 @@ branch_0x802156dc:
     beq-    branch_0x80215734
     lwz     r5, 0x1fc(r31)
     addi    r4, r30, 0x0
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -344,14 +344,14 @@ branch_0x8021575c:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lis     r4, 0x803a
-    subi    r4, r4, 0x5a84
+    lis     r4, sCheckFrameMonte_localstatic0_isPolWaitLEffectEmitTime___8TBaseNPCCFv@ha
+    addi    r4, r4, sCheckFrameMonte_localstatic0_isPolWaitLEffectEmitTime___8TBaseNPCCFv@l
     bl      IsCheckPassFrame__FP12J3DFrameCtrlPCf
     clrlwi. r0, r3, 24
     beq-    branch_0x802157d4
     lwz     r5, 0x200(r31)
     li      r4, 0x73
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -373,14 +373,14 @@ branch_0x802157d4:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lis     r4, 0x803a
-    subi    r4, r4, 0x5a74
+    lis     r4, sCheckFrameMonte_localstatic0_isPolWaitREffectEmitTime___8TBaseNPCCFv@ha
+    addi    r4, r4, sCheckFrameMonte_localstatic0_isPolWaitREffectEmitTime___8TBaseNPCCFv@l
     bl      IsCheckPassFrame__FP12J3DFrameCtrlPCf
     clrlwi. r0, r3, 24
     beq-    branch_0x80215980
     lwz     r5, 0x204(r31)
     li      r4, 0x73
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
@@ -441,7 +441,7 @@ branch_0x802158c4:
 branch_0x802158c8:
     cmpwi   r30, -0x1
     beq-    branch_0x80215980
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     mr      r4, r30
     lwz     r5, 0x1fc(r31)
     addi    r7, r31, 0x0
@@ -449,9 +449,9 @@ branch_0x802158c8:
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     mr.     r30, r3
     beq-    branch_0x80215980
-    lis     r3, 0x400
+    lis     r3, unk_04000018@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x18
+    addi    r0, r3, unk_04000018@l
     cmpw    r4, r0
     bge-    branch_0x8021592c
     addi    r0, r3, 0x16
@@ -460,7 +460,7 @@ branch_0x802158c8:
     b       branch_0x8021592c
 
 branch_0x80215914:
-    lfs     f1, -0x19f0(rtoc)
+    lfs     f1, -0x19f0(r2)
     addi    r3, sp, 0x68
     fmr     f2, f1
     fmr     f3, f1
@@ -537,8 +537,8 @@ isPolWaitCEffectEmitTime___8TBaseNPCCFv: # 0x802159bc
 branch_0x80215a0c:
     clrlwi. r0, r29, 24
     beq-    branch_0x80215a24
-    lis     r3, 0x803a
-    subi    r0, r3, 0x5ab8
+    lis     r3, sCheckFrameMonte_localstatic0_isPolWaitCEffectEmitTime___8TBaseNPCCFv@ha
+    addi    r0, r3, sCheckFrameMonte_localstatic0_isPolWaitCEffectEmitTime___8TBaseNPCCFv@l
     mr      r28, r0
     b       branch_0x80215a80
 
@@ -556,8 +556,8 @@ branch_0x80215a24:
 branch_0x80215a4c:
     clrlwi. r0, r29, 24
     beq-    branch_0x80215a64
-    lis     r3, 0x803a
-    subi    r0, r3, 0x5a9c
+    lis     r3, sCheckFrameMare_localstatic1_isPolWaitCEffectEmitTime___8TBaseNPCCFv@ha
+    addi    r0, r3, sCheckFrameMare_localstatic1_isPolWaitCEffectEmitTime___8TBaseNPCCFv@l
     mr      r28, r0
     b       branch_0x80215a80
 
@@ -566,8 +566,8 @@ branch_0x80215a64:
     addis   r0, r3, 0xfc00
     cmplwi  r0, 0x16
     bne-    branch_0x80215a80
-    lis     r3, 0x803a
-    subi    r0, r3, 0x5a90
+    lis     r3, sCheckFrameKino_localstatic2_isPolWaitCEffectEmitTime___8TBaseNPCCFv@ha
+    addi    r0, r3, sCheckFrameKino_localstatic2_isPolWaitCEffectEmitTime___8TBaseNPCCFv@l
     mr      r28, r0
 branch_0x80215a80:
     cmplwi  r28, 0x0
@@ -576,7 +576,7 @@ branch_0x80215a80:
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
     li      r30, 0x0
-    lfs     f31, -0x19e8(rtoc)
+    lfs     f31, -0x19e8(r2)
     addi    r29, r3, 0x0
     addi    r31, r30, 0x0
     b       branch_0x80215ac4
@@ -624,9 +624,9 @@ emitHappyEffect___8TBaseNPCFv: # 0x80215b0c
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_04000018@h
     stw     r30, 0x38(sp)
-    addi    r0, r3, 0x18
+    addi    r0, r3, unk_04000018@l
     lwz     r4, 0x4c(r31)
     cmpw    r4, r0
     bge-    branch_0x80215b60
@@ -636,7 +636,7 @@ emitHappyEffect___8TBaseNPCFv: # 0x80215b0c
     b       branch_0x80215b60
 
 branch_0x80215b48:
-    lfs     f1, -0x19f0(rtoc)
+    lfs     f1, -0x19f0(r2)
     addi    r3, sp, 0x1c
     fmr     f2, f1
     fmr     f3, f1
@@ -658,7 +658,7 @@ branch_0x80215b78:
     stw     r0, 0x28(sp)
     lwz     r0, 0x24(sp)
     stw     r4, 0x2c(sp)
-    lwz     r4, -0x6220(r13)
+    lwz     r4, R13Off_m0x6220(r13)
     stw     r0, 0x30(sp)
     lfs     f1, 0x25c(r4)
     lfs     f0, 0x28(sp)
@@ -750,9 +750,9 @@ branch_0x80215ca8:
 
 .globl getEffectScale___8TBaseNPCCFv
 getEffectScale___8TBaseNPCCFv: # 0x80215cc8
-    lis     r5, 0x400
+    lis     r5, unk_04000018@h
     lwz     r6, 0x4c(r4)
-    addi    r0, r5, 0x18
+    addi    r0, r5, unk_04000018@l
     cmpw    r6, r0
     bge-    branch_0x80215d00
     addi    r0, r5, 0x16
@@ -761,7 +761,7 @@ getEffectScale___8TBaseNPCCFv: # 0x80215cc8
     b       branch_0x80215d00
 
 branch_0x80215cec:
-    lfs     f0, -0x19f0(rtoc)
+    lfs     f0, -0x19f0(r2)
     stfs    f0, 0x0(r3)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
@@ -791,7 +791,7 @@ IsCheckPassFrame__FP12J3DFrameCtrlPCf: # 0x80215d1c
     addi    r29, r4, 0x0
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
-    lfs     f31, -0x19e8(rtoc)
+    lfs     f31, -0x19e8(r2)
     b       branch_0x80215d70
 
 branch_0x80215d54:
@@ -837,14 +837,14 @@ setSmokeEffectMtxPtr___8TBaseNPCFb: # 0x80215da8
     li      r5, 0x0
     bl      getPartsMActor__9TNpcPartsFii
     lwz     r31, 0x4(r3)
-    subi    r4, rtoc, 0x19dc
+    addi    r4, r2, R2Off_m0x19dc
     b       branch_0x80215dfc
 
 branch_0x80215de4:
     mr      r3, r30
     bl      getModel__10TLiveActorCFv
-    lis     r4, 0x803a
-    subi    r0, r4, 0x5a64
+    lis     r4, unk_8039a59c@ha
+    addi    r0, r4, unk_8039a59c@l
     addi    r31, r3, 0x0
     mr      r4, r0
 branch_0x80215dfc:
@@ -867,9 +867,9 @@ branch_0x80215dfc:
 .globl setPollutionEffectMtxPtr___8TBaseNPCFPC10JUTNameTab
 setPollutionEffectMtxPtr___8TBaseNPCFPC10JUTNameTab: # 0x80215e34
     mflr    r0
-    lis     r5, 0x803a
+    lis     r5, unk_8039a458@ha
     stw     r0, 0x4(sp)
-    subi    r5, r5, 0x5ba8
+    addi    r5, r5, unk_8039a458@l
     stwu    sp, -0x50(sp)
     stmw    r24, 0x30(sp)
     addi    r30, r3, 0x0
@@ -878,7 +878,7 @@ setPollutionEffectMtxPtr___8TBaseNPCFPC10JUTNameTab: # 0x80215e34
     addi    r26, r5, 0x15c
     addi    r25, r5, 0x168
     addi    r24, r5, 0x174
-    subi    r27, rtoc, 0x19d4
+    addi    r27, r2, R2Off_m0x19d4
     li      r29, 0x1
     bl      isNormalMonteM__8TBaseNPCCFv
     clrlwi. r0, r3, 24
@@ -967,19 +967,19 @@ branch_0x80215f78:
 .globl setNoteEffectMtxPtr___8TBaseNPCFPC10JUTNameTab
 setNoteEffectMtxPtr___8TBaseNPCFPC10JUTNameTab: # 0x80215f8c
     mflr    r0
-    lis     r6, 0x803a
+    lis     r6, unk_8039a5d8@ha
     stw     r0, 0x4(sp)
-    subi    r6, r6, 0x5a28
+    addi    r6, r6, unk_8039a5d8@l
     li      r7, 0x0
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_04000012@h
     lwz     r5, 0x4c(r30)
-    addi    r0, r3, 0x12
+    addi    r0, r3, unk_04000012@l
     cmpw    r5, r0
-    subi    r0, rtoc, 0x19cc
+    addi    r0, r2, R2Off_m0x19cc
     beq-    branch_0x80215fe4
     bge-    branch_0x80215fe8
     addi    r0, r3, 0x9
@@ -1019,19 +1019,19 @@ branch_0x8021601c:
 .globl setHappyEffectMtxPtr___8TBaseNPCFPC10JUTNameTab
 setHappyEffectMtxPtr___8TBaseNPCFPC10JUTNameTab: # 0x80216034
     mflr    r0
-    lis     r6, 0x803a
+    lis     r6, unk_8039a5a8@ha
     stw     r0, 0x4(sp)
-    lis     r5, 0x803a
-    subi    r0, r5, 0x5a4c
+    lis     r5, unk_8039a5b4@ha
+    addi    r0, r5, unk_8039a5b4@l
     stwu    sp, -0x38(sp)
     stmw    r26, 0x20(sp)
     addi    r31, r3, 0x0
-    subi    r3, r6, 0x5a58
+    addi    r3, r6, unk_8039a5a8@l
     addi    r29, r3, 0x0
     addi    r26, r4, 0x0
     mr      r27, r0
     addi    r3, r31, 0x0
-    subi    r28, rtoc, 0x19d4
+    addi    r28, r2, R2Off_m0x19d4
     li      r30, 0x1
     bl      isNormalMonteM__8TBaseNPCCFv
     clrlwi. r0, r3, 24

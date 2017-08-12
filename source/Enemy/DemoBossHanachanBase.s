@@ -9,8 +9,8 @@ __dt__17TDemoBossHanachanFv: # 0x800eaa04
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800eaa54
-    lis     r3, 0x803c
-    subi    r3, r3, 0x5668
+    lis     r3, __vvt__17TDemoBossHanachan@ha
+    addi    r3, r3, __vvt__17TDemoBossHanachan@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -68,17 +68,17 @@ branch_0x800eaacc:
     bl      createMActorFromNthData__13TMActorKeeperFiUl
     stw     r3, 0x74(r29)
     addi    r4, r29, 0xc4
-    lfs     f0, -0x5aec(rtoc)
+    lfs     f0, -0x5aec(r2)
     stfs    f0, 0x148(r29)
-    lfs     f0, -0x5ae8(rtoc)
+    lfs     f0, -0x5ae8(r2)
     stfs    f0, 0xbc(r29)
     lfs     f0, 0xbc(r29)
     stfs    f0, 0x14c(r29)
-    lfs     f0, -0x5ae4(rtoc)
+    lfs     f0, -0x5ae4(r2)
     stfs    f0, 0xc0(r29)
-    lfs     f0, -0x5af0(rtoc)
+    lfs     f0, -0x5af0(r2)
     stfs    f0, 0x140(r29)
-    lfs     f0, -0x5ae0(rtoc)
+    lfs     f0, -0x5ae0(r2)
     stfs    f0, 0xb8(r29)
     lwz     r0, 0xf0(r29)
     ori     r0, r0, 0x18
@@ -87,7 +87,7 @@ branch_0x800eaacc:
     lfs     f1, 0xc0(r29)
     lfs     f0, 0x14(r29)
     fmuls   f2, f2, f1
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x10(r29)
     lfs     f3, 0x18(r29)
     fadds   f2, f0, f2
@@ -133,8 +133,8 @@ __ct__27TDemoBossHanachanSaveParamsFPCc: # 0x800eaba4
     stw     r28, 0x10(sp)
     mr      r28, r3
     stw     r4, 0x0(r3)
-    lis     r3, 0x8038
-    addi    r29, r3, 0x1850
+    lis     r3, unk_80381850@h
+    addi    r29, r3, unk_80381850@l
     stw     r0, 0x4(r28)
     addi    r3, r29, 0xe0
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -143,12 +143,12 @@ __ct__27TDemoBossHanachanSaveParamsFPCc: # 0x800eaba4
     addi    r3, r28, 0x8
     addi    r6, r29, 0xe0
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r30, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r30, r3, __vvt__10TParamT_f_@l
     stw     r30, 0x8(r28)
-    lis     r3, 0x803b
-    subi    r31, r3, 0x42d0
-    lfs     f0, -0x5adc(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r31, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x5adc(r2)
     addi    r3, r29, 0xf0
     stfs    f0, 0x18(r28)
     stw     r31, 0x8(r28)
@@ -160,7 +160,7 @@ __ct__27TDemoBossHanachanSaveParamsFPCc: # 0x800eaba4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r30, 0x1c(r28)
     mr      r3, r28
-    lfs     f0, -0x5ad8(rtoc)
+    lfs     f0, -0x5ad8(r2)
     stfs    f0, 0x2c(r28)
     stw     r31, 0x1c(r28)
     lwz     r4, 0x0(r28)
@@ -186,8 +186,8 @@ __dt__24TDemoBossHanachanManagerFv: # 0x800eac70
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800eacb8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x5554
+    lis     r3, __vvt__24TDemoBossHanachanManager@ha
+    addi    r0, r3, __vvt__24TDemoBossHanachanManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -206,8 +206,8 @@ branch_0x800eacb8:
     blr
 
 
-.globl _32___dt__17TDemoBossHanachanFv
-_32___dt__17TDemoBossHanachanFv: # 0x800eacd4
-    subi    r3, r3, 0x20
+.globl unk_800eacd4
+unk_800eacd4: # 0x800eacd4
+    addi    r3, r3, -0x20
     b       __dt__17TDemoBossHanachanFv
 

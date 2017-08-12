@@ -10,7 +10,7 @@ create__10JKRStdHeapFUlP7JKRHeapb: # 0x802c4e7c
     stw     r29, 0x1c(sp)
     mr.     r29, r4
     bne-    branch_0x802c4ea4
-    lwz     r29, -0x5f28(r13)
+    lwz     r29, R13Off_m0x5f28(r13)
 branch_0x802c4ea4:
     clrrwi  r31, r3, 5
     addi    r3, r31, 0x0
@@ -27,7 +27,7 @@ branch_0x802c4ecc:
     beq-    branch_0x802c4ee0
     addi    r6, r29, 0x0
     addi    r7, r30, 0x0
-    subi    r5, r31, 0x80
+    addi    r5, r31, -0x80
     bl      __ct__10JKRStdHeapFPvUlP7JKRHeapb
 branch_0x802c4ee0:
     lwz     r0, 0x2c(sp)
@@ -48,9 +48,9 @@ __ct__10JKRStdHeapFPvUlP7JKRHeapb: # 0x802c4efc
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__7JKRHeapFPvUlP7JKRHeapb
-    lis     r3, 0x803e
+    lis     r3, __vvt__10JKRStdHeap@h
     lwz     r31, 0x8(sp)
-    addi    r0, r3, 0xc0
+    addi    r0, r3, __vvt__10JKRStdHeap@l
     stw     r0, 0x0(r31)
     lwz     r3, 0x30(r31)
     lwz     r4, 0x34(r31)
@@ -74,8 +74,8 @@ __dt__10JKRStdHeapFv: # 0x802c4f50
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c4fb0
-    lis     r3, 0x803e
-    addi    r0, r3, 0xc0
+    lis     r3, __vvt__10JKRStdHeap@h
+    addi    r0, r3, __vvt__10JKRStdHeap@l
     stw     r0, 0x0(r30)
     mr      r3, r30
     bl      dispose__7JKRHeapFv
@@ -124,15 +124,15 @@ branch_0x802c5008:
     bl      OSAllocFromHeap
     mr.     r31, r3
     bne-    branch_0x802c5058
-    lis     r3, 0x803b
+    lis     r3, unk_803a9a58@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x65a8
+    addi    r3, r3, unk_803a9a58@l
     addi    r4, r29, 0x0
     bl      JUTWarningConsole_f
     lbz     r0, 0x64(r28)
     cmplwi  r0, 0x1
     bne-    branch_0x802c5058
-    lwz     r12, -0x5f24(r13)
+    lwz     r12, R13Off_m0x5f24(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x802c5058
     mtlr    r12
@@ -205,9 +205,9 @@ branch_0x802c5104:
 .globl freeTail__10JKRStdHeapFv
 freeTail__10JKRStdHeapFv: # 0x802c5118
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9a84@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x657c
+    addi    r3, r3, unk_803a9a84@l
     stwu    sp, -0x8(sp)
     bl      JUTWarningConsole
     lwz     r0, 0xc(sp)
@@ -219,10 +219,10 @@ freeTail__10JKRStdHeapFv: # 0x802c5118
 .globl resize__10JKRStdHeapFPvUl
 resize__10JKRStdHeapFPvUl: # 0x802c5140
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9aa8@ha
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    subi    r3, r3, 0x6558
+    addi    r3, r3, unk_803a9aa8@l
     stwu    sp, -0x8(sp)
     bl      JUTWarningConsole_f
     lwz     r0, 0xc(sp)
@@ -235,9 +235,9 @@ resize__10JKRStdHeapFPvUl: # 0x802c5140
 .globl getFreeSize__10JKRStdHeapFv
 getFreeSize__10JKRStdHeapFv: # 0x802c5170
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9ad8@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x6528
+    addi    r3, r3, unk_803a9ad8@l
     stwu    sp, -0x8(sp)
     bl      JUTWarningConsole
     lwz     r0, 0xc(sp)
@@ -304,8 +304,8 @@ getTotalFreeSize__10JKRStdHeapFv: # 0x802c5204
 
 .globl getHeapType__10JKRStdHeapFv
 getHeapType__10JKRStdHeapFv: # 0x802c5230
-    lis     r3, 0x5354
-    addi    r3, r3, 0x4448
+    lis     r3, unk_53544448@h
+    addi    r3, r3, unk_53544448@l
     blr
 
 

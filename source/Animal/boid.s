@@ -9,12 +9,12 @@ __dt__11TBoidLeaderFv: # 0x8000566c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800056c4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x49a0
+    lis     r3, __vvt__11TBoidLeader@ha
+    addi    r0, r3, __vvt__11TBoidLeader@l
     stw     r0, 0x0(r30)
     beq-    branch_0x800056b4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -112,7 +112,7 @@ calcForces__11TBoidLeaderCFPC5TBoid: # 0x800056e0
     lfs     f2, 0x6c(sp)
     fmuls   f1, f1, f1
     fmuls   f0, f0, f0
-    lfs     f3, -0x8000(rtoc)
+    lfs     f3, -0x8000(r2)
     fmuls   f2, f2, f2
     fadds   f0, f1, f0
     fadds   f0, f2, f0
@@ -126,16 +126,16 @@ calcForces__11TBoidLeaderCFPC5TBoid: # 0x800056e0
 branch_0x80005838:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x7fe0(rtoc)
+    lfd     f3, -0x7fe0(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
-    lfs     f4, -0x7ffc(rtoc)
+    lfs     f4, -0x7ffc(r2)
     stw     r0, 0x70(sp)
-    lfs     f2, -0x7ff0(rtoc)
+    lfs     f2, -0x7ff0(r2)
     lfd     f0, 0x70(sp)
-    lfs     f1, -0x7ff4(rtoc)
+    lfs     f1, -0x7ff4(r2)
     fsubs   f5, f0, f3
-    lfs     f3, -0x7ff8(rtoc)
+    lfs     f3, -0x7ff8(r2)
     lfs     f0, 0x64(sp)
     fmuls   f4, f4, f5
     fmadds  f1, f2, f4, f1
@@ -153,14 +153,14 @@ branch_0x80005838:
     fmuls   f2, f1, f1
     lfs     f3, 0x6c(sp)
     fmuls   f1, f0, f0
-    lfs     f0, -0x7fec(rtoc)
+    lfs     f0, -0x7fec(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x800058dc
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     stfs    f0, 0x6c(sp)
     stfs    f0, 0x68(sp)
     stfs    f0, 0x64(sp)
@@ -168,7 +168,7 @@ branch_0x80005838:
 
 branch_0x800058dc:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, -0x7fe8(rtoc)
+    lfs     f2, -0x7fe8(r2)
     lfs     f0, 0x64(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -180,7 +180,7 @@ branch_0x800058dc:
     fmuls   f0, f0, f1
     stfs    f0, 0x6c(sp)
 branch_0x8000590c:
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     lfs     f4, 0x6c(r31)
     fcmpo   cr0, f0, f4
     bge-    branch_0x80005a1c
@@ -216,7 +216,7 @@ branch_0x8000594c:
     lfs     f3, 0x60(sp)
     fmuls   f1, f1, f1
     fmuls   f0, f0, f0
-    lfs     f2, -0x8000(rtoc)
+    lfs     f2, -0x8000(r2)
     fmuls   f3, f3, f3
     fadds   f0, f1, f0
     fadds   f1, f3, f0
@@ -225,7 +225,7 @@ branch_0x8000594c:
     fmuls   f0, f4, f4
     fcmpo   cr0, f1, f0
     bge-    branch_0x80005a1c
-    lfs     f0, -0x7fec(rtoc)
+    lfs     f0, -0x7fec(r2)
     lfs     f31, 0x70(r31)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
@@ -274,14 +274,14 @@ branch_0x80005a34:
 
 .globl inv_sqrt__Q29JGeometry8TUtil_f_Ff
 inv_sqrt__Q29JGeometry8TUtil_f_Ff: # 0x80005a54
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     beqlr-    
 
     frsqrte f4, f1
-    lfs     f3, -0x7fd8(rtoc)
-    lfs     f0, -0x7fd4(rtoc)
+    lfs     f3, -0x7fd8(r2)
+    lfs     f0, -0x7fd4(r2)
     frsp    f4, f4
     fmuls   f2, f4, f4
     fmuls   f3, f3, f4
@@ -338,13 +338,13 @@ calcGoalForce__11TBoidLeaderCFRCQ29JGeometry8TVec3_f_: # 0x80005ab0
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, -0x7fec(rtoc)
+    lfs     f0, -0x7fec(r2)
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80005b5c
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     stfs    f0, 0x3c(sp)
     stfs    f0, 0x38(sp)
     stfs    f0, 0x34(sp)
@@ -352,7 +352,7 @@ calcGoalForce__11TBoidLeaderCFRCQ29JGeometry8TVec3_f_: # 0x80005ab0
 
 branch_0x80005b5c:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, -0x7fe8(rtoc)
+    lfs     f2, -0x7fe8(r2)
     lfs     f0, 0x34(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -411,7 +411,7 @@ branch_0x80005ba8:
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     fadds   f1, f2, f1
     fadds   f4, f3, f1
     fcmpo   cr0, f4, f0
@@ -421,8 +421,8 @@ branch_0x80005ba8:
 
 branch_0x80005c54:
     frsqrte f3, f4
-    lfs     f2, -0x7fd8(rtoc)
-    lfs     f0, -0x7fd4(rtoc)
+    lfs     f2, -0x7fd8(r2)
+    lfs     f0, -0x7fd4(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -430,10 +430,10 @@ branch_0x80005c54:
     fmuls   f0, f2, f0
     fmuls   f4, f4, f0
 branch_0x80005c78:
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     fcmpo   cr0, f0, f4
     bge-    branch_0x80005cdc
-    lfs     f1, -0x7fe8(rtoc)
+    lfs     f1, -0x7fe8(r2)
     lfs     f0, 0x34(sp)
     fdivs   f1, f1, f4
     fmuls   f0, f0, f1
@@ -516,7 +516,7 @@ perform__11TBoidLeaderFUlPQ26JDrama9TGraphics: # 0x80005d14
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, -0x7fd0(rtoc)
+    lfs     f0, -0x7fd0(r2)
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
@@ -536,7 +536,7 @@ branch_0x80005df0:
     addi    r3, sp, 0x18
     addi    r4, r3, 0x0
     bl      PSVECNormalize
-    lfs     f2, -0x7fcc(rtoc)
+    lfs     f2, -0x7fcc(r2)
     lfs     f1, 0x20(r30)
     lfs     f0, 0x18(sp)
     fmuls   f1, f2, f1
@@ -662,7 +662,7 @@ calcBoids__11TBoidLeaderFv: # 0x80005f60
     li      r0, 0x0
     lwz     r4, 0x14(r28)
     mulli   r3, r3, 0x50
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     add     r30, r4, r3
     b       branch_0x80005ff0
 
@@ -683,11 +683,11 @@ branch_0x80005ff0:
     bne+    branch_0x80005fc4
     lwz     r31, 0x14(r28)
     lis     r27, 0x4330
-    lfs     f26, -0x7fc8(rtoc)
-    lfs     f23, -0x7fe8(rtoc)
-    lfs     f28, -0x7fec(rtoc)
-    lfd     f25, -0x7fe0(rtoc)
-    lfs     f24, -0x8000(rtoc)
+    lfs     f26, -0x7fc8(r2)
+    lfs     f23, -0x7fe8(r2)
+    lfs     f28, -0x7fec(r2)
+    lfd     f25, -0x7fe0(r2)
+    lfs     f24, -0x8000(r2)
     b       branch_0x800064b4
 
 branch_0x80006018:
@@ -1001,15 +1001,15 @@ branch_0x800064b4:
     bne+    branch_0x80006018
     lwz     r29, 0x14(r28)
     lis     r31, 0x4330
-    lfs     f30, -0x7fac(rtoc)
-    lfs     f31, -0x8000(rtoc)
-    lfs     f27, -0x7ff8(rtoc)
-    lfs     f26, -0x7fc4(rtoc)
-    lfs     f23, -0x7fc0(rtoc)
-    lfd     f28, -0x7fe0(rtoc)
-    lfs     f25, -0x7fb4(rtoc)
-    lfs     f29, -0x7fb0(rtoc)
-    lfs     f24, -0x7fec(rtoc)
+    lfs     f30, -0x7fac(r2)
+    lfs     f31, -0x8000(r2)
+    lfs     f27, -0x7ff8(r2)
+    lfs     f26, -0x7fc4(r2)
+    lfs     f23, -0x7fc0(r2)
+    lfd     f28, -0x7fe0(r2)
+    lfs     f25, -0x7fb4(r2)
+    lfs     f29, -0x7fb0(r2)
+    lfs     f24, -0x7fec(r2)
     b       branch_0x800067a4
 
 branch_0x800064ec:
@@ -1074,11 +1074,11 @@ branch_0x800065b0:
     fcmpo   cr0, f0, f31
     cror    2, 1, 2
     bne-    branch_0x800065d4
-    lfs     f22, -0x7fbc(rtoc)
+    lfs     f22, -0x7fbc(r2)
     b       branch_0x8000663c
 
 branch_0x800065d4:
-    lfs     f22, -0x7fb8(rtoc)
+    lfs     f22, -0x7fb8(r2)
     b       branch_0x8000663c
 
 branch_0x800065dc:
@@ -1232,14 +1232,14 @@ branch_0x800067ac:
 
 .globl sqrt__Q29JGeometry8TUtil_f_Ff
 sqrt__Q29JGeometry8TUtil_f_Ff: # 0x800067e8
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     beqlr-    
 
     frsqrte f4, f1
-    lfs     f3, -0x7fd8(rtoc)
-    lfs     f0, -0x7fd4(rtoc)
+    lfs     f3, -0x7fd8(r2)
+    lfs     f0, -0x7fd4(r2)
     frsp    f4, f4
     fmuls   f2, f4, f4
     fmuls   f3, f3, f4
@@ -1271,6 +1271,7 @@ MsWrap_f___Ffff: # 0x80006848
     fmr     f1, f2
     blr
 
+branch_0x8000685c:
     b       branch_0x80006864
 
 branch_0x80006860:
@@ -1292,12 +1293,13 @@ branch_0x80006884:
     fsubs   f0, f3, f2
     b       branch_0x80006864
 
+branch_0x8000688c:
     blr
 
 
 .globl div__Q29JGeometry8TVec3_f_Ff
 div__Q29JGeometry8TVec3_f_Ff: # 0x80006890
-    lfs     f2, -0x7fe8(rtoc)
+    lfs     f2, -0x7fe8(r2)
     lfs     f0, 0x0(r3)
     fdivs   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1321,28 +1323,28 @@ __ct__11TBoidLeaderFiPCc: # 0x800068c0
     stw     r29, 0x3c(sp)
     addi    r29, r4, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     mr      r3, r5
     stw     r0, 0x0(r31)
     stw     r5, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r31)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r30, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TBoidLeader@ha
     sth     r30, 0xc(r31)
-    subi    r0, r3, 0x49a0
+    addi    r0, r3, __vvt__11TBoidLeader@l
     mulli   r3, r29, 0x50
     stw     r0, 0x0(r31)
     stw     r29, 0x10(r31)
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8000
-    addi    r4, r4, 0x6ad0
+    lis     r4, __ct__5TBoidFv@h
+    addi    r4, r4, __ct__5TBoidFv@l
     addi    r7, r29, 0x0
     li      r5, 0x0
     li      r6, 0x50
@@ -1351,18 +1353,18 @@ __ct__11TBoidLeaderFiPCc: # 0x800068c0
     mr      r3, r31
     stw     r30, 0x18(r31)
     stw     r30, 0x1c(r31)
-    lfs     f0, -0x7fa8(rtoc)
+    lfs     f0, -0x7fa8(r2)
     stfs    f0, 0x20(r31)
-    lfs     f0, -0x7fa4(rtoc)
+    lfs     f0, -0x7fa4(r2)
     stfs    f0, 0x24(r31)
-    lfs     f0, -0x7fa0(rtoc)
+    lfs     f0, -0x7fa0(r2)
     stfs    f0, 0x28(r31)
     stfs    f0, 0x2c(r31)
-    lfs     f0, -0x7f9c(rtoc)
+    lfs     f0, -0x7f9c(r2)
     stfs    f0, 0x30(r31)
-    lfs     f0, -0x7ff8(rtoc)
+    lfs     f0, -0x7ff8(r2)
     stfs    f0, 0x34(r31)
-    lfs     f1, -0x8000(rtoc)
+    lfs     f1, -0x8000(r2)
     stfs    f1, 0x28(sp)
     stfs    f1, 0x2c(sp)
     stfs    f1, 0x30(sp)
@@ -1373,7 +1375,7 @@ __ct__11TBoidLeaderFiPCc: # 0x800068c0
     stw     r0, 0x40(r31)
     lwz     r0, 0x30(sp)
     stw     r0, 0x44(r31)
-    lfs     f0, -0x7fe8(rtoc)
+    lfs     f0, -0x7fe8(r2)
     stfs    f0, 0x48(r31)
     stw     r30, 0x58(r31)
     stfs    f1, 0x1c(sp)
@@ -1437,8 +1439,8 @@ __dt__Q26JDrama8TViewObjFv: # 0x80006a6c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80006ab4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1466,7 +1468,7 @@ __ct__5TBoidFv: # 0x80006ad0
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     stw     r0, 0x48(r3)
-    lfs     f0, -0x8000(rtoc)
+    lfs     f0, -0x8000(r2)
     stfs    f0, 0x4c(r3)
     stfs    f0, 0x8(r3)
     stfs    f0, 0x4(r3)
@@ -1476,14 +1478,14 @@ __ct__5TBoidFv: # 0x80006ad0
     stfs    f0, 0xc(r3)
     stfs    f0, 0x18(r3)
     stfs    f0, 0x1c(r3)
-    lfs     f0, -0x7fe8(rtoc)
+    lfs     f0, -0x7fe8(r2)
     stfs    f0, 0x20(r3)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f2, -0x7fe0(rtoc)
+    lfd     f2, -0x7fe0(r2)
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x7ffc(rtoc)
+    lfs     f0, -0x7ffc(r2)
     mr      r3, r31
     stw     r0, 0x10(sp)
     lfd     f1, 0x10(sp)
@@ -1495,3 +1497,4 @@ __ct__5TBoidFv: # 0x80006ad0
     addi    sp, sp, 0x20
     mtlr    r0
     blr
+

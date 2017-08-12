@@ -54,17 +54,17 @@ branch_0x8021731c:
     lfs     f1, 0x38(sp)
     addi    r4, r31, 0xc4
     lfs     f0, 0xc0(r31)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x34(sp)
     lfs     f3, 0x3c(sp)
     bl      checkGroundIgnoreWaterSurface__4TMapCFfffPPC12TBGCheckData
     stfs    f1, 0xc8(r31)
     lfs     f1, 0xc8(r31)
-    lfs     f0, -0x1978(rtoc)
+    lfs     f0, -0x1978(r2)
     fadds   f0, f1, f0
     stfs    f0, 0xc8(r31)
-    lfs     f1, -0x1974(rtoc)
+    lfs     f1, -0x1974(r2)
     lfs     f0, 0xc8(r31)
     lfs     f2, 0x38(sp)
     fadds   f0, f1, f0
@@ -97,7 +97,7 @@ branch_0x802173a8:
     lwz     r0, 0xf0(r31)
     rlwinm  r0, r0, 0, 25, 23
     stw     r0, 0xf0(r31)
-    lfs     f0, -0x1970(rtoc)
+    lfs     f0, -0x1970(r2)
     stfs    f0, 0xac(r31)
     stfs    f0, 0xb0(r31)
     stfs    f0, 0xb4(r31)
@@ -121,9 +121,9 @@ branch_0x802173f0:
     mr      r5, r30
     lfs     f0, 0xc0(r31)
     addi    r4, sp, 0x34
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f1, f1, f0
-    lfs     f2, -0x196c(rtoc)
+    lfs     f2, -0x196c(r2)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
 branch_0x8021741c:
     lwz     r0, 0x34(sp)
@@ -161,7 +161,7 @@ setVariableDamageRadius___8TBaseNPCFv: # 0x80217470
     mr      r31, r3
     lwz     r3, 0x4c(r3)
     addis   r3, r3, 0xfc00
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     bl      SMSGetNpcInitData__FUl
     lfs     f1, 0x4c(r3)
     mr      r3, r31
@@ -174,12 +174,12 @@ setVariableDamageRadius___8TBaseNPCFv: # 0x80217470
     bl      SMS_IsMarioTouchGround4cm__Fv
     clrlwi. r0, r3, 24
     bne-    branch_0x80217520
-    lwz     r3, MarioHitActorPos(r13)
+    lwz     r3, R13Off_m0x60b4(r13)
     lfs     f0, 0x14(r31)
     lfs     f1, 0x4(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80217520
-    lfs     f0, -0x1968(rtoc)
+    lfs     f0, -0x1968(r2)
     lfs     f4, 0x0(r3)
     lfs     f3, 0x10(r31)
     fmuls   f1, f0, f30
@@ -188,7 +188,7 @@ setVariableDamageRadius___8TBaseNPCFv: # 0x80217470
     fsubs   f31, f4, f3
     fsubs   f30, f2, f0
     bl      CLBSquared_f___Ff
-    lfs     f0, -0x1970(rtoc)
+    lfs     f0, -0x1970(r2)
     fmadds  f0, f31, f31, f0
     fmadds  f0, f30, f30, f0
     fcmpo   cr0, f0, f1
@@ -227,11 +227,11 @@ execNpcObjCollision___8TBaseNPCFv: # 0x8021754c
     stw     r29, 0x5c(sp)
     li      r29, 0x0
     stw     r28, 0x58(sp)
-    lfs     f29, -0x1970(rtoc)
-    lfs     f30, -0x1960(rtoc)
-    lfs     f31, -0x1964(rtoc)
-    lfs     f27, -0x1978(rtoc)
-    lfs     f28, -0x195c(rtoc)
+    lfs     f29, -0x1970(r2)
+    lfs     f30, -0x1960(r2)
+    lfs     f31, -0x1964(r2)
+    lfs     f27, -0x1978(r2)
+    lfs     f28, -0x195c(r2)
     b       branch_0x80217834
 
 branch_0x802175a4:
@@ -453,9 +453,9 @@ initNpcObjCollision___8TBaseNPCFPC12TNpcInitInfo: # 0x80217878
     li      r31, 0x2
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_0400001c@h
     lwz     r5, 0x4c(r30)
-    addi    r0, r3, 0x1c
+    addi    r0, r3, unk_0400001c@l
     cmpw    r5, r0
     beq-    branch_0x802178e4
     bge-    branch_0x802178d0

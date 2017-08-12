@@ -26,13 +26,13 @@ branch_0x803110b8:
 
 .globl setDSPSyncCount__Q28JASystem11AudioThreadFUl
 setDSPSyncCount__Q28JASystem11AudioThreadFUl: # 0x803110e0
-    stw     r3, -0x5c68(r13)
+    stw     r3, R13Off_m0x5c68(r13)
     blr
 
 
 .globl getDSPSyncCount__Q28JASystem11AudioThreadFv
 getDSPSyncCount__Q28JASystem11AudioThreadFv: # 0x803110e8
-    lwz     r3, -0x5c68(r13)
+    lwz     r3, R13Off_m0x5c68(r13)
     blr
 
 
@@ -41,30 +41,30 @@ syncAudio__Q28JASystem11AudioThreadFv: # 0x803110f0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x5c54(r13)
+    lbz     r0, R13Off_m0x5c54(r13)
     extsb.  r0, r0
     bne-    branch_0x80311114
     li      r0, 0x1
-    stw     r0, -0x5c58(r13)
-    stb     r0, -0x5c54(r13)
+    stw     r0, R13Off_m0x5c58(r13)
+    stb     r0, R13Off_m0x5c54(r13)
 branch_0x80311114:
-    lwz     r0, -0x5c58(r13)
+    lwz     r0, R13Off_m0x5c58(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x80311128
     li      r3, 0x4
     bl      probeFinish__Q28JASystem6KernelFl
 branch_0x80311128:
     li      r0, 0x0
-    lis     r3, 0x803b
-    stw     r0, -0x5c58(r13)
-    subi    r4, r3, 0x5a48
+    lis     r3, unk_803aa5b8@ha
+    stw     r0, R13Off_m0x5c58(r13)
+    addi    r4, r3, unk_803aa5b8@l
     li      r3, 0x4
     bl      probeStart__Q28JASystem6KernelFlPc
-    lwz     r0, -0x5c6c(r13)
+    lwz     r0, R13Off_m0x5c6c(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80311160
-    lis     r3, 0x8040
-    subi    r3, r3, 0x27a8
+    lis     r3, audioproc_mq__Q28JASystem11AudioThread@ha
+    addi    r3, r3, audioproc_mq__Q28JASystem11AudioThread@l
     li      r4, 0x0
     li      r5, 0x0
     bl      OSSendMessage
@@ -78,12 +78,12 @@ branch_0x80311160:
 .globl audioproc__Q28JASystem11AudioThreadFPv
 audioproc__Q28JASystem11AudioThreadFPv: # 0x80311170
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, audioproc_mq__Q28JASystem11AudioThread@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    subi    r30, r4, 0x27a8
+    addi    r30, r4, audioproc_mq__Q28JASystem11AudioThread@l
     li      r3, 0x4
     oris    r3, r3, 0x4
     mtspr   914, r3
@@ -101,21 +101,21 @@ audioproc__Q28JASystem11AudioThreadFPv: # 0x80311170
     li      r5, 0x10
     bl      OSInitMessageQueue
     li      r31, 0x1
-    stw     r31, -0x5c6c(r13)
+    stw     r31, R13Off_m0x5c6c(r13)
     bl      init__Q28JASystem6KernelFv
-    lwz     r0, -0x5c70(r13)
+    lwz     r0, R13Off_m0x5c70(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x803111f4
-    lis     r4, 0x8031
-    addi    r3, r4, 0x12d0
+    lis     r4, syncDSP__Q28JASystem11AudioThreadFPv@h
+    addi    r3, r4, syncDSP__Q28JASystem11AudioThreadFPv@l
     bl      DspBoot__FPFPv_v
-    stw     r31, -0x5c70(r13)
+    stw     r31, R13Off_m0x5c70(r13)
 branch_0x803111f4:
     bl      init__Q28JASystem6DriverFv
-    lwz     r3, -0x5b34(r13)
+    lwz     r3, R13Off_m0x5b34(r13)
     bl      AISetDSPSampleRate
-    lis     r4, 0x8031
-    addi    r3, r4, 0x10f0
+    lis     r4, syncAudio__Q28JASystem11AudioThreadFv@h
+    addi    r3, r4, syncAudio__Q28JASystem11AudioThreadFv@l
     bl      AIRegisterDMACallback
     bl      AIStartDMA
 branch_0x80311210:
@@ -142,17 +142,17 @@ branch_0x8031124c:
     b       branch_0x80311210
 
 branch_0x80311254:
-    lwz     r0, -0x5c68(r13)
+    lwz     r0, R13Off_m0x5c68(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x80311268
     li      r3, 0x0
     b       branch_0x803112b8
 
 branch_0x80311268:
-    lwz     r4, -0x5c68(r13)
-    subi    r0, r4, 0x1
-    stw     r0, -0x5c68(r13)
-    lwz     r0, -0x5c68(r13)
+    lwz     r4, R13Off_m0x5c68(r13)
+    addi    r0, r4, -0x1
+    stw     r0, R13Off_m0x5c68(r13)
+    lwz     r0, R13Off_m0x5c68(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x80311290
     li      r3, 0x7
@@ -162,7 +162,7 @@ branch_0x80311268:
 
 branch_0x80311290:
     li      r3, 0x2
-    addi    r4, rtoc, 0x688
+    addi    r4, r2, R2Off_0x688
     bl      probeStart__Q28JASystem6KernelFlPc
     bl      updateDSP__Q28JASystem6DSPBufFv
     li      r3, 0x2
@@ -197,19 +197,19 @@ branch_0x803112dc:
     srwi    r4, r3, 16
     cmplw   r4, r0
     bne-    branch_0x80311348
-    lis     r4, 0x1
+    lis     r4, unk_0000ff00@ha
     rlwinm  r5, r3, 0, 16, 23
-    subi    r0, r4, 0x100
+    addi    r0, r4, unk_0000ff00@l
     cmpw    r5, r0
     beq-    branch_0x80311314
     b       branch_0x80311340
 
 branch_0x80311314:
-    lwz     r0, -0x5c6c(r13)
+    lwz     r0, R13Off_m0x5c6c(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80311338
-    lis     r3, 0x8040
-    subi    r3, r3, 0x27a8
+    lis     r3, audioproc_mq__Q28JASystem11AudioThread@ha
+    addi    r3, r3, audioproc_mq__Q28JASystem11AudioThread@l
     li      r4, 0x1
     li      r5, 0x0
     bl      OSSendMessage
@@ -234,18 +234,18 @@ stop__Q28JASystem11AudioThreadFv: # 0x80311358
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x5c6c(r13)
+    lwz     r0, R13Off_m0x5c6c(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80311398
-    lis     r3, 0x8040
-    subi    r3, r3, 0x27a8
+    lis     r3, audioproc_mq__Q28JASystem11AudioThread@ha
+    addi    r3, r3, audioproc_mq__Q28JASystem11AudioThread@l
     li      r4, 0x3
     li      r5, 0x0
     bl      OSSendMessage
     cmpwi   r3, 0x0
     bne-    branch_0x80311398
-    lis     r3, 0x8040
-    addi    r3, r3, 0x75c0
+    lis     r3, jac_audioThread__Q28JASystem11AudioThread@h
+    addi    r3, r3, jac_audioThread__Q28JASystem11AudioThread@l
     bl      OSCancelThread
 branch_0x80311398:
     lwz     r0, 0xc(sp)
@@ -258,10 +258,10 @@ branch_0x80311398:
 setPriority__Q28JASystem11AudioThreadFUcUc: # 0x803113a8
     clrlwi  r3, r3, 24
     clrlwi  r0, r4, 24
-    stw     r3, -0x5c60(r13)
+    stw     r3, R13Off_m0x5c60(r13)
     li      r3, 0x1
-    stw     r3, -0x5c64(r13)
-    stw     r0, -0x5c5c(r13)
+    stw     r3, R13Off_m0x5c64(r13)
+    stw     r0, R13Off_m0x5c5c(r13)
     blr
 
 
@@ -276,33 +276,33 @@ start__Q28JASystem11AudioThreadFP12JKRSolidHeapUlUl: # 0x803113c4
     addi    r30, r4, 0x0
     stw     r29, 0x1c(sp)
     addi    r29, r5, 0x0
-    lwz     r0, -0x5c64(r13)
+    lwz     r0, R13Off_m0x5c64(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x80311410
     bl      OSGetCurrentThread
     bl      OSGetThreadPriority
-    subi    r0, r3, 0x3
-    stw     r0, -0x5c60(r13)
-    lwz     r3, -0x5c60(r13)
+    addi    r0, r3, -0x3
+    stw     r0, R13Off_m0x5c60(r13)
+    lwz     r3, R13Off_m0x5c60(r13)
     addi    r0, r3, 0x1
-    stw     r0, -0x5c5c(r13)
+    stw     r0, R13Off_m0x5c5c(r13)
 branch_0x80311410:
     mr      r3, r31
     bl      sysDramSetup__Q28JASystem6KernelFP12JKRSolidHeap
     mr      r3, r30
     bl      sysAramSetup__Q28JASystem6KernelFUl
-    lis     r3, 0x8041
-    subi    r31, r3, 0x6400
+    lis     r3, jac_audioStack__Q28JASystem11AudioThread@ha
+    addi    r31, r3, jac_audioStack__Q28JASystem11AudioThread@l
     addi    r3, r31, 0x0
     li      r4, 0x200
     bl      stackInit__Q28JASystem6KernelFPUxUl
     rlwinm. r0, r29, 0, 30, 30
     beq-    branch_0x80311470
-    lis     r4, 0x8040
-    lwz     r8, -0x5c60(r13)
-    lis     r3, 0x8031
-    addi    r30, r4, 0x75c0
-    addi    r4, r3, 0x1170
+    lis     r4, jac_audioThread__Q28JASystem11AudioThread@h
+    lwz     r8, R13Off_m0x5c60(r13)
+    lis     r3, audioproc__Q28JASystem11AudioThreadFPv@h
+    addi    r30, r4, jac_audioThread__Q28JASystem11AudioThread@l
+    addi    r4, r3, audioproc__Q28JASystem11AudioThreadFPv@l
     addi    r3, r30, 0x0
     addi    r6, r31, 0x1000
     li      r5, 0x0
@@ -312,19 +312,19 @@ branch_0x80311410:
     mr      r3, r30
     bl      OSResumeThread
 branch_0x80311470:
-    lis     r3, 0x8041
-    subi    r30, r3, 0x50e0
+    lis     r3, jac_dvdStack__Q28JASystem11AudioThread@ha
+    addi    r30, r3, jac_dvdStack__Q28JASystem11AudioThread@l
     addi    r3, r30, 0x0
     li      r4, 0x200
     bl      stackInit__Q28JASystem6KernelFPUxUl
     clrlwi. r0, r29, 31
     beq-    branch_0x803114c4
     bl      dvdProcInit__Q28JASystem3DvdFv
-    lis     r4, 0x8041
-    lwz     r8, -0x5c5c(r13)
-    lis     r3, 0x8031
-    subi    r31, r4, 0x5400
-    addi    r4, r3, 0x71ec
+    lis     r4, jac_dvdThread__Q28JASystem11AudioThread@ha
+    lwz     r8, R13Off_m0x5c5c(r13)
+    lis     r3, dvdProc__Q28JASystem3DvdFPv@h
+    addi    r31, r4, jac_dvdThread__Q28JASystem11AudioThread@l
+    addi    r4, r3, dvdProc__Q28JASystem3DvdFPv@l
     addi    r3, r31, 0x0
     addi    r6, r30, 0x1000
     li      r5, 0x0

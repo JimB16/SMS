@@ -40,8 +40,8 @@ launchScript__13TEventWatcherFPCc: # 0x8028903c
     addi    r3, r29, 0x0
     addi    r4, r31, 0x0
     bl      __ct__10TSpcBinaryFPv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x125c
+    lis     r3, __vvt__32TSpcTypedBinary_13TEventWatcher_@ha
+    addi    r0, r3, __vvt__32TSpcTypedBinary_13TEventWatcher_@l
     stw     r0, 0x4(r29)
 branch_0x80289090:
     stw     r29, 0x10(r30)
@@ -59,8 +59,8 @@ branch_0x80289090:
     li      r8, 0x20
     li      r9, 0x20
     bl      __ct__10TSpcInterpFP10TSpcBinaryPviiii
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1270
+    lis     r3, __vvt__32TSpcTypedInterp_13TEventWatcher_@ha
+    addi    r0, r3, __vvt__32TSpcTypedInterp_13TEventWatcher_@l
     stw     r0, 0x5c(r29)
 branch_0x802890d8:
     stw     r29, 0x14(r30)
@@ -83,21 +83,21 @@ __ct__13TEventWatcherFPCcPCc: # 0x802890f8
     stw     r30, 0x18(sp)
     addi    r30, r5, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     mr      r3, r4
     stw     r0, 0x0(r31)
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r5, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13TEventWatcher@ha
     sth     r5, 0xc(r31)
-    subi    r0, r3, 0x1298
+    addi    r0, r3, __vvt__13TEventWatcher@l
     addi    r3, r31, 0x0
     stw     r0, 0x0(r31)
     mr      r4, r30
@@ -119,9 +119,9 @@ __ct__13TEventWatcherFPCcPCc: # 0x802890f8
 .globl __ct__13TEventWatcherFPCc
 __ct__13TEventWatcherFPCc: # 0x80289190
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -130,13 +130,13 @@ __ct__13TEventWatcherFPCc: # 0x80289190
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13TEventWatcher@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x1298
+    addi    r0, r3, __vvt__13TEventWatcher@l
     addi    r3, r31, 0x0
     stw     r0, 0x0(r31)
     stw     r4, 0x10(r31)
@@ -151,459 +151,459 @@ __ct__13TEventWatcherFPCc: # 0x80289190
 .globl initUserBuiltin__32TSpcTypedBinary_13TEventWatcher_Fv
 initUserBuiltin__32TSpcTypedBinary_13TEventWatcher_Fv: # 0x80289200
     mflr    r0
-    lis     r5, 0x803a
+    lis     r5, unk_803a1ec0@h
     stw     r0, 0x4(sp)
-    lis     r4, 0x8029
+    lis     r4, evGetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x10(sp)
-    addi    r30, r5, 0x1ec0
-    addi    r5, r4, 0x2ed4
+    addi    r30, r5, unk_803a1ec0@l
+    addi    r5, r4, evGetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r4, r30, 0x158
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x2ce8
+    lis     r3, evSetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x168
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x2b98
+    lis     r3, evGetNameRefHandle__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetNameRefHandle__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x178
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x2a30
+    lis     r3, evGetNameRefName__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetNameRefName__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x18c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x2850
+    lis     r3, evGetNPCType__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetNPCType__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x19c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x25c8
+    lis     r3, evSetFlagNPCDontTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetFlagNPCDontTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x1a8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x2340
+    lis     r3, evSetFlagNPCDontThrow__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetFlagNPCDontThrow__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x1bc
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x20b8
+    lis     r3, evSetFlagNPCDead__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetFlagNPCDead__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x1d0
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x1bb0
+    lis     r3, evIsNearSameActors__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evIsNearSameActors__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x1e0
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x182c
+    lis     r3, evIsNearActors__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evIsNearActors__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x1f4
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x1784
+    lis     r3, evGetTalkNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetTalkNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x204
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x1644
+    lis     r3, evGetTalkNPCName__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetTalkNPCName__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x210
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x1444
+    lis     r3, evSetTalkMsgID__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetTalkMsgID__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x220
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x13ac
+    lis     r3, evGetTalkMode__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetTalkMode__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x230
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x1310
+    lis     r3, evGetTalkSelectedValue__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetTalkSelectedValue__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x23c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x122c
+    lis     r3, evSetValue2TalkVariable__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetValue2TalkVariable__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x254
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x1168
+    lis     r3, evIsTalkModeNow__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evIsTalkModeNow__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x26c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0xf54
+    lis     r3, evSetFlagNPCCanTaken__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetFlagNPCCanTaken__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x27c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0xd00
+    lis     r3, evPushNerve4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evPushNerve4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x290
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0xa98
+    lis     r3, evIsOnLiveActorFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evIsOnLiveActorFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x2a4
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x86c
+    lis     r3, evSetHide4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetHide4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x2b8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x640
+    lis     r3, evSetDead4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetDead4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x2cc
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x4ec
+    lis     r3, evSetTimeLimit__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetTimeLimit__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x2e0
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x434
+    lis     r3, evSetAttentionTime__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetAttentionTime__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x2f0
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x37c
+    lis     r3, evSetPollutionIncreaseCount__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetPollutionIncreaseCount__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x304
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x2a0
+    lis     r3, evGetRestTime__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetRestTime__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x320
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x208
+    lis     r3, evGetPollutionLevel__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evGetPollutionLevel__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x32c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    addi    r5, r3, 0x0
+    lis     r3, evSetNextStage__FP32TSpcTypedInterp_13TEventWatcher_Ul@h
+    addi    r5, r3, evSetNextStage__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x340
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x144
+    lis     r3, evRegisterMovie__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evRegisterMovie__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x350
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1e4
+    lis     r3, evGameOver__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evGameOver__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x360
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x290
+    lis     r3, evIsGraffitoCoverage0__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsGraffitoCoverage0__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x36c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x43c
+    lis     r3, evSetGraffitoMultiplied__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evSetGraffitoMultiplied__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x380
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x4e8
+    lis     r3, evIsBossDefeated__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsBossDefeated__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x398
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x598
+    lis     r3, evLaunchEventClearDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evLaunchEventClearDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x3a8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x760
+    lis     r3, evIsEMarioReachedToGoal__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsEMarioReachedToGoal__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x3c0
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x928
+    lis     r3, evIsEMarioDownWaitingToTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsEMarioDownWaitingToTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x3d8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0xaec
+    lis     r3, evStartEMarioRunAway__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartEMarioRunAway__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x3f4
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0xcb0
+    lis     r3, evStartEMarioGateDrawing__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartEMarioGateDrawing__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x408
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0xe74
+    lis     r3, evStartEMarioDisappear__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartEMarioDisappear__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x420
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1038
+    lis     r3, evStartOpenModelGate__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartOpenModelGate__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x438
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x120c
+    lis     r3, evIsMapEventFinishedAll__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsMapEventFinishedAll__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x44c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x139c
+    lis     r3, evRaiseBuilding__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evRaiseBuilding__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x464
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1434
+    lis     r3, evForceCloseTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evForceCloseTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x474
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1668
+    lis     r3, evInsertTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evInsertTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x484
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x17d4
+    lis     r3, evStartTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x490
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1960
+    lis     r3, evStartMonteman__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartMonteman__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x49c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x19fc
+    lis     r3, evStopTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStopTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x4ac
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1ae8
+    lis     r3, evMonteManReachFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evMonteManReachFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x4b8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1b84
+    lis     r3, evGetTime__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evGetTime__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
-    subi    r4, rtoc, 0x698
+    addi    r4, r2, R2Off_m0x698
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1d54
+    lis     r3, evKillShine__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evKillShine__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x4cc
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x1f24
+    lis     r3, evKillMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evKillMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x4d8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x211c
+    lis     r3, evAppearMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppearMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x4e8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x2480
+    lis     r3, evAppearShineFromNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppearShineFromNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x4fc
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x2938
+    lis     r3, evAppearShineFromNPCWithoutDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppearShineFromNPCWithoutDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x510
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x2bf4
+    lis     r3, evAppearShineFromKageMario__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppearShineFromKageMario__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x530
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x26a8
+    lis     r3, evAppearShine__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppearShine__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x54c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x2d60
+    lis     r3, evAppearShineForWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppearShineForWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x558
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x2ebc
+    lis     r3, evChangeNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evChangeNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x570
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x2f54
+    lis     r3, evStartMarioTalking__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartMarioTalking__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x580
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x38cc
+    lis     r3, evIsInsideCube__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsInsideCube__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x594
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x3974
+    lis     r3, evSetMarioWaiting__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evSetMarioWaiting__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x5a4
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x44ac
+    lis     r3, evSetTransScale__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evSetTransScale__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x5b4
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x4704
+    lis     r3, evSetEventID__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evSetEventID__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x5c4
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x48d8
+    lis     r3, evStartBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x5d0
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x4db4
+    lis     r3, evStopBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStopBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
-    subi    r4, rtoc, 0x690
+    addi    r4, r2, R2Off_m0x690
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x5138
+    lis     r3, evStartMiss__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartMiss__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x5dc
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x4f18
+    lis     r3, evStartSE__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartSE__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
-    subi    r4, rtoc, 0x688
+    addi    r4, r2, R2Off_m0x688
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x50a0
+    lis     r3, evStartEventSE__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartEventSE__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x5e8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x532c
+    lis     r3, evChangeSunglass__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evChangeSunglass__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x5f8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x55a0
+    lis     r3, evSetCollision__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evSetCollision__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x608
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x5920
+    lis     r3, evWarpMario__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evWarpMario__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x618
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x5b7c
+    lis     r3, evStartAppearJetBalloon__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartAppearJetBalloon__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x624
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x5fc8
+    lis     r3, evAppear8RedCoinsAndTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppear8RedCoinsAndTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x63c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x61fc
+    lis     r3, evWarpFrontToMario__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evWarpFrontToMario__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x654
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x5de0
+    lis     r3, evAppearReadyGo__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evAppearReadyGo__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x668
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x629c
+    lis     r3, evOnNeutralMarioKey__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evOnNeutralMarioKey__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x678
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x63e0
+    lis     r3, evInvalidatePad__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evInvalidatePad__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x68c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x6620
+    lis     r3, evStartMontemanBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartMontemanBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x69c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x66bc
+    lis     r3, evStartMontemanFanfare__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartMontemanFanfare__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x6b0
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x3200
+    lis     r3, evCheckWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evCheckWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x6c8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x34a4
+    lis     r3, evRefreshWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evRefreshWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x6d8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x3748
+    lis     r3, evKillWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evKillWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x6e8
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x47a0
+    lis     r3, evManiCoinDown__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evManiCoinDown__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x6f4
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x4aa8
+    lis     r3, evEggYoshiStartFruit__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evEggYoshiStartFruit__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x708
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x4c78
+    lis     r3, evPutNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evPutNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x71c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x3a84
+    lis     r3, evStartMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evStartMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x728
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x3b78
+    lis     r3, evIsFinishMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsFinishMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x73c
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x3e38
+    lis     r3, evIsInsideFastCube__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsInsideFastCube__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x754
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x5d40
+    lis     r3, evSetEventForWaterMelon__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evSetEventForWaterMelon__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x768
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
-    lis     r3, 0x8029
-    subi    r5, r3, 0x6550
+    lis     r3, evIsWaterMelonIsReached__FP32TSpcTypedInterp_13TEventWatcher_Ul@ha
+    addi    r5, r3, evIsWaterMelonIsReached__FP32TSpcTypedInterp_13TEventWatcher_Ul@l
     addi    r3, r31, 0x0
     addi    r4, r30, 0x780
     bl      bindSystemDataToSymbol__10TSpcBinaryFPCcUl
@@ -628,8 +628,8 @@ evStartMontemanFanfare__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289944
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lis     r3, 0x8001
-    addi    r3, r3, 0x26
+    lis     r3, unk_80010026@h
+    addi    r3, r3, unk_80010026@l
     bl      startBGM__5MSBgmFUl
     li      r0, 0x0
     stw     r0, 0x10(sp)
@@ -638,9 +638,9 @@ evStartMontemanFanfare__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289944
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x802899a4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x802899cc
 
@@ -677,10 +677,10 @@ evStartMontemanBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802899e0
     li      r3, 0x0
     li      r4, 0xa
     bl      stopTrackBGM__5MSBgmFUcUl
-    lis     r3, 0x8001
-    addi    r3, r3, 0x2f
+    lis     r3, unk_8001002f@h
+    addi    r3, r3, unk_8001002f@l
     bl      startBGM__5MSBgmFUl
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x4851
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -698,9 +698,9 @@ branch_0x80289a44:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80289a74
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80289a9c
 
@@ -737,9 +737,9 @@ evIsWaterMelonIsReached__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289ab0
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x80289b14
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -752,7 +752,7 @@ evIsWaterMelonIsReached__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289ab0
     b       branch_0x80289b3c
 
 branch_0x80289b14:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -785,15 +785,15 @@ branch_0x80289b60:
 branch_0x80289b74:
     li      r3, 0x0
 branch_0x80289b78:
-    lfs     f3, -0x680(rtoc)
+    lfs     f3, -0x680(r2)
     li      r4, 0x0
     lfs     f1, 0x10(r3)
-    lfs     f2, -0x67c(rtoc)
+    lfs     f2, -0x67c(r2)
     lfs     f0, 0x18(r3)
     fsubs   f3, f3, f1
-    lfs     f1, -0x678(rtoc)
+    lfs     f1, -0x678(r2)
     fsubs   f2, f2, f0
-    lfs     f0, -0x674(rtoc)
+    lfs     f0, -0x674(r2)
     fmadds  f1, f3, f3, f1
     fmadds  f1, f2, f2, f1
     fcmpo   cr0, f1, f0
@@ -808,9 +808,9 @@ branch_0x80289bb4:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80289be4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80289c0c
 
@@ -847,9 +847,9 @@ evInvalidatePad__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289c20
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x80289c84
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -862,7 +862,7 @@ evInvalidatePad__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289c20
     b       branch_0x80289cac
 
 branch_0x80289c84:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -895,7 +895,7 @@ branch_0x80289cd0:
 branch_0x80289ce4:
     li      r4, 0x0
 branch_0x80289ce8:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r0, 0x0
     lwz     r3, 0x18(r3)
     lwz     r3, 0x0(r3)
@@ -906,9 +906,9 @@ branch_0x80289ce8:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80289d28
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80289d50
 
@@ -942,7 +942,7 @@ evOnNeutralMarioKey__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289d64
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x18(r3)
     lwz     r3, 0x0(r3)
     bl      onNeutralMarioKey__13TMarioGamePadFv
@@ -953,9 +953,9 @@ evOnNeutralMarioKey__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289d64
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80289dc8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80289df0
 
@@ -994,9 +994,9 @@ evWarpFrontToMario__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289e04
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
     bgt-    branch_0x80289e70
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -1009,7 +1009,7 @@ evWarpFrontToMario__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80289e04
     b       branch_0x80289e98
 
 branch_0x80289e70:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -1042,22 +1042,22 @@ branch_0x80289ebc:
 branch_0x80289ed0:
     li      r31, 0x0
 branch_0x80289ed4:
-    lwz     r5, -0x60ac(r13)
+    lwz     r5, R13Off_m0x60ac(r13)
     addi    r3, sp, 0x64
-    lfs     f1, -0x678(rtoc)
+    lfs     f1, -0x678(r2)
     addi    r4, sp, 0x84
     lha     r29, 0x0(r5)
-    lfs     f0, -0x670(rtoc)
+    lfs     f0, -0x670(r2)
     stfs    f1, 0x84(sp)
     stfs    f1, 0x88(sp)
     stfs    f0, 0x8c(sp)
     lhz     r6, 0x0(r5)
-    lwz     r5, -0x5eac(r13)
-    lwz     r0, -0x5ea8(r13)
+    lwz     r5, R13Off_m0x5eac(r13)
+    lwz     r0, R13Off_m0x5ea8(r13)
     sraw    r5, r6, r5
     lfs     f4, 0x84(sp)
     slwi    r6, r5, 2
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     add     r7, r0, r6
     lfs     f1, 0x8c(sp)
     lfs     f0, 0x0(r7)
@@ -1074,7 +1074,7 @@ branch_0x80289ed4:
     fmadds  f0, f3, f2, f0
     stfs    f0, 0x8c(sp)
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
-    lwz     r6, MarioHitActorPos(r13)
+    lwz     r6, R13Off_m0x60b4(r13)
     addi    r3, sp, 0x44
     addi    r4, sp, 0x64
     lwz     r5, 0x0(r6)
@@ -1085,7 +1085,7 @@ branch_0x80289ed4:
     stw     r0, 0x4c(sp)
     bl      add__Q29JGeometry8TVec3_f_FRCQ29JGeometry8TVec3_f_
     lwz     r3, 0x44(sp)
-    subi    r0, r29, 0x8000
+    addi    r0, r29, -0x8000
     lwz     r5, 0x48(sp)
     extsh   r0, r0
     xoris   r4, r0, 0x8000
@@ -1098,8 +1098,8 @@ branch_0x80289ed4:
     stw     r3, 0x98(sp)
     stw     r4, 0x18(r31)
     lfd     f0, 0x98(sp)
-    lfd     f1, -0x668(rtoc)
-    lfs     f2, -0x66c(rtoc)
+    lfd     f1, -0x668(r2)
+    lfs     f2, -0x66c(r2)
     fsubs   f0, f0, f1
     fmuls   f0, f2, f0
     stfs    f0, 0x34(r31)
@@ -1109,9 +1109,9 @@ branch_0x80289ed4:
     lwz     r0, 0x18(r30)
     cmpw    r3, r0
     blt-    branch_0x80289ff4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028a01c
 
@@ -1148,9 +1148,9 @@ evAppear8RedCoinsAndTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a038
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x5db8(r13)
-    lis     r4, 0x803a
-    addi    r0, r4, 0x2694
+    lwz     r3, R13Off_m0x5db8(r13)
+    lis     r4, unk_803a2694@h
+    addi    r0, r4, unk_803a2694@l
     mr      r29, r0
     lwz     r30, 0x4(r3)
     mr      r3, r29
@@ -1164,11 +1164,11 @@ evAppear8RedCoinsAndTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a038
     blrl
     lwz     r28, 0x138(r3)
     li      r27, 0x0
-    lfs     f31, -0x660(rtoc)
-    lis     r30, 0x2000
+    lfs     f31, -0x660(r2)
+    lis     r30, unk_2000000f@h
 branch_0x8028a0a8:
-    lwz     r3, gpItemManager(r13)
-    addi    r4, r30, 0xf
+    lwz     r3, R13Off_m0x62b0(r13)
+    addi    r4, r30, unk_2000000f@l
     bl      makeObjAppeared__18TMapObjBaseManagerFUl
     mr      r29, r3
     lwz     r12, 0x0(r29)
@@ -1188,18 +1188,18 @@ branch_0x8028a0a8:
     bl      getModel__10TLiveActorCFv
     lwz     r5, 0x58(r3)
     mr      r7, r29
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x58
     li      r6, 0x0
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     addi    r29, r29, 0x158
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r29, 0x0
     li      r4, 0xe5
     li      r6, 0x0
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r29, 0x0
     li      r4, 0xe6
     li      r6, 0x0
@@ -1209,13 +1209,13 @@ branch_0x8028a0a8:
     cmpwi   r27, 0x8
     blt+    branch_0x8028a0a8
     xoris   r0, r28, 0x8000
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     stw     r0, 0x7c(sp)
-    lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
-    li      r4, 0x1
+    lis     r0, unk_43300001@h
+    lfd     f1, -0x668(r2)
+    addi    r4, r0, unk_43300001@l
     stw     r0, 0x78(sp)
-    lfs     f2, -0x65c(rtoc)
+    lfs     f2, -0x65c(r2)
     lfd     f0, 0x78(sp)
     lwz     r3, 0x74(r3)
     fsubs   f0, f0, f1
@@ -1224,13 +1224,13 @@ branch_0x8028a0a8:
     stfd    f0, 0x70(sp)
     lwz     r5, 0x74(sp)
     bl      startAppearTimer__11TGCConsole2Fil
-    lwz     r29, gpMarDirector(r13)
+    lwz     r29, R13Off_m0x6048(r13)
     addi    r3, r29, 0xe8
     bl      OSCheckStopwatch
     stw     r4, 0xcc(r29)
     li      r4, 0xa
     stw     r3, 0xc8(r29)
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startMoveTimer__11TGCConsole2Fi
     li      r0, 0x0
@@ -1240,9 +1240,9 @@ branch_0x8028a0a8:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028a1e0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028a208
 
@@ -1277,7 +1277,7 @@ evAppearReadyGo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a220
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     lwz     r3, 0x94(r3)
     bl      startAppearReady__11TConsoleStrFv
@@ -1288,9 +1288,9 @@ evAppearReadyGo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a220
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028a284
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028a2ac
 
@@ -1329,9 +1329,9 @@ evSetEventForWaterMelon__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a2c0
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028a32c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -1344,7 +1344,7 @@ evSetEventForWaterMelon__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a2c0
     b       branch_0x8028a354
 
 branch_0x8028a32c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -1380,9 +1380,9 @@ branch_0x8028a398:
     b       branch_0x8028a3a4
 
 branch_0x8028a3a0:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028a3a4:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -1425,9 +1425,9 @@ branch_0x8028a40c:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028a440
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028a468
 
@@ -1463,8 +1463,8 @@ evStartAppearJetBalloon__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a484
     mr      r30, r3
     stw     r29, 0x9c(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r30)
@@ -1484,7 +1484,7 @@ evStartAppearJetBalloon__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a484
     b       branch_0x8028a51c
 
 branch_0x8028a4f4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -1534,7 +1534,7 @@ branch_0x8028a558:
     b       branch_0x8028a5bc
 
 branch_0x8028a594:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -1582,7 +1582,7 @@ branch_0x8028a610:
 branch_0x8028a61c:
     cmpwi   r29, 0x1
     bne-    branch_0x8028a670
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x0
     li      r5, 0x8
     lwz     r3, 0x74(r3)
@@ -1592,7 +1592,7 @@ branch_0x8028a61c:
 branch_0x8028a63c:
     cmpwi   r29, 0x1
     bne-    branch_0x8028a670
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x1
     li      r5, 0xa
     lwz     r3, 0x74(r3)
@@ -1602,7 +1602,7 @@ branch_0x8028a63c:
 branch_0x8028a65c:
     cmpwi   r29, 0x1
     bne-    branch_0x8028a670
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearRedCoin__11TGCConsole2Fv
 branch_0x8028a670:
@@ -1648,8 +1648,8 @@ evWarpMario__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a6e0
     mr      r27, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x4
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r27)
@@ -1669,7 +1669,7 @@ evWarpMario__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028a6e0
     b       branch_0x8028a770
 
 branch_0x8028a748:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -1719,7 +1719,7 @@ branch_0x8028a7ac:
     b       branch_0x8028a810
 
 branch_0x8028a7e8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -1769,7 +1769,7 @@ branch_0x8028a84c:
     b       branch_0x8028a8b0
 
 branch_0x8028a888:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -1819,7 +1819,7 @@ branch_0x8028a8ec:
     b       branch_0x8028a950
 
 branch_0x8028a928:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -1853,7 +1853,7 @@ branch_0x8028a988:
     li      r0, 0x0
 branch_0x8028a98c:
     xoris   r0, r0, 0x8000
-    lfd     f4, -0x668(rtoc)
+    lfd     f4, -0x668(r2)
     stw     r0, 0xc4(sp)
     xoris   r3, r28, 0x8000
     lis     r5, 0x4330
@@ -1919,8 +1919,8 @@ evSetCollision__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028aa60
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -1940,7 +1940,7 @@ evSetCollision__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028aa60
     b       branch_0x8028aaf0
 
 branch_0x8028aac8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -1990,7 +1990,7 @@ branch_0x8028ab2c:
     b       branch_0x8028ab90
 
 branch_0x8028ab68:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2026,9 +2026,9 @@ branch_0x8028abd4:
     b       branch_0x8028abe0
 
 branch_0x8028abdc:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x8028abe0:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2118,8 +2118,8 @@ evChangeSunglass__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028acd4
     stw     r29, 0x6c(sp)
     stw     r28, 0x68(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x1
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r30)
@@ -2139,7 +2139,7 @@ evChangeSunglass__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028acd4
     b       branch_0x8028ad70
 
 branch_0x8028ad48:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -2172,7 +2172,7 @@ branch_0x8028ad94:
 branch_0x8028ada8:
     li      r29, 0x0
 branch_0x8028adac:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x7e8
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2188,14 +2188,14 @@ branch_0x8028adac:
     li      r4, 0x2
     li      r5, 0x1
     bl      startFade__9TSunGlassFib
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     bl      wearGlass__6TMarioFv
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     li      r4, 0x77
     bl      getShineFlag__12TFlagManagerCFUc
     clrlwi. r0, r3, 24
     beq-    branch_0x8028ae54
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     lwz     r0, 0x118(r3)
     oris    r0, r0, 0x10
     stw     r0, 0x118(r3)
@@ -2205,14 +2205,14 @@ branch_0x8028ae1c:
     li      r4, 0x3
     li      r5, 0x1
     bl      startFade__9TSunGlassFib
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     bl      takeOffGlass__6TMarioFv
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     li      r4, 0x77
     bl      getShineFlag__12TFlagManagerCFUc
     clrlwi. r0, r3, 24
     beq-    branch_0x8028ae54
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     lwz     r0, 0x118(r3)
     rlwinm  r0, r0, 0, 12, 10
     stw     r0, 0x118(r3)
@@ -2262,7 +2262,7 @@ evStartMiss__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028aec8
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     bl      loserExec__6TMarioFv
     li      r0, 0x0
     stw     r0, 0x10(sp)
@@ -2271,9 +2271,9 @@ evStartMiss__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028aec8
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028af24
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028af4c
 
@@ -2311,9 +2311,9 @@ evStartEventSE__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028af60
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028afc8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -2326,7 +2326,7 @@ evStartEventSE__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028af60
     b       branch_0x8028aff0
 
 branch_0x8028afc8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -2373,7 +2373,7 @@ branch_0x8028b044:
 branch_0x8028b04c:
     li      r31, 0x485b
 branch_0x8028b050:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     mr      r4, r31
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2391,9 +2391,9 @@ branch_0x8028b078:
     lwz     r0, 0x18(r30)
     cmpw    r3, r0
     blt-    branch_0x8028b0a8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028b0d0
 
@@ -2432,9 +2432,9 @@ evStartSE__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b0e8
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028b150
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2447,7 +2447,7 @@ evStartSE__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b0e8
     b       branch_0x8028b178
 
 branch_0x8028b150:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2480,7 +2480,7 @@ branch_0x8028b19c:
 branch_0x8028b1b0:
     li      r30, 0x0
 branch_0x8028b1b4:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     mr      r4, r30
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -2498,9 +2498,9 @@ branch_0x8028b1dc:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028b20c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028b234
 
@@ -2538,9 +2538,9 @@ evStopBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b24c
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028b2b0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2553,7 +2553,7 @@ evStopBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b24c
     b       branch_0x8028b2d8
 
 branch_0x8028b2b0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2595,9 +2595,9 @@ branch_0x8028b314:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028b34c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028b374
 
@@ -2636,9 +2636,9 @@ evPutNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b388
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028b3f4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2651,7 +2651,7 @@ evPutNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b388
     b       branch_0x8028b41c
 
 branch_0x8028b3f4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2687,9 +2687,9 @@ branch_0x8028b460:
     b       branch_0x8028b46c
 
 branch_0x8028b468:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028b46c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2735,9 +2735,9 @@ branch_0x8028b4d4:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028b514
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028b53c
 
@@ -2778,9 +2778,9 @@ evEggYoshiStartFruit__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b558
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028b5c4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2793,7 +2793,7 @@ evEggYoshiStartFruit__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b558
     b       branch_0x8028b5ec
 
 branch_0x8028b5c4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2829,9 +2829,9 @@ branch_0x8028b630:
     b       branch_0x8028b63c
 
 branch_0x8028b638:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028b63c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -2878,9 +2878,9 @@ branch_0x8028b6b4:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028b6e4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028b70c
 
@@ -2919,9 +2919,9 @@ evStartBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b728
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028b78c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2934,7 +2934,7 @@ evStartBGM__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b728
     b       branch_0x8028b7b4
 
 branch_0x8028b78c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2975,9 +2975,9 @@ branch_0x8028b7f0:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028b824
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028b84c
 
@@ -3011,7 +3011,7 @@ evManiCoinDown__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b860
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearStar__11TGCConsole2Fv
     li      r0, 0x0
@@ -3021,9 +3021,9 @@ evManiCoinDown__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b860
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028b8c0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028b8e8
 
@@ -3055,8 +3055,8 @@ evSetEventID__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b8fc
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -3076,7 +3076,7 @@ evSetEventID__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028b8fc
     b       branch_0x8028b98c
 
 branch_0x8028b964:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -3127,7 +3127,7 @@ branch_0x8028b9c8:
     b       branch_0x8028ba30
 
 branch_0x8028ba08:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -3163,9 +3163,9 @@ branch_0x8028ba74:
     b       branch_0x8028ba80
 
 branch_0x8028ba7c:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x8028ba80:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -3250,8 +3250,8 @@ evSetTransScale__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028bb54
     stw     r29, 0x16c(sp)
     stw     r28, 0x168(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x7
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r30)
@@ -3271,7 +3271,7 @@ evSetTransScale__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028bb54
     b       branch_0x8028bc08
 
 branch_0x8028bbe0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3293,7 +3293,7 @@ branch_0x8028bc08:
 branch_0x8028bc24:
     lwz     r3, 0x120(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x164(sp)
     stw     r0, 0x160(sp)
@@ -3306,7 +3306,7 @@ branch_0x8028bc48:
     b       branch_0x8028bc54
 
 branch_0x8028bc50:
-    lfs     f31, -0x678(rtoc)
+    lfs     f31, -0x678(r2)
 branch_0x8028bc54:
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
@@ -3325,7 +3325,7 @@ branch_0x8028bc54:
     b       branch_0x8028bcb8
 
 branch_0x8028bc90:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3347,7 +3347,7 @@ branch_0x8028bcb8:
 branch_0x8028bcd4:
     lwz     r3, 0x118(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x164(sp)
     stw     r0, 0x160(sp)
@@ -3360,7 +3360,7 @@ branch_0x8028bcf8:
     b       branch_0x8028bd04
 
 branch_0x8028bd00:
-    lfs     f30, -0x678(rtoc)
+    lfs     f30, -0x678(r2)
 branch_0x8028bd04:
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
@@ -3379,7 +3379,7 @@ branch_0x8028bd04:
     b       branch_0x8028bd68
 
 branch_0x8028bd40:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3401,7 +3401,7 @@ branch_0x8028bd68:
 branch_0x8028bd84:
     lwz     r3, 0x110(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x164(sp)
     stw     r0, 0x160(sp)
@@ -3414,7 +3414,7 @@ branch_0x8028bda8:
     b       branch_0x8028bdb4
 
 branch_0x8028bdb0:
-    lfs     f29, -0x678(rtoc)
+    lfs     f29, -0x678(r2)
 branch_0x8028bdb4:
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
@@ -3433,7 +3433,7 @@ branch_0x8028bdb4:
     b       branch_0x8028be18
 
 branch_0x8028bdf0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3455,7 +3455,7 @@ branch_0x8028be18:
 branch_0x8028be34:
     lwz     r3, 0x108(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x164(sp)
     stw     r0, 0x160(sp)
@@ -3468,7 +3468,7 @@ branch_0x8028be58:
     b       branch_0x8028be64
 
 branch_0x8028be60:
-    lfs     f28, -0x678(rtoc)
+    lfs     f28, -0x678(r2)
 branch_0x8028be64:
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
@@ -3487,7 +3487,7 @@ branch_0x8028be64:
     b       branch_0x8028bec8
 
 branch_0x8028bea0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3509,7 +3509,7 @@ branch_0x8028bec8:
 branch_0x8028bee4:
     lwz     r3, 0x100(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x164(sp)
     stw     r0, 0x160(sp)
@@ -3522,7 +3522,7 @@ branch_0x8028bf08:
     b       branch_0x8028bf14
 
 branch_0x8028bf10:
-    lfs     f27, -0x678(rtoc)
+    lfs     f27, -0x678(r2)
 branch_0x8028bf14:
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
@@ -3541,7 +3541,7 @@ branch_0x8028bf14:
     b       branch_0x8028bf78
 
 branch_0x8028bf50:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3563,7 +3563,7 @@ branch_0x8028bf78:
 branch_0x8028bf94:
     lwz     r3, 0xf8(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x164(sp)
     stw     r0, 0x160(sp)
@@ -3576,7 +3576,7 @@ branch_0x8028bfb8:
     b       branch_0x8028bfc4
 
 branch_0x8028bfc0:
-    lfs     f26, -0x678(rtoc)
+    lfs     f26, -0x678(r2)
 branch_0x8028bfc4:
     lwz     r3, 0x1c(r30)
     cmpwi   r3, 0x0
@@ -3595,7 +3595,7 @@ branch_0x8028bfc4:
     b       branch_0x8028c028
 
 branch_0x8028c000:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3631,9 +3631,9 @@ branch_0x8028c06c:
     b       branch_0x8028c078
 
 branch_0x8028c074:
-    subi    r29, rtoc, 0x658
+    addi    r29, r2, R2Off_m0x658
 branch_0x8028c078:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r29
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -3673,7 +3673,7 @@ branch_0x8028c0e0:
     lwz     r12, 0x100(r12)
     mtlr    r12
     blrl
-    lfs     f0, -0x678(rtoc)
+    lfs     f0, -0x678(r2)
     mr      r3, r28
     stfs    f26, 0x13c(sp)
     addi    r4, sp, 0x13c
@@ -3742,8 +3742,8 @@ evIsInsideFastCube__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c1c8
     stw     r29, 0x7c(sp)
     mr      r29, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -3763,7 +3763,7 @@ evIsInsideFastCube__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c1c8
     b       branch_0x8028c260
 
 branch_0x8028c238:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -3814,7 +3814,7 @@ branch_0x8028c29c:
     b       branch_0x8028c304
 
 branch_0x8028c2dc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -3847,9 +3847,9 @@ branch_0x8028c328:
 branch_0x8028c33c:
     li      r5, 0x0
 branch_0x8028c340:
-    lwz     r4, MarioActor(r13)
+    lwz     r4, R13Off_m0x60d8(r13)
     cmpwi   r5, 0x1
-    lfs     f0, -0x654(rtoc)
+    lfs     f0, -0x654(r2)
     lwz     r3, 0x10(r4)
     lwz     r0, 0x14(r4)
     stw     r3, 0x5c(sp)
@@ -3871,7 +3871,7 @@ branch_0x8028c384:
     b       branch_0x8028c3e8
 
 branch_0x8028c390:
-    lwz     r3, -0x70d8(r13)
+    lwz     r3, R13Off_m0x70d8(r13)
     addi    r5, r30, 0x0
     addi    r4, sp, 0x5c
     bl      isInCube__16TCubeManagerBaseCFRC3Vecl
@@ -3887,7 +3887,7 @@ branch_0x8028c3b4:
     b       branch_0x8028c418
 
 branch_0x8028c3bc:
-    lwz     r3, -0x70d4(r13)
+    lwz     r3, R13Off_m0x70d4(r13)
     addi    r5, r30, 0x0
     addi    r4, sp, 0x5c
     bl      isInCube__16TCubeManagerBaseCFRC3Vecl
@@ -3903,7 +3903,7 @@ branch_0x8028c3e0:
     b       branch_0x8028c418
 
 branch_0x8028c3e8:
-    lwz     r3, -0x70d0(r13)
+    lwz     r3, R13Off_m0x70d0(r13)
     addi    r5, r30, 0x0
     addi    r4, sp, 0x5c
     bl      isInCube__16TCubeManagerBaseCFRC3Vecl
@@ -3965,11 +3965,11 @@ evIsFinishMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c488
     stw     r30, 0x40(sp)
     stw     r29, 0x3c(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r30, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r30, r4, unk_803a1ec0@l
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x7fc
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -4036,11 +4036,11 @@ evStartMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c57c
     stw     r30, 0x38(sp)
     stw     r29, 0x34(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r29, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r29, r4, unk_803a1ec0@l
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r29, 0x7fc
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -4055,8 +4055,8 @@ evStartMareBottleDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c57c
     lwz     r3, 0x74(r3)
     addi    r4, r29, 0x808
     bl      setBck__6MActorFPCc
-    lwz     r7, MarioActor(r13)
-    li      r4, MARIOSTATUS_1310
+    lwz     r7, R13Off_m0x60d8(r13)
+    li      r4, 0x1310
     lwz     r3, 0x10(r30)
     li      r5, 0x0
     lwz     r0, 0x14(r30)
@@ -4111,9 +4111,9 @@ evSetMarioWaiting__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c68c
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lis     r4, 0xc40
-    lwz     r3, MarioActor(r13)
-    addi    r4, r4, MARIOSTATUS_201
+    lis     r4, unk_0c400201@h
+    lwz     r3, R13Off_m0x60d8(r13)
+    addi    r4, r4, unk_0c400201@l
     li      r5, 0x0
     li      r6, 0x1
     bl      changePlayerStatus__6TMarioFUlUlb
@@ -4124,9 +4124,9 @@ evSetMarioWaiting__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c68c
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028c6f8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028c720
 
@@ -4163,9 +4163,9 @@ evIsInsideCube__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c734
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028c798
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -4178,7 +4178,7 @@ evIsInsideCube__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c734
     b       branch_0x8028c7c0
 
 branch_0x8028c798:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -4211,13 +4211,13 @@ branch_0x8028c7e4:
 branch_0x8028c7f8:
     li      r0, 0x0
 branch_0x8028c7fc:
-    lwz     r7, MarioActor(r13)
+    lwz     r7, R13Off_m0x60d8(r13)
     mr      r5, r0
-    lfs     f0, -0x654(rtoc)
+    lfs     f0, -0x654(r2)
     addi    r4, sp, 0x3c
     lwz     r6, 0x10(r7)
     lwz     r0, 0x14(r7)
-    lwz     r3, -0x70dc(r13)
+    lwz     r3, R13Off_m0x70dc(r13)
     stw     r6, 0x3c(sp)
     stw     r0, 0x40(sp)
     lwz     r0, 0x18(r7)
@@ -4241,9 +4241,9 @@ branch_0x8028c84c:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028c87c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028c8a4
 
@@ -4275,8 +4275,8 @@ evKillWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c8b8
     mr      r27, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r30, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r30, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r27)
@@ -4296,7 +4296,7 @@ evKillWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028c8b8
     b       branch_0x8028c948
 
 branch_0x8028c920:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -4346,7 +4346,7 @@ branch_0x8028c984:
     b       branch_0x8028c9e8
 
 branch_0x8028c9c0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -4380,10 +4380,10 @@ branch_0x8028ca20:
     li      r5, 0x0
 branch_0x8028ca24:
     lwz     r4, 0x148(r30)
-    lis     r3, 0x6666
+    lis     r3, unk_66666667@h
     lwz     r0, 0x14c(r30)
     addi    r28, r5, 0x0
-    addi    r31, r3, 0x6667
+    addi    r31, r3, unk_66666667@l
     stw     r4, 0x70(sp)
     stw     r0, 0x74(sp)
     lwz     r0, 0x150(r30)
@@ -4416,7 +4416,7 @@ branch_0x8028ca70:
     addi    r0, r3, 0x30
     stb     r0, 0x7b(sp)
 branch_0x8028caa4:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, sp, 0x70
     lwz     r26, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -4478,8 +4478,8 @@ evRefreshWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028cb5c
     mr      r27, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r30, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r30, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r27)
@@ -4499,7 +4499,7 @@ evRefreshWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028cb5c
     b       branch_0x8028cbec
 
 branch_0x8028cbc4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -4549,7 +4549,7 @@ branch_0x8028cc28:
     b       branch_0x8028cc8c
 
 branch_0x8028cc64:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -4583,10 +4583,10 @@ branch_0x8028ccc4:
     li      r5, 0x0
 branch_0x8028ccc8:
     lwz     r4, 0x138(r30)
-    lis     r3, 0x6666
+    lis     r3, unk_66666667@h
     lwz     r0, 0x13c(r30)
     addi    r28, r5, 0x0
-    addi    r31, r3, 0x6667
+    addi    r31, r3, unk_66666667@l
     stw     r4, 0x70(sp)
     stw     r0, 0x74(sp)
     lwz     r0, 0x140(r30)
@@ -4619,7 +4619,7 @@ branch_0x8028cd14:
     addi    r0, r3, 0x30
     stb     r0, 0x7b(sp)
 branch_0x8028cd48:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, sp, 0x70
     lwz     r26, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -4681,8 +4681,8 @@ evCheckWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028ce00
     mr      r26, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r30, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r30, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r26)
@@ -4702,7 +4702,7 @@ evCheckWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028ce00
     b       branch_0x8028ce90
 
 branch_0x8028ce68:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r26)
     lwz     r0, 0x1c(r26)
     lwz     r3, 0x20(r26)
@@ -4752,7 +4752,7 @@ branch_0x8028cecc:
     b       branch_0x8028cf30
 
 branch_0x8028cf08:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r26)
     lwz     r0, 0x1c(r26)
     lwz     r3, 0x20(r26)
@@ -4788,11 +4788,11 @@ branch_0x8028cf6c:
     lwz     r4, 0x128(r30)
     subf    r5, r6, r29
     lwz     r0, 0x12c(r30)
-    lis     r3, 0x6666
+    lis     r3, unk_66666667@h
     addi    r27, r6, 0x0
     stw     r4, 0x70(sp)
     addi    r28, r5, 0x1
-    addi    r31, r3, 0x6667
+    addi    r31, r3, unk_66666667@l
     stw     r0, 0x74(sp)
     lwz     r0, 0x130(r30)
     stw     r0, 0x78(sp)
@@ -4824,7 +4824,7 @@ branch_0x8028cfc0:
     addi    r0, r3, 0x30
     stb     r0, 0x7b(sp)
 branch_0x8028cff4:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, sp, 0x70
     lwz     r25, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -4840,7 +4840,7 @@ branch_0x8028cff4:
     lwz     r0, 0xf0(r3)
     clrlwi. r0, r0, 31
     beq-    branch_0x8028d038
-    subi    r28, r28, 0x1
+    addi    r28, r28, -0x1
 branch_0x8028d038:
     addi    r27, r27, 0x1
 branch_0x8028d03c:
@@ -4888,7 +4888,7 @@ evStartMarioTalking__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d0ac
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     bl      startTalking__6TMarioFv
     li      r0, 0x0
     stw     r0, 0x10(sp)
@@ -4897,9 +4897,9 @@ evStartMarioTalking__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d0ac
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028d108
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028d130
 
@@ -4936,9 +4936,9 @@ evChangeNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d144
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028d1a8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -4951,7 +4951,7 @@ evChangeNozzle__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d144
     b       branch_0x8028d1d0
 
 branch_0x8028d1a8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -4987,12 +4987,12 @@ branch_0x8028d20c:
     mr      r4, r0
     cmpwi   r4, 0x7
     bne-    branch_0x8028d224
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     bl      setDivHelm__6TMarioFv
     b       branch_0x8028d234
 
 branch_0x8028d224:
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     li      r5, 0x1
     lwz     r3, 0x3e4(r3)
     bl      changeNozzle__9TWaterGunFQ29TWaterGun11TNozzleTypeb
@@ -5004,9 +5004,9 @@ branch_0x8028d234:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028d264
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028d28c
 
@@ -5039,8 +5039,8 @@ evAppearShineForWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d2a0
     stw     r30, 0x40(sp)
     mr      r30, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x1
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r30)
@@ -5060,7 +5060,7 @@ evAppearShineForWoodBox__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d2a0
     b       branch_0x8028d334
 
 branch_0x8028d30c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -5098,13 +5098,13 @@ branch_0x8028d370:
     li      r0, 0x1
 branch_0x8028d37c:
     slwi    r0, r0, 2
-    lwz     r3, gpItemManager(r13)
-    subi    r4, r13, 0x75d8
-    lfs     f1, -0x650(rtoc)
+    lwz     r3, R13Off_m0x62b0(r13)
+    addi    r4, r13, R13Off_m0x75d8
+    lfs     f1, -0x650(r2)
     lwzx    r4, r4, r0
     addi    r5, r31, 0x81c
-    lfs     f2, -0x64c(rtoc)
-    lfs     f3, -0x648(rtoc)
+    lfs     f2, -0x64c(r2)
+    lfs     f3, -0x648(r2)
     bl      makeShineAppearWithDemo__12TItemManagerFPCcPCcfff
     li      r0, 0x0
     stw     r0, 0x24(sp)
@@ -5147,8 +5147,8 @@ evAppearShineFromKageMario__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d40c
     mr      r28, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x3
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r28)
@@ -5168,7 +5168,7 @@ evAppearShineFromKageMario__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d40c
     b       branch_0x8028d49c
 
 branch_0x8028d474:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r28)
     lwz     r0, 0x1c(r28)
     lwz     r3, 0x20(r28)
@@ -5219,7 +5219,7 @@ branch_0x8028d4d8:
     b       branch_0x8028d540
 
 branch_0x8028d518:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r28)
     lwz     r0, 0x1c(r28)
     lwz     r3, 0x20(r28)
@@ -5240,7 +5240,7 @@ branch_0x8028d550:
     b       branch_0x8028d55c
 
 branch_0x8028d558:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x8028d55c:
     lwz     r3, 0x1c(r28)
     mr      r29, r0
@@ -5260,7 +5260,7 @@ branch_0x8028d55c:
     b       branch_0x8028d5c4
 
 branch_0x8028d59c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r28)
     lwz     r0, 0x1c(r28)
     lwz     r3, 0x20(r28)
@@ -5281,9 +5281,9 @@ branch_0x8028d5d4:
     b       branch_0x8028d5e0
 
 branch_0x8028d5dc:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x8028d5e0:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r26, r0
     addi    r3, r29, 0x0
     lwz     r27, 0x4(r4)
@@ -5295,7 +5295,7 @@ branch_0x8028d5e0:
     mr      r5, r29
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r29, r3, 0x0
     addi    r3, r26, 0x0
     lwz     r27, 0x4(r4)
@@ -5355,8 +5355,8 @@ evAppearShineFromNPCWithoutDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -5375,7 +5375,7 @@ evAppearShineFromNPCWithoutDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802
     b       branch_0x8028d750
 
 branch_0x8028d72c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -5405,7 +5405,7 @@ branch_0x8028d750:
     b       branch_0x8028d7c0
 
 branch_0x8028d798:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -5426,7 +5426,7 @@ branch_0x8028d7d0:
     b       branch_0x8028d7dc
 
 branch_0x8028d7d8:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x8028d7dc:
     lwz     r3, 0x84(sp)
     mr      r30, r0
@@ -5454,9 +5454,9 @@ branch_0x8028d824:
     b       branch_0x8028d830
 
 branch_0x8028d82c:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x8028d830:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -5492,7 +5492,7 @@ branch_0x8028d884:
 branch_0x8028d898:
     li      r28, 0x0
 branch_0x8028d89c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -5556,8 +5556,8 @@ evAppearShine__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d958
     mr      r29, r3
     stw     r28, 0x70(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -5577,7 +5577,7 @@ evAppearShine__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028d958
     b       branch_0x8028d9f4
 
 branch_0x8028d9cc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -5598,7 +5598,7 @@ branch_0x8028da04:
     b       branch_0x8028da10
 
 branch_0x8028da0c:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x8028da10:
     lwz     r3, 0x1c(r29)
     mr      r30, r0
@@ -5618,7 +5618,7 @@ branch_0x8028da10:
     b       branch_0x8028da78
 
 branch_0x8028da50:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -5639,17 +5639,17 @@ branch_0x8028da88:
     b       branch_0x8028da94
 
 branch_0x8028da90:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x8028da94:
     mr      r28, r0
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x658
+    addi    r4, r2, R2Off_m0x658
     bl      strcmp
     cmpwi   r3, 0x0
     beq-    branch_0x8028dacc
-    lfs     f1, -0x678(rtoc)
+    lfs     f1, -0x678(r2)
     mr      r4, r28
-    lwz     r3, gpItemManager(r13)
+    lwz     r3, R13Off_m0x62b0(r13)
     mr      r5, r30
     fmr     f2, f1
     fmr     f3, f1
@@ -5657,7 +5657,7 @@ branch_0x8028da94:
     b       branch_0x8028db0c
 
 branch_0x8028dacc:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -5717,8 +5717,8 @@ evAppearShineFromNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028db80
     mr      r27, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x3
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r27)
@@ -5738,7 +5738,7 @@ evAppearShineFromNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028db80
     b       branch_0x8028dc10
 
 branch_0x8028dbe8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -5759,7 +5759,7 @@ branch_0x8028dc20:
     b       branch_0x8028dc2c
 
 branch_0x8028dc28:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x8028dc2c:
     lwz     r3, 0x1c(r27)
     mr      r29, r0
@@ -5778,7 +5778,7 @@ branch_0x8028dc2c:
     b       branch_0x8028dc8c
 
 branch_0x8028dc68:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -5808,7 +5808,7 @@ branch_0x8028dc8c:
     b       branch_0x8028dcfc
 
 branch_0x8028dcd4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -5829,7 +5829,7 @@ branch_0x8028dd0c:
     b       branch_0x8028dd18
 
 branch_0x8028dd14:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x8028dd18:
     lwz     r3, 0xa4(sp)
     mr      r28, r0
@@ -5857,9 +5857,9 @@ branch_0x8028dd60:
     b       branch_0x8028dd6c
 
 branch_0x8028dd68:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028dd6c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r26, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -5896,11 +5896,11 @@ branch_0x8028ddd4:
     li      r30, 0x0
 branch_0x8028ddd8:
     addi    r3, r29, 0x0
-    subi    r4, rtoc, 0x658
+    addi    r4, r2, R2Off_m0x658
     bl      strcmp
     cmpwi   r3, 0x0
     beq-    branch_0x8028de0c
-    lwz     r3, gpItemManager(r13)
+    lwz     r3, R13Off_m0x62b0(r13)
     mr      r4, r28
     lfs     f1, 0x10(r30)
     mr      r5, r29
@@ -5910,7 +5910,7 @@ branch_0x8028ddd8:
     b       branch_0x8028de7c
 
 branch_0x8028de0c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -5986,9 +5986,9 @@ evAppearMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028dee4
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028df50
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6001,7 +6001,7 @@ evAppearMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028dee4
     b       branch_0x8028df78
 
 branch_0x8028df50:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6037,9 +6037,9 @@ branch_0x8028dfbc:
     b       branch_0x8028dfc8
 
 branch_0x8028dfc4:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028dfc8:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -6078,7 +6078,7 @@ branch_0x8028e030:
     lwz     r12, 0xfc(r12)
     mtlr    r12
     blrl
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x4854
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -6096,9 +6096,9 @@ branch_0x8028e068:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028e098
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028e0c0
 
@@ -6139,9 +6139,9 @@ evKillMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e0dc
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028e148
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6154,7 +6154,7 @@ evKillMushroom1up__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e0dc
     b       branch_0x8028e170
 
 branch_0x8028e148:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6190,9 +6190,9 @@ branch_0x8028e1b4:
     b       branch_0x8028e1c0
 
 branch_0x8028e1bc:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028e1c0:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -6238,9 +6238,9 @@ branch_0x8028e228:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028e268
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028e290
 
@@ -6281,9 +6281,9 @@ evKillShine__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e2ac
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028e318
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6296,7 +6296,7 @@ evKillShine__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e2ac
     b       branch_0x8028e340
 
 branch_0x8028e318:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6332,9 +6332,9 @@ branch_0x8028e384:
     b       branch_0x8028e390
 
 branch_0x8028e38c:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028e390:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -6380,9 +6380,9 @@ branch_0x8028e3f8:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028e438
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028e460
 
@@ -6418,7 +6418,7 @@ evGetTime__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e47c
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      getFinishedTime__11TGCConsole2Fv
     li      r0, 0x0
@@ -6428,9 +6428,9 @@ evGetTime__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e47c
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028e4dc
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028e504
 
@@ -6466,11 +6466,11 @@ evMonteManReachFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e518
     stw     r28, 0x30(sp)
     li      r28, 0x0
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r30, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r30, r4, unk_803a1ec0@l
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x838
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -6531,7 +6531,7 @@ evStopTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e604
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      stopMoveTimer__11TGCConsole2Fv
     li      r0, 0x0
@@ -6541,9 +6541,9 @@ evStopTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e604
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028e664
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028e68c
 
@@ -6577,11 +6577,11 @@ evStartMonteman__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e6a0
     stw     r29, 0x64(sp)
     mr      r29, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x1
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x838
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -6609,7 +6609,7 @@ evStartMonteman__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e6a0
     b       branch_0x8028e760
 
 branch_0x8028e73c:
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -6699,9 +6699,9 @@ evStartTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e82c
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028e898
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6714,7 +6714,7 @@ evStartTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e82c
     b       branch_0x8028e8c0
 
 branch_0x8028e898:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6747,14 +6747,14 @@ branch_0x8028e8e4:
 branch_0x8028e8f8:
     li      r0, 0x0
 branch_0x8028e8fc:
-    lwz     r30, gpMarDirector(r13)
+    lwz     r30, R13Off_m0x6048(r13)
     mr      r29, r0
     addi    r3, r30, 0xe8
     bl      OSCheckStopwatch
     stw     r4, 0xcc(r30)
     mr      r4, r29
     stw     r3, 0xc8(r30)
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startMoveTimer__11TGCConsole2Fi
     li      r0, 0x0
@@ -6764,9 +6764,9 @@ branch_0x8028e8fc:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028e954
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028e97c
 
@@ -6802,8 +6802,8 @@ evInsertTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e998
     stw     r29, 0x94(sp)
     mr      r29, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -6823,7 +6823,7 @@ evInsertTimer__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028e998
     b       branch_0x8028ea30
 
 branch_0x8028ea08:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -6874,7 +6874,7 @@ branch_0x8028ea6c:
     b       branch_0x8028ead4
 
 branch_0x8028eaac:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -6909,7 +6909,7 @@ branch_0x8028eb0c:
 branch_0x8028eb10:
     cmpwi   r0, 0x1
     bne-    branch_0x8028eb30
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     addi    r5, r30, 0x0
     li      r4, 0x0
     lwz     r3, 0x74(r3)
@@ -6919,7 +6919,7 @@ branch_0x8028eb10:
 branch_0x8028eb30:
     cmpwi   r0, 0x2
     bne-    branch_0x8028eb50
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     addi    r5, r30, 0x0
     li      r4, 0x1
     lwz     r3, 0x74(r3)
@@ -6927,7 +6927,7 @@ branch_0x8028eb30:
     b       branch_0x8028eb5c
 
 branch_0x8028eb50:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startDisappearTimer__11TGCConsole2Fv
 branch_0x8028eb5c:
@@ -6975,7 +6975,7 @@ evForceCloseTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028ebcc
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, TalkManager(r13)
+    lwz     r3, R13Off_m0x63e8(r13)
     bl      forceCloseTalk__8TTalk2D2Fv
     li      r0, 0x0
     stw     r0, 0x14(sp)
@@ -6984,9 +6984,9 @@ evForceCloseTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028ebcc
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028ec28
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028ec50
 
@@ -7021,8 +7021,8 @@ evRaiseBuilding__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028ec64
     stw     r29, 0x64(sp)
     stw     r28, 0x60(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x1
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r30)
@@ -7041,7 +7041,7 @@ evRaiseBuilding__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028ec64
     b       branch_0x8028ecf8
 
 branch_0x8028ecd4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -7076,7 +7076,7 @@ branch_0x8028ed28:
 branch_0x8028ed3c:
     li      r0, 0x0
 branch_0x8028ed40:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r28, r0
     addi    r3, r31, 0x844
     lwz     r29, 0x4(r4)
@@ -7143,9 +7143,9 @@ evIsMapEventFinishedAll__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028edf4
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028ee60
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7158,7 +7158,7 @@ evIsMapEventFinishedAll__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028edf4
     b       branch_0x8028ee88
 
 branch_0x8028ee60:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7194,9 +7194,9 @@ branch_0x8028eecc:
     b       branch_0x8028eed8
 
 branch_0x8028eed4:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028eed8:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7243,9 +7243,9 @@ branch_0x8028ef40:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028ef84
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028efac
 
@@ -7286,9 +7286,9 @@ evStartOpenModelGate__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028efc8
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028f034
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7301,7 +7301,7 @@ evStartOpenModelGate__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028efc8
     b       branch_0x8028f05c
 
 branch_0x8028f034:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7337,9 +7337,9 @@ branch_0x8028f0a0:
     b       branch_0x8028f0ac
 
 branch_0x8028f0a8:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028f0ac:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7382,9 +7382,9 @@ branch_0x8028f114:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028f148
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028f170
 
@@ -7425,9 +7425,9 @@ evStartEMarioDisappear__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f18c
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028f1f8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7440,7 +7440,7 @@ evStartEMarioDisappear__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f18c
     b       branch_0x8028f220
 
 branch_0x8028f1f8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7476,9 +7476,9 @@ branch_0x8028f264:
     b       branch_0x8028f270
 
 branch_0x8028f26c:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028f270:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7521,9 +7521,9 @@ branch_0x8028f2d8:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028f30c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028f334
 
@@ -7564,9 +7564,9 @@ evStartEMarioGateDrawing__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f350
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028f3bc
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7579,7 +7579,7 @@ evStartEMarioGateDrawing__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f350
     b       branch_0x8028f3e4
 
 branch_0x8028f3bc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7615,9 +7615,9 @@ branch_0x8028f428:
     b       branch_0x8028f434
 
 branch_0x8028f430:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028f434:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7660,9 +7660,9 @@ branch_0x8028f49c:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028f4d0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028f4f8
 
@@ -7703,9 +7703,9 @@ evStartEMarioRunAway__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f514
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028f580
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7718,7 +7718,7 @@ evStartEMarioRunAway__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f514
     b       branch_0x8028f5a8
 
 branch_0x8028f580:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7754,9 +7754,9 @@ branch_0x8028f5ec:
     b       branch_0x8028f5f8
 
 branch_0x8028f5f4:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028f5f8:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7799,9 +7799,9 @@ branch_0x8028f660:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028f694
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028f6bc
 
@@ -7842,9 +7842,9 @@ evIsEMarioDownWaitingToTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f6d
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028f744
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7857,7 +7857,7 @@ evIsEMarioDownWaitingToTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f6d
     b       branch_0x8028f76c
 
 branch_0x8028f744:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7893,9 +7893,9 @@ branch_0x8028f7b0:
     b       branch_0x8028f7bc
 
 branch_0x8028f7b8:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028f7bc:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -7939,9 +7939,9 @@ branch_0x8028f824:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028f85c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028f884
 
@@ -7982,9 +7982,9 @@ evIsEMarioReachedToGoal__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f8a0
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028f90c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -7997,7 +7997,7 @@ evIsEMarioReachedToGoal__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028f8a0
     b       branch_0x8028f934
 
 branch_0x8028f90c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -8033,9 +8033,9 @@ branch_0x8028f978:
     b       branch_0x8028f984
 
 branch_0x8028f980:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x8028f984:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8079,9 +8079,9 @@ branch_0x8028f9ec:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028fa24
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028fa4c
 
@@ -8118,7 +8118,7 @@ evLaunchEventClearDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fa68
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r31, 0x74(r3)
     lwz     r3, 0x94(r31)
     bl      startAppearShineGet__11TConsoleStrFv
@@ -8131,9 +8131,9 @@ evLaunchEventClearDemo__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fa68
     lwz     r0, 0x18(r30)
     cmpw    r3, r0
     blt-    branch_0x8028fad8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028fb00
 
@@ -8168,7 +8168,7 @@ evIsBossDefeated__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fb18
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      isBossDefeated__10TConductorFv
     cmpwi   r3, 0x0
     beq-    branch_0x8028fb54
@@ -8185,9 +8185,9 @@ branch_0x8028fb58:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028fb88
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028fbb0
 
@@ -8224,9 +8224,9 @@ evSetGraffitoMultiplied__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fbc4
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028fc24
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -8238,7 +8238,7 @@ evSetGraffitoMultiplied__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fbc4
     b       branch_0x8028fc48
 
 branch_0x8028fc24:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -8274,7 +8274,7 @@ branch_0x8028fc8c:
     li      r0, 0x0
 branch_0x8028fc90:
     cmpwi   r0, 0x0
-    lwz     r6, gpPollution(r13)
+    lwz     r6, R13Off_m0x62f0(r13)
     li      r7, 0x0
     li      r3, 0x0
     li      r4, 0x0
@@ -8295,8 +8295,9 @@ branch_0x8028fcc8:
     blt+    branch_0x8028fcac
     b       branch_0x8028fd04
 
+branch_0x8028fcd8:
+    b       branch_0x8028fcf8
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x28a6d8, 0x8028fcdc - 0x8028fcd8
 branch_0x8028fcdc:
     lwz     r5, 0x14(r6)
     addi    r7, r7, 0x1
@@ -8317,9 +8318,9 @@ branch_0x8028fd04:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028fd34
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028fd5c
 
@@ -8353,7 +8354,7 @@ evIsGraffitoCoverage0__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fd70
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     bl      cleanedAll__17TPollutionManagerCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8028fdac
@@ -8370,9 +8371,9 @@ branch_0x8028fdb0:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028fde0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028fe08
 
@@ -8406,7 +8407,7 @@ evGameOver__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fe1c
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     li      r0, 0x0
     lhz     r3, 0x4c(r4)
     ori     r3, r3, 0x1
@@ -8417,9 +8418,9 @@ evGameOver__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028fe1c
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028fe80
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028fea8
 
@@ -8456,9 +8457,9 @@ evRegisterMovie__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028febc
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x8028ff1c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -8470,7 +8471,7 @@ evRegisterMovie__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8028febc
     b       branch_0x8028ff40
 
 branch_0x8028ff1c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -8505,7 +8506,7 @@ branch_0x8028ff70:
 branch_0x8028ff84:
     li      r0, 0x0
 branch_0x8028ff88:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     clrlwi  r4, r0, 24
     bl      fireStreamingMovie__12TMarDirectorFUc
     li      r0, 0x0
@@ -8515,9 +8516,9 @@ branch_0x8028ff88:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8028ffc4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8028ffec
 
@@ -8551,8 +8552,8 @@ evSetNextStage__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290000
     mr      r30, r3
     stw     r29, 0x7c(sp)
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r30)
@@ -8571,7 +8572,7 @@ evSetNextStage__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290000
     b       branch_0x80290090
 
 branch_0x8029006c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -8622,7 +8623,7 @@ branch_0x802900d8:
     b       branch_0x80290134
 
 branch_0x80290110:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -8658,7 +8659,7 @@ branch_0x80290178:
     li      r3, 0x0
 branch_0x8029017c:
     addi    r0, r3, 0x1
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     clrlwi  r4, r29, 24
     slwi    r0, r0, 8
     add     r4, r4, r0
@@ -8708,7 +8709,7 @@ evGetPollutionLevel__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290208
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     bl      getPollutionDegree__17TPollutionManagerCFv
     li      r0, 0x0
     stw     r0, 0x10(sp)
@@ -8717,9 +8718,9 @@ evGetPollutionLevel__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290208
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80290264
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x8029028c
 
@@ -8754,13 +8755,13 @@ evGetRestTime__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802902a0
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r30, gpMarDirector(r13)
+    lwz     r30, R13Off_m0x6048(r13)
     addi    r3, r30, 0xe8
     bl      OSCheckStopwatch
     lis     r5, 0x8000
     lwz     r0, 0xf8(r5)
-    lis     r5, 0x1062
-    addi    r5, r5, 0x4dd3
+    lis     r5, unk_10624dd3@h
+    addi    r5, r5, unk_10624dd3@l
     srwi    r0, r0, 2
     mulhwu  r0, r5, r0
     srwi    r6, r0, 6
@@ -8778,9 +8779,9 @@ evGetRestTime__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802902a0
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8029033c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80290364
 
@@ -8818,14 +8819,14 @@ evSetPollutionIncreaseCount__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8029037
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x802903c0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     b       branch_0x802903c8
 
 branch_0x802903c0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
 branch_0x802903c8:
     li      r0, 0x0
@@ -8835,9 +8836,9 @@ branch_0x802903c8:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x802903f8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80290420
 
@@ -8874,14 +8875,14 @@ evSetAttentionTime__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290434
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x80290478
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     b       branch_0x80290480
 
 branch_0x80290478:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
 branch_0x80290480:
     li      r0, 0x0
@@ -8891,9 +8892,9 @@ branch_0x80290480:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x802904b0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x802904d8
 
@@ -8931,9 +8932,9 @@ evSetTimeLimit__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802904ec
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x80290550
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -8945,7 +8946,7 @@ evSetTimeLimit__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802904ec
     b       branch_0x80290574
 
 branch_0x80290550:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -8980,10 +8981,10 @@ branch_0x802905a4:
 branch_0x802905b8:
     li      r30, 0x0
 branch_0x802905bc:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     addi    r3, r3, 0xe8
     bl      OSResetStopwatch
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r0, 0x0
     stw     r30, 0x120(r3)
     stw     r0, 0x34(sp)
@@ -8992,9 +8993,9 @@ branch_0x802905bc:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80290600
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80290628
 
@@ -9027,8 +9028,8 @@ evSetDead4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290640
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -9047,7 +9048,7 @@ evSetDead4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290640
     b       branch_0x802906c8
 
 branch_0x802906a4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9099,7 +9100,7 @@ branch_0x80290710:
     b       branch_0x80290774
 
 branch_0x8029074c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9120,9 +9121,9 @@ branch_0x80290784:
     b       branch_0x80290790
 
 branch_0x8029078c:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x80290790:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r27, r0
     addi    r3, r27, 0x0
     lwz     r28, 0x4(r4)
@@ -9194,8 +9195,8 @@ evSetHide4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8029086c
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -9214,7 +9215,7 @@ evSetHide4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8029086c
     b       branch_0x802908f4
 
 branch_0x802908d0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9266,7 +9267,7 @@ branch_0x8029093c:
     b       branch_0x802909a0
 
 branch_0x80290978:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9287,9 +9288,9 @@ branch_0x802909b0:
     b       branch_0x802909bc
 
 branch_0x802909b8:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x802909bc:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r27, r0
     addi    r3, r27, 0x0
     lwz     r28, 0x4(r4)
@@ -9361,8 +9362,8 @@ evIsOnLiveActorFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290a98
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -9381,7 +9382,7 @@ evIsOnLiveActorFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290a98
     b       branch_0x80290b20
 
 branch_0x80290afc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9433,7 +9434,7 @@ branch_0x80290b68:
     b       branch_0x80290bcc
 
 branch_0x80290ba4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9469,9 +9470,9 @@ branch_0x80290c10:
     b       branch_0x80290c1c
 
 branch_0x80290c18:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x80290c1c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -9552,11 +9553,12 @@ evPushNerve4LiveActor__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290d00
     mr      r29, r3
     addi    r5, sp, 0xc
 
+
 .globl Function_0x80290d18
 Function_0x80290d18: # 0x80290d18
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r30, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r30, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -9575,7 +9577,7 @@ Function_0x80290d18: # 0x80290d18
     b       branch_0x80290d88
 
 branch_0x80290d64:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9630,7 +9632,7 @@ branch_0x80290dd0:
     b       branch_0x80290e40
 
 branch_0x80290e18:
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9651,9 +9653,9 @@ branch_0x80290e50:
     b       branch_0x80290e5c
 
 branch_0x80290e58:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x80290e5c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r27, r0
     addi    r3, r27, 0x0
     lwz     r28, 0x4(r4)
@@ -9731,8 +9733,8 @@ evSetFlagNPCCanTaken__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290f54
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -9751,7 +9753,7 @@ evSetFlagNPCCanTaken__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80290f54
     b       branch_0x80290fdc
 
 branch_0x80290fb8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9803,7 +9805,7 @@ branch_0x80291024:
     b       branch_0x80291088
 
 branch_0x80291060:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -9824,9 +9826,9 @@ branch_0x80291098:
     b       branch_0x802910a4
 
 branch_0x802910a0:
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
 branch_0x802910a4:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r27, r0
     addi    r3, r27, 0x0
     lwz     r28, 0x4(r4)
@@ -9894,7 +9896,7 @@ evIsTalkModeNow__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291168
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     li      r3, 0x1
     lbz     r0, 0x124(r4)
     cmplwi  r0, 0x1
@@ -9918,9 +9920,9 @@ branch_0x802911c0:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x802911f0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80291218
 
@@ -9953,8 +9955,8 @@ evSetValue2TalkVariable__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8029122c
     stw     r30, 0x98(sp)
     mr      r30, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r30)
@@ -9966,7 +9968,7 @@ evSetValue2TalkVariable__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x8029122c
     b       branch_0x80291280
 
 branch_0x80291278:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
 branch_0x80291280:
     lwz     r3, 0x1c(r30)
@@ -9978,7 +9980,7 @@ branch_0x80291280:
     b       branch_0x802912a4
 
 branch_0x8029129c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
 branch_0x802912a4:
     li      r0, 0x0
@@ -10025,7 +10027,7 @@ evGetTalkSelectedValue__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291310
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
     li      r0, 0x0
-    lwz     r3, TalkManager(r13)
+    lwz     r3, R13Off_m0x63e8(r13)
     stw     r0, 0x1c(sp)
     lbz     r0, 0x214(r3)
     extsb   r0, r0
@@ -10034,9 +10036,9 @@ evGetTalkSelectedValue__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291310
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80291370
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80291398
 
@@ -10071,7 +10073,7 @@ evGetTalkMode__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802913ac
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
     li      r0, 0x0
-    lwz     r3, TalkManager(r13)
+    lwz     r3, R13Off_m0x63e8(r13)
     stw     r0, 0x20(sp)
     lwz     r0, 0x248(r3)
     stw     r0, 0x24(sp)
@@ -10079,9 +10081,9 @@ evGetTalkMode__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802913ac
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80291408
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80291430
 
@@ -10115,8 +10117,8 @@ evSetTalkMsgID__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291444
     stw     r29, 0x7c(sp)
     mr      r29, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -10135,7 +10137,7 @@ evSetTalkMsgID__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291444
     b       branch_0x802914d4
 
 branch_0x802914b0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -10187,7 +10189,7 @@ branch_0x8029151c:
     b       branch_0x8029157c
 
 branch_0x80291558:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -10222,7 +10224,7 @@ branch_0x802915ac:
 branch_0x802915c0:
     li      r0, 0x0
 branch_0x802915c4:
-    lwz     r3, TalkManager(r13)
+    lwz     r3, R13Off_m0x63e8(r13)
     mr      r4, r0
     addi    r5, r30, 0x0
     bl      setMessageID__8TTalk2D2FUlUl
@@ -10270,13 +10272,13 @@ evGetTalkNPCName__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291644
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0xa0(r3)
     cmplwi  r3, 0x0
     bne-    branch_0x802916f4
     li      r3, 0x0
     stw     r3, 0x28(sp)
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
     cmplwi  r0, 0x0
     stw     r3, 0x2c(sp)
     li      r3, 0x2
@@ -10292,9 +10294,9 @@ branch_0x802916a4:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x802916c8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80291770
 
@@ -10320,7 +10322,7 @@ branch_0x802916f4:
     stw     r3, 0x24(sp)
     stw     r0, 0x20(sp)
     bne-    branch_0x80291720
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
     stw     r0, 0x24(sp)
     b       branch_0x80291724
 
@@ -10331,9 +10333,9 @@ branch_0x80291724:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80291748
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80291770
 
@@ -10367,7 +10369,7 @@ evGetTalkNPC__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291784
     stw     r4, 0xc(sp)
     li      r4, 0x0
     bl      verifyArgNum__10TSpcInterpFUlPUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r0, 0x0
     lwz     r3, 0xa0(r3)
     cmplwi  r3, 0x0
@@ -10383,9 +10385,9 @@ branch_0x802917c8:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x802917f0
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80291818
 
@@ -10450,9 +10452,9 @@ branch_0x802918ac:
     b       branch_0x802918b8
 
 branch_0x802918b4:
-    subi    r29, rtoc, 0x658
+    addi    r29, r2, R2Off_m0x658
 branch_0x802918b8:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r29
     lwz     r26, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10491,9 +10493,9 @@ branch_0x80291924:
     cmplwi  r31, 0x0
     beq-    branch_0x80291b00
     lwz     r3, 0x1c(r27)
-    subi    r4, r28, 0x2
+    addi    r4, r28, -0x2
     lwz     r5, 0x20(r27)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     subf    r0, r4, r0
     slwi    r0, r0, 3
     add     r3, r5, r0
@@ -10508,7 +10510,7 @@ branch_0x80291924:
 branch_0x80291964:
     lwz     r3, 0x4(r3)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0xb4(sp)
     stw     r0, 0xb0(sp)
@@ -10521,7 +10523,7 @@ branch_0x80291988:
     b       branch_0x80291994
 
 branch_0x80291990:
-    lfs     f31, -0x678(rtoc)
+    lfs     f31, -0x678(r2)
 branch_0x80291994:
     li      r29, 0x2
     li      r30, 0x1
@@ -10559,9 +10561,9 @@ branch_0x802919fc:
     b       branch_0x80291a08
 
 branch_0x80291a04:
-    subi    r26, rtoc, 0x658
+    addi    r26, r2, R2Off_m0x658
 branch_0x80291a08:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r26
     lwz     r25, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10635,8 +10637,8 @@ branch_0x80291af8:
     cmplw   r29, r28
     blt+    branch_0x802919a0
 branch_0x80291b00:
-    lis     r3, 0x803a
-    addi    r29, r3, 0x2674
+    lis     r3, unk_803a2674@h
+    addi    r29, r3, unk_803a2674@l
     li      r25, 0x0
     b       branch_0x80291b38
 
@@ -10650,7 +10652,7 @@ branch_0x80291b10:
     b       branch_0x80291b34
 
 branch_0x80291b2c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
 branch_0x80291b34:
     addi    r25, r25, 0x1
@@ -10664,9 +10666,9 @@ branch_0x80291b38:
     lwz     r0, 0x18(r27)
     cmpw    r3, r0
     blt-    branch_0x80291b70
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80291b98
 
@@ -10700,8 +10702,8 @@ evIsNearSameActors__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291bb0
     stmw    r24, 0x128(sp)
     mr      r29, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x3
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -10721,7 +10723,7 @@ evIsNearSameActors__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80291bb0
     b       branch_0x80291c44
 
 branch_0x80291c1c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -10757,9 +10759,9 @@ branch_0x80291c88:
     b       branch_0x80291c94
 
 branch_0x80291c90:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x80291c94:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10840,7 +10842,7 @@ branch_0x80291d5c:
     b       branch_0x80291dc4
 
 branch_0x80291d9c:
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -10862,7 +10864,7 @@ branch_0x80291dc4:
 branch_0x80291de0:
     lwz     r3, 0xf8(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x668(rtoc)
+    lfd     f1, -0x668(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x124(sp)
     stw     r0, 0x120(sp)
@@ -10875,7 +10877,7 @@ branch_0x80291e04:
     b       branch_0x80291e10
 
 branch_0x80291e0c:
-    lfs     f31, -0x678(rtoc)
+    lfs     f31, -0x678(r2)
 branch_0x80291e10:
     lwz     r3, 0x1c(r29)
     cmpwi   r3, 0x0
@@ -10894,7 +10896,7 @@ branch_0x80291e10:
     b       branch_0x80291e74
 
 branch_0x80291e4c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -10930,9 +10932,9 @@ branch_0x80291eb8:
     b       branch_0x80291ec4
 
 branch_0x80291ec0:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x80291ec4:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -10996,7 +10998,7 @@ branch_0x80291f64:
     b       branch_0x802920a0
 
 branch_0x80291f90:
-    lwz     r3, -0x62b8(r13)
+    lwz     r3, R13Off_m0x62b8(r13)
     li      r25, 0x0
     li      r24, 0x0
     lwz     r26, 0x14(r3)
@@ -11004,7 +11006,7 @@ branch_0x80291f90:
     b       branch_0x80292044
 
 branch_0x80291fa8:
-    lwz     r3, -0x62b8(r13)
+    lwz     r3, R13Off_m0x62b8(r13)
     lwz     r3, 0x18(r3)
     lwzx    r4, r3, r28
     lwz     r0, 0x4c(r4)
@@ -11088,8 +11090,8 @@ evSetFlagNPCDead__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802920b8
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -11109,7 +11111,7 @@ evSetFlagNPCDead__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802920b8
     b       branch_0x80292148
 
 branch_0x80292120:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -11162,7 +11164,7 @@ branch_0x80292184:
     b       branch_0x802921f4
 
 branch_0x802921cc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -11198,9 +11200,9 @@ branch_0x80292238:
     b       branch_0x80292244
 
 branch_0x80292240:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x80292244:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11289,8 +11291,8 @@ evSetFlagNPCDontThrow__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292340
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -11310,7 +11312,7 @@ evSetFlagNPCDontThrow__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292340
     b       branch_0x802923d0
 
 branch_0x802923a8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -11363,7 +11365,7 @@ branch_0x8029240c:
     b       branch_0x8029247c
 
 branch_0x80292454:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -11399,9 +11401,9 @@ branch_0x802924c0:
     b       branch_0x802924cc
 
 branch_0x802924c8:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x802924cc:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11490,8 +11492,8 @@ evSetFlagNPCDontTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802925c8
     mr      r29, r3
     addi    r5, sp, 0xc
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -11511,7 +11513,7 @@ evSetFlagNPCDontTalk__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x802925c8
     b       branch_0x80292658
 
 branch_0x80292630:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -11564,7 +11566,7 @@ branch_0x80292694:
     b       branch_0x80292704
 
 branch_0x802926dc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -11600,9 +11602,9 @@ branch_0x80292748:
     b       branch_0x80292754
 
 branch_0x80292750:
-    subi    r28, rtoc, 0x658
+    addi    r28, r2, R2Off_m0x658
 branch_0x80292754:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r28
     lwz     r27, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11700,9 +11702,9 @@ evGetNPCType__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292850
     li      r31, -0x1
     cmpwi   r3, 0x0
     bgt-    branch_0x802928c4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -11715,7 +11717,7 @@ evGetNPCType__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292850
     b       branch_0x802928ec
 
 branch_0x802928c4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -11751,9 +11753,9 @@ branch_0x80292930:
     b       branch_0x8029293c
 
 branch_0x80292938:
-    subi    r29, rtoc, 0x658
+    addi    r29, r2, R2Off_m0x658
 branch_0x8029293c:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r29
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11792,7 +11794,7 @@ branch_0x802929a4:
     beq-    branch_0x802929b8
     lwz     r3, 0x4c(r3)
     addis   r31, r3, 0xfc00
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
 branch_0x802929b8:
     li      r0, 0x0
     stw     r0, 0x50(sp)
@@ -11801,9 +11803,9 @@ branch_0x802929b8:
     lwz     r0, 0x18(r30)
     cmpw    r3, r0
     blt-    branch_0x802929e8
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80292a10
 
@@ -11843,9 +11845,9 @@ evGetNameRefName__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292a30
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x80292a94
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -11858,7 +11860,7 @@ evGetNameRefName__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292a30
     b       branch_0x80292abc
 
 branch_0x80292a94:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -11897,7 +11899,7 @@ branch_0x80292af8:
     b       branch_0x80292b0c
 
 branch_0x80292b08:
-    subi    r4, rtoc, 0x658
+    addi    r4, r2, R2Off_m0x658
 branch_0x80292b0c:
     li      r3, 0x0
     stw     r3, 0x28(sp)
@@ -11906,7 +11908,7 @@ branch_0x80292b0c:
     stw     r3, 0x2c(sp)
     stw     r0, 0x28(sp)
     bne-    branch_0x80292b34
-    subi    r0, rtoc, 0x658
+    addi    r0, r2, R2Off_m0x658
     stw     r0, 0x2c(sp)
     b       branch_0x80292b38
 
@@ -11917,9 +11919,9 @@ branch_0x80292b38:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80292b5c
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80292b84
 
@@ -11958,9 +11960,9 @@ evGetNameRefHandle__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292b98
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x80292c04
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -11973,7 +11975,7 @@ evGetNameRefHandle__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292b98
     b       branch_0x80292c2c
 
 branch_0x80292c04:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -11994,9 +11996,9 @@ branch_0x80292c3c:
     b       branch_0x80292c48
 
 branch_0x80292c44:
-    subi    r30, rtoc, 0x658
+    addi    r30, r2, R2Off_m0x658
 branch_0x80292c48:
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     mr      r3, r30
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -12014,9 +12016,9 @@ branch_0x80292c48:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80292ca4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80292ccc
 
@@ -12052,8 +12054,8 @@ evSetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292ce8
     stw     r29, 0x4c(sp)
     mr      r29, r3
     stw     r4, 0xc(sp)
-    lis     r4, 0x803a
-    addi    r31, r4, 0x1ec0
+    lis     r4, unk_803a1ec0@h
+    addi    r31, r4, unk_803a1ec0@l
     li      r4, 0x2
     bl      verifyArgNum__10TSpcInterpFUlPUl
     lwz     r3, 0x1c(r29)
@@ -12072,7 +12074,7 @@ evSetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292ce8
     b       branch_0x80292d78
 
 branch_0x80292d54:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -12100,7 +12102,7 @@ branch_0x80292d78:
     b       branch_0x80292ddc
 
 branch_0x80292db8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -12155,7 +12157,7 @@ branch_0x80292e40:
 branch_0x80292e54:
     li      r0, 0x0
 branch_0x80292e58:
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     mr      r5, r0
     bl      setFlag__12TFlagManagerFUll
     li      r0, 0x0
@@ -12205,9 +12207,9 @@ evGetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292ed4
     lwz     r3, 0x1c(r31)
     cmpwi   r3, 0x0
     bgt-    branch_0x80292f34
-    lis     r3, 0x803a
+    lis     r3, unk_803a2674@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2674
+    addi    r3, r3, unk_803a2674@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -12219,7 +12221,7 @@ evGetSystemFlag__FP32TSpcTypedInterp_13TEventWatcher_Ul: # 0x80292ed4
     b       branch_0x80292f58
 
 branch_0x80292f34:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -12252,7 +12254,7 @@ branch_0x80292f80:
 branch_0x80292f94:
     li      r0, 0x0
 branch_0x80292f98:
-    lwz     r3, -0x6060(r13)
+    lwz     r3, R13Off_m0x6060(r13)
     mr      r4, r0
     bl      getFlag__12TFlagManagerCFUl
     li      r0, 0x0
@@ -12262,9 +12264,9 @@ branch_0x80292f98:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80292fd4
-    lis     r3, 0x803a
+    lis     r3, unk_803a2658@h
     crxor   6, 6, 6
-    addi    r3, r3, 0x2658
+    addi    r3, r3, unk_803a2658@l
     bl      SpcTrace__FPCce
     b       branch_0x80292ffc
 
@@ -12297,8 +12299,8 @@ __dt__32TSpcTypedInterp_13TEventWatcher_Fv: # 0x80293010
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80293058
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1270
+    lis     r3, __vvt__32TSpcTypedInterp_13TEventWatcher_@ha
+    addi    r0, r3, __vvt__32TSpcTypedInterp_13TEventWatcher_@l
     stw     r0, 0x5c(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -12327,8 +12329,8 @@ __dt__32TSpcTypedBinary_13TEventWatcher_Fv: # 0x80293074
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802930bc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x125c
+    lis     r3, __vvt__32TSpcTypedBinary_13TEventWatcher_@ha
+    addi    r0, r3, __vvt__32TSpcTypedBinary_13TEventWatcher_@l
     stw     r0, 0x4(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -12387,208 +12389,209 @@ branch_0x80293140:
 .globl __sinit_EventWatcher_cpp
 __sinit_EventWatcher_cpp: # 0x80293150
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, unk_803fc628@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x39d8
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803fc628@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x80293198
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x80293198:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x802931c8
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x802931c8:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x802931f8
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x802931f8:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x80293228
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x80293228:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x80293258
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x80293258:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x80293288
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x80293288:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x802932b8
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x802932b8:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x802932e8
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x802932e8:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x80293318
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x80293318:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x80293348
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x80293348:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x80293378
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x80293378:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x802933a8
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x802933a8:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x802933d8
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x802933d8:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x80293408
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x80293408:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x80293438
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x80293438:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
     addi    sp, sp, 0x10
     mtlr    r0
     blr
+

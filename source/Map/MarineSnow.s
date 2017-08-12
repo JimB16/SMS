@@ -9,8 +9,8 @@ __dt__11TMarineSnowFv: # 0x801a2e0c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x801a2e5c
-    lis     r3, 0x803c
-    addi    r3, r3, 0x2358
+    lis     r3, __vvt__11TMarineSnow@h
+    addi    r3, r3, __vvt__11TMarineSnow@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -38,7 +38,7 @@ perform__11TMarineSnowFUlPQ26JDrama9TGraphics: # 0x801a2e78
     rlwinm. r0, r4, 0, 30, 30
     stwu    sp, -0x8(sp)
     beq-    branch_0x801a2ec4
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r7, r3, 0x0
     addi    r5, r3, 0x10
     addi    r8, r4, 0x124
@@ -50,7 +50,7 @@ perform__11TMarineSnowFUlPQ26JDrama9TGraphics: # 0x801a2e78
     stfs    f0, 0x14(r3)
     lfs     f0, 0x8(r8)
     stfs    f0, 0x18(r3)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x801a2ec4:
     lwz     r0, 0xc(sp)
@@ -62,18 +62,18 @@ branch_0x801a2ec4:
 .globl loadAfter__11TMarineSnowFv
 loadAfter__11TMarineSnowFv: # 0x801a2ed4
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2f98
+    addi    r3, r3, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x14b
     lbz     r0, 0x14b(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x801a2f18
-    lis     r4, 0x8039
-    lwz     r3, -0x5fe0(r13)
-    subi    r4, r4, 0x5be8
+    lis     r4, unk_8038a418@ha
+    lwz     r3, R13Off_m0x5fe0(r13)
+    addi    r4, r4, unk_8038a418@l
     li      r5, 0x14b
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
@@ -99,43 +99,43 @@ __ct__11TMarineSnowFPCc: # 0x801a2f2c
     lwz     r3, 0x10(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x10(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
     lwz     r30, 0x14(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x10
-    lfs     f1, -0x40c8(rtoc)
+    lfs     f1, -0x40c8(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_801a3020
     li      r5, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     sth     r5, 0x1c(r30)
-    addi    r0, r3, 0x4718
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage6TActor@h
     stw     r0, 0x20(r31)
-    addi    r0, r3, 0x4650
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage6TActor@l
+    lis     r3, __vvt__Q26JDrama6TActor@h
     stw     r0, 0x20(r31)
-    addi    r3, r3, 0x1920
+    addi    r3, r3, __vvt__Q26JDrama6TActor@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
-    lis     r3, 0x803c
+    lis     r3, __vvt__11TMarineSnow@h
     stw     r0, 0x20(r31)
-    addi    r4, r3, 0x2358
+    addi    r4, r3, __vvt__11TMarineSnow@l
     addi    r0, r4, 0x24
-    lfs     f0, -0x40c4(rtoc)
+    lfs     f0, -0x40c4(r2)
     mr      r3, r31
     stfs    f0, 0x24(r31)
     stfs    f0, 0x28(r31)
     stfs    f0, 0x2c(r31)
-    lfs     f0, -0x40c8(rtoc)
+    lfs     f0, -0x40c8(r2)
     stfs    f0, 0x30(r31)
     stfs    f0, 0x34(r31)
     stfs    f0, 0x38(r31)
@@ -159,7 +159,8 @@ set_f___Q29JGeometry8TVec3_f_Ffff_801a3020: # 0x801a3020
     blr
 
 
-.globl _32___dt__11TMarineSnowFv
-_32___dt__11TMarineSnowFv: # 0x801a3030
-    subi    r3, r3, 0x20
+.globl unk_801a3030
+unk_801a3030: # 0x801a3030
+    addi    r3, r3, -0x20
     b       __dt__11TMarineSnowFv
+

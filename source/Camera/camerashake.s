@@ -172,7 +172,7 @@ branch_0x8002c3a0:
     addi    r7, sp, 0xd4
     bl      CLBCrossToPolar__FRC3VecRC3VecPfPsPs
     li      r0, 0x20
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     mtctr   r0
     addi    r5, r28, 0x4
 branch_0x8002c3d0:
@@ -190,9 +190,9 @@ branch_0x8002c3e8:
     lha     r6, 0x14(r5)
     li      r0, 0x0
     lhz     r3, 0x8(r5)
-    lwz     r4, -0x5eac(r13)
+    lwz     r4, R13Off_m0x5eac(r13)
     mullw   r6, r6, r3
-    lwz     r3, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     lfs     f1, 0xc(r5)
     lha     r7, 0xd6(sp)
     lha     r8, 0xd4(sp)
@@ -310,13 +310,13 @@ branch_0x8002c590:
     fsubs   f0, f4, f1
     stfs    f2, 0xcc(sp)
     stfs    f0, 0xd0(sp)
-    lfs     f31, -0x7764(rtoc)
+    lfs     f31, -0x7764(r2)
     bl      dot__Q29JGeometry8TVec3_f_CFRCQ29JGeometry8TVec3_f_
-    lfs     f0, -0x7760(rtoc)
+    lfs     f0, -0x7760(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x8002c5f4
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     stfs    f0, 0xd0(sp)
     stfs    f0, 0xcc(sp)
     stfs    f0, 0xc8(sp)
@@ -331,14 +331,14 @@ branch_0x8002c5f4:
 branch_0x8002c608:
     lha     r3, 0x0(r28)
     lis     r0, 0x4330
-    lfs     f4, -0x775c(rtoc)
+    lfs     f4, -0x775c(r2)
     addi    r4, sp, 0xc8
-    lfs     f3, -0x7758(rtoc)
+    lfs     f3, -0x7758(r2)
     xoris   r3, r3, 0x8000
-    lfd     f2, -0x7750(rtoc)
+    lfd     f2, -0x7750(r2)
     stw     r3, 0xec(sp)
     addi    r3, sp, 0x90
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     stw     r0, 0xe8(sp)
     stfs    f0, 0xa4(sp)
     lfd     f1, 0xe8(sp)
@@ -350,7 +350,7 @@ branch_0x8002c608:
     stfs    f0, 0xa8(sp)
     fmuls   f1, f4, f1
     stfs    f0, 0x9c(sp)
-    lfs     f0, -0x7764(rtoc)
+    lfs     f0, -0x7764(r2)
     fneg    f1, f1
     stfs    f0, 0xb0(sp)
     stfs    f0, 0xa0(sp)
@@ -526,7 +526,7 @@ branch_0x8002c89c:
     stb     r0, 0x5(r3)
     sth     r30, 0x6(r3)
     sth     r0, 0x8(r3)
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     lfs     f3, 0x2c(r31)
     fcmpo   cr0, f31, f0
     lha     r5, 0x40(r31)
@@ -539,16 +539,16 @@ branch_0x8002c8e8:
     stfs    f3, 0xc(r3)
     lis     r0, 0x4330
     stw     r4, 0x34(sp)
-    lfd     f1, -0x7748(rtoc)
+    lfd     f1, -0x7748(r2)
     stw     r0, 0x30(sp)
-    lfs     f2, -0x7764(rtoc)
+    lfs     f2, -0x7764(r2)
     lfd     f0, 0x30(sp)
     fsubs   f0, f0, f1
     fdivs   f2, f2, f0
     fmuls   f0, f3, f2
     stfs    f0, 0x10(r3)
     sth     r5, 0x14(r3)
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     lfs     f1, 0x54(r31)
     fcmpo   cr0, f31, f0
     lha     r0, 0x68(r31)
@@ -561,7 +561,7 @@ branch_0x8002c93c:
     stfs    f1, 0x18(r3)
     stfs    f0, 0x1c(r3)
     sth     r0, 0x20(r3)
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     lfs     f1, 0x7c(r31)
     fcmpo   cr0, f31, f0
     lha     r0, 0x90(r31)
@@ -609,7 +609,7 @@ startShake__12TCameraShakeF16EnumCamShakeModef: # 0x8002c99c
     stb     r0, 0x5(r3)
     sth     r30, 0x6(r3)
     sth     r0, 0x8(r3)
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     lfs     f3, 0x2c(r31)
     fcmpo   cr0, f31, f0
     lha     r5, 0x40(r31)
@@ -622,16 +622,16 @@ branch_0x8002ca14:
     stfs    f3, 0xc(r3)
     lis     r0, 0x4330
     stw     r4, 0x34(sp)
-    lfd     f1, -0x7748(rtoc)
+    lfd     f1, -0x7748(r2)
     stw     r0, 0x30(sp)
-    lfs     f2, -0x7764(rtoc)
+    lfs     f2, -0x7764(r2)
     lfd     f0, 0x30(sp)
     fsubs   f0, f0, f1
     fdivs   f2, f2, f0
     fmuls   f0, f3, f2
     stfs    f0, 0x10(r3)
     sth     r5, 0x14(r3)
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     lfs     f1, 0x54(r31)
     fcmpo   cr0, f31, f0
     lha     r0, 0x68(r31)
@@ -644,7 +644,7 @@ branch_0x8002ca68:
     stfs    f1, 0x18(r3)
     stfs    f0, 0x1c(r3)
     sth     r0, 0x20(r3)
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     lfs     f1, 0x7c(r31)
     fcmpo   cr0, f31, f0
     lha     r0, 0x90(r31)
@@ -820,10 +820,10 @@ branch_0x8002cc6c:
     addi    r4, r4, 0x30
     bdnz+      branch_0x8002cad8
     li      r0, 0x8
-    lis     r4, 0x1
+    lis     r4, unk_0000ffff@ha
     mtctr   r0
     addi    r9, r3, 0x4
-    subi    r10, r4, 0x1
+    addi    r10, r4, unk_0000ffff@l
     li      r8, 0x0
     li      r4, 0x0
 branch_0x8002cc94:
@@ -903,8 +903,8 @@ __ct__12TCameraShakeFv: # 0x8002cd8c
     stmw    r27, 0x14(sp)
     addi    r28, r3, 0x0
     li      r30, 0x0
-    lis     r3, 0x803b
-    subi    r31, r3, 0x2750
+    lis     r3, mCamShakeNameSave__12TCameraShake@ha
+    addi    r31, r3, mCamShakeNameSave__12TCameraShake@l
     li      r29, 0x0
     sth     r30, 0x0(r28)
 branch_0x8002cdb4:
@@ -924,7 +924,7 @@ branch_0x8002cdd4:
     addi    r30, r30, 0x4
     blt+    branch_0x8002cdb4
     li      r0, 0x8
-    lfs     f0, -0x7768(rtoc)
+    lfs     f0, -0x7768(r2)
     mtctr   r0
     li      r3, 0x0
 branch_0x8002cdfc:

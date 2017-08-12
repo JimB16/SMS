@@ -2,7 +2,7 @@
 .globl TRK_fill_mem
 TRK_fill_mem: # 0x8033fa54
     cmplwi  r5, 0x20
-    subi    r6, r3, 0x1
+    addi    r6, r3, -0x1
     clrlwi  r0, r4, 24
     mr      r7, r0
     blt-    branch_0x8033fafc
@@ -27,7 +27,7 @@ branch_0x8033fa8c:
     or      r7, r7, r0
 branch_0x8033faac:
     srwi.   r0, r5, 5
-    subi    r3, r6, 0x3
+    addi    r3, r6, -0x3
     beq-    branch_0x8033fae0
 branch_0x8033fab8:
     stw     r7, 0x4(r3)

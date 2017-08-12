@@ -27,7 +27,7 @@ getResource__15JUTResReferenceFP14JSUInputStreamUlP10JKRArchive: # 0x802ca3bc
     lbz     r3, 0x0(r28)
     cmplwi  r3, 0x2
     beq-    branch_0x802ca434
-    subi    r0, r3, 0x3
+    addi    r0, r3, -0x3
     clrlwi  r0, r0, 24
     cmplwi  r0, 0x1
     bgt-    branch_0x802ca444

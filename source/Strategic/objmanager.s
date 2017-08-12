@@ -103,9 +103,9 @@ branch_0x8021c470:
 .globl createModelData__11TObjManagerFv
 createModelData__11TObjManagerFv: # 0x8021c4a0
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, entry_1734@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x2d0c
+    addi    r4, r4, entry_1734@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -214,7 +214,7 @@ perform__11TObjManagerFUlPQ26JDrama9TGraphics: # 0x8021c5e4
     clrlwi. r0, r0, 31
     beq-    branch_0x8021c650
     li      r0, 0xff
-    lwz     r30, -0x5ff8(r13)
+    lwz     r30, R13Off_m0x5ff8(r13)
     stb     r0, 0x34(sp)
     cmplwi  r30, 0x0
     stb     r0, 0x35(sp)
@@ -250,7 +250,7 @@ branch_0x8021c678:
     lwz     r0, 0x30(r27)
     clrlwi. r0, r0, 31
     beq-    branch_0x8021c6bc
-    lwz     r30, -0x5ff8(r13)
+    lwz     r30, R13Off_m0x5ff8(r13)
     cmplwi  r30, 0x0
     beq-    branch_0x8021c6bc
     bl      OSGetTick
@@ -308,7 +308,7 @@ load__11TObjManagerFR20JSUMemoryInputStream: # 0x8021c71c
     addi    r4, sp, 0x2c
     li      r5, 0x100
     bl      readString__14JSUInputStreamFPcUs
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, sp, 0x2c
     lwz     r31, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -354,9 +354,9 @@ manageObj__11TObjManagerFP9THitActor: # 0x8021c7c4
 .globl __ct__11TObjManagerFPCc
 __ct__11TObjManagerFPCc: # 0x8021c7e4
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -365,13 +365,13 @@ __ct__11TObjManagerFPCc: # 0x8021c7e4
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__11TObjManager@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x6058
+    addi    r0, r3, __vvt__11TObjManager@l
     addi    r3, r31, 0x0
     stw     r0, 0x0(r31)
     stw     r4, 0x10(r31)
@@ -398,7 +398,7 @@ getRes__9TObjCharaCFPCc: # 0x8021c870
     crxor   6, 6, 6
     li      r4, 0x100
     stwu    sp, -0x110(sp)
-    subi    r5, rtoc, 0x18b8
+    addi    r5, r2, R2Off_m0x18b8
     lwz     r6, 0xc(r3)
     addi    r3, sp, 0x10
     bl      snprintf
@@ -420,12 +420,12 @@ __dt__9TObjCharaFv: # 0x8021c8b0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8021c908
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6004
+    lis     r3, __vvt__9TObjChara@ha
+    addi    r0, r3, __vvt__9TObjChara@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8021c8f8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6028
+    lis     r3, __vvt__Q26JDrama10TCharacter@ha
+    addi    r0, r3, __vvt__Q26JDrama10TCharacter@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -476,8 +476,8 @@ __dt__Q26JDrama10TCharacterFv: # 0x8021c968
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8021c9b0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6028
+    lis     r3, __vvt__Q26JDrama10TCharacter@ha
+    addi    r0, r3, __vvt__Q26JDrama10TCharacter@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

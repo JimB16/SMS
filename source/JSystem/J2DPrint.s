@@ -10,41 +10,41 @@ J2DPrint_print_alpha_va: # 0x802cdbbc
     addi    r29, r5, 0x0
     addi    r30, r6, 0x0
     bl      initchar__8J2DPrintFv
-    lis     r3, 0x8040
-    addi    r31, r3, 0x45c4
+    lis     r3, mMutex__8J2DPrint@h
+    addi    r31, r3, mMutex__8J2DPrint@l
     addi    r3, r31, 0x0
     bl      OSLockMutex
-    lwz     r3, -0x5ea0(r13)
+    lwz     r3, R13Off_m0x5ea0(r13)
     mr      r5, r29
-    lwz     r4, -0x5e98(r13)
+    lwz     r4, R13Off_m0x5e98(r13)
     mr      r6, r30
     bl      vsnprintf
     mr.     r5, r3
     bge-    branch_0x802cdc1c
     mr      r3, r31
     bl      OSUnlockMutex
-    lfs     f1, 0x1b8(rtoc)
+    lfs     f1, 0x1b8(r2)
     b       branch_0x802cdc68
 
 branch_0x802cdc1c:
-    lwz     r3, -0x5e98(r13)
+    lwz     r3, R13Off_m0x5e98(r13)
     cmplw   r5, r3
     blt-    branch_0x802cdc34
     li      r0, 0x1
-    stb     r0, -0x5e94(r13)
-    subi    r5, r3, 0x1
+    stb     r0, R13Off_m0x5e94(r13)
+    addi    r5, r3, -0x1
 branch_0x802cdc34:
-    lis     r6, 0x8000
-    lwz     r4, -0x5ea0(r13)
+    lis     r6, unk_7fffffff@ha
+    lwz     r4, R13Off_m0x5ea0(r13)
     addi    r3, r27, 0x0
     addi    r9, r28, 0x0
-    subi    r6, r6, 0x1
+    addi    r6, r6, unk_7fffffff@l
     addi    r8, sp, 0x18
     li      r7, 0x0
     li      r10, 0x1
     bl      parse__8J2DPrintFPCUciiPUsRQ28J2DPrint5TSizeUcb
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45c4
+    lis     r3, mMutex__8J2DPrint@h
+    addi    r3, r3, mMutex__8J2DPrint@l
     bl      OSUnlockMutex
     lfs     f1, 0x18(sp)
 branch_0x802cdc68:
@@ -58,9 +58,9 @@ branch_0x802cdc68:
 .globl __ct__8J2DPrintFP7JUTFonti
 __ct__8J2DPrintFP7JUTFonti: # 0x802cdc7c
     mflr    r0
-    lis     r6, 0x803e
+    lis     r6, __vvt__8J2DPrint@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x658
+    addi    r0, r6, __vvt__8J2DPrint@l
     lis     r6, 0x8000
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
@@ -93,9 +93,9 @@ __ct__8J2DPrintFP7JUTFonti: # 0x802cdc7c
 .globl __ct__8J2DPrintFP7JUTFontiiQ28JUtility6TColorQ28JUtility6TColor
 __ct__8J2DPrintFP7JUTFontiiQ28JUtility6TColorQ28JUtility6TColor: # 0x802cdcf8
     mflr    r0
-    lis     r9, 0x803e
+    lis     r9, __vvt__8J2DPrint@h
     stw     r0, 0x4(sp)
-    addi    r0, r9, 0x658
+    addi    r0, r9, __vvt__8J2DPrint@l
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     addi    r31, r3, 0x0
@@ -132,8 +132,8 @@ __dt__8J2DPrintFv: # 0x802cdd70
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802cdda4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x658
+    lis     r3, __vvt__8J2DPrint@h
+    addi    r3, r3, __vvt__8J2DPrint@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802cdda4
@@ -200,20 +200,20 @@ private_initiate__8J2DPrintFP7JUTFontiiQ28JUtility6TColorQ28JUtility6TColor: # 0
     addi    r28, r6, 0x0
     addi    r29, r7, 0x0
     addi    r30, r8, 0x0
-    lwz     r0, -0x5ea0(r13)
+    lwz     r0, R13Off_m0x5ea0(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802cde80
     li      r3, 0x400
     bl      setBuffer__8J2DPrintFUl
 branch_0x802cde80:
-    lbz     r0, -0x5e9c(r13)
+    lbz     r0, R13Off_m0x5e9c(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802cdea0
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45c4
+    lis     r3, mMutex__8J2DPrint@h
+    addi    r3, r3, mMutex__8J2DPrint@l
     bl      OSInitMutex
     li      r0, 0x1
-    stb     r0, -0x5e9c(r13)
+    stb     r0, R13Off_m0x5e9c(r13)
 branch_0x802cdea0:
     stw     r26, 0x4(r31)
     li      r0, 0x20
@@ -310,22 +310,22 @@ setBuffer__8J2DPrintFUl: # 0x802cdfcc
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r3
-    lbz     r0, -0x5e9b(r13)
-    lwz     r3, -0x5ea0(r13)
+    lbz     r0, R13Off_m0x5e9b(r13)
+    lwz     r3, R13Off_m0x5ea0(r13)
     cmplwi  r0, 0x0
     addi    r31, r3, 0x0
     beq-    branch_0x802cdffc
     bl      __dl__FPv
 branch_0x802cdffc:
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     addi    r3, r30, 0x0
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
     li      r0, 0x1
-    stw     r3, -0x5ea0(r13)
+    stw     r3, R13Off_m0x5ea0(r13)
     mr      r3, r31
-    stw     r30, -0x5e98(r13)
-    stb     r0, -0x5e9b(r13)
+    stw     r30, R13Off_m0x5e98(r13)
+    stb     r0, R13Off_m0x5e9b(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     lwz     r30, 0x10(sp)
@@ -373,7 +373,7 @@ locate__8J2DPrintFii: # 0x802ce098
     stw     r6, 0x24(sp)
     stw     r5, 0x20(r3)
     stw     r4, 0x20(sp)
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x1c(sp)
     lfd     f0, 0x20(sp)
     stw     r4, 0x18(sp)
@@ -383,7 +383,7 @@ locate__8J2DPrintFii: # 0x802ce098
     fsubs   f0, f0, f2
     stfs    f1, 0x24(r3)
     stfs    f0, 0x28(r3)
-    lfs     f0, 0x1b8(rtoc)
+    lfs     f0, 0x1b8(r2)
     stfs    f0, 0x2c(r3)
     blr
 
@@ -420,7 +420,7 @@ branch_0x802ce11c:
     lis     r5, 0x4330
     stw     r7, 0x94(sp)
     addi    r7, sp, 0xa0
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x8c(sp)
     addi    r0, sp, 0x8
     stw     r5, 0x90(sp)
@@ -434,7 +434,7 @@ branch_0x802ce11c:
     fsubs   f0, f0, f2
     stfs    f1, 0x24(r3)
     stfs    f0, 0x28(r3)
-    lfs     f0, 0x1b8(rtoc)
+    lfs     f0, 0x1b8(r2)
     stfs    f0, 0x2c(r3)
     stw     r8, 0x7c(sp)
     stw     r7, 0x80(sp)
@@ -474,14 +474,14 @@ branch_0x802ce1f0:
     stw     r10, 0x24(sp)
     addi    r10, sp, 0x80
     stw     r4, 0x1c(r3)
-    lis     r4, 0x4330
+    lis     r4, unk_43300000@h
     stw     r8, 0x9c(sp)
     addi    r8, sp, 0xa8
     stw     r5, 0x20(r3)
     addi    r5, r7, 0x0
     stw     r0, 0x94(sp)
     addi    r0, sp, 0x8
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r4, 0x98(sp)
     lfd     f0, 0x98(sp)
     stw     r4, 0x90(sp)
@@ -492,7 +492,7 @@ branch_0x802ce1f0:
     fsubs   f0, f0, f2
     stfs    f1, 0x24(r3)
     stfs    f0, 0x28(r3)
-    lfs     f0, 0x1b8(rtoc)
+    lfs     f0, 0x1b8(r2)
     stfs    f0, 0x2c(r3)
     stw     r9, 0x80(sp)
     stw     r8, 0x84(sp)
@@ -526,10 +526,10 @@ branch_0x802ce2d0:
     lis     r0, 0x200
     addi    r29, r3, 0x0
     stw     r4, 0xc(sp)
-    addi    r30, r4, 0x0
+    addi    r30, r4, unk_43300000@l
     addi    r31, sp, 0x78
     stw     r5, 0x10(sp)
-    lis     r5, 0x8040
+    lis     r5, mMutex__8J2DPrint@h
     stw     r6, 0x14(sp)
     addi    r6, sp, 0x8
     stw     r7, 0x18(sp)
@@ -539,34 +539,34 @@ branch_0x802ce2d0:
     stw     r0, 0x78(sp)
     addi    r0, sp, 0xa0
     stw     r0, 0x7c(sp)
-    addi    r0, r5, 0x45c4
+    addi    r0, r5, mMutex__8J2DPrint@l
     mr      r3, r0
     stw     r6, 0x80(sp)
     bl      OSLockMutex
-    lwz     r3, -0x5ea0(r13)
+    lwz     r3, R13Off_m0x5ea0(r13)
     mr      r5, r30
-    lwz     r4, -0x5e98(r13)
+    lwz     r4, R13Off_m0x5e98(r13)
     mr      r6, r31
     bl      vsnprintf
     mr.     r5, r3
     blt-    branch_0x802ce34c
-    lwz     r0, -0x5e98(r13)
+    lwz     r0, R13Off_m0x5e98(r13)
     cmplw   r5, r0
     ble-    branch_0x802ce350
 branch_0x802ce34c:
-    lwz     r5, -0x5e98(r13)
+    lwz     r5, R13Off_m0x5e98(r13)
 branch_0x802ce350:
-    lis     r6, 0x8000
-    lwz     r4, -0x5ea0(r13)
+    lis     r6, unk_7fffffff@ha
+    lwz     r4, R13Off_m0x5ea0(r13)
     addi    r3, r29, 0x0
-    subi    r6, r6, 0x1
+    addi    r6, r6, unk_7fffffff@l
     addi    r8, sp, 0x70
     li      r7, 0x0
     li      r9, 0xff
     li      r10, 0x0
     bl      parse__8J2DPrintFPCUciiPUsRQ28J2DPrint5TSizeUcb
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45c4
+    lis     r3, mMutex__8J2DPrint@h
+    addi    r3, r3, mMutex__8J2DPrint@l
     bl      OSUnlockMutex
     lwz     r0, 0x9c(sp)
     lfs     f1, 0x70(sp)
@@ -610,13 +610,13 @@ printReturn__8J2DPrintFPCcii18J2DTextBoxHBinding18J2DTextBoxVBindingiiUc: # 0x80
     lwz     r0, 0x24c(sp)
     stw     r0, 0x20(r22)
     bl      strlen
-    lwz     r4, -0x5e98(r13)
+    lwz     r4, R13Off_m0x5e98(r13)
     addi    r31, r3, 0x0
     cmplw   r31, r4
     blt-    branch_0x802ce434
     li      r0, 0x1
-    stb     r0, -0x5e94(r13)
-    subi    r31, r4, 0x1
+    stb     r0, R13Off_m0x5e94(r13)
+    addi    r31, r4, -0x1
 branch_0x802ce434:
     addi    r3, r22, 0x0
     addi    r4, r23, 0x0
@@ -629,7 +629,7 @@ branch_0x802ce434:
     bl      parse__8J2DPrintFPCUciiPUsRQ28J2DPrint5TSizeUcb
     lwz     r3, 0x5c(r22)
     lis     r0, 0x4330
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     cmpwi   r27, 0x1
     xoris   r3, r3, 0x8000
     stw     r3, 0x24c(sp)
@@ -642,10 +642,12 @@ branch_0x802ce434:
     cmpwi   r27, 0x0
     bge-    branch_0x802ce4b8
     b       branch_0x802ce4dc
-    b	    branch_0x802ce4dc
+
+branch_0x802ce494:
+    b       branch_0x802ce4dc
 
 branch_0x802ce498:
-    lfs     f0, 0x1c8(rtoc)
+    lfs     f0, 0x1c8(r2)
     fadds   f0, f0, f1
     fctiwz  f0, f0
     stfd    f0, 0x248(sp)
@@ -655,7 +657,7 @@ branch_0x802ce498:
     b       branch_0x802ce4dc
 
 branch_0x802ce4b8:
-    lfs     f0, 0x1c8(rtoc)
+    lfs     f0, 0x1c8(r2)
     fadds   f0, f0, f1
     fctiwz  f0, f0
     stfd    f0, 0x248(sp)
@@ -704,7 +706,7 @@ branch_0x802ce530:
     mr      r3, r22
     bl      initchar__8J2DPrintFv
     xoris   r0, r28, 0x8000
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x24c(sp)
     lis     r11, 0x4330
     lfs     f1, 0x24(r22)
@@ -781,7 +783,7 @@ parse__8J2DPrintFPCUciiPUsRQ28J2DPrint5TSizeUcb: # 0x802ce5fc
     lwz     r0, 0x4(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x802ce678
-    lfs     f1, 0x1b8(rtoc)
+    lfs     f1, 0x1b8(r2)
     b       branch_0x802cedf0
 
 branch_0x802ce678:
@@ -791,7 +793,7 @@ branch_0x802ce678:
     li      r3, 0x4
     lfs     f25, 0x28(r26)
     addi    r0, r22, 0x1
-    lfs     f24, 0x1b8(rtoc)
+    lfs     f24, 0x1b8(r2)
     stw     r0, 0xc(sp)
     li      r4, 0x0
     fmr     f23, f24
@@ -809,10 +811,10 @@ branch_0x802ce678:
     li      r9, 0x2
     bl      GXSetChanCtrl
     lwz     r0, 0x8(r26)
-    lis     r3, 0x8081
+    lis     r3, unk_80808081@ha
     clrlwi  r5, r30, 24
     stw     r0, 0x48(sp)
-    subi    r4, r3, 0x7f7f
+    addi    r4, r3, unk_80808081@l
     lwz     r0, 0xc(r26)
     stw     r0, 0x44(sp)
     lbz     r0, 0x4b(sp)
@@ -848,12 +850,12 @@ branch_0x802ce748:
     stw     r0, 0x38(sp)
     lwz     r3, 0x4(r26)
     bl      setGradColor__7JUTFontFQ28JUtility6TColorQ28JUtility6TColor
-    lfd     f30, 0x1c0(rtoc)
+    lfd     f30, 0x1c0(r2)
     clrlwi  r24, r31, 24
-    lfd     f27, 0x1d0(rtoc)
+    lfd     f27, 0x1d0(r2)
     xoris   r23, r17, 0x8000
-    lfs     f28, 0x1cc(rtoc)
-    lfs     f29, 0x1c8(rtoc)
+    lfs     f28, 0x1cc(r2)
+    lfs     f29, 0x1c8(r2)
     li      r19, 0x0
     lis     r25, 0x4330
 branch_0x802ce788:
@@ -885,7 +887,7 @@ branch_0x802ce7e0:
     bne-    branch_0x802ce80c
     cmplwi  r28, 0x0
     beq-    branch_0x802ce80c
-    lfs     f0, 0x1c8(rtoc)
+    lfs     f0, 0x1c8(r2)
     clrlslwi  r0, r21, 16, 1
     fadds   f0, f0, f24
     fctiwz  f0, f0
@@ -928,7 +930,7 @@ branch_0x802ce870:
     stfs    f25, 0x28(r26)
     beq-    branch_0x802ced80
     li      r19, 0x0
-    lfs     f24, 0x1b8(rtoc)
+    lfs     f24, 0x1b8(r2)
 branch_0x802ce890:
     clrlwi. r0, r3, 16
     beq-    branch_0x802cec44
@@ -957,12 +959,12 @@ branch_0x802ce8e0:
     clrlwi  r0, r21, 16
     cmplwi  r0, 0x100
     beq-    branch_0x802ced80
-    lfs     f24, 0x1b8(rtoc)
+    lfs     f24, 0x1b8(r2)
     li      r19, 0x0
     b       branch_0x802cec44
 
 branch_0x802ce8fc:
-    subi    r0, r20, 0x8
+    addi    r0, r20, -0x8
     cmplwi  r0, 0x1
     bgt-    branch_0x802ce910
     li      r19, 0x1
@@ -983,7 +985,7 @@ branch_0x802ce920:
     bne-    branch_0x802ce95c
     cmplwi  r28, 0x0
     beq-    branch_0x802ce95c
-    lfs     f0, 0x1c8(rtoc)
+    lfs     f0, 0x1c8(r2)
     clrlslwi  r0, r21, 16, 1
     fadds   f0, f0, f24
     fctiwz  f0, f0
@@ -1128,7 +1130,7 @@ branch_0x802ceb20:
     lfd     f0, 0x50(sp)
     fsubs   f0, f0, f30
     stfs    f0, 0x24(r26)
-    lfs     f24, 0x1b8(rtoc)
+    lfs     f24, 0x1b8(r2)
     b       branch_0x802cec44
 
 branch_0x802ceb5c:
@@ -1284,8 +1286,8 @@ branch_0x802ced6c:
 branch_0x802ced80:
     cmplwi  r28, 0x0
     beq-    branch_0x802ced98
-    lis     r3, 0x1
-    subi    r3, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r3, r3, unk_0000ffff@l
     clrlslwi  r0, r21, 16, 1
     sthx    r3, r28, r0
 branch_0x802ced98:
@@ -1297,7 +1299,7 @@ branch_0x802ced98:
     mtlr    r12
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x54(sp)
     lis     r3, 0x4330
     fsubs   f0, f19, f20
@@ -1336,115 +1338,112 @@ branch_0x802cedf0:
 
 .globl doCtrlCode__8J2DPrintFi
 doCtrlCode__8J2DPrintFi: # 0x802cee3c
-    subi    r0, r4, 0x8
+    addi    r0, r4, -0x8
     stwu    sp, -0x20(sp)
     cmplwi  r0, 0x17
     bgt-    branch_0x802cefa8
-    lis     r4, 0x803e
-    addi    r4, r4, 0x5f8
+    lis     r4, unk_803e05f8@h
+    addi    r4, r4, unk_803e05f8@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x802CEE64:		# jumptable 802CEE60 case 0
+    bctr       
+branch_0x802cee64:
     lfs     f1, 0x24(r3)
     lfs     f0, 0x2c(r3)
     fsubs   f0, f1, f0
     stfs    f0, 0x24(r3)
-    lfs     f0, 0x1b8(rtoc)
+    lfs     f0, 0x1b8(r2)
     stfs    f0, 0x2c(r3)
     b       branch_0x802cefa8
 
-branch_0x802CEE80:		# jumptable 802CEE60 case 1
-lwz	  r5, 0x30(r3)
-cmpwi	  r5, 0
-ble	  def_802CEE60	# jumptable 802CEE60 default case
-lfs	  f2, 0x24(r3)
-lis	  r0, 0x4330
-lfd	  f1, 0x1C0(r2)
-fctiwz	  f0, f2
-stfd	  f0, 0x20+var_8(r1)
-lwz	  r4, 0x20+var_8+4(r1)
-divw	  r4, r4, r5
-mullw	  r4, r5, r4
-add	  r4, r5, r4
-xoris	  r4, r4, 0x8000
-stw	  r4, 0x20+var_10+4(r1)
-stw	  r0, 0x20+var_10(r1)
-lfd	  f0, 0x20+var_10(r1)
-fsubs	  f0, f0, f1
-stfs	  f0, 0x24(r3)
-lfs	  f0, 0x24(r3)
-fsubs	  f0, f0, f2
-stfs	  f0, 0x2C(r3)
-b	  def_802CEE60	# jumptable 802CEE60 default case
+branch_0x802cee80:
+    lwz     r5, 0x30(r3)
+    cmpwi   r5, 0x0
+    ble-    branch_0x802cefa8
+    lfs     f2, 0x24(r3)
+    lis     r0, 0x4330
+    lfd     f1, 0x1c0(r2)
+    fctiwz  f0, f2
+    stfd    f0, 0x18(sp)
+    lwz     r4, 0x1c(sp)
+    divw    r4, r4, r5
+    mullw   r4, r5, r4
+    add     r4, r5, r4
+    xoris   r4, r4, 0x8000
+    stw     r4, 0x14(sp)
+    stw     r0, 0x10(sp)
+    lfd     f0, 0x10(sp)
+    fsubs   f0, f0, f1
+    stfs    f0, 0x24(r3)
+    lfs     f0, 0x24(r3)
+    fsubs   f0, f0, f2
+    stfs    f0, 0x2c(r3)
+    b       branch_0x802cefa8
 
-branch_0x802CEED8:		# jumptable 802CEE60 case 2
-lfs	  f0, 0x1B8(r2)
-lis	  r4, 0x4330
-stfs	  f0, 0x2C(r3)
-lwz	  r0, 0x1C(r3)
-lfd	  f2, 0x1C0(r2)
-xoris	  r0, r0, 0x8000
-stw	  r0, 0x20+var_10+4(r1)
-stw	  r4, 0x20+var_10(r1)
-lfd	  f0, 0x20+var_10(r1)
-fsubs	  f0, f0, f2
-stfs	  f0, 0x24(r3)
-lwz	  r0, 0x14(r3)
-lfs	  f1, 0x28(r3)
-xoris	  r0, r0, 0x8000
-stw	  r0, 0x20+var_8+4(r1)
-stw	  r4, 0x20+var_8(r1)
-lfd	  f0, 0x20+var_8(r1)
-fsubs	  f0, f0, f2
-fadds	  f0, f1, f0
-stfs	  f0, 0x28(r3)
-b	  def_802CEE60	# jumptable 802CEE60 default case
+branch_0x802ceed8:
+    lfs     f0, 0x1b8(r2)
+    lis     r4, 0x4330
+    stfs    f0, 0x2c(r3)
+    lwz     r0, 0x1c(r3)
+    lfd     f2, 0x1c0(r2)
+    xoris   r0, r0, 0x8000
+    stw     r0, 0x14(sp)
+    stw     r4, 0x10(sp)
+    lfd     f0, 0x10(sp)
+    fsubs   f0, f0, f2
+    stfs    f0, 0x24(r3)
+    lwz     r0, 0x14(r3)
+    lfs     f1, 0x28(r3)
+    xoris   r0, r0, 0x8000
+    stw     r0, 0x1c(sp)
+    stw     r4, 0x18(sp)
+    lfd     f0, 0x18(sp)
+    fsubs   f0, f0, f2
+    fadds   f0, f1, f0
+    stfs    f0, 0x28(r3)
+    b       branch_0x802cefa8
 
-branch_0x802CEF2C:		# jumptable 802CEE60 case 5
-lfs	  f0, 0x1B8(r2)
-lis	  r0, 0x4330
-stfs	  f0, 0x2C(r3)
-lwz	  r4, 0x1C(r3)
-lfd	  f1, 0x1C0(r2)
-xoris	  r4, r4, 0x8000
-stw	  r4, 0x20+var_10+4(r1)
-stw	  r0, 0x20+var_10(r1)
-lfd	  f0, 0x20+var_10(r1)
-fsubs	  f0, f0, f1
-stfs	  f0, 0x24(r3)
-b	  def_802CEE60	# jumptable 802CEE60 default case
+branch_0x802cef2c:
+    lfs     f0, 0x1b8(r2)
+    lis     r0, 0x4330
+    stfs    f0, 0x2c(r3)
+    lwz     r4, 0x1c(r3)
+    lfd     f1, 0x1c0(r2)
+    xoris   r4, r4, 0x8000
+    stw     r4, 0x14(sp)
+    stw     r0, 0x10(sp)
+    lfd     f0, 0x10(sp)
+    fsubs   f0, f0, f1
+    stfs    f0, 0x24(r3)
+    b       branch_0x802cefa8
 
-branch_0x802CEF5C:		# jumptable 802CEE60 case 20
-lfs	  f1, 0x24(r3)
-lfs	  f0, 0x1D8(r2)
-fadds	  f0, f1, f0
-stfs	  f0, 0x24(r3)
-b	  def_802CEE60	# jumptable 802CEE60 default case
+branch_0x802cef5c:
+    lfs     f1, 0x24(r3)
+    lfs     f0, 0x1d8(r2)
+    fadds   f0, f1, f0
+    stfs    f0, 0x24(r3)
+    b       branch_0x802cefa8
 
-branch_0x802CEF70:		# jumptable 802CEE60 case 21
-lfs	  f1, 0x24(r3)
-lfs	  f0, 0x1D8(r2)
-fsubs	  f0, f1, f0
-stfs	  f0, 0x24(r3)
-b	  def_802CEE60	# jumptable 802CEE60 default case
+branch_0x802cef70:
+    lfs     f1, 0x24(r3)
+    lfs     f0, 0x1d8(r2)
+    fsubs   f0, f1, f0
+    stfs    f0, 0x24(r3)
+    b       branch_0x802cefa8
 
-branch_0x802CEF84:		# jumptable 802CEE60 case 22
-lfs	  f1, 0x28(r3)
-lfs	  f0, 0x1D8(r2)
-fsubs	  f0, f1, f0
-stfs	  f0, 0x28(r3)
-b	  def_802CEE60	# jumptable 802CEE60 default case
+branch_0x802cef84:
+    lfs     f1, 0x28(r3)
+    lfs     f0, 0x1d8(r2)
+    fsubs   f0, f1, f0
+    stfs    f0, 0x28(r3)
+    b       branch_0x802cefa8
 
-branch_0x802CEF98:		# jumptable 802CEE60 case 23
-lfs	  f1, 0x28(r3)
-lfs	  f0, 0x1D8(r2)
-fadds	  f0, f1, f0
-stfs	  f0, 0x28(r3)
-
-def_802CEE60:		# jumptable 802CEE60 default case
+branch_0x802cef98:
+    lfs     f1, 0x28(r3)
+    lfs     f0, 0x1d8(r2)
+    fadds   f0, f1, f0
+    stfs    f0, 0x28(r3)
 branch_0x802cefa8:
     addi    sp, sp, 0x20
     blr
@@ -1579,7 +1578,7 @@ branch_0x802cf134:
     li      r7, 0xa
     bl      getNumber__8J2DPrintFPPCUclli
     xoris   r0, r3, 0x8000
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x4c(sp)
     lis     r0, 0x4330
     lfs     f0, 0x28(r31)
@@ -1598,7 +1597,7 @@ branch_0x802cf178:
     li      r7, 0xa
     bl      getNumber__8J2DPrintFPPCUclli
     xoris   r0, r3, 0x8000
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x4c(sp)
     lis     r0, 0x4330
     lfs     f0, 0x28(r31)
@@ -1617,7 +1616,7 @@ branch_0x802cf1bc:
     li      r7, 0xa
     bl      getNumber__8J2DPrintFPPCUclli
     xoris   r0, r3, 0x8000
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x4c(sp)
     lis     r0, 0x4330
     lfs     f0, 0x24(r31)
@@ -1636,7 +1635,7 @@ branch_0x802cf200:
     li      r7, 0xa
     bl      getNumber__8J2DPrintFPPCUclli
     xoris   r0, r3, 0x8000
-    lfd     f2, 0x1c0(rtoc)
+    lfd     f2, 0x1c0(r2)
     stw     r0, 0x4c(sp)
     lis     r0, 0x4330
     lfs     f0, 0x24(r31)
@@ -1650,7 +1649,7 @@ branch_0x802cf200:
 branch_0x802cf244:
     lwz     r3, 0x14(r31)
     lis     r0, 0x4330
-    lfd     f1, 0x1c0(rtoc)
+    lfd     f1, 0x1c0(r2)
     xoris   r3, r3, 0x8000
     lfs     f2, 0x28(r31)
     stw     r3, 0x4c(sp)
@@ -1664,7 +1663,7 @@ branch_0x802cf244:
 branch_0x802cf274:
     lwz     r3, 0x14(r31)
     lis     r0, 0x4330
-    lfd     f1, 0x1c0(rtoc)
+    lfd     f1, 0x1c0(r2)
     xoris   r3, r3, 0x8000
     lfs     f2, 0x28(r31)
     stw     r3, 0x4c(sp)
@@ -1695,10 +1694,10 @@ branch_0x802cf2cc:
     li      r7, 0x10
     bl      getNumber__8J2DPrintFPPCUclli
     stw     r3, 0x38(sp)
-    lis     r3, 0x8081
+    lis     r3, unk_80808081@ha
     clrlwi  r5, r28, 24
     lwz     r0, 0x38(sp)
-    subi    r4, r3, 0x7f7f
+    addi    r4, r3, unk_80808081@l
     stw     r0, 0x8(r31)
     lwz     r0, 0x8(r31)
     stw     r0, 0x40(sp)
@@ -1745,10 +1744,10 @@ branch_0x802cf380:
     li      r7, 0x10
     bl      getNumber__8J2DPrintFPPCUclli
     stw     r3, 0x2c(sp)
-    lis     r3, 0x8081
+    lis     r3, unk_80808081@ha
     clrlwi  r5, r28, 24
     lwz     r0, 0x2c(sp)
-    subi    r4, r3, 0x7f7f
+    addi    r4, r3, unk_80808081@l
     stw     r0, 0xc(r31)
     lwz     r0, 0xc(r31)
     stw     r0, 0x3c(sp)
@@ -1843,10 +1842,10 @@ branch_0x802cf4c4:
     subic   r0, r3, 0x1
     subfe   r0, r0, r3
     stb     r0, 0x18(r31)
-    lis     r3, 0x8081
+    lis     r3, unk_80808081@ha
     clrlwi  r5, r28, 24
     lbz     r0, 0x43(sp)
-    subi    r4, r3, 0x7f7f
+    addi    r4, r3, unk_80808081@l
     mullw   r0, r0, r5
     mulhw   r3, r4, r0
     add     r0, r3, r0

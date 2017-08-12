@@ -1,5 +1,4 @@
 
-# JDrama::TActor::load((JSUMemoryInputStream &))
 .globl load__Q26JDrama6TActorFR20JSUMemoryInputStream
 load__Q26JDrama6TActorFR20JSUMemoryInputStream: # 0x802f6dd0
     mflr    r0
@@ -39,7 +38,7 @@ load__Q26JDrama6TActorFR20JSUMemoryInputStream: # 0x802f6dd0
     addi    r4, sp, 0x4c
     li      r5, 0x50
     bl      readString__14JSUInputStreamFPcUs
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, sp, 0x4c
     lwz     r30, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -56,19 +55,19 @@ load__Q26JDrama6TActorFR20JSUMemoryInputStream: # 0x802f6dd0
     mr.     r30, r3
     beq-    branch_0x802f6eec
     stw     r30, 0x40(sp)
-    lis     r3, 0x803b
-    subi    r4, r3, 0x5da8
+    lis     r3, unk_803aa258@ha
+    addi    r4, r3, unk_803aa258@l
     lwz     r3, 0x40(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x40(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1ee8
+    lis     r3, __vvt__Q26JDrama9TLightMap@h
+    addi    r0, r3, __vvt__Q26JDrama9TLightMap@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
     stw     r0, 0x10(r30)
@@ -122,8 +121,8 @@ __dt__Q26JDrama6TActorFv: # 0x802f6f68
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f6fe8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1920
+    lis     r3, __vvt__Q26JDrama6TActor@h
+    addi    r3, r3, __vvt__Q26JDrama6TActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x20
@@ -132,12 +131,12 @@ __dt__Q26JDrama6TActorFv: # 0x802f6f68
     bl      __dt__Q26JStage6TActorFv
     cmplwi  r30, 0x0
     beq-    branch_0x802f6fd8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f6fd8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -223,7 +222,8 @@ JSGSetRotation__Q26JDrama6TActorFRC3Vec: # 0x802f7090
     blr
 
 
-.globl _32___dt__Q26JDrama6TActorFv
-_32___dt__Q26JDrama6TActorFv: # 0x802f70ac
-    subi    r3, r3, 0x20
+.globl unk_802f70ac
+unk_802f70ac: # 0x802f70ac
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama6TActorFv
+

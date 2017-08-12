@@ -7,7 +7,7 @@ ctrlTalkCamera___15CPolarSubCameraFv: # 0x8002cf20
     lwz     r0, 0x7c(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x8002cf54
-    lwz     r4, -0x7110(r13)
+    lwz     r4, R13Off_m0x7110(r13)
     lfs     f0, 0x0(r4)
     stfs    f0, 0x8c(r3)
     lfs     f0, 0x4(r4)
@@ -46,7 +46,7 @@ makeMtxForPrevTalk__15CPolarSubCameraFv: # 0x8002cf68
     bl      changeCamModeSpecifyFrame___15CPolarSubCameraFii
     lwz     r3, 0x120(r30)
     bl      onNeutralMarioKey__13TMarioGamePadFv
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     addi    r31, r3, 0x88
     lwz     r30, 0x8c(r3)
     b       branch_0x8002cfdc
@@ -80,13 +80,13 @@ makeMtxForTalk__15CPolarSubCameraFPC8TBaseNPC: # 0x8002d000
     addi    r29, r3, 0x0
     bl      killHeightPan___15CPolarSubCameraFv
     lha     r4, 0xa6(r29)
-    lis     r3, 0x400
-    addi    r0, r3, 0x1a
+    lis     r3, unk_0400001a@h
+    addi    r0, r3, unk_0400001a@l
     sth     r4, 0xac(r29)
     li      r31, 0xc
-    lwz     r4, -0x60ac(r13)
+    lwz     r4, R13Off_m0x60ac(r13)
     lha     r4, 0x0(r4)
-    subi    r4, r4, 0x8000
+    addi    r4, r4, -0x8000
     sth     r4, 0xa6(r29)
     lwz     r4, 0x50(r29)
     stw     r4, 0x58(r29)

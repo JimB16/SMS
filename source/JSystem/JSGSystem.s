@@ -9,8 +9,8 @@ __dt__Q26JStage7TSystemFv: # 0x80337238
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80337280
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4748
+    lis     r3, __vvt__Q26JStage7TSystem@h
+    addi    r0, r3, __vvt__Q26JStage7TSystem@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -62,3 +62,11 @@ JSGGetSystemData__Q26JStage7TSystemFUl: # 0x803372b8
 JSGSetSystemData__Q26JStage7TSystemFUlUl: # 0x803372c0
     blr
 
+branch_0x803372c4:
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0
+    .long 0x0

@@ -115,9 +115,9 @@ TRKProcessInput: # 0x8033e0f4
     addi    r31, r3, 0x0
     addi    r3, sp, 0x8
     bl      TRKConstructEvent
-    lis     r3, 0x8040
+    lis     r3, gTRKFramingState@h
     stw     r31, 0x10(sp)
-    addi    r4, r3, 0x1fc0
+    addi    r4, r3, gTRKFramingState@l
     addi    r3, sp, 0x8
     li      r0, -0x1
     stw     r0, 0x0(r4)
@@ -131,8 +131,8 @@ TRKProcessInput: # 0x8033e0f4
 
 .globl TRKInitializeSerialHandler
 TRKInitializeSerialHandler: # 0x8033e144
-    lis     r3, 0x8040
-    addi    r4, r3, 0x1fc0
+    lis     r3, gTRKFramingState@h
+    addi    r4, r3, gTRKFramingState@l
     li      r0, -0x1
     stw     r0, 0x0(r4)
     li      r0, 0x0

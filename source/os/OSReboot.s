@@ -13,13 +13,18 @@ Run: # 0x80346af4
     mtlr    r31
     blr
 
+branch_0x80346b20:
+    lwz     r0, 0x1c(sp)
+    lwz     r31, 0x14(sp)
+    addi    sp, sp, 0x18
+    mtlr    r0
+    blr
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x341520, 0x80346b34 - 0x80346b20
 
 .globl Callback
 Callback: # 0x80346b34
     li      r0, 0x1
-    stw     r0, -0x59f0(r13)
+    stw     r0, R13Off_m0x59f0(r13)
     blr
 
 
@@ -30,12 +35,12 @@ __OSReboot: # 0x80346b40
     stwu    sp, -0x340(sp)
     stw     r31, 0x33c(sp)
     stw     r30, 0x338(sp)
-    lis     r3, 0x8040
-    addi    r30, r3, 0x2620
+    lis     r3, Header@h
+    addi    r30, r3, Header@l
     bl      OSDisableInterrupts
-    lwz     r5, -0x59f8(r13)
+    lwz     r5, R13Off_m0x59f8(r13)
     lis     r4, 0x8130
-    lwz     r0, -0x59f4(r13)
+    lwz     r0, R13Off_m0x59f4(r13)
     li      r3, 0x0
     lis     r31, 0x8180
     li      r7, 0x1
@@ -52,8 +57,8 @@ __OSReboot: # 0x80346b40
     bl      DVDInit
     li      r3, 0x1
     bl      DVDSetAutoInvalidation
-    lis     r3, 0x8034
-    addi    r3, r3, 0x6b34
+    lis     r3, Callback@h
+    addi    r3, r3, Callback@l
     bl      __DVDPrepareResetAsync
     bl      DVDCheckDisk
     cmpwi   r3, 0x0
@@ -72,7 +77,7 @@ branch_0x80346be4:
     b       branch_0x80346be8
 
 branch_0x80346be8:
-    lwz     r0, -0x59f0(r13)
+    lwz     r0, R13Off_m0x59f0(r13)
     cmpwi   r0, 0x0
     beq+    branch_0x80346be8
     mr      r4, r30
@@ -119,7 +124,7 @@ branch_0x80346c68:
     b       branch_0x80346c6c
 
 branch_0x80346c6c:
-    lwz     r0, -0x59f0(r13)
+    lwz     r0, R13Off_m0x59f0(r13)
     cmpwi   r0, 0x0
     beq+    branch_0x80346c6c
     mr      r5, r30

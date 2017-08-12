@@ -1,16 +1,20 @@
 
-.section .ram80373480, "aw"
+.section .ram80373480, "ax"
 
 
-.globl Data3_Start
-Data3_Start:
+.globl __destroy_global_chain_reference
+__destroy_global_chain_reference: # 0x80373480 /Runtime_PPCEABI_H/__init_cpp_exceptions.s
+.long __destroy_global_chain # 0x80373480
 
-off_80373480:
-.long __destroy_global_chain
-.long __fini_cpp_exceptions
-.long __destroy_global_chain
-.long 0, 0, 0, 0
-.long 0
+.globl __fini_cpp_exceptions_reference
+__fini_cpp_exceptions_reference: # 0x80373484 /Runtime_PPCEABI_H/__init_cpp_exceptions.s
+.long __fini_cpp_exceptions # 0x80373484
 
-.globl Data3_End
-Data3_End:
+.globl __destroy_global_chain_reference_80373488
+__destroy_global_chain_reference_80373488: # 0x80373488 /Runtime_PPCEABI_H/global_destructor_chain.s
+.long __destroy_global_chain # 0x80373488
+.long 0x0 # 0x8037348c
+.long 0x0 # 0x80373490
+.long 0x0 # 0x80373494
+.long 0x0 # 0x80373498
+.long 0x0 # 0x8037349c

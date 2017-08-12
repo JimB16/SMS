@@ -6,17 +6,14 @@ isSlopeCameraMode__15CPolarSubCameraCFv: # 0x80033738
     cmplwi  r0, 0x48
     bgtlr-    
 
-    lis     r4, 0x803b
-    subi    r4, r4, 0x2bc4
+    lis     r4, unk_803ad43c@ha
+    addi    r4, r4, unk_803ad43c@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80033760:		# jumptable 8003375C cases 0,1,4,11,14,20,38-42,44,47,53-56,65,66,69-72
+    bctr       
+branch_0x80033760:
     li      r3, 0x1
-
-locret_80033764:	# jumptable 8003375C cases 2,3,5-10,12,13,15-19,21-37,43,45,46,48-52,57-64,67,68
     blr
 
 
@@ -49,20 +46,17 @@ branch_0x800337b8:
     b       branch_0x800337f0
 
 branch_0x800337c8:
-    subi    r0, r29, 0x8
+    addi    r0, r29, -0x8
     cmplwi  r0, 0x40
     bgt-    branch_0x800337f0
-    lis     r3, 0x803b
-    subi    r3, r3, 0x2aa0
+    lis     r3, unk_803ad560@ha
+    addi    r3, r3, unk_803ad560@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x800337EC:		# jumptable 800337E8 cases 0,3,5,6,9,12,30-34,39,43,47-49,57-59,63,64
+    bctr       
+branch_0x800337ec:
     li      r30, 0x1
-
-def_800337E8:		# jumptable 800337E8 default case
 branch_0x800337f0:
     lwz     r0, 0x24(sp)
     mr      r3, r30
@@ -189,17 +183,14 @@ isNormalCameraCompletely__15CPolarSubCameraCFv: # 0x800338e8
     li      r4, 0x0
     cmplwi  r0, 0x48
     bgt-    branch_0x80033950
-    lis     r3, 0x803b
-    subi    r3, r3, 0x299c
+    lis     r3, unk_803ad664@ha
+    addi    r3, r3, unk_803ad664@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8003394C:		# jumptable 80033948 cases 0,1,3-6,8,11,13-21,38,42-44,47-54,56,57,60-62,66-72
+    bctr       
+branch_0x8003394c:
     li      r4, 0x1
-
-def_80033948:		# jumptable 80033948 default case
 branch_0x80033950:
     clrlwi. r0, r4, 24
     beq-    branch_0x8003395c
@@ -221,17 +212,14 @@ isNormalCameraSpecifyMode__15CPolarSubCameraCFi: # 0x80033978
     li      r3, 0x0
     bgtlr-    
 
-    lis     r5, 0x803b
-    subi    r5, r5, 0x2878
+    lis     r5, unk_803ad788@ha
+    addi    r5, r5, unk_803ad788@l
     slwi    r0, r4, 2
     lwzx    r0, r5, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8003399C:		# jumptable 80033998 cases 0,1,3-6,8,11,13-21,38,42-44,47-54,56,57,60-62,66-72
+    bctr       
+branch_0x8003399c:
     li      r3, 0x1
-
-locret_800339A0:	# jumptable 80033998 cases 2,7,9,10,12,22-37,39-41,45,46,55,58,59,63-65
     blr
 
 

@@ -1,8 +1,8 @@
 
 .globl memcmp
 memcmp: # 0x803392a4
-    subi    r6, r3, 0x1
-    subi    r4, r4, 0x1
+    addi    r6, r3, -0x1
+    addi    r4, r4, -0x1
     addi    r5, r5, 0x1
     b       branch_0x803392d8
 
@@ -29,7 +29,7 @@ branch_0x803392d8:
 .globl memchr
 memchr: # 0x803392e8
     clrlwi  r4, r4, 24
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     addi    r5, r5, 0x1
     b       branch_0x80339304
 
@@ -88,8 +88,8 @@ branch_0x80339384:
 branch_0x8033938c:
     cmpwi   r3, 0x0
     bne-    branch_0x803393b8
-    subi    r3, r4, 0x1
-    subi    r4, r31, 0x1
+    addi    r3, r4, -0x1
+    addi    r4, r31, -0x1
     addi    r5, r5, 0x1
     b       branch_0x803393ac
 

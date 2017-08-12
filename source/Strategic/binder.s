@@ -7,8 +7,8 @@ __dt__7TBinderFv: # 0x80224110
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80224144
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5a68
+    lis     r3, __vvt__7TBinder@ha
+    addi    r3, r3, __vvt__7TBinder@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x80224144
@@ -25,8 +25,8 @@ branch_0x80224144:
 
 .globl __ct__7TBinderFv
 __ct__7TBinderFv: # 0x8022415c
-    lis     r4, 0x803e
-    subi    r0, r4, 0x5a68
+    lis     r4, __vvt__7TBinder@ha
+    addi    r0, r4, __vvt__7TBinder@l
     stw     r0, 0x0(r3)
     blr
 

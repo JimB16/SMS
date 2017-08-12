@@ -13,21 +13,21 @@ execSecureView___15CPolarSubCameraFsP3Vec: # 0x80033bb8
     stw     r29, 0x8c(sp)
     stw     r28, 0x88(sp)
     mr      r28, r4
-    lwz     r6, -0x60ac(r13)
+    lwz     r6, R13Off_m0x60ac(r13)
     lwz     r7, 0x68(r3)
     lha     r3, 0x0(r6)
     lfs     f1, 0x3c(r7)
-    subi    r0, r3, 0x8000
+    addi    r0, r3, -0x8000
     lfs     f2, 0x44(r7)
     lfs     f3, 0xa8(r30)
     extsh   r29, r0
     bl      CLBLinearInbetween_f___Ffff
     subf    r3, r29, r28
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r28, r3, 16
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     sraw    r0, r28, r0
-    lfs     f0, -0x7528(rtoc)
+    lfs     f0, -0x7528(r2)
     slwi    r0, r0, 2
     fmr     f31, f1
     lfsx    f30, r3, r0
@@ -44,11 +44,11 @@ branch_0x80033c40:
     bl      CLBLinearInbetween_f___Ffff
     fmr     f0, f1
 branch_0x80033c58:
-    lwz     r3, -0x5eac(r13)
+    lwz     r3, R13Off_m0x5eac(r13)
     fmuls   f3, f0, f30
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     sraw    r0, r28, r3
-    lfs     f0, -0x7528(rtoc)
+    lfs     f0, -0x7528(r2)
     slwi    r0, r0, 2
     lfsx    f2, r6, r0
     fmadds  f1, f31, f2, f3
@@ -61,15 +61,15 @@ branch_0x80033c88:
     fnmadds  f1, f31, f2, f3
 branch_0x80033c8c:
     clrlwi  r0, r29, 16
-    lwz     r4, MarioActor(r13)
+    lwz     r4, R13Off_m0x60d8(r13)
     sraw    r0, r0, r3
-    lwz     r3, -0x60ac(r13)
+    lwz     r3, R13Off_m0x60ac(r13)
     slwi    r0, r0, 2
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     fneg    f2, f1
     lfsx    f1, r6, r0
     lfsx    f0, r5, r0
-    lha     r4, MarioActor_9c(r4)
+    lha     r4, 0x9c(r4)
     lha     r3, 0x0(r3)
     fmuls   f1, f2, f1
     fmuls   f30, f2, f0
@@ -83,12 +83,12 @@ branch_0x80033cd0:
     neg     r0, r0
 branch_0x80033cd8:
     extsh   r0, r0
-    lfd     f3, -0x7518(rtoc)
+    lfd     f3, -0x7518(r2)
     xoris   r0, r0, 0x8000
-    lfs     f4, -0x7524(rtoc)
+    lfs     f4, -0x7524(r2)
     stw     r0, 0x84(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x7520(rtoc)
+    lfs     f0, -0x7520(r2)
     stw     r0, 0x80(sp)
     lfd     f2, 0x80(sp)
     fsubs   f2, f2, f3
@@ -103,7 +103,7 @@ branch_0x80033d18:
     fdivs   f3, f0, f2
 branch_0x80033d1c:
     lwz     r3, 0x68(r30)
-    lfs     f0, -0x7520(rtoc)
+    lfs     f0, -0x7520(r2)
     lfs     f2, 0x38(r3)
     fmuls   f2, f2, f3
     fcmpo   cr0, f2, f0
@@ -112,17 +112,17 @@ branch_0x80033d1c:
     b       branch_0x80033d4c
 
 branch_0x80033d3c:
-    lfs     f0, -0x7528(rtoc)
+    lfs     f0, -0x7528(r2)
     fcmpo   cr0, f2, f0
     bge-    branch_0x80033d4c
     fmr     f2, f0
 branch_0x80033d4c:
     fmr     f31, f2
-    lfs     f3, -0x7528(rtoc)
+    lfs     f3, -0x7528(r2)
     addi    r3, r30, 0x294
     bl      CLBChaseDecrease__FPffff
     fmr     f1, f30
-    lfs     f3, -0x7528(rtoc)
+    lfs     f3, -0x7528(r2)
     fmr     f2, f31
     addi    r3, r30, 0x298
     bl      CLBChaseDecrease__FPffff
@@ -158,21 +158,21 @@ calcSecureViewTarget___15CPolarSubCameraFsPfPf: # 0x80033db8
     mr      r29, r4
     addi    r30, r5, 0x0
     addi    r31, r6, 0x0
-    lwz     r7, -0x60ac(r13)
+    lwz     r7, R13Off_m0x60ac(r13)
     lwz     r8, 0x68(r3)
     lha     r3, 0x0(r7)
     lfs     f1, 0x3c(r8)
-    subi    r0, r3, 0x8000
+    addi    r0, r3, -0x8000
     lfs     f2, 0x44(r8)
     lfs     f3, 0xa8(r27)
     extsh   r28, r0
     bl      CLBLinearInbetween_f___Ffff
     subf    r3, r28, r29
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r29, r3, 16
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     sraw    r0, r29, r0
-    lfs     f0, -0x7528(rtoc)
+    lfs     f0, -0x7528(r2)
     slwi    r0, r0, 2
     fmr     f31, f1
     lfsx    f30, r3, r0
@@ -189,10 +189,10 @@ branch_0x80033e3c:
     lfs     f2, 0x48(r3)
     bl      CLBLinearInbetween_f___Ffff
 branch_0x80033e50:
-    lwz     r3, -0x5eac(r13)
-    lwz     r4, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5eac(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     sraw    r0, r29, r3
-    lfs     f0, -0x7528(rtoc)
+    lfs     f0, -0x7528(r2)
     slwi    r0, r0, 2
     lfsx    f2, r4, r0
     fmuls   f2, f31, f2
@@ -212,8 +212,8 @@ branch_0x80033e84:
     lfsx    f0, r4, r0
     fmuls   f0, f1, f0
     stfs    f0, 0x0(r30)
-    lwz     r0, -0x5eac(r13)
-    lwz     r3, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     sraw    r0, r5, r0
     slwi    r0, r0, 2
     lfsx    f0, r3, r0

@@ -44,11 +44,11 @@ branch_0x8033d244:
 .globl TRKNubMainLoop
 TRKNubMainLoop: # 0x8033d254
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gTRKInputPendingPtr@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r3, 0x1fd4
+    addi    r31, r3, gTRKInputPendingPtr@l
     stw     r30, 0x18(sp)
     li      r30, 0x0
     stw     r29, 0x14(sp)

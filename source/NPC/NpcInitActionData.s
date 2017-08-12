@@ -8,8 +8,8 @@ setKinoActionFlag___8TBaseNPCFv: # 0x8021614c
     stw     r0, 0x16c(r3)
 branch_0x80216160:
     lwz     r5, 0x16c(r3)
-    lis     r4, 0x803a
-    subi    r0, r4, 0x2fb8
+    lis     r4, sBaseActionFlagTable_1944@ha
+    addi    r0, r4, sBaseActionFlagTable_1944@l
     slwi    r4, r5, 2
     add     r4, r0, r4
     lwz     r0, 0x0(r4)
@@ -26,8 +26,8 @@ setMareActionFlag___8TBaseNPCFv: # 0x80216180
     stw     r0, 0x16c(r3)
 branch_0x80216194:
     lwz     r5, 0x16c(r3)
-    lis     r4, 0x803a
-    subi    r0, r4, 0x2ffc
+    lis     r4, sBaseActionFlagTable_1941@ha
+    addi    r0, r4, sBaseActionFlagTable_1941@l
     slwi    r4, r5, 2
     add     r4, r0, r4
     lwz     r0, 0x0(r4)
@@ -44,8 +44,8 @@ setMonteActionFlag___8TBaseNPCFv: # 0x802161b4
     stw     r0, 0x16c(r3)
 branch_0x802161c8:
     lwz     r5, 0x16c(r3)
-    lis     r4, 0x803a
-    subi    r0, r4, 0x3060
+    lis     r4, sBaseActionFlagTable_1938@ha
+    addi    r0, r4, sBaseActionFlagTable_1938@l
     slwi    r4, r5, 2
     add     r4, r0, r4
     lwz     r0, 0x0(r4)

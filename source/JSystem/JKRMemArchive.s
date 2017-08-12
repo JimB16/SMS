@@ -7,8 +7,8 @@ __ct__13JKRMemArchiveFv: # 0x802c3ea4
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__10JKRArchiveFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x28
+    lis     r3, __vvt__13JKRMemArchive@h
+    addi    r0, r3, __vvt__13JKRMemArchive@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -32,20 +32,20 @@ __ct__13JKRMemArchiveFlQ210JKRArchive15EMountDirection: # 0x802c3ee0
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__10JKRArchiveFlQ210JKRArchive10EMountMode
-    lis     r3, 0x803e
+    lis     r3, __vvt__13JKRMemArchive@h
     lwz     r31, 0x8(sp)
-    addi    r0, r3, 0x28
+    addi    r0, r3, __vvt__13JKRMemArchive@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     mr      r4, r29
     stw     r30, 0x5c(r31)
     lwz     r5, 0x5c(r31)
     bl      open__13JKRMemArchiveFlQ210JKRArchive15EMountDirection
-    lis     r3, 0x5241
-    addi    r0, r3, 0x5243
+    lis     r3, unk_52415243@h
+    addi    r0, r3, unk_52415243@l
     stw     r0, 0x2c(r31)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     lwz     r5, 0x48(r31)
     addi    r4, r31, 0x18
     lwz     r6, 0x50(r31)
@@ -82,19 +82,19 @@ __ct__13JKRMemArchiveFPvUl15JKRMemBreakFlag: # 0x802c3f8c
     lwz     r3, 0x8(sp)
     bl      __ct__10JKRArchiveFlQ210JKRArchive10EMountMode
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x28
+    lis     r3, __vvt__13JKRMemArchive@h
+    addi    r0, r3, __vvt__13JKRMemArchive@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x0
     addi    r4, r28, 0x0
     addi    r5, r29, 0x0
     addi    r6, r30, 0x0
     bl      open__13JKRMemArchiveFPvUl15JKRMemBreakFlag
-    lis     r3, 0x5241
-    addi    r0, r3, 0x5243
+    lis     r3, unk_52415243@h
+    addi    r0, r3, unk_52415243@l
     stw     r0, 0x2c(r31)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     lwz     r5, 0x48(r31)
     addi    r4, r31, 0x18
     lwz     r6, 0x50(r31)
@@ -125,8 +125,8 @@ __dt__13JKRMemArchiveFv: # 0x802c4044
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c40d0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x28
+    lis     r3, __vvt__13JKRMemArchive@h
+    addi    r0, r3, __vvt__13JKRMemArchive@l
     stw     r0, 0x0(r30)
     lbz     r0, 0x30(r30)
     cmplwi  r0, 0x1
@@ -140,8 +140,8 @@ __dt__13JKRMemArchiveFv: # 0x802c4044
     lwz     r4, 0x38(r30)
     bl      free__7JKRHeapFPvP7JKRHeap
 branch_0x802c409c:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     addi    r4, r30, 0x18
     bl      remove__10JSUPtrListFP10JSUPtrLink
     li      r0, 0x0
@@ -190,20 +190,20 @@ branch_0x802c4128:
     stb     r3, 0x3c(r31)
     stw     r3, 0x34(r31)
     stw     r0, 0x54(r31)
-    lwz     r0, -0x5f2c(r13)
+    lwz     r0, R13Off_m0x5f2c(r13)
     stw     r0, 0x38(r31)
     stw     r29, 0x40(r31)
-    lwz     r0, -0x5f38(r13)
+    lwz     r0, R13Off_m0x5f38(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802c4164
-    stw     r31, -0x5f38(r13)
-    stw     r4, -0x5f98(r13)
+    stw     r31, R13Off_m0x5f38(r13)
+    stw     r4, R13Off_m0x5f98(r13)
 branch_0x802c4164:
-    lis     r5, 0x1
+    lis     r5, unk_0000ffff@ha
     addi    r3, r31, 0x0
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
-    subi    r5, r5, 0x1
+    addi    r5, r5, unk_0000ffff@l
     bl      open__13JKRMemArchiveFPvUl15JKRMemBreakFlag
     clrlwi. r0, r3, 24
     bne-    branch_0x802c418c
@@ -211,11 +211,11 @@ branch_0x802c4164:
     b       branch_0x802c41e0
 
 branch_0x802c418c:
-    lis     r3, 0x5241
-    addi    r0, r3, 0x5243
+    lis     r3, unk_52415243@h
+    addi    r0, r3, unk_52415243@l
     stw     r0, 0x2c(r31)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     lwz     r5, 0x48(r31)
     addi    r4, r31, 0x18
     lwz     r6, 0x50(r31)
@@ -252,11 +252,11 @@ unmountFixed__13JKRMemArchiveFv: # 0x802c41fc
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
-    lwz     r0, -0x5f38(r13)
+    lwz     r0, R13Off_m0x5f38(r13)
     cmplw   r0, r31
     bne-    branch_0x802c4224
     li      r0, 0x0
-    stw     r0, -0x5f38(r13)
+    stw     r0, R13Off_m0x5f38(r13)
 branch_0x802c4224:
     lbz     r0, 0x68(r31)
     cmplwi  r0, 0x0
@@ -267,8 +267,8 @@ branch_0x802c4224:
     lwz     r4, 0x38(r31)
     bl      free__7JKRHeapFPvP7JKRHeap
 branch_0x802c4244:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     addi    r4, r31, 0x18
     bl      remove__10JSUPtrListFP10JSUPtrLink
     li      r0, 0x0
@@ -613,11 +613,11 @@ branch_0x802c467c:
     b       branch_0x802c46b8
 
 branch_0x802c4698:
-    lis     r3, 0x803b
+    lis     r3, unk_803a9890@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x675c
-    subi    r3, r3, 0x6770
+    lis     r4, unk_803a98a4@ha
+    addi    r5, r4, unk_803a98a4@l
+    addi    r3, r3, unk_803a9890@l
     li      r4, 0x2d0
     bl      OSPanic
     li      r3, 0x0

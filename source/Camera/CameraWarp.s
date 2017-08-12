@@ -58,7 +58,7 @@ addMoveCameraAndMario__15CPolarSubCameraFRC3Vec: # 0x8003312c
     lfs     f0, 0x150(r29)
     fadds   f0, f0, f1
     stfs    f0, 0x150(r29)
-    lwz     r31, -0x7110(r13)
+    lwz     r31, R13Off_m0x7110(r13)
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
     lfs     f1, 0x0(r31)
     mr      r4, r30
@@ -189,7 +189,7 @@ warpPosAndAt__15CPolarSubCameraFfs: # 0x80033390
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
     beq-    branch_0x8003343c
-    lfs     f0, -0x7530(rtoc)
+    lfs     f0, -0x7530(r2)
     fmr     f1, f31
     fcmpo   cr0, f31, f0
     ble-    branch_0x80033424
@@ -197,7 +197,7 @@ warpPosAndAt__15CPolarSubCameraFfs: # 0x80033390
     b       branch_0x80033434
 
 branch_0x80033424:
-    lfs     f0, -0x752c(rtoc)
+    lfs     f0, -0x752c(r2)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80033434
     fmr     f1, f0

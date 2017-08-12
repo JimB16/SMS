@@ -7,8 +7,8 @@ __ct__10JKRArchiveFv: # 0x802bc9ac
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13JKRFileLoaderFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1d8
+    lis     r3, __vvt__10JKRArchive@ha
+    addi    r0, r3, __vvt__10JKRArchive@l
     stw     r0, 0x0(r31)
     li      r3, 0x0
     li      r0, 0x1
@@ -35,9 +35,9 @@ __ct__10JKRArchiveFlQ210JKRArchive10EMountMode: # 0x802bc9f8
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__13JKRFileLoaderFv
-    lis     r3, 0x803e
+    lis     r3, __vvt__10JKRArchive@ha
     lwz     r31, 0x8(sp)
-    subi    r0, r3, 0x1d8
+    addi    r0, r3, __vvt__10JKRArchive@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0
@@ -52,17 +52,17 @@ __ct__10JKRArchiveFlQ210JKRArchive10EMountMode: # 0x802bc9f8
     lwz     r0, 0x38(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x802bca70
-    lwz     r0, -0x5f2c(r13)
+    lwz     r0, R13Off_m0x5f2c(r13)
     stw     r0, 0x0(r3)
 branch_0x802bca70:
     lwz     r3, 0x8(sp)
     stw     r29, 0x40(r3)
-    lwz     r0, -0x5f38(r13)
+    lwz     r0, R13Off_m0x5f38(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802bca90
     li      r0, 0x0
-    stw     r3, -0x5f38(r13)
-    stw     r0, -0x5f98(r13)
+    stw     r3, R13Off_m0x5f38(r13)
+    stw     r0, R13Off_m0x5f98(r13)
 branch_0x802bca90:
     lwz     r0, 0x2c(sp)
     lwz     r3, 0x8(sp)
@@ -84,8 +84,8 @@ __dt__10JKRArchiveFv: # 0x802bcab0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802bcaf8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1d8
+    lis     r3, __vvt__10JKRArchive@ha
+    addi    r0, r3, __vvt__10JKRArchive@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

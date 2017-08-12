@@ -200,7 +200,7 @@ branch_0x802bee60:
     b       branch_0x802bee7c
 
 branch_0x802bee70:
-    lwz     r5, -0x5f98(r13)
+    lwz     r5, R13Off_m0x5f98(r13)
     mr      r3, r31
     bl      findDirectory__10JKRArchiveCFPCcUl
 branch_0x802bee7c:
@@ -209,12 +209,12 @@ branch_0x802bee7c:
     cmplwi  r3, 0x0
     subfe   r4, r0, r4
     beq-    branch_0x802beea8
-    stw     r31, -0x5f38(r13)
+    stw     r31, R13Off_m0x5f38(r13)
     lwz     r0, 0x48(r31)
     subf    r0, r0, r3
     srawi   r0, r0, 4
     addze   r0, r0
-    stw     r0, -0x5f98(r13)
+    stw     r0, R13Off_m0x5f98(r13)
 branch_0x802beea8:
     lwz     r0, 0x1c(sp)
     mr      r3, r4
@@ -336,7 +336,7 @@ getResource__10JKRArchiveFPCc: # 0x802beff0
     b       branch_0x802bf038
 
 branch_0x802bf028:
-    lwz     r5, -0x5f98(r13)
+    lwz     r5, R13Off_m0x5f98(r13)
     mr      r3, r31
     bl      findFsResource__10JKRArchiveCFPCcUl
     mr      r4, r3
@@ -482,7 +482,7 @@ readResource__10JKRArchiveFPvUlPCc: # 0x802bf1a8
     b       branch_0x802bf204
 
 branch_0x802bf1f0:
-    lwz     r5, -0x5f98(r13)
+    lwz     r5, R13Off_m0x5f98(r13)
     addi    r3, r29, 0x0
     addi    r4, r6, 0x0
     bl      findFsResource__10JKRArchiveCFPCcUl
@@ -651,7 +651,7 @@ branch_0x802bf3e4:
     b       branch_0x802bf3f8
 
 branch_0x802bf3f0:
-    lwz     r5, -0x5f98(r13)
+    lwz     r5, R13Off_m0x5f98(r13)
     bl      findDirectory__10JKRArchiveCFPCcUl
 branch_0x802bf3f8:
     cmplwi  r3, 0x0
@@ -691,14 +691,14 @@ branch_0x802bf450:
     b       branch_0x802bf474
 
 branch_0x802bf464:
-    lwz     r5, -0x5f98(r13)
+    lwz     r5, R13Off_m0x5f98(r13)
     mr      r3, r30
     bl      findDirectory__10JKRArchiveCFPCcUl
     mr      r31, r3
 branch_0x802bf474:
     cmplwi  r31, 0x0
     beq-    branch_0x802bf4a8
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     li      r3, 0x24
     li      r5, 0x0
     bl      __nw__FUlP7JKRHeapi

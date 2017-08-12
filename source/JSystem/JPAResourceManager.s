@@ -131,7 +131,7 @@ __ct__18JPAResourceManagerFUlUlP7JKRHeap: # 0x80336640
     b       branch_0x80336678
 
 branch_0x80336674:
-    lwz     r6, -0x5f2c(r13)
+    lwz     r6, R13Off_m0x5f2c(r13)
 branch_0x80336678:
     stw     r6, 0x0(r28)
     li      r3, 0xc

@@ -2,11 +2,11 @@
 .globl TRKInitializeEventQueue
 TRKInitializeEventQueue: # 0x8033d348
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gTRKEventQueue@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x5e0
+    addi    r31, r3, gTRKEventQueue@l
     addi    r3, r31, 0x0
     bl      TRKInitializeMutex
     mr      r3, r31
@@ -42,11 +42,11 @@ TRKCopyEvent: # 0x8033d3a4
 .globl TRKGetNextEvent
 TRKGetNextEvent: # 0x8033d3c8
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, gTRKEventQueue@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x5e0
+    addi    r31, r4, gTRKEventQueue@l
     stw     r30, 0x10(sp)
     stw     r29, 0xc(sp)
     li      r29, 0x0
@@ -66,7 +66,7 @@ TRKGetNextEvent: # 0x8033d3c8
     addi    r4, r4, 0xc
     bl      TRKCopyEvent
     lwz     r3, 0x0(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x0(r30)
     lwz     r3, 0x0(r29)
     addi    r0, r3, 0x1
@@ -79,8 +79,8 @@ TRKGetNextEvent: # 0x8033d3c8
 branch_0x8033d454:
     li      r29, 0x1
 branch_0x8033d458:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x5e0
+    lis     r3, gTRKEventQueue@h
+    addi    r3, r3, gTRKEventQueue@l
     bl      TRKReleaseMutex
     mr      r3, r29
     lwz     r31, 0x14(sp)
@@ -96,13 +96,13 @@ branch_0x8033d458:
 .globl TRKPostEvent
 TRKPostEvent: # 0x8033d488
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, gTRKEventQueue@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x10(sp)
-    addi    r30, r4, 0x5e0
+    addi    r30, r4, gTRKEventQueue@l
     addi    r3, r30, 0x0
     stw     r29, 0xc(sp)
     stw     r28, 0x8(sp)
@@ -143,8 +143,8 @@ branch_0x8033d52c:
     addi    r0, r3, 0x1
     stw     r0, 0x0(r29)
 branch_0x8033d538:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x5e0
+    lis     r3, gTRKEventQueue@h
+    addi    r3, r3, gTRKEventQueue@l
     bl      TRKReleaseMutex
     mr      r3, r28
     lwz     r31, 0x14(sp)

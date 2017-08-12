@@ -16,19 +16,19 @@ branch_0x802e8cc8:
     addis   r0, r3, 0xb5cd
     cmplwi  r0, 0x4431
     bne-    branch_0x802e9388
-    lis     r3, 0x6272
+    lis     r3, unk_62726b31@h
     lwz     r5, 0x4(r31)
-    addi    r0, r3, 0x6b31
+    addi    r0, r3, unk_62726b31@l
     cmpw    r5, r0
     beq-    branch_0x802e8fc4
     bge-    branch_0x802e8d5c
-    lis     r4, 0x626c
-    addi    r0, r4, 0x6b31
+    lis     r4, unk_626c6b31@h
+    addi    r0, r4, unk_626c6b31@l
     cmpw    r5, r0
     beq-    branch_0x802e8ea4
     bge-    branch_0x802e8d38
-    lis     r3, 0x6263
-    addi    r0, r3, 0x6b31
+    lis     r3, unk_62636b31@h
+    addi    r0, r3, unk_62636b31@l
     cmpw    r5, r0
     beq-    branch_0x802e8db8
     bge-    branch_0x802e8d28
@@ -44,8 +44,8 @@ branch_0x802e8d28:
     b       branch_0x802e9380
 
 branch_0x802e8d38:
-    lis     r3, 0x6270
-    addi    r0, r3, 0x6b31
+    lis     r3, unk_62706b31@h
+    addi    r0, r3, unk_62706b31@l
     cmpw    r5, r0
     beq-    branch_0x802e8e38
     bge-    branch_0x802e9380
@@ -55,13 +55,13 @@ branch_0x802e8d38:
     b       branch_0x802e9380
 
 branch_0x802e8d5c:
-    lis     r3, 0x6276
-    addi    r0, r3, 0x6131
+    lis     r3, unk_62766131@h
+    addi    r0, r3, unk_62766131@l
     cmpw    r5, r0
     beq-    branch_0x802e9238
     bge-    branch_0x802e8d94
-    lis     r3, 0x6274
-    addi    r0, r3, 0x7031
+    lis     r3, unk_62747031@h
+    addi    r0, r3, unk_62747031@l
     cmpw    r5, r0
     beq-    branch_0x802e91c4
     bge-    branch_0x802e9380
@@ -71,8 +71,8 @@ branch_0x802e8d5c:
     b       branch_0x802e9380
 
 branch_0x802e8d94:
-    lis     r3, 0x6278
-    addi    r0, r3, 0x6b31
+    lis     r3, unk_62786b31@h
+    addi    r0, r3, unk_62786b31@l
     cmpw    r5, r0
     beq-    branch_0x802e907c
     bge-    branch_0x802e9380
@@ -91,13 +91,13 @@ branch_0x802e8db8:
     addi    r3, r30, 0x0
     li      r4, 0x0
     bl      __ct__10J3DAnmBaseFs
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1334
+    lis     r3, __vvt__15J3DAnmTransform@h
+    addi    r0, r3, __vvt__15J3DAnmTransform@l
     stw     r0, 0xc(r30)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__18J3DAnmTransformKey@h
     stw     r4, 0x10(r30)
-    addi    r0, r3, 0x1320
+    addi    r0, r3, __vvt__18J3DAnmTransformKey@l
     stw     r4, 0x14(r30)
     stw     r4, 0x18(r30)
     stw     r4, 0x8(r30)
@@ -125,8 +125,8 @@ branch_0x802e8e38:
     beq-    branch_0x802e8e7c
     mr      r3, r30
     bl      __ct__11J3DAnmColorFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1290
+    lis     r3, __vvt__14J3DAnmColorKey@h
+    addi    r0, r3, __vvt__14J3DAnmColorKey@l
     stw     r0, 0xc(r30)
     li      r0, 0x0
     stw     r0, 0x24(r30)
@@ -156,14 +156,14 @@ branch_0x802e8ea4:
     addi    r3, r30, 0x0
     li      r4, 0x0
     bl      __ct__10J3DAnmBaseFs
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1300
+    lis     r3, __vvt__13J3DAnmCluster@h
+    addi    r0, r3, __vvt__13J3DAnmCluster@l
     stw     r0, 0xc(r30)
     li      r5, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__16J3DAnmClusterKey@h
     stw     r5, 0x10(r30)
     li      r4, 0x3
-    addi    r0, r3, 0x12f0
+    addi    r0, r3, __vvt__16J3DAnmClusterKey@l
     stw     r4, 0x8(r30)
     stw     r0, 0xc(r30)
     stw     r5, 0x14(r30)
@@ -188,8 +188,8 @@ branch_0x802e8f1c:
     beq-    branch_0x802e8f9c
     mr      r3, r30
     bl      __ct__10J3DAnmBaseFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x143c
+    lis     r3, __vvt__19J3DAnmTextureSRTKey@h
+    addi    r0, r3, __vvt__19J3DAnmTextureSRTKey@l
     stw     r0, 0xc(r30)
     li      r3, 0x0
     li      r0, 0x4
@@ -233,8 +233,8 @@ branch_0x802e8fc4:
     beq-    branch_0x802e9054
     mr      r3, r30
     bl      __ct__10J3DAnmBaseFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1430
+    lis     r3, __vvt__15J3DAnmTevRegKey@h
+    addi    r0, r3, __vvt__15J3DAnmTevRegKey@l
     stw     r0, 0xc(r30)
     li      r3, 0x0
     li      r0, 0x5
@@ -282,8 +282,8 @@ branch_0x802e907c:
     beq-    branch_0x802e90b4
     mr      r3, r30
     bl      __ct__14J3DAnmVtxColorFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x12c0
+    lis     r3, __vvt__17J3DAnmVtxColorKey@h
+    addi    r0, r3, __vvt__17J3DAnmVtxColorKey@l
     stw     r0, 0xc(r30)
     li      r0, 0x0
     stw     r0, 0x1c(r30)
@@ -310,13 +310,13 @@ branch_0x802e90dc:
     addi    r3, r30, 0x0
     li      r4, 0x0
     bl      __ct__10J3DAnmBaseFs
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1334
+    lis     r3, __vvt__15J3DAnmTransform@h
+    addi    r0, r3, __vvt__15J3DAnmTransform@l
     stw     r0, 0xc(r30)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__19J3DAnmTransformFull@h
     stw     r4, 0x10(r30)
-    addi    r0, r3, 0x1344
+    addi    r0, r3, __vvt__19J3DAnmTransformFull@l
     stw     r4, 0x14(r30)
     stw     r4, 0x18(r30)
     stw     r4, 0x8(r30)
@@ -343,8 +343,8 @@ branch_0x802e9158:
     beq-    branch_0x802e919c
     mr      r3, r30
     bl      __ct__11J3DAnmColorFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x12b0
+    lis     r3, __vvt__15J3DAnmColorFull@h
+    addi    r0, r3, __vvt__15J3DAnmColorFull@l
     stw     r0, 0xc(r30)
     li      r0, 0x0
     stw     r0, 0x24(r30)
@@ -373,8 +373,8 @@ branch_0x802e91c4:
     beq-    branch_0x802e9210
     mr      r3, r30
     bl      __ct__10J3DAnmBaseFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1424
+    lis     r3, __vvt__16J3DAnmTexPattern@h
+    addi    r0, r3, __vvt__16J3DAnmTexPattern@l
     stw     r0, 0xc(r30)
     li      r3, 0x0
     li      r0, 0x2
@@ -405,8 +405,8 @@ branch_0x802e9238:
     beq-    branch_0x802e9280
     mr      r3, r30
     bl      __ct__10J3DAnmBaseFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1418
+    lis     r3, __vvt__20J3DAnmVisibilityFull@h
+    addi    r0, r3, __vvt__20J3DAnmVisibilityFull@l
     stw     r0, 0xc(r30)
     li      r3, 0x0
     li      r0, 0x6
@@ -437,14 +437,14 @@ branch_0x802e92a8:
     addi    r3, r30, 0x0
     li      r4, 0x0
     bl      __ct__10J3DAnmBaseFs
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1300
+    lis     r3, __vvt__13J3DAnmCluster@h
+    addi    r0, r3, __vvt__13J3DAnmCluster@l
     stw     r0, 0xc(r30)
     li      r5, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__17J3DAnmClusterFull@h
     stw     r5, 0x10(r30)
     li      r4, 0x3
-    addi    r0, r3, 0x1310
+    addi    r0, r3, __vvt__17J3DAnmClusterFull@l
     stw     r4, 0x8(r30)
     stw     r0, 0xc(r30)
     stw     r5, 0x14(r30)
@@ -469,8 +469,8 @@ branch_0x802e9320:
     beq-    branch_0x802e9358
     mr      r3, r30
     bl      __ct__14J3DAnmVtxColorFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x12e0
+    lis     r3, __vvt__18J3DAnmVtxColorFull@h
+    addi    r0, r3, __vvt__18J3DAnmVtxColorFull@l
     stw     r0, 0xc(r30)
     li      r0, 0x0
     stw     r0, 0x1c(r30)
@@ -510,8 +510,8 @@ __ct__14J3DAnmVtxColorFv: # 0x802e93a4
     stw     r31, 0x2c(sp)
     mr      r31, r3
     bl      __ct__10J3DAnmBaseFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x12d0
+    lis     r3, __vvt__14J3DAnmVtxColor@h
+    addi    r0, r3, __vvt__14J3DAnmVtxColor@l
     stw     r0, 0xc(r31)
     li      r3, 0x7
     li      r0, 0x0
@@ -536,8 +536,8 @@ __ct__11J3DAnmColorFv: # 0x802e93fc
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__10J3DAnmBaseFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x12a0
+    lis     r3, __vvt__11J3DAnmColor@h
+    addi    r0, r3, __vvt__11J3DAnmColor@l
     stw     r0, 0xc(r31)
     li      r4, 0x0
     li      r0, 0x1
@@ -559,11 +559,11 @@ __ct__11J3DAnmColorFv: # 0x802e93fc
 
 .globl __ct__20J3DAnmFullLoader_v15Fv
 __ct__20J3DAnmFullLoader_v15Fv: # 0x802e9460
-    lis     r4, 0x803e
-    addi    r0, r4, 0x1408
-    lis     r4, 0x803e
+    lis     r4, __vvt__12J3DAnmLoader@h
+    addi    r0, r4, __vvt__12J3DAnmLoader@l
+    lis     r4, __vvt__20J3DAnmFullLoader_v15@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0x13f8
+    addi    r0, r4, __vvt__20J3DAnmFullLoader_v15@l
     stw     r0, 0x0(r3)
     blr
 
@@ -576,8 +576,8 @@ __dt__12J3DAnmLoaderFv: # 0x802e947c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e94b0
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1408
+    lis     r3, __vvt__12J3DAnmLoader@h
+    addi    r3, r3, __vvt__12J3DAnmLoader@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802e94b0
@@ -600,12 +600,12 @@ __dt__20J3DAnmFullLoader_v15Fv: # 0x802e94c8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e950c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x13f8
+    lis     r3, __vvt__20J3DAnmFullLoader_v15@h
+    addi    r0, r3, __vvt__20J3DAnmFullLoader_v15@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802e94fc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1408
+    lis     r3, __vvt__12J3DAnmLoader@h
+    addi    r0, r3, __vvt__12J3DAnmLoader@l
     stw     r0, 0x0(r31)
 branch_0x802e94fc:
     extsh.  r0, r4
@@ -623,11 +623,11 @@ branch_0x802e950c:
 
 .globl __ct__19J3DAnmKeyLoader_v15Fv
 __ct__19J3DAnmKeyLoader_v15Fv: # 0x802e9524
-    lis     r4, 0x803e
-    addi    r0, r4, 0x1408
-    lis     r4, 0x803e
+    lis     r4, __vvt__12J3DAnmLoader@h
+    addi    r0, r4, __vvt__12J3DAnmLoader@l
+    lis     r4, __vvt__19J3DAnmKeyLoader_v15@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0x13e8
+    addi    r0, r4, __vvt__19J3DAnmKeyLoader_v15@l
     stw     r0, 0x0(r3)
     blr
 
@@ -640,12 +640,12 @@ __dt__19J3DAnmKeyLoader_v15Fv: # 0x802e9540
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802e9584
-    lis     r3, 0x803e
-    addi    r0, r3, 0x13e8
+    lis     r3, __vvt__19J3DAnmKeyLoader_v15@h
+    addi    r0, r3, __vvt__19J3DAnmKeyLoader_v15@l
     stw     r0, 0x0(r31)
     beq-    branch_0x802e9574
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1408
+    lis     r3, __vvt__12J3DAnmLoader@h
+    addi    r0, r3, __vvt__12J3DAnmLoader@l
     stw     r0, 0x0(r31)
 branch_0x802e9574:
     extsh.  r0, r4
@@ -664,24 +664,24 @@ branch_0x802e9584:
 .globl load__20J3DAnmFullLoader_v15FPCv
 load__20J3DAnmFullLoader_v15FPCv: # 0x802e959c
     mflr    r0
-    lis     r5, 0x5643
+    lis     r5, unk_56434631@h
     stw     r0, 0x4(sp)
-    lis     r6, 0x5041
-    lis     r9, 0x5450
+    lis     r6, unk_50414631@h
+    lis     r9, unk_54505431@h
     stwu    sp, -0x38(sp)
-    lis     r8, 0x434c
-    lis     r7, 0x414e
+    lis     r8, unk_434c4631@h
+    lis     r7, unk_414e4631@h
     stmw    r22, 0x10(sp)
     addi    r31, r4, 0x0
-    lis     r4, 0x5641
+    lis     r4, unk_56414631@h
     addi    r30, r3, 0x0
     addi    r23, r31, 0x20
-    addi    r29, r4, 0x4631
-    addi    r28, r5, 0x4631
-    addi    r27, r6, 0x4631
-    addi    r24, r9, 0x5431
-    addi    r25, r8, 0x4631
-    addi    r26, r7, 0x4631
+    addi    r29, r4, unk_56414631@l
+    addi    r28, r5, unk_56434631@l
+    addi    r27, r6, unk_50414631@l
+    addi    r24, r9, unk_54505431@l
+    addi    r25, r8, unk_434c4631@l
+    addi    r26, r7, unk_414e4631@l
     li      r22, 0x0
     b       branch_0x802e96a4
 
@@ -776,7 +776,7 @@ readAnmTransform__20J3DAnmFullLoader_v15FPC23J3DAnmTransformFullData: # 0x802e96
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lwz     r4, 0x14(r4)
     bl      JSUConvertOffsetToPtr_24J3DAnmTransformFullTable___FPCvPCv
@@ -816,7 +816,7 @@ readAnmColor__20J3DAnmFullLoader_v15FPC19J3DAnmColorFullData: # 0x802e975c
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xe(r4)
     sth     r0, 0x18(r31)
@@ -879,7 +879,7 @@ readAnmTexPattern__20J3DAnmFullLoader_v15FPC24J3DAnmTexPatternFullData: # 0x802e
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xc(r4)
     sth     r0, 0x1a(r31)
@@ -931,7 +931,7 @@ readAnmVisibility__20J3DAnmFullLoader_v15FPC24J3DAnmVisibilityFullData: # 0x802e
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xc(r4)
     sth     r0, 0x10(r31)
@@ -966,7 +966,7 @@ readAnmCluster__20J3DAnmFullLoader_v15FPC21J3DAnmClusterFullData: # 0x802e9980
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lwz     r4, 0x10(r4)
     bl      JSUConvertOffsetToPtr_22J3DAnmClusterFullTable___FPCvPCv
@@ -998,7 +998,7 @@ readAnmVtxColor__20J3DAnmFullLoader_v15FPC22J3DAnmVtxColorFullData: # 0x802e99ec
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xc(r4)
     sth     r0, 0x10(r31)
@@ -1090,24 +1090,24 @@ branch_0x802e9afc:
 .globl load__19J3DAnmKeyLoader_v15FPCv
 load__19J3DAnmKeyLoader_v15FPCv: # 0x802e9b64
     mflr    r0
-    lis     r5, 0x5643
+    lis     r5, unk_56434b31@h
     stw     r0, 0x4(sp)
-    lis     r6, 0x5041
-    lis     r9, 0x5452
+    lis     r6, unk_50414b31@h
+    lis     r9, unk_54524b31@h
     stwu    sp, -0x38(sp)
-    lis     r8, 0x434c
-    lis     r7, 0x414e
+    lis     r8, unk_434c4b31@h
+    lis     r7, unk_414e4b31@h
     stmw    r22, 0x10(sp)
     addi    r31, r4, 0x0
-    lis     r4, 0x5454
+    lis     r4, unk_54544b31@h
     addi    r30, r3, 0x0
     addi    r23, r31, 0x20
-    addi    r29, r4, 0x4b31
-    addi    r28, r5, 0x4b31
-    addi    r27, r6, 0x4b31
-    addi    r24, r9, 0x4b31
-    addi    r25, r8, 0x4b31
-    addi    r26, r7, 0x4b31
+    addi    r29, r4, unk_54544b31@l
+    addi    r28, r5, unk_56434b31@l
+    addi    r27, r6, unk_50414b31@l
+    addi    r24, r9, unk_54524b31@l
+    addi    r25, r8, unk_434c4b31@l
+    addi    r26, r7, unk_414e4b31@l
     li      r22, 0x0
     b       branch_0x802e9c6c
 
@@ -1204,7 +1204,7 @@ readAnmTransform__19J3DAnmKeyLoader_v15FPC22J3DAnmTransformKeyData: # 0x802e9c90
     stb     r0, 0x0(r31)
     lbz     r0, 0x9(r4)
     stw     r0, 0x24(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lwz     r4, 0x14(r4)
     bl      JSUConvertOffsetToPtr_23J3DAnmTransformKeyTable___FPCvPCv
@@ -1248,7 +1248,7 @@ readAnmTextureSRT__19J3DAnmKeyLoader_v15FPC23J3DAnmTextureSRTKeyData: # 0x802e9d
     stb     r0, 0x0(r31)
     lbz     r0, 0x9(r4)
     stw     r0, 0x10(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xc(r4)
     sth     r0, 0x14(r31)
@@ -1380,7 +1380,7 @@ readAnmColor__19J3DAnmKeyLoader_v15FPC18J3DAnmColorKeyData: # 0x802e9f28
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xe(r4)
     sth     r0, 0x18(r31)
@@ -1450,7 +1450,7 @@ readAnmCluster__19J3DAnmKeyLoader_v15FPC20J3DAnmClusterKeyData: # 0x802ea030
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lwz     r4, 0x10(r4)
     bl      JSUConvertOffsetToPtr_21J3DAnmClusterKeyTable___FPCvPCv
@@ -1482,7 +1482,7 @@ readAnmTevReg__19J3DAnmKeyLoader_v15FPC19J3DAnmTevRegKeyData: # 0x802ea09c
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xc(r4)
     sth     r0, 0x10(r31)
@@ -1599,7 +1599,7 @@ readAnmVtxColor__19J3DAnmKeyLoader_v15FPC21J3DAnmVtxColorKeyData: # 0x802ea258
     sth     r0, 0x2(r31)
     lbz     r0, 0x8(r4)
     stb     r0, 0x0(r31)
-    lfs     f0, 0x2f0(rtoc)
+    lfs     f0, 0x2f0(r2)
     stfs    f0, 0x4(r31)
     lhz     r0, 0xc(r4)
     sth     r0, 0x10(r31)
@@ -1698,8 +1698,8 @@ __dt__20J3DAnmVisibilityFullFv: # 0x802ea3d0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802ea418
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1418
+    lis     r3, __vvt__20J3DAnmVisibilityFull@h
+    addi    r0, r3, __vvt__20J3DAnmVisibilityFull@l
     stw     r0, 0xc(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1728,8 +1728,8 @@ __dt__16J3DAnmTexPatternFv: # 0x802ea434
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802ea47c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1424
+    lis     r3, __vvt__16J3DAnmTexPattern@h
+    addi    r0, r3, __vvt__16J3DAnmTexPattern@l
     stw     r0, 0xc(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1758,8 +1758,8 @@ __dt__15J3DAnmTevRegKeyFv: # 0x802ea498
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802ea4e0
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1430
+    lis     r3, __vvt__15J3DAnmTevRegKey@h
+    addi    r0, r3, __vvt__15J3DAnmTevRegKey@l
     stw     r0, 0xc(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1788,8 +1788,8 @@ __dt__19J3DAnmTextureSRTKeyFv: # 0x802ea4fc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802ea544
-    lis     r3, 0x803e
-    addi    r0, r3, 0x143c
+    lis     r3, __vvt__19J3DAnmTextureSRTKey@h
+    addi    r0, r3, __vvt__19J3DAnmTextureSRTKey@l
     stw     r0, 0xc(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

@@ -7,12 +7,12 @@ partsPerform__9TNpcPartsFUlPQ26JDrama9TGraphics: # 0x80212020
     stmw    r21, 0xcc(sp)
     addi    r25, r4, 0x0
     mr      r24, r3
-    addi    r26, r5, 0x0
+    addi    r26, r5, unk_43300000@l
     rlwinm  r29, r25, 0, 30, 30
     li      r28, 0x0
     lwz     r6, 0x60(r3)
-    lis     r3, 0x803a
-    subi    r31, r3, 0x7710
+    lis     r3, unk_803988f0@ha
+    addi    r31, r3, unk_803988f0@l
     lwz     r4, 0xd0(r6)
     lwz     r0, 0x8(r4)
     mulli   r0, r0, 0x30
@@ -187,8 +187,8 @@ setPartsAnmFrame__9TNpcPartsFf: # 0x8021225c
     stw     r31, 0x94(sp)
     mr      r31, r3
     lwz     r4, 0x60(r3)
-    lis     r3, 0x400
-    addi    r0, r3, 0x15
+    lis     r3, unk_04000015@h
+    addi    r0, r3, unk_04000015@l
     lwz     r4, 0x4c(r4)
     cmpw    r4, r0
     beq-    branch_0x802122e8
@@ -305,19 +305,19 @@ addJellyFishParts__9TNpcPartsFf: # 0x802123e0
     stmw    r27, 0x34(sp)
     mr      r31, r3
     addi    r29, r31, 0x2c
-    lwz     r3, -0x61f8(r13)
+    lwz     r3, R13Off_m0x61f8(r13)
     bl      getModelDataKeeper__11TObjManagerFv
     bl      getModelDataNum__16TModelDataKeeperCFv
     mr      r30, r3
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1a50(rtoc)
+    lfd     f3, -0x1a50(r2)
     stw     r0, 0x2c(sp)
     lis     r4, 0x4330
     xoris   r0, r30, 0x8000
-    lfs     f1, -0x1a58(rtoc)
+    lfs     f1, -0x1a58(r2)
     stw     r4, 0x28(sp)
-    lwz     r3, -0x61f8(r13)
+    lwz     r3, R13Off_m0x61f8(r13)
     stw     r0, 0x24(sp)
     lfd     f0, 0x28(sp)
     stw     r4, 0x20(sp)
@@ -348,7 +348,7 @@ branch_0x80212494:
     bl      __nw__FUl
     mr.     r27, r3
     beq-    branch_0x802124bc
-    lwz     r3, -0x61f8(r13)
+    lwz     r3, R13Off_m0x61f8(r13)
     bl      getMActorAnmData__11TObjManagerFv
     addi    r4, r3, 0x0
     addi    r3, r27, 0x0
@@ -362,9 +362,9 @@ branch_0x802124bc:
     bl      __nw__FUl
     mr.     r28, r3
     beq-    branch_0x802124f8
-    lis     r3, 0x803a
+    lis     r3, unk_803988fc@ha
     lwz     r4, 0x60(r31)
-    subi    r7, r3, 0x7704
+    addi    r7, r3, unk_803988fc@l
     addi    r3, r28, 0x0
     addi    r6, r27, 0x0
     li      r5, -0x1
@@ -409,7 +409,7 @@ __ct__9TNpcPartsFUlPC13J3DGXColorS10P8TBaseNPC: # 0x80212558
     lwz     r3, 0x60(r3)
     lwz     r3, 0x4c(r3)
     addis   r3, r3, 0xfc00
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     bl      SMSGetNpcInitData__FUl
     li      r0, 0x3
     stw     r3, 0x1a8(sp)
@@ -427,11 +427,11 @@ branch_0x802125a0:
     stw     r0, 0x1c(r3)
     addi    r3, r3, 0x20
     bdnz+      branch_0x802125a0
-    lis     r3, 0x400
-    addi    r0, r3, 0x18
-    lis     r4, 0x803a
+    lis     r3, unk_04000018@h
+    addi    r0, r3, unk_04000018@l
+    lis     r4, unk_803988fc@ha
     stw     r0, 0x1ac(sp)
-    subi    r16, r4, 0x7704
+    addi    r16, r4, unk_803988fc@l
     addi    r15, r3, 0x15
     addi    r14, r3, 0x10
     li      r21, 0x0
@@ -476,7 +476,7 @@ branch_0x80212650:
     mr      r25, r0
     beq-    branch_0x8021294c
     lwz     r3, 0x0(r3)
-    lwz     r4, -0x77b8(r13)
+    lwz     r4, R13Off_m0x77b8(r13)
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x80212698
@@ -553,12 +553,12 @@ branch_0x80212774:
     lwz     r30, 0x4(r4)
     bl      getModel__10TLiveActorCFv
     lwz     r25, 0x4(r3)
-    lwz     r4, -0x774c(r13)
+    lwz     r4, R13Off_m0x774c(r13)
     lwz     r3, 0xa8(r25)
     bl      getIndex__10JUTNameTabCFPCc
     lwz     r5, 0xac(r25)
     clrlslwi  r6, r3, 16, 5
-    lwz     r4, -0x7750(r13)
+    lwz     r4, R13Off_m0x7750(r13)
     addi    r3, r30, 0x0
     lwz     r0, 0x4(r5)
     add     r5, r0, r6
@@ -581,7 +581,7 @@ branch_0x802127e0:
     li      r4, -0x1
     cmpwi   r4, -0x1
     bne-    branch_0x802127f4
-    lwz     r3, -0x6220(r13)
+    lwz     r3, R13Off_m0x6220(r13)
     lwz     r4, 0x1a8(r3)
 branch_0x802127f4:
     lwz     r3, 0x0(r24)
@@ -614,7 +614,7 @@ branch_0x80212840:
     li      r4, -0x1
     cmpwi   r4, -0x1
     bne-    branch_0x80212864
-    lwz     r3, -0x6220(r13)
+    lwz     r3, R13Off_m0x6220(r13)
     lwz     r4, 0x1a8(r3)
 branch_0x80212864:
     lwz     r3, 0x0(r24)

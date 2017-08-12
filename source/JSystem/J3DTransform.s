@@ -76,14 +76,14 @@ branch_0x802d2aa0:
 .globl J3DGetTranslateRotateMtx__FRC16J3DTransformInfoPA4_f
 J3DGetTranslateRotateMtx__FRC16J3DTransformInfoPA4_f: # 0x802d2af4
     lhz     r5, 0xc(r3)
-    lwz     r7, -0x5eac(r13)
+    lwz     r7, R13Off_m0x5eac(r13)
     lhz     r0, 0xe(r3)
     sraw    r6, r5, r7
-    lwz     r8, -0x5ea8(r13)
+    lwz     r8, R13Off_m0x5ea8(r13)
     sraw    r5, r0, r7
     lhz     r0, 0x10(r3)
     slwi    r5, r5, 2
-    lwz     r9, -0x5ea4(r13)
+    lwz     r9, R13Off_m0x5ea4(r13)
     sraw    r0, r0, r7
     lfsx    f5, r8, r5
     slwi    r7, r0, 2
@@ -126,13 +126,13 @@ J3DGetTranslateRotateMtx__FRC16J3DTransformInfoPA4_f: # 0x802d2af4
 
 .globl J3DGetTranslateRotateMtx__FsssfffPA4_f
 J3DGetTranslateRotateMtx__FsssfffPA4_f: # 0x802d2bb0
-    lwz     r7, -0x5eac(r13)
+    lwz     r7, R13Off_m0x5eac(r13)
     clrlwi  r3, r3, 16
     clrlwi  r0, r4, 16
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     sraw    r3, r3, r7
     sraw    r0, r0, r7
-    lwz     r9, -0x5ea4(r13)
+    lwz     r9, R13Off_m0x5ea4(r13)
     slwi    r8, r0, 2
     clrlwi  r0, r5, 16
     lfsx    f8, r4, r8
@@ -175,12 +175,12 @@ J3DGetTranslateRotateMtx__FsssfffPA4_f: # 0x802d2bb0
 .globl J3DGetTextureMtx__FRC17J3DTextureSRTInfo3VecPA4_f
 J3DGetTextureMtx__FRC17J3DTextureSRTInfo3VecPA4_f: # 0x802d2c60
     lhz     r7, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     sraw    r0, r7, r0
     lfs     f0, 0x0(r3)
     slwi    r0, r0, 2
-    lwz     r7, -0x5ea8(r13)
+    lwz     r7, R13Off_m0x5ea8(r13)
     lfsx    f5, r6, r0
     lfsx    f4, r7, r0
     fmuls   f0, f0, f5
@@ -219,13 +219,13 @@ J3DGetTextureMtx__FRC17J3DTextureSRTInfo3VecPA4_f: # 0x802d2c60
     fadds   f0, f6, f0
     fadds   f0, f3, f0
     stfs    f0, 0x18(r5)
-    lfs     f0, 0x200(rtoc)
+    lfs     f0, 0x200(r2)
     stfs    f0, 0x2c(r5)
     stfs    f0, 0x24(r5)
     stfs    f0, 0x20(r5)
     stfs    f0, 0x1c(r5)
     stfs    f0, 0xc(r5)
-    lfs     f0, 0x204(rtoc)
+    lfs     f0, 0x204(r2)
     stfs    f0, 0x28(r5)
     blr
 
@@ -233,12 +233,12 @@ J3DGetTextureMtx__FRC17J3DTextureSRTInfo3VecPA4_f: # 0x802d2c60
 .globl J3DGetTextureMtxOld__FRC17J3DTextureSRTInfo3VecPA4_f
 J3DGetTextureMtxOld__FRC17J3DTextureSRTInfo3VecPA4_f: # 0x802d2d38
     lhz     r7, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     sraw    r0, r7, r0
     lfs     f0, 0x0(r3)
     slwi    r0, r0, 2
-    lwz     r7, -0x5ea8(r13)
+    lwz     r7, R13Off_m0x5ea8(r13)
     lfsx    f5, r6, r0
     lfsx    f4, r7, r0
     fmuls   f0, f0, f5
@@ -277,13 +277,13 @@ J3DGetTextureMtxOld__FRC17J3DTextureSRTInfo3VecPA4_f: # 0x802d2d38
     fadds   f0, f6, f0
     fadds   f0, f3, f0
     stfs    f0, 0x1c(r5)
-    lfs     f0, 0x200(rtoc)
+    lfs     f0, 0x200(r2)
     stfs    f0, 0x2c(r5)
     stfs    f0, 0x24(r5)
     stfs    f0, 0x20(r5)
     stfs    f0, 0x18(r5)
     stfs    f0, 0x8(r5)
-    lfs     f0, 0x204(rtoc)
+    lfs     f0, 0x204(r2)
     stfs    f0, 0x28(r5)
     blr
 
@@ -291,8 +291,8 @@ J3DGetTextureMtxOld__FRC17J3DTextureSRTInfo3VecPA4_f: # 0x802d2d38
 .globl J3DGetTextureMtxMaya__FRC17J3DTextureSRTInfoPA4_f
 J3DGetTextureMtxMaya__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2e10
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     sraw    r0, r5, r0
     lfs     f1, 0x0(r3)
     slwi    r0, r0, 2
@@ -300,25 +300,25 @@ J3DGetTextureMtxMaya__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2e10
     fmuls   f0, f1, f0
     stfs    f0, 0x0(r4)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea8(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     sraw    r0, r5, r0
     lfs     f1, 0x4(r3)
     slwi    r0, r0, 2
     lfsx    f0, r6, r0
     fmuls   f0, f1, f0
     stfs    f0, 0x4(r4)
-    lfs     f4, 0x208(rtoc)
+    lfs     f4, 0x208(r2)
     lfs     f0, 0x10(r3)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fsubs   f1, f0, f4
     lfs     f0, 0x4(r3)
     sraw    r0, r5, r0
     lfs     f2, 0xc(r3)
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     slwi    r0, r0, 2
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     fadds   f0, f1, f0
     lfsx    f3, r6, r0
     fsubs   f2, f2, f4
@@ -327,21 +327,21 @@ J3DGetTextureMtxMaya__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2e10
     fmsubs  f0, f2, f1, f0
     fadds   f0, f4, f0
     stfs    f0, 0x8(r4)
-    lfs     f3, 0x200(rtoc)
+    lfs     f3, 0x200(r2)
     stfs    f3, 0xc(r4)
     lfs     f0, 0x0(r3)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fneg    f1, f0
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     sraw    r0, r5, r0
     slwi    r0, r0, 2
     lfsx    f0, r6, r0
     fmuls   f0, f1, f0
     stfs    f0, 0x10(r4)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     sraw    r0, r5, r0
     lfs     f1, 0x4(r3)
     slwi    r0, r0, 2
@@ -354,11 +354,11 @@ J3DGetTextureMtxMaya__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2e10
     lfs     f0, 0x4(r3)
     fsubs   f2, f2, f4
     lhz     r3, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     sraw    r0, r3, r0
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     slwi    r0, r0, 2
-    lwz     r3, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     fadds   f0, f1, f0
     lfsx    f5, r5, r0
     fneg    f2, f2
@@ -370,7 +370,7 @@ J3DGetTextureMtxMaya__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2e10
     stfs    f3, 0x1c(r4)
     stfs    f3, 0x20(r4)
     stfs    f3, 0x24(r4)
-    lfs     f0, 0x204(rtoc)
+    lfs     f0, 0x204(r2)
     stfs    f0, 0x28(r4)
     stfs    f3, 0x2c(r4)
     blr
@@ -379,8 +379,8 @@ J3DGetTextureMtxMaya__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2e10
 .globl J3DGetTextureMtxMayaOld__FRC17J3DTextureSRTInfoPA4_f
 J3DGetTextureMtxMayaOld__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2f60
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     sraw    r0, r5, r0
     lfs     f1, 0x0(r3)
     slwi    r0, r0, 2
@@ -388,27 +388,27 @@ J3DGetTextureMtxMayaOld__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2f60
     fmuls   f0, f1, f0
     stfs    f0, 0x0(r4)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea8(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     sraw    r0, r5, r0
     lfs     f1, 0x4(r3)
     slwi    r0, r0, 2
     lfsx    f0, r6, r0
     fmuls   f0, f1, f0
     stfs    f0, 0x4(r4)
-    lfs     f4, 0x200(rtoc)
+    lfs     f4, 0x200(r2)
     stfs    f4, 0x8(r4)
-    lfs     f3, 0x208(rtoc)
+    lfs     f3, 0x208(r2)
     lfs     f0, 0x10(r3)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fsubs   f1, f0, f3
     lfs     f0, 0x4(r3)
     sraw    r0, r5, r0
     lfs     f2, 0xc(r3)
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     slwi    r0, r0, 2
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     fadds   f0, f1, f0
     lfsx    f5, r6, r0
     fsubs   f2, f2, f3
@@ -419,17 +419,17 @@ J3DGetTextureMtxMayaOld__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2f60
     stfs    f0, 0xc(r4)
     lfs     f0, 0x0(r3)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fneg    f1, f0
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     sraw    r0, r5, r0
     slwi    r0, r0, 2
     lfsx    f0, r6, r0
     fmuls   f0, f1, f0
     stfs    f0, 0x10(r4)
     lhz     r5, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     sraw    r0, r5, r0
     lfs     f1, 0x4(r3)
     slwi    r0, r0, 2
@@ -443,11 +443,11 @@ J3DGetTextureMtxMayaOld__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2f60
     lfs     f0, 0x4(r3)
     fsubs   f2, f2, f3
     lhz     r3, 0x8(r3)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     sraw    r0, r3, r0
-    lwz     r5, -0x5ea4(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
     slwi    r0, r0, 2
-    lwz     r3, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     fadds   f0, f1, f0
     lfsx    f5, r5, r0
     fneg    f2, f2
@@ -458,7 +458,7 @@ J3DGetTextureMtxMayaOld__FRC17J3DTextureSRTInfoPA4_f: # 0x802d2f60
     stfs    f0, 0x1c(r4)
     stfs    f4, 0x20(r4)
     stfs    f4, 0x24(r4)
-    lfs     f0, 0x204(rtoc)
+    lfs     f0, 0x204(r2)
     stfs    f0, 0x28(r4)
     stfs    f4, 0x2c(r4)
     blr
@@ -600,8 +600,8 @@ J3DPSMtx33CopyFrom34__FPA4_fPA3_f: # 0x802d3254
 
 .globl J3DPSMtxArrayCopy__FPA4_fPA4_fUl
 J3DPSMtxArrayCopy__FPA4_fPA4_fUl: # 0x802d3288
-    subi    r3, r3, 0x8
-    subi    r4, r4, 0x8
+    addi    r3, r3, -0x8
+    addi    r4, r4, -0x8
     mtctr   r5
 branch_0x802d3294:
     psq_l   f0, 0x8(3), 0, 0
@@ -622,7 +622,7 @@ branch_0x802d3294:
 
 .globl J3DMTXConcatArrayIndexedSrc__FPA4_CfPA3_A4_CfPCUsPA3_A4_fUl
 J3DMTXConcatArrayIndexedSrc__FPA4_CfPA3_A4_CfPCUsPA3_A4_fUl: # 0x802d32cc
-    subi    r8, r13, 0x75a8
+    addi    r8, r13, R13Off_m0x75a8
     lhz     r0, 0x0(r5)
     psq_l   f0, 0x0(3), 0, 0
     mtctr   r7
@@ -712,12 +712,12 @@ branch_0x802d3400:
 J3DPSMtxArrayConcat__FPA4_fPA4_fPA4_fUl: # 0x802d3404
     stwu    sp, -0x40(sp)
     stfd    f14, 0x8(sp)
-    lis     r7, 0x8041
+    lis     r7, Unit01@ha
     stfd    f15, 0x10(sp)
-    subi    r7, r7, 0x33e8
+    addi    r7, r7, Unit01@l
     stfd    f31, 0x28(sp)
-    subi    r4, r4, 0x8
-    subi    r5, r5, 0x8
+    addi    r4, r4, -0x8
+    addi    r5, r5, -0x8
     mtctr   r6
 branch_0x802d3428:
     psq_l   f0, 0x0(3), 0, 0

@@ -2,9 +2,9 @@
 .globl __ct__Q26JDrama8TDisplayFUsPvPvRC16_GXRenderModeObj
 __ct__Q26JDrama8TDisplayFUsPvPvRC16_GXRenderModeObj: # 0x802f7eac
     mflr    r0
-    lis     r8, 0x803e
+    lis     r8, __vvt__Q26JDrama8TDisplay@h
     stw     r0, 0x4(sp)
-    addi    r0, r8, 0x1dc0
+    addi    r0, r8, __vvt__Q26JDrama8TDisplay@l
     li      r11, 0x0
     stwu    sp, -0x28(sp)
     li      r8, 0x3
@@ -13,8 +13,8 @@ __ct__Q26JDrama8TDisplayFUsPvPvRC16_GXRenderModeObj: # 0x802f7eac
     addi    r31, r3, 0x0
     stw     r30, 0x20(sp)
     stw     r0, 0x0(r3)
-    lis     r3, 0x100
-    subi    r3, r3, 0x1
+    lis     r3, unk_00ffffff@ha
+    addi    r3, r3, unk_00ffffff@l
     sth     r11, 0xc(r31)
     li      r0, 0x20
     lwz     r10, 0x0(r7)

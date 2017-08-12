@@ -15,8 +15,8 @@ GetFontCode: # 0x80344a0c
     blt-    branch_0x80344a5c
     cmplwi  r0, 0xdf
     bgt-    branch_0x80344a5c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x7640
+    lis     r3, HankakuToCode@h
+    addi    r3, r3, HankakuToCode@l
     slwi    r0, r0, 1
     add     r3, r3, r0
     lhz     r3, -0x40(r3)
@@ -30,7 +30,7 @@ branch_0x80344a5c:
     bgt-    branch_0x80344ae0
     srawi   r3, r0, 8
     clrlwi  r4, r0, 24
-    subi    r0, r3, 0x88
+    addi    r0, r3, -0x88
     cmplwi  r4, 0x40
     mulli   r5, r0, 0xbc
     li      r3, 0x0
@@ -53,10 +53,10 @@ branch_0x80344ab4:
     b       branch_0x80344b94
 
 branch_0x80344ac4:
-    subi    r3, r4, 0x40
+    addi    r3, r4, -0x40
     cmpwi   r3, 0x40
     blt-    branch_0x80344ad4
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
 branch_0x80344ad4:
     addi    r3, r3, 0x2be
     add     r3, r5, r3
@@ -70,7 +70,7 @@ branch_0x80344ae0:
     bge-    branch_0x80344b90
     srawi   r3, r0, 8
     clrlwi  r4, r0, 24
-    subi    r0, r3, 0x81
+    addi    r0, r3, -0x81
     cmplwi  r4, 0x40
     mulli   r5, r0, 0xbc
     li      r3, 0x0
@@ -93,15 +93,15 @@ branch_0x80344b38:
     b       branch_0x80344b94
 
 branch_0x80344b48:
-    subi    r3, r4, 0x40
+    addi    r3, r4, -0x40
     cmpwi   r3, 0x40
     blt-    branch_0x80344b58
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
 branch_0x80344b58:
     add     r0, r5, r3
-    lis     r3, 0x803e
+    lis     r3, Zenkaku2Code@h
     slwi    r4, r0, 1
-    addi    r0, r3, 0x77c0
+    addi    r0, r3, Zenkaku2Code@l
     add     r3, r0, r4
     lhz     r3, 0x0(r3)
     b       branch_0x80344b94
@@ -112,7 +112,7 @@ branch_0x80344b74:
     ble-    branch_0x80344b90
     cmplwi  r3, 0xff
     bgt-    branch_0x80344b90
-    subi    r3, r3, 0x20
+    addi    r3, r3, -0x20
     b       branch_0x80344b94
 
 branch_0x80344b90:
@@ -181,7 +181,7 @@ branch_0x80344c44:
     mtctr   r0
     beq-    branch_0x80344cd8
 branch_0x80344c60:
-    subi    r8, r9, 0x1
+    addi    r8, r9, -0x1
     lbzx    r0, r4, r8
     addi    r8, r9, 0x0
     addi    r10, r10, 0x8
@@ -214,7 +214,7 @@ branch_0x80344c60:
 branch_0x80344cd8:
     mtctr   r5
 branch_0x80344cdc:
-    subi    r8, r9, 0x1
+    addi    r8, r9, -0x1
     lbzx    r0, r4, r8
     addi    r10, r10, 0x1
     addi    r9, r9, 0x1
@@ -224,7 +224,7 @@ branch_0x80344cdc:
 branch_0x80344cf8:
     cmpw    r10, r31
     slwi    r29, r29, 1
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
     blt+    branch_0x80344bd0
     lwz     r31, 0x1c(sp)
     lwz     r30, 0x18(sp)
@@ -325,23 +325,23 @@ OSLoadFont: # 0x80344e00
     addi    r30, r4, 0x0
     stw     r29, 0x34(sp)
     addi    r29, r3, 0x0
-    stw     r0, -0x5a1c(r13)
+    stw     r0, R13Off_m0x5a1c(r13)
     bl      OSGetFontEncode
     clrlwi  r0, r3, 16
     cmplwi  r0, 0x1
     bne-    branch_0x80344e54
-    lis     r4, 0x5
-    lis     r5, 0x1b
+    lis     r4, unk_0004d000@ha
+    lis     r5, unk_001aff00@ha
     addi    r3, r30, 0x0
-    subi    r4, r4, 0x3000
-    subi    r5, r5, 0x100
+    addi    r4, r4, unk_0004d000@l
+    addi    r5, r5, unk_001aff00@l
     bl      ReadROM
     b       branch_0x80344e68
 
 branch_0x80344e54:
-    lis     r4, 0x20
+    lis     r4, unk_001fcf00@ha
     addi    r3, r30, 0x0
-    subi    r5, r4, 0x3100
+    addi    r5, r4, unk_001fcf00@l
     li      r4, 0x3000
     bl      ReadROM
 branch_0x80344e68:
@@ -365,16 +365,16 @@ branch_0x80344e98:
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
     bl      Decode
-    stw     r29, -0x5a20(r13)
+    stw     r29, R13Off_m0x5a20(r13)
     lhz     r4, -0x7368(r13)
     lhz     r0, 0x22(r29)
     cmplwi  r4, 0x1
     add     r0, r29, r0
-    stw     r0, -0x5a18(r13)
+    stw     r0, R13Off_m0x5a18(r13)
     lhz     r3, 0x1a(r29)
     lhz     r0, 0x1c(r29)
     mullw   r0, r3, r0
-    stw     r0, -0x5a14(r13)
+    stw     r0, R13Off_m0x5a14(r13)
     bgt-    branch_0x80344edc
     b       branch_0x80344f24
 
@@ -409,14 +409,14 @@ branch_0x80344f24:
     clrlwi  r0, r4, 16
     cmplwi  r0, 0x1
     bne-    branch_0x80345114
-    lwz     r4, 0xae8(rtoc)
+    lwz     r4, R2Off_0xae8(r2)
     li      r3, 0x54
-    lwz     r0, 0xaec(rtoc)
+    lwz     r0, R2Off_0xaec(r2)
     stw     r4, 0x1c(sp)
     stw     r0, 0x20(sp)
     bl      GetFontCode
-    lwz     r5, -0x5a14(r13)
-    lwz     r12, -0x5a20(r13)
+    lwz     r5, R13Off_m0x5a14(r13)
+    lwz     r12, R13Off_m0x5a20(r13)
     divw    r10, r3, r5
     lhz     r6, 0x1c(sp)
     lhz     r0, 0x1e(r12)
@@ -466,7 +466,7 @@ branch_0x80344f24:
     sth     r6, 0x0(r9)
     addi    r10, r5, 0x5
     addi    r9, r5, 0x6
-    lwz     r7, -0x5a20(r13)
+    lwz     r7, R13Off_m0x5a20(r13)
     addi    r6, r5, 0x7
     lhz     r5, 0x1e(sp)
     lhz     r7, 0x1e(r7)
@@ -488,7 +488,7 @@ branch_0x80344f24:
     add     r8, r8, r7
     add     r8, r8, r3
     sth     r5, 0x0(r8)
-    lwz     r7, -0x5a20(r13)
+    lwz     r7, R13Off_m0x5a20(r13)
     lhz     r5, 0x20(sp)
     lhz     r7, 0x1e(r7)
     srawi   r7, r7, 3
@@ -509,7 +509,7 @@ branch_0x80344f24:
     add     r8, r8, r7
     add     r8, r8, r3
     sth     r5, 0x0(r8)
-    lwz     r5, -0x5a20(r13)
+    lwz     r5, R13Off_m0x5a20(r13)
     lhz     r5, 0x1e(r5)
     srawi   r5, r5, 3
     addze   r5, r5
@@ -546,7 +546,7 @@ ExpandFontSheet: # 0x80345134
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r6, -0x5a20(r13)
+    lwz     r6, R13Off_m0x5a20(r13)
     lhz     r0, 0x18(r6)
     addi    r5, r6, 0x2c
     cmplwi  r0, 0x0
@@ -554,7 +554,7 @@ ExpandFontSheet: # 0x80345134
     lwz     r0, 0x28(r6)
     srawi   r6, r0, 1
     addze   r6, r6
-    subi    r0, r6, 0x1
+    addi    r0, r6, -0x1
     mr.     r10, r0
     slwi    r0, r0, 1
     add     r8, r4, r0
@@ -566,7 +566,7 @@ ExpandFontSheet: # 0x80345134
 branch_0x80345184:
     add     r9, r3, r10
     lbz     r0, 0x0(r9)
-    subi    r10, r10, 0x1
+    addi    r10, r10, -0x1
     extrwi  r7, r0, 2, 24
     extrwi  r0, r0, 2, 26
     lbzx    r7, r5, r7
@@ -576,7 +576,7 @@ branch_0x80345184:
     stb     r0, 0x0(r8)
     lbz     r0, 0x0(r9)
     add     r9, r3, r10
-    subi    r10, r10, 0x1
+    addi    r10, r10, -0x1
     extrwi  r7, r0, 2, 28
     clrlwi  r0, r0, 30
     lbzx    r7, r5, r7
@@ -594,7 +594,7 @@ branch_0x80345184:
     stb     r0, -0x2(r8)
     lbz     r0, 0x0(r9)
     add     r9, r3, r10
-    subi    r10, r10, 0x1
+    addi    r10, r10, -0x1
     extrwi  r7, r0, 2, 28
     clrlwi  r0, r0, 30
     lbzx    r7, r5, r7
@@ -612,7 +612,7 @@ branch_0x80345184:
     stb     r0, -0x4(r8)
     lbz     r0, 0x0(r9)
     add     r9, r3, r10
-    subi    r10, r10, 0x1
+    addi    r10, r10, -0x1
     extrwi  r7, r0, 2, 28
     clrlwi  r0, r0, 30
     lbzx    r7, r5, r7
@@ -636,7 +636,7 @@ branch_0x80345184:
     clrlwi  r0, r0, 28
     rlwimi  r0, r7, 0, 24, 27
     stb     r0, -0x5(r8)
-    subi    r8, r8, 0x8
+    addi    r8, r8, -0x8
     bdnz+      branch_0x80345184
     andi.   r6, r6, 0x3
     beq-    branch_0x803454c4
@@ -645,7 +645,7 @@ branch_0x803452b4:
 branch_0x803452b8:
     add     r9, r3, r10
     lbz     r0, 0x0(r9)
-    subi    r10, r10, 0x1
+    addi    r10, r10, -0x1
     extrwi  r7, r0, 2, 24
     extrwi  r0, r0, 2, 26
     lbzx    r7, r5, r7
@@ -661,7 +661,7 @@ branch_0x803452b8:
     clrlwi  r0, r0, 28
     rlwimi  r0, r7, 0, 24, 27
     stb     r0, 0x1(r8)
-    subi    r8, r8, 0x2
+    addi    r8, r8, -0x2
     bdnz+      branch_0x803452b8
     b       branch_0x803454c4
 
@@ -682,7 +682,7 @@ branch_0x8034530c:
 branch_0x80345340:
     add     r8, r3, r9
     lbz     r0, 0x0(r8)
-    subi    r9, r9, 0x1
+    addi    r9, r9, -0x1
     extrwi  r0, r0, 2, 24
     lbzx    r0, r5, r0
     stb     r0, 0x0(r7)
@@ -696,7 +696,7 @@ branch_0x80345340:
     stb     r0, 0x2(r7)
     lbz     r0, 0x0(r8)
     add     r8, r3, r9
-    subi    r9, r9, 0x1
+    addi    r9, r9, -0x1
     clrlwi  r0, r0, 30
     lbzx    r0, r5, r0
     stb     r0, 0x3(r7)
@@ -714,7 +714,7 @@ branch_0x80345340:
     stb     r0, -0x2(r7)
     lbz     r0, 0x0(r8)
     add     r8, r3, r9
-    subi    r9, r9, 0x1
+    addi    r9, r9, -0x1
     clrlwi  r0, r0, 30
     lbzx    r0, r5, r0
     stb     r0, -0x1(r7)
@@ -732,7 +732,7 @@ branch_0x80345340:
     stb     r0, -0x6(r7)
     lbz     r0, 0x0(r8)
     add     r8, r3, r9
-    subi    r9, r9, 0x1
+    addi    r9, r9, -0x1
     clrlwi  r0, r0, 30
     lbzx    r0, r5, r0
     stb     r0, -0x5(r7)
@@ -752,7 +752,7 @@ branch_0x80345340:
     clrlwi  r0, r0, 30
     lbzx    r0, r5, r0
     stb     r0, -0x9(r7)
-    subi    r7, r7, 0x10
+    addi    r7, r7, -0x10
     bdnz+      branch_0x80345340
     andi.   r6, r6, 0x3
     beq-    branch_0x803454c4
@@ -761,7 +761,7 @@ branch_0x80345470:
 branch_0x80345474:
     add     r8, r3, r9
     lbz     r0, 0x0(r8)
-    subi    r9, r9, 0x1
+    addi    r9, r9, -0x1
     extrwi  r0, r0, 2, 24
     lbzx    r0, r5, r0
     stb     r0, 0x0(r7)
@@ -777,10 +777,10 @@ branch_0x80345474:
     clrlwi  r0, r0, 30
     lbzx    r0, r5, r0
     stb     r0, 0x3(r7)
-    subi    r7, r7, 0x4
+    addi    r7, r7, -0x4
     bdnz+      branch_0x80345474
 branch_0x803454c4:
-    lwz     r5, -0x5a20(r13)
+    lwz     r5, R13Off_m0x5a20(r13)
     mr      r3, r4
     lwz     r4, 0x28(r5)
     bl      DCStoreRange
@@ -837,7 +837,7 @@ branch_0x80345548:
 
 branch_0x80345560:
     addis   r4, r3, 0x2
-    subi    r4, r4, 0x2ee0
+    addi    r4, r4, -0x2ee0
 branch_0x80345568:
     clrrwi  r4, r4, 5
     bl      OSLoadFont
@@ -847,16 +847,16 @@ branch_0x80345568:
     b       branch_0x803455b4
 
 branch_0x80345580:
-    lwz     r5, -0x5a20(r13)
+    lwz     r5, R13Off_m0x5a20(r13)
     lwz     r0, 0x24(r5)
     add     r0, r5, r0
-    stw     r0, -0x5a1c(r13)
-    lwz     r3, -0x5a1c(r13)
+    stw     r0, R13Off_m0x5a1c(r13)
+    lwz     r3, R13Off_m0x5a1c(r13)
     addi    r0, r3, 0x1f
     clrrwi  r0, r0, 5
-    stw     r0, -0x5a1c(r13)
+    stw     r0, R13Off_m0x5a1c(r13)
     lwz     r0, 0x24(r5)
-    lwz     r4, -0x5a1c(r13)
+    lwz     r4, R13Off_m0x5a1c(r13)
     add     r3, r5, r0
     bl      ExpandFontSheet
     li      r3, 0x1
@@ -958,17 +958,17 @@ branch_0x803456c0:
     addi    r27, r27, 0x1
 branch_0x803456e0:
     bl      GetFontCode
-    lwz     r0, -0x5a14(r13)
+    lwz     r0, R13Off_m0x5a14(r13)
     cmplwi  r31, 0x0
-    lwz     r4, -0x5a20(r13)
+    lwz     r4, R13Off_m0x5a20(r13)
     divw    r6, r3, r0
-    lwz     r5, -0x5a1c(r13)
+    lwz     r5, R13Off_m0x5a1c(r13)
     lwz     r0, 0x14(r4)
     mullw   r0, r0, r6
     add     r0, r5, r0
     stw     r0, 0x0(r28)
-    lwz     r0, -0x5a14(r13)
-    lwz     r5, -0x5a20(r13)
+    lwz     r0, R13Off_m0x5a14(r13)
+    lwz     r5, R13Off_m0x5a20(r13)
     mullw   r4, r6, r0
     lhz     r6, 0x1a(r5)
     lhz     r0, 0x10(r5)
@@ -978,12 +978,12 @@ branch_0x803456e0:
     subf    r4, r4, r5
     mullw   r0, r4, r0
     stw     r0, 0x0(r29)
-    lwz     r4, -0x5a20(r13)
+    lwz     r4, R13Off_m0x5a20(r13)
     lhz     r0, 0x12(r4)
     mullw   r0, r7, r0
     stw     r0, 0x0(r30)
     beq-    branch_0x80345754
-    lwz     r4, -0x5a18(r13)
+    lwz     r4, R13Off_m0x5a18(r13)
     lbzx    r0, r4, r3
     stw     r0, 0x0(r31)
 branch_0x80345754:
@@ -1085,7 +1085,7 @@ branch_0x80345878:
     cmplwi  r31, 0x0
     beq-    branch_0x80345890
     bl      GetFontCode
-    lwz     r4, -0x5a18(r13)
+    lwz     r4, R13Off_m0x5a18(r13)
     lbzx    r0, r4, r3
     stw     r0, 0x0(r31)
 branch_0x80345890:

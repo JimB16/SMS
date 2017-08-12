@@ -7,9 +7,9 @@ ARRegisterDMACallback: # 0x80352db0
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r3
-    lwz     r31, -0x5838(r13)
+    lwz     r31, R13Off_m0x5838(r13)
     bl      OSDisableInterrupts
-    stw     r30, -0x5838(r13)
+    stw     r30, R13Off_m0x5838(r13)
     bl      OSRestoreInterrupts
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -34,9 +34,9 @@ ARStartDMA: # 0x80352df4
     stw     r28, 0x18(sp)
     addi    r28, r4, 0x0
     bl      OSDisableInterrupts
-    lis     r6, 0xcc00
+    lis     r6, unk_cc005000@h
     lhz     r0, 0x5020(r6)
-    addi    r8, r6, 0x5000
+    addi    r8, r6, unk_cc005000@l
     addi    r9, r6, 0x5000
     clrrwi  r4, r0, 10
     srwi    r0, r28, 16
@@ -93,17 +93,17 @@ ARAlloc: # 0x80352ee4
     stw     r30, 0x10(sp)
     mr      r30, r3
     bl      OSDisableInterrupts
-    lwz     r31, -0x5828(r13)
-    lwz     r4, -0x5820(r13)
+    lwz     r31, R13Off_m0x5828(r13)
+    lwz     r4, R13Off_m0x5820(r13)
     add     r0, r31, r30
-    stw     r0, -0x5828(r13)
+    stw     r0, R13Off_m0x5828(r13)
     stw     r30, 0x0(r4)
-    lwz     r5, -0x5820(r13)
-    lwz     r4, -0x5824(r13)
+    lwz     r5, R13Off_m0x5820(r13)
+    lwz     r4, R13Off_m0x5824(r13)
     addi    r5, r5, 0x4
-    subi    r0, r4, 0x1
-    stw     r5, -0x5820(r13)
-    stw     r0, -0x5824(r13)
+    addi    r0, r4, -0x1
+    stw     r5, R13Off_m0x5820(r13)
+    stw     r0, R13Off_m0x5824(r13)
     bl      OSRestoreInterrupts
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -124,7 +124,7 @@ ARInit: # 0x80352f4c
     addi    r30, r4, 0x0
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
-    lwz     r0, -0x581c(r13)
+    lwz     r0, R13Off_m0x581c(r13)
     cmpwi   r0, 0x1
     bne-    branch_0x80352f80
     li      r3, 0x4000
@@ -133,20 +133,20 @@ ARInit: # 0x80352f4c
 branch_0x80352f80:
     bl      OSDisableInterrupts
     li      r0, 0x0
-    lis     r4, 0x8035
-    stw     r0, -0x5838(r13)
+    lis     r4, __ARHandler@h
+    stw     r0, R13Off_m0x5838(r13)
     addi    r31, r3, 0x0
-    addi    r4, r4, 0x3018
+    addi    r4, r4, __ARHandler@l
     li      r3, 0x6
     bl      __OSSetInterruptHandler
     lis     r3, 0x200
     bl      __OSUnmaskInterrupts
     li      r0, 0x4000
-    stw     r30, -0x5824(r13)
-    lis     r3, 0xcc00
-    stw     r0, -0x5828(r13)
-    addi    r4, r3, 0x5000
-    stw     r29, -0x5820(r13)
+    stw     r30, R13Off_m0x5824(r13)
+    lis     r3, unk_cc005000@h
+    stw     r0, R13Off_m0x5828(r13)
+    addi    r4, r3, unk_cc005000@l
+    stw     r29, R13Off_m0x5820(r13)
     lhz     r0, 0x1a(r4)
     lhz     r3, 0x501a(r3)
     clrrwi  r0, r0, 8
@@ -154,10 +154,10 @@ branch_0x80352f80:
     sth     r0, 0x1a(r4)
     bl      __ARChecksize
     li      r0, 0x1
-    stw     r0, -0x581c(r13)
+    stw     r0, R13Off_m0x581c(r13)
     mr      r3, r31
     bl      OSRestoreInterrupts
-    lwz     r3, -0x5828(r13)
+    lwz     r3, R13Off_m0x5828(r13)
 branch_0x80352fec:
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
@@ -176,16 +176,16 @@ ARGetBaseAddress: # 0x80353008
 
 .globl ARGetSize
 ARGetSize: # 0x80353010
-    lwz     r3, -0x5834(r13)
+    lwz     r3, R13Off_m0x5834(r13)
     blr
 
 
 .globl __ARHandler
 __ARHandler: # 0x80353018
     mflr    r0
-    lis     r3, 0xcc00
+    lis     r3, unk_cc005000@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x5000
+    addi    r3, r3, unk_cc005000@l
     li      r0, -0x89
     stwu    sp, -0x2e0(sp)
     stw     r31, 0x2dc(sp)
@@ -198,7 +198,7 @@ __ARHandler: # 0x80353018
     bl      OSClearContext
     addi    r3, sp, 0x10
     bl      OSSetCurrentContext
-    lwz     r12, -0x5838(r13)
+    lwz     r12, R13Off_m0x5838(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8035306c
     mtlr    r12
@@ -218,35 +218,35 @@ branch_0x8035306c:
 .globl __ARChecksize
 __ARChecksize: # 0x80353090
     mflr    r0
-    lis     r3, 0xcc00
+    lis     r3, unk_cc005000@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x5000
+    addi    r3, r3, unk_cc005000@l
     stwu    sp, -0x138(sp)
     stmw    r14, 0xf0(sp)
 branch_0x803530a8:
     lhz     r0, 0x16(r3)
     clrlwi. r0, r0, 31
     beq+    branch_0x803530a8
-    lis     r3, 0x100
-    stw     r3, -0x5830(r13)
-    lis     r22, 0xcc00
+    lis     r3, unk_01000000@h
+    stw     r3, R13Off_m0x5830(r13)
+    lis     r22, unk_cc005000@h
     addi    r0, sp, 0xb3
     lhz     r5, 0x5012(r22)
     clrrwi  r23, r0, 5
     addi    r0, sp, 0x73
     clrrwi  r5, r5, 6
     ori     r5, r5, 0x23
-    addi    r18, r22, 0x5000
+    addi    r18, r22, unk_cc005000@l
     sthu    r5, 0x12(r18)
-    lis     r4, 0xdeae
-    subi    r5, r4, 0x4111
+    lis     r4, unk_deadbeef@ha
+    addi    r5, r4, unk_deadbeef@l
     stw     r5, 0x0(r23)
-    lis     r4, 0xbad1
+    lis     r4, unk_bad0bad0@ha
     clrrwi  r28, r0, 5
-    subi    r0, r4, 0x4530
+    addi    r0, r4, unk_bad0bad0@l
     stw     r0, 0x0(r28)
     addi    r4, sp, 0x33
-    addi    r21, r3, 0x0
+    addi    r21, r3, unk_01000000@l
     stw     r5, 0x4(r23)
     clrrwi  r24, r4, 5
     addi    r3, r23, 0x0
@@ -270,7 +270,7 @@ branch_0x803530a8:
     li      r4, 0x20
     bl      DCFlushRange
     li      r0, 0x0
-    stw     r0, -0x582c(r13)
+    stw     r0, R13Off_m0x582c(r13)
     srwi    r5, r28, 16
     clrlwi  r6, r28, 16
     lhz     r0, 0x5020(r22)
@@ -627,14 +627,14 @@ branch_0x803536a0:
     lwz     r3, 0x0(r23)
     cmplw   r0, r3
     bne-    branch_0x803536e4
-    lis     r0, 0x20
-    stw     r0, -0x582c(r13)
+    lis     r0, unk_00200000@h
+    stw     r0, R13Off_m0x582c(r13)
     addis   r21, r21, 0x20
     b       branch_0x80353974
 
 branch_0x803536e4:
     addi    r3, r24, 0x0
-    li      r4, 0x0
+    addi    r4, r0, unk_00200000@l
     li      r5, 0x20
     bl      memset
     addi    r3, r24, 0x0
@@ -683,15 +683,15 @@ branch_0x80353774:
     lwz     r3, 0x0(r23)
     cmplw   r0, r3
     bne-    branch_0x803537bc
-    lis     r0, 0x40
-    stw     r0, -0x582c(r13)
+    lis     r0, unk_00400000@h
+    stw     r0, R13Off_m0x582c(r13)
     ori     r19, r19, 0x8
     addis   r21, r21, 0x40
     b       branch_0x80353974
 
 branch_0x803537bc:
     addi    r3, r24, 0x0
-    li      r4, 0x0
+    addi    r4, r0, unk_00400000@l
     li      r5, 0x20
     bl      memset
     addi    r3, r24, 0x0
@@ -740,15 +740,15 @@ branch_0x8035384c:
     lwz     r0, 0x0(r23)
     cmplw   r3, r0
     bne-    branch_0x80353894
-    lis     r0, 0x80
-    stw     r0, -0x582c(r13)
+    lis     r0, unk_00800000@h
+    stw     r0, R13Off_m0x582c(r13)
     ori     r19, r19, 0x10
     addis   r21, r21, 0x80
     b       branch_0x80353974
 
 branch_0x80353894:
     addi    r3, r24, 0x0
-    li      r4, 0x0
+    addi    r4, r0, unk_00800000@l
     li      r5, 0x20
     bl      memset
     addi    r3, r24, 0x0
@@ -796,14 +796,14 @@ branch_0x8035391c:
     cmplw   r3, r0
     bne-    branch_0x80353964
     lis     r0, 0x100
-    stw     r0, -0x582c(r13)
+    stw     r0, R13Off_m0x582c(r13)
     ori     r19, r19, 0x18
     addis   r21, r21, 0x100
     b       branch_0x80353974
 
 branch_0x80353964:
     lis     r0, 0x200
-    stw     r0, -0x582c(r13)
+    stw     r0, R13Off_m0x582c(r13)
     ori     r19, r19, 0x20
     addis   r21, r21, 0x200
 branch_0x80353974:
@@ -814,7 +814,7 @@ branch_0x80353974:
 branch_0x80353984:
     lis     r3, 0xc000
     stw     r21, 0xd0(r3)
-    stw     r21, -0x5834(r13)
+    stw     r21, R13Off_m0x5834(r13)
     lwz     r0, 0x13c(sp)
     lmw     r14, 0xf0(sp)
     addi    sp, sp, 0x138

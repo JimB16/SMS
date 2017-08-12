@@ -2,20 +2,20 @@
 .globl __ct__Q28JASystem15TSimpleWaveBankFv
 __ct__Q28JASystem15TSimpleWaveBankFv: # 0x80310248
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q38JASystem13WaveArcLoader7TObject@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     li      r31, 0x0
     stw     r30, 0x10(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x26ec
+    lis     r3, __vvt__Q28JASystem9TWaveBank@h
+    addi    r0, r3, __vvt__Q28JASystem9TWaveBank@l
     lwz     r30, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r3, r3, 0x275c
+    lis     r3, __vvt__Q28JASystem15TSimpleWaveBank@h
+    addi    r3, r3, __vvt__Q28JASystem15TSimpleWaveBank@l
     stw     r0, 0x0(r30)
-    addi    r0, r4, 0x26c4
+    addi    r0, r4, __vvt__Q38JASystem13WaveArcLoader7TObject@l
     stw     r0, 0x4(r30)
     addi    r0, r3, 0x14
     stw     r3, 0x0(r30)
@@ -45,21 +45,21 @@ __dt__Q28JASystem15TSimpleWaveBankFv: # 0x803102c8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80310338
-    lis     r3, 0x803e
-    addi    r3, r3, 0x275c
+    lis     r3, __vvt__Q28JASystem15TSimpleWaveBank@h
+    addi    r3, r3, __vvt__Q28JASystem15TSimpleWaveBank@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x14
-    lis     r3, 0x8031
+    lis     r3, __dt__Q38JASystem15TSimpleWaveBank11TWaveHandleFv@h
     stw     r0, 0x4(r30)
-    addi    r4, r3, 0x354
+    addi    r4, r3, __dt__Q38JASystem15TSimpleWaveBank11TWaveHandleFv@l
     lwz     r3, 0x8(r30)
     bl      __destroy_new_array
     lwz     r3, 0x10(r30)
     bl      __dla__FPv
     cmplwi  r30, 0x0
     beq-    branch_0x80310328
-    lis     r3, 0x803e
-    addi    r0, r3, 0x26ec
+    lis     r3, __vvt__Q28JASystem9TWaveBank@h
+    addi    r0, r3, __vvt__Q28JASystem9TWaveBank@l
     stw     r0, 0x0(r30)
 branch_0x80310328:
     extsh.  r0, r31
@@ -84,12 +84,12 @@ __dt__Q38JASystem15TSimpleWaveBank11TWaveHandleFv: # 0x80310354
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80310398
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2748
+    lis     r3, __vvt__Q38JASystem15TSimpleWaveBank11TWaveHandle@h
+    addi    r0, r3, __vvt__Q38JASystem15TSimpleWaveBank11TWaveHandle@l
     stw     r0, 0x0(r31)
     beq-    branch_0x80310388
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2688
+    lis     r3, __vvt__Q28JASystem11TWaveHandle@h
+    addi    r0, r3, __vvt__Q28JASystem11TWaveHandle@l
     stw     r0, 0x0(r31)
 branch_0x80310388:
     extsh.  r0, r4
@@ -108,11 +108,11 @@ branch_0x80310398:
 .globl setWaveTableSize__Q28JASystem15TSimpleWaveBankFUl
 setWaveTableSize__Q28JASystem15TSimpleWaveBankFUl: # 0x803103b0
     mflr    r0
-    lis     r5, 0x8031
+    lis     r5, __dt__Q38JASystem15TSimpleWaveBank11TWaveHandleFv@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r5, 0x354
+    addi    r31, r5, __dt__Q38JASystem15TSimpleWaveBank11TWaveHandleFv@l
     stw     r30, 0x18(sp)
     addi    r30, r4, 0x0
     addi    r4, r31, 0x0
@@ -126,8 +126,8 @@ setWaveTableSize__Q28JASystem15TSimpleWaveBankFUl: # 0x803103b0
     addi    r3, r5, 0x8
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8031
-    addi    r4, r4, 0x438
+    lis     r4, __ct__Q38JASystem15TSimpleWaveBank11TWaveHandleFv@h
+    addi    r4, r4, __ct__Q38JASystem15TSimpleWaveBank11TWaveHandleFv@l
     addi    r5, r31, 0x0
     addi    r7, r30, 0x0
     li      r6, 0x34
@@ -145,11 +145,11 @@ setWaveTableSize__Q28JASystem15TSimpleWaveBankFUl: # 0x803103b0
 
 .globl __ct__Q38JASystem15TSimpleWaveBank11TWaveHandleFv
 __ct__Q38JASystem15TSimpleWaveBank11TWaveHandleFv: # 0x80310438
-    lis     r4, 0x803e
-    addi    r0, r4, 0x2688
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q28JASystem11TWaveHandle@h
+    addi    r0, r4, __vvt__Q28JASystem11TWaveHandle@l
+    lis     r4, __vvt__Q38JASystem15TSimpleWaveBank11TWaveHandle@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0x2748
+    addi    r0, r4, __vvt__Q38JASystem15TSimpleWaveBank11TWaveHandle@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0x30(r3)
@@ -265,8 +265,8 @@ branch_0x8031059c:
 
 .globl getType__Q28JASystem15TSimpleWaveBankCFv
 getType__Q28JASystem15TSimpleWaveBankCFv: # 0x803105a8
-    lis     r3, 0x534d
-    addi    r3, r3, 0x504c
+    lis     r3, unk_534d504c@h
+    addi    r3, r3, unk_534d504c@l
     blr
 
 
@@ -282,20 +282,20 @@ getWaveArcFileName__Q28JASystem15TSimpleWaveBankCFv: # 0x803105bc
     blr
 
 
-.globl _4_getHeap__Q28JASystem15TSimpleWaveBankFv
-_4_getHeap__Q28JASystem15TSimpleWaveBankFv: # 0x803105c4
-    subi    r3, r3, 0x4
+.globl unk_803105c4
+unk_803105c4: # 0x803105c4
+    addi    r3, r3, -0x4
     b       getHeap__Q28JASystem15TSimpleWaveBankFv
 
 
-.globl _4_getWaveArcFileName__Q28JASystem15TSimpleWaveBankCFv
-_4_getWaveArcFileName__Q28JASystem15TSimpleWaveBankCFv: # 0x803105cc
-    subi    r3, r3, 0x4
+.globl unk_803105cc
+unk_803105cc: # 0x803105cc
+    addi    r3, r3, -0x4
     b       getWaveArcFileName__Q28JASystem15TSimpleWaveBankCFv
 
 
-.globl _4_getLoadFlagPtr__Q28JASystem15TSimpleWaveBankFv
-_4_getLoadFlagPtr__Q28JASystem15TSimpleWaveBankFv: # 0x803105d4
-    subi    r3, r3, 0x4
+.globl unk_803105d4
+unk_803105d4: # 0x803105d4
+    addi    r3, r3, -0x4
     b       getLoadFlagPtr__Q28JASystem15TSimpleWaveBankFv
 

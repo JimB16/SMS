@@ -9,15 +9,15 @@ __dt__9TSunModelFv: # 0x8002e9f0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8002ea54
-    lis     r3, 0x803b
-    subi    r3, r3, 0x2e60
+    lis     r3, __vvt__9TSunModel@ha
+    addi    r3, r3, __vvt__9TSunModel@l
     stw     r3, 0x0(r30)
     addi    r3, r3, 0x24
     addic.  r0, r30, 0x50
     stw     r3, 0x20(r30)
     beq-    branch_0x8002ea38
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2eac
+    lis     r3, __vvt__12J3DFrameCtrl@ha
+    addi    r0, r3, __vvt__12J3DFrameCtrl@l
     stw     r0, 0x50(r30)
 branch_0x8002ea38:
     addi    r3, r30, 0x0
@@ -44,7 +44,7 @@ getZBufValue__9TSunModelFv: # 0x8002ea70
     stwu    sp, -0x28(sp)
     stmw    r26, 0x10(sp)
     mr      r26, r3
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioIndoor__16TCameraMarioDataCFv
     addi    r28, r26, 0xb4
     addi    r27, r26, 0x180
@@ -93,7 +93,7 @@ perform__9TSunModelFUlPQ26JDrama9TGraphics: # 0x8002eb0c
     stw     r29, 0xd4(sp)
     mr      r29, r3
     stw     r28, 0xd0(sp)
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioIndoor__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8002eb48
@@ -146,9 +146,9 @@ branch_0x8002ebd0:
     beq-    branch_0x8002edfc
     lbz     r0, 0x68(r29)
     lis     r28, 0x4330
-    lfd     f1, -0x7678(rtoc)
+    lfd     f1, -0x7678(r2)
     stw     r0, 0xcc(sp)
-    lfs     f2, -0x7690(rtoc)
+    lfs     f2, -0x7690(r2)
     stw     r28, 0xc8(sp)
     lfs     f3, 0x194(r29)
     lfd     f0, 0xc8(sp)
@@ -156,9 +156,9 @@ branch_0x8002ebd0:
     bl      CLBLinearInbetween_f___Ffff
     stfs    f1, 0xa4(r29)
     lbz     r0, 0x74(r29)
-    lfd     f1, -0x7678(rtoc)
+    lfd     f1, -0x7678(r2)
     stw     r0, 0xc4(sp)
-    lfs     f2, -0x7690(rtoc)
+    lfs     f2, -0x7690(r2)
     stw     r28, 0xc0(sp)
     lfs     f3, 0x194(r29)
     lfd     f0, 0xc0(sp)
@@ -175,7 +175,7 @@ branch_0x8002ebd0:
 branch_0x8002ec44:
     lfs     f2, 0x70(r29)
 branch_0x8002ec48:
-    lfs     f3, -0x768c(rtoc)
+    lfs     f3, -0x768c(r2)
     addi    r3, r29, 0x9c
     bl      CLBChaseDecrease__FPffff
     lfs     f0, 0x9c(r29)
@@ -193,7 +193,7 @@ branch_0x8002ec48:
 branch_0x8002ec80:
     lfs     f2, 0x7c(r29)
 branch_0x8002ec84:
-    lfs     f3, -0x768c(rtoc)
+    lfs     f3, -0x768c(r2)
     addi    r3, r29, 0xa0
     bl      CLBChaseDecrease__FPffff
     lfs     f0, 0xa0(r29)
@@ -201,11 +201,11 @@ branch_0x8002ec84:
     stfd    f0, 0xc0(sp)
     lwz     r0, 0xc4(sp)
     sth     r0, 0x9a(r29)
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioIndoor__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8002ecc0
-    lfs     f0, -0x768c(rtoc)
+    lfs     f0, -0x768c(r2)
     stfs    f0, 0xb0(r29)
     b       branch_0x8002ed28
 
@@ -213,28 +213,28 @@ branch_0x8002ecc0:
     lfs     f0, 0xf8(r29)
     lfs     f1, 0xfc(r29)
     fmuls   f2, f0, f0
-    lfs     f0, -0x7688(rtoc)
+    lfs     f0, -0x7688(r2)
     fmuls   f1, f1, f1
     fadds   f1, f2, f1
     fcmpo   cr0, f1, f0
     ble-    branch_0x8002ecec
-    lfs     f0, -0x768c(rtoc)
+    lfs     f0, -0x768c(r2)
     stfs    f0, 0xb0(r29)
     b       branch_0x8002ed28
 
 branch_0x8002ecec:
     fsubs   f1, f0, f1
     lbz     r3, 0x80(r29)
-    lfs     f2, -0x7684(rtoc)
+    lfs     f2, -0x7684(r2)
     lis     r0, 0x4330
     stw     r3, 0xc4(sp)
     fmuls   f1, f2, f1
     lfs     f0, 0x194(r29)
     stw     r0, 0xc0(sp)
-    lfd     f2, -0x7678(rtoc)
+    lfd     f2, -0x7678(r2)
     fmuls   f3, f1, f0
     lfd     f0, 0xc0(sp)
-    lfs     f1, -0x768c(rtoc)
+    lfs     f1, -0x768c(r2)
     fsubs   f2, f0, f2
     bl      CLBLinearInbetween_f___Ffff
     stfs    f1, 0xb0(r29)
@@ -251,7 +251,7 @@ branch_0x8002ed40:
 branch_0x8002ed44:
     addi    r3, r29, 0xac
     bl      CLBChaseGeneralConstantSpecifySpeed_f___FPfff
-    lwz     r5, gpCamera(r13)
+    lwz     r5, R13Off_m0x7118(r13)
     addi    r3, sp, 0xa8
     lfsu    f0, 0x124(r5)
     mr      r4, r3
@@ -267,12 +267,12 @@ branch_0x8002ed44:
     stfs    f2, 0xac(sp)
     stfs    f0, 0xb0(sp)
     bl      MsVECNormalize__FP3VecP3Vec
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r3, sp, 0xb4
     addi    r4, r4, 0x124
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
     lfs     f1, 0xa8(sp)
-    lfs     f2, -0x7680(rtoc)
+    lfs     f2, -0x7680(r2)
     lfs     f0, 0xb4(sp)
     fmadds  f0, f1, f2, f0
     stfs    f0, 0x198(r29)
@@ -404,20 +404,20 @@ branch_0x8002ef78:
     addi    r4, r4, 0x1
     bdnz+      branch_0x8002ef60
     lbz     r4, 0x191(r30)
-    lis     r0, 0x4330
-    lfd     f1, -0x7678(rtoc)
+    lis     r0, unk_43300000@h
+    lfd     f1, -0x7678(r2)
     addi    r3, r30, 0xf8
     stw     r4, 0x24(sp)
-    lfs     f2, -0x7670(rtoc)
+    lfs     f2, -0x7670(r2)
     addi    r6, r30, 0x198
     stw     r0, 0x20(sp)
-    li      r7, 0x0
+    addi    r7, r0, unk_43300000@l
     li      r8, 0x0
     lfd     f0, 0x20(sp)
     fsubs   f0, f0, f1
     fmuls   f0, f2, f0
     stfs    f0, 0x194(r30)
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r5, r4, 0x1ec
     addi    r4, r4, 0x16c
     bl      CLBCalc2DFPos__FPQ29JGeometry8TVec2_f_PA4_CfPA4_CfRC3VecPUlb
@@ -429,7 +429,7 @@ branch_0x8002ef78:
     fmuls   f31, f1, f0
     fmr     f1, f31
     bl      calcOtherFPosFromCenterAndRadius___9TSunModelFPQ29JGeometry8TVec2_f_RCQ29JGeometry8TVec2_f_f
-    lfs     f0, -0x7684(rtoc)
+    lfs     f0, -0x7684(r2)
     addi    r3, r30, 0x0
     addi    r4, r30, 0x140
     fmuls   f31, f31, f0
@@ -468,11 +468,11 @@ CLBScreenFPosToSPos__FPQ29JGeometry8TVec2_s_RCQ29JGeometry8TVec2_f_: # 0x8002f05
     mr      r31, r4
     stw     r30, 0x20(sp)
     mr      r30, r3
-    lfs     f0, -0x766c(rtoc)
+    lfs     f0, -0x766c(r2)
     lfs     f31, 0x0(r4)
     fcmpo   cr0, f31, f0
     blt-    branch_0x8002f08c
-    lfs     f0, -0x7668(rtoc)
+    lfs     f0, -0x7668(r2)
     fcmpo   cr0, f0, f31
     bge-    branch_0x8002f098
 branch_0x8002f08c:
@@ -483,11 +483,11 @@ branch_0x8002f08c:
 branch_0x8002f098:
     bl      SMSGetGameRenderWidth__Fv
     clrlwi  r3, r3, 16
-    lfs     f0, -0x7668(rtoc)
-    subi    r0, r3, 0x1
-    lfd     f1, -0x7660(rtoc)
+    lfs     f0, -0x7668(r2)
+    addi    r0, r3, -0x1
+    lfd     f1, -0x7660(r2)
     xoris   r0, r0, 0x8000
-    lfs     f2, -0x7684(rtoc)
+    lfs     f2, -0x7684(r2)
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
     fadds   f3, f0, f31
@@ -500,10 +500,10 @@ branch_0x8002f098:
     sth     r3, 0x0(r30)
 branch_0x8002f0dc:
     lfs     f31, 0x4(r31)
-    lfs     f0, -0x766c(rtoc)
+    lfs     f0, -0x766c(r2)
     fcmpo   cr0, f31, f0
     blt-    branch_0x8002f0f8
-    lfs     f0, -0x7668(rtoc)
+    lfs     f0, -0x7668(r2)
     fcmpo   cr0, f0, f31
     bge-    branch_0x8002f104
 branch_0x8002f0f8:
@@ -514,11 +514,11 @@ branch_0x8002f0f8:
 branch_0x8002f104:
     bl      SMSGetGameRenderHeight__Fv
     clrlwi  r3, r3, 16
-    lfs     f0, -0x7668(rtoc)
-    subi    r0, r3, 0x1
-    lfd     f1, -0x7660(rtoc)
+    lfs     f0, -0x7668(r2)
+    addi    r0, r3, -0x1
+    lfd     f1, -0x7660(r2)
     xoris   r0, r0, 0x8000
-    lfs     f2, -0x7664(rtoc)
+    lfs     f2, -0x7664(r2)
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
     fsubs   f3, f31, f0
@@ -541,7 +541,7 @@ branch_0x8002f148:
 
 .globl calcOtherFPosFromCenterAndRadius___9TSunModelFPQ29JGeometry8TVec2_f_RCQ29JGeometry8TVec2_f_f
 calcOtherFPosFromCenterAndRadius___9TSunModelFPQ29JGeometry8TVec2_f_RCQ29JGeometry8TVec2_f_f: # 0x8002f164
-    lfs     f2, -0x7658(rtoc)
+    lfs     f2, -0x7658(r2)
     lfs     f0, 0x0(r5)
     fmuls   f2, f2, f1
     stfs    f0, 0x0(r4)
@@ -593,16 +593,16 @@ calcOtherFPosFromCenterAndRadius___9TSunModelFPQ29JGeometry8TVec2_f_RCQ29JGeomet
 .globl load__9TSunModelFR20JSUMemoryInputStream
 load__9TSunModelFR20JSUMemoryInputStream: # 0x8002f220
     mflr    r0
-    lis     r5, 0x8037
+    lis     r5, unk_80375798@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x1f8(sp)
     stmw    r25, 0x1dc(sp)
     addi    r30, r3, 0x0
-    addi    r31, r5, 0x5798
+    addi    r31, r5, unk_80375798@l
     bl      load__Q26JDrama6TActorFR20JSUMemoryInputStream
     lfs     f0, 0x24(r30)
     lis     r29, 0x1002
-    lfs     f1, -0x7654(rtoc)
+    lfs     f1, -0x7654(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x24(r30)
     lfs     f0, 0x28(r30)
@@ -612,18 +612,18 @@ load__9TSunModelFR20JSUMemoryInputStream: # 0x8002f220
     fmuls   f0, f0, f1
     stfs    f0, 0x2c(r30)
     lbz     r0, 0x1ac(r30)
-    lwz     r28, -0x7fa8(r13)
+    lwz     r28, R13Off_m0x7fa8(r13)
     rlwinm. r0, r0, 0, 29, 29
     beq-    branch_0x8002f284
     oris    r29, r29, 0x100
-    lwz     r28, -0x7fa4(r13)
+    lwz     r28, R13Off_m0x7fa4(r13)
 branch_0x8002f284:
     addi    r6, r28, 0x0
     crxor   6, 6, 6
     addi    r3, sp, 0xc4
     addi    r7, r31, 0x3c
     li      r4, 0x100
-    subi    r5, rtoc, 0x7650
+    addi    r5, r2, R2Off_m0x7650
     bl      snprintf
     addi    r3, sp, 0xc4
     bl      getGlbResource__13JKRFileLoaderFPCc
@@ -646,7 +646,7 @@ branch_0x8002f2d8:
     crxor   6, 6, 6
     addi    r7, r31, 0x48
     li      r4, 0x100
-    subi    r5, rtoc, 0x7650
+    addi    r5, r2, R2Off_m0x7650
     bl      snprintf
     addi    r3, sp, 0xc4
     bl      getGlbResource__13JKRFileLoaderFPCc
@@ -656,8 +656,8 @@ branch_0x8002f2d8:
     lwz     r4, 0x44(r30)
     bl      searchUpdateMaterialID__19J3DAnmTextureSRTKeyFP12J3DModelData
     lwz     r4, 0x44(r30)
-    lis     r3, 0x803e
-    addi    r29, r3, 0x1798
+    lis     r3, __vvt__14J3DMaterialAnm@h
+    addi    r29, r3, __vvt__14J3DMaterialAnm@l
     lhz     r26, 0x24(r4)
     li      r27, 0x0
     b       branch_0x8002f370
@@ -717,7 +717,7 @@ branch_0x8002f370:
     stw     r5, 0x94(r30)
     stw     r0, 0x98(r30)
     lbz     r0, 0x68(r30)
-    lfd     f1, -0x7678(rtoc)
+    lfd     f1, -0x7678(r2)
     stw     r0, 0x1d4(sp)
     stw     r4, 0x1d0(sp)
     lfd     f0, 0x1d0(sp)
@@ -778,7 +778,7 @@ branch_0x8002f484:
     stw     r0, 0x28(r5)
     lwz     r0, 0x2c(r30)
     stw     r0, 0x2c(r5)
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -831,46 +831,46 @@ __ct__9TSunModelFbPCc: # 0x8002f570
     lwz     r3, 0x14(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x14(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
     lwz     r28, 0x18(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r28)
     addi    r3, r28, 0x10
-    lfs     f1, -0x768c(rtoc)
+    lfs     f1, -0x768c(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_8002f7cc
     li      r31, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JStage7TObject@h
     sth     r31, 0x1c(r28)
-    addi    r0, r3, 0x4718
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage6TActor@h
     stw     r0, 0x20(r30)
-    addi    r0, r3, 0x4650
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage6TActor@l
+    lis     r3, __vvt__Q26JDrama6TActor@h
     stw     r0, 0x20(r30)
-    addi    r3, r3, 0x1920
+    addi    r3, r3, __vvt__Q26JDrama6TActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
-    lis     r3, 0x803b
+    lis     r3, __vvt__9TSunModel@ha
     stw     r0, 0x20(r30)
-    subi    r6, r3, 0x2e60
-    lis     r3, 0x803b
-    lfs     f0, -0x7668(rtoc)
-    subi    r0, r3, 0x2eac
+    addi    r6, r3, __vvt__9TSunModel@l
+    lis     r3, __vvt__12J3DFrameCtrl@ha
+    lfs     f0, -0x7668(r2)
+    addi    r0, r3, __vvt__12J3DFrameCtrl@l
     addi    r5, r6, 0x24
     stfs    f0, 0x24(r30)
     addi    r3, r30, 0x50
     li      r4, 0x0
     stfs    f0, 0x28(r30)
     stfs    f0, 0x2c(r30)
-    lfs     f0, -0x768c(rtoc)
+    lfs     f0, -0x768c(r2)
     stfs    f0, 0x30(r30)
     stfs    f0, 0x34(r30)
     stfs    f0, 0x38(r30)
@@ -885,28 +885,28 @@ __ct__9TSunModelFbPCc: # 0x8002f570
     bl      init__12J3DFrameCtrlFs
     stw     r31, 0x64(r30)
     li      r0, 0xff
-    lis     r3, 0x8003
+    lis     r3, __ct__Q29JGeometry8TVec2_s_Fv@ha
     stb     r0, 0x68(r30)
-    subi    r4, r3, 0x838
+    addi    r4, r3, __ct__Q29JGeometry8TVec2_s_Fv@l
     li      r8, 0x32
-    lfs     f1, -0x7648(rtoc)
+    lfs     f1, -0x7648(r2)
     li      r0, 0x64
     addi    r3, r30, 0xb4
     stfs    f1, 0x6c(r30)
     li      r5, 0x0
     li      r6, 0x4
-    lfs     f0, -0x7644(rtoc)
+    lfs     f0, -0x7644(r2)
     li      r7, 0x11
     stfs    f0, 0x70(r30)
     stb     r8, 0x74(r30)
     stfs    f1, 0x78(r30)
     stfs    f0, 0x7c(r30)
     stb     r0, 0x80(r30)
-    lfs     f0, -0x7640(rtoc)
+    lfs     f0, -0x7640(r2)
     stfs    f0, 0x84(r30)
-    lfs     f0, -0x7688(rtoc)
+    lfs     f0, -0x7688(r2)
     stfs    f0, 0x88(r30)
-    lfs     f0, -0x768c(rtoc)
+    lfs     f0, -0x768c(r2)
     stfs    f0, 0x9c(r30)
     stfs    f0, 0xa0(r30)
     stfs    f0, 0xa4(r30)
@@ -914,8 +914,8 @@ __ct__9TSunModelFbPCc: # 0x8002f570
     stfs    f0, 0xac(r30)
     stfs    f0, 0xb0(r30)
     bl      __construct_array
-    lis     r3, 0x8003
-    subi    r4, r3, 0x83c
+    lis     r3, __ct__Q29JGeometry8TVec2_f_Fv@ha
+    addi    r4, r3, __ct__Q29JGeometry8TVec2_f_Fv@l
     addi    r3, r30, 0xf8
     li      r5, 0x0
     li      r6, 0x8
@@ -923,14 +923,14 @@ __ct__9TSunModelFbPCc: # 0x8002f570
     bl      __construct_array
     stb     r31, 0x191(r30)
     clrlwi. r0, r29, 24
-    lfs     f0, -0x768c(rtoc)
+    lfs     f0, -0x768c(r2)
     stfs    f0, 0x194(r30)
-    lfs     f0, -0x763c(rtoc)
+    lfs     f0, -0x763c(r2)
     stfs    f0, 0x1a4(r30)
-    lfs     f0, -0x7640(rtoc)
+    lfs     f0, -0x7640(r2)
     stfs    f0, 0x1a8(r30)
     stb     r31, 0x1ac(r30)
-    stw     r30, gpSunModel(r13)
+    stw     r30, R13Off_m0x70f8(r13)
     beq-    branch_0x8002f758
     lbz     r3, 0x1ac(r30)
     li      r0, 0x30
@@ -941,7 +941,7 @@ branch_0x8002f758:
     lwz     r3, 0x8(sp)
     li      r0, 0x11
     mtctr   r0
-    lfs     f0, -0x7638(rtoc)
+    lfs     f0, -0x7638(r2)
     addi    r4, r3, 0xb4
     addi    r5, r3, 0xf8
     addi    r6, r3, 0x180
@@ -995,9 +995,9 @@ __ct__Q26JDrama10TFlagT_Us_FUs: # 0x8002f7dc
 .globl __ct__Q26JDrama8TNameRefFPCc
 __ct__Q26JDrama8TNameRefFPCc: # 0x8002f7e4
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
@@ -1014,8 +1014,8 @@ __ct__Q26JDrama8TNameRefFPCc: # 0x8002f7e4
     blr
 
 
-.globl _32___dt__9TSunModelFv
-_32___dt__9TSunModelFv: # 0x8002f82c
-    subi    r3, r3, 0x20
+.globl unk_8002f82c
+unk_8002f82c: # 0x8002f82c
+    addi    r3, r3, -0x20
     b       __dt__9TSunModelFv
 

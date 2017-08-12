@@ -1,7 +1,7 @@
 
 .globl finishPause__9RumbleMgrFv
 finishPause__9RumbleMgrFv: # 0x802342b0
-    lfs     f0, -0x15c0(rtoc)
+    lfs     f0, -0x15c0(r2)
     li      r0, 0x0
     stfs    f0, 0x4(r3)
     stb     r0, 0x9(r3)
@@ -58,7 +58,7 @@ setActive__9RumbleMgrFb: # 0x80234338
     lbz     r0, 0x8(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x802343c8
-    lfs     f31, -0x15bc(rtoc)
+    lfs     f31, -0x15bc(r2)
     li      r30, 0x0
     addi    r31, r30, 0x0
     stfs    f31, 0x0(r28)
@@ -107,7 +107,7 @@ update__9RumbleMgrFv: # 0x802343ec
     stmw    r27, 0x1c(sp)
     mr      r29, r3
     bl      SMSGetVSyncTimesPerSec__Fv
-    lfs     f28, -0x15b8(rtoc)
+    lfs     f28, -0x15b8(r2)
     lbz     r0, 0x9(r29)
     fdivs   f31, f28, f1
     cmplwi  r0, 0x0
@@ -118,9 +118,9 @@ update__9RumbleMgrFv: # 0x802343ec
     b       branch_0x8023469c
 
 branch_0x80234438:
-    lfs     f29, -0x15bc(rtoc)
+    lfs     f29, -0x15bc(r2)
     li      r30, 0x0
-    lfs     f30, -0x15c0(rtoc)
+    lfs     f30, -0x15c0(r2)
     li      r28, 0x0
 branch_0x80234448:
     add     r27, r29, r28
@@ -290,7 +290,7 @@ branch_0x80234674:
     addi    r28, r28, 0x4
     blt+    branch_0x80234448
     lfs     f1, 0x4(r29)
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8023469c
     fsubs   f0, f1, f31
@@ -340,7 +340,7 @@ stop__9RumbleMgrFv: # 0x80234714
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     li      r30, 0x0
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
 branch_0x8023472c:
     addi    r0, r4, 0x1c
     lwzx    r12, r3, r0
@@ -545,7 +545,7 @@ reset__9RumbleMgrFv: # 0x802349c0
     addi    r30, r3, 0x0
     li      r31, 0x0
     li      r29, 0x0
-    lfs     f31, -0x15bc(rtoc)
+    lfs     f31, -0x15bc(r2)
     stfs    f31, 0x0(r3)
     stfs    f31, 0x4(r3)
 branch_0x802349ec:
@@ -673,7 +673,7 @@ init__9RumbleMgrFv: # 0x80234bb4
     li      r4, 0x0
     li      r5, 0x0
     stmw    r25, 0x24(sp)
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     stfs    f0, 0x0(r3)
     stfs    f0, 0x4(r3)
 branch_0x80234bd0:
@@ -793,9 +793,9 @@ branch_0x80234d88:
     cmpwi   r4, 0x4
     addi    r5, r5, 0x4
     blt+    branch_0x80234bd0
-    lis     r5, 0x803e
+    lis     r5, channelDataTbl@ha
     lwz     r4, 0x2c(r3)
-    subi    r0, r5, 0x46d8
+    addi    r0, r5, channelDataTbl@l
     stw     r0, 0x0(r4)
     li      r4, 0x1
     li      r0, 0x0
@@ -816,12 +816,12 @@ __ct__9RumbleMgrFbbbb: # 0x80234dc8
     stfd    f30, 0x38(sp)
     stmw    r24, 0x18(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8023
-    addi    r28, r3, 0x5688
+    lis     r3, __ct__16RumbleChannelMgrFv@h
+    addi    r28, r3, __ct__16RumbleChannelMgrFv@l
     addi    r30, sp, 0x10
     li      r25, 0x0
     li      r29, 0x0
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     stfs    f0, 0x0(r31)
     fmr     f30, f0
     fmr     f31, f0
@@ -906,7 +906,7 @@ update__19RumbleControllerMgrFv: # 0x80234f00
     li      r30, 0x0
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
-    lfs     f31, -0x15bc(rtoc)
+    lfs     f31, -0x15bc(r2)
 branch_0x80234f2c:
     lwz     r0, 0x4(r29)
     add     r3, r0, r31
@@ -926,14 +926,14 @@ branch_0x80234f58:
     blt+    branch_0x80234f2c
     stfs    f31, 0x0(r29)
     lfs     f1, 0x0(r29)
-    lfs     f0, -0x15b8(rtoc)
+    lfs     f0, -0x15b8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80234f84
     stfs    f0, 0x0(r29)
     b       branch_0x80234f94
 
 branch_0x80234f84:
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80234f94
     stfs    f0, 0x0(r29)
@@ -948,7 +948,7 @@ branch_0x80234fac:
     lbz     r0, 0x12(r29)
     extsb.  r0, r0
     beq-    branch_0x80234fc0
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     stfs    f0, 0x0(r29)
 branch_0x80234fc0:
     lwz     r0, 0x2c(sp)
@@ -970,7 +970,7 @@ updateMotorCount__19RumbleControllerMgrFv: # 0x80234fe4
     lwz     r4, 0xc(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x80235008
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0xc(r3)
     blr
 
@@ -982,7 +982,7 @@ branch_0x80235008:
 
 branch_0x80235018:
     lwz     r4, 0xc(r3)
-    lwz     r0, -0x76f0(r13)
+    lwz     r0, R13Off_m0x76f0(r13)
     cmplw   r4, r0
     ble-    branch_0x80235034
     li      r0, 0x1
@@ -993,7 +993,7 @@ branch_0x80235034:
     lhz     r4, 0x10(r3)
     cmplwi  r4, 0x0
     beq-    branch_0x80235058
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     sth     r0, 0x10(r3)
     lwz     r4, 0xc(r3)
     addi    r0, r4, 0x1
@@ -1009,7 +1009,7 @@ branch_0x80235058:
 .globl stop__19RumbleControllerMgrFi
 stop__19RumbleControllerMgrFi: # 0x80235064
     li      r0, 0x8
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     li      r5, 0x0
     mtctr   r0
     addi    r8, r5, 0x0
@@ -1105,11 +1105,11 @@ branch_0x802351ac:
     lwz     r0, 0x18(r8)
     cmplwi  r0, 0x0
     bne-    branch_0x802351ec
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     mulli   r7, r4, 0xc
     stfs    f0, 0x0(r8)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x46d8
+    lis     r3, channelDataTbl@ha
+    addi    r0, r3, channelDataTbl@l
     add     r0, r0, r7
     stw     r0, 0x18(r8)
     stw     r4, 0x8(r8)
@@ -1134,11 +1134,11 @@ branch_0x80235204:
     lwz     r0, 0x18(r8)
     cmplwi  r0, 0x0
     bne-    branch_0x80235244
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     mulli   r7, r4, 0xc
     stfs    f0, 0x0(r8)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x46d8
+    lis     r3, channelDataTbl@ha
+    addi    r0, r3, channelDataTbl@l
     add     r0, r0, r7
     stw     r0, 0x18(r8)
     stw     r4, 0x8(r8)
@@ -1160,7 +1160,7 @@ reset__19RumbleControllerMgrFv: # 0x80235250
     li      r4, 0x0
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     stfs    f0, 0x0(r3)
 branch_0x80235270:
     lwz     r0, 0x4(r3)
@@ -1264,13 +1264,13 @@ update__16RumbleChannelMgrFv: # 0x802353d8
     stw     r31, 0x54(sp)
     mr      r31, r3
     bl      SMSGetVSyncTimesPerSec__Fv
-    lfs     f2, -0x15b8(rtoc)
+    lfs     f2, -0x15b8(r2)
     lwz     r3, 0x10(r31)
     fdivs   f31, f2, f1
     cmplwi  r3, 0x0
     beq-    branch_0x80235434
     lfs     f1, 0x0(r3)
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     fmr     f5, f1
     fcmpo   cr0, f1, f0
     bge-    branch_0x80235424
@@ -1287,7 +1287,7 @@ branch_0x80235434:
     lwz     r5, 0x14(r31)
     cmplwi  r5, 0x0
     beq-    branch_0x80235504
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x34(sp)
@@ -1321,11 +1321,11 @@ branch_0x80235434:
     fadds   f0, f1, f0
     fadds   f1, f2, f0
     bl      sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x15b0(rtoc)
-    lfs     f3, -0x15b4(rtoc)
+    lfs     f0, -0x15b0(r2)
+    lfs     f3, -0x15b4(r2)
     fsubs   f2, f1, f0
-    lfs     f1, -0x15b8(rtoc)
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f1, -0x15b8(r2)
+    lfs     f0, -0x15bc(r2)
     fnmsubs  f2, f3, f2, f1
     fcmpo   cr0, f2, f0
     fmr     f5, f2
@@ -1342,7 +1342,7 @@ branch_0x802354f4:
 branch_0x80235504:
     fmr     f5, f2
 branch_0x80235508:
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     stfs    f0, 0x4(r31)
     lwz     r0, 0xc(r31)
     cmpwi   r0, 0x0
@@ -1365,8 +1365,8 @@ branch_0x80235540:
     li      r3, 0x0
     fadds   f0, f0, f31
     stfs    f0, 0x0(r31)
-    lfs     f4, -0x15bc(rtoc)
-    lfs     f3, -0x15b8(rtoc)
+    lfs     f4, -0x15bc(r2)
+    lfs     f3, -0x15b8(r2)
     b       branch_0x802355cc
 
 branch_0x8023556c:
@@ -1385,7 +1385,7 @@ branch_0x8023556c:
     b       branch_0x802355a4
 
 branch_0x802355a0:
-    lfs     f6, -0x15b8(rtoc)
+    lfs     f6, -0x15b8(r2)
 branch_0x802355a4:
     lwz     r0, 0x8(r5)
     fsubs   f2, f3, f6
@@ -1402,7 +1402,7 @@ branch_0x802355cc:
     lwz     r5, 0x18(r31)
     lwz     r4, 0x0(r5)
     lwz     r4, 0x0(r4)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     cmpw    r6, r0
     blt+    branch_0x8023556c
     lwz     r3, 0x4(r5)
@@ -1415,22 +1415,22 @@ branch_0x802355cc:
     lwz     r0, 0xc(r31)
     cmpwi   r0, 0x1
     ble-    branch_0x80235624
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     stfs    f0, 0x0(r31)
     lwz     r3, 0xc(r31)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xc(r31)
     b       branch_0x80235660
 
 branch_0x80235624:
     cmpwi   r0, 0x0
     bge-    branch_0x80235638
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     stfs    f0, 0x0(r31)
     b       branch_0x80235660
 
 branch_0x80235638:
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     li      r3, -0x1
     li      r0, 0x0
     stfs    f0, 0x0(r31)
@@ -1455,7 +1455,7 @@ branch_0x80235660:
 
 .globl __ct__16RumbleChannelMgrFv
 __ct__16RumbleChannelMgrFv: # 0x80235688
-    lfs     f0, -0x15bc(rtoc)
+    lfs     f0, -0x15bc(r2)
     li      r4, -0x1
     li      r0, 0x0
     stfs    f0, 0x0(r3)

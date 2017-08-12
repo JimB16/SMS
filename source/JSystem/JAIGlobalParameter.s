@@ -1,10 +1,10 @@
 
 .globl setParamInitDataPointer__18JAIGlobalParameterFPv
 setParamInitDataPointer__18JAIGlobalParameterFPv: # 0x8030a218
-    lwz     r4, -0x5d90(r13)
+    lwz     r4, R13Off_m0x5d90(r13)
     li      r0, 0x4
     stw     r3, 0x4c(r4)
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     stb     r0, 0x13(r3)
     blr
 
@@ -12,26 +12,26 @@ setParamInitDataPointer__18JAIGlobalParameterFPv: # 0x8030a218
 .globl setParamSeqPlayTrackMax__18JAIGlobalParameterFUl
 setParamSeqPlayTrackMax__18JAIGlobalParameterFUl: # 0x8030a230
     slwi    r0, r3, 1
-    stw     r3, -0x74b8(r13)
-    stw     r0, -0x74b4(r13)
+    stw     r3, R13Off_m0x74b8(r13)
+    stw     r0, R13Off_m0x74b4(r13)
     blr
 
 
 .globl setParamSeqControlBufferMax__18JAIGlobalParameterFUl
 setParamSeqControlBufferMax__18JAIGlobalParameterFUl: # 0x8030a240
-    stw     r3, -0x74b4(r13)
+    stw     r3, R13Off_m0x74b4(r13)
     blr
 
 
 .globl setParamAutoHeapMax__18JAIGlobalParameterFUl
 setParamAutoHeapMax__18JAIGlobalParameterFUl: # 0x8030a248
-    stw     r3, -0x74a8(r13)
+    stw     r3, R13Off_m0x74a8(r13)
     blr
 
 
 .globl setParamStayHeapMax__18JAIGlobalParameterFUl
 setParamStayHeapMax__18JAIGlobalParameterFUl: # 0x8030a250
-    stw     r3, -0x74a4(r13)
+    stw     r3, R13Off_m0x74a4(r13)
     blr
 
 
@@ -67,7 +67,7 @@ setParamMinDistanceVolume__18JAIGlobalParameterFf: # 0x8030a278
 
 .globl setParamStreamInsideBufferCut__18JAIGlobalParameterFb
 setParamStreamInsideBufferCut__18JAIGlobalParameterFb: # 0x8030a280
-    lwz     r4, -0x5d90(r13)
+    lwz     r4, R13Off_m0x5d90(r13)
     lbz     r0, 0x1c(r4)
     insrwi  r0, r3, 1, 30
     stb     r0, 0x1c(r4)
@@ -76,49 +76,49 @@ setParamStreamInsideBufferCut__18JAIGlobalParameterFb: # 0x8030a280
 
 .globl setParamAutoHeapRoomSize__18JAIGlobalParameterFUl
 setParamAutoHeapRoomSize__18JAIGlobalParameterFUl: # 0x8030a294
-    stw     r3, -0x74a0(r13)
+    stw     r3, R13Off_m0x74a0(r13)
     blr
 
 
 .globl setParamStayHeapSize__18JAIGlobalParameterFUl
 setParamStayHeapSize__18JAIGlobalParameterFUl: # 0x8030a29c
-    stw     r3, -0x749c(r13)
+    stw     r3, R13Off_m0x749c(r13)
     blr
 
 
 .globl setParamInitDataFileName__18JAIGlobalParameterFPc
 setParamInitDataFileName__18JAIGlobalParameterFPc: # 0x8030a2a4
-    stw     r3, -0x748c(r13)
+    stw     r3, R13Off_m0x748c(r13)
     blr
 
 
 .globl setParamWavePath__18JAIGlobalParameterFPc
 setParamWavePath__18JAIGlobalParameterFPc: # 0x8030a2ac
-    stw     r3, -0x7488(r13)
+    stw     r3, R13Off_m0x7488(r13)
     blr
 
 
 .globl setParamSequenceArchivesPath__18JAIGlobalParameterFPc
 setParamSequenceArchivesPath__18JAIGlobalParameterFPc: # 0x8030a2b4
-    stw     r3, -0x7484(r13)
+    stw     r3, R13Off_m0x7484(r13)
     blr
 
 
 .globl setParamStreamPath__18JAIGlobalParameterFPc
 setParamStreamPath__18JAIGlobalParameterFPc: # 0x8030a2bc
-    stw     r3, -0x7480(r13)
+    stw     r3, R13Off_m0x7480(r13)
     blr
 
 
 .globl setParamSystemTrackMax__18JAIGlobalParameterFl
 setParamSystemTrackMax__18JAIGlobalParameterFl: # 0x8030a2c4
-    stw     r3, -0x744c(r13)
+    stw     r3, R13Off_m0x744c(r13)
     blr
 
 
 .globl setParamSystemRootTrackMax__18JAIGlobalParameterFl
 setParamSystemRootTrackMax__18JAIGlobalParameterFl: # 0x8030a2cc
-    stw     r3, -0x7448(r13)
+    stw     r3, R13Off_m0x7448(r13)
     blr
 
 
@@ -156,7 +156,7 @@ branch_0x8030a328:
     li      r5, 0x2
     li      r31, 0x1
 branch_0x8030a330:
-    lwz     r4, -0x5d90(r13)
+    lwz     r4, R13Off_m0x5d90(r13)
     clrlwi  r0, r3, 24
     addi    r3, r5, 0x0
     stb     r0, 0x14(r4)
@@ -172,7 +172,7 @@ branch_0x8030a330:
 
 .globl getParamSeCategoryMax__18JAIGlobalParameterFv
 getParamSeCategoryMax__18JAIGlobalParameterFv: # 0x8030a360
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     lwz     r3, 0x0(r3)
     lbz     r3, 0x89(r3)
     blr
@@ -180,7 +180,7 @@ getParamSeCategoryMax__18JAIGlobalParameterFv: # 0x8030a360
 
 .globl getParamSeqTrackMax__18JAIGlobalParameterFv
 getParamSeqTrackMax__18JAIGlobalParameterFv: # 0x8030a370
-    lwz     r3, -0x74bc(r13)
+    lwz     r3, R13Off_m0x74bc(r13)
     blr
 
 

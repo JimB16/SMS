@@ -111,7 +111,7 @@ branch_0x80359a5c:
     lwz     r4, 0x18(sp)
     lwz     r5, 0x8(r28)
     lwz     r4, 0xc(r4)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     andc    r0, r30, r0
     cmplw   r5, r0
     blt+    branch_0x80359a14
@@ -137,9 +137,9 @@ ReadCallback: # 0x80359aa8
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r29, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     mulli   r5, r29, 0x110
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     mr.     r30, r4
     add     r31, r0, r5
     blt-    branch_0x80359b98
@@ -153,7 +153,7 @@ ReadCallback: # 0x80359aa8
 branch_0x80359aec:
     lwz     r5, 0xc(r31)
     lwz     r6, 0x8(r28)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     not     r3, r0
     add     r0, r6, r5
     and     r0, r3, r0
@@ -194,8 +194,8 @@ branch_0x80359b74:
 branch_0x80359b78:
     mullw   r4, r0, r3
     lwz     r6, 0xb4(r31)
-    lis     r3, 0x8036
-    subi    r7, r3, 0x6558
+    lis     r3, ReadCallback@ha
+    addi    r7, r3, ReadCallback@l
     addi    r3, r29, 0x0
     bl      __CARDRead
     mr.     r30, r3
@@ -280,15 +280,15 @@ branch_0x80359c7c:
     b       branch_0x80359ca0
 
 branch_0x80359c98:
-    lis     r3, 0x8035
-    addi    r0, r3, 0x432c
+    lis     r3, __CARDDefaultApiCallback@h
+    addi    r0, r3, __CARDDefaultApiCallback@l
 branch_0x80359ca0:
     lwz     r3, 0x1c(sp)
     stw     r0, 0xd0(r3)
     lwz     r3, 0x1c(sp)
     lwz     r4, 0x8(r29)
     lwz     r5, 0xc(r3)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     and     r8, r4, r0
     subf    r3, r8, r5
     cmpw    r31, r3
@@ -296,11 +296,11 @@ branch_0x80359ca0:
     mr      r3, r31
 branch_0x80359ccc:
     lhz     r0, 0x10(r29)
-    lis     r4, 0x8036
+    lis     r4, ReadCallback@ha
     addi    r31, r3, 0x0
     lwz     r3, 0x0(r29)
     mullw   r0, r5, r0
-    subi    r7, r4, 0x6558
+    addi    r7, r4, ReadCallback@l
     addi    r5, r31, 0x0
     addi    r6, r30, 0x0
     add     r4, r8, r0
@@ -323,9 +323,9 @@ branch_0x80359d0c:
 .globl CARDRead
 CARDRead: # 0x80359d20
     mflr    r0
-    lis     r7, 0x8035
+    lis     r7, __CARDSyncCallback@h
     stw     r0, 0x4(sp)
-    addi    r7, r7, 0x4330
+    addi    r7, r7, __CARDSyncCallback@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0

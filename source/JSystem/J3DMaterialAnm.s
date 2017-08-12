@@ -194,8 +194,8 @@ __dt__14J3DMaterialAnmFv: # 0x802eff80
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802effb4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1798
+    lis     r3, __vvt__14J3DMaterialAnm@h
+    addi    r3, r3, __vvt__14J3DMaterialAnm@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802effb4

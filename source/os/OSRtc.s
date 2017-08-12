@@ -2,11 +2,11 @@
 .globl WriteSramCallback
 WriteSramCallback: # 0x80347490
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r3, 0x2640
+    addi    r31, r3, Scb@l
     stw     r30, 0x10(sp)
     addi    r30, r31, 0x40
     lwz     r4, 0x40(r31)
@@ -31,9 +31,9 @@ branch_0x803474d8:
 .globl WriteSram
 WriteSram: # 0x803474f0
     mflr    r0
-    lis     r6, 0x8034
+    lis     r6, WriteSramCallback@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x7490
+    addi    r0, r6, WriteSramCallback@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r4, 0x0
@@ -110,14 +110,14 @@ branch_0x803475ec:
 .globl __OSInitSram
 __OSInitSram: # 0x80347608
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, Scb@h
     stw     r0, 0x4(sp)
     li      r4, 0x40
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     li      r31, 0x0
     stw     r30, 0x10(sp)
-    addi    r30, r3, 0x2640
+    addi    r30, r3, Scb@l
     addi    r3, r30, 0x0
     stw     r31, 0x44(r30)
     stw     r31, 0x48(r30)
@@ -142,8 +142,8 @@ branch_0x80347658:
     b       branch_0x80347718
 
 branch_0x8034767c:
-    lis     r3, 0x2000
-    addi    r0, r3, 0x100
+    lis     r3, unk_20000100@h
+    addi    r0, r3, unk_20000100@l
     stw     r0, 0x8(sp)
     addi    r4, sp, 0x8
     li      r3, 0x0
@@ -196,11 +196,11 @@ branch_0x80347718:
 .globl __OSLockSram
 __OSLockSram: # 0x8034773c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x2640
+    addi    r31, r3, Scb@l
     bl      OSDisableInterrupts
     lwz     r0, 0x48(r31)
     addi    r4, r31, 0x48
@@ -226,11 +226,11 @@ branch_0x80347780:
 .globl __OSLockSramEx
 __OSLockSramEx: # 0x80347798
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x2640
+    addi    r31, r3, Scb@l
     bl      OSDisableInterrupts
     lwz     r0, 0x48(r31)
     addi    r4, r31, 0x48
@@ -258,10 +258,10 @@ UnlockSram: # 0x803477f4
     mflr    r0
     cmpwi   r3, 0x0
     stw     r0, 0x4(sp)
-    lis     r3, 0x8040
+    lis     r3, Scb@h
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
-    addi    r31, r3, 0x2640
+    addi    r31, r3, Scb@l
     beq-    branch_0x80347ad4
     cmplwi  r4, 0x0
     bne-    branch_0x803479c8
@@ -384,8 +384,8 @@ branch_0x803479c8:
     stw     r4, 0x0(r30)
 branch_0x803479dc:
     lwz     r29, 0x0(r30)
-    lis     r3, 0x8034
-    addi    r5, r3, 0x7490
+    lis     r3, WriteSramCallback@h
+    addi    r5, r3, WriteSramCallback@l
     subfic  r27, r29, 0x40
     add     r28, r31, r29
     li      r3, 0x0
@@ -491,8 +491,8 @@ __OSUnlockSramEx: # 0x80347b20
 
 .globl __OSSyncSram
 __OSSyncSram: # 0x80347b44
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2640
+    lis     r3, Scb@h
+    addi    r3, r3, Scb@l
     lwz     r3, 0x4c(r3)
     blr
 
@@ -582,11 +582,11 @@ branch_0x80347c5c:
 .globl OSGetSoundMode
 OSGetSoundMode: # 0x80347c78
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r3, 0x2640
+    addi    r31, r3, Scb@l
     bl      OSDisableInterrupts
     lwz     r0, 0x48(r31)
     addi    r4, r31, 0x48
@@ -624,11 +624,11 @@ branch_0x80347cd4:
 .globl OSSetSoundMode
 OSSetSoundMode: # 0x80347cf8
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r4, 0x2640
+    addi    r31, r4, Scb@l
     stw     r30, 0x18(sp)
     clrlslwi  r30, r3, 31, 2
     bl      OSDisableInterrupts
@@ -675,11 +675,11 @@ branch_0x80347d84:
 .globl OSGetProgressiveMode
 OSGetProgressiveMode: # 0x80347d9c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r3, 0x2640
+    addi    r31, r3, Scb@l
     bl      OSDisableInterrupts
     lwz     r0, 0x48(r31)
     addi    r4, r31, 0x48
@@ -710,11 +710,11 @@ branch_0x80347de0:
 .globl OSSetProgressiveMode
 OSSetProgressiveMode: # 0x80347e0c
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r4, 0x2640
+    addi    r31, r4, Scb@l
     stw     r30, 0x18(sp)
     clrlslwi  r30, r3, 31, 7
     bl      OSDisableInterrupts
@@ -761,11 +761,11 @@ branch_0x80347e98:
 .globl OSGetWirelessID
 OSGetWirelessID: # 0x80347eb0
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r4, 0x2640
+    addi    r31, r4, Scb@l
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
     bl      OSDisableInterrupts
@@ -801,11 +801,11 @@ branch_0x80347f00:
 .globl OSSetWirelessID
 OSSetWirelessID: # 0x80347f34
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, Scb@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    addi    r31, r5, 0x2640
+    addi    r31, r5, Scb@l
     stw     r30, 0x20(sp)
     addi    r30, r4, 0x0
     stw     r29, 0x1c(sp)

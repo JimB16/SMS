@@ -36,7 +36,7 @@ branch_0x803458ec:
 .globl __OSSetInterruptHandler
 __OSSetInterruptHandler: # 0x803458f8
     extsh   r0, r3
-    lwz     r3, -0x5a10(r13)
+    lwz     r3, R13Off_m0x5a10(r13)
     slwi    r0, r0, 2
     add     r5, r3, r0
     lwz     r3, 0x0(r5)
@@ -47,7 +47,7 @@ __OSSetInterruptHandler: # 0x803458f8
 .globl __OSGetInterruptHandler
 __OSGetInterruptHandler: # 0x80345914
     extsh   r0, r3
-    lwz     r3, -0x5a10(r13)
+    lwz     r3, R13Off_m0x5a10(r13)
     slwi    r0, r0, 2
     lwzx    r3, r3, r0
     blr
@@ -59,24 +59,24 @@ __OSInterruptInit: # 0x80345928
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    lis     r31, 0x8000
-    addi    r0, r31, 0x3040
-    stw     r0, -0x5a10(r13)
+    lis     r31, unk_80003040@h
+    addi    r0, r31, unk_80003040@l
+    stw     r0, R13Off_m0x5a10(r13)
     li      r4, 0x0
     li      r5, 0x80
-    lwz     r3, -0x5a10(r13)
+    lwz     r3, R13Off_m0x5a10(r13)
     bl      memset
     li      r0, 0x0
     stw     r0, 0xc4(r31)
-    lis     r3, 0xcc00
-    addi    r4, r3, 0x3000
+    lis     r3, unk_cc003000@h
+    addi    r4, r3, unk_cc003000@l
     stw     r0, 0xc8(r31)
     li      r0, 0xf0
     li      r3, -0x20
     stw     r0, 0x4(r4)
     bl      __OSMaskInterrupts
-    lis     r3, 0x8034
-    addi    r4, r3, 0x60c8
+    lis     r3, ExternalInterruptHandler@h
+    addi    r4, r3, ExternalInterruptHandler@l
     li      r3, 0x4
     bl      __OSSetExceptionHandler
     lwz     r0, 0x14(sp)
@@ -139,16 +139,16 @@ branch_0x80345a2c:
     bne-    branch_0x80345a3c
     ori     r5, r5, 0x10
 branch_0x80345a3c:
-    lis     r4, 0xcc00
+    lis     r4, unk_cc004000@h
     clrlwi  r0, r5, 16
-    addi    r4, r4, 0x4000
+    addi    r4, r4, unk_cc004000@l
     sth     r0, 0x1c(r4)
     clrlwi  r3, r3, 5
     b       branch_0x80345c70
 
 branch_0x80345a54:
-    lis     r5, 0xcc00
-    addi    r5, r5, 0x5000
+    lis     r5, unk_cc005000@h
+    addi    r5, r5, unk_cc005000@l
     addi    r5, r5, 0xa
     rlwinm  r0, r4, 0, 5, 5
     lhz     r6, 0x0(r5)
@@ -213,8 +213,8 @@ branch_0x80345b18:
     b       branch_0x80345c70
 
 branch_0x80345b28:
-    lis     r5, 0xcc00
-    addi    r6, r5, 0x6800
+    lis     r5, unk_cc006800@h
+    addi    r6, r5, unk_cc006800@l
     addi    r6, r6, 0x14
     rlwinm  r0, r4, 0, 12, 12
     lwz     r7, 0x0(r6)
@@ -239,8 +239,8 @@ branch_0x80345b70:
     b       branch_0x80345c70
 
 branch_0x80345b7c:
-    lis     r5, 0xcc00
-    addi    r5, r5, 0x6800
+    lis     r5, unk_cc006800@h
+    addi    r5, r5, unk_cc006800@l
     addi    r5, r5, 0x28
     rlwinm  r0, r4, 0, 15, 15
     lwz     r6, 0x0(r5)
@@ -310,8 +310,8 @@ branch_0x80345c50:
     bne-    branch_0x80345c60
     ori     r5, r5, 0x2000
 branch_0x80345c60:
-    lis     r4, 0xcc00
-    addi    r4, r4, 0x3000
+    lis     r4, unk_cc003000@h
+    addi    r4, r4, unk_cc003000@l
     stw     r5, 0x4(r4)
     rlwinm  r3, r3, 0, 27, 16
 branch_0x80345c70:
@@ -417,12 +417,12 @@ __OSDispatchInterrupt: # 0x80345d84
     stw     r30, 0x20(sp)
     stw     r29, 0x1c(sp)
     mr      r30, r4
-    lis     r3, 0xcc00
+    lis     r3, unk_cc003000@h
     lwz     r31, 0x3000(r3)
     rlwinm  r31, r31, 0, 16, 14
     cmplwi  r31, 0x0
     beq-    branch_0x80345dc8
-    addi    r3, r3, 0x3000
+    addi    r3, r3, unk_cc003000@l
     lwz     r0, 0x4(r3)
     and     r0, r31, r0
     cmplwi  r0, 0x0
@@ -435,8 +435,8 @@ branch_0x80345dd0:
     cmplwi  r0, 0x0
     li      r0, 0x0
     beq-    branch_0x80345e3c
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x4000
+    lis     r3, unk_cc004000@h
+    addi    r3, r3, unk_cc004000@l
     lhz     r4, 0x1e(r3)
     clrlwi  r3, r4, 31
     cmplwi  r3, 0x0
@@ -466,8 +466,8 @@ branch_0x80345e3c:
     rlwinm  r3, r31, 0, 25, 25
     cmplwi  r3, 0x0
     beq-    branch_0x80345e84
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x5000
+    lis     r3, unk_cc005000@h
+    addi    r3, r3, unk_cc005000@l
     lhz     r4, 0xa(r3)
     rlwinm  r3, r4, 0, 28, 28
     cmplwi  r3, 0x0
@@ -514,8 +514,8 @@ branch_0x80345edc:
     beq-    branch_0x80345eec
     oris    r0, r0, 0x10
 branch_0x80345eec:
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6800
+    lis     r3, unk_cc006800@h
+    addi    r3, r3, unk_cc006800@l
     lwz     r4, 0x14(r3)
     rlwinm  r3, r4, 0, 30, 30
     cmplwi  r3, 0x0
@@ -532,8 +532,8 @@ branch_0x80345f18:
     beq-    branch_0x80345f28
     oris    r0, r0, 0x2
 branch_0x80345f28:
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6800
+    lis     r3, unk_cc006800@h
+    addi    r3, r3, unk_cc006800@l
     lwz     r4, 0x28(r3)
     rlwinm  r3, r4, 0, 30, 30
     cmplwi  r3, 0x0
@@ -602,8 +602,8 @@ branch_0x80345ff4:
     andc    r4, r0, r3
     cmplwi  r4, 0x0
     beq-    branch_0x803460a4
-    lis     r3, 0x803f
-    subi    r0, r3, 0x7eb0
+    lis     r3, InterruptPrioTable@ha
+    addi    r0, r3, InterruptPrioTable@l
     mr      r3, r0
     b       branch_0x80346020
 
@@ -624,7 +624,7 @@ branch_0x80346040:
     b       branch_0x80346024
 
 branch_0x80346048:
-    lwz     r3, -0x5a10(r13)
+    lwz     r3, R13Off_m0x5a10(r13)
     slwi    r0, r29, 2
     lwzx    r31, r3, r0
     cmplwi  r31, 0x0
@@ -633,10 +633,10 @@ branch_0x80346048:
     ble-    branch_0x8034607c
     sth     r29, -0x5a08(r13)
     bl      OSGetTime
-    stw     r4, -0x59fc(r13)
-    stw     r3, -0x5a00(r13)
+    stw     r4, R13Off_m0x59fc(r13)
+    stw     r3, R13Off_m0x5a00(r13)
     lwz     r0, 0x198(r30)
-    stw     r0, -0x5a0c(r13)
+    stw     r0, R13Off_m0x5a0c(r13)
 branch_0x8034607c:
     bl      OSDisableScheduler
     mr      r3, r29
@@ -664,7 +664,7 @@ branch_0x803460a4:
 ExternalInterruptHandler: # 0x803460c8
     stw     r0, 0x0(r4)
     stw     sp, 0x4(r4)
-    stw     rtoc, 0x8(r4)
+    stw     r2, 0x8(r4)
     stmw    r6, 0x18(r4)
     mfspr   r0, 913
     stw     r0, 0x1a8(r4)

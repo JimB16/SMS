@@ -14,19 +14,19 @@ initSinfT__Q28JASystem4CalcFv: # 0x80316414
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5bd8(r13)
+    stw     r3, R13Off_m0x5bd8(r13)
     li      r3, 0x404
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5bd4(r13)
+    stw     r3, R13Off_m0x5bd4(r13)
     li      r29, 0x0
-    lfs     f29, 0x718(rtoc)
+    lfs     f29, 0x718(r2)
     li      r31, 0x0
-    lfd     f28, 0x728(rtoc)
-    lfs     f27, 0x71c(rtoc)
+    lfd     f28, 0x728(r2)
+    lfs     f27, 0x71c(r2)
     lis     r30, 0x4330
 branch_0x80316480:
     stw     r29, 0xc(sp)
@@ -36,20 +36,20 @@ branch_0x80316480:
     fmuls   f0, f29, f0
     fmuls   f1, f0, f27
     bl      sinf
-    lwz     r3, -0x5bd8(r13)
+    lwz     r3, R13Off_m0x5bd8(r13)
     addi    r29, r29, 0x1
     cmplwi  r29, 0x101
     stfsx   f1, r3, r31
     addi    r31, r31, 0x4
     blt+    branch_0x80316480
-    lfs     f27, 0x718(rtoc)
+    lfs     f27, 0x718(r2)
     li      r29, 0x0
-    lfs     f28, 0x724(rtoc)
+    lfs     f28, 0x724(r2)
     li      r31, 0x0
-    lfd     f29, 0x728(rtoc)
-    lfs     f30, 0x71c(rtoc)
+    lfd     f29, 0x728(r2)
+    lfs     f30, 0x71c(r2)
     lis     r30, 0x4330
-    lfs     f31, 0x720(rtoc)
+    lfs     f31, 0x720(r2)
 branch_0x803164d4:
     stw     r29, 0xc(sp)
     stw     r30, 0x8(sp)
@@ -59,7 +59,7 @@ branch_0x803164d4:
     fmadds  f0, f0, f30, f31
     fmuls   f1, f27, f0
     bl      sinf
-    lwz     r3, -0x5bd4(r13)
+    lwz     r3, R13Off_m0x5bd4(r13)
     addi    r29, r29, 0x1
     cmplwi  r29, 0x101
     stfsx   f1, r3, r31
@@ -82,8 +82,8 @@ branch_0x803164d4:
 .globl sinfT__Q28JASystem4CalcFf
 sinfT__Q28JASystem4CalcFf: # 0x8031653c
     stwu    sp, -0x18(sp)
-    lfs     f0, 0x730(rtoc)
-    lwz     r3, -0x5bd8(r13)
+    lfs     f0, 0x730(r2)
+    lwz     r3, R13Off_m0x5bd8(r13)
     fmuls   f0, f0, f1
     fctiwz  f0, f0
     stfd    f0, 0x10(sp)
@@ -97,8 +97,8 @@ sinfT__Q28JASystem4CalcFf: # 0x8031653c
 .globl sinfDolby2__Q28JASystem4CalcFf
 sinfDolby2__Q28JASystem4CalcFf: # 0x80316568
     stwu    sp, -0x18(sp)
-    lfs     f0, 0x730(rtoc)
-    lwz     r3, -0x5bd4(r13)
+    lfs     f0, 0x730(r2)
+    lwz     r3, R13Off_m0x5bd4(r13)
     fmuls   f0, f0, f1
     fctiwz  f0, f0
     stfd    f0, 0x10(sp)
@@ -256,11 +256,11 @@ branch_0x80316764:
 
 branch_0x8031678c:
     lbz     r0, 0x0(r3)
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
     addi    r3, r3, 0x1
     stb     r0, 0x0(r4)
     addi    r4, r4, 0x1
-    subi    r5, r5, 0x1
+    addi    r5, r5, -0x1
 branch_0x803167a4:
     clrlwi. r0, r6, 24
     bne+    branch_0x8031678c
@@ -472,8 +472,8 @@ branch_0x80316a48:
 branch_0x80316a64:
     stb     r5, 0x0(r3)
     addi    r3, r3, 0x1
-    subi    r4, r4, 0x1
-    subi    r6, r6, 0x1
+    addi    r4, r4, -0x1
+    addi    r6, r6, -0x1
 branch_0x80316a74:
     clrlwi. r0, r6, 24
     bne+    branch_0x80316a64

@@ -9,12 +9,12 @@ __dt__17TMarioPositionObjFv: # 0x80280e1c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80280e74
-    lis     r3, 0x803e
-    subi    r0, r3, 0x14c8
+    lis     r3, __vvt__17TMarioPositionObj@ha
+    addi    r0, r3, __vvt__17TMarioPositionObj@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80280e64
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -138,3 +138,4 @@ getPosition__20JSUMemoryInputStreamCFv: # 0x80280fd8
 getLength__20JSUMemoryInputStreamCFv: # 0x80280fe0
     lwz     r3, 0xc(r3)
     blr
+

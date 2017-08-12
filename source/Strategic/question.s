@@ -9,12 +9,12 @@ __dt__16TQuestionManagerFv: # 0x802237c0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80223818
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5b60
+    lis     r3, __vvt__16TQuestionManager@ha
+    addi    r0, r3, __vvt__16TQuestionManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80223808
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -47,8 +47,8 @@ perform__16TQuestionManagerFUlPQ26JDrama9TGraphics: # 0x80223834
     stw     r29, 0x24(sp)
     addi    r29, r3, 0x0
     beq-    branch_0x802238cc
-    lwz     r3, -0x6130(r13)
-    lfs     f0, -0x1840(rtoc)
+    lwz     r3, R13Off_m0x6130(r13)
+    lfs     f0, -0x1840(r2)
     lfs     f1, 0x48(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8022387c
@@ -83,8 +83,8 @@ branch_0x802238c4:
 branch_0x802238cc:
     rlwinm. r0, r30, 0, 28, 28
     beq-    branch_0x80223910
-    lwz     r3, -0x6130(r13)
-    lfs     f0, -0x1840(rtoc)
+    lwz     r3, R13Off_m0x6130(r13)
+    lfs     f0, -0x1840(r2)
     lfs     f1, 0x48(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x802238f0
@@ -304,7 +304,7 @@ request__16TQuestionManagerFQ29JGeometry8TVec3_f_f: # 0x80223be0
     lhz     r0, 0x12(r3)
     cmplwi  r0, 0x20
     bge-    branch_0x80223c6c
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     lfs     f0, 0x14(r3)
     lfs     f3, 0x8(r5)
     lfs     f2, 0x8(r4)
@@ -355,10 +355,10 @@ load__16TQuestionManagerFR20JSUMemoryInputStream: # 0x80223c74
     bl      load__Q26JDrama8TNameRefFR20JSUMemoryInputStream
     li      r31, 0x0
     sth     r31, 0x10(r29)
-    lis     r3, 0x803a
-    subi    r3, r3, 0x2920
+    lis     r3, unk_8039d6e0@ha
+    addi    r3, r3, unk_8039d6e0@l
     sth     r31, 0x12(r29)
-    lfs     f0, -0x183c(rtoc)
+    lfs     f0, -0x183c(r2)
     stfs    f0, 0x14(r29)
     bl      getGlbResource__13JKRFileLoaderFPCc
     addi    r30, r3, 0x0
@@ -375,8 +375,8 @@ branch_0x80223ce0:
     stw     r28, 0x18(r29)
     li      r3, 0x208
     bl      __nwa__FUl
-    lis     r4, 0x8022
-    addi    r4, r4, 0x3d64
+    lis     r4, __ct__16TQuestionRequestFv@h
+    addi    r4, r4, __ct__16TQuestionRequestFv@l
     li      r5, 0x0
     li      r6, 0x10
     li      r7, 0x20
@@ -386,8 +386,8 @@ branch_0x80223ce0:
     bl      __nw__FUl
     cmplwi  r3, 0x0
     beq-    branch_0x80223d24
-    lis     r4, 0x803e
-    subi    r0, r4, 0x59e8
+    lis     r4, __vvt__10TDLTexQuad@ha
+    addi    r0, r4, __vvt__10TDLTexQuad@l
     stw     r0, 0x0(r3)
 branch_0x80223d24:
     stw     r3, 0x20(r29)
@@ -397,7 +397,7 @@ branch_0x80223d24:
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    stw     r29, -0x6138(r13)
+    stw     r29, R13Off_m0x6138(r13)
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
     lwz     r30, 0x18(sp)

@@ -1,8 +1,8 @@
 
 .globl __ct__15SampleCtrlShapeFP8J3DShape
 __ct__15SampleCtrlShapeFP8J3DShape: # 0x8023e8bc
-    lis     r5, 0x803e
-    subi    r0, r5, 0x4108
+    lis     r5, __vvt__15SampleCtrlShape@ha
+    addi    r0, r5, __vvt__15SampleCtrlShape@l
     stw     r0, 0x0(r3)
     li      r5, 0x0
     stw     r5, 0x4(r3)
@@ -28,10 +28,10 @@ branch_0x8023e8fc:
 .globl __ct__18SampleCtrlMaterialFP11J3DMaterial
 __ct__18SampleCtrlMaterialFP11J3DMaterial: # 0x8023e908
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__18SampleCtrlMaterial@ha
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0x4114
-    subi    r5, r13, 0x753c
+    addi    r0, r5, __vvt__18SampleCtrlMaterial@l
+    addi    r5, r13, R13Off_m0x753c
     stwu    sp, -0xc8(sp)
     stmw    r26, 0xb0(sp)
     addi    r28, r4, 0x0
@@ -39,7 +39,7 @@ __ct__18SampleCtrlMaterialFP11J3DMaterial: # 0x8023e908
     li      r4, 0x0
     stw     r0, 0x0(r3)
     li      r0, 0x0
-    lbz     r3, -0x753c(r13)
+    lbz     r3, R13Off_m0x753c(r13)
     stb     r3, 0x38(r27)
     lbz     r3, 0x1(r5)
     stb     r3, 0x39(r27)
@@ -117,7 +117,7 @@ branch_0x8023e98c:
     lwz     r12, 0x40(r12)
     mtlr    r12
     blrl
-    lwz     r0, -0x75e0(r13)
+    lwz     r0, R13Off_m0x75e0(r13)
     addi    r30, r30, 0x1
     stw     r0, 0x90(sp)
     lhz     r0, 0x0(r3)
@@ -354,8 +354,8 @@ branch_0x8023edc0:
 
 .globl __ct__15SampleCtrlJointFP8J3DJoint
 __ct__15SampleCtrlJointFP8J3DJoint: # 0x8023ede4
-    lis     r5, 0x803e
-    subi    r0, r5, 0x4120
+    lis     r5, __vvt__15SampleCtrlJoint@ha
+    addi    r0, r5, __vvt__15SampleCtrlJoint@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0x4(r3)
@@ -389,8 +389,8 @@ __dt__15SampleCtrlJointFv: # 0x8023ee48
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8023ee7c
-    lis     r3, 0x803e
-    subi    r3, r3, 0x4120
+    lis     r3, __vvt__15SampleCtrlJoint@ha
+    addi    r3, r3, __vvt__15SampleCtrlJoint@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8023ee7c
@@ -413,8 +413,8 @@ __dt__18SampleCtrlMaterialFv: # 0x8023ee94
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8023eec8
-    lis     r3, 0x803e
-    subi    r3, r3, 0x4114
+    lis     r3, __vvt__18SampleCtrlMaterial@ha
+    addi    r3, r3, __vvt__18SampleCtrlMaterial@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8023eec8
@@ -437,8 +437,8 @@ __dt__15SampleCtrlShapeFv: # 0x8023eee0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8023ef14
-    lis     r3, 0x803e
-    subi    r3, r3, 0x4108
+    lis     r3, __vvt__15SampleCtrlShape@ha
+    addi    r3, r3, __vvt__15SampleCtrlShape@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8023ef14

@@ -9,12 +9,12 @@ __dt__12TTargetArrowFv: # 0x802bc868
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802bc8c0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x2b8
+    lis     r3, __vvt__12TTargetArrow@ha
+    addi    r0, r3, __vvt__12TTargetArrow@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802bc8b0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -78,19 +78,19 @@ loadAfter__12TTargetArrowFv: # 0x802bc948
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lwz     r3, -0x75c8(r13)
+    lwz     r3, R13Off_m0x75c8(r13)
     bl      getGlbResource__13JKRFileLoaderFPCc
     cmplwi  r3, 0x0
     beq-    branch_0x802bc998
-    lis     r3, 0x803b
-    lwz     r4, -0x75c8(r13)
-    subi    r3, r3, 0x6d1c
+    lis     r3, unk_803a92e4@ha
+    lwz     r4, R13Off_m0x75c8(r13)
+    addi    r3, r3, unk_803a92e4@l
     li      r5, 0x3
     lis     r6, 0x1001
     bl      SMS_MakeMActor__FPCcPCcUlUl
     stw     r3, 0x10(r31)
-    lis     r3, 0x803b
-    subi    r4, r3, 0x6d04
+    lis     r3, unk_803a92fc@ha
+    addi    r4, r3, unk_803a92fc@l
     lwz     r3, 0x10(r31)
     bl      setBck__6MActorFPCc
 branch_0x802bc998:

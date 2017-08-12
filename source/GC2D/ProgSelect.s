@@ -9,12 +9,12 @@ __dt__11TProgSelectFv: # 0x8017d9f4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8017da4c
-    lis     r3, 0x803c
-    addi    r0, r3, 0x1254
+    lis     r3, __vvt__11TProgSelect@h
+    addi    r0, r3, __vvt__11TProgSelect@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8017da3c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -65,7 +65,7 @@ perform__11TProgSelectFUlPQ26JDrama9TGraphics: # 0x8017da68
 
 branch_0x8017dad0:
     lwz     r3, 0x10(r28)
-    subi    r0, r3, 0x10
+    addi    r0, r3, -0x10
     stw     r0, 0x10(r28)
     lwz     r0, 0x10(r28)
     cmpwi   r0, 0x0
@@ -106,11 +106,11 @@ branch_0x8017db48:
     addi    r3, r3, 0x1
     stw     r3, 0x128(r28)
     lwz     r3, 0x128(r28)
-    lfd     f3, -0x4638(rtoc)
+    lfd     f3, -0x4638(r2)
     xoris   r3, r3, 0x8000
     lfs     f1, 0x12c(r28)
     stw     r3, 0x1e4(sp)
-    lfs     f0, -0x4640(rtoc)
+    lfs     f0, -0x4640(r2)
     stw     r0, 0x1e0(sp)
     lfd     f2, 0x1e0(sp)
     fsubs   f2, f2, f3
@@ -121,9 +121,9 @@ branch_0x8017db90:
     lbz     r0, 0x14(r28)
     cmplwi  r0, 0x0
     bne-    branch_0x8017dbc0
-    lis     r3, 0x803c
+    lis     r3, strSetProg@h
     crxor   6, 6, 6
-    addi    r5, r3, 0x117c
+    addi    r5, r3, strSetProg@l
     addi    r3, r28, 0x1c
     li      r4, 0x100
     bl      snprintf
@@ -132,9 +132,9 @@ branch_0x8017db90:
     b       branch_0x8017dbe0
 
 branch_0x8017dbc0:
-    lis     r3, 0x803c
+    lis     r3, strSetInter@h
     crxor   6, 6, 6
-    addi    r5, r3, 0x11ec
+    addi    r5, r3, strSetInter@l
     addi    r3, r28, 0x1c
     li      r4, 0x100
     bl      snprintf
@@ -148,16 +148,16 @@ branch_0x8017dbe8:
     cmplw   r31, r0
     beq-    branch_0x8017dc74
     li      r6, 0xff
-    lis     r4, 0xff
+    lis     r4, unk_00ff00ff@h
     stw     r6, 0x10(r28)
-    addi    r0, r4, 0xff
+    addi    r0, r4, unk_00ff00ff@l
     stw     r0, 0x74(sp)
     slwi    r0, r31, 2
-    lis     r3, 0x7f7f
+    lis     r3, unk_7f7f7fff@h
     lwz     r5, 0x74(sp)
     add     r7, r28, r0
     stw     r4, 0x7c(sp)
-    addi    r4, r3, 0x7fff
+    addi    r4, r3, unk_7f7f7fff@l
     addi    r0, r3, 0x7f00
     stw     r5, 0x78(sp)
     lwz     r3, 0x7c(sp)
@@ -203,7 +203,7 @@ branch_0x8017dcb0:
     bl      __ct__13J2DOrthoGraphFRC7JUTRect
     addi    r3, sp, 0xe8
     bl      setup2D__14J2DGrafContextFv
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     addi    r3, sp, 0x84
     li      r5, 0x0
     bl      __ct__8J2DPrintFP7JUTFonti
@@ -235,11 +235,11 @@ branch_0x8017dd3c:
     addi    r3, sp, 0x84
     li      r4, -0x1
     bl      __dt__8J2DPrintFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r0, 0xe8(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0xe8(sp)
 branch_0x8017dd60:
     lwz     r0, 0x1fc(sp)
@@ -262,21 +262,21 @@ __ct__11TProgSelectFUcPCc: # 0x8017dd80
     stw     r29, 0x8c(sp)
     addi    r29, r4, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r30, 0x8(sp)
     mr      r3, r5
     stw     r0, 0x0(r30)
     stw     r5, 0x4(r30)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r30)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r31, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__11TProgSelect@h
     sth     r31, 0xc(r30)
-    addi    r3, r3, 0x1254
+    addi    r3, r3, __vvt__11TProgSelect@l
     li      r0, 0xff
     stw     r3, 0x0(r30)
     stw     r0, 0x10(r30)
@@ -285,8 +285,8 @@ __ct__11TProgSelectFUcPCc: # 0x8017dd80
     stb     r31, 0x16(r30)
     bl      SMSGetVSyncTimesPerSec__Fv
     stw     r31, 0x128(r30)
-    lis     r3, 0x803c
-    addi    r5, r3, 0x1148
+    lis     r3, strDispProg@h
+    addi    r5, r3, strDispProg@l
     crxor   6, 6, 6
     stfs    f1, 0x12c(r30)
     addi    r3, r30, 0x1c
@@ -296,9 +296,9 @@ __ct__11TProgSelectFUcPCc: # 0x8017dd80
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x8017de3c
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     addi    r3, r29, 0x0
-    subi    r5, r13, 0x7b28
+    addi    r5, r13, R13Off_m0x7b28
     lwz     r4, 0x48(r4)
     bl      __ct__10J2DTextBoxFPC7ResFONTPCc
 branch_0x8017de3c:
@@ -308,9 +308,9 @@ branch_0x8017de3c:
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x8017de68
-    lwz     r4, gpSystemFont(r13)
+    lwz     r4, R13Off_m0x6038(r13)
     addi    r3, r29, 0x0
-    subi    r5, r13, 0x7b24
+    addi    r5, r13, R13Off_m0x7b24
     lwz     r4, 0x48(r4)
     bl      __ct__10J2DTextBoxFPC7ResFONTPCc
 branch_0x8017de68:
@@ -326,12 +326,12 @@ branch_0x8017de68:
     lbz     r0, 0x14(r6)
     cmplwi  r0, 0x0
     bne-    branch_0x8017def8
-    lis     r3, 0xff
-    addi    r0, r3, 0xff
+    lis     r3, unk_00ff00ff@h
+    addi    r0, r3, unk_00ff00ff@l
     stw     r3, 0x7c(sp)
-    lis     r3, 0x7f7f
+    lis     r3, unk_7f7f7fff@h
     stw     r0, 0x74(sp)
-    addi    r4, r3, 0x7fff
+    addi    r4, r3, unk_7f7f7fff@l
     lwz     r5, 0x7c(sp)
     addi    r0, r3, 0x7f00
     lwz     r3, 0x74(sp)
@@ -352,12 +352,12 @@ branch_0x8017de68:
     b       branch_0x8017df54
 
 branch_0x8017def8:
-    lis     r3, 0xff
-    addi    r0, r3, 0xff
+    lis     r3, unk_00ff00ff@h
+    addi    r0, r3, unk_00ff00ff@l
     stw     r3, 0x5c(sp)
-    lis     r3, 0x7f7f
+    lis     r3, unk_7f7f7fff@h
     stw     r0, 0x54(sp)
-    addi    r4, r3, 0x7fff
+    addi    r4, r3, unk_7f7f7fff@l
     lwz     r5, 0x5c(sp)
     addi    r0, r3, 0x7f00
     lwz     r3, 0x54(sp)

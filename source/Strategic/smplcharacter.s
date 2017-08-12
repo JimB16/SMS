@@ -9,15 +9,15 @@ __dt__13TSMSSmplCharaFv: # 0x80223d68
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80223dcc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5b38
+    lis     r3, __vvt__13TSMSSmplChara@ha
+    addi    r0, r3, __vvt__13TSMSSmplChara@l
     stw     r0, 0x0(r30)
     lwz     r3, 0xc(r30)
     bl      __dla__FPv
     cmplwi  r30, 0x0
     beq-    branch_0x80223dbc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6028
+    lis     r3, __vvt__Q26JDrama10TCharacter@ha
+    addi    r0, r3, __vvt__Q26JDrama10TCharacter@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -43,7 +43,7 @@ getRes__13TSMSSmplCharaCFPCc: # 0x80223de8
     addi    r4, r3, 0x0
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
-    subi    r5, rtoc, 0x1838
+    addi    r5, r2, R2Off_m0x1838
     stwu    sp, -0x110(sp)
     addi    r3, sp, 0x10
     lwz     r6, 0xc(r4)

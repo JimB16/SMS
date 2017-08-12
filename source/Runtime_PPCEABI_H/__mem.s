@@ -20,7 +20,7 @@ __fill_mem: # 0x80003130
     cmplwi  r5, 0x20
     clrlwi  r0, r4, 24
     mr      r7, r0
-    subi    r6, r3, 0x1
+    addi    r6, r3, -0x1
     blt-    branch_0x800031d8
     not     r0, r6
     clrlwi. r0, r0, 30
@@ -43,7 +43,7 @@ branch_0x80003168:
     or      r7, r7, r0
 branch_0x80003188:
     srwi.   r0, r5, 5
-    subi    r3, r6, 0x3
+    addi    r3, r6, -0x3
     beq-    branch_0x800031bc
 branch_0x80003194:
     stw     r7, 0x4(r3)
@@ -82,8 +82,8 @@ branch_0x800031e4:
 memcpy: # 0x800031f4
     cmplw   r4, r3
     blt-    branch_0x80003220
-    subi    r4, r4, 0x1
-    subi    r6, r3, 0x1
+    addi    r4, r4, -0x1
+    addi    r6, r3, -0x1
     addi    r5, r5, 0x1
     b       branch_0x80003214
 

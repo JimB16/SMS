@@ -9,9 +9,9 @@ __CARDSyncCallback: # 0x80354330
     mflr    r0
     mulli   r4, r3, 0x110
     stw     r0, 0x4(sp)
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stwu    sp, -0x8(sp)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     add     r3, r0, r4
     addi    r3, r3, 0x8c
     bl      OSWakeupThread
@@ -31,8 +31,8 @@ __CARDExtHandler: # 0x80354364
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
     mulli   r4, r29, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r30, r0, r4
     lwz     r0, 0x0(r30)
     cmpwi   r0, 0x0
@@ -91,9 +91,9 @@ __CARDExiHandler: # 0x8035443c
     addi    r31, r3, 0x0
     mulli   r4, r31, 0x110
     stw     r30, 0x20(sp)
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stw     r29, 0x1c(sp)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     add     r30, r0, r4
     addi    r3, r30, 0xe0
     bl      OSCancelAlarm
@@ -172,8 +172,8 @@ __CARDTxHandler: # 0x80354554
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     mulli   r4, r27, 0x110
     addi    r3, r27, 0x0
     add     r29, r0, r4
@@ -225,8 +225,8 @@ __CARDUnlockedHandler: # 0x803545fc
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     mulli   r4, r30, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r3, r0, r4
     lwz     r0, 0xdc(r3)
     cmplwi  r0, 0x0
@@ -281,12 +281,12 @@ branch_0x803546b8:
     b       branch_0x803546cc
 
 branch_0x803546c8:
-    lis     r0, 0x8100
+    lis     r0, unk_81000002@h
 branch_0x803546cc:
     stw     r0, 0x10(sp)
     addi    r3, r30, 0x0
     addi    r4, sp, 0x10
-    li      r5, 0x2
+    addi    r5, r0, unk_81000002@l
     li      r6, 0x1
     li      r7, 0x0
     bl      EXIImm
@@ -336,11 +336,11 @@ __CARDReadStatus: # 0x80354740
     b       branch_0x80354814
 
 branch_0x8035477c:
-    lis     r0, 0x8300
+    lis     r0, unk_83000002@h
     stw     r0, 0x10(sp)
     addi    r3, r29, 0x0
     addi    r4, sp, 0x10
-    li      r5, 0x2
+    addi    r5, r0, unk_83000002@l
     li      r6, 0x1
     li      r7, 0x0
     bl      EXIImm
@@ -403,11 +403,11 @@ __CARDClearStatus: # 0x80354830
     b       branch_0x803548c4
 
 branch_0x80354864:
-    lis     r0, 0x8900
+    lis     r0, unk_89000001@h
     stw     r0, 0xc(sp)
     addi    r3, r30, 0x0
     addi    r4, sp, 0xc
-    li      r5, 0x1
+    addi    r5, r0, unk_89000001@l
     li      r6, 0x1
     li      r7, 0x0
     bl      EXIImm
@@ -441,9 +441,9 @@ branch_0x803548c4:
 .globl TimeoutHandler
 TimeoutHandler: # 0x803548dc
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, __CARDBlock@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x3460
+    addi    r4, r4, __CARDBlock@l
     addi    r0, r4, 0xe0
     stwu    sp, -0x18(sp)
     cmplw   r3, r0
@@ -495,8 +495,8 @@ Retry: # 0x80354980
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     mulli   r4, r30, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r4
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -528,14 +528,14 @@ branch_0x803549f8:
 branch_0x80354a04:
     lis     r3, 0x8000
     lwz     r0, 0xf8(r3)
-    lis     r4, 0x1062
-    lis     r3, 0x8035
+    lis     r4, unk_10624dd3@h
+    lis     r3, TimeoutHandler@h
     srwi    r0, r0, 2
-    addi    r4, r4, 0x4dd3
+    addi    r4, r4, unk_10624dd3@l
     mulhwu  r0, r4, r0
     srwi    r0, r0, 6
     mulli   r6, r0, 0x64
-    addi    r7, r3, 0x48dc
+    addi    r7, r3, TimeoutHandler@l
     addi    r3, r31, 0xe0
     li      r5, 0x0
     bl      OSSetAlarm
@@ -545,7 +545,7 @@ branch_0x80354a3c:
     lis     r3, 0x8000
     lwz     r4, 0xc(r31)
     lwz     r0, 0xf8(r3)
-    lis     r3, 0x8035
+    lis     r3, TimeoutHandler@h
     srawi   r9, r4, 13
     srwi    r7, r0, 2
     li      r0, 0x2
@@ -559,7 +559,7 @@ branch_0x80354a3c:
     srawi   r0, r9, 31
     mullw   r4, r0, r5
     mulhwu  r0, r9, r5
-    addi    r7, r3, 0x48dc
+    addi    r7, r3, TimeoutHandler@l
     add     r3, r8, r6
     add     r4, r4, r0
     mullw   r0, r9, r3
@@ -623,9 +623,9 @@ branch_0x80354b40:
 branch_0x80354b54:
     li      r5, 0x80
 branch_0x80354b58:
-    lis     r3, 0x8035
+    lis     r3, __CARDTxHandler@h
     lwz     r4, 0xb4(r31)
-    addi    r7, r3, 0x4554
+    addi    r7, r3, __CARDTxHandler@l
     lwz     r6, 0xa4(r31)
     mr      r3, r30
     bl      EXIDma
@@ -659,15 +659,15 @@ UnlockedCallback: # 0x80354bac
     addi    r31, r3, 0x0
     mulli   r5, r31, 0x110
     stw     r30, 0x10(sp)
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r30, r0, r5
     blt-    branch_0x80354c20
-    lis     r3, 0x8035
-    addi    r0, r3, 0x4bac
-    lis     r3, 0x8035
+    lis     r3, UnlockedCallback@h
+    addi    r0, r3, UnlockedCallback@l
+    lis     r3, __CARDUnlockedHandler@h
     stw     r0, 0xdc(r30)
-    addi    r5, r3, 0x45fc
+    addi    r5, r3, __CARDUnlockedHandler@l
     addi    r3, r31, 0x0
     li      r4, 0x0
     bl      EXILock
@@ -742,8 +742,8 @@ __CARDStart: # 0x80354cbc
     addi    r29, r5, 0x0
     bl      OSDisableInterrupts
     mulli   r5, r27, 0x110
-    lis     r4, 0x8040
-    addi    r0, r4, 0x3460
+    lis     r4, __CARDBlock@h
+    addi    r0, r4, __CARDBlock@l
     add     r31, r0, r5
     lwz     r0, 0x0(r31)
     addi    r30, r3, 0x0
@@ -761,11 +761,11 @@ branch_0x80354d10:
     beq-    branch_0x80354d1c
     stw     r29, 0xcc(r31)
 branch_0x80354d1c:
-    lis     r3, 0x8035
-    addi    r0, r3, 0x4bac
-    lis     r3, 0x8035
+    lis     r3, UnlockedCallback@h
+    addi    r0, r3, UnlockedCallback@l
+    lis     r3, __CARDUnlockedHandler@h
     stw     r0, 0xdc(r31)
-    addi    r5, r3, 0x45fc
+    addi    r5, r3, __CARDUnlockedHandler@l
     addi    r3, r27, 0x0
     li      r4, 0x0
     bl      EXILock
@@ -808,14 +808,14 @@ branch_0x80354da4:
 branch_0x80354db0:
     lis     r3, 0x8000
     lwz     r0, 0xf8(r3)
-    lis     r4, 0x1062
-    lis     r3, 0x8035
+    lis     r4, unk_10624dd3@h
+    lis     r3, TimeoutHandler@h
     srwi    r0, r0, 2
-    addi    r4, r4, 0x4dd3
+    addi    r4, r4, unk_10624dd3@l
     mulhwu  r0, r4, r0
     srwi    r0, r0, 6
     mulli   r6, r0, 0x64
-    addi    r7, r3, 0x48dc
+    addi    r7, r3, TimeoutHandler@l
     addi    r3, r31, 0xe0
     li      r5, 0x0
     bl      OSSetAlarm
@@ -825,7 +825,7 @@ branch_0x80354de8:
     lis     r3, 0x8000
     lwz     r4, 0xc(r31)
     lwz     r0, 0xf8(r3)
-    lis     r3, 0x8035
+    lis     r3, TimeoutHandler@h
     srawi   r9, r4, 13
     srwi    r7, r0, 2
     li      r0, 0x2
@@ -839,7 +839,7 @@ branch_0x80354de8:
     srawi   r0, r9, 31
     mullw   r4, r0, r5
     mulhwu  r0, r9, r5
-    addi    r7, r3, 0x48dc
+    addi    r7, r3, TimeoutHandler@l
     add     r3, r8, r6
     add     r4, r4, r0
     mullw   r0, r9, r3
@@ -870,8 +870,8 @@ __CARDReadSegment: # 0x80354e70
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     mulli   r5, r30, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     li      r0, 0x52
     stb     r0, 0x94(r31)
@@ -917,9 +917,9 @@ branch_0x80354f00:
     bl      EXIImmEx
     cmpwi   r3, 0x0
     beq-    branch_0x80354f68
-    lis     r3, 0x8035
+    lis     r3, __CARDTxHandler@h
     lwz     r4, 0xb4(r31)
-    addi    r7, r3, 0x4554
+    addi    r7, r3, __CARDTxHandler@l
     lwz     r6, 0xa4(r31)
     addi    r3, r30, 0x0
     li      r5, 0x200
@@ -958,8 +958,8 @@ __CARDWritePage: # 0x80354fa4
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     mulli   r5, r30, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r5
     li      r0, 0xf2
     stb     r0, 0x94(r31)
@@ -998,9 +998,9 @@ branch_0x8035503c:
     bl      EXIImmEx
     cmpwi   r3, 0x0
     beq-    branch_0x80355084
-    lis     r3, 0x8035
+    lis     r3, __CARDTxHandler@h
     lwz     r4, 0xb4(r31)
-    addi    r7, r3, 0x4554
+    addi    r7, r3, __CARDTxHandler@l
     lwz     r6, 0xa4(r31)
     addi    r3, r30, 0x0
     li      r5, 0x80
@@ -1038,8 +1038,8 @@ __CARDEraseSector: # 0x803550c0
     stw     r29, 0x1c(sp)
     addi    r29, r3, 0x0
     mulli   r6, r29, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r6
     li      r0, 0xf1
     stb     r0, 0x94(r31)
@@ -1097,12 +1097,12 @@ branch_0x80355180:
 .globl CARDInit
 CARDInit: # 0x803551a0
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    addi    r30, r3, 0x3460
+    addi    r30, r3, __CARDBlock@l
     stw     r29, 0xc(sp)
     lwz     r0, 0x10c(r30)
     cmplwi  r0, 0x0
@@ -1127,8 +1127,8 @@ branch_0x803551e8:
     blt+    branch_0x803551e8
     lis     r3, 0x8000
     bl      __CARDSetDiskID
-    lis     r3, 0x803f
-    subi    r3, r3, 0x7400
+    lis     r3, ResetFunctionInfo_803e8c00@ha
+    addi    r3, r3, ResetFunctionInfo_803e8c00@l
     bl      OSRegisterResetFunction
 branch_0x80355220:
     lwz     r0, 0x1c(sp)
@@ -1143,8 +1143,8 @@ branch_0x80355220:
 .globl __CARDSetDiskID
 __CARDSetDiskID: # 0x8035523c
     cmplwi  r3, 0x0
-    lis     r4, 0x8040
-    addi    r4, r4, 0x3460
+    lis     r4, __CARDBlock@h
+    addi    r4, r4, __CARDBlock@l
     beq-    branch_0x80355254
     mr      r0, r3
     b       branch_0x80355258
@@ -1170,10 +1170,10 @@ __CARDGetControlBlock: # 0x80355274
     mulli   r6, r3, 0x110
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
-    lis     r5, 0x8040
+    lis     r5, __CARDBlock@h
     cmpwi   r3, 0x0
     stw     r31, 0x1c(sp)
-    addi    r0, r5, 0x3460
+    addi    r0, r5, __CARDBlock@l
     stw     r30, 0x18(sp)
     add     r30, r0, r6
     stw     r29, 0x14(sp)
@@ -1372,8 +1372,8 @@ __CARDSync: # 0x803554e0
     stw     r28, 0x10(sp)
     addi    r28, r3, 0x0
     mulli   r4, r28, 0x110
-    lis     r3, 0x8040
-    addi    r0, r3, 0x3460
+    lis     r3, __CARDBlock@h
+    addi    r0, r3, __CARDBlock@l
     add     r31, r0, r4
     bl      OSDisableInterrupts
     mr      r29, r3

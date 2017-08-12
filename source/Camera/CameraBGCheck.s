@@ -23,12 +23,12 @@ execGroundCheck___15CPolarSubCameraF3Vec: # 0x800202e8
     fmr     f30, f1
     cmpwi   r0, 0x2a
     bne-    branch_0x80020368
-    lfs     f0, -0x79b8(rtoc)
+    lfs     f0, -0x79b8(r2)
     fcmpo   cr0, f31, f0
     ble-    branch_0x80020350
     fmr     f0, f31
 branch_0x80020350:
-    lfs     f1, -0x79b4(rtoc)
+    lfs     f1, -0x79b4(r2)
     fmr     f31, f0
     fcmpo   cr0, f30, f1
     ble-    branch_0x80020364
@@ -38,7 +38,7 @@ branch_0x80020364:
 branch_0x80020368:
     lfs     f0, 0xb8(r30)
     addi    r4, sp, 0x28
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f0, f31
     lfs     f1, 0x0(r29)
     lfs     f3, 0x8(r29)
@@ -119,11 +119,11 @@ execRoofCheck___15CPolarSubCameraF3Vec: # 0x80020438
     bl      SMS_GetMonteVillageAreaInMario__Fv
     cmpwi   r3, 0x0
     bne-    branch_0x80020494
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0x3e
     beq-    branch_0x80020494
-    lfs     f1, -0x79b0(rtoc)
+    lfs     f1, -0x79b0(r2)
     li      r29, 0x1
     b       branch_0x800204bc
 
@@ -132,7 +132,7 @@ branch_0x80020494:
     addi    r4, sp, 0x30
     lfs     f2, 0xb8(r30)
     addi    r5, r3, 0xe0
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f0, 0x0(r5)
     lfs     f1, 0x0(r28)
     fsubs   f2, f2, f0
@@ -215,18 +215,18 @@ execWallCheck___15CPolarSubCameraFP3Vec: # 0x8002057c
     stw     r28, 0x98(sp)
     mr      r28, r3
     lwz     r3, 0x2d4(r3)
-    lfs     f0, -0x79ac(rtoc)
+    lfs     f0, -0x79ac(r2)
     lfs     f31, 0x7c(r3)
     fcmpo   cr0, f31, f0
     ble-    branch_0x80020788
-    lfs     f2, -0x79a8(rtoc)
+    lfs     f2, -0x79a8(r2)
     li      r0, 0x4
     lfs     f1, 0xb8(r28)
     li      r31, 0x0
     lfs     f3, 0x88(r28)
     lfs     f0, 0x80(r28)
     fadds   f1, f2, f1
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     addi    r4, sp, 0x6c
     stfs    f0, 0x6c(sp)
     stfs    f1, 0x70(sp)
@@ -239,7 +239,7 @@ execWallCheck___15CPolarSubCameraFP3Vec: # 0x8002057c
     beq-    branch_0x80020788
     lwz     r0, 0x80(sp)
     addi    r4, sp, 0x6c
-    lfs     f2, -0x79ac(rtoc)
+    lfs     f2, -0x79ac(r2)
     cmpwi   r0, 0x0
     mtctr   r0
     ble-    branch_0x80020788
@@ -537,11 +537,11 @@ branch_0x800209d4:
     beq-    branch_0x80020a7c
 branch_0x80020a00:
     lwz     r4, 0x68(r30)
-    lwz     r5, -0x5eac(r13)
+    lwz     r5, R13Off_m0x5eac(r13)
     lhz     r3, 0x18(r4)
     lhz     r0, 0x1a(r4)
     sraw    r3, r3, r5
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     sraw    r0, r0, r5
     lfs     f2, 0x8(r4)
     slwi    r3, r3, 2
@@ -558,7 +558,7 @@ branch_0x80020a00:
     ble-    branch_0x80020a54
     fmr     f1, f3
 branch_0x80020a54:
-    lfs     f0, -0x79a4(rtoc)
+    lfs     f0, -0x79a4(r2)
     fmuls   f0, f0, f1
     fcmpo   cr0, f2, f0
     ble-    branch_0x80020a7c
@@ -642,7 +642,7 @@ branch_0x80020b6c:
     beq-    branch_0x80021000
     lwz     r3, 0x2ac(r31)
     li      r28, 0x0
-    lfs     f0, -0x79a0(rtoc)
+    lfs     f0, -0x79a0(r2)
     lfs     f1, 0x8(r3)
     fcmpo   cr0, f1, f0
     bgt-    branch_0x80020c1c
@@ -706,7 +706,7 @@ branch_0x80020c20:
     lbz     r5, 0x2cc(r31)
     lbz     r0, 0x108(r3)
     stw     r5, 0x184(sp)
-    lfd     f2, -0x7988(rtoc)
+    lfd     f2, -0x7988(r2)
     stw     r0, 0x17c(sp)
     stw     r4, 0x180(sp)
     stw     r4, 0x178(sp)
@@ -729,7 +729,7 @@ branch_0x80020c88:
     lbz     r5, 0x2cc(r31)
     lbz     r0, 0x108(r3)
     stw     r5, 0x17c(sp)
-    lfd     f2, -0x7988(rtoc)
+    lfd     f2, -0x7988(r2)
     stw     r0, 0x184(sp)
     stw     r4, 0x178(sp)
     stw     r4, 0x180(sp)
@@ -750,8 +750,8 @@ branch_0x80020cdc:
     b       branch_0x800210bc
 
 branch_0x80020cec:
-    lis     r3, 0x8002
-    addi    r4, r3, 0x10dc
+    lis     r3, __ct__Q29JGeometry8TVec3_f_Fv@h
+    addi    r4, r3, __ct__Q29JGeometry8TVec3_f_Fv@l
     addi    r3, sp, 0xa0
     li      r5, 0x0
     li      r6, 0xc
@@ -762,26 +762,26 @@ branch_0x80020cec:
     lfs     f30, 0x48(r31)
     lfs     f31, 0x28(r31)
     bl      getFinalAngleZ__15CPolarSubCameraCFv
-    lfs     f0, -0x7998(rtoc)
+    lfs     f0, -0x7998(r2)
     mr      r28, r3
-    lfs     f1, -0x799c(rtoc)
+    lfs     f1, -0x799c(r2)
     fmuls   f0, f0, f30
     fmuls   f1, f1, f0
     bl      CLBRoundf_s___Ff
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r4, r3, 16
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     fmr     f1, f31
     sraw    r0, r4, r0
     slwi    r0, r0, 2
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     lfsx    f0, r3, r0
-    lfs     f2, -0x7994(rtoc)
+    lfs     f2, -0x7994(r2)
     mr      r7, r28
     lfsx    f3, r4, r0
     addi    r3, sp, 0xa0
     fdivs   f0, f2, f0
-    lfs     f2, -0x7990(rtoc)
+    lfs     f2, -0x7990(r2)
     addi    r4, sp, 0x8c
     addi    r5, r31, 0x124
     addi    r6, r31, 0x148
@@ -852,7 +852,7 @@ branch_0x80020db0:
     bdnz+      branch_0x80020db0
     lfs     f30, 0x2c0(r31)
     addi    r28, sp, 0xa0
-    lfs     f31, -0x798c(rtoc)
+    lfs     f31, -0x798c(r2)
     li      r26, 0x0
     li      r30, 0x0
 branch_0x80020e8c:
@@ -860,13 +860,13 @@ branch_0x80020e8c:
     li      r29, 0x0
 branch_0x80020e94:
     add     r27, r29, r30
-    lfs     f29, -0x79ac(rtoc)
+    lfs     f29, -0x79ac(r2)
     add     r27, r28, r27
     li      r24, 0x0
 branch_0x80020ea4:
     lfs     f0, 0x0(r27)
     addi    r4, sp, 0x94
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     addi    r5, sp, 0x88
     stfs    f0, 0x94(sp)
     lfs     f0, 0x4(r27)
@@ -901,7 +901,7 @@ branch_0x80020ef8:
     lbz     r5, 0x2cc(r31)
     lbz     r0, 0x108(r3)
     stw     r5, 0x17c(sp)
-    lfd     f2, -0x7988(rtoc)
+    lfd     f2, -0x7988(r2)
     stw     r0, 0x184(sp)
     stw     r4, 0x178(sp)
     stw     r4, 0x180(sp)
@@ -924,7 +924,7 @@ branch_0x80020f60:
     lbz     r5, 0x2cc(r31)
     lbz     r0, 0x108(r3)
     stw     r5, 0x17c(sp)
-    lfd     f2, -0x7988(rtoc)
+    lfd     f2, -0x7988(r2)
     stw     r0, 0x184(sp)
     stw     r4, 0x178(sp)
     stw     r4, 0x180(sp)
@@ -970,7 +970,7 @@ branch_0x80021000:
     lbz     r5, 0x2cc(r31)
     lbz     r0, 0x108(r3)
     stw     r5, 0x17c(sp)
-    lfd     f2, -0x7988(rtoc)
+    lfd     f2, -0x7988(r2)
     stw     r0, 0x184(sp)
     stw     r4, 0x178(sp)
     stw     r4, 0x180(sp)
@@ -993,7 +993,7 @@ branch_0x80021058:
     lbz     r5, 0x2cc(r31)
     lbz     r0, 0x108(r3)
     stw     r5, 0x17c(sp)
-    lfd     f2, -0x7988(rtoc)
+    lfd     f2, -0x7988(r2)
     stw     r0, 0x184(sp)
     stw     r4, 0x178(sp)
     stw     r4, 0x180(sp)
@@ -1038,14 +1038,14 @@ CLBLinearInbetween_f___Ffff: # 0x800210e0
 .globl CLBRoundf_s___Ff
 CLBRoundf_s___Ff: # 0x800210ec
     stwu    sp, -0x18(sp)
-    lfs     f0, -0x79ac(rtoc)
+    lfs     f0, -0x79ac(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80021104
-    lfs     f0, -0x7998(rtoc)
+    lfs     f0, -0x7998(r2)
     b       branch_0x80021108
 
 branch_0x80021104:
-    lfs     f0, -0x7980(rtoc)
+    lfs     f0, -0x7980(r2)
 branch_0x80021108:
     fadds   f0, f1, f0
     fctiwz  f0, f0

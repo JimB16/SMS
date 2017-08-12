@@ -51,3 +51,4 @@ load__18TStagePositionInfoFR20JSUMemoryInputStream: # 0x802a8cb0
     mtlr    r0
     addi    sp, sp, 0x40
     blr
+

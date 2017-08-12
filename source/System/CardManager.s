@@ -2,12 +2,12 @@
 .globl cmdLoop__12TCardManagerFv
 cmdLoop__12TCardManagerFv: # 0x802b16b0
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, unk_803df9c8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stmw    r25, 0x3c(sp)
     addi    r29, r3, 0x0
-    subi    r31, r4, 0x638
+    addi    r31, r4, unk_803df9c8@l
     li      r30, 0x1
     b       branch_0x802b18b8
 
@@ -29,9 +29,8 @@ branch_0x802b16ec:
     slwi    r0, r0, 2
     lwzx    r0, r31, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x802B1710:		# jumptable 802B170C case 1
+    bctr       
+branch_0x802b1710:
     addi    r3, r29, 0x0
     li      r4, 0x0
     bl      mount___12TCardManagerFb
@@ -55,7 +54,7 @@ branch_0x802b1744:
     bl      CARDUnmount
     li      r4, 0x0
     stb     r4, 0x125(r29)
-    subi    r3, r13, 0x5fe8
+    addi    r3, r13, R13Off_m0x5fe8
     stb     r4, 0x126(r29)
     lwz     r0, 0x0(r29)
     stbx    r4, r3, r0
@@ -63,105 +62,100 @@ branch_0x802b1778:
     stw     r28, 0x128(r29)
     b       branch_0x802b18a8
 
-branch_0x802B1780:		# jumptable 802B170C case 2
-mr	  r3, r29
-bl	  createFile___12TCardManagerFv	# TCardManager::createFile_((void))
-stw	  r3, 0x128(r29)
-b	  def_802B170C	# jumptable 802B170C default case
+branch_0x802b1780:
+    mr      r3, r29
+    bl      createFile___12TCardManagerFv
+    stw     r3, 0x128(r29)
+    b       branch_0x802b18a8
 
-branch_0x802B1790:		# jumptable 802B170C case 3
-mr	  r3, r29
-bl	  getBookmarkInfos___12TCardManagerFv #	TCardManager::getBookmarkInfos_((void))
-stw	  r3, 0x128(r29)
-b	  def_802B170C	# jumptable 802B170C default case
+branch_0x802b1790:
+    mr      r3, r29
+    bl      getBookmarkInfos___12TCardManagerFv
+    stw     r3, 0x128(r29)
+    b       branch_0x802b18a8
 
-branch_0x802B17A0:		# jumptable 802B170C case 5
-mr	  r3, r29
-lwz	  r4, 0x474(r29)
-bl	  readBlock___12TCardManagerFUl	# TCardManager::readBlock_((ulong))
-stw	  r3, 0x128(r29)
-b	  def_802B170C	# jumptable 802B170C default case
+branch_0x802b17a0:
+    mr      r3, r29
+    lwz     r4, 0x474(r29)
+    bl      readBlock___12TCardManagerFUl
+    stw     r3, 0x128(r29)
+    b       branch_0x802b18a8
 
-branch_0x802B17B4:		# jumptable 802B170C case 6
-mr	  r3, r29
-lwz	  r4, 0x474(r29)
-bl	  writeBlock___12TCardManagerFUl # TCardManager::writeBlock_((ulong))
-stw	  r3, 0x128(r29)
-b	  def_802B170C	# jumptable 802B170C default case
+branch_0x802b17b4:
+    mr      r3, r29
+    lwz     r4, 0x474(r29)
+    bl      writeBlock___12TCardManagerFUl
+    stw     r3, 0x128(r29)
+    b       branch_0x802b18a8
 
-branch_0x802B17C8:		# jumptable 802B170C case 7
-addi	  r3, r29, 0
-addi	  r4, r1, 0x58+var_40
-bl	  open___12TCardManagerFP12CARDFileInfo	# TCardManager::open_((CARDFileInfo *))
-mr.	  r28, r3
-bne	  branch_0x802B188C
-lwz	  r0, 0xC(r29)
-lwz	  r27, 0x130(r29)
-cmpwi	  r0, 1
-bne	  branch_0x802B1818
-addi	  r3, r27, 4
-li	  r4, 0
-li	  r5, 0x1FF8
-bl	  memset
-li	  r0, 0
-stw	  r0, 0(r27)
-addi	  r3, r27, 0
-li	  r4, 0x1FFC
-bl	  CalcCheckSum__FPCvUl # CalcCheckSum(void const *,ulong)
-stw	  r3, 0x1FFC(r27)
-b	  branch_0x802B188C
+branch_0x802b17c8:
+    addi    r3, r29, 0x0
+    addi    r4, sp, 0x18
+    bl      open___12TCardManagerFP12CARDFileInfo
+    mr.     r28, r3
+    bne-    branch_0x802b188c
+    lwz     r0, 0xc(r29)
+    lwz     r27, 0x130(r29)
+    cmpwi   r0, 0x1
+    bne-    branch_0x802b1818
+    addi    r3, r27, 0x4
+    li      r4, 0x0
+    li      r5, 0x1ff8
+    bl      memset
+    li      r0, 0x0
+    stw     r0, 0x0(r27)
+    addi    r3, r27, 0x0
+    li      r4, 0x1ffc
+    bl      CalcCheckSum__FPCvUl
+    stw     r3, 0x1ffc(r27)
+    b       branch_0x802b188c
 
-branch_0x802B1818:
-addi	  r4, r27, 0
-addi	  r3, r1, 0x58+var_40
-li	  r5, 0x2000
-li	  r6, 0
-bl	  CARDRead
-mr.	  r28, r3
-bne	  branch_0x802B1878
-lwz	  r25, 0(r27)
-addi	  r3, r27, 0
-addi	  r26, r27, 4
-li	  r4, 0x1FFC
-bl	  CalcCheckSum__FPCvUl # CalcCheckSum(void const *,ulong)
-lwz	  r0, 0x1FFC(r27)
-subf	  r0, r0, r3
-cntlzw	  r0, r0
-extrwi.	  r0, r0, 8,19
-beq	  branch_0x802B1864
-li	  r4, 3
-b	  branch_0x802B1868
+branch_0x802b1818:
+    addi    r4, r27, 0x0
+    addi    r3, sp, 0x18
+    li      r5, 0x2000
+    li      r6, 0x0
+    bl      CARDRead
+    mr.     r28, r3
+    bne-    branch_0x802b1878
+    lwz     r25, 0x0(r27)
+    addi    r3, r27, 0x0
+    addi    r26, r27, 0x4
+    li      r4, 0x1ffc
+    bl      CalcCheckSum__FPCvUl
+    lwz     r0, 0x1ffc(r27)
+    subf    r0, r0, r3
+    cntlzw  r0, r0
+    extrwi. r0, r0, 8, 19
+    beq-    branch_0x802b1864
+    li      r4, 0x3
+    b       branch_0x802b1868
 
-branch_0x802B1864:
-li	  r4, 2
+branch_0x802b1864:
+    li      r4, 0x2
+branch_0x802b1868:
+    addi    r5, r25, 0x0
+    addi    r6, r26, 0x0
+    addi    r3, r29, 0xc
+    bl      set__Q212TCardManager9TCriteriaFQ312TCardManager9TCriteria11TEBlockStatUlPCv
+branch_0x802b1878:
+    addi    r3, sp, 0x18
+    bl      CARDClose
+    cmpwi   r28, 0x0
+    bne-    branch_0x802b188c
+    mr      r28, r3
+branch_0x802b188c:
+    stw     r28, 0x128(r29)
+    b       branch_0x802b18a8
 
-branch_0x802B1868:
-addi	  r5, r25, 0
-addi	  r6, r26, 0
-addi	  r3, r29, 0xC
-bl	  set__Q212TCardManager9TCriteriaFQ312TCardManager9TCriteria11TEBlockStatUlPCv # TCardManager::TCriteria::set((TCardManager::TCriteria::TEBlockStat,ulong,void const *))
+branch_0x802b1894:
+    mr      r3, r29
+    bl      writeOptionBlock___12TCardManagerFv
+    stw     r3, 0x128(r29)
+    b       branch_0x802b18a8
 
-branch_0x802B1878:
-addi	  r3, r1, 0x58+var_40
-bl	  CARDClose
-cmpwi	  r28, 0
-bne	  branch_0x802B188C
-mr	  r28, r3
-
-branch_0x802B188C:
-stw	  r28, 0x128(r29)
-b	  def_802B170C	# jumptable 802B170C default case
-
-branch_0x802B1894:		# jumptable 802B170C case 8
-mr	  r3, r29
-bl	  writeOptionBlock___12TCardManagerFv #	TCardManager::writeOptionBlock_((void))
-stw	  r3, 0x128(r29)
-b	  def_802B170C	# jumptable 802B170C default case
-
-branch_0x802B18A4:		# jumptable 802B170C case 9
-li	  r30, 0
-
-def_802B170C:		# jumptable 802B170C default case
+branch_0x802b18a4:
+    li      r30, 0x0
 branch_0x802b18a8:
     li      r0, 0x0
     stw     r0, 0x448(r29)
@@ -284,7 +278,7 @@ branch_0x802b1a24:
     bl      CARDUnmount
     li      r4, 0x0
     stb     r4, 0x125(r30)
-    subi    r3, r13, 0x5fe8
+    addi    r3, r13, R13Off_m0x5fe8
     stb     r4, 0x126(r30)
     lwz     r0, 0x0(r30)
     stbx    r4, r3, r0
@@ -446,7 +440,7 @@ branch_0x802b1c44:
     bl      CARDUnmount
     li      r4, 0x0
     stb     r4, 0x125(r29)
-    subi    r3, r13, 0x5fe8
+    addi    r3, r13, R13Off_m0x5fe8
     stb     r4, 0x126(r29)
     lwz     r0, 0x0(r29)
     stbx    r4, r3, r0
@@ -802,8 +796,8 @@ open___12TCardManagerFP12CARDFileInfo: # 0x802b20d0
     bne-    branch_0x802b223c
     li      r30, 0x0
     stb     r30, 0x124(r31)
-    lis     r3, 0x803a
-    addi    r4, r3, 0x76a8
+    lis     r3, unk_803a76a8@h
+    addi    r4, r3, unk_803a76a8@l
     lwz     r3, 0x0(r31)
     mr      r5, r28
     bl      CARDOpen
@@ -872,9 +866,9 @@ branch_0x802b21e8:
     bl      CARDFreeBlocks
     mr.     r29, r3
     bne-    branch_0x802b223c
-    lis     r3, 0x1
+    lis     r3, unk_0000e000@ha
     lwz     r4, 0x14(sp)
-    subi    r0, r3, 0x2000
+    addi    r0, r3, unk_0000e000@l
     cmpw    r4, r0
     bge-    branch_0x802b2224
     li      r29, -0x9
@@ -1064,19 +1058,19 @@ filledInitData___12TCardManagerFP12CARDFileInfo: # 0x802b24a4
     mr      r29, r3
     addi    r30, r4, 0x0
     lwz     r0, 0xc(r3)
-    lis     r3, 0x803e
+    lis     r3, unk_803df978@ha
     lwz     r31, 0x130(r29)
-    subi    r24, r3, 0x688
+    addi    r24, r3, unk_803df978@l
     cmpwi   r0, 0x1
     bne-    branch_0x802b2684
     addi    r3, r31, 0x4
     li      r4, 0x0
     li      r5, 0x1ff8
     bl      memset
-    lis     r4, 0xa
-    lwz     r3, -0x6060(r13)
+    lis     r4, unk_000a0001@h
+    lwz     r3, R13Off_m0x6060(r13)
     addi    r26, r31, 0x4
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_000a0001@l
     bl      getFlag__12TFlagManagerCFUl
     addi    r25, r3, 0x0
     crxor   6, 6, 6
@@ -1301,11 +1295,11 @@ createFile___12TCardManagerFv: # 0x802b27dc
     bl      mount___12TCardManagerFb
     mr.     r30, r3
     bne-    branch_0x802b28c0
-    lis     r4, 0x803a
+    lis     r4, unk_803a76a8@h
     lwz     r3, 0x0(r31)
-    lis     r5, 0x1
-    addi    r4, r4, 0x76a8
-    subi    r5, r5, 0x2000
+    lis     r5, unk_0000e000@ha
+    addi    r4, r4, unk_803a76a8@l
+    addi    r5, r5, unk_0000e000@l
     addi    r6, sp, 0x10
     bl      CARDCreate
     mr.     r30, r3
@@ -1361,7 +1355,7 @@ branch_0x802b28c0:
     bl      CARDUnmount
     li      r4, 0x0
     stb     r4, 0x125(r31)
-    subi    r3, r13, 0x5fe8
+    addi    r3, r13, R13Off_m0x5fe8
     stb     r4, 0x126(r31)
     lwz     r0, 0x0(r31)
     stbx    r4, r3, r0
@@ -1385,7 +1379,7 @@ mount___12TCardManagerFb: # 0x802b2914
     mr      r31, r3
     stw     r30, 0x30(sp)
     stw     r29, 0x2c(sp)
-    subi    r29, r13, 0x5fe8
+    addi    r29, r13, R13Off_m0x5fe8
     stw     r28, 0x28(sp)
     addi    r28, r4, 0x0
     lwz     r3, 0x0(r3)
@@ -1416,7 +1410,7 @@ branch_0x802b2970:
     bl      CARDUnmount
     li      r4, 0x0
     stb     r4, 0x125(r31)
-    subi    r3, r13, 0x5fe8
+    addi    r3, r13, R13Off_m0x5fe8
     stb     r4, 0x126(r31)
     lwz     r0, 0x0(r31)
     stbx    r4, r3, r0
@@ -1478,9 +1472,9 @@ branch_0x802b2a6c:
     cmplwi  r28, 0x7
     addi    r30, r30, 0x28
     blt+    branch_0x802b2a20
-    lis     r4, 0x802b
+    lis     r4, detachCallback__Fll@h
     lwz     r3, 0x0(r31)
-    addi    r5, r4, 0x2b60
+    addi    r5, r4, detachCallback__Fll@l
     lwz     r4, 0x12c(r31)
     bl      CARDMount
     addi    r29, r3, 0x0
@@ -1531,7 +1525,7 @@ branch_0x802b2b04:
     bl      CARDUnmount
     li      r4, 0x0
     stb     r4, 0x125(r31)
-    subi    r3, r13, 0x5fe8
+    addi    r3, r13, R13Off_m0x5fe8
     stb     r4, 0x126(r31)
     lwz     r0, 0x0(r31)
     stbx    r4, r3, r0
@@ -1555,7 +1549,7 @@ branch_0x802b2b3c:
 .globl detachCallback__Fll
 detachCallback__Fll: # 0x802b2b60
     li      r0, 0x1
-    subi    r4, r13, 0x5fe8
+    addi    r4, r13, R13Off_m0x5fe8
     stbx    r0, r4, r3
     blr
 
@@ -1624,14 +1618,14 @@ getOptionWriteStream__12TCardManagerFP21JSUMemoryOutputStream: # 0x802b2c18
     mr      r26, r3
     li      r4, 0x0
     lwz     r28, 0x130(r3)
-    lis     r3, 0x803e
-    subi    r31, r3, 0x688
+    lis     r3, unk_803df978@ha
+    addi    r31, r3, unk_803df978@l
     addi    r3, r28, 0x4
     bl      memset
-    lis     r4, 0xa
-    lwz     r3, -0x6060(r13)
+    lis     r4, unk_000a0001@h
+    lwz     r3, R13Off_m0x6060(r13)
     addi    r29, r28, 0x4
-    addi    r4, r4, 0x1
+    addi    r4, r4, unk_000a0001@l
     bl      getFlag__12TFlagManagerCFUl
     addi    r30, r3, 0x0
     crxor   6, 6, 6
@@ -1916,7 +1910,7 @@ unmount__12TCardManagerFv: # 0x802b2fe0
     bl      CARDUnmount
     li      r5, 0x0
     stb     r5, 0x125(r30)
-    subi    r4, r13, 0x5fe8
+    addi    r4, r13, R13Off_m0x5fe8
     stb     r5, 0x126(r30)
     lwz     r0, 0x0(r30)
     stbx    r5, r4, r0
@@ -1992,7 +1986,7 @@ __dt__12TCardManagerFv: # 0x802b30e0
     bl      CARDUnmount
     li      r4, 0x0
     stb     r4, 0x125(r30)
-    subi    r3, r13, 0x5fe8
+    addi    r3, r13, R13Off_m0x5fe8
     stb     r4, 0x126(r30)
     lwz     r0, 0x0(r30)
     stbx    r4, r3, r0
@@ -2040,8 +2034,8 @@ __ct__12TCardManagerFPvPvllPvUl: # 0x802b318c
     li      r5, 0x0
     li      r7, 0x7
     stw     r6, 0x0(r3)
-    lis     r3, 0x802b
-    addi    r0, r3, 0x3258
+    lis     r3, __ct__Q212TCardManager9TCriteriaFv@h
+    addi    r0, r3, __ct__Q212TCardManager9TCriteriaFv@l
     stw     r31, 0x4(r25)
     mr      r4, r0
     addi    r3, r25, 0xc
@@ -2060,8 +2054,8 @@ __ct__12TCardManagerFPvPvllPvUl: # 0x802b318c
     bl      OSInitMutex
     addi    r3, r25, 0x464
     bl      OSInitCond
-    lis     r3, 0x802b
-    addi    r4, r3, 0x3264
+    lis     r3, cardmain__FPv@h
+    addi    r4, r3, cardmain__FPv@l
     addi    r5, r25, 0x0
     addi    r7, r30, 0x0
     addi    r8, r28, 0x0
@@ -2136,20 +2130,20 @@ branch_0x802b32f0:
     li      r7, 0x0
     stw     r7, 0x0(r30)
     addi    r31, sp, 0x68
-    lis     r4, 0x803b
+    lis     r4, __vvt__10JSUIosBase@ha
     stw     r31, 0x5c(sp)
     mulli   r6, r3, 0x28
     lwz     r3, 0x5c(sp)
-    subi    r0, r4, 0xf0c
+    addi    r0, r4, __vvt__10JSUIosBase@l
     stw     r0, 0x0(r3)
-    lis     r5, 0x803e
-    addi    r0, r5, 0x184
+    lis     r5, __vvt__14JSUInputStream@h
+    addi    r0, r5, __vvt__14JSUInputStream@l
     stb     r7, 0x4(r3)
-    lis     r4, 0x803e
-    addi    r28, r4, 0x160
+    lis     r4, __vvt__20JSURandomInputStream@h
+    addi    r28, r4, __vvt__20JSURandomInputStream@l
     stw     r0, 0x0(r3)
-    lis     r5, 0x803e
-    addi    r29, r5, 0x1c8
+    lis     r5, __vvt__20JSUMemoryInputStream@h
+    addi    r29, r5, __vvt__20JSUMemoryInputStream@l
     stw     r28, 0x0(r3)
     addi    r4, r6, 0x8
     add     r4, r27, r4

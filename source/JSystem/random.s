@@ -22,8 +22,8 @@ setSeed__Q25JMath15TRandom_enough_FUl: # 0x8031e24c
     addi    r0, r3, 0x1
     stw     r0, 0x0(r31)
 branch_0x8031e284:
-    lis     r3, 0x8000
-    subi    r29, r3, 0x1
+    lis     r3, unk_7fffffff@ha
+    addi    r29, r3, unk_7fffffff@l
     li      r26, 0x8
     li      r28, 0x0
     li      r27, 0x41a7
@@ -41,8 +41,8 @@ branch_0x8031e298:
     subic.  r26, r26, 0x1
     stw     r4, 0x0(r31)
     bne+    branch_0x8031e298
-    lis     r3, 0x8000
-    subi    r27, r3, 0x1
+    lis     r3, unk_7fffffff@ha
+    addi    r27, r3, unk_7fffffff@l
     li      r26, 0x20
     li      r30, 0x80
     li      r28, 0x0
@@ -57,8 +57,8 @@ branch_0x8031e2e4:
     add     r3, r3, r0
     addi    r6, r27, 0x0
     li      r5, 0x0
-    subi    r26, r26, 0x1
-    subi    r30, r30, 0x4
+    addi    r26, r26, -0x1
+    addi    r30, r30, -0x4
     bl      __mod2u
     stw     r4, 0x0(r31)
     cmplwi  r26, 0x0

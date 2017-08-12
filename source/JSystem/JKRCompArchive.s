@@ -14,18 +14,18 @@ __ct__14JKRCompArchiveFlQ210JKRArchive15EMountDirection: # 0x802bf4c4
     lwz     r3, 0x8(sp)
     bl      __ct__10JKRArchiveFlQ210JKRArchive10EMountMode
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x190
+    lis     r3, __vvt__14JKRCompArchive@ha
+    addi    r0, r3, __vvt__14JKRCompArchive@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x0
     addi    r4, r29, 0x0
     stw     r30, 0x5c(r31)
     bl      open__14JKRCompArchiveFl
-    lis     r3, 0x5241
-    addi    r0, r3, 0x5243
+    lis     r3, unk_52415243@h
+    addi    r0, r3, unk_52415243@l
     stw     r0, 0x2c(r31)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     lwz     r5, 0x48(r31)
     addi    r4, r31, 0x18
     lwz     r6, 0x50(r31)
@@ -57,8 +57,8 @@ __dt__14JKRCompArchiveFv: # 0x802bf56c
     stw     r29, 0x1c(sp)
     stw     r28, 0x18(sp)
     beq-    branch_0x802bf67c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x190
+    lis     r3, __vvt__14JKRCompArchive@ha
+    addi    r0, r3, __vvt__14JKRCompArchive@l
     stw     r0, 0x0(r30)
     lwz     r0, 0x44(r30)
     cmplwi  r0, 0x0
@@ -109,8 +109,8 @@ branch_0x802bf624:
     mtlr    r12
     blrl
 branch_0x802bf648:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42b4
+    lis     r3, sVolumeList__13JKRFileLoader@h
+    addi    r3, r3, sVolumeList__13JKRFileLoader@l
     addi    r4, r30, 0x18
     bl      remove__10JSUPtrListFP10JSUPtrLink
     li      r0, 0x0
@@ -155,7 +155,7 @@ open__14JKRCompArchiveFl: # 0x802bf6a0
     stw     r0, 0x48(r31)
     stw     r0, 0x4c(r31)
     stw     r0, 0x50(r31)
-    lwz     r4, -0x5f30(r13)
+    lwz     r4, R13Off_m0x5f30(r13)
     bl      __nw__FUlP7JKRHeapi
     cmplwi  r3, 0x0
     beq-    branch_0x802bf704
@@ -172,7 +172,7 @@ branch_0x802bf704:
     b       branch_0x802bfb50
 
 branch_0x802bf724:
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     li      r4, 0x20
     li      r5, -0x20
     lwz     r12, 0x0(r3)
@@ -253,7 +253,7 @@ branch_0x802bf7fc:
     lwz     r4, 0x74(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x802bf894
-    lwz     r3, -0x5f90(r13)
+    lwz     r3, R13Off_m0x5f90(r13)
     li      r5, 0x0
     lwz     r3, 0x78(r3)
     bl      alloc__11JKRAramHeapFUlQ211JKRAramHeap10EAllocMode
@@ -312,7 +312,7 @@ branch_0x802bf8d8:
 branch_0x802bf908:
     li      r28, -0x20
 branch_0x802bf90c:
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     neg     r26, r28
     addi    r4, r25, 0x0
     lwz     r12, 0x0(r3)
@@ -365,7 +365,7 @@ branch_0x802bf9b8:
     addi    r5, r25, 0x0
     li      r6, 0x0
     bl      orderSync__9JKRDecompFPUcPUcUlUl
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     mr      r4, r27
     lwz     r12, 0x0(r3)
     lwz     r12, 0x10(r12)
@@ -398,7 +398,7 @@ branch_0x802bfa1c:
     lwz     r4, 0x74(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x802bfaac
-    lwz     r3, -0x5f90(r13)
+    lwz     r3, R13Off_m0x5f90(r13)
     li      r5, 0x0
     lwz     r3, 0x78(r3)
     bl      alloc__11JKRAramHeapFUlQ211JKRAramHeap10EAllocMode
@@ -596,7 +596,7 @@ branch_0x802bfcb0:
 .globl fetchResource__14JKRCompArchiveFPvUlPQ210JKRArchive12SDIFileEntryPUl
 fetchResource__14JKRCompArchiveFPvUlPQ210JKRArchive12SDIFileEntryPUl: # 0x802bfccc
     mflr    r0
-    lis     r8, 0x803b
+    lis     r8, unk_803a93d0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stmw    r23, 0x34(sp)
@@ -605,7 +605,7 @@ fetchResource__14JKRCompArchiveFPvUlPQ210JKRArchive12SDIFileEntryPUl: # 0x802bfc
     addi    r31, r4, 0x0
     addi    r25, r5, 0x0
     addi    r27, r7, 0x0
-    subi    r23, r8, 0x6c30
+    addi    r23, r8, unk_803a93d0@l
     li      r30, 0x0
     lwz     r6, 0xc(r6)
     addi    r0, r6, 0x1f

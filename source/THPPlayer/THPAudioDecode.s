@@ -2,10 +2,10 @@
 .globl PopDecodedAudioBuffer
 PopDecodedAudioBuffer: # 0x8001dab0
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, DecodedAudioBufferQueue@ha
     stw     r0, 0x4(sp)
     addi    r5, r3, 0x0
-    subi    r3, r4, 0x3ef0
+    addi    r3, r4, DecodedAudioBufferQueue@l
     stwu    sp, -0x10(sp)
     addi    r4, sp, 0xc
     bl      OSReceiveMessage
@@ -26,10 +26,10 @@ branch_0x8001dae4:
 .globl PushFreeAudioBuffer
 PushFreeAudioBuffer: # 0x8001daf4
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, FreeAudioBufferQueue@ha
     stw     r0, 0x4(sp)
     addi    r4, r3, 0x0
-    subi    r3, r5, 0x3f10
+    addi    r3, r5, FreeAudioBufferQueue@l
     stwu    sp, -0x8(sp)
     li      r5, 0x0
     bl      OSSendMessage
@@ -42,21 +42,21 @@ PushFreeAudioBuffer: # 0x8001daf4
 .globl AudioDecode__FP13THPReadBuffer
 AudioDecode__FP13THPReadBuffer: # 0x8001db24
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    subi    r31, r4, 0x3ea0
+    addi    r31, r4, ActivePlayer@l
     stw     r30, 0x20(sp)
     addi    r30, r31, 0x6c
     stw     r29, 0x1c(sp)
     stw     r28, 0x18(sp)
     lwz     r0, 0x6c(r31)
     lwz     r5, 0x0(r3)
-    lis     r3, 0x803f
+    lis     r3, FreeAudioBufferQueue@ha
     slwi    r4, r0, 2
     addi    r28, r4, 0x8
-    subi    r3, r3, 0x3f10
+    addi    r3, r3, FreeAudioBufferQueue@l
     addi    r29, r5, 0x8
     add     r28, r5, r28
     addi    r4, sp, 0x14
@@ -76,9 +76,9 @@ branch_0x8001db90:
     b       branch_0x8001dbec
 
 branch_0x8001dba4:
-    lis     r3, 0x803f
+    lis     r3, ActivePlayer@ha
     lwz     r6, 0x0(r29)
-    subi    r4, r3, 0x3ea0
+    addi    r4, r3, ActivePlayer@l
     lwz     r3, 0x0(r30)
     lwz     r0, 0xec(r4)
     li      r5, 0x0
@@ -86,8 +86,8 @@ branch_0x8001dba4:
     add     r4, r28, r0
     bl      THPAudioDecode
     stw     r3, 0x8(r30)
-    lis     r3, 0x803f
-    subi    r3, r3, 0x3ef0
+    lis     r3, DecodedAudioBufferQueue@ha
+    addi    r3, r3, DecodedAudioBufferQueue@l
     lwz     r0, 0x0(r30)
     mr      r4, r30
     li      r5, 0x1
@@ -115,17 +115,17 @@ branch_0x8001dc00:
 .globl AudioDecoderForOnMemory__FPv
 AudioDecoderForOnMemory__FPv: # 0x8001dc20
     mflr    r0
-    lis     r4, 0x803f
+    lis     r4, ActivePlayer@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
     li      r31, 0x0
     stw     r30, 0x28(sp)
     stw     r29, 0x24(sp)
-    subi    r29, r4, 0x3ea0
-    lis     r4, 0x803f
+    addi    r29, r4, ActivePlayer@l
+    lis     r4, AudioDecodeThread@ha
     stw     r28, 0x20(sp)
-    subi    r30, r4, 0x5220
+    addi    r30, r4, AudioDecodeThread@l
     lwz     r28, 0xbc(r29)
     stw     r3, 0x10(sp)
 branch_0x8001dc58:
@@ -138,7 +138,7 @@ branch_0x8001dc58:
     divwu   r0, r3, r4
     mullw   r0, r0, r4
     subf    r3, r0, r3
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     cmplw   r3, r0
     bne-    branch_0x8001dcb4
     lbz     r0, 0xa6(r29)
@@ -186,14 +186,14 @@ AudioDecodeThreadCancel: # 0x8001dcf8
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x7148(r13)
+    lwz     r0, R13Off_m0x7148(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8001dd24
-    lis     r3, 0x803f
-    subi    r3, r3, 0x5220
+    lis     r3, AudioDecodeThread@ha
+    addi    r3, r3, AudioDecodeThread@l
     bl      OSCancelThread
     li      r0, 0x0
-    stw     r0, -0x7148(r13)
+    stw     r0, R13Off_m0x7148(r13)
 branch_0x8001dd24:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -206,11 +206,11 @@ AudioDecodeThreadStart: # 0x8001dd34
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x7148(r13)
+    lwz     r0, R13Off_m0x7148(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x8001dd58
-    lis     r3, 0x803f
-    subi    r3, r3, 0x5220
+    lis     r3, AudioDecodeThread@ha
+    addi    r3, r3, AudioDecodeThread@l
     bl      OSResumeThread
 branch_0x8001dd58:
     lwz     r0, 0xc(sp)
@@ -224,14 +224,14 @@ CreateAudioDecodeThread: # 0x8001dd68
     mflr    r0
     mr.     r5, r4
     stw     r0, 0x4(sp)
-    lis     r4, 0x803f
+    lis     r4, AudioDecodeThread@ha
     addi    r8, r3, 0x0
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    subi    r31, r4, 0x5220
+    addi    r31, r4, AudioDecodeThread@l
     beq-    branch_0x8001ddb8
-    lis     r3, 0x8002
-    subi    r4, r3, 0x23e0
+    lis     r3, AudioDecoderForOnMemory__FPv@ha
+    addi    r4, r3, AudioDecoderForOnMemory__FPv@l
     addi    r3, r31, 0x0
     addi    r6, r31, 0x1310
     li      r7, 0x1000
@@ -243,8 +243,8 @@ CreateAudioDecodeThread: # 0x8001dd68
     b       branch_0x8001de14
 
 branch_0x8001ddb8:
-    lis     r3, 0x8002
-    subi    r4, r3, 0x2330
+    lis     r3, AudioDecoder__FPv@ha
+    addi    r4, r3, AudioDecoder__FPv@l
     addi    r3, r31, 0x0
     addi    r6, r31, 0x1310
     li      r5, 0x0
@@ -266,7 +266,7 @@ branch_0x8001dde8:
     li      r5, 0x3
     bl      OSInitMessageQueue
     li      r0, 0x1
-    stw     r0, -0x7148(r13)
+    stw     r0, R13Off_m0x7148(r13)
     li      r3, 0x1
 branch_0x8001de14:
     lwz     r0, 0x1c(sp)

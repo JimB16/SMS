@@ -19,11 +19,11 @@ DBWrite: # 0x80363c48
     addi    r27, r4, 0x0
     bl      OSDisableInterrupts
     addi    r28, r3, 0x0
-    lis     r25, 0xcc00
+    lis     r25, unk_cc006800@h
     lis     r31, 0x4000
 branch_0x80363c70:
     lwz     r0, 0x6828(r25)
-    addi    r30, r25, 0x6800
+    addi    r30, r25, unk_cc006800@l
     addi    r3, sp, 0x50
     andi.   r0, r0, 0x405
     li      r4, 0x2
@@ -53,10 +53,10 @@ branch_0x80363cc0:
     lwz     r0, 0x54(sp)
     rlwinm. r0, r0, 0, 30, 30
     bne+    branch_0x80363c70
-    lbz     r3, -0x72d8(r13)
+    lbz     r3, R13Off_m0x72d8(r13)
     addi    r0, r3, 0x1
-    stb     r0, -0x72d8(r13)
-    lbz     r0, -0x72d8(r13)
+    stb     r0, R13Off_m0x72d8(r13)
+    lbz     r0, R13Off_m0x72d8(r13)
     clrlwi. r0, r0, 31
     beq-    branch_0x80363d04
     li      r3, 0x1000
@@ -107,7 +107,7 @@ branch_0x80363d7c:
     lwz     r0, 0x54(sp)
     rlwinm. r0, r0, 0, 30, 30
     bne+    branch_0x80363d34
-    lbz     r0, -0x72d8(r13)
+    lbz     r0, R13Off_m0x72d8(r13)
     slwi    r0, r0, 16
     oris    r0, r0, 0x1f00
     or      r0, r0, r27
@@ -191,7 +191,7 @@ DBRead: # 0x80363ea8
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
     bl      OSDisableInterrupts
-    lwz     r0, -0x5788(r13)
+    lwz     r0, R13Off_m0x5788(r13)
     addi    r31, r3, 0x0
     rlwinm. r0, r0, 0, 15, 15
     beq-    branch_0x80363ee4
@@ -205,12 +205,12 @@ branch_0x80363ee8:
     addi    r0, r30, 0x3
     addi    r4, r29, 0x0
     clrrwi  r5, r0, 2
-    subi    r3, r3, 0x2000
+    addi    r3, r3, -0x2000
     bl      DBGRead
     li      r0, 0x0
-    stw     r0, -0x5784(r13)
+    stw     r0, R13Off_m0x5784(r13)
     mr      r3, r31
-    stb     r0, -0x577c(r13)
+    stb     r0, R13Off_m0x577c(r13)
     bl      OSRestoreInterrupts
     lwz     r0, 0x24(sp)
     li      r3, 0x0
@@ -229,8 +229,8 @@ DBQueryData: # 0x80363f34
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    lwz     r0, -0x5784(r13)
-    stb     r3, -0x577c(r13)
+    lwz     r0, R13Off_m0x5784(r13)
+    stb     r3, R13Off_m0x577c(r13)
     cmpwi   r0, 0x0
     bne-    branch_0x80363fb8
     bl      OSDisableInterrupts
@@ -251,15 +251,15 @@ DBQueryData: # 0x80363f34
     cmplwi  r0, 0x0
     bne-    branch_0x80363fb0
     clrlwi  r3, r4, 17
-    stw     r4, -0x5788(r13)
+    stw     r4, R13Off_m0x5788(r13)
     li      r0, 0x1
-    stw     r3, -0x5784(r13)
-    stb     r0, -0x577c(r13)
+    stw     r3, R13Off_m0x5784(r13)
+    stb     r0, R13Off_m0x577c(r13)
 branch_0x80363fb0:
     mr      r3, r31
     bl      OSRestoreInterrupts
 branch_0x80363fb8:
-    lwz     r3, -0x5784(r13)
+    lwz     r3, R13Off_m0x5784(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     addi    sp, sp, 0x18
@@ -270,18 +270,18 @@ branch_0x80363fb8:
 .globl DBInitInterrupts
 DBInitInterrupts: # 0x80363fd0
     mflr    r0
-    lis     r3, 0x2
+    lis     r3, unk_00018000@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x8000
+    addi    r3, r3, unk_00018000@l
     stwu    sp, -0x8(sp)
     bl      __OSMaskInterrupts
     li      r3, 0x40
     bl      __OSMaskInterrupts
-    lis     r3, 0x8036
-    addi    r0, r3, 0x40dc
-    lis     r3, 0x8036
-    stw     r0, -0x578c(r13)
-    addi    r4, r3, 0x409c
+    lis     r3, MWCallback@h
+    addi    r0, r3, MWCallback@l
+    lis     r3, DBGHandler@h
+    stw     r0, R13Off_m0x578c(r13)
+    addi    r4, r3, DBGHandler@l
     li      r3, 0x19
     bl      __OSSetInterruptHandler
     li      r3, 0x40
@@ -303,14 +303,14 @@ DBInitComm: # 0x80364024
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
     bl      OSDisableInterrupts
-    subi    r0, r13, 0x577c
-    stw     r0, -0x5780(r13)
-    lis     r4, 0x2
+    addi    r0, r13, R13Off_m0x577c
+    stw     r0, R13Off_m0x5780(r13)
+    lis     r4, unk_00018000@ha
     addi    r31, r3, 0x0
-    lwz     r0, -0x5780(r13)
-    subi    r3, r4, 0x8000
+    lwz     r0, R13Off_m0x5780(r13)
+    addi    r3, r4, unk_00018000@l
     stw     r0, 0x0(r29)
-    stw     r30, -0x5790(r13)
+    stw     r30, R13Off_m0x5790(r13)
     bl      __OSMaskInterrupts
     lis     r3, 0xcc00
     li      r0, 0x0
@@ -333,7 +333,7 @@ DBGHandler: # 0x8036409c
     stw     r0, 0x4(sp)
     li      r0, 0x1000
     stwu    sp, -0x8(sp)
-    lwz     r12, -0x578c(r13)
+    lwz     r12, R13Off_m0x578c(r13)
     stw     r0, 0x3000(r5)
     cmplwi  r12, 0x0
     beq-    branch_0x803640cc
@@ -353,8 +353,8 @@ MWCallback: # 0x803640dc
     stw     r0, 0x4(sp)
     li      r0, 0x1
     stwu    sp, -0x8(sp)
-    lwz     r12, -0x5790(r13)
-    stb     r0, -0x577c(r13)
+    lwz     r12, R13Off_m0x5790(r13)
+    stb     r0, R13Off_m0x577c(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x80364108
     mtlr    r12
@@ -372,18 +372,18 @@ DBGReadStatus: # 0x80364118
     mflr    r0
     li      r4, 0x2
     stw     r0, 0x4(sp)
-    lis     r0, 0x4000
+    lis     r0, unk_40000001@h
     stwu    sp, -0x38(sp)
     stmw    r27, 0x24(sp)
-    lis     r30, 0xcc00
+    lis     r30, unk_cc006800@h
     addi    r27, r3, 0x0
-    addi    r29, r30, 0x6800
+    addi    r29, r30, unk_cc006800@l
     addi    r3, sp, 0x18
     lwz     r5, 0x6828(r30)
     andi.   r5, r5, 0x405
     ori     r5, r5, 0xc0
     stwu    r5, 0x28(r29)
-    li      r5, 0x1
+    addi    r5, r0, unk_40000001@l
     stw     r0, 0x18(sp)
     bl      DBGEXIImm
     cntlzw  r0, r3
@@ -424,10 +424,10 @@ DBGWrite: # 0x803641c4
     oris    r0, r0, 0xa000
     stwu    sp, -0x40(sp)
     stmw    r26, 0x28(sp)
-    lis     r29, 0xcc00
+    lis     r29, unk_cc006800@h
     addi    r30, r5, 0x0
     addi    r26, r4, 0x0
-    addi    r31, r29, 0x6800
+    addi    r31, r29, unk_cc006800@l
     addi    r3, sp, 0x24
     li      r4, 0x4
     li      r5, 0x1
@@ -488,10 +488,10 @@ DBGRead: # 0x803642a0
     oris    r0, r0, 0x2000
     stwu    sp, -0x40(sp)
     stmw    r26, 0x28(sp)
-    lis     r29, 0xcc00
+    lis     r29, unk_cc006800@h
     addi    r30, r5, 0x0
     addi    r26, r4, 0x0
-    addi    r31, r29, 0x6800
+    addi    r31, r29, unk_cc006800@l
     addi    r3, sp, 0x24
     li      r4, 0x4
     li      r5, 0x1
@@ -549,18 +549,18 @@ DBGReadMailbox: # 0x8036437c
     mflr    r0
     li      r4, 0x2
     stw     r0, 0x4(sp)
-    lis     r0, 0x6000
+    lis     r0, unk_60000001@h
     stwu    sp, -0x38(sp)
     stmw    r27, 0x24(sp)
-    lis     r30, 0xcc00
+    lis     r30, unk_cc006800@h
     addi    r27, r3, 0x0
-    addi    r29, r30, 0x6800
+    addi    r29, r30, unk_cc006800@l
     addi    r3, sp, 0x18
     lwz     r5, 0x6828(r30)
     andi.   r5, r5, 0x405
     ori     r5, r5, 0xc0
     stwu    r5, 0x28(r29)
-    li      r5, 0x1
+    addi    r5, r0, unk_60000001@l
     stw     r0, 0x18(sp)
     bl      DBGEXIImm
     cntlzw  r0, r3
@@ -604,7 +604,7 @@ DBGEXIImm: # 0x80364428
     li      r30, 0x0
     bge-    branch_0x80364564
     cmpwi   r4, 0x8
-    subi    r6, r4, 0x8
+    addi    r6, r4, -0x8
     ble-    branch_0x803646ac
     addi    r0, r6, 0x7
     srwi    r0, r0, 3
@@ -682,10 +682,10 @@ branch_0x80364564:
     lis     r6, 0xcc00
     stw     r30, 0x6838(r6)
 branch_0x8036456c:
-    subi    r0, r4, 0x1
-    lis     r6, 0xcc00
+    addi    r0, r4, -0x1
+    lis     r6, unk_cc006800@h
     slwi    r7, r5, 2
-    addi    r8, r6, 0x6800
+    addi    r8, r6, unk_cc006800@l
     ori     r6, r7, 0x1
     slwi    r0, r0, 4
     or      r0, r6, r0
@@ -702,7 +702,7 @@ branch_0x8036458c:
     lwz     r0, 0x6838(r6)
     bge-    branch_0x803646a4
     cmpwi   r4, 0x8
-    subi    r7, r4, 0x8
+    addi    r7, r4, -0x8
     ble-    branch_0x80364678
     addi    r6, r7, 0x7
     srwi    r6, r6, 3

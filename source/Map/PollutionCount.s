@@ -76,10 +76,10 @@ pushTask__18TPollutionTexStampFUcUsUsUss: # 0x8019abac
 .globl __ct__22TPollutionCounterLayerFv
 __ct__22TPollutionCounterLayerFv: # 0x8019ac28
     mflr    r0
-    lis     r4, 0x803b
+    lis     r4, __vvt__17TDrawSyncCallback@ha
     stw     r0, 0x4(sp)
-    subi    r0, r4, 0x2e6c
-    lis     r5, 0x803c
+    addi    r0, r4, __vvt__17TDrawSyncCallback@l
+    lis     r5, __vvt__22TPollutionCounterLayer@h
     stwu    sp, -0x18(sp)
     li      r6, 0x8
     li      r7, 0x14
@@ -87,13 +87,13 @@ __ct__22TPollutionCounterLayerFv: # 0x8019ac28
     li      r31, 0x0
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__21TPollutionCounterBase@h
     stw     r0, 0x0(r30)
-    addi    r0, r3, 0x1d90
-    lis     r3, 0x801a
+    addi    r0, r3, __vvt__21TPollutionCounterBase@l
+    lis     r3, __ct__23TPollutionModelTaskInfoFv@ha
     stw     r0, 0x0(r30)
-    addi    r0, r5, 0x1db8
-    subi    r4, r3, 0x52f4
+    addi    r0, r5, __vvt__22TPollutionCounterLayer@l
+    addi    r4, r3, __ct__23TPollutionModelTaskInfoFv@l
     stw     r31, 0x4(r30)
     addi    r3, r30, 0x34
     li      r5, 0x0
@@ -112,9 +112,9 @@ __ct__22TPollutionCounterLayerFv: # 0x8019ac28
     stw     r31, 0x2c(r30)
     stw     r31, 0x30(r30)
     bl      __construct_array
-    lis     r3, 0x801a
+    lis     r3, __ct__26TPollutionJointObjTaskInfoFv@ha
     sth     r31, 0xd4(r30)
-    subi    r4, r3, 0x5308
+    addi    r4, r3, __ct__26TPollutionJointObjTaskInfoFv@l
     addi    r3, r30, 0xd8
     li      r5, 0x0
     li      r6, 0x8
@@ -170,7 +170,7 @@ init__22TPollutionCounterLayerFiUsUs: # 0x8019ad1c
     addi    r4, r3, 0x0
     ble-    branch_0x8019ae6c
     cmpwi   r28, 0x8
-    subi    r5, r28, 0x8
+    addi    r5, r28, -0x8
     ble-    branch_0x8019ae3c
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -259,8 +259,8 @@ branch_0x8019ae9c:
     mulli   r3, r26, 0x14
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x801a
-    subi    r4, r4, 0x5490
+    lis     r4, __ct__18TPollutionTexStampFv@ha
+    addi    r4, r4, __ct__18TPollutionTexStampFv@l
     addi    r7, r26, 0x0
     li      r5, 0x0
     li      r6, 0x14
@@ -271,8 +271,8 @@ branch_0x8019ae9c:
     mulli   r3, r26, 0x1c
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x801a
-    subi    r4, r4, 0x54bc
+    lis     r4, __ct__25TPollutionRevivalTexStampFv@ha
+    addi    r4, r4, __ct__25TPollutionRevivalTexStampFv@l
     addi    r7, r26, 0x0
     li      r5, 0x0
     li      r6, 0x1c
@@ -401,8 +401,8 @@ branch_0x8019b064:
     mulli   r3, r31, 0xa
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x801a
-    subi    r4, r4, 0x5470
+    lis     r4, __ct__23TPollutionLayerTaskInfoFv@ha
+    addi    r4, r4, __ct__23TPollutionLayerTaskInfoFv@l
     addi    r7, r31, 0x0
     li      r5, 0x0
     li      r6, 0xa
@@ -470,18 +470,18 @@ pushModelStampTask__22TPollutionCounterLayerFUcP8J3DModel: # 0x8019b120
 .globl calcViewMtx__22TPollutionCounterLayerFv
 calcViewMtx__22TPollutionCounterLayerFv: # 0x8019b16c
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, j3dSys@h
     stw     r0, 0x4(sp)
     stwu    sp, -0xe0(sp)
     stfd    f31, 0xd8(sp)
     addi    r0, sp, 0x78
     stmw    r20, 0xa8(sp)
-    addi    r31, r4, 0x45dc
+    addi    r31, r4, j3dSys@l
     addi    r23, r3, 0x0
     mr      r3, r0
     addi    r4, r31, 0x0
     bl      gekko_ps_copy12__9JGeometryFPvPv
-    lfs     f31, -0x4198(rtoc)
+    lfs     f31, -0x4198(r2)
     addi    r27, r31, 0x44
     lwz     r29, 0x44(r31)
     addi    r26, r31, 0x48
@@ -492,7 +492,7 @@ calcViewMtx__22TPollutionCounterLayerFv: # 0x8019b16c
     b       branch_0x8019b2b0
 
 branch_0x8019b1c0:
-    lwz     r5, gpPollution(r13)
+    lwz     r5, R13Off_m0x62f0(r13)
     addi    r3, r30, 0x0
     addi    r4, r31, 0x0
     lwz     r5, 0x14(r5)
@@ -560,9 +560,9 @@ branch_0x8019b2b0:
     lwz     r0, 0x8(r23)
     cmpw    r25, r0
     blt+    branch_0x8019b1c0
-    lis     r4, 0x8040
+    lis     r4, j3dSys@h
     addi    r3, sp, 0x78
-    addi    r4, r4, 0x45dc
+    addi    r4, r4, j3dSys@l
     bl      PSMTXCopy
     stw     r29, 0x0(r27)
     stw     r28, 0x0(r26)
@@ -664,9 +664,9 @@ countTexDegree__22TPollutionCounterLayerFi: # 0x8019b3a0
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    lfs     f1, -0x4198(rtoc)
+    lfs     f1, -0x4198(r2)
     addi    r3, sp, 0x80
-    lfs     f2, -0x4194(rtoc)
+    lfs     f2, -0x4194(r2)
     li      r4, 0x0
     fmr     f3, f1
     li      r5, 0x0
@@ -689,7 +689,7 @@ countTexDegree__22TPollutionCounterLayerFi: # 0x8019b3a0
     lhz     r3, 0x2(r4)
     lhz     r4, 0x4(r4)
     bl      drawTex__FUsUs
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      pushBreakPoint__16TDrawSyncManagerFv
     mr      r3, r29
     lwz     r12, 0x0(r29)
@@ -698,15 +698,15 @@ countTexDegree__22TPollutionCounterLayerFi: # 0x8019b3a0
     mtlr    r12
     blrl
     bl      GXSetDrawSync
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      pushBreakPoint__16TDrawSyncManagerFv
     li      r3, 0x0
     bl      GXSetDrawSync
     lhz     r0, 0x28(r29)
     cmplwi  r0, 0x0
     beq-    branch_0x8019b4dc
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     li      r0, 0x7
     stw     r0, 0x4c(r3)
     lwz     r3, 0x2c(r29)
@@ -835,7 +835,7 @@ cleanProhibitArea__22TPollutionCounterLayerCFi: # 0x8019b5f4
     li      r3, 0xd
     li      r4, 0x1
     bl      GXSetVtxDesc
-    lwz     r0, -0x419c(rtoc)
+    lwz     r0, R2Off_m0x419c(r2)
     addi    r4, sp, 0x2c
     li      r3, 0x2
     stw     r0, 0x28(sp)
@@ -897,7 +897,7 @@ cleanProhibitArea__22TPollutionCounterLayerCFi: # 0x8019b5f4
     lhz     r30, 0x4(r6)
     bl      GXBegin
     li      r4, 0x0
-    lis     r3, 0xcc01
+    lis     r3, unk_cc010000@h
     sth     r4, -0x8000(r3)
     li      r0, 0x1
     sth     r4, -0x8000(r3)
@@ -932,7 +932,7 @@ drawRevivalTexStamp__22TPollutionCounterLayerCFi: # 0x8019b7d8
     li      r7, 0x0
     stwu    sp, -0xa0(sp)
     stmw    r25, 0x84(sp)
-    addi    r28, r3, 0x0
+    addi    r28, r3, unk_cc010000@l
     addi    r29, r4, 0x0
     li      r3, 0x0
     li      r4, 0x9
@@ -961,7 +961,7 @@ drawRevivalTexStamp__22TPollutionCounterLayerCFi: # 0x8019b7d8
     bl      GXSetTexCoordGen2
     li      r3, 0x1
     bl      GXSetNumChans
-    lwz     r0, -0x41a0(rtoc)
+    lwz     r0, R2Off_m0x41a0(r2)
     addi    r4, sp, 0x24
     li      r3, 0x4
     stw     r0, 0x20(sp)
@@ -1188,9 +1188,9 @@ initGXforStamp__FPCUcUsUsi: # 0x8019bac4
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    lfs     f1, -0x4198(rtoc)
+    lfs     f1, -0x4198(r2)
     addi    r3, sp, 0x14
-    lfs     f2, -0x4194(rtoc)
+    lfs     f2, -0x4194(r2)
     li      r4, 0x0
     fmr     f3, f1
     li      r5, 0x0
@@ -1360,7 +1360,7 @@ branch_0x8019be3c:
     ble-    branch_0x8019be48
     li      r15, 0xff
 branch_0x8019be48:
-    lwz     r0, -0x41a8(rtoc)
+    lwz     r0, R2Off_m0x41a8(r2)
     mr      r4, r28
     li      r3, 0x1
     stw     r0, 0x30(sp)
@@ -1371,7 +1371,7 @@ branch_0x8019be48:
     lwz     r0, 0x30(sp)
     stw     r0, 0x34(sp)
     bl      GXSetTevColor
-    lwz     r0, -0x41a4(rtoc)
+    lwz     r0, R2Off_m0x41a4(r2)
     mr      r4, r27
     li      r3, 0x2
     stw     r0, 0x28(sp)
@@ -1445,7 +1445,7 @@ branch_0x8019bf54:
 .globl drawJointObjStamp__22TPollutionCounterLayerCFi
 drawJointObjStamp__22TPollutionCounterLayerCFi: # 0x8019bf80
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, j3dSys@h
     stw     r0, 0x4(sp)
     stwu    sp, -0xe0(sp)
     stfd    f31, 0xd8(sp)
@@ -1454,10 +1454,10 @@ drawJointObjStamp__22TPollutionCounterLayerCFi: # 0x8019bf80
     addi    r24, r4, 0x0
     addi    r29, sp, 0x68
     addi    r30, sp, 0x70
-    addi    r31, r5, 0x45dc
+    addi    r31, r5, j3dSys@l
     li      r27, 0x0
     li      r22, 0x0
-    lfs     f31, -0x4198(rtoc)
+    lfs     f31, -0x4198(r2)
     b       branch_0x8019c1e4
 
 branch_0x8019bfbc:
@@ -1466,7 +1466,7 @@ branch_0x8019bfbc:
     addi    r26, r3, 0xd8
     cmpw    r0, r24
     bne-    branch_0x8019c1dc
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lbz     r0, 0x1(r26)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2
@@ -1493,7 +1493,7 @@ branch_0x8019bfbc:
     lbz     r0, 0x0(r26)
     cmplwi  r0, 0x0
     bne-    branch_0x8019c05c
-    lwz     r0, -0x41b0(rtoc)
+    lwz     r0, R2Off_m0x41b0(r2)
     addi    r4, r30, 0x0
     li      r3, 0x4
     stw     r0, 0x6c(sp)
@@ -1503,7 +1503,7 @@ branch_0x8019bfbc:
     b       branch_0x8019c078
 
 branch_0x8019c05c:
-    lwz     r0, -0x41ac(rtoc)
+    lwz     r0, R2Off_m0x41ac(r2)
     addi    r4, r29, 0x0
     li      r3, 0x4
     stw     r0, 0x64(sp)
@@ -1648,7 +1648,7 @@ branch_0x8019c23c:
     bl      GXSetTexCoordGen2
     li      r3, 0x0
     bl      GXSetNumChans
-    lwz     r0, -0x41b8(rtoc)
+    lwz     r0, R2Off_m0x41b8(r2)
     addi    r4, sp, 0x24
     li      r3, 0x1
     stw     r0, 0x20(sp)
@@ -1659,7 +1659,7 @@ branch_0x8019c23c:
     lwz     r0, 0x20(sp)
     stw     r0, 0x24(sp)
     bl      GXSetTevColor
-    lwz     r0, -0x41b4(rtoc)
+    lwz     r0, R2Off_m0x41b4(r2)
     addi    r4, sp, 0x1c
     li      r3, 0x2
     stw     r0, 0x18(sp)
@@ -1906,7 +1906,7 @@ drawTex__FUsUs: # 0x8019c5c8
     li      r5, 0x4
     bl      GXBegin
     li      r4, 0x0
-    lis     r3, 0xcc01
+    lis     r3, unk_cc010000@h
     sth     r4, -0x8000(r3)
     li      r0, 0x1
     sth     r4, -0x8000(r3)
@@ -1934,16 +1934,16 @@ drawTex__FUsUs: # 0x8019c5c8
 
 .globl __ct__20TPollutionCounterObjFv
 __ct__20TPollutionCounterObjFv: # 0x8019c6ac
-    lis     r4, 0x803b
-    subi    r0, r4, 0x2e6c
-    lis     r4, 0x803c
+    lis     r4, __vvt__17TDrawSyncCallback@ha
+    addi    r0, r4, __vvt__17TDrawSyncCallback@l
+    lis     r4, __vvt__21TPollutionCounterBase@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0x1d90
+    addi    r0, r4, __vvt__21TPollutionCounterBase@l
     stw     r0, 0x0(r3)
     li      r5, 0x0
-    lis     r4, 0x803c
+    lis     r4, __vvt__20TPollutionCounterObj@h
     stw     r5, 0x4(r3)
-    addi    r0, r4, 0x1da4
+    addi    r0, r4, __vvt__20TPollutionCounterObj@l
     stw     r5, 0x8(r3)
     stw     r5, 0xc(r3)
     stw     r5, 0x10(r3)
@@ -1961,7 +1961,7 @@ init__20TPollutionCounterObjFi: # 0x8019c6ec
     stw     r30, 0x20(sp)
     addi    r30, r4, 0x0
     stw     r29, 0x1c(sp)
-    addi    r29, r3, 0x0
+    addi    r29, r3, unk_cc010000@l
     stw     r30, 0x4(r3)
     lwz     r0, 0x4(r3)
     slwi    r3, r0, 2
@@ -1976,7 +1976,7 @@ init__20TPollutionCounterObjFi: # 0x8019c6ec
     addi    r4, r3, 0x0
     ble-    branch_0x8019c83c
     cmpwi   r30, 0x8
-    subi    r5, r30, 0x8
+    addi    r5, r30, -0x8
     ble-    branch_0x8019c80c
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -2050,7 +2050,7 @@ branch_0x8019c83c:
     li      r4, 0x0
     ble-    branch_0x8019c954
     cmpwi   r30, 0x8
-    subi    r5, r30, 0x8
+    addi    r5, r30, -0x8
     ble-    branch_0x8019c924
     addi    r0, r5, 0x7
     srwi    r0, r0, 3
@@ -2188,11 +2188,11 @@ countObjDegree__20TPollutionCounterObjCFv: # 0x8019ca18
     mr      r27, r3
     bl      ReInitializeGX
     bl      initDrawObjGX__Fv
-    lis     r3, 0x8040
-    lfs     f29, -0x4198(rtoc)
-    lfs     f30, -0x4194(rtoc)
-    addi    r31, r3, 0x45dc
-    lfs     f31, -0x4190(rtoc)
+    lis     r3, j3dSys@h
+    lfs     f29, -0x4198(r2)
+    lfs     f30, -0x4194(r2)
+    addi    r31, r3, j3dSys@l
+    lfs     f31, -0x4190(r2)
     li      r28, 0x0
     b       branch_0x8019ccb4
 
@@ -2283,9 +2283,9 @@ branch_0x8019ca64:
     lhz     r5, 0x2(r4)
     add     r4, r4, r0
     bl      GXInitTexObj
-    lfs     f1, -0x4198(rtoc)
+    lfs     f1, -0x4198(r2)
     addi    r3, sp, 0x54
-    lfs     f2, -0x4194(rtoc)
+    lfs     f2, -0x4194(r2)
     li      r4, 0x0
     fmr     f3, f1
     li      r5, 0x0
@@ -2338,7 +2338,7 @@ branch_0x8019cc68:
     cmpw    r25, r0
     blt+    branch_0x8019cc18
 branch_0x8019cc7c:
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      pushBreakPoint__16TDrawSyncManagerFv
     mr      r3, r27
     lwz     r12, 0x0(r27)
@@ -2347,7 +2347,7 @@ branch_0x8019cc7c:
     mtlr    r12
     blrl
     bl      GXSetDrawSync
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      pushBreakPoint__16TDrawSyncManagerFv
     li      r3, 0x0
     bl      GXSetDrawSync
@@ -2371,13 +2371,13 @@ branch_0x8019ccb4:
 
 .globl setEular__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___Fsss
 setEular__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___Fsss: # 0x8019ccec
-    lwz     r7, -0x5eac(r13)
+    lwz     r7, R13Off_m0x5eac(r13)
     clrlwi  r4, r4, 16
     clrlwi  r0, r5, 16
-    lwz     r9, -0x5ea4(r13)
+    lwz     r9, R13Off_m0x5ea4(r13)
     sraw    r5, r4, r7
     sraw    r4, r0, r7
-    lwz     r8, -0x5ea8(r13)
+    lwz     r8, R13Off_m0x5ea8(r13)
     clrlwi  r0, r6, 16
     slwi    r4, r4, 2
     sraw    r0, r0, r7
@@ -2421,9 +2421,9 @@ initDrawObjGX__Fv: # 0x8019cd94
     li      r4, 0x0
     stw     r0, 0x4(sp)
     stwu    sp, -0x48(sp)
-    lfs     f1, -0x4198(rtoc)
+    lfs     f1, -0x4198(r2)
     addi    r3, sp, 0x14
-    lfs     f0, -0x4194(rtoc)
+    lfs     f0, -0x4194(r2)
     stfs    f1, 0x40(sp)
     stfs    f1, 0x30(sp)
     stfs    f1, 0x20(sp)
@@ -2457,7 +2457,7 @@ initDrawObjGX__Fv: # 0x8019cd94
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, -0x41bc(rtoc)
+    lwz     r0, R2Off_m0x41bc(r2)
     addi    r4, sp, 0x10
     li      r3, 0x4
     stw     r0, 0xc(sp)
@@ -2608,7 +2608,7 @@ drawBlack__FUsUs: # 0x8019cfd4
     li      r8, 0x0
     li      r9, 0x2
     bl      GXSetChanCtrl
-    lwz     r0, -0x41c0(rtoc)
+    lwz     r0, R2Off_m0x41c0(r2)
     addi    r4, sp, 0x14
     li      r3, 0x4
     stw     r0, 0x10(sp)
@@ -2672,7 +2672,7 @@ drawBlack__FUsUs: # 0x8019cfd4
 
 .globl getCounterNo__20TPollutionCounterObjCFUl
 getCounterNo__20TPollutionCounterObjCFUl: # 0x8019d160
-    subi    r3, r4, 0x92
+    addi    r3, r4, -0x92
     blr
 
 
@@ -2684,7 +2684,7 @@ getTokenNo__20TPollutionCounterObjCFi: # 0x8019d168
 
 .globl getCounterNo__22TPollutionCounterLayerCFUl
 getCounterNo__22TPollutionCounterLayerCFUl: # 0x8019d170
-    subi    r3, r4, 0x7e
+    addi    r3, r4, -0x7e
     blr
 
 
@@ -2697,205 +2697,205 @@ getTokenNo__22TPollutionCounterLayerCFi: # 0x8019d178
 .globl __sinit_PollutionCount_cpp
 __sinit_PollutionCount_cpp: # 0x8019d180
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, unk_803f8538@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x7ac8
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803f8538@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d1c8
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x8019d1c8:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d1f8
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x8019d1f8:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d228
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x8019d228:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d258
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x8019d258:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d288
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x8019d288:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d2b8
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x8019d2b8:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d2e8
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x8019d2e8:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d318
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x8019d318:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d348
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x8019d348:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d378
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x8019d378:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d3a8
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x8019d3a8:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d3d8
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x8019d3d8:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d408
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x8019d408:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d438
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x8019d438:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x8019d468
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x8019d468:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

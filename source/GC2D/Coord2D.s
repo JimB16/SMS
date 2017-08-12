@@ -36,7 +36,7 @@ branch_0x8013eb20:
 branch_0x8013eb24:
     clrlwi. r0, r0, 24
     beq-    branch_0x8013eb3c
-    lfs     f0, -0x4cd8(rtoc)
+    lfs     f0, -0x4cd8(r2)
     li      r31, 0x1
     stfs    f0, 0x10(r30)
     stfs    f0, 0x14(r30)
@@ -59,14 +59,14 @@ setValue__8TCoord2DFlffff: # 0x8013eb58
     stfs    f3, 0x0(r3)
     stfs    f4, 0x4(r3)
     bgt-    branch_0x8013eb84
-    lfs     f0, -0x4cd8(rtoc)
+    lfs     f0, -0x4cd8(r2)
     stfs    f0, 0x10(r3)
     stfs    f0, 0x14(r3)
     b       branch_0x8013ebc8
 
 branch_0x8013eb84:
     xoris   r4, r4, 0x8000
-    lfd     f5, -0x4cd0(rtoc)
+    lfd     f5, -0x4cd0(r2)
     stw     r4, 0x2c(sp)
     lis     r0, 0x4330
     fsubs   f3, f1, f3
@@ -89,7 +89,7 @@ branch_0x8013ebc8:
 
 .globl __ct__8TCoord2DFv
 __ct__8TCoord2DFv: # 0x8013ebd0
-    lfs     f0, -0x4cd8(rtoc)
+    lfs     f0, -0x4cd8(r2)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x0(r3)
     stfs    f0, 0xc(r3)

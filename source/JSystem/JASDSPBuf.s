@@ -2,14 +2,14 @@
 .globl updateDSP__Q28JASystem6DSPBufFv
 updateDSP__Q28JASystem6DSPBufFv: # 0x80314160
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803aa5d8@ha
     stw     r0, 0x4(sp)
-    subi    r4, r3, 0x5a28
+    addi    r4, r3, unk_803aa5d8@l
     li      r3, 0x3
     stwu    sp, -0x8(sp)
-    lwz     r5, -0x5c24(r13)
+    lwz     r5, R13Off_m0x5c24(r13)
     addi    r0, r5, 0x1
-    stw     r0, -0x5c24(r13)
+    stw     r0, R13Off_m0x5c24(r13)
     bl      probeStart__Q28JASystem6KernelFlPc
     bl      invalChannelAll__Q28JASystem12DSPInterfaceFv
     bl      subframeCallback__Q28JASystem6KernelFv
@@ -55,11 +55,11 @@ process__Q28JASystem6DSPBufFQ38JASystem6DSPBuf13DSPBUF_EVENTS: # 0x803141fc
     mflr    r0
     cmpwi   r3, 0x1
     stw     r0, 0x4(sp)
-    lis     r4, 0x8040
+    lis     r4, dsp_buf__Q28JASystem6DSPBuf@ha
     stwu    sp, -0x38(sp)
     stmw    r26, 0x20(sp)
-    subi    r31, r4, 0x2748
-    lwz     r29, -0x73c8(r13)
+    addi    r31, r4, dsp_buf__Q28JASystem6DSPBuf@l
+    lwz     r29, R13Off_m0x73c8(r13)
     beq-    branch_0x80314358
     bge-    branch_0x80314230
     cmpwi   r3, 0x0
@@ -74,11 +74,11 @@ branch_0x80314230:
 branch_0x8031423c:
     li      r3, 0x2
     li      r0, 0x0
-    stb     r3, -0x5c28(r13)
+    stb     r3, R13Off_m0x5c28(r13)
     slwi    r28, r29, 1
-    stb     r0, -0x5c27(r13)
+    stb     r0, R13Off_m0x5c27(r13)
     slwi    r30, r29, 2
-    subi    r29, r28, 0x8
+    addi    r29, r28, -0x8
     li      r27, 0x0
     li      r26, 0x0
 branch_0x80314260:
@@ -146,47 +146,47 @@ branch_0x80314330:
     addi    r26, r26, 0x4
     blt+    branch_0x80314260
     li      r0, 0x0
-    stb     r0, -0x5c26(r13)
+    stb     r0, R13Off_m0x5c26(r13)
     b       branch_0x8031463c
 
 branch_0x80314358:
-    lbz     r3, -0x5c28(r13)
+    lbz     r3, R13Off_m0x5c28(r13)
     addi    r0, r3, 0x1
     clrlwi  r4, r0, 24
     cmplwi  r4, 0x3
     bne-    branch_0x80314370
     li      r4, 0x0
 branch_0x80314370:
-    lbz     r0, -0x5c27(r13)
+    lbz     r0, R13Off_m0x5c27(r13)
     clrlwi  r3, r4, 24
     cmplw   r3, r0
     bne-    branch_0x8031438c
     li      r0, 0x0
-    stb     r0, -0x5c26(r13)
+    stb     r0, R13Off_m0x5c26(r13)
     b       branch_0x8031463c
 
 branch_0x8031438c:
-    lwz     r3, -0x73cc(r13)
-    stb     r4, -0x5c28(r13)
+    lwz     r3, R13Off_m0x73cc(r13)
+    stb     r4, R13Off_m0x5c28(r13)
     bl      setDSPSyncCount__Q28JASystem11AudioThreadFUl
-    lis     r3, 0x803b
-    subi    r4, r3, 0x5a1c
+    lis     r3, unk_803aa5e4@ha
+    addi    r4, r3, unk_803aa5e4@l
     li      r3, 0x7
     bl      probeStart__Q28JASystem6KernelFlPc
-    lbz     r4, -0x5c28(r13)
+    lbz     r4, R13Off_m0x5c28(r13)
     slwi    r0, r29, 1
-    lwz     r3, -0x73cc(r13)
+    lwz     r3, R13Off_m0x73cc(r13)
     slwi    r4, r4, 2
     lwzx    r4, r31, r4
     add     r5, r4, r0
     bl      DsyncFrame2__FUlUlUl
-    lwz     r4, -0x5c24(r13)
+    lwz     r4, R13Off_m0x5c24(r13)
     li      r0, 0x1
-    stb     r0, -0x5c26(r13)
-    lis     r3, 0x803b
+    stb     r0, R13Off_m0x5c26(r13)
+    lis     r3, unk_803aa5d8@ha
     addi    r0, r4, 0x1
-    stw     r0, -0x5c24(r13)
-    subi    r4, r3, 0x5a28
+    stw     r0, R13Off_m0x5c24(r13)
+    addi    r4, r3, unk_803aa5d8@l
     li      r3, 0x3
     bl      probeStart__Q28JASystem6KernelFlPc
     bl      invalChannelAll__Q28JASystem12DSPInterfaceFv
@@ -199,14 +199,14 @@ branch_0x8031438c:
     b       branch_0x8031463c
 
 branch_0x80314408:
-    lbz     r4, -0x5c27(r13)
+    lbz     r4, R13Off_m0x5c27(r13)
     addi    r0, r4, 0x1
     clrlwi  r5, r0, 24
     cmplwi  r5, 0x3
     bne-    branch_0x80314420
     li      r5, 0x0
 branch_0x80314420:
-    lbz     r0, -0x5c28(r13)
+    lbz     r0, R13Off_m0x5c28(r13)
     clrlwi  r3, r5, 24
     cmplw   r3, r0
     bne-    branch_0x80314600
@@ -214,7 +214,7 @@ branch_0x80314420:
     lwzx    r3, r31, r0
     cmplwi  r29, 0x0
     clrrwi  r0, r29, 1
-    subi    r4, r3, 0x2
+    addi    r4, r3, -0x2
     slwi    r3, r29, 1
     lhax    r0, r4, r0
     lhax    r5, r4, r3
@@ -222,10 +222,10 @@ branch_0x80314420:
     li      r7, 0x0
     ble-    branch_0x80314518
     cmplwi  r29, 0x8
-    subi    r9, r29, 0x8
+    addi    r9, r29, -0x8
     ble-    branch_0x803144ec
     addi    r6, r9, 0x7
-    lbz     r8, -0x5c27(r13)
+    lbz     r8, R13Off_m0x5c27(r13)
     srwi    r6, r6, 3
     cmplwi  r9, 0x0
     mtctr   r6
@@ -260,7 +260,7 @@ branch_0x80314484:
     bdnz+      branch_0x80314484
 branch_0x803144ec:
     subf    r6, r4, r29
-    lbz     r7, -0x5c27(r13)
+    lbz     r7, R13Off_m0x5c27(r13)
     cmplw   r4, r29
     mtctr   r6
     slwi    r7, r7, 2
@@ -276,10 +276,10 @@ branch_0x80314518:
     bge-    branch_0x803145e8
     subf    r0, r29, r3
     cmplwi  r0, 0x8
-    subi    r6, r3, 0x8
+    addi    r6, r3, -0x8
     ble-    branch_0x803145bc
     addi    r0, r6, 0x7
-    lbz     r4, -0x5c27(r13)
+    lbz     r4, R13Off_m0x5c27(r13)
     subf    r0, r29, r0
     srwi    r0, r0, 3
     cmplw   r29, r6
@@ -316,7 +316,7 @@ branch_0x80314554:
     bdnz+      branch_0x80314554
 branch_0x803145bc:
     subf    r0, r29, r3
-    lbz     r4, -0x5c27(r13)
+    lbz     r4, R13Off_m0x5c27(r13)
     cmplw   r29, r3
     mtctr   r0
     slwi    r0, r4, 2
@@ -328,7 +328,7 @@ branch_0x803145d8:
     addi    r3, r3, 0x2
     bdnz+      branch_0x803145d8
 branch_0x803145e8:
-    lbz     r0, -0x5c26(r13)
+    lbz     r0, R13Off_m0x5c26(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8031462c
     li      r3, 0x1
@@ -336,19 +336,19 @@ branch_0x803145e8:
     b       branch_0x8031462c
 
 branch_0x80314600:
-    stb     r5, -0x5c27(r13)
+    stb     r5, R13Off_m0x5c27(r13)
     slwi    r4, r29, 2
-    lbz     r0, -0x5c27(r13)
+    lbz     r0, R13Off_m0x5c27(r13)
     slwi    r0, r0, 2
     lwzx    r3, r31, r0
     bl      DCInvalidateRange
-    lbz     r0, -0x5c26(r13)
+    lbz     r0, R13Off_m0x5c26(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8031462c
     li      r3, 0x1
     bl      process__Q28JASystem6DSPBufFQ38JASystem6DSPBuf13DSPBUF_EVENTS
 branch_0x8031462c:
-    lbz     r0, -0x5c27(r13)
+    lbz     r0, R13Off_m0x5c27(r13)
     slwi    r0, r0, 2
     lwzx    r3, r31, r0
     b       branch_0x8031464c
@@ -357,8 +357,12 @@ branch_0x8031463c:
     li      r3, 0x0
     b       branch_0x8031464c
 
+branch_0x80314644:
+    b       branch_0x80314308
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x30f044, 0x8031464c - 0x80314644
+branch_0x80314648:
+    b       branch_0x803145bc
+
 branch_0x8031464c:
     lmw     r26, 0x20(sp)
     lwz     r0, 0x3c(sp)

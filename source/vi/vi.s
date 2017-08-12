@@ -2,15 +2,15 @@
 .globl __VIRetraceHandler
 __VIRetraceHandler: # 0x8034ed18
     mflr    r0
-    lis     r3, 0xcc00
+    lis     r3, unk_cc002000@h
     stw     r0, 0x4(sp)
-    addi    r5, r3, 0x2000
-    lis     r3, 0x8040
+    addi    r5, r3, unk_cc002000@l
+    lis     r3, regs@h
     stwu    sp, -0x2f8(sp)
     li      r7, 0x0
     stmw    r27, 0x2e4(sp)
     addi    r30, r4, 0x0
-    addi    r31, r3, 0x32c8
+    addi    r31, r3, regs@l
     lhzu    r6, 0x30(r5)
     rlwinm. r0, r6, 0, 16, 16
     beq-    branch_0x8034ed58
@@ -52,38 +52,38 @@ branch_0x8034edbc:
     b       branch_0x8034ef2c
 
 branch_0x8034edc8:
-    lwz     r4, -0x58f0(r13)
+    lwz     r4, R13Off_m0x58f0(r13)
     addi    r3, sp, 0x18
     addi    r0, r4, 0x1
-    stw     r0, -0x58f0(r13)
+    stw     r0, R13Off_m0x58f0(r13)
     bl      OSClearContext
     addi    r3, sp, 0x18
     bl      OSSetCurrentContext
-    lwz     r12, -0x58e0(r13)
+    lwz     r12, R13Off_m0x58e0(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x8034edfc
-    lwz     r3, -0x58f0(r13)
+    lwz     r3, R13Off_m0x58f0(r13)
     mtlr    r12
     blrl
 branch_0x8034edfc:
-    lwz     r0, -0x58ec(r13)
+    lwz     r0, R13Off_m0x58ec(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034eef0
-    lwz     r0, -0x58c0(r13)
+    lwz     r0, R13Off_m0x58c0(r13)
     cmplwi  r0, 0x1
     bne-    branch_0x8034ee20
     bl      getCurrentFieldEvenOdd
     cmplwi  r3, 0x0
     beq-    branch_0x8034eed8
 branch_0x8034ee20:
-    lis     r3, 0xcc00
-    addi    r29, r3, 0x2000
+    lis     r3, unk_cc002000@h
+    addi    r29, r3, unk_cc002000@l
     b       branch_0x8034eea0
 
 branch_0x8034ee2c:
-    lwz     r3, -0x58b8(r13)
+    lwz     r3, R13Off_m0x58b8(r13)
     li      r5, 0x20
-    lwz     r27, -0x58b4(r13)
+    lwz     r27, R13Off_m0x58b4(r13)
     addi    r4, r27, 0x0
     bl      __shr2u
     cntlzw  r4, r4
@@ -105,28 +105,28 @@ branch_0x8034ee60:
     sthx    r0, r29, r6
     li      r4, 0x1
     bl      __shl2i
-    lwz     r0, -0x58b8(r13)
+    lwz     r0, R13Off_m0x58b8(r13)
     not     r5, r3
     not     r4, r4
-    lwz     r3, -0x58b4(r13)
+    lwz     r3, R13Off_m0x58b4(r13)
     and     r0, r0, r5
     and     r3, r3, r4
-    stw     r3, -0x58b4(r13)
-    stw     r0, -0x58b8(r13)
+    stw     r3, R13Off_m0x58b4(r13)
+    stw     r0, R13Off_m0x58b8(r13)
 branch_0x8034eea0:
-    lwz     r0, -0x58b8(r13)
+    lwz     r0, R13Off_m0x58b8(r13)
     li      r4, 0x0
-    lwz     r3, -0x58b4(r13)
+    lwz     r3, R13Off_m0x58b4(r13)
     xor     r0, r0, r4
     xor     r3, r3, r4
     or.     r0, r3, r0
     bne+    branch_0x8034ee2c
-    stw     r4, -0x58c0(r13)
+    stw     r4, R13Off_m0x58c0(r13)
     li      r3, 0x1
     lwz     r0, 0x144(r31)
-    stw     r0, -0x58b0(r13)
+    stw     r0, R13Off_m0x58b0(r13)
     lwz     r0, 0x118(r31)
-    stw     r0, -0x58ac(r13)
+    stw     r0, R13Off_m0x58ac(r13)
     b       branch_0x8034eedc
 
 branch_0x8034eed8:
@@ -135,20 +135,20 @@ branch_0x8034eedc:
     cmpwi   r3, 0x0
     beq-    branch_0x8034eef0
     li      r0, 0x0
-    stw     r0, -0x58ec(r13)
+    stw     r0, R13Off_m0x58ec(r13)
     bl      SIRefreshSamplingRate
 branch_0x8034eef0:
-    lwz     r0, -0x58dc(r13)
+    lwz     r0, R13Off_m0x58dc(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x8034ef14
     addi    r3, sp, 0x18
     bl      OSClearContext
-    lwz     r12, -0x58dc(r13)
-    lwz     r3, -0x58f0(r13)
+    lwz     r12, R13Off_m0x58dc(r13)
+    lwz     r3, R13Off_m0x58f0(r13)
     mtlr    r12
     blrl
 branch_0x8034ef14:
-    subi    r3, r13, 0x58e8
+    addi    r3, r13, R13Off_m0x58e8
     bl      OSWakeupThread
     addi    r3, sp, 0x18
     bl      OSClearContext
@@ -170,9 +170,9 @@ VISetPostRetraceCallback: # 0x8034ef40
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r3
-    lwz     r31, -0x58dc(r13)
+    lwz     r31, R13Off_m0x58dc(r13)
     bl      OSDisableInterrupts
-    stw     r30, -0x58dc(r13)
+    stw     r30, R13Off_m0x58dc(r13)
     bl      OSRestoreInterrupts
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -186,65 +186,63 @@ VISetPostRetraceCallback: # 0x8034ef40
 .globl getTiming
 getTiming: # 0x8034ef84
     cmplwi  r3, 0x15
-    lis     r4, 0x803f
-    subi    r5, r4, 0x7850
+    lis     r4, timing@ha
+    addi    r5, r4, timing@l
     bgt-    branch_0x8034f00c
-    lis     r4, 0x803f
-    subi    r4, r4, 0x76ec
+    lis     r4, unk_803e8914@ha
+    addi    r4, r4, unk_803e8914@l
     slwi    r0, r3, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8034EFAC:		# jumptable 8034EFA8 case 0
+    bctr       
+branch_0x8034efac:
     mr      r3, r5
     blr
 
-branch_0x8034EFB4:		# jumptable 8034EFA8 case 1
-addi	  r3, r5, 0x26
-blr
+branch_0x8034efb4:
+    addi    r3, r5, 0x26
+    blr
 
-branch_0x8034EFBC:		# jumptable 8034EFA8 case 4
-addi	  r3, r5, 0x4C
-blr
+branch_0x8034efbc:
+    addi    r3, r5, 0x4c
+    blr
 
-branch_0x8034EFC4:		# jumptable 8034EFA8 case 5
-addi	  r3, r5, 0x72
-blr
+branch_0x8034efc4:
+    addi    r3, r5, 0x72
+    blr
 
-branch_0x8034EFCC:		# jumptable 8034EFA8 case 20
-mr	  r3, r5
-blr
+branch_0x8034efcc:
+    mr      r3, r5
+    blr
 
-branch_0x8034EFD4:		# jumptable 8034EFA8 case 21
-addi	  r3, r5, 0x26
-blr
+branch_0x8034efd4:
+    addi    r3, r5, 0x26
+    blr
 
-branch_0x8034EFDC:		# jumptable 8034EFA8 case 8
-addi	  r3, r5, 0x98
-blr
+branch_0x8034efdc:
+    addi    r3, r5, 0x98
+    blr
 
-branch_0x8034EFE4:		# jumptable 8034EFA8 case 9
-addi	  r3, r5, 0xBE
-blr
+branch_0x8034efe4:
+    addi    r3, r5, 0xbe
+    blr
 
-branch_0x8034EFEC:		# jumptable 8034EFA8 case 2
-addi	  r3, r5, 0xE4
-blr
+branch_0x8034efec:
+    addi    r3, r5, 0xe4
+    blr
 
-branch_0x8034EFF4:		# jumptable 8034EFA8 case 3
-addi	  r3, r5, 0x10A
-blr
+branch_0x8034eff4:
+    addi    r3, r5, 0x10a
+    blr
 
-branch_0x8034EFFC:		# jumptable 8034EFA8 case 16
-addi	  r3, r5, 0x4C
-blr
+branch_0x8034effc:
+    addi    r3, r5, 0x4c
+    blr
 
-branch_0x8034F004:		# jumptable 8034EFA8 case 17
-addi	  r3, r5, 0x72
-blr
+branch_0x8034f004:
+    addi    r3, r5, 0x72
+    blr
 
-def_8034EFA8:		# jumptable 8034EFA8 default case
 branch_0x8034f00c:
     li      r3, 0x0
     blr
@@ -265,9 +263,9 @@ __VIInit: # 0x8034f014
     addi    r3, r29, 0x0
     rlwinm  r30, r29, 0, 30, 30
     bl      getTiming
-    lis     r4, 0xcc00
+    lis     r4, unk_cc002000@h
     li      r0, 0x2
-    addi    r5, r4, 0x2000
+    addi    r5, r4, unk_cc002000@l
     sthu    r0, 0x2(r5)
     li      r0, 0x0
     stw     r0, 0x1c(sp)
@@ -287,14 +285,14 @@ branch_0x8034f07c:
 branch_0x8034f088:
     li      r0, 0x0
     sth     r0, 0x0(r5)
-    lis     r12, 0xcc00
+    lis     r12, unk_cc002000@h
     li      r8, 0x2828
     lhz     r6, 0x1a(r3)
     li      r7, 0x1
     cmpwi   r29, 0x2
     sth     r6, 0x2006(r12)
     li      r6, 0x1001
-    addi    r4, r12, 0x2000
+    addi    r4, r12, unk_cc002000@l
     lbz     r9, 0x1d(r3)
     lbz     r10, 0x1e(r3)
     insrwi  r10, r9, 8, 16
@@ -311,7 +309,7 @@ branch_0x8034f088:
     lbz     r11, 0x0(r3)
     slwi    r9, r9, 1
     lhz     r10, 0x4(r3)
-    subi    r9, r9, 0x2
+    addi    r9, r9, -0x2
     sth     r11, 0x2000(r12)
     add     r9, r10, r9
     sth     r9, 0x200e(r12)
@@ -321,7 +319,7 @@ branch_0x8034f088:
     lhz     r9, 0x2(r3)
     lhz     r10, 0x6(r3)
     slwi    r9, r9, 1
-    subi    r9, r9, 0x2
+    addi    r9, r9, -0x2
     add     r9, r10, r9
     sth     r9, 0x2012(r12)
     lhz     r9, 0xa(r3)
@@ -390,20 +388,20 @@ branch_0x8034f1f0:
 .globl VIInit
 VIInit: # 0x8034f20c
     mflr    r0
-    lis     r3, 0xcc00
+    lis     r3, unk_cc002000@h
     stw     r0, 0x4(sp)
     li      r0, 0x1
-    lis     r4, 0x803f
+    lis     r4, timing@ha
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    subi    r30, r4, 0x7850
+    addi    r30, r4, timing@l
     stw     r29, 0xc(sp)
     stw     r28, 0x8(sp)
-    addi    r28, r3, 0x2000
-    lis     r3, 0x8040
-    stw     r0, -0x58d8(r13)
-    addi    r31, r3, 0x32c8
+    addi    r28, r3, unk_cc002000@l
+    lis     r3, regs@h
+    stw     r0, R13Off_m0x58d8(r13)
+    addi    r31, r3, regs@l
     lhzu    r0, 0x2(r28)
     clrlwi. r0, r0, 31
     bne-    branch_0x8034f25c
@@ -411,17 +409,17 @@ VIInit: # 0x8034f20c
     bl      __VIInit
 branch_0x8034f25c:
     li      r29, 0x0
-    stw     r29, -0x58f0(r13)
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x2000
-    stw     r29, -0x58c4(r13)
+    stw     r29, R13Off_m0x58f0(r13)
+    lis     r3, unk_cc002000@h
+    addi    r3, r3, unk_cc002000@l
+    stw     r29, R13Off_m0x58c4(r13)
     li      r0, 0x280
-    stw     r29, -0x58c8(r13)
-    stw     r29, -0x58b4(r13)
-    stw     r29, -0x58b8(r13)
-    stw     r29, -0x58d0(r13)
-    stw     r29, -0x58c0(r13)
-    stw     r29, -0x58ec(r13)
+    stw     r29, R13Off_m0x58c8(r13)
+    stw     r29, R13Off_m0x58b4(r13)
+    stw     r29, R13Off_m0x58b8(r13)
+    stw     r29, R13Off_m0x58d0(r13)
+    stw     r29, R13Off_m0x58c0(r13)
+    stw     r29, R13Off_m0x58ec(r13)
     lhz     r5, 0x132(r30)
     lhz     r6, 0x130(r30)
     clrlslwi  r5, r5, 26, 10
@@ -530,11 +528,11 @@ branch_0x8034f400:
     addi    r6, r31, 0xf6
     lwz     r4, 0x0(r4)
     addi    r3, r31, 0xf2
-    stw     r4, -0x58b0(r13)
+    stw     r4, R13Off_m0x58b0(r13)
     lwz     r4, 0x0(r28)
-    stw     r4, -0x58ac(r13)
+    stw     r4, R13Off_m0x58ac(r13)
     sth     r0, 0xf4(r31)
-    lwz     r4, -0x58b0(r13)
+    lwz     r4, R13Off_m0x58b0(r13)
     lhzu    r0, 0x2(r4)
     clrlslwi  r0, r0, 17, 1
     sth     r0, 0xf6(r31)
@@ -664,7 +662,7 @@ branch_0x8034f5ac:
     li      r5, 0x28
     li      r0, 0x1
     lhz     r6, 0x0(r4)
-    subi    r3, r13, 0x58e8
+    addi    r3, r13, R13Off_m0x58e8
     clrlslwi  r6, r6, 17, 1
     sth     r6, 0x104(r31)
     sth     r28, 0x106(r31)
@@ -681,20 +679,20 @@ branch_0x8034f5ac:
     stw     r0, 0x130(r31)
     stw     r28, 0x134(r31)
     bl      OSInitThreadQueue
-    lis     r3, 0xcc00
+    lis     r3, unk_cc002000@h
     lhz     r0, 0x2030(r3)
-    addi    r4, r3, 0x2000
+    addi    r4, r3, unk_cc002000@l
     addi    r5, r3, 0x2000
     clrlwi  r0, r0, 17
     sth     r0, 0x30(r4)
-    lis     r3, 0x8035
-    subi    r4, r3, 0x12e8
+    lis     r3, __VIRetraceHandler@ha
+    addi    r4, r3, __VIRetraceHandler@l
     lhz     r0, 0x34(r5)
     li      r3, 0x18
     clrlwi  r0, r0, 17
     sth     r0, 0x34(r5)
-    stw     r28, -0x58e0(r13)
-    stw     r28, -0x58dc(r13)
+    stw     r28, R13Off_m0x58e0(r13)
+    stw     r28, R13Off_m0x58dc(r13)
     bl      __OSSetInterruptHandler
     li      r3, 0x80
     bl      __OSUnmaskInterrupts
@@ -716,12 +714,12 @@ VIWaitForRetrace: # 0x8034f684
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
     bl      OSDisableInterrupts
-    lwz     r30, -0x58f0(r13)
+    lwz     r30, R13Off_m0x58f0(r13)
     mr      r31, r3
 branch_0x8034f6a4:
-    subi    r3, r13, 0x58e8
+    addi    r3, r13, R13Off_m0x58e8
     bl      OSSleepThread
-    lwz     r0, -0x58f0(r13)
+    lwz     r0, R13Off_m0x58f0(r13)
     cmplw   r30, r0
     beq+    branch_0x8034f6a4
     mr      r3, r31
@@ -737,8 +735,8 @@ branch_0x8034f6a4:
 .globl setFbbRegs
 setFbbRegs: # 0x8034f6d8
     stwu    sp, -0x48(sp)
-    lis     r9, 0x8040
-    addi    r9, r9, 0x32c8
+    lis     r9, regs@h
+    addi    r9, r9, regs@l
     stw     r31, 0x44(sp)
     lbz     r8, 0x2c(r3)
     lhz     r0, 0xe(r3)
@@ -858,14 +856,14 @@ branch_0x8034f84c:
 branch_0x8034f884:
     lwz     r0, 0x0(r4)
     slwi    r11, r10, 12
-    lis     r8, 0x1
+    lis     r8, unk_00008000@ha
     sth     r0, 0x1e(r9)
     lis     r0, 0x2
-    lwz     r10, -0x58c8(r13)
-    lwz     r12, -0x58c4(r13)
+    lwz     r10, R13Off_m0x58c8(r13)
+    lwz     r12, R13Off_m0x58c4(r13)
     or      r10, r10, r8
-    stw     r12, -0x58c4(r13)
-    stw     r10, -0x58c8(r13)
+    stw     r12, R13Off_m0x58c4(r13)
+    stw     r10, R13Off_m0x58c8(r13)
     lwz     r10, 0x0(r4)
     lbz     r4, 0x3c(r3)
     srwi    r10, r10, 16
@@ -873,60 +871,60 @@ branch_0x8034f884:
     or      r4, r10, r4
     or      r4, r11, r4
     sth     r4, 0x1c(r9)
-    lwz     r4, -0x58c8(r13)
-    lwz     r10, -0x58c4(r13)
+    lwz     r4, R13Off_m0x58c8(r13)
+    lwz     r10, R13Off_m0x58c4(r13)
     or      r0, r4, r0
-    stw     r10, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r10, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r0, 0x0(r5)
     sth     r0, 0x26(r9)
-    lwz     r0, -0x58c8(r13)
-    lwz     r4, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r4, R13Off_m0x58c4(r13)
     ori     r0, r0, 0x1000
-    stw     r4, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r4, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r0, 0x0(r5)
     srwi    r0, r0, 16
     sth     r0, 0x24(r9)
-    lwz     r0, -0x58c8(r13)
-    lwz     r4, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r4, R13Off_m0x58c4(r13)
     ori     r0, r0, 0x2000
-    stw     r4, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r4, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r0, 0x44(r3)
     cmpwi   r0, 0x0
     beq-    branch_0x8034f9a0
     lwz     r3, 0x0(r6)
-    subi    r0, r8, 0x8000
+    addi    r0, r8, unk_00008000@l
     sth     r3, 0x22(r9)
-    lwz     r3, -0x58c8(r13)
-    lwz     r4, -0x58c4(r13)
+    lwz     r3, R13Off_m0x58c8(r13)
+    lwz     r4, R13Off_m0x58c4(r13)
     ori     r3, r3, 0x4000
-    stw     r4, -0x58c4(r13)
-    stw     r3, -0x58c8(r13)
+    stw     r4, R13Off_m0x58c4(r13)
+    stw     r3, R13Off_m0x58c8(r13)
     lwz     r3, 0x0(r6)
     srwi    r3, r3, 16
     sth     r3, 0x20(r9)
-    lwz     r3, -0x58c8(r13)
-    lwz     r4, -0x58c4(r13)
+    lwz     r3, R13Off_m0x58c8(r13)
+    lwz     r4, R13Off_m0x58c4(r13)
     or      r0, r3, r0
-    stw     r4, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r4, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r0, 0x0(r7)
     sth     r0, 0x2a(r9)
-    lwz     r0, -0x58c8(r13)
-    lwz     r3, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r3, R13Off_m0x58c4(r13)
     ori     r0, r0, 0x400
-    stw     r3, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r3, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r0, 0x0(r7)
     srwi    r0, r0, 16
     sth     r0, 0x28(r9)
-    lwz     r0, -0x58c8(r13)
-    lwz     r3, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r3, R13Off_m0x58c4(r13)
     ori     r0, r0, 0x800
-    stw     r3, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r3, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
 branch_0x8034f9a0:
     lwz     r31, 0x44(sp)
     addi    sp, sp, 0x48
@@ -937,11 +935,11 @@ branch_0x8034f9a0:
 setVerticalRegs: # 0x8034f9ac
     stwu    sp, -0x28(sp)
     clrlwi  r0, r5, 24
-    lis     r11, 0x8040
+    lis     r11, regs@h
     stw     r31, 0x24(sp)
     cmplwi  r0, 0xa
     lwz     r31, 0x30(sp)
-    addi    r11, r11, 0x32c8
+    addi    r11, r11, regs@l
     stw     r30, 0x20(sp)
     stw     r29, 0x1c(sp)
     blt-    branch_0x8034f9e0
@@ -996,7 +994,7 @@ branch_0x8034fa6c:
     clrlwi  r4, r4, 16
     beq-    branch_0x8034faa0
     slwi    r4, r4, 1
-    subi    r4, r4, 0x2
+    addi    r4, r4, -0x2
     add     r0, r0, r4
     add     r3, r3, r4
     li      r4, 0x0
@@ -1009,38 +1007,38 @@ branch_0x8034faa0:
     sth     r4, 0x0(r11)
     lis     r4, 0x8000
     lis     r9, 0x100
-    lwz     r5, -0x58c8(r13)
+    lwz     r5, R13Off_m0x58c8(r13)
     lis     r8, 0x200
-    lwz     r10, -0x58c4(r13)
+    lwz     r10, R13Off_m0x58c4(r13)
     or      r4, r5, r4
     lis     r5, 0x40
-    stw     r10, -0x58c4(r13)
-    stw     r4, -0x58c8(r13)
+    stw     r10, R13Off_m0x58c4(r13)
+    stw     r4, R13Off_m0x58c8(r13)
     lis     r4, 0x80
     sth     r0, 0xe(r11)
-    lwz     r0, -0x58c8(r13)
-    lwz     r10, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r10, R13Off_m0x58c4(r13)
     or      r0, r0, r9
-    stw     r10, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r10, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     sth     r6, 0xc(r11)
-    lwz     r0, -0x58c8(r13)
-    lwz     r6, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r6, R13Off_m0x58c4(r13)
     or      r0, r0, r8
-    stw     r6, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r6, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     sth     r3, 0x12(r11)
-    lwz     r0, -0x58c8(r13)
-    lwz     r3, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r3, R13Off_m0x58c4(r13)
     or      r0, r0, r5
-    stw     r3, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r3, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     sth     r7, 0x10(r11)
-    lwz     r0, -0x58c8(r13)
-    lwz     r3, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r3, R13Off_m0x58c4(r13)
     or      r0, r0, r4
-    stw     r3, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r3, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r31, 0x24(sp)
     lwz     r30, 0x20(sp)
     lwz     r29, 0x1c(sp)
@@ -1051,14 +1049,14 @@ branch_0x8034faa0:
 .globl VIConfigure
 VIConfigure: # 0x8034fb4c
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, timing@ha
     stw     r0, 0x4(sp)
-    lis     r4, 0x8040
+    lis     r4, regs@h
     stwu    sp, -0x78(sp)
     stmw    r14, 0x30(sp)
     addi    r31, r3, 0x0
-    subi    r15, r5, 0x7850
-    addi    r29, r4, 0x32c8
+    addi    r15, r5, timing@l
+    addi    r29, r4, regs@l
     bl      OSDisableInterrupts
     lwz     r4, 0x0(r31)
     addi    r28, r29, 0x114
@@ -1068,7 +1066,7 @@ VIConfigure: # 0x8034fb4c
     cmplw   r0, r4
     beq-    branch_0x8034fb9c
     li      r0, 0x1
-    stw     r0, -0x58d0(r13)
+    stw     r0, R13Off_m0x58d0(r13)
     stw     r4, 0x0(r28)
 branch_0x8034fb9c:
     lwz     r0, 0x0(r31)
@@ -1077,12 +1075,12 @@ branch_0x8034fb9c:
     srwi    r16, r0, 2
     cmplwi  r16, 0x4
     bne-    branch_0x8034fc1c
-    lwz     r0, -0x58a4(r13)
+    lwz     r0, R13Off_m0x58a4(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8034fc1c
     li      r0, 0x1
     crxor   6, 6, 6
-    stw     r0, -0x58a4(r13)
+    stw     r0, R13Off_m0x58a4(r13)
     addi    r3, r15, 0x1bc
     bl      OSReport
     addi    r3, r15, 0x1e8
@@ -1307,7 +1305,7 @@ branch_0x8034fe88:
     add     r0, r5, r0
     subf    r0, r4, r0
     sth     r0, 0x100(r29)
-    lwz     r0, -0x58d8(r13)
+    lwz     r0, R13Off_m0x58d8(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8034feb4
     li      r0, 0x3
@@ -1333,18 +1331,18 @@ branch_0x8034fee8:
     sth     r0, 0x32(r29)
     addi    r0, r4, 0x1
     ori     r0, r0, 0x1000
-    lwz     r5, -0x58c8(r13)
+    lwz     r5, R13Off_m0x58c8(r13)
     addi    r4, r29, 0x2
-    lwz     r6, -0x58c4(r13)
+    lwz     r6, R13Off_m0x58c4(r13)
     ori     r5, r5, 0x40
-    stw     r6, -0x58c4(r13)
-    stw     r5, -0x58c8(r13)
+    stw     r6, R13Off_m0x58c4(r13)
+    stw     r5, R13Off_m0x58c8(r13)
     sth     r0, 0x30(r29)
-    lwz     r0, -0x58c8(r13)
-    lwz     r5, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r5, R13Off_m0x58c4(r13)
     ori     r0, r0, 0x80
-    stw     r5, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r5, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r0, 0x0(r28)
     lhz     r5, 0x2(r29)
     cmplwi  r0, 0x2
@@ -1381,11 +1379,11 @@ branch_0x8034ff8c:
     sth     r0, 0x0(r4)
     lis     r0, 0x4000
     addi    r6, r29, 0x6c
-    lwz     r4, -0x58c8(r13)
-    lwz     r5, -0x58c4(r13)
+    lwz     r4, R13Off_m0x58c8(r13)
+    lwz     r5, R13Off_m0x58c4(r13)
     or      r0, r4, r0
-    stw     r5, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r5, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lwz     r0, 0x0(r31)
     lhz     r4, 0x6c(r29)
     cmpwi   r0, 0x2
@@ -1402,11 +1400,11 @@ branch_0x8034ffd0:
 branch_0x8034ffd4:
     sth     r0, 0x0(r6)
     cmpwi   r7, 0x0
-    lwz     r4, -0x58c8(r13)
-    lwz     r0, -0x58c4(r13)
+    lwz     r4, R13Off_m0x58c8(r13)
+    lwz     r0, R13Off_m0x58c4(r13)
     ori     r0, r0, 0x200
-    stw     r0, -0x58c4(r13)
-    stw     r4, -0x58c8(r13)
+    stw     r0, R13Off_m0x58c4(r13)
+    stw     r4, R13Off_m0x58c8(r13)
     lhz     r4, 0x0(r24)
     lhz     r5, 0x0(r16)
     beq-    branch_0x80350004
@@ -1420,34 +1418,34 @@ branch_0x80350008:
     cmplw   r8, r4
     bge-    branch_0x80350060
     slwi    r6, r8, 8
-    subi    r0, r6, 0x1
+    addi    r0, r6, -0x1
     add     r0, r4, r0
     divwu   r0, r0, r4
     ori     r0, r0, 0x1000
     sth     r0, 0x4a(r29)
     lis     r0, 0x400
-    lwz     r6, -0x58c8(r13)
-    lwz     r7, -0x58c4(r13)
+    lwz     r6, R13Off_m0x58c8(r13)
+    lwz     r7, R13Off_m0x58c4(r13)
     or      r0, r7, r0
-    stw     r0, -0x58c4(r13)
-    stw     r6, -0x58c8(r13)
+    stw     r0, R13Off_m0x58c4(r13)
+    stw     r6, R13Off_m0x58c8(r13)
     sth     r8, 0x70(r29)
-    lwz     r6, -0x58c8(r13)
-    lwz     r0, -0x58c4(r13)
+    lwz     r6, R13Off_m0x58c8(r13)
+    lwz     r0, R13Off_m0x58c4(r13)
     ori     r0, r0, 0x80
-    stw     r0, -0x58c4(r13)
-    stw     r6, -0x58c8(r13)
+    stw     r0, R13Off_m0x58c4(r13)
+    stw     r6, R13Off_m0x58c8(r13)
     b       branch_0x80350080
 
 branch_0x80350060:
     li      r0, 0x100
     sth     r0, 0x4a(r29)
     lis     r0, 0x400
-    lwz     r6, -0x58c8(r13)
-    lwz     r7, -0x58c4(r13)
+    lwz     r6, R13Off_m0x58c8(r13)
+    lwz     r7, R13Off_m0x58c4(r13)
     or      r0, r7, r0
-    stw     r0, -0x58c4(r13)
-    stw     r6, -0x58c8(r13)
+    stw     r0, R13Off_m0x58c4(r13)
+    stw     r6, R13Off_m0x58c8(r13)
 branch_0x80350080:
     lhz     r0, 0x0(r3)
     subfic  r12, r4, 0x2d0
@@ -1457,90 +1455,90 @@ branch_0x80350080:
     sth     r6, 0x6(r29)
     lis     r9, 0x400
     lis     r7, 0x800
-    lwz     r10, -0x58c8(r13)
+    lwz     r10, R13Off_m0x58c8(r13)
     lis     r6, 0x10
     lis     r4, 0x20
-    lwz     r11, -0x58c4(r13)
+    lwz     r11, R13Off_m0x58c4(r13)
     or      r10, r10, r3
     lis     r3, 0x4
-    stw     r11, -0x58c4(r13)
-    stw     r10, -0x58c8(r13)
+    stw     r11, R13Off_m0x58c4(r13)
+    stw     r10, R13Off_m0x58c8(r13)
     lbz     r10, 0x1d(r30)
     lbz     r11, 0x1e(r30)
     insrwi  r11, r10, 8, 16
     sth     r11, 0x4(r29)
-    lwz     r10, -0x58c8(r13)
-    lwz     r11, -0x58c4(r13)
+    lwz     r10, R13Off_m0x58c8(r13)
+    lwz     r11, R13Off_m0x58c4(r13)
     or      r8, r10, r8
-    stw     r11, -0x58c4(r13)
-    stw     r8, -0x58c8(r13)
+    stw     r11, R13Off_m0x58c4(r13)
+    stw     r8, R13Off_m0x58c8(r13)
     lbz     r8, 0x1f(r30)
     lbz     r10, 0x1c(r30)
     add     r16, r8, r0
     lhz     r11, 0x20(r30)
-    subi    r16, r16, 0x28
+    addi    r16, r16, -0x28
     clrlslwi  r8, r16, 23, 7
     or      r8, r10, r8
     sth     r8, 0xa(r29)
     add     r8, r11, r0
     addi    r0, r8, 0x28
-    lwz     r10, -0x58c8(r13)
+    lwz     r10, R13Off_m0x58c8(r13)
     subf    r0, r12, r0
     srwi    r8, r16, 9
-    lwz     r11, -0x58c4(r13)
+    lwz     r11, R13Off_m0x58c4(r13)
     slwi    r0, r0, 1
     or      r9, r10, r9
-    stw     r11, -0x58c4(r13)
+    stw     r11, R13Off_m0x58c4(r13)
     or      r0, r8, r0
-    stw     r9, -0x58c8(r13)
+    stw     r9, R13Off_m0x58c8(r13)
     sth     r0, 0x8(r29)
-    lwz     r0, -0x58c8(r13)
-    lwz     r8, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r8, R13Off_m0x58c4(r13)
     or      r0, r0, r7
-    stw     r8, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r8, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lhz     r0, 0x10(r30)
     lbz     r7, 0xc(r30)
     slwi    r0, r0, 5
     or      r0, r7, r0
     sth     r0, 0x16(r29)
-    lwz     r0, -0x58c8(r13)
-    lwz     r7, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r7, R13Off_m0x58c4(r13)
     or      r0, r0, r6
-    stw     r7, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r7, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lhz     r0, 0x14(r30)
     lbz     r6, 0xe(r30)
     slwi    r0, r0, 5
     or      r0, r6, r0
     sth     r0, 0x14(r29)
-    lwz     r0, -0x58c8(r13)
-    lwz     r6, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r6, R13Off_m0x58c4(r13)
     or      r0, r0, r4
-    stw     r6, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r6, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lhz     r0, 0x12(r30)
     lbz     r4, 0xd(r30)
     slwi    r0, r0, 5
     or      r0, r4, r0
     sth     r0, 0x1a(r29)
-    lwz     r0, -0x58c8(r13)
-    lwz     r4, -0x58c4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r4, R13Off_m0x58c4(r13)
     or      r0, r0, r3
-    stw     r4, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r4, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lhz     r0, 0x16(r30)
     lbz     r3, 0xf(r30)
     slwi    r0, r0, 5
     or      r0, r3, r0
     sth     r0, 0x18(r29)
-    lwz     r3, -0x58c8(r13)
+    lwz     r3, R13Off_m0x58c8(r13)
     lis     r0, 0x8
     addi    r6, r29, 0x11c
-    lwz     r4, -0x58c4(r13)
+    lwz     r4, R13Off_m0x58c4(r13)
     or      r0, r3, r0
-    stw     r4, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r4, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
     lhz     r3, 0x0(r27)
     lwz     r4, 0x0(r25)
     addi    r0, r3, 0xf
@@ -1574,13 +1572,13 @@ branch_0x80350224:
     lbz     r4, 0x11d(r29)
     insrwi  r4, r0, 8, 16
     sth     r4, 0x48(r29)
-    lwz     r4, -0x58c8(r13)
-    lwz     r0, -0x58a8(r13)
-    lwz     r5, -0x58c4(r13)
+    lwz     r4, R13Off_m0x58c8(r13)
+    lwz     r0, R13Off_m0x58a8(r13)
+    lwz     r5, R13Off_m0x58c4(r13)
     cmplwi  r0, 0x0
     or      r0, r5, r3
-    stw     r0, -0x58c4(r13)
-    stw     r4, -0x58c8(r13)
+    stw     r0, R13Off_m0x58c4(r13)
+    stw     r4, R13Off_m0x58c8(r13)
     beq-    branch_0x803502a0
     addi    r3, r29, 0xf0
     addi    r4, r29, 0x124
@@ -1616,31 +1614,31 @@ VIFlush: # 0x803502e8
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     bl      OSDisableInterrupts
-    lwz     r7, -0x58c0(r13)
-    lis     r4, 0x8040
-    lis     r5, 0x8040
-    lwz     r6, -0x58d0(r13)
+    lwz     r7, R13Off_m0x58c0(r13)
+    lis     r4, shdwRegs@h
+    lis     r5, regs@h
+    lwz     r6, R13Off_m0x58d0(r13)
     li      r0, 0x0
-    addi    r29, r4, 0x3340
+    addi    r29, r4, shdwRegs@l
     or      r6, r7, r6
-    stw     r6, -0x58c0(r13)
-    addi    r31, r5, 0x32c8
+    stw     r6, R13Off_m0x58c0(r13)
+    addi    r31, r5, regs@l
     addi    r30, r3, 0x0
-    stw     r0, -0x58d0(r13)
-    lwz     r4, -0x58b8(r13)
-    lwz     r5, -0x58b4(r13)
-    lwz     r0, -0x58c8(r13)
-    lwz     r3, -0x58c4(r13)
+    stw     r0, R13Off_m0x58d0(r13)
+    lwz     r4, R13Off_m0x58b8(r13)
+    lwz     r5, R13Off_m0x58b4(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
+    lwz     r3, R13Off_m0x58c4(r13)
     or      r0, r4, r0
     or      r3, r5, r3
-    stw     r3, -0x58b4(r13)
-    stw     r0, -0x58b8(r13)
+    stw     r3, R13Off_m0x58b4(r13)
+    stw     r0, R13Off_m0x58b8(r13)
     b       branch_0x803503c4
 
 branch_0x8035034c:
-    lwz     r3, -0x58c8(r13)
+    lwz     r3, R13Off_m0x58c8(r13)
     li      r5, 0x20
-    lwz     r27, -0x58c4(r13)
+    lwz     r27, R13Off_m0x58c4(r13)
     addi    r4, r27, 0x0
     bl      __shr2u
     cntlzw  r4, r4
@@ -1663,24 +1661,24 @@ branch_0x80350380:
     li      r3, 0x0
     li      r4, 0x1
     bl      __shl2i
-    lwz     r0, -0x58c8(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
     not     r5, r3
     not     r4, r4
-    lwz     r3, -0x58c4(r13)
+    lwz     r3, R13Off_m0x58c4(r13)
     and     r0, r0, r5
     and     r3, r3, r4
-    stw     r3, -0x58c4(r13)
-    stw     r0, -0x58c8(r13)
+    stw     r3, R13Off_m0x58c4(r13)
+    stw     r0, R13Off_m0x58c8(r13)
 branch_0x803503c4:
-    lwz     r0, -0x58c8(r13)
+    lwz     r0, R13Off_m0x58c8(r13)
     li      r3, 0x0
-    lwz     r4, -0x58c4(r13)
+    lwz     r4, R13Off_m0x58c4(r13)
     xor     r0, r0, r3
     xor     r3, r4, r3
     or.     r0, r3, r0
     bne+    branch_0x8035034c
     li      r0, 0x1
-    stw     r0, -0x58ec(r13)
+    stw     r0, R13Off_m0x58ec(r13)
     mr      r3, r30
     bl      OSRestoreInterrupts
     lmw     r27, 0x14(sp)
@@ -1693,18 +1691,18 @@ branch_0x803503c4:
 .globl VISetNextFrameBuffer
 VISetNextFrameBuffer: # 0x80350404
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, regs@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x32c8
+    addi    r31, r4, regs@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      OSDisableInterrupts
     stw     r30, 0x120(r31)
     li      r0, 0x1
     addi    r30, r3, 0x0
-    stw     r0, -0x58a8(r13)
+    stw     r0, R13Off_m0x58a8(r13)
     addi    r3, r31, 0xf0
     addi    r4, r31, 0x124
     addi    r5, r31, 0x128
@@ -1724,11 +1722,11 @@ VISetNextFrameBuffer: # 0x80350404
 .globl VISetBlack
 VISetBlack: # 0x80350470
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, regs@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r4, 0x32c8
+    addi    r31, r4, regs@l
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
     bl      OSDisableInterrupts
@@ -1758,14 +1756,14 @@ VISetBlack: # 0x80350470
 
 .globl VIGetRetraceCount
 VIGetRetraceCount: # 0x803504ec
-    lwz     r3, -0x58f0(r13)
+    lwz     r3, R13Off_m0x58f0(r13)
     blr
 
 
 .globl getCurrentFieldEvenOdd
 getCurrentFieldEvenOdd: # 0x803504f4
-    lis     r3, 0xcc00
-    addi    r7, r3, 0x2000
+    lis     r3, unk_cc002000@h
+    addi    r7, r3, unk_cc002000@l
     lhzu    r0, 0x2c(r7)
     addi    r4, r3, 0x2000
     clrlwi  r5, r0, 21
@@ -1777,9 +1775,9 @@ branch_0x80350508:
     cmplw   r6, r5
     clrlwi  r3, r3, 21
     bne+    branch_0x80350508
-    lwz     r6, -0x58b0(r13)
-    subi    r0, r5, 0x1
-    subi    r4, r3, 0x1
+    lwz     r6, R13Off_m0x58b0(r13)
+    addi    r0, r5, -0x1
+    addi    r4, r3, -0x1
     lhz     r3, 0x1a(r6)
     slwi    r5, r0, 1
     lhz     r0, 0x18(r6)
@@ -1802,8 +1800,8 @@ VIGetNextField: # 0x8035055c
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     bl      OSDisableInterrupts
-    lis     r4, 0xcc00
-    addi    r8, r4, 0x2000
+    lis     r4, unk_cc002000@h
+    addi    r8, r4, unk_cc002000@l
     lhzu    r0, 0x2c(r8)
     addi    r5, r4, 0x2000
     clrlwi  r6, r0, 21
@@ -1815,9 +1813,9 @@ branch_0x80350584:
     cmplw   r7, r6
     clrlwi  r4, r4, 21
     bne+    branch_0x80350584
-    lwz     r7, -0x58b0(r13)
-    subi    r0, r6, 0x1
-    subi    r5, r4, 0x1
+    lwz     r7, R13Off_m0x58b0(r13)
+    addi    r0, r6, -0x1
+    addi    r5, r4, -0x1
     lhz     r4, 0x1a(r7)
     slwi    r6, r0, 1
     lhz     r0, 0x18(r7)
@@ -1832,8 +1830,8 @@ branch_0x803505d0:
     li      r31, 0x0
 branch_0x803505d4:
     bl      OSRestoreInterrupts
-    lis     r3, 0x8040
-    addi    r3, r3, 0x33b8
+    lis     r3, HorVer@h
+    addi    r3, r3, HorVer@l
     lhz     r0, 0xa(r3)
     xori     r3, r31, 0x1
     clrlwi  r0, r0, 31
@@ -1852,10 +1850,10 @@ VIGetCurrentLine: # 0x80350604
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
-    lwz     r31, -0x58b0(r13)
+    lwz     r31, R13Off_m0x58b0(r13)
     bl      OSDisableInterrupts
-    lis     r4, 0xcc00
-    addi    r8, r4, 0x2000
+    lis     r4, unk_cc002000@h
+    addi    r8, r4, unk_cc002000@l
     lhzu    r0, 0x2c(r8)
     addi    r5, r4, 0x2000
     clrlwi  r6, r0, 21
@@ -1867,9 +1865,9 @@ branch_0x80350634:
     cmplw   r7, r6
     clrlwi  r7, r4, 21
     bne+    branch_0x80350634
-    lwz     r4, -0x58b0(r13)
-    subi    r5, r7, 0x1
-    subi    r6, r6, 0x1
+    lwz     r4, R13Off_m0x58b0(r13)
+    addi    r5, r7, -0x1
+    addi    r6, r6, -0x1
     lhz     r0, 0x1a(r4)
     slwi    r4, r6, 1
     divwu   r0, r5, r0
@@ -1896,7 +1894,7 @@ VIGetTvFormat: # 0x8035069c
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     bl      OSDisableInterrupts
-    lwz     r0, -0x58ac(r13)
+    lwz     r0, R13Off_m0x58ac(r13)
     cmpwi   r0, 0x3
     beq-    branch_0x803506e8
     bge-    branch_0x803506d8

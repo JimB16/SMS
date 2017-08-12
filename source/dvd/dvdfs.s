@@ -2,19 +2,19 @@
 .globl __DVDFSInit
 __DVDFSInit: # 0x8034b574
     lis     r3, 0x8000
-    stw     r3, -0x5968(r13)
+    stw     r3, R13Off_m0x5968(r13)
     lwz     r0, 0x38(r3)
-    stw     r0, -0x5964(r13)
-    lwz     r3, -0x5964(r13)
+    stw     r0, R13Off_m0x5964(r13)
+    lwz     r3, R13Off_m0x5964(r13)
     cmplwi  r3, 0x0
     beqlr-    
 
     lwz     r0, 0x8(r3)
-    stw     r0, -0x595c(r13)
-    lwz     r0, -0x595c(r13)
+    stw     r0, R13Off_m0x595c(r13)
+    lwz     r0, R13Off_m0x595c(r13)
     mulli   r0, r0, 0xc
     add     r0, r3, r0
-    stw     r0, -0x5960(r13)
+    stw     r0, R13Off_m0x5960(r13)
     blr
 
 
@@ -25,10 +25,10 @@ DVDConvertPathToEntrynum: # 0x8034b5ac
     stwu    sp, -0x48(sp)
     stmw    r20, 0x18(sp)
     mr      r23, r3
-    lis     r3, 0x803f
+    lis     r3, unk_803e81f0@ha
     addi    r25, r23, 0x0
-    subi    r31, r3, 0x7e10
-    lwz     r26, -0x5958(r13)
+    addi    r31, r3, unk_803e81f0@l
+    lwz     r26, R13Off_m0x5958(r13)
 branch_0x8034b5d0:
     lbz     r3, 0x0(r23)
     extsb.  r0, r3
@@ -55,7 +55,7 @@ branch_0x8034b5fc:
     cmpwi   r3, 0x2f
     bne-    branch_0x8034b638
     mulli   r3, r26, 0xc
-    lwz     r4, -0x5964(r13)
+    lwz     r4, R13Off_m0x5964(r13)
     addi    r0, r3, 0x4
     lwzx    r26, r4, r0
     addi    r23, r23, 0x3
@@ -65,7 +65,7 @@ branch_0x8034b638:
     extsb.  r0, r3
     bne-    branch_0x8034b674
     mulli   r0, r26, 0xc
-    lwz     r3, -0x5964(r13)
+    lwz     r3, R13Off_m0x5964(r13)
     add     r3, r3, r0
     lwz     r3, 0x4(r3)
     b       branch_0x8034b88c
@@ -83,7 +83,7 @@ branch_0x8034b664:
     b       branch_0x8034b88c
 
 branch_0x8034b674:
-    lwz     r0, -0x5954(r13)
+    lwz     r0, R13Off_m0x5954(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x8034b728
     addi    r28, r23, 0x0
@@ -135,7 +135,7 @@ branch_0x8034b704:
     addi    r5, r31, 0x0
     crxor   6, 6, 6
     addi    r6, r25, 0x0
-    subi    r3, r13, 0x7350
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x178
     bl      OSPanic
     b       branch_0x8034b74c
@@ -184,7 +184,7 @@ branch_0x8034b790:
     cmpwi   r30, 0x1
     beq-    branch_0x8034b81c
 branch_0x8034b7a0:
-    lwz     r3, -0x5960(r13)
+    lwz     r3, R13Off_m0x5960(r13)
     clrlwi  r0, r4, 8
     addi    r21, r23, 0x0
     add     r20, r3, r0
@@ -224,7 +224,7 @@ branch_0x8034b814:
     cmpwi   r0, 0x1
     beq-    branch_0x8034b870
 branch_0x8034b81c:
-    lwz     r0, -0x5964(r13)
+    lwz     r0, R13Off_m0x5964(r13)
     add     r3, r0, r28
     lwz     r0, 0x0(r3)
     clrrwi. r0, r0, 24
@@ -245,7 +245,7 @@ branch_0x8034b84c:
 branch_0x8034b850:
     mr      r26, r0
 branch_0x8034b854:
-    lwz     r3, -0x5964(r13)
+    lwz     r3, R13Off_m0x5964(r13)
     addi    r0, r3, 0x8
     lwzx    r0, r29, r0
     cmplw   r26, r0
@@ -276,11 +276,11 @@ branch_0x8034b88c:
 DVDFastOpen: # 0x8034b8a0
     cmpwi   r3, 0x0
     blt-    branch_0x8034b8dc
-    lwz     r0, -0x595c(r13)
+    lwz     r0, R13Off_m0x595c(r13)
     cmplw   r3, r0
     bge-    branch_0x8034b8dc
     mulli   r6, r3, 0xc
-    lwz     r3, -0x5964(r13)
+    lwz     r3, R13Off_m0x5964(r13)
     lwzx    r0, r3, r6
     clrrwi. r0, r0, 24
     bne-    branch_0x8034b8d0
@@ -302,7 +302,7 @@ branch_0x8034b8e4:
     li      r0, 0x0
     li      r3, 0x1
     stw     r5, 0x30(r4)
-    lwz     r5, -0x5964(r13)
+    lwz     r5, R13Off_m0x5964(r13)
     add     r5, r5, r6
     lwz     r5, 0x8(r5)
     stw     r5, 0x34(r4)
@@ -326,9 +326,9 @@ DVDOpen: # 0x8034b914
     addi    r3, sp, 0x10
     li      r4, 0x80
     bl      DVDGetCurrentDir
-    lis     r3, 0x803f
+    lis     r3, unk_803e82b8@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x7d48
+    addi    r3, r3, unk_803e82b8@l
     addi    r4, r30, 0x0
     addi    r5, sp, 0x10
     bl      OSReport
@@ -337,7 +337,7 @@ DVDOpen: # 0x8034b914
 
 branch_0x8034b968:
     mulli   r5, r3, 0xc
-    lwz     r3, -0x5964(r13)
+    lwz     r3, R13Off_m0x5964(r13)
     lwzx    r0, r3, r5
     clrrwi. r0, r0, 24
     bne-    branch_0x8034b984
@@ -358,7 +358,7 @@ branch_0x8034b998:
     li      r0, 0x0
     li      r3, 0x1
     stw     r4, 0x30(r31)
-    lwz     r4, -0x5964(r13)
+    lwz     r4, R13Off_m0x5964(r13)
     add     r4, r4, r5
     lwz     r4, 0x8(r4)
     stw     r4, 0x34(r31)
@@ -403,9 +403,9 @@ entryToPath: # 0x8034ba00
     b       branch_0x8034bb40
 
 branch_0x8034ba34:
-    lwz     r4, -0x5964(r13)
+    lwz     r4, R13Off_m0x5964(r13)
     mulli   r3, r3, 0xc
-    lwz     r6, -0x5960(r13)
+    lwz     r6, R13Off_m0x5960(r13)
     addi    r5, r4, 0x4
     lwzx    r0, r4, r3
     lwzx    r3, r5, r3
@@ -442,7 +442,7 @@ branch_0x8034ba90:
 branch_0x8034bab0:
     lbz     r0, 0x0(r28)
     addi    r28, r28, 0x1
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
     stb     r0, 0x0(r5)
     addi    r5, r5, 0x1
 branch_0x8034bac4:
@@ -473,7 +473,7 @@ branch_0x8034baec:
 branch_0x8034bb10:
     lbz     r0, 0x0(r6)
     addi    r6, r6, 0x1
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
     stb     r0, 0x0(r5)
     addi    r5, r5, 0x1
 branch_0x8034bb24:
@@ -508,7 +508,7 @@ DVDGetCurrentDir: # 0x8034bb60
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
     addi    r4, r29, 0x0
-    lwz     r31, -0x5958(r13)
+    lwz     r31, R13Off_m0x5958(r13)
     addi    r3, r31, 0x0
     bl      entryToPath
     cmplw   r3, r30
@@ -520,7 +520,7 @@ DVDGetCurrentDir: # 0x8034bb60
 
 branch_0x8034bbac:
     mulli   r0, r31, 0xc
-    lwz     r4, -0x5964(r13)
+    lwz     r4, R13Off_m0x5964(r13)
     lwzx    r0, r4, r0
     clrrwi. r0, r0, 24
     bne-    branch_0x8034bbc8
@@ -532,7 +532,7 @@ branch_0x8034bbc8:
 branch_0x8034bbcc:
     cmpwi   r0, 0x0
     beq-    branch_0x8034bbf8
-    subi    r0, r30, 0x1
+    addi    r0, r30, -0x1
     cmplw   r3, r0
     bne-    branch_0x8034bbec
     li      r0, 0x0
@@ -567,7 +567,7 @@ DVDChangeDir: # 0x8034bc24
     cmpwi   r3, 0x0
     blt-    branch_0x8034bc64
     mulli   r0, r3, 0xc
-    lwz     r4, -0x5964(r13)
+    lwz     r4, R13Off_m0x5964(r13)
     lwzx    r0, r4, r0
     clrrwi. r0, r0, 24
     bne-    branch_0x8034bc58
@@ -584,7 +584,7 @@ branch_0x8034bc64:
     b       branch_0x8034bc74
 
 branch_0x8034bc6c:
-    stw     r3, -0x5958(r13)
+    stw     r3, R13Off_m0x5958(r13)
     li      r3, 0x1
 branch_0x8034bc74:
     lwz     r0, 0xc(sp)
@@ -610,10 +610,10 @@ DVDReadAsyncPrio: # 0x8034bc84
     cmplw   r29, r0
     blt-    branch_0x8034bcd4
 branch_0x8034bcbc:
-    lis     r3, 0x803f
+    lis     r3, unk_803e82f0@ha
     crxor   6, 6, 6
-    subi    r5, r3, 0x7d10
-    subi    r3, r13, 0x7350
+    addi    r5, r3, unk_803e82f0@l
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x2e3
     bl      OSPanic
 branch_0x8034bcd4:
@@ -624,16 +624,16 @@ branch_0x8034bcd4:
     cmplw   r4, r0
     blt-    branch_0x8034bd04
 branch_0x8034bcec:
-    lis     r3, 0x803f
+    lis     r3, unk_803e82f0@ha
     crxor   6, 6, 6
-    subi    r5, r3, 0x7d10
-    subi    r3, r13, 0x7350
+    addi    r5, r3, unk_803e82f0@l
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x2e9
     bl      OSPanic
 branch_0x8034bd04:
     stw     r30, 0x38(r26)
-    lis     r3, 0x8035
-    subi    r7, r3, 0x42bc
+    lis     r3, cbForReadAsync@ha
+    addi    r7, r3, cbForReadAsync@l
     lwz     r0, 0x30(r26)
     addi    r3, r26, 0x0
     addi    r4, r27, 0x0
@@ -682,10 +682,10 @@ DVDReadPrio: # 0x8034bd74
     cmplw   r29, r0
     blt-    branch_0x8034bdc0
 branch_0x8034bda8:
-    lis     r3, 0x803f
+    lis     r3, unk_803e8324@ha
     crxor   6, 6, 6
-    subi    r5, r3, 0x7cdc
-    subi    r3, r13, 0x7350
+    addi    r5, r3, unk_803e8324@l
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x329
     bl      OSPanic
 branch_0x8034bdc0:
@@ -696,16 +696,16 @@ branch_0x8034bdc0:
     cmplw   r4, r0
     blt-    branch_0x8034bdf0
 branch_0x8034bdd8:
-    lis     r3, 0x803f
+    lis     r3, unk_803e8324@ha
     crxor   6, 6, 6
-    subi    r5, r3, 0x7cdc
-    subi    r3, r13, 0x7350
+    addi    r5, r3, unk_803e8324@l
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x32f
     bl      OSPanic
 branch_0x8034bdf0:
     lwz     r0, 0x30(r31)
-    lis     r4, 0x8035
-    subi    r7, r4, 0x4174
+    lis     r4, cbForReadSync@ha
+    addi    r7, r4, cbForReadSync@l
     addi    r3, r31, 0x0
     addi    r4, r27, 0x0
     addi    r5, r28, 0x0
@@ -740,7 +740,7 @@ branch_0x8034be50:
     b       branch_0x8034be6c
 
 branch_0x8034be60:
-    subi    r3, r13, 0x5950
+    addi    r3, r13, R13Off_m0x5950
     bl      OSSleepThread
     b       branch_0x8034be2c
 
@@ -759,7 +759,7 @@ branch_0x8034be78:
 .globl cbForReadSync
 cbForReadSync: # 0x8034be8c
     mflr    r0
-    subi    r3, r13, 0x5950
+    addi    r3, r13, R13Off_m0x5950
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     bl      OSWakeupThread
@@ -780,8 +780,8 @@ DVDPrepareStreamAsync: # 0x8034beb0
     addi    r28, r4, 0x0
     addi    r30, r6, 0x0
     lwz     r7, 0x30(r3)
-    lis     r3, 0x803f
-    subi    r31, r3, 0x7e10
+    lis     r3, unk_803e81f0@ha
+    addi    r31, r3, unk_803e81f0@l
     add     r0, r7, r29
     clrlwi. r0, r0, 17
     beq-    branch_0x8034bf04
@@ -789,7 +789,7 @@ DVDPrepareStreamAsync: # 0x8034beb0
     crxor   6, 6, 6
     addi    r7, r29, 0x0
     addi    r5, r31, 0x1c8
-    subi    r3, r13, 0x7350
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x4a2
     bl      OSPanic
 branch_0x8034bf04:
@@ -803,7 +803,7 @@ branch_0x8034bf14:
     addi    r6, r28, 0x0
     crxor   6, 6, 6
     addi    r5, r31, 0x230
-    subi    r3, r13, 0x7350
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x4ac
     bl      OSPanic
 branch_0x8034bf34:
@@ -818,13 +818,13 @@ branch_0x8034bf4c:
     crxor   6, 6, 6
     addi    r7, r28, 0x0
     addi    r5, r31, 0x288
-    subi    r3, r13, 0x7350
+    addi    r3, r13, R13Off_m0x7350
     li      r4, 0x4b4
     bl      OSPanic
 branch_0x8034bf68:
     stw     r30, 0x38(r27)
-    lis     r3, 0x8035
-    subi    r6, r3, 0x4064
+    lis     r3, cbForPrepareStreamAsync@ha
+    addi    r6, r3, cbForPrepareStreamAsync@l
     lwz     r0, 0x30(r27)
     addi    r3, r27, 0x0
     addi    r4, r28, 0x0

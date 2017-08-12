@@ -30,10 +30,10 @@ branch_0x80310154:
     lis     r0, 0x4330
     lfs     f0, 0x10(r3)
     stw     r0, 0x20(sp)
-    lfd     f3, 0x678(rtoc)
+    lfd     f3, 0x678(r2)
     fsubs   f1, f0, f4
     lfd     f2, 0x20(sp)
-    lfs     f0, 0x670(rtoc)
+    lfs     f0, 0x670(r2)
     fsubs   f2, f2, f3
     fmuls   f1, f2, f1
     fdivs   f0, f1, f0
@@ -46,16 +46,16 @@ branch_0x80310190:
     xoris   r4, r6, 0x8000
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
-    lfd     f3, 0x678(rtoc)
+    lfd     f3, 0x678(r2)
     stw     r4, 0x24(sp)
-    lfd     f1, 0x680(rtoc)
+    lfd     f1, 0x680(r2)
     stw     r0, 0x20(sp)
     lfs     f4, 0xc(r3)
     stw     r0, 0x18(sp)
     lfd     f2, 0x20(sp)
     lfd     f0, 0x18(sp)
     fsubs   f2, f2, f3
-    lfs     f3, 0x674(rtoc)
+    lfs     f3, 0x674(r2)
     fsubs   f0, f0, f1
     fsubs   f1, f3, f4
     fdivs   f0, f2, f0
@@ -64,11 +64,11 @@ branch_0x80310190:
 
 branch_0x803101e0:
     subf    r4, r0, r6
-    lfd     f2, 0x678(rtoc)
+    lfd     f2, 0x678(r2)
     subfic  r0, r0, 0x7f
     lfs     f0, 0x10(r3)
     xoris   r3, r4, 0x8000
-    lfs     f4, 0x674(rtoc)
+    lfs     f4, 0x674(r2)
     xoris   r0, r0, 0x8000
     stw     r3, 0x1c(sp)
     lis     r3, 0x4330

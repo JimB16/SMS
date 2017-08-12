@@ -7,12 +7,12 @@ __dt__26TNerveBossEelSleepOnBottomFv: # 0x800d0498
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d04dc
-    lis     r3, 0x803c
-    subi    r0, r3, 0x72f8
+    lis     r3, __vvt__26TNerveBossEelSleepOnBottom@ha
+    addi    r0, r3, __vvt__26TNerveBossEelSleepOnBottom@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d04cc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d04cc:
     extsh.  r0, r4
@@ -50,7 +50,7 @@ execute__26TNerveBossEelSleepOnBottomCFP24TSpineBase_10TLiveActor_: # 0x800d04f4
     stw     r3, 0x1b8(r31)
     li      r0, 0xa
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r4, 0x74(r31)
     lwz     r3, 0xc(r4)
@@ -78,7 +78,7 @@ branch_0x800d0578:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d059c:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -100,9 +100,9 @@ branch_0x800d05e0:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
 branch_0x800d05e8:
-    lis     r3, 0x51ec
+    lis     r3, unk_51eb851f@ha
     lwz     r4, 0x20(r30)
-    subi    r0, r3, 0x7ae1
+    addi    r0, r3, unk_51eb851f@l
     mulhw   r0, r0, r4
     srawi   r0, r0, 5
     srwi    r3, r0, 31
@@ -151,26 +151,26 @@ theNerve__26TNerveBossEelSleepOnBottomFv: # 0x800d0688
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x691c(r13)
+    lbz     r0, R13Off_m0x691c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d06d8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6918(r13)
-    subi    r0, r3, 0x72f8
-    lis     r4, 0x800d
-    stw     r0, -0x6918(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fe0
-    addi    r4, r4, 0x498
-    subi    r3, r13, 0x6918
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__26TNerveBossEelSleepOnBottom@ha
+    stw     r0, R13Off_m0x6918(r13)
+    addi    r0, r3, __vvt__26TNerveBossEelSleepOnBottom@l
+    lis     r4, __dt__26TNerveBossEelSleepOnBottomFv@h
+    stw     r0, R13Off_m0x6918(r13)
+    lis     r3, unk_803f1fe0@h
+    addi    r5, r3, unk_803f1fe0@l
+    addi    r4, r4, __dt__26TNerveBossEelSleepOnBottomFv@l
+    addi    r3, r13, R13Off_m0x6918
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x691c(r13)
+    stb     r0, R13Off_m0x691c(r13)
 branch_0x800d06d8:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6918
+    addi    r3, r13, R13Off_m0x6918
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -202,7 +202,7 @@ branch_0x800d0730:
     stw     r3, 0x1b8(r31)
     li      r0, 0xd
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -230,7 +230,7 @@ branch_0x800d077c:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d07a0:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -251,9 +251,9 @@ branch_0x800d07e0:
 branch_0x800d07e4:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x1b
-    lfs     f1, -0x5e48(rtoc)
+    lfs     f1, -0x5e48(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     b       branch_0x800d0bac
 
@@ -274,7 +274,7 @@ branch_0x800d0800:
     stw     r3, 0x1b8(r31)
     li      r0, 0xe
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -302,7 +302,7 @@ branch_0x800d0874:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d0898:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -323,9 +323,9 @@ branch_0x800d08d8:
 branch_0x800d08dc:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x1c
-    lfs     f1, -0x5e48(rtoc)
+    lfs     f1, -0x5e48(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r3, 0x18c(r31)
     lwz     r12, 0x0(r3)
@@ -377,7 +377,7 @@ branch_0x800d0974:
 branch_0x800d09a4:
     lwz     r4, 0x74(r31)
     addi    r3, sp, 0xd4
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     lwz     r4, 0x4(r4)
     lhz     r0, 0x1a0(r31)
     lwz     r7, 0x58(r4)
@@ -415,25 +415,25 @@ branch_0x800d0a2c:
 branch_0x800d0a30:
     clrlwi. r0, r0, 24
     beq-    branch_0x800d0ab8
-    lbz     r0, -0x6934(r13)
+    lbz     r0, R13Off_m0x6934(r13)
     extsb.  r0, r0
     bne-    branch_0x800d0a7c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6930(r13)
-    subi    r0, r3, 0x7264
-    lis     r4, 0x800d
-    stw     r0, -0x6930(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fbc
-    addi    r4, r4, 0xbf4
-    subi    r3, r13, 0x6930
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBossEelEat@ha
+    stw     r0, R13Off_m0x6930(r13)
+    addi    r0, r3, __vvt__16TNerveBossEelEat@l
+    lis     r4, __dt__16TNerveBossEelEatFv@h
+    stw     r0, R13Off_m0x6930(r13)
+    lis     r3, unk_803f1fbc@h
+    addi    r5, r3, unk_803f1fbc@l
+    addi    r4, r4, __dt__16TNerveBossEelEatFv@l
+    addi    r3, r13, R13Off_m0x6930
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6934(r13)
+    stb     r0, R13Off_m0x6934(r13)
 branch_0x800d0a7c:
-    subi    r4, r13, 0x6930
+    addi    r4, r13, R13Off_m0x6930
     cmplwi  r4, 0x0
     beq-    branch_0x800d0ab0
     lwz     r5, 0x8(r29)
@@ -463,9 +463,9 @@ branch_0x800d0ab8:
     b       branch_0x800d0bd4
 
 branch_0x800d0ae0:
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x1d
-    lfs     f1, -0x5e48(rtoc)
+    lfs     f1, -0x5e48(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r3, 0x74(r31)
     li      r4, 0x0
@@ -473,7 +473,7 @@ branch_0x800d0ae0:
     stw     r3, 0x1b8(r31)
     li      r0, 0x2
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -501,7 +501,7 @@ branch_0x800d0b3c:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d0b60:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -553,12 +553,12 @@ __dt__16TNerveBossEelEatFv: # 0x800d0bf4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d0c38
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7264
+    lis     r3, __vvt__16TNerveBossEelEat@ha
+    addi    r0, r3, __vvt__16TNerveBossEelEat@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d0c28
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d0c28:
     extsh.  r0, r4
@@ -579,26 +579,26 @@ theNerve__26TNerveBossEelMouthOpenWaitFv: # 0x800d0c50
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6924(r13)
+    lbz     r0, R13Off_m0x6924(r13)
     extsb.  r0, r0
     bne-    branch_0x800d0ca0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6920(r13)
-    subi    r0, r3, 0x7284
-    lis     r4, 0x800d
-    stw     r0, -0x6920(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fd4
-    addi    r4, r4, 0xcb4
-    subi    r3, r13, 0x6920
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__26TNerveBossEelMouthOpenWait@ha
+    stw     r0, R13Off_m0x6920(r13)
+    addi    r0, r3, __vvt__26TNerveBossEelMouthOpenWait@l
+    lis     r4, __dt__26TNerveBossEelMouthOpenWaitFv@h
+    stw     r0, R13Off_m0x6920(r13)
+    lis     r3, unk_803f1fd4@h
+    addi    r5, r3, unk_803f1fd4@l
+    addi    r4, r4, __dt__26TNerveBossEelMouthOpenWaitFv@l
+    addi    r3, r13, R13Off_m0x6920
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6924(r13)
+    stb     r0, R13Off_m0x6924(r13)
 branch_0x800d0ca0:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6920
+    addi    r3, r13, R13Off_m0x6920
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -612,12 +612,12 @@ __dt__26TNerveBossEelMouthOpenWaitFv: # 0x800d0cb4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d0cf8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7284
+    lis     r3, __vvt__26TNerveBossEelMouthOpenWait@ha
+    addi    r0, r3, __vvt__26TNerveBossEelMouthOpenWait@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d0ce8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d0ce8:
     extsh.  r0, r4
@@ -636,17 +636,17 @@ branch_0x800d0cf8:
 .globl execute__16TNerveBossEelDieCFP24TSpineBase_10TLiveActor_
 execute__16TNerveBossEelDieCFP24TSpineBase_10TLiveActor_: # 0x800d0d10
     mflr    r0
-    lis     r3, 0x8038
+    lis     r3, unk_8037fe80@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x120(sp)
     stfd    f31, 0x118(sp)
     stmw    r27, 0x104(sp)
-    subi    r30, r3, 0x180
+    addi    r30, r3, unk_8037fe80@l
     lwz     r0, 0x20(r4)
     lwz     r31, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800d0f08
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x298d
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -659,7 +659,7 @@ execute__16TNerveBossEelDieCFP24TSpineBase_10TLiveActor_: # 0x800d0d10
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800d0d6c:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x14
     li      r5, 0x1
     lwz     r3, 0x74(r3)
@@ -667,9 +667,9 @@ branch_0x800d0d6c:
     li      r3, 0x7
     li      r4, 0xa
     bl      stopTrackBGMs__5MSBgmFUcUl
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x1e
-    lfs     f1, -0x5e48(rtoc)
+    lfs     f1, -0x5e48(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r3, 0x74(r31)
     li      r4, 0x0
@@ -677,7 +677,7 @@ branch_0x800d0d6c:
     stw     r3, 0x1b8(r31)
     li      r0, 0x3
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -705,7 +705,7 @@ branch_0x800d0de8:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d0e0c:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -750,7 +750,7 @@ branch_0x800d0e50:
     lwz     r3, 0x218(r31)
     bl      generate__17TBossEelHeartCoinFRQ29JGeometry8TVec3_f_
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_4
+    li      r4, 0x4
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d0f08
@@ -758,7 +758,7 @@ branch_0x800d0e50:
     stw     r3, 0x6c(r31)
     li      r0, 0x0
     addi    r6, sp, 0xec
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     addi    r4, r30, 0x25c
     sth     r0, 0xec(sp)
     addi    r5, r31, 0x10
@@ -766,7 +766,7 @@ branch_0x800d0e50:
     stw     r6, 0x8(sp)
     li      r6, -0x1
     li      r8, 0x0
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     li      r9, 0x0
     li      r10, 0x0
     bl      fireStartDemoCamera__12TMarDirectorFPCcPCQ29JGeometry8TVec3_f_lfbPFUlUl_lUlPQ26JDrama6TActorQ26JDrama10TFlagT_Us_
@@ -779,7 +779,7 @@ branch_0x800d0f08:
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f1, -0x5e3c(rtoc)
+    lfs     f1, -0x5e3c(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x800d0f48
@@ -794,21 +794,21 @@ branch_0x800d0f48:
     cmpwi   r3, 0x0
     beq-    branch_0x800d1174
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_8
+    li      r4, 0x8
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d0f8c
     li      r0, 0x0
     stw     r0, 0x6c(r31)
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     bl      fireEndDemoCamera__12TMarDirectorFv
 branch_0x800d0f8c:
-    lwz     r8, MarioHitActorPos(r13)
+    lwz     r8, R13Off_m0x60b4(r13)
     addi    r4, sp, 0xf0
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r5, r30, 0x270
     lwz     r7, 0x0(r8)
     lwz     r0, 0x4(r8)
@@ -858,14 +858,14 @@ branch_0x800d0f8c:
     stb     r28, 0x81(r3)
 branch_0x800d1054:
     lwz     r3, 0x74(r31)
-    subi    r4, rtoc, 0x5e58
+    addi    r4, r2, R2Off_m0x5e58
     lwz     r3, 0x4(r3)
     lwz     r3, 0x4(r3)
     lwz     r3, 0xb0(r3)
     bl      getIndex__10JUTNameTabCFPCc
     lwz     r4, 0x74(r31)
     mulli   r0, r3, 0x30
-    lwz     r3, gpItemManager(r13)
+    lwz     r3, R13Off_m0x62b0(r13)
     lwz     r5, 0x4(r4)
     addi    r4, r30, 0x28c
     lwz     r6, 0x58(r5)
@@ -888,7 +888,7 @@ branch_0x800d1054:
     stw     r3, 0x1b8(r31)
     li      r0, 0x4
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r4, 0x74(r31)
     lwz     r3, 0xc(r4)
@@ -916,7 +916,7 @@ branch_0x800d1104:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d1128:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -952,26 +952,26 @@ theNerve__16TNerveBossEelDieFv: # 0x800d1190
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x692c(r13)
+    lbz     r0, R13Off_m0x692c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d11e0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6928(r13)
-    subi    r0, r3, 0x7274
-    lis     r4, 0x800d
-    stw     r0, -0x6928(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fc8
-    addi    r4, r4, 0x11f4
-    subi    r3, r13, 0x6928
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBossEelDie@ha
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r0, r3, __vvt__16TNerveBossEelDie@l
+    lis     r4, __dt__16TNerveBossEelDieFv@h
+    stw     r0, R13Off_m0x6928(r13)
+    lis     r3, unk_803f1fc8@h
+    addi    r5, r3, unk_803f1fc8@l
+    addi    r4, r4, __dt__16TNerveBossEelDieFv@l
+    addi    r3, r13, R13Off_m0x6928
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x692c(r13)
+    stb     r0, R13Off_m0x692c(r13)
 branch_0x800d11e0:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6928
+    addi    r3, r13, R13Off_m0x6928
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -985,12 +985,12 @@ __dt__16TNerveBossEelDieFv: # 0x800d11f4
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d1238
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7274
+    lis     r3, __vvt__16TNerveBossEelDie@ha
+    addi    r0, r3, __vvt__16TNerveBossEelDie@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d1228
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d1228:
     extsh.  r0, r4
@@ -1026,7 +1026,7 @@ execute__16TNerveBossEelEatCFP24TSpineBase_10TLiveActor_: # 0x800d1250
     stw     r3, 0x1b8(r31)
     li      r0, 0x11
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1054,7 +1054,7 @@ branch_0x800d12cc:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d12f0:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -1095,7 +1095,7 @@ branch_0x800d133c:
 branch_0x800d1378:
     lwz     r4, 0x74(r31)
     addi    r3, sp, 0xec
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     lwz     r4, 0x4(r4)
     lhz     r0, 0x1a0(r31)
     lwz     r7, 0x58(r4)
@@ -1139,7 +1139,7 @@ branch_0x800d1404:
     stw     r3, 0x1b8(r31)
     li      r0, 0xc
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1167,7 +1167,7 @@ branch_0x800d1458:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d147c:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -1189,7 +1189,7 @@ branch_0x800d14c0:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_4
+    li      r4, 0x4
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d1778
@@ -1198,21 +1198,21 @@ branch_0x800d14c0:
     lbz     r0, 0x21c(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x800d1778
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x15
     li      r5, 0x1
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
     li      r0, 0x0
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     sth     r0, 0xe8(sp)
     addi    r0, sp, 0xe8
-    lis     r4, 0x8038
+    lis     r4, unk_8038013c@h
     stw     r0, 0x8(sp)
-    lis     r5, 0x800d
-    addi    r8, r5, 0x356c
-    lfs     f1, -0x5e40(rtoc)
-    addi    r4, r4, 0x13c
+    lis     r5, hoseiDiveCameraCallback__FUlUl@h
+    addi    r8, r5, hoseiDiveCameraCallback__FUlUl@l
+    lfs     f1, -0x5e40(r2)
+    addi    r4, r4, unk_8038013c@l
     addi    r9, r31, 0x0
     addi    r5, r31, 0x10
     li      r6, -0x1
@@ -1230,7 +1230,7 @@ branch_0x800d1550:
     stw     r3, 0x1b8(r31)
     li      r0, 0x5
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1258,7 +1258,7 @@ branch_0x800d159c:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d15c0:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -1293,7 +1293,7 @@ branch_0x800d1604:
     stfs    f0, 0x204(r31)
     stfs    f1, 0x208(r31)
     stfs    f2, 0x20c(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x800d1778
@@ -1318,16 +1318,16 @@ branch_0x800d1688:
     cmpwi   r3, 0x0
     beq-    branch_0x800d1770
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_8
+    li      r4, 0x8
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d16d0
     li      r29, 0x0
     stw     r29, 0x6c(r31)
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     bl      fireEndDemoCamera__12TMarDirectorFv
     stb     r29, 0x21c(r31)
 branch_0x800d16d0:
@@ -1342,25 +1342,25 @@ branch_0x800d16ec:
     li      r0, 0x0
     stw     r0, 0x20(r30)
     stw     r3, 0x14(r30)
-    lbz     r0, -0x693c(r13)
+    lbz     r0, R13Off_m0x693c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d173c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6938(r13)
-    subi    r0, r3, 0x7254
-    lis     r4, 0x800d
-    stw     r0, -0x6938(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fb0
-    addi    r4, r4, 0x1884
-    subi    r3, r13, 0x6938
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossEelQuickBack@ha
+    stw     r0, R13Off_m0x6938(r13)
+    addi    r0, r3, __vvt__22TNerveBossEelQuickBack@l
+    lis     r4, __dt__22TNerveBossEelQuickBackFv@h
+    stw     r0, R13Off_m0x6938(r13)
+    lis     r3, unk_803f1fb0@h
+    addi    r5, r3, unk_803f1fb0@l
+    addi    r4, r4, __dt__22TNerveBossEelQuickBackFv@l
+    addi    r3, r13, R13Off_m0x6938
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x693c(r13)
+    stb     r0, R13Off_m0x693c(r13)
 branch_0x800d173c:
-    subi    r4, r13, 0x6938
+    addi    r4, r13, R13Off_m0x6938
     cmplwi  r4, 0x0
     beq-    branch_0x800d1770
     lwz     r5, 0x8(r30)
@@ -1387,27 +1387,27 @@ branch_0x800d1778:
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
     lfs     f1, 0x10(r3)
-    lfs     f0, -0x5e38(rtoc)
+    lfs     f0, -0x5e38(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800d17bc
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     addi    r5, r31, 0x10
     li      r4, 0x8
     bl      start__9RumbleMgrFiP3Vec
     b       branch_0x800d17d0
 
 branch_0x800d17bc:
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     li      r4, 0x14
     li      r5, 0xa
     li      r6, 0x0
     bl      start__9RumbleMgrFiiPf
 branch_0x800d17d0:
-    lwz     r3, MarioActor(r13)
+    lwz     r3, R13Off_m0x60d8(r13)
     lwz     r3, 0x4fc(r3)
     bl      onNeutralMarioKey__13TMarioGamePadFv
     addi    r3, r31, 0x0
-    li      r4, MARIOMSG_4
+    li      r4, 0x4
     bl      SMS_SendMessageToMario__FP9THitActorUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d1860
@@ -1416,21 +1416,21 @@ branch_0x800d17d0:
     lbz     r0, 0x21c(r31)
     cmplwi  r0, 0x0
     bne-    branch_0x800d1860
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x15
     li      r5, 0x1
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
     li      r0, 0x0
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     sth     r0, 0xcc(sp)
     addi    r0, sp, 0xcc
-    lis     r4, 0x8038
+    lis     r4, unk_8038013c@h
     stw     r0, 0x8(sp)
-    lis     r5, 0x800d
-    addi    r8, r5, 0x356c
-    lfs     f1, -0x5e40(rtoc)
-    addi    r4, r4, 0x13c
+    lis     r5, hoseiDiveCameraCallback__FUlUl@h
+    addi    r8, r5, hoseiDiveCameraCallback__FUlUl@l
+    lfs     f1, -0x5e40(r2)
+    addi    r4, r4, unk_8038013c@l
     addi    r9, r31, 0x0
     addi    r5, r31, 0x10
     li      r6, -0x1
@@ -1460,12 +1460,12 @@ __dt__22TNerveBossEelQuickBackFv: # 0x800d1884
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d18c8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7254
+    lis     r3, __vvt__22TNerveBossEelQuickBack@ha
+    addi    r0, r3, __vvt__22TNerveBossEelQuickBack@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d18b8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d18b8:
     extsh.  r0, r4
@@ -1486,26 +1486,26 @@ theNerve__16TNerveBossEelEatFv: # 0x800d18e0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6934(r13)
+    lbz     r0, R13Off_m0x6934(r13)
     extsb.  r0, r0
     bne-    branch_0x800d1930
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6930(r13)
-    subi    r0, r3, 0x7264
-    lis     r4, 0x800d
-    stw     r0, -0x6930(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fbc
-    addi    r4, r4, 0xbf4
-    subi    r3, r13, 0x6930
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBossEelEat@ha
+    stw     r0, R13Off_m0x6930(r13)
+    addi    r0, r3, __vvt__16TNerveBossEelEat@l
+    lis     r4, __dt__16TNerveBossEelEatFv@h
+    stw     r0, R13Off_m0x6930(r13)
+    lis     r3, unk_803f1fbc@h
+    addi    r5, r3, unk_803f1fbc@l
+    addi    r4, r4, __dt__16TNerveBossEelEatFv@l
+    addi    r3, r13, R13Off_m0x6930
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6934(r13)
+    stb     r0, R13Off_m0x6934(r13)
 branch_0x800d1930:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6930
+    addi    r3, r13, R13Off_m0x6930
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -1519,7 +1519,7 @@ execute__22TNerveBossEelQuickBackCFP24TSpineBase_10TLiveActor_: # 0x800d1944
     stw     r31, 0x2c(sp)
     mr      r31, r4
     mr      r3, r31
-    lfs     f1, -0x5e34(rtoc)
+    lfs     f1, -0x5e34(r2)
     bl      ExecBackNerve_Sub__FP24TSpineBase_10TLiveActor_f
     cmpwi   r3, 0x0
     beq-    branch_0x800d1a50
@@ -1601,26 +1601,26 @@ theNerve__22TNerveBossEelQuickBackFv: # 0x800d1a68
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x693c(r13)
+    lbz     r0, R13Off_m0x693c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d1ab8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6938(r13)
-    subi    r0, r3, 0x7254
-    lis     r4, 0x800d
-    stw     r0, -0x6938(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fb0
-    addi    r4, r4, 0x1884
-    subi    r3, r13, 0x6938
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossEelQuickBack@ha
+    stw     r0, R13Off_m0x6938(r13)
+    addi    r0, r3, __vvt__22TNerveBossEelQuickBack@l
+    lis     r4, __dt__22TNerveBossEelQuickBackFv@h
+    stw     r0, R13Off_m0x6938(r13)
+    lis     r3, unk_803f1fb0@h
+    addi    r5, r3, unk_803f1fb0@l
+    addi    r4, r4, __dt__22TNerveBossEelQuickBackFv@l
+    addi    r3, r13, R13Off_m0x6938
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x693c(r13)
+    stb     r0, R13Off_m0x693c(r13)
 branch_0x800d1ab8:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6938
+    addi    r3, r13, R13Off_m0x6938
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -1632,7 +1632,7 @@ execute__21TNerveBossEelSlowBackCFP24TSpineBase_10TLiveActor_: # 0x800d1acc
     mr      r3, r4
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lfs     f1, -0x5e30(rtoc)
+    lfs     f1, -0x5e30(r2)
     bl      ExecBackNerve_Sub__FP24TSpineBase_10TLiveActor_f
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -1645,26 +1645,26 @@ theNerve__21TNerveBossEelSlowBackFv: # 0x800d1af4
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6944(r13)
+    lbz     r0, R13Off_m0x6944(r13)
     extsb.  r0, r0
     bne-    branch_0x800d1b44
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6940(r13)
-    subi    r0, r3, 0x7244
-    lis     r4, 0x800d
-    stw     r0, -0x6940(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fa4
-    addi    r4, r4, 0x1b58
-    subi    r3, r13, 0x6940
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__21TNerveBossEelSlowBack@ha
+    stw     r0, R13Off_m0x6940(r13)
+    addi    r0, r3, __vvt__21TNerveBossEelSlowBack@l
+    lis     r4, __dt__21TNerveBossEelSlowBackFv@h
+    stw     r0, R13Off_m0x6940(r13)
+    lis     r3, unk_803f1fa4@h
+    addi    r5, r3, unk_803f1fa4@l
+    addi    r4, r4, __dt__21TNerveBossEelSlowBackFv@l
+    addi    r3, r13, R13Off_m0x6940
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6944(r13)
+    stb     r0, R13Off_m0x6944(r13)
 branch_0x800d1b44:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6940
+    addi    r3, r13, R13Off_m0x6940
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -1678,12 +1678,12 @@ __dt__21TNerveBossEelSlowBackFv: # 0x800d1b58
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d1b9c
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7244
+    lis     r3, __vvt__21TNerveBossEelSlowBack@ha
+    addi    r0, r3, __vvt__21TNerveBossEelSlowBack@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d1b8c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d1b8c:
     extsh.  r0, r4
@@ -1713,7 +1713,7 @@ ExecBackNerve_Sub__FP24TSpineBase_10TLiveActor_f: # 0x800d1bb4
     lwz     r31, 0x0(r3)
     cmpwi   r0, 0x1
     bne-    branch_0x800d1db4
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2982
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -1737,7 +1737,7 @@ branch_0x800d1c14:
     stw     r3, 0x1b8(r31)
     li      r0, 0x6
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r4, 0x74(r31)
     lwz     r3, 0xc(r4)
@@ -1765,7 +1765,7 @@ branch_0x800d1c74:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d1c98:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -1786,9 +1786,9 @@ branch_0x800d1cd8:
 branch_0x800d1cdc:
     mr      r3, r31
     bl      setAnmSound__10TLiveActorFPCc
-    lwz     r3, -0x7108(r13)
+    lwz     r3, R13Off_m0x7108(r13)
     li      r4, 0x1a
-    lfs     f1, -0x5e48(rtoc)
+    lfs     f1, -0x5e48(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     b       branch_0x800d1db4
 
@@ -1799,7 +1799,7 @@ branch_0x800d1cf8:
     stw     r3, 0x1b8(r31)
     li      r0, 0x9
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -1827,7 +1827,7 @@ branch_0x800d1d44:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d1d68:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -1856,7 +1856,7 @@ branch_0x800d1db4:
     lis     r0, 0x4330
     lwz     r4, 0x1e8(r31)
     slwi    r3, r3, 1
-    lfd     f1, -0x5e28(rtoc)
+    lfd     f1, -0x5e28(r2)
     xoris   r3, r3, 0x8000
     lfs     f2, 0x2c(r4)
     stw     r3, 0x7c(sp)
@@ -1868,7 +1868,7 @@ branch_0x800d1db4:
     fsubs   f0, f3, f0
     stfs    f0, 0x1f4(r31)
     lfs     f1, 0x1f4(r31)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800d1f38
     stfs    f0, 0x1f4(r31)
@@ -1879,25 +1879,25 @@ branch_0x800d1db4:
     beq-    branch_0x800d1f38
     li      r0, 0x0
     stb     r0, 0x1f0(r31)
-    lbz     r0, -0x6960(r13)
+    lbz     r0, R13Off_m0x6960(r13)
     extsb.  r0, r0
     bne-    branch_0x800d1e70
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x695c(r13)
-    subi    r0, r3, 0x7214
-    lis     r4, 0x800d
-    stw     r0, -0x695c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f80
-    addi    r4, r4, 0x1f5c
-    subi    r3, r13, 0x695c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBossEelSecondSpin@ha
+    stw     r0, R13Off_m0x695c(r13)
+    addi    r0, r3, __vvt__23TNerveBossEelSecondSpin@l
+    lis     r4, __dt__23TNerveBossEelSecondSpinFv@h
+    stw     r0, R13Off_m0x695c(r13)
+    lis     r3, unk_803f1f80@h
+    addi    r5, r3, unk_803f1f80@l
+    addi    r4, r4, __dt__23TNerveBossEelSecondSpinFv@l
+    addi    r3, r13, R13Off_m0x695c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6960(r13)
+    stb     r0, R13Off_m0x6960(r13)
 branch_0x800d1e70:
-    subi    r4, r13, 0x695c
+    addi    r4, r13, R13Off_m0x695c
     cmplwi  r4, 0x0
     beq-    branch_0x800d1ea4
     lwz     r5, 0x8(r30)
@@ -1916,25 +1916,25 @@ branch_0x800d1ea4:
     bl      checkCurBckFromIndex__6MActorFi
     cmpwi   r3, 0x0
     beq-    branch_0x800d1f30
-    lbz     r0, -0x691c(r13)
+    lbz     r0, R13Off_m0x691c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d1efc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6918(r13)
-    subi    r0, r3, 0x72f8
-    lis     r4, 0x800d
-    stw     r0, -0x6918(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fe0
-    addi    r4, r4, 0x498
-    subi    r3, r13, 0x6918
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__26TNerveBossEelSleepOnBottom@ha
+    stw     r0, R13Off_m0x6918(r13)
+    addi    r0, r3, __vvt__26TNerveBossEelSleepOnBottom@l
+    lis     r4, __dt__26TNerveBossEelSleepOnBottomFv@h
+    stw     r0, R13Off_m0x6918(r13)
+    lis     r3, unk_803f1fe0@h
+    addi    r5, r3, unk_803f1fe0@l
+    addi    r4, r4, __dt__26TNerveBossEelSleepOnBottomFv@l
+    addi    r3, r13, R13Off_m0x6918
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x691c(r13)
+    stb     r0, R13Off_m0x691c(r13)
 branch_0x800d1efc:
-    subi    r4, r13, 0x6918
+    addi    r4, r13, R13Off_m0x6918
     cmplwi  r4, 0x0
     beq-    branch_0x800d1f30
     lwz     r5, 0x8(r30)
@@ -1972,12 +1972,12 @@ __dt__23TNerveBossEelSecondSpinFv: # 0x800d1f5c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d1fa0
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7214
+    lis     r3, __vvt__23TNerveBossEelSecondSpin@ha
+    addi    r0, r3, __vvt__23TNerveBossEelSecondSpin@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d1f90
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d1f90:
     extsh.  r0, r4
@@ -1996,7 +1996,7 @@ branch_0x800d1fa0:
 .globl execute__20TNerveBossEelOutWaitCFP24TSpineBase_10TLiveActor_
 execute__20TNerveBossEelOutWaitCFP24TSpineBase_10TLiveActor_: # 0x800d1fb8
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803f1f20@h
     stw     r0, 0x4(sp)
     stwu    sp, -0xb0(sp)
     stfd    f31, 0xa8(sp)
@@ -2004,7 +2004,7 @@ execute__20TNerveBossEelOutWaitCFP24TSpineBase_10TLiveActor_: # 0x800d1fb8
     stw     r30, 0xa0(sp)
     mr      r30, r4
     stw     r29, 0x9c(sp)
-    addi    r29, r3, 0x1f20
+    addi    r29, r3, unk_803f1f20@l
     stw     r28, 0x98(sp)
     lwz     r4, 0x0(r4)
     lwz     r3, 0x200(r4)
@@ -2022,7 +2022,7 @@ execute__20TNerveBossEelOutWaitCFP24TSpineBase_10TLiveActor_: # 0x800d1fb8
     stw     r3, 0x1b8(r31)
     li      r0, 0x10
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r4, 0x74(r31)
     lwz     r3, 0xc(r4)
@@ -2050,7 +2050,7 @@ branch_0x800d2058:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d207c:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -2084,25 +2084,25 @@ branch_0x800d20c8:
     bl      checkCurBckFromIndex__6MActorFi
     cmpwi   r3, 0x0
     beq-    branch_0x800d215c
-    lbz     r0, -0x693c(r13)
+    lbz     r0, R13Off_m0x693c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d2138
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6938(r13)
-    subi    r0, r3, 0x7254
-    lis     r3, 0x800d
-    stw     r0, -0x6938(r13)
-    addi    r4, r3, 0x1884
-    subi    r3, r13, 0x6938
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossEelQuickBack@ha
+    stw     r0, R13Off_m0x6938(r13)
+    addi    r0, r3, __vvt__22TNerveBossEelQuickBack@l
+    lis     r3, __dt__22TNerveBossEelQuickBackFv@h
+    stw     r0, R13Off_m0x6938(r13)
+    addi    r4, r3, __dt__22TNerveBossEelQuickBackFv@l
+    addi    r3, r13, R13Off_m0x6938
     addi    r5, r29, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x693c(r13)
+    stb     r0, R13Off_m0x693c(r13)
 branch_0x800d2138:
     lwz     r0, 0x14(r30)
-    subi    r3, r13, 0x6938
+    addi    r3, r13, R13Off_m0x6938
     cmplwi  r0, 0x0
     beq-    branch_0x800d214c
     stw     r0, 0x1c(r30)
@@ -2116,24 +2116,24 @@ branch_0x800d215c:
     lwz     r0, 0x200(r31)
     cmpwi   r0, 0xe10
     blt-    branch_0x800d21ec
-    lbz     r0, -0x6944(r13)
+    lbz     r0, R13Off_m0x6944(r13)
     extsb.  r0, r0
     bne-    branch_0x800d21a8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6940(r13)
-    subi    r0, r3, 0x7244
-    lis     r3, 0x800d
-    stw     r0, -0x6940(r13)
-    addi    r4, r3, 0x1b58
-    subi    r3, r13, 0x6940
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__21TNerveBossEelSlowBack@ha
+    stw     r0, R13Off_m0x6940(r13)
+    addi    r0, r3, __vvt__21TNerveBossEelSlowBack@l
+    lis     r3, __dt__21TNerveBossEelSlowBackFv@h
+    stw     r0, R13Off_m0x6940(r13)
+    addi    r4, r3, __dt__21TNerveBossEelSlowBackFv@l
+    addi    r3, r13, R13Off_m0x6940
     addi    r5, r29, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6944(r13)
+    stb     r0, R13Off_m0x6944(r13)
 branch_0x800d21a8:
-    subi    r4, r13, 0x6940
+    addi    r4, r13, R13Off_m0x6940
     cmplwi  r4, 0x0
     beq-    branch_0x800d21dc
     lwz     r5, 0x8(r30)
@@ -2156,24 +2156,24 @@ branch_0x800d21ec:
     lwz     r0, 0x20(r30)
     cmpw    r0, r28
     ble-    branch_0x800d22e8
-    lbz     r0, -0x694c(r13)
+    lbz     r0, R13Off_m0x694c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d2238
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6948(r13)
-    subi    r0, r3, 0x7234
-    lis     r3, 0x800d
-    stw     r0, -0x6948(r13)
-    addi    r4, r3, 0x256c
-    subi    r3, r13, 0x6948
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBossEelOutWait@ha
+    stw     r0, R13Off_m0x6948(r13)
+    addi    r0, r3, __vvt__20TNerveBossEelOutWait@l
+    lis     r3, __dt__20TNerveBossEelOutWaitFv@h
+    stw     r0, R13Off_m0x6948(r13)
+    addi    r4, r3, __dt__20TNerveBossEelOutWaitFv@l
+    addi    r3, r13, R13Off_m0x6948
     addi    r5, r29, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x694c(r13)
+    stb     r0, R13Off_m0x694c(r13)
 branch_0x800d2238:
-    subi    r4, r13, 0x6948
+    addi    r4, r13, R13Off_m0x6948
     cmplwi  r4, 0x0
     beq-    branch_0x800d226c
     lwz     r5, 0x8(r30)
@@ -2187,24 +2187,24 @@ branch_0x800d2238:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r30)
 branch_0x800d226c:
-    lbz     r0, -0x6924(r13)
+    lbz     r0, R13Off_m0x6924(r13)
     extsb.  r0, r0
     bne-    branch_0x800d22ac
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6920(r13)
-    subi    r0, r3, 0x7284
-    lis     r3, 0x800d
-    stw     r0, -0x6920(r13)
-    addi    r4, r3, 0xcb4
-    subi    r3, r13, 0x6920
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__26TNerveBossEelMouthOpenWait@ha
+    stw     r0, R13Off_m0x6920(r13)
+    addi    r0, r3, __vvt__26TNerveBossEelMouthOpenWait@l
+    lis     r3, __dt__26TNerveBossEelMouthOpenWaitFv@h
+    stw     r0, R13Off_m0x6920(r13)
+    addi    r4, r3, __dt__26TNerveBossEelMouthOpenWaitFv@l
+    addi    r3, r13, R13Off_m0x6920
     addi    r5, r29, 0xb4
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6924(r13)
+    stb     r0, R13Off_m0x6924(r13)
 branch_0x800d22ac:
-    subi    r4, r13, 0x6920
+    addi    r4, r13, R13Off_m0x6920
     cmplwi  r4, 0x0
     beq-    branch_0x800d22e0
     lwz     r5, 0x8(r30)
@@ -2231,7 +2231,7 @@ branch_0x800d22e8:
     stw     r3, 0x1b8(r31)
     li      r0, 0x13
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2259,7 +2259,7 @@ branch_0x800d2340:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d2364:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -2294,7 +2294,7 @@ branch_0x800d23b4:
     stw     r3, 0x1b8(r31)
     li      r0, 0x12
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r4, 0x74(r31)
     lwz     r3, 0xc(r4)
@@ -2322,7 +2322,7 @@ branch_0x800d2414:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d2438:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -2352,7 +2352,7 @@ branch_0x800d2488:
     stw     r3, 0x1b8(r31)
     li      r0, 0x10
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2380,7 +2380,7 @@ branch_0x800d24d4:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d24f8:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -2423,12 +2423,12 @@ __dt__20TNerveBossEelOutWaitFv: # 0x800d256c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d25b0
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7234
+    lis     r3, __vvt__20TNerveBossEelOutWait@ha
+    addi    r0, r3, __vvt__20TNerveBossEelOutWait@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d25a0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d25a0:
     extsh.  r0, r4
@@ -2449,26 +2449,26 @@ theNerve__20TNerveBossEelOutWaitFv: # 0x800d25c8
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x694c(r13)
+    lbz     r0, R13Off_m0x694c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d2618
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6948(r13)
-    subi    r0, r3, 0x7234
-    lis     r4, 0x800d
-    stw     r0, -0x6948(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f98
-    addi    r4, r4, 0x256c
-    subi    r3, r13, 0x6948
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBossEelOutWait@ha
+    stw     r0, R13Off_m0x6948(r13)
+    addi    r0, r3, __vvt__20TNerveBossEelOutWait@l
+    lis     r4, __dt__20TNerveBossEelOutWaitFv@h
+    stw     r0, R13Off_m0x6948(r13)
+    lis     r3, unk_803f1f98@h
+    addi    r5, r3, unk_803f1f98@l
+    addi    r4, r4, __dt__20TNerveBossEelOutWaitFv@l
+    addi    r3, r13, R13Off_m0x6948
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x694c(r13)
+    stb     r0, R13Off_m0x694c(r13)
 branch_0x800d2618:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6948
+    addi    r3, r13, R13Off_m0x6948
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -2488,13 +2488,13 @@ execute__19TNerveBossEelAppearCFP24TSpineBase_10TLiveActor_: # 0x800d262c
     lwz     r31, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800d27c0
-    lis     r29, 0x1
-    lwz     r3, gpMSound(r13)
-    subi    r4, r29, 0x76de
+    lis     r29, unk_00008922@ha
+    lwz     r3, R13Off_m0x6044(r13)
+    addi    r4, r29, unk_00008922@l
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d2690
-    subi    r3, r29, 0x76de
+    addi    r3, r29, -0x76de
     addi    r4, r31, 0x10
     li      r5, 0x0
     li      r6, 0x0
@@ -2512,7 +2512,7 @@ branch_0x800d2690:
     stw     r3, 0x1b8(r31)
     li      r0, 0xf
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2540,7 +2540,7 @@ branch_0x800d26ec:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d2710:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -2564,8 +2564,8 @@ branch_0x800d2754:
     li      r0, 0x1
     stb     r0, 0x1f0(r31)
     li      r4, 0x19
-    lwz     r3, -0x7108(r13)
-    lfs     f1, -0x5e48(rtoc)
+    lwz     r3, R13Off_m0x7108(r13)
+    lfs     f1, -0x5e48(r2)
     bl      startShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r3, 0x74(r31)
     li      r4, 0x0
@@ -2574,7 +2574,7 @@ branch_0x800d2754:
     lis     r0, 0x4330
     lwz     r3, 0x1e8(r31)
     slwi    r4, r4, 1
-    lfd     f2, -0x5e28(rtoc)
+    lfd     f2, -0x5e28(r2)
     xoris   r4, r4, 0x8000
     lfs     f0, 0x2c(r3)
     stw     r4, 0x8c(sp)
@@ -2584,7 +2584,7 @@ branch_0x800d2754:
     fdivs   f0, f0, f1
     fdivs   f0, f0, f1
     stfs    f0, 0x1f8(r31)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, -0x6950(r13)
 branch_0x800d27c0:
     lwz     r3, 0x74(r31)
@@ -2599,7 +2599,7 @@ branch_0x800d27c0:
     lwz     r3, 0x1e8(r31)
     stw     r0, 0x8c(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x5e28(rtoc)
+    lfd     f1, -0x5e28(r2)
     stw     r0, 0x88(sp)
     lfs     f2, 0x2c(r3)
     lfd     f0, 0x88(sp)
@@ -2609,7 +2609,7 @@ branch_0x800d27c0:
     fadds   f0, f3, f0
     stfs    f0, 0x1f4(r31)
     lfs     f1, 0x144(r31)
-    lfs     f0, -0x5e20(rtoc)
+    lfs     f0, -0x5e20(r2)
     fmuls   f1, f1, f0
     stfs    f1, 0x144(r31)
     lwz     r0, 0xf0(r31)
@@ -2626,7 +2626,7 @@ branch_0x800d2840:
     stfs    f0, 0x34(r31)
 branch_0x800d284c:
     lfs     f2, 0x34(r31)
-    lfs     f0, -0x5e1c(rtoc)
+    lfs     f0, -0x5e1c(r2)
     b       branch_0x800d285c
 
 branch_0x800d2858:
@@ -2635,8 +2635,8 @@ branch_0x800d285c:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x800d2858
-    lfs     f1, -0x5e1c(rtoc)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f1, -0x5e1c(r2)
+    lfs     f0, -0x5e40(r2)
     b       branch_0x800d2878
 
 branch_0x800d2874:
@@ -2653,25 +2653,25 @@ branch_0x800d2888:
     bl      checkCurAnmEnd__11TSpineEnemyCFi
     cmpwi   r3, 0x0
     beq-    branch_0x800d2954
-    lbz     r0, -0x694c(r13)
+    lbz     r0, R13Off_m0x694c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d28e0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6948(r13)
-    subi    r0, r3, 0x7234
-    lis     r4, 0x800d
-    stw     r0, -0x6948(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f98
-    addi    r4, r4, 0x256c
-    subi    r3, r13, 0x6948
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBossEelOutWait@ha
+    stw     r0, R13Off_m0x6948(r13)
+    addi    r0, r3, __vvt__20TNerveBossEelOutWait@l
+    lis     r4, __dt__20TNerveBossEelOutWaitFv@h
+    stw     r0, R13Off_m0x6948(r13)
+    lis     r3, unk_803f1f98@h
+    addi    r5, r3, unk_803f1f98@l
+    addi    r4, r4, __dt__20TNerveBossEelOutWaitFv@l
+    addi    r3, r13, R13Off_m0x6948
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x694c(r13)
+    stb     r0, R13Off_m0x694c(r13)
 branch_0x800d28e0:
-    subi    r4, r13, 0x6948
+    addi    r4, r13, R13Off_m0x6948
     cmplwi  r4, 0x0
     beq-    branch_0x800d2914
     lwz     r5, 0x8(r30)
@@ -2696,7 +2696,7 @@ branch_0x800d2914:
     stb     r0, 0x21d(r31)
     li      r4, 0x13
     li      r5, 0x1
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
 branch_0x800d294c:
@@ -2721,26 +2721,26 @@ theNerve__19TNerveBossEelAppearFv: # 0x800d2978
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6958(r13)
+    lbz     r0, R13Off_m0x6958(r13)
     extsb.  r0, r0
     bne-    branch_0x800d29c8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6954(r13)
-    subi    r0, r3, 0x7224
-    lis     r4, 0x800d
-    stw     r0, -0x6954(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f8c
-    addi    r4, r4, 0x29dc
-    subi    r3, r13, 0x6954
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__19TNerveBossEelAppear@ha
+    stw     r0, R13Off_m0x6954(r13)
+    addi    r0, r3, __vvt__19TNerveBossEelAppear@l
+    lis     r4, __dt__19TNerveBossEelAppearFv@h
+    stw     r0, R13Off_m0x6954(r13)
+    lis     r3, unk_803f1f8c@h
+    addi    r5, r3, unk_803f1f8c@l
+    addi    r4, r4, __dt__19TNerveBossEelAppearFv@l
+    addi    r3, r13, R13Off_m0x6954
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6958(r13)
+    stb     r0, R13Off_m0x6958(r13)
 branch_0x800d29c8:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6954
+    addi    r3, r13, R13Off_m0x6954
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -2754,12 +2754,12 @@ __dt__19TNerveBossEelAppearFv: # 0x800d29dc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d2a20
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7224
+    lis     r3, __vvt__19TNerveBossEelAppear@ha
+    addi    r0, r3, __vvt__19TNerveBossEelAppear@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d2a10
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d2a10:
     extsh.  r0, r4
@@ -2795,7 +2795,7 @@ execute__23TNerveBossEelSecondSpinCFP24TSpineBase_10TLiveActor_: # 0x800d2a38
     stw     r3, 0x1b8(r31)
     li      r0, 0xa
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -2823,7 +2823,7 @@ branch_0x800d2ab4:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d2ad8:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -2849,13 +2849,13 @@ branch_0x800d2b1c:
     stw     r0, 0x0(r29)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x5e28(rtoc)
+    lfd     f3, -0x5e28(r2)
     stw     r0, 0x7c(sp)
-    lis     r0, 0x4330
-    lfs     f1, -0x5e18(rtoc)
-    li      r4, 0x2981
+    lis     r0, unk_43302981@h
+    lfs     f1, -0x5e18(r2)
+    addi    r4, r0, unk_43302981@l
     stw     r0, 0x78(sp)
-    lfs     f0, -0x5e14(rtoc)
+    lfs     f0, -0x5e14(r2)
     lfd     f2, 0x78(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -2865,13 +2865,13 @@ branch_0x800d2b1c:
     lwz     r3, 0x74(sp)
     addi    r0, r3, 0xf1
     stw     r0, 0x4(r29)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, 0x144(r31)
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d2bb8
-    lfs     f1, -0x5e10(rtoc)
+    lfs     f1, -0x5e10(r2)
     addi    r4, r31, 0x10
     li      r3, 0x2981
     li      r5, 0x0
@@ -2884,12 +2884,12 @@ branch_0x800d2b1c:
 branch_0x800d2bb8:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x5e28(rtoc)
+    lfd     f3, -0x5e28(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x5e18(rtoc)
+    lfs     f1, -0x5e18(r2)
     stw     r0, 0x70(sp)
-    lfs     f0, -0x5e0c(rtoc)
+    lfs     f0, -0x5e0c(r2)
     lfd     f2, 0x70(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -2915,8 +2915,8 @@ branch_0x800d2c08:
     lfs     f0, 0x68(sp)
     li      r4, 0x18
     stfs    f0, 0x144(r31)
-    lwz     r3, -0x7108(r13)
-    lfs     f1, -0x5e48(rtoc)
+    lwz     r3, R13Off_m0x7108(r13)
+    lfs     f1, -0x5e48(r2)
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r0, 0xf0(r31)
     rlwinm. r0, r0, 0, 15, 15
@@ -2926,11 +2926,11 @@ branch_0x800d2c08:
     fsubs   f0, f1, f0
     stfs    f0, 0x34(r31)
     lfs     f1, 0x34(r31)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x800d2d14
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2981
     lfs     f31, 0x68(sp)
     bl      gateCheck__6MSoundFUl
@@ -2954,11 +2954,11 @@ branch_0x800d2cb0:
     fadds   f0, f1, f0
     stfs    f0, 0x34(r31)
     lfs     f1, 0x34(r31)
-    lfs     f0, -0x5e1c(rtoc)
+    lfs     f0, -0x5e1c(r2)
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x800d2d14
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2981
     lfs     f31, 0x68(sp)
     bl      gateCheck__6MSoundFUl
@@ -2976,8 +2976,8 @@ branch_0x800d2cb0:
     bl      startSoundActorWithInfo__Q214MSoundSESystem8MSoundSEFUlPC3VecP3VecfUlUlPP8JAISoundUlUc
 branch_0x800d2d14:
     lfs     f1, 0x34(r31)
-    lfs     f2, -0x5e40(rtoc)
-    lfs     f3, -0x5e1c(rtoc)
+    lfs     f2, -0x5e40(r2)
+    lfs     f3, -0x5e1c(r2)
     bl      MsWrap_f___Ffff_800d2e00
     stfs    f1, 0x34(r31)
     li      r4, 0x0
@@ -2994,25 +2994,25 @@ branch_0x800d2d14:
 branch_0x800d2d54:
     clrlwi. r0, r4, 24
     beq-    branch_0x800d2ddc
-    lbz     r0, -0x6958(r13)
+    lbz     r0, R13Off_m0x6958(r13)
     extsb.  r0, r0
     bne-    branch_0x800d2da0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6954(r13)
-    subi    r0, r3, 0x7224
-    lis     r4, 0x800d
-    stw     r0, -0x6954(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f8c
-    addi    r4, r4, 0x29dc
-    subi    r3, r13, 0x6954
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__19TNerveBossEelAppear@ha
+    stw     r0, R13Off_m0x6954(r13)
+    addi    r0, r3, __vvt__19TNerveBossEelAppear@l
+    lis     r4, __dt__19TNerveBossEelAppearFv@h
+    stw     r0, R13Off_m0x6954(r13)
+    lis     r3, unk_803f1f8c@h
+    addi    r5, r3, unk_803f1f8c@l
+    addi    r4, r4, __dt__19TNerveBossEelAppearFv@l
+    addi    r3, r13, R13Off_m0x6954
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6958(r13)
+    stb     r0, R13Off_m0x6958(r13)
 branch_0x800d2da0:
-    subi    r4, r13, 0x6954
+    addi    r4, r13, R13Off_m0x6954
     cmplwi  r4, 0x0
     beq-    branch_0x800d2dd4
     lwz     r5, 0x8(r30)
@@ -3050,6 +3050,7 @@ MsWrap_f___Ffff_800d2e00: # 0x800d2e00
     fmr     f1, f2
     blr
 
+branch_0x800d2e14:
     b       branch_0x800d2e1c
 
 branch_0x800d2e18:
@@ -3070,7 +3071,8 @@ branch_0x800d2e30:
 branch_0x800d2e3c:
     fsubs   f0, f3, f2
     b       branch_0x800d2e1c
-    
+
+branch_0x800d2e44:
     blr
 
 
@@ -3079,26 +3081,26 @@ theNerve__23TNerveBossEelSecondSpinFv: # 0x800d2e48
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6960(r13)
+    lbz     r0, R13Off_m0x6960(r13)
     extsb.  r0, r0
     bne-    branch_0x800d2e98
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x695c(r13)
-    subi    r0, r3, 0x7214
-    lis     r4, 0x800d
-    stw     r0, -0x695c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f80
-    addi    r4, r4, 0x1f5c
-    subi    r3, r13, 0x695c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBossEelSecondSpin@ha
+    stw     r0, R13Off_m0x695c(r13)
+    addi    r0, r3, __vvt__23TNerveBossEelSecondSpin@l
+    lis     r4, __dt__23TNerveBossEelSecondSpinFv@h
+    stw     r0, R13Off_m0x695c(r13)
+    lis     r3, unk_803f1f80@h
+    addi    r5, r3, unk_803f1f80@l
+    addi    r4, r4, __dt__23TNerveBossEelSecondSpinFv@l
+    addi    r3, r13, R13Off_m0x695c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6960(r13)
+    stb     r0, R13Off_m0x6960(r13)
 branch_0x800d2e98:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x695c
+    addi    r3, r13, R13Off_m0x695c
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -3117,14 +3119,14 @@ execute__22TNerveBossEelFirstSpinCFP24TSpineBase_10TLiveActor_: # 0x800d2eac
     lwz     r31, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800d3028
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     li      r4, 0x2981
     stfs    f0, 0x144(r31)
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d2f1c
-    lfs     f1, -0x5e10(rtoc)
+    lfs     f1, -0x5e10(r2)
     addi    r4, r31, 0x10
     li      r3, 0x2981
     li      r5, 0x0
@@ -3141,7 +3143,7 @@ branch_0x800d2f1c:
     stw     r3, 0x1b8(r31)
     li      r0, 0xa
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -3169,7 +3171,7 @@ branch_0x800d2f68:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d2f8c:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -3192,12 +3194,12 @@ branch_0x800d2fd0:
     bl      setAnmSound__10TLiveActorFPCc
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x5e28(rtoc)
+    lfd     f3, -0x5e28(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x5e18(rtoc)
+    lfs     f1, -0x5e18(r2)
     stw     r0, 0x70(sp)
-    lfs     f0, -0x5e0c(rtoc)
+    lfs     f0, -0x5e0c(r2)
     lfd     f2, 0x70(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -3223,8 +3225,8 @@ branch_0x800d3028:
     lfs     f0, 0x6c(sp)
     li      r4, 0x18
     stfs    f0, 0x144(r31)
-    lwz     r3, -0x7108(r13)
-    lfs     f1, -0x5e48(rtoc)
+    lwz     r3, R13Off_m0x7108(r13)
+    lfs     f1, -0x5e48(r2)
     bl      keepShake__12TCameraShakeF16EnumCamShakeModef
     lwz     r0, 0xf0(r31)
     rlwinm. r0, r0, 0, 15, 15
@@ -3234,11 +3236,11 @@ branch_0x800d3028:
     fsubs   f0, f1, f0
     stfs    f0, 0x34(r31)
     lfs     f1, 0x34(r31)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x800d3134
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2981
     lfs     f31, 0x6c(sp)
     bl      gateCheck__6MSoundFUl
@@ -3262,11 +3264,11 @@ branch_0x800d30d0:
     fadds   f0, f1, f0
     stfs    f0, 0x34(r31)
     lfs     f1, 0x34(r31)
-    lfs     f0, -0x5e1c(rtoc)
+    lfs     f0, -0x5e1c(r2)
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x800d3134
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2981
     lfs     f31, 0x6c(sp)
     bl      gateCheck__6MSoundFUl
@@ -3284,32 +3286,32 @@ branch_0x800d30d0:
     bl      startSoundActorWithInfo__Q214MSoundSESystem8MSoundSEFUlPC3VecP3VecfUlUlPP8JAISoundUlUc
 branch_0x800d3134:
     lfs     f1, 0x34(r31)
-    lfs     f2, -0x5e40(rtoc)
-    lfs     f3, -0x5e1c(rtoc)
+    lfs     f2, -0x5e40(r2)
+    lfs     f3, -0x5e1c(r2)
     bl      MsWrap_f___Ffff_800d2e00
     stfs    f1, 0x34(r31)
     lwz     r0, 0x20(r30)
     cmpwi   r0, 0x168
     blt-    branch_0x800d31d4
-    lbz     r0, -0x6958(r13)
+    lbz     r0, R13Off_m0x6958(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3198
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6954(r13)
-    subi    r0, r3, 0x7224
-    lis     r4, 0x800d
-    stw     r0, -0x6954(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f8c
-    addi    r4, r4, 0x29dc
-    subi    r3, r13, 0x6954
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__19TNerveBossEelAppear@ha
+    stw     r0, R13Off_m0x6954(r13)
+    addi    r0, r3, __vvt__19TNerveBossEelAppear@l
+    lis     r4, __dt__19TNerveBossEelAppearFv@h
+    stw     r0, R13Off_m0x6954(r13)
+    lis     r3, unk_803f1f8c@h
+    addi    r5, r3, unk_803f1f8c@l
+    addi    r4, r4, __dt__19TNerveBossEelAppearFv@l
+    addi    r3, r13, R13Off_m0x6954
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6958(r13)
+    stb     r0, R13Off_m0x6958(r13)
 branch_0x800d3198:
-    subi    r4, r13, 0x6954
+    addi    r4, r13, R13Off_m0x6954
     cmplwi  r4, 0x0
     beq-    branch_0x800d31cc
     lwz     r5, 0x8(r30)
@@ -3343,26 +3345,26 @@ theNerve__22TNerveBossEelFirstSpinFv: # 0x800d31f4
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6968(r13)
+    lbz     r0, R13Off_m0x6968(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3244
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6964(r13)
-    subi    r0, r3, 0x7204
-    lis     r4, 0x800d
-    stw     r0, -0x6964(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f74
-    addi    r4, r4, 0x3258
-    subi    r3, r13, 0x6964
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossEelFirstSpin@ha
+    stw     r0, R13Off_m0x6964(r13)
+    addi    r0, r3, __vvt__22TNerveBossEelFirstSpin@l
+    lis     r4, __dt__22TNerveBossEelFirstSpinFv@h
+    stw     r0, R13Off_m0x6964(r13)
+    lis     r3, unk_803f1f74@h
+    addi    r5, r3, unk_803f1f74@l
+    addi    r4, r4, __dt__22TNerveBossEelFirstSpinFv@l
+    addi    r3, r13, R13Off_m0x6964
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6968(r13)
+    stb     r0, R13Off_m0x6968(r13)
 branch_0x800d3244:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6964
+    addi    r3, r13, R13Off_m0x6964
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -3376,12 +3378,12 @@ __dt__22TNerveBossEelFirstSpinFv: # 0x800d3258
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d329c
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7204
+    lis     r3, __vvt__22TNerveBossEelFirstSpin@ha
+    addi    r0, r3, __vvt__22TNerveBossEelFirstSpin@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d328c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d328c:
     extsh.  r0, r4
@@ -3416,7 +3418,7 @@ execute__23TNerveBossEelWaitAppearCFP24TSpineBase_10TLiveActor_: # 0x800d32b4
     stw     r3, 0x1b8(r31)
     li      r0, 0xa
     stw     r0, 0x1b4(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     lwz     r5, 0x74(r31)
     lwz     r3, 0xc(r5)
@@ -3444,7 +3446,7 @@ branch_0x800d332c:
     bl      setMotionBlendRatio__12MActorAnmBckFf
 branch_0x800d3350:
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x5e44(rtoc)
+    lfs     f0, -0x5e44(r2)
     li      r4, 0x0
     lwz     r3, 0x74(r31)
     fmuls   f31, f0, f1
@@ -3469,15 +3471,15 @@ branch_0x800d339c:
     lwz     r0, 0x20(r30)
     cmpwi   r0, 0x9c4
     bne-    branch_0x800d33bc
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r4, 0x12
     li      r5, 0x1
     lwz     r3, 0x74(r3)
     bl      startAppearBalloon__11TGCConsole2FUlb
 branch_0x800d33bc:
-    lwz     r6, MarioHitActorPos(r13)
+    lwz     r6, R13Off_m0x60b4(r13)
     addi    r4, sp, 0x4c
-    lfs     f0, -0x5e08(rtoc)
+    lfs     f0, -0x5e08(r2)
     li      r5, 0x0
     lwz     r3, 0x0(r6)
     lwz     r0, 0x4(r6)
@@ -3492,25 +3494,25 @@ branch_0x800d33bc:
     bl      isInCube__16TCubeManagerBaseCFRC3Vecl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d3480
-    lbz     r0, -0x6968(r13)
+    lbz     r0, R13Off_m0x6968(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3444
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6964(r13)
-    subi    r0, r3, 0x7204
-    lis     r4, 0x800d
-    stw     r0, -0x6964(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f74
-    addi    r4, r4, 0x3258
-    subi    r3, r13, 0x6964
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossEelFirstSpin@ha
+    stw     r0, R13Off_m0x6964(r13)
+    addi    r0, r3, __vvt__22TNerveBossEelFirstSpin@l
+    lis     r4, __dt__22TNerveBossEelFirstSpinFv@h
+    stw     r0, R13Off_m0x6964(r13)
+    lis     r3, unk_803f1f74@h
+    addi    r5, r3, unk_803f1f74@l
+    addi    r4, r4, __dt__22TNerveBossEelFirstSpinFv@l
+    addi    r3, r13, R13Off_m0x6964
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6968(r13)
+    stb     r0, R13Off_m0x6968(r13)
 branch_0x800d3444:
-    subi    r4, r13, 0x6964
+    addi    r4, r13, R13Off_m0x6964
     cmplwi  r4, 0x0
     beq-    branch_0x800d3478
     lwz     r5, 0x8(r30)
@@ -3544,26 +3546,26 @@ theNerve__23TNerveBossEelWaitAppearFv: # 0x800d34a0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6970(r13)
+    lbz     r0, R13Off_m0x6970(r13)
     extsb.  r0, r0
     bne-    branch_0x800d34f0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x696c(r13)
-    subi    r0, r3, 0x71f4
-    lis     r4, 0x800d
-    stw     r0, -0x696c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f68
-    addi    r4, r4, 0x3504
-    subi    r3, r13, 0x696c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBossEelWaitAppear@ha
+    stw     r0, R13Off_m0x696c(r13)
+    addi    r0, r3, __vvt__23TNerveBossEelWaitAppear@l
+    lis     r4, __dt__23TNerveBossEelWaitAppearFv@h
+    stw     r0, R13Off_m0x696c(r13)
+    lis     r3, unk_803f1f68@h
+    addi    r5, r3, unk_803f1f68@l
+    addi    r4, r4, __dt__23TNerveBossEelWaitAppearFv@l
+    addi    r3, r13, R13Off_m0x696c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6970(r13)
+    stb     r0, R13Off_m0x6970(r13)
 branch_0x800d34f0:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x696c
+    addi    r3, r13, R13Off_m0x696c
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -3577,12 +3579,12 @@ __dt__23TNerveBossEelWaitAppearFv: # 0x800d3504
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d3548
-    lis     r3, 0x803c
-    subi    r0, r3, 0x71f4
+    lis     r3, __vvt__23TNerveBossEelWaitAppear@ha
+    addi    r0, r3, __vvt__23TNerveBossEelWaitAppear@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d3538
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d3538:
     extsh.  r0, r4
@@ -3600,8 +3602,8 @@ branch_0x800d3548:
 
 .globl getBasNameTable__8TBossEelCFv
 getBasNameTable__8TBossEelCFv: # 0x800d3560
-    lis     r3, 0x803c
-    subi    r3, r3, 0x73d8
+    lis     r3, bosseel_bastable@ha
+    addi    r3, r3, bosseel_bastable@l
     blr
 
 
@@ -3615,12 +3617,12 @@ hoseiDiveCameraCallback__FUlUl: # 0x800d356c
     lwz     r6, 0x10(r3)
     addi    r4, sp, 0x10
     lwz     r0, 0x14(r3)
-    lfs     f0, -0x5e04(rtoc)
+    lfs     f0, -0x5e04(r2)
     stw     r6, 0x10(sp)
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     stw     r0, 0x14(sp)
     lwz     r0, 0x18(r3)
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     stw     r0, 0x18(sp)
     lfs     f1, 0x14(sp)
     fadds   f0, f1, f0
@@ -3673,43 +3675,43 @@ perform__8TBossEelFUlPQ26JDrama9TGraphics: # 0x800d3628
     stmw    r23, 0x2f4(sp)
     rlwinm. r27, r4, 0, 30, 30
     addi    r30, r4, 0x0
-    lis     r4, 0x803f
+    lis     r4, unk_803f1f20@h
     addi    r31, r3, 0x0
     addi    r29, r5, 0x0
-    addi    r28, r4, 0x1f20
+    addi    r28, r4, unk_803f1f20@l
     beq-    branch_0x800d36d4
-    lbz     r0, -0x692c(r13)
+    lbz     r0, R13Off_m0x692c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3694
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6928(r13)
-    subi    r0, r3, 0x7274
-    lis     r3, 0x800d
-    stw     r0, -0x6928(r13)
-    addi    r4, r3, 0x11f4
-    subi    r3, r13, 0x6928
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBossEelDie@ha
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r0, r3, __vvt__16TNerveBossEelDie@l
+    lis     r3, __dt__16TNerveBossEelDieFv@h
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r4, r3, __dt__16TNerveBossEelDieFv@l
+    addi    r3, r13, R13Off_m0x6928
     addi    r5, r28, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x692c(r13)
+    stb     r0, R13Off_m0x692c(r13)
 branch_0x800d3694:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6928
+    addi    r0, r13, R13Off_m0x6928
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d36d4
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x1dc
     stfs    f1, 0x1dc(r31)
     li      r4, 0x198
     li      r6, 0x1
-    lfs     f0, -0x5e00(rtoc)
+    lfs     f0, -0x5e00(r2)
     stfs    f0, 0x1e0(r31)
     stfs    f1, 0x1e4(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
 branch_0x800d36d4:
     lwz     r3, 0x74(r31)
@@ -3744,7 +3746,7 @@ branch_0x800d3704:
     fadds   f0, f2, f0
     stfs    f0, 0x14(r31)
     lwz     r4, 0x1ac(r31)
-    lfs     f2, -0x5dfc(rtoc)
+    lfs     f2, -0x5dfc(r2)
     lwz     r4, 0x14(r4)
     lfs     f1, 0x28(r31)
     lwz     r4, 0x10(r4)
@@ -3756,11 +3758,11 @@ branch_0x800d3704:
     stfs    f0, 0xc(r4)
     stfs    f1, 0x10(r4)
     stfs    f3, 0x14(r4)
-    lfs     f4, -0x5df8(rtoc)
+    lfs     f4, -0x5df8(r2)
     lfs     f0, 0x24(r31)
     lfs     f3, 0x2c(r31)
     fmuls   f0, f4, f0
-    lfs     f2, -0x5df4(rtoc)
+    lfs     f2, -0x5df4(r2)
     lfs     f1, 0x28(r31)
     fmuls   f3, f4, f3
     fmuls   f1, f2, f1
@@ -3795,7 +3797,7 @@ branch_0x800d3704:
     lwz     r12, 0x14(r12)
     mtlr    r12
     blrl
-    lbz     r0, -0x69a0(r13)
+    lbz     r0, R13Off_m0x69a0(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x800d388c
     addi    r24, sp, 0x28c
@@ -3825,28 +3827,28 @@ branch_0x800d3838:
     addi    r25, r25, 0x2
     blt+    branch_0x800d3838
 branch_0x800d388c:
-    lbz     r0, -0x7df4(r13)
+    lbz     r0, R13Off_m0x7df4(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x800d3900
-    lbz     r0, -0x692c(r13)
+    lbz     r0, R13Off_m0x692c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d38d8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6928(r13)
-    subi    r0, r3, 0x7274
-    lis     r3, 0x800d
-    stw     r0, -0x6928(r13)
-    addi    r4, r3, 0x11f4
-    subi    r3, r13, 0x6928
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBossEelDie@ha
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r0, r3, __vvt__16TNerveBossEelDie@l
+    lis     r3, __dt__16TNerveBossEelDieFv@h
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r4, r3, __dt__16TNerveBossEelDieFv@l
+    addi    r3, r13, R13Off_m0x6928
     addi    r5, r28, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x692c(r13)
+    stb     r0, R13Off_m0x692c(r13)
 branch_0x800d38d8:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6928
+    addi    r0, r13, R13Off_m0x6928
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800d3900
@@ -3920,7 +3922,7 @@ branch_0x800d3910:
     stfs    f0, 0x1c(r3)
     lfs     f0, 0x38(r31)
     stfs    f0, 0x20(r3)
-    lfs     f2, -0x5df0(rtoc)
+    lfs     f2, -0x5df0(r2)
     lfs     f1, 0x14(r31)
     lfs     f3, 0x18(r31)
     lfs     f0, 0x10(r31)
@@ -3928,12 +3930,12 @@ branch_0x800d3910:
     stfs    f0, 0xc(r3)
     stfs    f1, 0x10(r3)
     stfs    f3, 0x14(r3)
-    lfs     f1, -0x5dec(rtoc)
+    lfs     f1, -0x5dec(r2)
     stfs    f1, 0x24(r3)
-    lfs     f0, -0x5de8(rtoc)
+    lfs     f0, -0x5de8(r2)
     stfs    f0, 0x28(r3)
     stfs    f1, 0x2c(r3)
-    lfs     f3, -0x5dfc(rtoc)
+    lfs     f3, -0x5dfc(r2)
     lfs     f2, 0x28(r31)
     lfs     f1, 0x14(r31)
     lfs     f4, 0x18(r31)
@@ -3942,11 +3944,11 @@ branch_0x800d3910:
     stfs    f0, 0xc(r3)
     stfs    f1, 0x10(r3)
     stfs    f4, 0x14(r3)
-    lfs     f4, -0x5df8(rtoc)
+    lfs     f4, -0x5df8(r2)
     lfs     f0, 0x24(r31)
     lfs     f3, 0x2c(r31)
     fmuls   f0, f4, f0
-    lfs     f2, -0x5df4(rtoc)
+    lfs     f2, -0x5df4(r2)
     lfs     f1, 0x28(r31)
     fmuls   f3, f4, f3
     fmuls   f1, f2, f1
@@ -3978,69 +3980,69 @@ branch_0x800d3ac0:
     lhz     r0, 0x48(r5)
     cmpw    r6, r0
     blt+    branch_0x800d3a9c
-    lbz     r0, -0x6968(r13)
+    lbz     r0, R13Off_m0x6968(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3b10
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6964(r13)
-    subi    r0, r3, 0x7204
-    lis     r3, 0x800d
-    stw     r0, -0x6964(r13)
-    addi    r4, r3, 0x3258
-    subi    r3, r13, 0x6964
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossEelFirstSpin@ha
+    stw     r0, R13Off_m0x6964(r13)
+    addi    r0, r3, __vvt__22TNerveBossEelFirstSpin@l
+    lis     r3, __dt__22TNerveBossEelFirstSpinFv@h
+    stw     r0, R13Off_m0x6964(r13)
+    addi    r4, r3, __dt__22TNerveBossEelFirstSpinFv@l
+    addi    r3, r13, R13Off_m0x6964
     addi    r5, r28, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6968(r13)
+    stb     r0, R13Off_m0x6968(r13)
 branch_0x800d3b10:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6964
+    addi    r0, r13, R13Off_m0x6964
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800d3c24
-    lbz     r0, -0x6960(r13)
+    lbz     r0, R13Off_m0x6960(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3b64
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x695c(r13)
-    subi    r0, r3, 0x7214
-    lis     r3, 0x800d
-    stw     r0, -0x695c(r13)
-    addi    r4, r3, 0x1f5c
-    subi    r3, r13, 0x695c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBossEelSecondSpin@ha
+    stw     r0, R13Off_m0x695c(r13)
+    addi    r0, r3, __vvt__23TNerveBossEelSecondSpin@l
+    lis     r3, __dt__23TNerveBossEelSecondSpinFv@h
+    stw     r0, R13Off_m0x695c(r13)
+    addi    r4, r3, __dt__23TNerveBossEelSecondSpinFv@l
+    addi    r3, r13, R13Off_m0x695c
     addi    r5, r28, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6960(r13)
+    stb     r0, R13Off_m0x6960(r13)
 branch_0x800d3b64:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x695c
+    addi    r0, r13, R13Off_m0x695c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800d3c24
-    lbz     r0, -0x6924(r13)
+    lbz     r0, R13Off_m0x6924(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3bb8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6920(r13)
-    subi    r0, r3, 0x7284
-    lis     r3, 0x800d
-    stw     r0, -0x6920(r13)
-    addi    r4, r3, 0xcb4
-    subi    r3, r13, 0x6920
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__26TNerveBossEelMouthOpenWait@ha
+    stw     r0, R13Off_m0x6920(r13)
+    addi    r0, r3, __vvt__26TNerveBossEelMouthOpenWait@l
+    lis     r3, __dt__26TNerveBossEelMouthOpenWaitFv@h
+    stw     r0, R13Off_m0x6920(r13)
+    addi    r4, r3, __dt__26TNerveBossEelMouthOpenWaitFv@l
+    addi    r3, r13, R13Off_m0x6920
     addi    r5, r28, 0xb4
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6924(r13)
+    stb     r0, R13Off_m0x6924(r13)
 branch_0x800d3bb8:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6920
+    addi    r0, r13, R13Off_m0x6920
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800d3c24
@@ -4069,8 +4071,8 @@ branch_0x800d3c1c:
     bl      updateTearsCnt__8TBossEelFv
 branch_0x800d3c24:
     lfs     f2, 0x1bc(r31)
-    lfs     f1, -0x5de4(rtoc)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f1, -0x5de4(r2)
+    lfs     f0, -0x5e48(r2)
     fsubs   f1, f2, f1
     fcmpo   cr0, f1, f0
     ble-    branch_0x800d3c44
@@ -4078,7 +4080,7 @@ branch_0x800d3c24:
     b       branch_0x800d3c54
 
 branch_0x800d3c44:
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800d3c54
     fmr     f1, f0
@@ -4123,46 +4125,46 @@ branch_0x800d3c70:
     lwz     r0, 0x70(r3)
     cmpwi   r0, 0x1
     bgt-    branch_0x800d3db4
-    lbz     r0, -0x692c(r13)
+    lbz     r0, R13Off_m0x692c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3d30
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6928(r13)
-    subi    r0, r3, 0x7274
-    lis     r3, 0x800d
-    stw     r0, -0x6928(r13)
-    addi    r4, r3, 0x11f4
-    subi    r3, r13, 0x6928
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBossEelDie@ha
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r0, r3, __vvt__16TNerveBossEelDie@l
+    lis     r3, __dt__16TNerveBossEelDieFv@h
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r4, r3, __dt__16TNerveBossEelDieFv@l
+    addi    r3, r13, R13Off_m0x6928
     addi    r5, r28, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x692c(r13)
+    stb     r0, R13Off_m0x692c(r13)
 branch_0x800d3d30:
     lwz     r3, 0x8c(r31)
-    subi    r24, r13, 0x6928
+    addi    r24, r13, R13Off_m0x6928
     lwz     r0, 0x14(r3)
     cmplw   r0, r24
     beq-    branch_0x800d3db4
-    lbz     r0, -0x692c(r13)
+    lbz     r0, R13Off_m0x692c(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3d80
-    subi    r3, r13, 0x6928
+    addi    r3, r13, R13Off_m0x6928
     bl      __ct__24TNerveBase_10TLiveActor_Fv
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7274
-    lis     r3, 0x800d
-    stw     r0, -0x6928(r13)
-    addi    r4, r3, 0x11f4
+    lis     r3, __vvt__16TNerveBossEelDie@ha
+    addi    r0, r3, __vvt__16TNerveBossEelDie@l
+    lis     r3, __dt__16TNerveBossEelDieFv@h
+    stw     r0, R13Off_m0x6928(r13)
+    addi    r4, r3, __dt__16TNerveBossEelDieFv@l
     addi    r3, r24, 0x0
     addi    r5, r28, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x692c(r13)
+    stb     r0, R13Off_m0x692c(r13)
 branch_0x800d3d80:
     lwz     r4, 0x8c(r31)
-    subi    r3, r13, 0x6928
+    addi    r3, r13, R13Off_m0x6928
     lwz     r0, 0x14(r4)
     cmplwi  r0, 0x0
     beq-    branch_0x800d3d98
@@ -4186,47 +4188,47 @@ branch_0x800d3db4:
     lwz     r12, 0xf4(r12)
     mtlr    r12
     blrl
-    lbz     r0, -0x6960(r13)
+    lbz     r0, R13Off_m0x6960(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3e1c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x695c(r13)
-    subi    r0, r3, 0x7214
-    lis     r3, 0x800d
-    stw     r0, -0x695c(r13)
-    addi    r4, r3, 0x1f5c
-    subi    r3, r13, 0x695c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBossEelSecondSpin@ha
+    stw     r0, R13Off_m0x695c(r13)
+    addi    r0, r3, __vvt__23TNerveBossEelSecondSpin@l
+    lis     r3, __dt__23TNerveBossEelSecondSpinFv@h
+    stw     r0, R13Off_m0x695c(r13)
+    addi    r4, r3, __dt__23TNerveBossEelSecondSpinFv@l
+    addi    r3, r13, R13Off_m0x695c
     addi    r5, r28, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6960(r13)
+    stb     r0, R13Off_m0x6960(r13)
 branch_0x800d3e1c:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x695c
+    addi    r0, r13, R13Off_m0x695c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800d3e84
-    lbz     r0, -0x6968(r13)
+    lbz     r0, R13Off_m0x6968(r13)
     extsb.  r0, r0
     bne-    branch_0x800d3e70
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6964(r13)
-    subi    r0, r3, 0x7204
-    lis     r3, 0x800d
-    stw     r0, -0x6964(r13)
-    addi    r4, r3, 0x3258
-    subi    r3, r13, 0x6964
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__22TNerveBossEelFirstSpin@ha
+    stw     r0, R13Off_m0x6964(r13)
+    addi    r0, r3, __vvt__22TNerveBossEelFirstSpin@l
+    lis     r3, __dt__22TNerveBossEelFirstSpinFv@h
+    stw     r0, R13Off_m0x6964(r13)
+    addi    r4, r3, __dt__22TNerveBossEelFirstSpinFv@l
+    addi    r3, r13, R13Off_m0x6964
     addi    r5, r28, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6968(r13)
+    stb     r0, R13Off_m0x6968(r13)
 branch_0x800d3e70:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x6964
+    addi    r0, r13, R13Off_m0x6964
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d3f9c
@@ -4244,7 +4246,7 @@ branch_0x800d3e84:
     lwz     r0, 0xf0(r31)
     rlwinm. r0, r0, 0, 15, 15
     beq-    branch_0x800d3ed4
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x204
     li      r4, 0x193
@@ -4253,7 +4255,7 @@ branch_0x800d3e84:
     b       branch_0x800d3eec
 
 branch_0x800d3ed4:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x204
     li      r4, 0x194
@@ -4278,7 +4280,7 @@ branch_0x800d3f24:
     lwz     r0, 0xf0(r31)
     rlwinm. r0, r0, 0, 15, 15
     beq-    branch_0x800d3f4c
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x204
     li      r4, 0x195
@@ -4287,7 +4289,7 @@ branch_0x800d3f24:
     b       branch_0x800d3f64
 
 branch_0x800d3f4c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x204
     li      r4, 0x196
@@ -4328,11 +4330,11 @@ branch_0x800d3f9c:
     stfs    f0, 0x204(r31)
     stfs    f1, 0x208(r31)
     stfs    f2, 0x20c(r31)
-    lfs     f1, -0x5de0(rtoc)
+    lfs     f1, -0x5de0(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x800d4048
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x204
     li      r4, 0xd4
     li      r6, 0x0
@@ -4354,10 +4356,10 @@ branch_0x800d3f9c:
     stfs    f0, 0x17c(r3)
 branch_0x800d4048:
     lfs     f1, 0x10(r23)
-    lfs     f0, -0x5e34(rtoc)
+    lfs     f0, -0x5e34(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800d40a8
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x204
     li      r4, 0x197
@@ -4397,7 +4399,7 @@ branch_0x800d40a8:
     stfs    f0, 0x204(r31)
     stfs    f1, 0x208(r31)
     stfs    f2, 0x20c(r31)
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x800d4120
@@ -4409,7 +4411,7 @@ branch_0x800d40a8:
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800d4120:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x204
     li      r4, 0x199
@@ -4417,7 +4419,7 @@ branch_0x800d4120:
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x800d415c
-    lfs     f0, -0x5ddc(rtoc)
+    lfs     f0, -0x5ddc(r2)
     stfs    f0, 0x154(r3)
     stfs    f0, 0x158(r3)
     stfs    f0, 0x15c(r3)
@@ -4525,23 +4527,23 @@ collideToMario__8TBossEelFv: # 0x800d4260
     mr      r30, r3
     stw     r29, 0xac(sp)
     li      r29, 0x0
-    lwz     r4, MarioHitActorPos(r13)
-    lfs     f24, -0x5e40(rtoc)
+    lwz     r4, R13Off_m0x60b4(r13)
+    lfs     f24, -0x5e40(r2)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     fmr     f23, f24
     fmr     f25, f24
-    lfs     f30, -0x5dd8(rtoc)
+    lfs     f30, -0x5dd8(r2)
     stw     r3, 0x9c(sp)
     fmr     f22, f23
     stw     r0, 0xa0(sp)
     fmr     f26, f24
-    lfs     f31, -0x5e48(rtoc)
+    lfs     f31, -0x5e48(r2)
     lwz     r0, 0x8(r4)
     fmr     f29, f24
-    lfs     f27, -0x5e0c(rtoc)
+    lfs     f27, -0x5e0c(r2)
     stw     r0, 0xa4(sp)
-    lfs     f28, -0x5ddc(rtoc)
+    lfs     f28, -0x5ddc(r2)
 branch_0x800d42fc:
     addi    r0, r29, 0x1a0
     lwz     r3, 0x74(r30)
@@ -4806,7 +4808,7 @@ branch_0x800d4694:
     stw     r3, 0x60(r30)
     li      r0, 0x1
     stw     r0, 0x5c(r30)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x64(r30)
     lwz     r5, 0x18(r30)
     lwz     r3, 0xc(r5)
@@ -4860,11 +4862,11 @@ shedTears__8TBossEelFPA4_f: # 0x800d4754
     stw     r30, 0x70(sp)
     mr      r30, r4
     lfs     f2, 0x2c(r4)
-    lis     r4, 0x8038
+    lis     r4, unk_803800f0@h
     lfs     f1, 0x1c(r30)
-    addi    r5, r4, 0xf0
+    addi    r5, r4, unk_803800f0@l
     lfs     f0, 0xc(r30)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r4, sp, 0x5c
     stfs    f0, 0x5c(sp)
     stfs    f1, 0x60(sp)
@@ -4878,26 +4880,26 @@ shedTears__8TBossEelFPA4_f: # 0x800d4754
     lwz     r12, 0xfc(r12)
     mtlr    r12
     blrl
-    lfs     f1, -0x5e40(rtoc)
-    lfs     f0, -0x5dd4(rtoc)
+    lfs     f1, -0x5e40(r2)
+    lfs     f0, -0x5dd4(r2)
     stfs    f1, 0x50(sp)
     stfs    f1, 0x54(sp)
     stfs    f0, 0x58(sp)
     stfs    f1, 0x48(sp)
-    lfs     f0, -0x5e1c(rtoc)
+    lfs     f0, -0x5e1c(r2)
     stfs    f0, 0x4c(sp)
     lfs     f1, 0x4c(sp)
     lfs     f0, 0x48(sp)
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     stw     r0, 0x6c(sp)
     lis     r0, 0x4330
-    lfd     f5, -0x5e28(rtoc)
+    lfd     f5, -0x5e28(r2)
     fmr     f3, f1
     stw     r0, 0x68(sp)
-    lfs     f0, -0x5e18(rtoc)
+    lfs     f0, -0x5e18(r2)
     addi    r3, sp, 0x18
     lfd     f4, 0x68(sp)
     lfs     f2, 0x48(sp)
@@ -4922,7 +4924,7 @@ shedTears__8TBossEelFPA4_f: # 0x800d4754
     stfs    f0, 0x18(r31)
     bl      MsVECNormalize__FP3VecP3Vec
     lfs     f0, 0x50(sp)
-    lfs     f1, -0x5e30(rtoc)
+    lfs     f1, -0x5e30(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0x50(sp)
     lfs     f0, 0x58(sp)
@@ -4954,11 +4956,11 @@ updateTearsCnt__8TBossEelFv: # 0x800d48bc
     lwz     r3, 0x1c4(r3)
     addi    r0, r3, 0x1
     stw     r0, 0x1c4(r31)
-    lwz     r3, MarioHitActorPos(r13)
+    lwz     r3, R13Off_m0x60b4(r13)
     lwz     r4, 0x1e8(r31)
     lfs     f2, 0x14(r31)
     lfs     f1, 0x4(r3)
-    lfs     f0, -0x5dd0(rtoc)
+    lfs     f0, -0x5dd0(r2)
     fsubs   f1, f2, f1
     lwz     r30, 0x1e4(r4)
     fabs    f1, f1
@@ -4968,25 +4970,25 @@ updateTearsCnt__8TBossEelFv: # 0x800d48bc
     b       branch_0x800d4930
 
 branch_0x800d490c:
-    lfs     f0, -0x5dcc(rtoc)
+    lfs     f0, -0x5dcc(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800d4920
     mulli   r30, r30, 0x3
     b       branch_0x800d4930
 
 branch_0x800d4920:
-    lfs     f0, -0x5dc8(rtoc)
+    lfs     f0, -0x5dc8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800d4930
     slwi    r30, r30, 1
 branch_0x800d4930:
     lwz     r3, 0x1c4(r31)
-    subi    r0, r30, 0x64
+    addi    r0, r30, -0x64
     cmpw    r3, r0
     bne-    branch_0x800d4a54
     lwz     r4, 0x1c0(r31)
-    lis     r3, 0x8038
-    addi    r0, r3, 0xcc
+    lis     r3, eyeTable_3618@h
+    addi    r0, r3, eyeTable_3618@l
     slwi    r3, r4, 2
     add     r3, r0, r3
     lwz     r28, 0x0(r3)
@@ -4999,7 +5001,7 @@ branch_0x800d4930:
     stw     r3, 0x60(r29)
     li      r0, 0x1
     stw     r0, 0x5c(r29)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x64(r29)
     lwz     r5, 0x18(r29)
     lwz     r3, 0xc(r5)
@@ -5036,7 +5038,7 @@ branch_0x800d49d4:
     stw     r3, 0x60(r29)
     li      r0, 0x1
     stw     r0, 0x5c(r29)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x64(r29)
     lwz     r5, 0x18(r29)
     lwz     r3, 0xc(r5)
@@ -5068,8 +5070,8 @@ branch_0x800d4a54:
     ble-    branch_0x800d4b3c
     li      r30, 0x0
     stw     r30, 0x1c4(r31)
-    lis     r3, 0x8038
-    addi    r0, r3, 0xcc
+    lis     r3, eyeTable_3618@h
+    addi    r0, r3, eyeTable_3618@l
     lwz     r3, 0x1c0(r31)
     slwi    r3, r3, 2
     add     r3, r0, r3
@@ -5086,7 +5088,7 @@ branch_0x800d4a54:
     stw     r3, 0x60(r29)
     li      r0, 0x1
     stw     r0, 0x5c(r29)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x64(r29)
     lwz     r4, 0x18(r29)
     lwz     r3, 0xc(r4)
@@ -5146,16 +5148,16 @@ getTakingMtx__8TBossEelFv: # 0x800d4b50
 .globl init__8TBossEelFP12TLiveManager
 init__8TBossEelFP12TLiveManager: # 0x800d4b64
     mflr    r0
-    lis     r6, 0x803c
+    lis     r6, unk_803b8bf0@ha
     stw     r0, 0x4(sp)
-    lis     r5, 0x8038
+    lis     r5, unk_8037fe80@ha
     stwu    sp, -0x310(sp)
     stmw    r22, 0x2e8(sp)
     addi    r23, r4, 0x0
     addi    r31, r3, 0x0
     addi    r4, r31, 0x0
-    subi    r30, r6, 0x7410
-    subi    r29, r5, 0x180
+    addi    r30, r6, unk_803b8bf0@l
+    addi    r29, r5, unk_8037fe80@l
     stw     r23, 0x70(r3)
     addi    r3, r23, 0x0
     bl      manageActor__12TLiveManagerFP10TLiveActor
@@ -5191,7 +5193,7 @@ branch_0x800d4bb8:
     lfs     f1, 0xc0(r31)
     lfs     f0, 0x14(r31)
     fmuls   f2, f2, f1
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x10(r31)
     lfs     f3, 0x18(r31)
     fadds   f2, f0, f2
@@ -5203,32 +5205,32 @@ branch_0x800d4bb8:
     beq-    branch_0x800d4c44
     bl      initNormalMotionBlend__12MActorAnmBckFv
 branch_0x800d4c44:
-    lbz     r0, -0x6970(r13)
+    lbz     r0, R13Off_m0x6970(r13)
     extsb.  r0, r0
     bne-    branch_0x800d4c88
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x696c(r13)
-    subi    r0, r3, 0x71f4
-    lis     r4, 0x800d
-    stw     r0, -0x696c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f68
-    addi    r4, r4, 0x3504
-    subi    r3, r13, 0x696c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBossEelWaitAppear@ha
+    stw     r0, R13Off_m0x696c(r13)
+    addi    r0, r3, __vvt__23TNerveBossEelWaitAppear@l
+    lis     r4, __dt__23TNerveBossEelWaitAppearFv@h
+    stw     r0, R13Off_m0x696c(r13)
+    lis     r3, unk_803f1f68@h
+    addi    r5, r3, unk_803f1f68@l
+    addi    r4, r4, __dt__23TNerveBossEelWaitAppearFv@l
+    addi    r3, r13, R13Off_m0x696c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6970(r13)
+    stb     r0, R13Off_m0x6970(r13)
 branch_0x800d4c88:
     lwz     r8, 0x8c(r31)
     li      r7, 0x0
-    lis     r4, 0x800
+    lis     r4, unk_08000003@h
     stw     r7, 0x8(r8)
-    subi    r0, r13, 0x696c
+    addi    r0, r13, R13Off_m0x696c
     addi    r3, r31, 0x0
     stw     r7, 0x20(r8)
-    addi    r4, r4, 0x3
+    addi    r4, r4, unk_08000003@l
     li      r5, 0x1
     stw     r0, 0x14(r8)
     lis     r6, 0x8000
@@ -5272,8 +5274,8 @@ branch_0x800d4d20:
     bl      __ct__9THitActorFPCc
 branch_0x800d4d44:
     stw     r23, 0x1a8(r31)
-    lis     r3, 0x800
-    addi    r4, r3, 0x3
+    lis     r3, unk_08000003@h
+    addi    r4, r3, unk_08000003@l
     lwz     r9, 0x1e8(r31)
     li      r5, 0x2
     lwz     r3, 0x1a8(r31)
@@ -5283,7 +5285,7 @@ branch_0x800d4d44:
     lfs     f2, 0xf4(r9)
     lfs     f1, 0xe0(r9)
     bl      initHitActor__9THitActorFUlUsiffff
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r29, 0x2e4
     lwz     r25, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -5327,17 +5329,17 @@ branch_0x800d4d44:
     addi    r4, r29, 0x2f0
     addi    r25, r5, 0x20
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r23)
     addi    r0, r3, 0x24
-    lis     r3, 0x803c
+    lis     r3, __vvt__21TBossEelBodyCollision@ha
     stw     r0, 0x20(r23)
-    subi    r3, r3, 0x6ecc
+    addi    r3, r3, __vvt__21TBossEelBodyCollision@l
     li      r4, 0x0
     stw     r25, 0x68(r23)
     addi    r0, r3, 0x24
-    lfs     f2, -0x5e40(rtoc)
+    lfs     f2, -0x5e40(r2)
     stfs    f2, 0x6c(r23)
     fmr     f1, f2
     fmr     f0, f2
@@ -5389,17 +5391,17 @@ branch_0x800d4e74:
     lwz     r5, 0x58(r5)
     addi    r25, r5, 0x150
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r23)
     addi    r0, r3, 0x24
-    lis     r3, 0x803c
+    lis     r3, __vvt__24TBossEelBarrierCollision@ha
     stw     r0, 0x20(r23)
-    subi    r3, r3, 0x7024
+    addi    r3, r3, __vvt__24TBossEelBarrierCollision@l
     li      r4, 0x0
     stw     r25, 0x68(r23)
     addi    r0, r3, 0x24
-    lfs     f2, -0x5e40(rtoc)
+    lfs     f2, -0x5e40(r2)
     stfs    f2, 0x6c(r23)
     fmr     f1, f2
     fmr     f0, f2
@@ -5499,13 +5501,13 @@ branch_0x800d5068:
     lwz     r3, 0x164(r31)
     lwz     r3, 0x18(r3)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x5dd4(rtoc)
+    lfs     f0, -0x5dd4(r2)
     li      r4, 0x0
     stfs    f0, 0x10(r3)
     lwz     r3, 0x168(r31)
     lwz     r3, 0x18(r3)
     bl      getFrameCtrl__6MActorFi
-    lfs     f0, -0x5dd4(rtoc)
+    lfs     f0, -0x5dd4(r2)
     stfs    f0, 0x10(r3)
     addi    r3, r29, 0x338
     bl      getGlbResource__13JKRFileLoaderFPCc
@@ -5629,9 +5631,9 @@ branch_0x800d526c:
     li      r5, 0x0
     li      r7, 0x3
     bl      __ct__12TSharedPartsFPC10TLiveActoriP12SDLModelDataUlPCc
-    lis     r4, 0x803c
+    lis     r4, __vvt__17TBossEelHeartCoin@ha
     lwz     r3, 0x258(sp)
-    subi    r0, r4, 0x6d74
+    addi    r0, r4, __vvt__17TBossEelHeartCoin@l
     stw     r0, 0x0(r3)
     li      r26, 0x0
     li      r25, 0x0
@@ -5639,7 +5641,7 @@ branch_0x800d526c:
     stw     r26, 0x7c(r3)
     stw     r31, 0x7c(r3)
 branch_0x800d52c0:
-    lwz     r3, gpItemManager(r13)
+    lwz     r3, R13Off_m0x62b0(r13)
     bl      newAndRegisterCoinReal__12TItemManagerFv
     lwz     r4, 0x258(sp)
     addi    r0, r25, 0x20
@@ -5708,17 +5710,17 @@ branch_0x800d5338:
     add     r25, r4, r0
     addi    r4, r29, 0x3e8
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r22)
     addi    r0, r3, 0x24
-    lis     r3, 0x803c
+    lis     r3, __vvt__20TBossEelAwaCollision@ha
     stw     r0, 0x20(r22)
-    subi    r3, r3, 0x6f78
+    addi    r3, r3, __vvt__20TBossEelAwaCollision@l
     li      r4, 0x0
     stw     r25, 0x68(r22)
     addi    r0, r3, 0x24
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, 0x6c(r22)
     stfs    f0, 0x70(r22)
     stfs    f0, 0x74(r22)
@@ -5765,17 +5767,17 @@ branch_0x800d5418:
     addi    r4, r29, 0x3f8
     lwz     r3, 0x238(sp)
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
+    lis     r3, __vvt__14TBossEelVortex@ha
     lwz     r27, 0x238(sp)
-    subi    r3, r3, 0x6d2c
+    addi    r3, r3, __vvt__14TBossEelVortex@l
     stw     r3, 0x0(r27)
     addi    r0, r3, 0x24
-    lis     r4, 0x800
+    lis     r4, unk_08000003@h
     stw     r0, 0x20(r27)
     li      r0, 0x1
     addi    r3, r27, 0x0
     stw     r31, 0x68(r27)
-    addi    r4, r4, 0x3
+    addi    r4, r4, unk_08000003@l
     li      r5, 0x3
     stb     r0, 0x6c(r27)
     lis     r6, 0x8000
@@ -5786,7 +5788,7 @@ branch_0x800d5418:
     lfs     f2, 0x20c(r9)
     lfs     f1, 0x1f8(r9)
     bl      initHitActor__9THitActorFUlUsiffff
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r29, 0x2e4
     lwz     r25, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -5836,7 +5838,7 @@ branch_0x800d5590:
 branch_0x800d55b4:
     stw     r22, 0x1ac(r31)
     lwz     r3, 0x1ac(r31)
-    lfs     f1, -0x5dfc(rtoc)
+    lfs     f1, -0x5dfc(r2)
     lwz     r3, 0x14(r3)
     lfs     f0, 0x14(r31)
     lwz     r3, 0x10(r3)
@@ -5847,9 +5849,9 @@ branch_0x800d55b4:
     stfs    f0, 0xc(r3)
     stfs    f1, 0x10(r3)
     stfs    f2, 0x14(r3)
-    lfs     f1, -0x5df8(rtoc)
+    lfs     f1, -0x5df8(r2)
     stfs    f1, 0x24(r3)
-    lfs     f0, -0x5df4(rtoc)
+    lfs     f0, -0x5df4(r2)
     stfs    f0, 0x28(r3)
     stfs    f1, 0x2c(r3)
     lha     r0, 0x7c(r31)
@@ -5894,14 +5896,14 @@ __dt__17TBossEelCollisionFv: # 0x800d5664
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800d56cc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800d56bc
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -5982,7 +5984,7 @@ branch_0x800d5774:
 .globl behaveToMario__29TBossEelTearsRecoverCollisionFv
 behaveToMario__29TBossEelTearsRecoverCollisionFv: # 0x800d5798
     mflr    r0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
@@ -6003,13 +6005,13 @@ behaveToMario__29TBossEelTearsRecoverCollisionFv: # 0x800d5798
 .globl initCollision__29TBossEelTearsRecoverCollisionFv
 initCollision__29TBossEelTearsRecoverCollisionFv: # 0x800d57dc
     mflr    r0
-    lis     r4, 0x2000
+    lis     r4, unk_2000002c@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x2c
+    addi    r4, r4, unk_2000002c@l
     li      r5, 0x3
     stwu    sp, -0x8(sp)
     lis     r6, 0x8000
-    lfs     f0, -0x5dc4(rtoc)
+    lfs     f0, -0x5dc4(r2)
     stfs    f0, 0x74(r3)
     stfs    f0, 0x6c(r3)
     stfs    f0, 0x78(r3)
@@ -6030,13 +6032,13 @@ behaveToMario__24TBossEelBarrierCollisionFv: # 0x800d5830
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     addi    r3, sp, 0x18
     lfs     f0, -0x7df0(r13)
     stfs    f1, 0x18(sp)
     stfs    f0, 0x1c(sp)
     stfs    f1, 0x20(sp)
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     lfs     f1, 0x18(sp)
     lfs     f0, 0x0(r4)
     fadds   f0, f1, f0
@@ -6059,13 +6061,13 @@ behaveToMario__24TBossEelBarrierCollisionFv: # 0x800d5830
 .globl initCollision__24TBossEelBarrierCollisionFv
 initCollision__24TBossEelBarrierCollisionFv: # 0x800d589c
     mflr    r0
-    lis     r4, 0x800
+    lis     r4, unk_08000023@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x23
+    addi    r4, r4, unk_08000023@l
     li      r5, 0x5
     stwu    sp, -0x8(sp)
     lis     r6, 0x8000
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, 0x74(r3)
     stfs    f0, 0x6c(r3)
     stfs    f0, 0x78(r3)
@@ -6094,9 +6096,9 @@ perform__20TBossEelAwaCollisionFUlPQ26JDrama9TGraphics: # 0x800d58f0
     beq-    branch_0x800d59cc
     mr      r3, r29
     bl      calcEntryRadius__9THitActorFv
-    lfs     f1, -0x5dc0(rtoc)
+    lfs     f1, -0x5dc0(r2)
     lfs     f0, 0x14(r29)
-    lwz     r3, MarioHitActorPos(r13)
+    lwz     r3, R13Off_m0x60b4(r13)
     fadds   f0, f1, f0
     lfs     f1, 0x4(r3)
     fcmpo   cr0, f1, f0
@@ -6107,7 +6109,7 @@ perform__20TBossEelAwaCollisionFUlPQ26JDrama9TGraphics: # 0x800d58f0
 branch_0x800d5944:
     lfs     f1, 0x14(r29)
     lfs     f0, 0x54(r29)
-    lwz     r3, MarioHitActorPos(r13)
+    lwz     r3, R13Off_m0x60b4(r13)
     fadds   f0, f1, f0
     lfs     f1, 0x4(r3)
     fcmpo   cr0, f1, f0
@@ -6154,7 +6156,7 @@ branch_0x800d59cc:
     lfs     f0, 0xc(r3)
     stfs    f0, 0x10(r29)
     lwz     r3, 0x68(r29)
-    lfs     f1, -0x5dbc(rtoc)
+    lfs     f1, -0x5dbc(r2)
     lfs     f0, 0x1c(r3)
     fadds   f0, f1, f0
     stfs    f0, 0x14(r29)
@@ -6178,17 +6180,17 @@ behaveToMario__20TBossEelAwaCollisionFv: # 0x800d5a24
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     addi    r3, sp, 0x14
-    lfs     f0, -0x5e30(rtoc)
+    lfs     f0, -0x5e30(r2)
     stfs    f1, 0x14(sp)
     stfs    f0, 0x18(sp)
     stfs    f1, 0x1c(sp)
-    lfs     f0, -0x5db8(rtoc)
+    lfs     f0, -0x5db8(r2)
     stfs    f0, 0x18(sp)
-    lwz     r4, -0x60a0(r13)
+    lwz     r4, R13Off_m0x60a0(r13)
     stfs    f1, 0x0(r4)
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     lfs     f1, 0x14(sp)
     lfs     f0, 0x0(r4)
     fadds   f0, f1, f0
@@ -6211,13 +6213,13 @@ behaveToMario__20TBossEelAwaCollisionFv: # 0x800d5a24
 .globl initCollision__20TBossEelAwaCollisionFv
 initCollision__20TBossEelAwaCollisionFv: # 0x800d5aa0
     mflr    r0
-    lis     r4, 0x800
+    lis     r4, unk_08000003@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x3
+    addi    r4, r4, unk_08000003@l
     li      r5, 0x2
     stwu    sp, -0x8(sp)
     lis     r6, 0x8000
-    lfs     f0, -0x5db4(rtoc)
+    lfs     f0, -0x5db4(r2)
     stfs    f0, 0x74(r3)
     stfs    f0, 0x6c(r3)
     stfs    f0, 0x78(r3)
@@ -6236,18 +6238,18 @@ initCollision__20TBossEelAwaCollisionFv: # 0x800d5aa0
 .globl initCollision__21TBossEelBodyCollisionFv
 initCollision__21TBossEelBodyCollisionFv: # 0x800d5af4
     mflr    r0
-    lis     r4, 0x800
+    lis     r4, unk_08000023@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x23
+    addi    r4, r4, unk_08000023@l
     li      r5, 0x5
     stwu    sp, -0x8(sp)
     lis     r6, 0x8000
-    lfs     f0, -0x5db4(rtoc)
+    lfs     f0, -0x5db4(r2)
     stfs    f0, 0x6c(r3)
     stfs    f0, 0x74(r3)
-    lfs     f0, -0x5db0(rtoc)
+    lfs     f0, -0x5db0(r2)
     stfs    f0, 0x70(r3)
-    lfs     f0, -0x5dac(rtoc)
+    lfs     f0, -0x5dac(r2)
     stfs    f0, 0x78(r3)
     lfs     f1, 0x6c(r3)
     lfs     f2, 0x70(r3)
@@ -6269,12 +6271,12 @@ behaveToMario__17TBossEelCollisionFv: # 0x800d5b50
     mr      r31, r3
     addi    r3, sp, 0x68
     stw     r30, 0x78(sp)
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     lfs     f0, -0x7df0(r13)
     stfs    f1, 0x68(sp)
     stfs    f0, 0x6c(sp)
     stfs    f1, 0x70(sp)
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     lfs     f1, 0x68(sp)
     lfs     f0, 0x0(r4)
     fadds   f0, f1, f0
@@ -6300,7 +6302,7 @@ behaveToMario__17TBossEelCollisionFv: # 0x800d5b50
 branch_0x800d5bd8:
     lwz     r4, 0x74(r30)
     addi    r3, sp, 0x50
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     lwz     r4, 0x4(r4)
     lhz     r0, 0x1a0(r30)
     lwz     r7, 0x58(r4)
@@ -6338,48 +6340,48 @@ branch_0x800d5c60:
 branch_0x800d5c64:
     clrlwi. r0, r0, 24
     beq-    branch_0x800d5d60
-    lbz     r0, -0x6934(r13)
+    lbz     r0, R13Off_m0x6934(r13)
     lwz     r31, 0x7c(r31)
     extsb.  r0, r0
     bne-    branch_0x800d5cb4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6930(r13)
-    subi    r0, r3, 0x7264
-    lis     r4, 0x800d
-    stw     r0, -0x6930(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fbc
-    addi    r4, r4, 0xbf4
-    subi    r3, r13, 0x6930
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__16TNerveBossEelEat@ha
+    stw     r0, R13Off_m0x6930(r13)
+    addi    r0, r3, __vvt__16TNerveBossEelEat@l
+    lis     r4, __dt__16TNerveBossEelEatFv@h
+    stw     r0, R13Off_m0x6930(r13)
+    lis     r3, unk_803f1fbc@h
+    addi    r5, r3, unk_803f1fbc@l
+    addi    r4, r4, __dt__16TNerveBossEelEatFv@l
+    addi    r3, r13, R13Off_m0x6930
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6934(r13)
+    stb     r0, R13Off_m0x6934(r13)
 branch_0x800d5cb4:
     lwz     r3, 0x8c(r31)
-    subi    r30, r13, 0x6930
+    addi    r30, r13, R13Off_m0x6930
     lwz     r0, 0x14(r3)
     cmplw   r0, r30
     beq-    branch_0x800d5d60
-    lbz     r0, -0x6934(r13)
+    lbz     r0, R13Off_m0x6934(r13)
     extsb.  r0, r0
     bne-    branch_0x800d5d08
-    subi    r3, r13, 0x6930
+    addi    r3, r13, R13Off_m0x6930
     bl      __ct__24TNerveBase_10TLiveActor_Fv
-    lis     r3, 0x803c
-    subi    r0, r3, 0x7264
-    lis     r4, 0x800d
-    stw     r0, -0x6930(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1fbc
-    addi    r4, r4, 0xbf4
+    lis     r3, __vvt__16TNerveBossEelEat@ha
+    addi    r0, r3, __vvt__16TNerveBossEelEat@l
+    lis     r4, __dt__16TNerveBossEelEatFv@h
+    stw     r0, R13Off_m0x6930(r13)
+    lis     r3, unk_803f1fbc@h
+    addi    r5, r3, unk_803f1fbc@l
+    addi    r4, r4, __dt__16TNerveBossEelEatFv@l
     addi    r3, r30, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6934(r13)
+    stb     r0, R13Off_m0x6934(r13)
 branch_0x800d5d08:
-    subi    r6, r13, 0x6930
+    addi    r6, r13, R13Off_m0x6930
     lwz     r5, 0x8c(r31)
     cmplwi  r6, 0x0
     beq-    branch_0x800d5d60
@@ -6414,9 +6416,9 @@ branch_0x800d5d60:
 .globl initCollision__17TBossEelCollisionFv
 initCollision__17TBossEelCollisionFv: # 0x800d5d78
     mflr    r0
-    lis     r4, 0x800
+    lis     r4, unk_08000023@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x23
+    addi    r4, r4, unk_08000023@l
     li      r5, 0x5
     stwu    sp, -0x8(sp)
     lis     r6, 0x8000
@@ -6507,12 +6509,12 @@ __dt__27TNerveBEelTearsMarioRecoverFv: # 0x800d5e94
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d5ed8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6a54
+    lis     r3, __vvt__27TNerveBEelTearsMarioRecover@ha
+    addi    r0, r3, __vvt__27TNerveBEelTearsMarioRecover@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d5ec8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d5ec8:
     extsh.  r0, r4
@@ -6538,9 +6540,9 @@ __ct__8TBossEelFPCc: # 0x800d5ef0
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803c
+    lis     r3, __vvt__8TBossEel@ha
     lwz     r4, 0x8(sp)
-    subi    r3, r3, 0x71e4
+    addi    r3, r3, __vvt__8TBossEel@l
     stw     r3, 0x0(r4)
     addi    r0, r3, 0x24
     li      r30, 0x0
@@ -6550,20 +6552,20 @@ __ct__8TBossEelFPCc: # 0x800d5ef0
     stw     r30, 0x1a8(r4)
     stw     r30, 0x1ac(r4)
     stw     r30, 0x1b0(r4)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r4)
     stw     r30, 0x1c0(r4)
     stw     r30, 0x1c4(r4)
-    lfs     f0, -0x5dc0(rtoc)
+    lfs     f0, -0x5dc0(r2)
     stfs    f0, 0x1cc(r4)
     stb     r31, 0x1d0(r4)
-    lfs     f0, -0x5da8(rtoc)
+    lfs     f0, -0x5da8(r2)
     stfs    f0, 0x1d4(r4)
-    lfs     f0, -0x5da4(rtoc)
+    lfs     f0, -0x5da4(r2)
     stfs    f0, 0x1d8(r4)
     stw     r30, 0x1e8(r4)
     stb     r30, 0x1f0(r4)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, 0x1f4(r4)
     stb     r30, 0x1fc(r4)
     stb     r30, 0x1fd(r4)
@@ -6665,7 +6667,7 @@ perform__17TBossEelHeartCoinFUlPQ26JDrama9TGraphics: # 0x800d60a4
     rlwinm. r31, r29, 0, 30, 30
     beq-    branch_0x800d6198
     lwz     r3, 0x7c(r28)
-    subi    r4, rtoc, 0x5e58
+    addi    r4, r2, R2Off_m0x5e58
     lwz     r3, 0x74(r3)
     lwz     r3, 0x4(r3)
     lwz     r3, 0x4(r3)
@@ -6686,7 +6688,7 @@ perform__17TBossEelHeartCoinFUlPQ26JDrama9TGraphics: # 0x800d60a4
     lwz     r3, 0x74(r3)
     bl      getFrameCtrl__6MActorFi
     lfs     f1, 0x10(r3)
-    lfs     f0, -0x5da0(rtoc)
+    lfs     f0, -0x5da0(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800d615c
     lfs     f2, 0x2c(r27)
@@ -6843,7 +6845,7 @@ perform__11TBossEelEyeFUlPQ26JDrama9TGraphics: # 0x800d6304
     li      r6, 0x1
     stfs    f31, 0x74(r31)
     stfs    f30, 0x78(r31)
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     beq-    branch_0x800d63d0
@@ -6879,8 +6881,8 @@ branch_0x800d63d0:
     bl      PSMTXCopy
 branch_0x800d6410:
     lfs     f2, 0x64(r31)
-    lfs     f1, -0x5de4(rtoc)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f1, -0x5de4(r2)
+    lfs     f0, -0x5e48(r2)
     fsubs   f1, f2, f1
     fcmpo   cr0, f1, f0
     ble-    branch_0x800d6430
@@ -6888,7 +6890,7 @@ branch_0x800d6410:
     b       branch_0x800d6440
 
 branch_0x800d6430:
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800d6440
     fmr     f1, f0
@@ -6922,7 +6924,7 @@ branch_0x800d645c:
     stw     r3, 0x60(r31)
     li      r4, 0x0
     stw     r4, 0x5c(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x64(r31)
     lwz     r5, 0x18(r31)
     lwz     r3, 0xc(r5)
@@ -6955,7 +6957,7 @@ branch_0x800d6504:
     stw     r3, 0x60(r28)
     li      r4, 0x0
     stw     r4, 0x5c(r28)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x64(r28)
     lwz     r5, 0x18(r28)
     lwz     r3, 0xc(r5)
@@ -7013,9 +7015,9 @@ __ct__11TBossEelEyeFPC10TLiveActoriP12SDLModelDataUlPCc: # 0x800d65b4
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__12TSharedPartsFPC10TLiveActoriP12SDLModelDataUlPCc
-    lis     r3, 0x803c
+    lis     r3, __vvt__11TBossEelEye@ha
     lwz     r6, 0x8(sp)
-    subi    r0, r3, 0x6d50
+    addi    r0, r3, __vvt__11TBossEelEye@l
     stw     r0, 0x0(r6)
     li      r5, 0x0
     li      r4, -0x1
@@ -7037,7 +7039,7 @@ __ct__11TBossEelEyeFPC10TLiveActoriP12SDLModelDataUlPCc: # 0x800d65b4
     bl      __ct__8SDLModelFP12SDLModelDataUlUl
 branch_0x800d6638:
     lwz     r31, 0x8(sp)
-    subi    r4, rtoc, 0x5d9c
+    addi    r4, r2, R2Off_m0x5d9c
     stw     r29, 0x4c(r31)
     lwz     r3, 0x4c(r31)
     lwz     r3, 0x4(r3)
@@ -7056,7 +7058,7 @@ branch_0x800d6668:
     stw     r3, 0x60(r31)
     li      r4, 0x0
     stw     r4, 0x5c(r31)
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x64(r31)
     lwz     r5, 0x18(r31)
     lwz     r3, 0xc(r5)
@@ -7163,15 +7165,15 @@ perform__14TBossEelVortexFUlPQ26JDrama9TGraphics: # 0x800d6720
     cmpwi   r3, 0x0
     beq-    branch_0x800d69a8
 branch_0x800d67f8:
-    lfs     f26, -0x5d94(rtoc)
+    lfs     f26, -0x5d94(r2)
     li      r31, 0x0
-    lfs     f27, -0x5d90(rtoc)
+    lfs     f27, -0x5d90(r2)
     li      r27, 0x0
-    lfd     f28, -0x5e28(rtoc)
-    lfs     f29, -0x5e48(rtoc)
+    lfd     f28, -0x5e28(r2)
+    lfs     f29, -0x5e48(r2)
     lis     r26, 0x4330
-    lfs     f30, -0x5d8c(rtoc)
-    lfs     f31, -0x5e0c(rtoc)
+    lfs     f30, -0x5d8c(r2)
+    lfs     f31, -0x5e0c(r2)
     b       branch_0x800d6998
 
 branch_0x800d6820:
@@ -7191,7 +7193,7 @@ branch_0x800d6844:
     beq-    branch_0x800d6990
     lwz     r6, 0x68(r28)
     addi    r3, sp, 0x138
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     mr      r4, r3
     lfs     f1, 0x10(r6)
     lfs     f0, 0x0(r5)
@@ -7209,13 +7211,13 @@ branch_0x800d6844:
     lwz     r0, 0x70(r28)
     lwz     r4, 0x68(r28)
     xoris   r3, r0, 0x8000
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     stw     r3, 0x15c(sp)
     lwz     r3, 0x1e8(r4)
     stw     r26, 0x158(sp)
     lfs     f25, 0x2c0(r3)
     lfd     f0, 0x158(sp)
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     fsubs   f0, f0, f28
     fmuls   f0, f27, f0
     fmuls   f0, f26, f0
@@ -7238,7 +7240,7 @@ branch_0x800d68f4:
     fmr     f0, f30
 branch_0x800d6900:
     fmuls   f25, f25, f0
-    lwz     r3, -0x60f0(r13)
+    lwz     r3, R13Off_m0x60f0(r13)
     addi    r5, r28, 0x10
     li      r4, 0x8
     bl      start__9RumbleMgrFiP3Vec
@@ -7260,7 +7262,7 @@ branch_0x800d6930:
     lfs     f0, 0x140(sp)
     fmuls   f0, f0, f25
     stfs    f0, 0x140(sp)
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     lfs     f1, 0x138(sp)
     lfs     f0, 0x0(r4)
     fadds   f0, f1, f0
@@ -7300,7 +7302,7 @@ branch_0x800d69b4:
     lfsx    f0, r4, r0
     stfs    f0, 0x10(r28)
     lwz     r4, 0x68(r28)
-    lfs     f1, -0x5de8(rtoc)
+    lfs     f1, -0x5de8(r2)
     lwz     r3, 0x74(r4)
     lhz     r0, 0x1a4(r4)
     lwz     r4, 0x4(r3)
@@ -7377,36 +7379,36 @@ branch_0x800d6ab0:
     stfs    f1, 0x58(r30)
     stfs    f0, 0x5c(r30)
     bl      calcEntryRadius__9THitActorFv
-    lis     r6, 0x803b
-    lis     r5, 0x803c
-    lis     r4, 0x800d
-    lis     r3, 0x803f
-    subi    r25, r6, 0x48f4
-    subi    r28, r5, 0x7264
-    addi    r27, r4, 0xbf4
-    addi    r26, r3, 0x1fbc
+    lis     r6, __vvt__24TNerveBase_10TLiveActor_@ha
+    lis     r5, __vvt__16TNerveBossEelEat@ha
+    lis     r4, __dt__16TNerveBossEelEatFv@h
+    lis     r3, unk_803f1fbc@h
+    addi    r25, r6, __vvt__24TNerveBase_10TLiveActor_@l
+    addi    r28, r5, __vvt__16TNerveBossEelEat@l
+    addi    r27, r4, __dt__16TNerveBossEelEatFv@l
+    addi    r26, r3, unk_803f1fbc@l
     li      r24, 0x0
     li      r22, 0x0
     b       branch_0x800d6bc8
 
 branch_0x800d6b24:
-    lbz     r0, -0x6934(r13)
+    lbz     r0, R13Off_m0x6934(r13)
     lwz     r3, 0x44(r30)
     extsb.  r0, r0
     lwz     r21, 0x6c(r30)
     lwzx    r23, r3, r22
     bne-    branch_0x800d6b5c
-    stw     r25, -0x6930(r13)
-    subi    r3, r13, 0x6930
+    stw     r25, R13Off_m0x6930(r13)
+    addi    r3, r13, R13Off_m0x6930
     addi    r4, r27, 0x0
-    stw     r28, -0x6930(r13)
+    stw     r28, R13Off_m0x6930(r13)
     addi    r5, r26, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6934(r13)
+    stb     r0, R13Off_m0x6934(r13)
 branch_0x800d6b5c:
     lwz     r3, 0x8c(r21)
-    subi    r0, r13, 0x6930
+    addi    r0, r13, R13Off_m0x6930
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d6b78
@@ -7434,7 +7436,7 @@ branch_0x800d6ba0:
     cmpwi   r0, 0x1
     ble-    branch_0x800d6bc0
     addi    r3, r30, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
 branch_0x800d6bc0:
     addi    r24, r24, 0x1
@@ -7446,7 +7448,7 @@ branch_0x800d6bc8:
     lwz     r3, 0x84(r30)
     cmpwi   r3, 0x0
     ble-    branch_0x800d6bec
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x84(r30)
     b       branch_0x800d6e0c
 
@@ -7466,7 +7468,7 @@ branch_0x800d6bec:
     beq-    branch_0x800d6c34
     lwz     r3, 0x68(r30)
     li      r4, 0x0
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     lwz     r3, 0x18(r3)
     bl      setFrameRate__6MActorFfi
 branch_0x800d6c34:
@@ -7487,13 +7489,13 @@ branch_0x800d6c34:
     lwz     r3, 0x18(r3)
     bl      setBckFromIndex__6MActorFi
     lfs     f2, 0x7c(r30)
-    lis     r3, 0x8038
+    lis     r3, unk_803800f0@h
     lfs     f1, 0xa4(r30)
-    addi    r5, r3, 0xf0
+    addi    r5, r3, unk_803800f0@l
     lfs     f3, 0xb4(r30)
     lfs     f0, 0x94(r30)
     fadds   f1, f2, f1
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     addi    r4, sp, 0x19c
     stfs    f0, 0x19c(sp)
     li      r6, 0x0
@@ -7579,8 +7581,8 @@ branch_0x800d6da0:
     lfs     f0, 0x1bc(r3)
     fcmpo   cr0, f1, f0
     bgt-    branch_0x800d6df8
-    lwz     r3, MarioHitActorPos(r13)
-    lfs     f1, -0x5db4(rtoc)
+    lwz     r3, R13Off_m0x60b4(r13)
+    lfs     f1, -0x5db4(r2)
     lfs     f0, 0x4(r3)
     lfs     f2, 0x14(r30)
     fadds   f0, f1, f0
@@ -7618,7 +7620,7 @@ branch_0x800d6e54:
     lwz     r0, 0x70(r30)
     cmpwi   r0, 0x1
     ble-    branch_0x800d6eb4
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r30, 0x0
     addi    r5, r30, 0x10
     li      r4, 0x19c
@@ -7651,10 +7653,10 @@ branch_0x800d6eb4:
     lwz     r3, 0x18(r3)
     bl      getFrameCtrl__6MActorFi
     lfs     f1, 0xc(r3)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x800d6f40
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r30, 0x0
     addi    r5, r30, 0x10
     li      r4, 0x19a
@@ -7685,7 +7687,7 @@ branch_0x800d6f54:
     lwz     r0, 0x70(r30)
     cmpwi   r0, 0x1
     bne-    branch_0x800d6fb4
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r30, 0x0
     addi    r5, r30, 0x10
     li      r4, 0x19b
@@ -7710,7 +7712,7 @@ branch_0x800d6fb4:
     lfs     f31, 0x78(r30)
     addi    r3, sp, 0x138
     bl      identity33__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___Fv
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     addi    r3, sp, 0x168
     addi    r5, r3, 0x0
     stfs    f0, 0x144(sp)
@@ -7720,7 +7722,7 @@ branch_0x800d6fb4:
     bl      PSMTXConcat
     lfs     f1, 0x80(r30)
     addi    r3, sp, 0x138
-    lfs     f3, -0x5e40(rtoc)
+    lfs     f3, -0x5e40(r2)
     fmr     f2, f1
     bl      MsMtxSetRotRPH__FPA4_ffff
     addi    r3, sp, 0x168
@@ -7786,7 +7788,7 @@ receiveMessage__13TBossEelToothFP9THitActorUl: # 0x800d7080
     li      r0, 0x2
     stw     r0, 0x84(r31)
     lwz     r3, 0x70(r31)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x70(r31)
     lwz     r3, 0x68(r31)
     lwz     r30, 0x18(r3)
@@ -7802,7 +7804,7 @@ receiveMessage__13TBossEelToothFP9THitActorUl: # 0x800d7080
     lwz     r0, 0x70(r31)
     lwz     r3, 0x1e8(r3)
     mulli   r5, r0, 0xff
-    lfd     f2, -0x5e28(rtoc)
+    lfd     f2, -0x5e28(r2)
     lwz     r0, 0x1d0(r3)
     xoris   r3, r5, 0x8000
     xoris   r0, r0, 0x8000
@@ -7822,9 +7824,9 @@ receiveMessage__13TBossEelToothFP9THitActorUl: # 0x800d7080
     lbz     r0, 0x74(r31)
     cmplwi  r0, 0x1
     bne-    branch_0x800d71a0
-    lis     r3, 0x6666
+    lis     r3, unk_66666667@h
     lwz     r4, 0x70(r31)
-    addi    r0, r3, 0x6667
+    addi    r0, r3, unk_66666667@l
     mulhw   r0, r0, r4
     srawi   r0, r0, 3
     srwi    r3, r0, 31
@@ -7850,7 +7852,7 @@ branch_0x800d71a0:
     lbz     r0, 0x74(r31)
     cmplwi  r0, 0x1
     bne-    branch_0x800d72e8
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2987
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7868,7 +7870,7 @@ branch_0x800d7204:
     beq-    branch_0x800d724c
     lwz     r5, 0x6c(r31)
     li      r4, 0x2989
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7885,7 +7887,7 @@ branch_0x800d7204:
 branch_0x800d724c:
     lwz     r5, 0x6c(r31)
     li      r4, 0x298a
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7904,7 +7906,7 @@ branch_0x800d7284:
     stb     r0, 0x1fd(r3)
     li      r4, 0xd3
     li      r6, 0x0
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r7, 0x0
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
@@ -7925,7 +7927,7 @@ branch_0x800d7284:
     b       branch_0x800d7398
 
 branch_0x800d72e8:
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2988
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7943,7 +7945,7 @@ branch_0x800d7318:
     beq-    branch_0x800d7360
     lwz     r5, 0x6c(r31)
     li      r4, 0x298b
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7960,7 +7962,7 @@ branch_0x800d7318:
 branch_0x800d7360:
     lwz     r5, 0x6c(r31)
     li      r4, 0x298c
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     addi    r30, r5, 0x10
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -7986,7 +7988,7 @@ branch_0x800d739c:
 .globl __ct__13TBossEelToothFUcP8TBossEelPCcP12SDLModelDataPCc
 __ct__13TBossEelToothFUcP8TBossEelPCcP12SDLModelDataPCc: # 0x800d73b4
     mflr    r0
-    lis     r9, 0x8038
+    lis     r9, unk_8037fe80@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x110(sp)
     stmw    r26, 0xf8(sp)
@@ -7995,13 +7997,13 @@ __ct__13TBossEelToothFUcP8TBossEelPCcP12SDLModelDataPCc: # 0x800d73b4
     addi    r28, r6, 0x0
     addi    r30, r7, 0x0
     addi    r4, r8, 0x0
-    subi    r31, r9, 0x180
+    addi    r31, r9, unk_8037fe80@l
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
+    lis     r3, __vvt__13TBossEelTooth@ha
     lwz     r29, 0x8(sp)
-    subi    r3, r3, 0x6c84
+    addi    r3, r3, __vvt__13TBossEelTooth@l
     stw     r3, 0x0(r29)
     addi    r0, r3, 0x24
     li      r3, 0x0
@@ -8012,7 +8014,7 @@ __ct__13TBossEelToothFUcP8TBossEelPCcP12SDLModelDataPCc: # 0x800d73b4
     stw     r27, 0x6c(r29)
     stw     r3, 0x70(r29)
     stb     r26, 0x74(r29)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, 0x78(r29)
     stfs    f0, 0x7c(r29)
     stfs    f0, 0x80(r29)
@@ -8050,7 +8052,7 @@ branch_0x800d7480:
     bl      setBckFromIndex__6MActorFi
     lwz     r3, 0x68(r30)
     li      r4, 0x0
-    lfs     f1, -0x5e40(rtoc)
+    lfs     f1, -0x5e40(r2)
     lwz     r3, 0x18(r3)
     bl      setFrameRate__6MActorFfi
     li      r28, 0x0
@@ -8072,10 +8074,10 @@ branch_0x800d74e0:
     blt+    branch_0x800d74c8
     lwz     r30, 0x8(sp)
     li      r0, 0xff
-    lis     r4, 0x800
+    lis     r4, unk_08000022@h
     stb     r0, 0xbb(r30)
     mr      r3, r30
-    addi    r4, r4, 0x22
+    addi    r4, r4, unk_08000022@l
     lwz     r6, 0x6c(r30)
     li      r5, 0x5
     lwz     r7, 0x1e8(r6)
@@ -8089,7 +8091,7 @@ branch_0x800d74e0:
     lfs     f2, 0x144(r9)
     lfs     f1, 0x130(r9)
     bl      initHitActor__9THitActorFUlUsiffff
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x42c
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8146,9 +8148,9 @@ clipEnemies__15TBossEelManagerFPQ26JDrama9TGraphics: # 0x800d75dc
 .globl createModelData__15TBossEelManagerFv
 createModelData__15TBossEelManagerFv: # 0x800d7604
     mflr    r0
-    lis     r4, 0x8038
+    lis     r4, entry_3303@h
     stw     r0, 0x4(sp)
-    addi    r4, r4, 0x40
+    addi    r4, r4, entry_3303@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -8163,175 +8165,175 @@ createModelData__15TBossEelManagerFv: # 0x800d7604
 .globl loadAfter__15TBossEelManagerFv
 loadAfter__15TBossEelManagerFv: # 0x800d7638
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2f98
+    addi    r3, r3, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r3, 0xd3
     lbz     r0, 0xd3(r3)
-    lis     r3, 0x8038
-    subi    r31, r3, 0x180
+    lis     r3, unk_8037fe80@ha
+    addi    r31, r3, unk_8037fe80@l
     cmplwi  r0, 0x0
     bne-    branch_0x800d7684
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x444
     li      r5, 0xd3
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7684:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0xd4
     lbz     r0, 0xd4(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d76b4
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x46c
     li      r5, 0xd4
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d76b4:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x192
     lbz     r0, 0x192(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d76e4
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x494
     li      r5, 0x192
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d76e4:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x193
     lbz     r0, 0x193(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d7714
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x4bc
     li      r5, 0x193
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7714:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x194
     lbz     r0, 0x194(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d7744
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x4e8
     li      r5, 0x194
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7744:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x195
     lbz     r0, 0x195(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d7774
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x514
     li      r5, 0x195
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7774:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x196
     lbz     r0, 0x196(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d77a4
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x53c
     li      r5, 0x196
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d77a4:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x197
     lbz     r0, 0x197(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d77d4
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x568
     li      r5, 0x197
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d77d4:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x198
     lbz     r0, 0x198(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d7804
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x590
     li      r5, 0x198
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7804:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x199
     lbz     r0, 0x199(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d7834
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x5b8
     li      r5, 0x199
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7834:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x19a
     lbz     r0, 0x19a(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d7864
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x5e0
     li      r5, 0x19a
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7864:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x19b
     lbz     r0, 0x19b(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d7894
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x60c
     li      r5, 0x19b
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800d7894:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x19c
     lbz     r0, 0x19c(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d78c4
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x638
     li      r5, 0x19c
     bl      load__18JPAResourceManagerFPCcUs
@@ -8349,11 +8351,11 @@ branch_0x800d78c4:
 .globl __ct__18TBossEelSaveParamsFv
 __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     mflr    r0
-    lis     r4, 0x8038
+    lis     r4, unk_8037fe80@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stmw    r26, 0x10(sp)
-    subi    r30, r4, 0x180
+    addi    r30, r4, unk_8037fe80@l
     addi    r0, r30, 0x664
     addi    r31, r3, 0x0
     stw     r0, 0x0(r3)
@@ -8366,12 +8368,12 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     addi    r3, r31, 0x8
     addi    r6, r30, 0x678
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r29, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r29, r3, __vvt__10TParamT_f_@l
     stw     r29, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r28, r3, 0x42d0
-    lfs     f0, -0x5e40(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r28, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x5e40(r2)
     addi    r3, r30, 0x68c
     stfs    f0, 0x18(r31)
     stw     r28, 0x8(r31)
@@ -8383,7 +8385,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1c(r31)
     addi    r3, r30, 0x6a0
-    lfs     f0, -0x5dc8(rtoc)
+    lfs     f0, -0x5dc8(r2)
     stfs    f0, 0x2c(r31)
     stw     r28, 0x1c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8394,7 +8396,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x30(r31)
     addi    r3, r30, 0x6b0
-    lfs     f0, -0x5da4(rtoc)
+    lfs     f0, -0x5da4(r2)
     stfs    f0, 0x40(r31)
     stw     r28, 0x30(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8405,7 +8407,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x44(r31)
     addi    r3, r30, 0x6c0
-    lfs     f0, -0x5d88(rtoc)
+    lfs     f0, -0x5d88(r2)
     stfs    f0, 0x54(r31)
     stw     r28, 0x44(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8416,7 +8418,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x58(r31)
     addi    r3, r30, 0x6d4
-    lfs     f0, -0x5d84(rtoc)
+    lfs     f0, -0x5d84(r2)
     stfs    f0, 0x68(r31)
     stw     r28, 0x58(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8427,7 +8429,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x6c(r31)
     addi    r3, r30, 0x6ec
-    lfs     f0, -0x5dc8(rtoc)
+    lfs     f0, -0x5dc8(r2)
     stfs    f0, 0x7c(r31)
     stw     r28, 0x6c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8438,7 +8440,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x80(r31)
     addi    r3, r30, 0x700
-    lfs     f0, -0x5d80(rtoc)
+    lfs     f0, -0x5d80(r2)
     stfs    f0, 0x90(r31)
     stw     r28, 0x80(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8449,7 +8451,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x94(r31)
     addi    r3, r30, 0x714
-    lfs     f0, -0x5d7c(rtoc)
+    lfs     f0, -0x5d7c(r2)
     stfs    f0, 0xa4(r31)
     stw     r28, 0x94(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8460,7 +8462,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xa8(r31)
     addi    r3, r30, 0x728
-    lfs     f0, -0x5d78(rtoc)
+    lfs     f0, -0x5d78(r2)
     stfs    f0, 0xb8(r31)
     stw     r28, 0xa8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8471,7 +8473,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xbc(r31)
     addi    r3, r30, 0x73c
-    lfs     f0, -0x5d74(rtoc)
+    lfs     f0, -0x5d74(r2)
     stfs    f0, 0xcc(r31)
     stw     r28, 0xbc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8482,7 +8484,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xd0(r31)
     addi    r3, r30, 0x750
-    lfs     f0, -0x5d70(rtoc)
+    lfs     f0, -0x5d70(r2)
     stfs    f0, 0xe0(r31)
     stw     r28, 0xd0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8493,7 +8495,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xe4(r31)
     addi    r3, r30, 0x764
-    lfs     f0, -0x5d6c(rtoc)
+    lfs     f0, -0x5d6c(r2)
     stfs    f0, 0xf4(r31)
     stw     r28, 0xe4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8504,7 +8506,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0xf8(r31)
     addi    r3, r30, 0x778
-    lfs     f0, -0x5d68(rtoc)
+    lfs     f0, -0x5d68(r2)
     stfs    f0, 0x108(r31)
     stw     r28, 0xf8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8515,7 +8517,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x10c(r31)
     addi    r3, r30, 0x78c
-    lfs     f0, -0x5d64(rtoc)
+    lfs     f0, -0x5d64(r2)
     stfs    f0, 0x11c(r31)
     stw     r28, 0x10c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8526,7 +8528,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x120(r31)
     addi    r3, r30, 0x7a4
-    lfs     f0, -0x5dc0(rtoc)
+    lfs     f0, -0x5dc0(r2)
     stfs    f0, 0x130(r31)
     stw     r28, 0x120(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8537,7 +8539,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x134(r31)
     addi    r3, r30, 0x7bc
-    lfs     f0, -0x5d60(rtoc)
+    lfs     f0, -0x5d60(r2)
     stfs    f0, 0x144(r31)
     stw     r28, 0x134(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8548,7 +8550,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x148(r31)
     addi    r3, r30, 0x7d4
-    lfs     f0, -0x5d5c(rtoc)
+    lfs     f0, -0x5d5c(r2)
     stfs    f0, 0x158(r31)
     stw     r28, 0x148(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8559,7 +8561,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x15c(r31)
     addi    r3, r30, 0x7ec
-    lfs     f0, -0x5dc4(rtoc)
+    lfs     f0, -0x5dc4(r2)
     stfs    f0, 0x16c(r31)
     stw     r28, 0x15c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8570,7 +8572,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x170(r31)
     addi    r3, r30, 0x7fc
-    lfs     f0, -0x5de4(rtoc)
+    lfs     f0, -0x5de4(r2)
     stfs    f0, 0x180(r31)
     stw     r28, 0x170(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8581,7 +8583,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x184(r31)
     addi    r3, r30, 0x80c
-    lfs     f0, -0x5e30(rtoc)
+    lfs     f0, -0x5e30(r2)
     stfs    f0, 0x194(r31)
     stw     r28, 0x184(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8592,7 +8594,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x198(r31)
     addi    r3, r30, 0x81c
-    lfs     f0, -0x5d58(rtoc)
+    lfs     f0, -0x5d58(r2)
     stfs    f0, 0x1a8(r31)
     stw     r28, 0x198(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8603,7 +8605,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1ac(r31)
     addi    r3, r30, 0x830
-    lfs     f0, -0x5db4(rtoc)
+    lfs     f0, -0x5db4(r2)
     stfs    f0, 0x1bc(r31)
     stw     r28, 0x1ac(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8612,13 +8614,13 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     addi    r3, r31, 0x1c0
     addi    r6, r30, 0x830
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r27, r3, 0x42ac
+    lis     r3, __vvt__10TParamT_l_@ha
+    addi    r27, r3, __vvt__10TParamT_l_@l
     stw     r27, 0x1c0(r31)
     li      r0, 0x32
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TParamRT_l_@ha
     stw     r0, 0x1d0(r31)
-    subi    r26, r3, 0x42b8
+    addi    r26, r3, __vvt__11TParamRT_l_@l
     addi    r3, r30, 0x844
     stw     r26, 0x1c0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8640,7 +8642,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1e8(r31)
     addi    r3, r30, 0x86c
-    lfs     f0, -0x5dc0(rtoc)
+    lfs     f0, -0x5dc0(r2)
     stfs    f0, 0x1f8(r31)
     stw     r28, 0x1e8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8651,7 +8653,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x1fc(r31)
     addi    r3, r30, 0x884
-    lfs     f0, -0x5d60(rtoc)
+    lfs     f0, -0x5d60(r2)
     stfs    f0, 0x20c(r31)
     stw     r28, 0x1fc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8662,7 +8664,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x210(r31)
     addi    r3, r30, 0x89c
-    lfs     f0, -0x5d5c(rtoc)
+    lfs     f0, -0x5d5c(r2)
     stfs    f0, 0x220(r31)
     stw     r28, 0x210(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8673,7 +8675,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x224(r31)
     addi    r3, r30, 0x8b4
-    lfs     f0, -0x5dc4(rtoc)
+    lfs     f0, -0x5dc4(r2)
     stfs    f0, 0x234(r31)
     stw     r28, 0x224(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8695,7 +8697,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x24c(r31)
     addi    r3, r30, 0x8dc
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x25c(r31)
     stw     r28, 0x24c(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8706,7 +8708,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x260(r31)
     addi    r3, r30, 0x8ec
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x270(r31)
     stw     r28, 0x260(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -8750,7 +8752,7 @@ __ct__18TBossEelSaveParamsFv: # 0x800d78dc
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r29, 0x2b0(r31)
     mr      r3, r31
-    lfs     f0, -0x5e30(rtoc)
+    lfs     f0, -0x5e30(r2)
     stfs    f0, 0x2c0(r31)
     stw     r28, 0x2b0(r31)
     lwz     r4, 0x0(r31)
@@ -8787,9 +8789,9 @@ execute__17TNerveOilBallStayCFP24TSpineBase_10TLiveActor_: # 0x800d7f50
     cmpwi   r3, 0x0
     bne-    branch_0x800d7fc4
 branch_0x800d7fa4:
-    lis     r4, 0x8038
+    lis     r4, unk_80380010@h
     lwz     r3, 0x78(r31)
-    addi    r4, r4, 0x10
+    addi    r4, r4, unk_80380010@l
     bl      getMActor__13TMActorKeeperCFPCc
     stw     r3, 0x74(r31)
     li      r4, 0x1
@@ -8809,26 +8811,26 @@ theNerve__17TNerveOilBallStayFv: # 0x800d7fdc
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6978(r13)
+    lbz     r0, R13Off_m0x6978(r13)
     extsb.  r0, r0
     bne-    branch_0x800d802c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6974(r13)
-    subi    r0, r3, 0x6b8c
-    lis     r4, 0x800e
-    stw     r0, -0x6974(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f5c
-    subi    r4, r4, 0x7fc0
-    subi    r3, r13, 0x6974
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__17TNerveOilBallStay@ha
+    stw     r0, R13Off_m0x6974(r13)
+    addi    r0, r3, __vvt__17TNerveOilBallStay@l
+    lis     r4, __dt__17TNerveOilBallStayFv@ha
+    stw     r0, R13Off_m0x6974(r13)
+    lis     r3, unk_803f1f5c@h
+    addi    r5, r3, unk_803f1f5c@l
+    addi    r4, r4, __dt__17TNerveOilBallStayFv@l
+    addi    r3, r13, R13Off_m0x6974
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6978(r13)
+    stb     r0, R13Off_m0x6978(r13)
 branch_0x800d802c:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6974
+    addi    r3, r13, R13Off_m0x6974
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -8842,12 +8844,12 @@ __dt__17TNerveOilBallStayFv: # 0x800d8040
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d8084
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6b8c
+    lis     r3, __vvt__17TNerveOilBallStay@ha
+    addi    r0, r3, __vvt__17TNerveOilBallStay@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d8074
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d8074:
     extsh.  r0, r4
@@ -8880,21 +8882,21 @@ moveObject__8TOilBallFv: # 0x800d80bc
     mflr    r0
     lis     r5, 0x4330
     stw     r0, 0x4(sp)
-    lis     r6, 0x803f
+    lis     r6, unk_803f1f20@h
     stwu    sp, -0xf0(sp)
     stfd    f31, 0xe8(sp)
     stfd    f30, 0xe0(sp)
     stfd    f29, 0xd8(sp)
     stmw    r21, 0xac(sp)
     mr      r22, r3
-    addi    r24, r6, 0x1f20
+    addi    r24, r6, unk_803f1f20@l
     lwz     r7, 0x15c(r3)
     lfs     f4, 0x24(r3)
     mr      r3, r22
     lwz     r0, 0x130(r7)
     lwz     r4, 0x144(r7)
     xoris   r0, r0, 0x8000
-    lfd     f3, -0x5e28(rtoc)
+    lfd     f3, -0x5e28(r2)
     stw     r0, 0x8c(sp)
     xoris   r4, r4, 0x8000
     lwz     r0, 0x108(r7)
@@ -8925,23 +8927,23 @@ moveObject__8TOilBallFv: # 0x800d80bc
     stfs    f1, 0x58(r22)
     stfs    f0, 0x5c(r22)
     bl      calcEntryRadius__9THitActorFv
-    lis     r5, 0x803b
-    lfs     f30, -0x5e40(rtoc)
-    lis     r4, 0x803c
-    lfs     f31, -0x5e48(rtoc)
-    lis     r3, 0x800e
-    lfs     f29, -0x5d58(rtoc)
-    lis     r7, 0x803c
-    lis     r6, 0x800e
-    lis     r9, 0x803c
-    lis     r8, 0x800e
-    subi    r29, r5, 0x48f4
-    subi    r30, r4, 0x6a64
-    subi    r31, r3, 0x7bd8
-    subi    r27, r7, 0x6b8c
-    subi    r28, r6, 0x7fc0
-    subi    r25, r9, 0x6a34
-    subi    r26, r8, 0x7b7c
+    lis     r5, __vvt__24TNerveBase_10TLiveActor_@ha
+    lfs     f30, -0x5e40(r2)
+    lis     r4, __vvt__20TNerveBEelTearsSplit@ha
+    lfs     f31, -0x5e48(r2)
+    lis     r3, __dt__20TNerveBEelTearsSplitFv@ha
+    lfs     f29, -0x5d58(r2)
+    lis     r7, __vvt__17TNerveOilBallStay@ha
+    lis     r6, __dt__17TNerveOilBallStayFv@ha
+    lis     r9, __vvt__21TNerveBEelTearsMoveUp@ha
+    lis     r8, __dt__21TNerveBEelTearsMoveUpFv@ha
+    addi    r29, r5, __vvt__24TNerveBase_10TLiveActor_@l
+    addi    r30, r4, __vvt__20TNerveBEelTearsSplit@l
+    addi    r31, r3, __dt__20TNerveBEelTearsSplitFv@l
+    addi    r27, r7, __vvt__17TNerveOilBallStay@l
+    addi    r28, r6, __dt__17TNerveOilBallStayFv@l
+    addi    r25, r9, __vvt__21TNerveBEelTearsMoveUp@l
+    addi    r26, r8, __dt__21TNerveBEelTearsMoveUpFv@l
     li      r23, 0x0
     li      r21, 0x0
     b       branch_0x800d83f4
@@ -8961,57 +8963,57 @@ branch_0x800d81ec:
 branch_0x800d81f0:
     clrlwi. r0, r0, 24
     beq-    branch_0x800d830c
-    lbz     r0, -0x6998(r13)
+    lbz     r0, R13Off_m0x6998(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8224
-    stw     r29, -0x6994(r13)
-    subi    r3, r13, 0x6994
+    stw     r29, R13Off_m0x6994(r13)
+    addi    r3, r13, R13Off_m0x6994
     addi    r4, r26, 0x0
-    stw     r25, -0x6994(r13)
+    stw     r25, R13Off_m0x6994(r13)
     addi    r5, r24, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6998(r13)
+    stb     r0, R13Off_m0x6998(r13)
 branch_0x800d8224:
     lwz     r3, 0x8c(r22)
-    subi    r0, r13, 0x6994
+    addi    r0, r13, R13Off_m0x6994
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800d8278
-    lbz     r0, -0x6978(r13)
+    lbz     r0, R13Off_m0x6978(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8264
-    stw     r29, -0x6974(r13)
-    subi    r3, r13, 0x6974
+    stw     r29, R13Off_m0x6974(r13)
+    addi    r3, r13, R13Off_m0x6974
     addi    r4, r28, 0x0
-    stw     r27, -0x6974(r13)
+    stw     r27, R13Off_m0x6974(r13)
     addi    r5, r24, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6978(r13)
+    stb     r0, R13Off_m0x6978(r13)
 branch_0x800d8264:
     lwz     r3, 0x8c(r22)
-    subi    r0, r13, 0x6974
+    addi    r0, r13, R13Off_m0x6974
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d83ec
 branch_0x800d8278:
     addi    r3, r22, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
-    lbz     r0, -0x6980(r13)
+    lbz     r0, R13Off_m0x6980(r13)
     extsb.  r0, r0
     bne-    branch_0x800d82b0
-    stw     r29, -0x697c(r13)
-    subi    r3, r13, 0x697c
+    stw     r29, R13Off_m0x697c(r13)
+    addi    r3, r13, R13Off_m0x697c
     addi    r4, r31, 0x0
-    stw     r30, -0x697c(r13)
+    stw     r30, R13Off_m0x697c(r13)
     addi    r5, r24, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6980(r13)
+    stb     r0, R13Off_m0x6980(r13)
 branch_0x800d82b0:
-    subi    r6, r13, 0x697c
+    addi    r6, r13, R13Off_m0x697c
     lwz     r5, 0x8c(r22)
     cmplwi  r6, 0x0
     beq-    branch_0x800d83ec
@@ -9121,12 +9123,12 @@ __dt__20TNerveBEelTearsSplitFv: # 0x800d8428
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d846c
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6a64
+    lis     r3, __vvt__20TNerveBEelTearsSplit@ha
+    addi    r0, r3, __vvt__20TNerveBEelTearsSplit@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d845c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d845c:
     extsh.  r0, r4
@@ -9150,12 +9152,12 @@ __dt__21TNerveBEelTearsMoveUpFv: # 0x800d8484
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d84c8
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6a34
+    lis     r3, __vvt__21TNerveBEelTearsMoveUp@ha
+    addi    r0, r3, __vvt__21TNerveBEelTearsMoveUp@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d84b8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d84b8:
     extsh.  r0, r4
@@ -9174,35 +9176,35 @@ branch_0x800d84c8:
 .globl reset__8TOilBallFv
 reset__8TOilBallFv: # 0x800d84e0
     mflr    r0
-    lis     r4, 0x800
+    lis     r4, unk_08000003@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x3
+    addi    r0, r4, unk_08000003@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     addi    r31, r3, 0x0
     stw     r30, 0x20(sp)
     stw     r0, 0x4c(r3)
     bl      reset__11TSpineEnemyFv
-    lbz     r0, -0x699f(r13)
+    lbz     r0, R13Off_m0x699f(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8548
-    subi    r3, r13, 0x699c
+    addi    r3, r13, R13Off_m0x699c
     bl      __ct__24TNerveBase_10TLiveActor_Fv
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6a24
-    lis     r4, 0x800e
-    stw     r0, -0x699c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f20
-    subi    r4, r4, 0x7990
-    subi    r3, r13, 0x699c
+    lis     r3, __vvt__23TNerveBEelTearsGenerate@ha
+    addi    r0, r3, __vvt__23TNerveBEelTearsGenerate@l
+    lis     r4, __dt__23TNerveBEelTearsGenerateFv@ha
+    stw     r0, R13Off_m0x699c(r13)
+    lis     r3, unk_803f1f20@h
+    addi    r5, r3, unk_803f1f20@l
+    addi    r4, r4, __dt__23TNerveBEelTearsGenerateFv@l
+    addi    r3, r13, R13Off_m0x699c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x699f(r13)
+    stb     r0, R13Off_m0x699f(r13)
 branch_0x800d8548:
     lwz     r4, 0x8c(r31)
     li      r3, 0x0
-    subi    r0, r13, 0x699c
+    addi    r0, r13, R13Off_m0x699c
     stw     r3, 0x8(r4)
     stw     r3, 0x20(r4)
     stw     r0, 0x14(r4)
@@ -9234,30 +9236,30 @@ branch_0x800d8548:
     stw     r0, 0x14(r31)
     lwz     r0, 0x158(r31)
     stw     r0, 0x18(r31)
-    lbz     r0, -0x6978(r13)
+    lbz     r0, R13Off_m0x6978(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8614
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6974(r13)
-    subi    r0, r3, 0x6b8c
-    lis     r4, 0x800e
-    stw     r0, -0x6974(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f5c
-    subi    r4, r4, 0x7fc0
-    subi    r3, r13, 0x6974
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__17TNerveOilBallStay@ha
+    stw     r0, R13Off_m0x6974(r13)
+    addi    r0, r3, __vvt__17TNerveOilBallStay@l
+    lis     r4, __dt__17TNerveOilBallStayFv@ha
+    stw     r0, R13Off_m0x6974(r13)
+    lis     r3, unk_803f1f5c@h
+    addi    r5, r3, unk_803f1f5c@l
+    addi    r4, r4, __dt__17TNerveOilBallStayFv@l
+    addi    r3, r13, R13Off_m0x6974
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6978(r13)
+    stb     r0, R13Off_m0x6978(r13)
 branch_0x800d8614:
     lwz     r5, 0x8c(r31)
     li      r30, 0x0
-    lis     r3, 0x8038
+    lis     r3, unk_80380010@h
     stw     r30, 0x8(r5)
-    subi    r0, r13, 0x6974
-    addi    r4, r3, 0x10
+    addi    r0, r13, R13Off_m0x6974
+    addi    r4, r3, unk_80380010@l
     stw     r30, 0x20(r5)
     stw     r0, 0x14(r5)
     stw     r0, 0x18(r5)
@@ -9285,12 +9287,12 @@ __dt__23TNerveBEelTearsGenerateFv: # 0x800d8670
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d86b4
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6a24
+    lis     r3, __vvt__23TNerveBEelTearsGenerate@ha
+    addi    r0, r3, __vvt__23TNerveBEelTearsGenerate@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d86a4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d86a4:
     extsh.  r0, r4
@@ -9348,7 +9350,7 @@ execute__20TNerveBEelTearsSplitCFP24TSpineBase_10TLiveActor_: # 0x800d872c
     lwz     r31, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800d87cc
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2985
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -9361,9 +9363,9 @@ execute__20TNerveBEelTearsSplitCFP24TSpineBase_10TLiveActor_: # 0x800d872c
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800d878c:
-    lis     r4, 0x8038
+    lis     r4, unk_8038001c@h
     lwz     r3, 0x78(r31)
-    addi    r4, r4, 0x1c
+    addi    r4, r4, unk_8038001c@l
     bl      getMActor__13TMActorKeeperCFPCc
     stw     r3, 0x74(r31)
     li      r4, 0x3
@@ -9383,7 +9385,7 @@ branch_0x800d87cc:
     bl      checkCurAnmEnd__11TSpineEnemyCFi
     cmpwi   r3, 0x0
     beq-    branch_0x800d8958
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0xd5
     li      r6, 0x0
@@ -9431,7 +9433,7 @@ branch_0x800d8830:
     stw     r0, 0x18(r5)
     lwz     r3, 0x70(r31)
     bl      splitTears__17TBEelTearsManagerFRQ29JGeometry8TVec3_f_
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2986
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -9447,25 +9449,25 @@ branch_0x800d88cc:
     lwz     r0, 0xf0(r31)
     ori     r0, r0, 0x2
     stw     r0, 0xf0(r31)
-    lbz     r0, -0x6988(r13)
+    lbz     r0, R13Off_m0x6988(r13)
     extsb.  r0, r0
     bne-    branch_0x800d891c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6984(r13)
-    subi    r0, r3, 0x6a54
-    lis     r4, 0x800d
-    stw     r0, -0x6984(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f44
-    addi    r4, r4, 0x5e94
-    subi    r3, r13, 0x6984
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBEelTearsMarioRecover@ha
+    stw     r0, R13Off_m0x6984(r13)
+    addi    r0, r3, __vvt__27TNerveBEelTearsMarioRecover@l
+    lis     r4, __dt__27TNerveBEelTearsMarioRecoverFv@h
+    stw     r0, R13Off_m0x6984(r13)
+    lis     r3, unk_803f1f44@h
+    addi    r5, r3, unk_803f1f44@l
+    addi    r4, r4, __dt__27TNerveBEelTearsMarioRecoverFv@l
+    addi    r3, r13, R13Off_m0x6984
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6988(r13)
+    stb     r0, R13Off_m0x6988(r13)
 branch_0x800d891c:
-    subi    r4, r13, 0x6984
+    addi    r4, r13, R13Off_m0x6984
     cmplwi  r4, 0x0
     beq-    branch_0x800d8950
     lwz     r5, 0x8(r30)
@@ -9500,26 +9502,26 @@ theNerve__20TNerveBEelTearsSplitFv: # 0x800d897c
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6980(r13)
+    lbz     r0, R13Off_m0x6980(r13)
     extsb.  r0, r0
     bne-    branch_0x800d89cc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x697c(r13)
-    subi    r0, r3, 0x6a64
-    lis     r4, 0x800e
-    stw     r0, -0x697c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f50
-    subi    r4, r4, 0x7bd8
-    subi    r3, r13, 0x697c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__20TNerveBEelTearsSplit@ha
+    stw     r0, R13Off_m0x697c(r13)
+    addi    r0, r3, __vvt__20TNerveBEelTearsSplit@l
+    lis     r4, __dt__20TNerveBEelTearsSplitFv@ha
+    stw     r0, R13Off_m0x697c(r13)
+    lis     r3, unk_803f1f50@h
+    addi    r5, r3, unk_803f1f50@l
+    addi    r4, r4, __dt__20TNerveBEelTearsSplitFv@l
+    addi    r3, r13, R13Off_m0x697c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6980(r13)
+    stb     r0, R13Off_m0x6980(r13)
 branch_0x800d89cc:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x697c
+    addi    r3, r13, R13Off_m0x697c
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -9539,9 +9541,9 @@ execute__27TNerveBEelTearsMarioRecoverCFP24TSpineBase_10TLiveActor_: # 0x800d89e
     lbz     r0, 0x80(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800d8a7c
-    lwz     r5, MarioHitActorPos(r13)
+    lwz     r5, R13Off_m0x60b4(r13)
     li      r4, 0xd6
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r6, 0x0
     li      r7, 0x0
     bl      emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
@@ -9569,7 +9571,7 @@ branch_0x800d8a60:
     b       branch_0x800d8b28
 
 branch_0x800d8a7c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r7, r31, 0x0
     addi    r5, r31, 0x10
     li      r4, 0x19d
@@ -9630,26 +9632,26 @@ theNerve__27TNerveBEelTearsMarioRecoverFv: # 0x800d8b40
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6988(r13)
+    lbz     r0, R13Off_m0x6988(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8b90
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6984(r13)
-    subi    r0, r3, 0x6a54
-    lis     r4, 0x800d
-    stw     r0, -0x6984(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f44
-    addi    r4, r4, 0x5e94
-    subi    r3, r13, 0x6984
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBEelTearsMarioRecover@ha
+    stw     r0, R13Off_m0x6984(r13)
+    addi    r0, r3, __vvt__27TNerveBEelTearsMarioRecover@l
+    lis     r4, __dt__27TNerveBEelTearsMarioRecoverFv@h
+    stw     r0, R13Off_m0x6984(r13)
+    lis     r3, unk_803f1f44@h
+    addi    r5, r3, unk_803f1f44@l
+    addi    r4, r4, __dt__27TNerveBEelTearsMarioRecoverFv@l
+    addi    r3, r13, R13Off_m0x6984
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6988(r13)
+    stb     r0, R13Off_m0x6988(r13)
 branch_0x800d8b90:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6984
+    addi    r3, r13, R13Off_m0x6984
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -9669,7 +9671,7 @@ execute__23TNerveBEelTearsWaterHitCFP24TSpineBase_10TLiveActor_: # 0x800d8ba4
     lwz     r31, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800d8c24
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2985
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -9682,9 +9684,9 @@ execute__23TNerveBEelTearsWaterHitCFP24TSpineBase_10TLiveActor_: # 0x800d8ba4
     li      r8, 0x4
     bl      startSoundActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc
 branch_0x800d8c04:
-    lis     r4, 0x8038
+    lis     r4, unk_8038001c@h
     lwz     r3, 0x78(r31)
-    addi    r4, r4, 0x1c
+    addi    r4, r4, unk_8038001c@l
     bl      getMActor__13TMActorKeeperCFPCc
     stw     r3, 0x74(r31)
     li      r4, 0x3
@@ -9692,7 +9694,7 @@ branch_0x800d8c04:
     bl      setBckFromIndex__6MActorFi
 branch_0x800d8c24:
     lwz     r3, 0x164(r31)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x164(r31)
     lwz     r0, 0x164(r31)
     lwz     r3, 0x15c(r31)
@@ -9709,7 +9711,7 @@ branch_0x800d8c24:
     addi    r3, r31, 0x0
     li      r4, 0x0
     bl      getCurAnmFrameNo__11TSpineEnemyCFi
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x800d8c98
     li      r3, 0x1
@@ -9728,25 +9730,25 @@ branch_0x800d8c98:
     bl      checkCurAnmEnd__11TSpineEnemyCFi
     cmpwi   r3, 0x0
     beq-    branch_0x800d8e24
-    lbz     r0, -0x6988(r13)
+    lbz     r0, R13Off_m0x6988(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8cf0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6984(r13)
-    subi    r0, r3, 0x6a54
-    lis     r4, 0x800d
-    stw     r0, -0x6984(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f44
-    addi    r4, r4, 0x5e94
-    subi    r3, r13, 0x6984
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__27TNerveBEelTearsMarioRecover@ha
+    stw     r0, R13Off_m0x6984(r13)
+    addi    r0, r3, __vvt__27TNerveBEelTearsMarioRecover@l
+    lis     r4, __dt__27TNerveBEelTearsMarioRecoverFv@h
+    stw     r0, R13Off_m0x6984(r13)
+    lis     r3, unk_803f1f44@h
+    addi    r5, r3, unk_803f1f44@l
+    addi    r4, r4, __dt__27TNerveBEelTearsMarioRecoverFv@l
+    addi    r3, r13, R13Off_m0x6984
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6988(r13)
+    stb     r0, R13Off_m0x6988(r13)
 branch_0x800d8cf0:
-    subi    r4, r13, 0x6984
+    addi    r4, r13, R13Off_m0x6984
     cmplwi  r4, 0x0
     beq-    branch_0x800d8d24
     lwz     r5, 0x8(r30)
@@ -9760,7 +9762,7 @@ branch_0x800d8cf0:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r30)
 branch_0x800d8d24:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r31, 0x10
     li      r4, 0xd5
     li      r6, 0x0
@@ -9808,7 +9810,7 @@ branch_0x800d8d74:
     stw     r0, 0x18(r5)
     lwz     r3, 0x70(r31)
     bl      splitTears__17TBEelTearsManagerFRQ29JGeometry8TVec3_f_
-    lwz     r3, gpMSound(r13)
+    lwz     r3, R13Off_m0x6044(r13)
     li      r4, 0x2986
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
@@ -9854,26 +9856,26 @@ theNerve__23TNerveBEelTearsWaterHitFv: # 0x800d8e68
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6990(r13)
+    lbz     r0, R13Off_m0x6990(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8eb8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x698c(r13)
-    subi    r0, r3, 0x6a44
-    lis     r4, 0x800e
-    stw     r0, -0x698c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f38
-    subi    r4, r4, 0x7134
-    subi    r3, r13, 0x698c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBEelTearsWaterHit@ha
+    stw     r0, R13Off_m0x698c(r13)
+    addi    r0, r3, __vvt__23TNerveBEelTearsWaterHit@l
+    lis     r4, __dt__23TNerveBEelTearsWaterHitFv@ha
+    stw     r0, R13Off_m0x698c(r13)
+    lis     r3, unk_803f1f38@h
+    addi    r5, r3, unk_803f1f38@l
+    addi    r4, r4, __dt__23TNerveBEelTearsWaterHitFv@l
+    addi    r3, r13, R13Off_m0x698c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6990(r13)
+    stb     r0, R13Off_m0x6990(r13)
 branch_0x800d8eb8:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x698c
+    addi    r3, r13, R13Off_m0x698c
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -9887,12 +9889,12 @@ __dt__23TNerveBEelTearsWaterHitFv: # 0x800d8ecc
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x800d8f10
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6a44
+    lis     r3, __vvt__23TNerveBEelTearsWaterHit@ha
+    addi    r0, r3, __vvt__23TNerveBEelTearsWaterHit@l
     stw     r0, 0x0(r31)
     beq-    branch_0x800d8f00
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x800d8f00:
     extsh.  r0, r4
@@ -9918,9 +9920,9 @@ execute__21TNerveBEelTearsMoveUpCFP24TSpineBase_10TLiveActor_: # 0x800d8f28
     lwz     r31, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800d8f68
-    lis     r4, 0x8038
+    lis     r4, unk_80380010@h
     lwz     r3, 0x78(r31)
-    addi    r4, r4, 0x10
+    addi    r4, r4, unk_80380010@l
     bl      getMActor__13TMActorKeeperCFPCc
     stw     r3, 0x74(r31)
     li      r4, 0x1
@@ -9945,26 +9947,26 @@ theNerve__21TNerveBEelTearsMoveUpFv: # 0x800d8f94
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6998(r13)
+    lbz     r0, R13Off_m0x6998(r13)
     extsb.  r0, r0
     bne-    branch_0x800d8fe4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6994(r13)
-    subi    r0, r3, 0x6a34
-    lis     r4, 0x800e
-    stw     r0, -0x6994(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f2c
-    subi    r4, r4, 0x7b7c
-    subi    r3, r13, 0x6994
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__21TNerveBEelTearsMoveUp@ha
+    stw     r0, R13Off_m0x6994(r13)
+    addi    r0, r3, __vvt__21TNerveBEelTearsMoveUp@l
+    lis     r4, __dt__21TNerveBEelTearsMoveUpFv@ha
+    stw     r0, R13Off_m0x6994(r13)
+    lis     r3, unk_803f1f2c@h
+    addi    r5, r3, unk_803f1f2c@l
+    addi    r4, r4, __dt__21TNerveBEelTearsMoveUpFv@l
+    addi    r3, r13, R13Off_m0x6994
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6998(r13)
+    stb     r0, R13Off_m0x6998(r13)
 branch_0x800d8fe4:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6994
+    addi    r3, r13, R13Off_m0x6994
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -9982,9 +9984,9 @@ execute__23TNerveBEelTearsGenerateCFP24TSpineBase_10TLiveActor_: # 0x800d8ff8
     lwz     r30, 0x0(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x800d9040
-    lis     r4, 0x8038
+    lis     r4, unk_80380010@h
     lwz     r3, 0x78(r30)
-    addi    r4, r4, 0x10
+    addi    r4, r4, unk_80380010@l
     bl      getMActor__13TMActorKeeperCFPCc
     stw     r3, 0x74(r30)
     li      r4, 0x2
@@ -9996,25 +9998,25 @@ branch_0x800d9040:
     bl      checkCurAnmEnd__11TSpineEnemyCFi
     cmpwi   r3, 0x0
     beq-    branch_0x800d90d4
-    lbz     r0, -0x6998(r13)
+    lbz     r0, R13Off_m0x6998(r13)
     extsb.  r0, r0
     bne-    branch_0x800d9098
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6994(r13)
-    subi    r0, r3, 0x6a34
-    lis     r4, 0x800e
-    stw     r0, -0x6994(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f2c
-    subi    r4, r4, 0x7b7c
-    subi    r3, r13, 0x6994
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__21TNerveBEelTearsMoveUp@ha
+    stw     r0, R13Off_m0x6994(r13)
+    addi    r0, r3, __vvt__21TNerveBEelTearsMoveUp@l
+    lis     r4, __dt__21TNerveBEelTearsMoveUpFv@ha
+    stw     r0, R13Off_m0x6994(r13)
+    lis     r3, unk_803f1f2c@h
+    addi    r5, r3, unk_803f1f2c@l
+    addi    r4, r4, __dt__21TNerveBEelTearsMoveUpFv@l
+    addi    r3, r13, R13Off_m0x6994
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6998(r13)
+    stb     r0, R13Off_m0x6998(r13)
 branch_0x800d9098:
-    subi    r4, r13, 0x6994
+    addi    r4, r13, R13Off_m0x6994
     cmplwi  r4, 0x0
     beq-    branch_0x800d90cc
     lwz     r5, 0x8(r31)
@@ -10047,26 +10049,26 @@ theNerve__23TNerveBEelTearsGenerateFv: # 0x800d90f0
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x699f(r13)
+    lbz     r0, R13Off_m0x699f(r13)
     extsb.  r0, r0
     bne-    branch_0x800d9140
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x699c(r13)
-    subi    r0, r3, 0x6a24
-    lis     r4, 0x800e
-    stw     r0, -0x699c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f20
-    subi    r4, r4, 0x7990
-    subi    r3, r13, 0x699c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBEelTearsGenerate@ha
+    stw     r0, R13Off_m0x699c(r13)
+    addi    r0, r3, __vvt__23TNerveBEelTearsGenerate@l
+    lis     r4, __dt__23TNerveBEelTearsGenerateFv@ha
+    stw     r0, R13Off_m0x699c(r13)
+    lis     r3, unk_803f1f20@h
+    addi    r5, r3, unk_803f1f20@l
+    addi    r4, r4, __dt__23TNerveBEelTearsGenerateFv@l
+    addi    r3, r13, R13Off_m0x699c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x699f(r13)
+    stb     r0, R13Off_m0x699f(r13)
 branch_0x800d9140:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x699c
+    addi    r3, r13, R13Off_m0x699c
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -10074,43 +10076,43 @@ branch_0x800d9140:
 
 .globl getBasNameTable__10TBEelTearsCFv
 getBasNameTable__10TBEelTearsCFv: # 0x800d9154
-    lis     r3, 0x803c
-    subi    r3, r3, 0x737c
+    lis     r3, bossEelTears_bastable@ha
+    addi    r3, r3, bossEelTears_bastable@l
     blr
 
 
 .globl reset__10TBEelTearsFv
 reset__10TBEelTearsFv: # 0x800d9160
     mflr    r0
-    lis     r4, 0x800
+    lis     r4, unk_08000003@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x3
+    addi    r0, r4, unk_08000003@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     stw     r0, 0x4c(r3)
     bl      reset__11TSpineEnemyFv
-    lbz     r0, -0x699f(r13)
+    lbz     r0, R13Off_m0x699f(r13)
     extsb.  r0, r0
     bne-    branch_0x800d91c8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x699c(r13)
-    subi    r0, r3, 0x6a24
-    lis     r4, 0x800e
-    stw     r0, -0x699c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f20
-    subi    r4, r4, 0x7990
-    subi    r3, r13, 0x699c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBEelTearsGenerate@ha
+    stw     r0, R13Off_m0x699c(r13)
+    addi    r0, r3, __vvt__23TNerveBEelTearsGenerate@l
+    lis     r4, __dt__23TNerveBEelTearsGenerateFv@ha
+    stw     r0, R13Off_m0x699c(r13)
+    lis     r3, unk_803f1f20@h
+    addi    r5, r3, unk_803f1f20@l
+    addi    r4, r4, __dt__23TNerveBEelTearsGenerateFv@l
+    addi    r3, r13, R13Off_m0x699c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x699f(r13)
+    stb     r0, R13Off_m0x699f(r13)
 branch_0x800d91c8:
     lwz     r4, 0x8c(r31)
     li      r3, 0x0
-    subi    r0, r13, 0x699c
+    addi    r0, r13, R13Off_m0x699c
     stw     r3, 0x8(r4)
     stw     r3, 0x20(r4)
     stw     r0, 0x14(r4)
@@ -10163,78 +10165,78 @@ receiveMessage__10TBEelTearsFP9THitActorUl: # 0x800d9278
     mflr    r0
     cmplwi  r5, 0xf
     stw     r0, 0x4(sp)
-    lis     r4, 0x803f
+    lis     r4, unk_803f1f20@h
     stwu    sp, -0x68(sp)
     stw     r31, 0x64(sp)
-    addi    r31, r4, 0x1f20
+    addi    r31, r4, unk_803f1f20@l
     stw     r30, 0x60(sp)
     addi    r30, r3, 0x0
     bne-    branch_0x800d9458
     li      r0, 0x3c
     stw     r0, 0x164(r30)
-    lbz     r0, -0x6998(r13)
+    lbz     r0, R13Off_m0x6998(r13)
     extsb.  r0, r0
     bne-    branch_0x800d92e8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6994(r13)
-    subi    r0, r3, 0x6a34
-    lis     r3, 0x800e
-    stw     r0, -0x6994(r13)
-    subi    r4, r3, 0x7b7c
-    subi    r3, r13, 0x6994
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__21TNerveBEelTearsMoveUp@ha
+    stw     r0, R13Off_m0x6994(r13)
+    addi    r0, r3, __vvt__21TNerveBEelTearsMoveUp@l
+    lis     r3, __dt__21TNerveBEelTearsMoveUpFv@ha
+    stw     r0, R13Off_m0x6994(r13)
+    addi    r4, r3, __dt__21TNerveBEelTearsMoveUpFv@l
+    addi    r3, r13, R13Off_m0x6994
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6998(r13)
+    stb     r0, R13Off_m0x6998(r13)
 branch_0x800d92e8:
     lwz     r3, 0x8c(r30)
-    subi    r0, r13, 0x6994
+    addi    r0, r13, R13Off_m0x6994
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     beq-    branch_0x800d9350
-    lbz     r0, -0x6978(r13)
+    lbz     r0, R13Off_m0x6978(r13)
     extsb.  r0, r0
     bne-    branch_0x800d933c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x6974(r13)
-    subi    r0, r3, 0x6b8c
-    lis     r3, 0x800e
-    stw     r0, -0x6974(r13)
-    subi    r4, r3, 0x7fc0
-    subi    r3, r13, 0x6974
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__17TNerveOilBallStay@ha
+    stw     r0, R13Off_m0x6974(r13)
+    addi    r0, r3, __vvt__17TNerveOilBallStay@l
+    lis     r3, __dt__17TNerveOilBallStayFv@ha
+    stw     r0, R13Off_m0x6974(r13)
+    addi    r4, r3, __dt__17TNerveOilBallStayFv@l
+    addi    r3, r13, R13Off_m0x6974
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6978(r13)
+    stb     r0, R13Off_m0x6978(r13)
 branch_0x800d933c:
     lwz     r3, 0x8c(r30)
-    subi    r0, r13, 0x6974
+    addi    r0, r13, R13Off_m0x6974
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d93e8
 branch_0x800d9350:
-    lbz     r0, -0x6990(r13)
+    lbz     r0, R13Off_m0x6990(r13)
     extsb.  r0, r0
     bne-    branch_0x800d9390
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x698c(r13)
-    subi    r0, r3, 0x6a44
-    lis     r3, 0x800e
-    stw     r0, -0x698c(r13)
-    subi    r4, r3, 0x7134
-    subi    r3, r13, 0x698c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBEelTearsWaterHit@ha
+    stw     r0, R13Off_m0x698c(r13)
+    addi    r0, r3, __vvt__23TNerveBEelTearsWaterHit@l
+    lis     r3, __dt__23TNerveBEelTearsWaterHitFv@ha
+    stw     r0, R13Off_m0x698c(r13)
+    addi    r4, r3, __dt__23TNerveBEelTearsWaterHitFv@l
+    addi    r3, r13, R13Off_m0x698c
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6990(r13)
+    stb     r0, R13Off_m0x6990(r13)
 branch_0x800d9390:
-    subi    r6, r13, 0x698c
+    addi    r6, r13, R13Off_m0x698c
     lwz     r5, 0x8c(r30)
     cmplwi  r6, 0x0
     beq-    branch_0x800d93e8
@@ -10258,25 +10260,25 @@ branch_0x800d93dc:
     stw     r0, 0x20(r5)
     stw     r6, 0x14(r5)
 branch_0x800d93e8:
-    lbz     r0, -0x6990(r13)
+    lbz     r0, R13Off_m0x6990(r13)
     extsb.  r0, r0
     bne-    branch_0x800d9428
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x698c(r13)
-    subi    r0, r3, 0x6a44
-    lis     r3, 0x800e
-    stw     r0, -0x698c(r13)
-    subi    r4, r3, 0x7134
-    subi    r3, r13, 0x698c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBEelTearsWaterHit@ha
+    stw     r0, R13Off_m0x698c(r13)
+    addi    r0, r3, __vvt__23TNerveBEelTearsWaterHit@l
+    lis     r3, __dt__23TNerveBEelTearsWaterHitFv@ha
+    stw     r0, R13Off_m0x698c(r13)
+    addi    r4, r3, __dt__23TNerveBEelTearsWaterHitFv@l
+    addi    r3, r13, R13Off_m0x698c
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6990(r13)
+    stb     r0, R13Off_m0x6990(r13)
 branch_0x800d9428:
     lwz     r3, 0x8c(r30)
-    subi    r0, r13, 0x698c
+    addi    r0, r13, R13Off_m0x698c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d9450
@@ -10415,26 +10417,26 @@ calcRootMatrix__10TBEelTearsFv: # 0x800d95c0
 branch_0x800d9600:
     mr      r3, r31
     bl      calcRootMatrix__11TSpineEnemyFv
-    lbz     r0, -0x699f(r13)
+    lbz     r0, R13Off_m0x699f(r13)
     extsb.  r0, r0
     bne-    branch_0x800d964c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x699c(r13)
-    subi    r0, r3, 0x6a24
-    lis     r4, 0x800e
-    stw     r0, -0x699c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f20
-    subi    r4, r4, 0x7990
-    subi    r3, r13, 0x699c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBEelTearsGenerate@ha
+    stw     r0, R13Off_m0x699c(r13)
+    addi    r0, r3, __vvt__23TNerveBEelTearsGenerate@l
+    lis     r4, __dt__23TNerveBEelTearsGenerateFv@ha
+    stw     r0, R13Off_m0x699c(r13)
+    lis     r3, unk_803f1f20@h
+    addi    r5, r3, unk_803f1f20@l
+    addi    r4, r4, __dt__23TNerveBEelTearsGenerateFv@l
+    addi    r3, r13, R13Off_m0x699c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x699f(r13)
+    stb     r0, R13Off_m0x699f(r13)
 branch_0x800d964c:
     lwz     r3, 0x8c(r31)
-    subi    r0, r13, 0x699c
+    addi    r0, r13, R13Off_m0x699c
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d9708
@@ -10445,7 +10447,7 @@ branch_0x800d964c:
     bl      identity33__Q29JGeometry64TRotation3_Q29JGeometry38TMatrix34_Q29JGeometry13SMatrix34C_f___Fv
     stfs    f31, 0x64(sp)
     addi    r3, sp, 0x58
-    lfs     f2, -0x5d8c(rtoc)
+    lfs     f2, -0x5d8c(r2)
     stfs    f30, 0x74(sp)
     stfs    f29, 0x84(sp)
     lwz     r4, 0x168(r31)
@@ -10504,7 +10506,7 @@ moveObject__10TBEelTearsFv: # 0x800d9728
     stmw    r22, 0xa8(sp)
     mr      r23, r3
     lfs     f0, 0xac(r3)
-    lfs     f1, -0x5d90(rtoc)
+    lfs     f1, -0x5d90(r2)
     lwz     r3, 0x15c(r3)
     fmuls   f0, f0, f1
     lfs     f3, 0xe0(r3)
@@ -10527,8 +10529,8 @@ moveObject__10TBEelTearsFv: # 0x800d9728
     lwz     r4, 0x168(r23)
     cmplwi  r4, 0x0
     beq-    branch_0x800d97ec
-    lwz     r3, MarioHitActorPos(r13)
-    lfs     f1, -0x5d54(rtoc)
+    lwz     r3, R13Off_m0x60b4(r13)
+    lfs     f1, -0x5d54(r2)
     lfs     f0, 0x4(r3)
     lfs     f2, 0x14(r23)
     fadds   f0, f1, f0
@@ -10549,7 +10551,7 @@ branch_0x800d97d4:
 branch_0x800d97ec:
     lwz     r7, 0x15c(r23)
     lis     r5, 0x4330
-    lfd     f3, -0x5e28(rtoc)
+    lfd     f3, -0x5e28(r2)
     mr      r3, r23
     lwz     r0, 0x130(r7)
     lwz     r6, 0x144(r7)
@@ -10585,23 +10587,23 @@ branch_0x800d97ec:
     stfs    f1, 0x58(r23)
     stfs    f0, 0x5c(r23)
     bl      calcEntryRadius__9THitActorFv
-    lis     r6, 0x803b
-    lfs     f30, -0x5e40(rtoc)
-    lis     r5, 0x803c
-    lfs     f31, -0x5e48(rtoc)
-    lis     r4, 0x800e
-    lfs     f29, -0x5d58(rtoc)
-    lis     r3, 0x803f
-    lis     r9, 0x803c
-    lis     r8, 0x800e
-    lis     r7, 0x803f
-    subi    r28, r6, 0x48f4
-    subi    r29, r5, 0x6a64
-    subi    r30, r4, 0x7bd8
-    addi    r31, r3, 0x1f50
-    subi    r25, r9, 0x6a34
-    subi    r26, r8, 0x7b7c
-    addi    r27, r7, 0x1f2c
+    lis     r6, __vvt__24TNerveBase_10TLiveActor_@ha
+    lfs     f30, -0x5e40(r2)
+    lis     r5, __vvt__20TNerveBEelTearsSplit@ha
+    lfs     f31, -0x5e48(r2)
+    lis     r4, __dt__20TNerveBEelTearsSplitFv@ha
+    lfs     f29, -0x5d58(r2)
+    lis     r3, unk_803f1f50@h
+    lis     r9, __vvt__21TNerveBEelTearsMoveUp@ha
+    lis     r8, __dt__21TNerveBEelTearsMoveUpFv@ha
+    lis     r7, unk_803f1f2c@h
+    addi    r28, r6, __vvt__24TNerveBase_10TLiveActor_@l
+    addi    r29, r5, __vvt__20TNerveBEelTearsSplit@l
+    addi    r30, r4, __dt__20TNerveBEelTearsSplitFv@l
+    addi    r31, r3, unk_803f1f50@l
+    addi    r25, r9, __vvt__21TNerveBEelTearsMoveUp@l
+    addi    r26, r8, __dt__21TNerveBEelTearsMoveUpFv@l
+    addi    r27, r7, unk_803f1f2c@l
     li      r24, 0x0
     li      r22, 0x0
     b       branch_0x800d9abc
@@ -10621,39 +10623,39 @@ branch_0x800d98f4:
 branch_0x800d98f8:
     clrlwi. r0, r0, 24
     beq-    branch_0x800d99d4
-    lbz     r0, -0x6998(r13)
+    lbz     r0, R13Off_m0x6998(r13)
     extsb.  r0, r0
     bne-    branch_0x800d992c
-    stw     r28, -0x6994(r13)
-    subi    r3, r13, 0x6994
+    stw     r28, R13Off_m0x6994(r13)
+    addi    r3, r13, R13Off_m0x6994
     addi    r4, r26, 0x0
-    stw     r25, -0x6994(r13)
+    stw     r25, R13Off_m0x6994(r13)
     addi    r5, r27, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6998(r13)
+    stb     r0, R13Off_m0x6998(r13)
 branch_0x800d992c:
     lwz     r3, 0x8c(r23)
-    subi    r0, r13, 0x6994
+    addi    r0, r13, R13Off_m0x6994
     lwz     r3, 0x14(r3)
     cmplw   r3, r0
     bne-    branch_0x800d9ab4
     addi    r3, r23, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
-    lbz     r0, -0x6980(r13)
+    lbz     r0, R13Off_m0x6980(r13)
     extsb.  r0, r0
     bne-    branch_0x800d9978
-    stw     r28, -0x697c(r13)
-    subi    r3, r13, 0x697c
+    stw     r28, R13Off_m0x697c(r13)
+    addi    r3, r13, R13Off_m0x697c
     addi    r4, r30, 0x0
-    stw     r29, -0x697c(r13)
+    stw     r29, R13Off_m0x697c(r13)
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6980(r13)
+    stb     r0, R13Off_m0x6980(r13)
 branch_0x800d9978:
-    subi    r6, r13, 0x697c
+    addi    r6, r13, R13Off_m0x697c
     lwz     r5, 0x8c(r23)
     cmplwi  r6, 0x0
     beq-    branch_0x800d9ab4
@@ -10774,14 +10776,14 @@ setMActorAndKeeper__10TBEelTearsFv: # 0x800d9af0
     bl      __ct__13TMActorKeeperFP12TLiveManagerUs
 branch_0x800d9b28:
     stw     r30, 0x78(r31)
-    lis     r3, 0x8038
-    addi    r4, r3, 0x10
+    lis     r3, unk_80380010@h
+    addi    r4, r3, unk_80380010@l
     lwz     r3, 0x78(r31)
     li      r5, 0x0
     bl      createMActor__13TMActorKeeperFPCcUl
     stw     r3, 0x74(r31)
-    lis     r3, 0x8038
-    addi    r4, r3, 0x1c
+    lis     r3, unk_8038001c@h
+    addi    r4, r3, unk_8038001c@l
     lwz     r3, 0x78(r31)
     li      r5, 0x0
     bl      createMActor__13TMActorKeeperFPCcUl
@@ -10796,16 +10798,16 @@ branch_0x800d9b28:
 .globl init__10TBEelTearsFP12TLiveManager
 init__10TBEelTearsFP12TLiveManager: # 0x800d9b70
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_8037fe80@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x110(sp)
     stfd    f31, 0x108(sp)
     stmw    r27, 0xf4(sp)
     addi    r31, r3, 0x0
-    subi    r30, r5, 0x180
+    addi    r30, r5, unk_8037fe80@l
     bl      init__11TSpineEnemyFP12TLiveManager
-    lis     r3, 0x800
-    addi    r0, r3, 0x3
+    lis     r3, unk_08000003@h
+    addi    r0, r3, unk_08000003@l
     stw     r0, 0x4c(r31)
     mr      r3, r31
     lwz     r0, 0x64(r31)
@@ -10821,34 +10823,34 @@ init__10TBEelTearsFP12TLiveManager: # 0x800d9b70
     mtlr    r12
     blrl
     stw     r3, 0x15c(r31)
-    lbz     r0, -0x699f(r13)
+    lbz     r0, R13Off_m0x699f(r13)
     extsb.  r0, r0
     bne-    branch_0x800d9c1c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803c
-    stw     r0, -0x699c(r13)
-    subi    r0, r3, 0x6a24
-    lis     r4, 0x800e
-    stw     r0, -0x699c(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0x1f20
-    subi    r4, r4, 0x7990
-    subi    r3, r13, 0x699c
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__23TNerveBEelTearsGenerate@ha
+    stw     r0, R13Off_m0x699c(r13)
+    addi    r0, r3, __vvt__23TNerveBEelTearsGenerate@l
+    lis     r4, __dt__23TNerveBEelTearsGenerateFv@ha
+    stw     r0, R13Off_m0x699c(r13)
+    lis     r3, unk_803f1f20@h
+    addi    r5, r3, unk_803f1f20@l
+    addi    r4, r4, __dt__23TNerveBEelTearsGenerateFv@l
+    addi    r3, r13, R13Off_m0x699c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x699f(r13)
+    stb     r0, R13Off_m0x699f(r13)
 branch_0x800d9c1c:
     lwz     r5, 0x8c(r31)
     li      r4, 0x0
-    subi    r0, r13, 0x699c
+    addi    r0, r13, R13Off_m0x699c
     stw     r4, 0x8(r5)
     addi    r3, r30, 0x93c
     stw     r4, 0x20(r5)
     stw     r0, 0x14(r5)
     stw     r0, 0x18(r5)
     stw     r4, 0x1c(r5)
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -10880,7 +10882,7 @@ branch_0x800d9c88:
     bl      resetDL__6MActorFv
     lwz     r3, 0x4(r27)
     addi    r5, r28, 0x0
-    subi    r4, rtoc, 0x5d50
+    addi    r4, r2, R2Off_m0x5d50
     lwz     r3, 0x4(r3)
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
     addi    r3, r27, 0x0
@@ -10893,7 +10895,7 @@ branch_0x800d9c88:
     lwz     r3, 0x4(r3)
     addi    r5, r28, 0x0
     lwz     r3, 0x4(r3)
-    subi    r4, rtoc, 0x5d50
+    addi    r4, r2, R2Off_m0x5d50
     bl      SMS_ChangeTextureAll__FP12J3DModelDataPCcRC7ResTIMG
     addi    r3, r29, 0x0
     li      r4, 0x3
@@ -10908,10 +10910,10 @@ branch_0x800d9c88:
     fsubs   f31, f1, f0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x5e28(rtoc)
+    lfd     f3, -0x5e28(r2)
     stw     r0, 0xec(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x5e18(rtoc)
+    lfs     f0, -0x5e18(r2)
     addi    r3, r30, 0x2e4
     stw     r0, 0xe8(sp)
     lfs     f1, 0x0(r29)
@@ -10921,7 +10923,7 @@ branch_0x800d9c88:
     fmuls   f0, f31, f0
     fadds   f0, f1, f0
     stfs    f0, 0x148(r31)
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -10942,17 +10944,17 @@ branch_0x800d9c88:
     addi    r4, r30, 0x954
     lwz     r30, 0x58(r5)
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r27)
     addi    r0, r3, 0x24
-    lis     r3, 0x803c
+    lis     r3, __vvt__29TBossEelTearsRecoverCollision@ha
     stw     r0, 0x20(r27)
-    subi    r3, r3, 0x70d0
+    addi    r3, r3, __vvt__29TBossEelTearsRecoverCollision@l
     li      r4, 0x0
     stw     r30, 0x68(r27)
     addi    r0, r3, 0x24
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, 0x6c(r27)
     stfs    f0, 0x70(r27)
     stfs    f0, 0x74(r27)
@@ -11007,8 +11009,8 @@ __ct__10TBEelTearsFPCc: # 0x800d9e8c
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6a14
+    lis     r3, __vvt__10TBEelTears@ha
+    addi    r3, r3, __vvt__10TBEelTears@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     li      r4, 0x0
@@ -11045,22 +11047,22 @@ splitTears__17TBEelTearsManagerFRQ29JGeometry8TVec3_f_: # 0x800d9eec
     li      r29, 0x0
     li      r26, 0x0
     lis     r31, 0x4330
-    lfs     f0, -0x5d5c(rtoc)
+    lfs     f0, -0x5d5c(r2)
     lfs     f1, 0x4(r4)
     lwz     r3, 0x38(r3)
     fadds   f0, f1, f0
     lwz     r30, 0xf4(r3)
     stfs    f0, 0x4(r4)
-    lfs     f1, -0x5d48(rtoc)
-    lfs     f0, -0x5e38(rtoc)
+    lfs     f1, -0x5d48(r2)
+    lfs     f0, -0x5e38(r2)
     stfs    f1, 0x7c(sp)
     stfs    f0, 0x80(sp)
-    lfd     f28, -0x5e28(rtoc)
-    lfs     f29, -0x5e18(rtoc)
-    lfs     f30, -0x5d44(rtoc)
-    lfs     f31, -0x5d40(rtoc)
-    lfs     f26, -0x5e48(rtoc)
-    lfs     f27, -0x5d3c(rtoc)
+    lfd     f28, -0x5e28(r2)
+    lfs     f29, -0x5e18(r2)
+    lfs     f30, -0x5d44(r2)
+    lfs     f31, -0x5d40(r2)
+    lfs     f26, -0x5e48(r2)
+    lfs     f27, -0x5d3c(r2)
 branch_0x800d9f6c:
     addi    r24, r26, 0x54
     add     r24, r27, r24
@@ -11113,7 +11115,7 @@ branch_0x800d9f6c:
     stw     r0, 0x9c(sp)
     li      r0, 0x1
     lfs     f2, 0x78(sp)
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
     stw     r31, 0x98(sp)
     lfd     f0, 0x98(sp)
     fsubs   f0, f0, f28
@@ -11201,8 +11203,8 @@ createEnemies__17TBEelTearsManagerFi: # 0x800da168
     stmw    r26, 0x18(sp)
     mr      r27, r3
     bl      createEnemies__13TEnemyManagerFi
-    lis     r3, 0x8038
-    addi    r3, r3, 0x7e4
+    lis     r3, unk_803807e4@h
+    addi    r3, r3, unk_803807e4@l
     bl      getGlbResource__13JKRFileLoaderFPCc
     addi    r30, r3, 0x0
     li      r3, 0x1c
@@ -11230,7 +11232,7 @@ branch_0x800da1cc:
     addi    r4, r29, 0x0
     addi    r6, r30, 0x0
     li      r5, 0x0
-    subi    r7, rtoc, 0x5d38
+    addi    r7, r2, R2Off_m0x5d38
     bl      __ct__14TBEelTearsDropFP10TBEelTearsiP12SDLModelDataPCc
 branch_0x800da1f4:
     addi    r28, r28, 0x1
@@ -11256,12 +11258,12 @@ createEnemyInstance__17TBEelTearsManagerFv: # 0x800da220
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x800da280
-    lis     r4, 0x8038
+    lis     r4, unk_80380808@h
     addi    r3, r31, 0x0
-    addi    r4, r4, 0x808
+    addi    r4, r4, unk_80380808@l
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6a14
+    lis     r3, __vvt__10TBEelTears@ha
+    addi    r3, r3, __vvt__10TBEelTears@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     li      r3, 0x0
@@ -11362,9 +11364,9 @@ branch_0x800da370:
 .globl createModelData__17TBEelTearsManagerFv
 createModelData__17TBEelTearsManagerFv: # 0x800da394
     mflr    r0
-    lis     r4, 0x803c
+    lis     r4, entry_3117@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x736c
+    addi    r4, r4, entry_3117@l
     stwu    sp, -0x8(sp)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x2c(r12)
@@ -11379,45 +11381,45 @@ createModelData__17TBEelTearsManagerFv: # 0x800da394
 .globl loadAfter__17TBEelTearsManagerFv
 loadAfter__17TBEelTearsManagerFv: # 0x800da3c8
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gParticleFlagLoaded@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x2f98
+    addi    r3, r3, gParticleFlagLoaded@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r3, 0xd5
     lbz     r0, 0xd5(r3)
-    lis     r3, 0x8038
-    subi    r31, r3, 0x180
+    lis     r3, unk_8037fe80@ha
+    addi    r31, r3, unk_8037fe80@l
     cmplwi  r0, 0x0
     bne-    branch_0x800da414
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x998
     li      r5, 0xd5
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800da414:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0xd6
     lbz     r0, 0xd6(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800da444
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x9c4
     li      r5, 0xd6
     bl      load__18JPAResourceManagerFPCcUs
     li      r0, 0x1
     stb     r0, 0x0(r30)
 branch_0x800da444:
-    lis     r3, 0x8040
-    subi    r3, r3, 0x2f98
+    lis     r3, gParticleFlagLoaded@ha
+    addi    r3, r3, gParticleFlagLoaded@l
     addi    r30, r3, 0x19d
     lbz     r0, 0x19d(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x800da474
-    lwz     r3, -0x5fe0(r13)
+    lwz     r3, R13Off_m0x5fe0(r13)
     addi    r4, r31, 0x9f0
     li      r5, 0x19d
     bl      load__18JPAResourceManagerFPCcUs
@@ -11446,8 +11448,8 @@ load__17TBEelTearsManagerFR20JSUMemoryInputStream: # 0x800da48c
     bl      __nw__FUl
     mr.     r29, r3
     beq-    branch_0x800da4cc
-    lis     r3, 0x8038
-    addi    r4, r3, 0x898
+    lis     r3, unk_80380898@h
+    addi    r4, r3, unk_80380898@l
     addi    r3, r29, 0x0
     bl      __ct__24TBEelTearsSaveLoadParamsFPCc
 branch_0x800da4cc:
@@ -11472,8 +11474,8 @@ __ct__17TBEelTearsManagerFPCc: # 0x800da4f8
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803c
-    subi    r0, r3, 0x68fc
+    lis     r3, __vvt__17TBEelTearsManager@ha
+    addi    r0, r3, __vvt__17TBEelTearsManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -11486,11 +11488,11 @@ __ct__17TBEelTearsManagerFPCc: # 0x800da4f8
 .globl __ct__24TBEelTearsSaveLoadParamsFPCc
 __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_8037fe80@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x48(sp)
     stmw    r22, 0x20(sp)
-    subi    r30, r5, 0x180
+    addi    r30, r5, unk_8037fe80@l
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__17TSpineEnemyParamsFPCc
@@ -11502,12 +11504,12 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     addi    r4, r31, 0x0
     addi    r3, r31, 0xa8
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r27, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r27, r3, __vvt__10TParamT_f_@l
     stw     r27, 0xa8(r31)
-    lis     r3, 0x803b
-    subi    r26, r3, 0x42d0
-    lfs     f0, -0x5d58(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r26, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x5d58(r2)
     addi    r3, r30, 0xa40
     stfs    f0, 0xb8(r31)
     stw     r26, 0xa8(r31)
@@ -11519,7 +11521,7 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0xbc(r31)
     addi    r3, r30, 0xa58
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0xcc(r31)
     stw     r26, 0xbc(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11530,7 +11532,7 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0xd0(r31)
     addi    r3, r30, 0xa6c
-    lfs     f0, -0x5db4(rtoc)
+    lfs     f0, -0x5db4(r2)
     stfs    f0, 0xe0(r31)
     stw     r26, 0xd0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11539,13 +11541,13 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     addi    r3, r31, 0xe4
     addi    r6, r30, 0xa6c
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r29, r3, 0x42ac
+    lis     r3, __vvt__10TParamT_l_@ha
+    addi    r29, r3, __vvt__10TParamT_l_@l
     stw     r29, 0xe4(r31)
     li      r0, 0x2
-    lis     r3, 0x803b
+    lis     r3, __vvt__11TParamRT_l_@ha
     stw     r0, 0xf4(r31)
-    subi    r28, r3, 0x42b8
+    addi    r28, r3, __vvt__11TParamRT_l_@l
     addi    r3, r30, 0xa80
     stw     r28, 0xe4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11640,7 +11642,7 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x198(r31)
     addi    r3, r30, 0xb64
-    lfs     f0, -0x5d54(rtoc)
+    lfs     f0, -0x5d54(r2)
     stfs    f0, 0x1a8(r31)
     stw     r26, 0x198(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11651,7 +11653,7 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x1ac(r31)
     addi    r3, r30, 0xb78
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1bc(r31)
     stw     r26, 0x1ac(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11662,7 +11664,7 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x1c0(r31)
     addi    r3, r30, 0xb88
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1d0(r31)
     stw     r26, 0x1c0(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11673,7 +11675,7 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x1d4(r31)
     addi    r3, r30, 0xb9c
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1e4(r31)
     stw     r26, 0x1d4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11684,7 +11686,7 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x1e8(r31)
     addi    r3, r30, 0xbb4
-    lfs     f0, -0x5e48(rtoc)
+    lfs     f0, -0x5e48(r2)
     stfs    f0, 0x1f8(r31)
     stw     r26, 0x1e8(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11695,10 +11697,10 @@ __ct__24TBEelTearsSaveLoadParamsFPCc: # 0x800da534
     bl      __ct__10TBaseParamFP7TParamsUsPCc
     stw     r27, 0x1fc(r31)
     mr      r3, r31
-    lfs     f1, -0x5e48(rtoc)
+    lfs     f1, -0x5e48(r2)
     stfs    f1, 0x20c(r31)
     stw     r26, 0x1fc(r31)
-    lfs     f0, -0x5e40(rtoc)
+    lfs     f0, -0x5e40(r2)
     stfs    f0, 0x210(r31)
     stfs    f1, 0x214(r31)
     stfs    f0, 0x218(r31)
@@ -11740,8 +11742,8 @@ perform__14TBEelTearsDropFUlPQ26JDrama9TGraphics: # 0x800da8dc
     lfs     f0, 0x70(r29)
     fadds   f0, f1, f0
     stfs    f0, 0x14(r29)
-    lwz     r3, MarioHitActorPos(r13)
-    lfs     f1, -0x5db4(rtoc)
+    lwz     r3, R13Off_m0x60b4(r13)
+    lfs     f1, -0x5db4(r2)
     lfs     f0, 0x4(r3)
     lfs     f2, 0x14(r29)
     fadds   f0, f1, f0
@@ -11754,7 +11756,7 @@ branch_0x800da944:
     beq-    branch_0x800da9f8
     lfs     f0, 0x38(r29)
     addi    r28, sp, 0x6c
-    lfs     f2, -0x5d94(rtoc)
+    lfs     f2, -0x5d94(r2)
     mr      r3, r28
     lfs     f1, 0x34(r29)
     fmuls   f0, f2, f0
@@ -11814,7 +11816,7 @@ branch_0x800da9f8:
 .globl __ct__14TBEelTearsDropFP10TBEelTearsiP12SDLModelDataPCc
 __ct__14TBEelTearsDropFP10TBEelTearsiP12SDLModelDataPCc: # 0x800daa2c
     mflr    r0
-    lis     r8, 0x8038
+    lis     r8, unk_8037fe80@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x138(sp)
     stmw    r27, 0x124(sp)
@@ -11822,13 +11824,13 @@ __ct__14TBEelTearsDropFP10TBEelTearsiP12SDLModelDataPCc: # 0x800daa2c
     addi    r28, r5, 0x0
     addi    r29, r6, 0x0
     addi    r4, r7, 0x0
-    subi    r31, r8, 0x180
+    addi    r31, r8, unk_8037fe80@l
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803c
+    lis     r3, __vvt__14TBEelTearsDrop@ha
     lwz     r30, 0x8(sp)
-    subi    r3, r3, 0x68a8
+    addi    r3, r3, __vvt__14TBEelTearsDrop@l
     stw     r3, 0x0(r30)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -11848,14 +11850,14 @@ __ct__14TBEelTearsDropFP10TBEelTearsiP12SDLModelDataPCc: # 0x800daa2c
     bl      __ct__12TSharedPartsFPC10TLiveActoriP12SDLModelDataUlPCc
 branch_0x800daab0:
     lwz     r30, 0x8(sp)
-    lis     r4, 0x2000
+    lis     r4, unk_2000002c@h
     lis     r9, 0x4330
     stw     r27, 0x68(r30)
     mr      r3, r30
-    addi    r4, r4, 0x2c
+    addi    r4, r4, unk_2000002c@l
     lwz     r6, 0x74(r30)
     li      r5, 0x3
-    lfd     f4, -0x5e28(rtoc)
+    lfd     f4, -0x5e28(r2)
     lwz     r11, 0x15c(r6)
     lis     r6, 0x8000
     lwz     r8, 0x194(r11)
@@ -11883,7 +11885,7 @@ branch_0x800daab0:
     fsubs   f3, f3, f4
     fsubs   f4, f0, f4
     bl      initHitActor__9THitActorFUlUsiffff
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r31, 0x2e4
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -11915,7 +11917,7 @@ branch_0x800daab0:
     li      r0, 0x0
     stb     r0, 0x6c(r30)
     addi    r3, r31, 0x93c
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -11935,7 +11937,7 @@ branch_0x800daab0:
 branch_0x800dac04:
     lwz     r30, 0x8(sp)
     addi    r5, r29, 0x0
-    subi    r4, rtoc, 0x5d50
+    addi    r4, r2, R2Off_m0x5d50
     lwz     r3, 0x68(r30)
     lwz     r6, 0x18(r3)
     lwz     r3, 0x4(r6)
@@ -11966,8 +11968,8 @@ __dt__8TBossEelFv: # 0x800dac58
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800daca8
-    lis     r3, 0x803c
-    subi    r3, r3, 0x71e4
+    lis     r3, __vvt__8TBossEel@ha
+    addi    r3, r3, __vvt__8TBossEel@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12010,20 +12012,20 @@ __dt__29TBossEelTearsRecoverCollisionFv: # 0x800dacd4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800dad54
-    lis     r3, 0x803c
-    subi    r3, r3, 0x70d0
+    lis     r3, __vvt__29TBossEelTearsRecoverCollision@ha
+    addi    r3, r3, __vvt__29TBossEelTearsRecoverCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800dad44
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800dad44
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12055,20 +12057,20 @@ __dt__24TBossEelBarrierCollisionFv: # 0x800dad70
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800dadf0
-    lis     r3, 0x803c
-    subi    r3, r3, 0x7024
+    lis     r3, __vvt__24TBossEelBarrierCollision@ha
+    addi    r3, r3, __vvt__24TBossEelBarrierCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800dade0
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800dade0
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12100,20 +12102,20 @@ __dt__20TBossEelAwaCollisionFv: # 0x800dae0c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800dae8c
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6f78
+    lis     r3, __vvt__20TBossEelAwaCollision@ha
+    addi    r3, r3, __vvt__20TBossEelAwaCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800dae7c
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800dae7c
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12145,20 +12147,20 @@ __dt__21TBossEelBodyCollisionFv: # 0x800daea8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800daf28
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6ecc
+    lis     r3, __vvt__21TBossEelBodyCollision@ha
+    addi    r3, r3, __vvt__21TBossEelBodyCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800daf18
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6e20
+    lis     r3, __vvt__17TBossEelCollision@ha
+    addi    r3, r3, __vvt__17TBossEelCollision@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800daf18
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12190,16 +12192,16 @@ __dt__17TBossEelHeartCoinFv: # 0x800daf44
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800dafac
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6d74
+    lis     r3, __vvt__17TBossEelHeartCoin@ha
+    addi    r0, r3, __vvt__17TBossEelHeartCoin@l
     stw     r0, 0x0(r30)
     beq-    branch_0x800daf9c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5a58
+    lis     r3, __vvt__12TSharedParts@ha
+    addi    r0, r3, __vvt__12TSharedParts@l
     stw     r0, 0x0(r30)
     beq-    branch_0x800daf9c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -12229,16 +12231,16 @@ __dt__11TBossEelEyeFv: # 0x800dafc8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db030
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6d50
+    lis     r3, __vvt__11TBossEelEye@ha
+    addi    r0, r3, __vvt__11TBossEelEye@l
     stw     r0, 0x0(r30)
     beq-    branch_0x800db020
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5a58
+    lis     r3, __vvt__12TSharedParts@ha
+    addi    r0, r3, __vvt__12TSharedParts@l
     stw     r0, 0x0(r30)
     beq-    branch_0x800db020
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -12268,14 +12270,14 @@ __dt__14TBossEelVortexFv: # 0x800db04c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db0b4
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6d2c
+    lis     r3, __vvt__14TBossEelVortex@ha
+    addi    r3, r3, __vvt__14TBossEelVortex@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800db0a4
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12307,14 +12309,14 @@ __dt__13TBossEelToothFv: # 0x800db0d0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db138
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6c84
+    lis     r3, __vvt__13TBossEelTooth@ha
+    addi    r3, r3, __vvt__13TBossEelTooth@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800db128
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12346,8 +12348,8 @@ __dt__15TBossEelManagerFv: # 0x800db154
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db19c
-    lis     r3, 0x803c
-    subi    r0, r3, 0x6be0
+    lis     r3, __vvt__15TBossEelManager@ha
+    addi    r0, r3, __vvt__15TBossEelManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -12376,14 +12378,14 @@ __dt__8TOilBallFv: # 0x800db1b8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db220
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6b7c
+    lis     r3, __vvt__8TOilBall@ha
+    addi    r3, r3, __vvt__8TOilBall@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800db210
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6a14
+    lis     r3, __vvt__10TBEelTears@ha
+    addi    r3, r3, __vvt__10TBEelTears@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12415,8 +12417,8 @@ __dt__10TBEelTearsFv: # 0x800db23c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db28c
-    lis     r3, 0x803c
-    subi    r3, r3, 0x6a14
+    lis     r3, __vvt__10TBEelTears@ha
+    addi    r3, r3, __vvt__10TBEelTears@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12447,8 +12449,8 @@ __dt__17TBEelTearsManagerFv: # 0x800db2a8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db2f0
-    lis     r3, 0x803c
-    subi    r0, r3, 0x68fc
+    lis     r3, __vvt__17TBEelTearsManager@ha
+    addi    r0, r3, __vvt__17TBEelTearsManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -12477,14 +12479,14 @@ __dt__14TBEelTearsDropFv: # 0x800db30c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800db374
-    lis     r3, 0x803c
-    subi    r3, r3, 0x68a8
+    lis     r3, __vvt__14TBEelTearsDrop@ha
+    addi    r3, r3, __vvt__14TBEelTearsDrop@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800db364
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -12509,205 +12511,205 @@ branch_0x800db374:
 .globl __sinit_bosseel_cpp
 __sinit_bosseel_cpp: # 0x800db390
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803f1f20@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x1f20
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803f1f20@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x800db3d8
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0xcc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x800db3d8:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x800db408
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xd8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x800db408:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x800db438
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0xe4
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x800db438:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x800db468
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0xf0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x800db468:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x800db498
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0xfc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x800db498:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x800db4c8
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x108
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x800db4c8:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x800db4f8
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x114
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x800db4f8:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x800db528
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x120
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x800db528:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x800db558
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x12c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x800db558:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x800db588
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x138
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x800db588:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x800db5b8
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x144
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x800db5b8:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x800db5e8
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x150
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x800db5e8:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x800db618
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x15c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x800db618:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x800db648
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x168
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x800db648:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x800db678
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0x174
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x800db678:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)
@@ -12716,68 +12718,68 @@ branch_0x800db678:
     blr
 
 
-.globl _32___dt__14TBEelTearsDropFv
-_32___dt__14TBEelTearsDropFv: # 0x800db68c
-    subi    r3, r3, 0x20
+.globl unk_800db68c
+unk_800db68c: # 0x800db68c
+    addi    r3, r3, -0x20
     b       __dt__14TBEelTearsDropFv
 
 
-.globl _32___dt__10TBEelTearsFv
-_32___dt__10TBEelTearsFv: # 0x800db694
-    subi    r3, r3, 0x20
+.globl unk_800db694
+unk_800db694: # 0x800db694
+    addi    r3, r3, -0x20
     b       __dt__10TBEelTearsFv
 
 
-.globl _32___dt__8TOilBallFv
-_32___dt__8TOilBallFv: # 0x800db69c
-    subi    r3, r3, 0x20
+.globl unk_800db69c
+unk_800db69c: # 0x800db69c
+    addi    r3, r3, -0x20
     b       __dt__8TOilBallFv
 
 
-.globl _32___dt__13TBossEelToothFv
-_32___dt__13TBossEelToothFv: # 0x800db6a4
-    subi    r3, r3, 0x20
+.globl unk_800db6a4
+unk_800db6a4: # 0x800db6a4
+    addi    r3, r3, -0x20
     b       __dt__13TBossEelToothFv
 
 
-.globl _32___dt__14TBossEelVortexFv
-_32___dt__14TBossEelVortexFv: # 0x800db6ac
-    subi    r3, r3, 0x20
+.globl unk_800db6ac
+unk_800db6ac: # 0x800db6ac
+    addi    r3, r3, -0x20
     b       __dt__14TBossEelVortexFv
 
 
-.globl _32___dt__17TBossEelCollisionFv
-_32___dt__17TBossEelCollisionFv: # 0x800db6b4
-    subi    r3, r3, 0x20
+.globl unk_800db6b4
+unk_800db6b4: # 0x800db6b4
+    addi    r3, r3, -0x20
     b       __dt__17TBossEelCollisionFv
 
 
-.globl _32___dt__21TBossEelBodyCollisionFv
-_32___dt__21TBossEelBodyCollisionFv: # 0x800db6bc
-    subi    r3, r3, 0x20
+.globl unk_800db6bc
+unk_800db6bc: # 0x800db6bc
+    addi    r3, r3, -0x20
     b       __dt__21TBossEelBodyCollisionFv
 
 
-.globl _32___dt__20TBossEelAwaCollisionFv
-_32___dt__20TBossEelAwaCollisionFv: # 0x800db6c4
-    subi    r3, r3, 0x20
+.globl unk_800db6c4
+unk_800db6c4: # 0x800db6c4
+    addi    r3, r3, -0x20
     b       __dt__20TBossEelAwaCollisionFv
 
 
-.globl _32___dt__24TBossEelBarrierCollisionFv
-_32___dt__24TBossEelBarrierCollisionFv: # 0x800db6cc
-    subi    r3, r3, 0x20
+.globl unk_800db6cc
+unk_800db6cc: # 0x800db6cc
+    addi    r3, r3, -0x20
     b       __dt__24TBossEelBarrierCollisionFv
 
 
-.globl _32___dt__29TBossEelTearsRecoverCollisionFv
-_32___dt__29TBossEelTearsRecoverCollisionFv: # 0x800db6d4
-    subi    r3, r3, 0x20
+.globl unk_800db6d4
+unk_800db6d4: # 0x800db6d4
+    addi    r3, r3, -0x20
     b       __dt__29TBossEelTearsRecoverCollisionFv
 
 
-.globl _32___dt__8TBossEelFv
-_32___dt__8TBossEelFv: # 0x800db6dc
-    subi    r3, r3, 0x20
+.globl unk_800db6dc
+unk_800db6dc: # 0x800db6dc
+    addi    r3, r3, -0x20
     b       __dt__8TBossEelFv
 

@@ -27,9 +27,9 @@ branch_0x8020246c:
     bl      isCurAnmAlreadyEnd__6MActorFi
     clrlwi. r0, r3, 24
     beq-    branch_0x80202638
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x802024a0
     addi    r0, r3, 0x1c
@@ -78,9 +78,9 @@ branch_0x80202510:
     bl      isCurAnmAlreadyEnd__6MActorFi
     clrlwi. r0, r3, 24
     beq-    branch_0x80202638
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80202544
     addi    r0, r3, 0x1c
@@ -124,9 +124,9 @@ branch_0x802025a0:
     b       branch_0x80202638
 
 branch_0x802025b4:
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x802025d4
     addi    r0, r3, 0x1c
@@ -200,9 +200,9 @@ branch_0x8020268c:
     bl      isCurAnmAlreadyEnd__6MActorFi
     clrlwi. r0, r3, 24
     beq-    branch_0x80202858
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x802026c0
     addi    r0, r3, 0x1c
@@ -251,9 +251,9 @@ branch_0x80202730:
     bl      isCurAnmAlreadyEnd__6MActorFi
     clrlwi. r0, r3, 24
     beq-    branch_0x80202858
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80202764
     addi    r0, r3, 0x1c
@@ -297,9 +297,9 @@ branch_0x802027c0:
     b       branch_0x80202858
 
 branch_0x802027d4:
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x802027f4
     addi    r0, r3, 0x1c
@@ -419,11 +419,11 @@ sunflowerReviveIn__8TBaseNPCFv: # 0x80202938
     clrlwi. r0, r0, 31
     beq-    branch_0x80202a04
     lbz     r0, 0x1d8(r3)
-    lis     r4, 0x400
+    lis     r4, unk_0400001e@h
     li      r6, 0x0
     clrrwi  r0, r0, 1
     stb     r0, 0x1d8(r3)
-    addi    r0, r4, 0x1e
+    addi    r0, r4, unk_0400001e@l
     lbz     r5, 0x1d8(r3)
     ori     r5, r5, 0x2
     stb     r5, 0x1d8(r3)
@@ -481,12 +481,12 @@ branch_0x80202a04:
 .globl sunflowerDownIn___8TBaseNPCFv
 sunflowerDownIn___8TBaseNPCFv: # 0x80202a14
     lbz     r0, 0x1d8(r3)
-    lis     r5, 0x8039
-    lis     r4, 0x8039
+    lis     r5, sIndividualSunflowerBck_2906@h
+    lis     r4, sIndividualSunflowerBtp_2907@h
     ori     r0, r0, 0x1
     stb     r0, 0x1d8(r3)
-    addi    r5, r5, 0x4998
-    addi    r0, r4, 0x49b0
+    addi    r5, r5, sIndividualSunflowerBck_2906@l
+    addi    r0, r4, sIndividualSunflowerBtp_2907@l
     lbz     r4, 0x1d8(r3)
     rlwinm  r4, r4, 0, 31, 29
     stb     r4, 0x1d8(r3)
@@ -506,8 +506,8 @@ peachTiredIn___8TBaseNPCFv: # 0x80202a50
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x80202afc
     lbz     r5, 0x1d8(r3)
-    lis     r4, 0x400
-    addi    r0, r4, 0x1e
+    lis     r4, unk_0400001e@h
+    addi    r0, r4, unk_0400001e@l
     ori     r5, r5, 0x2
     stb     r5, 0x1d8(r3)
     lwz     r5, 0x4c(r3)
@@ -577,12 +577,12 @@ peachParasolOut___8TBaseNPCFv: # 0x80202b0c
 .globl peachParasolIn___8TBaseNPCFv
 peachParasolIn___8TBaseNPCFv: # 0x80202b3c
     lbz     r0, 0x1d8(r3)
-    lis     r5, 0x8039
-    lis     r4, 0x8039
+    lis     r5, sIndividualPeachBck_2896@h
+    lis     r4, sIndividualPeachBtp_2897@h
     ori     r0, r0, 0x1
     stb     r0, 0x1d8(r3)
-    addi    r5, r5, 0x4950
-    addi    r0, r4, 0x4968
+    addi    r5, r5, sIndividualPeachBck_2896@l
+    addi    r0, r4, sIndividualPeachBtp_2897@l
     lwz     r4, 0xd0(r3)
     stw     r5, 0x18(r4)
     lwz     r3, 0xd0(r3)
@@ -633,9 +633,9 @@ branch_0x80202bb4:
 branch_0x80202bf4:
     clrlwi. r0, r4, 24
     beq-    branch_0x80202cac
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r30)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80202c1c
     addi    r0, r3, 0x1c
@@ -725,12 +725,12 @@ branch_0x80202d00:
     stw     r0, 0x0(r30)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x4c(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r0, 0x48(sp)
-    lfs     f0, -0x1da4(rtoc)
+    lfs     f0, -0x1da4(r2)
     lfd     f2, 0x48(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -743,9 +743,9 @@ branch_0x80202d00:
     b       branch_0x80202de4
 
 branch_0x80202d60:
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80202d80
     addi    r0, r3, 0x1c
@@ -785,7 +785,7 @@ branch_0x80202dd4:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80202de4:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -827,9 +827,9 @@ npcBlownIn__8TBaseNPCFv: # 0x80202e48
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80202e7c
     addi    r0, r3, 0x1c
@@ -871,7 +871,7 @@ branch_0x80202ed8:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80202ee8:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -920,12 +920,12 @@ branch_0x80202f70:
 branch_0x80202f7c:
     lwz     r6, 0x228(r30)
     addi    r3, r30, 0x10
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     addi    r5, r30, 0x34
     lfs     f1, 0x2ac(r6)
     bl      SMS_GoRotate__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
-    lwz     r4, MarioHitActorPos(r13)
-    lfs     f0, -0x1da0(rtoc)
+    lwz     r4, R13Off_m0x60b4(r13)
+    lfs     f0, -0x1da0(r2)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x68(sp)
@@ -963,11 +963,11 @@ branch_0x80202f7c:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     bne-    branch_0x80203038
-    lfs     f2, -0x1d90(rtoc)
+    lfs     f2, -0x1d90(r2)
     b       branch_0x802030b4
 
 branch_0x80203038:
-    lfs     f2, -0x1d8c(rtoc)
+    lfs     f2, -0x1d8c(r2)
     b       branch_0x802030b4
 
 branch_0x80203040:
@@ -976,9 +976,9 @@ branch_0x80203040:
     bne-    branch_0x8020307c
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x1d98(rtoc)
+    lfd     f2, -0x1d98(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x1d88(rtoc)
+    lfs     f0, -0x1d88(r2)
     stw     r0, 0xac(sp)
     lis     r0, 0x4330
     stw     r0, 0xa8(sp)
@@ -991,12 +991,12 @@ branch_0x8020307c:
     fneg    f1, f1
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x1d88(rtoc)
+    lfs     f1, -0x1d88(r2)
     stw     r0, 0xac(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x1d84(rtoc)
+    lfs     f0, -0x1d84(r2)
     stw     r0, 0xa8(sp)
     lfd     f2, 0xa8(sp)
     fsubs   f2, f2, f3
@@ -1004,7 +1004,7 @@ branch_0x8020307c:
     fsubs   f2, f0, f1
 branch_0x802030b4:
     lfs     f1, 0x34(r30)
-    lfs     f0, -0x1d80(rtoc)
+    lfs     f0, -0x1d80(r2)
     fsubs   f1, f1, f2
     fabs    f2, f1
     b       branch_0x802030cc
@@ -1015,8 +1015,8 @@ branch_0x802030cc:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x802030c8
-    lfs     f1, -0x1d80(rtoc)
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f1, -0x1d80(r2)
+    lfs     f0, -0x1da0(r2)
     b       branch_0x802030e8
 
 branch_0x802030e4:
@@ -1024,12 +1024,12 @@ branch_0x802030e4:
 branch_0x802030e8:
     fcmpo   cr0, f2, f0
     blt+    branch_0x802030e4
-    lfs     f0, -0x1d7c(rtoc)
+    lfs     f0, -0x1d7c(r2)
     fcmpo   cr0, f2, f0
     bge-    branch_0x80203188
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r30)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x8020311c
     addi    r0, r3, 0x1c
@@ -1119,8 +1119,8 @@ npcMadIn__8TBaseNPCFv: # 0x802031ec
     clrlwi. r0, r0, 31
     beq-    branch_0x802032b4
 branch_0x80203228:
-    lis     r3, 0x400
-    addi    r0, r3, 0x1e
+    lis     r3, unk_0400001e@h
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80203244
     addi    r0, r3, 0x1c
@@ -1168,7 +1168,7 @@ branch_0x802032b4:
     li      r4, 0x4
     li      r5, 0x1
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -1194,7 +1194,7 @@ npcThrowing__8TBaseNPCFv: # 0x802032f8
     stw     r30, 0x28(sp)
     mr      r30, r3
     lwz     r3, 0x8c(r3)
-    lwz     r4, -0x6220(r13)
+    lwz     r4, R13Off_m0x6220(r13)
     lwz     r3, 0x20(r3)
     lha     r4, 0xb8(r4)
     cmpwi   r3, 0x0
@@ -1202,7 +1202,7 @@ npcThrowing__8TBaseNPCFv: # 0x802032f8
     cmpwi   r4, 0x14
     blt-    branch_0x80203340
 branch_0x80203334:
-    subi    r0, r4, 0x14
+    addi    r0, r4, -0x14
     cmpw    r3, r0
     bne-    branch_0x8020335c
 branch_0x80203340:
@@ -1246,9 +1246,9 @@ npcThrowIn__8TBaseNPCFv: # 0x802033a8
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x802033dc
     addi    r0, r3, 0x1c
@@ -1290,7 +1290,7 @@ branch_0x80203438:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80203448:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -1327,7 +1327,7 @@ npcSinking__8TBaseNPCFv: # 0x8020347c
     bl      isPollutionNpc__8TBaseNPCCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x802034e8
-    lfs     f1, -0x1d78(rtoc)
+    lfs     f1, -0x1d78(r2)
     addi    r3, r31, 0x178
     lfs     f0, 0x14(r31)
     fdivs   f2, f1, f30
@@ -1342,8 +1342,8 @@ branch_0x802034e8:
     cmpwi   r3, 0x0
     bne-    branch_0x802035a4
     lwz     r4, 0xf0(r31)
-    lis     r3, 0x400
-    addi    r0, r3, 0x1e
+    lis     r3, unk_0400001e@h
+    addi    r0, r3, unk_0400001e@l
     oris    r4, r4, 0x80
     stw     r4, 0xf0(r31)
     lwz     r4, 0x64(r31)
@@ -1426,7 +1426,7 @@ npcWetting__8TBaseNPCFv: # 0x802035c0
     ori     r0, r0, 0x200
     stw     r0, 0x170(r30)
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     stfs    f1, 0x140(r30)
     lwz     r3, 0x228(r30)
     lfs     f0, 0x144(r3)
@@ -1446,7 +1446,7 @@ npcWetting__8TBaseNPCFv: # 0x802035c0
     b       branch_0x80203678
 
 branch_0x80203668:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -1476,7 +1476,7 @@ branch_0x802036b8:
     lwz     r0, 0x14(r3)
     cmpwi   r0, 0x19
     bne-    branch_0x80203828
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     lfs     f0, 0x178(r30)
     fcmpu   cr0, f1, f0
     bne-    branch_0x80203794
@@ -1489,7 +1489,7 @@ branch_0x802036b8:
     ori     r0, r0, 0x200
     stw     r0, 0x170(r30)
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     stfs    f1, 0x140(r30)
     lwz     r3, 0x228(r30)
     lfs     f0, 0x144(r3)
@@ -1509,7 +1509,7 @@ branch_0x802036b8:
     b       branch_0x80203754
 
 branch_0x80203744:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -1554,7 +1554,7 @@ branch_0x80203794:
     b       branch_0x802037e8
 
 branch_0x802037d8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -1600,17 +1600,16 @@ branch_0x80203850:
 branch_0x80203868:
     lwz     r3, 0xd0(r30)
     lwz     r3, 0x14(r3)
-    subi    r0, r3, 0x5
+    addi    r0, r3, -0x5
     cmplwi  r0, 0x16
     bgt-    branch_0x80204204
-    lis     r3, 0x803e
-    subi    r3, r3, 0x7c6c
+    lis     r3, unk_803d8394@ha
+    addi    r3, r3, unk_803d8394@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80203894:		# jumptable 80203890 cases 0,6,15
+    bctr       
+branch_0x80203894:
     lwz     r3, 0x74(r30)
     li      r4, 0x0
     bl      isCurAnmAlreadyEnd__6MActorFi
@@ -1624,12 +1623,12 @@ branch_0x80203894:		# jumptable 80203890 cases 0,6,15
     stw     r0, 0x0(r28)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x14c(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r0, 0x148(sp)
-    lfs     f0, -0x1d74(rtoc)
+    lfs     f0, -0x1d74(r2)
     lfd     f2, 0x148(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -1657,12 +1656,12 @@ branch_0x80203930:
     li      r28, 0x7
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x144(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r0, 0x140(sp)
-    lfs     f0, -0x1d70(rtoc)
+    lfs     f0, -0x1d70(r2)
     lfd     f2, 0x140(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -1670,9 +1669,9 @@ branch_0x80203930:
     bge-    branch_0x80203974
     li      r28, 0x1b
 branch_0x80203974:
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r30)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80203994
     addi    r0, r3, 0x1c
@@ -1714,54 +1713,51 @@ branch_0x802039ec:
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
     b       branch_0x80204204
 
-branch_0x80203A00:		# jumptable 80203890 cases 2,22
-lwz	  r3, 0x74(r30)
-li	  r4, 0
-bl	  isCurAnmAlreadyEnd__6MActorFi	# MActor::isCurAnmAlreadyEnd((int))
-clrlwi.	  r0, r3, 24
-beq	  def_80203F38	# jumptable 80203890 default case
-lwz	  r0, 0xF0(r30)
-rlwinm	  r0, r0, 0,7,5
-stw	  r0, 0xF0(r30)
-lwz	  r0, 0xF0(r30)
-rlwinm	  r0, r0, 0,6,4
-stw	  r0, 0xF0(r30)
-lwz	  r4, 0x8C(r30)
-lwz	  r3, 8(r4)
-cmpwi	  r3, 0
-bne	  branch_0x80203A44
-li	  r29, 0
-b	  branch_0x80203A54
+branch_0x80203a00:
+    lwz     r3, 0x74(r30)
+    li      r4, 0x0
+    bl      isCurAnmAlreadyEnd__6MActorFi
+    clrlwi. r0, r3, 24
+    beq-    branch_0x80204204
+    lwz     r0, 0xf0(r30)
+    rlwinm  r0, r0, 0, 7, 5
+    stw     r0, 0xf0(r30)
+    lwz     r0, 0xf0(r30)
+    rlwinm  r0, r0, 0, 6, 4
+    stw     r0, 0xf0(r30)
+    lwz     r4, 0x8c(r30)
+    lwz     r3, 0x8(r4)
+    cmpwi   r3, 0x0
+    bne-    branch_0x80203a44
+    li      r29, 0x0
+    b       branch_0x80203a54
 
-branch_0x80203A44:
-addi	  r0, r3, -1
-lwz	  r3, 0xC(r4)
-slwi	  r0, r0, 2
-lwzx	  r29, r3, r0
+branch_0x80203a44:
+    addi    r0, r3, -0x1
+    lwz     r3, 0xc(r4)
+    slwi    r0, r0, 2
+    lwzx    r29, r3, r0
+branch_0x80203a54:
+    bl      theNerve__13TNerveNPCTalkFv
+    cmplw   r29, r3
+    bne-    branch_0x80203a6c
+    mr      r3, r30
+    bl      requestTalkAnm___8TBaseNPCFv
+    b       branch_0x80203a8c
 
-branch_0x80203A54:		# TNerveNPCTalk::theNerve((void))
-bl	  theNerve__13TNerveNPCTalkFv
-cmplw	  r29, r3
-bne	  branch_0x80203A6C
-mr	  r3, r30
-bl	  requestTalkAnm___8TBaseNPCFv # TBaseNPC::requestTalkAnm_((void))
-b	  branch_0x80203A8C
+branch_0x80203a6c:
+    lwz     r3, 0x4c(r30)
+    addis   r0, r3, 0xfc00
+    cmplwi  r0, 0x6
+    bne-    branch_0x80203a8c
+    addi    r3, r30, 0x0
+    li      r4, 0x4
+    li      r5, 0x1
+    bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
+branch_0x80203a8c:
+    li      r31, 0x1
+    b       branch_0x80204204
 
-branch_0x80203A6C:
-lwz	  r3, 0x4C(r30)
-addis	  r0, r3, -0x400
-cmplwi	  r0, 6
-bne	  branch_0x80203A8C
-addi	  r3, r30, 0
-li	  r4, 4
-li	  r5, 1
-bl	  requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff # TBaseNPC::requestNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
-
-branch_0x80203A8C:
-li	  r31, 1
-b	  def_80203F38	# jumptable 80203890 default case
-
-branch_0x80203A94:
 branch_0x80203a94:
     li      r29, 0x1
     addi    r28, r29, 0x0
@@ -1853,7 +1849,7 @@ branch_0x80203bc4:
     li      r4, 0x4
     li      r5, 0x1
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r30)
     lwz     r3, 0x228(r30)
@@ -1878,7 +1874,7 @@ branch_0x80203bf8:
     b       branch_0x80203c38
 
 branch_0x80203c28:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -1933,7 +1929,7 @@ branch_0x80203c90:
     b       branch_0x80203cec
 
 branch_0x80203cdc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -1978,7 +1974,7 @@ branch_0x80203d2c:
     b       branch_0x80203d80
 
 branch_0x80203d70:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -2061,7 +2057,7 @@ branch_0x80203e50:
     b       branch_0x80203e98
 
 branch_0x80203e88:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -2087,9 +2083,9 @@ branch_0x80203ed0:
     b       branch_0x80204204
 
 branch_0x80203ed8:
-    lis     r29, 0x400
+    lis     r29, unk_04000018@h
     lwz     r3, 0x4c(r30)
-    addi    r0, r29, 0x18
+    addi    r0, r29, unk_04000018@l
     cmpw    r3, r0
     bge-    branch_0x80204148
     addi    r0, r29, 0x16
@@ -2105,17 +2101,16 @@ branch_0x80203efc:
     beq-    branch_0x80204204
     lwz     r3, 0xd0(r30)
     lwz     r3, 0x14(r3)
-    subi    r0, r3, 0x5
+    addi    r0, r3, -0x5
     cmplwi  r0, 0x13
     bgt-    branch_0x80204204
-    lis     r4, 0x803e
-    subi    r4, r4, 0x7cbc
+    lis     r4, unk_803d8344@ha
+    addi    r4, r4, unk_803d8344@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80203F3C:		# jumptable 80203F38 case 0
+    bctr       
+branch_0x80203f3c:
     lwz     r4, 0x4c(r30)
     addi    r0, r29, 0x1e
     cmpw    r4, r0
@@ -2158,137 +2153,131 @@ branch_0x80203fac:
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
     b       branch_0x80204204
 
-branch_0x80203FC0:		# jumptable 80203F38 case 6
-lwz	  r4, 0x4C(r30)
-addi	  r0, r29, 0x1E	# 0x400001E
-cmpw	  r4, r0
-bge	  branch_0x80203FDC
-addi	  r0, r29, 0x1C	# 0x400001C
-cmpw	  r4, r0
-bge	  def_80203F38	# jumptable 80203890 default case
+branch_0x80203fc0:
+    lwz     r4, 0x4c(r30)
+    addi    r0, r29, 0x1e
+    cmpw    r4, r0
+    bge-    branch_0x80203fdc
+    addi    r0, r29, 0x1c
+    cmpw    r4, r0
+    bge-    branch_0x80204204
+branch_0x80203fdc:
+    lwz     r4, 0x18c(r30)
+    lwz     r0, 0x24(r4)
+    cmpwi   r0, 0x0
+    ble-    branch_0x80203ff4
+    li      r0, 0x1
+    b       branch_0x80203ff8
 
-branch_0x80203FDC:
-lwz	  r4, 0x18C(r30)
-lwz	  r0, 0x24(r4)
-cmpwi	  r0, 0
-ble	  branch_0x80203FF4
-li	  r0, 1
-b	  branch_0x80203FF8
-
-branch_0x80203FF4:
-li	  r0, 0
-
-branch_0x80203FF8:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80204030
-cmpwi	  r3, 0xA
-bne	  branch_0x80204018
-lwz	  r3, 0x190(r30)
-li	  r0, -1
-stw	  r0, 0(r3)
-b	  def_80203F38	# jumptable 80203890 default case
+branch_0x80203ff4:
+    li      r0, 0x0
+branch_0x80203ff8:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80204030
+    cmpwi   r3, 0xa
+    bne-    branch_0x80204018
+    lwz     r3, 0x190(r30)
+    li      r0, -0x1
+    stw     r0, 0x0(r3)
+    b       branch_0x80204204
 
 branch_0x80204018:
-lwz	  r4, 0x190(r30)
-li	  r3, 0xA
-li	  r0, 1
-stw	  r3, 0(r4)
-stb	  r0, 4(r4)
-b	  def_80203F38	# jumptable 80203890 default case
+    lwz     r4, 0x190(r30)
+    li      r3, 0xa
+    li      r0, 0x1
+    stw     r3, 0x0(r4)
+    stb     r0, 0x4(r4)
+    b       branch_0x80204204
 
 branch_0x80204030:
-addi	  r3, r30, 0
-li	  r4, 0xA
-li	  r5, 1
-bl	  setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff #	TBaseNPC::setNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
-b	  def_80203F38	# jumptable 80203890 default case
+    addi    r3, r30, 0x0
+    li      r4, 0xa
+    li      r5, 0x1
+    bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
+    b       branch_0x80204204
 
-branch_0x80204044:		# jumptable 80203F38 case 15
-lwz	  r4, 0x4C(r30)
-addi	  r0, r29, 0x1E	# 0x400001E
-cmpw	  r4, r0
-bge	  branch_0x80204060
-addi	  r0, r29, 0x1C	# 0x400001C
-cmpw	  r4, r0
-bge	  def_80203F38	# jumptable 80203890 default case
-
+branch_0x80204044:
+    lwz     r4, 0x4c(r30)
+    addi    r0, r29, 0x1e
+    cmpw    r4, r0
+    bge-    branch_0x80204060
+    addi    r0, r29, 0x1c
+    cmpw    r4, r0
+    bge-    branch_0x80204204
 branch_0x80204060:
-lwz	  r4, 0x18C(r30)
-lwz	  r0, 0x24(r4)
-cmpwi	  r0, 0
-ble	  branch_0x80204078
-li	  r0, 1
-b	  branch_0x8020407C
+    lwz     r4, 0x18c(r30)
+    lwz     r0, 0x24(r4)
+    cmpwi   r0, 0x0
+    ble-    branch_0x80204078
+    li      r0, 0x1
+    b       branch_0x8020407c
 
 branch_0x80204078:
-li	  r0, 0
+    li      r0, 0x0
+branch_0x8020407c:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x802040b4
+    cmpwi   r3, 0x18
+    bne-    branch_0x8020409c
+    lwz     r3, 0x190(r30)
+    li      r0, -0x1
+    stw     r0, 0x0(r3)
+    b       branch_0x80204204
 
-branch_0x8020407C:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x802040B4
-cmpwi	  r3, 0x18
-bne	  branch_0x8020409C
-lwz	  r3, 0x190(r30)
-li	  r0, -1
-stw	  r0, 0(r3)
-b	  def_80203F38	# jumptable 80203890 default case
+branch_0x8020409c:
+    lwz     r4, 0x190(r30)
+    li      r3, 0x18
+    li      r0, 0x1
+    stw     r3, 0x0(r4)
+    stb     r0, 0x4(r4)
+    b       branch_0x80204204
 
-branch_0x8020409C:
-lwz	  r4, 0x190(r30)
-li	  r3, 0x18
-li	  r0, 1
-stw	  r3, 0(r4)
-stb	  r0, 4(r4)
-b	  def_80203F38	# jumptable 80203890 default case
+branch_0x802040b4:
+    addi    r3, r30, 0x0
+    li      r4, 0x18
+    li      r5, 0x1
+    bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
+    b       branch_0x80204204
 
-branch_0x802040B4:
-addi	  r3, r30, 0
-li	  r4, 0x18
-li	  r5, 1
-bl	  setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff #	TBaseNPC::setNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
-b	  def_80203F38	# jumptable 80203890 default case
+branch_0x802040c8:
+    lwz     r0, 0xf0(r30)
+    rlwinm  r0, r0, 0, 7, 5
+    stw     r0, 0xf0(r30)
+    lwz     r0, 0xf0(r30)
+    rlwinm  r0, r0, 0, 6, 4
+    stw     r0, 0xf0(r30)
+    lwz     r4, 0x8c(r30)
+    lwz     r3, 0x8(r4)
+    cmpwi   r3, 0x0
+    bne-    branch_0x802040f8
+    li      r29, 0x0
+    b       branch_0x80204108
 
-branch_0x802040C8:		# jumptable 80203F38 cases 2,5,19
-lwz	  r0, 0xF0(r30)
-rlwinm	  r0, r0, 0,7,5
-stw	  r0, 0xF0(r30)
-lwz	  r0, 0xF0(r30)
-rlwinm	  r0, r0, 0,6,4
-stw	  r0, 0xF0(r30)
-lwz	  r4, 0x8C(r30)
-lwz	  r3, 8(r4)
-cmpwi	  r3, 0
-bne	  branch_0x802040F8
-li	  r29, 0
-b	  branch_0x80204108
-
-branch_0x802040F8:
-addi	  r0, r3, -1
-lwz	  r3, 0xC(r4)
-slwi	  r0, r0, 2
-lwzx	  r29, r3, r0
-
-branch_0x80204108:		# TNerveNPCTalk::theNerve((void))
-bl	  theNerve__13TNerveNPCTalkFv
-cmplw	  r29, r3
-bne	  branch_0x80204120
-mr	  r3, r30
-bl	  requestTalkAnm___8TBaseNPCFv # TBaseNPC::requestTalkAnm_((void))
-b	  branch_0x80204140
+branch_0x802040f8:
+    addi    r0, r3, -0x1
+    lwz     r3, 0xc(r4)
+    slwi    r0, r0, 2
+    lwzx    r29, r3, r0
+branch_0x80204108:
+    bl      theNerve__13TNerveNPCTalkFv
+    cmplw   r29, r3
+    bne-    branch_0x80204120
+    mr      r3, r30
+    bl      requestTalkAnm___8TBaseNPCFv
+    b       branch_0x80204140
 
 branch_0x80204120:
-lwz	  r3, 0x4C(r30)
-addis	  r0, r3, -0x400
-cmplwi	  r0, 6
-bne	  branch_0x80204140
-addi	  r3, r30, 0
-li	  r4, 4
-li	  r5, 1
-bl	  requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff # TBaseNPC::requestNpcAnm_((EnumNpcAnmKind,EnumNpcStopMotionBlendOnOff))
-
+    lwz     r3, 0x4c(r30)
+    addis   r0, r3, 0xfc00
+    cmplwi  r0, 0x6
+    bne-    branch_0x80204140
+    addi    r3, r30, 0x0
+    li      r4, 0x4
+    li      r5, 0x1
+    bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80204140:
-li	  r31, 1
-b	  def_80203F38	# jumptable 80203890 default case
+    li      r31, 0x1
+    b       branch_0x80204204
 
 branch_0x80204148:
     lwz     r3, 0x74(r30)
@@ -2298,17 +2287,16 @@ branch_0x80204148:
     beq-    branch_0x80204204
     lwz     r3, 0xd0(r30)
     lwz     r3, 0x14(r3)
-    subi    r0, r3, 0x5
+    addi    r0, r3, -0x5
     cmplwi  r0, 0x14
     bgt-    branch_0x80204204
-    lis     r3, 0x803e
-    subi    r3, r3, 0x7d10
+    lis     r3, unk_803d82f0@ha
+    addi    r3, r3, unk_803d82f0@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80204188:		# jumptable 80204184 cases 0,6,15,20
+    bctr       
+branch_0x80204188:
     lwz     r0, 0xf0(r30)
     rlwinm  r0, r0, 0, 7, 5
     stw     r0, 0xf0(r30)
@@ -2323,7 +2311,7 @@ branch_0x80204188:		# jumptable 80204184 cases 0,6,15,20
     b       branch_0x802041c8
 
 branch_0x802041b8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0xc(r4)
     slwi    r0, r0, 2
     lwzx    r29, r3, r0
@@ -2344,12 +2332,8 @@ branch_0x802041e0:
     li      r4, 0x4
     li      r5, 0x1
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
-
 branch_0x80204200:
     li      r31, 0x1
-
-def_80204184:
-def_80203F38:		# jumptable 80203890 default case
 branch_0x80204204:
     lwz     r0, 0x164(sp)
     mr      r3, r31
@@ -2383,7 +2367,7 @@ npcWetIn__8TBaseNPCFv: # 0x80204228
 branch_0x80204268:
     clrlwi. r0, r30, 24
     bne-    branch_0x802044d8
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r31, 0x5
     lfs     f0, 0x178(r29)
     li      r30, 0x1
@@ -2437,12 +2421,12 @@ branch_0x80204318:
     bne-    branch_0x80204360
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x44(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r0, 0x40(sp)
-    lfs     f0, -0x1d70(rtoc)
+    lfs     f0, -0x1d70(r2)
     lfd     f2, 0x40(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -2476,12 +2460,12 @@ branch_0x80204390:
 branch_0x802043a8:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x44(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r0, 0x40(sp)
-    lfs     f0, -0x1d70(rtoc)
+    lfs     f0, -0x1d70(r2)
     lfd     f2, 0x40(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -2491,8 +2475,8 @@ branch_0x802043a8:
     b       branch_0x80204448
 
 branch_0x802043e4:
-    lis     r3, 0x400
-    addi    r0, r3, 0x18
+    lis     r3, unk_04000018@h
+    addi    r0, r3, unk_04000018@l
     cmpw    r4, r0
     bge-    branch_0x80204448
     addi    r0, r3, 0x16
@@ -2506,12 +2490,12 @@ branch_0x80204404:
     bne-    branch_0x80204448
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x44(sp)
     lis     r0, 0x4330
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r0, 0x40(sp)
-    lfs     f0, -0x1d70(rtoc)
+    lfs     f0, -0x1d70(r2)
     lfd     f2, 0x40(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
@@ -2519,9 +2503,9 @@ branch_0x80204404:
     bge-    branch_0x80204448
     li      r31, 0xb
 branch_0x80204448:
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r29)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80204468
     addi    r0, r3, 0x1c
@@ -2564,7 +2548,7 @@ branch_0x802044c8:
     addi    r5, r30, 0x0
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x802044d8:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r29)
     lwz     r3, 0x228(r29)
@@ -2592,8 +2576,8 @@ npcHappyIn__8TBaseNPCFUc: # 0x80204520
     stw     r31, 0x34(sp)
     mr      r31, r3
     stb     r4, 0x1d9(r3)
-    lis     r3, 0x400
-    addi    r0, r3, 0x1e
+    lis     r3, unk_0400001e@h
+    addi    r0, r3, unk_0400001e@l
     lwz     r4, 0x170(r31)
     ori     r4, r4, 0x200
     stw     r4, 0x170(r31)
@@ -2639,7 +2623,7 @@ branch_0x802045c0:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x802045d0:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -2662,8 +2646,8 @@ npcDanceIn__8TBaseNPCFv: # 0x80204604
     stw     r31, 0x34(sp)
     mr      r31, r3
     lwz     r4, 0x170(r3)
-    lis     r3, 0x400
-    addi    r0, r3, 0x1e
+    lis     r3, unk_0400001e@h
+    addi    r0, r3, unk_0400001e@l
     ori     r4, r4, 0x4
     stw     r4, 0x170(r31)
     lwz     r4, 0x4c(r31)
@@ -2708,7 +2692,7 @@ branch_0x802046a0:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x802046b0:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -2730,9 +2714,9 @@ npcTakenIn__8TBaseNPCFv: # 0x802046e4
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80204718
     addi    r0, r3, 0x1c
@@ -2774,7 +2758,7 @@ branch_0x80204774:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80204784:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -2819,12 +2803,12 @@ branch_0x8020480c:
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x80204868
     lbz     r0, 0x1d8(r31)
-    lis     r4, 0x8039
-    lis     r3, 0x8039
+    lis     r4, sIndividualPeachBck_2904@h
+    lis     r3, sIndividualPeachBtp_2905@h
     rlwinm  r0, r0, 0, 31, 29
     stb     r0, 0x1d8(r31)
-    addi    r7, r4, 0x4978
-    addi    r0, r3, 0x4988
+    addi    r7, r4, sIndividualPeachBck_2904@l
+    addi    r0, r3, sIndividualPeachBtp_2905@l
     lbz     r5, 0x1d8(r31)
     addi    r3, r31, 0x0
     li      r4, 0x6
@@ -2870,8 +2854,8 @@ branch_0x802048b8:
     addis   r0, r4, 0xfc00
     cmplwi  r0, 0x6
     bne-    branch_0x80204970
-    lis     r3, 0x400
-    addi    r0, r3, 0x1e
+    lis     r3, unk_0400001e@h
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80204904
     addi    r0, r3, 0x1c
@@ -2973,7 +2957,7 @@ branch_0x80204a24:
     beq-    branch_0x80204a68
     lfs     f1, 0x144(r31)
     addi    r3, r31, 0x10
-    lwz     r4, MarioHitActorPos(r13)
+    lwz     r4, R13Off_m0x60b4(r13)
     addi    r5, r31, 0x34
     bl      SMS_GoRotate__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_fPf
     lwz     r3, 0x124(r31)
@@ -3010,12 +2994,12 @@ branch_0x80204a8c:
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x80204b0c
     lbz     r0, 0x1d8(r31)
-    lis     r4, 0x8039
-    lis     r3, 0x8039
+    lis     r4, sIndividualPeachBck_2904@h
+    lis     r3, sIndividualPeachBtp_2905@h
     rlwinm  r0, r0, 0, 31, 29
     stb     r0, 0x1d8(r31)
-    addi    r7, r4, 0x4978
-    addi    r0, r3, 0x4988
+    addi    r7, r4, sIndividualPeachBck_2904@l
+    addi    r0, r3, sIndividualPeachBtp_2905@l
     lbz     r5, 0x1d8(r31)
     addi    r3, r31, 0x0
     li      r4, 0x6
@@ -3077,8 +3061,8 @@ branch_0x80204b84:
 branch_0x80204bb0:
     clrlwi. r0, r3, 24
     beq-    branch_0x80204c44
-    lis     r3, 0x400
-    addi    r0, r3, 0x1e
+    lis     r3, unk_0400001e@h
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80204bd4
     addi    r0, r3, 0x1c
@@ -3143,7 +3127,7 @@ branch_0x80204c74:
     li      r5, 0x1
     bl      requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80204c80:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -3166,9 +3150,9 @@ npcStepIn__8TBaseNPCFv: # 0x80204cb8
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80204cec
     addi    r0, r3, 0x1c
@@ -3210,7 +3194,7 @@ branch_0x80204d48:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80204d58:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -3232,9 +3216,9 @@ npcRecoverAfterIn__8TBaseNPCFv: # 0x80204d8c
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80204dc0
     addi    r0, r3, 0x1c
@@ -3276,7 +3260,7 @@ branch_0x80204e1c:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x80204e2c:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -3306,7 +3290,7 @@ npcRecoverFromSinking__8TBaseNPCFv: # 0x80204e60
     lwz     r3, 0x74(r31)
     li      r4, 0x0
     bl      getFrameCtrl__6MActorFi
-    lfs     f1, -0x1d6c(rtoc)
+    lfs     f1, -0x1d6c(r2)
     bl      checkPass__12J3DFrameCtrlFf
     cmpwi   r3, 0x0
     beq-    branch_0x80204f58
@@ -3320,22 +3304,22 @@ npcRecoverFromSinking__8TBaseNPCFv: # 0x80204e60
     blrl
     lfs     f2, 0x1c4(r31)
     lfs     f0, 0x14(r31)
-    lfs     f4, -0x1da0(rtoc)
+    lfs     f4, -0x1da0(r2)
     fsubs   f0, f2, f0
-    lfs     f2, -0x1d68(rtoc)
+    lfs     f2, -0x1d68(r2)
     fcmpo   cr0, f1, f4
     fadds   f5, f2, f0
     ble-    branch_0x80204f40
-    lfs     f2, -0x1d78(rtoc)
-    lfs     f3, -0x1d64(rtoc)
+    lfs     f2, -0x1d78(r2)
+    lfs     f3, -0x1d64(r2)
     fdivs   f0, f2, f1
     fmuls   f0, f5, f0
     fmadds  f5, f3, f0, f2
     fcmpo   cr0, f5, f4
     ble-    branch_0x80204f2c
     frsqrte f4, f5
-    lfd     f3, -0x1d60(rtoc)
-    lfd     f0, -0x1d58(rtoc)
+    lfd     f3, -0x1d60(r2)
+    lfd     f0, -0x1d58(r2)
     fmul    f2, f4, f4
     fmul    f3, f3, f4
     fnmsub   f0, f5, f2, f0
@@ -3345,15 +3329,15 @@ npcRecoverFromSinking__8TBaseNPCFv: # 0x80204e60
     stfs    f0, 0x10(sp)
     lfs     f5, 0x10(sp)
 branch_0x80204f2c:
-    lfs     f2, -0x1d70(rtoc)
-    lfs     f0, -0x1d78(rtoc)
+    lfs     f2, -0x1d70(r2)
+    lfs     f0, -0x1d78(r2)
     fmuls   f1, f2, f1
     fadds   f0, f0, f5
     fmuls   f4, f1, f0
 branch_0x80204f40:
     stfs    f4, 0xb0(r31)
     lfs     f1, 0xb0(r31)
-    lfs     f0, -0x1d50(rtoc)
+    lfs     f0, -0x1d50(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80204f58
     stfs    f0, 0xb0(r31)
@@ -3364,12 +3348,12 @@ branch_0x80204f58:
     clrlwi. r0, r3, 24
     beq-    branch_0x80204fac
     lwz     r4, 0xf0(r31)
-    lis     r3, 0xf7c0
-    subi    r0, r3, 0x11
+    lis     r3, unk_f7bfffef@ha
+    addi    r0, r3, unk_f7bfffef@l
     rlwinm  r3, r4, 0, 25, 23
     stw     r3, 0xf0(r31)
     li      r30, 0x1
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     stfs    f0, 0xac(r31)
     stfs    f0, 0xb0(r31)
     stfs    f0, 0xb4(r31)
@@ -3403,7 +3387,7 @@ branch_0x80204fec:
     fadds   f0, f1, f0
     stfs    f0, 0x14(r31)
     lfs     f1, 0xb0(r31)
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80205024
@@ -3429,9 +3413,9 @@ npcFallIn__8TBaseNPCFv: # 0x80205040
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80205074
     addi    r0, r3, 0x1c
@@ -3473,7 +3457,7 @@ branch_0x802050d0:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x802050e0:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r31)
     lwz     r3, 0x228(r31)
@@ -3501,7 +3485,7 @@ npcWaitIn__8TBaseNPCFv: # 0x80205114
     lwz     r3, 0x170(r3)
     rlwinm. r0, r3, 0, 21, 21
     bne-    branch_0x80205228
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     lfs     f0, 0x178(r30)
     fcmpu   cr0, f1, f0
     beq-    branch_0x80205158
@@ -3546,7 +3530,7 @@ branch_0x802051bc:
     bl      theNerve__18TNerveNPCGraphWaitFv
     cmplw   r29, r3
     bne-    branch_0x80205228
-    lwz     r5, gpMarDirector(r13)
+    lwz     r5, R13Off_m0x6048(r13)
     li      r3, 0x1
     addi    r4, r3, 0x0
     lbz     r0, 0x124(r5)
@@ -3575,9 +3559,9 @@ branch_0x8020521c:
     bl      getNpcWaitAnmBase___8TBaseNPCFv
     mr      r31, r3
 branch_0x80205228:
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r30)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80205248
     addi    r0, r3, 0x1c
@@ -3618,7 +3602,7 @@ branch_0x802052a0:
     li      r5, 0x1
     bl      setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 branch_0x802052b0:
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     li      r0, 0x0
     stfs    f1, 0x140(r30)
     lwz     r3, 0x228(r30)
@@ -3688,14 +3672,14 @@ walkAnmRateChange___8TBaseNPCFv: # 0x80205354
     lfs     f2, 0x94(r3)
     lfs     f1, 0x9c(r3)
     fmuls   f2, f2, f2
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     fmuls   f1, f1, f1
     fadds   f31, f2, f1
     fcmpo   cr0, f31, f0
     ble-    branch_0x802053c4
     frsqrte f3, f31
-    lfd     f2, -0x1d60(rtoc)
-    lfd     f0, -0x1d58(rtoc)
+    lfd     f2, -0x1d60(r2)
+    lfd     f0, -0x1d58(r2)
     fmul    f1, f3, f3
     fmul    f2, f2, f3
     fnmsub   f0, f31, f1, f0
@@ -3705,7 +3689,7 @@ walkAnmRateChange___8TBaseNPCFv: # 0x80205354
     stfs    f0, 0x7c(sp)
     lfs     f31, 0x7c(sp)
 branch_0x802053c4:
-    lfs     f0, -0x1d7c(rtoc)
+    lfs     f0, -0x1d7c(r2)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80205500
     lwz     r3, 0xd0(r31)
@@ -3718,16 +3702,16 @@ branch_0x802053c4:
     b       branch_0x802054f4
 
 branch_0x802053f0:
-    lwz     r3, -0x6220(r13)
+    lwz     r3, R13Off_m0x6220(r13)
     addi    r3, r3, 0x194
     lwz     r3, 0x0(r3)
     bl      CLBPalFrame_l___Fl
-    lwz     r4, -0x6220(r13)
+    lwz     r4, R13Off_m0x6220(r13)
     mr      r30, r3
-    lfs     f1, -0x1da0(rtoc)
+    lfs     f1, -0x1da0(r2)
     addi    r3, r31, 0x1d0
     lfs     f2, 0x180(r4)
-    lfs     f3, -0x1d7c(rtoc)
+    lfs     f3, -0x1d7c(r2)
     bl      CLBChaseDecrease__FPffff
     lwz     r4, 0x1cc(r31)
     cmpw    r4, r30
@@ -3744,7 +3728,7 @@ branch_0x80205444:
     li      r0, 0x0
     stw     r0, 0x1cc(r31)
     li      r3, 0x1
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     stfs    f0, 0x1d0(r31)
     lwz     r4, 0x18c(r31)
     lwz     r5, 0x24(r4)
@@ -3755,7 +3739,7 @@ branch_0x8020546c:
     clrlwi. r0, r0, 24
     bne-    branch_0x8020549c
     lfs     f1, 0x28(r4)
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8020548c
     li      r0, 0x1
@@ -3835,7 +3819,7 @@ branch_0x80205528:
     fmuls   f29, f0, f1
     lfs     f2, 0xe0(r3)
     beq-    branch_0x802055a4
-    lwz     r3, -0x6220(r13)
+    lwz     r3, R13Off_m0x6220(r13)
     lfs     f0, 0x270(r3)
     fmuls   f29, f29, f0
     fmuls   f2, f2, f0
@@ -3858,14 +3842,14 @@ branch_0x802055b0:
     fmr     f3, f31
     lfs     f1, 0xb8(r3)
     bl      CLBCalcRatio_f___Ffff
-    lfs     f0, -0x1d78(rtoc)
+    lfs     f0, -0x1d78(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x802055d4
     fmr     f1, f0
     b       branch_0x802055e4
 
 branch_0x802055d4:
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x802055e4
     fmr     f1, f0
@@ -3879,9 +3863,9 @@ branch_0x802055e4:
     beq-    branch_0x80205604
     fmr     f1, f29
 branch_0x80205604:
-    lwz     r4, -0x6220(r13)
+    lwz     r4, R13Off_m0x6220(r13)
     addi    r3, r31, 0x1d0
-    lfs     f3, -0x1da0(rtoc)
+    lfs     f3, -0x1da0(r2)
     lfs     f2, 0x16c(r4)
     bl      CLBChaseDecrease__FPffff
     lwz     r3, 0x74(r31)
@@ -3891,14 +3875,14 @@ branch_0x80205604:
     b       branch_0x8020575c
 
 branch_0x8020562c:
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     stfs    f0, 0x1d0(r31)
     lwz     r0, 0x170(r31)
     rlwinm. r0, r0, 0, 28, 28
     beq-    branch_0x802056d0
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x80205660
     addi    r0, r3, 0x1c
@@ -3942,9 +3926,9 @@ branch_0x802056bc:
     b       branch_0x8020575c
 
 branch_0x802056d0:
-    lis     r3, 0x400
+    lis     r3, unk_0400001e@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x1e
+    addi    r0, r3, unk_0400001e@l
     cmpw    r4, r0
     bge-    branch_0x802056f0
     addi    r0, r3, 0x1c
@@ -4015,11 +3999,11 @@ randomizeBckAndBtpFrame___8TBaseNPCFv: # 0x80205780
     mr      r29, r30
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x34(sp)
     lis     r3, 0x4330
     xoris   r0, r30, 0x8000
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r3, 0x30(sp)
     stw     r0, 0x2c(sp)
     lfd     f0, 0x30(sp)
@@ -4057,11 +4041,11 @@ branch_0x80205828:
 branch_0x80205854:
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x1d98(rtoc)
+    lfd     f3, -0x1d98(r2)
     stw     r0, 0x14(sp)
     lis     r3, 0x4330
     xoris   r0, r30, 0x8000
-    lfs     f1, -0x1da8(rtoc)
+    lfs     f1, -0x1da8(r2)
     stw     r3, 0x10(sp)
     stw     r0, 0x1c(sp)
     lfd     f0, 0x10(sp)
@@ -4076,7 +4060,7 @@ branch_0x80205854:
     lwz     r0, 0x24(sp)
 branch_0x802058a0:
     extsh   r0, r0
-    lfd     f1, -0x1d98(rtoc)
+    lfd     f1, -0x1d98(r2)
     xoris   r0, r0, 0x8000
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
@@ -4114,9 +4098,9 @@ branch_0x802058f8:
 branch_0x80205910:
     li      r4, 0x6
 branch_0x80205914:
-    lis     r5, 0x400
+    lis     r5, unk_0400001e@h
     lwz     r6, 0x4c(r3)
-    addi    r0, r5, 0x1e
+    addi    r0, r5, unk_0400001e@l
     cmpw    r6, r0
     bge-    branch_0x80205934
     addi    r0, r5, 0x1c
@@ -4193,9 +4177,9 @@ branch_0x802059ec:
 .globl requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff
 requestNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff: # 0x802059fc
     mflr    r0
-    lis     r6, 0x400
+    lis     r6, unk_0400001e@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x1e
+    addi    r0, r6, unk_0400001e@l
     stwu    sp, -0x8(sp)
     lwz     r7, 0x4c(r3)
     cmpw    r7, r0
@@ -4250,8 +4234,8 @@ setNpcAnm___8TBaseNPCF14EnumNpcAnmKind27EnumNpcStopMotionBlendOnOff: # 0x80205a9
     stwu    sp, -0x60(sp)
     stmw    r26, 0x48(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x400
-    addi    r0, r3, 0x1e
+    lis     r3, unk_0400001e@h
+    addi    r0, r3, unk_0400001e@l
     addi    r30, r4, 0x0
     addi    r29, r5, 0x0
     lwz     r6, 0x4c(r31)
@@ -4284,13 +4268,13 @@ branch_0x80205ad8:
 branch_0x80205b24:
     mr      r3, r31
     bl      emitHappyEffect___8TBaseNPCFv
-    lis     r28, 0x1
-    lwz     r3, gpMSound(r13)
-    subi    r4, r28, 0x77f8
+    lis     r28, unk_00008808@ha
+    lwz     r3, R13Off_m0x6044(r13)
+    addi    r4, r28, unk_00008808@l
     bl      gateCheck__6MSoundFUl
     clrlwi. r0, r3, 24
     beq-    branch_0x80205b60
-    subi    r3, r28, 0x77f8
+    addi    r3, r28, -0x77f8
     addi    r4, r31, 0x10
     li      r5, 0x0
     li      r6, 0x0
@@ -4340,7 +4324,7 @@ branch_0x80205bdc:
 branch_0x80205be0:
     lwz     r3, 0x74(r31)
     bl      setBrkFromIndex__6MActorFi
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     stfs    f0, 0xc(r28)
     b       branch_0x80205c30
 
@@ -4371,9 +4355,9 @@ branch_0x80205c30:
     bl      isPartsAnmNpc__8TBaseNPCCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x80205ed0
-    lis     r3, 0x400
+    lis     r3, unk_04000015@h
     lwz     r4, 0x4c(r31)
-    addi    r0, r3, 0x15
+    addi    r0, r3, unk_04000015@l
     cmpw    r4, r0
     beq-    branch_0x80205e5c
     bge-    branch_0x80205c74
@@ -4438,29 +4422,27 @@ branch_0x80205d08:
     bl      getPartsMActor__9TNpcPartsFii
     cmplwi  r3, 0x0
     beq-    branch_0x80205da4
-    subi    r0, r30, 0x5
+    addi    r0, r30, -0x5
     cmplwi  r0, 0x15
     bgt-    branch_0x80205d5c
-    lis     r4, 0x803e
-    subi    r4, r4, 0x7c10
+    lis     r4, unk_803d83f0@ha
+    addi    r4, r4, unk_803d83f0@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80205D44:		# jumptable 80205D40 case 4
+    bctr       
+branch_0x80205d44:
     li      r26, 0x7
     b       branch_0x80205d84
 
-branch_0x80205D4C:		# jumptable 80205D40 case 11
-li	  r26, 0xE
-b	  branch_0x80205d84
+branch_0x80205d4c:
+    li      r26, 0xe
+    b       branch_0x80205d84
 
-branch_0x80205D54:		# jumptable 80205D40 case 21
-li	  r26, 0xD
-b	  branch_0x80205d84
+branch_0x80205d54:
+    li      r26, 0xd
+    b       branch_0x80205d84
 
-def_80205D40:		# jumptable 80205D40 default case
 branch_0x80205d5c:
     clrlwi. r0, r26, 24
     beq-    branch_0x80205d6c
@@ -4612,13 +4594,13 @@ CLBPalFrame_l___Fl: # 0x80205f10
     stw     r31, 0x1c(sp)
     mr      r31, r3
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x1d78(rtoc)
+    lfs     f0, -0x1d78(r2)
     xoris   r0, r31, 0x8000
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
     fdivs   f0, f0, f1
     stw     r0, 0x10(sp)
-    lfd     f2, -0x1d98(rtoc)
+    lfd     f2, -0x1d98(r2)
     lfd     f1, 0x10(sp)
     fsubs   f1, f1, f2
     fmuls   f1, f1, f0
@@ -4633,14 +4615,14 @@ CLBPalFrame_l___Fl: # 0x80205f10
 .globl CLBRoundf_l___Ff
 CLBRoundf_l___Ff: # 0x80205f68
     stwu    sp, -0x18(sp)
-    lfs     f0, -0x1da0(rtoc)
+    lfs     f0, -0x1da0(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80205f80
-    lfs     f0, -0x1d70(rtoc)
+    lfs     f0, -0x1d70(r2)
     b       branch_0x80205f84
 
 branch_0x80205f80:
-    lfs     f0, -0x1d4c(rtoc)
+    lfs     f0, -0x1d4c(r2)
 branch_0x80205f84:
     fadds   f0, f1, f0
     fctiwz  f0, f0
@@ -4653,205 +4635,205 @@ branch_0x80205f84:
 .globl __sinit_NpcAnm_cpp
 __sinit_NpcAnm_cpp: # 0x80205f9c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, unk_803facd8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x5328
-    lbz     r0, -0x7204(r13)
+    addi    r31, r3, unk_803facd8@l
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x80205fe4
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x80205fe4:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x80206014
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0xc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x80206014:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x80206044
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x18
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x80206044:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x80206074
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x24
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x80206074:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x802060a4
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x802060a4:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x802060d4
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x802060d4:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x80206104
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x80206104:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x80206134
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x80206134:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x80206164
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x80206164:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x80206194
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x80206194:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x802061c4
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x802061c4:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x802061f4
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x802061f4:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x80206224
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x80206224:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x80206254
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x80206254:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x80206284
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x80206284:
     lwz     r0, 0x14(sp)
     lwz     r31, 0xc(sp)

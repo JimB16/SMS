@@ -12,8 +12,8 @@ __ct__7J2DPaneFv: # 0x802cae18
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x598
+    lis     r3, __vvt__7J2DPane@h
+    addi    r0, r3, __vvt__7J2DPane@l
     lwz     r29, 0x8(sp)
     stw     r0, 0x0(r29)
     addi    r3, r29, 0x14
@@ -45,9 +45,9 @@ __ct__7J2DPaneFv: # 0x802cae18
     addi    r4, r29, 0x0
     bl      __ct__10JSUPtrLinkFPv
     li      r0, 0x10
-    lis     r3, 0x5041
+    lis     r3, unk_50414e31@h
     sth     r0, 0x4(r29)
-    addi    r0, r3, 0x4e31
+    addi    r0, r3, unk_50414e31@l
     stw     r0, 0x8(r29)
     li      r30, 0x1
     li      r31, 0x0
@@ -65,7 +65,7 @@ __ct__7J2DPaneFv: # 0x802cae18
     stw     r31, 0xb8(r29)
     mr      r3, r29
     stb     r4, 0xbc(r29)
-    lfs     f0, 0x178(rtoc)
+    lfs     f0, 0x178(r2)
     stfs    f0, 0xc0(r29)
     stw     r31, 0xc8(r29)
     stb     r0, 0xcc(r29)
@@ -97,8 +97,8 @@ __ct__7J2DPaneFP7J2DPaneUsbUlRC7JUTRect: # 0x802caf50
     li      r6, 0x0
     li      r7, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x598
+    lis     r3, __vvt__7J2DPane@h
+    addi    r0, r3, __vvt__7J2DPane@l
     lwz     r30, 0x8(sp)
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x14
@@ -129,9 +129,9 @@ __ct__7J2DPaneFP7J2DPaneUsbUlRC7JUTRect: # 0x802caf50
     addi    r3, r29, 0xc
     addi    r4, r30, 0x0
     bl      __ct__10JSUPtrLinkFPv
-    lis     r3, 0x5041
+    lis     r3, unk_50414e31@h
     sth     r24, 0x4(r30)
-    addi    r0, r3, 0x4e31
+    addi    r0, r3, unk_50414e31@l
     stw     r0, 0x8(r30)
     cmplwi  r31, 0x0
     stb     r25, 0xc(r30)
@@ -161,7 +161,7 @@ branch_0x802cb060:
     li      r0, 0x1
     stw     r6, 0xb8(r3)
     stb     r5, 0xbc(r3)
-    lfs     f0, 0x178(rtoc)
+    lfs     f0, 0x178(r2)
     stfs    f0, 0xc0(r3)
     stw     r6, 0xc8(r3)
     stb     r4, 0xcc(r3)
@@ -178,9 +178,9 @@ branch_0x802cb060:
 .globl __ct__7J2DPaneFUsUlRC7JUTRect
 __ct__7J2DPaneFUsUlRC7JUTRect: # 0x802cb0b0
     mflr    r0
-    lis     r7, 0x803e
+    lis     r7, __vvt__7J2DPane@h
     stw     r0, 0x4(sp)
-    addi    r0, r7, 0x598
+    addi    r0, r7, __vvt__7J2DPane@l
     li      r7, 0x0
     stwu    sp, -0x38(sp)
     stmw    r27, 0x24(sp)
@@ -220,9 +220,9 @@ __ct__7J2DPaneFUsUlRC7JUTRect: # 0x802cb0b0
     addi    r3, r30, 0xc
     addi    r4, r31, 0x0
     bl      __ct__10JSUPtrLinkFPv
-    lis     r3, 0x5041
+    lis     r3, unk_50414e31@h
     sth     r27, 0x4(r31)
-    addi    r0, r3, 0x4e31
+    addi    r0, r3, unk_50414e31@l
     stw     r0, 0x8(r31)
     li      r8, 0x1
     li      r5, 0x0
@@ -242,7 +242,7 @@ __ct__7J2DPaneFUsUlRC7JUTRect: # 0x802cb0b0
     stw     r5, 0xb4(r31)
     stw     r5, 0xb8(r31)
     stb     r4, 0xbc(r31)
-    lfs     f0, 0x178(rtoc)
+    lfs     f0, 0x178(r2)
     stfs    f0, 0xc0(r31)
     stw     r5, 0xc8(r31)
     stb     r0, 0xcc(r31)
@@ -270,8 +270,8 @@ __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb: # 0x802cb1e4
     li      r5, 0x0
     li      r6, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x598
+    lis     r3, __vvt__7J2DPane@h
+    addi    r0, r3, __vvt__7J2DPane@l
     lwz     r31, 0x8(sp)
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x14
@@ -363,7 +363,7 @@ __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb: # 0x802cb1e4
     add     r0, r3, r0
     stw     r0, 0x20(r31)
     lbz     r3, 0x78(sp)
-    subi    r0, r3, 0x6
+    addi    r0, r3, -0x6
     stb     r0, 0x78(sp)
     lbz     r0, 0x78(sp)
     cmplwi  r0, 0x0
@@ -374,19 +374,19 @@ __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb: # 0x802cb1e4
     bl      read__14JSUInputStreamFPvl
     lhz     r3, 0x64(sp)
     lis     r0, 0x4330
-    lfd     f1, 0x180(rtoc)
+    lfd     f1, 0x180(r2)
     stw     r3, 0x84(sp)
     stw     r0, 0x80(sp)
     lfd     f0, 0x80(sp)
     fsubs   f0, f0, f1
     stfs    f0, 0xc0(r31)
     lbz     r3, 0x78(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x78(sp)
     b       branch_0x802cb3e4
 
 branch_0x802cb3dc:
-    lfs     f0, 0x178(rtoc)
+    lfs     f0, 0x178(r2)
     stfs    f0, 0xc0(r31)
 branch_0x802cb3e4:
     lbz     r0, 0x78(sp)
@@ -400,7 +400,7 @@ branch_0x802cb3e4:
     lwz     r3, 0x8(sp)
     bl      setBasePosition__7J2DPaneF15J2DBasePosition
     lbz     r3, 0x78(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x78(sp)
     b       branch_0x802cb428
 
@@ -420,7 +420,7 @@ branch_0x802cb428:
     lwz     r3, 0x8(sp)
     stb     r0, 0xcc(r3)
     lbz     r3, 0x78(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x78(sp)
     b       branch_0x802cb46c
 
@@ -445,7 +445,7 @@ branch_0x802cb46c:
     subfe   r0, r0, r3
     stb     r0, 0xce(r31)
     lbz     r3, 0x78(sp)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stb     r0, 0x78(sp)
 branch_0x802cb4b4:
     addi    r3, r30, 0x0
@@ -505,7 +505,7 @@ branch_0x802cb4c4:
     add     r0, r5, r0
     stw     r0, 0x20(r31)
     bl      setBasePosition__7J2DPaneF15J2DBasePosition
-    lfs     f0, 0x178(rtoc)
+    lfs     f0, 0x178(r2)
     li      r3, 0xff
     li      r0, 0x1
     stfs    f0, 0xc0(r31)
@@ -546,20 +546,20 @@ __dt__7J2DPaneFv: # 0x802cb5f4
     stw     r29, 0x64(sp)
     mr.     r29, r3
     beq-    branch_0x802cb6b4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x598
+    lis     r3, __vvt__7J2DPane@h
+    addi    r0, r3, __vvt__7J2DPane@l
     stw     r0, 0x0(r29)
     lwz     r31, 0xd0(r29)
     cmplwi  r31, 0x0
     beq-    branch_0x802cb66c
-    subi    r31, r31, 0xc
+    addi    r31, r31, -0xc
     b       branch_0x802cb66c
 
 branch_0x802cb638:
     lwz     r4, 0x18(r31)
     cmplwi  r4, 0x0
     beq-    branch_0x802cb648
-    subi    r4, r4, 0xc
+    addi    r4, r4, -0xc
 branch_0x802cb648:
     lwz     r3, 0xc(r31)
     addi    r31, r4, 0x0
@@ -605,9 +605,9 @@ branch_0x802cb6b4:
 .globl draw__7J2DPaneFiiPC14J2DGrafContextb
 draw__7J2DPaneFiiPC14J2DGrafContextb: # 0x802cb6d4
     mflr    r0
-    lis     r8, 0x803e
+    lis     r8, __vvt__14J2DGrafContext@h
     stw     r0, 0x4(sp)
-    addi    r0, r8, 0x1448
+    addi    r0, r8, __vvt__14J2DGrafContext@l
     stwu    sp, -0x148(sp)
     stmw    r25, 0x12c(sp)
     addi    r25, r3, 0x0
@@ -779,9 +779,9 @@ branch_0x802cb8ac:
     cmplwi  r0, 0x0
     beq-    branch_0x802cb9e8
     lbz     r4, 0xcc(r25)
-    lis     r3, 0x8081
+    lis     r3, unk_80808081@ha
     lbz     r0, 0xcd(r30)
-    subi    r3, r3, 0x7f7f
+    addi    r3, r3, unk_80808081@l
     mullw   r0, r4, r0
     mulhw   r3, r3, r0
     add     r0, r3, r0
@@ -844,7 +844,7 @@ branch_0x802cba40:
     lwz     r25, 0xd0(r25)
     cmplwi  r25, 0x0
     beq-    branch_0x802cbaa4
-    subi    r25, r25, 0xc
+    addi    r25, r25, -0xc
     b       branch_0x802cbaa4
 
 branch_0x802cba7c:
@@ -857,13 +857,13 @@ branch_0x802cba7c:
     lwz     r25, 0x18(r25)
     cmplwi  r25, 0x0
     beq-    branch_0x802cbaa4
-    subi    r25, r25, 0xc
+    addi    r25, r25, -0xc
 branch_0x802cbaa4:
     cmplwi  r25, 0x0
     bne+    branch_0x802cba7c
 branch_0x802cbaac:
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1448
+    lis     r3, __vvt__14J2DGrafContext@h
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x4c(sp)
     lwz     r0, 0x14c(sp)
     lmw     r25, 0x12c(sp)
@@ -885,8 +885,8 @@ __dt__14J2DGrafContextFv: # 0x802cbad0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802cbb04
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1448
+    lis     r3, __vvt__14J2DGrafContext@h
+    addi    r3, r3, __vvt__14J2DGrafContext@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802cbb04
@@ -941,7 +941,7 @@ branch_0x802cbb90:
     lwz     r31, 0xd0(r3)
     cmplwi  r31, 0x0
     beq-    branch_0x802cbbd8
-    subi    r31, r31, 0xc
+    addi    r31, r31, -0xc
     b       branch_0x802cbbd8
 
 branch_0x802cbba4:
@@ -959,7 +959,7 @@ branch_0x802cbbc8:
     lwz     r31, 0x18(r31)
     cmplwi  r31, 0x0
     beq-    branch_0x802cbbd8
-    subi    r31, r31, 0xc
+    addi    r31, r31, -0xc
 branch_0x802cbbd8:
     cmplwi  r31, 0x0
     bne+    branch_0x802cbba4
@@ -984,7 +984,7 @@ makeMatrix__7J2DPaneFii: # 0x802cbbfc
     addi    r30, r5, 0x0
     stw     r29, 0xbc(sp)
     addi    r29, r4, 0x0
-    lfs     f3, 0x178(rtoc)
+    lfs     f3, 0x178(r2)
     lfs     f0, 0xc0(r3)
     fcmpu   cr0, f3, f0
     beq-    branch_0x802cbd14
@@ -992,7 +992,7 @@ makeMatrix__7J2DPaneFii: # 0x802cbbfc
     lis     r4, 0x4330
     lwz     r0, 0xb8(r31)
     neg     r3, r3
-    lfd     f2, 0x190(rtoc)
+    lfd     f2, 0x190(r2)
     neg     r0, r0
     xoris   r3, r3, 0x8000
     stw     r3, 0xb4(sp)
@@ -1016,19 +1016,19 @@ makeMatrix__7J2DPaneFii: # 0x802cbbfc
 branch_0x802cbc90:
     lfs     f1, 0xc0(r31)
 branch_0x802cbc94:
-    lfs     f0, 0x188(rtoc)
+    lfs     f0, 0x188(r2)
     addi    r3, sp, 0x44
     fmuls   f1, f0, f1
     bl      PSMTXRotRad
     lwz     r5, 0xb4(r31)
-    lis     r4, 0x4330
+    lis     r4, unk_43300000@h
     lwz     r0, 0xb8(r31)
     addi    r3, sp, 0x14
     add     r5, r5, r29
     add     r0, r0, r30
-    lfd     f2, 0x190(rtoc)
+    lfd     f2, 0x190(r2)
     xoris   r5, r5, 0x8000
-    lfs     f3, 0x178(rtoc)
+    lfs     f3, 0x178(r2)
     xoris   r0, r0, 0x8000
     stw     r5, 0xac(sp)
     stw     r0, 0xb4(sp)
@@ -1044,14 +1044,14 @@ branch_0x802cbc94:
     addi    r5, r31, 0x54
     bl      PSMTXConcat
     addi    r4, r31, 0x54
-    addi    r5, r4, 0x0
+    addi    r5, r4, unk_43300000@l
     addi    r3, sp, 0x14
     bl      PSMTXConcat
     b       branch_0x802cbd4c
 
 branch_0x802cbd14:
     xoris   r3, r29, 0x8000
-    lfd     f2, 0x190(rtoc)
+    lfd     f2, 0x190(r2)
     xoris   r0, r30, 0x8000
     stw     r3, 0xac(sp)
     lis     r4, 0x4330
@@ -1088,7 +1088,7 @@ setCullBack__7J2DPaneF11_GXCullMode: # 0x802cbd68
     lwz     r28, 0xd0(r3)
     cmplwi  r28, 0x0
     beq-    branch_0x802cbe2c
-    subi    r28, r28, 0xc
+    addi    r28, r28, -0xc
     b       branch_0x802cbe2c
 
 branch_0x802cbda0:
@@ -1097,7 +1097,7 @@ branch_0x802cbda0:
     lwz     r29, 0xd0(r3)
     cmplwi  r29, 0x0
     beq-    branch_0x802cbe14
-    subi    r29, r29, 0xc
+    addi    r29, r29, -0xc
     b       branch_0x802cbe14
 
 branch_0x802cbdbc:
@@ -1107,7 +1107,7 @@ branch_0x802cbdbc:
     bl      getFirstLink__10JSUPtrListCFv
     cmplwi  r3, 0x0
     beq-    branch_0x802cbdd8
-    subi    r3, r3, 0xc
+    addi    r3, r3, -0xc
 branch_0x802cbdd8:
     mr      r30, r3
     b       branch_0x802cbdfc
@@ -1119,21 +1119,21 @@ branch_0x802cbde0:
     lwz     r30, 0x18(r30)
     cmplwi  r30, 0x0
     beq-    branch_0x802cbdfc
-    subi    r30, r30, 0xc
+    addi    r30, r30, -0xc
 branch_0x802cbdfc:
     cmplwi  r30, 0x0
     bne+    branch_0x802cbde0
     lwz     r29, 0x18(r29)
     cmplwi  r29, 0x0
     beq-    branch_0x802cbe14
-    subi    r29, r29, 0xc
+    addi    r29, r29, -0xc
 branch_0x802cbe14:
     cmplwi  r29, 0x0
     bne+    branch_0x802cbdbc
     lwz     r28, 0x18(r28)
     cmplwi  r28, 0x0
     beq-    branch_0x802cbe2c
-    subi    r28, r28, 0xc
+    addi    r28, r28, -0xc
 branch_0x802cbe2c:
     cmplwi  r28, 0x0
     bne+    branch_0x802cbda0
@@ -1149,9 +1149,9 @@ branch_0x802cbe2c:
 
 .globl setBasePosition__7J2DPaneF15J2DBasePosition
 setBasePosition__7J2DPaneF15J2DBasePosition: # 0x802cbe54
-    lis     r5, 0x5555
+    lis     r5, unk_55555556@h
     stw     r4, 0xc4(r3)
-    addi    r0, r5, 0x5556
+    addi    r0, r5, unk_55555556@l
     mulhw   r5, r0, r4
     srwi    r0, r5, 31
     add     r0, r5, r0
@@ -1179,8 +1179,8 @@ branch_0x802cbea8:
     subf    r0, r5, r0
     stw     r0, 0xb4(r3)
 branch_0x802cbeb8:
-    lis     r5, 0x5555
-    addi    r0, r5, 0x5556
+    lis     r5, unk_55555556@h
+    addi    r0, r5, unk_55555556@l
     mulhw   r4, r0, r4
     srwi    r0, r4, 31
     add.    r0, r4, r0

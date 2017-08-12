@@ -2,9 +2,9 @@
 .globl ErrorCode2Num
 ErrorCode2Num: # 0x8034e940
     li      r0, 0x2
-    lis     r4, 0x803f
+    lis     r4, ErrorTable@ha
     mtctr   r0
-    subi    r4, r4, 0x7908
+    addi    r4, r4, ErrorTable@l
     li      r5, 0x0
 branch_0x8034e954:
     lwz     r0, 0x0(r4)
@@ -81,10 +81,10 @@ branch_0x8034ea28:
     addi    r4, r4, 0x4
     addi    r5, r5, 0x1
     bdnz+      branch_0x8034e954
-    lis     r4, 0x10
+    lis     r4, unk_00100008@h
     cmplw   r3, r4
     blt-    branch_0x8034ea54
-    addi    r0, r4, 0x8
+    addi    r0, r4, unk_00100008@l
     cmplw   r3, r0
     bgt-    branch_0x8034ea54
     li      r3, 0x11

@@ -2,9 +2,9 @@
 .globl SMS_EmitSinkInPollutionEffect__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_b
 SMS_EmitSinkInPollutionEffect__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_b: # 0x802339b4
     mflr    r0
-    lis     r6, 0x6666
+    lis     r6, unk_66666667@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x6667
+    addi    r0, r6, unk_66666667@l
     stwu    sp, -0xd8(sp)
     stfd    f31, 0xd0(sp)
     stfd    f30, 0xc8(sp)
@@ -19,7 +19,7 @@ SMS_EmitSinkInPollutionEffect__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_b:
     addi    r30, r4, 0x0
     stw     r29, 0x94(sp)
     addi    r29, r3, 0x0
-    lwz     r7, gpMarDirector(r13)
+    lwz     r7, R13Off_m0x6048(r13)
     lwz     r6, 0x58(r7)
     mulhw   r0, r0, r6
     srawi   r0, r0, 3
@@ -28,14 +28,14 @@ SMS_EmitSinkInPollutionEffect__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_b:
     mulli   r0, r0, 0x14
     subf.   r0, r0, r6
     bne-    branch_0x80233b64
-    lfs     f28, -0x15e0(rtoc)
+    lfs     f28, -0x15e0(r2)
     lfs     f6, 0x0(r30)
     lfs     f5, 0x4(r30)
     fmuls   f3, f28, f6
-    lfs     f1, -0x15dc(rtoc)
+    lfs     f1, -0x15dc(r2)
     lfs     f4, 0x8(r30)
     fmuls   f2, f28, f5
-    lfs     f0, -0x15d8(rtoc)
+    lfs     f0, -0x15d8(r2)
     fmsubs  f29, f1, f5, f3
     fmsubs  f31, f28, f4, f2
     fnmsubs  f30, f1, f4, f3
@@ -57,27 +57,27 @@ SMS_EmitSinkInPollutionEffect__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_b:
 
 branch_0x80233a88:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x15dc(rtoc)
+    lfs     f0, -0x15dc(r2)
     fmuls   f0, f0, f1
     fmuls   f27, f27, f0
     fmuls   f26, f26, f0
     fmuls   f28, f25, f0
 branch_0x80233aa0:
     fmuls   f1, f30, f30
-    lfs     f0, -0x15d8(rtoc)
+    lfs     f0, -0x15d8(r2)
     fmadds  f1, f31, f31, f1
     fmadds  f1, f29, f29, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80233acc
-    lfs     f3, -0x15e0(rtoc)
+    lfs     f3, -0x15e0(r2)
     fmr     f2, f3
     fmr     f1, f2
     b       branch_0x80233ae4
 
 branch_0x80233acc:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, -0x15dc(rtoc)
+    lfs     f0, -0x15dc(r2)
     fmuls   f0, f0, f1
     fmuls   f1, f31, f0
     fmuls   f2, f30, f0
@@ -103,14 +103,14 @@ branch_0x80233ae4:
     lfs     f0, 0x8(r29)
     stfs    f0, 0x74(sp)
     beq-    branch_0x80233b4c
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, sp, 0x48
     li      r4, 0x1d8
     li      r6, 0x2
     li      r7, 0x0
     bl      emitAndBindToMtx__21TMarioParticleManagerFlPA4_fUcPCv
 branch_0x80233b4c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, sp, 0x48
     li      r4, 0x1d9
     li      r6, 0x2
@@ -147,14 +147,14 @@ SMS_EmitRippleSea__FPA4_fPv: # 0x80233b9c
     stw     r29, 0x14(sp)
     mr      r29, r3
     addi    r5, r29, 0x0
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1e8
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80233be4
     li      r31, 0x0
 branch_0x80233be4:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x107
@@ -164,7 +164,7 @@ branch_0x80233be4:
     bne-    branch_0x80233c08
     li      r31, 0x0
 branch_0x80233c08:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x108
@@ -198,14 +198,14 @@ SMS_EmitRipplePool__FPA4_fPv: # 0x80233c4c
     stw     r29, 0x14(sp)
     mr      r29, r3
     addi    r5, r29, 0x0
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     li      r4, 0x1e9
     bl      emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80233c94
     li      r31, 0x0
 branch_0x80233c94:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x10a
@@ -215,7 +215,7 @@ branch_0x80233c94:
     bne-    branch_0x80233cb8
     li      r31, 0x0
 branch_0x80233cb8:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r29, 0x0
     addi    r7, r30, 0x0
     li      r4, 0x10b
@@ -248,13 +248,13 @@ SMS_EmitRippleTiny__FPQ29JGeometry8TVec3_f_: # 0x80233cfc
     stw     r30, 0x10(sp)
     mr      r30, r3
     addi    r5, r30, 0x0
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     bl      emit__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv
     cmplwi  r3, 0x0
     bne-    branch_0x80233d3c
     li      r31, 0x0
 branch_0x80233d3c:
-    lwz     r3, gpMarioParticleManager(r13)
+    lwz     r3, R13Off_m0x6070(r13)
     addi    r5, r30, 0x0
     li      r4, 0x36
     li      r6, 0x0

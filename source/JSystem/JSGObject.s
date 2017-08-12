@@ -7,8 +7,8 @@ __dt__Q26JStage7TObjectFv: # 0x803371c0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x803371f4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x4718
+    lis     r3, __vvt__Q26JStage7TObject@h
+    addi    r3, r3, __vvt__Q26JStage7TObject@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x803371f4

@@ -45,8 +45,8 @@ branch_0x80304b18:
     lwz     r29, 0x4(r3)
     mr      r28, r15
     bne-    branch_0x80304b50
-    lis     r3, 0x8040
-    addi    r0, r3, 0x74f8
+    lis     r3, nullActor__8JAIConst@h
+    addi    r0, r3, nullActor__8JAIConst@l
     mr      r28, r0
 branch_0x80304b50:
     lwz     r3, 0x0(r19)
@@ -125,7 +125,7 @@ branch_0x80304c44:
     li      r11, 0x0
     ble-    branch_0x80304cf4
     cmplwi  r16, 0x8
-    subi    r3, r16, 0x8
+    addi    r3, r16, -0x8
     ble-    branch_0x80304cc8
     addi    r0, r3, 0x7
     srwi    r0, r0, 3
@@ -246,8 +246,9 @@ branch_0x80304dd0:
     bl      initSoundParameter__8JAIEntryFP8JAISoundPP8JAISoundP8JAIActorUlUlUcPv
     b       branch_0x80304e04
 
+branch_0x80304e00:
+    b       branch_0x80304cc8
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x2ff800, 0x80304e04 - 0x80304e00
 branch_0x80304e04:
     lmw     r15, 0x6c(sp)
     lwz     r0, 0xb4(sp)

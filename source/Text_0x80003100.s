@@ -1,4 +1,9 @@
 
+.include "source/offsets.s"
+.include "source/constants.s"
+.include "source/values.s"
+
+
 .section .ram80003100, "ax"
 
 
@@ -8,5 +13,5 @@
 .include "source/TRK_MINNOW_DOLPHIN/dolphin_trk_2.s"
 .include "source/os/__start.s"
 .include "source/os/__ppc_eabi_init_2.s"
-.include "source/os/__start_data.s"
+#.include "source/os/__start_data.s"
 

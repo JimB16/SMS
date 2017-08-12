@@ -11,7 +11,7 @@ __GXDefaultTexRegionCallback: # 0x8035a5c4
     beq-    branch_0x8035a610
     cmpwi   r3, 0xa
     beq-    branch_0x8035a610
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     lwz     r3, 0x2c8(r5)
     clrlwi  r0, r3, 29
     addi    r4, r3, 0x1
@@ -22,7 +22,7 @@ __GXDefaultTexRegionCallback: # 0x8035a5c4
     b       branch_0x8035a630
 
 branch_0x8035a610:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     lwz     r3, 0x2cc(r5)
     clrlwi  r0, r3, 30
     addi    r4, r3, 0x1
@@ -46,7 +46,7 @@ __GXDefaultTlutRegionCallback: # 0x8035a640
 
 branch_0x8035a650:
     slwi    r3, r3, 4
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r3, r3, 0x2d0
     add     r3, r0, r3
 branch_0x8035a660:
@@ -61,29 +61,29 @@ GXInit: # 0x8035a664
     stmw    r26, 0x30(sp)
     mr      r27, r3
     mr      r26, r4
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     li      r31, 0x0
-    lis     r4, 0x8040
+    lis     r4, gxData@h
     stb     r31, 0x4f0(r3)
     li      r0, 0x1
-    addi    r30, r4, 0x36a0
-    lwz     r5, -0x72f8(r13)
+    addi    r30, r4, gxData@l
+    lwz     r5, R13Off_m0x72f8(r13)
     li      r3, 0x1
     li      r4, 0x0
     stb     r0, 0x4f1(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stw     r31, 0x4dc(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stw     r31, 0x4e0(r5)
     bl      GXSetMisc
-    lis     r4, 0xcc00
-    addi    r5, r4, 0x3000
-    stw     r4, -0x57d4(r13)
+    lis     r4, unk_cc003000@h
+    addi    r5, r4, unk_cc003000@l
+    stw     r4, R13Off_m0x57d4(r13)
     addi    r3, r4, 0x1000
     addi    r0, r4, 0x4000
-    stw     r5, -0x57d8(r13)
-    stw     r3, -0x57d0(r13)
-    stw     r0, -0x57cc(r13)
+    stw     r5, R13Off_m0x57d8(r13)
+    stw     r3, R13Off_m0x57d0(r13)
+    stw     r0, R13Off_m0x57cc(r13)
     bl      __GXFifoInit
     mr      r4, r27
     mr      r5, r26
@@ -95,34 +95,34 @@ GXInit: # 0x8035a664
     bl      GXSetGPFifo
     bl      __GXPEInit
     bl      PPCMfhid2
-    lis     r4, 0xc01
+    lis     r4, unk_0c008000@ha
     mr      r26, r3
-    subi    r3, r4, 0x8000
+    addi    r3, r4, unk_0c008000@l
     bl      PPCMtwpar
     oris    r3, r26, 0x4000
     bl      PPCMthid2
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     li      r0, 0xff
     li      r7, 0x0
     stw     r31, 0x204(r3)
     li      r3, 0xc0
     li      r4, 0xc1
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r6, r5, 0x204
     lwz     r5, 0x0(r6)
     clrlwi  r5, r5, 8
     stw     r5, 0x0(r6)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stw     r0, 0x124(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x124
     lwz     r0, 0x0(r5)
     clrlwi  r0, r0, 8
     oris    r0, r0, 0xf00
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stw     r31, 0x7c(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x7c
     lwz     r0, 0x0(r5)
     clrlwi  r0, r0, 8
@@ -139,32 +139,32 @@ branch_0x8035a798:
     b       branch_0x8035a79c
 
 branch_0x8035a79c:
-    lwz     r6, -0x72f8(r13)
+    lwz     r6, R13Off_m0x72f8(r13)
     srwi    r8, r7, 1
     addi    r26, r31, 0x130
     li      r5, 0x0
     stwx    r5, r6, r26
     slwi    r28, r8, 2
     slwi    r11, r3, 24
-    lwz     r6, -0x72f8(r13)
+    lwz     r6, R13Off_m0x72f8(r13)
     addi    r27, r31, 0x170
     addi    r12, r31, 0x49c
     stwx    r5, r6, r27
     slwi    r10, r4, 24
     addi    r9, r8, 0xf6
-    lwz     r6, -0x72f8(r13)
+    lwz     r6, R13Off_m0x72f8(r13)
     addi    r0, r28, 0x100
     addi    r8, r8, 0x28
     stwx    r5, r6, r0
     li      r29, 0xff
     addi    r6, r28, 0x1b0
-    lwz     r28, -0x72f8(r13)
+    lwz     r28, R13Off_m0x72f8(r13)
     slwi    r9, r9, 24
     slwi    r8, r8, 24
     stwx    r29, r28, r12
     addi    r31, r31, 0x4
     addi    r3, r3, 0x2
-    lwz     r12, -0x72f8(r13)
+    lwz     r12, R13Off_m0x72f8(r13)
     addi    r4, r4, 0x2
     addi    r7, r7, 0x1
     add     r26, r12, r26
@@ -172,30 +172,30 @@ branch_0x8035a79c:
     clrlwi  r12, r12, 8
     or      r11, r12, r11
     stw     r11, 0x0(r26)
-    lwz     r11, -0x72f8(r13)
+    lwz     r11, R13Off_m0x72f8(r13)
     add     r12, r11, r27
     lwz     r11, 0x0(r12)
     clrlwi  r11, r11, 8
     or      r10, r11, r10
     stw     r10, 0x0(r12)
-    lwz     r10, -0x72f8(r13)
+    lwz     r10, R13Off_m0x72f8(r13)
     add     r6, r10, r6
     lwz     r10, 0x0(r6)
     clrlwi  r10, r10, 8
     or      r9, r10, r9
     stw     r9, 0x0(r6)
-    lwz     r6, -0x72f8(r13)
+    lwz     r6, R13Off_m0x72f8(r13)
     add     r6, r6, r0
     lwz     r0, 0x0(r6)
     clrlwi  r0, r0, 8
     or      r0, r0, r8
     stw     r0, 0x0(r6)
     bdnz+      branch_0x8035a79c
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     li      r8, 0x30
     li      r9, 0x31
     stw     r5, 0x120(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     addi    r3, r3, 0x120
     lwz     r0, 0x0(r3)
     clrlwi  r0, r0, 8
@@ -212,19 +212,19 @@ branch_0x8035a8a4:
     b       branch_0x8035a8a8
 
 branch_0x8035a8a8:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     slwi    r4, r8, 24
     addi    r7, r5, 0xb8
     li      r29, 0x0
     stwx    r29, r3, r7
     addi    r6, r5, 0xd8
     slwi    r0, r9, 24
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x4
     addi    r8, r8, 0x2
     stwx    r29, r3, r6
     addi    r9, r9, 0x2
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     add     r10, r3, r7
     lwz     r3, 0x0(r10)
     addi    r7, r5, 0xb8
@@ -233,7 +233,7 @@ branch_0x8035a8a8:
     stw     r3, 0x0(r10)
     slwi    r4, r8, 24
     addi    r8, r8, 0x2
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     add     r10, r3, r6
     lwz     r3, 0x0(r10)
     addi    r6, r5, 0xd8
@@ -243,70 +243,70 @@ branch_0x8035a8a8:
     stw     r0, 0x0(r10)
     slwi    r0, r9, 24
     addi    r9, r9, 0x2
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stwx    r29, r3, r7
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stwx    r29, r3, r6
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     add     r10, r3, r7
     lwz     r3, 0x0(r10)
     clrlwi  r3, r3, 8
     or      r3, r3, r4
     stw     r3, 0x0(r10)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     add     r10, r3, r6
     lwz     r3, 0x0(r10)
     clrlwi  r3, r3, 8
     or      r0, r3, r0
     stw     r0, 0x0(r10)
     bdnz+      branch_0x8035a8a8
-    lwz     r5, -0x72f8(r13)
-    lis     r3, 0x1062
+    lwz     r5, R13Off_m0x72f8(r13)
+    lis     r3, unk_10624dd3@h
     lis     r4, 0x8000
     addi    r5, r5, 0xf8
     lwz     r0, 0x0(r5)
-    addi    r3, r3, 0x4dd3
+    addi    r3, r3, unk_10624dd3@l
     clrlwi  r0, r0, 8
     oris    r0, r0, 0x2000
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0xfc
     lwz     r0, 0x0(r5)
     clrlwi  r0, r0, 8
     oris    r0, r0, 0x2100
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x1d0
     lwz     r0, 0x0(r5)
     clrlwi  r0, r0, 8
     oris    r0, r0, 0x4100
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x1d4
     lwz     r0, 0x0(r5)
     clrlwi  r0, r0, 8
     oris    r0, r0, 0x4200
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x1d8
     lwz     r0, 0x0(r5)
     clrlwi  r0, r0, 8
     oris    r0, r0, 0x4000
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x1dc
     lwz     r0, 0x0(r5)
     clrlwi  r0, r0, 8
     oris    r0, r0, 0x4300
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r5, r5, 0x1fc
     lwz     r0, 0x0(r5)
     rlwinm  r0, r0, 0, 25, 22
     stw     r0, 0x0(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stw     r29, 0x4f4(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stb     r29, 0x4f2(r5)
     lwz     r0, 0xf8(r4)
     mulhwu  r0, r3, r0
@@ -320,9 +320,9 @@ branch_0x8035a8a8:
     ori     r0, r0, 0x400
     stw     r0, -0x8000(r31)
     bl      __GXFlushTextureState
-    lis     r3, 0x3e10
+    lis     r3, unk_3e0f83e1@ha
     stb     r28, -0x8000(r31)
-    subi    r0, r3, 0x7c1f
+    addi    r0, r3, unk_3e0f83e1@l
     mulhwu  r0, r0, r26
     srwi    r0, r0, 10
     oris    r0, r0, 0x4600
@@ -340,7 +340,7 @@ branch_0x8035aa8c:
     b       branch_0x8035aa90
 
 branch_0x8035aa90:
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r8, r7, 0x1c
     ori     r5, r29, 0x80
     add     r8, r0, r8
@@ -352,7 +352,7 @@ branch_0x8035aa90:
     stw     r0, 0x0(r8)
     addi    r7, r7, 0x4
     li      r6, 0x8
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r8, r7, 0x1c
     addi    r29, r29, 0x1
     add     r9, r0, r9
@@ -362,7 +362,7 @@ branch_0x8035aa90:
     stw     r0, 0x0(r9)
     addi    r9, r7, 0x3c
     stb     r6, -0x8000(r31)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stb     r5, -0x8000(r31)
     ori     r5, r29, 0x80
     add     r8, r4, r8
@@ -376,7 +376,7 @@ branch_0x8035aa90:
     oris    r0, r0, 0x4000
     stw     r0, 0x0(r8)
     addi    r8, r7, 0x1c
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     add     r9, r0, r9
     lwz     r0, 0x0(r9)
     clrlwi  r0, r0, 1
@@ -384,7 +384,7 @@ branch_0x8035aa90:
     stw     r0, 0x0(r9)
     addi    r9, r7, 0x3c
     stb     r6, -0x8000(r31)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stb     r5, -0x8000(r31)
     ori     r5, r29, 0x80
     add     r8, r4, r8
@@ -398,7 +398,7 @@ branch_0x8035aa90:
     oris    r0, r0, 0x4000
     stw     r0, 0x0(r8)
     addi    r8, r7, 0x1c
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     add     r9, r0, r9
     lwz     r0, 0x0(r9)
     clrlwi  r0, r0, 1
@@ -406,7 +406,7 @@ branch_0x8035aa90:
     stw     r0, 0x0(r9)
     addi    r9, r7, 0x3c
     stb     r6, -0x8000(r31)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stb     r5, -0x8000(r31)
     ori     r5, r29, 0x80
     add     r8, r4, r8
@@ -419,14 +419,14 @@ branch_0x8035aa90:
     rlwinm  r0, r0, 0, 2, 0
     oris    r0, r0, 0x4000
     stw     r0, 0x0(r8)
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     add     r9, r0, r9
     lwz     r0, 0x0(r9)
     clrlwi  r0, r0, 1
     oris    r0, r0, 0x8000
     stw     r0, 0x0(r9)
     stb     r6, -0x8000(r31)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stb     r5, -0x8000(r31)
     lwzx    r0, r4, r3
     stw     r0, -0x8000(r31)
@@ -444,9 +444,9 @@ branch_0x8035aa90:
     li      r5, 0x1
     stb     r4, -0x8000(r6)
     li      r4, 0x61
-    lis     r3, 0x5800
+    lis     r3, unk_5800000f@h
     stw     r0, -0x8000(r6)
-    addi    r0, r3, 0xf
+    addi    r0, r3, unk_5800000f@l
     addis   r26, r28, 0x8
     stw     r5, -0x8000(r6)
     slwi    r27, r29, 4
@@ -461,7 +461,7 @@ branch_0x8035ac58:
     b       branch_0x8035ac5c
 
 branch_0x8035ac5c:
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r3, r27, 0x208
     mr      r5, r28
     mr      r7, r26
@@ -472,8 +472,8 @@ branch_0x8035ac5c:
     bl      GXInitTexCacheRegion
     addis   r26, r26, 0x1
     addis   r28, r28, 0x1
-    subi    r26, r26, 0x8000
-    subi    r28, r28, 0x8000
+    addi    r26, r26, -0x8000
+    addi    r28, r28, -0x8000
     addi    r27, r27, 0x10
     addi    r29, r29, 0x1
     cmplwi  r29, 0x8
@@ -492,7 +492,7 @@ branch_0x8035acbc:
     b       branch_0x8035acc0
 
 branch_0x8035acc0:
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r3, r28, 0x288
     slwi    r5, r27, 15
     add     r3, r0, r3
@@ -520,7 +520,7 @@ branch_0x8035ad14:
     b       branch_0x8035ad18
 
 branch_0x8035ad18:
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     addi    r3, r27, 0x2d0
     mr      r4, r26
     add     r3, r0, r3
@@ -544,7 +544,7 @@ branch_0x8035ad58:
 
 branch_0x8035ad5c:
     addi    r0, r27, 0x10
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     slwi    r3, r0, 4
     addi    r3, r3, 0x2d0
     mr      r4, r26
@@ -552,17 +552,17 @@ branch_0x8035ad5c:
     li      r5, 0x40
     bl      GXInitTlutRegion
     addis   r26, r26, 0x1
-    subi    r26, r26, 0x8000
+    addi    r26, r26, -0x8000
     addi    r27, r27, 0x1
     cmplwi  r27, 0x4
     blt+    branch_0x8035ad5c
-    lwz     r4, -0x57d4(r13)
+    lwz     r4, R13Off_m0x57d4(r13)
     li      r12, 0x0
     li      r3, 0x8
     sth     r12, 0x6(r4)
     lis     r11, 0xcc01
     li      r10, 0x20
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     li      r8, 0x10
     li      r7, 0x1006
     addi    r4, r4, 0x4ec
@@ -572,10 +572,10 @@ branch_0x8035ad5c:
     rlwinm  r0, r0, 0, 28, 23
     stw     r0, 0x0(r4)
     lis     r4, 0x2400
-    lis     r0, 0x6700
+    lis     r0, unk_67000000@h
     stb     r3, -0x8000(r11)
-    li      r3, 0x0
-    lwz     r9, -0x72f8(r13)
+    addi    r3, r0, unk_67000000@l
+    lwz     r9, R13Off_m0x72f8(r13)
     stb     r10, -0x8000(r11)
     lwz     r9, 0x4ec(r9)
     stw     r9, -0x8000(r11)
@@ -605,9 +605,9 @@ __GXInitGX: # 0x8035ae30
     stwu    sp, -0x78(sp)
     stw     r31, 0x74(sp)
     stw     r30, 0x70(sp)
-    lwz     r4, 0xb28(rtoc)
-    lwz     r3, 0xb2c(rtoc)
-    lwz     r0, 0xb30(rtoc)
+    lwz     r4, R2Off_0xb28(r2)
+    lwz     r3, R2Off_0xb2c(r2)
+    lwz     r0, R2Off_0xb30(r2)
     stw     r4, 0x28(sp)
     stw     r3, 0x24(sp)
     stw     r0, 0x20(sp)
@@ -626,39 +626,39 @@ branch_0x8035ae7c:
     b       branch_0x8035aec8
 
 branch_0x8035ae88:
-    lis     r3, 0x803f
-    subi    r0, r3, 0x6fc8
+    lis     r3, GXNtsc480IntDf@ha
+    addi    r0, r3, GXNtsc480IntDf@l
     mr      r31, r0
     b       branch_0x8035aed4
 
 branch_0x8035ae98:
-    lis     r3, 0x803f
-    subi    r0, r3, 0x6f14
+    lis     r3, GXPal528IntDf@ha
+    addi    r0, r3, GXPal528IntDf@l
     mr      r31, r0
     b       branch_0x8035aed4
 
 branch_0x8035aea8:
-    lis     r3, 0x803f
-    subi    r0, r3, 0x6ed8
+    lis     r3, GXEurgb60Hz480IntDf@ha
+    addi    r0, r3, GXEurgb60Hz480IntDf@l
     mr      r31, r0
     b       branch_0x8035aed4
 
 branch_0x8035aeb8:
-    lis     r3, 0x803f
-    subi    r0, r3, 0x6f50
+    lis     r3, GXMpal480IntDf@ha
+    addi    r0, r3, GXMpal480IntDf@l
     mr      r31, r0
     b       branch_0x8035aed4
 
 branch_0x8035aec8:
-    lis     r3, 0x803f
-    subi    r0, r3, 0x6fc8
+    lis     r3, GXNtsc480IntDf@ha
+    addi    r0, r3, GXNtsc480IntDf@l
     mr      r31, r0
 branch_0x8035aed4:
     lwz     r0, 0x28(sp)
-    lis     r4, 0x100
+    lis     r4, unk_00ffffff@ha
     addi    r3, sp, 0x1c
     stw     r0, 0x1c(sp)
-    subi    r4, r4, 0x1
+    addi    r4, r4, unk_00ffffff@l
     bl      GXSetCopyClear
     li      r3, 0x0
     li      r4, 0x1
@@ -730,7 +730,7 @@ branch_0x8035afe8:
     b       branch_0x8035afec
 
 branch_0x8035afec:
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     mr      r3, r30
     li      r5, 0x0
     bl      GXSetArray
@@ -775,9 +775,9 @@ branch_0x8035afec:
     li      r4, 0x0
     li      r5, 0x0
     bl      GXEnableTexOffsets
-    lfs     f1, 0xb34(rtoc)
+    lfs     f1, 0xb34(r2)
     addi    r3, sp, 0x2c
-    lfs     f0, 0xb38(rtoc)
+    lfs     f0, 0xb38(r2)
     li      r4, 0x0
     stfs    f1, 0x2c(sp)
     stfs    f0, 0x30(sp)
@@ -809,13 +809,13 @@ branch_0x8035afec:
     lis     r3, 0x4330
     lhz     r0, 0x8(r31)
     stw     r4, 0x6c(sp)
-    lfs     f1, 0xb38(rtoc)
+    lfs     f1, 0xb38(r2)
     stw     r0, 0x64(sp)
-    lfd     f4, 0xb40(rtoc)
+    lfd     f4, 0xb40(r2)
     fmr     f2, f1
     stw     r3, 0x68(sp)
     fmr     f5, f1
-    lfs     f6, 0xb34(rtoc)
+    lfs     f6, 0xb34(r2)
     stw     r3, 0x60(sp)
     lfd     f3, 0x68(sp)
     lfd     f0, 0x60(sp)
@@ -875,16 +875,16 @@ branch_0x8035afec:
     stw     r0, 0xc(sp)
     bl      GXSetChanMatColor
     bl      GXInvalidateTexAll
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     li      r30, 0x0
-    lis     r3, 0x8036
+    lis     r3, __GXDefaultTexRegionCallback@ha
     stw     r30, 0x2c8(r4)
-    subi    r3, r3, 0x5a3c
-    lwz     r4, -0x72f8(r13)
+    addi    r3, r3, __GXDefaultTexRegionCallback@l
+    lwz     r4, R13Off_m0x72f8(r13)
     stw     r30, 0x2cc(r4)
     bl      GXSetTexRegionCallback
-    lis     r3, 0x8036
-    subi    r3, r3, 0x59c0
+    lis     r3, __GXDefaultTlutRegionCallback@ha
+    addi    r3, r3, __GXDefaultTlutRegionCallback@l
     bl      GXSetTlutRegionCallback
     li      r3, 0x0
     li      r4, 0x0
@@ -1060,14 +1060,14 @@ branch_0x8035b488:
     li      r4, 0x0
     li      r5, 0x0
     bl      GXSetIndTexCoordScale
-    lfs     f2, 0xb34(rtoc)
+    lfs     f2, 0xb34(r2)
     addi    r4, sp, 0x8
     lwz     r0, 0x24(sp)
     li      r3, 0x0
     fmr     f4, f2
     stw     r0, 0x8(sp)
-    lfs     f1, 0xb38(rtoc)
-    lfs     f3, 0xb3c(rtoc)
+    lfs     f1, 0xb38(r2)
+    lfs     f3, 0xb3c(r2)
     bl      GXSetFog
     li      r3, 0x0
     li      r4, 0x0
@@ -1124,7 +1124,7 @@ branch_0x8035b5a0:
     lis     r3, 0x4330
     lhz     r0, 0x6(r31)
     stw     r4, 0x64(sp)
-    lfd     f2, 0xb40(rtoc)
+    lfd     f2, 0xb40(r2)
     stw     r0, 0x6c(sp)
     stw     r3, 0x60(sp)
     stw     r3, 0x68(sp)

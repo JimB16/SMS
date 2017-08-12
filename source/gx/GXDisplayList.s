@@ -8,13 +8,13 @@ GXCallDisplayList: # 0x80362a50
     addi    r31, r4, 0x0
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     lwz     r0, 0x4f4(r5)
     cmplwi  r0, 0x0
     beq-    branch_0x80362a80
     bl      __GXSetDirtyState
 branch_0x80362a80:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x0(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80362a94

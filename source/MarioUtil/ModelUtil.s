@@ -130,9 +130,9 @@ SMS_RideMoveByGroundActor__FP11TRidingInfoPQ29JGeometry8TVec3_f_Pf: # 0x80233f10
     mr      r30, r4
     stw     r29, 0x94(sp)
     mr      r29, r3
-    lfs     f1, -0x15d0(rtoc)
+    lfs     f1, -0x15d0(r2)
     lfs     f0, 0x4(r4)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r4)
     lfs     f3, 0x8(r30)
@@ -143,7 +143,7 @@ SMS_RideMoveByGroundActor__FP11TRidingInfoPQ29JGeometry8TVec3_f_Pf: # 0x80233f10
     cmplwi  r0, 0x0
     beq-    branch_0x80234080
     lfs     f2, 0x4(r30)
-    lfs     f0, -0x15cc(rtoc)
+    lfs     f0, -0x15cc(r2)
     fsubs   f1, f2, f1
     fcmpo   cr0, f1, f0
     bge-    branch_0x80234080
@@ -295,8 +295,8 @@ setNthData__9TMultiBtkFiP19J3DAnmTextureSRTKey: # 0x80234130
     bl      searchUpdateMaterialID__19J3DAnmTextureSRTKeyFP12J3DModelData
     cmpwi   r30, 0x0
     bne-    branch_0x802341d4
-    lis     r3, 0x803e
-    addi    r28, r3, 0x1798
+    lis     r3, __vvt__14J3DMaterialAnm@h
+    addi    r28, r3, __vvt__14J3DMaterialAnm@l
     li      r26, 0x0
     b       branch_0x802341c0
 
@@ -338,7 +338,7 @@ branch_0x802341d4:
     lha     r4, 0x2(r4)
     sthx    r4, r3, r0
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x15c8(rtoc)
+    lfs     f0, -0x15c8(r2)
     addi    r0, r27, 0xc
     lwz     r3, 0xc(r29)
     fmuls   f0, f0, f1
@@ -369,10 +369,10 @@ __ct__9TMultiBtkFiP12J3DModelData: # 0x8023422c
     stw     r30, 0x8(r29)
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8004
-    lis     r5, 0x8003
-    addi    r4, r4, 0x4b1c
-    subi    r5, r5, 0x1e58
+    lis     r4, __ct__12J3DFrameCtrlFv@h
+    lis     r5, __dt__12J3DFrameCtrlFv@ha
+    addi    r4, r4, __ct__12J3DFrameCtrlFv@l
+    addi    r5, r5, __dt__12J3DFrameCtrlFv@l
     addi    r7, r31, 0x0
     li      r6, 0x14
     bl      __construct_new_array

@@ -9,8 +9,8 @@ __dt__9J2DScreenFv: # 0x802cf6e4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802cf72c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x6ec
+    lis     r3, __vvt__9J2DScreen@h
+    addi    r0, r3, __vvt__9J2DScreen@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -37,9 +37,9 @@ makeHiearachyPanes__9J2DScreenFP7J2DPaneP20JSURandomInputStreambbbPl: # 0x802cf7
     stwu    sp, -0xf8(sp)
     stmw    r14, 0xb0(sp)
     addi    r22, r7, 0x0
-    lis     r7, 0x803b
+    lis     r7, unk_803a9f00@ha
     addi    r28, r4, 0x0
-    subi    r26, r7, 0x6100
+    addi    r26, r7, unk_803a9f00@l
     addi    r30, r3, 0x0
     addi    r31, r5, 0x0
     addi    r24, r6, 0x0
@@ -136,24 +136,24 @@ branch_0x802cf7b4:
     stw     r0, 0xf0(r30)
 branch_0x802cf8d8:
     clrlwi  r0, r22, 24
-    lis     r3, 0x803e
+    lis     r3, unk_803e0668@h
     stw     r0, 0xac(sp)
-    lis     r4, 0x4558
-    lis     r5, 0x5049
-    lis     r6, 0x5442
-    lis     r7, 0x5749
-    lis     r8, 0x5041
-    lis     r9, 0x454e
-    lis     r10, 0x4247
+    lis     r4, unk_45585431@h
+    lis     r5, unk_50494331@h
+    lis     r6, unk_54425831@h
+    lis     r7, unk_57494e31@h
+    lis     r8, unk_50414e31@h
+    lis     r9, unk_454e4431@h
+    lis     r10, unk_42474e31@h
     clrlwi  r23, r24, 24
-    addi    r14, r3, 0x668
-    addi    r18, r4, 0x5431
-    addi    r16, r5, 0x4331
-    addi    r17, r6, 0x5831
-    addi    r15, r7, 0x4e31
-    addi    r21, r8, 0x4e31
-    addi    r20, r9, 0x4431
-    addi    r19, r10, 0x4e31
+    addi    r14, r3, unk_803e0668@l
+    addi    r18, r4, unk_45585431@l
+    addi    r16, r5, unk_50494331@l
+    addi    r17, r6, unk_54425831@l
+    addi    r15, r7, unk_57494e31@l
+    addi    r21, r8, unk_50414e31@l
+    addi    r20, r9, unk_454e4431@l
+    addi    r19, r10, unk_42474e31@l
     clrlwi  r22, r29, 24
 branch_0x802cf928:
     cmplwi  r22, 0x0
@@ -224,7 +224,9 @@ branch_0x802cfa0c:
     cmpw    r0, r15
     beq-    branch_0x802cfa8c
     b       branch_0x802cfb04
-    b	    branch_0x802cfd14
+
+branch_0x802cfa18:
+    b       branch_0x802cfd14
 
 branch_0x802cfa1c:
     lwz     r4, 0x0(r25)
@@ -334,109 +336,106 @@ branch_0x802cfb70:
     slwi    r0, r4, 2
     lwzx    r0, r14, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x802CFB8C:		# jumptable 802CFB88 case 0
+    bctr       
+branch_0x802cfb8c:
     b       branch_0x802cfd14
 
-branch_0x802CFB90:		# jumptable 802CFB88 case 1
-mr	  r3, r31
-lwz	  r12, 0(r31)
-li	  r4, 4
-lwz	  r12, 0x10(r12)
-mtlr	  r12
-blrl
-addi	  r3, r30, 0
-addi	  r4, r27, 0
-addi	  r5, r31, 0
-addi	  r6, r24, 0
-addi	  r8, r29, 0
-li	  r7, 0
-li	  r9, 0
-bl	  makeHiearachyPanes__9J2DScreenFP7J2DPaneP20JSURandomInputStreambbbPl # J2DScreen::makeHiearachyPanes((J2DPane	*,JSURandomInputStream *,bool,bool,bool,long *))
-b	  branch_0x802cf928
+branch_0x802cfb90:
+    mr      r3, r31
+    lwz     r12, 0x0(r31)
+    li      r4, 0x4
+    lwz     r12, 0x10(r12)
+    mtlr    r12
+    blrl
+    addi    r3, r30, 0x0
+    addi    r4, r27, 0x0
+    addi    r5, r31, 0x0
+    addi    r6, r24, 0x0
+    addi    r8, r29, 0x0
+    li      r7, 0x0
+    li      r9, 0x0
+    bl      makeHiearachyPanes__9J2DScreenFP7J2DPaneP20JSURandomInputStreambbbPl
+    b       branch_0x802cf928
 
-branch_0x802CFBCC:		# jumptable 802CFB88 case 2
-mr	  r3, r31
-lwz	  r12, 0(r31)
-li	  r4, 4
-lwz	  r12, 0x10(r12)
-mtlr	  r12
-blrl
-b	  branch_0x802cfd14
+branch_0x802cfbcc:
+    mr      r3, r31
+    lwz     r12, 0x0(r31)
+    li      r4, 0x4
+    lwz     r12, 0x10(r12)
+    mtlr    r12
+    blrl
+    b       branch_0x802cfd14
 
-branch_0x802CFBE8:		# jumptable 802CFB88 case 16
-li	  r3, 0xEC
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r27, r3
-beq	  branch_0x802CFC0C
-addi	  r3, r27, 0
-addi	  r4, r28, 0
-addi	  r5, r31, 0
-addi	  r6, r29, 0
-bl	  __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb # J2DPane::J2DPane((J2DPane *,JSURandomInputStream *,bool))
+branch_0x802cfbe8:
+    li      r3, 0xec
+    bl      __nw__FUl
+    mr.     r27, r3
+    beq-    branch_0x802cfc0c
+    addi    r3, r27, 0x0
+    addi    r4, r28, 0x0
+    addi    r5, r31, 0x0
+    addi    r6, r29, 0x0
+    bl      __ct__7J2DPaneFP7J2DPaneP20JSURandomInputStreamb
+branch_0x802cfc0c:
+    lwz     r0, 0xac(sp)
+    cmplwi  r0, 0x0
+    beq+    branch_0x802cf928
+    lwz     r0, 0x18(r27)
+    addi    r3, sp, 0x68
+    lwz     r5, 0x20(r27)
+    li      r4, 0x0
+    lwz     r8, 0x14(r27)
+    lwz     r6, 0x1c(r27)
+    subf    r7, r0, r5
+    li      r5, 0x0
+    subf    r6, r8, r6
+    bl      set__7JUTRectFiiii
+    lwz     r3, 0x68(sp)
+    lwz     r0, 0x6c(sp)
+    stw     r3, 0x14(r30)
+    stw     r0, 0x18(r30)
+    lwz     r3, 0x70(sp)
+    lwz     r0, 0x74(sp)
+    stw     r3, 0x1c(r30)
+    stw     r0, 0x20(r30)
+    b       branch_0x802cf928
 
-branch_0x802CFC0C:
-lwz	  r0, 0xF8+var_4C(r1)
-cmplwi	  r0, 0
-beq	  branch_0x802cf928
-lwz	  r0, 0x18(r27)
-addi	  r3, r1, 0xF8+var_90
-lwz	  r5, 0x20(r27)
-li	  r4, 0
-lwz	  r8, 0x14(r27)
-lwz	  r6, 0x1C(r27)
-subf	  r7, r0, r5
-li	  r5, 0
-subf	  r6, r8, r6
-bl	  set__7JUTRectFiiii # JUTRect::set((int,int,int,int))
-lwz	  r3, 0xF8+var_90(r1)
-lwz	  r0, 0xF8+var_8C(r1)
-stw	  r3, 0x14(r30)
-stw	  r0, 0x18(r30)
-lwz	  r3, 0xF8+var_88(r1)
-lwz	  r0, 0xF8+var_84(r1)
-stw	  r3, 0x1C(r30)
-stw	  r0, 0x20(r30)
-b	  branch_0x802cf928
+branch_0x802cfc64:
+    li      r3, 0x13c
+    bl      __nw__FUl
+    mr.     r27, r3
+    beq+    branch_0x802cf928
+    addi    r3, r27, 0x0
+    addi    r4, r28, 0x0
+    addi    r5, r31, 0x0
+    addi    r6, r29, 0x0
+    bl      __ct__9J2DWindowFP7J2DPaneP20JSURandomInputStreamb
+    b       branch_0x802cf928
 
-branch_0x802CFC64:		# jumptable 802CFB88 case 17
-li	  r3, 0x13C
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r27, r3
-beq	  branch_0x802cf928
-addi	  r3, r27, 0
-addi	  r4, r28, 0
-addi	  r5, r31, 0
-addi	  r6, r29, 0
-bl	  __ct__9J2DWindowFP7J2DPaneP20JSURandomInputStreamb # J2DWindow::J2DWindow((J2DPane *,JSURandomInputStream *,bool))
-b	  branch_0x802cf928
+branch_0x802cfc8c:
+    li      r3, 0x15c
+    bl      __nw__FUl
+    mr.     r27, r3
+    beq+    branch_0x802cf928
+    addi    r3, r27, 0x0
+    addi    r4, r28, 0x0
+    addi    r5, r31, 0x0
+    addi    r6, r29, 0x0
+    bl      __ct__10J2DPictureFP7J2DPaneP20JSURandomInputStreamb
+    b       branch_0x802cf928
 
-branch_0x802CFC8C:		# jumptable 802CFB88 case 18
-li	  r3, 0x15C
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r27, r3
-beq	  branch_0x802cf928
-addi	  r3, r27, 0
-addi	  r4, r28, 0
-addi	  r5, r31, 0
-addi	  r6, r29, 0
-bl	  __ct__10J2DPictureFP7J2DPaneP20JSURandomInputStreamb # J2DPicture::J2DPicture((J2DPane *,JSURandomInputStream	*,bool))
-b	  branch_0x802cf928
+branch_0x802cfcb4:
+    li      r3, 0x128
+    bl      __nw__FUl
+    mr.     r27, r3
+    beq+    branch_0x802cf928
+    addi    r3, r27, 0x0
+    addi    r4, r28, 0x0
+    addi    r5, r31, 0x0
+    addi    r6, r29, 0x0
+    bl      __ct__10J2DTextBoxFP7J2DPaneP20JSURandomInputStreamb
+    b       branch_0x802cf928
 
-branch_0x802CFCB4:		# jumptable 802CFB88 case 19
-li	  r3, 0x128
-bl	  __nw__FUl	# __nw(ulong)
-mr.	  r27, r3
-beq	  branch_0x802cf928
-addi	  r3, r27, 0
-addi	  r4, r28, 0
-addi	  r5, r31, 0
-addi	  r6, r29, 0
-bl	  __ct__10J2DTextBoxFP7J2DPaneP20JSURandomInputStreamb # J2DTextBox::J2DTextBox((J2DPane *,JSURandomInputStream	*,bool))
-b	  branch_0x802cf928
-
-def_802CFB88:		# jumptable 802CFB88 default case
 branch_0x802cfcdc:
     cmplwi  r23, 0x0
     beq-    branch_0x802cfd04
@@ -467,13 +466,13 @@ branch_0x802cfd14:
 .globl makeUserPane__9J2DScreenFUsP7J2DPaneP20JSURandomInputStream
 makeUserPane__9J2DScreenFUsP7J2DPaneP20JSURandomInputStream: # 0x802cfd28
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9f00@ha
     stw     r0, 0x4(sp)
-    lis     r4, 0x803b
-    subi    r5, r4, 0x60d4
+    lis     r4, unk_803a9f2c@ha
+    addi    r5, r4, unk_803a9f2c@l
     crxor   6, 6, 6
     stwu    sp, -0x8(sp)
-    subi    r3, r3, 0x6100
+    addi    r3, r3, unk_803a9f00@l
     li      r4, 0x10e
     bl      OSPanic
     lwz     r0, 0xc(sp)
@@ -492,13 +491,13 @@ makeUserPane__9J2DScreenFUlP7J2DPaneP20JSURandomInputStream: # 0x802cfd64
 .globl stop__9J2DScreenFv
 stop__9J2DScreenFv: # 0x802cfd6c
     mflr    r0
-    lis     r3, 0x803b
+    lis     r3, unk_803a9f00@ha
     stw     r0, 0x4(sp)
-    lis     r4, 0x803b
-    subi    r5, r4, 0x60d4
+    lis     r4, unk_803a9f2c@ha
+    addi    r5, r4, unk_803a9f2c@l
     crxor   6, 6, 6
     stwu    sp, -0x8(sp)
-    subi    r3, r3, 0x6100
+    addi    r3, r3, unk_803a9f00@l
     li      r4, 0x137
     bl      OSPanic
     lwz     r0, 0xc(sp)
@@ -519,8 +518,8 @@ draw__9J2DScreenFiiPC14J2DGrafContext: # 0x802cfda8
     addi    r27, r4, 0x0
     addi    r28, r5, 0x0
     beq-    branch_0x802cff80
-    lis     r3, 0x803e
-    addi    r31, r3, 0x1448
+    lis     r3, __vvt__14J2DGrafContext@h
+    addi    r31, r3, __vvt__14J2DGrafContext@l
     stw     r31, 0x108(sp)
     addi    r3, sp, 0x110
     addi    r4, r30, 0x8
@@ -646,11 +645,11 @@ branch_0x802cff80:
     bl      draw__7J2DPaneFiiPC14J2DGrafContextb
     addi    r3, sp, 0x18
     bl      setScissor__14J2DGrafContextFv
-    lis     r3, 0x803e
-    addi    r0, r3, 0x14b0
-    lis     r3, 0x803e
+    lis     r3, __vvt__13J2DOrthoGraph@h
+    addi    r0, r3, __vvt__13J2DOrthoGraph@l
+    lis     r3, __vvt__14J2DGrafContext@h
     stw     r0, 0x18(sp)
-    addi    r0, r3, 0x1448
+    addi    r0, r3, __vvt__14J2DGrafContext@l
     stw     r0, 0x18(sp)
 branch_0x802cffd8:
     li      r3, 0x0
@@ -720,22 +719,22 @@ __ct__12J2DSetScreenFPCcP10JKRArchive: # 0x802d0080
     addi    r3, sp, 0x1c
     lwz     r31, 0x8(sp)
     bl      set__7JUTRectFiiii
-    lis     r4, 0x726f
-    addi    r7, r4, 0x6f74
+    lis     r4, unk_726f6f74@h
+    addi    r7, r4, unk_726f6f74@l
     addi    r8, sp, 0x1c
     addi    r3, r31, 0x0
     li      r4, 0x0
     li      r5, 0x8
     li      r6, 0x1
     bl      __ct__7J2DPaneFP7J2DPaneUsbUlRC7JUTRect
-    lis     r3, 0x803e
-    addi    r0, r3, 0x6ec
+    lis     r3, __vvt__9J2DScreen@h
+    addi    r0, r3, __vvt__9J2DScreen@l
     stw     r0, 0x0(r31)
     li      r0, -0x1
-    lis     r3, 0x803e
+    lis     r3, __vvt__12J2DSetScreen@h
     stw     r0, 0xf0(r31)
     li      r29, 0x0
-    addi    r0, r3, 0x6b8
+    addi    r0, r3, __vvt__12J2DSetScreen@l
     stb     r29, 0xec(r31)
     addi    r3, r28, 0x0
     addi    r4, r27, 0x0
@@ -749,17 +748,17 @@ __ct__12J2DSetScreenFPCcP10JKRArchive: # 0x802d0080
     bl      getResSize__13JKRFileLoaderFPvP13JKRFileLoader
     addi    r28, sp, 0x2c
     stw     r28, 0x18(sp)
-    lis     r5, 0x803b
-    subi    r0, r5, 0xf0c
+    lis     r5, __vvt__10JSUIosBase@ha
+    addi    r0, r5, __vvt__10JSUIosBase@l
     lwz     r6, 0x18(sp)
-    lis     r4, 0x803e
-    lis     r5, 0x803e
+    lis     r4, __vvt__14JSUInputStream@h
+    lis     r5, __vvt__20JSURandomInputStream@h
     stw     r0, 0x0(r6)
-    addi    r0, r4, 0x184
-    lis     r4, 0x803e
+    addi    r0, r4, __vvt__14JSUInputStream@l
+    lis     r4, __vvt__20JSUMemoryInputStream@h
     stb     r29, 0x4(r6)
-    addi    r29, r5, 0x160
-    addi    r30, r4, 0x1c8
+    addi    r29, r5, __vvt__20JSURandomInputStream@l
+    addi    r30, r4, __vvt__20JSUMemoryInputStream@l
     stw     r0, 0x0(r6)
     addi    r5, r3, 0x0
     addi    r3, r6, 0x0
@@ -851,12 +850,12 @@ __dt__12J2DSetScreenFv: # 0x802d0280
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802d02d8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x6b8
+    lis     r3, __vvt__12J2DSetScreen@h
+    addi    r0, r3, __vvt__12J2DSetScreen@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802d02c8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x6ec
+    lis     r3, __vvt__9J2DScreen@h
+    addi    r0, r3, __vvt__9J2DScreen@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

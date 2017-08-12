@@ -5,29 +5,27 @@ GXGetTexBufferSize: # 0x8035f8b4
     cmplwi  r5, 0x3c
     stw     r31, 0x24(sp)
     bgt-    branch_0x8035f900
-    lis     r8, 0x803f
-    subi    r8, r8, 0x6e98
+    lis     r8, unk_803e9168@ha
+    addi    r8, r8, unk_803e9168@l
     slwi    r0, r5, 2
     lwzx    r0, r8, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8035f8dc:		# jumptable 8035F8D8 cases 0,8,14,32,48
+    bctr       
+branch_0x8035f8dc:
     li      r0, 0x3
     li      r8, 0x3
     b       branch_0x8035f908
 
-branch_0x8035f8e8:		# jumptable 8035F8D8 cases 1,2,9,17,34,39-42,57,58
-    li	    r0, 0x3
-    li	    r8, 0x2
-    b	    branch_0x8035f908
+branch_0x8035f8e8:
+    li      r0, 0x3
+    li      r8, 0x2
+    b       branch_0x8035f908
 
-branch_0x8035f8f4:		# jumptable 8035F8D8 cases 3-6,10,19,22,35,43,44,60
-    li	    r0, 0x2
-    li	    r8, 0x2
-    b	    branch_0x8035f908
+branch_0x8035f8f4:
+    li      r0, 0x2
+    li      r8, 0x2
+    b       branch_0x8035f908
 
-def_8035F8D8:		# jumptable 8035F8D8 default case
 branch_0x8035f900:
     li      r8, 0x0
     li      r0, 0x0
@@ -52,8 +50,8 @@ branch_0x8035f924:
     slw     r7, r6, r8
     slw     r6, r6, r0
     cmplwi  r9, 0x0
-    subi    r10, r6, 0x1
-    subi    r7, r7, 0x1
+    addi    r10, r6, -0x1
+    addi    r7, r7, -0x1
     li      r31, 0x0
     ble-    branch_0x8035fa00
 branch_0x8035f958:
@@ -99,10 +97,10 @@ branch_0x8035f9cc:
     slw     r7, r6, r0
     slw     r6, r6, r8
     clrlwi  r9, r3, 16
-    subi    r3, r7, 0x1
+    addi    r3, r7, -0x1
     add     r7, r9, r3
     clrlwi  r4, r4, 16
-    subi    r3, r6, 0x1
+    addi    r3, r6, -0x1
     sraw    r6, r7, r0
     add     r0, r4, r3
     sraw    r0, r0, r8
@@ -119,29 +117,27 @@ branch_0x8035fa00:
 __GetImageTileCount: # 0x8035fa10
     cmplwi  r3, 0x3c
     bgt-    branch_0x8035fa54
-    lis     r9, 0x803f
-    subi    r9, r9, 0x6da4
+    lis     r9, unk_803e925c@ha
+    addi    r9, r9, unk_803e925c@l
     slwi    r0, r3, 2
     lwzx    r0, r9, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8035fa30:		# jumptable 8035FA2C cases 0,8,14,32,48
+    bctr       
+branch_0x8035fa30:
     li      r11, 0x3
     li      r12, 0x3
     b       branch_0x8035fa5c
 
-branch_0x8035fa3c:		# jumptable 8035FA2C cases 1,2,9,17,34,39-42,57,58
-    li	    r11, 0x3
-    li	    r12, 0x2
-    b	    branch_0x8035fa5c
+branch_0x8035fa3c:
+    li      r11, 0x3
+    li      r12, 0x2
+    b       branch_0x8035fa5c
 
-branch_0x8035fa48:		# jumptable 8035FA2C cases 3-6,10,19,22,35,43,44,60
-    li	    r11, 0x2
-    li	    r12, 0x2
-    b	    branch_0x8035fa5c
+branch_0x8035fa48:
+    li      r11, 0x2
+    li      r12, 0x2
+    b       branch_0x8035fa5c
 
-def_8035FA2C:		# jumptable 8035FA2C default case
 branch_0x8035fa54:
     li      r12, 0x0
     li      r11, 0x0
@@ -157,13 +153,13 @@ branch_0x8035fa74:
     li      r10, 0x1
     slw     r9, r10, r11
     clrlwi  r4, r4, 16
-    subi    r0, r9, 0x1
+    addi    r0, r9, -0x1
     add     r0, r4, r0
     sraw    r0, r0, r11
     slw     r4, r10, r12
     stw     r0, 0x0(r6)
     clrlwi  r5, r5, 16
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     add     r0, r5, r0
     sraw    r0, r0, r12
     cmpwi   r3, 0x6
@@ -218,7 +214,7 @@ GXInitTexObj: # 0x8035fad8
     stw     r0, 0x0(r31)
     beq-    branch_0x8035fbf0
     lbz     r3, 0x1f(r31)
-    subi    r0, r30, 0x8
+    addi    r0, r30, -0x8
     cmplwi  r0, 0x2
     ori     r0, r3, 0x1
     stb     r0, 0x1f(r31)
@@ -251,10 +247,10 @@ branch_0x8035fbb0:
     lis     r0, 0x4330
     lwz     r3, 0x4(r31)
     stw     r0, 0x38(sp)
-    lfd     f1, 0xb88(rtoc)
+    lfd     f1, 0xb88(r2)
     rlwinm  r3, r3, 0, 24, 15
     lfd     f0, 0x38(sp)
-    lfs     f2, 0xb80(rtoc)
+    lfs     f2, 0xb80(r2)
     fsubs   f0, f0, f1
     fmuls   f0, f2, f0
     fctiwz  f0, f0
@@ -275,9 +271,9 @@ branch_0x8035fc00:
     clrlwi  r7, r30, 28
     lwz     r5, 0x8(r31)
     clrlwi  r4, r28, 16
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     clrrwi  r6, r5, 10
-    subi    r5, r4, 0x1
+    addi    r5, r4, -0x1
     or      r5, r6, r5
     stw     r5, 0x8(r31)
     slwi    r5, r0, 10
@@ -296,49 +292,47 @@ branch_0x8035fc00:
     or      r0, r5, r0
     stw     r0, 0xc(r31)
     bgt-    branch_0x8035fce4
-    lis     r5, 0x803f
-    subi    r5, r5, 0x6cb0
+    lis     r5, unk_803e9350@ha
+    addi    r5, r5, unk_803e9350@l
     slwi    r0, r7, 2
     lwzx    r0, r5, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x8035fc80:		# jumptable 8035FC7C cases 0,8
+    bctr       
+branch_0x8035fc80:
     li      r0, 0x1
     stb     r0, 0x1e(r31)
     li      r0, 0x3
     li      r7, 0x3
     b       branch_0x8035fcf4
 
-branch_0x8035fc94:		# jumptable 8035FC7C cases 1,2,9
-    li	    r0, 0x2
-    stb	    r0, 0x1E(r31)
-    li	    r0, 0x3
-    li	    r7, 0x2
-    b	    branch_0x8035fcf4
+branch_0x8035fc94:
+    li      r0, 0x2
+    stb     r0, 0x1e(r31)
+    li      r0, 0x3
+    li      r7, 0x2
+    b       branch_0x8035fcf4
 
-branch_0x8035fca8:		# jumptable 8035FC7C cases 3-5,10
-    li	    r0, 0x2
-    stb	    r0, 0x1E(r31)
-    li	    r0, 0x2
-    li	    r7, 0x2
-    b	    branch_0x8035fcf4
+branch_0x8035fca8:
+    li      r0, 0x2
+    stb     r0, 0x1e(r31)
+    li      r0, 0x2
+    li      r7, 0x2
+    b       branch_0x8035fcf4
 
-branch_0x8035fcbc:		# jumptable 8035FC7C case 6
-    li	    r0, 0x3
-    stb	    r0, 0x1E(r31)
-    li	    r0, 0x2
-    li	    r7, 0x2
-    b	    branch_0x8035fcf4
+branch_0x8035fcbc:
+    li      r0, 0x3
+    stb     r0, 0x1e(r31)
+    li      r0, 0x2
+    li      r7, 0x2
+    b       branch_0x8035fcf4
 
-branch_0x8035fcd0:		# jumptable 8035FC7C case 14
-    li	    r0, 0x0
-    stb	    r0, 0x1E(r31)
-    li	    r0, 0x3
-    li	    r7, 0x3
-    b	    branch_0x8035fcf4
+branch_0x8035fcd0:
+    li      r0, 0x0
+    stb     r0, 0x1e(r31)
+    li      r0, 0x3
+    li      r7, 0x3
+    b       branch_0x8035fcf4
 
-def_8035FC7C:		# jumptable 8035FC7C default case
 branch_0x8035fce4:
     li      r0, 0x2
     stb     r0, 0x1e(r31)
@@ -349,10 +343,10 @@ branch_0x8035fcf4:
     li      r6, 0x1
     slw     r5, r6, r8
     clrlwi  r7, r7, 16
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     slw     r5, r6, r7
     add     r4, r4, r0
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     sraw    r4, r4, r8
     add     r0, r3, r0
     sraw    r0, r0, r7
@@ -394,20 +388,20 @@ GXInitTexObjCI: # 0x8035fd4c
 .globl GXInitTexObjLOD
 GXInitTexObjLOD: # 0x8035fd94
     stwu    sp, -0x38(sp)
-    lfs     f0, 0xb90(rtoc)
+    lfs     f0, 0xb90(r2)
     fcmpo   cr0, f3, f0
     bge-    branch_0x8035fdac
     fmr     f3, f0
     b       branch_0x8035fdc0
 
 branch_0x8035fdac:
-    lfs     f0, 0xb94(rtoc)
+    lfs     f0, 0xb94(r2)
     fcmpo   cr0, f3, f0
     cror    2, 1, 2
     bne-    branch_0x8035fdc0
-    lfs     f3, 0xb98(rtoc)
+    lfs     f3, 0xb98(r2)
 branch_0x8035fdc0:
-    lfs     f0, 0xb9c(rtoc)
+    lfs     f0, 0xb9c(r2)
     cmpwi   r5, 0x1
     lwz     r0, 0x0(r3)
     fmuls   f0, f0, f3
@@ -430,7 +424,7 @@ branch_0x8035fdf8:
     rlwinm  r7, r9, 0, 28, 26
     or      r5, r7, r5
     stw     r5, 0x0(r3)
-    subi    r5, r13, 0x72e0
+    addi    r5, r13, R13Off_m0x72e0
     lbzx    r0, r5, r4
     lwz     r7, 0x0(r3)
     slwi    r0, r0, 5
@@ -465,20 +459,20 @@ branch_0x8035fe3c:
     rlwinm  r4, r4, 0, 11, 9
     or      r0, r4, r0
     stw     r0, 0x0(r3)
-    lfs     f0, 0xba0(rtoc)
+    lfs     f0, 0xba0(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x8035fea4
     fmr     f1, f0
     b       branch_0x8035feb4
 
 branch_0x8035fea4:
-    lfs     f0, 0xba4(rtoc)
+    lfs     f0, 0xba4(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x8035feb4
     fmr     f1, f0
 branch_0x8035feb4:
-    lfs     f3, 0xb80(rtoc)
-    lfs     f0, 0xba0(rtoc)
+    lfs     f3, 0xb80(r2)
+    lfs     f0, 0xba0(r2)
     fmuls   f1, f3, f1
     fcmpo   cr0, f2, f0
     fctiwz  f1, f1
@@ -489,7 +483,7 @@ branch_0x8035feb4:
     b       branch_0x8035feec
 
 branch_0x8035fedc:
-    lfs     f0, 0xba4(rtoc)
+    lfs     f0, 0xba4(r2)
     fcmpo   cr0, f2, f0
     ble-    branch_0x8035feec
     fmr     f2, f0
@@ -498,7 +492,7 @@ branch_0x8035feec:
     clrrwi  r0, r0, 8
     insrwi  r0, r4, 8, 24
     stw     r0, 0x4(r3)
-    lfs     f0, 0xb80(rtoc)
+    lfs     f0, 0xb80(r2)
     lwz     r0, 0x4(r3)
     fmuls   f0, f0, f2
     rlwinm  r4, r0, 0, 24, 15
@@ -534,7 +528,7 @@ GXGetTexObjAll: # 0x8035ff28
     stw     r0, 0x0(r9)
     lbz     r0, 0x1f(r3)
     clrlwi  r3, r0, 31
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     cntlzw  r0, r0
     extrwi  r0, r0, 8, 19
     stb     r0, 0x0(r10)
@@ -566,7 +560,7 @@ GXGetTexObjFmt: # 0x8035ffb0
 .globl GXLoadTexObjPreLoaded
 GXLoadTexObjPreLoaded: # 0x8035ffb8
     mflr    r0
-    subi    r7, r13, 0x7578
+    addi    r7, r13, R13Off_m0x7578
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
@@ -575,19 +569,19 @@ GXLoadTexObjPreLoaded: # 0x8035ffb8
     li      r30, 0x61
     stw     r29, 0x1c(sp)
     addi    r29, r5, 0x0
-    subi    r5, r13, 0x7568
+    addi    r5, r13, R13Off_m0x7568
     stw     r28, 0x18(sp)
     mr      r28, r3
     lwz     r6, 0x0(r3)
-    subi    r3, r13, 0x7588
+    addi    r3, r13, R13Off_m0x7588
     lbzx    r0, r3, r29
-    subi    r3, r13, 0x7580
+    addi    r3, r13, R13Off_m0x7580
     slwi    r0, r0, 24
     insrwi  r0, r6, 24, 8
     stw     r0, 0x0(r28)
-    subi    r6, r13, 0x7570
+    addi    r6, r13, R13Off_m0x7570
     lbzx    r0, r3, r29
-    subi    r3, r13, 0x7560
+    addi    r3, r13, R13Off_m0x7560
     lwz     r8, 0x4(r28)
     slwi    r0, r0, 24
     insrwi  r0, r8, 24, 8
@@ -633,12 +627,12 @@ GXLoadTexObjPreLoaded: # 0x8035ffb8
     lbz     r0, 0x1f(r28)
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x80360100
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwz     r3, 0x18(r28)
     lwz     r12, 0x414(r4)
     mtlr    r12
     blrl
-    subi    r4, r13, 0x7558
+    addi    r4, r13, R13Off_m0x7558
     lwz     r5, 0x4(r3)
     lbzx    r0, r4, r29
     slwi    r0, r0, 24
@@ -648,21 +642,21 @@ GXLoadTexObjPreLoaded: # 0x8035ffb8
     lwz     r0, 0x4(r3)
     stw     r0, -0x8000(r31)
 branch_0x80360100:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     slwi    r5, r29, 2
     lwz     r4, 0x8(r28)
     li      r0, 0x0
     add     r3, r3, r5
     stw     r4, 0x45c(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r4, 0x0(r28)
     add     r3, r3, r5
     stw     r4, 0x47c(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwz     r3, 0x4f4(r4)
     ori     r3, r3, 0x1
     stw     r3, 0x4f4(r4)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     sth     r0, 0x2(r3)
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)
@@ -683,7 +677,7 @@ GXLoadTexObj: # 0x80360160
     addi    r31, r4, 0x0
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     lwz     r12, 0x410(r5)
     mtlr    r12
     blrl
@@ -730,7 +724,7 @@ GXLoadTlut: # 0x803601fc
     stw     r30, 0x18(sp)
     mr      r30, r3
     addi    r3, r4, 0x0
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     lwz     r12, 0x414(r5)
     mtlr    r12
     blrl
@@ -889,10 +883,10 @@ GXInvalidateTexAll: # 0x80360400
     stwu    sp, -0x8(sp)
     bl      __GXFlushTextureState
     li      r6, 0x61
-    lis     r3, 0x6600
-    lis     r5, 0xcc01
+    lis     r3, unk_66001000@h
+    lis     r5, unk_cc00ffff@ha
     stb     r6, -0x8000(r5)
-    addi    r4, r3, 0x1000
+    addi    r4, r3, unk_66001000@l
     addi    r0, r3, 0x1100
     stw     r4, -0x8000(r5)
     stb     r6, -0x8000(r5)
@@ -906,7 +900,7 @@ GXInvalidateTexAll: # 0x80360400
 
 .globl GXSetTexRegionCallback
 GXSetTexRegionCallback: # 0x80360448
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwzu    r0, 0x410(r4)
     stw     r3, 0x0(r4)
     mr      r3, r0
@@ -915,7 +909,7 @@ GXSetTexRegionCallback: # 0x80360448
 
 .globl GXSetTlutRegionCallback
 GXSetTlutRegionCallback: # 0x8036045c
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwzu    r0, 0x414(r4)
     stw     r3, 0x0(r4)
     mr      r3, r0
@@ -924,7 +918,7 @@ GXSetTlutRegionCallback: # 0x8036045c
 
 .globl GXSetTexCoordScaleManually
 GXSetTexCoordScaleManually: # 0x80360470
-    lwz     r7, -0x72f8(r13)
+    lwz     r7, R13Off_m0x72f8(r13)
     li      r0, 0x1
     clrlwi. r4, r4, 24
     addi    r8, r7, 0x4dc
@@ -936,25 +930,25 @@ GXSetTexCoordScaleManually: # 0x80360470
     stw     r0, 0x0(r8)
     beqlr-    
 
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     slwi    r8, r3, 2
-    subi    r0, r5, 0x1
+    addi    r0, r5, unk_cc00ffff@l
     add     r5, r4, r8
     lwz     r4, 0xb8(r5)
-    subi    r3, r6, 0x1
+    addi    r3, r6, -0x1
     li      r7, 0x61
     clrrwi  r4, r4, 16
     insrwi  r4, r0, 16, 16
     stw     r4, 0xb8(r5)
     lis     r6, 0xcc01
     li      r0, 0x0
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     add     r5, r4, r8
     lwz     r4, 0xd8(r5)
     clrrwi  r4, r4, 16
     insrwi  r4, r3, 16, 16
     stw     r4, 0xd8(r5)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stb     r7, -0x8000(r6)
     add     r4, r5, r8
     lwz     r3, 0xb8(r4)
@@ -968,7 +962,7 @@ GXSetTexCoordScaleManually: # 0x80360470
 
 .globl GXSetTexCoordCylWrap
 GXSetTexCoordCylWrap: # 0x8036050c
-    lwz     r0, -0x72f8(r13)
+    lwz     r0, R13Off_m0x72f8(r13)
     slwi    r8, r3, 2
     clrlslwi  r4, r4, 24, 17
     add     r7, r0, r8
@@ -979,13 +973,13 @@ GXSetTexCoordCylWrap: # 0x8036050c
     or      r4, r6, r4
     stw     r4, 0xb8(r7)
     clrlslwi  r4, r5, 24, 17
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     add     r5, r3, r8
     lwz     r3, 0xd8(r5)
     rlwinm  r3, r3, 0, 15, 13
     or      r3, r3, r4
     stw     r3, 0xd8(r5)
-    lwz     r7, -0x72f8(r13)
+    lwz     r7, R13Off_m0x72f8(r13)
     lwz     r3, 0x4dc(r7)
     and.    r0, r3, r0
     beqlr-    
@@ -1006,7 +1000,7 @@ GXSetTexCoordCylWrap: # 0x8036050c
 
 .globl __SetSURegs
 __SetSURegs: # 0x80360590
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     slwi    r0, r4, 2
     slwi    r9, r3, 2
     add     r4, r5, r0
@@ -1019,13 +1013,13 @@ __SetSURegs: # 0x80360590
     insrwi  r3, r5, 10, 22
     stw     r3, 0xb8(r4)
     li      r3, 0x0
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     add     r8, r4, r0
     lwz     r4, 0xd8(r8)
     clrrwi  r4, r4, 16
     rlwimi  r4, r5, 22, 22, 31
     stw     r4, 0xd8(r8)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     add     r4, r5, r9
     lwz     r9, 0x47c(r4)
     add     r10, r5, r0
@@ -1041,13 +1035,13 @@ __SetSURegs: # 0x80360590
     stw     r4, 0xb8(r10)
     cntlzw  r4, r8
     rlwinm  r4, r4, 11, 8, 15
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     add     r8, r5, r0
     lwz     r5, 0xd8(r8)
     rlwinm  r5, r5, 0, 16, 14
     or      r4, r5, r4
     stw     r4, 0xd8(r8)
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     stb     r7, -0x8000(r6)
     add     r4, r5, r0
     lwz     r0, 0xb8(r4)
@@ -1065,7 +1059,7 @@ __GXSetSUTexRegs: # 0x8036065c
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x4dc(r3)
     cmplwi  r0, 0xff
     beq-    branch_0x803607c4
@@ -1091,33 +1085,33 @@ branch_0x803606b0:
     b       branch_0x803606f8
 
 branch_0x803606bc:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x120(r3)
     clrlwi  r29, r0, 29
     extrwi  r28, r0, 3, 26
     b       branch_0x80360708
 
 branch_0x803606d0:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x120(r3)
     extrwi  r29, r0, 3, 23
     extrwi  r28, r0, 3, 20
     b       branch_0x80360708
 
 branch_0x803606e4:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x120(r3)
     extrwi  r29, r0, 3, 17
     extrwi  r28, r0, 3, 14
     b       branch_0x80360708
 
 branch_0x803606f8:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lwz     r0, 0x120(r3)
     extrwi  r29, r0, 3, 11
     extrwi  r28, r0, 3, 8
 branch_0x80360708:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     li      r0, 0x1
     slw     r0, r0, r28
     lwz     r3, 0x4dc(r3)
@@ -1136,7 +1130,7 @@ branch_0x80360730:
     b       branch_0x803607bc
 
 branch_0x80360744:
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     addi    r3, r27, 0x49c
     extlwi  r4, r31, 30, 1
     lwzx    r3, r5, r3
@@ -1194,54 +1188,54 @@ __GXSetTmemConfig: # 0x803607d8
 branch_0x803607f4:
     li      r0, 0x61
     lis     r3, 0xcc01
-    lis     r4, 0x8c0e
+    lis     r4, unk_8c0d8000@ha
     stb     r0, -0x8000(r3)
-    subi    r4, r4, 0x8000
+    addi    r4, r4, unk_8c0d8000@l
     stw     r4, -0x8000(r3)
-    lis     r4, 0x900e
-    lis     r7, 0x8d0e
+    lis     r4, unk_900dc000@ha
+    lis     r7, unk_8d0d8800@ha
     stb     r0, -0x8000(r3)
-    subi    r4, r4, 0x4000
-    lis     r6, 0x910e
+    addi    r4, r4, unk_900dc000@l
+    lis     r6, unk_910dc800@ha
     stw     r4, -0x8000(r3)
-    lis     r5, 0x8e0e
-    lis     r4, 0x920e
+    lis     r5, unk_8e0d9000@ha
+    lis     r4, unk_920dd000@ha
     stb     r0, -0x8000(r3)
-    subi    r7, r7, 0x7800
-    lis     r30, 0x8f0e
+    addi    r7, r7, unk_8d0d8800@l
+    lis     r30, unk_8f0d9800@ha
     stw     r7, -0x8000(r3)
-    lis     r12, 0x930e
-    lis     r11, 0xac0e
+    lis     r12, unk_930dd800@ha
+    lis     r11, unk_ac0da000@ha
     stb     r0, -0x8000(r3)
-    subi    r6, r6, 0x3800
-    lis     r10, 0xb00e
+    addi    r6, r6, unk_910dc800@l
+    lis     r10, unk_b00de000@ha
     stw     r6, -0x8000(r3)
-    lis     r9, 0xad0e
-    lis     r8, 0xb10e
+    lis     r9, unk_ad0da800@ha
+    lis     r8, unk_b10de800@ha
     stb     r0, -0x8000(r3)
-    subi    r5, r5, 0x7000
-    lis     r7, 0xae0e
+    addi    r5, r5, unk_8e0d9000@l
+    lis     r7, unk_ae0db000@ha
     stw     r5, -0x8000(r3)
-    lis     r6, 0xb20e
-    lis     r5, 0xaf0e
+    lis     r6, unk_b20df000@ha
+    lis     r5, unk_af0db800@ha
     stb     r0, -0x8000(r3)
-    subi    r31, r4, 0x3000
-    lis     r4, 0xb30e
+    addi    r31, r4, unk_920dd000@l
+    lis     r4, unk_b30df800@ha
     stw     r31, -0x8000(r3)
-    subi    r30, r30, 0x6800
-    subi    r12, r12, 0x2800
+    addi    r30, r30, unk_8f0d9800@l
+    addi    r12, r12, unk_930dd800@l
     stb     r0, -0x8000(r3)
-    subi    r11, r11, 0x6000
-    subi    r10, r10, 0x2000
+    addi    r11, r11, unk_ac0da000@l
+    addi    r10, r10, unk_b00de000@l
     stw     r30, -0x8000(r3)
-    subi    r9, r9, 0x5800
-    subi    r8, r8, 0x1800
+    addi    r9, r9, unk_ad0da800@l
+    addi    r8, r8, unk_b10de800@l
     stb     r0, -0x8000(r3)
-    subi    r7, r7, 0x5000
-    subi    r6, r6, 0x1000
+    addi    r7, r7, unk_ae0db000@l
+    addi    r6, r6, unk_b20df000@l
     stw     r12, -0x8000(r3)
-    subi    r5, r5, 0x4800
-    subi    r4, r4, 0x800
+    addi    r5, r5, unk_af0db800@l
+    addi    r4, r4, unk_b30df800@l
     stb     r0, -0x8000(r3)
     stw     r11, -0x8000(r3)
     stb     r0, -0x8000(r3)
@@ -1263,54 +1257,54 @@ branch_0x803607f4:
 branch_0x80360900:
     li      r0, 0x61
     lis     r3, 0xcc01
-    lis     r4, 0x8c0e
+    lis     r4, unk_8c0d8000@ha
     stb     r0, -0x8000(r3)
-    subi    r4, r4, 0x8000
+    addi    r4, r4, unk_8c0d8000@l
     stw     r4, -0x8000(r3)
-    lis     r4, 0x900e
-    lis     r7, 0x8d0e
+    lis     r4, unk_900dc000@ha
+    lis     r7, unk_8d0d8400@ha
     stb     r0, -0x8000(r3)
-    subi    r4, r4, 0x4000
-    lis     r6, 0x910e
+    addi    r4, r4, unk_900dc000@l
+    lis     r6, unk_910dc400@ha
     stw     r4, -0x8000(r3)
-    lis     r5, 0x8e0e
-    lis     r4, 0x920e
+    lis     r5, unk_8e0d8800@ha
+    lis     r4, unk_920dc800@ha
     stb     r0, -0x8000(r3)
-    subi    r7, r7, 0x7c00
-    lis     r31, 0x8f0e
+    addi    r7, r7, unk_8d0d8400@l
+    lis     r31, unk_8f0d8c00@ha
     stw     r7, -0x8000(r3)
-    lis     r12, 0x930e
-    lis     r11, 0xac0e
+    lis     r12, unk_930dcc00@ha
+    lis     r11, unk_ac0d9000@ha
     stb     r0, -0x8000(r3)
-    subi    r6, r6, 0x3c00
-    lis     r10, 0xb00e
+    addi    r6, r6, unk_910dc400@l
+    lis     r10, unk_b00dd000@ha
     stw     r6, -0x8000(r3)
-    lis     r9, 0xad0e
-    lis     r8, 0xb10e
+    lis     r9, unk_ad0d9400@ha
+    lis     r8, unk_b10dd400@ha
     stb     r0, -0x8000(r3)
-    subi    r5, r5, 0x7800
-    lis     r7, 0xae0e
+    addi    r5, r5, unk_8e0d8800@l
+    lis     r7, unk_ae0d9800@ha
     stw     r5, -0x8000(r3)
-    lis     r6, 0xb20e
-    lis     r5, 0xaf0e
+    lis     r6, unk_b20dd800@ha
+    lis     r5, unk_af0d9c00@ha
     stb     r0, -0x8000(r3)
-    subi    r30, r4, 0x3800
-    lis     r4, 0xb30e
+    addi    r30, r4, unk_920dc800@l
+    lis     r4, unk_b30ddc00@ha
     stw     r30, -0x8000(r3)
-    subi    r31, r31, 0x7400
-    subi    r12, r12, 0x3400
+    addi    r31, r31, unk_8f0d8c00@l
+    addi    r12, r12, unk_930dcc00@l
     stb     r0, -0x8000(r3)
-    subi    r11, r11, 0x7000
-    subi    r10, r10, 0x3000
+    addi    r11, r11, unk_ac0d9000@l
+    addi    r10, r10, unk_b00dd000@l
     stw     r31, -0x8000(r3)
-    subi    r9, r9, 0x6c00
-    subi    r8, r8, 0x2c00
+    addi    r9, r9, unk_ad0d9400@l
+    addi    r8, r8, unk_b10dd400@l
     stb     r0, -0x8000(r3)
-    subi    r7, r7, 0x6800
-    subi    r6, r6, 0x2800
+    addi    r7, r7, unk_ae0d9800@l
+    addi    r6, r6, unk_b20dd800@l
     stw     r12, -0x8000(r3)
-    subi    r5, r5, 0x6400
-    subi    r4, r4, 0x2400
+    addi    r5, r5, unk_af0d9c00@l
+    addi    r4, r4, unk_b30ddc00@l
     stb     r0, -0x8000(r3)
     stw     r11, -0x8000(r3)
     stb     r0, -0x8000(r3)

@@ -45,8 +45,8 @@ branch_0x802ed688:
 
 .globl __ct__15J3DVertexBufferFP13J3DVertexData
 __ct__15J3DVertexBufferFP13J3DVertexData: # 0x802ed6a0
-    lis     r5, 0x803e
-    addi    r0, r5, 0x14d8
+    lis     r5, __vvt__15J3DVertexBuffer@h
+    addi    r0, r5, __vvt__15J3DVertexBuffer@l
     stw     r0, 0x38(r3)
     li      r5, 0x0
     stw     r4, 0x0(r3)
@@ -82,8 +82,8 @@ __dt__15J3DVertexBufferFv: # 0x802ed70c
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802ed740
-    lis     r3, 0x803e
-    addi    r3, r3, 0x14d8
+    lis     r3, __vvt__15J3DVertexBuffer@h
+    addi    r3, r3, __vvt__15J3DVertexBuffer@l
     extsh.  r0, r4
     stw     r3, 0x38(r31)
     ble-    branch_0x802ed740

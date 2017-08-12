@@ -2,14 +2,14 @@
 .globl preEntry__12TMarDirectorFP12TPerformList
 preEntry__12TMarDirectorFP12TPerformList: # 0x8029c1a4
     mflr    r0
-    lis     r5, 0x803a
+    lis     r5, unk_803a2cd0@h
     stw     r0, 0x4(sp)
     stwu    sp, -0xe8(sp)
     stmw    r25, 0xcc(sp)
-    addi    r30, r5, 0x2cd0
+    addi    r30, r5, unk_803a2cd0@l
     addi    r31, r3, 0x0
     addi    r3, r30, 0x54
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -19,7 +19,7 @@ preEntry__12TMarDirectorFP12TPerformList: # 0x8029c1a4
     addi    r5, r30, 0x54
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r29, r3, 0x0
     addi    r3, r30, 0x6c
     lwz     r28, 0x4(r4)
@@ -31,7 +31,7 @@ preEntry__12TMarDirectorFP12TPerformList: # 0x8029c1a4
     addi    r5, r30, 0x6c
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r27, r3, 0x0
     addi    r3, r30, 0x80
     lwz     r28, 0x4(r4)
@@ -43,7 +43,7 @@ preEntry__12TMarDirectorFP12TPerformList: # 0x8029c1a4
     addi    r5, r30, 0x80
     mtlr    r12
     blrl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r26, r3, 0x0
     addi    r3, r30, 0x90
     lwz     r28, 0x4(r4)
@@ -100,10 +100,10 @@ preEntry__12TMarDirectorFP12TPerformList: # 0x8029c1a4
     addi    r4, r30, 0x108
     li      r5, 0x480
     bl      push_back__12TPerformListFPCcUl
-    lis     r4, 0x400
+    lis     r4, unk_04000200@h
     addi    r3, r31, 0x0
-    addi    r5, r4, 0x200
-    subi    r4, rtoc, 0x560
+    addi    r5, r4, unk_04000200@l
+    addi    r4, r2, R2Off_m0x560
     bl      push_back__12TPerformListFPCcUl
     addi    r3, r31, 0x0
     addi    r4, r30, 0x128
@@ -113,10 +113,10 @@ preEntry__12TMarDirectorFP12TPerformList: # 0x8029c1a4
     addi    r4, r30, 0x148
     li      r5, 0x480
     bl      push_back__12TPerformListFPCcUl
-    lis     r4, 0x200
+    lis     r4, unk_02000200@h
     addi    r3, r31, 0x0
-    addi    r5, r4, 0x200
-    subi    r4, rtoc, 0x560
+    addi    r5, r4, unk_02000200@l
+    addi    r4, r2, R2Off_m0x560
     bl      push_back__12TPerformListFPCcUl
     addi    r3, r31, 0x0
     addi    r4, r30, 0x168
@@ -177,7 +177,7 @@ branch_0x8029c410:
     addi    r4, r30, 0x21c
     li      r5, 0x4
     bl      push_back__12TPerformListFPCcUl
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, r30, 0x234
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -195,10 +195,10 @@ branch_0x8029c410:
     addi    r4, r30, 0x24c
     li      r5, 0x480
     bl      push_back__12TPerformListFPCcUl
-    lis     r5, 0x4000
+    lis     r5, unk_40000204@h
     addi    r3, r31, 0x0
     addi    r4, r26, 0x0
-    addi    r5, r5, 0x204
+    addi    r5, r5, unk_40000204@l
     bl      push_back__12TPerformListFPQ26JDrama8TViewObjUl
 branch_0x8029c4bc:
     addi    r3, r31, 0x0

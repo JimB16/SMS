@@ -9,12 +9,12 @@ __dt__11TAlphaCatchFv: # 0x802a5834
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802a588c
-    lis     r3, 0x803e
-    subi    r0, r3, 0xc58
+    lis     r3, __vvt__11TAlphaCatch@ha
+    addi    r0, r3, __vvt__11TAlphaCatch@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802a587c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -41,11 +41,11 @@ perform__11TAlphaCatchFUlPQ26JDrama9TGraphics: # 0x802a58a8
     rlwinm. r0, r4, 0, 28, 28
     stwu    sp, -0x8(sp)
     beq-    branch_0x802a58dc
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      pushBreakPoint__16TDrawSyncManagerFv
     li      r3, 0x7c
     bl      GXSetDrawSync
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      pushBreakPoint__16TDrawSyncManagerFv
     li      r3, 0x0
     bl      GXSetDrawSync
@@ -63,7 +63,7 @@ perform__13TZBufferCatchFUlPQ26JDrama9TGraphics: # 0x802a58ec
     rlwinm. r0, r4, 0, 28, 28
     stwu    sp, -0x8(sp)
     beq-    branch_0x802a5914
-    lwz     r3, -0x5ff0(r13)
+    lwz     r3, R13Off_m0x5ff0(r13)
     bl      pushBreakPoint__16TDrawSyncManagerFv
     bl      ReInitializeGX
     li      r3, 0x7d
@@ -85,12 +85,12 @@ __dt__13TZBufferCatchFv: # 0x802a5924
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802a597c
-    lis     r3, 0x803e
-    subi    r0, r3, 0xc34
+    lis     r3, __vvt__13TZBufferCatch@ha
+    addi    r0, r3, __vvt__13TZBufferCatch@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802a596c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

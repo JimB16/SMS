@@ -7,7 +7,7 @@ createRoot__10JKRExpHeapFib: # 0x802c0f8c
     stw     r31, 0x2c(sp)
     addi    r31, r4, 0x0
     li      r4, 0x0
-    lwz     r0, -0x5f28(r13)
+    lwz     r0, R13Off_m0x5f28(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802c0fec
     addi    r5, r3, 0x0
@@ -18,14 +18,14 @@ createRoot__10JKRExpHeapFib: # 0x802c0f8c
     lwz     r5, 0x20(sp)
     cmplwi  r3, 0x0
     addi    r4, r3, 0x90
-    subi    r5, r5, 0x90
+    addi    r5, r5, -0x90
     beq-    branch_0x802c0fe4
     addi    r7, r31, 0x0
     li      r6, 0x0
     bl      __ct__10JKRExpHeapFPvUlP7JKRHeapb
 branch_0x802c0fe4:
     mr      r4, r3
-    stw     r3, -0x5f28(r13)
+    stw     r3, R13Off_m0x5f28(r13)
 branch_0x802c0fec:
     li      r0, 0x1
     stb     r0, 0x6a(r4)
@@ -49,7 +49,7 @@ create__10JKRExpHeapFUlP7JKRHeapb: # 0x802c100c
     stw     r28, 0x20(sp)
     mr.     r28, r4
     bne-    branch_0x802c1038
-    lwz     r28, -0x5f28(r13)
+    lwz     r28, R13Off_m0x5f28(r13)
 branch_0x802c1038:
     clrrwi  r31, r3, 4
     addi    r3, r31, 0x0
@@ -65,10 +65,10 @@ branch_0x802c1038:
 branch_0x802c1060:
     subic.  r0, r31, 0x90
     bgt-    branch_0x802c1090
-    lis     r3, 0x803b
+    lis     r3, unk_803a94c8@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x6b38
-    subi    r4, r31, 0x90
+    addi    r3, r3, unk_803a94c8@l
+    addi    r4, r31, -0x90
     bl      OSReport
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -82,7 +82,7 @@ branch_0x802c1090:
     beq-    branch_0x802c10ac
     addi    r6, r28, 0x0
     addi    r7, r29, 0x0
-    subi    r5, r31, 0x90
+    addi    r5, r31, -0x90
     bl      __ct__10JKRExpHeapFPvUlP7JKRHeapb
 branch_0x802c10ac:
     cmplwi  r3, 0x0
@@ -120,7 +120,7 @@ create__10JKRExpHeapFPvUlP7JKRHeapb: # 0x802c10f0
     stw     r29, 0x24(sp)
     addi    r29, r3, 0x0
     bne-    branch_0x802c1138
-    lwz     r3, -0x5f28(r13)
+    lwz     r3, R13Off_m0x5f28(r13)
     mr      r4, r29
     bl      find__7JKRHeapCFPv
     mr.     r5, r3
@@ -130,7 +130,7 @@ create__10JKRExpHeapFPvUlP7JKRHeapb: # 0x802c10f0
 
 branch_0x802c1138:
     mr.     r6, r29
-    subi    r0, r30, 0x90
+    addi    r0, r30, -0x90
     clrrwi  r8, r0, 4
     addi    r4, r6, 0x90
     li      r3, 0x0
@@ -139,7 +139,7 @@ branch_0x802c1138:
     beq-    branch_0x802c1168
     addi    r6, r5, 0x0
     addi    r7, r31, 0x0
-    subi    r5, r8, 0x90
+    addi    r5, r8, -0x90
     bl      __ct__10JKRExpHeapFPvUlP7JKRHeapb
 branch_0x802c1168:
     li      r0, 0x1
@@ -213,14 +213,14 @@ __ct__10JKRExpHeapFPvUlP7JKRHeapb: # 0x802c1224
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__7JKRHeapFPvUlP7JKRHeapb
-    lis     r3, 0x803e
+    lis     r3, __vvt__10JKRExpHeap@ha
     lwz     r30, 0x8(sp)
-    subi    r0, r3, 0xc8
+    addi    r0, r3, __vvt__10JKRExpHeap@l
     stw     r0, 0x0(r30)
     li      r31, 0x0
     li      r0, 0xff
     stb     r31, 0x68(r30)
-    subi    r6, r29, 0x10
+    addi    r6, r29, -0x10
     li      r4, 0x0
     stb     r0, 0x69(r30)
     li      r5, 0x0
@@ -254,8 +254,8 @@ __dt__10JKRExpHeapFv: # 0x802c12c8
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c1318
-    lis     r3, 0x803e
-    subi    r0, r3, 0xc8
+    lis     r3, __vvt__10JKRExpHeap@ha
+    addi    r0, r3, __vvt__10JKRExpHeap@l
     stw     r0, 0x0(r30)
     mr      r3, r30
     bl      dispose__7JKRHeapFv
@@ -322,12 +322,12 @@ alloc__10JKRExpHeapFUli: # 0x802c138c
 branch_0x802c13c8:
     li      r0, 0x0
     cmpwi   r30, 0x0
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     blt-    branch_0x802c141c
     cmpwi   r30, 0x4
     bgt-    branch_0x802c13fc
     li      r0, 0x1
-    stw     r0, -0x5f58(r13)
+    stw     r0, R13Off_m0x5f58(r13)
     addi    r3, r28, 0x0
     addi    r4, r29, 0x0
     bl      allocFromHead__10JKRExpHeapFUl
@@ -336,7 +336,7 @@ branch_0x802c13c8:
 
 branch_0x802c13fc:
     li      r0, 0x2
-    stw     r0, -0x5f58(r13)
+    stw     r0, R13Off_m0x5f58(r13)
     addi    r3, r28, 0x0
     addi    r4, r29, 0x0
     addi    r5, r30, 0x0
@@ -349,7 +349,7 @@ branch_0x802c141c:
     cmpwi   r5, 0x4
     bgt-    branch_0x802c1444
     li      r0, 0x3
-    stw     r0, -0x5f58(r13)
+    stw     r0, R13Off_m0x5f58(r13)
     addi    r3, r28, 0x0
     addi    r4, r29, 0x0
     bl      allocFromTail__10JKRExpHeapFUl
@@ -358,7 +358,7 @@ branch_0x802c141c:
 
 branch_0x802c1444:
     li      r0, 0x4
-    stw     r0, -0x5f58(r13)
+    stw     r0, R13Off_m0x5f58(r13)
     addi    r3, r28, 0x0
     addi    r4, r29, 0x0
     bl      allocFromTail__10JKRExpHeapFUli
@@ -366,15 +366,15 @@ branch_0x802c1444:
 branch_0x802c145c:
     cmplwi  r31, 0x0
     bne-    branch_0x802c14a4
-    lis     r3, 0x803b
+    lis     r3, unk_803a94d8@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x6b28
+    addi    r3, r3, unk_803a94d8@l
     addi    r4, r29, 0x0
     bl      JUTWarningConsole_f
     lbz     r0, 0x64(r28)
     cmplwi  r0, 0x1
     bne-    branch_0x802c14a4
-    lwz     r12, -0x5f24(r13)
+    lwz     r12, R13Off_m0x5f24(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x802c14a4
     mtlr    r12
@@ -401,7 +401,7 @@ allocFromHead__10JKRExpHeapFUli: # 0x802c14d0
     mflr    r0
     li      r8, -0x1
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stwu    sp, -0x38(sp)
     stmw    r26, 0x20(sp)
     addi    r28, r3, 0x0
@@ -417,7 +417,7 @@ branch_0x802c1508:
     addi    r6, r9, 0x10
     lwz     r7, 0x4(r9)
     add     r3, r5, r6
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     and     r0, r4, r0
     subf    r3, r6, r0
     add     r0, r29, r3
@@ -440,17 +440,17 @@ branch_0x802c1558:
     bne+    branch_0x802c1508
 branch_0x802c1560:
     cmplwi  r30, 0x0
-    stw     r8, -0x5f50(r13)
-    stw     r31, -0x5f4c(r13)
-    stw     r30, -0x5f48(r13)
+    stw     r8, R13Off_m0x5f50(r13)
+    stw     r31, R13Off_m0x5f4c(r13)
+    stw     r30, R13Off_m0x5f48(r13)
     beq-    branch_0x802c178c
     cmplwi  r31, 0x10
     blt-    branch_0x802c166c
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r30, 0x0
-    subi    r4, r31, 0x10
+    addi    r4, r31, -0x10
     addi    r0, r5, 0x1
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     li      r5, 0x0
     li      r6, 0x0
     lwz     r27, 0x8(r30)
@@ -460,11 +460,11 @@ branch_0x802c1560:
     bl      allocFore__Q210JKRExpHeap9CMemBlockFUlUcUcUcUc
     mr.     r31, r3
     beq-    branch_0x802c15e4
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r31, 0x0
     addi    r4, r29, 0x0
     addi    r0, r5, 0x2
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     li      r6, 0x0
     li      r7, 0x0
     lbz     r5, 0x69(r28)
@@ -494,11 +494,11 @@ branch_0x802c1608:
 branch_0x802c161c:
     cmplwi  r29, 0x0
     beq-    branch_0x802c1644
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r28, 0x0
     addi    r4, r29, 0x0
     addi    r0, r5, 0x4
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     addi    r5, r30, 0x0
     addi    r6, r26, 0x0
     bl      setFreeBlock__10JKRExpHeapFPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlock
@@ -506,22 +506,22 @@ branch_0x802c1644:
     addi    r3, r28, 0x0
     addi    r4, r31, 0x0
     bl      appendUsedList__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
-    lwz     r4, -0x5f54(r13)
+    lwz     r4, R13Off_m0x5f54(r13)
     addi    r3, r31, 0x10
-    stw     r29, -0x5f44(r13)
+    stw     r29, R13Off_m0x5f44(r13)
     addi    r0, r4, 0x8
-    stw     r0, -0x5f54(r13)
-    stw     r31, -0x5f40(r13)
+    stw     r0, R13Off_m0x5f54(r13)
+    stw     r31, R13Off_m0x5f40(r13)
     b       branch_0x802c179c
 
 branch_0x802c166c:
     cmplwi  r31, 0x0
     beq-    branch_0x802c1704
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r28, 0x0
     addi    r4, r30, 0x0
     addi    r0, r5, 0x10
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     lwz     r26, 0x8(r30)
     lwz     r27, 0xc(r30)
     bl      removeFreeBlock__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
@@ -538,29 +538,29 @@ branch_0x802c166c:
     bl      allocFore__Q210JKRExpHeap9CMemBlockFUlUcUcUcUc
     mr.     r4, r3
     beq-    branch_0x802c16e4
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r28, 0x0
     addi    r6, r27, 0x0
     addi    r0, r5, 0x20
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     addi    r5, r26, 0x0
     bl      setFreeBlock__10JKRExpHeapFPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlock
 branch_0x802c16e4:
     addi    r3, r28, 0x0
     addi    r4, r30, 0x0
     bl      appendUsedList__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
-    lwz     r4, -0x5f54(r13)
+    lwz     r4, R13Off_m0x5f54(r13)
     addi    r3, r30, 0x10
     addi    r0, r4, 0x40
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     b       branch_0x802c179c
 
 branch_0x802c1704:
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
     addi    r0, r5, 0x80
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     li      r6, 0x0
     li      r7, 0x0
     lwz     r26, 0x8(r30)
@@ -574,11 +574,11 @@ branch_0x802c1704:
     bl      removeFreeBlock__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
     cmplwi  r29, 0x0
     beq-    branch_0x802c176c
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r28, 0x0
     addi    r4, r29, 0x0
     addi    r0, r5, 0x100
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     addi    r5, r26, 0x0
     addi    r6, r27, 0x0
     bl      setFreeBlock__10JKRExpHeapFPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlock
@@ -586,17 +586,17 @@ branch_0x802c176c:
     addi    r3, r28, 0x0
     addi    r4, r30, 0x0
     bl      appendUsedList__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
-    lwz     r4, -0x5f54(r13)
+    lwz     r4, R13Off_m0x5f54(r13)
     addi    r3, r30, 0x10
     addi    r0, r4, 0x200
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     b       branch_0x802c179c
 
 branch_0x802c178c:
-    lwz     r4, -0x5f54(r13)
+    lwz     r4, R13Off_m0x5f54(r13)
     li      r3, 0x0
     addi    r0, r4, 0x400
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
 branch_0x802c179c:
     lmw     r26, 0x20(sp)
     lwz     r0, 0x3c(sp)
@@ -639,10 +639,10 @@ branch_0x802c1814:
     cmplwi  r6, 0x0
     bne+    branch_0x802c17e0
 branch_0x802c181c:
-    lwz     r3, -0x5f54(r13)
+    lwz     r3, R13Off_m0x5f54(r13)
     cmplwi  r31, 0x0
     addi    r0, r3, 0x1
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     beq-    branch_0x802c18b4
     lbz     r5, 0x69(r30)
     addi    r3, r31, 0x0
@@ -650,42 +650,42 @@ branch_0x802c181c:
     li      r7, 0x0
     li      r8, 0x0
     bl      allocFore__Q210JKRExpHeap9CMemBlockFUlUcUcUcUc
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     mr.     r4, r3
     addi    r0, r5, 0x2
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     beq-    branch_0x802c187c
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r30, 0x0
     addi    r0, r5, 0x4
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     lwz     r5, 0x8(r31)
     lwz     r6, 0xc(r31)
     bl      setFreeBlock__10JKRExpHeapFPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlock
     b       branch_0x802c1894
 
 branch_0x802c187c:
-    lwz     r5, -0x5f54(r13)
+    lwz     r5, R13Off_m0x5f54(r13)
     addi    r3, r30, 0x0
     addi    r4, r31, 0x0
     addi    r0, r5, 0x8
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     bl      removeFreeBlock__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
 branch_0x802c1894:
     addi    r3, r30, 0x0
     addi    r4, r31, 0x0
     bl      appendUsedList__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
-    lwz     r4, -0x5f54(r13)
+    lwz     r4, R13Off_m0x5f54(r13)
     addi    r3, r31, 0x10
     addi    r0, r4, 0x10
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
     b       branch_0x802c18c4
 
 branch_0x802c18b4:
-    lwz     r4, -0x5f54(r13)
+    lwz     r4, R13Off_m0x5f54(r13)
     li      r3, 0x0
     addi    r0, r4, 0x20
-    stw     r0, -0x5f54(r13)
+    stw     r0, R13Off_m0x5f54(r13)
 branch_0x802c18c4:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -699,7 +699,7 @@ branch_0x802c18c4:
 allocFromTail__10JKRExpHeapFUli: # 0x802c18dc
     mflr    r0
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stwu    sp, -0x38(sp)
     stmw    r27, 0x24(sp)
     addi    r27, r3, 0x0
@@ -722,7 +722,7 @@ branch_0x802c190c:
     blt-    branch_0x802c1940
     addi    r30, r8, 0x0
     subf    r31, r28, r7
-    subi    r29, r6, 0x10
+    addi    r29, r6, -0x10
     b       branch_0x802c194c
 
 branch_0x802c1940:
@@ -746,7 +746,7 @@ branch_0x802c194c:
     addi    r3, r27, 0x0
     addi    r4, r29, 0x0
     subf    r5, r28, r0
-    subi    r0, r5, 0x10
+    addi    r0, r5, -0x10
     stw     r0, 0x4(r30)
     bl      appendUsedList__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
     addi    r3, r29, 0x10
@@ -926,7 +926,7 @@ freeAll__10JKRExpHeapFv: # 0x802c1b88
     stw     r0, 0x78(r31)
     lwz     r6, 0x38(r31)
     lwz     r3, 0x74(r31)
-    subi    r6, r6, 0x10
+    addi    r6, r6, -0x10
     bl      initiate__Q210JKRExpHeap9CMemBlockFPQ210JKRExpHeap9CMemBlockPQ210JKRExpHeap9CMemBlockUlUcUc
     li      r0, 0x0
     stw     r0, 0x7c(r31)
@@ -1275,8 +1275,8 @@ check__10JKRExpHeapFv: # 0x802c2028
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
     addi    r28, r3, 0x0
-    lis     r3, 0x803b
-    subi    r31, r3, 0x6b38
+    lis     r3, unk_803a94c8@ha
+    addi    r31, r3, unk_803a94c8@l
     addi    r3, r28, 0x18
     bl      OSLockMutex
     lwz     r27, 0x7c(r28)
@@ -1422,11 +1422,11 @@ appendUsedList__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock: # 0x802c220c
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bne-    branch_0x802c2248
-    lis     r3, 0x803b
+    lis     r3, unk_803a9634@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x69bc
-    subi    r3, r3, 0x69cc
+    lis     r4, unk_803a9644@ha
+    addi    r5, r4, unk_803a9644@l
+    addi    r3, r3, unk_803a9634@l
     li      r4, 0x5f7
     bl      OSPanic
 branch_0x802c2248:
@@ -1658,13 +1658,13 @@ branch_0x802c24f0:
 .globl joinTwoBlocks__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock
 joinTwoBlocks__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock: # 0x802c250c
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, unk_803a94c8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r26, 0x18(sp)
     mr      r30, r4
     mr      r29, r3
-    subi    r28, r5, 0x6b38
+    addi    r28, r5, unk_803a94c8@l
     lwz     r31, 0xc(r4)
     lwz     r4, 0x4(r4)
     lbz     r0, 0x2(r31)
@@ -1678,7 +1678,7 @@ joinTwoBlocks__10JKRExpHeapFPQ210JKRExpHeap9CMemBlock: # 0x802c250c
     crxor   6, 6, 6
     addi    r3, r28, 0x198
     bl      JUTWarningConsole_f
-    lwz     r3, -0x5f2c(r13)
+    lwz     r3, R13Off_m0x5f2c(r13)
     lwz     r12, 0x0(r3)
     lwz     r12, 0x38(r12)
     mtlr    r12
@@ -1740,8 +1740,8 @@ dump__10JKRExpHeapFv: # 0x802c2614
     stwu    sp, -0x48(sp)
     stmw    r25, 0x2c(sp)
     addi    r26, r3, 0x0
-    lis     r3, 0x803b
-    subi    r31, r3, 0x6b38
+    lis     r3, unk_803a94c8@ha
+    addi    r31, r3, unk_803a94c8@l
     addi    r3, r26, 0x18
     bl      OSLockMutex
     mr      r3, r26
@@ -1760,7 +1760,7 @@ dump__10JKRExpHeapFv: # 0x802c2614
     lwz     r0, 0x7c(r26)
     cmplwi  r0, 0x0
     bne-    branch_0x802c2680
-    addi    r3, rtoc, 0x58
+    addi    r3, r2, R2Off_0x58
     bl      JUTReportConsole
 branch_0x802c2680:
     lwz     r25, 0x7c(r26)
@@ -1782,11 +1782,11 @@ branch_0x802c26a8:
     rlwinm. r0, r3, 0, 24, 24
     clrlwi  r8, r3, 25
     beq-    branch_0x802c26c4
-    addi    r4, rtoc, 0x60
+    addi    r4, r2, R2Off_0x60
     b       branch_0x802c26c8
 
 branch_0x802c26c4:
-    addi    r4, rtoc, 0x68
+    addi    r4, r2, R2Off_0x68
 branch_0x802c26c8:
     lwz     r6, 0x4(r25)
     addi    r3, r31, 0x250
@@ -1812,7 +1812,7 @@ branch_0x802c270c:
     lwz     r0, 0x74(r26)
     cmplwi  r0, 0x0
     bne-    branch_0x802c2728
-    addi    r3, rtoc, 0x58
+    addi    r3, r2, R2Off_0x58
     bl      JUTReportConsole
 branch_0x802c2728:
     lwz     r25, 0x74(r26)
@@ -1828,7 +1828,7 @@ branch_0x802c2730:
     clrlwi  r8, r0, 25
     lwz     r10, 0xc(r25)
     crxor   6, 6, 6
-    addi    r4, rtoc, 0x70
+    addi    r4, r2, R2Off_0x70
     bl      JUTReportConsole_f
     lwz     r25, 0xc(r25)
     addi    r27, r27, 0x1
@@ -1839,10 +1839,10 @@ branch_0x802c2764:
     lis     r0, 0x4330
     stw     r29, 0x24(sp)
     mr      r4, r29
-    lfd     f2, 0x80(rtoc)
+    lfd     f2, 0x80(r2)
     stw     r5, 0x1c(sp)
     mr      r6, r28
-    lfs     f3, 0x78(rtoc)
+    lfs     f3, 0x78(r2)
     addi    r7, r27, 0x0
     stw     r0, 0x20(sp)
     creqv   6, 6, 6
@@ -1872,8 +1872,8 @@ dump_sort__10JKRExpHeapFv: # 0x802c27dc
     stwu    sp, -0x48(sp)
     stmw    r25, 0x2c(sp)
     addi    r26, r3, 0x0
-    lis     r3, 0x803b
-    subi    r31, r3, 0x6b38
+    lis     r3, unk_803a94c8@ha
+    addi    r31, r3, unk_803a94c8@l
     addi    r3, r26, 0x18
     bl      OSLockMutex
     mr      r3, r26
@@ -1892,7 +1892,7 @@ dump_sort__10JKRExpHeapFv: # 0x802c27dc
     lwz     r0, 0x7c(r26)
     cmplwi  r0, 0x0
     bne-    branch_0x802c284c
-    addi    r3, rtoc, 0x58
+    addi    r3, r2, R2Off_0x58
     bl      JUTReportConsole
     b       branch_0x802c2904
 
@@ -1931,11 +1931,11 @@ branch_0x802c28a4:
     rlwinm. r0, r3, 0, 24, 24
     clrlwi  r8, r3, 25
     beq-    branch_0x802c28c0
-    addi    r4, rtoc, 0x60
+    addi    r4, r2, R2Off_0x60
     b       branch_0x802c28c4
 
 branch_0x802c28c0:
-    addi    r4, rtoc, 0x68
+    addi    r4, r2, R2Off_0x68
 branch_0x802c28c4:
     lwz     r6, 0x4(r25)
     addi    r3, r31, 0x250
@@ -1960,7 +1960,7 @@ branch_0x802c2904:
     lwz     r0, 0x74(r26)
     cmplwi  r0, 0x0
     bne-    branch_0x802c2920
-    addi    r3, rtoc, 0x58
+    addi    r3, r2, R2Off_0x58
     bl      JUTReportConsole
 branch_0x802c2920:
     lwz     r25, 0x74(r26)
@@ -1976,7 +1976,7 @@ branch_0x802c2928:
     clrlwi  r8, r0, 25
     lwz     r10, 0xc(r25)
     crxor   6, 6, 6
-    addi    r4, rtoc, 0x70
+    addi    r4, r2, R2Off_0x70
     bl      JUTReportConsole_f
     lwz     r25, 0xc(r25)
     addi    r27, r27, 0x1
@@ -1987,10 +1987,10 @@ branch_0x802c295c:
     lis     r0, 0x4330
     stw     r29, 0x24(sp)
     mr      r4, r29
-    lfd     f2, 0x80(rtoc)
+    lfd     f2, 0x80(r2)
     stw     r5, 0x1c(sp)
     mr      r6, r28
-    lfs     f3, 0x78(rtoc)
+    lfs     f3, 0x78(r2)
     addi    r7, r27, 0x0
     stw     r0, 0x20(sp)
     creqv   6, 6, 6
@@ -2211,7 +2211,7 @@ getCurrentGroupId__10JKRExpHeapFv: # 0x802c2c00
 
 .globl getHeapType__10JKRExpHeapFv
 getHeapType__10JKRExpHeapFv: # 0x802c2c08
-    lis     r3, 0x4558
-    addi    r3, r3, 0x5048
+    lis     r3, unk_45585048@h
+    addi    r3, r3, unk_45585048@l
     blr
 

@@ -135,3 +135,4 @@ branch_0x802a8c90:
 SMSGetGameVideoWidth__Fv: # 0x802a8ca8
     li      r3, 0x294
     blr
+

@@ -7,11 +7,11 @@ FormatCallback: # 0x80358a6c
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
     addi    r30, r3, 0x0
-    lis     r3, 0x8040
+    lis     r3, __CARDBlock@h
     stw     r29, 0x14(sp)
     mulli   r5, r30, 0x110
     stw     r28, 0x10(sp)
-    addi    r0, r3, 0x3460
+    addi    r0, r3, __CARDBlock@l
     mr.     r28, r4
     add     r31, r0, r5
     blt-    branch_0x80358b64
@@ -22,8 +22,8 @@ FormatCallback: # 0x80358a6c
     cmpwi   r4, 0x5
     bge-    branch_0x80358ae0
     lwz     r0, 0xc(r31)
-    lis     r3, 0x8036
-    subi    r5, r3, 0x7594
+    lis     r3, FormatCallback@ha
+    addi    r5, r3, FormatCallback@l
     mullw   r4, r0, r4
     addi    r3, r30, 0x0
     bl      __CARDEraseSector
@@ -35,12 +35,12 @@ branch_0x80358ae0:
     cmpwi   r4, 0xa
     bge-    branch_0x80358b20
     lwz     r0, 0xc(r31)
-    subi    r6, r4, 0x5
-    lis     r3, 0x8036
+    addi    r6, r4, -0x5
+    lis     r3, FormatCallback@ha
     lwz     r5, 0x80(r31)
     mullw   r4, r0, r6
     slwi    r0, r6, 13
-    subi    r7, r3, 0x7594
+    addi    r7, r3, FormatCallback@l
     add     r6, r5, r0
     addi    r3, r30, 0x0
     li      r5, 0x2000
@@ -65,7 +65,7 @@ branch_0x80358b20:
     lwz     r4, 0x80(r31)
     lwz     r3, 0x88(r31)
     addis   r4, r4, 0x1
-    subi    r4, r4, 0x8000
+    addi    r4, r4, -0x8000
     bl      memcpy
 branch_0x80358b64:
     lwz     r29, 0xd0(r31)
@@ -112,7 +112,7 @@ branch_0x80358be0:
     lwz     r27, 0x80(r3)
     mr      r3, r27
     bl      memset
-    lis     r3, 0xcc00
+    lis     r3, unk_cc000000@h
     lhz     r18, 0x206e(r3)
     sth     r20, 0x24(r27)
     bl      __OSLockSram
@@ -124,15 +124,15 @@ branch_0x80358be0:
     bl      __OSUnlockSram
     bl      OSGetTime
     addi    r21, r4, 0x0
-    addi    r20, r3, 0x0
+    addi    r20, r3, unk_cc000000@l
     addi    r26, r21, 0x0
     addi    r30, r20, 0x0
     bl      __OSLockSramEx
     mulli   r0, r22, 0xc
     add     r25, r3, r0
-    lis     r3, 0x41c6
+    lis     r3, unk_41c64e6d@h
     addi    r24, r25, 0x0
-    addi    r31, r3, 0x4e6d
+    addi    r31, r3, unk_41c64e6d@l
     li      r28, 0x0
     li      r23, 0x4
     b       branch_0x80358fc8
@@ -365,8 +365,8 @@ branch_0x80358fc8:
     b       branch_0x803591ec
 
 branch_0x80358fd8:
-    lis     r3, 0x41c6
-    addi    r25, r3, 0x4e6d
+    lis     r3, unk_41c64e6d@h
+    addi    r25, r3, unk_41c64e6d@l
     b       branch_0x80359060
 
 branch_0x80358fe4:
@@ -467,7 +467,7 @@ branch_0x80359108:
     addi    r6, r20, 0x2
     lhz     r7, 0x10(r4)
     li      r4, 0x1ffc
-    subi    r7, r7, 0x5
+    addi    r7, r7, -0x5
     sth     r7, 0x6(r20)
     sth     r0, 0x8(r20)
     bl      __CARDCheckSum
@@ -482,21 +482,21 @@ branch_0x80359164:
     b       branch_0x80359188
 
 branch_0x80359180:
-    lis     r3, 0x8035
-    addi    r0, r3, 0x432c
+    lis     r3, __CARDDefaultApiCallback@h
+    addi    r0, r3, __CARDDefaultApiCallback@l
 branch_0x80359188:
     lwz     r5, 0x18(sp)
-    lis     r3, 0x1
-    subi    r4, r3, 0x6000
+    lis     r3, unk_0000a000@ha
+    addi    r4, r3, unk_0000a000@l
     stw     r0, 0xd0(r5)
     lwz     r3, 0x18(sp)
     lwz     r3, 0x80(r3)
     bl      DCStoreRange
     lwz     r4, 0x18(sp)
     li      r0, 0x0
-    lis     r3, 0x8036
+    lis     r3, FormatCallback@ha
     stw     r0, 0x28(r4)
-    subi    r5, r3, 0x7594
+    addi    r5, r3, FormatCallback@l
     addi    r3, r22, 0x0
     lwz     r6, 0x18(sp)
     lwz     r4, 0xc(r6)
@@ -532,9 +532,9 @@ CARDFormat: # 0x80359208
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      OSGetFontEncode
-    lis     r5, 0x8035
+    lis     r5, __CARDSyncCallback@h
     addi    r4, r3, 0x0
-    addi    r5, r5, 0x4330
+    addi    r5, r5, __CARDSyncCallback@l
     addi    r3, r31, 0x0
     bl      __CARDFormatRegionAsync
     cmpwi   r3, 0x0

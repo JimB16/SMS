@@ -15,9 +15,9 @@ branch_0x80368330:
 
 .globl SIIsChanBusy
 SIIsChanBusy: # 0x80368338
-    lis     r4, 0x8040
+    lis     r4, Packet@h
     slwi    r5, r3, 5
-    addi    r0, r4, 0x3ea0
+    addi    r0, r4, Packet@l
     add     r4, r0, r5
     lwz     r0, 0x0(r4)
     li      r5, 0x1
@@ -36,29 +36,29 @@ branch_0x8036836c:
 .globl CompleteTransfer
 CompleteTransfer: # 0x80368374
     mflr    r0
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006400@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
-    addi    r30, r3, 0x6400
+    addi    r30, r3, unk_cc006400@l
     stw     r29, 0x14(sp)
     addi    r29, r30, 0x34
     stw     r28, 0x10(sp)
     lwz     r0, 0x6434(r3)
     lwz     r28, 0x6438(r3)
-    lis     r3, 0x803f
+    lis     r3, Si@ha
     oris    r0, r0, 0x8000
     clrrwi  r0, r0, 1
     stw     r0, 0x34(r30)
-    subi    r31, r3, 0x6a78
+    addi    r31, r3, Si@l
     lwz     r0, 0x0(r31)
     cmpwi   r0, -0x1
     beq-    branch_0x80368634
     bl      __OSGetSystemTime
     lwz     r6, 0x0(r31)
-    lis     r5, 0x8040
-    addi    r0, r5, 0x3fe0
+    lis     r5, XferTime@h
+    addi    r0, r5, XferTime@l
     slwi    r5, r6, 3
     add     r5, r0, r5
     stw     r4, 0x4(r5)
@@ -71,7 +71,7 @@ CompleteTransfer: # 0x80368374
     cmplwi  r7, 0x0
     ble-    branch_0x8036849c
     cmplwi  r7, 0x8
-    subi    r3, r7, 0x8
+    addi    r3, r7, -0x8
     ble-    branch_0x8036863c
     addi    r0, r3, 0x7
     srwi    r0, r0, 3
@@ -117,15 +117,15 @@ branch_0x8036849c:
     lwz     r0, 0x0(r6)
     clrlwi. r3, r0, 30
     beq-    branch_0x803685b4
-    lis     r6, 0xcc00
-    addi    r6, r6, 0x6400
+    lis     r6, unk_cc006400@h
+    addi    r6, r6, unk_cc006400@l
     slwi    r0, r4, 2
     add     r4, r6, r0
     lwz     r6, 0x80(r4)
     li      r4, 0x0
     ble-    branch_0x803685b4
     cmplwi  r3, 0x8
-    subi    r7, r3, 0x8
+    addi    r7, r3, -0x8
     ble-    branch_0x80368588
     addi    r0, r7, 0x7
     srwi    r0, r0, 3
@@ -214,8 +214,8 @@ branch_0x803685f8:
 branch_0x80368608:
     bl      __OSGetSystemTime
     lwz     r6, 0x0(r31)
-    lis     r5, 0x8040
-    addi    r0, r5, 0x3fc0
+    lis     r5, TypeTime@h
+    addi    r0, r5, TypeTime@l
     slwi    r5, r6, 3
     add     r5, r0, r5
     stw     r4, 0x4(r5)
@@ -229,9 +229,9 @@ branch_0x80368634:
     b       branch_0x80368650
 
 branch_0x8036863c:
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006400@h
     slwi    r0, r4, 2
-    addi    r3, r3, 0x6400
+    addi    r3, r3, unk_cc006400@l
     add     r3, r3, r0
     b       branch_0x80368474
 
@@ -251,14 +251,14 @@ SIInterruptHandler: # 0x80368670
     mflr    r0
     lis     r5, 0xcc00
     stw     r0, 0x4(sp)
-    lis     r7, 0x8040
-    lis     r6, 0x803f
+    lis     r7, Packet@h
+    lis     r6, Si@ha
     stwu    sp, -0x48(sp)
     stmw    r21, 0x1c(sp)
     addi    r30, r3, 0x0
     addi    r31, r4, 0x0
-    addi    r28, r7, 0x3ea0
-    subi    r29, r6, 0x6a78
+    addi    r28, r7, Packet@l
+    addi    r29, r6, Si@l
     lwz     r24, 0x6434(r5)
     clrrwi  r5, r24, 30
     addis   r0, r5, 0x4000
@@ -324,8 +324,8 @@ branch_0x8036876c:
     addi    r5, r31, 0x0
     blrl
 branch_0x8036878c:
-    lis     r3, 0xcc00
-    addi    r4, r3, 0x6400
+    lis     r3, unk_cc006400@h
+    addi    r4, r3, unk_cc006400@l
     lwz     r5, 0x6438(r3)
     slwi    r0, r23, 3
     lis     r3, 0xf00
@@ -351,17 +351,17 @@ branch_0x803687e4:
     bne-    branch_0x80368830
     lis     r3, 0x8000
     lwz     r0, 0xf8(r3)
-    lis     r3, 0x431c
-    lis     r4, 0x8037
+    lis     r3, unk_431bde83@ha
+    lis     r4, GetTypeCallback@ha
     srwi    r0, r0, 2
-    subi    r3, r3, 0x217d
+    addi    r3, r3, unk_431bde83@l
     mulhwu  r0, r3, r0
     srwi    r0, r0, 15
     mulli   r0, r0, 0x41
-    subi    r8, r4, 0x6ba0
+    addi    r8, r4, GetTypeCallback@l
     srwi    r10, r0, 3
     addi    r3, r23, 0x0
-    subi    r4, r13, 0x5770
+    addi    r4, r13, R13Off_m0x5770
     li      r5, 0x1
     li      r7, 0x3
     li      r9, 0x0
@@ -482,11 +482,11 @@ branch_0x803689a0:
 .globl SIEnablePollingInterrupt
 SIEnablePollingInterrupt: # 0x803689b4
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, Packet@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stw     r31, 0x2c(sp)
-    addi    r31, r4, 0x3ea0
+    addi    r31, r4, Packet@l
     stw     r30, 0x28(sp)
     stw     r29, 0x24(sp)
     addi    r29, r3, 0x0
@@ -536,9 +536,9 @@ SIRegisterPollingHandler: # 0x80368a4c
     stw     r30, 0x10(sp)
     mr      r30, r3
     bl      OSDisableInterrupts
-    lis     r4, 0x8040
+    lis     r4, RDSTHandler@h
     li      r0, 0x4
-    addi    r4, r4, 0x4040
+    addi    r4, r4, RDSTHandler@l
     mtctr   r0
     addi    r31, r3, 0x0
     addi    r3, r4, 0x0
@@ -561,9 +561,9 @@ branch_0x80368ab0:
     lwz     r0, 0x0(r4)
     cmplwi  r0, 0x0
     bne-    branch_0x80368ae8
-    lis     r3, 0x8040
+    lis     r3, RDSTHandler@h
     slwi    r4, r5, 2
-    addi    r0, r3, 0x4040
+    addi    r0, r3, RDSTHandler@l
     add     r3, r0, r4
     stw     r30, 0x0(r3)
     li      r3, 0x1
@@ -598,9 +598,9 @@ SIUnregisterPollingHandler: # 0x80368b18
     stw     r30, 0x10(sp)
     mr      r30, r3
     bl      OSDisableInterrupts
-    lis     r4, 0x8040
+    lis     r4, RDSTHandler@h
     li      r0, 0x4
-    addi    r5, r4, 0x4040
+    addi    r5, r4, RDSTHandler@l
     mtctr   r0
     addi    r31, r3, 0x0
     addi    r3, r5, 0x0
@@ -609,9 +609,9 @@ branch_0x80368b50:
     lwz     r0, 0x0(r3)
     cmplw   r0, r30
     bne-    branch_0x80368bdc
-    lis     r3, 0x8040
+    lis     r3, RDSTHandler@h
     slwi    r4, r4, 2
-    addi    r0, r3, 0x4040
+    addi    r0, r3, RDSTHandler@l
     add     r3, r0, r4
     li      r0, 0x0
     stw     r0, 0x0(r3)
@@ -663,13 +663,13 @@ branch_0x80368bf4:
 .globl SIInit
 SIInit: # 0x80368c0c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, Packet@h
     stw     r0, 0x4(sp)
-    addi    r6, r3, 0x3ea0
-    lis     r3, 0x803f
+    addi    r6, r3, Packet@l
+    lis     r3, Si@ha
     stwu    sp, -0x8(sp)
     li      r5, -0x1
-    subi    r4, r3, 0x6a78
+    addi    r4, r3, Si@l
     stw     r5, 0x60(r6)
     li      r0, 0x0
     li      r3, 0x0
@@ -678,17 +678,17 @@ SIInit: # 0x80368c0c
     stw     r5, 0x0(r6)
     stw     r0, 0x4(r4)
     bl      SISetSamplingRate
-    lis     r3, 0xcc00
+    lis     r3, unk_cc006400@h
 branch_0x80368c50:
-    addi    r4, r3, 0x6400
+    addi    r4, r3, unk_cc006400@l
     lwzu    r0, 0x34(r4)
     clrlwi. r0, r0, 31
     bne+    branch_0x80368c50
-    lis     r0, 0x8000
-    lis     r3, 0x8037
+    lis     r0, unk_80000014@h
+    lis     r3, SIInterruptHandler@ha
     stw     r0, 0x0(r4)
-    subi    r4, r3, 0x7990
-    li      r3, 0x14
+    addi    r4, r3, SIInterruptHandler@l
+    addi    r3, r0, unk_80000014@l
     bl      __OSSetInterruptHandler
     li      r3, 0x800
     bl      __OSUnmaskInterrupts
@@ -709,7 +709,7 @@ branch_0x80368c50:
 .globl __SITransfer
 __SITransfer: # 0x80368cb0
     mflr    r0
-    lis     r9, 0x803f
+    lis     r9, Si@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x48(sp)
     stmw    r25, 0x2c(sp)
@@ -719,7 +719,7 @@ __SITransfer: # 0x80368cb0
     addi    r29, r6, 0x0
     addi    r30, r7, 0x0
     addi    r31, r8, 0x0
-    subi    r25, r9, 0x6a78
+    addi    r25, r9, Si@l
     bl      OSDisableInterrupts
     lwz     r0, 0x0(r25)
     cmpwi   r0, -0x1
@@ -729,10 +729,10 @@ __SITransfer: # 0x80368cb0
     b       branch_0x80368ea8
 
 branch_0x80368cfc:
-    lis     r6, 0xcc00
+    lis     r6, unk_cc006400@h
     slwi    r0, r26, 3
     lwz     r7, 0x6438(r6)
-    lis     r4, 0xf00
+    lis     r4, unk_0efffff8@ha
     sraw    r0, r4, r0
     and     r7, r7, r0
     stw     r7, 0x6438(r6)
@@ -746,14 +746,14 @@ branch_0x80368cfc:
     stw     r29, 0xc(r25)
     ble-    branch_0x80368ddc
     cmplwi  r4, 0x8
-    subi    r7, r4, 0x8
+    addi    r7, r4, unk_0efffff8@l
     ble-    branch_0x80368e90
     addi    r0, r7, 0x7
     srwi    r0, r0, 3
     cmplwi  r7, 0x0
     mtctr   r0
     addi    r7, r27, 0x0
-    addi    r6, r6, 0x6400
+    addi    r6, r6, unk_cc006400@l
     ble-    branch_0x80368e90
 branch_0x80368d64:
     lwz     r0, 0x0(r7)
@@ -790,8 +790,8 @@ branch_0x80368dc8:
     addi    r7, r7, 0x4
     bdnz+      branch_0x80368dc8
 branch_0x80368ddc:
-    lis     r4, 0xcc00
-    addi    r6, r4, 0x6400
+    lis     r4, unk_cc006400@h
+    addi    r6, r4, unk_cc006400@l
     lwzu    r0, 0x34(r6)
     li      r4, 0x1
     stw     r0, 0x24(sp)
@@ -846,9 +846,9 @@ branch_0x80368e50:
     b       branch_0x80368ea8
 
 branch_0x80368e90:
-    lis     r6, 0xcc00
+    lis     r6, unk_cc006400@h
     slwi    r0, r5, 2
-    addi    r7, r6, 0x6400
+    addi    r7, r6, unk_cc006400@l
     add     r6, r27, r0
     add     r7, r7, r0
     b       branch_0x80368db8
@@ -877,9 +877,9 @@ SIGetStatus: # 0x80368ebc
     srw     r31, r31, r0
     rlwinm. r0, r31, 0, 28, 28
     beq-    branch_0x80368f18
-    lis     r4, 0x803f
+    lis     r4, Type@ha
     slwi    r5, r30, 2
-    subi    r0, r4, 0x6a64
+    addi    r0, r4, Type@l
     add     r4, r0, r5
     lwz     r0, 0x0(r4)
     rlwinm. r0, r0, 0, 24, 24
@@ -900,8 +900,8 @@ branch_0x80368f18:
 .globl SISetCommand
 SISetCommand: # 0x80368f38
     mulli   r0, r3, 0xc
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x6400
+    lis     r3, unk_cc006400@h
+    addi    r3, r3, unk_cc006400@l
     stwx    r4, r3, r0
     blr
 
@@ -924,8 +924,8 @@ SISetXY: # 0x80368f5c
     slwi    r31, r3, 16
     or      r31, r31, r0
     bl      OSDisableInterrupts
-    lis     r4, 0x803f
-    subi    r4, r4, 0x6a78
+    lis     r4, Si@ha
+    addi    r4, r4, Si@l
     lwz     r0, 0x4(r4)
     addi    r5, r4, 0x4
     lis     r4, 0xcc00
@@ -953,15 +953,15 @@ SIEnablePolling: # 0x80368fc8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     bne-    branch_0x80368ff0
-    lis     r3, 0x803f
-    subi    r3, r3, 0x6a78
+    lis     r3, Si@ha
+    addi    r3, r3, Si@l
     lwz     r3, 0x4(r3)
     b       branch_0x80369050
 
 branch_0x80368ff0:
     bl      OSDisableInterrupts
-    lis     r4, 0x803f
-    subi    r4, r4, 0x6a78
+    lis     r4, Si@ha
+    addi    r4, r4, Si@l
     srwi    r31, r31, 24
     lwz     r0, 0x4(r4)
     addi    r5, r4, 0x4
@@ -975,8 +975,8 @@ branch_0x80368ff0:
     rlwinm  r31, r31, 0, 24, 5
     or      r0, r0, r31
     stw     r0, 0x0(r5)
-    lis     r4, 0xcc00
-    addi    r4, r4, 0x6400
+    lis     r4, unk_cc006400@h
+    addi    r4, r4, unk_cc006400@l
     lwz     r31, 0x0(r5)
     lis     r0, 0x8000
     stw     r0, 0x38(r4)
@@ -999,15 +999,15 @@ SIDisablePolling: # 0x80369064
     stw     r31, 0x14(sp)
     mr.     r31, r3
     bne-    branch_0x8036908c
-    lis     r3, 0x803f
-    subi    r3, r3, 0x6a78
+    lis     r3, Si@ha
+    addi    r3, r3, Si@l
     lwz     r3, 0x4(r3)
     b       branch_0x803690bc
 
 branch_0x8036908c:
     bl      OSDisableInterrupts
-    lis     r4, 0x803f
-    subi    r4, r4, 0x6a78
+    lis     r4, Si@ha
+    addi    r4, r4, Si@l
     lwz     r0, 0x4(r4)
     rlwinm  r31, r31, 8, 24, 27
     addi    r5, r4, 0x4
@@ -1028,11 +1028,11 @@ branch_0x803690bc:
 .globl SIGetResponseRaw
 SIGetResponseRaw: # 0x803690d0
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, Packet@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
-    addi    r31, r4, 0x3ea0
+    addi    r31, r4, Packet@l
     stw     r30, 0x20(sp)
     addi    r30, r3, 0x0
     stw     r29, 0x1c(sp)
@@ -1044,9 +1044,9 @@ SIGetResponseRaw: # 0x803690d0
     srw     r29, r29, r0
     rlwinm. r0, r29, 0, 28, 28
     beq-    branch_0x80369138
-    lis     r4, 0x803f
+    lis     r4, Type@ha
     slwi    r5, r30, 2
-    subi    r0, r4, 0x6a64
+    addi    r0, r4, Type@l
     add     r4, r0, r5
     lwz     r0, 0x0(r4)
     rlwinm. r0, r0, 0, 24, 24
@@ -1058,8 +1058,8 @@ branch_0x80369138:
     rlwinm. r0, r29, 0, 26, 26
     beq-    branch_0x80369184
     mulli   r4, r30, 0xc
-    lis     r3, 0xcc00
-    addi    r0, r3, 0x6400
+    lis     r3, unk_cc006400@h
+    addi    r0, r3, unk_cc006400@l
     add     r3, r0, r4
     slwi    r4, r30, 3
     lwz     r0, 0x4(r3)
@@ -1089,13 +1089,13 @@ branch_0x80369188:
 .globl SIGetResponse
 SIGetResponse: # 0x803691a4
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, Packet@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r29, r3, 0x0
     addi    r30, r4, 0x0
-    addi    r28, r5, 0x3ea0
+    addi    r28, r5, Packet@l
     bl      OSDisableInterrupts
     addi    r31, r3, 0x0
     addi    r3, r29, 0x0
@@ -1103,8 +1103,8 @@ SIGetResponse: # 0x803691a4
     rlwinm. r0, r3, 0, 26, 26
     beq-    branch_0x80369214
     mulli   r4, r29, 0xc
-    lis     r3, 0xcc00
-    addi    r0, r3, 0x6400
+    lis     r3, unk_cc006400@h
+    addi    r0, r3, unk_cc006400@l
     add     r4, r0, r4
     slwi    r3, r29, 3
     lwz     r0, 0x4(r4)
@@ -1144,21 +1144,21 @@ branch_0x80369248:
 .globl AlarmHandler_80369268
 AlarmHandler_80369268: # 0x80369268
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, Alarm@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x3f20
-    lis     r4, 0x6666
+    addi    r0, r4, Alarm@l
+    lis     r4, unk_66666667@h
     subf    r0, r0, r3
     stwu    sp, -0x20(sp)
-    addi    r3, r4, 0x6667
+    addi    r3, r4, unk_66666667@l
     mulhw   r0, r3, r0
     stw     r31, 0x1c(sp)
     srawi   r0, r0, 4
     srwi    r3, r0, 31
     add     r0, r0, r3
-    lis     r3, 0x8040
+    lis     r3, Packet@h
     slwi    r4, r0, 5
-    addi    r0, r3, 0x3ea0
+    addi    r0, r3, Packet@l
     add     r31, r0, r4
     lwz     r3, 0x0(r31)
     cmpwi   r3, -0x1
@@ -1188,8 +1188,8 @@ SITransfer: # 0x803692f4
     stwu    sp, -0x60(sp)
     stmw    r19, 0x2c(sp)
     addi    r24, r3, 0x0
-    lis     r3, 0x8040
-    addi    r23, r3, 0x3ea0
+    lis     r3, Packet@h
+    addi    r23, r3, Packet@l
     slwi    r0, r24, 5
     addi    r25, r4, 0x0
     addi    r26, r5, 0x0
@@ -1204,7 +1204,7 @@ SITransfer: # 0x803692f4
     addi    r21, r3, 0x0
     cmpwi   r0, -0x1
     bne-    branch_0x80369358
-    lis     r3, 0x803f
+    lis     r3, unk_803f0000@h
     lwz     r0, -0x6a78(r3)
     cmpw    r0, r24
     bne-    branch_0x80369368
@@ -1222,7 +1222,7 @@ branch_0x80369368:
     or.     r0, r5, r0
     bne-    branch_0x8036938c
     addi    r19, r4, 0x0
-    addi    r20, r3, 0x0
+    addi    r20, r3, unk_803f0000@l
     b       branch_0x803693a4
 
 branch_0x8036938c:
@@ -1243,9 +1243,9 @@ branch_0x803693a4:
     mulli   r0, r24, 0x28
     subfc   r30, r4, r19
     subfe   r31, r3, r20
-    lis     r4, 0x8037
+    lis     r4, AlarmHandler_80369268@ha
     add     r3, r23, r0
-    subi    r7, r4, 0x6d98
+    addi    r7, r4, AlarmHandler_80369268@l
     addi    r6, r30, 0x0
     addi    r5, r31, 0x0
     addi    r3, r3, 0x80
@@ -1294,13 +1294,13 @@ GetTypeCallback: # 0x80369460
     stwu    sp, -0x30(sp)
     stmw    r26, 0x18(sp)
     addi    r27, r3, 0x0
-    lis     r3, 0x803f
-    subi    r0, r3, 0x6a64
+    lis     r3, Type@ha
+    addi    r0, r3, Type@l
     slwi    r29, r27, 2
     add     r30, r0, r29
-    lis     r3, 0x8040
+    lis     r3, Packet@h
     addi    r26, r4, 0x0
-    addi    r31, r3, 0x3ea0
+    addi    r31, r3, Packet@l
     lwz     r0, 0x0(r30)
     rlwinm  r0, r0, 0, 25, 23
     stw     r0, 0x0(r30)
@@ -1315,10 +1315,10 @@ GetTypeCallback: # 0x80369460
     clrlwi. r0, r26, 28
     stw     r3, 0x120(r5)
     srw     r4, r4, r27
-    lwz     r3, -0x5768(r13)
+    lwz     r3, R13Off_m0x5768(r13)
     lwz     r28, 0x0(r30)
     andc    r0, r3, r4
-    stw     r0, -0x5768(r13)
+    stw     r0, R13Off_m0x5768(r13)
     and     r26, r3, r4
     bne-    branch_0x80369500
     rlwinm  r3, r28, 0, 3, 4
@@ -1363,16 +1363,16 @@ branch_0x80369558:
     beq-    branch_0x803695bc
     rlwinm. r0, r26, 0, 11, 11
     beq-    branch_0x803695bc
-    lis     r3, 0xd0
-    subi    r0, r3, 0x100
+    lis     r3, unk_00cfff00@ha
+    addi    r0, r3, unk_00cfff00@l
     and     r0, r26, r0
     oris    r0, r0, 0x4e10
     add     r4, r31, r29
     stwu    r0, 0x1f0(r4)
     li      r0, 0x80
-    lis     r3, 0x8037
+    lis     r3, GetTypeCallback@ha
     stw     r0, 0x0(r30)
-    subi    r8, r3, 0x6ba0
+    addi    r8, r3, GetTypeCallback@l
     addi    r3, r27, 0x0
     addi    r6, r30, 0x0
     li      r5, 0x3
@@ -1385,8 +1385,8 @@ branch_0x80369558:
 branch_0x803695bc:
     rlwinm. r0, r28, 0, 11, 11
     beq-    branch_0x80369630
-    lis     r3, 0xd0
-    subi    r3, r3, 0x100
+    lis     r3, unk_00cfff00@ha
+    addi    r3, r3, unk_00cfff00@l
     and     r0, r26, r3
     and     r3, r28, r3
     cmplw   r0, r3
@@ -1402,9 +1402,9 @@ branch_0x803695f4:
     add     r4, r31, r29
     stwu    r0, 0x1f0(r4)
     li      r0, 0x80
-    lis     r3, 0x8037
+    lis     r3, GetTypeCallback@ha
     stw     r0, 0x0(r30)
-    subi    r8, r3, 0x6ba0
+    addi    r8, r3, GetTypeCallback@l
     addi    r3, r27, 0x0
     addi    r6, r30, 0x0
     li      r5, 0x3
@@ -1417,8 +1417,8 @@ branch_0x803695f4:
 branch_0x80369630:
     rlwinm. r0, r28, 0, 1, 1
     beq-    branch_0x80369690
-    lis     r3, 0xd0
-    subi    r0, r3, 0x100
+    lis     r3, unk_00cfff00@ha
+    addi    r0, r3, unk_00cfff00@l
     and     r28, r28, r0
     oris    r28, r28, 0x10
     addi    r3, r27, 0x0
@@ -1428,9 +1428,9 @@ branch_0x80369630:
     add     r4, r31, r29
     stwu    r0, 0x1f0(r4)
     li      r0, 0x80
-    lis     r3, 0x8037
+    lis     r3, GetTypeCallback@ha
     stw     r0, 0x0(r30)
-    subi    r8, r3, 0x6ba0
+    addi    r8, r3, GetTypeCallback@l
     addi    r3, r27, 0x0
     addi    r6, r30, 0x0
     li      r5, 0x3
@@ -1481,20 +1481,20 @@ SIGetType: # 0x803696f8
     stmw    r27, 0x14(sp)
     mr      r27, r3
     bl      OSDisableInterrupts
-    lis     r4, 0x803f
+    lis     r4, Type@ha
     slwi    r5, r27, 2
-    subi    r0, r4, 0x6a64
+    addi    r0, r4, Type@l
     add     r30, r0, r5
     lwz     r28, 0x0(r30)
     mr      r29, r3
     bl      __OSGetSystemTime
-    lis     r5, 0x8040
+    lis     r5, TypeTime@h
     slwi    r6, r27, 3
-    addi    r0, r5, 0x3fc0
+    addi    r0, r5, TypeTime@l
     add     r31, r0, r6
     lwz     r6, 0x4(r31)
-    lis     r5, 0x803f
-    subi    r5, r5, 0x6a78
+    lis     r5, Si@ha
+    addi    r5, r5, Si@l
     lwz     r0, 0x0(r31)
     subfc   r4, r6, r4
     subfe   r0, r0, r3
@@ -1521,8 +1521,8 @@ branch_0x8036978c:
 branch_0x80369798:
     lis     r3, 0x8000
     lwz     r6, 0xf8(r3)
-    lis     r5, 0x1062
-    addi    r5, r5, 0x4dd3
+    lis     r5, unk_10624dd3@h
+    addi    r5, r5, unk_10624dd3@l
     srwi    r6, r6, 2
     mulhwu  r5, r5, r6
     srwi    r5, r5, 6
@@ -1545,8 +1545,8 @@ branch_0x80369798:
 branch_0x803697f0:
     lis     r3, 0x8000
     lwz     r6, 0xf8(r3)
-    lis     r5, 0x1062
-    addi    r5, r5, 0x4dd3
+    lis     r5, unk_10624dd3@h
+    addi    r5, r5, unk_10624dd3@l
     srwi    r6, r6, 2
     mulhwu  r5, r5, r6
     srwi    r5, r5, 6
@@ -1570,13 +1570,13 @@ branch_0x8036983c:
 branch_0x80369848:
     bl      __OSGetSystemTime
     stw     r4, 0x4(r31)
-    lis     r4, 0x431c
-    lis     r5, 0x8037
+    lis     r4, unk_431bde83@ha
+    lis     r5, GetTypeCallback@ha
     stw     r3, 0x0(r31)
-    lis     r3, 0x8000
-    subi    r8, r5, 0x6ba0
+    lis     r3, unk_80000000@h
+    addi    r8, r5, GetTypeCallback@l
     lwz     r0, 0xf8(r3)
-    subi    r4, r4, 0x217d
+    addi    r4, r4, unk_431bde83@l
     addi    r3, r27, 0x0
     srwi    r0, r0, 2
     mulhwu  r0, r4, r0
@@ -1584,7 +1584,7 @@ branch_0x80369848:
     mulli   r0, r0, 0x41
     srwi    r10, r0, 3
     addi    r6, r30, 0x0
-    subi    r4, r13, 0x576c
+    addi    r4, r13, R13Off_m0x576c
     li      r5, 0x1
     li      r7, 0x3
     li      r9, 0x0
@@ -1610,22 +1610,22 @@ SIGetTypeAsync: # 0x803698bc
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     stw     r28, 0x10(sp)
-    addi    r28, r3, 0x0
+    addi    r28, r3, unk_80000000@l
     bl      OSDisableInterrupts
     addi    r30, r3, 0x0
     addi    r3, r28, 0x0
     bl      SIGetType
-    lis     r4, 0x803f
+    lis     r4, Type@ha
     slwi    r5, r28, 2
-    subi    r0, r4, 0x6a64
+    addi    r0, r4, Type@l
     add     r4, r0, r5
     lwz     r0, 0x0(r4)
     addi    r29, r3, 0x0
     rlwinm. r0, r0, 0, 24, 24
     beq-    branch_0x803699b8
-    lis     r3, 0x8040
+    lis     r3, TypeCallback@h
     slwi    r4, r28, 4
-    addi    r0, r3, 0x4000
+    addi    r0, r3, TypeCallback@l
     add     r4, r0, r4
     lwz     r0, 0x0(r4)
     li      r5, 0x0
@@ -1671,8 +1671,9 @@ branch_0x80369990:
     stwx    r31, r4, r0
     b       branch_0x803699cc
 
+branch_0x803699b4:
+    b       branch_0x803699cc
 
-.incbin "./baserom/code/Text_0x80005600.bin", 0x3643b4, 0x803699b8 - 0x803699b4
 branch_0x803699b8:
     addi    r12, r31, 0x0
     mtlr    r12

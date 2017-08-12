@@ -1,510 +1,548 @@
 
-/*
-  00000198 000000 80003298 gTRKInterruptVectorTable (entry of .init) 	TRK_MINNOW_DOLPHIN.a __exception.s
-  000020cc 000000 800051cc gTRKInterruptVectorTableEnd (entry of .init) 	TRK_MINNOW_DOLPHIN.a __exception.s
-*/
+# 0x80003298
+.ascii "Metrowerks Target Resident Kernel for PowerPC"
 
-.globl gTRKInterruptVectorTable
-gTRKInterruptVectorTable: # 0x80003298
+.zero 0x80003398 - 0x80003298 - 45
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x198, 0x80003398 - 0x80003298
 
-.string "Metrowerks Target Resident Kernel for PowerPC"
-.zero 0x100-46
-
-
-SystemResetInterrupt: # 0x80000100
+.globl TRKInterrupt_0
+TRKInterrupt_0: # 0x80003398
     b       __TRK_reset
-.zero 0x100-4*1
 
 
-MachineCheckInterrupt: # 0x80000200
-    mtsprg1	r2
-    mfsrr0	r2
-    icbi	r0, r2
-    mfdar	r2
-    dcbi	r0, r2
-    mfsprg1	r2
-    mtsprg1	r2
-    mtsprg2	r3
-    mtsprg3	r4
-    mfsrr0	r2
-    mfsrr1	r4
-    mfmsr	r3
-    ori	    r3, r3, 0x30
-    mtsrr1	r3
-    lis	    r3, TRKInterruptHandler@h
-    ori	    r3, r3, TRKInterruptHandler@l
-    mtsrr0	r3
-    li	    r3, 0x200
+.zero 0x80003498 - 0x8000339c
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x29c, 0x80003498 - 0x8000339c
+
+.globl TRKInterrupt_1
+TRKInterrupt_1: # 0x80003498
+    mtspr   273, r2
+    mfspr   r2, 26
+    icbi    r0, r2
+    mfspr   r2, 19
+    dcbi    r0, r2
+    mfspr   r2, 273
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x200
     rfi
-.zero 0x100-4*19
 
 
-DSIInterrupt: # 0x80000300
-    mtsprg1	r2
-    mtsprg2	r3
-    mtsprg3	r4
-    mfsrr0	r2
-    mfsrr1	r4
-    mfmsr	r3
-    ori	    r3, r3, 0x30
-    mtsrr1  r3
-    lis	    r3, TRKInterruptHandler@h
-    ori	    r3, r3, TRKInterruptHandler@l
-    mtsrr0	r3
-    li	    r3, 0x300
+.zero 0x80003598 - 0x800034e4
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x3e4, 0x80003598 - 0x800034e4
+
+.globl TRKInterrupt_2
+TRKInterrupt_2: # 0x80003598
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x300
     rfi
-.zero 0x100-4*13
 
 
-ISIInterrupt: # 0x80000400
-    mtsprg1	r2
-    mtsprg2	r3
-    mtsprg3	r4
-    mfsrr0	r2
-    mfsrr1	r4
-    mfmsr	r3
-    ori	    r3, r3, 0x30
-    mtsrr1	r3
-    lis	    r3, TRKInterruptHandler@h
-    ori	    r3, r3, TRKInterruptHandler@l
-    mtsrr0	r3
-    li	    r3, 0x400
+.zero 0x80003698 - 0x800035cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x4cc, 0x80003698 - 0x800035cc
+
+.globl TRKInterrupt_3
+TRKInterrupt_3: # 0x80003698
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x400
     rfi
-.zero 0x100-4*13
 
 
-ExternalInterrupt: # 0x80000500
-    mtsprg1	r2
-    mtsprg2	r3
-    mtsprg3	r4
-    mfsrr0	r2
-    mfsrr1	r4
-    mfmsr	r3
-    ori	    r3, r3, 0x30
-    mtsrr1	r3
-    lis	    r3, TRKInterruptHandler@h
-    ori	    r3, r3, TRKInterruptHandler@l
-    mtsrr0	r3
-    li	    r3, 0x500
+.zero 0x80003798 - 0x800036cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x5cc, 0x80003798 - 0x800036cc
+
+.globl TRKInterrupt_4
+TRKInterrupt_4: # 0x80003798
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x500
     rfi
-.zero 0x100-4*13
 
 
-AlignmentInterrupt: # 0x80000600
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x600
-rfi
-.zero 0x100-4*13
+.zero 0x80003898 - 0x800037cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x6cc, 0x80003898 - 0x800037cc
+
+.globl TRKInterrupt_5
+TRKInterrupt_5: # 0x80003898
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x600
+    rfi
 
 
-ProgramInterrupt: # 0x80000700
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x700
-rfi
-.zero 0x100-4*13
+.zero 0x80003998 - 0x800038cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x7cc, 0x80003998 - 0x800038cc
+
+.globl TRKInterrupt_6
+TRKInterrupt_6: # 0x80003998
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x700
+    rfi
 
 
-FPunavailableInterrupt: # 0x80000800
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x800
-rfi
-.zero 0x100-4*13
+.zero 0x80003a98 - 0x800039cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x8cc, 0x80003a98 - 0x800039cc
+
+.globl TRKInterrupt_7
+TRKInterrupt_7: # 0x80003a98
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x800
+    rfi
 
 
-DecrementerInterrupt: # 0x80000900
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x900
-rfi
-.zero 0x100-4*13
+.zero 0x80003b98 - 0x80003acc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x9cc, 0x80003b98 - 0x80003acc
+
+.globl TRKInterrupt_8
+TRKInterrupt_8: # 0x80003b98
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x900
+    rfi
 
 
-# 0x80000a00
-.zero 0x100-0
+.zero 0x80003e98 - 0x80003bcc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0xacc, 0x80003e98 - 0x80003bcc
+
+.globl TRKInterrupt_11
+TRKInterrupt_11: # 0x80003e98
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0xc00
+    rfi
 
 
-# 0x80000b00
-.zero 0x100-0
+.zero 0x80003f98 - 0x80003ecc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0xdcc, 0x80003f98 - 0x80003ecc
+
+.globl TRKInterrupt_12
+TRKInterrupt_12: # 0x80003f98
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0xd00
+    rfi
 
 
-SystemCallInterrupt: # 0x80000c00
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0xC00
-rfi
-.zero 0x100-4*13
+.zero 0x80004098 - 0x80003fcc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0xecc, 0x80004098 - 0x80003fcc
+
+.globl TRKInterrupt_13
+TRKInterrupt_13: # 0x80004098
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0xe00
+    rfi
 
 
-TraceInterrupt: # 0x80000d00
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0xD00
-rfi
-.zero 0x100-4*13
+.zero 0x80004198 - 0x800040cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0xfcc, 0x80004198 - 0x800040cc
+
+.globl TRKInterrupt_14
+TRKInterrupt_14: # 0x80004198
+    b       branch_0x800041ec
 
 
-# 0x80000e00
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0xE00
-rfi
-.zero 0x100-4*13
+.zero 0x800041b8 - 0x8000419c
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x109c, 0x800041b8 - 0x8000419c
+
+.globl TRKInterrupt_14_
+TRKInterrupt_14_: # 0x800041b8
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0xf20
+    rfi
+
+branch_0x800041ec:
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0xf00
+    rfi
 
 
-PerformanceMonitorInterrupt: # 0x80000f00
-b	  loc_800041EC
-.zero 4*7
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0xF20
-rfi
+.zero 0x80004298 - 0x80004220
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x1120, 0x80004298 - 0x80004220
 
-loc_800041EC:
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0xF00
-rfi
-.zero 0x100-4*34
-
-
-# 0x80001000
-mtsprg1	  r2
-mfcr	  r2
-mtsprg2	  r2
-mfmsr	  r2
-andis.	  r2, r2, 2
-beq	  loc_800042C8
-mfmsr	  r2
-xoris	  r2, r2, 2
-sync
-mtmsr	  r2
-sync
-mtsprg1	  r2
-
-loc_800042C8:
-mfsprg2	  r2
-mtcr	  r2
-mfsprg1	  r2
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1000
-rfi
-.zero 0x100-4*28
+.globl TRKInterrupt_15
+TRKInterrupt_15: # 0x80004298
+    mtspr   273, r2
+    mfcr    r2
+    mtspr   274, r2
+    mfmsr   r2
+    andis.  r2, r2, 0x2
+    beq-    branch_0x800042c8
+    mfmsr   r2
+    xoris   r2, r2, 0x2
+    sync
+    mtmsr   r2
+    sync
+    mtspr   273, r2
+branch_0x800042c8:
+    mfspr   r2, 274
+    mtcrf   255, r2
+    mfspr   r2, 273
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1000
+    rfi
 
 
-# 0x80001100
-mtsprg1	  r2
-mfcr	  r2
-mtsprg2	  r2
-mfmsr	  r2
-andis.	  r2, r2, 2
-beq	  loc_800043C8
-mfmsr	  r2
-xoris	  r2, r2, 2
-sync
-mtmsr	  r2
-sync
-mtsprg1	  r2
+.zero 0x80004398 - 0x80004308
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x1208, 0x80004398 - 0x80004308
 
-loc_800043C8:
-mfsprg2	  r2
-mtcr	  r2
-mfsprg1	  r2
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1100
-rfi
-.zero 0x100-4*28
-
-
-# 0x80001200
-mtsprg1	  r2
-mfcr	  r2
-mtsprg2	  r2
-mfmsr	  r2
-andis.	  r2, r2, 2
-beq	  loc_800044C8
-mfmsr	  r2
-xoris	  r2, r2, 2
-sync
-mtmsr	  r2
-sync
-mtsprg1	  r2
-
-loc_800044C8:
-mfsprg2	  r2
-mtcr	  r2
-mfsprg1	  r2
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1200
-rfi
-.zero 0x100-4*28
+.globl TRKInterrupt_16
+TRKInterrupt_16: # 0x80004398
+    mtspr   273, r2
+    mfcr    r2
+    mtspr   274, r2
+    mfmsr   r2
+    andis.  r2, r2, 0x2
+    beq-    branch_0x800043c8
+    mfmsr   r2
+    xoris   r2, r2, 0x2
+    sync
+    mtmsr   r2
+    sync
+    mtspr   273, r2
+branch_0x800043c8:
+    mfspr   r2, 274
+    mtcrf   255, r2
+    mfspr   r2, 273
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1100
+    rfi
 
 
-IABRInterrupt: # 0x80001300
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1300
-rfi
-.zero 0x100-4*13
+.zero 0x80004498 - 0x80004408
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x1308, 0x80004498 - 0x80004408
+
+.globl TRKInterrupt_17
+TRKInterrupt_17: # 0x80004498
+    mtspr   273, r2
+    mfcr    r2
+    mtspr   274, r2
+    mfmsr   r2
+    andis.  r2, r2, 0x2
+    beq-    branch_0x800044c8
+    mfmsr   r2
+    xoris   r2, r2, 0x2
+    sync
+    mtmsr   r2
+    sync
+    mtspr   273, r2
+branch_0x800044c8:
+    mfspr   r2, 274
+    mtcrf   255, r2
+    mfspr   r2, 273
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1200
+    rfi
 
 
-# 0x80001400
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1400
-rfi
-.zero 0x100-4*13
+.zero 0x80004598 - 0x80004508
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x1408, 0x80004598 - 0x80004508
+
+.globl TRKInterrupt_18
+TRKInterrupt_18: # 0x80004598
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1300
+    rfi
 
 
-# 0x80001500
-.zero 0x100
+.zero 0x80004698 - 0x800045cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x14cc, 0x80004698 - 0x800045cc
+
+.globl TRKInterrupt_19
+TRKInterrupt_19: # 0x80004698
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1400
+    rfi
 
 
-# 0x80001600
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1600
-rfi
-.zero 0x100-4*13
+.zero 0x80004898 - 0x800046cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x15cc, 0x80004898 - 0x800046cc
+
+.globl TRKInterrupt_21
+TRKInterrupt_21: # 0x80004898
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1600
+    rfi
 
 
-ThermalInterrupt: # 0x80001700
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1700
-rfi
-.zero 0x100-4*13
+.zero 0x80004998 - 0x800048cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x17cc, 0x80004998 - 0x800048cc
+
+.globl TRKInterrupt_22
+TRKInterrupt_22: # 0x80004998
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1700
+    rfi
 
 
-# 0x80001800
-.zero 0x100
+.zero 0x80004e98 - 0x800049cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x18cc, 0x80004e98 - 0x800049cc
 
-# 0x80001900
-.zero 0x100
-
-# 0x80001a00
-.zero 0x100
-
-# 0x80001b00
-.zero 0x100
-
-
-# 0x80001c00
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1C00
-rfi
-.zero 0x100-4*13
+.globl TRKInterrupt_27
+TRKInterrupt_27: # 0x80004e98
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1c00
+    rfi
 
 
-# 0x80001d00
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1D00
-rfi
-.zero 0x100-4*13
+.zero 0x80004f98 - 0x80004ecc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x1dcc, 0x80004f98 - 0x80004ecc
+
+.globl TRKInterrupt_28
+TRKInterrupt_28: # 0x80004f98
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1d00
+    rfi
 
 
-# 0x80001e00
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1E00
-rfi
-.zero 0x100-4*13
+.zero 0x80005098 - 0x80004fcc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x1ecc, 0x80005098 - 0x80004fcc
+
+.globl TRKInterrupt_29
+TRKInterrupt_29: # 0x80005098
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1e00
+    rfi
 
 
-# 0x80001f00
-mtsprg1	  r2
-mtsprg2	  r3
-mtsprg3	  r4
-mfsrr0	  r2
-mfsrr1	  r4
-mfmsr	  r3
-ori	  r3, r3, 0x30
-mtsrr1	  r3
-lis	  r3, TRKInterruptHandler@h
-ori	  r3, r3, TRKInterruptHandler@l
-mtsrr0	  r3
-li	  r3, 0x1F00
-rfi
+.zero 0x80005198 - 0x800050cc
+#.incbin "./baserom/code/Text_0x80003100.bin", 0x1fcc, 0x80005198 - 0x800050cc
 
-
-.globl gTRKInterruptVectorTableEnd
-gTRKInterruptVectorTableEnd: # 800051cc
+.globl TRKInterrupt_30
+TRKInterrupt_30: # 0x80005198
+    mtspr   273, r2
+    mtspr   274, r3
+    mtspr   275, r4
+    mfspr   r2, 26
+    mfspr   r4, 27
+    mfmsr   r3
+    ori     r3, r3, 0x30
+    mtspr   27, r3
+    lis     r3, TRKInterruptHandler@h
+    ori     r3, r3, TRKInterruptHandler@l
+    mtspr   26, r3
+    li      r3, 0x1f00
+    rfi
 

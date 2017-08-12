@@ -2,8 +2,8 @@
 .globl __cvt_fp2unsigned
 __cvt_fp2unsigned: # 0x8033829c
     stwu    sp, -0x10(sp)
-    lis     r4, 0x803a
-    ori     r4, r4, 0xa8e8
+    lis     r4, unk_803aa8e8@h
+    ori     r4, r4, unk_803aa8e8@l
     li      r3, 0x0
     lfd     f0, 0x0(r4)
     lfd     f3, 0x8(r4)
@@ -11,7 +11,7 @@ __cvt_fp2unsigned: # 0x8033829c
     fcmpu   cr0, f1, f0
     fcmpu   cr6, f1, f3
     blt-    branch_0x803382f0
-    subi    r3, r3, 0x1
+    addi    r3, r3, -0x1
     bge-    cr6, branch_0x803382f0
     fcmpu   cr7, f1, f4
     fmr     f2, f1
@@ -51,7 +51,7 @@ branch_0x80338320:
     subf    r9, r9, r10
     mtctr   r9
     cmpwi   r9, 0x20
-    subi    r7, r9, 0x20
+    addi    r7, r9, -0x20
     blt-    branch_0x80338358
     srw     r8, r3, r7
     li      r7, 0x0
@@ -139,7 +139,7 @@ branch_0x80338438:
     subf    r9, r9, r10
     mtctr   r9
     cmpwi   r9, 0x20
-    subi    r7, r9, 0x20
+    addi    r7, r9, -0x20
     blt-    branch_0x80338470
     srw     r8, r3, r7
     li      r7, 0x0
@@ -224,7 +224,7 @@ branch_0x80338544:
     subf    r9, r9, r10
     mtctr   r9
     cmpwi   r9, 0x20
-    subi    r7, r9, 0x20
+    addi    r7, r9, -0x20
     blt-    branch_0x8033857c
     srw     r8, r3, r7
     li      r7, 0x0
@@ -307,7 +307,7 @@ branch_0x80338648:
     subf    r9, r9, r10
     mtctr   r9
     cmpwi   r9, 0x20
-    subi    r7, r9, 0x20
+    addi    r7, r9, -0x20
     blt-    branch_0x80338680
     srw     r8, r3, r7
     li      r7, 0x0
@@ -470,7 +470,7 @@ branch_0x80338858:
     mr      r6, r3
     clrlwi  r3, r3, 12
     oris    r3, r3, 0x10
-    subi    r5, r5, 0x433
+    addi    r5, r5, -0x433
     cmpwi   r5, 0x0
     bge-    branch_0x80338898
     neg     r5, r5
@@ -494,8 +494,8 @@ branch_0x80338898:
     b       branch_0x803388f4
 
 branch_0x803388b4:
-    lis     r3, 0x7fff
-    ori     r3, r3, 0xffff
+    lis     r3, unk_7fffffff@h
+    ori     r3, r3, unk_7fffffff@l
     li      r4, -0x1
     b       branch_0x803388f4
 

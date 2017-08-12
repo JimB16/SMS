@@ -96,7 +96,7 @@ branch_0x80304a60:
     stb     r9, 0x4(r4)
     stw     r10, 0x3c(r4)
     stb     r3, 0x2(r4)
-    lbz     r3, -0x74d0(r13)
+    lbz     r3, R13Off_m0x74d0(r13)
     stb     r3, 0x5(r4)
     sth     r0, 0x6(r4)
     stw     r0, 0x14(r4)

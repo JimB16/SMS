@@ -9,21 +9,21 @@ __ct__Q26JDrama9TViewportFRCQ26JDrama5TRectPCc: # 0x802fccfc
     stw     r29, 0x1c(sp)
     addi    r29, r4, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r30, 0x8(sp)
     mr      r3, r5
     stw     r0, 0x0(r30)
     stw     r5, 0x4(r30)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r31, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q26JDrama9TViewport@h
     sth     r31, 0xc(r30)
-    addi    r0, r3, 0x22a8
+    addi    r0, r3, __vvt__Q26JDrama9TViewport@l
     addi    r4, r29, 0x0
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x10
@@ -50,9 +50,9 @@ perform__Q26JDrama9TViewportFUlPQ26JDrama9TGraphics: # 0x802fcd8c
     stw     r30, 0x28(sp)
     addi    r30, r3, 0x0
     beq-    branch_0x802fce24
-    lfs     f1, 0x460(rtoc)
+    lfs     f1, 0x460(r2)
     mr      r3, r31
-    lfs     f2, 0x464(rtoc)
+    lfs     f2, 0x464(r2)
     addi    r4, r30, 0x10
     bl      setViewport__Q26JDrama9TGraphicsFRCQ26JDrama5TRectff
     lhz     r0, 0x20(r30)
@@ -132,12 +132,12 @@ __dt__Q26JDrama9TViewportFv: # 0x802fceb4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fcf0c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x22a8
+    lis     r3, __vvt__Q26JDrama9TViewport@h
+    addi    r0, r3, __vvt__Q26JDrama9TViewport@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fcefc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0

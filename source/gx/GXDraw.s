@@ -25,18 +25,18 @@ GXDrawSphere: # 0x80362268
     lis     r3, 0x4330
     mr      r21, r4
     stw     r0, 0x2c(sp)
-    lis     r4, 0x8040
-    addi    r26, r4, 0x3c18
+    lis     r4, vcd@h
+    addi    r26, r4, vcd@l
     stw     r3, 0x30(sp)
     addi    r4, sp, 0x10
     stw     r3, 0x28(sp)
     li      r3, 0xd
     lfd     f2, 0x30(sp)
     lfd     f0, 0x28(sp)
-    lfd     f3, 0xbf8(rtoc)
-    lfs     f4, 0xbe8(rtoc)
+    lfd     f3, 0xbf8(r2)
+    lfs     f4, 0xbe8(r2)
     fsubs   f2, f2, f3
-    lfs     f1, 0xc00(rtoc)
+    lfs     f1, 0xc00(r2)
     fsubs   f0, f0, f3
     fdivs   f25, f4, f2
     fdivs   f24, f1, f0
@@ -79,10 +79,10 @@ GXDrawSphere: # 0x80362268
     bl      GXSetVtxAttrFmt
 branch_0x80362398:
     clrlwi  r23, r21, 24
-    lfd     f26, 0xbf0(rtoc)
+    lfd     f26, 0xbf0(r2)
     addi    r0, r23, 0x1
-    lfs     f28, 0xbe4(rtoc)
-    lfd     f30, 0xbf8(rtoc)
+    lfs     f28, 0xbe4(r2)
+    lfd     f30, 0xbf8(r2)
     slwi    r25, r0, 1
     clrlwi  r24, r22, 24
     li      r22, 0x0
@@ -252,7 +252,7 @@ GXDrawCubeFace: # 0x803625e4
     stfd    f28, 0x38(sp)
     fadds   f12, f11, f10
     stfd    f27, 0x30(sp)
-    lfs     f31, 0xc04(rtoc)
+    lfs     f31, 0xc04(r2)
     fmuls   f30, f31, f30
     fmuls   f13, f31, f13
     fmuls   f12, f31, f12
@@ -278,7 +278,7 @@ branch_0x80362664:
     stb     r0, -0x8000(r5)
 branch_0x8036267c:
     fsubs   f29, f1, f4
-    lfs     f31, 0xc04(rtoc)
+    lfs     f31, 0xc04(r2)
     fsubs   f28, f2, f5
     lis     r5, 0xcc01
     fsubs   f27, f3, f6
@@ -312,7 +312,7 @@ branch_0x803626e0:
     stb     r0, -0x8000(r5)
 branch_0x803626fc:
     fsubs   f31, f29, f7
-    lfs     f30, 0xc04(rtoc)
+    lfs     f30, 0xc04(r2)
     fsubs   f13, f28, f8
     lis     r5, 0xcc01
     fsubs   f12, f27, f11
@@ -342,7 +342,7 @@ branch_0x80362754:
     stb     r0, -0x8000(r5)
 branch_0x8036276c:
     fsubs   f12, f0, f7
-    lfs     f13, 0xc04(rtoc)
+    lfs     f13, 0xc04(r2)
     fsubs   f9, f9, f8
     lis     r5, 0xcc01
     fsubs   f0, f10, f11
@@ -384,11 +384,11 @@ branch_0x803627e0:
 .globl GXDrawCube
 GXDrawCube: # 0x803627fc
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, vcd@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r3, 0x3c18
+    addi    r31, r3, vcd@l
     addi    r4, sp, 0x14
     li      r3, 0x19
     bl      GXGetVtxDesc
@@ -449,22 +449,22 @@ branch_0x803628ec:
     li      r4, 0x3
     li      r5, 0x18
     bl      GXBegin
-    lfs     f2, 0xbe0(rtoc)
+    lfs     f2, 0xbe0(r2)
     stfs    f2, 0x8(sp)
     fmr     f3, f2
     fmr     f4, f2
-    lfs     f1, 0xbec(rtoc)
+    lfs     f1, 0xbec(r2)
     fmr     f5, f2
     fmr     f7, f2
     fmr     f6, f1
-    lfs     f8, 0xbe4(rtoc)
+    lfs     f8, 0xbe4(r2)
     lwz     r3, 0x14(sp)
     lwz     r4, 0x10(sp)
     bl      GXDrawCubeFace
-    lfs     f0, 0xbec(rtoc)
+    lfs     f0, 0xbec(r2)
     stfs    f0, 0x8(sp)
-    lfs     f2, 0xbe0(rtoc)
-    lfs     f1, 0xbe4(rtoc)
+    lfs     f2, 0xbe0(r2)
+    lfs     f1, 0xbe4(r2)
     fmr     f3, f2
     lwz     r3, 0x14(sp)
     fmr     f4, f2
@@ -474,10 +474,10 @@ branch_0x803628ec:
     fmr     f7, f2
     fmr     f8, f2
     bl      GXDrawCubeFace
-    lfs     f0, 0xbe4(rtoc)
+    lfs     f0, 0xbe4(r2)
     stfs    f0, 0x8(sp)
-    lfs     f1, 0xbe0(rtoc)
-    lfs     f2, 0xbec(rtoc)
+    lfs     f1, 0xbe0(r2)
+    lfs     f2, 0xbec(r2)
     fmr     f3, f1
     lwz     r3, 0x14(sp)
     fmr     f4, f2
@@ -487,39 +487,39 @@ branch_0x803628ec:
     fmr     f7, f1
     fmr     f8, f1
     bl      GXDrawCubeFace
-    lfs     f1, 0xbe0(rtoc)
+    lfs     f1, 0xbe0(r2)
     stfs    f1, 0x8(sp)
     fmr     f3, f1
     fmr     f4, f1
-    lfs     f2, 0xbe4(rtoc)
+    lfs     f2, 0xbe4(r2)
     fmr     f5, f1
     fmr     f8, f1
     fmr     f6, f2
-    lfs     f7, 0xbec(rtoc)
+    lfs     f7, 0xbec(r2)
     lwz     r3, 0x14(sp)
     lwz     r4, 0x10(sp)
     bl      GXDrawCubeFace
-    lfs     f1, 0xbe0(rtoc)
+    lfs     f1, 0xbe0(r2)
     stfs    f1, 0x8(sp)
     fmr     f2, f1
     fmr     f4, f1
-    lfs     f3, 0xbec(rtoc)
+    lfs     f3, 0xbec(r2)
     fmr     f6, f1
     fmr     f8, f1
     fmr     f5, f3
-    lfs     f7, 0xbe4(rtoc)
+    lfs     f7, 0xbe4(r2)
     lwz     r3, 0x14(sp)
     lwz     r4, 0x10(sp)
     bl      GXDrawCubeFace
-    lfs     f1, 0xbe0(rtoc)
+    lfs     f1, 0xbe0(r2)
     stfs    f1, 0x8(sp)
     fmr     f2, f1
     fmr     f5, f1
-    lfs     f3, 0xbe4(rtoc)
+    lfs     f3, 0xbe4(r2)
     fmr     f6, f1
     fmr     f7, f1
     fmr     f4, f3
-    lfs     f8, 0xbec(rtoc)
+    lfs     f8, 0xbec(r2)
     lwz     r3, 0x14(sp)
     lwz     r4, 0x10(sp)
     bl      GXDrawCubeFace

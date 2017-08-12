@@ -6,9 +6,9 @@ __ct__Q38JASystem6Kernel5THeapFv: # 0x80318e10
     li      r0, 0x1
     stw     r6, 0xc(r3)
     stw     r6, 0x10(r3)
-    lwz     r5, -0x5b40(r13)
+    lwz     r5, R13Off_m0x5b40(r13)
     addi    r4, r5, 0x1
-    stw     r4, -0x5b40(r13)
+    stw     r4, R13Off_m0x5b40(r13)
     stw     r5, 0x4(r3)
     stb     r6, 0x0(r3)
     stb     r0, 0x1(r3)
@@ -113,9 +113,9 @@ initMotherHeap__Q38JASystem6Kernel5THeapFUlUlUc: # 0x80318f5c
     subf    r4, r0, r5
     li      r0, 0x1
     stw     r4, 0x10(r3)
-    lwz     r5, -0x5b40(r13)
+    lwz     r5, R13Off_m0x5b40(r13)
     addi    r4, r5, 0x1
-    stw     r4, -0x5b40(r13)
+    stw     r4, R13Off_m0x5b40(r13)
     stw     r5, 0x4(r3)
     stb     r0, 0x0(r3)
     stb     r6, 0x1(r3)
@@ -156,10 +156,10 @@ branch_0x80318ff4:
     cmplw   r5, r0
     bge-    branch_0x803190e4
     lwz     r7, 0x14(r4)
-    lis     r5, 0x1000
+    lis     r5, unk_0fffffff@ha
     addi    r8, r6, 0x0
     addi    r9, r7, 0x0
-    subi    r12, r5, 0x1
+    addi    r12, r5, unk_0fffffff@l
     li      r10, 0x0
 branch_0x80319020:
     cmplwi  r9, 0x0
@@ -377,7 +377,7 @@ branch_0x803192b0:
 branch_0x803192b8:
     lwz     r4, 0x18(r31)
     lhz     r3, 0x2(r4)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0x2(r4)
 branch_0x803192c8:
     lwz     r3, 0x20(r31)

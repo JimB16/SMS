@@ -1,8 +1,8 @@
 
 .globl JPAGetEmitterInfoPtr__Fv
 JPAGetEmitterInfoPtr__Fv: # 0x80321c98
-    lis     r3, 0x8040
-    subi    r3, r3, 0x1ec8
+    lis     r3, JPAEmitterInfoObj@ha
+    addi    r3, r3, JPAEmitterInfoObj@l
     blr
 
 
@@ -17,10 +17,10 @@ __ct__14JPABaseEmitterFv: # 0x80321ca4
     addi    r3, r31, 0x0
     addi    r4, r31, 0x0
     bl      __ct__10JSUPtrLinkFPv
-    lfs     f1, 0x810(rtoc)
+    lfs     f1, 0x810(r2)
     addi    r3, r31, 0x20
     stfs    f1, 0x10(r31)
-    lfs     f0, 0x814(rtoc)
+    lfs     f0, 0x814(r2)
     stfs    f0, 0x14(r31)
     stfs    f1, 0x18(r31)
     stfs    f0, 0x1c(r31)
@@ -34,15 +34,15 @@ __ct__14JPABaseEmitterFv: # 0x80321ca4
     bl      __ct__Q25JMath13TRandom_fast_FUl
     addi    r3, r31, 0x124
     bl      PSMTXIdentity
-    lfs     f1, 0x814(rtoc)
-    lis     r3, 0x8040
-    subi    r4, r3, 0x1ec8
+    lfs     f1, 0x814(r2)
+    lis     r3, JPAEmitterInfoObj@ha
+    addi    r4, r3, JPAEmitterInfoObj@l
     stfs    f1, 0x154(r31)
-    lis     r3, 0x19
+    lis     r3, unk_0019660d@h
     li      r5, 0x0
     stfs    f1, 0x158(r31)
     addi    r6, r4, 0x8
-    addi    r0, r3, 0x660d
+    addi    r0, r3, unk_0019660d@l
     stfs    f1, 0x15c(r31)
     mr      r3, r31
     stfs    f1, 0x174(r31)
@@ -51,7 +51,7 @@ __ct__14JPABaseEmitterFv: # 0x80321ca4
     sth     r5, 0x170(r31)
     sth     r5, 0x16e(r31)
     sth     r5, 0x16c(r31)
-    lfs     f0, 0x810(rtoc)
+    lfs     f0, 0x810(r2)
     stfs    f0, 0x168(r31)
     stfs    f0, 0x164(r31)
     stfs    f0, 0x160(r31)
@@ -69,7 +69,7 @@ __ct__14JPABaseEmitterFv: # 0x80321ca4
     lwz     r4, 0x0(r6)
     mullw   r4, r4, r0
     addis   r4, r4, 0x3c6f
-    subi    r0, r4, 0xca1
+    addi    r0, r4, -0xca1
     stw     r0, 0x0(r6)
     lwz     r0, 0x0(r6)
     stw     r0, 0x21c(r31)
@@ -82,16 +82,16 @@ __ct__14JPABaseEmitterFv: # 0x80321ca4
 
 .globl getFovy__14JPABaseEmitterFv
 getFovy__14JPABaseEmitterFv: # 0x80321dbc
-    lis     r3, 0x8040
-    subi    r3, r3, 0x1ec8
+    lis     r3, JPAEmitterInfoObj@ha
+    addi    r3, r3, JPAEmitterInfoObj@l
     lfs     f1, 0x15c(r3)
     blr
 
 
 .globl getAspect__14JPABaseEmitterFv
 getAspect__14JPABaseEmitterFv: # 0x80321dcc
-    lis     r3, 0x8040
-    subi    r3, r3, 0x1ec8
+    lis     r3, JPAEmitterInfoObj@ha
+    addi    r3, r3, JPAEmitterInfoObj@l
     lfs     f1, 0x160(r3)
     blr
 
@@ -162,7 +162,7 @@ branch_0x80321e88:
 .globl createChildParticle__14JPABaseEmitterFP15JPABaseParticle
 createChildParticle__14JPABaseEmitterFP15JPABaseParticle: # 0x80321eb0
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, JPAEmitterInfoObj@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x258(sp)
     stfd    f31, 0x250(sp)
@@ -183,10 +183,10 @@ createChildParticle__14JPABaseEmitterFP15JPABaseParticle: # 0x80321eb0
     stfd    f16, 0x1d8(sp)
     stmw    r22, 0x1b0(sp)
     addi    r22, r3, 0x0
-    subi    r3, r5, 0x1ec8
+    addi    r3, r5, JPAEmitterInfoObj@l
     addi    r23, r4, 0x0
     li      r5, 0x0
-    lfs     f0, 0x810(rtoc)
+    lfs     f0, 0x810(r2)
     stfs    f0, 0x198(sp)
     stfs    f0, 0x19c(sp)
     stfs    f0, 0x1a0(sp)
@@ -204,18 +204,18 @@ createChildParticle__14JPABaseEmitterFP15JPABaseParticle: # 0x80321eb0
     bne-    branch_0x80321f58
     li      r5, 0x1
 branch_0x80321f58:
-    lis     r3, 0x19
-    lfs     f30, 0x814(rtoc)
-    lfs     f31, 0x810(rtoc)
-    addi    r31, r3, 0x660d
-    lfs     f26, 0x818(rtoc)
+    lis     r3, unk_0019660d@h
+    lfs     f30, 0x814(r2)
+    lfs     f31, 0x810(r2)
+    addi    r31, r3, unk_0019660d@l
+    lfs     f26, 0x818(r2)
     clrlwi  r30, r5, 24
-    lfs     f27, 0x81c(rtoc)
-    lfs     f28, 0x820(rtoc)
+    lfs     f27, 0x81c(r2)
+    lfs     f28, 0x820(r2)
     li      r25, 0x0
-    lfd     f25, 0x828(rtoc)
+    lfd     f25, 0x828(r2)
     lis     r29, 0x4330
-    lfs     f29, 0x824(rtoc)
+    lfs     f29, 0x824(r2)
     b       branch_0x80322408
 
 branch_0x80321f8c:
@@ -333,7 +333,7 @@ branch_0x80322124:
     lwz     r0, 0x21c(r22)
     mullw   r3, r0, r31
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r22)
     lwz     r0, 0x21c(r22)
     srwi    r0, r0, 9
@@ -346,7 +346,7 @@ branch_0x80322124:
     fmuls   f1, f2, f1
     fsubs   f0, f0, f30
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     fmsubs  f0, f26, f0, f30
     stw     r0, 0x21c(r22)
     lwz     r0, 0x21c(r22)
@@ -361,7 +361,7 @@ branch_0x80322124:
     fsubs   f0, f0, f30
     fsubs   f1, f0, f27
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r22)
     lwz     r0, 0x21c(r22)
     srwi    r0, r0, 9
@@ -373,7 +373,7 @@ branch_0x80322124:
     fsubs   f0, f0, f30
     fsubs   f2, f0, f27
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r22)
     lwz     r0, 0x21c(r22)
     srwi    r0, r0, 9
@@ -471,12 +471,12 @@ branch_0x80322310:
     addi    r5, sp, 0x114
     mullw   r3, r0, r31
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r22)
     lwz     r4, 0x21c(r22)
     mullw   r3, r4, r31
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r22)
     extsh   r4, r4
     lwz     r0, 0x21c(r22)
@@ -487,7 +487,7 @@ branch_0x80322310:
     addi    r5, r4, 0x0
     mullw   r3, r0, r31
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r22)
     addi    r3, sp, 0x114
     lwz     r0, 0x21c(r22)
@@ -641,12 +641,12 @@ getEmitterGlobalTranslation__14JPABaseEmitterFRQ29JGeometry8TVec3_f_: # 0x803224
 .globl calcEmitterGlobalParams__14JPABaseEmitterFv
 calcEmitterGlobalParams__14JPABaseEmitterFv: # 0x8032259c
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, JPAEmitterInfoObj@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x118(sp)
     stmw    r26, 0x100(sp)
     addi    r30, r3, 0x0
-    subi    r31, r4, 0x1ec8
+    addi    r31, r4, JPAEmitterInfoObj@l
     addi    r0, r30, 0x20
     stw     r30, 0x0(r31)
     stw     r0, 0x4(r31)
@@ -720,7 +720,7 @@ branch_0x803225f4:
     fmuls   f0, f1, f0
     stfs    f0, 0x38(r31)
     lfs     f0, 0x18(r31)
-    lfs     f1, 0x814(rtoc)
+    lfs     f1, 0x814(r2)
     fmuls   f0, f0, f1
     stfs    f0, 0xc(r31)
     lfs     f0, 0x1c(r31)
@@ -783,10 +783,10 @@ branch_0x803225f4:
     stfs    f0, 0x60(r31)
     stfs    f1, 0x64(r31)
     stfs    f2, 0x68(r31)
-    lfs     f4, 0x810(rtoc)
+    lfs     f4, 0x810(r2)
     stfs    f4, 0x94(sp)
     stfs    f4, 0x98(sp)
-    lfs     f0, 0x814(rtoc)
+    lfs     f0, 0x814(r2)
     stfs    f0, 0x9c(sp)
     lfs     f1, 0x210(r30)
     lfs     f3, 0x218(r30)
@@ -794,7 +794,7 @@ branch_0x803225f4:
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, 0x820(rtoc)
+    lfs     f0, 0x820(r2)
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
@@ -807,7 +807,7 @@ branch_0x803225f4:
 
 branch_0x80322820:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x814(rtoc)
+    lfs     f2, 0x814(r2)
     lfs     f0, 0x210(r30)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -877,16 +877,16 @@ branch_0x803228fc:
 .globl loadBaseEmitterBlock__14JPABaseEmitterFP12JPADataBlock
 loadBaseEmitterBlock__14JPABaseEmitterFP12JPADataBlock: # 0x80322910
     mflr    r0
-    lis     r7, 0x803e
+    lis     r7, __vvt__20JSURandomInputStream@h
     stw     r0, 0x4(sp)
-    lis     r9, 0x803b
-    subi    r0, r9, 0xf0c
+    lis     r9, __vvt__10JSUIosBase@ha
+    addi    r0, r9, __vvt__10JSUIosBase@l
     stwu    sp, -0x58(sp)
-    lis     r8, 0x803e
-    addi    r7, r7, 0x160
+    lis     r8, __vvt__14JSUInputStream@h
+    addi    r7, r7, __vvt__20JSURandomInputStream@l
     stw     r31, 0x54(sp)
     addi    r31, sp, 0x24
-    lis     r6, 0x803e
+    lis     r6, __vvt__20JSUMemoryInputStream@h
     stw     r30, 0x50(sp)
     addi    r30, r3, 0x0
     lwz     r4, 0x4(r4)
@@ -897,10 +897,10 @@ loadBaseEmitterBlock__14JPABaseEmitterFP12JPADataBlock: # 0x80322910
     li      r0, 0x0
     addi    r9, r10, 0x0
     stb     r0, 0x4(r10)
-    addi    r0, r8, 0x184
+    addi    r0, r8, __vvt__14JSUInputStream@l
     addi    r3, r10, 0x0
     stw     r0, 0x0(r10)
-    addi    r0, r6, 0x1c8
+    addi    r0, r6, __vvt__20JSUMemoryInputStream@l
     stw     r7, 0x0(r10)
     stw     r0, 0x0(r10)
     bl      setBuffer__20JSUMemoryInputStreamFPCvl
@@ -1064,14 +1064,14 @@ loadBaseEmitterBlock__14JPABaseEmitterFP12JPADataBlock: # 0x80322910
     fmuls   f2, f1, f1
     lfs     f3, 0x40(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x820(rtoc)
+    lfs     f0, 0x820(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80322c30
-    lfs     f0, 0x810(rtoc)
+    lfs     f0, 0x810(r2)
     stfs    f0, 0x218(r30)
     stfs    f0, 0x214(r30)
     stfs    f0, 0x210(r30)
@@ -1079,7 +1079,7 @@ loadBaseEmitterBlock__14JPABaseEmitterFP12JPADataBlock: # 0x80322910
 
 branch_0x80322c30:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x814(rtoc)
+    lfs     f2, 0x814(r2)
     lfs     f0, 0x38(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1106,11 +1106,11 @@ branch_0x80322c60:
     addi    r4, r30, 0x18c
     li      r5, 0x4
     bl      read__14JSUInputStreamFPvl
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1c8
-    lis     r3, 0x803e
+    lis     r3, __vvt__20JSUMemoryInputStream@h
+    addi    r0, r3, __vvt__20JSUMemoryInputStream@l
+    lis     r3, __vvt__20JSURandomInputStream@h
     stw     r0, 0x24(sp)
-    addi    r0, r3, 0x160
+    addi    r0, r3, __vvt__20JSURandomInputStream@l
     stw     r0, 0x24(sp)
     addi    r3, sp, 0x24
     li      r4, 0x0
@@ -1145,75 +1145,8 @@ branch_0x80322d04:
 
 .globl createParticle__14JPABaseEmitterFv
 createParticle__14JPABaseEmitterFv: # 0x80322d14
-
-.set var_2D0, -0x2D0
-.set var_2CC, -0x2CC
-.set var_2C8, -0x2C8
-.set var_2C4, -0x2C4
-.set var_2C0, -0x2C0
-.set var_2BC, -0x2BC
-.set var_2B8, -0x2B8
-.set var_2B4, -0x2B4
-.set var_2B0, -0x2B0
-.set var_2AC, -0x2AC
-.set var_2A8, -0x2A8
-.set var_2A4, -0x2A4
-.set var_2A0, -0x2A0
-.set var_29C, -0x29C
-.set var_298, -0x298
-.set var_290, -0x290
-.set var_28C, -0x28C
-.set var_288, -0x288
-.set var_284, -0x284
-.set var_280, -0x280
-.set var_27C, -0x27C
-.set var_278, -0x278
-.set var_208, -0x208
-.set var_204, -0x204
-.set var_200, -0x200
-.set var_1F8, -0x1F8
-.set var_1F4, -0x1F4
-.set var_1F0, -0x1F0
-.set var_1EC, -0x1EC
-.set var_1E8, -0x1E8
-.set var_1E4, -0x1E4
-.set var_1E0, -0x1E0
-.set var_1B0, -0x1B0
-.set var_1AC, -0x1AC
-.set var_1A8, -0x1A8
-.set var_180, -0x180
-.set var_17C, -0x17C
-.set var_178, -0x178
-.set var_170, -0x170
-.set var_140, -0x140
-.set var_110, -0x110
-.set var_E0, -0xE0
-.set var_DC, -0xDC
-.set var_D8, -0xD8
-.set var_B8, -0xB8
-.set var_B0, -0xB0
-.set var_A8, -0xA8
-.set var_88, -0x88
-.set var_80, -0x80
-.set var_78, -0x78
-.set var_70, -0x70
-.set var_68, -0x68
-.set var_60, -0x60
-.set var_58, -0x58
-.set var_50, -0x50
-.set var_48, -0x48
-.set var_40, -0x40
-.set var_38, -0x38
-.set var_30, -0x30
-.set var_28, -0x28
-.set var_20, -0x20
-.set var_18, -0x18
-.set var_10, -0x10
-.set var_8, -8
-.set arg_4,  4
-
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, JPAEmitterInfoObj@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x548(sp)
     stfd    f31, 0x540(sp)
@@ -1235,7 +1168,7 @@ createParticle__14JPABaseEmitterFv: # 0x80322d14
     stfd    f15, 0x4c0(sp)
     stmw    r24, 0x4a0(sp)
     mr      r31, r3
-    subi    r30, r4, 0x1ec8
+    addi    r30, r4, JPAEmitterInfoObj@l
     lwz     r3, 0x10c(r3)
     lwz     r0, 0x8(r3)
     cmplwi  r0, 0x0
@@ -1283,9 +1216,9 @@ branch_0x80322e08:
 branch_0x80322e0c:
     clrlwi. r0, r0, 24
     beq-    branch_0x80322f0c
-    lis     r3, 0x8040
+    lis     r3, JPAEmitterInfoObj@ha
     lbz     r0, 0x1ae(r31)
-    subi    r3, r3, 0x1ec8
+    addi    r3, r3, JPAEmitterInfoObj@l
     lwz     r27, 0x168(r30)
     lwz     r3, 0x164(r3)
     cmplwi  r0, 0x1
@@ -1311,7 +1244,7 @@ branch_0x80322e0c:
     cmplwi  r0, 0x0
     beq-    branch_0x80322ef0
     lwz     r3, 0x170(r30)
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     stw     r0, 0x170(r30)
     lwz     r3, 0x170(r30)
     cmpwi   r3, 0x0
@@ -1321,7 +1254,7 @@ branch_0x80322e0c:
     b       branch_0x80322ec8
 
 branch_0x80322ea4:
-    lfs     f1, 0x834(rtoc)
+    lfs     f1, 0x834(r2)
     lfs     f0, 0x1f4(r31)
     fmuls   f0, f1, f0
     fctiwz  f0, f0
@@ -1354,8 +1287,8 @@ branch_0x80322f04:
 branch_0x80322f0c:
     lhz     r3, 0x1f0(r31)
     lis     r0, 0x4330
-    lfd     f2, 0x840(rtoc)
-    lfs     f0, 0x810(rtoc)
+    lfd     f2, 0x840(r2)
+    lfs     f0, 0x810(r2)
     stw     r3, 0x49c(sp)
     stfs    f0, 0x70(r29)
     stfs    f0, 0x6c(r29)
@@ -1366,571 +1299,553 @@ branch_0x80322f0c:
     fsubs   f15, f1, f2
     cmplwi  r5, 0x6
     bgt-    branch_0x803236e0
-    lis     r3, 0x803e
-    addi    r4, r3, 0x3cb0
+    lis     r3, unk_803e3cb0@h
+    addi    r4, r3, unk_803e3cb0@l
     slwi    r3, r5, 2
     lwzx    r3, r4, r3
     mtctr   r3
-    bctr			# switch jump
-
-branch_0x80322F5C:		# jumptable 80322F58 case 4
+    bctr       
+branch_0x80322f5c:
     stfs    f0, 0x470(sp)
     stfs    f0, 0x46c(sp)
     stfs    f0, 0x468(sp)
     b       branch_0x803236e0
 
-branch_0x80322F6C:		# jumptable 80322F58 case 6
-lwz	  r0, 0x188(r31)
-rlwinm.	  r0, r0, 0,30,30
-beq	  branch_0x80322F80
-li	  r0, 1
-b	  branch_0x80322F84
+branch_0x80322f6c:
+    lwz     r0, 0x188(r31)
+    rlwinm. r0, r0, 0, 30, 30
+    beq-    branch_0x80322f80
+    li      r0, 0x1
+    b       branch_0x80322f84
 
-branch_0x80322F80:
-li	  r0, 0
+branch_0x80322f80:
+    li      r0, 0x0
+branch_0x80322f84:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80322fd4
+    xoris   r0, r27, 0x8000
+    lfd     f2, 0x828(r2)
+    stw     r0, 0x49c(sp)
+    addi    r0, r26, -0x1
+    lis     r3, 0x4330
+    lfs     f3, 0x81c(r2)
+    stw     r3, 0x498(sp)
+    xoris   r0, r0, 0x8000
+    stw     r0, 0x494(sp)
+    lfd     f0, 0x498(sp)
+    stw     r3, 0x490(sp)
+    fsubs   f1, f0, f2
+    lfd     f0, 0x490(sp)
+    fmuls   f1, f15, f1
+    fsubs   f0, f0, f2
+    fdivs   f0, f1, f0
+    fnmsubs  f1, f15, f3, f0
+    b       branch_0x80323018
 
-branch_0x80322F84:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80322FD4
-xoris	  r0, r27, 0x8000
-lfd	  f2, 0x828(r2)
-stw	  r0, 0x548+var_B0+4(r1)
-addi	  r0, r26, -1
-lis	  r3, 0x4330
-lfs	  f3, 0x81C(r2)
-stw	  r3, 0x548+var_B0(r1)
-xoris	  r0, r0, 0x8000
-stw	  r0, 0x548+var_B8+4(r1)
-lfd	  f0, 0x548+var_B0(r1)
-stw	  r3, 0x548+var_B8(r1)
-fsubs	  f1, f0, f2
-lfd	  f0, 0x548+var_B8(r1)
-fmuls	  f1, f15, f1
-fsubs	  f0, f0, f2
-fdivs	  f0, f1, f0
-fnmsubs	  f1, f15, f3, f0
-b	  branch_0x80323018
-
-branch_0x80322FD4:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r0, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r0
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-lfs	  f1, 0x814(r2)
-srwi	  r0, r0, 9
-lfs	  f0, 0x81C(r2)
-oris	  r0, r0, 0x3F80
-stw	  r0, 0x548+var_278(r1)
-lfs	  f2, 0x548+var_278(r1)
-fsubs	  f1, f2, f1
-fsubs	  f0, f1, f0
-fmuls	  f1, f15, f0
-
+branch_0x80322fd4:
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r0, r3, unk_0019660d@l
+    mullw   r3, r4, r0
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    lfs     f1, 0x814(r2)
+    srwi    r0, r0, 9
+    lfs     f0, 0x81c(r2)
+    oris    r0, r0, 0x3f80
+    stw     r0, 0x2d0(sp)
+    lfs     f2, 0x2d0(sp)
+    fsubs   f1, f2, f1
+    fsubs   f0, f1, f0
+    fmuls   f1, f15, f0
 branch_0x80323018:
-lfs	  f0, 0x810(r2)
-stfs	  f0, 0x548+var_E0(r1)
-stfs	  f0, 0x548+var_DC(r1)
-stfs	  f1, 0x548+var_D8(r1)
-b	  def_80322F58	# jumptable 80322F58 default case
+    lfs     f0, 0x810(r2)
+    stfs    f0, 0x468(sp)
+    stfs    f0, 0x46c(sp)
+    stfs    f1, 0x470(sp)
+    b       branch_0x803236e0
 
-branch_0x8032302C:		# jumptable 80322F58 case 5
-lwz	  r0, 0x188(r31)
-rlwinm.	  r0, r0, 0,30,30
-beq	  branch_0x80323040
-li	  r0, 1
-b	  branch_0x80323044
+branch_0x8032302c:
+    lwz     r0, 0x188(r31)
+    rlwinm. r0, r0, 0, 30, 30
+    beq-    branch_0x80323040
+    li      r0, 0x1
+    b       branch_0x80323044
 
 branch_0x80323040:
-li	  r0, 0
-
+    li      r0, 0x0
 branch_0x80323044:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x8032305C
-slwi	  r0, r27, 16
-divw	  r0, r0, r26
-extsh	  r25, r0
-b	  branch_0x80323090
+    clrlwi. r0, r0, 24
+    beq-    branch_0x8032305c
+    slwi    r0, r27, 16
+    divw    r0, r0, r26
+    extsh   r25, r0
+    b       branch_0x80323090
 
-branch_0x8032305C:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r0, 0x21C(r31)
-addi	  r4, r3, 0x660D # 0x19660D
-mullw	  r3, r0, r4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r5, 0x21C(r31)
-mullw	  r3, r5, r4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-extsh	  r25, r5
-
+branch_0x8032305c:
+    lis     r3, unk_0019660d@h
+    lwz     r0, 0x21c(r31)
+    addi    r4, r3, unk_0019660d@l
+    mullw   r3, r0, r4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r5, 0x21c(r31)
+    mullw   r3, r5, r4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    extsh   r25, r5
 branch_0x80323090:
-lfs	  f2, 0x1F4(r31)
-lfs	  f0, 0x814(r2)
-fcmpo	  cr0, f2, f0
-bge	  branch_0x803230DC
-extsh	  r0, r25
-lfd	  f1, 0x828(r2)
-xoris	  r0, r0, 0x8000
-stw	  r0, 0x548+var_B8+4(r1)
-lis	  r0, 0x4330
-addi	  r4, r1, 0x548+var_110
-stw	  r0, 0x548+var_B8(r1)
-lfd	  f0, 0x548+var_B8(r1)
-fsubs	  f0, f0, f1
-fmuls	  f0, f0, f2
-fctiwz	  f0, f0
-stfd	  f0, 0x548+var_B0(r1)
-lwz	  r3, 0x548+var_B0+4(r1)
-bl	  JPAGetYRotateMtx__FsPA4_f # JPAGetYRotateMtx(short,float *[4])
-b	  branch_0x803230E8
+    lfs     f2, 0x1f4(r31)
+    lfs     f0, 0x814(r2)
+    fcmpo   cr0, f2, f0
+    bge-    branch_0x803230dc
+    extsh   r0, r25
+    lfd     f1, 0x828(r2)
+    xoris   r0, r0, 0x8000
+    stw     r0, 0x494(sp)
+    lis     r0, 0x4330
+    addi    r4, sp, 0x438
+    stw     r0, 0x490(sp)
+    lfd     f0, 0x490(sp)
+    fsubs   f0, f0, f1
+    fmuls   f0, f0, f2
+    fctiwz  f0, f0
+    stfd    f0, 0x498(sp)
+    lwz     r3, 0x49c(sp)
+    bl      JPAGetYRotateMtx__FsPA4_f
+    b       branch_0x803230e8
 
-branch_0x803230DC:
-addi	  r3, r25, 0
-addi	  r4, r1, 0x548+var_110
-bl	  JPAGetYRotateMtx__FsPA4_f # JPAGetYRotateMtx(short,float *[4])
-
-branch_0x803230E8:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r0, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r0
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-lfs	  f0, 0x814(r2)
-srwi	  r0, r0, 9
-oris	  r0, r0, 0x3F80
-stw	  r0, 0x548+var_27C(r1)
-lwz	  r0, 0x188(r31)
-lfs	  f1, 0x548+var_27C(r1)
-clrlwi.	  r0, r0, 31
-fsubs	  f1, f1, f0
-beq	  branch_0x80323134
-li	  r0, 1
-b	  branch_0x80323138
+branch_0x803230dc:
+    addi    r3, r25, 0x0
+    addi    r4, sp, 0x438
+    bl      JPAGetYRotateMtx__FsPA4_f
+branch_0x803230e8:
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r0, r3, unk_0019660d@l
+    mullw   r3, r4, r0
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    lfs     f0, 0x814(r2)
+    srwi    r0, r0, 9
+    oris    r0, r0, 0x3f80
+    stw     r0, 0x2cc(sp)
+    lwz     r0, 0x188(r31)
+    lfs     f1, 0x2cc(sp)
+    clrlwi. r0, r0, 31
+    fsubs   f1, f1, f0
+    beq-    branch_0x80323134
+    li      r0, 0x1
+    b       branch_0x80323138
 
 branch_0x80323134:
-li	  r0, 0
-
+    li      r0, 0x0
 branch_0x80323138:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x80323144
-bl	  JPASqrtf__Ff	# JPASqrtf(float)
-
+    clrlwi. r0, r0, 24
+    beq-    branch_0x80323144
+    bl      JPASqrtf__Ff
 branch_0x80323144:
-lfs	  f3, 0x1F8(r31)
-addi	  r4, r1, 0x548+var_E0
-lfs	  f2, 0x814(r2)
-mr	  r5, r4
-lfs	  f0, 0x810(r2)
-fsubs	  f2, f2, f3
-addi	  r3, r1, 0x548+var_110
-stfs	  f0, 0x548+var_E0(r1)
-fmadds	  f1, f1, f2, f3
-stfs	  f0, 0x548+var_DC(r1)
-fmuls	  f0, f15, f1
-stfs	  f0, 0x548+var_D8(r1)
-bl	  PSMTXMultVec
-b	  def_80322F58	# jumptable 80322F58 default case
+    lfs     f3, 0x1f8(r31)
+    addi    r4, sp, 0x468
+    lfs     f2, 0x814(r2)
+    mr      r5, r4
+    lfs     f0, 0x810(r2)
+    fsubs   f2, f2, f3
+    addi    r3, sp, 0x438
+    stfs    f0, 0x468(sp)
+    fmadds  f1, f1, f2, f3
+    stfs    f0, 0x46c(sp)
+    fmuls   f0, f15, f1
+    stfs    f0, 0x470(sp)
+    bl      PSMTXMultVec
+    b       branch_0x803236e0
 
-branch_0x8032317C:		# jumptable 80322F58 case 0
-lis	  r3, 0x19 # 0x19660D
-lwz	  r0, 0x21C(r31)
-addi	  r4, r3, 0x660D # 0x19660D
-mullw	  r3, r0, r4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-lfs	  f4, 0x814(r2)
-srwi	  r0, r0, 9
-oris	  r0, r0, 0x3F80
-stw	  r0, 0x548+var_2A8(r1)
-lwz	  r0, 0x21C(r31)
-lfs	  f0, 0x548+var_2A8(r1)
-mullw	  r3, r0, r4
-fsubs	  f3, f0, f4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-srwi	  r0, r0, 9
-oris	  r0, r0, 0x3F80
-stw	  r0, 0x548+var_2AC(r1)
-lwz	  r0, 0x21C(r31)
-lfs	  f0, 0x548+var_2AC(r1)
-mullw	  r3, r0, r4
-fsubs	  f0, f0, f4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-lfs	  f2, 0x81C(r2)
-srwi	  r0, r0, 9
-oris	  r0, r0, 0x3F80
-fsubs	  f1, f0, f2
-stw	  r0, 0x548+var_2B0(r1)
-fsubs	  f0, f3, f2
-lfs	  f3, 0x548+var_2B0(r1)
-fmuls	  f1, f15, f1
-fmuls	  f0, f15, f0
-fsubs	  f3, f3, f4
-fsubs	  f2, f3, f2
-fmuls	  f2, f15, f2
-stfs	  f2, 0x548+var_E0(r1)
-stfs	  f1, 0x548+var_DC(r1)
-stfs	  f0, 0x548+var_D8(r1)
-b	  def_80322F58	# jumptable 80322F58 default case
+branch_0x8032317c:
+    lis     r3, unk_0019660d@h
+    lwz     r0, 0x21c(r31)
+    addi    r4, r3, unk_0019660d@l
+    mullw   r3, r0, r4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    lfs     f4, 0x814(r2)
+    srwi    r0, r0, 9
+    oris    r0, r0, 0x3f80
+    stw     r0, 0x2a0(sp)
+    lwz     r0, 0x21c(r31)
+    lfs     f0, 0x2a0(sp)
+    mullw   r3, r0, r4
+    fsubs   f3, f0, f4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    srwi    r0, r0, 9
+    oris    r0, r0, 0x3f80
+    stw     r0, 0x29c(sp)
+    lwz     r0, 0x21c(r31)
+    lfs     f0, 0x29c(sp)
+    mullw   r3, r0, r4
+    fsubs   f0, f0, f4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    lfs     f2, 0x81c(r2)
+    srwi    r0, r0, 9
+    oris    r0, r0, 0x3f80
+    fsubs   f1, f0, f2
+    stw     r0, 0x298(sp)
+    fsubs   f0, f3, f2
+    lfs     f3, 0x298(sp)
+    fmuls   f1, f15, f1
+    fmuls   f0, f15, f0
+    fsubs   f3, f3, f4
+    fsubs   f2, f3, f2
+    fmuls   f2, f15, f2
+    stfs    f2, 0x468(sp)
+    stfs    f1, 0x46c(sp)
+    stfs    f0, 0x470(sp)
+    b       branch_0x803236e0
 
-branch_0x80323238:		# jumptable 80322F58 case 1
-lwz	  r0, 0x188(r31)
-rlwinm.	  r0, r0, 0,30,30
-beq	  branch_0x8032324C
-li	  r0, 1
-b	  branch_0x80323250
+branch_0x80323238:
+    lwz     r0, 0x188(r31)
+    rlwinm. r0, r0, 0, 30, 30
+    beq-    branch_0x8032324c
+    li      r0, 0x1
+    b       branch_0x80323250
 
-branch_0x8032324C:
-li	  r0, 0
-
+branch_0x8032324c:
+    li      r0, 0x0
 branch_0x80323250:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x8032326C
-addi	  r3, r24, 0
-addi	  r4, r25, 0
-addi	  r5, r1, 0x548+var_140
-bl	  JPAGetXYRotateMtx__FssPA4_f #	JPAGetXYRotateMtx(short,short,float *[4])
-b	  branch_0x80323358
+    clrlwi. r0, r0, 24
+    beq-    branch_0x8032326c
+    addi    r3, r24, 0x0
+    addi    r4, r25, 0x0
+    addi    r5, sp, 0x408
+    bl      JPAGetXYRotateMtx__FssPA4_f
+    b       branch_0x80323358
 
-branch_0x8032326C:
-lfs	  f1, 0x1F4(r31)
-lfs	  f0, 0x814(r2)
-fcmpo	  cr0, f1, f0
-bge	  branch_0x803232FC
-lis	  r3, 0x19 # 0x19660D
-lwz	  r0, 0x21C(r31)
-addi	  r4, r3, 0x660D # 0x19660D
-mullw	  r3, r0, r4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lis	  r0, 0x4330
-addi	  r5, r1, 0x548+var_140
-lwz	  r6, 0x21C(r31)
-lfd	  f1, 0x828(r2)
-clrlwi	  r3, r6, 16
-lfs	  f2, 0x1F4(r31)
-addi	  r3, r3, -0x8000
-xoris	  r3, r3, 0x8000
-stw	  r3, 0x548+var_B8+4(r1)
-mullw	  r3, r6, r4
-stw	  r0, 0x548+var_B8(r1)
-lfd	  f0, 0x548+var_B8(r1)
-addis	  r3, r3, 0x3C6F
-fsubs	  f0, f0, f1
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-fmuls	  f0, f2, f0
-lwz	  r0, 0x21C(r31)
-clrlwi	  r3, r0, 17
-fctiwz	  f0, f0
-addi	  r3, r3, -0x4000
-stfd	  f0, 0x548+var_B0(r1)
-lwz	  r4, 0x548+var_B0+4(r1)
-bl	  JPAGetXYRotateMtx__FssPA4_f #	JPAGetXYRotateMtx(short,short,float *[4])
-b	  branch_0x80323358
+branch_0x8032326c:
+    lfs     f1, 0x1f4(r31)
+    lfs     f0, 0x814(r2)
+    fcmpo   cr0, f1, f0
+    bge-    branch_0x803232fc
+    lis     r3, unk_0019660d@h
+    lwz     r0, 0x21c(r31)
+    addi    r4, r3, unk_0019660d@l
+    mullw   r3, r0, r4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lis     r0, 0x4330
+    addi    r5, sp, 0x408
+    lwz     r6, 0x21c(r31)
+    lfd     f1, 0x828(r2)
+    clrlwi  r3, r6, 16
+    lfs     f2, 0x1f4(r31)
+    addi    r3, r3, -0x8000
+    xoris   r3, r3, 0x8000
+    stw     r3, 0x494(sp)
+    mullw   r3, r6, r4
+    stw     r0, 0x490(sp)
+    lfd     f0, 0x490(sp)
+    addis   r3, r3, 0x3c6f
+    fsubs   f0, f0, f1
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    fmuls   f0, f2, f0
+    lwz     r0, 0x21c(r31)
+    clrlwi  r3, r0, 17
+    fctiwz  f0, f0
+    addi    r3, r3, -0x4000
+    stfd    f0, 0x498(sp)
+    lwz     r4, 0x49c(sp)
+    bl      JPAGetXYRotateMtx__FssPA4_f
+    b       branch_0x80323358
 
-branch_0x803232FC:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r0, 0x21C(r31)
-addi	  r4, r3, 0x660D # 0x19660D
-mullw	  r3, r0, r4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-addi	  r6, r1, 0x548+var_140
-lwz	  r5, 0x21C(r31)
-mullw	  r3, r5, r4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-extsh	  r5, r5
-lwz	  r7, 0x21C(r31)
-mullw	  r3, r7, r4
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-extsh	  r4, r7
-lwz	  r0, 0x21C(r31)
-extsh	  r3, r0
-bl	  JPAGetXYZRotateMtx__FsssPA4_f	# JPAGetXYZRotateMtx(short,short,short,float *[4])
-
+branch_0x803232fc:
+    lis     r3, unk_0019660d@h
+    lwz     r0, 0x21c(r31)
+    addi    r4, r3, unk_0019660d@l
+    mullw   r3, r0, r4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    addi    r6, sp, 0x408
+    lwz     r5, 0x21c(r31)
+    mullw   r3, r5, r4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    extsh   r5, r5
+    lwz     r7, 0x21c(r31)
+    mullw   r3, r7, r4
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    extsh   r4, r7
+    lwz     r0, 0x21c(r31)
+    extsh   r3, r0
+    bl      JPAGetXYZRotateMtx__FsssPA4_f
 branch_0x80323358:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r0, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r0
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-lfs	  f0, 0x814(r2)
-srwi	  r0, r0, 9
-oris	  r0, r0, 0x3F80
-stw	  r0, 0x548+var_280(r1)
-lwz	  r0, 0x188(r31)
-lfs	  f1, 0x548+var_280(r1)
-clrlwi.	  r0, r0, 31
-fsubs	  f1, f1, f0
-beq	  branch_0x803233A4
-li	  r0, 1
-b	  branch_0x803233A8
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r0, r3, unk_0019660d@l
+    mullw   r3, r4, r0
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    lfs     f0, 0x814(r2)
+    srwi    r0, r0, 9
+    oris    r0, r0, 0x3f80
+    stw     r0, 0x2c8(sp)
+    lwz     r0, 0x188(r31)
+    lfs     f1, 0x2c8(sp)
+    clrlwi. r0, r0, 31
+    fsubs   f1, f1, f0
+    beq-    branch_0x803233a4
+    li      r0, 0x1
+    b       branch_0x803233a8
 
-branch_0x803233A4:
-li	  r0, 0
+branch_0x803233a4:
+    li      r0, 0x0
+branch_0x803233a8:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x803233b4
+    bl      JPASqrtf__Ff
+branch_0x803233b4:
+    lfs     f3, 0x1f8(r31)
+    addi    r4, sp, 0x468
+    lfs     f2, 0x814(r2)
+    mr      r5, r4
+    lfs     f0, 0x810(r2)
+    fsubs   f2, f2, f3
+    addi    r3, sp, 0x408
+    stfs    f0, 0x468(sp)
+    fmadds  f1, f1, f2, f3
+    stfs    f0, 0x46c(sp)
+    fmuls   f0, f15, f1
+    stfs    f0, 0x470(sp)
+    bl      PSMTXMultVec
+    b       branch_0x803236e0
 
-branch_0x803233A8:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x803233B4
-bl	  JPASqrtf__Ff	# JPASqrtf(float)
-
-branch_0x803233B4:
-lfs	  f3, 0x1F8(r31)
-addi	  r4, r1, 0x548+var_E0
-lfs	  f2, 0x814(r2)
-mr	  r5, r4
-lfs	  f0, 0x810(r2)
-fsubs	  f2, f2, f3
-addi	  r3, r1, 0x548+var_140
-stfs	  f0, 0x548+var_E0(r1)
-fmadds	  f1, f1, f2, f3
-stfs	  f0, 0x548+var_DC(r1)
-fmuls	  f0, f15, f1
-stfs	  f0, 0x548+var_D8(r1)
-bl	  PSMTXMultVec
-b	  def_80322F58	# jumptable 80322F58 default case
-
-branch_0x803233EC:		# jumptable 80322F58 case 2
-lfs	  f1, 0x1F4(r31)
-lfs	  f0, 0x814(r2)
-fcmpo	  cr0, f1, f0
-bge	  branch_0x80323454
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r3, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r3
-addis	  r3, r3, 0x3C6F
-addi	  r3, r3, -0xCA1
-stw	  r3, 0x21C(r31)
-lwz	  r3, 0x21C(r31)
-lfd	  f1, 0x828(r2)
-clrlwi	  r3, r3, 16
-lfs	  f2, 0x1F4(r31)
-addi	  r3, r3, -0x8000
-xoris	  r3, r3, 0x8000
-stw	  r3, 0x548+var_B8+4(r1)
-stw	  r0, 0x548+var_B8(r1)
-lfd	  f0, 0x548+var_B8(r1)
-fsubs	  f0, f0, f1
-fmuls	  f0, f2, f0
-fctiwz	  f0, f0
-stfd	  f0, 0x548+var_B0(r1)
-lwz	  r24, 0x548+var_B0+4(r1)
-b	  branch_0x80323478
+branch_0x803233ec:
+    lfs     f1, 0x1f4(r31)
+    lfs     f0, 0x814(r2)
+    fcmpo   cr0, f1, f0
+    bge-    branch_0x80323454
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r3, r3, unk_0019660d@l
+    mullw   r3, r4, r3
+    addis   r3, r3, 0x3c6f
+    addi    r3, r3, -0xca1
+    stw     r3, 0x21c(r31)
+    lwz     r3, 0x21c(r31)
+    lfd     f1, 0x828(r2)
+    clrlwi  r3, r3, 16
+    lfs     f2, 0x1f4(r31)
+    addi    r3, r3, -0x8000
+    xoris   r3, r3, 0x8000
+    stw     r3, 0x494(sp)
+    stw     r0, 0x490(sp)
+    lfd     f0, 0x490(sp)
+    fsubs   f0, f0, f1
+    fmuls   f0, f2, f0
+    fctiwz  f0, f0
+    stfd    f0, 0x498(sp)
+    lwz     r24, 0x49c(sp)
+    b       branch_0x80323478
 
 branch_0x80323454:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r0, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r0
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-extsh	  r24, r0
-
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r0, r3, unk_0019660d@l
+    mullw   r3, r4, r0
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    extsh   r24, r0
 branch_0x80323478:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r0, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r0
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-lfs	  f0, 0x814(r2)
-srwi	  r0, r0, 9
-oris	  r0, r0, 0x3F80
-stw	  r0, 0x548+var_284(r1)
-lwz	  r0, 0x188(r31)
-lfs	  f1, 0x548+var_284(r1)
-clrlwi.	  r0, r0, 31
-fsubs	  f1, f1, f0
-beq	  branch_0x803234C4
-li	  r0, 1
-b	  branch_0x803234C8
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r0, r3, unk_0019660d@l
+    mullw   r3, r4, r0
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    lfs     f0, 0x814(r2)
+    srwi    r0, r0, 9
+    oris    r0, r0, 0x3f80
+    stw     r0, 0x2c4(sp)
+    lwz     r0, 0x188(r31)
+    lfs     f1, 0x2c4(sp)
+    clrlwi. r0, r0, 31
+    fsubs   f1, f1, f0
+    beq-    branch_0x803234c4
+    li      r0, 0x1
+    b       branch_0x803234c8
 
-branch_0x803234C4:
-li	  r0, 0
+branch_0x803234c4:
+    li      r0, 0x0
+branch_0x803234c8:
+    clrlwi. r0, r0, 24
+    beq-    branch_0x803234d4
+    bl      JPASqrtf__Ff
+branch_0x803234d4:
+    lfs     f2, 0x1f8(r31)
+    lis     r3, 0x19
+    lfs     f3, 0x814(r2)
+    clrlwi  r5, r24, 16
+    lwz     r0, R13Off_m0x5eac(r13)
+    fsubs   f0, f3, f2
+    lwz     r4, R13Off_m0x5ea8(r13)
+    sraw    r0, r5, r0
+    slwi    r0, r0, 2
+    fmadds  f1, f1, f0, f2
+    lfsx    f0, r4, r0
+    addi    r0, r3, 0x660d
+    fmuls   f4, f15, f1
+    fmuls   f0, f4, f0
+    stfs    f0, 0x468(sp)
+    lwz     r3, 0x21c(r31)
+    mullw   r3, r3, r0
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    lfs     f1, 0x818(r2)
+    srwi    r3, r0, 9
+    lwz     r0, R13Off_m0x5eac(r13)
+    oris    r3, r3, 0x3f80
+    lfs     f0, 0x81c(r2)
+    stw     r3, 0x2c0(sp)
+    sraw    r0, r5, r0
+    fmuls   f2, f1, f15
+    lwz     r3, R13Off_m0x5ea4(r13)
+    lfs     f1, 0x2c0(sp)
+    slwi    r0, r0, 2
+    fsubs   f1, f1, f3
+    fsubs   f0, f1, f0
+    fmuls   f0, f2, f0
+    stfs    f0, 0x46c(sp)
+    lfsx    f0, r3, r0
+    fmuls   f0, f4, f0
+    stfs    f0, 0x470(sp)
+    b       branch_0x803236e0
 
-branch_0x803234C8:
-clrlwi.	  r0, r0, 24
-beq	  branch_0x803234D4
-bl	  JPASqrtf__Ff	# JPASqrtf(float)
+branch_0x80323574:
+    lfs     f1, 0x1f4(r31)
+    lfs     f0, 0x814(r2)
+    fcmpo   cr0, f1, f0
+    bge-    branch_0x803235dc
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r3, r3, unk_0019660d@l
+    mullw   r3, r4, r3
+    addis   r3, r3, 0x3c6f
+    addi    r3, r3, -0xca1
+    stw     r3, 0x21c(r31)
+    lwz     r3, 0x21c(r31)
+    lfd     f1, 0x828(r2)
+    clrlwi  r3, r3, 16
+    lfs     f2, 0x1f4(r31)
+    addi    r3, r3, -0x8000
+    xoris   r3, r3, 0x8000
+    stw     r3, 0x494(sp)
+    stw     r0, 0x490(sp)
+    lfd     f0, 0x490(sp)
+    fsubs   f0, f0, f1
+    fmuls   f0, f2, f0
+    fctiwz  f0, f0
+    stfd    f0, 0x498(sp)
+    lwz     r24, 0x49c(sp)
+    b       branch_0x80323600
 
-branch_0x803234D4:
-lfs	  f2, 0x1F8(r31)
-lis	  r3, 0x19 # 0x19660D
-lfs	  f3, 0x814(r2)
-clrlwi	  r5, r24, 16
-lwz	  r0, -0x5EAC(r13)
-fsubs	  f0, f3, f2
-lwz	  r4, -0x5EA8(r13)
-sraw	  r0, r5, r0
-slwi	  r0, r0, 2
-fmadds	  f1, f1, f0, f2
-lfsx	  f0, r4, r0
-addi	  r0, r3, 0x660D # 0x19660D
-fmuls	  f4, f15, f1
-fmuls	  f0, f4, f0
-stfs	  f0, 0x548+var_E0(r1)
-lwz	  r3, 0x21C(r31)
-mullw	  r3, r3, r0
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-lfs	  f1, 0x818(r2)
-srwi	  r3, r0, 9
-lwz	  r0, -0x5EAC(r13)
-oris	  r3, r3, 0x3F80
-lfs	  f0, 0x81C(r2)
-stw	  r3, 0x548+var_288(r1)
-sraw	  r0, r5, r0
-fmuls	  f2, f1, f15
-lwz	  r3, -0x5EA4(r13)
-lfs	  f1, 0x548+var_288(r1)
-slwi	  r0, r0, 2
-fsubs	  f1, f1, f3
-fsubs	  f0, f1, f0
-fmuls	  f0, f2, f0
-stfs	  f0, 0x548+var_DC(r1)
-lfsx	  f0, r3, r0
-fmuls	  f0, f4, f0
-stfs	  f0, 0x548+var_D8(r1)
-b	  def_80322F58	# jumptable 80322F58 default case
-
-branch_0x80323574:		# jumptable 80322F58 case 3
-lfs	  f1, 0x1F4(r31)
-lfs	  f0, 0x814(r2)
-fcmpo	  cr0, f1, f0
-bge	  branch_0x803235DC
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r3, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r3
-addis	  r3, r3, 0x3C6F
-addi	  r3, r3, -0xCA1
-stw	  r3, 0x21C(r31)
-lwz	  r3, 0x21C(r31)
-lfd	  f1, 0x828(r2)
-clrlwi	  r3, r3, 16
-lfs	  f2, 0x1F4(r31)
-addi	  r3, r3, -0x8000
-xoris	  r3, r3, 0x8000
-stw	  r3, 0x548+var_B8+4(r1)
-stw	  r0, 0x548+var_B8(r1)
-lfd	  f0, 0x548+var_B8(r1)
-fsubs	  f0, f0, f1
-fmuls	  f0, f2, f0
-fctiwz	  f0, f0
-stfd	  f0, 0x548+var_B0(r1)
-lwz	  r24, 0x548+var_B0+4(r1)
-b	  branch_0x80323600
-
-branch_0x803235DC:
-lis	  r3, 0x19 # 0x19660D
-lwz	  r4, 0x21C(r31)
-addi	  r0, r3, 0x660D # 0x19660D
-mullw	  r3, r4, r0
-addis	  r3, r3, 0x3C6F
-addi	  r0, r3, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r0, 0x21C(r31)
-extsh	  r24, r0
-
+branch_0x803235dc:
+    lis     r3, unk_0019660d@h
+    lwz     r4, 0x21c(r31)
+    addi    r0, r3, unk_0019660d@l
+    mullw   r3, r4, r0
+    addis   r3, r3, 0x3c6f
+    addi    r0, r3, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r0, 0x21c(r31)
+    extsh   r24, r0
 branch_0x80323600:
-addi	  r3, r24, 0
-addi	  r4, r1, 0x548+var_170
-bl	  JPAGetYRotateMtx__FsPA4_f # JPAGetYRotateMtx(short,float *[4])
-lwz	  r0, -0x5EAC(r13)
-clrlwi	  r4, r24, 16
-lwz	  r5, -0x5EA8(r13)
-lis	  r3, 0x19 # 0x19660D
-sraw	  r0, r4, r0
-slwi	  r7, r0, 2
-lfs	  f1, 0x810(r2)
-lfsx	  f0, r5, r7
-addi	  r0, r3, 0x660D # 0x19660D
-addi	  r4, r1, 0x548+var_180
-fmuls	  f0, f15, f0
-mr	  r5, r4
-addi	  r3, r1, 0x548+var_170
-stfs	  f0, 0x548+var_E0(r1)
-stfs	  f1, 0x548+var_DC(r1)
-lwz	  r6, -0x5EA4(r13)
-lfsx	  f0, r6, r7
-fmuls	  f0, f15, f0
-stfs	  f0, 0x548+var_D8(r1)
-lwz	  r6, 0x21C(r31)
-lfs	  f0, 0x1F8(r31)
-mullw	  r6, r6, r0
-fmuls	  f2, f15, f0
-addis	  r6, r6, 0x3C6F
-addi	  r0, r6, -0xCA1
-stw	  r0, 0x21C(r31)
-lwz	  r6, 0x21C(r31)
-lwz	  r0, -0x5EAC(r13)
-clrlwi	  r6, r6, 16
-stfs	  f1, 0x548+var_180(r1)
-sraw	  r0, r6, r0
-lwz	  r7, -0x5EA8(r13)
-slwi	  r0, r0, 2
-lfsx	  f0, r7, r0
-fmuls	  f0, f2, f0
-stfs	  f0, 0x548+var_17C(r1)
-lwz	  r6, -0x5EA4(r13)
-lfsx	  f0, r6, r0
-fmuls	  f0, f2, f0
-stfs	  f0, 0x548+var_178(r1)
-bl	  PSMTXMultVec
-lfs	  f31, 0x548+var_180(r1)
-lfs	  f0, 0x548+var_E0(r1)
-fadds	  f0, f0, f31
-stfs	  f0, 0x548+var_E0(r1)
-lfs	  f30, 0x548+var_17C(r1)
-lfs	  f0, 0x548+var_DC(r1)
-fadds	  f0, f0, f30
-stfs	  f0, 0x548+var_DC(r1)
-lfs	  f29, 0x548+var_178(r1)
-lfs	  f0, 0x548+var_D8(r1)
-fadds	  f0, f0, f29
-stfs	  f0, 0x548+var_D8(r1)
-
-def_80322F58:		# jumptable 80322F58 default case
+    addi    r3, r24, 0x0
+    addi    r4, sp, 0x3d8
+    bl      JPAGetYRotateMtx__FsPA4_f
+    lwz     r0, R13Off_m0x5eac(r13)
+    clrlwi  r4, r24, 16
+    lwz     r5, R13Off_m0x5ea8(r13)
+    lis     r3, unk_0019660d@h
+    sraw    r0, r4, r0
+    slwi    r7, r0, 2
+    lfs     f1, 0x810(r2)
+    lfsx    f0, r5, r7
+    addi    r0, r3, unk_0019660d@l
+    addi    r4, sp, 0x3c8
+    fmuls   f0, f15, f0
+    mr      r5, r4
+    addi    r3, sp, 0x3d8
+    stfs    f0, 0x468(sp)
+    stfs    f1, 0x46c(sp)
+    lwz     r6, R13Off_m0x5ea4(r13)
+    lfsx    f0, r6, r7
+    fmuls   f0, f15, f0
+    stfs    f0, 0x470(sp)
+    lwz     r6, 0x21c(r31)
+    lfs     f0, 0x1f8(r31)
+    mullw   r6, r6, r0
+    fmuls   f2, f15, f0
+    addis   r6, r6, 0x3c6f
+    addi    r0, r6, -0xca1
+    stw     r0, 0x21c(r31)
+    lwz     r6, 0x21c(r31)
+    lwz     r0, R13Off_m0x5eac(r13)
+    clrlwi  r6, r6, 16
+    stfs    f1, 0x3c8(sp)
+    sraw    r0, r6, r0
+    lwz     r7, R13Off_m0x5ea8(r13)
+    slwi    r0, r0, 2
+    lfsx    f0, r7, r0
+    fmuls   f0, f2, f0
+    stfs    f0, 0x3cc(sp)
+    lwz     r6, R13Off_m0x5ea4(r13)
+    lfsx    f0, r6, r0
+    fmuls   f0, f2, f0
+    stfs    f0, 0x3d0(sp)
+    bl      PSMTXMultVec
+    lfs     f31, 0x3c8(sp)
+    lfs     f0, 0x468(sp)
+    fadds   f0, f0, f31
+    stfs    f0, 0x468(sp)
+    lfs     f30, 0x3cc(sp)
+    lfs     f0, 0x46c(sp)
+    fadds   f0, f0, f30
+    stfs    f0, 0x46c(sp)
+    lfs     f29, 0x3d0(sp)
+    lfs     f0, 0x470(sp)
+    fadds   f0, f0, f29
+    stfs    f0, 0x470(sp)
 branch_0x803236e0:
     lbz     r0, 0x1ae(r31)
     cmplwi  r0, 0x3
     beq-    branch_0x803236f8
     lfs     f31, 0x468(sp)
-    lfs     f30, 0x810(rtoc)
+    lfs     f30, 0x810(r2)
     lfs     f29, 0x470(sp)
 branch_0x803236f8:
     lfs     f1, 0x468(sp)
@@ -1946,19 +1861,19 @@ branch_0x803236f8:
     fmuls   f20, f3, f2
     fmuls   f19, f1, f0
     bl      PSMTXMultVec
-    lis     r3, 0x19
+    lis     r3, unk_0019660d@h
     lwz     r4, 0x21c(r31)
-    addi    r0, r3, 0x660d
+    addi    r0, r3, unk_0019660d@l
     mullw   r3, r4, r0
     addis   r3, r3, 0x3c6f
-    subi    r3, r3, 0xca1
+    addi    r3, r3, -0xca1
     stw     r3, 0x21c(r31)
     lwz     r3, 0x21c(r31)
-    lfs     f26, 0x810(rtoc)
+    lfs     f26, 0x810(r2)
     srwi    r3, r3, 9
-    lfs     f2, 0x818(rtoc)
+    lfs     f2, 0x818(r2)
     oris    r3, r3, 0x3f80
-    lfs     f0, 0x814(rtoc)
+    lfs     f0, 0x814(r2)
     stw     r3, 0x2bc(sp)
     fmr     f25, f26
     fmr     f28, f26
@@ -1985,10 +1900,10 @@ branch_0x803236f8:
     lwz     r3, 0x21c(r31)
     mullw   r3, r3, r0
     addis   r3, r3, 0x3c6f
-    subi    r3, r3, 0xca1
+    addi    r3, r3, -0xca1
     stw     r3, 0x21c(r31)
     lwz     r3, 0x21c(r31)
-    lfs     f4, 0x81c(rtoc)
+    lfs     f4, 0x81c(r2)
     srwi    r3, r3, 9
     oris    r3, r3, 0x3f80
     stw     r3, 0x294(sp)
@@ -1998,7 +1913,7 @@ branch_0x803236f8:
     fsubs   f1, f1, f0
     fsubs   f19, f1, f4
     addis   r3, r3, 0x3c6f
-    subi    r3, r3, 0xca1
+    addi    r3, r3, -0xca1
     stw     r3, 0x21c(r31)
     lwz     r3, 0x21c(r31)
     srwi    r3, r3, 9
@@ -2010,11 +1925,11 @@ branch_0x803236f8:
     fsubs   f1, f1, f0
     fsubs   f20, f1, f4
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     fmuls   f1, f20, f20
     lwz     r0, 0x21c(r31)
-    lfs     f2, 0x820(rtoc)
+    lfs     f2, 0x820(r2)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x28c(sp)
@@ -2041,7 +1956,7 @@ branch_0x8032387c:
 
 branch_0x80323894:
     fmuls   f1, f20, f20
-    lfs     f0, 0x820(rtoc)
+    lfs     f0, 0x820(r2)
     fmadds  f1, f21, f21, f1
     fmadds  f1, f19, f19, f1
     fcmpo   cr0, f1, f0
@@ -2058,7 +1973,7 @@ branch_0x803238bc:
     fmuls   f25, f20, f0
     fmuls   f28, f19, f0
 branch_0x803238d0:
-    lfs     f2, 0x810(rtoc)
+    lfs     f2, 0x810(r2)
     lfs     f4, 0x200(r31)
     fcmpu   cr0, f2, f4
     beq-    branch_0x80323a64
@@ -2077,11 +1992,11 @@ branch_0x80323904:
     clrlwi. r0, r0, 24
     beq-    branch_0x8032393c
     slwi    r3, r27, 16
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     divw    r4, r3, r26
-    lwz     r5, -0x5ea4(r13)
-    lwz     r3, -0x5ea8(r13)
-    lfs     f17, 0x810(rtoc)
+    lwz     r5, R13Off_m0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
+    lfs     f17, 0x810(r2)
     clrlwi  r4, r4, 16
     sraw    r0, r4, r0
     slwi    r0, r0, 2
@@ -2090,17 +2005,17 @@ branch_0x80323904:
     b       branch_0x803239b0
 
 branch_0x8032393c:
-    lis     r3, 0x19
+    lis     r3, unk_0019660d@h
     lwz     r0, 0x21c(r31)
-    addi    r4, r3, 0x660d
+    addi    r4, r3, unk_0019660d@l
     mullw   r3, r0, r4
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f2, 0x814(rtoc)
+    lfs     f2, 0x814(r2)
     srwi    r0, r0, 9
-    lfs     f1, 0x81c(rtoc)
+    lfs     f1, 0x81c(r2)
     oris    r0, r0, 0x3f80
     stw     r0, 0x288(sp)
     lwz     r0, 0x21c(r31)
@@ -2109,10 +2024,10 @@ branch_0x8032393c:
     fsubs   f0, f0, f2
     fsubs   f19, f0, f1
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f17, 0x810(rtoc)
+    lfs     f17, 0x810(r2)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x284(sp)
@@ -2121,14 +2036,14 @@ branch_0x8032393c:
     fsubs   f21, f0, f1
 branch_0x803239b0:
     fmuls   f1, f17, f17
-    lfs     f0, 0x820(rtoc)
+    lfs     f0, 0x820(r2)
     lfs     f20, 0x200(r31)
     fmadds  f1, f21, f21, f1
     fmadds  f1, f19, f19, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x803239e0
-    lfs     f22, 0x810(rtoc)
+    lfs     f22, 0x810(r2)
     fmr     f23, f22
     fmr     f24, f23
     b       branch_0x80323a64
@@ -2143,7 +2058,7 @@ branch_0x803239e0:
 
 branch_0x803239f8:
     fmuls   f1, f30, f30
-    lfs     f0, 0x820(rtoc)
+    lfs     f0, 0x820(r2)
     fmadds  f1, f31, f31, f1
     fmadds  f5, f29, f29, f1
     fcmpo   cr0, f5, f0
@@ -2162,8 +2077,8 @@ branch_0x80323a24:
 
 branch_0x80323a34:
     frsqrte f3, f5
-    lfs     f2, 0x81c(rtoc)
-    lfs     f0, 0x830(rtoc)
+    lfs     f2, 0x81c(r2)
+    lfs     f0, 0x830(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -2175,21 +2090,21 @@ branch_0x80323a54:
     fmuls   f23, f30, f0
     fmuls   f22, f29, f0
 branch_0x80323a64:
-    lfs     f1, 0x810(rtoc)
+    lfs     f1, 0x810(r2)
     lfs     f0, 0x204(r31)
     fcmpu   cr0, f1, f0
     beq-    branch_0x80323b24
-    lis     r3, 0x19
+    lis     r3, unk_0019660d@h
     lwz     r0, 0x21c(r31)
-    addi    r4, r3, 0x660d
+    addi    r4, r3, unk_0019660d@l
     mullw   r3, r0, r4
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f2, 0x814(rtoc)
+    lfs     f2, 0x814(r2)
     srwi    r0, r0, 9
-    lfs     f1, 0x81c(rtoc)
+    lfs     f1, 0x81c(r2)
     oris    r0, r0, 0x3f80
     stw     r0, 0x280(sp)
     lwz     r0, 0x21c(r31)
@@ -2198,7 +2113,7 @@ branch_0x80323a64:
     fsubs   f0, f0, f2
     fsubs   f4, f0, f1
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
     srwi    r0, r0, 9
@@ -2210,7 +2125,7 @@ branch_0x80323a64:
     fsubs   f0, f0, f2
     fsubs   f5, f0, f1
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
     srwi    r0, r0, 9
@@ -2224,7 +2139,7 @@ branch_0x80323a64:
     fsubs   f18, f0, f1
     fmuls   f18, f18, f3
 branch_0x80323b24:
-    lfs     f1, 0x810(rtoc)
+    lfs     f1, 0x810(r2)
     lfs     f0, 0x208(r31)
     fcmpu   cr0, f1, f0
     beq-    branch_0x80323c30
@@ -2232,21 +2147,21 @@ branch_0x80323b24:
     fcmpo   cr0, f0, f1
     ble-    branch_0x80323bf0
     stfs    f1, 0x398(sp)
-    lis     r3, 0x19
-    addi    r4, r3, 0x660d
+    lis     r3, unk_0019660d@h
+    addi    r4, r3, unk_0019660d@l
     stfs    f1, 0x39c(sp)
     addi    r5, sp, 0x368
-    lfs     f4, 0x814(rtoc)
+    lfs     f4, 0x814(r2)
     stfs    f4, 0x3a0(sp)
     lwz     r0, 0x21c(r31)
     mullw   r3, r0, r4
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f1, 0x818(rtoc)
+    lfs     f1, 0x818(r2)
     srwi    r0, r0, 9
-    lfs     f2, 0x838(rtoc)
+    lfs     f2, 0x838(r2)
     oris    r0, r0, 0x3f80
     stw     r0, 0x2b8(sp)
     lfs     f0, 0x2b8(sp)
@@ -2257,7 +2172,7 @@ branch_0x80323b24:
     fmsubs  f0, f1, f0, f4
     fmuls   f0, f2, f0
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     fmuls   f0, f3, f0
     lwz     r0, 0x21c(r31)
@@ -2310,7 +2225,7 @@ branch_0x80323c30:
     lfs     f1, 0x3a0(sp)
     fadds   f0, f1, f0
     stfs    f0, 0x364(sp)
-    lfs     f1, 0x810(rtoc)
+    lfs     f1, 0x810(r2)
     lfs     f0, 0x1c4(r31)
     fcmpu   cr0, f1, f0
     beq-    branch_0x80323ca0
@@ -2363,14 +2278,14 @@ branch_0x80323cf0:
     fmuls   f2, f1, f1
     lfs     f3, 0x364(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x820(rtoc)
+    lfs     f0, 0x820(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80323d5c
-    lfs     f0, 0x810(rtoc)
+    lfs     f0, 0x810(r2)
     stfs    f0, 0x358(sp)
     stfs    f0, 0x354(sp)
     stfs    f0, 0x350(sp)
@@ -2378,7 +2293,7 @@ branch_0x80323cf0:
 
 branch_0x80323d5c:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x814(rtoc)
+    lfs     f2, 0x814(r2)
     lfs     f0, 0x35c(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -2402,21 +2317,21 @@ branch_0x80323d8c:
     stfs    f0, 0x6c(r29)
     lfs     f0, 0x348(sp)
     stfs    f0, 0x70(r29)
-    lfs     f1, 0x810(rtoc)
+    lfs     f1, 0x810(r2)
     lfs     f0, 0x1c8(r31)
     fcmpu   cr0, f1, f0
     beq-    branch_0x80323e1c
-    lis     r3, 0x19
+    lis     r3, unk_0019660d@h
     lwz     r4, 0x21c(r31)
-    addi    r0, r3, 0x660d
+    addi    r0, r3, unk_0019660d@l
     mullw   r3, r4, r0
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f1, 0x814(rtoc)
+    lfs     f1, 0x814(r2)
     srwi    r0, r0, 9
-    lfs     f2, 0x818(rtoc)
+    lfs     f2, 0x818(r2)
     oris    r0, r0, 0x3f80
     stw     r0, 0x2b0(sp)
     lfs     f0, 0x2b0(sp)
@@ -2428,17 +2343,17 @@ branch_0x80323d8c:
     fmuls   f1, f4, f0
 branch_0x80323e1c:
     stfs    f1, 0x78(r29)
-    lis     r3, 0x19
-    addi    r0, r3, 0x660d
+    lis     r3, unk_0019660d@h
+    addi    r0, r3, unk_0019660d@l
     lwz     r3, 0x21c(r31)
     mullw   r3, r3, r0
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f3, 0x814(rtoc)
+    lfs     f3, 0x814(r2)
     srwi    r0, r0, 9
-    lfs     f1, 0x81c(rtoc)
+    lfs     f1, 0x81c(r2)
     oris    r0, r0, 0x3f80
     stw     r0, 0x2ac(sp)
     lfs     f0, 0x2ac(sp)
@@ -2452,16 +2367,16 @@ branch_0x80323e1c:
     fmr     f0, f3
 branch_0x80323e78:
     stfs    f0, 0x7c(r29)
-    lis     r3, 0x19
-    addi    r24, r3, 0x660d
+    lis     r3, unk_0019660d@h
+    addi    r24, r3, unk_0019660d@l
     lwz     r0, 0x21c(r31)
     addi    r3, r28, 0x0
     mullw   r4, r0, r24
     addis   r4, r4, 0x3c6f
-    subi    r0, r4, 0xca1
+    addi    r0, r4, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f1, 0x814(rtoc)
+    lfs     f1, 0x814(r2)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x2a8(sp)
@@ -2473,13 +2388,13 @@ branch_0x80323e78:
     fmuls   f0, f3, f0
     stfs    f0, 0x74(r29)
     bl      initGlobalPosition__15JPABaseParticleFv
-    lfs     f2, 0x810(rtoc)
+    lfs     f2, 0x810(r2)
     lis     r0, 0x4330
     stfs    f2, 0x48(r29)
     lha     r3, 0x1ee(r31)
     lfs     f0, 0x1e0(r31)
     xoris   r3, r3, 0x8000
-    lfd     f1, 0x828(rtoc)
+    lfd     f1, 0x828(r2)
     stw     r3, 0x494(sp)
     fcmpu   cr0, f2, f0
     stw     r0, 0x490(sp)
@@ -2489,10 +2404,10 @@ branch_0x80323e78:
     lwz     r0, 0x21c(r31)
     mullw   r3, r0, r24
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r31)
     lwz     r0, 0x21c(r31)
-    lfs     f1, 0x814(rtoc)
+    lfs     f1, 0x814(r2)
     srwi    r0, r0, 9
     oris    r0, r0, 0x3f80
     stw     r0, 0x2a4(sp)
@@ -2544,18 +2459,18 @@ calcCurrentRateTimerStep__14JPABaseEmitterFv: # 0x80323fbc
     lbz     r0, 0x1af(r3)
     cmplwi  r0, 0x0
     bne-    branch_0x80323fd8
-    lfs     f0, 0x814(rtoc)
+    lfs     f0, 0x814(r2)
     stfs    f0, 0x1c0(r3)
     b       branch_0x80324008
 
 branch_0x80323fd8:
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
-    lfd     f1, 0x840(rtoc)
+    lfd     f1, 0x840(r2)
     stw     r0, 0x10(sp)
-    lfs     f2, 0x814(rtoc)
+    lfs     f2, 0x814(r2)
     lfd     f0, 0x10(sp)
-    lfs     f3, 0x848(rtoc)
+    lfs     f3, 0x848(r2)
     fsubs   f0, f0, f1
     fadds   f0, f2, f0
     fdivs   f0, f2, f0
@@ -2578,8 +2493,8 @@ calcCreateParticle__14JPABaseEmitterFv: # 0x80324010
     mr      r29, r3
     stw     r28, 0x48(sp)
     lwz     r0, 0x11c(r3)
-    lis     r3, 0x8040
-    subi    r31, r3, 0x1ec8
+    lis     r3, JPAEmitterInfoObj@ha
+    addi    r31, r3, JPAEmitterInfoObj@l
     rlwinm. r0, r0, 0, 26, 26
     beq-    branch_0x80324050
     li      r0, 0x1
@@ -2601,22 +2516,22 @@ branch_0x80324070:
 branch_0x80324074:
     clrlwi. r0, r0, 24
     bne-    branch_0x80324174
-    lfs     f1, 0x810(rtoc)
+    lfs     f1, 0x810(r2)
     lfs     f0, 0x1b4(r29)
     lfs     f4, 0x1b0(r29)
     fcmpu   cr0, f1, f0
     beq-    branch_0x803240dc
-    lis     r3, 0x19
+    lis     r3, unk_0019660d@h
     lwz     r4, 0x21c(r29)
-    addi    r0, r3, 0x660d
+    addi    r0, r3, unk_0019660d@l
     mullw   r3, r4, r0
     addis   r3, r3, 0x3c6f
-    subi    r0, r3, 0xca1
+    addi    r0, r3, -0xca1
     stw     r0, 0x21c(r29)
     lwz     r0, 0x21c(r29)
-    lfs     f1, 0x814(rtoc)
+    lfs     f1, 0x814(r2)
     srwi    r0, r0, 9
-    lfs     f2, 0x818(rtoc)
+    lfs     f2, 0x818(r2)
     oris    r0, r0, 0x3f80
     stw     r0, 0x24(sp)
     lfs     f0, 0x24(sp)
@@ -2630,13 +2545,13 @@ branch_0x803240dc:
     fadds   f0, f0, f4
     stfs    f0, 0x1b8(r29)
     lfs     f2, 0x1b8(r29)
-    lfs     f0, 0x814(rtoc)
+    lfs     f0, 0x814(r2)
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     bne-    branch_0x80324138
     fctiwz  f0, f2
     lis     r0, 0x4330
-    lfd     f1, 0x828(rtoc)
+    lfd     f1, 0x828(r2)
     stfd    f0, 0x38(sp)
     lwz     r3, 0x3c(sp)
     stfd    f0, 0x40(sp)
@@ -2651,7 +2566,7 @@ branch_0x803240dc:
     b       branch_0x8032422c
 
 branch_0x80324138:
-    lfs     f0, 0x810(rtoc)
+    lfs     f0, 0x810(r2)
     fcmpo   cr0, f4, f0
     ble-    branch_0x8032416c
     lwz     r0, 0x11c(r29)
@@ -2701,7 +2616,7 @@ branch_0x803241cc:
     lhz     r0, 0x1f2(r29)
     cmpw    r5, r0
     blt+    branch_0x803241b0
-    lfs     f1, 0x834(rtoc)
+    lfs     f1, 0x834(r2)
     li      r3, 0x4000
     lfs     f0, 0x1f4(r29)
     lwz     r0, 0x170(r31)
@@ -2719,15 +2634,15 @@ branch_0x803241cc:
     b       branch_0x8032422c
 
 branch_0x80324218:
-    subi    r0, r3, 0x5
+    addi    r0, r3, -0x5
     clrlwi  r0, r0, 24
     cmplwi  r0, 0x1
     bgt-    branch_0x8032422c
     lhz     r30, 0x1f2(r29)
 branch_0x8032422c:
-    lis     r3, 0x8040
+    lis     r3, JPAEmitterInfoObj@ha
     extsh   r0, r30
-    subi    r3, r3, 0x1ec8
+    addi    r3, r3, JPAEmitterInfoObj@l
     stw     r0, 0x164(r3)
     lwz     r0, 0x11c(r29)
     clrlwi. r0, r0, 31
@@ -2758,7 +2673,7 @@ branch_0x80324288:
     cmpw    r28, r30
     blt+    branch_0x80324270
 branch_0x80324290:
-    lfs     f1, 0x814(rtoc)
+    lfs     f1, 0x814(r2)
     lfs     f2, 0x1c0(r29)
     fcmpu   cr0, f1, f2
     bne-    branch_0x803242b0
@@ -2821,7 +2736,7 @@ branch_0x8032434c:
     fadds   f0, f1, f0
     stfs    f0, 0x18(r3)
     lfs     f1, 0x18(r3)
-    lfs     f0, 0x810(rtoc)
+    lfs     f0, 0x810(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80324370
     stfs    f0, 0x18(r3)
@@ -3126,11 +3041,11 @@ calcKeyFrameAnime__14JPABaseEmitterFv: # 0x803246f0
     lbz     r29, 0x22(r4)
     cmplwi  r29, 0x0
     beq-    branch_0x803248a8
-    lis     r3, 0x803e
+    lis     r3, unk_803e3ccc@h
     lwz     r31, 0x18c(r25)
     lwz     r30, 0x14(r4)
-    addi    r23, r3, 0x3ccc
-    lfd     f31, 0x828(rtoc)
+    addi    r23, r3, unk_803e3ccc@l
+    lfd     f31, 0x828(r2)
     li      r28, 0x1
     li      r27, 0x0
     li      r26, 0x0
@@ -3166,7 +3081,7 @@ branch_0x80324790:
 branch_0x80324794:
     clrlwi. r0, r0, 24
     beq-    branch_0x803247e4
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     fctiwz  f0, f0
     slwi    r0, r0, 4
     lfsx    f2, r4, r0
@@ -3185,75 +3100,72 @@ branch_0x80324794:
     fsubs   f0, f0, f31
     fsubs   f1, f1, f0
 branch_0x803247e4:
-    subi    r0, r27, 0x1
+    addi    r0, r27, -0x1
     cmplwi  r0, 0xa
     bgt-    branch_0x80324898
     slwi    r0, r0, 2
     lwzx    r0, r23, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80324800:		# jumptable 803247FC case 0
+    bctr       
+branch_0x80324800:
     bl      JPAGetKeyFrameValue__FfUsPf
     stfs    f1, 0x1b0(r25)
     b       branch_0x80324898
 
-branch_0x8032480C:		# jumptable 803247FC case 1
-bl	  JPAGetKeyFrameValue__FfUsPf
-fctiwz	  f0, f1
-stfd	  f0, 0x88+var_48(r1)
-lwz	  r0, 0x88+var_48+4(r1)
-sth	  r0, 0x1F0(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x8032480c:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    fctiwz  f0, f1
+    stfd    f0, 0x40(sp)
+    lwz     r0, 0x44(sp)
+    sth     r0, 0x1f0(r25)
+    b       branch_0x80324898
 
-branch_0x80324824:		# jumptable 803247FC case 2
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0x1F4(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x80324824:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0x1f4(r25)
+    b       branch_0x80324898
 
-branch_0x80324830:		# jumptable 803247FC case 3
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0x20C(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x80324830:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0x20c(r25)
+    b       branch_0x80324898
 
-branch_0x8032483C:		# jumptable 803247FC case 4
-bl	  JPAGetKeyFrameValue__FfUsPf
-fctiwz	  f0, f1
-stfd	  f0, 0x88+var_48(r1)
-lwz	  r0, 0x88+var_48+4(r1)
-sth	  r0, 0x1EE(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x8032483c:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    fctiwz  f0, f1
+    stfd    f0, 0x40(sp)
+    lwz     r0, 0x44(sp)
+    sth     r0, 0x1ee(r25)
+    b       branch_0x80324898
 
-branch_0x80324854:		# jumptable 803247FC case 5
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0x1D8(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x80324854:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0x1d8(r25)
+    b       branch_0x80324898
 
-branch_0x80324860:		# jumptable 803247FC case 6
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0x1FC(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x80324860:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0x1fc(r25)
+    b       branch_0x80324898
 
-branch_0x8032486C:		# jumptable 803247FC case 7
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0x1FC(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x8032486c:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0x1fc(r25)
+    b       branch_0x80324898
 
-branch_0x80324878:		# jumptable 803247FC case 8
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0x208(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x80324878:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0x208(r25)
+    b       branch_0x80324898
 
-branch_0x80324884:		# jumptable 803247FC case 9
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0x1E4(r25)
-b	  def_803247FC	# jumptable 803247FC default case
+branch_0x80324884:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0x1e4(r25)
+    b       branch_0x80324898
 
-branch_0x80324890:		# jumptable 803247FC case 10
-bl	  JPAGetKeyFrameValue__FfUsPf
-stfs	  f1, 0xE4(r25)
-
-def_803247FC:		# jumptable 803247FC default case
+branch_0x80324890:
+    bl      JPAGetKeyFrameValue__FfUsPf
+    stfs    f1, 0xe4(r25)
 branch_0x80324898:
     addi    r26, r26, 0x1
     addi    r24, r24, 0x4
@@ -3272,9 +3184,9 @@ branch_0x803248a8:
 .globl calc__14JPABaseEmitterFv
 calc__14JPABaseEmitterFv: # 0x803248c0
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, JPAEmitterInfoObj@ha
     stw     r0, 0x4(sp)
-    subi    r4, r4, 0x1ec8
+    addi    r4, r4, JPAEmitterInfoObj@l
     li      r5, 0x0
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
@@ -3359,7 +3271,7 @@ branch_0x803249bc:
     fadds   f0, f1, f0
     stfs    f0, 0x10(r31)
     lfs     f1, 0x10(r31)
-    lfs     f0, 0x810(rtoc)
+    lfs     f0, 0x810(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x803249f8
     stfs    f0, 0x10(r31)
@@ -3407,12 +3319,12 @@ setGlobalSRTMatrix__14JPABaseEmitterFPA4_f: # 0x80324a3c
 .globl __sinit_JPAEmitter_cpp
 __sinit_JPAEmitter_cpp: # 0x80324a70
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, JPAEmitterInfoObj@ha
     stw     r0, 0x4(sp)
     li      r4, 0x0
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    subi    r31, r3, 0x1ec8
+    addi    r31, r3, JPAEmitterInfoObj@l
     addi    r3, r31, 0x8
     bl      __ct__Q25JMath13TRandom_fast_FUl
     addi    r3, r31, 0x6c

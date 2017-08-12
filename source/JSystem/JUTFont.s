@@ -2,9 +2,9 @@
 .globl __ct__7JUTFontFv
 __ct__7JUTFontFv: # 0x802c8780
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, __vvt__7JUTFont@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x540
+    addi    r0, r4, __vvt__7JUTFont@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -95,7 +95,7 @@ branch_0x802c8884:
     beq-    branch_0x802c88b8
     lbzu    r0, 0x1(r28)
     slwi    r31, r31, 8
-    subi    r29, r29, 0x1
+    addi    r29, r29, -0x1
     or      r31, r31, r0
 branch_0x802c88b8:
     mr      r3, r27
@@ -111,7 +111,7 @@ branch_0x802c88b8:
     blrl
     fadds   f27, f27, f1
     li      r30, 0x1
-    subi    r29, r29, 0x1
+    addi    r29, r29, -0x1
     addi    r28, r28, 0x1
 branch_0x802c88f4:
     cmplwi  r29, 0x0
@@ -137,8 +137,8 @@ __dt__7JUTFontFv: # 0x802c8928
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802c895c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x540
+    lis     r3, __vvt__7JUTFont@h
+    addi    r3, r3, __vvt__7JUTFont@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x802c895c

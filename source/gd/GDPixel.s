@@ -12,7 +12,7 @@ GDSetBlendMode: # 0x80366efc
     addi    r29, r4, 0x0
     stw     r28, 0x18(sp)
     addi    r28, r3, 0x0
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r7)
     lwz     r0, 0xc(r7)
     addi    r3, r3, 0x1
@@ -20,13 +20,13 @@ GDSetBlendMode: # 0x80366efc
     ble-    branch_0x80366f44
     bl      GDOverflowed
 branch_0x80366f44:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0x61
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x4
@@ -34,7 +34,7 @@ branch_0x80366f44:
     ble-    branch_0x80366f78
     bl      GDOverflowed
 branch_0x80366f78:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r8, 0xfe
     li      r7, 0x0
     lwz     r3, 0x8(r4)
@@ -43,22 +43,22 @@ branch_0x80366f78:
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r8, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r7, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x1
@@ -66,13 +66,13 @@ branch_0x80366f78:
     ble-    branch_0x80366ff4
     bl      GDOverflowed
 branch_0x80366ff4:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0x61
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x4
@@ -88,7 +88,7 @@ branch_0x80367028:
     li      r4, 0x0
 branch_0x80367040:
     subfic  r3, r28, 0x3
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     subfic  r0, r28, 0x2
     cntlzw  r0, r0
     lwz     r7, 0x8(r6)
@@ -116,7 +116,7 @@ branch_0x80367040:
     li      r7, 0x0
 branch_0x803670ac:
     or      r7, r0, r7
-    lwz     r9, -0x5778(r13)
+    lwz     r9, R13Off_m0x5778(r13)
     or      r7, r3, r7
     or      r7, r4, r7
     lwz     r8, 0x8(r9)
@@ -135,7 +135,7 @@ branch_0x803670ac:
     li      r7, 0x0
 branch_0x803670f4:
     or      r7, r0, r7
-    lwz     r9, -0x5778(r13)
+    lwz     r9, R13Off_m0x5778(r13)
     or      r7, r3, r7
     or      r7, r4, r7
     lwz     r8, 0x8(r9)
@@ -154,7 +154,7 @@ branch_0x803670f4:
     li      r7, 0x0
 branch_0x8036713c:
     or      r0, r0, r7
-    lwz     r7, -0x5778(r13)
+    lwz     r7, R13Off_m0x5778(r13)
     or      r0, r3, r0
     or      r0, r4, r0
     lwz     r3, 0x8(r7)
@@ -187,7 +187,7 @@ GDSetBlendModeEtc: # 0x80367188
     addi    r29, r7, 0x0
     addi    r30, r8, 0x0
     addi    r31, r9, 0x0
-    lwz     r10, -0x5778(r13)
+    lwz     r10, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r10)
     lwz     r0, 0xc(r10)
     addi    r3, r3, 0x1
@@ -195,13 +195,13 @@ GDSetBlendModeEtc: # 0x80367188
     ble-    branch_0x803671d0
     bl      GDOverflowed
 branch_0x803671d0:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0x61
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x4
@@ -217,7 +217,7 @@ branch_0x80367204:
     li      r4, 0x0
 branch_0x8036721c:
     subfic  r3, r25, 0x3
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     subfic  r0, r25, 0x2
     cntlzw  r0, r0
     lwz     r10, 0x8(r6)
@@ -251,7 +251,7 @@ branch_0x8036721c:
     li      r10, 0x0
 branch_0x803672a0:
     or      r10, r0, r10
-    lwz     r12, -0x5778(r13)
+    lwz     r12, R13Off_m0x5778(r13)
     or      r10, r3, r10
     or      r10, r4, r10
     lwz     r11, 0x8(r12)
@@ -273,7 +273,7 @@ branch_0x803672a0:
     li      r10, 0x0
 branch_0x803672f4:
     or      r10, r0, r10
-    lwz     r12, -0x5778(r13)
+    lwz     r12, R13Off_m0x5778(r13)
     or      r10, r3, r10
     or      r10, r4, r10
     lwz     r11, 0x8(r12)
@@ -295,7 +295,7 @@ branch_0x803672f4:
     li      r10, 0x0
 branch_0x80367348:
     or      r0, r0, r10
-    lwz     r10, -0x5778(r13)
+    lwz     r10, R13Off_m0x5778(r13)
     or      r0, r3, r0
     or      r0, r4, r0
     lwz     r3, 0x8(r10)
@@ -326,7 +326,7 @@ GDSetZMode: # 0x80367394
     addi    r30, r4, 0x0
     stw     r29, 0x1c(sp)
     addi    r29, r3, 0x0
-    lwz     r6, -0x5778(r13)
+    lwz     r6, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r6)
     lwz     r0, 0xc(r6)
     addi    r3, r3, 0x1
@@ -334,13 +334,13 @@ GDSetZMode: # 0x80367394
     ble-    branch_0x803673d4
     bl      GDOverflowed
 branch_0x803673d4:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0x61
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x4
@@ -348,7 +348,7 @@ branch_0x803673d4:
     ble-    branch_0x80367408
     bl      GDOverflowed
 branch_0x80367408:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     clrlwi  r5, r29, 24
     slwi    r0, r30, 1
     lwz     r3, 0x8(r4)
@@ -362,17 +362,17 @@ branch_0x80367408:
     extrwi  r6, r7, 8, 8
     stb     r0, 0x0(r3)
     extrwi  r5, r7, 8, 16
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
@@ -395,7 +395,7 @@ GDSetDstAlpha: # 0x80367498
     addi    r31, r4, 0x0
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lwz     r5, -0x5778(r13)
+    lwz     r5, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r5)
     lwz     r0, 0xc(r5)
     addi    r3, r3, 0x1
@@ -403,13 +403,13 @@ GDSetDstAlpha: # 0x80367498
     ble-    branch_0x803674d0
     bl      GDOverflowed
 branch_0x803674d0:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     li      r5, 0x61
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     lwz     r0, 0xc(r4)
     addi    r3, r3, 0x4
@@ -417,7 +417,7 @@ branch_0x803674d0:
     ble-    branch_0x80367504
     bl      GDOverflowed
 branch_0x80367504:
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     clrlslwi  r5, r30, 24, 8
     insrwi  r5, r31, 8, 24
     lwz     r3, 0x8(r4)
@@ -428,17 +428,17 @@ branch_0x80367504:
     srwi    r0, r7, 24
     extrwi  r5, r7, 8, 16
     stb     r0, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r6, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)
     stb     r5, 0x0(r3)
-    lwz     r4, -0x5778(r13)
+    lwz     r4, R13Off_m0x5778(r13)
     lwz     r3, 0x8(r4)
     addi    r0, r3, 0x1
     stw     r0, 0x8(r4)

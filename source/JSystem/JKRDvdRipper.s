@@ -102,12 +102,12 @@ branch_0x802eaa40:
 .globl loadToMainRAM__12JKRDvdRipperFP10JKRDvdFilePUc15JKRExpandSwitchUlP7JKRHeapQ212JKRDvdRipper15EAllocDirectionUlPi
 loadToMainRAM__12JKRDvdRipperFP10JKRDvdFilePUc15JKRExpandSwitchUlP7JKRHeapQ212JKRDvdRipper15EAllocDirectionUlPi: # 0x802eaa54
     mflr    r0
-    lis     r11, 0x803b
+    lis     r11, unk_803a9fe8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0xf0(sp)
     stmw    r18, 0xb8(sp)
     mr      r28, r3
-    subi    r22, r11, 0x6018
+    addi    r22, r11, unk_803a9fe8@l
     addi    r26, r4, 0x0
     addi    r24, r5, 0x0
     addi    r29, r6, 0x0
@@ -138,7 +138,7 @@ branch_0x802eaac4:
     bl      DVDReadPrio
     cmpwi   r3, 0x0
     bge-    branch_0x802eab00
-    lbz     r0, -0x7598(r13)
+    lbz     r0, R13Off_m0x7598(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802eaaf8
     li      r3, 0x0
@@ -259,7 +259,7 @@ branch_0x802eac4c:
     bl      DVDReadPrio
     cmpwi   r3, 0x0
     bge-    branch_0x802eac88
-    lbz     r0, -0x7598(r13)
+    lbz     r0, R13Off_m0x7598(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802eac80
     li      r3, 0x0
@@ -296,7 +296,7 @@ branch_0x802eacc0:
     bl      DVDReadPrio
     cmpwi   r3, 0x0
     bge-    branch_0x802eacfc
-    lbz     r0, -0x7598(r13)
+    lbz     r0, R13Off_m0x7598(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802eacf4
     li      r3, 0x0
@@ -350,7 +350,7 @@ branch_0x802ead70:
     bl      DVDReadPrio
     cmpwi   r3, 0x0
     bge-    branch_0x802eadb4
-    lbz     r0, -0x7598(r13)
+    lbz     r0, R13Off_m0x7598(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802eada0
     bl      VIWaitForRetrace
@@ -419,47 +419,47 @@ JKRDecompressFromDVD__FP10JKRDvdFilePvUlUlUlUl: # 0x802eae40
     addi    r30, r8, 0x0
     li      r31, 0x0
     li      r5, -0x20
-    lwz     r9, -0x5f30(r13)
-    lwz     r0, -0x7594(r13)
+    lwz     r9, R13Off_m0x5f30(r13)
+    lwz     r0, R13Off_m0x7594(r13)
     lwz     r12, 0x0(r9)
     mr      r3, r9
     mr      r4, r0
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    stw     r3, -0x5e80(r13)
+    stw     r3, R13Off_m0x5e80(r13)
     cmplwi  r29, 0x0
-    lwz     r0, -0x7594(r13)
-    lwz     r3, -0x5e80(r13)
+    lwz     r0, R13Off_m0x7594(r13)
+    lwz     r3, R13Off_m0x5e80(r13)
     add     r0, r3, r0
-    stw     r0, -0x5e7c(r13)
+    stw     r0, R13Off_m0x5e7c(r13)
     beq-    branch_0x802eaee0
-    lwz     r3, -0x5f30(r13)
+    lwz     r3, R13Off_m0x5f30(r13)
     li      r4, 0x1120
     li      r5, -0x4
     lwz     r12, 0x0(r3)
     lwz     r12, 0xc(r12)
     mtlr    r12
     blrl
-    stw     r3, -0x5e78(r13)
-    lwz     r3, -0x5e78(r13)
+    stw     r3, R13Off_m0x5e78(r13)
+    lwz     r3, R13Off_m0x5e78(r13)
     addi    r0, r3, 0x1120
-    stw     r3, -0x5e70(r13)
-    stw     r0, -0x5e74(r13)
+    stw     r3, R13Off_m0x5e70(r13)
+    stw     r0, R13Off_m0x5e74(r13)
     b       branch_0x802eaee8
 
 branch_0x802eaee0:
     li      r0, 0x0
-    stw     r0, -0x5e78(r13)
+    stw     r0, R13Off_m0x5e78(r13)
 branch_0x802eaee8:
     subf    r3, r30, r27
-    stw     r25, -0x5e60(r13)
+    stw     r25, R13Off_m0x5e60(r13)
     li      r0, 0x0
-    stw     r30, -0x5e6c(r13)
-    stw     r3, -0x5e68(r13)
-    stw     r29, -0x5e5c(r13)
-    stw     r0, -0x5e58(r13)
-    stw     r28, -0x5e54(r13)
+    stw     r30, R13Off_m0x5e6c(r13)
+    stw     r3, R13Off_m0x5e68(r13)
+    stw     r29, R13Off_m0x5e5c(r13)
+    stw     r0, R13Off_m0x5e58(r13)
+    stw     r28, R13Off_m0x5e54(r13)
     bl      firstSrcData__Fv_802eb1f4
     cmplwi  r3, 0x0
     beq-    branch_0x802eaf20
@@ -467,10 +467,10 @@ branch_0x802eaee8:
     bl      decompSZS_subroutine__FPUcPUc_802eaf58
     mr      r31, r3
 branch_0x802eaf20:
-    lwz     r3, -0x5e80(r13)
+    lwz     r3, R13Off_m0x5e80(r13)
     li      r4, 0x0
     bl      free__7JKRHeapFPvP7JKRHeap
-    lwz     r3, -0x5e78(r13)
+    lwz     r3, R13Off_m0x5e78(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x802eaf40
     li      r4, 0x0
@@ -511,9 +511,9 @@ branch_0x802eafa8:
     b       branch_0x802eb1dc
 
 branch_0x802eafb0:
-    lwz     r7, -0x5e5c(r13)
+    lwz     r7, R13Off_m0x5e5c(r13)
     lwz     r6, 0x4(r3)
-    lwz     r5, -0x5e54(r13)
+    lwz     r5, R13Off_m0x5e54(r13)
     subf    r6, r7, r6
     add     r6, r30, r6
     add     r5, r30, r5
@@ -526,10 +526,10 @@ branch_0x802eafd8:
 branch_0x802eafdc:
     cmpwi   r4, 0x0
     bne-    branch_0x802eb01c
-    lwz     r0, -0x5e64(r13)
+    lwz     r0, R13Off_m0x5e64(r13)
     cmplw   r3, r0
     ble-    branch_0x802eb010
-    lwz     r0, -0x5e68(r13)
+    lwz     r0, R13Off_m0x5e68(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802eb010
     bl      nextSrcData__FPUc_802eb2ac
@@ -545,10 +545,10 @@ branch_0x802eb010:
 branch_0x802eb01c:
     rlwinm. r5, r0, 0, 24, 24
     beq-    branch_0x802eb0ac
-    lwz     r6, -0x5e5c(r13)
+    lwz     r6, R13Off_m0x5e5c(r13)
     cmplwi  r6, 0x0
     beq-    branch_0x802eb084
-    lwz     r5, -0x5e58(r13)
+    lwz     r5, R13Off_m0x5e58(r13)
     cmplw   r5, r6
     blt-    branch_0x802eb050
     lbz     r5, 0x0(r3)
@@ -557,17 +557,17 @@ branch_0x802eb01c:
     cmplw   r30, r31
     beq-    branch_0x802eb1d8
 branch_0x802eb050:
-    lwz     r6, -0x5e70(r13)
+    lwz     r6, R13Off_m0x5e70(r13)
     lbz     r7, 0x0(r3)
     addi    r5, r6, 0x1
-    stw     r5, -0x5e70(r13)
+    stw     r5, R13Off_m0x5e70(r13)
     stb     r7, 0x0(r6)
-    lwz     r6, -0x5e70(r13)
-    lwz     r5, -0x5e74(r13)
+    lwz     r6, R13Off_m0x5e70(r13)
+    lwz     r5, R13Off_m0x5e74(r13)
     cmplw   r6, r5
     bne-    branch_0x802eb07c
-    lwz     r5, -0x5e78(r13)
-    stw     r5, -0x5e70(r13)
+    lwz     r5, R13Off_m0x5e78(r13)
+    stw     r5, R13Off_m0x5e70(r13)
 branch_0x802eb07c:
     addi    r3, r3, 0x1
     b       branch_0x802eb09c
@@ -580,13 +580,13 @@ branch_0x802eb084:
     cmplw   r30, r31
     beq-    branch_0x802eb1d8
 branch_0x802eb09c:
-    lwz     r5, -0x5e58(r13)
+    lwz     r5, R13Off_m0x5e58(r13)
     addi    r5, r5, 0x1
-    stw     r5, -0x5e58(r13)
+    stw     r5, R13Off_m0x5e58(r13)
     b       branch_0x802eb1c8
 
 branch_0x802eb0ac:
-    lwz     r8, -0x5e5c(r13)
+    lwz     r8, R13Off_m0x5e5c(r13)
     lbz     r6, 0x0(r3)
     cmplwi  r8, 0x0
     lbz     r9, 0x1(r3)
@@ -594,21 +594,21 @@ branch_0x802eb0ac:
     srawi   r5, r6, 4
     addi    r3, r3, 0x2
     beq-    branch_0x802eb0f8
-    lwz     r6, -0x5e70(r13)
-    lwz     r7, -0x5e78(r13)
+    lwz     r6, R13Off_m0x5e70(r13)
+    lwz     r7, R13Off_m0x5e78(r13)
     subf    r6, r9, r6
-    subi    r6, r6, 0x1
+    addi    r6, r6, -0x1
     cmplw   r6, r7
     addi    r9, r6, 0x0
     bge-    branch_0x802eb100
-    lwz     r6, -0x5e74(r13)
+    lwz     r6, R13Off_m0x5e74(r13)
     subf    r6, r7, r6
     add     r9, r9, r6
     b       branch_0x802eb100
 
 branch_0x802eb0f8:
     subf    r6, r9, r30
-    subi    r9, r6, 0x1
+    addi    r9, r6, -0x1
 branch_0x802eb100:
     cmpwi   r5, 0x0
     bne-    branch_0x802eb118
@@ -623,8 +623,8 @@ branch_0x802eb11c:
     cmplwi  r8, 0x0
     beq-    branch_0x802eb19c
 branch_0x802eb124:
-    lwz     r7, -0x5e58(r13)
-    lwz     r6, -0x5e5c(r13)
+    lwz     r7, R13Off_m0x5e58(r13)
+    lwz     r6, R13Off_m0x5e5c(r13)
     cmplw   r7, r6
     blt-    branch_0x802eb148
     lbz     r6, 0x0(r9)
@@ -633,27 +633,27 @@ branch_0x802eb124:
     cmplw   r30, r31
     beq-    branch_0x802eb1c8
 branch_0x802eb148:
-    lwz     r7, -0x5e70(r13)
+    lwz     r7, R13Off_m0x5e70(r13)
     lbz     r8, 0x0(r9)
     addi    r6, r7, 0x1
-    stw     r6, -0x5e70(r13)
+    stw     r6, R13Off_m0x5e70(r13)
     stb     r8, 0x0(r7)
-    lwz     r6, -0x5e70(r13)
-    lwz     r7, -0x5e74(r13)
+    lwz     r6, R13Off_m0x5e70(r13)
+    lwz     r7, R13Off_m0x5e74(r13)
     cmplw   r6, r7
     bne-    branch_0x802eb174
-    lwz     r6, -0x5e78(r13)
-    stw     r6, -0x5e70(r13)
+    lwz     r6, R13Off_m0x5e78(r13)
+    stw     r6, R13Off_m0x5e70(r13)
 branch_0x802eb174:
     addi    r9, r9, 0x1
     cmplw   r9, r7
     bne-    branch_0x802eb184
-    lwz     r9, -0x5e78(r13)
+    lwz     r9, R13Off_m0x5e78(r13)
 branch_0x802eb184:
-    lwz     r6, -0x5e58(r13)
+    lwz     r6, R13Off_m0x5e58(r13)
     subic.  r5, r5, 0x1
     addi    r6, r6, 0x1
-    stw     r6, -0x5e58(r13)
+    stw     r6, R13Off_m0x5e58(r13)
     bne+    branch_0x802eb124
     b       branch_0x802eb1c8
 
@@ -663,16 +663,16 @@ branch_0x802eb19c:
     addi    r30, r30, 0x1
     cmplw   r30, r31
     beq-    branch_0x802eb1c8
-    lwz     r6, -0x5e58(r13)
+    lwz     r6, R13Off_m0x5e58(r13)
     subic.  r5, r5, 0x1
     addi    r9, r9, 0x1
     addi    r6, r6, 0x1
-    stw     r6, -0x5e58(r13)
+    stw     r6, R13Off_m0x5e58(r13)
     bne+    branch_0x802eb19c
 branch_0x802eb1c8:
     cmplw   r30, r31
     slwi    r0, r0, 1
-    subi    r4, r4, 0x1
+    addi    r4, r4, -0x1
     blt+    branch_0x802eafdc
 branch_0x802eb1d8:
     li      r3, 0x0
@@ -692,12 +692,12 @@ firstSrcData__Fv_802eb1f4: # 0x802eb1f4
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     stw     r30, 0x18(sp)
-    lwz     r4, -0x5e7c(r13)
-    lwz     r3, -0x5e80(r13)
-    subi    r0, r4, 0x19
-    lwz     r31, -0x5e68(r13)
+    lwz     r4, R13Off_m0x5e7c(r13)
+    lwz     r3, R13Off_m0x5e80(r13)
+    addi    r0, r4, -0x19
+    lwz     r31, R13Off_m0x5e68(r13)
     subf    r4, r3, r4
-    stw     r0, -0x5e64(r13)
+    stw     r0, R13Off_m0x5e64(r13)
     cmplw   r31, r4
     addi    r30, r3, 0x0
     addi    r0, r4, 0x0
@@ -707,16 +707,16 @@ firstSrcData__Fv_802eb1f4: # 0x802eb1f4
 branch_0x802eb234:
     mr      r31, r0
 branch_0x802eb238:
-    lwz     r3, -0x5e60(r13)
+    lwz     r3, R13Off_m0x5e60(r13)
     mr      r4, r30
-    lwz     r6, -0x5e6c(r13)
+    lwz     r6, R13Off_m0x5e6c(r13)
     addi    r5, r31, 0x0
     addi    r3, r3, 0x5c
     li      r7, 0x2
     bl      DVDReadPrio
     cmpwi   r3, 0x0
     bge-    branch_0x802eb278
-    lbz     r0, -0x7598(r13)
+    lbz     r0, R13Off_m0x7598(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802eb270
     li      r3, 0x0
@@ -727,13 +727,13 @@ branch_0x802eb270:
     b       branch_0x802eb238
 
 branch_0x802eb278:
-    lwz     r4, -0x5e6c(r13)
+    lwz     r4, R13Off_m0x5e6c(r13)
     mr      r3, r30
-    lwz     r0, -0x5e68(r13)
+    lwz     r0, R13Off_m0x5e68(r13)
     add     r4, r4, r31
     subf    r0, r31, r0
-    stw     r4, -0x5e6c(r13)
-    stw     r0, -0x5e68(r13)
+    stw     r4, R13Off_m0x5e6c(r13)
+    stw     r0, R13Off_m0x5e68(r13)
 branch_0x802eb294:
     lwz     r0, 0x24(sp)
     lwz     r31, 0x1c(sp)
@@ -753,37 +753,37 @@ nextSrcData__FPUc_802eb2ac: # 0x802eb2ac
     stw     r30, 0x20(sp)
     stw     r29, 0x1c(sp)
     stw     r28, 0x18(sp)
-    lwz     r0, -0x5e7c(r13)
+    lwz     r0, R13Off_m0x5e7c(r13)
     subf    r0, r4, r0
     clrlwi. r5, r0, 27
     mr      r30, r0
     beq-    branch_0x802eb2f0
-    lwz     r3, -0x5e80(r13)
+    lwz     r3, R13Off_m0x5e80(r13)
     addi    r0, r3, 0x20
     subf    r29, r5, r0
     b       branch_0x802eb2f4
 
 branch_0x802eb2f0:
-    lwz     r29, -0x5e80(r13)
+    lwz     r29, R13Off_m0x5e80(r13)
 branch_0x802eb2f4:
     addi    r3, r29, 0x0
     addi    r5, r30, 0x0
     bl      memcpy
-    lwz     r0, -0x5e7c(r13)
+    lwz     r0, R13Off_m0x5e7c(r13)
     add     r30, r29, r30
-    lwz     r3, -0x5e68(r13)
+    lwz     r3, R13Off_m0x5e68(r13)
     subf    r0, r30, r0
     cmplw   r0, r3
     mr      r28, r0
     ble-    branch_0x802eb320
     mr      r28, r3
 branch_0x802eb320:
-    lis     r3, 0x802f
-    subi    r31, r3, 0x4c4c
+    lis     r3, isErrorRetry__12JKRDvdRipperFv@ha
+    addi    r31, r3, isErrorRetry__12JKRDvdRipperFv@l
 branch_0x802eb328:
-    lwz     r3, -0x5e60(r13)
+    lwz     r3, R13Off_m0x5e60(r13)
     mr      r4, r30
-    lwz     r6, -0x5e6c(r13)
+    lwz     r6, R13Off_m0x5e6c(r13)
     addi    r5, r28, 0x0
     addi    r3, r3, 0x5c
     li      r7, 0x2
@@ -800,17 +800,17 @@ branch_0x802eb35c:
     b       branch_0x802eb328
 
 branch_0x802eb364:
-    lwz     r0, -0x5e68(r13)
-    lwz     r3, -0x5e6c(r13)
+    lwz     r0, R13Off_m0x5e68(r13)
+    lwz     r3, R13Off_m0x5e6c(r13)
     subf    r0, r28, r0
-    stw     r0, -0x5e68(r13)
+    stw     r0, R13Off_m0x5e68(r13)
     add     r3, r3, r28
-    lwz     r0, -0x5e68(r13)
-    stw     r3, -0x5e6c(r13)
+    lwz     r0, R13Off_m0x5e68(r13)
+    stw     r3, R13Off_m0x5e6c(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802eb390
     add     r0, r30, r28
-    stw     r0, -0x5e64(r13)
+    stw     r0, R13Off_m0x5e64(r13)
 branch_0x802eb390:
     mr      r3, r29
 branch_0x802eb394:
@@ -826,24 +826,24 @@ branch_0x802eb394:
 
 .globl isErrorRetry__12JKRDvdRipperFv
 isErrorRetry__12JKRDvdRipperFv: # 0x802eb3b4
-    lbz     r3, -0x7598(r13)
+    lbz     r3, R13Off_m0x7598(r13)
     blr
 
 
 .globl __sinit_JKRDvdRipper_cpp
 __sinit_JKRDvdRipper_cpp: # 0x802eb3bc
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sDvdAsyncList__12JKRDvdRipper@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x4810
+    addi    r31, r3, sDvdAsyncList__12JKRDvdRipper@l
     addi    r3, r31, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x802f
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2a38
-    subi    r4, r4, 0x4bf8
+    lis     r4, __dt__23JSUList_12JKRDMCommand_Fv@ha
+    lis     r3, unk_803fd5c8@ha
+    addi    r5, r3, unk_803fd5c8@l
+    addi    r4, r4, __dt__23JSUList_12JKRDMCommand_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

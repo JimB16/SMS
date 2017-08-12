@@ -10,25 +10,25 @@ update__10TSpcInterpFv: # 0x8021d680
     stw     r29, 0x3c(sp)
     stw     r28, 0x38(sp)
     lwz     r4, 0x0(r3)
-    lis     r3, 0x803e
-    subi    r31, r3, 0x5fe0
+    lis     r3, unk_803da020@ha
+    addi    r31, r3, unk_803da020@l
     cmplwi  r4, 0x0
     beq-    branch_0x8021d6c0
     lwz     r0, 0x0(r4)
     cmplwi  r0, 0x0
     bne-    branch_0x8021d6d4
 branch_0x8021d6c0:
-    lis     r3, 0x803a
+    lis     r3, unk_8039d320@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2ce0
+    addi    r3, r3, unk_8039d320@l
     bl      SpcTrace__FPCce
     b       branch_0x8021db7c
 
 branch_0x8021d6d4:
-    lis     r4, 0x803a
-    lis     r3, 0x803b
-    subi    r28, r4, 0x2cc4
-    subi    r29, r3, 0x5728
+    lis     r4, unk_8039d33c@ha
+    lis     r3, unk_803aa8d8@ha
+    addi    r28, r4, unk_8039d33c@l
+    addi    r29, r3, unk_803aa8d8@l
     b       branch_0x8021db68
 
 branch_0x8021d6e8:
@@ -36,7 +36,7 @@ branch_0x8021d6e8:
     cmpwi   r0, 0x0
     bne-    branch_0x8021d700
     lwz     r3, 0xc(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xc(r30)
 branch_0x8021d700:
     lwz     r4, 0x0(r30)
@@ -48,7 +48,7 @@ branch_0x8021d700:
     add     r3, r5, r3
     lbz     r4, 0x0(r3)
     stw     r0, 0x8(r30)
-    lbz     r0, -0x6148(r13)
+    lbz     r0, R13Off_m0x6148(r13)
     extsb.  r0, r0
     bne-    branch_0x8021daf8
     lwz     r3, 0x0(r31)
@@ -292,7 +292,7 @@ branch_0x8021d700:
     stw     r3, 0x3b8(r31)
     lwz     r3, 0x1dc(r31)
     stw     r3, 0x3bc(r31)
-    stb     r0, -0x6148(r13)
+    stb     r0, R13Off_m0x6148(r13)
 branch_0x8021daf8:
     cmplwi  r4, 0x28
     blt-    branch_0x8021db28
@@ -352,10 +352,10 @@ verifyArgNum__10TSpcInterpFUlPUl: # 0x8021db9c
     mr      r30, r5
     stw     r29, 0x34(sp)
     addi    r29, r4, 0x0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r28, 0x30(sp)
     addi    r28, r3, 0x0
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     lwz     r5, 0x0(r5)
     cmplw   r29, r5
     beq-    branch_0x8021dc9c
@@ -376,11 +376,11 @@ branch_0x8021dbf0:
     b       branch_0x8021dc14
 
 branch_0x8021dc0c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r28)
 branch_0x8021dc14:
     lwz     r3, 0x0(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x0(r30)
 branch_0x8021dc20:
     lwz     r0, 0x0(r30)
@@ -434,12 +434,12 @@ branch_0x8021dc9c:
 .globl dump__10TSpcInterpFv
 dump__10TSpcInterpFv: # 0x8021dcbc
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     crxor   6, 6, 6
     stwu    sp, -0x88(sp)
     stw     r31, 0x84(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x80(sp)
     addi    r30, r3, 0x0
     addi    r3, r31, 0x1d0
@@ -493,7 +493,7 @@ branch_0x8021dd70:
     b       branch_0x8021de04
 
 branch_0x8021dda0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0x20(r30)
     subf    r0, r28, r0
     slwi    r0, r0, 3
@@ -533,7 +533,7 @@ branch_0x8021de04:
     b       branch_0x8021de44
 
 branch_0x8021de18:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0x40(r30)
     subf    r0, r28, r0
     crxor   6, 6, 6
@@ -552,7 +552,7 @@ branch_0x8021de44:
     b       branch_0x8021debc
 
 branch_0x8021de58:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0x30(r30)
     subf    r0, r28, r0
     slwi    r0, r0, 3
@@ -638,21 +638,21 @@ __dt__10TSpcInterpFv: # 0x8021df54
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8021dfec
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5c20
+    lis     r3, __vvt__10TSpcInterp@ha
+    addi    r3, r3, __vvt__10TSpcInterp@l
     addic.  r0, r30, 0x38
     stw     r3, 0x5c(r30)
     beq-    branch_0x8021df9c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5c00
+    lis     r3, __vvt__13TSpcStack_Ul_@ha
+    addi    r0, r3, __vvt__13TSpcStack_Ul_@l
     stw     r0, 0x44(r30)
     lwz     r3, 0x40(r30)
     bl      __dla__FPv
 branch_0x8021df9c:
     addic.  r0, r30, 0x28
     beq-    branch_0x8021dfbc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5c0c
+    lis     r3, __vvt__21TSpcStack_9TSpcSlice_@ha
+    addi    r0, r3, __vvt__21TSpcStack_9TSpcSlice_@l
     stw     r0, 0x34(r30)
     li      r4, 0x0
     lwz     r3, 0x30(r30)
@@ -660,8 +660,8 @@ branch_0x8021df9c:
 branch_0x8021dfbc:
     addic.  r0, r30, 0x18
     beq-    branch_0x8021dfdc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5c0c
+    lis     r3, __vvt__21TSpcStack_9TSpcSlice_@ha
+    addi    r0, r3, __vvt__21TSpcStack_9TSpcSlice_@l
     stw     r0, 0x24(r30)
     li      r4, 0x0
     lwz     r3, 0x20(r30)
@@ -684,19 +684,19 @@ branch_0x8021dfec:
 .globl __ct__10TSpcInterpFP10TSpcBinaryPviiii
 __ct__10TSpcInterpFP10TSpcBinaryPviiii: # 0x8021e008
     mflr    r0
-    lis     r10, 0x803e
+    lis     r10, __vvt__10TSpcInterp@ha
     stw     r0, 0x4(sp)
-    subi    r0, r10, 0x5c20
-    lis     r10, 0x803a
+    addi    r0, r10, __vvt__10TSpcInterp@l
+    lis     r10, unk_8039d320@ha
     stwu    sp, -0xa8(sp)
     stmw    r24, 0x88(sp)
     li      r31, 0x0
-    subi    r29, r10, 0x2ce0
+    addi    r29, r10, unk_8039d320@l
     addi    r24, r8, 0x0
     mr      r28, r9
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r26, r3, 0x5c0c
+    lis     r3, __vvt__21TSpcStack_9TSpcSlice_@ha
+    addi    r26, r3, __vvt__21TSpcStack_9TSpcSlice_@l
     lwz     r30, 0x8(sp)
     stw     r0, 0x5c(r30)
     stw     r4, 0x0(r30)
@@ -712,8 +712,8 @@ __ct__10TSpcInterpFP10TSpcBinaryPviiii: # 0x8021e008
     slwi    r3, r25, 3
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8022
-    subi    r27, r4, 0x1d30
+    lis     r4, __ct__9TSpcSliceFv@ha
+    addi    r27, r4, __ct__9TSpcSliceFv@l
     addi    r4, r27, 0x0
     addi    r7, r25, 0x0
     li      r5, 0x0
@@ -733,9 +733,9 @@ __ct__10TSpcInterpFP10TSpcBinaryPviiii: # 0x8021e008
     li      r5, 0x0
     li      r6, 0x8
     bl      __construct_new_array
-    lis     r4, 0x803e
+    lis     r4, __vvt__13TSpcStack_Ul_@ha
     stw     r3, 0x30(r30)
-    subi    r0, r4, 0x5c00
+    addi    r0, r4, __vvt__13TSpcStack_Ul_@l
     stw     r0, 0x44(r30)
     stw     r28, 0x38(r30)
     stw     r31, 0x3c(r30)
@@ -836,8 +836,8 @@ __dt__13TSpcStack_Ul_Fv: # 0x8021e20c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8021e250
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5c00
+    lis     r3, __vvt__13TSpcStack_Ul_@ha
+    addi    r0, r3, __vvt__13TSpcStack_Ul_@l
     stw     r0, 0xc(r30)
     lwz     r3, 0x8(r30)
     bl      __dla__FPv
@@ -865,8 +865,8 @@ __dt__21TSpcStack_9TSpcSlice_Fv: # 0x8021e26c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8021e2b4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x5c0c
+    lis     r3, __vvt__21TSpcStack_9TSpcSlice_@ha
+    addi    r0, r3, __vvt__21TSpcStack_9TSpcSlice_@l
     stw     r0, 0xc(r30)
     li      r4, 0x0
     lwz     r3, 0x8(r30)
@@ -918,8 +918,8 @@ dispatchBuiltinDefault__10TSpcInterpFUlUl: # 0x8021e300
     mr      r29, r3
     stw     r28, 0x78(sp)
     lwz     r6, 0x0(r3)
-    lis     r3, 0x803a
-    subi    r31, r3, 0x2ce0
+    lis     r3, unk_8039d320@ha
+    addi    r31, r3, unk_8039d320@l
     lwz     r7, 0x0(r6)
     lwz     r6, 0x10(r7)
     add     r5, r6, r0
@@ -941,7 +941,7 @@ branch_0x8021e35c:
     b       branch_0x8021e380
 
 branch_0x8021e378:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
 branch_0x8021e380:
     addi    r28, r28, 0x1
@@ -1000,7 +1000,7 @@ branch_0x8021e420:
     b       branch_0x8021e444
 
 branch_0x8021e43c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
 branch_0x8021e444:
     addi    r28, r28, 0x1
@@ -1060,8 +1060,8 @@ execend__10TSpcInterpFv: # 0x8021e4f4
     mflr    r0
     li      r5, 0x0
     stw     r0, 0x4(sp)
-    lis     r4, 0x803a
-    subi    r0, r4, 0x29ac
+    lis     r4, unk_8039d654@ha
+    addi    r0, r4, unk_8039d654@l
     crxor   6, 6, 6
     stwu    sp, -0x8(sp)
     stw     r5, 0x4(r3)
@@ -1087,9 +1087,9 @@ execint1__10TSpcInterpFv: # 0x8021e530
     lwz     r0, 0x18(r3)
     cmpw    r4, r0
     blt-    branch_0x8021e570
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8021e598
 
@@ -1123,9 +1123,9 @@ execint0__10TSpcInterpFv: # 0x8021e5a8
     lwz     r0, 0x18(r3)
     cmpw    r4, r0
     blt-    branch_0x8021e5e4
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8021e60c
 
@@ -1155,14 +1155,14 @@ execpop__10TSpcInterpFv: # 0x8021e61c
     lwz     r4, 0x1c(r3)
     cmpwi   r4, 0x0
     bgt-    branch_0x8021e648
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2b98
+    addi    r3, r3, unk_8039d468@l
     bl      SpcTrace__FPCce
     b       branch_0x8021e650
 
 branch_0x8021e648:
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x1c(r3)
 branch_0x8021e650:
     lwz     r0, 0xc(sp)
@@ -1226,9 +1226,9 @@ execjne__10TSpcInterpFv: # 0x8021e6b8
     lwz     r30, 0x34(sp)
     cmpwi   r3, 0x0
     bgt-    branch_0x8021e758
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2b98
+    addi    r3, r3, unk_8039d468@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -1241,7 +1241,7 @@ execjne__10TSpcInterpFv: # 0x8021e6b8
     b       branch_0x8021e780
 
 branch_0x8021e758:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -1289,13 +1289,13 @@ branch_0x8021e7c8:
 .globl execret0__10TSpcInterpFv
 execret0__10TSpcInterpFv: # 0x8021e7e0
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     li      r0, 0x0
     stwu    sp, -0x50(sp)
     stmw    r26, 0x38(sp)
     addi    r29, r3, 0x0
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r0, 0x30(sp)
     stw     r0, 0x34(sp)
     lwz     r3, 0x1c(r3)
@@ -1332,7 +1332,7 @@ branch_0x8021e850:
     b       branch_0x8021e894
 
 branch_0x8021e87c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1352,7 +1352,7 @@ branch_0x8021e894:
     b       branch_0x8021e8d8
 
 branch_0x8021e8c0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1372,7 +1372,7 @@ branch_0x8021e8d8:
     b       branch_0x8021e91c
 
 branch_0x8021e904:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1392,10 +1392,10 @@ branch_0x8021e924:
     b       branch_0x8021e948
 
 branch_0x8021e940:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x2c(r29)
 branch_0x8021e948:
-    subi    r28, r28, 0x1
+    addi    r28, r28, -0x1
 branch_0x8021e94c:
     cmplw   r28, r26
     bgt+    branch_0x8021e924
@@ -1415,7 +1415,7 @@ branch_0x8021e94c:
     b       branch_0x8021e9a4
 
 branch_0x8021e98c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1433,12 +1433,12 @@ branch_0x8021e9a4:
 .globl execret__10TSpcInterpFv
 execret__10TSpcInterpFv: # 0x8021e9bc
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x48(sp)
     stmw    r26, 0x30(sp)
     mr      r29, r3
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     lwz     r3, 0x3c(r3)
     cmpwi   r3, 0x0
     bgt-    branch_0x8021ea04
@@ -1452,7 +1452,7 @@ execret__10TSpcInterpFv: # 0x8021e9bc
     b       branch_0x8021ea1c
 
 branch_0x8021ea04:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1472,7 +1472,7 @@ branch_0x8021ea1c:
     b       branch_0x8021ea60
 
 branch_0x8021ea48:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1492,7 +1492,7 @@ branch_0x8021ea60:
     b       branch_0x8021eaa4
 
 branch_0x8021ea8c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1512,10 +1512,10 @@ branch_0x8021eaac:
     b       branch_0x8021ead0
 
 branch_0x8021eac8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x2c(r29)
 branch_0x8021ead0:
-    subi    r26, r26, 0x1
+    addi    r26, r26, -0x1
 branch_0x8021ead4:
     cmplw   r26, r27
     bgt+    branch_0x8021eaac
@@ -1535,7 +1535,7 @@ branch_0x8021ead4:
     b       branch_0x8021eb2c
 
 branch_0x8021eb14:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r29)
     lwz     r0, 0x3c(r29)
     lwz     r3, 0x40(r29)
@@ -1580,7 +1580,7 @@ execmkds__10TSpcInterpFv: # 0x8021eb44
     slwi    r0, r30, 2
     lwz     r4, 0x40(r31)
     add     r5, r31, r0
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r6, 0x48(r5)
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
@@ -1589,9 +1589,9 @@ execmkds__10TSpcInterpFv: # 0x8021eb44
     lwz     r0, 0x38(r31)
     cmpw    r4, r0
     blt-    branch_0x8021ebec
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8021ec04
 
@@ -1607,9 +1607,9 @@ branch_0x8021ec04:
     lwz     r0, 0x38(r31)
     cmpw    r4, r0
     blt-    branch_0x8021ec28
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8021ec40
 
@@ -1657,8 +1657,8 @@ execmkfr__10TSpcInterpFv: # 0x8021ec58
     lwz     r28, 0x20(sp)
     cmpwi   r0, 0x0
     ble-    branch_0x8021ed30
-    lis     r3, 0x803a
-    subi    r30, r3, 0x2bb4
+    lis     r3, unk_8039d44c@ha
+    addi    r30, r3, unk_8039d44c@l
     li      r27, 0x0
     li      r29, 0x0
     b       branch_0x8021ed28
@@ -1753,12 +1753,12 @@ execfunc__10TSpcInterpFv: # 0x8021ed44
 .globl execcall__10TSpcInterpFv
 execcall__10TSpcInterpFv: # 0x8021ee00
     mflr    r0
-    lis     r6, 0x803a
+    lis     r6, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x88(sp)
     stmw    r26, 0x70(sp)
     mr      r27, r3
-    subi    r31, r6, 0x2ce0
+    addi    r31, r6, unk_8039d320@l
     lwz     r5, 0x0(r3)
     lwz     r0, 0x8(r3)
     lwz     r7, 0x0(r5)
@@ -1884,7 +1884,7 @@ branch_0x8021ef94:
     b       branch_0x8021eff8
 
 branch_0x8021efd0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r27)
     lwz     r0, 0x1c(r27)
     lwz     r3, 0x20(r27)
@@ -1897,7 +1897,7 @@ branch_0x8021efd0:
 branch_0x8021eff8:
     lwz     r3, 0x2c(r27)
     lwz     r5, 0x30(r27)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     lwz     r3, 0x54(sp)
     subf    r4, r28, r0
     lwz     r0, 0x58(sp)
@@ -1920,11 +1920,11 @@ branch_0x8021f024:
 .globl execshr__10TSpcInterpFv
 execshr__10TSpcInterpFv: # 0x8021f044
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x50(sp)
     stw     r29, 0x4c(sp)
     mr      r29, r3
@@ -1944,7 +1944,7 @@ execshr__10TSpcInterpFv: # 0x8021f044
     b       branch_0x8021f0c4
 
 branch_0x8021f0a0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -1972,7 +1972,7 @@ branch_0x8021f0c4:
     b       branch_0x8021f128
 
 branch_0x8021f104:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2063,11 +2063,11 @@ branch_0x8021f1f8:
 .globl execshl__10TSpcInterpFv
 execshl__10TSpcInterpFv: # 0x8021f214
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x50(sp)
     stw     r29, 0x4c(sp)
     mr      r29, r3
@@ -2087,7 +2087,7 @@ execshl__10TSpcInterpFv: # 0x8021f214
     b       branch_0x8021f294
 
 branch_0x8021f270:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2115,7 +2115,7 @@ branch_0x8021f294:
     b       branch_0x8021f2f8
 
 branch_0x8021f2d4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2206,11 +2206,11 @@ branch_0x8021f3c8:
 .globl execbor__10TSpcInterpFv
 execbor__10TSpcInterpFv: # 0x8021f3e4
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x50(sp)
     stw     r29, 0x4c(sp)
     mr      r29, r3
@@ -2230,7 +2230,7 @@ execbor__10TSpcInterpFv: # 0x8021f3e4
     b       branch_0x8021f464
 
 branch_0x8021f440:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2258,7 +2258,7 @@ branch_0x8021f464:
     b       branch_0x8021f4c8
 
 branch_0x8021f4a4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2349,11 +2349,11 @@ branch_0x8021f598:
 .globl execband__10TSpcInterpFv
 execband__10TSpcInterpFv: # 0x8021f5b4
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x50(sp)
     stw     r29, 0x4c(sp)
     mr      r29, r3
@@ -2373,7 +2373,7 @@ execband__10TSpcInterpFv: # 0x8021f5b4
     b       branch_0x8021f634
 
 branch_0x8021f610:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2401,7 +2401,7 @@ branch_0x8021f634:
     b       branch_0x8021f698
 
 branch_0x8021f674:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -2492,11 +2492,11 @@ branch_0x8021f768:
 .globl execor__10TSpcInterpFv
 execor__10TSpcInterpFv: # 0x8021f784
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x50(sp)
     mr      r30, r3
     stw     r29, 0x4c(sp)
@@ -2516,7 +2516,7 @@ execor__10TSpcInterpFv: # 0x8021f784
     b       branch_0x8021f804
 
 branch_0x8021f7e0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -2545,7 +2545,7 @@ branch_0x8021f804:
     b       branch_0x8021f86c
 
 branch_0x8021f848:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -2660,11 +2660,11 @@ branch_0x8021f990:
 .globl execand__10TSpcInterpFv
 execand__10TSpcInterpFv: # 0x8021f998
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x50(sp)
     mr      r30, r3
     stw     r29, 0x4c(sp)
@@ -2684,7 +2684,7 @@ execand__10TSpcInterpFv: # 0x8021f998
     b       branch_0x8021fa18
 
 branch_0x8021f9f4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -2713,7 +2713,7 @@ branch_0x8021fa18:
     b       branch_0x8021fa80
 
 branch_0x8021fa5c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -2806,9 +2806,9 @@ execnot__10TSpcInterpFv: # 0x8021fb64
     lwz     r3, 0x1c(r3)
     cmpwi   r3, 0x0
     bgt-    branch_0x8021fbb4
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2b98
+    addi    r3, r3, unk_8039d468@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2820,7 +2820,7 @@ execnot__10TSpcInterpFv: # 0x8021fb64
     b       branch_0x8021fbd8
 
 branch_0x8021fbb4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2868,9 +2868,9 @@ branch_0x8021fc2c:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8021fc5c
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8021fc84
 
@@ -2903,9 +2903,9 @@ execneg__10TSpcInterpFv: # 0x8021fc98
     lwz     r3, 0x1c(r3)
     cmpwi   r3, 0x0
     bgt-    branch_0x8021fce8
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2b98
+    addi    r3, r3, unk_8039d468@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2917,7 +2917,7 @@ execneg__10TSpcInterpFv: # 0x8021fc98
     b       branch_0x8021fd0c
 
 branch_0x8021fce8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -2953,9 +2953,9 @@ branch_0x8021fd50:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x8021fd74
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8021fd9c
 
@@ -2981,12 +2981,12 @@ branch_0x8021fd9c:
 .globl execle__10TSpcInterpFv
 execle__10TSpcInterpFv: # 0x8021fdb0
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x50(sp)
     stfd    f31, 0x48(sp)
     stw     r31, 0x44(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x40(sp)
     mr      r30, r3
     stw     r29, 0x3c(sp)
@@ -3006,7 +3006,7 @@ execle__10TSpcInterpFv: # 0x8021fdb0
     b       branch_0x8021fe34
 
 branch_0x8021fe10:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3035,7 +3035,7 @@ branch_0x8021fe34:
     b       branch_0x8021fe9c
 
 branch_0x8021fe78:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3132,7 +3132,7 @@ getDataFloat__9TSpcSliceCFv: # 0x8021ff8c
 branch_0x8021ffac:
     lwz     r3, 0x4(r3)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x14(sp)
     stw     r0, 0x10(sp)
@@ -3145,7 +3145,7 @@ branch_0x8021ffd0:
     b       branch_0x8021ffdc
 
 branch_0x8021ffd8:
-    lfs     f1, -0x18a8(rtoc)
+    lfs     f1, -0x18a8(r2)
 branch_0x8021ffdc:
     addi    sp, sp, 0x18
     blr
@@ -3154,12 +3154,12 @@ branch_0x8021ffdc:
 .globl execge__10TSpcInterpFv
 execge__10TSpcInterpFv: # 0x8021ffe4
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x50(sp)
     stfd    f31, 0x48(sp)
     stw     r31, 0x44(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x40(sp)
     mr      r30, r3
     stw     r29, 0x3c(sp)
@@ -3179,7 +3179,7 @@ execge__10TSpcInterpFv: # 0x8021ffe4
     b       branch_0x80220068
 
 branch_0x80220044:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3208,7 +3208,7 @@ branch_0x80220068:
     b       branch_0x802200d0
 
 branch_0x802200ac:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3294,12 +3294,12 @@ branch_0x802201a0:
 .globl execlt__10TSpcInterpFv
 execlt__10TSpcInterpFv: # 0x802201c0
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x50(sp)
     stfd    f31, 0x48(sp)
     stw     r31, 0x44(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x40(sp)
     mr      r30, r3
     stw     r29, 0x3c(sp)
@@ -3319,7 +3319,7 @@ execlt__10TSpcInterpFv: # 0x802201c0
     b       branch_0x80220244
 
 branch_0x80220220:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3348,7 +3348,7 @@ branch_0x80220244:
     b       branch_0x802202ac
 
 branch_0x80220288:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3433,12 +3433,12 @@ branch_0x80220378:
 .globl execgt__10TSpcInterpFv
 execgt__10TSpcInterpFv: # 0x80220398
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x50(sp)
     stfd    f31, 0x48(sp)
     stw     r31, 0x44(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x40(sp)
     mr      r30, r3
     stw     r29, 0x3c(sp)
@@ -3458,7 +3458,7 @@ execgt__10TSpcInterpFv: # 0x80220398
     b       branch_0x8022041c
 
 branch_0x802203f8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3487,7 +3487,7 @@ branch_0x8022041c:
     b       branch_0x80220484
 
 branch_0x80220460:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3572,11 +3572,11 @@ branch_0x80220550:
 .globl execne__10TSpcInterpFv
 execne__10TSpcInterpFv: # 0x80220570
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x38(sp)
     mr      r30, r3
     lwz     r3, 0x1c(r3)
@@ -3595,7 +3595,7 @@ execne__10TSpcInterpFv: # 0x80220570
     b       branch_0x802205ec
 
 branch_0x802205c8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3624,7 +3624,7 @@ branch_0x802205ec:
     b       branch_0x80220654
 
 branch_0x80220630:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3712,7 +3712,7 @@ branch_0x80220734:
 branch_0x8022074c:
     lwz     r3, 0x4(r3)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x14(sp)
     stw     r0, 0x10(sp)
@@ -3725,7 +3725,7 @@ branch_0x80220770:
     b       branch_0x8022077c
 
 branch_0x80220778:
-    lfs     f2, -0x18a8(rtoc)
+    lfs     f2, -0x18a8(r2)
 branch_0x8022077c:
     lwz     r0, 0x0(r4)
     cmpwi   r0, 0x1
@@ -3738,7 +3738,7 @@ branch_0x8022077c:
 branch_0x80220798:
     lwz     r3, 0x4(r4)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x14(sp)
     stw     r0, 0x10(sp)
@@ -3751,7 +3751,7 @@ branch_0x802207bc:
     b       branch_0x802207c8
 
 branch_0x802207c4:
-    lfs     f0, -0x18a8(rtoc)
+    lfs     f0, -0x18a8(r2)
 branch_0x802207c8:
     fcmpu   cr0, f2, f0
     beq-    branch_0x802207d8
@@ -3822,11 +3822,11 @@ branch_0x80220864:
 .globl execeq__10TSpcInterpFv
 execeq__10TSpcInterpFv: # 0x80220874
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x38(sp)
     mr      r30, r3
     lwz     r3, 0x1c(r3)
@@ -3845,7 +3845,7 @@ execeq__10TSpcInterpFv: # 0x80220874
     b       branch_0x802208f0
 
 branch_0x802208cc:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3874,7 +3874,7 @@ branch_0x802208f0:
     b       branch_0x80220958
 
 branch_0x80220934:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -3962,7 +3962,7 @@ branch_0x80220a38:
 branch_0x80220a50:
     lwz     r3, 0x4(r3)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x14(sp)
     stw     r0, 0x10(sp)
@@ -3975,7 +3975,7 @@ branch_0x80220a74:
     b       branch_0x80220a80
 
 branch_0x80220a7c:
-    lfs     f2, -0x18a8(rtoc)
+    lfs     f2, -0x18a8(r2)
 branch_0x80220a80:
     lwz     r0, 0x0(r4)
     cmpwi   r0, 0x1
@@ -3988,7 +3988,7 @@ branch_0x80220a80:
 branch_0x80220a9c:
     lwz     r3, 0x4(r4)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x14(sp)
     stw     r0, 0x10(sp)
@@ -4001,7 +4001,7 @@ branch_0x80220ac0:
     b       branch_0x80220acc
 
 branch_0x80220ac8:
-    lfs     f0, -0x18a8(rtoc)
+    lfs     f0, -0x18a8(r2)
 branch_0x80220acc:
     fcmpu   cr0, f2, f0
     bne-    branch_0x80220adc
@@ -4079,9 +4079,9 @@ execass__10TSpcInterpFv: # 0x80220b78
     lwz     r3, 0x1c(r3)
     cmpwi   r3, 0x0
     bgt-    branch_0x80220bc8
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2b98
+    addi    r3, r3, unk_8039d468@l
     bl      SpcTrace__FPCce
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -4093,7 +4093,7 @@ execass__10TSpcInterpFv: # 0x80220b78
     b       branch_0x80220bec
 
 branch_0x80220bc8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -4166,11 +4166,11 @@ branch_0x80220bec:
 .globl execmod__10TSpcInterpFv
 execmod__10TSpcInterpFv: # 0x80220cd4
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x58(sp)
     stw     r31, 0x54(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x50(sp)
     stw     r29, 0x4c(sp)
     mr      r29, r3
@@ -4190,7 +4190,7 @@ execmod__10TSpcInterpFv: # 0x80220cd4
     b       branch_0x80220d54
 
 branch_0x80220d30:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4218,7 +4218,7 @@ branch_0x80220d54:
     b       branch_0x80220db8
 
 branch_0x80220d94:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4311,11 +4311,11 @@ branch_0x80220e90:
 .globl execdiv__10TSpcInterpFv
 execdiv__10TSpcInterpFv: # 0x80220eac
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x70(sp)
     stw     r31, 0x6c(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x68(sp)
     stw     r29, 0x64(sp)
     mr      r29, r3
@@ -4335,7 +4335,7 @@ execdiv__10TSpcInterpFv: # 0x80220eac
     b       branch_0x80220f2c
 
 branch_0x80220f08:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4363,7 +4363,7 @@ branch_0x80220f2c:
     b       branch_0x80220f90
 
 branch_0x80220f6c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4393,7 +4393,7 @@ branch_0x80220fa8:
 branch_0x80220fcc:
     lwz     r3, 0x48(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -4406,7 +4406,7 @@ branch_0x80220ff0:
     b       branch_0x80220ffc
 
 branch_0x80220ff8:
-    lfs     f2, -0x18a8(rtoc)
+    lfs     f2, -0x18a8(r2)
 branch_0x80220ffc:
     cmpwi   r30, 0x1
     beq-    branch_0x80221038
@@ -4418,7 +4418,7 @@ branch_0x80220ffc:
 branch_0x80221014:
     lwz     r3, 0x50(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -4431,7 +4431,7 @@ branch_0x80221038:
     b       branch_0x80221044
 
 branch_0x80221040:
-    lfs     f0, -0x18a8(rtoc)
+    lfs     f0, -0x18a8(r2)
 branch_0x80221044:
     fdivs   f0, f2, f0
     li      r0, 0x1
@@ -4539,11 +4539,11 @@ branch_0x80221168:
 .globl execmul__10TSpcInterpFv
 execmul__10TSpcInterpFv: # 0x80221184
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x70(sp)
     stw     r31, 0x6c(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x68(sp)
     stw     r29, 0x64(sp)
     mr      r29, r3
@@ -4563,7 +4563,7 @@ execmul__10TSpcInterpFv: # 0x80221184
     b       branch_0x80221204
 
 branch_0x802211e0:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4591,7 +4591,7 @@ branch_0x80221204:
     b       branch_0x80221268
 
 branch_0x80221244:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4621,7 +4621,7 @@ branch_0x80221280:
 branch_0x802212a4:
     lwz     r3, 0x48(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -4634,7 +4634,7 @@ branch_0x802212c8:
     b       branch_0x802212d4
 
 branch_0x802212d0:
-    lfs     f2, -0x18a8(rtoc)
+    lfs     f2, -0x18a8(r2)
 branch_0x802212d4:
     cmpwi   r30, 0x1
     beq-    branch_0x80221310
@@ -4646,7 +4646,7 @@ branch_0x802212d4:
 branch_0x802212ec:
     lwz     r3, 0x50(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -4659,7 +4659,7 @@ branch_0x80221310:
     b       branch_0x8022131c
 
 branch_0x80221318:
-    lfs     f0, -0x18a8(rtoc)
+    lfs     f0, -0x18a8(r2)
 branch_0x8022131c:
     li      r0, 0x1
     fmuls   f0, f2, f0
@@ -4767,11 +4767,11 @@ branch_0x80221440:
 .globl execsub__10TSpcInterpFv
 execsub__10TSpcInterpFv: # 0x8022145c
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x70(sp)
     stw     r31, 0x6c(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x68(sp)
     stw     r29, 0x64(sp)
     mr      r29, r3
@@ -4791,7 +4791,7 @@ execsub__10TSpcInterpFv: # 0x8022145c
     b       branch_0x802214dc
 
 branch_0x802214b8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4819,7 +4819,7 @@ branch_0x802214dc:
     b       branch_0x80221540
 
 branch_0x8022151c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -4849,7 +4849,7 @@ branch_0x80221558:
 branch_0x8022157c:
     lwz     r3, 0x48(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -4862,7 +4862,7 @@ branch_0x802215a0:
     b       branch_0x802215ac
 
 branch_0x802215a8:
-    lfs     f2, -0x18a8(rtoc)
+    lfs     f2, -0x18a8(r2)
 branch_0x802215ac:
     cmpwi   r30, 0x1
     beq-    branch_0x802215e8
@@ -4874,7 +4874,7 @@ branch_0x802215ac:
 branch_0x802215c4:
     lwz     r3, 0x50(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -4887,7 +4887,7 @@ branch_0x802215e8:
     b       branch_0x802215f4
 
 branch_0x802215f0:
-    lfs     f0, -0x18a8(rtoc)
+    lfs     f0, -0x18a8(r2)
 branch_0x802215f4:
     li      r0, 0x1
     fsubs   f0, f2, f0
@@ -4995,11 +4995,11 @@ branch_0x80221718:
 .globl execadd__10TSpcInterpFv
 execadd__10TSpcInterpFv: # 0x80221734
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x70(sp)
     stw     r31, 0x6c(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x68(sp)
     stw     r29, 0x64(sp)
     mr      r29, r3
@@ -5019,7 +5019,7 @@ execadd__10TSpcInterpFv: # 0x80221734
     b       branch_0x802217b4
 
 branch_0x80221790:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -5047,7 +5047,7 @@ branch_0x802217b4:
     b       branch_0x80221818
 
 branch_0x802217f4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r29)
     lwz     r0, 0x1c(r29)
     lwz     r3, 0x20(r29)
@@ -5077,7 +5077,7 @@ branch_0x80221830:
 branch_0x80221854:
     lwz     r3, 0x48(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -5090,7 +5090,7 @@ branch_0x80221878:
     b       branch_0x80221884
 
 branch_0x80221880:
-    lfs     f2, -0x18a8(rtoc)
+    lfs     f2, -0x18a8(r2)
 branch_0x80221884:
     cmpwi   r30, 0x1
     beq-    branch_0x802218c0
@@ -5102,7 +5102,7 @@ branch_0x80221884:
 branch_0x8022189c:
     lwz     r3, 0x50(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -5115,7 +5115,7 @@ branch_0x802218c0:
     b       branch_0x802218cc
 
 branch_0x802218c8:
-    lfs     f0, -0x18a8(rtoc)
+    lfs     f0, -0x18a8(r2)
 branch_0x802218cc:
     li      r0, 0x1
     fadds   f0, f2, f0
@@ -5281,13 +5281,13 @@ execdec__10TSpcInterpFv: # 0x80221a0c
 
 branch_0x80221aec:
     lwz     r4, 0x4(r7)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x4(r7)
     b       branch_0x80221b0c
 
 branch_0x80221afc:
     lfs     f1, 0x4(r7)
-    lfs     f0, -0x1898(rtoc)
+    lfs     f0, -0x1898(r2)
     fsubs   f0, f1, f0
     stfs    f0, 0x4(r7)
 branch_0x80221b0c:
@@ -5299,9 +5299,9 @@ branch_0x80221b0c:
     cmpw    r8, r0
     add     r7, r5, r4
     blt-    branch_0x80221b40
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80221b68
 
@@ -5390,7 +5390,7 @@ branch_0x80221c58:
 
 branch_0x80221c68:
     lfs     f1, 0x4(r7)
-    lfs     f0, -0x1898(rtoc)
+    lfs     f0, -0x1898(r2)
     fadds   f0, f1, f0
     stfs    f0, 0x4(r7)
 branch_0x80221c78:
@@ -5402,9 +5402,9 @@ branch_0x80221c78:
     cmpw    r8, r0
     add     r7, r5, r4
     blt-    branch_0x80221cac
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80221cd4
 
@@ -5483,9 +5483,9 @@ execvar__10TSpcInterpFv: # 0x80221ce8
     cmpw    r8, r0
     add     r7, r5, r4
     blt-    branch_0x80221dc4
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80221dec
 
@@ -5522,9 +5522,9 @@ execadr__10TSpcInterpFv: # 0x80221dfc
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80221e44
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80221e6c
 
@@ -5605,7 +5605,7 @@ execstr__10TSpcInterpFv: # 0x80221ed4
     stw     r0, 0x1c(sp)
     add.    r3, r6, r3
     bne-    branch_0x80221f5c
-    subi    r0, rtoc, 0x1894
+    addi    r0, r2, R2Off_m0x1894
     stw     r0, 0x20(sp)
     b       branch_0x80221f60
 
@@ -5616,9 +5616,9 @@ branch_0x80221f60:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80221f84
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80221fac
 
@@ -5683,9 +5683,9 @@ execflt__10TSpcInterpFv: # 0x80221fd4
     lwz     r0, 0x18(r3)
     cmpw    r4, r0
     blt-    branch_0x80222064
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8022208c
 
@@ -5722,9 +5722,9 @@ execint__10TSpcInterpFv: # 0x8022209c
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x802220e4
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8022210c
 
@@ -5826,9 +5826,9 @@ branch_0x80222204:
 branch_0x80222218:
     cmplwi  r25, 0x0
     bne-    branch_0x80222238
-    lis     r3, 0x803a
+    lis     r3, unk_8039d674@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x298c
+    addi    r3, r3, unk_8039d674@l
     addi    r4, r30, 0x0
     bl      SpcTrace__FPCce
     b       branch_0x8022223c
@@ -5910,12 +5910,12 @@ initUserBuiltin__10TSpcBinaryFv: # 0x80222308
 .globl init__10TSpcBinaryFv
 init__10TSpcBinaryFv: # 0x8022230c
     mflr    r0
-    lis     r4, 0x803a
+    lis     r4, unk_8039d320@ha
     stw     r0, 0x4(sp)
     li      r5, 0x0
     stwu    sp, -0x48(sp)
     stw     r31, 0x44(sp)
-    subi    r31, r4, 0x2ce0
+    addi    r31, r4, unk_8039d320@l
     stw     r30, 0x40(sp)
     addi    r30, r3, 0x0
     addi    r3, r5, 0x0
@@ -5950,147 +5950,147 @@ branch_0x80222384:
     cmplw   r5, r4
     blt+    branch_0x80222338
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1890
+    addi    r4, r2, R2Off_m0x1890
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x802223bc
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1890
+    addi    r4, r2, R2Off_m0x1890
     bl      SpcTrace__FPCce
     b       branch_0x802223c8
 
 branch_0x802223bc:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x309c
+    lis     r4, spcYield__FP10TSpcInterpUl@h
+    addi    r0, r4, spcYield__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x802223c8:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1888
+    addi    r4, r2, R2Off_m0x1888
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x802223f0
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1888
+    addi    r4, r2, R2Off_m0x1888
     bl      SpcTrace__FPCce
     b       branch_0x802223fc
 
 branch_0x802223f0:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x2fb4
+    lis     r4, spcExit__FP10TSpcInterpUl@h
+    addi    r0, r4, spcExit__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x802223fc:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1880
+    addi    r4, r2, R2Off_m0x1880
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x80222424
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1880
+    addi    r4, r2, R2Off_m0x1880
     bl      SpcTrace__FPCce
     b       branch_0x80222430
 
 branch_0x80222424:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x2ed0
+    lis     r4, spcLock__FP10TSpcInterpUl@h
+    addi    r0, r4, spcLock__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x80222430:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1878
+    addi    r4, r2, R2Off_m0x1878
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x80222458
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1878
+    addi    r4, r2, R2Off_m0x1878
     bl      SpcTrace__FPCce
     b       branch_0x80222464
 
 branch_0x80222458:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x2dec
+    lis     r4, spcUnlock__FP10TSpcInterpUl@h
+    addi    r0, r4, spcUnlock__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x80222464:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1870
+    addi    r4, r2, R2Off_m0x1870
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x8022248c
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1870
+    addi    r4, r2, R2Off_m0x1870
     bl      SpcTrace__FPCce
     b       branch_0x80222498
 
 branch_0x8022248c:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x2bf4
+    lis     r4, spcPrint__FP10TSpcInterpUl@h
+    addi    r0, r4, spcPrint__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x80222498:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1868
+    addi    r4, r2, R2Off_m0x1868
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x802224c0
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1868
+    addi    r4, r2, R2Off_m0x1868
     bl      SpcTrace__FPCce
     b       branch_0x802224cc
 
 branch_0x802224c0:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x2b14
+    lis     r4, spcDump__FP10TSpcInterpUl@h
+    addi    r0, r4, spcDump__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x802224cc:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1860
+    addi    r4, r2, R2Off_m0x1860
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x802224f4
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1860
+    addi    r4, r2, R2Off_m0x1860
     bl      SpcTrace__FPCce
     b       branch_0x80222500
 
 branch_0x802224f4:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x2954
+    lis     r4, spcInt__FP10TSpcInterpUl@h
+    addi    r0, r4, spcInt__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x80222500:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x185c
+    addi    r4, r2, R2Off_m0x185c
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x80222528
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x185c
+    addi    r4, r2, R2Off_m0x185c
     bl      SpcTrace__FPCce
     b       branch_0x80222534
 
 branch_0x80222528:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x2778
+    lis     r4, spcFloat__FP10TSpcInterpUl@h
+    addi    r0, r4, spcFloat__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x80222534:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x1854
+    addi    r4, r2, R2Off_m0x1854
     bl      searchSymbol__10TSpcBinaryFPCc
     cmplwi  r3, 0x0
     bne-    branch_0x8022255c
     addi    r3, r31, 0x354
     crxor   6, 6, 6
-    subi    r4, rtoc, 0x1854
+    addi    r4, r2, R2Off_m0x1854
     bl      SpcTrace__FPCce
     b       branch_0x80222568
 
 branch_0x8022255c:
-    lis     r4, 0x8022
-    addi    r0, r4, 0x260c
+    lis     r4, spcTypeof__FP10TSpcInterpUl@h
+    addi    r0, r4, spcTypeof__FP10TSpcInterpUl@l
     stw     r0, 0x10(r3)
 branch_0x80222568:
     addi    r3, r31, 0x374
@@ -6120,8 +6120,8 @@ __dt__10TSpcBinaryFv: # 0x802225ac
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x802225e0
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5bf4
+    lis     r3, __vvt__10TSpcBinary@ha
+    addi    r3, r3, __vvt__10TSpcBinary@l
     extsh.  r0, r4
     stw     r3, 0x4(r31)
     ble-    branch_0x802225e0
@@ -6138,8 +6138,8 @@ branch_0x802225e0:
 
 .globl __ct__10TSpcBinaryFPv
 __ct__10TSpcBinaryFPv: # 0x802225f8
-    lis     r5, 0x803e
-    subi    r0, r5, 0x5bf4
+    lis     r5, __vvt__10TSpcBinary@ha
+    addi    r0, r5, __vvt__10TSpcBinary@l
     stw     r0, 0x4(r3)
     stw     r4, 0x0(r3)
     blr
@@ -6157,8 +6157,8 @@ spcTypeof__FP10TSpcInterpUl: # 0x8022260c
     stw     r28, 0x68(sp)
     addi    r28, r4, 0x0
     cmplwi  r28, 0x1
-    lis     r4, 0x803a
-    subi    r29, r4, 0x2ce0
+    lis     r4, unk_8039d320@ha
+    addi    r29, r4, unk_8039d320@l
     beq-    branch_0x802226b8
     beq-    branch_0x802226b8
     lwz     r4, 0x58(r31)
@@ -6179,10 +6179,10 @@ branch_0x80222660:
     b       branch_0x80222684
 
 branch_0x8022267c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
 branch_0x80222684:
-    subi    r28, r28, 0x1
+    addi    r28, r28, -0x1
 branch_0x80222688:
     cmplwi  r28, 0x1
     bgt+    branch_0x80222660
@@ -6214,7 +6214,7 @@ branch_0x802226b8:
     b       branch_0x80222704
 
 branch_0x802226e8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
     lwz     r0, 0x1c(r31)
     lwz     r3, 0x20(r31)
@@ -6268,8 +6268,8 @@ spcFloat__FP10TSpcInterpUl: # 0x80222778
     stw     r28, 0x60(sp)
     addi    r28, r4, 0x0
     cmplwi  r28, 0x1
-    lis     r4, 0x803a
-    subi    r31, r4, 0x2ce0
+    lis     r4, unk_8039d320@ha
+    addi    r31, r4, unk_8039d320@l
     beq-    branch_0x80222824
     beq-    branch_0x80222824
     lwz     r4, 0x58(r30)
@@ -6290,10 +6290,10 @@ branch_0x802227cc:
     b       branch_0x802227f0
 
 branch_0x802227e8:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
 branch_0x802227f0:
-    subi    r28, r28, 0x1
+    addi    r28, r28, -0x1
 branch_0x802227f4:
     cmplwi  r28, 0x1
     bgt+    branch_0x802227cc
@@ -6331,7 +6331,7 @@ branch_0x80222824:
     b       branch_0x80222894
 
 branch_0x8022286c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -6353,7 +6353,7 @@ branch_0x80222894:
 branch_0x802228b0:
     lwz     r3, 0x4c(sp)
     lis     r0, 0x4330
-    lfd     f1, -0x18a0(rtoc)
+    lfd     f1, -0x18a0(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x5c(sp)
     stw     r0, 0x58(sp)
@@ -6366,7 +6366,7 @@ branch_0x802228d4:
     b       branch_0x802228e0
 
 branch_0x802228dc:
-    lfs     f0, -0x18a8(rtoc)
+    lfs     f0, -0x18a8(r2)
 branch_0x802228e0:
     li      r0, 0x1
     stw     r0, 0x50(sp)
@@ -6414,8 +6414,8 @@ spcInt__FP10TSpcInterpUl: # 0x80222954
     stw     r28, 0x60(sp)
     addi    r28, r4, 0x0
     cmplwi  r28, 0x1
-    lis     r4, 0x803a
-    subi    r31, r4, 0x2ce0
+    lis     r4, unk_8039d320@ha
+    addi    r31, r4, unk_8039d320@l
     beq-    branch_0x80222a00
     beq-    branch_0x80222a00
     lwz     r4, 0x58(r30)
@@ -6436,10 +6436,10 @@ branch_0x802229a8:
     b       branch_0x802229cc
 
 branch_0x802229c4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
 branch_0x802229cc:
-    subi    r28, r28, 0x1
+    addi    r28, r28, -0x1
 branch_0x802229d0:
     cmplwi  r28, 0x1
     bgt+    branch_0x802229a8
@@ -6474,7 +6474,7 @@ branch_0x80222a00:
     b       branch_0x80222a64
 
 branch_0x80222a3c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
     lwz     r0, 0x1c(r30)
     lwz     r3, 0x20(r30)
@@ -6553,8 +6553,8 @@ spcDump__FP10TSpcInterpUl: # 0x80222b14
     stw     r28, 0x30(sp)
     addi    r28, r3, 0x0
     bl      dump__10TSpcInterpFv
-    lis     r3, 0x803a
-    subi    r31, r3, 0x2b98
+    lis     r3, unk_8039d468@ha
+    addi    r31, r3, unk_8039d468@l
     li      r30, 0x0
     b       branch_0x80222b74
 
@@ -6568,7 +6568,7 @@ branch_0x80222b4c:
     b       branch_0x80222b70
 
 branch_0x80222b68:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r28)
 branch_0x80222b70:
     addi    r30, r30, 0x1
@@ -6582,9 +6582,9 @@ branch_0x80222b74:
     lwz     r0, 0x18(r28)
     cmpw    r3, r0
     blt-    branch_0x80222bac
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80222bd4
 
@@ -6624,7 +6624,7 @@ spcPrint__FP10TSpcInterpUl: # 0x80222bf4
     lis     r29, 0x4330
     stw     r28, 0x38(sp)
     li      r28, 0x0
-    lfd     f31, -0x18a0(rtoc)
+    lfd     f31, -0x18a0(r2)
     b       branch_0x80222d28
 
 branch_0x80222c2c:
@@ -6670,7 +6670,7 @@ branch_0x80222ca0:
     li      r4, 0x0
 branch_0x80222ca4:
     crxor   6, 6, 6
-    subi    r3, rtoc, 0x184c
+    addi    r3, r2, R2Off_m0x184c
     bl      SpcTrace__FPCce
     b       branch_0x80222d24
 
@@ -6695,10 +6695,10 @@ branch_0x80222ce4:
     b       branch_0x80222cf0
 
 branch_0x80222cec:
-    lfs     f1, -0x18a8(rtoc)
+    lfs     f1, -0x18a8(r2)
 branch_0x80222cf0:
     creqv   6, 6, 6
-    subi    r3, rtoc, 0x1848
+    addi    r3, r2, R2Off_m0x1848
     bl      SpcTrace__FPCce
     b       branch_0x80222d24
 
@@ -6712,18 +6712,18 @@ branch_0x80222d0c:
     b       branch_0x80222d18
 
 branch_0x80222d14:
-    subi    r4, rtoc, 0x1894
+    addi    r4, r2, R2Off_m0x1894
 branch_0x80222d18:
     crxor   6, 6, 6
-    subi    r3, rtoc, 0x1844
+    addi    r3, r2, R2Off_m0x1844
     bl      SpcTrace__FPCce
 branch_0x80222d24:
     addi    r28, r28, 0x1
 branch_0x80222d28:
     cmpw    r28, r31
     blt+    branch_0x80222c2c
-    lis     r3, 0x803a
-    subi    r29, r3, 0x2b98
+    lis     r3, unk_8039d468@ha
+    addi    r29, r3, unk_8039d468@l
     li      r28, 0x0
     b       branch_0x80222d68
 
@@ -6737,7 +6737,7 @@ branch_0x80222d40:
     b       branch_0x80222d64
 
 branch_0x80222d5c:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r30)
 branch_0x80222d64:
     addi    r28, r28, 0x1
@@ -6751,9 +6751,9 @@ branch_0x80222d68:
     lwz     r0, 0x18(r30)
     cmpw    r3, r0
     blt-    branch_0x80222da0
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80222dc8
 
@@ -6788,9 +6788,9 @@ spcUnlock__FP10TSpcInterpUl: # 0x80222dec
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     stw     r30, 0x38(sp)
-    subi    r30, r3, 0x2b98
+    addi    r30, r3, unk_8039d468@l
     stw     r29, 0x34(sp)
     li      r29, 0x0
     stw     r28, 0x30(sp)
@@ -6808,7 +6808,7 @@ branch_0x80222e28:
     b       branch_0x80222e4c
 
 branch_0x80222e44:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
 branch_0x80222e4c:
     addi    r29, r29, 0x1
@@ -6822,9 +6822,9 @@ branch_0x80222e50:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80222e88
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80222eb0
 
@@ -6858,9 +6858,9 @@ spcLock__FP10TSpcInterpUl: # 0x80222ed0
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     stw     r30, 0x38(sp)
-    subi    r30, r3, 0x2b98
+    addi    r30, r3, unk_8039d468@l
     stw     r29, 0x34(sp)
     li      r29, 0x0
     stw     r28, 0x30(sp)
@@ -6878,7 +6878,7 @@ branch_0x80222f0c:
     b       branch_0x80222f30
 
 branch_0x80222f28:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
 branch_0x80222f30:
     addi    r29, r29, 0x1
@@ -6892,9 +6892,9 @@ branch_0x80222f34:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80222f6c
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80222f94
 
@@ -6934,8 +6934,8 @@ spcExit__FP10TSpcInterpUl: # 0x80222fb4
     stw     r28, 0x30(sp)
     addi    r28, r4, 0x0
     stw     r0, 0x4(r3)
-    lis     r3, 0x803a
-    subi    r30, r3, 0x2b98
+    lis     r3, unk_8039d468@ha
+    addi    r30, r3, unk_8039d468@l
     stw     r0, 0xc(r31)
     b       branch_0x8022301c
 
@@ -6949,7 +6949,7 @@ branch_0x80222ff4:
     b       branch_0x80223018
 
 branch_0x80223010:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
 branch_0x80223018:
     addi    r29, r29, 0x1
@@ -6963,9 +6963,9 @@ branch_0x8022301c:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80223054
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x8022307c
 
@@ -6999,9 +6999,9 @@ spcYield__FP10TSpcInterpUl: # 0x8022309c
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x803a
+    lis     r3, unk_8039d468@ha
     stw     r30, 0x38(sp)
-    subi    r30, r3, 0x2b98
+    addi    r30, r3, unk_8039d468@l
     stw     r29, 0x34(sp)
     li      r29, 0x0
     stw     r28, 0x30(sp)
@@ -7019,7 +7019,7 @@ branch_0x802230d8:
     b       branch_0x802230fc
 
 branch_0x802230f4:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x1c(r31)
 branch_0x802230fc:
     addi    r29, r29, 0x1
@@ -7033,9 +7033,9 @@ branch_0x80223100:
     lwz     r0, 0x18(r31)
     cmpw    r3, r0
     blt-    branch_0x80223138
-    lis     r3, 0x803a
+    lis     r3, unk_8039d44c@ha
     crxor   6, 6, 6
-    subi    r3, r3, 0x2bb4
+    addi    r3, r3, unk_8039d44c@l
     bl      SpcTrace__FPCce
     b       branch_0x80223160
 

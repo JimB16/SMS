@@ -148,13 +148,13 @@ __LCEnable: # 0x803437b0
     mfmsr   r5
     ori     r5, r5, 0x1000
     mtmsr   r5
-    lis     r3, 0x8000
+    lis     r3, unk_80000020@h
     li      r4, 0x400
     mtctr   r4
 branch_0x803437c8:
     dcbt    r0, r3
     dcbst   r0, r3
-    addi    r3, r3, 0x20
+    addi    r3, r3, unk_80000020@l
     bdnz+      branch_0x803437c8
     mfspr   r4, 920
     oris    r4, r4, 0x100f
@@ -171,19 +171,19 @@ branch_0x803437c8:
     ori     r0, r0, 0x0
     ori     r0, r0, 0x0
     ori     r0, r0, 0x0
-    lis     r3, 0xe000
-    ori     r3, r3, 0x2
+    lis     r3, unk_e0000002@h
+    ori     r3, r3, unk_e0000002@l
     mtspr   543, r3
     ori     r3, r3, 0x1fe
     mtspr   542, r3
     isync
-    lis     r3, 0xe000
+    lis     r3, unk_e0000020@h
     li      r6, 0x200
     mtctr   r6
     li      r6, 0x0
 branch_0x8034383c:
     dcbz_l  r6, r3
-    addi    r3, r3, 0x20
+    addi    r3, r3, unk_e0000020@l
     bdnz+      branch_0x8034383c
     ori     r0, r0, 0x0
     ori     r0, r0, 0x0
@@ -220,12 +220,12 @@ LCEnable: # 0x8034387c
 
 .globl LCDisable
 LCDisable: # 0x803438b4
-    lis     r3, 0xe000
+    lis     r3, unk_e0000020@h
     li      r4, 0x200
     mtctr   r4
 branch_0x803438c0:
     dcbi    r0, r3
-    addi    r3, r3, 0x20
+    addi    r3, r3, unk_e0000020@l
     bdnz+      branch_0x803438c0
     mfspr   r4, 920
     rlwinm  r4, r4, 0, 4, 2
@@ -285,7 +285,7 @@ branch_0x80343964:
     mr      r4, r29
     li      r5, 0x0
     bl      LCStoreBlocks
-    subi    r31, r31, 0x80
+    addi    r31, r31, -0x80
     addi    r28, r28, 0x1000
     addi    r29, r29, 0x1000
 branch_0x80343980:
@@ -343,8 +343,8 @@ branch_0x803439fc:
     b       branch_0x80343a1c
 
 branch_0x80343a1c:
-    lis     r3, 0x803e
-    addi    r31, r3, 0x6f18
+    lis     r3, unk_803e6f18@h
+    addi    r31, r3, unk_803e6f18@l
     b       branch_0x80343a28
 
 branch_0x80343a28:
@@ -393,8 +393,8 @@ branch_0x80343a98:
     stw     r9, 0x20(sp)
     stw     r10, 0x24(sp)
     mr      r29, r4
-    lis     r3, 0x803e
-    addi    r31, r3, 0x6f18
+    lis     r3, unk_803e6f18@h
+    addi    r31, r3, unk_803e6f18@l
     bl      PPCMfhid2
     mr      r30, r3
     crxor   6, 6, 6
@@ -472,8 +472,8 @@ __OSCacheInit: # 0x80343bbc
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x6f18
+    lis     r3, unk_803e6f18@h
+    addi    r31, r3, unk_803e6f18@l
     bl      PPCMfhid0
     rlwinm  r0, r3, 0, 16, 16
     cmplwi  r0, 0x0
@@ -518,8 +518,8 @@ branch_0x80343c18:
     crxor   6, 6, 6
     bl      DBPrintf
 branch_0x80343c7c:
-    lis     r3, 0x8034
-    addi    r4, r3, 0x3a5c
+    lis     r3, DMAErrorHandler@h
+    addi    r4, r3, DMAErrorHandler@l
     li      r3, 0x1
     bl      OSSetErrorHandler
     addi    r3, r31, 0x1fc

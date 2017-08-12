@@ -4,7 +4,7 @@ InitializeUART: # 0x8036b3cc
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x574c(r13)
+    lwz     r3, R13Off_m0x574c(r13)
     addis   r0, r3, 0x5a01
     cmplwi  r0, 0x5a
     bne-    branch_0x8036b3f0
@@ -16,19 +16,19 @@ branch_0x8036b3f0:
     rlwinm. r0, r3, 0, 3, 3
     bne-    branch_0x8036b40c
     li      r0, 0x0
-    stw     r0, -0x5750(r13)
+    stw     r0, R13Off_m0x5750(r13)
     li      r3, 0x2
     b       branch_0x8036b42c
 
 branch_0x8036b40c:
-    lis     r3, 0xa5ff
-    addi    r0, r3, 0x5a
+    lis     r3, unk_a5ff005a@h
+    addi    r0, r3, unk_a5ff005a@l
     li      r3, 0x0
-    stw     r0, -0x5750(r13)
+    stw     r0, R13Off_m0x5750(r13)
     li      r0, 0x1
-    stw     r3, -0x5758(r13)
+    stw     r3, R13Off_m0x5758(r13)
     li      r3, 0x0
-    stw     r0, -0x5754(r13)
+    stw     r0, R13Off_m0x5754(r13)
 branch_0x8036b42c:
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -50,7 +50,7 @@ WriteUARTN: # 0x8036b444
     stmw    r26, 0x18(sp)
     addi    r30, r3, 0x0
     addi    r31, r4, 0x0
-    lwz     r5, -0x5750(r13)
+    lwz     r5, R13Off_m0x5750(r13)
     addis   r0, r5, 0x5a01
     cmplwi  r0, 0x5a
     beq-    branch_0x8036b474
@@ -58,9 +58,9 @@ WriteUARTN: # 0x8036b444
     b       branch_0x8036b630
 
 branch_0x8036b474:
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     li      r5, 0x0
-    lwz     r4, -0x5754(r13)
+    lwz     r4, R13Off_m0x5754(r13)
     bl      EXILock
     cmpwi   r3, 0x0
     bne-    branch_0x8036b494
@@ -83,16 +83,16 @@ branch_0x8036b4b4:
     subf    r0, r30, r4
     cmplw   r0, r31
     blt+    branch_0x8036b4a0
-    lis     r0, 0xa001
+    lis     r0, unk_a0010000@h
     stw     r0, 0x14(sp)
-    li      r26, 0x0
+    addi    r26, r0, unk_a0010000@l
     lis     r29, 0x2001
     b       branch_0x8036b61c
 
 branch_0x8036b4d4:
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     li      r5, 0x3
-    lwz     r4, -0x5754(r13)
+    lwz     r4, R13Off_m0x5754(r13)
     bl      EXISelect
     cmpwi   r3, 0x0
     bne-    branch_0x8036b4f4
@@ -102,22 +102,22 @@ branch_0x8036b4d4:
 branch_0x8036b4f4:
     stw     r29, 0x10(sp)
     addi    r4, sp, 0x10
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     li      r5, 0x4
     li      r6, 0x1
     li      r7, 0x0
     bl      EXIImm
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     bl      EXISync
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     addi    r4, sp, 0x10
     li      r5, 0x1
     li      r6, 0x0
     li      r7, 0x0
     bl      EXIImm
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     bl      EXISync
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     bl      EXIDeselect
     lwz     r0, 0x10(sp)
     srwi    r0, r0, 24
@@ -135,9 +135,9 @@ branch_0x8036b560:
     cmplw   r0, r31
     blt-    branch_0x8036b61c
 branch_0x8036b570:
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     li      r5, 0x3
-    lwz     r4, -0x5754(r13)
+    lwz     r4, R13Off_m0x5754(r13)
     bl      EXISelect
     cmpwi   r3, 0x0
     bne-    branch_0x8036b590
@@ -145,13 +145,13 @@ branch_0x8036b570:
     b       branch_0x8036b624
 
 branch_0x8036b590:
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     addi    r4, sp, 0x14
     li      r5, 0x4
     li      r6, 0x1
     li      r7, 0x0
     bl      EXIImm
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     bl      EXISync
     b       branch_0x8036b604
 
@@ -169,13 +169,13 @@ branch_0x8036b5c4:
 branch_0x8036b5d4:
     li      r28, 0x4
 branch_0x8036b5d8:
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     mr      r5, r28
     addi    r4, r30, 0x0
     li      r6, 0x1
     li      r7, 0x0
     bl      EXIImm
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     add     r30, r30, r28
     subf    r31, r28, r31
     subf    r27, r28, r27
@@ -186,13 +186,13 @@ branch_0x8036b604:
     cmplwi  r31, 0x0
     bne+    branch_0x8036b5b4
 branch_0x8036b614:
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     bl      EXIDeselect
 branch_0x8036b61c:
     cmplwi  r31, 0x0
     bne+    branch_0x8036b4d4
 branch_0x8036b624:
-    lwz     r3, -0x5758(r13)
+    lwz     r3, R13Off_m0x5758(r13)
     bl      EXIUnlock
     mr      r3, r26
 branch_0x8036b630:

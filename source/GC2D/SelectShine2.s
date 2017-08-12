@@ -7,8 +7,8 @@ __dt__12TSelectShineFv: # 0x80177984
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x801779b8
-    lis     r3, 0x803c
-    addi    r3, r3, 0xf88
+    lis     r3, __vvt__12TSelectShine@h
+    addi    r3, r3, __vvt__12TSelectShine@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x801779b8
@@ -32,17 +32,17 @@ move__12TSelectShineFv: # 0x801779d0
     stw     r30, 0x150(sp)
     mr      r30, r3
     stw     r29, 0x14c(sp)
-    lfs     f5, -0x4780(rtoc)
+    lfs     f5, -0x4780(r2)
     lfs     f6, 0x28(r3)
     fcmpo   cr0, f6, f5
     bge-    branch_0x80177a38
     fsubs   f2, f5, f6
-    lfs     f0, -0x477c(rtoc)
+    lfs     f0, -0x477c(r2)
     lfs     f5, 0x2c(r30)
     fmuls   f4, f6, f6
-    lfs     f1, -0x4774(rtoc)
+    lfs     f1, -0x4774(r2)
     fmuls   f0, f0, f2
-    lfs     f3, -0x4778(rtoc)
+    lfs     f3, -0x4778(r2)
     fmuls   f1, f5, f1
     fmuls   f2, f2, f2
     fmuls   f0, f0, f6
@@ -53,13 +53,13 @@ move__12TSelectShineFv: # 0x801779d0
     b       branch_0x80177b14
 
 branch_0x80177a38:
-    lfs     f2, -0x477c(rtoc)
+    lfs     f2, -0x477c(r2)
     fcmpo   cr0, f6, f2
     bge-    branch_0x80177a80
     fsubs   f6, f6, f5
     lfs     f7, 0x2c(r30)
-    lfs     f0, -0x4774(rtoc)
-    lfs     f4, -0x4778(rtoc)
+    lfs     f0, -0x4774(r2)
+    lfs     f4, -0x4778(r2)
     fsubs   f5, f5, f6
     fmuls   f1, f7, f0
     fmuls   f3, f6, f6
@@ -73,14 +73,14 @@ branch_0x80177a38:
     b       branch_0x80177b14
 
 branch_0x80177a80:
-    lfs     f1, -0x4770(rtoc)
+    lfs     f1, -0x4770(r2)
     fcmpo   cr0, f6, f1
     bge-    branch_0x80177acc
     fsubs   f6, f6, f2
     lfs     f1, 0x2c(r30)
-    lfs     f0, -0x4774(rtoc)
+    lfs     f0, -0x4774(r2)
     fneg    f7, f1
-    lfs     f3, -0x4778(rtoc)
+    lfs     f3, -0x4778(r2)
     fsubs   f5, f5, f6
     fmuls   f1, f7, f0
     fmuls   f4, f6, f6
@@ -94,14 +94,14 @@ branch_0x80177a80:
     b       branch_0x80177b14
 
 branch_0x80177acc:
-    lfs     f0, -0x476c(rtoc)
+    lfs     f0, -0x476c(r2)
     fcmpo   cr0, f6, f0
     bge-    branch_0x80177b14
     fsubs   f6, f6, f1
     lfs     f1, 0x2c(r30)
-    lfs     f0, -0x4774(rtoc)
+    lfs     f0, -0x4774(r2)
     fneg    f7, f1
-    lfs     f4, -0x4778(rtoc)
+    lfs     f4, -0x4778(r2)
     fsubs   f5, f5, f6
     fmuls   f1, f7, f0
     fmuls   f3, f6, f6
@@ -138,7 +138,7 @@ branch_0x80177b14:
     stfs    f0, 0x1c(r29)
     lfs     f1, 0x11c(sp)
     stfs    f1, 0x2c(r29)
-    lfs     f0, -0x4768(rtoc)
+    lfs     f0, -0x4768(r2)
     fmuls   f0, f0, f1
     fctiwz  f0, f0
     stfd    f0, 0x138(sp)
@@ -155,7 +155,7 @@ branch_0x80177ba4:
     beq-    branch_0x80177bd4
     lha     r3, 0x3c(r30)
     extsh   r0, r4
-    subi    r3, r3, 0x8
+    addi    r3, r3, -0x8
     sth     r3, 0x3c(r30)
     lha     r3, 0x3c(r30)
     cmpw    r3, r0
@@ -173,7 +173,7 @@ branch_0x80177bd4:
     lwz     r4, 0x8(r30)
     lha     r3, 0x3c(r30)
     lha     r4, 0x2(r4)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     cmpw    r3, r0
     ble-    branch_0x80177c38
     sth     r0, 0x3c(r30)
@@ -199,10 +199,10 @@ branch_0x80177c38:
     lha     r4, 0x3c(r30)
     lha     r3, 0x2(r3)
     cmplwi  r5, 0x2
-    lfd     f1, -0x4758(rtoc)
+    lfd     f1, -0x4758(r2)
     divw    r3, r4, r3
-    lfs     f2, -0x4780(rtoc)
-    lfs     f3, -0x4764(rtoc)
+    lfs     f2, -0x4780(r2)
+    lfs     f3, -0x4764(r2)
     xoris   r3, r3, 0x8000
     stw     r3, 0x13c(sp)
     stw     r0, 0x138(sp)
@@ -239,11 +239,11 @@ branch_0x80177cd0:
     bl      SMSGetAnmFrameRate__Fv
     lbz     r0, 0x38(r30)
     lis     r29, 0x4330
-    lfd     f3, -0x4758(rtoc)
+    lfd     f3, -0x4758(r2)
     addi    r3, sp, 0xe4
     extsb   r0, r0
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x4760(rtoc)
+    lfs     f0, -0x4760(r2)
     stw     r0, 0x13c(sp)
     li      r4, 0x79
     stw     r29, 0x138(sp)
@@ -256,7 +256,7 @@ branch_0x80177cd0:
     lbz     r3, 0x38(r30)
     lwz     r0, 0x34(r30)
     extsb   r3, r3
-    lfd     f3, -0x4758(rtoc)
+    lfd     f3, -0x4758(r2)
     xoris   r3, r3, 0x8000
     xoris   r0, r0, 0x8000
     stw     r3, 0x144(sp)
@@ -275,7 +275,7 @@ branch_0x80177cd0:
     lwz     r3, 0x34(r30)
     cmpwi   r3, 0x168
     ble-    branch_0x80177d80
-    subi    r0, r3, 0x168
+    addi    r0, r3, -0x168
     stw     r0, 0x34(r30)
 branch_0x80177d80:
     lwz     r3, 0x34(r30)
@@ -297,7 +297,7 @@ branch_0x80177da8:
     bl      SMSGetAnmFrameRate__Fv
     lbz     r0, 0x38(r30)
     lis     r3, 0x4330
-    lfd     f2, -0x4758(rtoc)
+    lfd     f2, -0x4758(r2)
     extsb   r4, r0
     lwz     r0, 0x34(r30)
     xoris   r4, r4, 0x8000
@@ -321,14 +321,14 @@ branch_0x80177da8:
     addi    r5, r3, 0x168
 branch_0x80177e18:
     extsh   r0, r5
-    lfd     f1, -0x4758(rtoc)
+    lfd     f1, -0x4758(r2)
     xoris   r0, r0, 0x8000
-    lfs     f2, -0x4760(rtoc)
+    lfs     f2, -0x4760(r2)
     stw     r0, 0x12c(sp)
-    lis     r0, 0x4330
+    lis     r0, unk_43300079@h
     addi    r3, sp, 0xb4
     stw     r0, 0x128(sp)
-    li      r4, 0x79
+    addi    r4, r0, unk_43300079@l
     lfd     f0, 0x128(sp)
     fsubs   f0, f0, f1
     fmuls   f1, f2, f0
@@ -343,10 +343,10 @@ branch_0x80177e5c:
     fadds   f0, f1, f0
     stfs    f0, 0x28(r30)
     lfs     f1, 0x28(r30)
-    lfs     f0, -0x476c(rtoc)
+    lfs     f0, -0x476c(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80177e84
-    lfs     f0, -0x4778(rtoc)
+    lfs     f0, -0x4778(r2)
     stfs    f0, 0x28(r30)
 branch_0x80177e84:
     lwz     r0, 0x15c(sp)
@@ -361,9 +361,9 @@ branch_0x80177e84:
 .globl __ct__12TSelectShineFP12J3DModelDataP11J3DAnmColorP17JPAEmitterManagerRQ29JGeometry8TVec3_f_sUcfff
 __ct__12TSelectShineFP12J3DModelDataP11J3DAnmColorP17JPAEmitterManagerRQ29JGeometry8TVec3_f_sUcfff: # 0x80177ea0
     mflr    r0
-    lis     r10, 0x803c
+    lis     r10, __vvt__12TSelectShine@h
     stw     r0, 0x4(sp)
-    addi    r0, r10, 0xf88
+    addi    r0, r10, __vvt__12TSelectShine@l
     stwu    sp, -0x108(sp)
     stfd    f31, 0x100(sp)
     fmr     f31, f3
@@ -381,7 +381,7 @@ __ct__12TSelectShineFP12J3DModelDataP11J3DAnmColorP17JPAEmitterManagerRQ29JGeome
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stb     r0, 0x24(r3)
-    lfs     f0, -0x4778(rtoc)
+    lfs     f0, -0x4778(r2)
     stfs    f0, 0x28(r3)
     li      r3, 0xa0
     stfs    f0, 0x2c(r31)
@@ -411,17 +411,17 @@ __ct__12TSelectShineFP12J3DModelDataP11J3DAnmColorP17JPAEmitterManagerRQ29JGeome
 branch_0x80177f60:
     stw     r25, 0x4(r31)
     li      r5, 0x3
-    lis     r0, 0x4330
+    lis     r0, unk_43300079@h
     stw     r27, 0x8(r31)
     addi    r3, sp, 0x98
-    li      r4, 0x79
+    addi    r4, r0, unk_43300079@l
     lfs     f0, 0x0(r30)
     stfs    f0, 0xc(r31)
     lfs     f0, 0x4(r30)
     stfs    f0, 0x10(r31)
     lfs     f0, 0x8(r30)
     stfs    f0, 0x14(r31)
-    lfs     f0, -0x4778(rtoc)
+    lfs     f0, -0x4778(r2)
     stfs    f0, 0x18(r31)
     stfs    f0, 0x1c(r31)
     stfs    f0, 0x20(r31)
@@ -440,9 +440,9 @@ branch_0x80177f60:
     lfs     f0, 0x14(r31)
     stfs    f0, 0x2c(r5)
     lha     r5, 0x3a(r31)
-    lfd     f1, -0x4758(rtoc)
+    lfd     f1, -0x4758(r2)
     xoris   r5, r5, 0x8000
-    lfs     f2, -0x4760(rtoc)
+    lfs     f2, -0x4760(r2)
     stw     r5, 0xcc(sp)
     stw     r0, 0xc8(sp)
     lfd     f0, 0xc8(sp)
@@ -561,10 +561,10 @@ perform__19TSelectShineManagerFUlPQ26JDrama9TGraphics: # 0x80178158
     stfd    f21, 0x1c8(sp)
     stmw    r21, 0x19c(sp)
     addi    r26, r4, 0x0
-    lis     r4, 0x803f
+    lis     r4, cCenter__19TSelectShineManager@h
     addi    r25, r3, 0x0
     addi    r27, r5, 0x0
-    addi    r30, r4, 0x42f8
+    addi    r30, r4, cCenter__19TSelectShineManager@l
     beq-    branch_0x801784d0
     li      r22, 0x0
     addi    r23, r22, 0x0
@@ -592,7 +592,7 @@ branch_0x801781dc:
 branch_0x80178200:
     lwz     r3, 0x9c(r25)
     lis     r0, 0x4330
-    lfd     f2, -0x4758(rtoc)
+    lfd     f2, -0x4758(r2)
     xoris   r3, r3, 0x8000
     lfs     f0, 0xa0(r25)
     stw     r3, 0x194(sp)
@@ -628,19 +628,19 @@ branch_0x80178264:
     li      r0, 0x0
     stb     r0, 0xa5(r25)
 branch_0x80178290:
-    lfs     f24, -0x4750(rtoc)
+    lfs     f24, -0x4750(r2)
     li      r29, 0x0
-    lfd     f25, -0x4758(rtoc)
+    lfd     f25, -0x4758(r2)
     li      r24, 0x0
-    lfs     f26, -0x474c(rtoc)
-    lfs     f27, -0x4748(rtoc)
+    lfs     f26, -0x474c(r2)
+    lfs     f27, -0x4748(r2)
     li      r23, 0x0
-    lfs     f28, -0x4744(rtoc)
+    lfs     f28, -0x4744(r2)
     lis     r31, 0x4330
-    lfs     f29, -0x4740(rtoc)
-    lfs     f30, -0x4780(rtoc)
-    lfs     f31, -0x4778(rtoc)
-    lfs     f23, -0x4760(rtoc)
+    lfs     f29, -0x4740(r2)
+    lfs     f30, -0x4780(r2)
+    lfs     f31, -0x4778(r2)
+    lfs     f23, -0x4760(r2)
     b       branch_0x801784c4
 
 branch_0x801782c8:
@@ -779,10 +779,10 @@ branch_0x801784c4:
 branch_0x801784d0:
     rlwinm. r0, r26, 0, 30, 30
     beq-    branch_0x8017855c
-    lfd     f24, -0x4758(rtoc)
+    lfd     f24, -0x4758(r2)
     li      r22, 0x0
     li      r28, 0x0
-    lis     r23, 0x4330
+    lis     r23, unk_43300000@h
     b       branch_0x80178550
 
 branch_0x801784ec:
@@ -818,10 +818,10 @@ branch_0x80178550:
 branch_0x8017855c:
     rlwinm. r0, r26, 0, 28, 28
     beq-    branch_0x801785b4
-    lis     r4, 0x8040
-    addi    r23, r4, 0x45dc
+    lis     r4, j3dSys@h
+    addi    r23, r4, j3dSys@l
     addi    r3, r27, 0xb4
-    addi    r4, r23, 0x0
+    addi    r4, r23, unk_43300000@l
     bl      PSMTXCopy
     mr      r3, r23
     bl      drawInit__6J3DSysFv
@@ -905,8 +905,8 @@ branch_0x80178670:
     stw     r0, 0x11c(r5)
 branch_0x80178680:
     mulli   r0, r4, 0x28
-    lis     r5, 0x6666
-    addi    r5, r5, 0x6667
+    lis     r5, unk_66666667@h
+    addi    r5, r5, unk_66666667@l
     mulhw   r0, r5, r0
     srawi   r0, r0, 2
     srwi    r5, r0, 31
@@ -917,7 +917,7 @@ branch_0x80178680:
     lis     r0, 0x4330
     stb     r5, 0xa5(r3)
     stw     r0, 0x28(sp)
-    lfd     f1, -0x4758(rtoc)
+    lfd     f1, -0x4758(r2)
     lfd     f0, 0x28(sp)
     fsubs   f0, f0, f1
     stfs    f0, 0xa0(r3)
@@ -978,8 +978,8 @@ branch_0x80178774:
     stw     r0, 0x11c(r5)
 branch_0x80178784:
     mulli   r0, r4, -0x28
-    lis     r5, 0x6666
-    addi    r5, r5, 0x6667
+    lis     r5, unk_66666667@h
+    addi    r5, r5, unk_66666667@l
     mulhw   r0, r5, r0
     srawi   r0, r0, 2
     srwi    r5, r0, 31
@@ -990,7 +990,7 @@ branch_0x80178784:
     lis     r0, 0x4330
     stb     r5, 0xa4(r3)
     stw     r0, 0x28(sp)
-    lfd     f1, -0x4758(rtoc)
+    lfd     f1, -0x4758(r2)
     lfd     f0, 0x28(sp)
     fsubs   f0, f0, f1
     stfs    f0, 0xa0(r3)
@@ -1107,9 +1107,9 @@ branch_0x80178934:
 .globl initData__19TSelectShineManagerFPUcUcUcP17JPAEmitterManager
 initData__19TSelectShineManagerFPUcUcUcP17JPAEmitterManager: # 0x8017894c
     mflr    r0
-    lis     r9, 0x8039
+    lis     r9, unk_80388708@ha
     stw     r0, 0x4(sp)
-    lis     r8, 0x803f
+    lis     r8, cCenter__19TSelectShineManager@h
     stwu    sp, -0x1b0(sp)
     stfd    f31, 0x1a8(sp)
     stfd    f30, 0x1a0(sp)
@@ -1128,8 +1128,8 @@ initData__19TSelectShineManagerFPUcUcUcP17JPAEmitterManager: # 0x8017894c
     addi    r24, r5, 0x0
     addi    r23, r6, 0x0
     addi    r29, r7, 0x0
-    subi    r26, r9, 0x78f8
-    addi    r30, r8, 0x42f8
+    addi    r26, r9, unk_80388708@l
+    addi    r30, r8, cCenter__19TSelectShineManager@l
     li      r3, 0x24
     bl      __nw__FUl
     mr.     r18, r3
@@ -1139,8 +1139,8 @@ initData__19TSelectShineManagerFPUcUcUcP17JPAEmitterManager: # 0x8017894c
     bl      __ct__13J3DDrawBufferFUl
 branch_0x801789c8:
     stw     r18, 0x50(r31)
-    lis     r3, 0x8040
-    addi    r4, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r4, r3, j3dSys@l
     lwz     r0, 0x50(r31)
     li      r3, 0x24
     stw     r0, 0x44(r4)
@@ -1152,8 +1152,8 @@ branch_0x801789c8:
     bl      __ct__13J3DDrawBufferFUl
 branch_0x801789f8:
     stw     r18, 0x54(r31)
-    lis     r3, 0x8040
-    addi    r4, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r4, r3, j3dSys@l
     lwz     r0, 0x54(r31)
     addi    r3, r26, 0x20
     stw     r0, 0x48(r4)
@@ -1171,8 +1171,8 @@ branch_0x801789f8:
     addi    r27, r3, 0x0
     addi    r4, r28, 0x0
     bl      searchUpdateMaterialID__11J3DAnmColorFP12J3DModelData
-    lis     r3, 0x803e
-    addi    r22, r3, 0x1798
+    lis     r3, __vvt__14J3DMaterialAnm@h
+    addi    r22, r3, __vvt__14J3DMaterialAnm@l
     li      r21, 0x0
     b       branch_0x80178a94
 
@@ -1216,8 +1216,8 @@ branch_0x80178a94:
     addi    r22, r3, 0x0
     addi    r4, r21, 0x0
     bl      searchUpdateMaterialID__11J3DAnmColorFP12J3DModelData
-    lis     r3, 0x803e
-    addi    r26, r3, 0x1798
+    lis     r3, __vvt__14J3DMaterialAnm@h
+    addi    r26, r3, __vvt__14J3DMaterialAnm@l
     li      r20, 0x0
     b       branch_0x80178b38
 
@@ -1258,27 +1258,27 @@ branch_0x80178b38:
     lis     r23, 0x4330
     mulli   r0, r0, -0x28
     stw     r0, 0x9c(r31)
-    lfd     f29, -0x4758(rtoc)
-    lfs     f30, -0x473c(rtoc)
-    lfs     f31, -0x4738(rtoc)
-    lfs     f21, -0x4734(rtoc)
-    lfs     f22, -0x4750(rtoc)
-    lfs     f23, -0x474c(rtoc)
-    lfs     f24, -0x4748(rtoc)
-    lfs     f25, -0x4744(rtoc)
-    lfs     f26, -0x4740(rtoc)
-    lfs     f27, -0x4780(rtoc)
-    lfs     f28, -0x4778(rtoc)
+    lfd     f29, -0x4758(r2)
+    lfs     f30, -0x473c(r2)
+    lfs     f31, -0x4738(r2)
+    lfs     f21, -0x4734(r2)
+    lfs     f22, -0x4750(r2)
+    lfs     f23, -0x474c(r2)
+    lfs     f24, -0x4748(r2)
+    lfs     f25, -0x4744(r2)
+    lfs     f26, -0x4740(r2)
+    lfs     f27, -0x4780(r2)
+    lfs     f28, -0x4778(r2)
 branch_0x80178bb0:
     lwz     r0, 0x9c(r31)
     addi    r3, sp, 0xe8
-    lwz     r6, -0x5ea4(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     add     r4, r0, r18
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     extsh   r4, r4
     lfs     f3, 0x8(r30)
     xoris   r5, r4, 0x8000
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     stw     r5, 0x11c(sp)
     lfs     f0, 0x0(r30)
     stw     r23, 0x118(sp)
@@ -1352,10 +1352,10 @@ branch_0x80178cd0:
     beq-    branch_0x80178d58
     bl      rand
     xoris   r0, r3, 0x8000
-    lfs     f2, -0x4730(rtoc)
+    lfs     f2, -0x4730(r2)
     stw     r0, 0x10c(sp)
     mr      r3, r19
-    lfs     f3, -0x472c(rtoc)
+    lfs     f3, -0x472c(r2)
     mr      r4, r28
     stw     r23, 0x108(sp)
     mr      r5, r27
@@ -1383,7 +1383,7 @@ branch_0x80178d58:
     b       branch_0x80178e08
 
 branch_0x80178d64:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     clrlwi  r0, r0, 24
     cmplwi  r0, 0x1
     bgt-    branch_0x80178dfc
@@ -1393,10 +1393,10 @@ branch_0x80178d64:
     beq-    branch_0x80178df0
     bl      rand
     xoris   r0, r3, 0x8000
-    lfs     f2, -0x4730(rtoc)
+    lfs     f2, -0x4730(r2)
     stw     r0, 0x10c(sp)
     mr      r3, r19
-    lfs     f3, -0x472c(rtoc)
+    lfs     f3, -0x472c(r2)
     mr      r4, r21
     stw     r23, 0x108(sp)
     mr      r5, r22
@@ -1482,31 +1482,31 @@ __ct__19TSelectShineManagerFPCc: # 0x80178eb4
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r0, 0x0(r31)
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r8, 0x0
-    lis     r3, 0x803c
+    lis     r3, __vvt__19TSelectShineManager@h
     sth     r8, 0xc(r31)
-    addi    r0, r3, 0xf98
-    lis     r3, 0x8002
+    addi    r0, r3, __vvt__19TSelectShineManager@l
+    lis     r3, __ct__Q29JGeometry8TVec3_f_Fv@h
     stw     r0, 0x0(r31)
-    addi    r4, r3, 0x10dc
+    addi    r4, r3, __ct__Q29JGeometry8TVec3_f_Fv@l
     addi    r3, r31, 0xa8
     stw     r8, 0x50(r31)
     li      r5, 0x0
     li      r6, 0xc
     stw     r8, 0x54(r31)
     li      r7, 0x8
-    lfs     f0, -0x4778(rtoc)
+    lfs     f0, -0x4778(r2)
     stfs    f0, 0x78(r31)
     stfs    f0, 0x7c(r31)
     stw     r8, 0x88(r31)
@@ -1538,12 +1538,12 @@ __dt__19TSelectShineManagerFv: # 0x80178f78
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80178fd0
-    lis     r3, 0x803c
-    addi    r0, r3, 0xf98
+    lis     r3, __vvt__19TSelectShineManager@h
+    addi    r0, r3, __vvt__19TSelectShineManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80178fc0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1565,12 +1565,12 @@ branch_0x80178fd0:
 
 .globl __sinit_SelectShine2_cpp
 __sinit_SelectShine2_cpp: # 0x80178fec
-    lfs     f0, -0x4744(rtoc)
-    lis     r3, 0x803f
+    lfs     f0, -0x4744(r2)
+    lis     r3, unk_803f0000@h
     stfsu   f0, 0x42f8(r3)
-    lfs     f0, -0x4728(rtoc)
+    lfs     f0, -0x4728(r2)
     stfs    f0, 0x4(r3)
-    lfs     f0, -0x4724(rtoc)
+    lfs     f0, -0x4724(r2)
     stfs    f0, 0x8(r3)
     blr
 

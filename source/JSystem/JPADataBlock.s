@@ -2,9 +2,9 @@
 .globl __ct__12JPADataBlockFPCUcP7JKRHeap
 __ct__12JPADataBlockFPCUcP7JKRHeap: # 0x80335338
     mflr    r0
-    lis     r6, 0x803e
+    lis     r6, __vvt__12JPADataBlock@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x4474
+    addi    r0, r6, __vvt__12JPADataBlock@l
     stwu    sp, -0x28(sp)
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)

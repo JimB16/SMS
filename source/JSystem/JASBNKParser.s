@@ -38,15 +38,15 @@ branch_0x8030f2e4:
     li      r4, 0x100
     bl      setInstCount__Q28JASystem10TBasicBankFUl
     li      r0, 0x0
-    lfs     f28, 0x630(rtoc)
-    lis     r4, 0x803e
-    lfs     f29, 0x634(rtoc)
-    lis     r3, 0x803e
+    lfs     f28, 0x630(r2)
+    lis     r4, __vvt__Q28JASystem11TInstEffect@h
+    lfs     f29, 0x634(r2)
+    lis     r3, __vvt__Q28JASystem10TInstSense@h
     stw     r0, 0x94(sp)
-    lis     r5, 0x803e
-    addi    r17, r4, 0x2700
-    addi    r16, r3, 0x2738
-    addi    r15, r5, 0x2728
+    lis     r5, __vvt__Q28JASystem9TInstRand@h
+    addi    r17, r4, __vvt__Q28JASystem11TInstEffect@l
+    addi    r16, r3, __vvt__Q28JASystem10TInstSense@l
+    addi    r15, r5, __vvt__Q28JASystem9TInstRand@l
     li      r18, 0x0
 branch_0x8030f31c:
     lwz     r3, 0x94(sp)
@@ -319,16 +319,16 @@ branch_0x8030f6dc:
     stw     r3, 0x94(sp)
     blt+    branch_0x8030f31c
     li      r0, 0x0
-    lfs     f30, 0x630(rtoc)
+    lfs     f30, 0x630(r2)
     stw     r0, 0x88(sp)
     li      r0, 0x0
-    lis     r4, 0x803e
-    lfs     f31, 0x634(rtoc)
-    lis     r3, 0x803e
-    lfd     f28, 0x640(rtoc)
-    addi    r22, r4, 0x2700
-    lfs     f29, 0x638(rtoc)
-    addi    r21, r3, 0x2728
+    lis     r4, __vvt__Q28JASystem11TInstEffect@h
+    lfs     f31, 0x634(r2)
+    lis     r3, __vvt__Q28JASystem9TInstRand@h
+    lfd     f28, 0x640(r2)
+    addi    r22, r4, __vvt__Q28JASystem11TInstEffect@l
+    lfs     f29, 0x638(r2)
+    addi    r21, r3, __vvt__Q28JASystem9TInstRand@l
     stw     r0, 0x90(sp)
     lis     r15, 0x4330
 branch_0x8030f728:
@@ -486,10 +486,10 @@ branch_0x8030f928:
     mtlr    r12
     blrl
     lwz     r0, 0x8c(sp)
-    lwz     r4, -0x5ca0(r13)
+    lwz     r4, R13Off_m0x5ca0(r13)
     subf    r0, r3, r0
     add     r0, r4, r0
-    stw     r0, -0x5ca0(r13)
+    stw     r0, R13Off_m0x5ca0(r13)
     addi    r3, r14, 0x0
 branch_0x8030f978:
     lmw     r14, 0xa0(sp)
@@ -506,23 +506,23 @@ branch_0x8030f978:
 .globl __ct__Q28JASystem8TDrumSetFv
 __ct__Q28JASystem8TDrumSetFv: # 0x8030f99c
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q28JASystem5TInst@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x2670
-    lis     r4, 0x8031
+    addi    r0, r4, __vvt__Q28JASystem5TInst@l
+    lis     r4, __ct__Q38JASystem8TDrumSet5TPercFv@ha
     stwu    sp, -0x18(sp)
-    subi    r4, r4, 0x1b0
+    addi    r4, r4, __ct__Q38JASystem8TDrumSet5TPercFv@l
     li      r6, 0x20
     stw     r31, 0x14(sp)
     li      r7, 0x80
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
+    lis     r3, __vvt__Q28JASystem8TDrumSet@h
     lwz     r31, 0x8(sp)
     stw     r0, 0x0(r31)
-    addi    r0, r3, 0x2710
-    lis     r3, 0x8031
+    addi    r0, r3, __vvt__Q28JASystem8TDrumSet@l
+    lis     r3, __dt__Q38JASystem8TDrumSet5TPercFv@ha
     stw     r0, 0x0(r31)
-    subi    r5, r3, 0x17c
+    addi    r5, r3, __dt__Q38JASystem8TDrumSet5TPercFv@l
     addi    r3, r31, 0x4
     bl      __construct_array
     lwz     r0, 0x1c(sp)
@@ -548,9 +548,9 @@ findOscPtr__Q28JASystem9BNKParserFPQ28JASystem10TBasicBankPQ38JASystem9BNKParser
     addi    r28, r24, 0x20
     li      r27, 0x0
     li      r31, 0x0
-    lfs     f29, 0x630(rtoc)
-    lfs     f30, 0x648(rtoc)
-    lfs     f31, 0x634(rtoc)
+    lfs     f29, 0x630(r2)
+    lfs     f30, 0x648(r2)
+    lfs     f31, 0x634(r2)
 branch_0x8030fa44:
     addi    r0, r31, 0x4
     lwzx    r4, r28, r0
@@ -635,7 +635,7 @@ getOscTableEndPtr__Q28JASystem9BNKParserFPs: # 0x8030fb60
     lha     r0, 0x0(r3)
     addi    r3, r3, 0x6
     cmpwi   r0, 0xa
-    ble-    getOscTableEndPtr__Q28JASystem9BNKParserFPs # ToDo Find out why wrong branch prediction
+    ble+    getOscTableEndPtr__Q28JASystem9BNKParserFPs
     blr
 
 

@@ -28,7 +28,7 @@ setNewAnm__16TMotionBlendCtrlFP15J3DAnmTransform: # 0x8023f278
     clrlwi. r0, r0, 31
     beqlr-    
 
-    lfs     f0, -0x14c0(rtoc)
+    lfs     f0, -0x14c0(r2)
     lwz     r3, 0x8(r3)
     stfs    f0, 0x50(r3)
     blr
@@ -66,7 +66,7 @@ execSimpleMotionBlend__16TMotionBlendCtrlFv: # 0x8023f2c8
     lwz     r4, 0x8(r3)
     lfs     f1, 0x4(r3)
     lfs     f2, 0x50(r4)
-    lfs     f0, -0x14bc(rtoc)
+    lfs     f0, -0x14bc(r2)
     fsubs   f1, f2, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
@@ -99,7 +99,7 @@ __ct__16TMotionBlendCtrlFb: # 0x8023f31c
     stw     r29, 0x14(sp)
     stb     r0, 0x0(r3)
     li      r3, 0x6c
-    lfs     f0, -0x14bc(rtoc)
+    lfs     f0, -0x14bc(r2)
     stfs    f0, 0x4(r30)
     bl      __nw__FUl
     mr.     r29, r3
@@ -134,7 +134,7 @@ __ct__16TMotionBlendCtrlFbi: # 0x8023f390
     stw     r29, 0x24(sp)
     stb     r0, 0x0(r3)
     bgt-    branch_0x8023f3cc
-    lfs     f0, -0x14c0(rtoc)
+    lfs     f0, -0x14c0(r2)
     stfs    f0, 0x4(r30)
     b       branch_0x8023f3fc
 
@@ -142,10 +142,10 @@ branch_0x8023f3cc:
     mr      r3, r5
     bl      CLBPalFrame_i___Fi
     xoris   r0, r3, 0x8000
-    lfd     f2, -0x14b8(rtoc)
+    lfd     f2, -0x14b8(r2)
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x14c0(rtoc)
+    lfs     f0, -0x14c0(r2)
     stw     r0, 0x18(sp)
     lfd     f1, 0x18(sp)
     fsubs   f1, f1, f2

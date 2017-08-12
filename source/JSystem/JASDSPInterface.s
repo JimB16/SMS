@@ -45,7 +45,7 @@ branch_0x80314ee4:
 .globl getDSPHandle__Q28JASystem12DSPInterfaceFUc
 getDSPHandle__Q28JASystem12DSPInterfaceFUc: # 0x80314f14
     clrlwi  r0, r3, 24
-    lwz     r3, -0x5c08(r13)
+    lwz     r3, R13Off_m0x5c08(r13)
     mulli   r0, r0, 0x180
     add     r3, r3, r0
     blr
@@ -57,7 +57,7 @@ invalChannelAll__Q28JASystem12DSPInterfaceFv: # 0x80314f28
     li      r4, 0x6000
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x5c08(r13)
+    lwz     r3, R13Off_m0x5c08(r13)
     bl      DCInvalidateRange
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -74,19 +74,19 @@ initBuffer__Q28JASystem12DSPInterfaceFv: # 0x80314f50
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5c08(r13)
+    stw     r3, R13Off_m0x5c08(r13)
     li      r3, 0x80
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     li      r5, 0x20
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5c04(r13)
+    stw     r3, R13Off_m0x5c04(r13)
     li      r30, 0x0
     b       branch_0x80314fb0
 
 branch_0x80314f94:
-    lwz     r3, -0x5c04(r13)
+    lwz     r3, R13Off_m0x5c04(r13)
     clrlslwi  r0, r30, 24, 5
     li      r4, 0x0
     add     r3, r3, r0
@@ -100,7 +100,7 @@ branch_0x80314fb0:
     li      r30, 0x0
     addi    r31, r30, 0x0
 branch_0x80314fc4:
-    lwz     r0, -0x5c08(r13)
+    lwz     r0, R13Off_m0x5c08(r13)
     li      r4, 0x180
     add     r3, r0, r31
     bl      bzero__Q28JASystem4CalcFPvUl
@@ -111,7 +111,7 @@ branch_0x80314fc4:
     li      r30, 0x0
     li      r31, 0x0
 branch_0x80314fec:
-    lwz     r0, -0x5c04(r13)
+    lwz     r0, R13Off_m0x5c04(r13)
     li      r4, 0x20
     add     r3, r0, r31
     bl      bzero__Q28JASystem4CalcFPvUl
@@ -119,18 +119,18 @@ branch_0x80314fec:
     cmplwi  r30, 0x4
     addi    r31, r31, 0x20
     blt+    branch_0x80314fec
-    lis     r5, 0x803e
-    lwz     r4, -0x5c08(r13)
-    lis     r3, 0x803e
-    lwz     r7, -0x5c04(r13)
-    addi    r6, r3, 0x2a80
-    addi    r5, r5, 0x2ac0
+    lis     r5, DSPRES_FILTER__Q28JASystem12DSPInterface@h
+    lwz     r4, R13Off_m0x5c08(r13)
+    lis     r3, DSPADPCM_FILTER__Q28JASystem12DSPInterface@h
+    lwz     r7, R13Off_m0x5c04(r13)
+    addi    r6, r3, DSPADPCM_FILTER__Q28JASystem12DSPInterface@l
+    addi    r5, r5, DSPRES_FILTER__Q28JASystem12DSPInterface@l
     li      r3, 0x40
     bl      DsetupTable__FUlUlUlUlUl
-    lwz     r3, -0x5c08(r13)
+    lwz     r3, R13Off_m0x5c08(r13)
     li      r4, 0x6000
     bl      DCFlushRange
-    lwz     r3, -0x5c04(r13)
+    lwz     r3, R13Off_m0x5c04(r13)
     li      r4, 0x80
     bl      DCFlushRange
     lwz     r0, 0x14(sp)
@@ -143,7 +143,7 @@ branch_0x80314fec:
 
 .globl getFXHandle__Q28JASystem12DSPInterfaceFUc
 getFXHandle__Q28JASystem12DSPInterfaceFUc: # 0x8031505c
-    lwz     r4, -0x5c04(r13)
+    lwz     r4, R13Off_m0x5c04(r13)
     clrlslwi  r0, r3, 24, 5
     add     r3, r4, r0
     blr
@@ -165,8 +165,8 @@ setFXLine__Q38JASystem12DSPInterface8FXBufferFPsPQ38JASystem12DSPInterface13Fxli
     addi    r31, r3, 0x0
     beq-    branch_0x80315128
     lha     r0, 0x4(r30)
-    lis     r3, 0x803e
-    addi    r4, r3, 0x2fe8
+    lis     r3, SEND_TABLE__Q28JASystem12DSPInterface@h
+    addi    r4, r3, SEND_TABLE__Q28JASystem12DSPInterface@l
     sth     r0, 0xa(r28)
     lhz     r0, 0x2(r30)
     slwi    r0, r0, 1
@@ -325,8 +325,8 @@ branch_0x803152bc:
 .globl setWaveInfo__Q38JASystem12DSPInterface9DSPBufferFPQ38JASystem6Driver5Wave_Ul
 setWaveInfo__Q38JASystem12DSPInterface9DSPBufferFPQ38JASystem6Driver5Wave_Ul: # 0x803152c8
     stw     r5, 0x118(r3)
-    subi    r6, r13, 0x7404
-    subi    r5, r13, 0x73fc
+    addi    r6, r13, R13Off_m0x7404
+    addi    r5, r13, R13Off_m0x73fc
     lbz     r0, 0x1(r4)
     lbzx    r0, r6, r0
     sth     r0, 0x64(r3)
@@ -589,9 +589,9 @@ setDistFilter__Q38JASystem12DSPInterface9DSPBufferFs: # 0x803155b0
 
 .globl setBusConnect__Q38JASystem12DSPInterface9DSPBufferFUcUc
 setBusConnect__Q38JASystem12DSPInterface9DSPBufferFUcUc: # 0x803155b8
-    lis     r6, 0x803e
+    lis     r6, connect_table_341@h
     clrlslwi  r5, r5, 24, 1
-    addi    r0, r6, 0x3000
+    addi    r0, r6, connect_table_341@l
     add     r5, r0, r5
     clrlslwi  r4, r4, 24, 3
     lhz     r5, 0x0(r5)

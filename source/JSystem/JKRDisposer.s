@@ -7,8 +7,8 @@ __ct__11JKRDisposerFv: # 0x802bfff4
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x148
+    lis     r3, __vvt__11JKRDisposer@ha
+    addi    r0, r3, __vvt__11JKRDisposer@l
     lwz     r30, 0x8(sp)
     addi    r31, r30, 0x8
     stw     r0, 0x0(r30)
@@ -44,8 +44,8 @@ __dt__11JKRDisposerFv: # 0x802c006c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c00d4
-    lis     r3, 0x803e
-    subi    r0, r3, 0x148
+    lis     r3, __vvt__11JKRDisposer@ha
+    addi    r0, r3, __vvt__11JKRDisposer@l
     stw     r0, 0x0(r30)
     lwz     r3, 0x4(r30)
     cmplwi  r3, 0x0

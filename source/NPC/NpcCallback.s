@@ -12,7 +12,7 @@ NPCNeckCallBack__FP7J3DNodei: # 0x80208670
     stw     r29, 0x174(sp)
     stw     r28, 0x170(sp)
     bne-    branch_0x80208a6c
-    lwz     r5, -0x6218(r13)
+    lwz     r5, R13Off_m0x6218(r13)
     cmplwi  r5, 0x0
     bne-    branch_0x802086b0
     li      r3, 0x0
@@ -38,9 +38,9 @@ branch_0x802086e0:
 branch_0x802086e4:
     clrlwi. r0, r0, 24
     beq-    branch_0x80208a6c
-    lis     r4, 0x8040
+    lis     r4, j3dSys@h
     lhz     r0, 0x18(r3)
-    addi    r3, r4, 0x45dc
+    addi    r3, r4, j3dSys@l
     lwz     r4, 0x38(r3)
     mulli   r0, r0, 0x30
     lwz     r3, 0x230(r5)
@@ -67,8 +67,8 @@ branch_0x80208748:
 branch_0x8020874c:
     clrlwi. r0, r29, 24
     beq-    branch_0x802088e8
-    lwz     r4, MarioHitActorPos(r13)
-    lfs     f0, -0x1d10(rtoc)
+    lwz     r4, R13Off_m0x60b4(r13)
+    lfs     f0, -0x1d10(r2)
     lwz     r3, 0x0(r4)
     lwz     r0, 0x4(r4)
     stw     r3, 0x13c(sp)
@@ -96,19 +96,19 @@ branch_0x8020874c:
     fmuls   f2, f1, f1
     fmuls   f3, f3, f3
     fmuls   f1, f0, f0
-    lfs     f0, -0x1d0c(rtoc)
+    lfs     f0, -0x1d0c(r2)
     fadds   f1, f2, f1
     fadds   f30, f3, f1
     fcmpo   cr0, f30, f0
     ble-    branch_0x80208890
-    lwz     r3, -0x6218(r13)
+    lwz     r3, R13Off_m0x6218(r13)
     lwz     r3, 0x228(r3)
     lfs     f1, 0x1e4(r3)
     bl      CLBSquared_f___Ff
     fcmpo   cr0, f30, f1
     bge-    branch_0x80208890
     lfs     f0, 0x1c(r31)
-    lwz     r3, -0x6218(r13)
+    lwz     r3, R13Off_m0x6218(r13)
     fsubs   f0, f31, f0
     lwz     r3, 0x228(r3)
     fabs    f1, f0
@@ -148,16 +148,16 @@ branch_0x8020874c:
     b       branch_0x802088a0
 
 branch_0x80208890:
-    lfs     f0, -0x1d08(rtoc)
+    lfs     f0, -0x1d08(r2)
     stfs    f0, 0x150(sp)
     stfs    f0, 0x14c(sp)
     stfs    f0, 0x148(sp)
 branch_0x802088a0:
     lfs     f1, 0x14c(sp)
-    lfs     f0, -0x1d04(rtoc)
+    lfs     f0, -0x1d04(r2)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
-    lwz     r4, -0x6218(r13)
+    lwz     r4, R13Off_m0x6218(r13)
     lwz     r5, 0x228(r4)
     extsh   r4, r3
     lha     r0, 0x360(r5)
@@ -175,7 +175,7 @@ branch_0x802088d4:
 branch_0x802088e4:
     mr      r28, r3
 branch_0x802088e8:
-    lwz     r3, -0x6218(r13)
+    lwz     r3, R13Off_m0x6218(r13)
     lwz     r3, 0x228(r3)
     addi    r3, r3, 0x388
     lha     r3, 0x0(r3)
@@ -187,10 +187,10 @@ branch_0x802088e8:
     clrlwi. r0, r29, 24
     beq-    branch_0x802089c0
     lfs     f1, 0x148(sp)
-    lfs     f0, -0x1d04(rtoc)
+    lfs     f0, -0x1d04(r2)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
-    lwz     r4, -0x6218(r13)
+    lwz     r4, R13Off_m0x6218(r13)
     extsh   r0, r3
     lwz     r6, 0x228(r4)
     addi    r5, r6, 0x34c
@@ -220,9 +220,9 @@ branch_0x80208970:
     li      r4, 0x0
     bl      CLBCalcRatio_i___Fiii
     extsh   r0, r29
-    lfd     f2, -0x1cf8(rtoc)
+    lfd     f2, -0x1cf8(r2)
     xoris   r0, r0, 0x8000
-    lfs     f3, -0x1d00(rtoc)
+    lfs     f3, -0x1d00(r2)
     stw     r0, 0x16c(sp)
     lis     r0, 0x4330
     mr      r4, r29
@@ -236,7 +236,7 @@ branch_0x80208970:
     bl      CLBEaseOutInbetween_s___Fssf
     mr      r30, r3
 branch_0x802089c0:
-    lwz     r3, -0x6218(r13)
+    lwz     r3, R13Off_m0x6218(r13)
     lwz     r3, 0x228(r3)
     addi    r3, r3, 0x374
     lha     r3, 0x0(r3)
@@ -245,7 +245,7 @@ branch_0x802089c0:
     addi    r4, r30, 0x0
     addi    r3, sp, 0x156
     bl      CLBChaseGeneralConstantSpecifySpeed_s___FPsss
-    lwz     r5, -0x6218(r13)
+    lwz     r5, R13Off_m0x6218(r13)
     lis     r4, 0x4330
     lha     r6, 0x154(sp)
     addi    r3, sp, 0xf0
@@ -256,12 +256,12 @@ branch_0x802089c0:
     lha     r5, 0x156(sp)
     lha     r0, 0x154(sp)
     xoris   r5, r5, 0x8000
-    lfd     f3, -0x1cf8(rtoc)
+    lfd     f3, -0x1cf8(r2)
     xoris   r0, r0, 0x8000
     stw     r5, 0x164(sp)
-    lfs     f4, -0x1cfc(rtoc)
+    lfs     f4, -0x1cfc(r2)
     stw     r0, 0x16c(sp)
-    lfs     f2, -0x1d08(rtoc)
+    lfs     f2, -0x1d08(r2)
     stw     r4, 0x160(sp)
     stw     r4, 0x168(sp)
     lfd     f1, 0x160(sp)
@@ -275,8 +275,8 @@ branch_0x802089c0:
     addi    r5, r31, 0x0
     addi    r4, sp, 0xf0
     bl      PSMTXConcat
-    lis     r3, 0x8040
-    addi    r4, r3, 0x4788
+    lis     r3, mCurrentMtx__6J3DSys@h
+    addi    r4, r3, mCurrentMtx__6J3DSys@l
     addi    r3, r31, 0x0
     bl      PSMTXCopy
 branch_0x80208a6c:
@@ -305,7 +305,7 @@ CLBEaseOutInbetween_s___Fssf: # 0x80208a98
     xoris   r0, r0, 0x8000
     stw     r0, 0x14(sp)
     lis     r0, 0x4330
-    lfd     f2, -0x1cf8(rtoc)
+    lfd     f2, -0x1cf8(r2)
     stw     r0, 0x10(sp)
     lfd     f0, 0x10(sp)
     fsubs   f2, f0, f2
@@ -320,12 +320,12 @@ CLBEaseOutInbetween_s___Fssf: # 0x80208a98
 CLBCalcRatio_i___Fiii: # 0x80208ae0
     stwu    sp, -0x28(sp)
     cmpw    r3, r4
-    lfs     f1, -0x1d08(rtoc)
+    lfs     f1, -0x1d08(r2)
     beq-    branch_0x80208b34
     subf    r0, r3, r4
-    lfd     f2, -0x1cf8(rtoc)
+    lfd     f2, -0x1cf8(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x1cf0(rtoc)
+    lfs     f1, -0x1cf0(r2)
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
     subf    r3, r3, r5
@@ -353,7 +353,7 @@ CLBPalIntSpeed_s___Fs: # 0x80208b3c
     mr      r31, r3
     bl      SMSGetAnmFrameRate__Fv
     extsh   r0, r31
-    lfd     f2, -0x1cf8(rtoc)
+    lfd     f2, -0x1cf8(r2)
     xoris   r0, r0, 0x8000
     stw     r0, 0x14(sp)
     lis     r0, 0x4330

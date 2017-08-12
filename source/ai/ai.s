@@ -7,9 +7,9 @@ AIRegisterDMACallback: # 0x803524c8
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r3
-    lwz     r31, -0x5874(r13)
+    lwz     r31, R13Off_m0x5874(r13)
     bl      OSDisableInterrupts
-    stw     r30, -0x5874(r13)
+    stw     r30, R13Off_m0x5874(r13)
     bl      OSRestoreInterrupts
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -26,13 +26,13 @@ AIInitDMA: # 0x8035250c
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x0
+    addi    r31, r4, unk_80000000@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
     bl      OSDisableInterrupts
-    lis     r4, 0xcc00
+    lis     r4, unk_cc005000@h
     lhz     r0, 0x5030(r4)
-    addi    r5, r4, 0x5000
+    addi    r5, r4, unk_cc005000@l
     addi    r6, r4, 0x5000
     addi    r7, r4, 0x5000
     clrrwi  r4, r0, 10
@@ -60,8 +60,8 @@ AIInitDMA: # 0x8035250c
 
 .globl AIStartDMA
 AIStartDMA: # 0x80352594
-    lis     r3, 0xcc00
-    addi    r3, r3, 0x5000
+    lis     r3, unk_cc005000@h
+    addi    r3, r3, unk_cc005000@l
     lhz     r0, 0x36(r3)
     ori     r0, r0, 0x8000
     sth     r0, 0x36(r3)
@@ -70,7 +70,7 @@ AIStartDMA: # 0x80352594
 
 .globl AIResetStreamSampleCount
 AIResetStreamSampleCount: # 0x803525ac
-    lis     r3, 0xcc00
+    lis     r3, unk_cc000000@h
     lwz     r0, 0x6c00(r3)
     rlwinm  r0, r0, 0, 27, 25
     ori     r0, r0, 0x20
@@ -98,7 +98,7 @@ AISetStreamPlayState: # 0x803525c4
     bl      AIGetStreamVolRight
     mr      r30, r3
     bl      AIGetStreamVolLeft
-    addi    r29, r3, 0x0
+    addi    r29, r3, unk_cc000000@l
     li      r3, 0x0
     bl      AISetStreamVolRight
     li      r3, 0x0
@@ -141,7 +141,7 @@ branch_0x80352680:
 
 .globl AIGetStreamPlayState
 AIGetStreamPlayState: # 0x8035269c
-    lis     r3, 0xcc00
+    lis     r3, unk_cc000000@h
     lwz     r0, 0x6c00(r3)
     clrlwi  r3, r0, 31
     blr
@@ -167,7 +167,7 @@ AISetDSPSampleRate: # 0x803526ac
     mr      r30, r3
     bl      AIGetStreamVolRight
     lwz     r0, 0x6c00(r31)
-    addi    r29, r3, 0x0
+    addi    r29, r3, unk_cc000000@l
     clrlwi  r27, r0, 31
     bl      AIGetStreamSampleRate
     addi    r28, r3, 0x0
@@ -210,7 +210,7 @@ branch_0x80352778:
 
 .globl AIGetDSPSampleRate
 AIGetDSPSampleRate: # 0x8035278c
-    lis     r3, 0xcc00
+    lis     r3, unk_cc000000@h
     lwz     r0, 0x6c00(r3)
     extrwi  r0, r0, 1, 25
     xori     r3, r0, 0x1
@@ -249,7 +249,7 @@ __AI_set_stream_sample_rate: # 0x803527c8
     bl      AIGetStreamVolLeft
     mr      r28, r3
     bl      AIGetStreamVolRight
-    addi    r27, r3, 0x0
+    addi    r27, r3, unk_cc000000@l
     li      r3, 0x0
     bl      AISetStreamVolRight
     li      r3, 0x0
@@ -300,8 +300,8 @@ AIGetStreamSampleRate: # 0x8035289c
 
 .globl AISetStreamVolLeft
 AISetStreamVolLeft: # 0x803528ac
-    lis     r4, 0xcc00
-    addi    r4, r4, 0x6c00
+    lis     r4, unk_cc006c00@h
+    addi    r4, r4, unk_cc006c00@l
     lwz     r0, 0x4(r4)
     clrrwi  r0, r0, 8
     insrwi  r0, r3, 8, 24
@@ -319,8 +319,8 @@ AIGetStreamVolLeft: # 0x803528c8
 
 .globl AISetStreamVolRight
 AISetStreamVolRight: # 0x803528d8
-    lis     r4, 0xcc00
-    addi    r4, r4, 0x6c00
+    lis     r4, unk_cc006c00@h
+    addi    r4, r4, unk_cc006c00@l
     lwz     r0, 0x4(r4)
     rlwinm  r0, r0, 0, 24, 15
     insrwi  r0, r3, 8, 16
@@ -330,7 +330,7 @@ AISetStreamVolRight: # 0x803528d8
 
 .globl AIGetStreamVolRight
 AIGetStreamVolRight: # 0x803528f4
-    lis     r3, 0xcc00
+    lis     r3, unk_cc000000@h
     lwz     r0, 0x6c04(r3)
     extrwi  r3, r0, 8, 16
     blr
@@ -343,24 +343,24 @@ AIInit: # 0x80352904
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    addi    r30, r3, 0x0
-    lwz     r0, -0x5868(r13)
+    addi    r30, r3, unk_cc000000@l
+    lwz     r0, R13Off_m0x5868(r13)
     cmpwi   r0, 0x1
     beq-    branch_0x80352a50
     lis     r3, 0x8000
     lwz     r0, 0xf8(r3)
-    lis     r3, 0x431c
-    lis     r4, 0x1
+    lis     r3, unk_431bde83@ha
+    lis     r4, unk_0000a428@ha
     srwi    r0, r0, 2
-    subi    r3, r3, 0x217d
+    addi    r3, r3, unk_431bde83@l
     mulhwu  r0, r3, r0
     srwi    r9, r0, 15
-    subi    r5, r4, 0x5bd8
-    subi    r3, r4, 0x5bf0
-    subi    r0, r4, 0x9e8
-    lis     r4, 0x1062
+    addi    r5, r4, unk_0000a428@l
+    addi    r3, r4, -0x5bf0
+    addi    r0, r4, -0x9e8
+    lis     r4, unk_10624dd3@h
     mullw   r7, r9, r5
-    addi    r10, r4, 0x4dd3
+    addi    r10, r4, unk_10624dd3@l
     mullw   r5, r9, r3
     mullw   r4, r9, r0
     mulli   r8, r9, 0x7b24
@@ -372,25 +372,25 @@ AIInit: # 0x80352904
     mulhwu  r3, r10, r3
     srwi    r8, r8, 9
     srwi    r7, r7, 9
-    stw     r8, -0x585c(r13)
+    stw     r8, R13Off_m0x585c(r13)
     srwi    r5, r5, 9
     srwi    r4, r4, 9
-    stw     r7, -0x5854(r13)
+    stw     r7, R13Off_m0x5854(r13)
     li      r31, 0x0
     srwi    r3, r3, 9
-    stw     r5, -0x584c(r13)
+    stw     r5, R13Off_m0x584c(r13)
     lis     r6, 0xcc00
-    stw     r3, -0x583c(r13)
+    stw     r3, R13Off_m0x583c(r13)
     li      r3, 0x1
     lwz     r0, 0x6c00(r6)
-    stw     r4, -0x5844(r13)
+    stw     r4, R13Off_m0x5844(r13)
     rlwinm  r0, r0, 0, 27, 25
     ori     r0, r0, 0x20
-    stw     r31, -0x5860(r13)
-    stw     r31, -0x5858(r13)
-    stw     r31, -0x5850(r13)
-    stw     r31, -0x5848(r13)
-    stw     r31, -0x5840(r13)
+    stw     r31, R13Off_m0x5860(r13)
+    stw     r31, R13Off_m0x5858(r13)
+    stw     r31, R13Off_m0x5850(r13)
+    stw     r31, R13Off_m0x5848(r13)
+    stw     r31, R13Off_m0x5840(r13)
     lwz     r5, 0x6c04(r6)
     stw     r0, 0x6c00(r6)
     rlwinm  r0, r5, 0, 24, 15
@@ -404,23 +404,23 @@ AIInit: # 0x80352904
     bl      __AI_set_stream_sample_rate
     li      r3, 0x0
     bl      AISetDSPSampleRate
-    lis     r3, 0x8035
-    stw     r31, -0x5878(r13)
-    addi    r4, r3, 0x2ae4
-    stw     r31, -0x5874(r13)
+    lis     r3, __AIDHandler@h
+    stw     r31, R13Off_m0x5878(r13)
+    addi    r4, r3, __AIDHandler@l
+    stw     r31, R13Off_m0x5874(r13)
     li      r3, 0x5
-    stw     r30, -0x5870(r13)
+    stw     r30, R13Off_m0x5870(r13)
     bl      __OSSetInterruptHandler
     lis     r3, 0x400
     bl      __OSUnmaskInterrupts
-    lis     r3, 0x8035
-    addi    r4, r3, 0x2a68
+    lis     r3, __AISHandler@h
+    addi    r4, r3, __AISHandler@l
     li      r3, 0x8
     bl      __OSSetInterruptHandler
     lis     r3, 0x80
     bl      __OSUnmaskInterrupts
     li      r0, 0x1
-    stw     r0, -0x5868(r13)
+    stw     r0, R13Off_m0x5868(r13)
 branch_0x80352a50:
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -436,7 +436,7 @@ __AISHandler: # 0x80352a68
     stw     r0, 0x4(sp)
     stwu    sp, -0x2e0(sp)
     stw     r31, 0x2dc(sp)
-    lis     r31, 0xcc00
+    lis     r31, unk_cc006c00@h
     lwz     r0, 0x6c00(r31)
     addi    r3, sp, 0x10
     stw     r30, 0x2d8(sp)
@@ -446,10 +446,10 @@ __AISHandler: # 0x80352a68
     bl      OSClearContext
     addi    r3, sp, 0x10
     bl      OSSetCurrentContext
-    lwz     r12, -0x5878(r13)
+    lwz     r12, R13Off_m0x5878(r13)
     cmplwi  r12, 0x0
     beq-    branch_0x80352abc
-    addi    r3, r31, 0x6c00
+    addi    r3, r31, unk_cc006c00@l
     mtlr    r12
     lwz     r3, 0x8(r3)
     blrl
@@ -469,9 +469,9 @@ branch_0x80352abc:
 .globl __AIDHandler
 __AIDHandler: # 0x80352ae4
     mflr    r0
-    lis     r3, 0xcc00
+    lis     r3, unk_cc005000@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x5000
+    addi    r3, r3, unk_cc005000@l
     li      r0, -0xa1
     stwu    sp, -0x2e0(sp)
     stw     r31, 0x2dc(sp)
@@ -484,10 +484,10 @@ __AIDHandler: # 0x80352ae4
     bl      OSClearContext
     addi    r3, sp, 0x10
     bl      OSSetCurrentContext
-    lwz     r3, -0x5874(r13)
+    lwz     r3, R13Off_m0x5874(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x80352b50
-    lwz     r0, -0x5870(r13)
+    lwz     r0, R13Off_m0x5870(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x80352b44
     bl      __AICallbackStackSwitch
@@ -516,17 +516,17 @@ __AICallbackStackSwitch: # 0x80352b74
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     mr      r31, r3
-    lis     r5, 0x8041
-    subi    r5, r5, 0x16ac
+    lis     r5, __OldStack@ha
+    addi    r5, r5, __OldStack@l
     stw     sp, 0x0(r5)
-    lis     r5, 0x8041
-    subi    r5, r5, 0x16b0
+    lis     r5, __CallbackStack@ha
+    addi    r5, r5, __CallbackStack@l
     lwz     sp, 0x0(r5)
-    subi    sp, sp, 0x8
+    addi    sp, sp, -0x8
     mtlr    r31
     blrl
-    lis     r5, 0x8041
-    subi    r5, r5, 0x16ac
+    lis     r5, __OldStack@ha
+    addi    r5, r5, __OldStack@l
     lwz     sp, 0x0(r5)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
@@ -549,7 +549,7 @@ __AI_SRC_INIT: # 0x80352bcc
     b       branch_0x80352bf4
 
 branch_0x80352bf4:
-    lis     r31, 0xcc00
+    lis     r31, unk_cc006c00@h
     b       branch_0x80352bfc
 
 branch_0x80352bfc:
@@ -557,7 +557,7 @@ branch_0x80352bfc:
 
 branch_0x80352c00:
     lwz     r0, 0x6c00(r31)
-    addi    r30, r31, 0x6c00
+    addi    r30, r31, unk_cc006c00@l
     addi    r30, r30, 0x8
     rlwinm  r0, r0, 0, 27, 25
     ori     r0, r0, 0x20
@@ -602,15 +602,15 @@ branch_0x80352c84:
     beq+    branch_0x80352c84
     bl      OSGetTime
     subfc   r8, r26, r4
-    lwz     r12, -0x585c(r13)
+    lwz     r12, R13Off_m0x585c(r13)
     lwz     r5, 0x6c00(r31)
     subfe   r7, r27, r3
-    lwz     r10, -0x583c(r13)
+    lwz     r10, R13Off_m0x583c(r13)
     xoris   r7, r7, 0x8000
     rlwinm  r5, r5, 0, 31, 29
-    lwz     r11, -0x5860(r13)
+    lwz     r11, R13Off_m0x5860(r13)
     subfc   r6, r10, r12
-    lwz     r9, -0x5840(r13)
+    lwz     r9, R13Off_m0x5840(r13)
     stw     r5, 0x6c00(r31)
     subfe   r0, r9, r11
     xoris   r5, r0, 0x8000
@@ -623,9 +623,9 @@ branch_0x80352c84:
     cmpwi   r5, 0x0
     stw     r0, 0x6c00(r31)
     beq-    branch_0x80352cfc
-    lwz     r29, -0x5850(r13)
+    lwz     r29, R13Off_m0x5850(r13)
     li      r0, 0x1
-    lwz     r28, -0x584c(r13)
+    lwz     r28, R13Off_m0x584c(r13)
     b       branch_0x80352d60
 
 branch_0x80352cfc:
@@ -638,8 +638,8 @@ branch_0x80352cfc:
     neg     r5, r5
     cmpwi   r5, 0x0
     bne-    branch_0x80352d5c
-    lwz     r5, -0x5854(r13)
-    lwz     r0, -0x5858(r13)
+    lwz     r5, R13Off_m0x5854(r13)
+    lwz     r0, R13Off_m0x5858(r13)
     subfc   r6, r10, r5
     subfe   r0, r9, r0
     xoris   r5, r0, 0x8000
@@ -649,9 +649,9 @@ branch_0x80352cfc:
     neg     r5, r5
     cmpwi   r5, 0x0
     beq-    branch_0x80352d5c
-    lwz     r29, -0x5848(r13)
+    lwz     r29, R13Off_m0x5848(r13)
     li      r0, 0x1
-    lwz     r28, -0x5844(r13)
+    lwz     r28, R13Off_m0x5844(r13)
     b       branch_0x80352d60
 
 branch_0x80352d5c:

@@ -9,12 +9,12 @@ __dt__18TEnemyPolluteModelFv: # 0x8003ccb4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8003cd0c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x19a8
+    lis     r3, __vvt__18TEnemyPolluteModel@ha
+    addi    r0, r3, __vvt__18TEnemyPolluteModel@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8003ccfc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -93,7 +93,7 @@ branch_0x8003cddc:
     rlwinm. r0, r31, 0, 22, 22
     beq-    branch_0x8003cdf8
     lwz     r4, 0x10(r30)
-    lwz     r3, gpPollution(r13)
+    lwz     r3, R13Off_m0x62f0(r13)
     lwz     r4, 0x18(r4)
     lwz     r4, 0x4(r4)
     bl      stampModel__17TPollutionManagerFP8J3DModel
@@ -119,21 +119,21 @@ __ct__18TEnemyPolluteModelFP10TLiveActoriP12SDLModelDataPCc: # 0x8003ce10
     stw     r28, 0x20(sp)
     addi    r28, r4, 0x0
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     addi    r3, r7, 0x0
     stw     r0, 0x0(r31)
     stw     r7, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__18TEnemyPolluteModel@ha
     sth     r4, 0xc(r31)
-    subi    r3, r3, 0x19a8
+    addi    r3, r3, __vvt__18TEnemyPolluteModel@l
     li      r0, 0x1
     stw     r3, 0x0(r31)
     li      r3, 0x1c
@@ -142,8 +142,8 @@ __ct__18TEnemyPolluteModelFP10TLiveActoriP12SDLModelDataPCc: # 0x8003ce10
     bl      __nw__FUl
     mr.     r31, r3
     beq-    branch_0x8003ceb8
-    lis     r3, 0x8037
-    addi    r8, r3, 0x6ee8
+    lis     r3, unk_80376ee8@h
+    addi    r8, r3, unk_80376ee8@l
     addi    r3, r31, 0x0
     addi    r4, r28, 0x0
     addi    r5, r29, 0x0
@@ -182,7 +182,7 @@ generatePolluteModel__25TEnemyPolluteModelManagerFRQ29JGeometry8TVec3_f_RQ29JGeo
     lwz     r0, 0x10(r28)
     lwz     r4, 0x18(r28)
     slwi    r0, r0, 2
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lwzx    r31, r4, r0
     addi    r4, r29, 0x0
     bl      checkGround__4TMapCFRCQ29JGeometry8TVec3_f_PPC12TBGCheckData
@@ -282,13 +282,13 @@ perform__25TEnemyPolluteModelManagerFUlPQ26JDrama9TGraphics: # 0x8003d068
     addi    r29, r3, 0x0
     addi    r31, r5, 0x0
     beq-    branch_0x8003d120
-    lwz     r4, gpCamera(r13)
-    lwz     r3, -0x70b0(r13)
+    lwz     r4, R13Off_m0x7118(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     lfs     f3, 0xe8(r31)
     lfs     f4, 0x9c(r3)
     lfs     f2, 0x4c(r4)
     lfs     f1, 0x48(r4)
-    lfs     f31, -0x7438(rtoc)
+    lfs     f31, -0x7438(r2)
     bl      SetViewFrustumClipCheckPerspective__Fffff
     li      r28, 0x0
     addi    r26, r28, 0x0
@@ -392,7 +392,7 @@ perform__16TEnemyAttachmentFUlPQ26JDrama9TGraphics: # 0x8003d1b0
     b       branch_0x8003d2bc
 
 branch_0x8003d1f8:
-    lwz     r3, gpMarDirector(r13)
+    lwz     r3, R13Off_m0x6048(r13)
     li      r0, 0x1
     lbz     r3, 0x124(r3)
     cmplwi  r3, 0x3
@@ -469,7 +469,7 @@ calcRootMatrix__16TEnemyAttachmentFv: # 0x8003d2d8
     stwu    sp, -0x60(sp)
     stw     r31, 0x5c(sp)
     mr      r31, r3
-    lfs     f2, -0x7434(rtoc)
+    lfs     f2, -0x7434(r2)
     lfs     f0, 0x38(r3)
     lfs     f1, 0x34(r3)
     lfs     f3, 0x30(r3)
@@ -536,7 +536,7 @@ branch_0x8003d3c8:
     clrlwi. r0, r0, 24
     beq-    branch_0x8003d3e0
     addi    r3, r29, 0x0
-    li      r4, MARIOMSG_HURT
+    li      r4, 0xe
     bl      SMS_SendMessageToMario__FP9THitActorUl
     b       branch_0x8003d400
 
@@ -653,7 +653,7 @@ rebirth__16TEnemyAttachmentFv: # 0x8003d524
     lwz     r0, 0x64(r3)
     ori     r0, r0, 0x1
     stw     r0, 0x64(r3)
-    lfs     f0, -0x743c(rtoc)
+    lfs     f0, -0x743c(r2)
     stfs    f0, 0xb0(r3)
     blr
 
@@ -720,14 +720,14 @@ branch_0x8003d61c:
     lfs     f1, 0x60(sp)
     addi    r4, r31, 0xc4
     lfs     f0, 0xc0(r31)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x5c(sp)
     lfs     f3, 0x64(sp)
     bl      checkGround__4TMapCFfffPPC12TBGCheckData
     stfs    f1, 0xc8(r31)
     lfs     f1, 0xc8(r31)
-    lfs     f0, -0x7440(rtoc)
+    lfs     f0, -0x7440(r2)
     fadds   f0, f1, f0
     stfs    f0, 0xc8(r31)
 branch_0x8003d65c:
@@ -756,12 +756,12 @@ branch_0x8003d69c:
     li      r0, 0x0
     lfs     f0, 0x5c(sp)
     fadds   f3, f31, f1
-    lfs     f1, -0x7430(rtoc)
+    lfs     f1, -0x7430(r2)
     stfs    f0, 0x30(sp)
     addi    r4, sp, 0x30
     fmuls   f1, f1, f2
     stfs    f3, 0x34(sp)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f0, 0x64(sp)
     stfs    f0, 0x38(sp)
     stfs    f1, 0x3c(sp)
@@ -844,7 +844,7 @@ recoverScale__16TEnemyAttachmentFv: # 0x8003d7d0
     fcmpo   cr0, f0, f1
     bge-    branch_0x8003d800
     addi    r3, r3, 0x24
-    lfs     f1, -0x7430(rtoc)
+    lfs     f1, -0x7430(r2)
     mr      r4, r3
     bl      PSVECScale
     b       branch_0x8003d80c
@@ -884,7 +884,7 @@ branch_0x8003d858:
 branch_0x8003d85c:
     clrlwi. r0, r0, 24
     bne-    branch_0x8003d87c
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x10(r31)
     lfs     f2, 0x18(r31)
     bl      isInArea__4TMapCFff
@@ -941,9 +941,9 @@ behaveToHitGround__16TEnemyAttachmentFv: # 0x8003d900
     lwz     r0, 0xf0(r3)
     rlwinm  r0, r0, 0, 25, 23
     stw     r0, 0xf0(r3)
-    lfs     f1, -0x743c(rtoc)
+    lfs     f1, -0x743c(r2)
     stfs    f1, 0xac(r3)
-    lfs     f0, -0x742c(rtoc)
+    lfs     f0, -0x742c(r2)
     stfs    f0, 0xb0(r3)
     stfs    f1, 0xb4(r3)
     lwz     r12, 0x0(r3)
@@ -1000,8 +1000,8 @@ __ct__16TEnemyAttachmentFPCc: # 0x8003d9d0
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1958
+    lis     r3, __vvt__16TEnemyAttachment@ha
+    addi    r3, r3, __vvt__16TEnemyAttachment@l
     stw     r3, 0x0(r31)
     addi    r3, r3, 0x24
     li      r0, 0x0
@@ -1010,7 +1010,7 @@ __ct__16TEnemyAttachmentFPCc: # 0x8003d9d0
     stw     r0, 0x154(r31)
     stw     r0, 0x158(r31)
     stw     r0, 0x160(r31)
-    lfs     f0, -0x7440(rtoc)
+    lfs     f0, -0x7440(r2)
     stfs    f0, 0x164(r31)
     stb     r0, 0x168(r31)
     lwz     r0, 0x1c(sp)
@@ -1030,12 +1030,12 @@ __dt__25TEnemyPolluteModelManagerFv: # 0x8003da30
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8003da88
-    lis     r3, 0x803b
-    subi    r0, r3, 0x1980
+    lis     r3, __vvt__25TEnemyPolluteModelManager@ha
+    addi    r0, r3, __vvt__25TEnemyPolluteModelManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8003da78
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1065,8 +1065,8 @@ __dt__16TEnemyAttachmentFv: # 0x8003daa4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8003daf4
-    lis     r3, 0x803b
-    subi    r3, r3, 0x1958
+    lis     r3, __vvt__16TEnemyAttachment@ha
+    addi    r3, r3, __vvt__16TEnemyAttachment@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -1091,7 +1091,7 @@ branch_0x8003daf4:
 appear__16TEnemyAttachmentFv: # 0x8003db10
     li      r0, 0x1
     stw     r0, 0x150(r3)
-    lfs     f0, -0x7428(rtoc)
+    lfs     f0, -0x7428(r2)
     stfs    f0, 0x2c(r3)
     stfs    f0, 0x28(r3)
     stfs    f0, 0x24(r3)
@@ -1104,8 +1104,8 @@ receiveMessage__16TEnemyAttachmentFP9THitActorUl: # 0x8003db2c
     blr
 
 
-.globl _32___dt__16TEnemyAttachmentFv
-_32___dt__16TEnemyAttachmentFv: # 0x8003db34
-    subi    r3, r3, 0x20
+.globl unk_8003db34
+unk_8003db34: # 0x8003db34
+    addi    r3, r3, -0x20
     b       __dt__16TEnemyAttachmentFv
 

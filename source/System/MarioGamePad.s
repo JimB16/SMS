@@ -9,10 +9,10 @@ read__13TMarioGamePadFv: # 0x802a8054
     addic.  r0, sp, 0xc
     stw     r3, 0xc(sp)
     beq-    branch_0x802a807c
-    lwz     r0, -0x5eb4(r13)
+    lwz     r0, R13Off_m0x5eb4(r13)
     stw     r0, 0xc(sp)
 branch_0x802a807c:
-    lbz     r0, -0x5eb7(r13)
+    lbz     r0, R13Off_m0x5eb7(r13)
     cmplwi  r0, 0x0
     beq-    branch_0x802a80c4
     lwz     r4, 0xc(sp)
@@ -32,7 +32,7 @@ branch_0x802a80a4:
     sth     r0, -0x6008(r13)
 branch_0x802a80bc:
     li      r0, 0x0
-    stb     r0, -0x5eb7(r13)
+    stb     r0, R13Off_m0x5eb7(r13)
 branch_0x802a80c4:
     lwz     r0, 0x14(sp)
     addi    sp, sp, 0x10
@@ -59,9 +59,10 @@ updateMeaning__13TMarioGamePadFv: # 0x802a80e0
     lwz     r3, 0xe8(r3)
     cmpwi   r3, 0x0
     ble-    branch_0x802a8110
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0xe8(r30)
 branch_0x802a8110:
+
     lhz     r4, 0xdc(r30)
     li      r0, 0x0
     sth     r0, 0xdc(r30)
@@ -72,10 +73,11 @@ branch_0x802a8110:
     ori     r0, r0, 0x1
     sth     r0, 0xdc(r30)
 branch_0x802a8134:
+
     clrlwi. r0, r4, 31
     beq-    branch_0x802a815c
     lfs     f1, 0x2c(r30)
-    lfs     f0, -0x3b8(rtoc)
+    lfs     f0, -0x3b8(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x802a8178
     lhz     r0, 0xdc(r30)
@@ -85,7 +87,7 @@ branch_0x802a8134:
 
 branch_0x802a815c:
     lfs     f1, 0x2c(r30)
-    lfs     f0, -0x3b4(rtoc)
+    lfs     f0, -0x3b4(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x802a8178
     lhz     r0, 0xdc(r30)
@@ -103,7 +105,7 @@ branch_0x802a8178:
     lhz     r0, 0xdc(r30)
     andc    r0, r4, r0
     sth     r0, 0xe0(r30)
-    lfs     f0, -0x3bc(rtoc)
+    lfs     f0, -0x3bc(r2)
     stfs    f0, 0xa8(r30)
     stfs    f0, 0xac(r30)
     stfs    f0, 0xb0(r30)
@@ -118,6 +120,7 @@ branch_0x802a81cc:
     stfsx   f0, r30, r0
     addi    r3, r3, 0x4
     bdnz+      branch_0x802a81cc
+
 branch_0x802a81dc:
     lwz     r31, 0xd0(r30)
     li      r0, 0x0
@@ -135,6 +138,7 @@ branch_0x802a8208:
     ori     r0, r0, 0x1
     stw     r0, 0xd0(r30)
 branch_0x802a8214:
+
     lhz     r3, 0xe2(r30)
     rlwinm. r0, r3, 0, 24, 24
     beq-    branch_0x802a828c
@@ -151,6 +155,7 @@ branch_0x802a8240:
     ori     r0, r0, 0x20
     stw     r0, 0xd0(r30)
 branch_0x802a824c:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 22, 22
     bne-    branch_0x802a826c
@@ -173,36 +178,38 @@ branch_0x802a8278:
 branch_0x802a828c:
     clrlwi. r0, r3, 31
     beq-    branch_0x802a8370
-    lis     r3, 0x800
+    lis     r3, unk_08000008@h
     lwz     r4, 0x30(r30)
-    addi    r0, r3, 0x8
+    addi    r0, r3, unk_08000008@l
     and.    r0, r4, r0
     beq-    branch_0x802a82b4
     lwz     r0, 0xd0(r30)
     ori     r0, r0, 0x2
     stw     r0, 0xd0(r30)
 branch_0x802a82b4:
-    lis     r3, 0x400
+
+    lis     r3, unk_04000004@h
     lwz     r4, 0x30(r30)
-    addi    r0, r3, 0x4
+    addi    r0, r3, unk_04000004@l
     and.    r0, r4, r0
     beq-    branch_0x802a82d4
     lwz     r0, 0xd0(r30)
     ori     r0, r0, 0x4
     stw     r0, 0xd0(r30)
 branch_0x802a82d4:
-    lis     r3, 0x100
+    lis     r3, unk_01000001@h
     lwz     r4, 0x30(r30)
-    addi    r0, r3, 0x1
+    addi    r0, r3, unk_01000001@l
     and.    r0, r4, r0
     beq-    branch_0x802a82f4
     lwz     r0, 0xd0(r30)
     ori     r0, r0, 0x8
     stw     r0, 0xd0(r30)
 branch_0x802a82f4:
-    lis     r3, 0x200
+
+    lis     r3, unk_02000002@h
     lwz     r4, 0x30(r30)
-    addi    r0, r3, 0x2
+    addi    r0, r3, unk_02000002@l
     and.    r0, r4, r0
     beq-    branch_0x802a8314
     lwz     r0, 0xd0(r30)
@@ -218,6 +225,7 @@ branch_0x802a8314:
     rlwinm. r0, r31, 0, 26, 26
     beq-    branch_0x802a8340
 branch_0x802a8334:
+
     lwz     r0, 0xd0(r30)
     ori     r0, r0, 0x20
     stw     r0, 0xd0(r30)
@@ -241,24 +249,25 @@ branch_0x802a8370:
     beq-    branch_0x802a8948
     rlwinm. r0, r3, 0, 28, 28
     beq-    branch_0x802a84d8
-    lis     r3, 0x800
+    lis     r3, unk_08000008@h
     lwz     r4, 0x30(r30)
-    addi    r0, r3, 0x8
+    addi    r0, r3, unk_08000008@l
     and.    r0, r4, r0
     beq-    branch_0x802a83a0
     lwz     r0, 0xd0(r30)
     oris    r0, r0, 0x8
     stw     r0, 0xd0(r30)
 branch_0x802a83a0:
-    lis     r3, 0x400
+    lis     r3, unk_04000004@h
     lwz     r4, 0x30(r30)
-    addi    r0, r3, 0x4
+    addi    r0, r3, unk_04000004@l
     and.    r0, r4, r0
     beq-    branch_0x802a83c0
     lwz     r0, 0xd0(r30)
     oris    r0, r0, 0x10
     stw     r0, 0xd0(r30)
 branch_0x802a83c0:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 23, 23
     bne-    branch_0x802a83e0
@@ -272,6 +281,7 @@ branch_0x802a83e0:
     oris    r0, r0, 0x2
     stw     r0, 0xd0(r30)
 branch_0x802a83ec:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 22, 22
     bne-    branch_0x802a840c
@@ -285,9 +295,10 @@ branch_0x802a840c:
     oris    r0, r0, 0x4
     stw     r0, 0xd0(r30)
 branch_0x802a8418:
+
     lbz     r0, 0x26(r30)
     lis     r3, 0x4330
-    lfd     f1, -0x3b0(rtoc)
+    lfd     f1, -0x3b0(r2)
     stw     r0, 0x17c(sp)
     stw     r3, 0x178(sp)
     lfd     f0, 0x178(sp)
@@ -299,6 +310,7 @@ branch_0x802a8418:
     lfd     f0, 0x170(sp)
     fsubs   f0, f0, f1
     stfs    f0, 0xb4(r30)
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 26, 26
     bne-    branch_0x802a8470
@@ -312,6 +324,7 @@ branch_0x802a8470:
     ori     r0, r0, 0x400
     stw     r0, 0xd0(r30)
 branch_0x802a847c:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 27, 27
     bne-    branch_0x802a849c
@@ -325,6 +338,7 @@ branch_0x802a849c:
     ori     r0, r0, 0x1000
     stw     r0, 0xd0(r30)
 branch_0x802a84a8:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 25, 25
     bne-    branch_0x802a84c8
@@ -345,14 +359,15 @@ branch_0x802a84d8:
     lwz     r0, 0xe8(r30)
     cmpwi   r0, 0x0
     bgt-    branch_0x802a8948
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lwz     r4, 0x50(r3)
     bl      isLButtonCameraSpecifyMode__15CPolarSubCameraCFi
     clrlwi. r0, r3, 24
     beq-    branch_0x802a86ac
+
     lbz     r0, 0x26(r30)
     lis     r3, 0x4330
-    lfd     f1, -0x3b0(rtoc)
+    lfd     f1, -0x3b0(r2)
     stw     r0, 0x174(sp)
     stw     r3, 0x170(sp)
     lfd     f0, 0x170(sp)
@@ -364,6 +379,7 @@ branch_0x802a84d8:
     lfd     f0, 0x178(sp)
     fsubs   f0, f0, f1
     stfs    f0, 0xb4(r30)
+    
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 26, 26
     bne-    branch_0x802a8558
@@ -377,6 +393,7 @@ branch_0x802a8558:
     ori     r0, r0, 0x400
     stw     r0, 0xd0(r30)
 branch_0x802a8564:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 27, 27
     bne-    branch_0x802a8584
@@ -390,6 +407,7 @@ branch_0x802a8584:
     ori     r0, r0, 0x1000
     stw     r0, 0xd0(r30)
 branch_0x802a8590:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 25, 25
     bne-    branch_0x802a85b0
@@ -407,6 +425,7 @@ branch_0x802a85bc:
     stfs    f0, 0xb8(r30)
     lfs     f0, 0x4c(r30)
     stfs    f0, 0xbc(r30)
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 23, 23
     bne-    branch_0x802a85ec
@@ -420,6 +439,7 @@ branch_0x802a85ec:
     oris    r0, r0, 0x1
     stw     r0, 0xd0(r30)
 branch_0x802a85f8:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 22, 22
     bne-    branch_0x802a8618
@@ -433,6 +453,7 @@ branch_0x802a8618:
     oris    r0, r0, 0x1
     stw     r0, 0xd0(r30)
 branch_0x802a8624:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 20, 20
     bne-    branch_0x802a8644
@@ -446,6 +467,7 @@ branch_0x802a8644:
     ori     r0, r0, 0x4000
     stw     r0, 0xd0(r30)
 branch_0x802a8650:
+
     lhz     r0, 0xde(r30)
     clrlwi. r0, r0, 31
     bne-    branch_0x802a8670
@@ -459,6 +481,7 @@ branch_0x802a8670:
     ori     r0, r0, 0x200
     stw     r0, 0xd0(r30)
 branch_0x802a867c:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 21, 21
     bne-    branch_0x802a869c
@@ -476,10 +499,10 @@ branch_0x802a869c:
 branch_0x802a86ac:
     lha     r3, 0xe4(r30)
     li      r29, 0x0
-    lfs     f1, -0x3c0(rtoc)
+    lfs     f1, -0x3c0(r2)
     cmpwi   r3, 0x0
     ble-    branch_0x802a86c8
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     sth     r0, 0xe4(r30)
 branch_0x802a86c8:
     lha     r3, 0xe4(r30)
@@ -490,7 +513,7 @@ branch_0x802a86c8:
     cmpwi   r5, 0x28
     li      r29, 0x1
     bgt-    branch_0x802a86f0
-    lfs     f1, -0x3bc(rtoc)
+    lfs     f1, -0x3bc(r2)
     b       branch_0x802a86fc
 
 branch_0x802a86f0:
@@ -516,7 +539,7 @@ branch_0x802a8720:
 branch_0x802a8730:
     lbz     r0, 0x26(r30)
     lis     r3, 0x4330
-    lfd     f1, -0x3b0(rtoc)
+    lfd     f1, -0x3b0(r2)
     stw     r0, 0x174(sp)
     stw     r3, 0x170(sp)
     lfd     f0, 0x170(sp)
@@ -528,6 +551,7 @@ branch_0x802a8730:
     lfd     f0, 0x178(sp)
     fsubs   f0, f0, f1
     stfs    f0, 0xb4(r30)
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 23, 23
     bne-    branch_0x802a8788
@@ -541,6 +565,7 @@ branch_0x802a8788:
     ori     r0, r0, 0x80
     stw     r0, 0xd0(r30)
 branch_0x802a8794:
+
     lhz     r3, 0xe2(r30)
     rlwinm. r0, r3, 0, 29, 29
     beq-    branch_0x802a87d0
@@ -574,6 +599,7 @@ branch_0x802a87f8:
     ori     r0, r0, 0x100
     stw     r0, 0xd0(r30)
 branch_0x802a8804:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 26, 26
     bne-    branch_0x802a8824
@@ -587,6 +613,7 @@ branch_0x802a8824:
     ori     r0, r0, 0x400
     stw     r0, 0xd0(r30)
 branch_0x802a8830:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 27, 27
     bne-    branch_0x802a8850
@@ -600,6 +627,7 @@ branch_0x802a8850:
     ori     r0, r0, 0x1000
     stw     r0, 0xd0(r30)
 branch_0x802a885c:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 25, 25
     bne-    branch_0x802a887c
@@ -613,6 +641,7 @@ branch_0x802a887c:
     ori     r0, r0, 0x2000
     stw     r0, 0xd0(r30)
 branch_0x802a8888:
+
     lfs     f0, 0x58(r30)
     stfs    f0, 0xc0(r30)
     lfs     f0, 0x5c(r30)
@@ -630,6 +659,7 @@ branch_0x802a88b8:
     ori     r0, r0, 0x4000
     stw     r0, 0xd0(r30)
 branch_0x802a88c4:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 25, 25
     bne-    branch_0x802a88e4
@@ -643,6 +673,7 @@ branch_0x802a88e4:
     ori     r0, r0, 0x8000
     stw     r0, 0xd0(r30)
 branch_0x802a88f0:
+
     lhz     r0, 0xde(r30)
     clrlwi. r0, r0, 31
     bne-    branch_0x802a8910
@@ -656,6 +687,7 @@ branch_0x802a8910:
     ori     r0, r0, 0x200
     stw     r0, 0xd0(r30)
 branch_0x802a891c:
+
     lwz     r0, 0x1c(r30)
     rlwinm. r0, r0, 0, 21, 21
     bne-    branch_0x802a893c
@@ -669,12 +701,15 @@ branch_0x802a893c:
     oris    r0, r0, 0x20
     stw     r0, 0xd0(r30)
 branch_0x802a8948:
+
     lwz     r0, 0xd0(r30)
     andc    r0, r0, r31
     stw     r0, 0xd4(r30)
+
     lwz     r0, 0xd0(r30)
     andc    r0, r31, r0
     stw     r0, 0xd8(r30)
+
     lwz     r0, 0x194(sp)
     lwz     r31, 0x18c(sp)
     lwz     r30, 0x188(sp)
@@ -693,19 +728,19 @@ reset__13TMarioGamePadFv: # 0x802a897c
     stw     r30, 0x10(sp)
     mr      r30, r3
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x3a4(rtoc)
+    lfs     f0, -0x3a4(r2)
     fdivs   f1, f0, f1
     bl      __cvt_fp2unsigned
     mr      r31, r3
     bl      SMSGetAnmFrameRate__Fv
-    lfs     f0, -0x3a8(rtoc)
+    lfs     f0, -0x3a8(r2)
     fdivs   f1, f0, f1
     bl      __cvt_fp2unsigned
-    lis     r4, 0xf00
+    lis     r4, unk_0f00000f@h
     addi    r5, r3, 0x0
     addi    r3, r30, 0x0
     addi    r6, r31, 0x0
-    addi    r4, r4, 0xf
+    addi    r4, r4, unk_0f00000f@l
     bl      setButtonRepeat__10JUTGamePadFUlUlUl
     li      r0, 0x0
     sth     r0, 0xe4(r30)
@@ -723,3 +758,4 @@ __sinit_MarioGamePad_cpp: # 0x802a89f4
     li      r0, 0x0
     sth     r0, -0x6008(r13)
     blr
+

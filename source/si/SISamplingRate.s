@@ -9,13 +9,13 @@ SISetSamplingRate: # 0x803699f8
     stw     r29, 0x14(sp)
     addi    r29, r3, 0x0
     cmplwi  r29, 0xb
-    lis     r3, 0x803f
-    subi    r31, r3, 0x69a8
+    lis     r3, XYNTSC@ha
+    addi    r31, r3, XYNTSC@l
     ble-    branch_0x80369a28
     li      r29, 0xb
 branch_0x80369a28:
     bl      OSDisableInterrupts
-    stw     r29, -0x5760(r13)
+    stw     r29, R13Off_m0x5760(r13)
     mr      r30, r3
     bl      VIGetTvFormat
     cmpwi   r3, 0x2
@@ -78,7 +78,7 @@ SIRefreshSamplingRate: # 0x80369adc
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r3, -0x5760(r13)
+    lwz     r3, R13Off_m0x5760(r13)
     bl      SISetSamplingRate
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8

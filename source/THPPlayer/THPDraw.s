@@ -22,7 +22,7 @@ THPGXYuv2RgbDraw: # 0x8001de28
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    lfs     f1, -0x79e4(rtoc)
+    lfs     f1, -0x79e4(r2)
     addi    r3, sp, 0x60
     li      r4, 0x0
     fmr     f2, f1
@@ -48,7 +48,7 @@ THPGXYuv2RgbDraw: # 0x8001de28
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    lfs     f1, -0x79e4(rtoc)
+    lfs     f1, -0x79e4(r2)
     addi    r3, sp, 0x40
     li      r4, 0x0
     fmr     f2, f1
@@ -70,7 +70,7 @@ THPGXYuv2RgbDraw: # 0x8001de28
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    lfs     f1, -0x79e4(rtoc)
+    lfs     f1, -0x79e4(r2)
     addi    r3, sp, 0x20
     li      r4, 0x0
     fmr     f2, f1
@@ -138,15 +138,15 @@ THPGXYuv2RgbSetup: # 0x8001e00c
     li      r4, 0x0
     bl      GXSetPixelFmt
     xoris   r29, r27, 0x8000
-    lfs     f1, -0x79e4(rtoc)
+    lfs     f1, -0x79e4(r2)
     xoris   r31, r28, 0x8000
     stw     r29, 0xd4(sp)
     lis     r30, 0x4330
-    lfd     f4, -0x79d8(rtoc)
+    lfd     f4, -0x79d8(r2)
     stw     r31, 0xcc(sp)
     fmr     f3, f1
     fmr     f5, f1
-    lfs     f6, -0x79e0(rtoc)
+    lfs     f6, -0x79e0(r2)
     stw     r30, 0xd0(sp)
     addi    r3, sp, 0x74
     stw     r30, 0xc8(sp)
@@ -159,13 +159,13 @@ THPGXYuv2RgbSetup: # 0x8001e00c
     li      r4, 0x1
     bl      GXSetProjection
     stw     r31, 0xc4(sp)
-    lfs     f1, -0x79e4(rtoc)
+    lfs     f1, -0x79e4(r2)
     stw     r29, 0xbc(sp)
-    lfd     f4, -0x79d8(rtoc)
+    lfd     f4, -0x79d8(r2)
     fmr     f2, f1
     stw     r30, 0xc0(sp)
     fmr     f5, f1
-    lfs     f6, -0x79dc(rtoc)
+    lfs     f6, -0x79dc(r2)
     stw     r30, 0xb8(sp)
     lfd     f3, 0xc0(sp)
     lfd     f0, 0xb8(sp)
@@ -398,9 +398,9 @@ branch_0x8001e138:
     li      r3, 0x3
     li      r4, 0xe
     bl      GXSetTevKColorSel
-    lwz     r3, -0x79f8(rtoc)
+    lwz     r3, R2Off_m0x79f8(r2)
     addi    r4, sp, 0x3c
-    lwz     r0, -0x79f4(rtoc)
+    lwz     r0, R2Off_m0x79f4(r2)
     stw     r3, 0x34(sp)
     li      r3, 0x1
     stw     r0, 0x38(sp)
@@ -409,21 +409,21 @@ branch_0x8001e138:
     stw     r5, 0x3c(sp)
     stw     r0, 0x40(sp)
     bl      GXSetTevColorS10
-    lwz     r0, -0x79f0(rtoc)
+    lwz     r0, R2Off_m0x79f0(r2)
     addi    r4, sp, 0x30
     li      r3, 0x0
     stw     r0, 0x2c(sp)
     lwz     r0, 0x2c(sp)
     stw     r0, 0x30(sp)
     bl      GXSetTevKColor
-    lwz     r0, -0x79ec(rtoc)
+    lwz     r0, R2Off_m0x79ec(r2)
     addi    r4, sp, 0x28
     li      r3, 0x1
     stw     r0, 0x24(sp)
     lwz     r0, 0x24(sp)
     stw     r0, 0x28(sp)
     bl      GXSetTevKColor
-    lwz     r0, -0x79e8(rtoc)
+    lwz     r0, R2Off_m0x79e8(r2)
     addi    r4, sp, 0x20
     li      r3, 0x2
     stw     r0, 0x1c(sp)

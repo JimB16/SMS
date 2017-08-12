@@ -12,11 +12,11 @@ update__10TBlendPaneFv: # 0x8017900c
     mr      r29, r3
     bl      update__10TBoundPaneFv
     lbz     r0, 0x70(r29)
-    addi    r31, r3, 0x0
+    addi    r31, r3, unk_803f0000@l
     cmplwi  r0, 0x0
     beq-    branch_0x801790b8
     lfs     f1, 0x6c(r29)
-    lfs     f0, -0x4720(rtoc)
+    lfs     f0, -0x4720(r2)
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x80179064
@@ -24,7 +24,7 @@ update__10TBlendPaneFv: # 0x8017900c
     li      r0, 0x0
     stb     r0, 0x70(r29)
 branch_0x80179064:
-    lfs     f0, -0x4720(rtoc)
+    lfs     f0, -0x4720(r2)
     lfs     f30, 0x6c(r29)
     lwz     r30, 0x0(r29)
     fsubs   f31, f0, f30
@@ -37,7 +37,7 @@ branch_0x80179064:
     stfs    f30, 0x114(r30)
     mr      r3, r30
     stfs    f31, 0x118(r30)
-    lfs     f0, -0x4720(rtoc)
+    lfs     f0, -0x4720(r2)
     stfs    f0, 0x11c(r30)
     stfs    f0, 0x120(r30)
     bl      setBlendKonstAlpha__10J2DPictureFv
@@ -81,13 +81,13 @@ __ct__10TBlendPaneFP9J2DScreenUl: # 0x8017910c
     stw     r31, 0x1c(sp)
     mr      r31, r3
     bl      __ct__10TBoundPaneFP9J2DScreenUl
-    lis     r3, 0x803c
-    addi    r0, r3, 0xfc0
+    lis     r3, __vvt__10TBlendPane@h
+    addi    r0, r3, __vvt__10TBlendPane@l
     stw     r0, 0x74(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0
     stb     r0, 0x70(r31)
-    lfs     f0, -0x471c(rtoc)
+    lfs     f0, -0x471c(r2)
     stfs    f0, 0x68(r31)
     stfs    f0, 0x6c(r31)
     lwz     r0, 0x24(sp)

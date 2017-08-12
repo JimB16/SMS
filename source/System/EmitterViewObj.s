@@ -9,12 +9,12 @@ __dt__21TMarioParticleManagerFv: # 0x80287698
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802876f0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x1378
+    lis     r3, __vvt__21TMarioParticleManager@ha
+    addi    r0, r3, __vvt__21TMarioParticleManager@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802876e0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -37,8 +37,8 @@ branch_0x802876f0:
 .globl SMSSetEmitterPolColor__FP14JPABaseEmitteri
 SMSSetEmitterPolColor__FP14JPABaseEmitteri: # 0x8028770c
     cmplwi  r3, 0x0
-    lis     r5, 0x803a
-    addi    r5, r5, 0x1e70
+    lis     r5, unk_803a1e70@h
+    addi    r5, r5, unk_803a1e70@l
     beqlr-    
 
     cmpwi   r4, 0x0
@@ -51,7 +51,7 @@ SMSSetEmitterPolColor__FP14JPABaseEmitteri: # 0x8028770c
 branch_0x80287730:
     cmpwi   r4, 0x6
     bne-    branch_0x802877ec
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     lbz     r0, 0x7c(r4)
     cmpwi   r0, 0x9
     beq-    branch_0x802877c8
@@ -262,7 +262,7 @@ branch_0x80287980:
     cmplwi  r4, 0x0
     beq-    branch_0x80287aac
     lwz     r3, 0x4(r30)
-    subi    r0, r13, 0x606c
+    addi    r0, r13, R13Off_m0x606c
     stw     r3, 0x120(r4)
     lwz     r3, 0xc(r30)
     stw     r0, 0x110(r3)
@@ -314,13 +314,13 @@ branch_0x80287a60:
     clrlwi. r0, r0, 24
     beq-    branch_0x80287a78
     lwz     r3, 0xc(r30)
-    subi    r0, r13, 0x6068
+    addi    r0, r13, R13Off_m0x6068
     stw     r0, 0x110(r3)
     b       branch_0x80287aac
 
 branch_0x80287a78:
     lwz     r3, 0xc(r30)
-    subi    r0, r13, 0x6064
+    addi    r0, r13, R13Off_m0x6064
     stw     r0, 0x110(r3)
     b       branch_0x80287aac
 
@@ -341,7 +341,7 @@ branch_0x80287aac:
     lwz     r31, 0xc(r30)
     cmplwi  r31, 0x0
     beq-    branch_0x80287aec
-    lwz     r5, -0x6104(r13)
+    lwz     r5, R13Off_m0x6104(r13)
     addi    r3, r31, 0x30
     li      r4, 0x0
     lwz     r5, 0x10(r5)
@@ -375,7 +375,7 @@ emitParticleCallBack__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcP54JPACa
     addi    r30, r7, 0x0
     addi    r31, r8, 0x0
     bne-    branch_0x80287bd4
-    subi    r25, r27, 0xfd
+    addi    r25, r27, -0xfd
     addi    r3, r26, 0x0
     addi    r4, r25, 0x0
     addi    r5, r29, 0x0
@@ -420,7 +420,7 @@ branch_0x80287bd4:
     clrlwi  r0, r29, 24
     cmplwi  r0, 0x3
     bne-    branch_0x80287c7c
-    subi    r25, r27, 0x1e6
+    addi    r25, r27, -0x1e6
     addi    r3, r26, 0x0
     addi    r4, r25, 0x0
     addi    r5, r29, 0x0
@@ -522,7 +522,7 @@ branch_0x80287d10:
     addi    r3, r30, 0x0
     addi    r4, r29, 0x0
     bl      setGlobalRTMatrix__14JPABaseEmitterFPA4_f
-    lwz     r5, -0x6104(r13)
+    lwz     r5, R13Off_m0x6104(r13)
     addi    r3, r30, 0x30
     li      r4, 0x0
     lwz     r5, 0x10(r5)
@@ -575,7 +575,7 @@ emitAndBindToSRTMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv: # 0x80287d98
     cmplwi  r3, 0x0
     beq-    branch_0x80287e14
     stw     r29, 0x120(r3)
-    subi    r0, r13, 0x6064
+    addi    r0, r13, R13Off_m0x6064
     stw     r0, 0x110(r3)
     b       branch_0x80287fc8
 
@@ -594,11 +594,11 @@ branch_0x80287e14:
     mr.     r26, r3
     beq-    branch_0x80287e84
     stw     r29, 0x120(r26)
-    subi    r0, r13, 0x6064
+    addi    r0, r13, R13Off_m0x6064
     addi    r3, r26, 0x30
     stw     r0, 0x110(r26)
     li      r4, 0x0
-    lwz     r5, -0x6104(r13)
+    lwz     r5, R13Off_m0x6104(r13)
     lwz     r5, 0x10(r5)
     lwz     r27, 0x20(r5)
     bl      getMainTextureID__7JPADrawFUc
@@ -613,7 +613,7 @@ branch_0x80287e84:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x1
     bne-    branch_0x80287f24
-    subi    r26, r28, 0xfd
+    addi    r26, r28, -0xfd
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -656,7 +656,7 @@ branch_0x80287f24:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x3
     bne-    branch_0x80287fc4
-    subi    r26, r28, 0x1e6
+    addi    r26, r28, -0x1e6
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -735,7 +735,7 @@ emitAndBindToMtxPtr__21TMarioParticleManagerFlPA4_fUcPCv: # 0x80287fdc
     cmplwi  r3, 0x0
     beq-    branch_0x80288058
     stw     r29, 0x120(r3)
-    subi    r0, r13, 0x6068
+    addi    r0, r13, R13Off_m0x6068
     stw     r0, 0x110(r3)
     b       branch_0x8028820c
 
@@ -754,11 +754,11 @@ branch_0x80288058:
     mr.     r26, r3
     beq-    branch_0x802880c8
     stw     r29, 0x120(r26)
-    subi    r0, r13, 0x6068
+    addi    r0, r13, R13Off_m0x6068
     addi    r3, r26, 0x30
     stw     r0, 0x110(r26)
     li      r4, 0x0
-    lwz     r5, -0x6104(r13)
+    lwz     r5, R13Off_m0x6104(r13)
     lwz     r5, 0x10(r5)
     lwz     r27, 0x20(r5)
     bl      getMainTextureID__7JPADrawFUc
@@ -773,7 +773,7 @@ branch_0x802880c8:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x1
     bne-    branch_0x80288168
-    subi    r26, r28, 0xfd
+    addi    r26, r28, -0xfd
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -816,7 +816,7 @@ branch_0x80288168:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x3
     bne-    branch_0x80288208
-    subi    r26, r28, 0x1e6
+    addi    r26, r28, -0x1e6
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -889,7 +889,7 @@ emitAndBindToPosPtr__21TMarioParticleManagerFlPCQ29JGeometry8TVec3_f_UcPCv: # 0x
     cmplwi  r3, 0x0
     beq-    branch_0x80288284
     stw     r29, 0x120(r3)
-    subi    r0, r13, 0x606c
+    addi    r0, r13, R13Off_m0x606c
     stw     r0, 0x110(r3)
     b       branch_0x80288438
 
@@ -908,11 +908,11 @@ branch_0x80288284:
     mr.     r26, r3
     beq-    branch_0x802882f4
     stw     r29, 0x120(r26)
-    subi    r0, r13, 0x606c
+    addi    r0, r13, R13Off_m0x606c
     addi    r3, r26, 0x30
     stw     r0, 0x110(r26)
     li      r4, 0x0
-    lwz     r5, -0x6104(r13)
+    lwz     r5, R13Off_m0x6104(r13)
     lwz     r5, 0x10(r5)
     lwz     r27, 0x20(r5)
     bl      getMainTextureID__7JPADrawFUc
@@ -927,7 +927,7 @@ branch_0x802882f4:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x1
     bne-    branch_0x80288394
-    subi    r26, r28, 0xfd
+    addi    r26, r28, -0xfd
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -970,7 +970,7 @@ branch_0x80288394:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x3
     bne-    branch_0x80288434
-    subi    r26, r28, 0x1e6
+    addi    r26, r28, -0x1e6
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -1077,7 +1077,7 @@ branch_0x802884d0:
     lha     r4, 0x16e(r30)
     lha     r5, 0x170(r30)
     bl      JPAGetXYZRotateMtx__FsssPA4_f
-    lwz     r5, -0x6104(r13)
+    lwz     r5, R13Off_m0x6104(r13)
     addi    r3, r30, 0x30
     li      r4, 0x0
     lwz     r5, 0x10(r5)
@@ -1139,7 +1139,7 @@ branch_0x802885c4:
     bl      createSimpleEmitterID__17JPAEmitterManagerFRCQ29JGeometry8TVec3_f_lUcUcP34JPACallBackBase_P14JPABaseEmitter_P54JPACallBackBase2_P14JPABaseEmitter_P15JPABaseParticle_
     mr.     r26, r3
     beq-    branch_0x80288628
-    lwz     r5, -0x6104(r13)
+    lwz     r5, R13Off_m0x6104(r13)
     addi    r3, r26, 0x30
     li      r4, 0x0
     lwz     r5, 0x10(r5)
@@ -1156,7 +1156,7 @@ branch_0x80288628:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x1
     bne-    branch_0x802886c8
-    subi    r26, r28, 0xfd
+    addi    r26, r28, -0xfd
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -1199,7 +1199,7 @@ branch_0x802886c8:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x3
     bne-    branch_0x80288768
-    subi    r26, r28, 0x1e6
+    addi    r26, r28, -0x1e6
     addi    r3, r27, 0x0
     addi    r4, r26, 0x0
     addi    r5, r30, 0x0
@@ -1268,7 +1268,7 @@ perform__21TMarioParticleManagerFUlPQ26JDrama9TGraphics: # 0x80288780
 branch_0x802887b8:
     lwz     r3, 0x3b8(r25)
     bl      calc__17JPAEmitterManagerFv
-    subi    r23, r23, 0x1
+    addi    r23, r23, -0x1
 branch_0x802887c4:
     cmpwi   r23, 0x0
     bgt+    branch_0x802887b8
@@ -1473,14 +1473,14 @@ branch_0x80288a74:
     beq-    branch_0x80288ad4
     bl      SMS_DrawInit__Fv
     addi    r0, r27, 0xb4
-    lfs     f0, -0x6a0(rtoc)
+    lfs     f0, -0x6a0(r2)
     stw     r0, 0x84(sp)
     addi    r4, sp, 0x84
     li      r5, 0x2
     stfs    f0, 0x88(sp)
-    lfs     f0, -0x69c(rtoc)
+    lfs     f0, -0x69c(r2)
     stfs    f0, 0x8c(sp)
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lfs     f0, 0x48(r3)
     stfs    f0, 0x88(sp)
     lfs     f0, 0x4c(r3)
@@ -1495,10 +1495,10 @@ branch_0x80288ad4:
     clrrwi. r0, r26, 31
     beq-    branch_0x80288b14
     addi    r0, r27, 0xb4
-    lfs     f1, -0x6a0(rtoc)
+    lfs     f1, -0x6a0(r2)
     stw     r0, 0x78(sp)
     addi    r4, sp, 0x78
-    lfs     f0, -0x69c(rtoc)
+    lfs     f0, -0x69c(r2)
     li      r5, 0x0
     stfs    f1, 0x7c(sp)
     stfs    f0, 0x80(sp)
@@ -1523,8 +1523,8 @@ createEffectInfoAry__21TMarioParticleManagerFi: # 0x80288b28
     stwu    sp, -0x38(sp)
     stmw    r27, 0x24(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x8029
-    subi    r29, r3, 0x73a8
+    lis     r3, __ct__Q221TMarioParticleManager5TInfoFv@ha
+    addi    r29, r3, __ct__Q221TMarioParticleManager5TInfoFv@l
     li      r27, 0x0
     li      r30, 0x0
     stw     r4, 0x3b4(r31)
@@ -1544,8 +1544,8 @@ branch_0x80288b50:
     stwx    r3, r31, r0
     addi    r30, r30, 0x4
     blt+    branch_0x80288b50
-    lis     r3, 0x8029
-    subi    r29, r3, 0x73a8
+    lis     r3, __ct__Q221TMarioParticleManager5TInfoFv@ha
+    addi    r29, r3, __ct__Q221TMarioParticleManager5TInfoFv@l
     li      r27, 0x0
     li      r30, 0x0
 branch_0x80288b9c:
@@ -1574,9 +1574,9 @@ branch_0x80288b9c:
 .globl __ct__21TMarioParticleManagerFPCc
 __ct__21TMarioParticleManagerFPCc: # 0x80288bec
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -1585,13 +1585,13 @@ __ct__21TMarioParticleManagerFPCc: # 0x80288bec
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__21TMarioParticleManager@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x1378
+    addi    r0, r3, __vvt__21TMarioParticleManager@l
     addi    r3, r31, 0x0
     stw     r0, 0x0(r31)
     stw     r4, 0x3b8(r31)
@@ -1694,7 +1694,7 @@ perform__23TEmitterIndirectViewObjFUlPQ26JDrama9TGraphics: # 0x80288cfc
 branch_0x80288d40:
     lwz     r3, 0x10(r28)
     bl      calc__17JPAEmitterManagerFv
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
 branch_0x80288d4c:
     cmpwi   r31, 0x0
     bgt+    branch_0x80288d40
@@ -1703,13 +1703,13 @@ branch_0x80288d54:
     beq-    branch_0x80288d98
     bl      SMS_DrawInit__Fv
     addi    r0, r30, 0xb4
-    lfs     f0, -0x6a0(rtoc)
+    lfs     f0, -0x6a0(r2)
     stw     r0, 0x38(sp)
     addi    r4, sp, 0x38
     stfs    f0, 0x3c(sp)
-    lfs     f0, -0x69c(rtoc)
+    lfs     f0, -0x69c(r2)
     stfs    f0, 0x40(sp)
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lfs     f0, 0x48(r3)
     stfs    f0, 0x3c(sp)
     lfs     f0, 0x4c(r3)
@@ -1750,7 +1750,7 @@ perform__15TEmitterViewObjFUlPQ26JDrama9TGraphics: # 0x80288db8
 branch_0x80288dfc:
     lwz     r3, 0x10(r28)
     bl      calc__17JPAEmitterManagerFv
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
 branch_0x80288e08:
     cmpwi   r31, 0x0
     bgt+    branch_0x80288dfc
@@ -1758,10 +1758,10 @@ branch_0x80288e10:
     rlwinm. r0, r29, 0, 28, 28
     beq-    branch_0x80288e3c
     addi    r0, r30, 0xb4
-    lfs     f1, -0x6a0(rtoc)
+    lfs     f1, -0x6a0(r2)
     stw     r0, 0x1c(sp)
     addi    r4, sp, 0x1c
-    lfs     f0, -0x69c(rtoc)
+    lfs     f0, -0x69c(r2)
     stfs    f1, 0x20(sp)
     stfs    f0, 0x24(sp)
     lwz     r3, 0x10(r28)
@@ -1780,9 +1780,9 @@ branch_0x80288e3c:
 .globl __ct__15TEmitterViewObjFP17JPAEmitterManagerPCc
 __ct__15TEmitterViewObjFP17JPAEmitterManagerPCc: # 0x80288e5c
     mflr    r0
-    lis     r6, 0x803e
+    lis     r6, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r6, 0x20f0
+    addi    r0, r6, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     mr      r31, r4
@@ -1793,13 +1793,13 @@ __ct__15TEmitterViewObjFP17JPAEmitterManagerPCc: # 0x80288e5c
     mr      r3, r5
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r30)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__15TEmitterViewObj@ha
     sth     r0, 0xc(r30)
-    subi    r0, r3, 0x12d0
+    addi    r0, r3, __vvt__15TEmitterViewObj@l
     addi    r3, r30, 0x0
     stw     r0, 0x0(r30)
     stw     r31, 0x10(r30)
@@ -1821,16 +1821,16 @@ __dt__23TEmitterIndirectViewObjFv: # 0x80288ed4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80288f3c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x12f4
+    lis     r3, __vvt__23TEmitterIndirectViewObj@ha
+    addi    r0, r3, __vvt__23TEmitterIndirectViewObj@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80288f2c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x12d0
+    lis     r3, __vvt__15TEmitterViewObj@ha
+    addi    r0, r3, __vvt__15TEmitterViewObj@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80288f2c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1860,12 +1860,12 @@ __dt__15TEmitterViewObjFv: # 0x80288f58
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80288fb0
-    lis     r3, 0x803e
-    subi    r0, r3, 0x12d0
+    lis     r3, __vvt__15TEmitterViewObj@ha
+    addi    r0, r3, __vvt__15TEmitterViewObj@l
     stw     r0, 0x0(r30)
     beq-    branch_0x80288fa0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1892,14 +1892,14 @@ executeAfter__34JPACallBackBase_P14JPABaseEmitter_FP14JPABaseEmitter: # 0x80288f
 
 .globl __sinit_EmitterViewObj_cpp
 __sinit_EmitterViewObj_cpp: # 0x80288fd0
-    lis     r3, 0x803e
-    subi    r4, r3, 0x13a0
+    lis     r3, unk_803dec60@ha
+    addi    r4, r3, unk_803dec60@l
     addi    r0, r4, 0x98
     addi    r3, r4, 0x84
-    stw     r0, -0x606c(r13)
+    stw     r0, R13Off_m0x606c(r13)
     addi    r0, r4, 0x70
-    stw     r3, -0x6068(r13)
-    stw     r0, -0x6064(r13)
+    stw     r3, R13Off_m0x6068(r13)
+    stw     r0, R13Off_m0x6064(r13)
     blr
 
 

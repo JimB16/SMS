@@ -21,7 +21,7 @@ Erase__Q27JGadget13TNodeLinkListFPQ27JGadget13TLinkListNode: # 0x802f6bc8
     stw     r5, 0x4(r6)
     stw     r6, 0x0(r5)
     lwz     r5, 0x0(r4)
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     stw     r0, 0x0(r4)
     stw     r6, 0x0(r3)
     blr

@@ -9,14 +9,14 @@ __dt__14TWaterHitActorFv: # 0x800eccd0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x800ecd38
-    lis     r3, 0x803c
-    subi    r3, r3, 0x5378
+    lis     r3, __vvt__14TWaterHitActor@ha
+    addi    r3, r3, __vvt__14TWaterHitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x800ecd28
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -65,7 +65,7 @@ setDegreeZAndRevisionPosXZ__11TSphereLinkFif: # 0x800ecd54
     b       branch_0x800ecee0
 
 branch_0x800ecdb0:
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     lwz     r4, 0x4(r29)
     mulli   r3, r0, 0x2c
     addi    r0, r3, 0xc
@@ -84,7 +84,7 @@ branch_0x800ecdb0:
     stw     r0, 0x74(sp)
     lwz     r0, 0x48(sp)
     stw     r3, 0x78(sp)
-    lfs     f2, -0x5a58(rtoc)
+    lfs     f2, -0x5a58(r2)
     stw     r0, 0x7c(sp)
     lfs     f1, 0x7c(sp)
     fcmpu   cr0, f2, f1
@@ -93,11 +93,11 @@ branch_0x800ecdb0:
     fcmpo   cr0, f0, f2
     cror    2, 1, 2
     bne-    branch_0x800ece28
-    lfs     f2, -0x5a54(rtoc)
+    lfs     f2, -0x5a54(r2)
     b       branch_0x800eceac
 
 branch_0x800ece28:
-    lfs     f2, -0x5a50(rtoc)
+    lfs     f2, -0x5a50(r2)
     b       branch_0x800eceac
 
 branch_0x800ece30:
@@ -107,9 +107,9 @@ branch_0x800ece30:
     lfs     f2, 0x74(sp)
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x5a38(rtoc)
+    lfd     f2, -0x5a38(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x5a4c(rtoc)
+    lfs     f0, -0x5a4c(r2)
     stw     r0, 0x84(sp)
     lis     r0, 0x4330
     stw     r0, 0x80(sp)
@@ -123,19 +123,19 @@ branch_0x800ece70:
     lfs     f2, 0x74(sp)
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f3, -0x5a38(rtoc)
+    lfd     f3, -0x5a38(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x5a4c(rtoc)
+    lfs     f1, -0x5a4c(r2)
     stw     r0, 0x84(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x5a48(rtoc)
+    lfs     f0, -0x5a48(r2)
     stw     r0, 0x80(sp)
     lfd     f2, 0x80(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
     fsubs   f2, f0, f1
 branch_0x800eceac:
-    lfs     f0, -0x5a44(rtoc)
+    lfs     f0, -0x5a44(r2)
     b       branch_0x800eceb8
 
 branch_0x800eceb4:
@@ -144,8 +144,8 @@ branch_0x800eceb8:
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     beq+    branch_0x800eceb4
-    lfs     f1, -0x5a44(rtoc)
-    lfs     f0, -0x5a58(rtoc)
+    lfs     f1, -0x5a44(r2)
+    lfs     f0, -0x5a58(r2)
     b       branch_0x800eced4
 
 branch_0x800eced0:
@@ -157,18 +157,18 @@ branch_0x800eced4:
 branch_0x800ecee0:
     fsubs   f1, f30, f31
     lfs     f2, 0x14(r29)
-    lfs     f0, -0x5a40(rtoc)
+    lfs     f0, -0x5a40(r2)
     fmuls   f30, f2, f1
     fmuls   f1, f0, f3
     bl      CLBRoundf_s___Ff
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r4, r3, 16
-    lwz     r3, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     fneg    f1, f30
     sraw    r0, r4, r0
     slwi    r0, r0, 2
-    lwz     r4, -0x5ea4(r13)
-    lfs     f0, -0x5a58(rtoc)
+    lwz     r4, R13Off_m0x5ea4(r13)
+    lfs     f0, -0x5a58(r2)
     lfsx    f5, r3, r0
     lfsx    f4, r4, r0
     fmuls   f3, f0, f5
@@ -247,7 +247,7 @@ branch_0x800ecffc:
     lwz     r3, 0x4(r29)
     lfs     f2, 0x10(r29)
     addi    r28, r3, 0xc
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x4(r28)
     addi    r4, r28, 0x0
     addi    r5, r28, 0x8
@@ -255,7 +255,7 @@ branch_0x800ecffc:
     lfs     f1, 0x4(r28)
     addi    r4, sp, 0x80
     lfs     f0, 0x10(r29)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r28)
     lfs     f3, 0x8(r28)
@@ -281,15 +281,15 @@ branch_0x800ed090:
     bge-    branch_0x800ed0a8
     stfs    f28, 0x4(r28)
 branch_0x800ed0a8:
-    lfs     f28, -0x5a30(rtoc)
+    lfs     f28, -0x5a30(r2)
     li      r31, 0x1
-    lfs     f29, -0x5a58(rtoc)
+    lfs     f29, -0x5a58(r2)
     li      r28, 0x2c
-    lfs     f30, -0x5a2c(rtoc)
+    lfs     f30, -0x5a2c(r2)
     b       branch_0x800ed244
 
 branch_0x800ed0c0:
-    subi    r0, r31, 0x1
+    addi    r0, r31, -0x1
     lwz     r4, 0x4(r29)
     mulli   r0, r0, 0x2c
     add     r30, r4, r28
@@ -359,13 +359,13 @@ branch_0x800ed158:
     lwz     r0, 0x54(sp)
     stw     r0, 0x14(r30)
     lfs     f2, 0x10(r29)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     lfs     f1, 0x10(r30)
     bl      isTouchedOneWallAndMoveXZ__4TMapCFPffPff
     lfs     f1, 0x4(r27)
     addi    r4, sp, 0x78
     lfs     f0, 0x10(r29)
-    lwz     r3, gpMap(r13)
+    lwz     r3, R13Off_m0x6328(r13)
     fadds   f2, f1, f0
     lfs     f1, 0x0(r27)
     lfs     f3, 0x8(r27)
@@ -503,8 +503,8 @@ __ct__11TSphereLinkFUsRCQ29JGeometry8TVec3_f_ffffff: # 0x800ed360
     sth     r4, 0x0(r3)
     addi    r3, r6, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x800f
-    subi    r4, r4, 0x2ac0
+    lis     r4, __ct__12TSpherePointFv@ha
+    addi    r4, r4, __ct__12TSpherePointFv@l
     addi    r7, r29, 0x0
     li      r5, 0x0
     li      r6, 0x2c
@@ -517,13 +517,13 @@ __ct__11TSphereLinkFUsRCQ29JGeometry8TVec3_f_ffffff: # 0x800ed360
     stfs    f26, 0x10(r30)
     stfs    f29, 0x14(r30)
     stfs    f30, 0x18(r30)
-    lfs     f1, -0x5a40(rtoc)
+    lfs     f1, -0x5a40(r2)
     lfs     f0, 0x18(r30)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f1, f1, f0
-    lwz     r7, -0x5ea8(r13)
-    lwz     r5, -0x5ea4(r13)
-    lfs     f0, -0x5a58(rtoc)
+    lwz     r7, R13Off_m0x5ea8(r13)
+    lwz     r5, R13Off_m0x5ea4(r13)
+    lfs     f0, -0x5a58(r2)
     fctiwz  f1, f1
     stfd    f1, 0x70(sp)
     lwz     r6, 0x74(sp)
@@ -550,7 +550,7 @@ branch_0x800ed444:
     b       branch_0x800ed4b0
 
 branch_0x800ed470:
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     mulli   r5, r0, 0x2c
     addi    r0, r5, 0xc
     add     r6, r6, r0
@@ -616,7 +616,7 @@ receiveMessage__14TWaterHitActorFP9THitActorUl: # 0x800ed544
     cmplwi  r5, 0xf
     li      r0, 0x0
     bne-    branch_0x800ed5ac
-    lwz     r6, gpMarDirector(r13)
+    lwz     r6, R13Off_m0x6048(r13)
     li      r4, 0x1
     addi    r5, r4, 0x0
     lbz     r0, 0x124(r6)
@@ -667,17 +667,17 @@ BHSCalcRevisionDistXZByRotateZ__FfffPfPf: # 0x800ed5c0
     addi    r31, r4, 0x0
     stw     r30, 0x48(sp)
     addi    r30, r3, 0x0
-    lfs     f0, -0x5a40(rtoc)
+    lfs     f0, -0x5a40(r2)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r4, r3, 16
-    lwz     r3, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     fneg    f1, f31
     sraw    r0, r4, r0
     slwi    r0, r0, 2
-    lwz     r4, -0x5ea4(r13)
-    lfs     f0, -0x5a58(rtoc)
+    lwz     r4, R13Off_m0x5ea4(r13)
+    lfs     f0, -0x5a58(r2)
     lfsx    f4, r3, r0
     lfsx    f3, r4, r0
     fmuls   f2, f0, f4
@@ -711,13 +711,13 @@ BHSCalcCentrifugalForce__FRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_RCQ29JGe
     lfs     f2, 0x0(r3)
     fsubs   f1, f0, f6
     lfs     f5, 0x0(r4)
-    lfs     f4, -0x5a28(rtoc)
+    lfs     f4, -0x5a28(r2)
     fsubs   f2, f2, f5
     fmuls   f0, f1, f1
     fmadds  f29, f2, f2, f0
     fcmpo   cr0, f29, f4
     bge-    branch_0x800ed6a4
-    lfs     f1, -0x5a58(rtoc)
+    lfs     f1, -0x5a58(r2)
     b       branch_0x800ed8d8
 
 branch_0x800ed6a4:
@@ -729,21 +729,21 @@ branch_0x800ed6a4:
     fmadds  f0, f31, f31, f0
     fcmpo   cr0, f0, f4
     bge-    branch_0x800ed6cc
-    lfs     f1, -0x5a58(rtoc)
+    lfs     f1, -0x5a58(r2)
     b       branch_0x800ed8d8
 
 branch_0x800ed6cc:
-    lfs     f0, -0x5a58(rtoc)
+    lfs     f0, -0x5a58(r2)
     fcmpu   cr0, f0, f1
     bne-    branch_0x800ed6f4
     fcmpo   cr0, f2, f0
     cror    2, 1, 2
     bne-    branch_0x800ed6ec
-    lfs     f1, -0x5a54(rtoc)
+    lfs     f1, -0x5a54(r2)
     b       branch_0x800ed768
 
 branch_0x800ed6ec:
-    lfs     f1, -0x5a50(rtoc)
+    lfs     f1, -0x5a50(r2)
     b       branch_0x800ed768
 
 branch_0x800ed6f4:
@@ -752,9 +752,9 @@ branch_0x800ed6f4:
     bne-    branch_0x800ed730
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x5a38(rtoc)
+    lfd     f2, -0x5a38(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x5a4c(rtoc)
+    lfs     f0, -0x5a4c(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
     stw     r0, 0x70(sp)
@@ -767,33 +767,33 @@ branch_0x800ed730:
     fneg    f1, f1
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f3, -0x5a38(rtoc)
+    lfd     f3, -0x5a38(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x5a4c(rtoc)
+    lfs     f1, -0x5a4c(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x5a48(rtoc)
+    lfs     f0, -0x5a48(r2)
     stw     r0, 0x70(sp)
     lfd     f2, 0x70(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
     fsubs   f1, f0, f1
 branch_0x800ed768:
-    lfs     f0, -0x5a40(rtoc)
+    lfs     f0, -0x5a40(r2)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
-    lfs     f0, -0x5a58(rtoc)
+    lfs     f0, -0x5a58(r2)
     mr      r31, r3
     fcmpu   cr0, f0, f30
     bne-    branch_0x800ed7a0
     fcmpo   cr0, f31, f0
     cror    2, 1, 2
     bne-    branch_0x800ed798
-    lfs     f1, -0x5a54(rtoc)
+    lfs     f1, -0x5a54(r2)
     b       branch_0x800ed820
 
 branch_0x800ed798:
-    lfs     f1, -0x5a50(rtoc)
+    lfs     f1, -0x5a50(r2)
     b       branch_0x800ed820
 
 branch_0x800ed7a0:
@@ -804,9 +804,9 @@ branch_0x800ed7a0:
     fmr     f2, f31
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f2, -0x5a38(rtoc)
+    lfd     f2, -0x5a38(r2)
     xoris   r0, r0, 0x8000
-    lfs     f0, -0x5a4c(rtoc)
+    lfs     f0, -0x5a4c(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
     stw     r0, 0x70(sp)
@@ -820,26 +820,26 @@ branch_0x800ed7e4:
     fmr     f2, f31
     bl      matan__Fff
     extsh   r0, r3
-    lfd     f3, -0x5a38(rtoc)
+    lfd     f3, -0x5a38(r2)
     xoris   r0, r0, 0x8000
-    lfs     f1, -0x5a4c(rtoc)
+    lfs     f1, -0x5a4c(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
-    lfs     f0, -0x5a48(rtoc)
+    lfs     f0, -0x5a48(r2)
     stw     r0, 0x70(sp)
     lfd     f2, 0x70(sp)
     fsubs   f2, f2, f3
     fmuls   f1, f1, f2
     fsubs   f1, f0, f1
 branch_0x800ed820:
-    lfs     f0, -0x5a40(rtoc)
+    lfs     f0, -0x5a40(r2)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
     extsh   r31, r31
     extsh   r0, r3
     cmpw    r31, r0
     bne-    branch_0x800ed844
-    lfs     f1, -0x5a58(rtoc)
+    lfs     f1, -0x5a58(r2)
     b       branch_0x800ed8d8
 
 branch_0x800ed844:
@@ -853,19 +853,19 @@ branch_0x800ed858:
     neg     r3, r3
 branch_0x800ed85c:
     xoris   r0, r3, 0x8000
-    lfd     f2, -0x5a38(rtoc)
+    lfd     f2, -0x5a38(r2)
     stw     r0, 0x74(sp)
     lis     r0, 0x4330
-    lfs     f3, -0x5a24(rtoc)
+    lfs     f3, -0x5a24(r2)
     stw     r0, 0x70(sp)
-    lfs     f0, -0x5a20(rtoc)
+    lfs     f0, -0x5a20(r2)
     lfd     f1, 0x70(sp)
     fsubs   f1, f1, f2
     fmuls   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 1, 2
     bne-    branch_0x800ed898
-    lfs     f1, -0x5a58(rtoc)
+    lfs     f1, -0x5a58(r2)
     b       branch_0x800ed8d8
 
 branch_0x800ed898:
@@ -874,13 +874,13 @@ branch_0x800ed898:
     bge-    branch_0x800ed8a8
     fneg    f29, f29
 branch_0x800ed8a8:
-    lfs     f0, -0x5a40(rtoc)
+    lfs     f0, -0x5a40(r2)
     fmuls   f1, f0, f28
     bl      CLBRoundf_s___Ff
     subf    r3, r3, r31
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r3, r3, 16
-    lwz     r4, -0x5ea4(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     sraw    r0, r3, r0
     slwi    r0, r0, 2
     lfsx    f0, r4, r0
@@ -898,8 +898,8 @@ branch_0x800ed8d8:
     blr
 
 
-.globl _32___dt__14TWaterHitActorFv
-_32___dt__14TWaterHitActorFv: # 0x800ed8fc
-    subi    r3, r3, 0x20
+.globl unk_800ed8fc
+unk_800ed8fc: # 0x800ed8fc
+    addi    r3, r3, -0x20
     b       __dt__14TWaterHitActorFv
 

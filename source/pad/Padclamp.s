@@ -110,7 +110,7 @@ branch_0x803508a4:
     lbz     r0, 0xa(r30)
     extsb.  r0, r0
     bne-    branch_0x80350960
-    subi    r29, r13, 0x7330
+    addi    r29, r13, R13Off_m0x7330
     lbz     r5, 0x3(r29)
     addi    r3, r30, 0x2
     lbz     r6, 0x4(r29)
@@ -124,7 +124,7 @@ branch_0x803508a4:
     lbz     r7, 0x5(r29)
     bl      ClampStick
     lbz     r3, 0x6(r30)
-    lbz     r0, -0x7330(r13)
+    lbz     r0, R13Off_m0x7330(r13)
     cmplw   r3, r0
     bgt-    branch_0x80350900
     li      r0, 0x0
@@ -137,13 +137,13 @@ branch_0x80350900:
     bge-    branch_0x80350910
     stb     r0, 0x6(r30)
 branch_0x80350910:
-    lbz     r3, -0x7330(r13)
+    lbz     r3, R13Off_m0x7330(r13)
     lbz     r0, 0x6(r30)
     subf    r0, r3, r0
     stb     r0, 0x6(r30)
 branch_0x80350920:
     lbz     r4, 0x7(r30)
-    lbz     r0, -0x7330(r13)
+    lbz     r0, R13Off_m0x7330(r13)
     cmplw   r4, r0
     bgt-    branch_0x8035093c
     li      r0, 0x0
@@ -151,13 +151,13 @@ branch_0x80350920:
     b       branch_0x80350960
 
 branch_0x8035093c:
-    subi    r3, r13, 0x7330
+    addi    r3, r13, R13Off_m0x7330
     lbz     r0, 0x1(r3)
     cmplw   r0, r4
     bge-    branch_0x80350950
     stb     r0, 0x7(r30)
 branch_0x80350950:
-    lbz     r3, -0x7330(r13)
+    lbz     r3, R13Off_m0x7330(r13)
     lbz     r0, 0x7(r30)
     subf    r0, r3, r0
     stb     r0, 0x7(r30)

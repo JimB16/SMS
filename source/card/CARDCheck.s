@@ -231,20 +231,20 @@ branch_0x803573a0:
     lwz     r31, 0xc(r29)
     lwz     r28, 0x10(r29)
     bl      __OSLockSramEx
-    lis     r4, 0x8040
-    addi    r0, r4, 0x3460
-    lis     r4, 0x7878
+    lis     r4, __CARDBlock@h
+    addi    r0, r4, __CARDBlock@l
+    lis     r4, unk_78787879@h
     subf    r0, r0, r27
-    addi    r4, r4, 0x7879
+    addi    r4, r4, unk_78787879@l
     mulhw   r0, r4, r0
     srawi   r0, r0, 7
     srwi    r4, r0, 31
     add     r0, r0, r4
     mulli   r0, r0, 0xc
-    lis     r4, 0x41c6
+    lis     r4, unk_41c64e6d@h
     addi    r26, r29, 0x0
     add     r29, r3, r0
-    addi    r30, r4, 0x4e6d
+    addi    r30, r4, unk_41c64e6d@l
     li      r27, 0x0
 branch_0x803573e8:
     mullw   r5, r31, r30
@@ -762,7 +762,7 @@ branch_0x80357a98:
     addis   r3, r4, 0x1
     addi    r4, r4, 0x4000
     stw     r0, 0x20(sp)
-    subi    r0, r3, 0x8000
+    addi    r0, r3, -0x8000
     stw     r4, 0x2c(sp)
     stw     r0, 0x24(sp)
     beq-    branch_0x80357ad0
@@ -1115,9 +1115,9 @@ branch_0x80357f74:
 .globl CARDCheck
 CARDCheck: # 0x80357f88
     mflr    r0
-    lis     r4, 0x8035
+    lis     r4, __CARDSyncCallback@h
     stw     r0, 0x4(sp)
-    addi    r5, r4, 0x4330
+    addi    r5, r4, __CARDSyncCallback@l
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0

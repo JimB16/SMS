@@ -9,8 +9,8 @@ __dt__8SDLModelFv: # 0x8023d308
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8023d350
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4158
+    lis     r3, __vvt__8SDLModel@ha
+    addi    r0, r3, __vvt__8SDLModel@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -53,7 +53,7 @@ viewCalcSimple__8SDLModelFv: # 0x8023d36c
     lwz     r3, 0x64(r30)
     slwi    r0, r0, 2
     stwx    r4, r3, r0
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     addi    r28, r3, 0x1ec
     b       branch_0x8023d3fc
 
@@ -118,8 +118,8 @@ branch_0x8023d484:
 
 branch_0x8023d49c:
     lwz     r0, 0xa8(r27)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     ori     r0, r0, 0x1
     stw     r0, 0xa8(r27)
     li      r0, 0x0
@@ -368,10 +368,10 @@ branch_0x8023d7cc:
     mulli   r3, r21, 0x34
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x802f
-    lis     r5, 0x802f
-    subi    r4, r4, 0x2328
-    subi    r5, r5, 0x2268
+    lis     r4, __ct__14J3DShapePacketFv@ha
+    lis     r5, __dt__14J3DShapePacketFv@ha
+    addi    r4, r4, __ct__14J3DShapePacketFv@l
+    addi    r5, r5, __dt__14J3DShapePacketFv@l
     addi    r7, r21, 0x0
     li      r6, 0x34
     bl      __construct_new_array
@@ -405,10 +405,10 @@ branch_0x8023d854:
     mulli   r3, r24, 0x48
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8024
-    lis     r5, 0x8024
-    subi    r4, r4, 0x2204
-    subi    r5, r5, 0x22fc
+    lis     r4, __ct__12SDLMatPacketFv@ha
+    lis     r5, __dt__12SDLMatPacketFv@ha
+    addi    r4, r4, __ct__12SDLMatPacketFv@l
+    addi    r5, r5, __dt__12SDLMatPacketFv@l
     addi    r7, r24, 0x0
     li      r6, 0x48
     bl      __construct_new_array
@@ -478,10 +478,10 @@ branch_0x8023d980:
     mulli   r3, r24, 0x48
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8024
-    lis     r5, 0x8024
-    subi    r4, r4, 0x2204
-    subi    r5, r5, 0x22fc
+    lis     r4, __ct__12SDLMatPacketFv@ha
+    lis     r5, __dt__12SDLMatPacketFv@ha
+    addi    r4, r4, __ct__12SDLMatPacketFv@l
+    addi    r5, r5, __dt__12SDLMatPacketFv@l
     addi    r7, r24, 0x0
     li      r6, 0x48
     bl      __construct_new_array
@@ -742,8 +742,8 @@ __dt__12SDLMatPacketFv: # 0x8023dd04
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8023dd4c
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4138
+    lis     r3, __vvt__12SDLMatPacket@ha
+    addi    r0, r3, __vvt__12SDLMatPacket@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -778,8 +778,8 @@ __ct__8SDLModelFP12SDLModelDataUlUl: # 0x8023dd68
     lwz     r3, 0x8(sp)
     bl      __ct__8J3DModelFv
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4158
+    lis     r3, __vvt__8SDLModel@ha
+    addi    r0, r3, __vvt__8SDLModel@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
     addi    r3, r31, 0x0
@@ -811,8 +811,8 @@ __ct__12SDLMatPacketFv: # 0x8023ddfc
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__12J3DMatPacketFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4138
+    lis     r3, __vvt__12SDLMatPacket@ha
+    addi    r0, r3, __vvt__12SDLMatPacket@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -983,7 +983,7 @@ __ct__12SDLModelDataFP12J3DModelData: # 0x8023e034
     stw     r0, 0x10(r31)
     stw     r0, 0x14(r31)
     stw     r5, 0x18(r31)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      registerSDLModelData__10TConductorFP12SDLModelData
     lwz     r0, 0x24(sp)
     mr      r3, r31
@@ -1277,8 +1277,8 @@ branch_0x8023e460:
 branch_0x8023e468:
     cmplwi  r6, 0x0
     beq-    branch_0x8023e550
-    lis     r4, 0x8040
-    addi    r4, r4, 0x45dc
+    lis     r4, j3dSys@h
+    addi    r4, r4, j3dSys@l
     stw     r6, 0x38(r4)
     li      r28, 0x0
     lwz     r3, 0x0(r3)
@@ -1356,12 +1356,12 @@ entry__12J3DMatPacketFP13J3DDrawBuffer: # 0x8023e564
     mflr    r0
     addi    r7, r3, 0x0
     stw     r0, 0x4(sp)
-    lis     r3, 0x803e
+    lis     r3, sortFuncTable__13J3DDrawBuffer@h
     stwu    sp, -0x20(sp)
     lwz     r0, 0xc(r4)
     addi    r12, sp, 0x14
     mulli   r5, r0, 0xc
-    addi    r0, r3, 0x1720
+    addi    r0, r3, sortFuncTable__13J3DDrawBuffer@l
     add     r6, r0, r5
     lwz     r5, 0x0(r6)
     mr      r3, r4

@@ -9,7 +9,7 @@ checkMonoSound__Q214MSoundSESystem8MSoundSEFUlP8JAIActor: # 0x80017ddc
     stw     r30, 0x30(sp)
     addi    r30, r3, 0x0
     addi    r4, r30, 0x0
-    lwz     r5, -0x5d90(r13)
+    lwz     r5, R13Off_m0x5d90(r13)
     lwz     r3, 0x0(r5)
     addi    r5, sp, 0x2c
     bl      getInfoPointer__7JAIDataFUlPPv
@@ -17,10 +17,10 @@ checkMonoSound__Q214MSoundSESystem8MSoundSEFUlP8JAIActor: # 0x80017ddc
     lwz     r0, 0x0(r3)
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x80017e94
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     mr      r4, r30
     bl      changeIDToCategory__8JAIBasicFUl
-    lwz     r6, -0x5d90(r13)
+    lwz     r6, R13Off_m0x5d90(r13)
     clrlwi  r0, r3, 24
     mulli   r0, r0, 0xc
     lwz     r3, 0x0(r6)
@@ -76,7 +76,7 @@ startSoundNpcActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc: # 0x8
     stw     r28, 0x78(sp)
     mr      r28, r3
     stw     r4, 0x64(sp)
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     stw     r4, 0x68(sp)
     stw     r4, 0x6c(sp)
     addi    r4, r28, 0x0
@@ -88,10 +88,10 @@ startSoundNpcActor__Q214MSoundSESystem8MSoundSEFUlPC3VecUlPP8JAISoundUlUc: # 0x8
     lwz     r0, 0x0(r3)
     rlwinm. r0, r0, 0, 17, 17
     beq-    branch_0x80017f88
-    lwz     r3, -0x5d90(r13)
+    lwz     r3, R13Off_m0x5d90(r13)
     mr      r4, r28
     bl      changeIDToCategory__8JAIBasicFUl
-    lwz     r7, -0x5d90(r13)
+    lwz     r7, R13Off_m0x5d90(r13)
     clrlwi  r0, r3, 24
     mulli   r0, r0, 0xc
     lwz     r6, 0x64(sp)
@@ -146,18 +146,17 @@ getNewIDBySurfaceCode__Q214MSoundSESystem8MSoundSEFUlP8JAIActor: # 0x80017fc0
     rlwinm. r5, r0, 0, 20, 23
     beqlr-    
 
-    subi    r0, r3, 0x1820
+    addi    r0, r3, -0x1820
     cmplwi  r0, 0x6
     bgtlr-    
 
-    lis     r4, 0x803b
-    subi    r4, r4, 0x39e4
+    lis     r4, unk_803ac61c@ha
+    addi    r4, r4, unk_803ac61c@l
     slwi    r0, r0, 2
     lwzx    r0, r4, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80017FF0:		# jumptable 80017FEC case 0
+    bctr       
+branch_0x80017ff0:
     cmpwi   r5, 0x400
     beq-    branch_0x80018058
     bge-    branch_0x80018020
@@ -201,55 +200,53 @@ branch_0x80018058:
     li      r3, 0x1930
     blr
 
-branch_0x80018060:		# jumptable 80017FEC case 4
-cmpwi	  r5, 0x400
-beq	  branch_0x800180C8
-bge	  branch_0x80018090
-cmpwi	  r5, 0x200
-beq	  branch_0x800180B8
-bge	  branch_0x80018084
-cmpwi	  r5, 0x100
-beq	  branch_0x800180B0
-blr
+branch_0x80018060:
+    cmpwi   r5, 0x400
+    beq-    branch_0x800180c8
+    bge-    branch_0x80018090
+    cmpwi   r5, 0x200
+    beq-    branch_0x800180b8
+    bge-    branch_0x80018084
+    cmpwi   r5, 0x100
+    beq-    branch_0x800180b0
+    blr
 
 branch_0x80018084:
-cmpwi	  r5, 0x300
-beq	  branch_0x800180C0
-blr
+    cmpwi   r5, 0x300
+    beq-    branch_0x800180c0
+    blr
 
 branch_0x80018090:
-cmpwi	  r5, 0x600
-beq	  branch_0x800180C8
-bge	  branch_0x800180A8
-cmpwi	  r5, 0x500
-beq	  branch_0x800180C0
-blr
+    cmpwi   r5, 0x600
+    beq-    branch_0x800180c8
+    bge-    branch_0x800180a8
+    cmpwi   r5, 0x500
+    beq-    branch_0x800180c0
+    blr
 
-branch_0x800180A8:
-cmpwi	  r5, 0x700
-bnelr
+branch_0x800180a8:
+    cmpwi   r5, 0x700
+    bnelr-    
 
-branch_0x800180B0:
-li	  r3, 0x1926
-blr
+branch_0x800180b0:
+    li      r3, 0x1926
+    blr
 
-branch_0x800180B8:
-li	  r3, 0x192A
-blr
+branch_0x800180b8:
+    li      r3, 0x192a
+    blr
 
-branch_0x800180C0:
-li	  r3, 0x192E
-blr
+branch_0x800180c0:
+    li      r3, 0x192e
+    blr
 
-branch_0x800180C8:
-li	  r3, 0x1932
-blr
+branch_0x800180c8:
+    li      r3, 0x1932
+    blr
 
-branch_0x800180D0:		# jumptable 80017FEC cases 2,6
-li	  r3, -1
-
-locret_800180D4:	# jumptable 80017FEC cases 1,3,5
-blr
+branch_0x800180d0:
+    li      r3, -0x1
+    blr
 
 
 .globl startSoundActorInner__Q214MSoundSESystem8MSoundSEFUlPP8JAISoundP8JAIActorUlUc
@@ -268,7 +265,7 @@ startSoundActorInner__Q214MSoundSESystem8MSoundSEFUlPP8JAISoundP8JAIActorUlUc: #
     cmplwi  r0, 0xffff
     addi    r31, r3, 0x0
     beq-    branch_0x800183b4
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     lbz     r3, 0xd1(r3)
     cmpwi   r3, 0x8
     beq-    branch_0x800181c0
@@ -461,22 +458,19 @@ branch_0x80018324:
     b       branch_0x80018368
 
 branch_0x80018338:
-    subi    r0, r26, 0x1820
+    addi    r0, r26, -0x1820
     cmplwi  r0, 0x6
     addi    r4, r26, 0x0
     bgt-    branch_0x80018368
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3974
+    lis     r3, unk_803ac68c@ha
+    addi    r3, r3, unk_803ac68c@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x80018360:		# jumptable 8001835C cases 0,2,4,6
+    bctr       
+branch_0x80018360:
     clrlslwi  r0, r5, 24, 3
     add     r4, r4, r0
-
-def_8001835C:		# jumptable 8001835C default case
 branch_0x80018368:
     addi    r26, r4, 0x0
     addis   r0, r26, 0x1
@@ -488,21 +482,19 @@ branch_0x80018368:
 branch_0x80018380:
     cmplwi  r25, 0x0
     beq-    branch_0x800183b4
-    subi    r0, r4, 0x1820
+    addi    r0, r4, -0x1820
     cmplwi  r0, 0x14
     bgt-    branch_0x800183b4
-    lis     r3, 0x803b
-    subi    r3, r3, 0x39c8
+    lis     r3, unk_803ac638@ha
+    addi    r3, r3, unk_803ac638@l
     slwi    r0, r0, 2
     lwzx    r0, r3, r0
     mtctr   r0
-    bctr			# switch jump
-
-branch_0x800183AC:		# jumptable 800183A8 cases 0,4,8,12,16,20
+    bctr       
+branch_0x800183ac:
     li      r3, 0x0
     b       branch_0x80018484
 
-def_800183A8:		# jumptable 800183A8 default case
 branch_0x800183b4:
     clrrwi. r0, r31, 31
     beq-    branch_0x800183c8
@@ -510,7 +502,7 @@ branch_0x800183b4:
     bl      getRandomID__Q214MSoundSESystem8MSoundSEFUl
     mr      r26, r3
 branch_0x800183c8:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     lbz     r0, 0xd1(r3)
     cmplwi  r0, 0x8
     bne-    branch_0x800183ec
@@ -518,14 +510,14 @@ branch_0x800183c8:
     blt-    branch_0x800183ec
     cmplwi  r26, 0x187f
     bgt-    branch_0x800183ec
-    subi    r26, r26, 0x8
+    addi    r26, r26, -0x8
 branch_0x800183ec:
     addis   r0, r28, 0x1
     cmplwi  r0, 0xffff
     bne-    branch_0x80018440
     cmplwi  r27, 0x0
     beq-    branch_0x80018424
-    lwz     r3, -0x7160(r13)
+    lwz     r3, R13Off_m0x7160(r13)
     addi    r4, r26, 0x0
     addi    r5, r27, 0x0
     addi    r7, r29, 0x0
@@ -536,7 +528,7 @@ branch_0x800183ec:
     b       branch_0x80018484
 
 branch_0x80018424:
-    lwz     r3, -0x7160(r13)
+    lwz     r3, R13Off_m0x7160(r13)
     addi    r4, r26, 0x0
     addi    r6, r29, 0x0
     li      r5, 0x0
@@ -547,7 +539,7 @@ branch_0x80018424:
 branch_0x80018440:
     cmplwi  r27, 0x0
     beq-    branch_0x8001846c
-    lwz     r3, -0x7160(r13)
+    lwz     r3, R13Off_m0x7160(r13)
     addi    r4, r26, 0x0
     addi    r5, r27, 0x0
     addi    r6, r28, 0x0
@@ -558,7 +550,7 @@ branch_0x80018440:
     b       branch_0x80018484
 
 branch_0x8001846c:
-    lwz     r3, -0x7160(r13)
+    lwz     r3, R13Off_m0x7160(r13)
     addi    r4, r26, 0x0
     addi    r5, r28, 0x0
     addi    r6, r29, 0x0
@@ -589,11 +581,11 @@ checkSoundArea__Q214MSoundSESystem8MSoundSEFUlRC3Vec: # 0x80018498
     b       branch_0x800185d8
 
 branch_0x800184cc:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     addi    r4, sp, 0x44
-    lfs     f0, -0x7c88(rtoc)
+    lfs     f0, -0x7c88(r2)
     lwz     r6, 0xb0(r3)
-    lwz     r3, -0x70f0(r13)
+    lwz     r3, R13Off_m0x70f0(r13)
     lwz     r5, 0x0(r6)
     lwz     r0, 0x4(r6)
     stw     r5, 0x28(sp)
@@ -614,9 +606,9 @@ branch_0x800184cc:
     mr      r31, r3
     lwz     r0, 0x4(r30)
     addi    r4, sp, 0x38
-    lfs     f0, -0x7c88(rtoc)
+    lfs     f0, -0x7c88(r2)
     stw     r5, 0x18(sp)
-    lwz     r3, -0x70f0(r13)
+    lwz     r3, R13Off_m0x70f0(r13)
     stw     r0, 0x1c(sp)
     lwz     r0, 0x8(r30)
     stw     r0, 0x20(sp)
@@ -722,6 +714,8 @@ branch_0x8001867c:
     cmpwi   r26, 0x3862
     beq-    branch_0x800186b4
     b       branch_0x80018704
+
+branch_0x80018688:
     b       branch_0x80018848
 
 branch_0x8001868c:
@@ -793,13 +787,13 @@ branch_0x80018704:
 
 branch_0x80018764:
     lwz     r4, 0x14(r31)
-    subi    r3, r13, 0x7154
+    addi    r3, r13, R13Off_m0x7154
     lfs     f1, 0x4(r3)
     li      r5, 0x0
     cmplwi  r4, 0x0
     ble-    branch_0x800187e4
     cmplwi  r4, 0x8
-    subi    r3, r4, 0x8
+    addi    r3, r4, -0x8
     ble-    branch_0x80018840
     addi    r0, r3, 0x7
     lfs     f0, -0x7154(r13)
@@ -829,7 +823,7 @@ branch_0x800187dc:
     fmuls   f1, f1, f0
     bdnz+      branch_0x800187dc
 branch_0x800187e4:
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     addi    r3, r31, 0x0
     li      r4, 0x0
     li      r5, 0x0
@@ -837,12 +831,12 @@ branch_0x800187e4:
     b       branch_0x80018828
 
 branch_0x800187fc:
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     fmr     f1, f31
-    lfs     f3, -0x7c80(rtoc)
+    lfs     f3, -0x7c80(r2)
     li      r3, 0x1
     fmr     f4, f2
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     bl      linearTransform__7JALCalcFfffffb
     addi    r3, r31, 0x0
     li      r4, 0x0
@@ -886,7 +880,7 @@ startSoundSystemSE__Q214MSoundSESystem8MSoundSEFUlUlPP8JAISoundUl: # 0x80018864
     b       branch_0x800188e8
 
 branch_0x80018894:
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
     cmpwi   r30, 0x3
     beq-    branch_0x800188d4
     bge-    branch_0x800188b4
@@ -935,7 +929,7 @@ branch_0x80018908:
     b       branch_0x800189b0
 
 branch_0x80018914:
-    lfs     f1, -0x7c78(rtoc)
+    lfs     f1, -0x7c78(r2)
     cmpwi   r30, 0x3
     fmr     f31, f1
     beq-    branch_0x80018970
@@ -954,30 +948,30 @@ branch_0x80018940:
     b       branch_0x8001897c
 
 branch_0x80018950:
-    lfs     f1, -0x7c74(rtoc)
+    lfs     f1, -0x7c74(r2)
     fmr     f31, f1
     b       branch_0x8001898c
 
 branch_0x8001895c:
-    lfs     f31, -0x7c84(rtoc)
+    lfs     f31, -0x7c84(r2)
     b       branch_0x8001898c
 
 branch_0x80018964:
-    lfs     f1, -0x7c70(rtoc)
-    lfs     f31, -0x7c74(rtoc)
+    lfs     f1, -0x7c70(r2)
+    lfs     f31, -0x7c74(r2)
     b       branch_0x8001898c
 
 branch_0x80018970:
-    lfs     f1, -0x7c74(rtoc)
-    lfs     f31, -0x7c70(rtoc)
+    lfs     f1, -0x7c74(r2)
+    lfs     f31, -0x7c70(r2)
     b       branch_0x8001898c
 
 branch_0x8001897c:
-    lfs     f31, -0x7c7c(rtoc)
+    lfs     f31, -0x7c7c(r2)
     b       branch_0x8001898c
 
 branch_0x80018984:
-    lfs     f1, -0x7c70(rtoc)
+    lfs     f1, -0x7c70(r2)
     fmr     f31, f1
 branch_0x8001898c:
     addi    r3, r31, 0x0
@@ -1069,15 +1063,15 @@ branch_0x80018aa0:
 
 branch_0x80018ab0:
     cmplwi  r31, 0x0
-    lfs     f31, -0x7c84(rtoc)
+    lfs     f31, -0x7c84(r2)
     li      r8, 0x0
     li      r3, 0x0
     ble-    branch_0x80018c00
     cmplwi  r31, 0x8
-    subi    r4, r31, 0x8
+    addi    r4, r31, -0x8
     ble-    branch_0x80018bc0
     addi    r0, r4, 0x7
-    lfd     f2, -0x7c68(rtoc)
+    lfd     f2, -0x7c68(r2)
     srwi    r0, r0, 3
     cmplwi  r4, 0x0
     mtctr   r0
@@ -1139,7 +1133,7 @@ branch_0x80018aec:
     bdnz+      branch_0x80018aec
 branch_0x80018bc0:
     subf    r0, r8, r31
-    lfd     f1, -0x7c68(rtoc)
+    lfd     f1, -0x7c68(r2)
     cmplw   r8, r31
     mtctr   r0
     addi    r5, sp, 0x18
@@ -1160,8 +1154,8 @@ branch_0x80018c00:
     cmplwi  r31, 0x0
     fmuls   f2, f31, f1
     mtctr   r31
-    lfs     f3, -0x7c84(rtoc)
-    lfd     f1, -0x7c68(rtoc)
+    lfs     f3, -0x7c84(r2)
+    lfd     f1, -0x7c68(r2)
     addi    r5, sp, 0x18
     li      r6, 0x0
     li      r7, 0x0
@@ -1198,18 +1192,18 @@ branch_0x80018c68:
 .globl construct__Q214MSoundSESystem8MSoundSEFv
 construct__Q214MSoundSESystem8MSoundSEFv: # 0x80018c80
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, unk_80373f08@h
     stw     r0, 0x4(sp)
-    lis     r3, 0x803f
+    lis     r3, unk_803eaab0@ha
     stwu    sp, -0xa0(sp)
     stw     r31, 0x9c(sp)
-    addi    r31, r4, 0x3f08
+    addi    r31, r4, unk_80373f08@l
     stw     r30, 0x98(sp)
-    subi    r30, r3, 0x5550
+    addi    r30, r3, unk_803eaab0@l
     li      r3, 0x1
     stw     r29, 0x94(sp)
     bl      __nw__FUl
-    stw     r3, -0x7158(r13)
+    stw     r3, R13Off_m0x7158(r13)
     li      r3, 0x4c
     bl      __nw__FUl
     mr.     r29, r3
@@ -1416,393 +1410,393 @@ branch_0x80018fa8:
     addi    r4, r29, 0x0
     addi    r3, r30, 0x24
     bl      append__10JSUPtrListFP10JSUPtrLink
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x20
-    lfs     f2, -0x7c60(rtoc)
+    lfs     f2, -0x7c60(r2)
     li      r3, 0x2
     fmr     f6, f1
-    lfs     f3, -0x7c5c(rtoc)
+    lfs     f3, -0x7c5c(r2)
     li      r5, 0x2052
-    lfs     f4, -0x7c78(rtoc)
+    lfs     f4, -0x7c78(r2)
     li      r6, 0x0
-    lfs     f5, -0x7c58(rtoc)
+    lfs     f5, -0x7c58(r2)
     li      r7, 0x0
-    lfs     f7, -0x7c54(rtoc)
+    lfs     f7, -0x7c54(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     addi    r4, r31, 0x3c
-    lfs     f1, -0x7c50(rtoc)
+    lfs     f1, -0x7c50(r2)
     li      r3, 0x2
     fmr     f6, f2
-    lfs     f3, -0x7c5c(rtoc)
+    lfs     f3, -0x7c5c(r2)
     li      r5, 0x6800
-    lfs     f4, -0x7c4c(rtoc)
+    lfs     f4, -0x7c4c(r2)
     li      r6, 0x0
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r7, 0x0
-    lfs     f7, -0x7c48(rtoc)
+    lfs     f7, -0x7c48(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x58
-    lfs     f2, -0x7c44(rtoc)
+    lfs     f2, -0x7c44(r2)
     li      r3, 0x2
     fmr     f6, f1
-    lfs     f3, -0x7c40(rtoc)
+    lfs     f3, -0x7c40(r2)
     li      r5, 0x3031
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f4, -0x7c3c(r2)
     li      r6, 0x1
-    lfs     f5, -0x7c38(rtoc)
+    lfs     f5, -0x7c38(r2)
     li      r7, 0x0
-    lfs     f7, -0x7c34(rtoc)
+    lfs     f7, -0x7c34(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x6c
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r3, 0x2
     fmr     f6, f1
     fmr     f7, f5
-    lfs     f2, -0x7c30(rtoc)
-    lfs     f3, -0x7c5c(rtoc)
+    lfs     f2, -0x7c30(r2)
+    lfs     f3, -0x7c5c(r2)
     li      r5, 0x3030
-    lfs     f4, -0x7c78(rtoc)
+    lfs     f4, -0x7c78(r2)
     li      r6, 0x2
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x84
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r3, 0x1
     fmr     f4, f1
     fmr     f6, f1
-    lfs     f2, -0x7c44(rtoc)
+    lfs     f2, -0x7c44(r2)
     fmr     f7, f5
-    lfs     f3, -0x7c40(rtoc)
+    lfs     f3, -0x7c40(r2)
     li      r5, 0x3031
     li      r6, 0x0
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x98
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r3, 0x1
     fmr     f6, f1
     fmr     f7, f5
-    lfs     f2, -0x7c30(rtoc)
-    lfs     f3, -0x7c5c(rtoc)
+    lfs     f2, -0x7c30(r2)
+    lfs     f3, -0x7c5c(r2)
     li      r5, 0x3023
-    lfs     f4, -0x7c78(rtoc)
+    lfs     f4, -0x7c78(r2)
     li      r6, 0x2
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c2c(rtoc)
+    lfs     f1, -0x7c2c(r2)
     addi    r4, r31, 0xb0
-    lfs     f2, -0x7c28(rtoc)
+    lfs     f2, -0x7c28(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c24(rtoc)
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f3, -0x7c24(r2)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x3045
-    lfs     f5, -0x7c20(rtoc)
+    lfs     f5, -0x7c20(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7c80(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7c80(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c2c(rtoc)
+    lfs     f1, -0x7c2c(r2)
     addi    r4, r31, 0xb0
-    lfs     f2, -0x7c28(rtoc)
+    lfs     f2, -0x7c28(r2)
     li      r3, 0x1
-    lfs     f3, -0x7c24(rtoc)
-    lfs     f4, -0x7c78(rtoc)
+    lfs     f3, -0x7c24(r2)
+    lfs     f4, -0x7c78(r2)
     li      r5, 0x3045
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x2
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7c80(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7c80(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0xbc
-    lfs     f2, -0x7c1c(rtoc)
+    lfs     f2, -0x7c1c(r2)
     li      r3, 0x2
     fmr     f6, f1
-    lfs     f3, -0x7c40(rtoc)
+    lfs     f3, -0x7c40(r2)
     li      r5, 0x3044
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f4, -0x7c3c(r2)
     li      r6, 0x2
-    lfs     f5, -0x7c38(rtoc)
+    lfs     f5, -0x7c38(r2)
     li      r7, 0x0
-    lfs     f7, -0x7c80(rtoc)
+    lfs     f7, -0x7c80(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0xbc
-    lfs     f2, -0x7c1c(rtoc)
+    lfs     f2, -0x7c1c(r2)
     li      r3, 0x1
     fmr     f6, f1
-    lfs     f3, -0x7c40(rtoc)
+    lfs     f3, -0x7c40(r2)
     li      r5, 0x3044
-    lfs     f4, -0x7c18(rtoc)
+    lfs     f4, -0x7c18(r2)
     li      r6, 0x2
-    lfs     f5, -0x7c38(rtoc)
+    lfs     f5, -0x7c38(r2)
     li      r7, 0x0
-    lfs     f7, -0x7c80(rtoc)
+    lfs     f7, -0x7c80(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c14(rtoc)
+    lfs     f1, -0x7c14(r2)
     addi    r4, r31, 0xcc
-    lfs     f2, -0x7c74(rtoc)
+    lfs     f2, -0x7c74(r2)
     li      r3, 0x1
-    lfs     f3, -0x7c5c(rtoc)
-    lfs     f4, -0x7c78(rtoc)
+    lfs     f3, -0x7c5c(r2)
+    lfs     f4, -0x7c78(r2)
     li      r5, 0x3042
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x2
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7c80(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7c80(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c10(rtoc)
+    lfs     f1, -0x7c10(r2)
     addi    r4, r31, 0xe4
-    lfs     f2, -0x7c0c(rtoc)
+    lfs     f2, -0x7c0c(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c5c(rtoc)
-    lfs     f4, -0x7c08(rtoc)
+    lfs     f3, -0x7c5c(r2)
+    lfs     f4, -0x7c08(r2)
     li      r5, 0x3040
-    lfs     f5, -0x7c04(rtoc)
+    lfs     f5, -0x7c04(r2)
     li      r6, 0x2
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7c80(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7c80(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0xe4
-    lfs     f2, -0x7c0c(rtoc)
+    lfs     f2, -0x7c0c(r2)
     li      r3, 0x1
     fmr     f6, f1
-    lfs     f3, -0x7c5c(rtoc)
+    lfs     f3, -0x7c5c(r2)
     li      r5, 0x3040
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f4, -0x7c3c(r2)
     li      r6, 0x2
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r7, 0x0
-    lfs     f7, -0x7c80(rtoc)
+    lfs     f7, -0x7c80(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c7c(rtoc)
+    lfs     f2, -0x7c7c(r2)
     li      r3, 0x2
-    lfs     f1, -0x7c14(rtoc)
-    subi    r4, rtoc, 0x7c00
+    lfs     f1, -0x7c14(r2)
+    addi    r4, r2, R2Off_m0x7c00
     fmr     f5, f2
-    lfs     f3, -0x7c5c(rtoc)
+    lfs     f3, -0x7c5c(r2)
     li      r5, 0x0
-    lfs     f4, -0x7bf8(rtoc)
+    lfs     f4, -0x7bf8(r2)
     li      r6, 0x2
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     li      r7, 0x1
-    lfs     f7, -0x7c34(rtoc)
+    lfs     f7, -0x7c34(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c14(rtoc)
+    lfs     f1, -0x7c14(r2)
     addi    r4, r31, 0xf8
-    lfs     f2, -0x7bf4(rtoc)
+    lfs     f2, -0x7bf4(r2)
     li      r3, 0x1
-    lfs     f3, -0x7c1c(rtoc)
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f3, -0x7c1c(r2)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x195a
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bf0(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bf0(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     addi    r4, r31, 0x10c
-    lfs     f1, -0x7bec(rtoc)
+    lfs     f1, -0x7bec(r2)
     li      r3, 0x2
     fmr     f4, f3
-    lfs     f2, -0x7be8(rtoc)
+    lfs     f2, -0x7be8(r2)
     li      r5, 0x3866
-    lfs     f5, -0x7be4(rtoc)
+    lfs     f5, -0x7be4(r2)
     li      r6, 0x2
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     li      r7, 0x0
-    lfs     f7, -0x7be0(rtoc)
+    lfs     f7, -0x7be0(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     addi    r4, r31, 0x10c
-    lfs     f1, -0x7be8(rtoc)
+    lfs     f1, -0x7be8(r2)
     li      r3, 0x1
     fmr     f5, f3
-    lfs     f2, -0x7bec(rtoc)
+    lfs     f2, -0x7bec(r2)
     li      r5, 0x3866
-    lfs     f4, -0x7bdc(rtoc)
+    lfs     f4, -0x7bdc(r2)
     li      r6, 0x2
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     li      r7, 0x0
-    lfs     f7, -0x7be0(rtoc)
+    lfs     f7, -0x7be0(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x11c
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r3, 0x1
     fmr     f6, f1
     fmr     f5, f3
-    lfs     f2, -0x7c80(rtoc)
-    lfs     f4, -0x7bd8(rtoc)
+    lfs     f2, -0x7c80(r2)
+    lfs     f4, -0x7bd8(r2)
     li      r5, 0x3060
-    lfs     f7, -0x7bf4(rtoc)
+    lfs     f7, -0x7bf4(r2)
     li      r6, 0x2
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x11c
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r3, 0x2
     fmr     f6, f1
     fmr     f5, f3
-    lfs     f2, -0x7c80(rtoc)
-    lfs     f4, -0x7bd4(rtoc)
+    lfs     f2, -0x7c80(r2)
+    lfs     f4, -0x7bd4(r2)
     li      r5, 0x3060
-    lfs     f7, -0x7bf4(rtoc)
+    lfs     f7, -0x7bf4(r2)
     li      r6, 0x2
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x138
-    lfs     f2, -0x7c80(rtoc)
+    lfs     f2, -0x7c80(r2)
     li      r3, 0x2
     fmr     f6, f1
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r5, 0x3061
-    lfs     f4, -0x7c78(rtoc)
+    lfs     f4, -0x7c78(r2)
     li      r6, 0x2
-    lfs     f5, -0x7bd0(rtoc)
+    lfs     f5, -0x7bd0(r2)
     li      r7, 0x0
-    lfs     f7, -0x7bcc(rtoc)
+    lfs     f7, -0x7bcc(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x144
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r3, 0x1
     fmr     f4, f1
     fmr     f5, f3
-    lfs     f2, -0x7c80(rtoc)
+    lfs     f2, -0x7c80(r2)
     fmr     f6, f1
-    lfs     f7, -0x7bf0(rtoc)
+    lfs     f7, -0x7bf0(r2)
     li      r5, 0x4842
     li      r6, 0x0
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c14(rtoc)
+    lfs     f1, -0x7c14(r2)
     addi    r4, r31, 0x158
-    lfs     f2, -0x7bc8(rtoc)
+    lfs     f2, -0x7bc8(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c34(rtoc)
-    lfs     f4, -0x7bc4(rtoc)
+    lfs     f3, -0x7c34(r2)
+    lfs     f4, -0x7bc4(r2)
     li      r5, 0x24
-    lfs     f5, -0x7bd0(rtoc)
+    lfs     f5, -0x7bd0(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bf0(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bf0(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c30(rtoc)
+    lfs     f1, -0x7c30(r2)
     addi    r4, r31, 0x174
-    lfs     f2, -0x7bc0(rtoc)
+    lfs     f2, -0x7bc0(r2)
     li      r3, 0x1
-    lfs     f3, -0x7c1c(rtoc)
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f3, -0x7c1c(r2)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x3889
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x0
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bbc(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bbc(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c30(rtoc)
+    lfs     f1, -0x7c30(r2)
     addi    r4, r31, 0x18c
-    lfs     f2, -0x7bc0(rtoc)
+    lfs     f2, -0x7bc0(r2)
     li      r3, 0x1
-    lfs     f3, -0x7c1c(rtoc)
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f3, -0x7c1c(r2)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x388c
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x0
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bbc(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bbc(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c1c(rtoc)
+    lfs     f2, -0x7c1c(r2)
     addi    r4, r31, 0x1a0
-    lfs     f1, -0x7c14(rtoc)
+    lfs     f1, -0x7c14(r2)
     li      r3, 0x1
     fmr     f3, f2
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x308a
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x0
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     li      r7, 0x1
-    lfs     f7, -0x7bbc(rtoc)
+    lfs     f7, -0x7bbc(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c1c(rtoc)
+    lfs     f2, -0x7c1c(r2)
     addi    r4, r31, 0x1b4
-    lfs     f1, -0x7c14(rtoc)
+    lfs     f1, -0x7c14(r2)
     li      r3, 0x1
     fmr     f3, f2
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x308b
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x0
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     li      r7, 0x1
-    lfs     f7, -0x7bbc(rtoc)
+    lfs     f7, -0x7bbc(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c14(rtoc)
+    lfs     f1, -0x7c14(r2)
     addi    r4, r31, 0x1a0
-    lfs     f2, -0x7c1c(rtoc)
+    lfs     f2, -0x7c1c(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c7c(rtoc)
-    lfs     f4, -0x7bb8(rtoc)
+    lfs     f3, -0x7c7c(r2)
+    lfs     f4, -0x7bb8(r2)
     li      r5, 0x308a
-    lfs     f5, -0x7bb4(rtoc)
+    lfs     f5, -0x7bb4(r2)
     li      r6, 0x0
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bbc(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bbc(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c14(rtoc)
+    lfs     f1, -0x7c14(r2)
     addi    r4, r31, 0x1b4
-    lfs     f2, -0x7c1c(rtoc)
+    lfs     f2, -0x7c1c(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c7c(rtoc)
-    lfs     f4, -0x7bb8(rtoc)
+    lfs     f3, -0x7c7c(r2)
+    lfs     f4, -0x7bb8(r2)
     li      r5, 0x308b
-    lfs     f5, -0x7bb4(rtoc)
+    lfs     f5, -0x7bb4(r2)
     li      r6, 0x0
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bbc(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bbc(r2)
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c7c(rtoc)
+    lfs     f2, -0x7c7c(r2)
     addi    r4, r31, 0x1c8
-    lfs     f3, -0x7c84(rtoc)
+    lfs     f3, -0x7c84(r2)
     li      r3, 0x1
     fmr     f5, f2
     fmr     f6, f3
-    lfs     f1, -0x7bb0(rtoc)
-    lfs     f4, -0x7bf8(rtoc)
+    lfs     f1, -0x7bb0(r2)
+    lfs     f4, -0x7bf8(r2)
     li      r5, 0x3849
-    lfs     f7, -0x7c1c(rtoc)
+    lfs     f7, -0x7c1c(r2)
     li      r6, 0x2
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c7c(rtoc)
+    lfs     f1, -0x7c7c(r2)
     addi    r4, r31, 0x1d4
-    lfs     f4, -0x7c84(rtoc)
+    lfs     f4, -0x7c84(r2)
     li      r3, 0x40
     fmr     f5, f1
     fmr     f6, f4
-    lfs     f2, -0x7bac(rtoc)
-    lfs     f3, -0x7ba8(rtoc)
+    lfs     f2, -0x7bac(r2)
+    lfs     f3, -0x7ba8(r2)
     li      r5, 0x0
-    lfs     f7, -0x7bcc(rtoc)
+    lfs     f7, -0x7bcc(r2)
     li      r6, 0x2
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
@@ -1826,16 +1820,16 @@ branch_0x80018fa8:
     li      r4, 0x0
     li      r5, 0x3820
     bl      appendGrpMember__9JALSystemFQ29JALSystem7ModTypeUlUl
-    lfs     f1, -0x7c7c(rtoc)
+    lfs     f1, -0x7c7c(r2)
     addi    r4, r31, 0x1e4
-    lfs     f4, -0x7c84(rtoc)
+    lfs     f4, -0x7c84(r2)
     li      r3, 0x40
     fmr     f5, f1
     fmr     f6, f4
-    lfs     f2, -0x7ba4(rtoc)
-    lfs     f3, -0x7bb4(rtoc)
+    lfs     f2, -0x7ba4(r2)
+    lfs     f3, -0x7bb4(r2)
     li      r5, 0x1
-    lfs     f7, -0x7bcc(rtoc)
+    lfs     f7, -0x7bcc(r2)
     li      r6, 0x2
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
@@ -1855,16 +1849,16 @@ branch_0x80018fa8:
     li      r4, 0x1
     li      r5, 0x180f
     bl      appendGrpMember__9JALSystemFQ29JALSystem7ModTypeUlUl
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     addi    r4, r31, 0x204
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r3, 0x80
     fmr     f6, f2
     fmr     f4, f3
-    lfs     f1, -0x7bbc(rtoc)
-    lfs     f5, -0x7c58(rtoc)
+    lfs     f1, -0x7bbc(r2)
+    lfs     f5, -0x7c58(r2)
     li      r5, 0x2
-    lfs     f7, -0x7bf0(rtoc)
+    lfs     f7, -0x7bf0(r2)
     li      r6, 0x2
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
@@ -1876,15 +1870,15 @@ branch_0x80018fa8:
     li      r4, 0x2
     li      r5, 0x3862
     bl      appendGrpMember__9JALSystemFQ29JALSystem7ModTypeUlUl
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x228
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r3, 0x40
     fmr     f4, f1
     fmr     f5, f3
-    lfs     f2, -0x7c80(rtoc)
+    lfs     f2, -0x7c80(r2)
     fmr     f6, f1
-    lfs     f7, -0x7bf0(rtoc)
+    lfs     f7, -0x7bf0(r2)
     li      r5, 0x2
     li      r6, 0x0
     li      r7, 0x1
@@ -1897,28 +1891,28 @@ branch_0x80018fa8:
     li      r4, 0x2
     li      r5, 0x3862
     bl      appendGrpMember__9JALSystemFQ29JALSystem7ModTypeUlUl
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x250
-    lfs     f2, -0x7bf4(rtoc)
+    lfs     f2, -0x7bf4(r2)
     li      r3, 0x2
     fmr     f6, f1
-    lfs     f3, -0x7ba0(rtoc)
+    lfs     f3, -0x7ba0(r2)
     li      r5, 0x305a
-    lfs     f4, -0x7c7c(rtoc)
+    lfs     f4, -0x7c7c(r2)
     li      r6, 0x0
-    lfs     f5, -0x7b9c(rtoc)
+    lfs     f5, -0x7b9c(r2)
     li      r7, 0x0
-    lfs     f7, -0x7bcc(rtoc)
+    lfs     f7, -0x7bcc(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x268
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r3, 0x40
     fmr     f4, f1
     fmr     f5, f3
-    lfs     f2, -0x7bbc(rtoc)
+    lfs     f2, -0x7bbc(r2)
     fmr     f6, f1
-    lfs     f7, -0x7bf0(rtoc)
+    lfs     f7, -0x7bf0(r2)
     li      r5, 0x3
     li      r6, 0x2
     li      r7, 0x1
@@ -1931,16 +1925,16 @@ branch_0x80018fa8:
     li      r4, 0x3
     li      r5, 0x3868
     bl      appendGrpMember__9JALSystemFQ29JALSystem7ModTypeUlUl
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x278
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     li      r3, 0x80
     fmr     f6, f1
     fmr     f5, f3
-    lfs     f2, -0x7bbc(rtoc)
-    lfs     f4, -0x7bf8(rtoc)
+    lfs     f2, -0x7bbc(r2)
+    lfs     f4, -0x7bf8(r2)
     li      r5, 0x3
-    lfs     f7, -0x7bf0(rtoc)
+    lfs     f7, -0x7bf0(r2)
     li      r6, 0x2
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
@@ -1952,274 +1946,274 @@ branch_0x80018fa8:
     li      r4, 0x3
     li      r5, 0x3868
     bl      appendGrpMember__9JALSystemFQ29JALSystem7ModTypeUlUl
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     addi    r4, r31, 0x288
-    lfs     f1, -0x7b98(rtoc)
+    lfs     f1, -0x7b98(r2)
     li      r3, 0x8
     fmr     f4, f2
     fmr     f6, f2
-    lfs     f3, -0x7b94(rtoc)
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f3, -0x7b94(r2)
+    lfs     f5, -0x7c7c(r2)
     li      r5, 0x2844
-    lfs     f7, -0x7c54(rtoc)
+    lfs     f7, -0x7c54(r2)
     li      r6, 0x1
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     addi    r4, r31, 0x298
-    lfs     f1, -0x7b90(rtoc)
+    lfs     f1, -0x7b90(r2)
     li      r3, 0x8
     fmr     f4, f2
     fmr     f6, f2
-    lfs     f3, -0x7c1c(rtoc)
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f3, -0x7c1c(r2)
+    lfs     f5, -0x7c7c(r2)
     li      r5, 0x2054
-    lfs     f7, -0x7c54(rtoc)
+    lfs     f7, -0x7c54(r2)
     li      r6, 0x2
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     addi    r4, r31, 0x2a8
-    lfs     f1, -0x7b8c(rtoc)
+    lfs     f1, -0x7b8c(r2)
     li      r3, 0x8
     fmr     f4, f2
     fmr     f6, f2
-    lfs     f3, -0x7c80(rtoc)
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f3, -0x7c80(r2)
+    lfs     f5, -0x7c7c(r2)
     li      r5, 0x2045
-    lfs     f7, -0x7c54(rtoc)
+    lfs     f7, -0x7c54(r2)
     li      r6, 0x1
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f2, -0x7c84(r2)
     addi    r4, r31, 0x2c8
-    lfs     f1, -0x7b8c(rtoc)
+    lfs     f1, -0x7b8c(r2)
     li      r3, 0x8
     fmr     f4, f2
     fmr     f6, f2
-    lfs     f3, -0x7b88(rtoc)
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f3, -0x7b88(r2)
+    lfs     f5, -0x7c7c(r2)
     li      r5, 0x2052
-    lfs     f7, -0x7c54(rtoc)
+    lfs     f7, -0x7c54(r2)
     li      r6, 0x1
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7b84(rtoc)
+    lfs     f1, -0x7b84(r2)
     addi    r4, r31, 0x2e8
-    lfs     f2, -0x7bf4(rtoc)
+    lfs     f2, -0x7bf4(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c7c(rtoc)
-    lfs     f4, -0x7c30(rtoc)
+    lfs     f3, -0x7c7c(r2)
+    lfs     f4, -0x7c30(r2)
     li      r5, 0x20ff
-    lfs     f5, -0x7bb4(rtoc)
+    lfs     f5, -0x7bb4(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7b8c(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7b8c(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f3, -0x7b7c(rtoc)
+    lfs     f3, -0x7b7c(r2)
     addi    r4, r31, 0x304
-    lfs     f1, -0x7b80(rtoc)
+    lfs     f1, -0x7b80(r2)
     li      r3, 0x2
     fmr     f7, f3
-    lfs     f2, -0x7c7c(rtoc)
+    lfs     f2, -0x7c7c(r2)
     li      r5, 0x20c2
-    lfs     f4, -0x7b78(rtoc)
+    lfs     f4, -0x7b78(r2)
     li      r6, 0x1
-    lfs     f5, -0x7b74(rtoc)
+    lfs     f5, -0x7b74(r2)
     li      r7, 0x0
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7c7c(rtoc)
+    lfs     f2, -0x7c7c(r2)
     addi    r4, r31, 0x304
-    lfs     f3, -0x7b7c(rtoc)
+    lfs     f3, -0x7b7c(r2)
     li      r3, 0x1
     fmr     f5, f2
     fmr     f7, f3
-    lfs     f1, -0x7b80(rtoc)
-    lfs     f4, -0x7b70(rtoc)
+    lfs     f1, -0x7b80(r2)
+    lfs     f4, -0x7b70(r2)
     li      r5, 0x20c2
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     li      r6, 0x1
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7b6c(rtoc)
+    lfs     f2, -0x7b6c(r2)
     addi    r4, r31, 0x318
-    lfs     f4, -0x7c84(rtoc)
+    lfs     f4, -0x7c84(r2)
     li      r3, 0x2
     fmr     f7, f2
     fmr     f6, f4
-    lfs     f1, -0x7bf0(rtoc)
-    lfs     f3, -0x7c34(rtoc)
+    lfs     f1, -0x7bf0(r2)
+    lfs     f3, -0x7c34(r2)
     li      r5, 0x20df
-    lfs     f5, -0x7be4(rtoc)
+    lfs     f5, -0x7be4(r2)
     li      r6, 0x2
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f3, -0x7c7c(rtoc)
+    lfs     f3, -0x7c7c(r2)
     addi    r4, r31, 0x334
-    lfs     f4, -0x7c84(rtoc)
+    lfs     f4, -0x7c84(r2)
     li      r3, 0x1
     fmr     f5, f3
     fmr     f6, f4
-    lfs     f1, -0x7b68(rtoc)
-    lfs     f2, -0x7bb4(rtoc)
+    lfs     f1, -0x7b68(r2)
+    lfs     f2, -0x7bb4(r2)
     li      r5, 0x28f7
-    lfs     f7, -0x7b64(rtoc)
+    lfs     f7, -0x7b64(r2)
     li      r6, 0x2
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7bb8(rtoc)
+    lfs     f1, -0x7bb8(r2)
     addi    r4, r31, 0x344
-    lfs     f2, -0x7b60(rtoc)
+    lfs     f2, -0x7b60(r2)
     li      r3, 0x1
-    lfs     f3, -0x7c1c(rtoc)
-    lfs     f4, -0x7bd8(rtoc)
+    lfs     f3, -0x7c1c(r2)
+    lfs     f4, -0x7bd8(r2)
     li      r5, 0x28ad
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bd0(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bd0(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7bb8(rtoc)
+    lfs     f1, -0x7bb8(r2)
     addi    r4, r31, 0x344
-    lfs     f2, -0x7b60(rtoc)
+    lfs     f2, -0x7b60(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c1c(rtoc)
-    lfs     f4, -0x7bd8(rtoc)
+    lfs     f3, -0x7c1c(r2)
+    lfs     f4, -0x7bd8(r2)
     li      r5, 0x28ad
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7bd0(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7bd0(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7b5c(rtoc)
+    lfs     f1, -0x7b5c(r2)
     addi    r4, r31, 0x358
-    lfs     f2, -0x7b9c(rtoc)
+    lfs     f2, -0x7b9c(r2)
     li      r3, 0x1
-    lfs     f3, -0x7b58(rtoc)
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f3, -0x7b58(r2)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x212f
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7b80(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7b80(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f2, -0x7b6c(rtoc)
+    lfs     f2, -0x7b6c(r2)
     addi    r4, r31, 0x358
-    lfs     f4, -0x7c84(rtoc)
+    lfs     f4, -0x7c84(r2)
     li      r3, 0x2
     fmr     f7, f2
     fmr     f6, f4
-    lfs     f1, -0x7bf0(rtoc)
-    lfs     f3, -0x7c34(rtoc)
+    lfs     f1, -0x7bf0(r2)
+    lfs     f3, -0x7c34(r2)
     li      r5, 0x212f
-    lfs     f5, -0x7be4(rtoc)
+    lfs     f5, -0x7be4(r2)
     li      r6, 0x2
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7b54(rtoc)
+    lfs     f1, -0x7b54(r2)
     addi    r4, r31, 0x36c
-    lfs     f2, -0x7b6c(rtoc)
+    lfs     f2, -0x7b6c(r2)
     li      r3, 0x2
-    lfs     f3, -0x7b7c(rtoc)
-    lfs     f4, -0x7b50(rtoc)
+    lfs     f3, -0x7b7c(r2)
+    lfs     f4, -0x7b50(r2)
     li      r5, 0x210c
-    lfs     f5, -0x7b4c(rtoc)
+    lfs     f5, -0x7b4c(r2)
     li      r6, 0x2
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7b48(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7b48(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7b44(rtoc)
+    lfs     f1, -0x7b44(r2)
     addi    r4, r31, 0x380
-    lfs     f2, -0x7b40(rtoc)
+    lfs     f2, -0x7b40(r2)
     li      r3, 0x2
-    lfs     f3, -0x7b58(rtoc)
-    lfs     f4, -0x7b3c(rtoc)
+    lfs     f3, -0x7b58(r2)
+    lfs     f4, -0x7b3c(r2)
     li      r5, 0x215c
-    lfs     f5, -0x7b38(rtoc)
+    lfs     f5, -0x7b38(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7b34(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7b34(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7b44(rtoc)
+    lfs     f1, -0x7b44(r2)
     addi    r4, r31, 0x380
-    lfs     f2, -0x7b40(rtoc)
+    lfs     f2, -0x7b40(r2)
     li      r3, 0x1
-    lfs     f3, -0x7c34(rtoc)
-    lfs     f4, -0x7bf8(rtoc)
+    lfs     f3, -0x7c34(r2)
+    lfs     f4, -0x7bf8(r2)
     li      r5, 0x215c
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x1
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7b34(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7b34(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7b58(rtoc)
+    lfs     f1, -0x7b58(r2)
     addi    r4, r31, 0x398
-    lfs     f2, -0x7b30(rtoc)
+    lfs     f2, -0x7b30(r2)
     li      r3, 0x2
-    lfs     f3, -0x7c7c(rtoc)
-    lfs     f4, -0x7c70(rtoc)
+    lfs     f3, -0x7c7c(r2)
+    lfs     f4, -0x7c70(r2)
     li      r5, 0x20d2
-    lfs     f5, -0x7b74(rtoc)
+    lfs     f5, -0x7b74(r2)
     li      r6, 0x0
-    lfs     f6, -0x7c84(rtoc)
-    lfs     f7, -0x7b6c(rtoc)
+    lfs     f6, -0x7c84(r2)
+    lfs     f7, -0x7b6c(r2)
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7bf8(rtoc)
-    lis     r30, 0x1
-    lfs     f3, -0x7c58(rtoc)
+    lfs     f1, -0x7bf8(r2)
+    lis     r30, unk_00008135@ha
+    lfs     f3, -0x7c58(r2)
     addi    r4, r31, 0x3b0
     fmr     f4, f1
     fmr     f7, f3
-    lfs     f2, -0x7b2c(rtoc)
-    lfs     f5, -0x7c7c(rtoc)
-    subi    r5, r30, 0x7ecb
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f2, -0x7b2c(r2)
+    lfs     f5, -0x7c7c(r2)
+    addi    r5, r30, unk_00008135@l
+    lfs     f6, -0x7c84(r2)
     li      r3, 0x2
     li      r6, 0x0
     li      r7, 0x1
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x3c0
-    lfs     f3, -0x7c58(rtoc)
+    lfs     f3, -0x7c58(r2)
     li      r3, 0x2
     fmr     f6, f1
     fmr     f7, f3
-    lfs     f2, -0x7b28(rtoc)
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f2, -0x7b28(r2)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x2981
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x0
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x3c0
-    lfs     f3, -0x7c58(rtoc)
+    lfs     f3, -0x7c58(r2)
     li      r3, 0x1
     fmr     f6, f1
     fmr     f7, f3
-    lfs     f2, -0x7b28(rtoc)
-    lfs     f4, -0x7c3c(rtoc)
+    lfs     f2, -0x7b28(r2)
+    lfs     f4, -0x7c3c(r2)
     li      r5, 0x2981
-    lfs     f5, -0x7c7c(rtoc)
+    lfs     f5, -0x7c7c(r2)
     li      r6, 0x0
     li      r7, 0x0
     bl      append__9JALSystemFQ29JALSystem7ModTypePCcUlfffffQ27JALCalc9CurveSignffUc
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     addi    r4, r31, 0x3cc
-    lfs     f2, -0x7c7c(rtoc)
-    subi    r5, r30, 0x7e63
-    lfs     f3, -0x7c58(rtoc)
+    lfs     f2, -0x7c7c(r2)
+    addi    r5, r30, -0x7e63
+    lfs     f3, -0x7c58(r2)
     fmr     f5, f2
-    lfs     f4, -0x7bf8(rtoc)
+    lfs     f4, -0x7bf8(r2)
     fmr     f6, f1
     li      r3, 0x2
     fmr     f7, f3
@@ -2242,28 +2236,28 @@ branch_0x80018fa8:
     addi    r6, r30, 0x0
     stw     r4, 0xc(sp)
     li      r4, 0x0
-    subi    r5, rtoc, 0x7b24
+    addi    r5, r2, R2Off_m0x7b24
     stw     r7, 0x10(sp)
     li      r7, 0x3
     li      r8, 0x2
-    lfs     f4, -0x7c7c(rtoc)
+    lfs     f4, -0x7c7c(r2)
     li      r9, 0x13
     li      r10, 0x2
     stfs    f4, 0x14(sp)
     fmr     f5, f4
     fmr     f8, f4
-    lfs     f6, -0x7c84(rtoc)
+    lfs     f6, -0x7c84(r2)
     stfs    f6, 0x18(sp)
     stw     r0, 0x1c(sp)
-    lfs     f1, -0x7b7c(rtoc)
-    lfs     f2, -0x7b1c(rtoc)
+    lfs     f1, -0x7b7c(r2)
+    lfs     f2, -0x7b1c(r2)
     fmr     f3, f1
-    lfs     f7, -0x7b18(rtoc)
+    lfs     f7, -0x7b18(r2)
     bl      __ct__29MSSetSoundTL_13MSSetSoundGrp_FUlPCcP13MSSetSoundGrpUcUcUcUcfUcffffflflfffb
     addi    r3, r30, 0xbc
     bl      __ct__10JSUPtrListFv
-    lis     r3, 0x803b
-    subi    r3, r3, 0x3940
+    lis     r3, __vvt__13MSSetSoundGrp@ha
+    addi    r3, r3, __vvt__13MSSetSoundGrp@l
     stw     r3, 0x18(r30)
     addi    r0, r3, 0x8
     stw     r0, 0x14(r30)
@@ -2277,7 +2271,7 @@ branch_0x80019d00:
     li      r5, 0x3813
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b14(rtoc)
+    lfs     f0, -0x7b14(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019d2c:
     addi    r4, r29, 0x4
@@ -2294,7 +2288,7 @@ branch_0x80019d2c:
     li      r5, 0x3814
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b14(rtoc)
+    lfs     f0, -0x7b14(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019d6c:
     addi    r4, r29, 0x4
@@ -2311,7 +2305,7 @@ branch_0x80019d6c:
     li      r5, 0x3815
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b14(rtoc)
+    lfs     f0, -0x7b14(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019dac:
     addi    r4, r29, 0x4
@@ -2328,7 +2322,7 @@ branch_0x80019dac:
     li      r5, 0x3816
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b14(rtoc)
+    lfs     f0, -0x7b14(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019dec:
     addi    r4, r29, 0x4
@@ -2345,7 +2339,7 @@ branch_0x80019dec:
     li      r5, 0x3817
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b14(rtoc)
+    lfs     f0, -0x7b14(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019e2c:
     addi    r4, r29, 0x4
@@ -2362,7 +2356,7 @@ branch_0x80019e2c:
     li      r5, 0x3818
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b14(rtoc)
+    lfs     f0, -0x7b14(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019e6c:
     addi    r4, r29, 0x4
@@ -2379,7 +2373,7 @@ branch_0x80019e6c:
     li      r5, 0x3819
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b10(rtoc)
+    lfs     f0, -0x7b10(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019eac:
     addi    r4, r29, 0x4
@@ -2396,7 +2390,7 @@ branch_0x80019eac:
     li      r5, 0x381a
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b10(rtoc)
+    lfs     f0, -0x7b10(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019eec:
     addi    r4, r29, 0x4
@@ -2413,7 +2407,7 @@ branch_0x80019eec:
     li      r5, 0x381b
     li      r6, 0x0
     bl      __ct__31JALLinkD_16MSSetSoundMember_Ul_FP16MSSetSoundMemberUlP31JALListD_16MSSetSoundMember_Ul_
-    lfs     f0, -0x7b10(rtoc)
+    lfs     f0, -0x7b10(r2)
     stfs    f0, 0x18(r29)
 branch_0x80019f2c:
     addi    r4, r29, 0x4
@@ -2468,9 +2462,9 @@ randPlay__Q214MSoundSESystem10MSRandPlayFUl: # 0x80019f8c
 branch_0x80019fcc:
     lwz     r3, 0x24(r30)
     lis     r0, 0x4330
-    lfd     f4, -0x7b08(rtoc)
+    lfd     f4, -0x7b08(r2)
     xoris   r3, r3, 0x8000
-    lfs     f0, -0x7c78(rtoc)
+    lfs     f0, -0x7c78(r2)
     stw     r3, 0x34(sp)
     lfs     f2, 0x28(r30)
     stw     r0, 0x30(sp)
@@ -2541,11 +2535,11 @@ branch_0x8001a0ac:
     b       branch_0x8001a0e0
 
 branch_0x8001a0bc:
-    lwz     r3, -0x7164(r13)
+    lwz     r3, R13Off_m0x7164(r13)
     li      r6, 0x0
     lwz     r5, 0x0(r31)
     li      r7, 0x0
-    lfs     f1, -0x7c84(rtoc)
+    lfs     f1, -0x7c84(r2)
     li      r8, 0x0
     li      r9, 0x4
     bl      startSoundSetGrp__6MSoundFUlPC3VecUlfUlUlUc
@@ -2589,9 +2583,9 @@ branch_0x8001a138:
 .globl __ct__Q214MSoundSESystem10MSRandPlayFUlllff
 __ct__Q214MSoundSESystem10MSRandPlayFUlllff: # 0x8001a150
     mflr    r0
-    lis     r7, 0x803b
+    lis     r7, __vvt__Q214MSoundSESystem10MSRandPlay@ha
     stw     r0, 0x4(sp)
-    subi    r0, r7, 0x39f0
+    addi    r0, r7, __vvt__Q214MSoundSESystem10MSRandPlay@l
     stwu    sp, -0x48(sp)
     stfd    f31, 0x40(sp)
     fmr     f31, f2
@@ -2633,9 +2627,9 @@ __ct__Q214MSoundSESystem10MSRandPlayFUlllff: # 0x8001a150
 .globl startSeRandPlay__Q214MSoundSESystem10MSRandPlayFUlUl
 startSeRandPlay__Q214MSoundSESystem10MSRandPlayFUlUl: # 0x8001a1f0
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, smList__Q214MSoundSESystem10MSRandPlay@ha
     stw     r0, 0x4(sp)
-    subi    r5, r5, 0x552c
+    addi    r5, r5, smList__Q214MSoundSESystem10MSRandPlay@l
     stwu    sp, -0x8(sp)
     lwz     r5, 0x0(r5)
     b       branch_0x8001a238
@@ -2723,9 +2717,9 @@ __ct__Q214MSoundSESystem13MSRandPlayVecFv: # 0x8001a2b0
 .globl createRandPlayVec__Q214MSoundSESystem10MSRandPlayFUlUs
 createRandPlayVec__Q214MSoundSESystem10MSRandPlayFUlUs: # 0x8001a308
     mflr    r0
-    lis     r5, 0x803f
+    lis     r5, smList__Q214MSoundSESystem10MSRandPlay@ha
     stw     r0, 0x4(sp)
-    subi    r5, r5, 0x552c
+    addi    r5, r5, smList__Q214MSoundSESystem10MSRandPlay@l
     stwu    sp, -0x68(sp)
     stw     r31, 0x64(sp)
     stw     r30, 0x60(sp)
@@ -2743,10 +2737,10 @@ branch_0x8001a334:
     mulli   r3, r31, 0x24
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8002
-    lis     r5, 0x8002
-    subi    r4, r4, 0x5d50
-    subi    r5, r5, 0x5db0
+    lis     r4, __ct__Q214MSoundSESystem13MSRandPlayVecFv@ha
+    lis     r5, __dt__Q214MSoundSESystem13MSRandPlayVecFv@ha
+    addi    r4, r4, __ct__Q214MSoundSESystem13MSRandPlayVecFv@l
+    addi    r5, r5, __dt__Q214MSoundSESystem13MSRandPlayVecFv@l
     addi    r7, r31, 0x0
     li      r6, 0x24
     bl      __construct_new_array
@@ -2773,8 +2767,8 @@ branch_0x8001a390:
 
 .globl registerTrans__Q214MSoundSESystem10MSRandPlayFUlPC3Vec
 registerTrans__Q214MSoundSESystem10MSRandPlayFUlPC3Vec: # 0x8001a3ac
-    lis     r5, 0x803f
-    subi    r5, r5, 0x552c
+    lis     r5, smList__Q214MSoundSESystem10MSRandPlay@ha
+    addi    r5, r5, smList__Q214MSoundSESystem10MSRandPlay@l
     lwz     r5, 0x0(r5)
     b       branch_0x8001a3f0
 
@@ -2818,8 +2812,8 @@ getRandVol__Q214MSoundSESystem9MSRandVolFUl: # 0x8001a400
     lfs     f3, 0x1c(r4)
     lfs     f2, 0x2c(r3)
     bl      getRandom__7JALCalcFfff
-    lfs     f0, -0x7c7c(rtoc)
-    lfs     f2, -0x7c84(rtoc)
+    lfs     f0, -0x7c7c(r2)
+    lfs     f2, -0x7c84(r2)
     fadds   f0, f0, f1
     fcmpo   cr0, f0, f2
     bge-    branch_0x8001a454
@@ -2828,7 +2822,7 @@ getRandVol__Q214MSoundSESystem9MSRandVolFUl: # 0x8001a400
 branch_0x8001a454:
     fmr     f2, f0
 branch_0x8001a458:
-    lfs     f1, -0x7c58(rtoc)
+    lfs     f1, -0x7c58(r2)
     fcmpo   cr0, f2, f1
     ble-    branch_0x8001a468
     b       branch_0x8001a46c
@@ -2845,9 +2839,9 @@ branch_0x8001a46c:
 .globl __ct__Q214MSoundSESystem9MSRandVolFUl
 __ct__Q214MSoundSESystem9MSRandVolFUl: # 0x8001a47c
     mflr    r0
-    lis     r5, 0x803b
+    lis     r5, __vvt__Q214MSoundSESystem9MSRandVol@ha
     stw     r0, 0x4(sp)
-    subi    r0, r5, 0x3928
+    addi    r0, r5, __vvt__Q214MSoundSESystem9MSRandVol@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r4, 0x0
@@ -2859,22 +2853,22 @@ __ct__Q214MSoundSESystem9MSRandVolFUl: # 0x8001a47c
     bl      __ct__10JSUPtrLinkFPv
     stw     r31, 0x14(r30)
     mr      r3, r30
-    lfs     f4, -0x7c78(rtoc)
+    lfs     f4, -0x7c78(r2)
     stfs    f4, 0x18(r30)
-    lfs     f0, -0x7c84(rtoc)
+    lfs     f0, -0x7c84(r2)
     stfs    f0, 0x1c(r30)
-    lfs     f3, -0x7bc4(rtoc)
+    lfs     f3, -0x7bc4(r2)
     stfs    f3, 0x20(r30)
     stfs    f4, 0x24(r30)
-    lfs     f2, -0x7b00(rtoc)
+    lfs     f2, -0x7b00(r2)
     stfs    f2, 0x28(r30)
-    lfs     f1, -0x7c7c(rtoc)
+    lfs     f1, -0x7c7c(r2)
     stfs    f1, 0x2c(r30)
-    lfs     f0, -0x7bd0(rtoc)
+    lfs     f0, -0x7bd0(r2)
     stfs    f0, 0x30(r30)
-    lfs     f0, -0x7c58(rtoc)
+    lfs     f0, -0x7c58(r2)
     stfs    f0, 0x34(r30)
-    lfs     f0, -0x7b58(rtoc)
+    lfs     f0, -0x7b58(r2)
     stfs    f0, 0x38(r30)
     stfs    f3, 0x3c(r30)
     stfs    f4, 0x40(r30)
@@ -2924,7 +2918,7 @@ branch_0x8001a574:
 .globl __ct__29MSSetSoundTL_13MSSetSoundGrp_FUlPCcP13MSSetSoundGrpUcUcUcUcfUcffffflflfffb
 __ct__29MSSetSoundTL_13MSSetSoundGrp_FUlPCcP13MSSetSoundGrpUcUcUcUcfUcffffflflfffb: # 0x8001a594
     mflr    r0
-    lis     r11, 0x8037
+    lis     r11, unk_80373f08@h
     stw     r0, 0x4(sp)
     mr      r0, r4
     addi    r4, r5, 0x0
@@ -2959,16 +2953,16 @@ __ct__29MSSetSoundTL_13MSSetSoundGrp_FUlPCcP13MSSetSoundGrpUcUcUcUcfUcffffflflff
     mr      r26, r9
     lbz     r31, 0x147(sp)
     addi    r27, r10, 0x0
-    addi    r22, r11, 0x3f08
+    addi    r22, r11, unk_80373f08@l
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__34JALListHioNode_13MSSetSoundGrp_Ul_FPCcUlP13MSSetSoundGrp
     lwz     r23, 0x8(sp)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x391c
-    lis     r3, 0x803b
+    lis     r3, __vvt__33JALListFrameLoop_13MSSetSoundGrp_@ha
+    addi    r0, r3, __vvt__33JALListFrameLoop_13MSSetSoundGrp_@l
+    lis     r3, __vvt__29MSSetSoundTL_13MSSetSoundGrp_@ha
     stw     r0, 0x14(r23)
-    subi    r3, r3, 0x3958
+    addi    r3, r3, __vvt__29MSSetSoundTL_13MSSetSoundGrp_@l
     stw     r3, 0x18(r23)
     addi    r0, r3, 0x8
     addi    r4, r24, 0x0
@@ -3045,7 +3039,7 @@ __ct__29MSSetSoundTL_13MSSetSoundGrp_FUlPCcP13MSSetSoundGrpUcUcUcUcfUcffffflflff
     li      r0, 0x1
     addi    r3, r23, 0x0
     stb     r4, 0x58(r23)
-    lfs     f0, -0x7c84(rtoc)
+    lfs     f0, -0x7c84(r2)
     stfs    f0, 0xac(r23)
     stfs    f0, 0xb0(r23)
     stfs    f0, 0xb4(r23)
@@ -3104,7 +3098,7 @@ __ct__34JALListHioNode_13MSSetSoundGrp_Ul_FPCcUlP13MSSetSoundGrp: # 0x8001a800
     mr      r30, r3
     stw     r30, 0x18(sp)
     bl      __ct__10JSUPtrLinkFPv
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     lwz     r4, 0x18(sp)
     bl      append__10JSUPtrListFP10JSUPtrLink
     stw     r31, 0x10(r30)
@@ -3120,227 +3114,227 @@ __ct__34JALListHioNode_13MSSetSoundGrp_Ul_FPCcUlP13MSSetSoundGrp: # 0x8001a800
 .globl __sinit_MSoundSE_cpp
 __sinit_MSoundSE_cpp: # 0x8001a854
     mflr    r0
-    lis     r3, 0x803f
+    lis     r3, unk_803eaab0@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
-    subi    r31, r3, 0x5550
+    addi    r31, r3, unk_803eaab0@l
     stw     r30, 0x30(sp)
     addi    r30, r31, 0xc
     addi    r3, r30, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x8002
+    lis     r4, __dt__37JSUList_Q214MSoundSESystem9MSRandVol_Fv@ha
     addi    r3, r30, 0x0
-    subi    r4, r4, 0x53fc
+    addi    r4, r4, __dt__37JSUList_Q214MSoundSESystem9MSRandVol_Fv@l
     addi    r5, r31, 0x0
     bl      __register_global_object
     addi    r30, r31, 0x24
     addi    r3, r30, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x8002
+    lis     r4, __dt__39JSUList_Q214MSoundSESystem10MSRandPlay_Fv@ha
     addi    r3, r30, 0x0
-    subi    r4, r4, 0x5454
+    addi    r4, r4, __dt__39JSUList_Q214MSoundSESystem10MSRandPlay_Fv@l
     addi    r5, r31, 0x18
     bl      __register_global_object
-    lfs     f1, -0x7c7c(rtoc)
-    subi    r3, r13, 0x7154
-    lfs     f0, -0x7c70(rtoc)
+    lfs     f1, -0x7c7c(r2)
+    addi    r3, r13, R13Off_m0x7154
+    lfs     f0, -0x7c70(r2)
     stfs    f1, -0x7154(r13)
     stfs    f0, 0x4(r3)
-    lbz     r0, -0x7204(r13)
+    lbz     r0, R13Off_m0x7204(r13)
     extsb.  r0, r0
     bne-    branch_0x8001a8f4
-    subi    r3, r13, 0x72b8
+    addi    r3, r13, R13Off_m0x72b8
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x63b8
-    subi    r3, r13, 0x72b8
+    lis     r3, __dt__15JSUList_5MSBgm_Fv@ha
+    addi    r4, r3, __dt__15JSUList_5MSBgm_Fv@l
+    addi    r3, r13, R13Off_m0x72b8
     addi    r5, r31, 0x30
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7204(r13)
+    stb     r0, R13Off_m0x7204(r13)
 branch_0x8001a8f4:
-    lbz     r0, -0x7203(r13)
+    lbz     r0, R13Off_m0x7203(r13)
     extsb.  r0, r0
     bne-    branch_0x8001a924
-    subi    r3, r13, 0x72ac
+    addi    r3, r13, R13Off_m0x72ac
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6410
-    subi    r3, r13, 0x72ac
+    lis     r3, __dt__24JSUList_13MSSetSoundGrp_Fv@ha
+    addi    r4, r3, __dt__24JSUList_13MSSetSoundGrp_Fv@l
+    addi    r3, r13, R13Off_m0x72ac
     addi    r5, r31, 0x3c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7203(r13)
+    stb     r0, R13Off_m0x7203(r13)
 branch_0x8001a924:
-    lbz     r0, -0x7202(r13)
+    lbz     r0, R13Off_m0x7202(r13)
     extsb.  r0, r0
     bne-    branch_0x8001a954
-    subi    r3, r13, 0x72a0
+    addi    r3, r13, R13Off_m0x72a0
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6468
-    subi    r3, r13, 0x72a0
+    lis     r3, __dt__21JSUList_10MSSetSound_Fv@ha
+    addi    r4, r3, __dt__21JSUList_10MSSetSound_Fv@l
+    addi    r3, r13, R13Off_m0x72a0
     addi    r5, r31, 0x48
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7202(r13)
+    stb     r0, R13Off_m0x7202(r13)
 branch_0x8001a954:
-    lbz     r0, -0x7201(r13)
+    lbz     r0, R13Off_m0x7201(r13)
     extsb.  r0, r0
     bne-    branch_0x8001a984
-    subi    r3, r13, 0x7294
+    addi    r3, r13, R13Off_m0x7294
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x64c0
-    subi    r3, r13, 0x7294
+    lis     r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7294
     addi    r5, r31, 0x54
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7201(r13)
+    stb     r0, R13Off_m0x7201(r13)
 branch_0x8001a984:
-    lbz     r0, -0x7200(r13)
+    lbz     r0, R13Off_m0x7200(r13)
     extsb.  r0, r0
     bne-    branch_0x8001a9b4
-    subi    r3, r13, 0x7288
+    addi    r3, r13, R13Off_m0x7288
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6518
-    subi    r3, r13, 0x7288
+    lis     r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7288
     addi    r5, r31, 0x60
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x7200(r13)
+    stb     r0, R13Off_m0x7200(r13)
 branch_0x8001a9b4:
-    lbz     r0, -0x71ff(r13)
+    lbz     r0, R13Off_m0x71ff(r13)
     extsb.  r0, r0
     bne-    branch_0x8001a9e4
-    subi    r3, r13, 0x727c
+    addi    r3, r13, R13Off_m0x727c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6570
-    subi    r3, r13, 0x727c
+    lis     r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDGrp_Fv@l
+    addi    r3, r13, R13Off_m0x727c
     addi    r5, r31, 0x6c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71ff(r13)
+    stb     r0, R13Off_m0x71ff(r13)
 branch_0x8001a9e4:
-    lbz     r0, -0x71fe(r13)
+    lbz     r0, R13Off_m0x71fe(r13)
     extsb.  r0, r0
     bne-    branch_0x8001aa14
-    subi    r3, r13, 0x7270
+    addi    r3, r13, R13Off_m0x7270
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x65c8
-    subi    r3, r13, 0x7270
+    lis     r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7270
     addi    r5, r31, 0x78
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fe(r13)
+    stb     r0, R13Off_m0x71fe(r13)
 branch_0x8001aa14:
-    lbz     r0, -0x71fd(r13)
+    lbz     r0, R13Off_m0x71fd(r13)
     extsb.  r0, r0
     bne-    branch_0x8001aa44
-    subi    r3, r13, 0x7264
+    addi    r3, r13, R13Off_m0x7264
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6620
-    subi    r3, r13, 0x7264
+    lis     r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7264
     addi    r5, r31, 0x84
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fd(r13)
+    stb     r0, R13Off_m0x71fd(r13)
 branch_0x8001aa44:
-    lbz     r0, -0x71fc(r13)
+    lbz     r0, R13Off_m0x71fc(r13)
     extsb.  r0, r0
     bne-    branch_0x8001aa74
-    subi    r3, r13, 0x7258
+    addi    r3, r13, R13Off_m0x7258
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6678
-    subi    r3, r13, 0x7258
+    lis     r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFGrp_Fv@l
+    addi    r3, r13, R13Off_m0x7258
     addi    r5, r31, 0x90
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fc(r13)
+    stb     r0, R13Off_m0x71fc(r13)
 branch_0x8001aa74:
-    lbz     r0, -0x71fb(r13)
+    lbz     r0, R13Off_m0x71fb(r13)
     extsb.  r0, r0
     bne-    branch_0x8001aaa4
-    subi    r3, r13, 0x724c
+    addi    r3, r13, R13Off_m0x724c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x66d0
-    subi    r3, r13, 0x724c
+    lis     r3, __dt__26JSUList_15JALSeModEffDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffDist_Fv@l
+    addi    r3, r13, R13Off_m0x724c
     addi    r5, r31, 0x9c
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fb(r13)
+    stb     r0, R13Off_m0x71fb(r13)
 branch_0x8001aaa4:
-    lbz     r0, -0x71fa(r13)
+    lbz     r0, R13Off_m0x71fa(r13)
     extsb.  r0, r0
     bne-    branch_0x8001aad4
-    subi    r3, r13, 0x7240
+    addi    r3, r13, R13Off_m0x7240
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6728
-    subi    r3, r13, 0x7240
+    lis     r3, __dt__26JSUList_15JALSeModPitDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitDist_Fv@l
+    addi    r3, r13, R13Off_m0x7240
     addi    r5, r31, 0xa8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71fa(r13)
+    stb     r0, R13Off_m0x71fa(r13)
 branch_0x8001aad4:
-    lbz     r0, -0x71f9(r13)
+    lbz     r0, R13Off_m0x71f9(r13)
     extsb.  r0, r0
     bne-    branch_0x8001ab04
-    subi    r3, r13, 0x7234
+    addi    r3, r13, R13Off_m0x7234
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6780
-    subi    r3, r13, 0x7234
+    lis     r3, __dt__26JSUList_15JALSeModVolDist_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolDist_Fv@l
+    addi    r3, r13, R13Off_m0x7234
     addi    r5, r31, 0xb4
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f9(r13)
+    stb     r0, R13Off_m0x71f9(r13)
 branch_0x8001ab04:
-    lbz     r0, -0x71f8(r13)
+    lbz     r0, R13Off_m0x71f8(r13)
     extsb.  r0, r0
     bne-    branch_0x8001ab34
-    subi    r3, r13, 0x7228
+    addi    r3, r13, R13Off_m0x7228
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x67d8
-    subi    r3, r13, 0x7228
+    lis     r3, __dt__26JSUList_15JALSeModEffFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModEffFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7228
     addi    r5, r31, 0xc0
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f8(r13)
+    stb     r0, R13Off_m0x71f8(r13)
 branch_0x8001ab34:
-    lbz     r0, -0x71f7(r13)
+    lbz     r0, R13Off_m0x71f7(r13)
     extsb.  r0, r0
     bne-    branch_0x8001ab64
-    subi    r3, r13, 0x721c
+    addi    r3, r13, R13Off_m0x721c
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6830
-    subi    r3, r13, 0x721c
+    lis     r3, __dt__26JSUList_15JALSeModPitFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModPitFunk_Fv@l
+    addi    r3, r13, R13Off_m0x721c
     addi    r5, r31, 0xcc
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f7(r13)
+    stb     r0, R13Off_m0x71f7(r13)
 branch_0x8001ab64:
-    lbz     r0, -0x71f6(r13)
+    lbz     r0, R13Off_m0x71f6(r13)
     extsb.  r0, r0
     bne-    branch_0x8001ab94
-    subi    r3, r13, 0x7210
+    addi    r3, r13, R13Off_m0x7210
     bl      initiate__10JSUPtrListFv
-    lis     r3, 0x8001
-    subi    r4, r3, 0x6888
-    subi    r3, r13, 0x7210
+    lis     r3, __dt__26JSUList_15JALSeModVolFunk_Fv@ha
+    addi    r4, r3, __dt__26JSUList_15JALSeModVolFunk_Fv@l
+    addi    r3, r13, R13Off_m0x7210
     addi    r5, r31, 0xd8
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x71f6(r13)
+    stb     r0, R13Off_m0x71f6(r13)
 branch_0x8001ab94:
     lwz     r0, 0x3c(sp)
     lwz     r31, 0x34(sp)
@@ -3404,8 +3398,8 @@ branch_0x8001ac40:
     blr
 
 
-.globl _20_frameLoopDyna__29MSSetSoundTL_13MSSetSoundGrp_Fv
-_20_frameLoopDyna__29MSSetSoundTL_13MSSetSoundGrp_Fv: # 0x8001ac5c
-    subi    r3, r3, 0x14
+.globl unk_8001ac5c
+unk_8001ac5c: # 0x8001ac5c
+    addi    r3, r3, -0x14
     b       frameLoopDyna__29MSSetSoundTL_13MSSetSoundGrp_Fv
 

@@ -9,8 +9,8 @@ updateMatAnm__6MActorFv: # 0x80237d70
     stw     r30, 0x30(sp)
     mr      r30, r3
     lwz     r4, 0x4(r3)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     lwz     r4, 0x4(r4)
     lwz     r0, 0xac(r4)
     stw     r0, 0x54(r3)
@@ -1718,7 +1718,7 @@ branch_0x802392e4:
     bge-    branch_0x80239318
     stw     r30, 0x3c(r31)
 branch_0x80239318:
-    lwz     r3, -0x610c(r13)
+    lwz     r3, R13Off_m0x610c(r13)
     lwz     r0, 0x44(r31)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2
@@ -1738,7 +1738,7 @@ branch_0x80239338:
     bl      entryOut__6MActorFv
     clrlwi. r0, r30, 24
     beq-    branch_0x8023937c
-    lwz     r3, -0x610c(r13)
+    lwz     r3, R13Off_m0x610c(r13)
     lwz     r0, 0x44(r31)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2
@@ -1870,7 +1870,7 @@ entry__6MActorFv: # 0x802394c8
     li      r0, 0x0
     stw     r0, 0x3c(r31)
 branch_0x80239518:
-    lwz     r3, -0x610c(r13)
+    lwz     r3, R13Off_m0x610c(r13)
     lwz     r0, 0x44(r31)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2
@@ -1924,7 +1924,7 @@ branch_0x802395c4:
     blt+    branch_0x80239598
     clrlwi. r0, r28, 24
     beq-    branch_0x802395f4
-    lwz     r3, -0x610c(r13)
+    lwz     r3, R13Off_m0x610c(r13)
     lwz     r0, 0x44(r31)
     lwz     r3, 0x14(r3)
     slwi    r0, r0, 2
@@ -1946,7 +1946,7 @@ setLightType__6MActorFi: # 0x80239614
     stw     r4, 0x44(r3)
     slwi    r0, r4, 2
     li      r4, 0x1
-    lwz     r3, -0x610c(r13)
+    lwz     r3, R13Off_m0x610c(r13)
     lwz     r3, 0x14(r3)
     lwzx    r3, r3, r0
     stb     r4, 0x20(r3)
@@ -1967,7 +1967,7 @@ setLightData__6MActorFPC12TBGCheckDataRCQ29JGeometry8TVec3_f_: # 0x80239634
     lbz     r0, 0x40(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80239704
-    lwz     r3, CubeManager4(r13)
+    lwz     r3, R13Off_m0x70e0(r13)
     cmplwi  r3, 0x0
     beq-    branch_0x8023968c
     mr      r4, r31
@@ -1998,7 +1998,7 @@ branch_0x802396ac:
     lfs     f4, 0x40(r30)
     lfs     f1, 0x38(r30)
     fmadds  f2, f3, f2, f0
-    lfs     f3, -0x1558(rtoc)
+    lfs     f3, -0x1558(r2)
     lfs     f0, 0x4(r31)
     fadds   f2, f4, f2
     fneg    f2, f2
@@ -2411,12 +2411,12 @@ resetDL__6MActorFv: # 0x80239bf8
     lbz     r0, 0x38(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80239d28
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lwz     r0, 0x4(r27)
-    addi    r30, r3, 0x45dc
+    addi    r30, r3, j3dSys@l
     stw     r0, 0x38(r30)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x7a8
+    lis     r3, j3dDefaultMtx@h
+    addi    r31, r3, j3dDefaultMtx@l
     lwz     r3, 0x4(r27)
     li      r28, 0x0
     lwz     r3, 0x4(r3)
@@ -2507,12 +2507,12 @@ initDL__6MActorFv: # 0x80239d3c
     lbz     r0, 0x38(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80239e50
-    lis     r3, 0x8040
+    lis     r3, j3dSys@h
     lwz     r0, 0x4(r26)
-    addi    r30, r3, 0x45dc
+    addi    r30, r3, j3dSys@l
     stw     r0, 0x38(r30)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x7a8
+    lis     r3, j3dDefaultMtx@h
+    addi    r31, r3, j3dDefaultMtx@l
     lwz     r3, 0x4(r26)
     li      r27, 0x0
     lwz     r3, 0x4(r3)
@@ -2642,9 +2642,9 @@ branch_0x80239f0c:
     lfs     f0, 0x10(r6)
     stw     r3, 0x44(sp)
     fadds   f2, f1, f0
-    lfs     f3, -0x1554(rtoc)
+    lfs     f3, -0x1554(r2)
     stw     r0, 0x40(sp)
-    lfd     f1, -0x1550(rtoc)
+    lfd     f1, -0x1550(r2)
     lfd     f0, 0x40(sp)
     fadds   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2672,9 +2672,9 @@ branch_0x80239f80:
     lwz     r4, 0x10(r31)
     slwi    r3, r3, 2
     lis     r0, 0x4330
-    lfs     f3, -0x1554(rtoc)
+    lfs     f3, -0x1554(r2)
     lwzx    r4, r4, r3
-    lfd     f1, -0x1550(rtoc)
+    lfd     f1, -0x1550(r2)
     lha     r3, 0xc(r4)
     lfs     f2, 0x14(r4)
     xoris   r3, r3, 0x8000
@@ -2703,9 +2703,9 @@ branch_0x80239fe8:
     lfs     f0, 0x10(r6)
     stw     r3, 0x44(sp)
     fadds   f2, f1, f0
-    lfs     f3, -0x1554(rtoc)
+    lfs     f3, -0x1554(r2)
     stw     r0, 0x40(sp)
-    lfd     f1, -0x1550(rtoc)
+    lfd     f1, -0x1550(r2)
     lfd     f0, 0x40(sp)
     fadds   f2, f3, f2
     fsubs   f0, f0, f1
@@ -2771,11 +2771,11 @@ branch_0x8023a0c0:
     bne-    branch_0x8023a104
     lha     r3, 0x8(r4)
     lis     r0, 0x4330
-    lfs     f2, -0x1554(rtoc)
+    lfs     f2, -0x1554(r2)
     xoris   r3, r3, 0x8000
     lfs     f0, 0x10(r4)
     stw     r3, 0x34(sp)
-    lfd     f1, -0x1550(rtoc)
+    lfd     f1, -0x1550(r2)
     fadds   f2, f2, f0
     stw     r0, 0x30(sp)
     lfd     f0, 0x30(sp)
@@ -2935,8 +2935,8 @@ branch_0x8023a2f0:
     cmplw   r3, r0
     bne+    branch_0x8023a2c4
 branch_0x8023a310:
-    lis     r3, 0x803e
-    addi    r29, r3, 0x1798
+    lis     r3, __vvt__14J3DMaterialAnm@h
+    addi    r29, r3, __vvt__14J3DMaterialAnm@l
     li      r31, 0x0
     lis     r28, 0xc000
     b       branch_0x8023a3b8
@@ -3024,8 +3024,8 @@ __ct__6MActorFP13MActorAnmData: # 0x8023a408
     li      r26, 0x1
     addi    r31, r4, 0x0
     stw     r27, 0x0(r3)
-    lis     r3, 0x1
-    subi    r0, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r0, r3, unk_0000ffff@l
     stw     r27, 0x4(r30)
     li      r3, 0x18
     stw     r27, 0x8(r30)
@@ -3067,24 +3067,24 @@ __ct__6MActorFP13MActorAnmData: # 0x8023a408
     bl      __nw__FUl
     mr.     r25, r3
     beq-    branch_0x8023a544
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4190
+    lis     r3, __vvt__13MActorAnmBase@ha
+    addi    r0, r3, __vvt__13MActorAnmBase@l
     stw     r0, 0x20(r25)
     li      r0, -0x1
-    lis     r3, 0x803b
+    lis     r3, __vvt__12J3DFrameCtrl@ha
     stw     r0, 0x0(r25)
-    subi    r0, r3, 0x2eac
+    addi    r0, r3, __vvt__12J3DFrameCtrl@l
     addi    r3, r25, 0x0
     stw     r0, 0x4(r25)
     addi    r3, r3, 0x4
     li      r4, 0x0
     bl      init__12J3DFrameCtrlFs
     stw     r27, 0x18(r25)
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r4, __vvt__35MActorAnmEach_18J3DAnmTransformKey_@ha
+    lis     r3, __vvt__12MActorAnmBck@ha
     stw     r27, 0x1c(r25)
-    subi    r4, r4, 0x42a8
-    subi    r0, r3, 0x41b8
+    addi    r4, r4, __vvt__35MActorAnmEach_18J3DAnmTransformKey_@l
+    addi    r0, r3, __vvt__12MActorAnmBck@l
     stw     r4, 0x20(r25)
     stw     r27, 0x24(r25)
     stw     r0, 0x20(r25)
@@ -3112,16 +3112,16 @@ branch_0x8023a560:
     beq-    branch_0x8023a5b4
     mr      r3, r25
     bl      __ct__13MActorAnmBaseFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x42d0
+    lis     r3, __vvt__31MActorAnmEach_14J3DAnmColorKey_@ha
+    addi    r0, r3, __vvt__31MActorAnmEach_14J3DAnmColorKey_@l
     stw     r0, 0x20(r25)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__34MActorAnmMatEach_14J3DAnmColorKey_@ha
     stw     r4, 0x24(r25)
-    subi    r0, r3, 0x42f8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__34MActorAnmMatEach_14J3DAnmColorKey_@l
+    lis     r3, __vvt__12MActorAnmBpk@ha
     stw     r0, 0x20(r25)
-    subi    r0, r3, 0x4230
+    addi    r0, r3, __vvt__12MActorAnmBpk@l
     stw     r0, 0x20(r25)
     stw     r4, 0x28(r25)
 branch_0x8023a5b4:
@@ -3144,16 +3144,16 @@ branch_0x8023a5d8:
     beq-    branch_0x8023a62c
     mr      r3, r25
     bl      __ct__13MActorAnmBaseFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4320
+    lis     r3, __vvt__33MActorAnmEach_16J3DAnmTexPattern_@ha
+    addi    r0, r3, __vvt__33MActorAnmEach_16J3DAnmTexPattern_@l
     stw     r0, 0x20(r25)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__36MActorAnmMatEach_16J3DAnmTexPattern_@ha
     stw     r4, 0x24(r25)
-    subi    r0, r3, 0x4348
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__36MActorAnmMatEach_16J3DAnmTexPattern_@l
+    lis     r3, __vvt__12MActorAnmBtp@ha
     stw     r0, 0x20(r25)
-    subi    r0, r3, 0x41e0
+    addi    r0, r3, __vvt__12MActorAnmBtp@l
     stw     r0, 0x20(r25)
     stw     r4, 0x28(r25)
 branch_0x8023a62c:
@@ -3176,16 +3176,16 @@ branch_0x8023a650:
     beq-    branch_0x8023a6a4
     mr      r3, r25
     bl      __ct__13MActorAnmBaseFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4370
+    lis     r3, __vvt__36MActorAnmEach_19J3DAnmTextureSRTKey_@ha
+    addi    r0, r3, __vvt__36MActorAnmEach_19J3DAnmTextureSRTKey_@l
     stw     r0, 0x20(r25)
     li      r4, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__39MActorAnmMatEach_19J3DAnmTextureSRTKey_@ha
     stw     r4, 0x24(r25)
-    subi    r0, r3, 0x4398
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__39MActorAnmMatEach_19J3DAnmTextureSRTKey_@l
+    lis     r3, __vvt__12MActorAnmBtk@ha
     stw     r0, 0x20(r25)
-    subi    r0, r3, 0x4208
+    addi    r0, r3, __vvt__12MActorAnmBtk@l
     stw     r0, 0x20(r25)
     stw     r4, 0x28(r25)
 branch_0x8023a6a4:
@@ -3208,16 +3208,16 @@ branch_0x8023a6c8:
     beq-    branch_0x8023a718
     mr      r3, r25
     bl      __ct__13MActorAnmBaseFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x43c0
+    lis     r3, __vvt__32MActorAnmEach_15J3DAnmTevRegKey_@ha
+    addi    r0, r3, __vvt__32MActorAnmEach_15J3DAnmTevRegKey_@l
     stw     r0, 0x20(r25)
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__35MActorAnmMatEach_15J3DAnmTevRegKey_@ha
     stw     r0, 0x24(r25)
-    subi    r0, r3, 0x43e8
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__35MActorAnmMatEach_15J3DAnmTevRegKey_@l
+    lis     r3, __vvt__12MActorAnmBrk@ha
     stw     r0, 0x20(r25)
-    subi    r0, r3, 0x4258
+    addi    r0, r3, __vvt__12MActorAnmBrk@l
     stw     r0, 0x20(r25)
 branch_0x8023a718:
     stw     r25, 0x20(r30)
@@ -3239,13 +3239,13 @@ branch_0x8023a744:
     bl      __nw__FUl
     mr.     r25, r3
     beq-    branch_0x8023a7bc
-    lis     r3, 0x803e
-    subi    r0, r3, 0x4190
+    lis     r3, __vvt__13MActorAnmBase@ha
+    addi    r0, r3, __vvt__13MActorAnmBase@l
     stw     r0, 0x20(r25)
     li      r0, -0x1
-    lis     r3, 0x803b
+    lis     r3, __vvt__12J3DFrameCtrl@ha
     stw     r0, 0x0(r25)
-    subi    r0, r3, 0x2eac
+    addi    r0, r3, __vvt__12J3DFrameCtrl@l
     addi    r3, r25, 0x0
     stw     r0, 0x4(r25)
     addi    r3, r3, 0x4
@@ -3253,11 +3253,11 @@ branch_0x8023a744:
     bl      init__12J3DFrameCtrlFs
     li      r5, 0x0
     stw     r5, 0x18(r25)
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r4, __vvt__33MActorAnmEach_16J3DAnmClusterKey_@ha
+    lis     r3, __vvt__12MActorAnmBlk@ha
     stw     r5, 0x1c(r25)
-    subi    r4, r4, 0x4410
-    subi    r0, r3, 0x4280
+    addi    r4, r4, __vvt__33MActorAnmEach_16J3DAnmClusterKey_@l
+    addi    r0, r3, __vvt__12MActorAnmBlk@l
     stw     r4, 0x20(r25)
     stw     r5, 0x24(r25)
     stw     r0, 0x20(r25)
@@ -3277,18 +3277,18 @@ branch_0x8023a7d8:
     slwi    r3, r0, 2
     bl      __nwa__FUl
     stw     r3, 0x10(r30)
-    lis     r6, 0x803e
-    lis     r5, 0x803b
+    lis     r6, __vvt__13MActorAnmBase@ha
+    lis     r5, __vvt__12J3DFrameCtrl@ha
     lwz     r7, 0x0(r30)
-    lis     r4, 0x803e
+    lis     r4, __vvt__35MActorAnmEach_18J3DAnmTransformKey_@ha
     lwzu    r0, 0x24(r7)
-    lis     r3, 0x803e
-    subi    r26, r6, 0x4190
+    lis     r3, __vvt__12MActorAnmBck@ha
+    addi    r26, r6, __vvt__13MActorAnmBase@l
     stw     r0, 0xe0(sp)
-    subi    r27, r5, 0x2eac
-    subi    r28, r4, 0x42a8
+    addi    r27, r5, __vvt__12J3DFrameCtrl@l
+    addi    r28, r4, __vvt__35MActorAnmEach_18J3DAnmTransformKey_@l
     stw     r7, 0xdc(sp)
-    subi    r29, r3, 0x41b8
+    addi    r29, r3, __vvt__12MActorAnmBck@l
     li      r25, 0x0
     b       branch_0x8023a8c8
 
@@ -3355,18 +3355,18 @@ branch_0x8023a8e8:
 .globl __ct__13MActorAnmBaseFv
 __ct__13MActorAnmBaseFv: # 0x8023a900
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, __vvt__13MActorAnmBase@ha
     stw     r0, 0x4(sp)
-    subi    r0, r4, 0x4190
+    addi    r0, r4, __vvt__13MActorAnmBase@l
     li      r4, 0x0
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     addi    r31, r3, 0x0
     stw     r0, 0x20(r3)
     li      r0, -0x1
-    lis     r3, 0x803b
+    lis     r3, __vvt__12J3DFrameCtrl@ha
     stw     r0, 0x0(r31)
-    subi    r0, r3, 0x2eac
+    addi    r0, r3, __vvt__12J3DFrameCtrl@l
     addi    r3, r31, 0x4
     stw     r0, 0x4(r31)
     bl      init__12J3DFrameCtrlFs

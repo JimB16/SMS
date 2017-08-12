@@ -9,8 +9,8 @@ __dt__Q26JStage13TAmbientLightFv: # 0x80336ef4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80336f3c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x4590
+    lis     r3, __vvt__Q26JStage13TAmbientLight@h
+    addi    r0, r3, __vvt__Q26JStage13TAmbientLight@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -38,7 +38,7 @@ JSGFGetType__Q26JStage13TAmbientLightCFv: # 0x80336f58
 .globl JSGGetColor__Q26JStage13TAmbientLightCFv
 JSGGetColor__Q26JStage13TAmbientLightCFv: # 0x80336f60
     stwu    sp, -0x18(sp)
-    lwz     r0, 0x988(rtoc)
+    lwz     r0, R2Off_0x988(r2)
     stw     r0, 0x10(sp)
     lwz     r3, 0x10(sp)
     addi    sp, sp, 0x18

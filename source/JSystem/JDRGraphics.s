@@ -37,7 +37,7 @@ setViewport__Q26JDrama9TGraphicsFRCQ26JDrama5TRectff: # 0x802f9534
     xoris   r5, r5, 0x8000
     xoris   r6, r6, 0x8000
     stw     r5, 0x2c(sp)
-    lfd     f4, 0x400(rtoc)
+    lfd     f4, 0x400(r2)
     fmr     f5, f30
     stw     r6, 0x34(sp)
     lis     r6, 0x4330
@@ -71,7 +71,7 @@ branch_0x802f9618:
     subf    r3, r7, r3
     stw     r0, 0x1c(sp)
     xoris   r0, r6, 0x8000
-    lfd     f4, 0x400(rtoc)
+    lfd     f4, 0x400(r2)
     xoris   r3, r3, 0x8000
     stw     r0, 0x24(sp)
     xoris   r0, r5, 0x8000

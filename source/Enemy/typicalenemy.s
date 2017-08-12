@@ -7,12 +7,12 @@ __dt__24TNerveTypicalGraphWanderFv: # 0x8006f4f8
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8006f53c
-    lis     r3, 0x803b
-    addi    r0, r3, 0x25b8
+    lis     r3, __vvt__24TNerveTypicalGraphWander@h
+    addi    r0, r3, __vvt__24TNerveTypicalGraphWander@l
     stw     r0, 0x0(r31)
     beq-    branch_0x8006f52c
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
     stw     r0, 0x0(r31)
 branch_0x8006f52c:
     extsh.  r0, r4
@@ -50,25 +50,25 @@ branch_0x8006f584:
     blrl
     cmpwi   r3, 0x0
     beq-    branch_0x8006f620
-    lbz     r0, -0x6e78(r13)
+    lbz     r0, R13Off_m0x6e78(r13)
     extsb.  r0, r0
     bne-    branch_0x8006f5e4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6e74(r13)
-    addi    r0, r3, 0x25b8
-    lis     r4, 0x8007
-    stw     r0, -0x6e74(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0xa78
-    subi    r4, r4, 0xb08
-    subi    r3, r13, 0x6e74
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveTypicalGraphWander@h
+    stw     r0, R13Off_m0x6e74(r13)
+    addi    r0, r3, __vvt__24TNerveTypicalGraphWander@l
+    lis     r4, __dt__24TNerveTypicalGraphWanderFv@ha
+    stw     r0, R13Off_m0x6e74(r13)
+    lis     r3, unk_803f0a78@h
+    addi    r5, r3, unk_803f0a78@l
+    addi    r4, r4, __dt__24TNerveTypicalGraphWanderFv@l
+    addi    r3, r13, R13Off_m0x6e74
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6e78(r13)
+    stb     r0, R13Off_m0x6e78(r13)
 branch_0x8006f5e4:
-    subi    r4, r13, 0x6e74
+    addi    r4, r13, R13Off_m0x6e74
     cmplwi  r4, 0x0
     beq-    branch_0x8006f618
     lwz     r5, 0x8(r31)
@@ -89,7 +89,7 @@ branch_0x8006f620:
     lfs     f2, 0x144(r30)
     mr      r3, r30
     lfs     f1, 0x140(r30)
-    lfs     f3, -0x6b28(rtoc)
+    lfs     f3, -0x6b28(r2)
     bl      walkToCurPathNode__11TSpineEnemyFfff
     mr      r3, r30
     bl      doShortCut__11TSpineEnemyFv
@@ -108,26 +108,26 @@ theNerve__24TNerveTypicalGraphWanderFv: # 0x8006f658
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lbz     r0, -0x6e78(r13)
+    lbz     r0, R13Off_m0x6e78(r13)
     extsb.  r0, r0
     bne-    branch_0x8006f6a8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6e74(r13)
-    addi    r0, r3, 0x25b8
-    lis     r4, 0x8007
-    stw     r0, -0x6e74(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0xa78
-    subi    r4, r4, 0xb08
-    subi    r3, r13, 0x6e74
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveTypicalGraphWander@h
+    stw     r0, R13Off_m0x6e74(r13)
+    addi    r0, r3, __vvt__24TNerveTypicalGraphWander@l
+    lis     r4, __dt__24TNerveTypicalGraphWanderFv@ha
+    stw     r0, R13Off_m0x6e74(r13)
+    lis     r3, unk_803f0a78@h
+    addi    r5, r3, unk_803f0a78@l
+    addi    r4, r4, __dt__24TNerveTypicalGraphWanderFv@l
+    addi    r3, r13, R13Off_m0x6e74
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6e78(r13)
+    stb     r0, R13Off_m0x6e78(r13)
 branch_0x8006f6a8:
     lwz     r0, 0xc(sp)
-    subi    r3, r13, 0x6e74
+    addi    r3, r13, R13Off_m0x6e74
     addi    sp, sp, 0x8
     mtlr    r0
     blr
@@ -145,12 +145,12 @@ createEnemyInstance__15TTypicalManagerFv: # 0x8006f6bc
     mr.     r31, r3
     beq-    branch_0x8006f728
     stw     r31, 0xc(sp)
-    subi    r4, rtoc, 0x6b24
+    addi    r4, r2, R2Off_m0x6b24
     lwz     r3, 0xc(sp)
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
+    lis     r3, __vvt__13TTypicalEnemy@h
     lwz     r4, 0xc(sp)
-    addi    r3, r3, 0x261c
+    addi    r3, r3, __vvt__13TTypicalEnemy@l
     stw     r3, 0x0(r4)
     addi    r0, r3, 0x24
     li      r3, 0x34
@@ -176,11 +176,11 @@ branch_0x8006f728:
 .globl load__15TTypicalManagerFR20JSUMemoryInputStream
 load__15TTypicalManagerFR20JSUMemoryInputStream: # 0x8006f744
     mflr    r0
-    lis     r5, 0x8038
+    lis     r5, unk_80379ef8@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r5, 0x6108
+    addi    r31, r5, unk_80379ef8@l
     stw     r30, 0x18(sp)
     addi    r30, r4, 0x0
     stw     r29, 0x14(sp)
@@ -200,12 +200,12 @@ load__15TTypicalManagerFR20JSUMemoryInputStream: # 0x8006f744
     addi    r3, r28, 0xa8
     addi    r6, r31, 0xf4
     bl      __ct__10TBaseParamFP7TParamsUsPCc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x42c4
+    lis     r3, __vvt__10TParamT_f_@ha
+    addi    r0, r3, __vvt__10TParamT_f_@l
     stw     r0, 0xa8(r28)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x42d0
-    lfs     f0, -0x6b1c(rtoc)
+    lis     r3, __vvt__11TParamRT_f_@ha
+    addi    r0, r3, __vvt__11TParamRT_f_@l
+    lfs     f0, -0x6b1c(r2)
     mr      r3, r28
     stfs    f0, 0xb8(r28)
     stw     r0, 0xa8(r28)
@@ -234,8 +234,8 @@ __ct__15TTypicalManagerFPCc: # 0x8006f804
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__13TEnemyManagerFPCc
-    lis     r3, 0x803b
-    addi    r0, r3, 0x25c8
+    lis     r3, __vvt__15TTypicalManager@h
+    addi    r0, r3, __vvt__15TTypicalManager@l
     stw     r0, 0x0(r31)
     mr      r3, r31
     lwz     r0, 0x1c(sp)
@@ -253,32 +253,32 @@ init__13TTypicalEnemyFP12TLiveManager: # 0x8006f840
     stw     r31, 0x2c(sp)
     mr      r31, r3
     bl      init__11TSpineEnemyFP12TLiveManager
-    lwz     r3, -0x70b0(r13)
-    subi    r4, rtoc, 0x6b18
+    lwz     r3, R13Off_m0x70b0(r13)
+    addi    r4, r2, R2Off_m0x6b18
     bl      getGraphByName__10TConductorFPCc
     lwz     r4, 0x124(r31)
     stw     r3, 0x0(r4)
-    lbz     r0, -0x6e78(r13)
+    lbz     r0, R13Off_m0x6e78(r13)
     extsb.  r0, r0
     bne-    branch_0x8006f8b0
-    lis     r3, 0x803b
-    subi    r0, r3, 0x48f4
-    lis     r3, 0x803b
-    stw     r0, -0x6e74(r13)
-    addi    r0, r3, 0x25b8
-    lis     r4, 0x8007
-    stw     r0, -0x6e74(r13)
-    lis     r3, 0x803f
-    addi    r5, r3, 0xa78
-    subi    r4, r4, 0xb08
-    subi    r3, r13, 0x6e74
+    lis     r3, __vvt__24TNerveBase_10TLiveActor_@ha
+    addi    r0, r3, __vvt__24TNerveBase_10TLiveActor_@l
+    lis     r3, __vvt__24TNerveTypicalGraphWander@h
+    stw     r0, R13Off_m0x6e74(r13)
+    addi    r0, r3, __vvt__24TNerveTypicalGraphWander@l
+    lis     r4, __dt__24TNerveTypicalGraphWanderFv@ha
+    stw     r0, R13Off_m0x6e74(r13)
+    lis     r3, unk_803f0a78@h
+    addi    r5, r3, unk_803f0a78@l
+    addi    r4, r4, __dt__24TNerveTypicalGraphWanderFv@l
+    addi    r3, r13, R13Off_m0x6e74
     bl      __register_global_object
     li      r0, 0x1
-    stb     r0, -0x6e78(r13)
+    stb     r0, R13Off_m0x6e78(r13)
 branch_0x8006f8b0:
     lwz     r6, 0x8c(r31)
     li      r5, 0x0
-    subi    r4, r13, 0x6e74
+    addi    r4, r13, R13Off_m0x6e74
     stw     r5, 0x8(r6)
     li      r0, -0x1
     addi    r3, r31, 0x0
@@ -305,9 +305,9 @@ __ct__13TTypicalEnemyFPCc: # 0x8006f8f8
     stw     r3, 0x8(sp)
     lwz     r3, 0x8(sp)
     bl      __ct__11TSpineEnemyFPCc
-    lis     r3, 0x803b
+    lis     r3, __vvt__13TTypicalEnemy@h
     lwz     r4, 0x8(sp)
-    addi    r3, r3, 0x261c
+    addi    r3, r3, __vvt__13TTypicalEnemy@l
     stw     r3, 0x0(r4)
     addi    r0, r3, 0x24
     li      r3, 0x34
@@ -337,8 +337,8 @@ __dt__15TTypicalManagerFv: # 0x8006f960
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8006f9a8
-    lis     r3, 0x803b
-    addi    r0, r3, 0x25c8
+    lis     r3, __vvt__15TTypicalManager@h
+    addi    r0, r3, __vvt__15TTypicalManager@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -367,8 +367,8 @@ __dt__13TTypicalEnemyFv: # 0x8006f9c4
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8006fa14
-    lis     r3, 0x803b
-    addi    r3, r3, 0x261c
+    lis     r3, __vvt__13TTypicalEnemy@h
+    addi    r3, r3, __vvt__13TTypicalEnemy@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -389,8 +389,8 @@ branch_0x8006fa14:
     blr
 
 
-.globl _32___dt__13TTypicalEnemyFv
-_32___dt__13TTypicalEnemyFv: # 0x8006fa30
-    subi    r3, r3, 0x20
+.globl unk_8006fa30
+unk_8006fa30: # 0x8006fa30
+    addi    r3, r3, -0x20
     b       __dt__13TTypicalEnemyFv
 

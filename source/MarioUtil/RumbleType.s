@@ -2,12 +2,12 @@
 .globl getIndex__10RumbleTypeFPc
 getIndex__10RumbleTypeFPc: # 0x802356b4
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, _info@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x28(sp)
     stmw    r27, 0x14(sp)
     addi    r27, r3, 0x0
-    subi    r30, r4, 0x45a8
+    addi    r30, r4, _info@l
     li      r28, 0x0
     li      r31, 0x0
     b       branch_0x80235704
@@ -26,7 +26,7 @@ branch_0x802356fc:
     addi    r28, r28, 0x1
     addi    r31, r31, 0x8
 branch_0x80235704:
-    lwz     r0, -0x75e4(r13)
+    lwz     r0, R13Off_m0x75e4(r13)
     cmpw    r28, r0
     blt+    branch_0x802356dc
     li      r3, -0x1

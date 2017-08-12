@@ -11,8 +11,8 @@ __ct__10JUTRomFontFP7JKRHeap: # 0x802f248c
     lwz     r3, 0x8(sp)
     bl      __ct__7JUTFontFv
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1868
+    lis     r3, __vvt__10JUTRomFont@h
+    addi    r0, r3, __vvt__10JUTRomFont@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x0
     addi    r4, r30, 0x0
@@ -57,26 +57,26 @@ __dt__10JUTRomFontFv: # 0x802f252c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f25ac
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1868
+    lis     r3, __vvt__10JUTRomFont@h
+    addi    r0, r3, __vvt__10JUTRomFont@l
     stw     r0, 0x0(r30)
-    lwz     r3, -0x5dd0(r13)
-    subi    r0, r3, 0x1
-    stw     r0, -0x5dd0(r13)
-    lwz     r0, -0x5dd0(r13)
+    lwz     r3, R13Off_m0x5dd0(r13)
+    addi    r0, r3, -0x1
+    stw     r0, R13Off_m0x5dd0(r13)
+    lwz     r0, R13Off_m0x5dd0(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802f2588
-    lwz     r3, -0x5dd4(r13)
+    lwz     r3, R13Off_m0x5dd4(r13)
     li      r4, 0x0
     bl      free__7JKRHeapFPvP7JKRHeap
     li      r0, 0x0
-    stw     r0, -0x5dd4(r13)
-    stw     r0, -0x5dd8(r13)
+    stw     r0, R13Off_m0x5dd4(r13)
+    stw     r0, R13Off_m0x5dd8(r13)
 branch_0x802f2588:
     cmplwi  r30, 0x0
     beq-    branch_0x802f259c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x540
+    lis     r3, __vvt__7JUTFont@h
+    addi    r0, r3, __vvt__7JUTFont@l
     stw     r0, 0x0(r30)
 branch_0x802f259c:
     extsh.  r0, r31
@@ -104,28 +104,28 @@ loadImage__10JUTRomFontFP7JKRHeap: # 0x802f25c8
     stw     r29, 0x1c(sp)
     addi    r29, r3, 0x0
     bne-    branch_0x802f25f0
-    lwz     r30, -0x5f2c(r13)
+    lwz     r30, R13Off_m0x5f2c(r13)
 branch_0x802f25f0:
-    lwz     r0, -0x5dd4(r13)
+    lwz     r0, R13Off_m0x5dd4(r13)
     cmplwi  r0, 0x0
     bne-    branch_0x802f2674
     bl      OSGetFontEncode
-    lis     r5, 0x803b
+    lis     r5, unk_803aa220@ha
     crxor   6, 6, 6
     clrlwi  r4, r3, 16
-    subi    r3, r5, 0x5de0
+    addi    r3, r5, unk_803aa220@l
     bl      JUTReportConsole_f
     bl      OSGetFontEncode
     clrlwi  r0, r3, 16
     crxor   6, 6, 6
     mulli   r4, r0, 0xc
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1850
+    lis     r3, saoAboutEncoding___10JUTRomFont@h
+    addi    r0, r3, saoAboutEncoding___10JUTRomFont@l
     add     r0, r0, r4
-    stw     r0, -0x5dd8(r13)
-    lis     r3, 0x803b
-    subi    r3, r3, 0x5dc8
-    lwz     r4, -0x5dd8(r13)
+    stw     r0, R13Off_m0x5dd8(r13)
+    lis     r3, unk_803aa238@ha
+    addi    r3, r3, unk_803aa238@l
+    lwz     r4, R13Off_m0x5dd8(r13)
     lwz     r31, 0x4(r4)
     mr      r4, r31
     bl      JUTReportConsole_f
@@ -133,16 +133,16 @@ branch_0x802f25f0:
     addi    r5, r30, 0x0
     li      r4, 0x20
     bl      alloc__7JKRHeapFUliP7JKRHeap
-    stw     r3, -0x5dd4(r13)
-    lwz     r3, -0x5dd4(r13)
+    stw     r3, R13Off_m0x5dd4(r13)
+    lwz     r3, R13Off_m0x5dd4(r13)
     bl      OSInitFont
-    lwz     r3, -0x5dd4(r13)
+    lwz     r3, R13Off_m0x5dd4(r13)
     lhz     r0, 0xc(r3)
     stw     r0, 0x8(r29)
 branch_0x802f2674:
-    lwz     r3, -0x5dd0(r13)
+    lwz     r3, R13Off_m0x5dd0(r13)
     addi    r0, r3, 0x1
-    stw     r0, -0x5dd0(r13)
+    stw     r0, R13Off_m0x5dd0(r13)
     lwz     r0, 0x2c(sp)
     lwz     r31, 0x24(sp)
     lwz     r30, 0x20(sp)
@@ -229,7 +229,7 @@ drawChar_scale__10JUTRomFontFffffib: # 0x802f2774
     mr.     r27, r4
     mr      r25, r3
     bne-    branch_0x802f27c0
-    lfs     f1, 0x388(rtoc)
+    lfs     f1, 0x388(r2)
     b       branch_0x802f2b9c
 
 branch_0x802f27c0:
@@ -239,7 +239,7 @@ branch_0x802f27c0:
     mtlr    r12
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f1, 0x390(rtoc)
+    lfd     f1, 0x390(r2)
     stw     r0, 0x12c(sp)
     lis     r26, 0x4330
     addi    r3, r25, 0x0
@@ -252,7 +252,7 @@ branch_0x802f27c0:
     fdivs   f31, f27, f0
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f1, 0x390(rtoc)
+    lfd     f1, 0x390(r2)
     stw     r0, 0x124(sp)
     cmpwi   r27, 0x100
     addi    r3, sp, 0x6c
@@ -283,7 +283,7 @@ branch_0x802f2840:
     li      r9, 0x0
     li      r10, 0x0
     bl      GXInitTexObj
-    lfs     f1, 0x388(rtoc)
+    lfs     f1, 0x388(r2)
     addi    r3, sp, 0x48
     li      r4, 0x1
     fmr     f2, f1
@@ -312,10 +312,10 @@ branch_0x802f28d8:
     stw     r3, 0x124(sp)
     lis     r31, 0x4330
     xoris   r0, r0, 0x8000
-    lfd     f3, 0x390(rtoc)
+    lfd     f3, 0x390(r2)
     stw     r31, 0x120(sp)
     mr      r3, r25
-    lfs     f1, 0x38c(rtoc)
+    lfs     f1, 0x38c(r2)
     lfd     f0, 0x120(sp)
     stw     r0, 0x12c(sp)
     fsubs   f0, f0, f3
@@ -330,7 +330,7 @@ branch_0x802f28d8:
     fmadds  f27, f0, f31, f28
     blrl
     xoris   r0, r3, 0x8000
-    lfd     f1, 0x390(rtoc)
+    lfd     f1, 0x390(r2)
     stw     r0, 0x11c(sp)
     mr      r3, r25
     lwz     r12, 0x0(r25)
@@ -350,7 +350,7 @@ branch_0x802f28d8:
     stw     r31, 0x110(sp)
     srawi   r29, r4, 9
     lwz     r12, 0x0(r25)
-    lfd     f1, 0x390(rtoc)
+    lfd     f1, 0x390(r2)
     add     r0, r5, r0
     lfd     f0, 0x110(sp)
     addze   r29, r29
@@ -376,13 +376,13 @@ branch_0x802f28d8:
     li      r3, 0x80
     bl      GXBegin
     fctiwz  f7, f28
-    lfd     f6, 0x390(rtoc)
+    lfd     f6, 0x390(r2)
     fctiwz  f2, f26
     lis     r3, 0xcc01
     fctiwz  f3, f27
     stfd    f7, 0x108(sp)
     fctiwz  f1, f29
-    lfs     f4, 0x388(rtoc)
+    lfs     f4, 0x388(r2)
     clrlwi  r0, r29, 16
     stfd    f2, 0xf8(sp)
     lwz     r5, 0x10c(sp)
@@ -500,14 +500,14 @@ branch_0x802f2b9c:
 
 .globl getDescent__10JUTRomFontCFv
 getDescent__10JUTRomFontCFv: # 0x802f2bc8
-    lwz     r3, -0x5dd4(r13)
+    lwz     r3, R13Off_m0x5dd4(r13)
     lhz     r3, 0xa(r3)
     blr
 
 
 .globl getAscent__10JUTRomFontCFv
 getAscent__10JUTRomFontCFv: # 0x802f2bd4
-    lwz     r3, -0x5dd4(r13)
+    lwz     r3, R13Off_m0x5dd4(r13)
     lhz     r3, 0x8(r3)
     blr
 
@@ -541,7 +541,7 @@ getHeight__10JUTRomFontCFv: # 0x802f2be0
 
 .globl getWidth__10JUTRomFontCFv
 getWidth__10JUTRomFontCFv: # 0x802f2c3c
-    lwz     r3, -0x5dd4(r13)
+    lwz     r3, R13Off_m0x5dd4(r13)
     lhz     r3, 0xc(r3)
     blr
 
@@ -583,7 +583,7 @@ isLeadByte__10JUTRomFontCFi: # 0x802f2cb0
     mr      r3, r4
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r5, -0x5dd8(r13)
+    lwz     r5, R13Off_m0x5dd8(r13)
     lwz     r12, 0x8(r5)
     mtlr    r12
     blrl
@@ -595,7 +595,7 @@ isLeadByte__10JUTRomFontCFi: # 0x802f2cb0
 
 .globl getLeading__10JUTRomFontCFv
 getLeading__10JUTRomFontCFv: # 0x802f2ce0
-    lwz     r3, -0x5dd4(r13)
+    lwz     r3, R13Off_m0x5dd4(r13)
     lhz     r3, 0xe(r3)
     blr
 
@@ -608,7 +608,7 @@ getResFont__10JUTRomFontCFv: # 0x802f2cec
 
 .globl getFontType__10JUTRomFontCFv
 getFontType__10JUTRomFontCFv: # 0x802f2cf4
-    lwz     r3, -0x5dd8(r13)
+    lwz     r3, R13Off_m0x5dd8(r13)
     lwz     r3, 0x0(r3)
     blr
 

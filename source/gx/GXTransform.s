@@ -17,7 +17,7 @@ GXProject: # 0x80362ac0
     fmuls   f4, f4, f1
     fmuls   f2, f0, f2
     fmuls   f11, f11, f3
-    lfs     f1, 0xc08(rtoc)
+    lfs     f1, 0xc08(r2)
     fadds   f9, f10, f9
     lfs     f0, 0x0(r4)
     fmuls   f8, f8, f3
@@ -36,7 +36,7 @@ GXProject: # 0x80362ac0
     fadds   f9, f5, f0
     bne-    branch_0x80362b90
     fneg    f0, f9
-    lfs     f1, 0xc0c(rtoc)
+    lfs     f1, 0xc0c(r2)
     lfs     f6, 0x4(r4)
     lfs     f5, 0x8(r4)
     fdivs   f0, f1, f0
@@ -66,12 +66,12 @@ branch_0x80362b90:
     lfs     f2, 0x18(r4)
     fadds   f6, f6, f5
     fadds   f3, f4, f3
-    lfs     f0, 0xc0c(rtoc)
+    lfs     f0, 0xc0c(r2)
     fadds   f7, f2, f1
 branch_0x80362bc4:
     lfs     f4, 0x8(r5)
     fneg    f1, f3
-    lfs     f5, 0xc10(rtoc)
+    lfs     f5, 0xc10(r2)
     fmuls   f2, f6, f4
     lfs     f3, 0x0(r5)
     fmuls   f4, f4, f5
@@ -101,44 +101,44 @@ branch_0x80362bc4:
 
 .globl GXSetProjection
 GXSetProjection: # 0x80362c34
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     cmpwi   r4, 0x1
     stw     r4, 0x420(r5)
     lfs     f0, 0x0(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stfs    f0, 0x424(r4)
     lfs     f0, 0x14(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stfs    f0, 0x42c(r4)
     lfs     f0, 0x28(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stfs    f0, 0x434(r4)
     lfs     f0, 0x2c(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stfs    f0, 0x438(r4)
     bne-    branch_0x80362c90
     lfs     f0, 0xc(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stfs    f0, 0x428(r4)
     lfs     f0, 0x1c(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stfs    f0, 0x430(r3)
     b       branch_0x80362ca8
 
 branch_0x80362c90:
     lfs     f0, 0x8(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     stfs    f0, 0x428(r4)
     lfs     f0, 0x18(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stfs    f0, 0x430(r3)
 branch_0x80362ca8:
     li      r0, 0x10
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
-    lis     r3, 0x6
+    lis     r3, unk_00061020@h
     stb     r0, -0x8000(r5)
-    addi    r0, r3, 0x1020
+    addi    r0, r3, unk_00061020@l
     stw     r0, -0x8000(r5)
     li      r0, 0x1
     lfs     f0, 0x424(r4)
@@ -163,30 +163,30 @@ branch_0x80362ca8:
 GXGetProjectionv: # 0x80362d08
     stwu    sp, -0x18(sp)
     lis     r0, 0x4330
-    lwz     r4, -0x72f8(r13)
-    lfd     f1, 0xc18(rtoc)
+    lwz     r4, R13Off_m0x72f8(r13)
+    lfd     f1, 0xc18(r2)
     lwz     r4, 0x420(r4)
     stw     r4, 0x14(sp)
     stw     r0, 0x10(sp)
     lfd     f0, 0x10(sp)
     fsubs   f0, f0, f1
     stfs    f0, 0x0(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x424(r4)
     stfs    f0, 0x4(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x428(r4)
     stfs    f0, 0x8(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x42c(r4)
     stfs    f0, 0xc(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x430(r4)
     stfs    f0, 0x10(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x434(r4)
     stfs    f0, 0x14(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x438(r4)
     stfs    f0, 0x18(r3)
     addi    sp, sp, 0x18
@@ -246,12 +246,12 @@ GXLoadPosMtxImm: # 0x80362e0c
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
     li      r6, 0x10
-    lis     r5, 0xcc01
+    lis     r5, unk_cc008000@ha
     slwi    r0, r4, 2
     stb     r6, -0x8000(r5)
     oris    r0, r0, 0xb
     stw     r0, -0x8000(r5)
-    subi    r4, r5, 0x8000
+    addi    r4, r5, unk_cc008000@l
     bl      WriteMTXPS4x3
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8
@@ -282,11 +282,11 @@ GXLoadNrmMtxImm: # 0x80362e78
     stwu    sp, -0x8(sp)
     mulli   r4, r4, 0x3
     addi    r0, r4, 0x400
-    lis     r5, 0xcc01
+    lis     r5, unk_cc008000@ha
     li      r6, 0x10
     stb     r6, -0x8000(r5)
     oris    r0, r0, 0x8
-    subi    r4, r5, 0x8000
+    addi    r4, r5, unk_cc008000@l
     stw     r0, -0x8000(r5)
     bl      WriteMTXPS3x3from3x4
     lwz     r0, 0xc(sp)
@@ -317,7 +317,7 @@ GXSetCurrentMtx: # 0x80362eec
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     addi    r4, r4, 0x80
     lwz     r0, 0x0(r4)
     clrrwi  r0, r0, 6
@@ -338,7 +338,7 @@ GXLoadTexMtxImm: # 0x80362f28
     stwu    sp, -0x8(sp)
     cmplwi  r4, 0x40
     blt-    branch_0x80362f4c
-    subi    r0, r4, 0x40
+    addi    r0, r4, -0x40
     slwi    r4, r0, 2
     addi    r7, r4, 0x500
     b       branch_0x80362f50
@@ -354,21 +354,21 @@ branch_0x80362f50:
 branch_0x80362f60:
     li      r4, 0xc
 branch_0x80362f64:
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     slwi    r0, r0, 16
     li      r6, 0x10
-    lis     r4, 0xcc01
+    lis     r4, unk_cc008000@ha
     stb     r6, -0x8000(r4)
     or      r0, r7, r0
     cmpwi   r5, 0x0
     stw     r0, -0x8000(r4)
     bne-    branch_0x80362f94
-    subi    r4, r4, 0x8000
+    addi    r4, r4, unk_cc008000@l
     bl      WriteMTXPS4x3
     b       branch_0x80362f9c
 
 branch_0x80362f94:
-    subi    r4, r4, 0x8000
+    addi    r4, r4, -0x8000
     bl      WriteMTXPS4x2
 branch_0x80362f9c:
     lwz     r0, 0xc(sp)
@@ -390,36 +390,36 @@ GXSetViewportJitter: # 0x80362fac
     stfd    f26, 0x30(sp)
     cmplwi  r3, 0x0
     bne-    branch_0x80362fe0
-    lfs     f0, 0xc10(rtoc)
+    lfs     f0, 0xc10(r2)
     fsubs   f2, f2, f0
 branch_0x80362fe0:
-    lfs     f11, 0xc10(rtoc)
+    lfs     f11, 0xc10(r2)
     fneg    f10, f4
-    lfs     f0, 0xc24(rtoc)
-    lfs     f9, 0xc20(rtoc)
+    lfs     f0, 0xc24(r2)
+    lfs     f9, 0xc20(r2)
     fmuls   f31, f3, f11
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     fmuls   f7, f4, f11
     stfs    f1, 0x43c(r3)
     fadds   f8, f1, f31
     fmuls   f30, f0, f6
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     fadds   f1, f2, f7
     stfs    f2, 0x440(r3)
     fmuls   f0, f0, f5
     fmuls   f29, f10, f11
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     fadds   f27, f9, f8
     stfs    f3, 0x444(r3)
     fadds   f26, f9, f1
     fsubs   f28, f30, f0
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stfs    f4, 0x448(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stfs    f5, 0x44c(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     stfs    f6, 0x450(r3)
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lbz     r0, 0x454(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80363064
@@ -428,11 +428,11 @@ branch_0x80362fe0:
     bl      __GXSetRange
 branch_0x80363064:
     li      r0, 0x10
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
-    lis     r4, 0x5
+    lis     r4, unk_0005101a@h
     stb     r0, -0x8000(r5)
-    addi    r0, r4, 0x101a
+    addi    r0, r4, unk_0005101a@l
     stw     r0, -0x8000(r5)
     li      r0, 0x1
     stfs    f31, -0x8000(r5)
@@ -469,22 +469,22 @@ GXSetViewport: # 0x803630c8
 
 .globl GXGetViewportv
 GXGetViewportv: # 0x803630ec
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x43c(r4)
     stfs    f0, 0x0(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x440(r4)
     stfs    f0, 0x4(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x444(r4)
     stfs    f0, 0x8(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x448(r4)
     stfs    f0, 0xc(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x44c(r4)
     stfs    f0, 0x10(r3)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lfs     f0, 0x450(r4)
     stfs    f0, 0x14(r3)
     blr
@@ -492,9 +492,9 @@ GXGetViewportv: # 0x803630ec
 
 .globl GXSetScissor
 GXSetScissor: # 0x80363138
-    lwz     r7, -0x72f8(r13)
+    lwz     r7, R13Off_m0x72f8(r13)
     addi    r8, r3, 0x156
-    subi    r0, r5, 0x1
+    addi    r0, r5, -0x1
     addi    r5, r7, 0xf8
     lwz     r3, 0x0(r5)
     add     r0, r8, r0
@@ -502,9 +502,9 @@ GXSetScissor: # 0x80363138
     clrrwi  r3, r3, 11
     or      r3, r3, r4
     stw     r3, 0x0(r5)
-    subi    r3, r6, 0x1
+    addi    r3, r6, -0x1
     slwi    r7, r8, 12
-    lwz     r5, -0x72f8(r13)
+    lwz     r5, R13Off_m0x72f8(r13)
     add     r4, r4, r3
     slwi    r3, r0, 12
     addi    r8, r5, 0xf8
@@ -515,20 +515,20 @@ GXSetScissor: # 0x80363138
     or      r0, r0, r7
     stw     r0, 0x0(r8)
     li      r0, 0x0
-    lwz     r7, -0x72f8(r13)
+    lwz     r7, R13Off_m0x72f8(r13)
     addi    r8, r7, 0xfc
     lwz     r7, 0x0(r8)
     clrrwi  r7, r7, 11
     or      r4, r7, r4
     stw     r4, 0x0(r8)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     addi    r7, r4, 0xfc
     lwz     r4, 0x0(r7)
     rlwinm  r4, r4, 0, 20, 8
     or      r3, r4, r3
     stw     r3, 0x0(r7)
     stb     r6, -0x8000(r5)
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lwz     r3, 0xf8(r4)
     stw     r3, -0x8000(r5)
     stb     r6, -0x8000(r5)
@@ -541,7 +541,7 @@ GXSetScissor: # 0x80363138
 .globl GXSetScissorBoxOffset
 GXSetScissorBoxOffset: # 0x803631e8
     addi    r5, r3, 0x156
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     addi    r0, r4, 0x156
     srwi    r4, r5, 1
     srwi    r0, r0, 1
@@ -562,7 +562,7 @@ GXSetScissorBoxOffset: # 0x803631e8
 .globl GXSetClipMode
 GXSetClipMode: # 0x8036322c
     li      r0, 0x10
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lis     r6, 0xcc01
     stb     r0, -0x8000(r6)
     li      r5, 0x1005
@@ -578,7 +578,7 @@ __GXSetMatrixIndex: # 0x80363254
     cmpwi   r3, 0x5
     bge-    branch_0x80363294
     li      r0, 0x8
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
     stb     r0, -0x8000(r5)
     li      r0, 0x30
@@ -594,7 +594,7 @@ __GXSetMatrixIndex: # 0x80363254
 
 branch_0x80363294:
     li      r0, 0x8
-    lwz     r4, -0x72f8(r13)
+    lwz     r4, R13Off_m0x72f8(r13)
     lis     r5, 0xcc01
     stb     r0, -0x8000(r5)
     li      r0, 0x40
@@ -607,7 +607,7 @@ branch_0x80363294:
     stw     r0, -0x8000(r5)
     stw     r4, -0x8000(r5)
 branch_0x803632c8:
-    lwz     r3, -0x72f8(r13)
+    lwz     r3, R13Off_m0x72f8(r13)
     li      r0, 0x1
     sth     r0, 0x2(r3)
     blr

@@ -1,7 +1,7 @@
 
 .globl TRKInitializeDispatcher
 TRKInitializeDispatcher: # 0x8033e174
-    lis     r3, 0x8040
+    lis     r3, unk_80400000@h
     li      r0, 0x20
     stw     r0, 0x1fd8(r3)
     li      r3, 0x0
@@ -17,7 +17,7 @@ TRKDispatchMessage: # 0x8033e188
     stw     r31, 0x14(sp)
     li      r31, 0x500
     stw     r30, 0x10(sp)
-    addi    r30, r3, 0x0
+    addi    r30, r3, unk_80400000@l
     bl      TRKSetBufferPosition
     addi    r3, r30, 0x0
     addi    r4, sp, 0x8
@@ -27,9 +27,9 @@ TRKDispatchMessage: # 0x8033e188
     lwz     r0, 0x1fd8(r3)
     cmplw   r4, r0
     bge-    branch_0x8033e1f0
-    lis     r3, 0x803e
+    lis     r3, gTRKDispatchTable@h
     slwi    r4, r4, 2
-    addi    r0, r3, 0x67d8
+    addi    r0, r3, gTRKDispatchTable@l
     add     r3, r0, r4
     lwz     r12, 0x0(r3)
     addi    r3, r30, 0x0

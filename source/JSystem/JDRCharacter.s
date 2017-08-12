@@ -34,8 +34,8 @@ __dt__Q26JDrama10TSmplCharaFv: # 0x802f7b70
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f7be8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1d28
+    lis     r3, __vvt__Q26JDrama10TSmplChara@h
+    addi    r0, r3, __vvt__Q26JDrama10TSmplChara@l
     stw     r0, 0x0(r30)
     lwz     r3, 0xc(r30)
     cmplwi  r3, 0x0
@@ -47,8 +47,8 @@ __dt__Q26JDrama10TSmplCharaFv: # 0x802f7b70
 branch_0x802f7bb8:
     cmplwi  r30, 0x0
     beq-    branch_0x802f7bd8
-    lis     r3, 0x803e
-    subi    r0, r3, 0x6028
+    lis     r3, __vvt__Q26JDrama10TCharacter@ha
+    addi    r0, r3, __vvt__Q26JDrama10TCharacter@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -93,7 +93,7 @@ mountArc__Q26JDrama10TSmplCharaFPCc: # 0x802f7c34
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
     addi    r3, r4, 0x0
-    lwz     r5, -0x5f2c(r13)
+    lwz     r5, R13Off_m0x5f2c(r13)
     li      r4, 0x1
     bl      mount__10JKRArchiveFPCcQ210JKRArchive10EMountModeP7JKRHeapQ210JKRArchive15EMountDirection
     stw     r3, 0xc(r31)

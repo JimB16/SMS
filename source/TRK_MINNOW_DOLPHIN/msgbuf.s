@@ -8,9 +8,9 @@ TRKSetBufferUsed: # 0x8033d760
 .globl TRKInitializeMessageBuffers
 TRKInitializeMessageBuffers: # 0x8033d768
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, gTRKMsgBufs@h
     stw     r0, 0x4(sp)
-    addi    r0, r3, 0x610
+    addi    r0, r3, gTRKMsgBufs@l
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     stw     r30, 0x8(sp)
@@ -95,8 +95,8 @@ TRKGetBuffer: # 0x8033d87c
     cmpwi   r3, 0x3
     bge-    branch_0x8033d8a0
     mulli   r4, r3, 0x890
-    lis     r3, 0x8040
-    addi    r0, r3, 0x610
+    lis     r3, gTRKMsgBufs@h
+    addi    r0, r3, gTRKMsgBufs@l
     add     r0, r0, r4
 branch_0x8033d8a0:
     mr      r3, r0
@@ -116,8 +116,8 @@ TRKReleaseBuffer: # 0x8033d8a8
     cmpwi   r3, 0x3
     bge-    branch_0x8033d8fc
     mulli   r4, r3, 0x890
-    lis     r3, 0x8040
-    addi    r0, r3, 0x610
+    lis     r3, gTRKMsgBufs@h
+    addi    r0, r3, gTRKMsgBufs@l
     add     r31, r0, r4
     addi    r3, r31, 0x0
     bl      TRKAcquireMutex
@@ -480,7 +480,7 @@ branch_0x8033dd2c:
     addi    r4, r31, 0x0
     li      r5, 0x2
     bl      TRKReadBuffer
-    lis     r4, 0x8040
+    lis     r4, unk_80400000@h
     lwz     r0, 0x608(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x8033dd60
@@ -507,7 +507,7 @@ TRKReadBuffer1_ui32: # 0x8033dd78
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    addi    r30, r4, 0x0
+    addi    r30, r4, unk_80400000@l
     lwz     r0, 0x608(r5)
     cmpwi   r0, 0x0
     beq-    branch_0x8033dda8
@@ -520,7 +520,7 @@ branch_0x8033ddac:
     addi    r4, r31, 0x0
     li      r5, 0x4
     bl      TRKReadBuffer
-    lis     r4, 0x8040
+    lis     r4, unk_80400000@h
     lwz     r0, 0x608(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x8033ddf0
@@ -546,12 +546,12 @@ branch_0x8033ddf0:
 .globl TRKReadBuffer1_ui64
 TRKReadBuffer1_ui64: # 0x8033de08
     mflr    r0
-    lis     r5, 0x8040
+    lis     r5, unk_80400000@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
-    addi    r30, r4, 0x0
+    addi    r30, r4, unk_80400000@l
     lwz     r0, 0x608(r5)
     cmpwi   r0, 0x0
     beq-    branch_0x8033de38
@@ -564,7 +564,7 @@ branch_0x8033de3c:
     addi    r4, r31, 0x0
     li      r5, 0x8
     bl      TRKReadBuffer
-    lis     r4, 0x8040
+    lis     r4, unk_80400000@h
     lwz     r0, 0x608(r4)
     cmpwi   r0, 0x0
     bne-    branch_0x8033dea0
@@ -603,9 +603,9 @@ TRKReadBuffer_ui8: # 0x8033deb8
     stw     r31, 0x14(sp)
     li      r31, 0x0
     stw     r30, 0x10(sp)
-    addi    r30, r5, 0x0
+    addi    r30, r5, unk_80400000@l
     stw     r29, 0xc(sp)
-    addi    r29, r4, 0x0
+    addi    r29, r4, unk_80400000@l
     stw     r28, 0x8(sp)
     addi    r28, r3, 0x0
     li      r3, 0x0

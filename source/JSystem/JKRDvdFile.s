@@ -9,13 +9,13 @@ __ct__10JKRDvdFileFv: # 0x802c0a0c
     lwz     r31, 0x8(sp)
     mr      r3, r31
     bl      __ct__11JKRDisposerFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x290
+    lis     r3, __vvt__7JKRFile@ha
+    addi    r0, r3, __vvt__7JKRFile@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__10JKRDvdFile@ha
     stb     r0, 0x18(r31)
-    subi    r0, r3, 0xf0
+    addi    r0, r3, __vvt__10JKRDvdFile@l
     addi    r4, r31, 0x0
     stw     r0, 0x0(r31)
     addi    r3, r4, 0xe4
@@ -42,13 +42,13 @@ __ct__10JKRDvdFileFl: # 0x802c0a78
     lwz     r30, 0x8(sp)
     mr      r3, r30
     bl      __ct__11JKRDisposerFv
-    lis     r3, 0x803e
-    subi    r0, r3, 0x290
+    lis     r3, __vvt__7JKRFile@ha
+    addi    r0, r3, __vvt__7JKRFile@l
     stw     r0, 0x0(r30)
     li      r0, 0x0
-    lis     r3, 0x803e
+    lis     r3, __vvt__10JKRDvdFile@ha
     stb     r0, 0x18(r30)
-    subi    r0, r3, 0xf0
+    addi    r0, r3, __vvt__10JKRDvdFile@l
     addi    r4, r30, 0x0
     stw     r0, 0x0(r30)
     addi    r3, r4, 0xe4
@@ -83,8 +83,8 @@ __dt__10JKRDvdFileFv: # 0x802c0b14
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c0b98
-    lis     r3, 0x803e
-    subi    r0, r3, 0xf0
+    lis     r3, __vvt__10JKRDvdFile@ha
+    addi    r0, r3, __vvt__10JKRDvdFile@l
     stw     r0, 0x0(r30)
     mr      r3, r30
     lwz     r12, 0x0(r30)
@@ -99,8 +99,8 @@ __dt__10JKRDvdFileFv: # 0x802c0b14
 branch_0x802c0b68:
     cmplwi  r30, 0x0
     beq-    branch_0x802c0b88
-    lis     r3, 0x803e
-    subi    r0, r3, 0x290
+    lis     r3, __vvt__7JKRFile@ha
+    addi    r0, r3, __vvt__7JKRFile@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -171,8 +171,8 @@ open__10JKRDvdFileFPCc: # 0x802c0c20
     lbz     r0, 0x18(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x802c0c80
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42a8
+    lis     r3, sDvdList__10JKRDvdFile@h
+    addi    r3, r3, sDvdList__10JKRDvdFile@l
     addi    r4, r31, 0xe4
     bl      append__10JSUPtrListFP10JSUPtrLink
     addi    r3, r31, 0x5c
@@ -206,8 +206,8 @@ open__10JKRDvdFileFl: # 0x802c0c98
     lbz     r0, 0x18(r31)
     cmplwi  r0, 0x0
     beq-    branch_0x802c0cf8
-    lis     r3, 0x8040
-    addi    r3, r3, 0x42a8
+    lis     r3, sDvdList__10JKRDvdFile@h
+    addi    r3, r3, sDvdList__10JKRDvdFile@l
     addi    r4, r31, 0xe4
     bl      append__10JSUPtrListFP10JSUPtrLink
     addi    r3, r31, 0x5c
@@ -236,19 +236,19 @@ close__10JKRDvdFileFv: # 0x802c0d10
     cmpwi   r3, 0x0
     beq-    branch_0x802c0d5c
     li      r0, 0x0
-    lis     r3, 0x8040
+    lis     r3, sDvdList__10JKRDvdFile@h
     stb     r0, 0x18(r31)
-    addi    r3, r3, 0x42a8
+    addi    r3, r3, sDvdList__10JKRDvdFile@l
     addi    r4, r31, 0xe4
     bl      remove__10JSUPtrListFP10JSUPtrLink
     b       branch_0x802c0d78
 
 branch_0x802c0d5c:
-    lis     r3, 0x803b
+    lis     r3, unk_803a94a0@ha
     crxor   6, 6, 6
-    lis     r4, 0x803b
-    subi    r5, r4, 0x6b50
-    subi    r3, r3, 0x6b60
+    lis     r4, unk_803a94b0@ha
+    addi    r5, r4, unk_803a94b0@l
+    addi    r3, r3, unk_803a94a0@l
     li      r4, 0xd4
     bl      OSPanic
 branch_0x802c0d78:
@@ -285,9 +285,9 @@ readData__10JKRDvdFileFPvll: # 0x802c0d8c
 
 branch_0x802c0de0:
     bl      OSGetCurrentThread
-    lis     r4, 0x802c
+    lis     r4, doneProcess__10JKRDvdFileFlP11DVDFileInfo@h
     stw     r3, 0xf4(r28)
-    addi    r7, r4, 0xeb0
+    addi    r7, r4, doneProcess__10JKRDvdFileFlP11DVDFileInfo@l
     addi    r6, r31, 0x0
     addi    r4, r29, 0x0
     addi    r5, r30, 0x0
@@ -373,17 +373,17 @@ getFileSize__10JKRDvdFileCFv: # 0x802c0ee0
 .globl __sinit_JKRDvdFile_cpp
 __sinit_JKRDvdFile_cpp: # 0x802c0ee8
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sDvdList__10JKRDvdFile@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x42a8
+    addi    r31, r3, sDvdList__10JKRDvdFile@l
     addi    r3, r31, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x802c
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2a98
-    addi    r4, r4, 0xf34
+    lis     r4, __dt__21JSUList_10JKRDvdFile_Fv@h
+    lis     r3, unk_803fd568@ha
+    addi    r5, r3, unk_803fd568@l
+    addi    r4, r4, __dt__21JSUList_10JKRDvdFile_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

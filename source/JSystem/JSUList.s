@@ -401,7 +401,7 @@ branch_0x802c6148:
     li      r0, 0x0
     stw     r0, 0x4(r4)
     lwz     r4, 0x8(r3)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x8(r3)
 branch_0x802c615c:
     mr      r3, r6

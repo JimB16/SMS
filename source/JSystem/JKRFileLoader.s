@@ -9,8 +9,8 @@ __ct__13JKRFileLoaderFv: # 0x802c2dc4
     lwz     r3, 0x8(sp)
     bl      __ct__11JKRDisposerFv
     lwz     r31, 0x8(sp)
-    lis     r3, 0x803e
-    subi    r0, r3, 0x68
+    lis     r3, __vvt__13JKRFileLoader@ha
+    addi    r0, r3, __vvt__13JKRFileLoader@l
     stw     r0, 0x0(r31)
     addi    r3, r31, 0x18
     addi    r4, r31, 0x0
@@ -37,14 +37,14 @@ __dt__13JKRFileLoaderFv: # 0x802c2e24
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802c2e94
-    lis     r3, 0x803e
-    subi    r0, r3, 0x68
+    lis     r3, __vvt__13JKRFileLoader@ha
+    addi    r0, r3, __vvt__13JKRFileLoader@l
     stw     r0, 0x0(r30)
-    lwz     r0, -0x5f38(r13)
+    lwz     r0, R13Off_m0x5f38(r13)
     cmplw   r0, r30
     bne-    branch_0x802c2e64
     li      r0, 0x0
-    stw     r0, -0x5f38(r13)
+    stw     r0, R13Off_m0x5f38(r13)
 branch_0x802c2e64:
     addic.  r0, r30, 0x18
     beq-    branch_0x802c2e78
@@ -284,7 +284,7 @@ findVolume__13JKRFileLoaderFPPCc: # 0x802c3124
     lbz     r0, 0x0(r5)
     cmpwi   r0, 0x2f
     beq-    branch_0x802c3150
-    lwz     r3, -0x5f38(r13)
+    lwz     r3, R13Off_m0x5f38(r13)
     b       branch_0x802c319c
 
 branch_0x802c3150:
@@ -333,7 +333,7 @@ findFirstFile__13JKRFileLoaderFPCc: # 0x802c31b0
     lbz     r0, 0x0(r3)
     cmpwi   r0, 0x2f
     beq-    branch_0x802c31e4
-    lwz     r0, -0x5f38(r13)
+    lwz     r0, R13Off_m0x5f38(r13)
     b       branch_0x802c3234
 
 branch_0x802c31e4:
@@ -392,7 +392,7 @@ fetchVolumeName__13JKRFileLoaderFPclPCc: # 0x802c3278
     addi    r31, r5, 0x0
     stw     r30, 0x28(sp)
     addi    r30, r4, 0x0
-    addi    r4, rtoc, 0x88
+    addi    r4, r2, R2Off_0x88
     stw     r29, 0x24(sp)
     addi    r29, r3, 0x0
     addi    r3, r31, 0x0
@@ -400,15 +400,15 @@ fetchVolumeName__13JKRFileLoaderFPclPCc: # 0x802c3278
     cmpwi   r3, 0x0
     bne-    branch_0x802c32c4
     addi    r3, r29, 0x0
-    subi    r4, r13, 0x75c0
+    addi    r4, r13, R13Off_m0x75c0
     bl      strcpy
-    subi    r3, r13, 0x75c0
+    addi    r3, r13, R13Off_m0x75c0
     b       branch_0x802c3344
 
 branch_0x802c32c4:
-    lis     r3, 0x803b
+    lis     r3, unk_803aaa88@ha
     addi    r31, r31, 0x1
-    subi    r4, r3, 0x5578
+    addi    r4, r3, unk_803aaa88@l
     b       branch_0x802c3310
 
 branch_0x802c32d4:
@@ -428,7 +428,7 @@ branch_0x802c32fc:
     extsb   r0, r0
     stb     r0, 0x0(r29)
     addi    r29, r29, 0x1
-    subi    r30, r30, 0x1
+    addi    r30, r30, -0x1
 branch_0x802c330c:
     addi    r31, r31, 0x1
 branch_0x802c3310:
@@ -444,7 +444,7 @@ branch_0x802c3328:
     lbz     r0, 0x0(r31)
     extsb.  r0, r0
     bne-    branch_0x802c3340
-    subi    r31, r13, 0x75c0
+    addi    r31, r13, R13Off_m0x75c0
 branch_0x802c3340:
     mr      r3, r31
 branch_0x802c3344:
@@ -460,17 +460,17 @@ branch_0x802c3344:
 .globl __sinit_JKRFileLoader_cpp
 __sinit_JKRFileLoader_cpp: # 0x802c3360
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sVolumeList__13JKRFileLoader@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    addi    r31, r3, 0x42b4
+    addi    r31, r3, sVolumeList__13JKRFileLoader@l
     addi    r3, r31, 0x0
     bl      initiate__10JSUPtrListFv
-    lis     r4, 0x802c
-    lis     r3, 0x8040
-    subi    r5, r3, 0x2a88
-    addi    r4, r4, 0x33ac
+    lis     r4, __dt__24JSUList_13JKRFileLoader_Fv@h
+    lis     r3, unk_803fd578@ha
+    addi    r5, r3, unk_803fd578@l
+    addi    r4, r4, __dt__24JSUList_13JKRFileLoader_Fv@l
     addi    r3, r31, 0x0
     bl      __register_global_object
     lwz     r0, 0x14(sp)

@@ -10,13 +10,13 @@ init__Q28JASystem11WaveBankMgrFi: # 0x803108ac
     stw     r30, 0x10(sp)
     mr      r30, r3
     addi    r3, r31, 0x0
-    lwz     r4, -0x5b30(r13)
+    lwz     r4, R13Off_m0x5b30(r13)
     bl      __nwa__FUlP7JKRHeapi
-    stw     r3, -0x5c7c(r13)
+    stw     r3, R13Off_m0x5c7c(r13)
     mr      r4, r31
-    lwz     r3, -0x5c7c(r13)
+    lwz     r3, R13Off_m0x5c7c(r13)
     bl      bzero__Q28JASystem4CalcFPvUl
-    stw     r30, -0x5c80(r13)
+    stw     r30, R13Off_m0x5c80(r13)
     lwz     r0, 0x1c(sp)
     lwz     r31, 0x14(sp)
     lwz     r30, 0x10(sp)
@@ -27,7 +27,7 @@ init__Q28JASystem11WaveBankMgrFi: # 0x803108ac
 
 .globl getWaveBank__Q28JASystem11WaveBankMgrFi
 getWaveBank__Q28JASystem11WaveBankMgrFi: # 0x80310904
-    lwz     r4, -0x5c7c(r13)
+    lwz     r4, R13Off_m0x5c7c(r13)
     slwi    r0, r3, 2
     lwzx    r3, r4, r0
     blr
@@ -62,7 +62,7 @@ branch_0x8031095c:
     b       branch_0x8031097c
 
 branch_0x8031096c:
-    lwz     r4, -0x5c7c(r13)
+    lwz     r4, R13Off_m0x5c7c(r13)
     slwi    r0, r30, 2
     li      r3, 0x1
     stwx    r5, r4, r0
@@ -84,7 +84,7 @@ loadWave__Q28JASystem11WaveBankMgrFii: # 0x80310994
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r4, 0x0
-    lwz     r5, -0x5c7c(r13)
+    lwz     r5, R13Off_m0x5c7c(r13)
     lwzx    r31, r5, r0
     cmplwi  r31, 0x0
     bne-    branch_0x803109c8
@@ -160,7 +160,7 @@ eraseWave__Q28JASystem11WaveBankMgrFii: # 0x80310a84
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     addi    r30, r4, 0x0
-    lwz     r5, -0x5c7c(r13)
+    lwz     r5, R13Off_m0x5c7c(r13)
     lwzx    r31, r5, r0
     cmplwi  r31, 0x0
     bne-    branch_0x80310ab8

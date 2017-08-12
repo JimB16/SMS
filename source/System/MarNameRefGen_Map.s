@@ -7,10 +7,10 @@ getNameRef_Map__14TMarNameRefGenCFPCc: # 0x802ac998
     stw     r31, 0x24(sp)
     stw     r30, 0x20(sp)
     addi    r30, r4, 0x0
-    lis     r4, 0x803a
-    addi    r31, r4, 0x5c28
+    lis     r4, unk_803a5c28@h
+    addi    r31, r4, unk_803a5c28@l
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x248
+    addi    r4, r2, R2Off_m0x248
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802ac9f0
@@ -19,7 +19,7 @@ getNameRef_Map__14TMarNameRefGenCFPCc: # 0x802ac998
     mr.     r30, r3
     beq-    branch_0x802ac9e8
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x244
+    addi    r4, r2, R2Off_m0x244
     bl      __ct__4TMapFPCc
 branch_0x802ac9e8:
     mr      r3, r30
@@ -44,7 +44,7 @@ branch_0x802aca20:
 
 branch_0x802aca28:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x23c
+    addi    r4, r2, R2Off_m0x23c
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802aca60
@@ -53,7 +53,7 @@ branch_0x802aca28:
     mr.     r30, r3
     beq-    branch_0x802aca58
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x238
+    addi    r4, r2, R2Off_m0x238
     bl      __ct__4TSkyFPCc
 branch_0x802aca58:
     mr      r3, r30
@@ -61,7 +61,7 @@ branch_0x802aca58:
 
 branch_0x802aca60:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x234
+    addi    r4, r2, R2Off_m0x234
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802aca98
@@ -108,14 +108,14 @@ branch_0x802acad0:
     lwz     r3, 0x14(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x14(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803c
-    addi    r0, r3, 0x2330
+    lis     r3, __vvt__14TPollutionTest@h
+    addi    r0, r3, __vvt__14TPollutionTest@l
     stw     r0, 0x0(r30)
 branch_0x802acb2c:
     mr      r3, r30
@@ -123,7 +123,7 @@ branch_0x802acb2c:
 
 branch_0x802acb34:
     addi    r3, r30, 0x0
-    subi    r4, rtoc, 0x22c
+    addi    r4, r2, R2Off_m0x22c
     bl      strcmp
     cmpwi   r3, 0x0
     bne-    branch_0x802acb6c
@@ -206,14 +206,14 @@ branch_0x802acc1c:
     lwz     r3, 0x10(sp)
     bl      __ct__Q26JDrama8TNameRefFPCc
     lwz     r3, 0x10(sp)
-    lis     r4, 0x803b
-    subi    r0, r4, 0x497c
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r3)
     addi    r3, r3, 0xc
     li      r4, 0x0
     bl      __ct__Q26JDrama10TFlagT_Us_FUs
-    lis     r3, 0x803c
-    addi    r0, r3, 0x28b0
+    lis     r3, __vvt__19TStickyStainManager@h
+    addi    r0, r3, __vvt__19TStickyStainManager@l
     stw     r0, 0x0(r30)
 branch_0x802acc78:
     mr      r3, r30

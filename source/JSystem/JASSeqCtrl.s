@@ -44,12 +44,12 @@ branch_0x8031a0f4:
     cmplwi  r0, 0x0
     mr      r5, r0
     beq-    branch_0x8031a110
-    subi    r5, r5, 0x1
+    addi    r5, r5, -0x1
 branch_0x8031a110:
     clrlwi. r0, r5, 16
     bne-    branch_0x8031a12c
     lwz     r4, 0xc(r3)
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0xc(r3)
     li      r3, 0x1
     blr
@@ -70,7 +70,7 @@ waitCountDown__Q28JASystem8TSeqCtrlFv: # 0x8031a14c
     lwz     r4, 0x8(r3)
     cmpwi   r4, 0x0
     ble-    branch_0x8031a174
-    subi    r0, r4, 0x1
+    addi    r0, r4, -0x1
     stw     r0, 0x8(r3)
     lwz     r0, 0x8(r3)
     cmpwi   r0, 0x0

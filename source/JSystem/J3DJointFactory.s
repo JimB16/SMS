@@ -42,9 +42,9 @@ create__15J3DJointFactoryFi: # 0x802e5078
     stw     r30, 0x24(sp)
     lwz     r3, 0x24(sp)
     bl      __ct__7J3DNodeFv
-    lis     r4, 0x803e
+    lis     r4, __vvt__8J3DJoint@h
     lwz     r3, 0x24(sp)
-    addi    r0, r4, 0x7f0
+    addi    r0, r4, __vvt__8J3DJoint@l
     stw     r0, 0x0(r3)
     bl      initialize__8J3DJointFv
 branch_0x802e50c8:

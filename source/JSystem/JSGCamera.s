@@ -9,8 +9,8 @@ __dt__Q26JStage7TCameraFv: # 0x80336f7c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x80336fc4
-    lis     r3, 0x803e
-    addi    r0, r3, 0x45c8
+    lis     r3, __vvt__Q26JStage7TCamera@h
+    addi    r0, r3, __vvt__Q26JStage7TCamera@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -48,7 +48,7 @@ JSGSetProjectionType__Q26JStage7TCameraFQ26JStage18TECameraProjection: # 0x80336
 
 .globl JSGGetProjectionNear__Q26JStage7TCameraCFv
 JSGGetProjectionNear__Q26JStage7TCameraCFv: # 0x80336ff4
-    lfs     f1, 0x990(rtoc)
+    lfs     f1, 0x990(r2)
     blr
 
 
@@ -59,7 +59,7 @@ JSGSetProjectionNear__Q26JStage7TCameraFf: # 0x80336ffc
 
 .globl JSGGetProjectionFar__Q26JStage7TCameraCFv
 JSGGetProjectionFar__Q26JStage7TCameraCFv: # 0x80337000
-    lfs     f1, 0x994(rtoc)
+    lfs     f1, 0x994(r2)
     blr
 
 
@@ -70,7 +70,7 @@ JSGSetProjectionFar__Q26JStage7TCameraFf: # 0x80337008
 
 .globl JSGGetProjectionFovy__Q26JStage7TCameraCFv
 JSGGetProjectionFovy__Q26JStage7TCameraCFv: # 0x8033700c
-    lfs     f1, 0x990(rtoc)
+    lfs     f1, 0x990(r2)
     blr
 
 
@@ -81,7 +81,7 @@ JSGSetProjectionFovy__Q26JStage7TCameraFf: # 0x80337014
 
 .globl JSGGetProjectionAspect__Q26JStage7TCameraCFv
 JSGGetProjectionAspect__Q26JStage7TCameraCFv: # 0x80337018
-    lfs     f1, 0x990(rtoc)
+    lfs     f1, 0x990(r2)
     blr
 
 
@@ -143,7 +143,7 @@ JSGSetViewTargetPosition__Q26JStage7TCameraFRC3Vec: # 0x8033704c
 
 .globl JSGGetViewRoll__Q26JStage7TCameraCFv
 JSGGetViewRoll__Q26JStage7TCameraCFv: # 0x80337050
-    lfs     f1, 0x990(rtoc)
+    lfs     f1, 0x990(r2)
     blr
 
 

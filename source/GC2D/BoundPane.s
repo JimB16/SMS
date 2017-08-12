@@ -10,7 +10,7 @@ update__10TBoundPaneFv: # 0x80154c98
     cmplwi  r0, 0x0
     beq-    branch_0x80154e40
     lfs     f1, 0x28(r31)
-    lfs     f0, -0x4b50(rtoc)
+    lfs     f0, -0x4b50(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80154cd4
     stfs    f0, 0x28(r31)
@@ -20,13 +20,13 @@ branch_0x80154cd4:
     lwz     r0, 0x40(r31)
     lis     r4, 0x4330
     lfs     f2, 0x28(r31)
-    lfs     f0, -0x4b50(rtoc)
+    lfs     f0, -0x4b50(r2)
     xoris   r0, r0, 0x8000
     stw     r0, 0x3c(sp)
     fmuls   f9, f2, f2
     fsubs   f1, f0, f2
     lwz     r0, 0x38(r31)
-    lfs     f0, -0x4b4c(rtoc)
+    lfs     f0, -0x4b4c(r2)
     stw     r4, 0x38(sp)
     xoris   r3, r0, 0x8000
     lwz     r0, 0x44(r31)
@@ -45,7 +45,7 @@ branch_0x80154cd4:
     xoris   r3, r3, 0x8000
     stw     r4, 0x20(sp)
     fmuls   f8, f1, f1
-    lfd     f6, -0x4b38(rtoc)
+    lfd     f6, -0x4b38(r2)
     lfd     f0, 0x38(sp)
     lfd     f2, 0x40(sp)
     fsubs   f1, f0, f6
@@ -66,30 +66,30 @@ branch_0x80154cd4:
     fmuls   f1, f0, f7
     lfd     f3, 0x30(sp)
     fmadds  f4, f5, f9, f4
-    lfs     f0, -0x4b48(rtoc)
+    lfs     f0, -0x4b48(r2)
     fsubs   f3, f3, f6
     fmadds  f1, f2, f8, f1
     fcmpo   cr0, f4, f0
     fmadds  f2, f3, f9, f1
     ble-    branch_0x80154db8
-    lfs     f0, -0x4b44(rtoc)
+    lfs     f0, -0x4b44(r2)
     b       branch_0x80154dbc
 
 branch_0x80154db8:
-    lfs     f0, -0x4b40(rtoc)
+    lfs     f0, -0x4b40(r2)
 branch_0x80154dbc:
     fadds   f1, f4, f0
-    lfs     f0, -0x4b48(rtoc)
+    lfs     f0, -0x4b48(r2)
     fcmpo   cr0, f2, f0
     fctiwz  f0, f1
     stfd    f0, 0x20(sp)
     lwz     r0, 0x24(sp)
     ble-    branch_0x80154de0
-    lfs     f0, -0x4b44(rtoc)
+    lfs     f0, -0x4b44(r2)
     b       branch_0x80154de4
 
 branch_0x80154de0:
-    lfs     f0, -0x4b40(rtoc)
+    lfs     f0, -0x4b40(r2)
 branch_0x80154de4:
     fadds   f0, f2, f0
     extsh   r0, r0
@@ -119,7 +119,7 @@ branch_0x80154e40:
     cmplwi  r0, 0x0
     beq-    branch_0x80154fe4
     lfs     f1, 0x30(r31)
-    lfs     f0, -0x4b50(rtoc)
+    lfs     f0, -0x4b50(r2)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80154e68
     stfs    f0, 0x30(r31)
@@ -129,13 +129,13 @@ branch_0x80154e68:
     lwz     r0, 0x58(r31)
     lis     r4, 0x4330
     lfs     f2, 0x30(r31)
-    lfs     f0, -0x4b50(rtoc)
+    lfs     f0, -0x4b50(r2)
     xoris   r0, r0, 0x8000
     stw     r0, 0x34(sp)
     fmuls   f9, f2, f2
     fsubs   f1, f0, f2
     lwz     r0, 0x50(r31)
-    lfs     f0, -0x4b4c(rtoc)
+    lfs     f0, -0x4b4c(r2)
     stw     r4, 0x30(sp)
     xoris   r3, r0, 0x8000
     lwz     r0, 0x5c(r31)
@@ -154,7 +154,7 @@ branch_0x80154e68:
     xoris   r3, r3, 0x8000
     stw     r4, 0x48(sp)
     fmuls   f8, f1, f1
-    lfd     f6, -0x4b38(rtoc)
+    lfd     f6, -0x4b38(r2)
     lfd     f0, 0x30(sp)
     lfd     f2, 0x28(sp)
     fsubs   f1, f0, f6
@@ -175,30 +175,30 @@ branch_0x80154e68:
     fmuls   f1, f0, f7
     lfd     f3, 0x38(sp)
     fmadds  f4, f5, f9, f4
-    lfs     f0, -0x4b48(rtoc)
+    lfs     f0, -0x4b48(r2)
     fsubs   f3, f3, f6
     fmadds  f1, f2, f8, f1
     fcmpo   cr0, f4, f0
     fmadds  f2, f3, f9, f1
     ble-    branch_0x80154f4c
-    lfs     f0, -0x4b44(rtoc)
+    lfs     f0, -0x4b44(r2)
     b       branch_0x80154f50
 
 branch_0x80154f4c:
-    lfs     f0, -0x4b40(rtoc)
+    lfs     f0, -0x4b40(r2)
 branch_0x80154f50:
     fadds   f1, f4, f0
-    lfs     f0, -0x4b48(rtoc)
+    lfs     f0, -0x4b48(r2)
     fcmpo   cr0, f2, f0
     fctiwz  f0, f1
     stfd    f0, 0x20(sp)
     lwz     r0, 0x24(sp)
     ble-    branch_0x80154f74
-    lfs     f0, -0x4b44(rtoc)
+    lfs     f0, -0x4b44(r2)
     b       branch_0x80154f78
 
 branch_0x80154f74:
-    lfs     f0, -0x4b40(rtoc)
+    lfs     f0, -0x4b40(r2)
 branch_0x80154f78:
     fadds   f0, f2, f0
     extsh   r0, r0
@@ -251,13 +251,13 @@ setPaneSize__10TBoundPaneFlRC8JUTPointRC8JUTPointRC8JUTPoint: # 0x80155018
     lis     r4, 0x4330
     stw     r0, 0x24(sp)
     li      r0, 0x1
-    lfs     f0, -0x4b48(rtoc)
+    lfs     f0, -0x4b48(r2)
     stw     r4, 0x20(sp)
     stfs    f0, 0x30(r3)
     lfd     f0, 0x20(sp)
     addi    sp, sp, 0x28
-    lfd     f1, -0x4b38(rtoc)
-    lfs     f2, -0x4b50(rtoc)
+    lfd     f1, -0x4b38(r2)
+    lfs     f2, -0x4b50(r2)
     fsubs   f0, f0, f1
     fdivs   f0, f2, f0
     stfs    f0, 0x34(r3)
@@ -284,13 +284,13 @@ setPanePosition__10TBoundPaneFlRC8JUTPointRC8JUTPointRC8JUTPoint: # 0x8015508c
     lis     r4, 0x4330
     stw     r0, 0x24(sp)
     li      r0, 0x1
-    lfs     f0, -0x4b48(rtoc)
+    lfs     f0, -0x4b48(r2)
     stw     r4, 0x20(sp)
     stfs    f0, 0x28(r3)
     lfd     f0, 0x20(sp)
     addi    sp, sp, 0x28
-    lfd     f1, -0x4b38(rtoc)
-    lfs     f2, -0x4b50(rtoc)
+    lfd     f1, -0x4b38(r2)
+    lfs     f2, -0x4b50(r2)
     fsubs   f0, f0, f1
     fdivs   f0, f2, f0
     stfs    f0, 0x2c(r3)
@@ -362,7 +362,7 @@ __ct__10TBoundPaneFP9J2DScreenUl: # 0x80155100
     lwz     r0, 0x20(r5)
     stw     r4, 0xc(r28)
     stw     r0, 0x10(r28)
-    lfs     f0, -0x4b48(rtoc)
+    lfs     f0, -0x4b48(r2)
     stfs    f0, 0x28(r28)
     stfs    f0, 0x2c(r28)
     stfs    f0, 0x30(r28)

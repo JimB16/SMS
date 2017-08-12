@@ -9,14 +9,14 @@ __dt__17TOneShotGeneratorFv: # 0x8008f460
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8008f4c8
-    lis     r3, 0x803b
-    addi    r3, r3, 0x42a0
+    lis     r3, __vvt__17TOneShotGenerator@h
+    addi    r3, r3, __vvt__17TOneShotGenerator@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x8008f4b8
-    lis     r3, 0x803e
-    subi    r3, r3, 0x5b10
+    lis     r3, __vvt__9THitActor@ha
+    addi    r3, r3, __vvt__9THitActor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x0
@@ -69,8 +69,8 @@ branch_0x8008f518:
     addi    r3, sp, 0x1c
     lwz     r4, 0x124(r31)
     stw     r0, 0x0(r4)
-    lfs     f1, -0x6760(rtoc)
-    lfs     f0, -0x675c(rtoc)
+    lfs     f1, -0x6760(r2)
+    lfs     f0, -0x675c(r2)
     stfs    f1, 0x58(sp)
     stfs    f1, 0x4c(sp)
     stfs    f1, 0x5c(sp)
@@ -125,22 +125,22 @@ loadAfter__17TOneShotGeneratorFv: # 0x8008f5dc
     lwz     r0, 0x44(r29)
     cmplwi  r0, 0x0
     bne-    branch_0x8008f6f4
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     lwz     r4, 0x68(r29)
     bl      getManagerByName__10TConductorFPCc
     stw     r3, 0x6c(r29)
     lwz     r0, 0x74(r29)
     cmplwi  r0, 0x0
     bne-    branch_0x8008f634
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     lwz     r4, 0x70(r29)
     bl      getGraphByName__10TConductorFPCc
     stw     r3, 0x74(r29)
 branch_0x8008f634:
-    lfs     f1, -0x6758(rtoc)
-    lis     r3, 0x200
-    lfs     f2, -0x6754(rtoc)
-    addi    r4, r3, 0x1
+    lfs     f1, -0x6758(r2)
+    lis     r3, unk_02000001@h
+    lfs     f2, -0x6754(r2)
+    addi    r4, r3, unk_02000001@l
     fmr     f3, f1
     fmr     f4, f2
     lwz     r3, 0x8(sp)
@@ -148,13 +148,13 @@ branch_0x8008f634:
     lis     r6, 0x8000
     bl      initHitActor__9THitActorFUlUsiffff
     lwz     r30, 0x8(sp)
-    lis     r3, 0x8038
-    subi    r31, r3, 0x4678
+    lis     r3, unk_8037b988@ha
+    addi    r31, r3, unk_8037b988@l
     lwz     r0, 0x64(r30)
     addi    r3, r31, 0x0
     clrrwi  r0, r0, 1
     stw     r0, 0x64(r30)
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     lwz     r29, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     lwz     r12, 0x0(r29)
@@ -182,7 +182,7 @@ branch_0x8008f634:
     lwz     r0, 0x50(sp)
     stw     r0, 0x44(sp)
     bl      insert__Q27JGadget18TList_pointer_voidFQ37JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__8iteratorRCPv
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     mr      r4, r30
     bl      registerOtherObj__10TConductorFPQ26JDrama8TViewObj
 branch_0x8008f6f4:
@@ -227,8 +227,8 @@ __ct__17TOneShotGeneratorFPCc: # 0x8008f760
     stw     r31, 0x14(sp)
     mr      r31, r3
     bl      __ct__9THitActorFPCc
-    lis     r3, 0x803b
-    addi    r3, r3, 0x42a0
+    lis     r3, __vvt__17TOneShotGenerator@h
+    addi    r3, r3, __vvt__17TOneShotGenerator@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     li      r4, 0x0
@@ -258,7 +258,7 @@ perform__10TGeneratorFUlPQ26JDrama9TGraphics: # 0x8008f7c0
     addi    r30, r3, 0x0
     beq-    branch_0x8008f8c8
     lwz     r3, 0x3c(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x3c(r30)
     lwz     r0, 0x3c(r30)
     cmpwi   r0, 0x0
@@ -272,7 +272,7 @@ branch_0x8008f800:
     lwz     r0, 0x2c(r30)
     cmplwi  r0, 0x0
     bne-    branch_0x8008f828
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     lwz     r4, 0x28(r30)
     bl      getManagerByName__10TConductorFPCc
     stw     r3, 0x2c(r30)
@@ -284,7 +284,7 @@ branch_0x8008f828:
     lwz     r0, 0x34(r30)
     cmplwi  r0, 0x0
     bne-    branch_0x8008f854
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     lwz     r4, 0x30(r30)
     bl      getGraphByName__10TConductorFPCc
     stw     r3, 0x34(r30)
@@ -293,8 +293,8 @@ branch_0x8008f854:
     addi    r3, sp, 0x1c
     lwz     r4, 0x124(r31)
     stw     r0, 0x0(r4)
-    lfs     f1, -0x6760(rtoc)
-    lfs     f0, -0x675c(rtoc)
+    lfs     f1, -0x6760(r2)
+    lfs     f0, -0x675c(r2)
     stfs    f1, 0x58(sp)
     stfs    f1, 0x4c(sp)
     stfs    f1, 0x5c(sp)
@@ -409,11 +409,11 @@ branch_0x8008f9d8:
     lwz     r31, 0x38(r28)
     bl      rand
     xoris   r0, r3, 0x8000
-    lfd     f3, -0x6748(rtoc)
+    lfd     f3, -0x6748(r2)
     stw     r0, 0x7c(sp)
     lis     r3, 0x4330
     xoris   r0, r31, 0x8000
-    lfs     f1, -0x6750(rtoc)
+    lfs     f1, -0x6750(r2)
     stw     r3, 0x78(sp)
     mr      r4, r28
     stw     r0, 0x74(sp)
@@ -428,7 +428,7 @@ branch_0x8008f9d8:
     stfd    f0, 0x68(sp)
     lwz     r0, 0x6c(sp)
     stw     r0, 0x3c(r28)
-    lwz     r3, -0x70b0(r13)
+    lwz     r3, R13Off_m0x70b0(r13)
     bl      registerGenerator__10TConductorFP10TGenerator
     lwz     r0, 0x94(sp)
     lwz     r31, 0x8c(sp)
@@ -443,9 +443,9 @@ branch_0x8008f9d8:
 .globl __ct__10TGeneratorFPCc
 __ct__10TGeneratorFPCc: # 0x8008fa88
     mflr    r0
-    lis     r5, 0x803e
+    lis     r5, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r5, 0x20f0
+    addi    r0, r5, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
@@ -454,13 +454,13 @@ __ct__10TGeneratorFPCc: # 0x8008fa88
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__10TGenerator@h
     sth     r4, 0xc(r31)
-    addi    r3, r3, 0x4344
+    addi    r3, r3, __vvt__10TGenerator@l
     li      r0, 0x1
     stw     r3, 0x0(r31)
     mr      r3, r31
@@ -487,12 +487,12 @@ __dt__10TGeneratorFv: # 0x8008fb0c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8008fb64
-    lis     r3, 0x803b
-    addi    r0, r3, 0x4344
+    lis     r3, __vvt__10TGenerator@h
+    addi    r0, r3, __vvt__10TGenerator@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8008fb54
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -512,8 +512,8 @@ branch_0x8008fb64:
     blr
 
 
-.globl _32___dt__17TOneShotGeneratorFv
-_32___dt__17TOneShotGeneratorFv: # 0x8008fb80
-    subi    r3, r3, 0x20
+.globl unk_8008fb80
+unk_8008fb80: # 0x8008fb80
+    addi    r3, r3, -0x20
     b       __dt__17TOneShotGeneratorFv
 

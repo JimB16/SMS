@@ -1,14 +1,14 @@
 
 .globl __ct__Q28JASystem10TBasicInstFv
 __ct__Q28JASystem10TBasicInstFv: # 0x8030e43c
-    lis     r4, 0x803e
-    addi    r0, r4, 0x2670
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q28JASystem5TInst@h
+    addi    r0, r4, __vvt__Q28JASystem5TInst@l
+    lis     r4, __vvt__Q28JASystem10TBasicInst@h
     stw     r0, 0x0(r3)
-    addi    r0, r4, 0x2658
+    addi    r0, r4, __vvt__Q28JASystem10TBasicInst@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
-    lfs     f0, 0x628(rtoc)
+    lfs     f0, 0x628(r2)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
     stw     r0, 0xc(r3)
@@ -28,8 +28,8 @@ __dt__Q28JASystem5TInstFv: # 0x8030e480
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x8030e4b4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x2670
+    lis     r3, __vvt__Q28JASystem5TInst@h
+    addi    r3, r3, __vvt__Q28JASystem5TInst@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x8030e4b4
@@ -54,11 +54,11 @@ __dt__Q28JASystem10TBasicInstFv: # 0x8030e4cc
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8030e53c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2658
+    lis     r3, __vvt__Q28JASystem10TBasicInst@h
+    addi    r0, r3, __vvt__Q28JASystem10TBasicInst@l
     stw     r0, 0x0(r30)
-    lis     r3, 0x8031
-    subi    r4, r3, 0x16f0
+    lis     r3, __dt__Q38JASystem10TBasicInst7TKeymapFv@ha
+    addi    r4, r3, __dt__Q38JASystem10TBasicInst7TKeymapFv@l
     lwz     r3, 0x20(r30)
     bl      __destroy_new_array
     lwz     r3, 0xc(r30)
@@ -67,8 +67,8 @@ __dt__Q28JASystem10TBasicInstFv: # 0x8030e4cc
     bl      __dla__FPv
     cmplwi  r30, 0x0
     beq-    branch_0x8030e52c
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2670
+    lis     r3, __vvt__Q28JASystem5TInst@h
+    addi    r0, r3, __vvt__Q28JASystem5TInst@l
     stw     r0, 0x0(r30)
 branch_0x8030e52c:
     extsh.  r0, r31
@@ -245,11 +245,11 @@ getKeymapIndex__Q28JASystem10TBasicInstCFi: # 0x8030e734
 .globl setKeyRegionCount__Q28JASystem10TBasicInstFUl
 setKeyRegionCount__Q28JASystem10TBasicInstFUl: # 0x8030e73c
     mflr    r0
-    lis     r5, 0x8031
+    lis     r5, __dt__Q38JASystem10TBasicInst7TKeymapFv@ha
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    subi    r31, r5, 0x16f0
+    addi    r31, r5, __dt__Q38JASystem10TBasicInst7TKeymapFv@l
     stw     r30, 0x18(sp)
     addi    r30, r4, 0x0
     addi    r4, r31, 0x0
@@ -263,8 +263,8 @@ setKeyRegionCount__Q28JASystem10TBasicInstFUl: # 0x8030e73c
     addi    r3, r5, 0x8
     li      r5, 0x0
     bl      __nwa__FUlP7JKRHeapi
-    lis     r4, 0x8031
-    subi    r4, r4, 0x183c
+    lis     r4, __ct__Q38JASystem10TBasicInst7TKeymapFv@ha
+    addi    r4, r4, __ct__Q38JASystem10TBasicInst7TKeymapFv@l
     addi    r5, r31, 0x0
     addi    r7, r30, 0x0
     li      r6, 0xc
@@ -479,7 +479,7 @@ branch_0x8030e9f4:
 
 .globl getType__Q28JASystem10TBasicInstCFv
 getType__Q28JASystem10TBasicInstCFv: # 0x8030ea04
-    lis     r3, 0x4253
-    addi    r3, r3, 0x4943
+    lis     r3, unk_42534943@h
+    addi    r3, r3, unk_42534943@l
     blr
 

@@ -909,7 +909,7 @@ newMatColor__18J3DMaterialFactoryCFii: # 0x802e5ec4
     stwu    sp, -0x38(sp)
     slwi    r0, r5, 1
     slwi    r10, r6, 1
-    lwz     r7, 0x2d8(rtoc)
+    lwz     r7, R2Off_0x2d8(r2)
     stw     r7, 0x2c(sp)
     lwz     r5, 0x8(r4)
     lwz     r6, 0x4(r4)
@@ -1003,15 +1003,15 @@ branch_0x802e5fe8:
     b       branch_0x802e6040
 
 branch_0x802e6008:
-    subi    r3, r13, 0x7518
+    addi    r3, r13, R13Off_m0x7518
     lbz     r8, 0x5(r3)
     addis   r0, r8, 0x0
     cmplwi  r0, 0xffff
     bne-    branch_0x802e6020
     li      r8, 0x0
 branch_0x802e6020:
-    subi    r7, r13, 0x7518
-    lbz     r3, -0x7518(r13)
+    addi    r7, r13, R13Off_m0x7518
+    lbz     r3, R13Off_m0x7518(r13)
     lbz     r4, 0x1(r7)
     lbz     r5, 0x2(r7)
     lbz     r6, 0x3(r7)
@@ -1031,7 +1031,7 @@ newAmbColor__18J3DMaterialFactoryCFii: # 0x802e6054
     stwu    sp, -0x38(sp)
     slwi    r0, r5, 1
     slwi    r10, r6, 1
-    lwz     r7, 0x2dc(rtoc)
+    lwz     r7, R2Off_0x2dc(r2)
     stw     r7, 0x2c(sp)
     lwz     r5, 0x8(r4)
     lwz     r6, 0x4(r4)
@@ -1208,8 +1208,8 @@ newTexNo__18J3DMaterialFactoryCFii: # 0x802e6264
     blr
 
 branch_0x802e62a0:
-    lis     r3, 0x1
-    subi    r3, r3, 0x1
+    lis     r3, unk_0000ffff@ha
+    addi    r3, r3, unk_0000ffff@l
     blr
 
 
@@ -1238,8 +1238,8 @@ newTevOrder__18J3DMaterialFactoryCFii: # 0x802e62ac
     blr
 
 branch_0x802e6300:
-    lbz     r0, -0x753c(r13)
-    subi    r4, r13, 0x753c
+    lbz     r0, R13Off_m0x753c(r13)
+    addi    r4, r13, R13Off_m0x753c
     stb     r0, 0x0(r3)
     lbz     r0, 0x1(r4)
     stb     r0, 0x1(r3)
@@ -1253,8 +1253,8 @@ newTevColor__18J3DMaterialFactoryCFii: # 0x802e6320
     stwu    sp, -0x40(sp)
     slwi    r0, r5, 1
     slwi    r10, r6, 1
-    lwz     r7, 0x2e0(rtoc)
-    lwz     r5, 0x2e4(rtoc)
+    lwz     r7, R2Off_0x2e0(r2)
+    lwz     r5, R2Off_0x2e4(r2)
     stw     r7, 0x2c(sp)
     stw     r5, 0x30(sp)
     lwz     r5, 0x8(r4)
@@ -1298,7 +1298,7 @@ newTevKColor__18J3DMaterialFactoryCFii: # 0x802e63b8
     stwu    sp, -0x38(sp)
     slwi    r0, r5, 1
     slwi    r10, r6, 1
-    lwz     r7, 0x2e8(rtoc)
+    lwz     r7, R2Off_0x2e8(r2)
     stw     r7, 0x2c(sp)
     lwz     r5, 0x8(r4)
     lwz     r6, 0x4(r4)
@@ -1429,7 +1429,7 @@ newTevStage__18J3DMaterialFactoryCFii: # 0x802e6480
     lbz     r7, 0x11(r31)
     lbz     r8, 0x12(r31)
     bl      setTevAlphaOp__11J3DTevStageFUcUcUcUcUc
-    subi    r3, r13, 0x7524
+    addi    r3, r13, R13Off_m0x7524
     lbz     r4, 0x7(r30)
     lbz     r0, 0x1(r3)
     rlwinm  r3, r4, 0, 30, 27
@@ -1437,15 +1437,15 @@ newTevStage__18J3DMaterialFactoryCFii: # 0x802e6480
     or      r0, r3, r0
     stb     r0, 0x7(r30)
     lbz     r3, 0x7(r30)
-    lbz     r0, -0x7524(r13)
+    lbz     r0, R13Off_m0x7524(r13)
     clrrwi  r3, r3, 2
     or      r0, r3, r0
     stb     r0, 0x7(r30)
     b       branch_0x802e66d4
 
 branch_0x802e65d0:
-    lis     r3, 0x803e
-    addi    r31, r3, 0x1678
+    lis     r3, j3dDefaultTevStageInfo@h
+    addi    r31, r3, j3dDefaultTevStageInfo@l
     lbz     r4, 0x5(r31)
     mr      r3, r30
     lbz     r5, 0x6(r31)
@@ -1497,7 +1497,7 @@ branch_0x802e65d0:
     lbz     r7, 0x11(r31)
     lbz     r8, 0x12(r31)
     bl      setTevAlphaOp__11J3DTevStageFUcUcUcUcUc
-    subi    r3, r13, 0x7524
+    addi    r3, r13, R13Off_m0x7524
     lbz     r4, 0x7(r30)
     lbz     r0, 0x1(r3)
     rlwinm  r3, r4, 0, 30, 27
@@ -1505,7 +1505,7 @@ branch_0x802e65d0:
     or      r0, r3, r0
     stb     r0, 0x7(r30)
     lbz     r3, 0x7(r30)
-    lbz     r0, -0x7524(r13)
+    lbz     r0, R13Off_m0x7524(r13)
     clrrwi  r3, r3, 2
     or      r0, r3, r0
     stb     r0, 0x7(r30)
@@ -1548,8 +1548,8 @@ newTevSwapModeTable__18J3DMaterialFactoryCFii: # 0x802e66ec
     blr
 
 branch_0x802e6754:
-    subi    r6, r13, 0x7520
-    lbz     r4, -0x7520(r13)
+    addi    r6, r13, R13Off_m0x7520
+    lbz     r4, R13Off_m0x7520(r13)
     lbz     r5, 0x2(r6)
     lbz     r0, 0x1(r6)
     slwi    r4, r4, 6
@@ -1582,9 +1582,9 @@ branch_0x802e67a8:
 .globl newIndTexOrder__18J3DMaterialFactoryCFii
 newIndTexOrder__18J3DMaterialFactoryCFii: # 0x802e67b0
     stwu    sp, -0x38(sp)
-    subi    r7, r13, 0x7538
+    addi    r7, r13, R13Off_m0x7538
     mulli   r0, r5, 0x138
-    lbz     r8, -0x7538(r13)
+    lbz     r8, R13Off_m0x7538(r13)
     stb     r8, 0x34(sp)
     lbz     r5, 0x1(r7)
     stb     r5, 0x35(sp)
@@ -1613,9 +1613,9 @@ branch_0x802e6808:
 .globl newIndTexMtx__18J3DMaterialFactoryCFii
 newIndTexMtx__18J3DMaterialFactoryCFii: # 0x802e6810
     mflr    r0
-    lis     r7, 0x803e
+    lis     r7, j3dDefaultIndTexMtxInfo@h
     stw     r0, 0x4(sp)
-    addi    r0, r7, 0x165c
+    addi    r0, r7, j3dDefaultIndTexMtxInfo@l
     stwu    sp, -0x48(sp)
     stw     r31, 0x44(sp)
     addi    r31, r3, 0x0
@@ -1669,9 +1669,9 @@ branch_0x802e68b8:
 
 .globl newIndTevStage__18J3DMaterialFactoryCFii
 newIndTevStage__18J3DMaterialFactoryCFii: # 0x802e68d8
-    lis     r7, 0x803e
+    lis     r7, j3dDefaultIndTevStageInfo@h
     stwu    sp, -0x40(sp)
-    addi    r8, r7, 0x168c
+    addi    r8, r7, j3dDefaultIndTevStageInfo@l
     lbz     r7, 0x0(r8)
     mulli   r0, r5, 0x138
     stb     r7, 0x34(sp)
@@ -1734,9 +1734,9 @@ branch_0x802e69b4:
 .globl newIndTexCoordScale__18J3DMaterialFactoryCFii
 newIndTexCoordScale__18J3DMaterialFactoryCFii: # 0x802e69bc
     stwu    sp, -0x20(sp)
-    subi    r7, r13, 0x752c
+    addi    r7, r13, R13Off_m0x752c
     mulli   r0, r5, 0x138
-    lbz     r8, -0x752c(r13)
+    lbz     r8, R13Off_m0x752c(r13)
     stb     r8, 0x18(sp)
     lbz     r5, 0x1(r7)
     stb     r5, 0x19(sp)
@@ -1832,8 +1832,8 @@ newAlphaComp__18J3DMaterialFactoryCFi: # 0x802e6aa8
     blr
 
 branch_0x802e6b0c:
-    lis     r4, 0x1
-    subi    r0, r4, 0x1
+    lis     r4, unk_0000ffff@ha
+    addi    r0, r4, unk_0000ffff@l
     sth     r0, 0x0(r3)
     li      r0, 0x0
     stb     r0, 0x2(r3)
@@ -1866,8 +1866,8 @@ newBlend__18J3DMaterialFactoryCFi: # 0x802e6b28
     blr
 
 branch_0x802e6b7c:
-    lbz     r0, -0x751c(r13)
-    subi    r4, r13, 0x751c
+    lbz     r0, R13Off_m0x751c(r13)
+    addi    r4, r13, R13Off_m0x751c
     stb     r0, 0x0(r3)
     lbz     r0, 0x1(r4)
     stb     r0, 0x1(r3)
@@ -1903,8 +1903,8 @@ newZMode__18J3DMaterialFactoryCFi: # 0x802e6ba4
     blr
 
 branch_0x802e6bf8:
-    lis     r4, 0x1
-    subi    r0, r4, 0x1
+    lis     r4, unk_0000ffff@ha
+    addi    r0, r4, unk_0000ffff@l
     sth     r0, 0x0(r3)
     blr
 
@@ -1951,9 +1951,9 @@ branch_0x802e6c70:
 
 .globl newNBTScale__18J3DMaterialFactoryCFi
 newNBTScale__18J3DMaterialFactoryCFi: # 0x802e6c78
-    lis     r6, 0x803e
+    lis     r6, j3dDefaultNBTScaleInfo@h
     stwu    sp, -0x38(sp)
-    addi    r7, r6, 0x16c4
+    addi    r7, r6, j3dDefaultNBTScaleInfo@l
     lbz     r6, 0x0(r7)
     slwi    r0, r5, 1
     stb     r6, 0x24(sp)

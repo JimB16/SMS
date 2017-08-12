@@ -266,13 +266,13 @@ isFileExist__10TCameraBckCFPCc: # 0x80031f80
 .globl __ct__10TCameraBckFv
 __ct__10TCameraBckFv: # 0x80031fa8
     mflr    r0
-    lis     r4, 0x8037
+    lis     r4, unk_80375a88@h
     stw     r0, 0x4(sp)
     li      r0, 0x0
     stwu    sp, -0x40(sp)
     stw     r31, 0x3c(sp)
     addi    r31, r3, 0x0
-    addi    r3, r4, 0x5a88
+    addi    r3, r4, unk_80375a88@l
     stw     r30, 0x38(sp)
     stw     r29, 0x34(sp)
     stw     r0, 0x14(r31)
@@ -286,10 +286,10 @@ __ct__10TCameraBckFv: # 0x80031fa8
     bl      __ct__13MActorAnmDataFv
 branch_0x80031ff4:
     stw     r29, 0x4(r31)
-    lis     r3, 0x803b
-    subi    r5, r3, 0x2cf8
+    lis     r3, sAddBckFileNameTable@ha
+    addi    r5, r3, sAddBckFileNameTable@l
     lwz     r3, 0x4(r31)
-    lwz     r4, -0x7f90(r13)
+    lwz     r4, R13Off_m0x7f90(r13)
     bl      init__13MActorAnmDataFPCcPPCc
     li      r3, 0x48
     bl      __nw__FUl
@@ -305,7 +305,7 @@ branch_0x80032028:
     lwz     r3, 0x0(r31)
     bl      setModel__6MActorFP8J3DModelUl
     lwz     r3, 0x4(r30)
-    lwz     r4, -0x7f98(r13)
+    lwz     r4, R13Off_m0x7f98(r13)
     lwz     r29, 0xb0(r3)
     mr      r3, r29
     bl      getIndex__10JUTNameTabCFPCc
@@ -317,7 +317,7 @@ branch_0x80032028:
     mulli   r0, r0, 0x30
     add     r0, r4, r0
     stw     r0, 0xc(r31)
-    lwz     r4, -0x7f94(r13)
+    lwz     r4, R13Off_m0x7f94(r13)
     bl      getIndex__10JUTNameTabCFPCc
     clrlwi  r0, r3, 16
     lwz     r3, 0x58(r30)

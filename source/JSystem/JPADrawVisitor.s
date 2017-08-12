@@ -147,14 +147,14 @@ exec__20JPADrawExecGenPrjMtxFPC14JPADrawContext: # 0x8032f5b0
     fmr     f31, f1
     lwz     r3, 0x0(r31)
     bl      getFovy__14JPABaseEmitterFv
-    lfs     f3, 0x900(rtoc)
+    lfs     f3, 0x900(r2)
     fmr     f2, f31
-    lfs     f4, 0x904(rtoc)
+    lfs     f4, 0x904(r2)
     addi    r3, sp, 0x10
     fmr     f5, f3
     fmr     f6, f3
     bl      C_MTXLightPerspective
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     addi    r3, sp, 0x10
     addi    r5, r3, 0x0
     addi    r4, r4, 0x68
@@ -195,9 +195,9 @@ exec__23JPADrawExecGenPrjTexMtxFPC14JPADrawContext: # 0x8032f660
     fmr     f31, f1
     lwz     r3, 0x0(r31)
     bl      getFovy__14JPABaseEmitterFv
-    lfs     f3, 0x900(rtoc)
+    lfs     f3, 0x900(r2)
     fmr     f2, f31
-    lfs     f4, 0x904(rtoc)
+    lfs     f4, 0x904(r2)
     addi    r3, sp, 0xc8
     fmr     f5, f3
     fmr     f6, f3
@@ -209,14 +209,14 @@ exec__23JPADrawExecGenPrjTexMtxFPC14JPADrawContext: # 0x8032f660
     lfs     f0, 0x44(r8)
     lfs     f7, 0x10(r3)
     addi    r3, sp, 0x98
-    lfs     f1, 0x908(rtoc)
+    lfs     f1, 0x908(r2)
     fmuls   f0, f7, f0
     lfs     f3, 0x34(r8)
     lfs     f2, 0x1c(r8)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f0, f1, f0
     fmadds  f4, f7, f3, f2
-    lfs     f6, 0x900(rtoc)
+    lfs     f6, 0x900(r2)
     lfs     f3, 0x38(r8)
     fctiwz  f0, f0
     lfs     f2, 0x20(r8)
@@ -227,10 +227,10 @@ exec__23JPADrawExecGenPrjTexMtxFPC14JPADrawContext: # 0x8032f660
     fmadds  f2, f7, f3, f2
     lwz     r7, 0xfc(sp)
     fmadds  f12, f7, f1, f0
-    lwz     r6, -0x5ea4(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     clrlwi  r7, r7, 16
     sraw    r0, r7, r0
-    lwz     r7, -0x5ea8(r13)
+    lwz     r7, R13Off_m0x5ea8(r13)
     slwi    r0, r0, 2
     fadds   f10, f6, f2
     lfsx    f9, r6, r0
@@ -245,12 +245,12 @@ exec__23JPADrawExecGenPrjTexMtxFPC14JPADrawContext: # 0x8032f660
     fmadds  f7, f7, f5, f4
     stfs    f3, 0x98(sp)
     fmuls   f1, f9, f10
-    lfs     f5, 0x90c(rtoc)
+    lfs     f5, 0x90c(r2)
     fmadds  f3, f12, f0, f6
     stfs    f2, 0x9c(sp)
     fmuls   f4, f7, f8
     fneg    f2, f7
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     stfs    f3, 0xa0(sp)
     fmadds  f1, f8, f11, f1
     fmuls   f3, f7, f9
@@ -265,7 +265,7 @@ exec__23JPADrawExecGenPrjTexMtxFPC14JPADrawContext: # 0x8032f660
     stfs    f0, 0xc0(sp)
     stfs    f5, 0xc4(sp)
     bl      PSMTXConcat
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     addi    r3, sp, 0xc8
     addi    r5, sp, 0x98
     addi    r4, r4, 0x68
@@ -353,15 +353,15 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContext: # 0x8032f89c
     li      r5, 0x1
     lfs     f5, 0x2c(r9)
     fctiwz  f0, f0
-    lfs     f3, 0x900(rtoc)
+    lfs     f3, 0x900(r2)
     lfs     f1, 0x30(r9)
-    lfd     f10, 0x918(rtoc)
+    lfd     f10, 0x918(r2)
     stfd    f0, 0x108(sp)
     fmuls   f0, f3, f5
     lfs     f2, 0x44(r9)
     lwz     r0, 0x10c(sp)
     fmuls   f1, f3, f1
-    lfs     f4, 0x908(rtoc)
+    lfs     f4, 0x908(r2)
     xoris   r8, r0, 0x8000
     lfs     f8, 0x34(r9)
     stw     r8, 0xe4(sp)
@@ -373,7 +373,7 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContext: # 0x8032f89c
     fsubs   f3, f3, f10
     lfs     f5, 0x24(r9)
     stw     r8, 0xf4(sp)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f2, f3, f2
     stw     r7, 0x100(sp)
     fmuls   f2, f4, f2
@@ -399,12 +399,12 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContext: # 0x8032f89c
     lfs     f3, 0x20(r9)
     fsubs   f7, f7, f10
     lfd     f6, 0xe8(sp)
-    lwz     r6, -0x5ea4(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     fmadds  f2, f7, f4, f3
     slwi    r0, r0, 2
     lfsx    f12, r6, r0
     fsubs   f9, f6, f10
-    lwz     r7, -0x5ea8(r13)
+    lwz     r7, R13Off_m0x5ea8(r13)
     fadds   f13, f1, f2
     lfsx    f11, r7, r0
     fneg    f4, f30
@@ -413,7 +413,7 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContext: # 0x8032f89c
     lfs     f7, 0x28(r9)
     fmuls   f5, f30, f12
     fmuls   f2, f12, f13
-    lfs     f6, 0x90c(rtoc)
+    lfs     f6, 0x90c(r2)
     fmuls   f4, f4, f11
     stfs    f5, 0xa8(sp)
     fmadds  f7, f9, f8, f7
@@ -422,7 +422,7 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContext: # 0x8032f89c
     fmadds  f2, f11, f31, f2
     stfs    f6, 0xb0(sp)
     fmadds  f4, f30, f3, f0
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     fneg    f3, f7
     fmuls   f5, f7, f11
     stfs    f4, 0xb4(sp)
@@ -501,7 +501,7 @@ exec__23JPADrawExecSetPointSizeFPC14JPADrawContextP15JPABaseParticle: # 0x8032fa
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     li      r4, 0x5
     lfs     f1, 0x10(r3)
     lfs     f0, 0x4(r5)
@@ -526,7 +526,7 @@ exec__23JPADrawExecSetLineWidthFPC14JPADrawContextP15JPABaseParticle: # 0x8032fb
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     li      r4, 0x5
     lfs     f1, 0x10(r3)
     lfs     f0, 0x4(r5)
@@ -552,8 +552,8 @@ exec__30JPADrawExecRegisterPrmColorAnmFPC14JPADrawContextP15JPABaseParticle: # 0
     mtlr    r12
     blrl
     lwz     r5, 0x2c(r3)
-    lis     r0, 0x4330
-    lwz     r7, -0x5ad8(r13)
+    lis     r0, unk_43300001@h
+    lwz     r7, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x40
     stw     r5, 0x44(sp)
     lbz     r5, 0x98(r7)
@@ -579,10 +579,10 @@ exec__30JPADrawExecRegisterPrmColorAnmFPC14JPADrawContextP15JPABaseParticle: # 0
     addi    r5, r5, 0x1
     lfs     f2, 0x20(r3)
     mullw   r3, r6, r5
-    lfd     f1, 0x920(rtoc)
+    lfd     f1, 0x920(r2)
     extrwi  r3, r3, 8, 16
     stw     r3, 0x54(sp)
-    li      r3, 0x1
+    addi    r3, r0, unk_43300001@l
     stw     r0, 0x50(sp)
     lfd     f0, 0x50(sp)
     fsubs   f0, f0, f1
@@ -613,8 +613,8 @@ exec__30JPADrawExecRegisterPrmAlphaAnmFPC14JPADrawContextP15JPABaseParticle: # 0
     mtlr    r12
     blrl
     lwz     r5, 0x14(r31)
-    lis     r0, 0x4330
-    lwz     r7, -0x5ad8(r13)
+    lis     r0, unk_43300001@h
+    lwz     r7, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x40
     lwz     r5, 0xb8(r5)
     stw     r5, 0x44(sp)
@@ -641,10 +641,10 @@ exec__30JPADrawExecRegisterPrmAlphaAnmFPC14JPADrawContextP15JPABaseParticle: # 0
     addi    r5, r5, 0x1
     lfs     f2, 0x20(r3)
     mullw   r3, r6, r5
-    lfd     f1, 0x920(rtoc)
+    lfd     f1, 0x920(r2)
     extrwi  r3, r3, 8, 16
     stw     r3, 0x54(sp)
-    li      r3, 0x1
+    addi    r3, r0, unk_43300001@l
     stw     r0, 0x50(sp)
     lfd     f0, 0x50(sp)
     fsubs   f0, f0, f1
@@ -675,7 +675,7 @@ exec__30JPADrawExecRegisterEnvColorAnmFPC14JPADrawContextP15JPABaseParticle: # 0
     blrl
     lwz     r0, 0x30(r3)
     addi    r4, sp, 0x34
-    lwz     r7, -0x5ad8(r13)
+    lwz     r7, R13Off_m0x5ad8(r13)
     li      r3, 0x2
     stw     r0, 0x38(sp)
     lbz     r5, 0x9c(r7)
@@ -716,8 +716,8 @@ exec__26JPADrawExecRegisterPrmCEnvFPC14JPADrawContextP15JPABaseParticle: # 0x803
     mtlr    r12
     blrl
     lwz     r6, 0x2c(r3)
-    lis     r0, 0x4330
-    lwz     r5, -0x5ad8(r13)
+    lis     r0, unk_43300001@h
+    lwz     r5, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x68
     stw     r6, 0x70(sp)
     lwz     r6, 0x30(r3)
@@ -745,10 +745,10 @@ exec__26JPADrawExecRegisterPrmCEnvFPC14JPADrawContextP15JPABaseParticle: # 0x803
     addi    r6, r6, 0x1
     lfs     f2, 0x20(r3)
     mullw   r3, r7, r6
-    lfd     f1, 0x920(rtoc)
+    lfd     f1, 0x920(r2)
     extrwi  r3, r3, 8, 16
     stw     r3, 0x84(sp)
-    li      r3, 0x1
+    addi    r3, r0, unk_43300001@l
     stw     r0, 0x80(sp)
     lfd     f0, 0x80(sp)
     fsubs   f0, f0, f1
@@ -802,8 +802,8 @@ exec__26JPADrawExecRegisterPrmAEnvFPC14JPADrawContextP15JPABaseParticle: # 0x803
     mtlr    r12
     blrl
     lwz     r6, 0x14(r31)
-    lis     r0, 0x4330
-    lwz     r5, -0x5ad8(r13)
+    lis     r0, unk_43300001@h
+    lwz     r5, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x68
     lwz     r6, 0xb8(r6)
     stw     r6, 0x70(sp)
@@ -832,10 +832,10 @@ exec__26JPADrawExecRegisterPrmAEnvFPC14JPADrawContextP15JPABaseParticle: # 0x803
     addi    r6, r6, 0x1
     lfs     f2, 0x20(r3)
     mullw   r3, r7, r6
-    lfd     f1, 0x920(rtoc)
+    lfd     f1, 0x920(r2)
     extrwi  r3, r3, 8, 16
     stw     r3, 0x84(sp)
-    li      r3, 0x1
+    addi    r3, r0, unk_43300001@l
     stw     r0, 0x80(sp)
     lfd     f0, 0x80(sp)
     fsubs   f0, f0, f1
@@ -890,19 +890,19 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContextP15JPABaseParticle: # 0x8033006c
     lwz     r9, 0x4(r4)
     li      r4, 0x1e
     fctiwz  f0, f0
-    lfs     f3, 0x900(rtoc)
+    lfs     f3, 0x900(r2)
     lfs     f1, 0x30(r9)
     stfd    f0, 0x108(sp)
     lfs     f0, 0x2c(r9)
     fmuls   f1, f3, f1
     lwz     r0, 0x10c(sp)
-    lfd     f10, 0x918(rtoc)
+    lfd     f10, 0x918(r2)
     fmuls   f0, f3, f0
     xoris   r8, r0, 0x8000
     stw     r8, 0xe4(sp)
     lfs     f2, 0x44(r9)
     stw     r7, 0xe0(sp)
-    lfs     f4, 0x908(rtoc)
+    lfs     f4, 0x908(r2)
     lfd     f3, 0xe0(sp)
     stw     r8, 0x104(sp)
     fsubs   f3, f3, f10
@@ -931,7 +931,7 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContextP15JPABaseParticle: # 0x8033006c
     stw     r7, 0xe8(sp)
     fmadds  f31, f2, f5, f3
     fsubs   f9, f6, f10
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r6, r6, 16
     sraw    r0, r6, r0
     lfd     f7, 0xe8(sp)
@@ -939,9 +939,9 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContextP15JPABaseParticle: # 0x8033006c
     slwi    r0, r0, 2
     lfs     f5, 0x20(r9)
     fneg    f3, f31
-    lwz     r6, -0x5ea4(r13)
+    lwz     r6, R13Off_m0x5ea4(r13)
     fmadds  f9, f9, f8, f5
-    lwz     r7, -0x5ea8(r13)
+    lwz     r7, R13Off_m0x5ea8(r13)
     lfsx    f12, r6, r0
     fsubs   f8, f7, f10
     lfsx    f11, r7, r0
@@ -949,13 +949,13 @@ exec__20JPADrawExecSetTexMtxFPC14JPADrawContextP15JPABaseParticle: # 0x8033006c
     fmuls   f4, f31, f12
     lfs     f5, 0x28(r9)
     fmuls   f2, f12, f13
-    lfs     f7, 0x90c(rtoc)
+    lfs     f7, 0x90c(r2)
     fmadds  f8, f8, f6, f5
     fadds   f5, f1, f9
     stfs    f4, 0xa4(sp)
     fmuls   f3, f3, f11
     fmsubs  f4, f11, f5, f2
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     fmuls   f6, f8, f11
     stfs    f3, 0xa8(sp)
     fmadds  f0, f31, f4, f0
@@ -1039,7 +1039,7 @@ branch_0x8033028c:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x5ad8(r13)
+    lwz     r6, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x38
     lfs     f4, 0x14(r3)
     mr      r5, r4
@@ -1085,7 +1085,7 @@ branch_0x8033028c:
     fadds   f0, f0, f2
     lfs     f4, 0x40(sp)
     fadds   f1, f1, f3
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
     stfs    f4, -0x8000(r3)
@@ -1158,7 +1158,7 @@ branch_0x80330460:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r7, -0x5ad8(r13)
+    lwz     r7, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x44
     lfs     f5, 0x10(r3)
     mr      r5, r4
@@ -1172,12 +1172,12 @@ branch_0x80330460:
     fsubs   f0, f4, f0
     lhz     r3, 0x34(r3)
     fadds   f1, f7, f6
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f11, f5, f0
     sraw    r0, r3, r0
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     fmuls   f10, f8, f1
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     fmuls   f9, f3, f2
     slwi    r0, r0, 2
     lfsx    f2, r6, r0
@@ -1229,7 +1229,7 @@ branch_0x80330460:
     fadds   f0, f0, f2
     lfs     f4, 0x4c(sp)
     fadds   f1, f1, f3
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
     stfs    f4, -0x8000(r3)
@@ -1308,7 +1308,7 @@ branch_0x80330680:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r6, -0x5ad8(r13)
+    lwz     r6, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x44
     lfs     f4, 0x14(r3)
     mr      r5, r4
@@ -1330,7 +1330,7 @@ branch_0x80330680:
     stfs    f2, 0x44(sp)
     fneg    f1, f1
     stfs    f4, 0x48(sp)
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x4c(sp)
     stfs    f5, 0x50(sp)
     stfs    f4, 0x54(sp)
@@ -1350,7 +1350,7 @@ branch_0x80330680:
     stfs    f0, 0x3c(sp)
     lfs     f0, 0x34(r31)
     stfs    f0, 0x40(sp)
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lwz     r3, 0x34(r3)
     bl      PSMTXMultVecSR
     li      r3, 0x80
@@ -1366,7 +1366,7 @@ branch_0x80330680:
     lfs     f2, 0x4c(sp)
     lfs     f5, 0x40(sp)
     fadds   f1, f1, f4
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     stfs    f0, -0x8000(r3)
     fadds   f0, f2, f5
     stfs    f1, -0x8000(r3)
@@ -1446,7 +1446,7 @@ branch_0x803308a0:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r7, -0x5ad8(r13)
+    lwz     r7, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x50
     lfs     f5, 0x10(r3)
     mr      r5, r4
@@ -1460,12 +1460,12 @@ branch_0x803308a0:
     fsubs   f0, f4, f0
     lhz     r3, 0x34(r3)
     fadds   f1, f7, f6
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     fmuls   f5, f5, f0
     sraw    r0, r3, r0
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     fmuls   f10, f8, f1
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     fmuls   f9, f3, f2
     slwi    r0, r0, 2
     lfsx    f2, r6, r0
@@ -1490,7 +1490,7 @@ branch_0x803308a0:
     fsubs   f5, f6, f4
     fadds   f4, f1, f2
     fsubs   f3, f6, f7
-    lfs     f6, 0x90c(rtoc)
+    lfs     f6, 0x90c(r2)
     fadds   f2, f10, f2
     fsubs   f1, f8, f7
     stfs    f6, 0x58(sp)
@@ -1513,7 +1513,7 @@ branch_0x803308a0:
     stfs    f0, 0x48(sp)
     lfs     f0, 0x34(r31)
     stfs    f0, 0x4c(sp)
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lwz     r3, 0x34(r3)
     bl      PSMTXMultVecSR
     li      r3, 0x80
@@ -1529,7 +1529,7 @@ branch_0x803308a0:
     lfs     f2, 0x58(sp)
     lfs     f5, 0x4c(sp)
     fadds   f1, f1, f4
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     stfs    f0, -0x8000(r3)
     fadds   f0, f2, f5
     stfs    f1, -0x8000(r3)
@@ -1691,12 +1691,12 @@ branch_0x80330bd4:
 rotTypeY__FffRA3_A4_f: # 0x80330c18
     stfs    f2, 0x0(r3)
     fneg    f0, f1
-    lfs     f3, 0x90c(rtoc)
+    lfs     f3, 0x90c(r2)
     stfs    f3, 0x4(r3)
     stfs    f0, 0x8(r3)
     stfs    f3, 0xc(r3)
     stfs    f3, 0x10(r3)
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     stfs    f0, 0x14(r3)
     stfs    f3, 0x18(r3)
     stfs    f3, 0x1c(r3)
@@ -1709,10 +1709,10 @@ rotTypeY__FffRA3_A4_f: # 0x80330c18
 
 .globl rotTypeX__FffRA3_A4_f
 rotTypeX__FffRA3_A4_f: # 0x80330c58
-    lfs     f3, 0x910(rtoc)
+    lfs     f3, 0x910(r2)
     fneg    f0, f1
     stfs    f3, 0x0(r3)
-    lfs     f3, 0x90c(rtoc)
+    lfs     f3, 0x90c(r2)
     stfs    f3, 0x4(r3)
     stfs    f3, 0x8(r3)
     stfs    f3, 0xc(r3)
@@ -1732,7 +1732,7 @@ rotTypeZ__FffRA3_A4_f: # 0x80330c98
     fneg    f0, f1
     stfs    f2, 0x0(r3)
     stfs    f0, 0x4(r3)
-    lfs     f3, 0x90c(rtoc)
+    lfs     f3, 0x90c(r2)
     stfs    f3, 0x8(r3)
     stfs    f3, 0xc(r3)
     stfs    f1, 0x10(r3)
@@ -1741,7 +1741,7 @@ rotTypeZ__FffRA3_A4_f: # 0x80330c98
     stfs    f3, 0x1c(r3)
     stfs    f3, 0x20(r3)
     stfs    f3, 0x24(r3)
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     stfs    f0, 0x28(r3)
     stfs    f3, 0x2c(r3)
     blr
@@ -1749,10 +1749,10 @@ rotTypeZ__FffRA3_A4_f: # 0x80330c98
 
 .globl rotTypeXYZ__FffRA3_A4_f
 rotTypeXYZ__FffRA3_A4_f: # 0x80330cd8
-    lfs     f3, 0x910(rtoc)
-    lfs     f0, 0x92c(rtoc)
+    lfs     f3, 0x910(r2)
+    lfs     f0, 0x92c(r2)
     fsubs   f3, f3, f2
-    lfs     f4, 0x928(rtoc)
+    lfs     f4, 0x928(r2)
     fmuls   f0, f0, f1
     fmuls   f3, f4, f3
     fadds   f4, f3, f0
@@ -1761,7 +1761,7 @@ rotTypeXYZ__FffRA3_A4_f: # 0x80330cd8
     stfs    f3, 0x0(r3)
     stfs    f1, 0x4(r3)
     stfs    f4, 0x8(r3)
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0xc(r3)
     stfs    f4, 0x10(r3)
     stfs    f3, 0x14(r3)
@@ -1778,19 +1778,19 @@ rotTypeXYZ__FffRA3_A4_f: # 0x80330cd8
 rotTypeYJiggle__FffRA3_A4_f: # 0x80330d34
     stfs    f2, 0x0(r3)
     fneg    f4, f1
-    lfs     f3, 0x930(rtoc)
+    lfs     f3, 0x930(r2)
     fmuls   f0, f3, f4
     fmuls   f3, f3, f2
     stfs    f0, 0x4(r3)
-    lfs     f5, 0x934(rtoc)
+    lfs     f5, 0x934(r2)
     fmuls   f4, f5, f4
     fmuls   f0, f5, f2
     stfs    f4, 0x8(r3)
-    lfs     f4, 0x90c(rtoc)
+    lfs     f4, 0x90c(r2)
     stfs    f4, 0xc(r3)
     stfs    f4, 0x10(r3)
     stfs    f5, 0x14(r3)
-    lfs     f2, 0x938(rtoc)
+    lfs     f2, 0x938(r2)
     stfs    f2, 0x18(r3)
     stfs    f4, 0x1c(r3)
     stfs    f1, 0x20(r3)
@@ -1829,7 +1829,7 @@ branch_0x80330dd0:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     mr      r31, r3
     lfs     f5, 0x10(r3)
     mr      r3, r30
@@ -1851,7 +1851,7 @@ branch_0x80330dd0:
     fsubs   f1, f7, f6
     stfs    f4, 0xcc(sp)
     fmuls   f1, f2, f1
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0xd0(sp)
     stfs    f5, 0xd4(sp)
     stfs    f4, 0xd8(sp)
@@ -1871,7 +1871,7 @@ branch_0x80330dd0:
     fmuls   f2, f1, f1
     lfs     f3, 0xc4(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
@@ -1881,7 +1881,7 @@ branch_0x80330dd0:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80330ed0
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0xc4(sp)
     stfs    f0, 0xc0(sp)
     stfs    f0, 0xbc(sp)
@@ -1889,7 +1889,7 @@ branch_0x80330dd0:
 
 branch_0x80330ed0:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0xbc(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1911,7 +1911,7 @@ branch_0x80330f00:
     lfs     f5, 0x4(r31)
     fmsubs  f30, f2, f4, f0
     fmuls   f2, f5, f4
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmsubs  f29, f5, f3, f1
     fmuls   f1, f30, f30
     fmsubs  f31, f7, f6, f2
@@ -1923,14 +1923,14 @@ branch_0x80330f00:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80330f68
-    lfs     f31, 0x90c(rtoc)
+    lfs     f31, 0x90c(r2)
     fmr     f30, f31
     fmr     f29, f30
     b       branch_0x80330f80
 
 branch_0x80330f68:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     fmuls   f0, f0, f1
     fmuls   f29, f29, f0
     fmuls   f30, f30, f0
@@ -1953,14 +1953,14 @@ branch_0x80330f80:
     fmuls   f2, f1, f1
     lfs     f3, 0x8(r31)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80330ff4
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x8(r31)
     stfs    f0, 0x4(r31)
     stfs    f0, 0x0(r31)
@@ -1968,7 +1968,7 @@ branch_0x80330f80:
 
 branch_0x80330ff4:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x0(r31)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -1985,7 +1985,7 @@ branch_0x80331024:
     lfs     f0, 0xbc(sp)
     mr      r5, r4
     stfs    f1, 0x80(sp)
-    lfs     f1, 0x90c(rtoc)
+    lfs     f1, 0x90c(r2)
     addi    r3, sp, 0x80
     stfs    f0, 0x84(sp)
     li      r6, 0x4
@@ -2017,7 +2017,7 @@ branch_0x80331024:
     fadds   f0, f0, f31
     lfs     f2, 0xd0(sp)
     fadds   f1, f1, f30
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     fadds   f2, f2, f29
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
@@ -2107,7 +2107,7 @@ branch_0x803311e4:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     mr      r31, r3
     lfs     f4, 0x10(r3)
     lfs     f3, 0x4(r5)
@@ -2115,15 +2115,15 @@ branch_0x803311e4:
     fneg    f2, f4
     lhz     r3, 0x34(r3)
     fadds   f1, f3, f0
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     lfs     f6, 0x8(r5)
     sraw    r0, r3, r0
     lfs     f5, 0x10(r5)
     fmuls   f8, f2, f1
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     fsubs   f0, f3, f0
     slwi    r0, r0, 2
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     lfsx    f2, r3, r0
     fadds   f1, f6, f5
     lfs     f7, 0x14(r31)
@@ -2136,7 +2136,7 @@ branch_0x803311e4:
     addi    r3, sp, 0x120
     stfs    f9, 0xf4(sp)
     fsubs   f3, f6, f5
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     fmuls   f3, f4, f3
     stfs    f0, 0xf8(sp)
     stfs    f10, 0xfc(sp)
@@ -2151,7 +2151,7 @@ branch_0x803311e4:
     lwz     r12, 0xa4(r5)
     mtlr    r12
     blrl
-    lwz     r6, -0x5ad8(r13)
+    lwz     r6, R13Off_m0x5ad8(r13)
     mr      r3, r30
     lwz     r4, 0x0(r29)
     addi    r5, sp, 0xe4
@@ -2163,7 +2163,7 @@ branch_0x803311e4:
     fmuls   f2, f1, f1
     lfs     f3, 0xec(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
@@ -2173,7 +2173,7 @@ branch_0x803311e4:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x8033131c
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0xec(sp)
     stfs    f0, 0xe8(sp)
     stfs    f0, 0xe4(sp)
@@ -2181,7 +2181,7 @@ branch_0x803311e4:
 
 branch_0x8033131c:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0xe4(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -2203,7 +2203,7 @@ branch_0x8033134c:
     lfs     f5, 0x4(r31)
     fmsubs  f30, f2, f4, f0
     fmuls   f2, f5, f4
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmsubs  f29, f5, f3, f1
     fmuls   f1, f30, f30
     fmsubs  f31, f7, f6, f2
@@ -2215,14 +2215,14 @@ branch_0x8033134c:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x803313b4
-    lfs     f31, 0x90c(rtoc)
+    lfs     f31, 0x90c(r2)
     fmr     f30, f31
     fmr     f29, f30
     b       branch_0x803313cc
 
 branch_0x803313b4:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     fmuls   f0, f0, f1
     fmuls   f29, f29, f0
     fmuls   f30, f30, f0
@@ -2245,14 +2245,14 @@ branch_0x803313cc:
     fmuls   f2, f1, f1
     lfs     f3, 0x8(r31)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80331440
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x8(r31)
     stfs    f0, 0x4(r31)
     stfs    f0, 0x0(r31)
@@ -2260,7 +2260,7 @@ branch_0x803313cc:
 
 branch_0x80331440:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x0(r31)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -2277,7 +2277,7 @@ branch_0x80331470:
     lfs     f0, 0xe4(sp)
     addi    r4, sp, 0x120
     stfs    f1, 0xa8(sp)
-    lfs     f1, 0x90c(rtoc)
+    lfs     f1, 0x90c(r2)
     addi    r5, sp, 0x78
     stfs    f0, 0xac(sp)
     stfs    f29, 0xb0(sp)
@@ -2313,7 +2313,7 @@ branch_0x80331470:
     fadds   f0, f0, f31
     lfs     f2, 0xf8(sp)
     fadds   f1, f1, f30
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     fadds   f2, f2, f29
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
@@ -2403,7 +2403,7 @@ branch_0x80331640:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     mr      r31, r3
     lfs     f5, 0x10(r3)
     mr      r3, r30
@@ -2425,7 +2425,7 @@ branch_0x80331640:
     fsubs   f1, f7, f6
     stfs    f4, 0xe4(sp)
     fmuls   f6, f2, f1
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0xe8(sp)
     stfs    f5, 0xec(sp)
     stfs    f4, 0xf0(sp)
@@ -2438,7 +2438,7 @@ branch_0x80331640:
     stfs    f0, 0x10c(sp)
     lfs     f3, 0xec(sp)
     lfs     f1, 0xe0(sp)
-    lfs     f2, 0x900(rtoc)
+    lfs     f2, 0x900(r2)
     fadds   f0, f3, f1
     fsubs   f1, f3, f1
     fmuls   f0, f2, f0
@@ -2482,7 +2482,7 @@ branch_0x80331640:
     fmuls   f2, f1, f1
     lfs     f3, 0xdc(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
@@ -2492,7 +2492,7 @@ branch_0x80331640:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x803317d4
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0xdc(sp)
     stfs    f0, 0xd8(sp)
     stfs    f0, 0xd4(sp)
@@ -2500,7 +2500,7 @@ branch_0x80331640:
 
 branch_0x803317d4:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0xd4(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -2522,7 +2522,7 @@ branch_0x80331804:
     lfs     f5, 0x4(r31)
     fmsubs  f30, f2, f4, f0
     fmuls   f2, f5, f4
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmsubs  f29, f5, f3, f1
     fmuls   f1, f30, f30
     fmsubs  f31, f7, f6, f2
@@ -2534,14 +2534,14 @@ branch_0x80331804:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x8033186c
-    lfs     f31, 0x90c(rtoc)
+    lfs     f31, 0x90c(r2)
     fmr     f30, f31
     fmr     f29, f30
     b       branch_0x80331884
 
 branch_0x8033186c:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     fmuls   f0, f0, f1
     fmuls   f29, f29, f0
     fmuls   f30, f30, f0
@@ -2564,14 +2564,14 @@ branch_0x80331884:
     fmuls   f2, f1, f1
     lfs     f3, 0x8(r31)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x803318f8
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x8(r31)
     stfs    f0, 0x4(r31)
     stfs    f0, 0x0(r31)
@@ -2579,7 +2579,7 @@ branch_0x80331884:
 
 branch_0x803318f8:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x0(r31)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -2596,7 +2596,7 @@ branch_0x80331928:
     lfs     f0, 0xd4(sp)
     mr      r5, r4
     stfs    f1, 0x98(sp)
-    lfs     f1, 0x90c(rtoc)
+    lfs     f1, 0x90c(r2)
     addi    r3, sp, 0x98
     stfs    f0, 0x9c(sp)
     li      r6, 0x8
@@ -2628,7 +2628,7 @@ branch_0x80331928:
     fadds   f0, f0, f31
     lfs     f2, 0xe8(sp)
     fadds   f1, f1, f30
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     fadds   f2, f2, f29
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
@@ -2762,7 +2762,7 @@ branch_0x80331b98:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     mr      r31, r3
     lfs     f4, 0x10(r3)
     lfs     f3, 0x4(r5)
@@ -2770,15 +2770,15 @@ branch_0x80331b98:
     fneg    f2, f4
     lhz     r3, 0x34(r3)
     fadds   f1, f3, f0
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     lfs     f6, 0x8(r5)
     sraw    r0, r3, r0
     lfs     f5, 0x10(r5)
     fmuls   f8, f2, f1
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     fsubs   f0, f3, f0
     slwi    r0, r0, 2
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     lfsx    f2, r3, r0
     fadds   f1, f6, f5
     lfs     f7, 0x14(r31)
@@ -2791,7 +2791,7 @@ branch_0x80331b98:
     addi    r3, sp, 0x180
     stfs    f9, 0x124(sp)
     fsubs   f0, f6, f5
-    lfs     f3, 0x90c(rtoc)
+    lfs     f3, 0x90c(r2)
     fmuls   f0, f4, f0
     stfs    f3, 0x128(sp)
     stfs    f10, 0x12c(sp)
@@ -2805,7 +2805,7 @@ branch_0x80331b98:
     stfs    f3, 0x14c(sp)
     lfs     f6, 0x12c(sp)
     lfs     f4, 0x120(sp)
-    lfs     f5, 0x900(rtoc)
+    lfs     f5, 0x900(r2)
     fadds   f3, f6, f4
     fsubs   f4, f6, f4
     fmuls   f3, f5, f3
@@ -2843,7 +2843,7 @@ branch_0x80331b98:
     lwz     r12, 0xa4(r5)
     mtlr    r12
     blrl
-    lwz     r6, -0x5ad8(r13)
+    lwz     r6, R13Off_m0x5ad8(r13)
     mr      r3, r30
     lwz     r4, 0x0(r29)
     addi    r5, sp, 0x114
@@ -2855,7 +2855,7 @@ branch_0x80331b98:
     fmuls   f2, f1, f1
     lfs     f3, 0x11c(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
@@ -2865,7 +2865,7 @@ branch_0x80331b98:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80331d64
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x11c(sp)
     stfs    f0, 0x118(sp)
     stfs    f0, 0x114(sp)
@@ -2873,7 +2873,7 @@ branch_0x80331b98:
 
 branch_0x80331d64:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x114(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -2895,7 +2895,7 @@ branch_0x80331d94:
     lfs     f5, 0x4(r31)
     fmsubs  f30, f2, f4, f0
     fmuls   f2, f5, f4
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmsubs  f29, f5, f3, f1
     fmuls   f1, f30, f30
     fmsubs  f31, f7, f6, f2
@@ -2907,14 +2907,14 @@ branch_0x80331d94:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80331dfc
-    lfs     f31, 0x90c(rtoc)
+    lfs     f31, 0x90c(r2)
     fmr     f30, f31
     fmr     f29, f30
     b       branch_0x80331e14
 
 branch_0x80331dfc:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     fmuls   f0, f0, f1
     fmuls   f29, f29, f0
     fmuls   f30, f30, f0
@@ -2937,14 +2937,14 @@ branch_0x80331e14:
     fmuls   f2, f1, f1
     lfs     f3, 0x8(r31)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80331e88
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x8(r31)
     stfs    f0, 0x4(r31)
     stfs    f0, 0x0(r31)
@@ -2952,7 +2952,7 @@ branch_0x80331e14:
 
 branch_0x80331e88:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x0(r31)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -2969,7 +2969,7 @@ branch_0x80331eb8:
     lfs     f0, 0x114(sp)
     addi    r4, sp, 0x180
     stfs    f1, 0xd8(sp)
-    lfs     f1, 0x90c(rtoc)
+    lfs     f1, 0x90c(r2)
     addi    r5, sp, 0xa8
     stfs    f0, 0xdc(sp)
     stfs    f29, 0xe0(sp)
@@ -3005,7 +3005,7 @@ branch_0x80331eb8:
     fadds   f0, f0, f31
     lfs     f2, 0x128(sp)
     fadds   f1, f1, f30
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     fadds   f2, f2, f29
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
@@ -3136,7 +3136,7 @@ branch_0x8033212c:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     mr      r31, r3
     lwz     r4, 0x0(r29)
     mr      r3, r30
@@ -3144,7 +3144,7 @@ branch_0x8033212c:
     addi    r5, sp, 0x9c
     mtlr    r12
     blrl
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lfs     f6, 0xa4(sp)
     lwz     r3, 0x34(r3)
     lfs     f5, 0x9c(sp)
@@ -3166,7 +3166,7 @@ branch_0x8033212c:
     fmuls   f2, f1, f1
     lfs     f3, 0xa4(sp)
     fmuls   f1, f0, f0
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     fmuls   f3, f3, f3
     fadds   f1, f2, f1
     fadds   f1, f3, f1
@@ -3176,7 +3176,7 @@ branch_0x8033212c:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x803321fc
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0xa4(sp)
     stfs    f0, 0xa0(sp)
     stfs    f0, 0x9c(sp)
@@ -3184,7 +3184,7 @@ branch_0x8033212c:
 
 branch_0x803321fc:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x9c(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -3196,12 +3196,12 @@ branch_0x803321fc:
     fmuls   f0, f0, f1
     stfs    f0, 0xa4(sp)
 branch_0x8033222c:
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x9c
     addi    r5, r4, 0x0
     lwz     r3, 0x34(r3)
     bl      PSMTXMultVecSR
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     addi    r4, sp, 0x60
     lfs     f4, 0x10(r31)
     mr      r5, r4
@@ -3282,7 +3282,7 @@ branch_0x8033222c:
     fadds   f0, f0, f2
     lfs     f4, 0x68(sp)
     fadds   f1, f1, f3
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
     stfs    f4, -0x8000(r3)
@@ -3359,24 +3359,24 @@ branch_0x8033247c:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     lfs     f4, 0x10(r3)
     lfs     f3, 0x4(r5)
     lfs     f0, 0xc(r5)
     fneg    f2, f4
     lhz     r4, 0x34(r3)
     fadds   f1, f3, f0
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     lfs     f6, 0x8(r5)
     sraw    r0, r4, r0
     lfs     f7, 0x14(r3)
     fsubs   f0, f3, f0
     lfs     f5, 0x10(r5)
     fmuls   f8, f2, f1
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     fadds   f1, f6, f5
     slwi    r0, r0, 2
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     lfsx    f3, r4, r0
     fmuls   f9, f7, f1
     lfsx    f2, r3, r0
@@ -3387,7 +3387,7 @@ branch_0x8033247c:
     addi    r3, sp, 0x84
     stfs    f9, 0x58(sp)
     fsubs   f3, f6, f5
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x5c(sp)
     fmuls   f3, f4, f3
     stfs    f10, 0x60(sp)
@@ -3420,7 +3420,7 @@ branch_0x8033247c:
     fadds   f0, f0, f31
     lfs     f2, 0x5c(sp)
     fadds   f1, f1, f30
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     fadds   f2, f2, f29
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
@@ -3505,24 +3505,24 @@ branch_0x803326a4:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     lfs     f4, 0x10(r3)
     lfs     f3, 0x4(r5)
     lfs     f0, 0xc(r5)
     fneg    f2, f4
     lhz     r4, 0x34(r3)
     fadds   f1, f3, f0
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     lfs     f6, 0x8(r5)
     sraw    r0, r4, r0
     lfs     f7, 0x14(r3)
     fsubs   f0, f3, f0
     lfs     f5, 0x10(r5)
     fmuls   f8, f2, f1
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     fadds   f1, f6, f5
     slwi    r0, r0, 2
-    lwz     r3, -0x5ea4(r13)
+    lwz     r3, R13Off_m0x5ea4(r13)
     lfsx    f3, r4, r0
     fmuls   f9, f7, f1
     lfsx    f2, r3, r0
@@ -3533,7 +3533,7 @@ branch_0x803326a4:
     addi    r3, sp, 0xe4
     stfs    f9, 0x88(sp)
     fsubs   f0, f6, f5
-    lfs     f3, 0x90c(rtoc)
+    lfs     f3, 0x90c(r2)
     stfs    f3, 0x8c(sp)
     fmuls   f0, f4, f0
     stfs    f10, 0x90(sp)
@@ -3547,7 +3547,7 @@ branch_0x803326a4:
     stfs    f3, 0xb0(sp)
     lfs     f6, 0x90(sp)
     lfs     f4, 0x84(sp)
-    lfs     f5, 0x900(rtoc)
+    lfs     f5, 0x900(r2)
     fadds   f3, f6, f4
     fsubs   f4, f6, f4
     fmuls   f3, f5, f3
@@ -3603,7 +3603,7 @@ branch_0x803326a4:
     fadds   f0, f0, f31
     lfs     f2, 0x8c(sp)
     fadds   f1, f1, f30
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     fadds   f2, f2, f29
     stfs    f0, -0x8000(r3)
     stfs    f1, -0x8000(r3)
@@ -3733,7 +3733,7 @@ branch_0x80332a08:
     li      r5, 0x1
     bl      GXBegin
     lis     r3, 0xcc01
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f31, -0x8000(r3)
     stfs    f30, -0x8000(r3)
     stfs    f29, -0x8000(r3)
@@ -3775,7 +3775,7 @@ branch_0x80332a9c:
     lfs     f29, 0x34(r31)
     lwz     r3, 0x38(r31)
     lwz     r0, 0x3c(r31)
-    lfs     f0, 0x93c(rtoc)
+    lfs     f0, 0x93c(r2)
     stw     r3, 0x40(sp)
     stw     r0, 0x44(sp)
     lwz     r0, 0x40(r31)
@@ -3794,7 +3794,7 @@ branch_0x80332a9c:
     fcmpo   cr0, f1, f0
     cror    2, 0, 2
     bne-    branch_0x80332b18
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     stfs    f0, 0x48(sp)
     stfs    f0, 0x44(sp)
     stfs    f0, 0x40(sp)
@@ -3802,7 +3802,7 @@ branch_0x80332a9c:
 
 branch_0x80332b18:
     bl      inv_sqrt__Q29JGeometry8TUtil_f_Ff
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x40(sp)
     fmuls   f1, f2, f1
     fmuls   f0, f0, f1
@@ -3819,7 +3819,7 @@ branch_0x80332b48:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     li      r4, 0x0
     lfs     f2, 0x14(r3)
     li      r3, 0xa8
@@ -3846,11 +3846,11 @@ branch_0x80332b48:
     stfs    f0, 0x48(sp)
     bl      GXBegin
     lis     r3, 0xcc01
-    lfs     f2, 0x90c(rtoc)
+    lfs     f2, 0x90c(r2)
     stfs    f31, -0x8000(r3)
     lfs     f1, 0x40(sp)
     stfs    f30, -0x8000(r3)
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     stfs    f29, -0x8000(r3)
     stfs    f2, -0x8000(r3)
     stfs    f2, -0x8000(r3)
@@ -3910,30 +3910,30 @@ exec__17JPADrawExecStripeFPC14JPADrawContext: # 0x80332c34
     lwz     r5, 0x8(r6)
     cmplwi  r5, 0x2
     blt-    branch_0x80333054
-    subi    r0, r5, 0x1
-    lfd     f1, 0x920(rtoc)
+    addi    r0, r5, -0x1
+    lfd     f1, 0x920(r2)
     stw     r0, 0x164(sp)
     lis     r4, 0x4330
     lwz     r3, 0x4(r31)
     stw     r4, 0x160(sp)
     lbz     r0, 0x7c(r3)
     lfd     f0, 0x160(sp)
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     clrlwi. r0, r0, 31
     fsubs   f0, f0, f1
-    lfs     f22, 0x90c(rtoc)
+    lfs     f22, 0x90c(r2)
     fdivs   f20, f2, f0
     bne-    branch_0x80332ce0
-    lis     r3, 0x8033
+    lis     r3, stripeGetNext__FP26JSULink_15JPABaseParticle_@h
     lwz     r28, 0x0(r6)
-    addi    r0, r3, 0x2c24
+    addi    r0, r3, stripeGetNext__FP26JSULink_15JPABaseParticle_@l
     mr      r27, r0
     b       branch_0x80332cf8
 
 branch_0x80332ce0:
-    lis     r3, 0x8033
+    lis     r3, stripeGetPrev__FP26JSULink_15JPABaseParticle_@h
     fmr     f22, f2
-    addi    r0, r3, 0x2c2c
+    addi    r0, r3, stripeGetPrev__FP26JSULink_15JPABaseParticle_@l
     fneg    f20, f20
     lwz     r28, 0x4(r6)
     mr      r27, r0
@@ -3942,11 +3942,11 @@ branch_0x80332cf8:
     li      r3, 0x98
     li      r4, 0x0
     bl      GXBegin
-    lfs     f29, 0x93c(rtoc)
+    lfs     f29, 0x93c(r2)
     mr      r26, r28
-    lfs     f30, 0x90c(rtoc)
+    lfs     f30, 0x90c(r2)
     lis     r30, 0xcc01
-    lfs     f31, 0x910(rtoc)
+    lfs     f31, 0x910(r2)
     b       branch_0x8033304c
 
 branch_0x80332d20:
@@ -3956,7 +3956,7 @@ branch_0x80332d20:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r7, -0x5ad8(r13)
+    lwz     r7, R13Off_m0x5ad8(r13)
     mr      r29, r3
     lfs     f4, 0x10(r3)
     mr      r3, r28
@@ -3967,12 +3967,12 @@ branch_0x80332d20:
     addi    r5, sp, 0x108
     fadds   f1, f3, f0
     fsubs   f0, f3, f0
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea8(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     fmuls   f2, f2, f1
     sraw    r0, r4, r0
     slwi    r0, r0, 2
-    lwz     r4, -0x5ea4(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     lfsx    f1, r6, r0
     fmuls   f3, f4, f0
     lfsx    f0, r4, r0
@@ -4043,8 +4043,8 @@ branch_0x80332e38:
     fcmpo   cr0, f1, f29
     cror    2, 0, 2
     bne-    branch_0x80332e90
-    lfs     f18, 0x90c(rtoc)
-    lfs     f19, 0x910(rtoc)
+    lfs     f18, 0x90c(r2)
+    lfs     f19, 0x910(r2)
     fmr     f17, f18
     b       branch_0x80332ec0
 
@@ -4052,7 +4052,7 @@ branch_0x80332e90:
     fcmpo   cr0, f1, f29
     cror    2, 0, 2
     bne-    branch_0x80332eac
-    lfs     f17, 0x90c(rtoc)
+    lfs     f17, 0x90c(r2)
     fmr     f18, f17
     fmr     f19, f18
     b       branch_0x80332ec0
@@ -4219,22 +4219,22 @@ exec__22JPADrawExecStripeCrossFPC14JPADrawContext: # 0x803330a4
     lwz     r5, 0x8(r6)
     cmplwi  r5, 0x2
     blt-    branch_0x80333838
-    subi    r0, r5, 0x1
-    lfd     f1, 0x920(rtoc)
+    addi    r0, r5, -0x1
+    lfd     f1, 0x920(r2)
     stw     r0, 0x214(sp)
     lis     r4, 0x4330
     lwz     r3, 0x4(r29)
     stw     r4, 0x210(sp)
     lbz     r0, 0x7c(r3)
     lfd     f0, 0x210(sp)
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     clrlwi. r0, r0, 31
     fsubs   f0, f0, f1
     fdivs   f20, f2, f0
     bne-    branch_0x80333158
-    lfs     f16, 0x90c(rtoc)
-    lis     r3, 0x8033
-    addi    r0, r3, 0x2c24
+    lfs     f16, 0x90c(r2)
+    lis     r3, stripeGetNext__FP26JSULink_15JPABaseParticle_@h
+    addi    r0, r3, stripeGetNext__FP26JSULink_15JPABaseParticle_@l
     lwz     r31, 0x0(r6)
     fmr     f30, f16
     mr      r30, r0
@@ -4242,8 +4242,8 @@ exec__22JPADrawExecStripeCrossFPC14JPADrawContext: # 0x803330a4
 
 branch_0x80333158:
     fmr     f16, f2
-    lis     r3, 0x8033
-    addi    r0, r3, 0x2c2c
+    lis     r3, stripeGetPrev__FP26JSULink_15JPABaseParticle_@h
+    addi    r0, r3, stripeGetPrev__FP26JSULink_15JPABaseParticle_@l
     fneg    f20, f20
     lwz     r31, 0x4(r6)
     fmr     f30, f16
@@ -4254,11 +4254,11 @@ branch_0x80333174:
     li      r3, 0x98
     li      r4, 0x0
     bl      GXBegin
-    lfs     f23, 0x93c(rtoc)
+    lfs     f23, 0x93c(r2)
     mr      r24, r31
-    lfs     f22, 0x90c(rtoc)
+    lfs     f22, 0x90c(r2)
     lis     r28, 0xcc01
-    lfs     f21, 0x910(rtoc)
+    lfs     f21, 0x910(r2)
     b       branch_0x803334cc
 
 branch_0x803331a0:
@@ -4268,7 +4268,7 @@ branch_0x803331a0:
     lwz     r12, 0x48(r12)
     mtlr    r12
     blrl
-    lwz     r7, -0x5ad8(r13)
+    lwz     r7, R13Off_m0x5ad8(r13)
     mr      r27, r3
     lfs     f4, 0x10(r3)
     mr      r3, r26
@@ -4279,12 +4279,12 @@ branch_0x803331a0:
     addi    r5, sp, 0x1bc
     fadds   f1, f3, f0
     fsubs   f0, f3, f0
-    lwz     r0, -0x5eac(r13)
-    lwz     r6, -0x5ea8(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     fmuls   f2, f2, f1
     sraw    r0, r4, r0
     slwi    r0, r0, 2
-    lwz     r4, -0x5ea4(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     lfsx    f1, r6, r0
     fmuls   f3, f4, f0
     lfsx    f0, r4, r0
@@ -4355,8 +4355,8 @@ branch_0x803332b8:
     fcmpo   cr0, f1, f23
     cror    2, 0, 2
     bne-    branch_0x80333310
-    lfs     f18, 0x90c(rtoc)
-    lfs     f19, 0x910(rtoc)
+    lfs     f18, 0x90c(r2)
+    lfs     f19, 0x910(r2)
     fmr     f17, f18
     b       branch_0x80333340
 
@@ -4364,7 +4364,7 @@ branch_0x80333310:
     fcmpo   cr0, f1, f23
     cror    2, 0, 2
     bne-    branch_0x8033332c
-    lfs     f17, 0x90c(rtoc)
+    lfs     f17, 0x90c(r2)
     fmr     f18, f17
     fmr     f19, f18
     b       branch_0x80333340
@@ -4486,11 +4486,11 @@ branch_0x803334cc:
     li      r3, 0x98
     li      r4, 0x0
     bl      GXBegin
-    lfs     f29, 0x93c(rtoc)
+    lfs     f29, 0x93c(r2)
     mr      r24, r31
-    lfs     f30, 0x90c(rtoc)
+    lfs     f30, 0x90c(r2)
     lis     r29, 0xcc01
-    lfs     f31, 0x910(rtoc)
+    lfs     f31, 0x910(r2)
     b       branch_0x80333830
 
 branch_0x80333500:
@@ -4501,12 +4501,12 @@ branch_0x80333500:
     mtlr    r12
     blrl
     mr      r31, r3
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     lhz     r3, 0x34(r3)
-    lwz     r0, -0x5eac(r13)
-    lwz     r4, -0x5ea4(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     sraw    r0, r3, r0
-    lwz     r3, -0x5ea8(r13)
+    lwz     r3, R13Off_m0x5ea8(r13)
     slwi    r0, r0, 2
     lfs     f5, 0x14(r31)
     lfsx    f0, r3, r0
@@ -4588,8 +4588,8 @@ branch_0x8033361c:
     fcmpo   cr0, f1, f29
     cror    2, 0, 2
     bne-    branch_0x80333674
-    lfs     f16, 0x90c(rtoc)
-    lfs     f18, 0x910(rtoc)
+    lfs     f16, 0x90c(r2)
+    lfs     f18, 0x910(r2)
     fmr     f17, f16
     b       branch_0x803336a4
 
@@ -4597,7 +4597,7 @@ branch_0x80333674:
     fcmpo   cr0, f1, f29
     cror    2, 0, 2
     bne-    branch_0x80333690
-    lfs     f17, 0x90c(rtoc)
+    lfs     f17, 0x90c(r2)
     fmr     f16, f17
     fmr     f18, f16
     b       branch_0x803336a4
@@ -4745,7 +4745,7 @@ exec__33JPADrawExecRegisterColorEmitterPEFPC14JPADrawContext: # 0x8033388c
     stwu    sp, -0x70(sp)
     lwz     r3, 0x14(r4)
     addi    r4, sp, 0x64
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     lwz     r0, 0xb8(r3)
     stw     r0, 0x6c(sp)
     lwz     r0, 0xbc(r3)
@@ -4814,7 +4814,7 @@ exec__32JPADrawExecRegisterColorEmitterPFPC14JPADrawContext: # 0x80333990
     stwu    sp, -0x48(sp)
     lwz     r3, 0x14(r4)
     addi    r4, sp, 0x3c
-    lwz     r7, -0x5ad8(r13)
+    lwz     r7, R13Off_m0x5ad8(r13)
     lwz     r0, 0xb8(r3)
     li      r3, 0x1
     stw     r0, 0x40(sp)
@@ -4858,7 +4858,7 @@ exec__32JPADrawExecRegisterColorEmitterEFPC14JPADrawContext: # 0x80333a30
     stwu    sp, -0x38(sp)
     lwz     r3, 0x14(r4)
     addi    r4, sp, 0x30
-    lwz     r7, -0x5ad8(r13)
+    lwz     r7, R13Off_m0x5ad8(r13)
     lwz     r0, 0xbc(r3)
     li      r3, 0x2
     stw     r0, 0x34(sp)
@@ -4897,7 +4897,7 @@ exec__31JPADrawExecRegisterColorChildPEFPC14JPADrawContext: # 0x80333ab8
     stwu    sp, -0x88(sp)
     lwz     r6, 0xc(r4)
     addi    r4, sp, 0x7c
-    lwz     r5, -0x5ad8(r13)
+    lwz     r5, R13Off_m0x5ad8(r13)
     lwz     r0, 0x38(r6)
     stw     r0, 0x3c(sp)
     lwz     r0, 0x3c(sp)
@@ -4962,7 +4962,7 @@ exec__31JPADrawExecRegisterColorChildPEFPC14JPADrawContext: # 0x80333ab8
 
 .globl calc__19JPADrawCalcColorPrmFPC14JPADrawContext
 calc__19JPADrawCalcColorPrmFPC14JPADrawContext: # 0x80333bc4
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lwz     r5, 0x4(r4)
     lha     r0, 0xac(r3)
     lwz     r5, 0xc(r5)
@@ -4975,7 +4975,7 @@ calc__19JPADrawCalcColorPrmFPC14JPADrawContext: # 0x80333bc4
 
 .globl calc__19JPADrawCalcColorEnvFPC14JPADrawContext
 calc__19JPADrawCalcColorEnvFPC14JPADrawContext: # 0x80333be8
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lwz     r5, 0x4(r4)
     lha     r0, 0xac(r3)
     lwz     r5, 0x10(r5)
@@ -5002,7 +5002,7 @@ calc__30JPADrawCalcColorAnmFrameNormalFPC14JPADrawContext: # 0x80333c0c
     bge-    branch_0x80333c40
     mr      r4, r0
 branch_0x80333c40:
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     extsh   r0, r4
     sth     r0, 0xac(r3)
     addi    sp, sp, 0x38
@@ -5020,7 +5020,7 @@ calc__30JPADrawCalcColorAnmFrameRepeatFPC14JPADrawContext: # 0x80333c54
     lfs     f1, 0x10(r3)
     bl      __cvt_fp2unsigned
     lwz     r5, 0x4(r31)
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     lha     r5, 0x5e(r5)
     addi    r5, r5, 0x1
     divwu   r0, r3, r5
@@ -5043,7 +5043,7 @@ calc__31JPADrawCalcColorAnmFrameReverseFPC14JPADrawContext: # 0x80333cac
     lfs     f0, 0x10(r5)
     lha     r6, 0x5e(r3)
     fctiwz  f0, f0
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     stfd    f0, 0x28(sp)
     lwz     r5, 0x2c(sp)
     addi    sp, sp, 0x30
@@ -5062,7 +5062,7 @@ calc__31JPADrawCalcColorAnmFrameReverseFPC14JPADrawContext: # 0x80333cac
 
 .globl calc__29JPADrawCalcColorAnmFrameMergeFPC14JPADrawContext
 calc__29JPADrawCalcColorAnmFrameMergeFPC14JPADrawContext: # 0x80333d00
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     li      r0, 0x0
     sth     r0, 0xac(r3)
     blr
@@ -5070,7 +5070,7 @@ calc__29JPADrawCalcColorAnmFrameMergeFPC14JPADrawContext: # 0x80333d00
 
 .globl calc__30JPADrawCalcColorAnmFrameRandomFPC14JPADrawContext
 calc__30JPADrawCalcColorAnmFrameRandomFPC14JPADrawContext: # 0x80333d10
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     li      r0, 0x0
     sth     r0, 0xac(r3)
     blr
@@ -5084,7 +5084,7 @@ calc__32JPADrawCalcTextureAnmIndexNormalFPC14JPADrawContext: # 0x80333d20
     lfs     f0, 0x10(r3)
     lbz     r3, 0x7e(r6)
     fctiwz  f0, f0
-    subi    r5, r3, 0x1
+    addi    r5, r3, -0x1
     stfd    f0, 0x30(sp)
     lwz     r0, 0x34(sp)
     stfd    f0, 0x38(sp)
@@ -5142,7 +5142,7 @@ calc__33JPADrawCalcTextureAnmIndexReverseFPC14JPADrawContext: # 0x80333dd8
     lbz     r3, 0x7e(r5)
     fctiwz  f0, f0
     lwz     r6, 0x20(r4)
-    subi    r8, r3, 0x1
+    addi    r8, r3, -0x1
     lwz     r3, 0x14(r4)
     lwz     r5, 0x8(r5)
     stfd    f0, 0x28(sp)
@@ -5226,7 +5226,7 @@ calc__17JPADrawCalcScaleXFPC14JPADrawContextP15JPABaseParticle: # 0x80333ec8
     mtlr    r12
     blrl
     lwz     r5, 0x8(r31)
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     lfs     f0, 0x38(r5)
     lfs     f3, 0xa8(r4)
     fcmpo   cr0, f3, f0
@@ -5245,7 +5245,7 @@ branch_0x80333f24:
     ble-    branch_0x80333f50
     fsubs   f1, f3, f0
     lfs     f2, 0x54(r5)
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     lfs     f3, 0xc(r3)
     fmadds  f0, f2, f1, f0
     fmuls   f0, f3, f0
@@ -5276,7 +5276,7 @@ calc__17JPADrawCalcScaleYFPC14JPADrawContextP15JPABaseParticle: # 0x80333f6c
     mtlr    r12
     blrl
     lwz     r5, 0x8(r31)
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     lfs     f0, 0x38(r5)
     lfs     f3, 0xa8(r4)
     fcmpo   cr0, f3, f0
@@ -5295,7 +5295,7 @@ branch_0x80333fc8:
     ble-    branch_0x80333ff4
     fsubs   f1, f3, f0
     lfs     f2, 0x5c(r5)
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     lfs     f3, 0xc(r3)
     fmadds  f0, f2, f1, f0
     fmuls   f0, f3, f0
@@ -5329,7 +5329,7 @@ calc__24JPADrawCalcScaleXBySpeedFPC14JPADrawContextP15JPABaseParticle: # 0x80334
     blrl
     lwz     r5, 0x38(r31)
     lwz     r0, 0x3c(r31)
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     stw     r5, 0x60(sp)
     stw     r0, 0x64(sp)
     lwz     r0, 0x40(r31)
@@ -5353,7 +5353,7 @@ branch_0x8033408c:
     ble-    branch_0x803340b8
     fsubs   f1, f3, f0
     lfs     f2, 0x54(r5)
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     lfs     f3, 0xc(r3)
     fmadds  f0, f2, f1, f0
     fmuls   f0, f3, f0
@@ -5369,7 +5369,7 @@ branch_0x803340c0:
     fmuls   f1, f0, f0
     lfs     f2, 0x60(sp)
     fmuls   f3, f3, f3
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     fmadds  f1, f2, f2, f1
     fadds   f4, f3, f1
     fcmpo   cr0, f4, f0
@@ -5379,8 +5379,8 @@ branch_0x803340c0:
 
 branch_0x803340f0:
     frsqrte f3, f4
-    lfs     f2, 0x900(rtoc)
-    lfs     f0, 0x940(rtoc)
+    lfs     f2, 0x900(r2)
+    lfs     f0, 0x940(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -5388,7 +5388,7 @@ branch_0x803340f0:
     fmuls   f0, f2, f0
     fmuls   f4, f4, f0
 branch_0x80334114:
-    lfs     f0, 0x944(rtoc)
+    lfs     f0, 0x944(r2)
     lfs     f1, 0x10(r3)
     fmuls   f0, f0, f4
     fmuls   f0, f1, f0
@@ -5417,7 +5417,7 @@ calc__24JPADrawCalcScaleYBySpeedFPC14JPADrawContextP15JPABaseParticle: # 0x80334
     blrl
     lwz     r5, 0x38(r31)
     lwz     r0, 0x3c(r31)
-    lwz     r4, -0x5ad8(r13)
+    lwz     r4, R13Off_m0x5ad8(r13)
     stw     r5, 0x60(sp)
     stw     r0, 0x64(sp)
     lwz     r0, 0x40(r31)
@@ -5441,7 +5441,7 @@ branch_0x803341bc:
     ble-    branch_0x803341e8
     fsubs   f1, f3, f0
     lfs     f2, 0x5c(r5)
-    lfs     f0, 0x910(rtoc)
+    lfs     f0, 0x910(r2)
     lfs     f3, 0xc(r3)
     fmadds  f0, f2, f1, f0
     fmuls   f0, f3, f0
@@ -5457,7 +5457,7 @@ branch_0x803341f0:
     fmuls   f1, f0, f0
     lfs     f2, 0x60(sp)
     fmuls   f3, f3, f3
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     fmadds  f1, f2, f2, f1
     fadds   f4, f3, f1
     fcmpo   cr0, f4, f0
@@ -5467,8 +5467,8 @@ branch_0x803341f0:
 
 branch_0x80334220:
     frsqrte f3, f4
-    lfs     f2, 0x900(rtoc)
-    lfs     f0, 0x940(rtoc)
+    lfs     f2, 0x900(r2)
+    lfs     f0, 0x940(r2)
     frsp    f3, f3
     fmuls   f1, f3, f3
     fmuls   f2, f2, f3
@@ -5476,7 +5476,7 @@ branch_0x80334220:
     fmuls   f0, f2, f0
     fmuls   f4, f4, f0
 branch_0x80334244:
-    lfs     f0, 0x944(rtoc)
+    lfs     f0, 0x944(r2)
     lfs     f1, 0x14(r3)
     fmuls   f0, f0, f4
     fmuls   f0, f1, f0
@@ -5510,7 +5510,7 @@ calc__23JPADrawCalcScaleCopyX2YFPC14JPADrawContextP15JPABaseParticle: # 0x803342
 .globl calc__31JPADrawCalcScaleAnmTimingNormalFPC14JPADrawContextP15JPABaseParticle
 calc__31JPADrawCalcScaleAnmTimingNormalFPC14JPADrawContextP15JPABaseParticle: # 0x803342a8
     lfs     f0, 0x48(r5)
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     stfs    f0, 0xa8(r3)
     blr
 
@@ -5522,9 +5522,9 @@ calc__32JPADrawCalcScaleAnmTimingRepeatXFPC14JPADrawContextP15JPABaseParticle: #
     lis     r5, 0x4330
     lwz     r3, 0x8(r4)
     fctiwz  f0, f0
-    lfd     f2, 0x918(rtoc)
+    lfd     f2, 0x918(r2)
     lha     r6, 0x76(r3)
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     stfd    f0, 0x38(sp)
     xoris   r0, r6, 0x8000
     lwz     r4, 0x3c(sp)
@@ -5553,9 +5553,9 @@ calc__32JPADrawCalcScaleAnmTimingRepeatYFPC14JPADrawContextP15JPABaseParticle: #
     lis     r5, 0x4330
     lwz     r3, 0x8(r4)
     fctiwz  f0, f0
-    lfd     f2, 0x918(rtoc)
+    lfd     f2, 0x918(r2)
     lha     r6, 0x74(r3)
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     stfd    f0, 0x38(sp)
     xoris   r0, r6, 0x8000
     lwz     r4, 0x3c(sp)
@@ -5584,12 +5584,12 @@ calc__33JPADrawCalcScaleAnmTimingReverseXFPC14JPADrawContextP15JPABaseParticle: 
     lfs     f0, 0x44(r5)
     lwz     r3, 0x8(r4)
     fctiwz  f1, f0
-    lfd     f4, 0x918(rtoc)
+    lfd     f4, 0x918(r2)
     lha     r8, 0x76(r3)
-    lfs     f0, 0x948(rtoc)
+    lfs     f0, 0x948(r2)
     stfd    f1, 0x48(sp)
     xoris   r0, r8, 0x8000
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lwz     r5, 0x4c(sp)
     stfd    f1, 0x58(sp)
     divw    r4, r5, r8
@@ -5628,12 +5628,12 @@ calc__33JPADrawCalcScaleAnmTimingReverseYFPC14JPADrawContextP15JPABaseParticle: 
     lfs     f0, 0x44(r5)
     lwz     r3, 0x8(r4)
     fctiwz  f1, f0
-    lfd     f4, 0x918(rtoc)
+    lfd     f4, 0x918(r2)
     lha     r8, 0x74(r3)
-    lfs     f0, 0x948(rtoc)
+    lfs     f0, 0x948(r2)
     stfd    f1, 0x48(sp)
     xoris   r0, r8, 0x8000
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lwz     r5, 0x4c(sp)
     stfd    f1, 0x58(sp)
     divw    r4, r5, r8
@@ -5674,7 +5674,7 @@ calc__19JPADrawCalcColorPrmFPC14JPADrawContextP15JPABaseParticle: # 0x803344d0
     stw     r31, 0x2c(sp)
     stw     r30, 0x28(sp)
     lwz     r12, 0x58(r5)
-    lwz     r6, -0x5ad8(r13)
+    lwz     r6, R13Off_m0x5ad8(r13)
     lwz     r4, 0x4(r4)
     lwz     r12, 0x48(r12)
     lha     r0, 0xac(r6)
@@ -5701,7 +5701,7 @@ calc__19JPADrawCalcColorEnvFPC14JPADrawContextP15JPABaseParticle: # 0x8033452c
     stw     r31, 0x2c(sp)
     stw     r30, 0x28(sp)
     lwz     r12, 0x58(r5)
-    lwz     r6, -0x5ad8(r13)
+    lwz     r6, R13Off_m0x5ad8(r13)
     lwz     r4, 0x4(r4)
     lwz     r12, 0x48(r12)
     lha     r0, 0xac(r6)
@@ -5768,7 +5768,7 @@ calc__30JPADrawCalcColorAnmFrameNormalFPC14JPADrawContextP15JPABaseParticle: # 0
     stfd    f0, 0x30(sp)
     lwz     r4, 0x34(sp)
 branch_0x80334630:
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     extsh   r0, r4
     sth     r0, 0xac(r3)
     addi    sp, sp, 0x38
@@ -5797,7 +5797,7 @@ calc__30JPADrawCalcColorAnmFrameRepeatFPC14JPADrawContextP15JPABaseParticle: # 0
     blrl
     lwz     r0, 0x28(r3)
     addi    r4, r29, 0x1
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     and     r0, r0, r31
     add     r5, r30, r0
     divw    r0, r5, r4
@@ -5836,7 +5836,7 @@ calc__31JPADrawCalcColorAnmFrameReverseFPC14JPADrawContextP15JPABaseParticle: # 
     lha     r6, 0x5e(r4)
     stfd    f0, 0x30(sp)
     and     r4, r3, r0
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     lwz     r0, 0x34(sp)
     add     r5, r4, r0
     divw    r4, r5, r6
@@ -5877,11 +5877,11 @@ calc__29JPADrawCalcColorAnmFrameMergeFPC14JPADrawContextP15JPABaseParticle: # 0x
     lha     r0, 0x5a(r5)
     lha     r3, 0x5e(r5)
     and     r0, r6, r0
-    lfd     f3, 0x918(rtoc)
+    lfd     f3, 0x918(r2)
     addi    r6, r3, 0x1
     lfs     f1, 0x48(r31)
     xoris   r5, r6, 0x8000
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     xoris   r0, r0, 0x8000
     stw     r5, 0x3c(sp)
     stw     r0, 0x34(sp)
@@ -5925,7 +5925,7 @@ calc__30JPADrawCalcColorAnmFrameRandomFPC14JPADrawContextP15JPABaseParticle: # 0
     blrl
     lwz     r0, 0x28(r3)
     addi    r4, r30, 0x1
-    lwz     r3, -0x5ad8(r13)
+    lwz     r3, R13Off_m0x5ad8(r13)
     and     r5, r0, r31
     divw    r0, r5, r4
     mullw   r0, r0, r4
@@ -6000,18 +6000,18 @@ calc__27JPADrawCalcAlphaFlickNrmSinFPC14JPADrawContextP15JPABaseParticle: # 0x80
     lis     r4, 0x4330
     lwz     r7, 0x8(r30)
     fctiwz  f0, f0
-    lfd     f4, 0x918(rtoc)
+    lfd     f4, 0x918(r2)
     lfs     f1, 0x1c(r7)
-    lfs     f6, 0x910(rtoc)
+    lfs     f6, 0x910(r2)
     stfd    f0, 0x48(sp)
     lfs     f7, 0x24(r3)
     fsubs   f5, f6, f1
     lwz     r5, 0x4c(sp)
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     slwi    r5, r5, 14
-    lwz     r6, -0x5ea8(r13)
+    lwz     r6, R13Off_m0x5ea8(r13)
     xoris   r5, r5, 0x8000
-    lfs     f2, 0x900(rtoc)
+    lfs     f2, 0x900(r2)
     stw     r5, 0x44(sp)
     lfs     f0, 0x24(r7)
     stw     r4, 0x40(sp)
@@ -6034,7 +6034,7 @@ calc__27JPADrawCalcAlphaFlickNrmSinFPC14JPADrawContextP15JPABaseParticle: # 0x80
     fmuls   f0, f3, f0
     stfs    f0, 0x20(r3)
     lfs     f1, 0x20(r3)
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x803349f4
     stfs    f0, 0x20(r3)
@@ -6065,24 +6065,24 @@ calc__27JPADrawCalcAlphaFlickAddSinFPC14JPADrawContextP15JPABaseParticle: # 0x80
     lis     r0, 0x4330
     lwz     r5, 0x8(r30)
     fctiwz  f0, f0
-    lfd     f4, 0x918(rtoc)
+    lfd     f4, 0x918(r2)
     lfs     f7, 0x24(r3)
     lfs     f2, 0x20(r5)
     stfd    f0, 0x68(sp)
-    lfs     f1, 0x910(rtoc)
+    lfs     f1, 0x910(r2)
     lwz     r4, 0x6c(sp)
     lfs     f0, 0x1c(r5)
     fsubs   f5, f1, f2
     slwi    r4, r4, 14
-    lwz     r6, -0x5eac(r13)
+    lwz     r6, R13Off_m0x5eac(r13)
     xoris   r4, r4, 0x8000
     stw     r4, 0x64(sp)
     fsubs   f0, f1, f0
-    lwz     r7, -0x5ea8(r13)
+    lwz     r7, R13Off_m0x5ea8(r13)
     stw     r0, 0x60(sp)
-    lfs     f1, 0x948(rtoc)
+    lfs     f1, 0x948(r2)
     lfd     f2, 0x60(sp)
-    lfs     f3, 0x900(rtoc)
+    lfs     f3, 0x900(r2)
     fsubs   f6, f2, f4
     lfs     f2, 0x24(r5)
     lfs     f4, 0x20(r3)
@@ -6112,7 +6112,7 @@ calc__27JPADrawCalcAlphaFlickAddSinFPC14JPADrawContextP15JPABaseParticle: # 0x80
     fmuls   f0, f4, f0
     stfs    f0, 0x20(r3)
     lfs     f1, 0x20(r3)
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80334b18
     stfs    f0, 0x20(r3)
@@ -6143,25 +6143,25 @@ calc__28JPADrawCalcAlphaFlickMultSinFPC14JPADrawContextP15JPABaseParticle: # 0x8
     lis     r0, 0x4330
     lwz     r5, 0x8(r30)
     fctiwz  f0, f0
-    lfd     f6, 0x918(rtoc)
+    lfd     f6, 0x918(r2)
     lfs     f7, 0x24(r3)
-    lfs     f3, 0x910(rtoc)
+    lfs     f3, 0x910(r2)
     stfd    f0, 0x68(sp)
     lfs     f1, 0x20(r5)
     lwz     r4, 0x6c(sp)
     lfs     f0, 0x1c(r5)
     fsubs   f1, f3, f1
     slwi    r4, r4, 14
-    lwz     r6, -0x5eac(r13)
+    lwz     r6, R13Off_m0x5eac(r13)
     xoris   r4, r4, 0x8000
     stw     r4, 0x64(sp)
     fsubs   f0, f3, f0
     lfs     f4, 0x24(r5)
     stw     r0, 0x60(sp)
-    lfs     f2, 0x900(rtoc)
+    lfs     f2, 0x900(r2)
     lfd     f5, 0x60(sp)
     fmuls   f4, f2, f4
-    lwz     r5, -0x5ea8(r13)
+    lwz     r5, R13Off_m0x5ea8(r13)
     fsubs   f5, f5, f6
     lfs     f2, 0x20(r3)
     fmuls   f6, f7, f4
@@ -6190,7 +6190,7 @@ calc__28JPADrawCalcAlphaFlickMultSinFPC14JPADrawContextP15JPABaseParticle: # 0x8
     fmuls   f0, f2, f0
     stfs    f0, 0x20(r3)
     lfs     f1, 0x20(r3)
-    lfs     f0, 0x90c(rtoc)
+    lfs     f0, 0x90c(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80334c3c
     stfs    f0, 0x20(r3)
@@ -6214,7 +6214,7 @@ calc__32JPADrawCalcTextureAnmIndexNormalFPC14JPADrawContextP15JPABaseParticle: #
     fctiwz  f0, f0
     lbz     r3, 0x7e(r7)
     stfd    f0, 0x38(sp)
-    subi    r6, r3, 0x1
+    addi    r6, r3, -0x1
     lwz     r0, 0x3c(sp)
     cmpw    r6, r0
     bge-    branch_0x80334c8c
@@ -6313,7 +6313,7 @@ calc__33JPADrawCalcTextureAnmIndexReverseFPC14JPADrawContextP15JPABaseParticle: 
     stfd    f0, 0x38(sp)
     and     r5, r5, r0
     lwz     r12, 0x58(r31)
-    subi    r8, r6, 0x1
+    addi    r8, r6, -0x1
     lwz     r0, 0x3c(sp)
     lwz     r12, 0x48(r12)
     add     r7, r5, r0
@@ -6373,7 +6373,7 @@ calc__31JPADrawCalcTextureAnmIndexMergeFPC14JPADrawContextP15JPABaseParticle: # 
     lis     r4, 0x4330
     lwz     r12, 0x48(r12)
     stw     r0, 0x3c(sp)
-    lfd     f3, 0x918(rtoc)
+    lfd     f3, 0x918(r2)
     mtlr    r12
     stw     r4, 0x40(sp)
     lfs     f1, 0x48(r29)
@@ -6457,7 +6457,7 @@ calc__24JPADrawCalcChildAlphaOutFPC14JPADrawContextP15JPABaseParticle: # 0x80334
     stwu    sp, -0x20(sp)
     stfd    f31, 0x18(sp)
     lwz     r12, 0x58(r5)
-    lfs     f1, 0x910(rtoc)
+    lfs     f1, 0x910(r2)
     lfs     f0, 0x48(r5)
     lwz     r12, 0x4c(r12)
     fsubs   f31, f1, f0
@@ -6483,7 +6483,7 @@ calc__24JPADrawCalcChildScaleOutFPC14JPADrawContextP15JPABaseParticle: # 0x80335
     lwz     r12, 0x4c(r12)
     mtlr    r12
     blrl
-    lfs     f2, 0x910(rtoc)
+    lfs     f2, 0x910(r2)
     lfs     f0, 0x48(r31)
     lfs     f1, 0xc(r3)
     fsubs   f0, f2, f0
@@ -6501,182 +6501,182 @@ calc__24JPADrawCalcChildScaleOutFPC14JPADrawContextP15JPABaseParticle: # 0x80335
     blr
 
 
-.globl _4_exec__20JPADrawExecSetTexMtxFPC14JPADrawContextP15JPABaseParticle
-_4_exec__20JPADrawExecSetTexMtxFPC14JPADrawContextP15JPABaseParticle: # 0x80335080
-    subi    r3, r3, 0x4
+.globl unk_80335080
+unk_80335080: # 0x80335080
+    addi    r3, r3, -0x4
     b       exec__20JPADrawExecSetTexMtxFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__20JPADrawExecSetTexMtxFv
-_4___dt__20JPADrawExecSetTexMtxFv: # 0x80335088
-    subi    r3, r3, 0x4
+.globl unk_80335088
+unk_80335088: # 0x80335088
+    addi    r3, r3, -0x4
     b       __dt__20JPADrawExecSetTexMtxFv
 
 
-.globl _4_exec__22JPADrawExecLoadTextureFPC14JPADrawContextP15JPABaseParticle
-_4_exec__22JPADrawExecLoadTextureFPC14JPADrawContextP15JPABaseParticle: # 0x80335090
-    subi    r3, r3, 0x4
+.globl unk_80335090
+unk_80335090: # 0x80335090
+    addi    r3, r3, -0x4
     b       exec__22JPADrawExecLoadTextureFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__22JPADrawExecLoadTextureFv
-_4___dt__22JPADrawExecLoadTextureFv: # 0x80335098
-    subi    r3, r3, 0x4
+.globl unk_80335098
+unk_80335098: # 0x80335098
+    addi    r3, r3, -0x4
     b       __dt__22JPADrawExecLoadTextureFv
 
 
-.globl _4_calc__19JPADrawCalcColorPrmFPC14JPADrawContextP15JPABaseParticle
-_4_calc__19JPADrawCalcColorPrmFPC14JPADrawContextP15JPABaseParticle: # 0x803350a0
-    subi    r3, r3, 0x4
+.globl unk_803350a0
+unk_803350a0: # 0x803350a0
+    addi    r3, r3, -0x4
     b       calc__19JPADrawCalcColorPrmFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__19JPADrawCalcColorPrmFv
-_4___dt__19JPADrawCalcColorPrmFv: # 0x803350a8
-    subi    r3, r3, 0x4
+.globl unk_803350a8
+unk_803350a8: # 0x803350a8
+    addi    r3, r3, -0x4
     b       __dt__19JPADrawCalcColorPrmFv
 
 
-.globl _4_calc__19JPADrawCalcColorEnvFPC14JPADrawContextP15JPABaseParticle
-_4_calc__19JPADrawCalcColorEnvFPC14JPADrawContextP15JPABaseParticle: # 0x803350b0
-    subi    r3, r3, 0x4
+.globl unk_803350b0
+unk_803350b0: # 0x803350b0
+    addi    r3, r3, -0x4
     b       calc__19JPADrawCalcColorEnvFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__19JPADrawCalcColorEnvFv
-_4___dt__19JPADrawCalcColorEnvFv: # 0x803350b8
-    subi    r3, r3, 0x4
+.globl unk_803350b8
+unk_803350b8: # 0x803350b8
+    addi    r3, r3, -0x4
     b       __dt__19JPADrawCalcColorEnvFv
 
 
-.globl _4_calc__30JPADrawCalcColorAnmFrameNormalFPC14JPADrawContextP15JPABaseParticle
-_4_calc__30JPADrawCalcColorAnmFrameNormalFPC14JPADrawContextP15JPABaseParticle: # 0x803350c0
-    subi    r3, r3, 0x4
+.globl unk_803350c0
+unk_803350c0: # 0x803350c0
+    addi    r3, r3, -0x4
     b       calc__30JPADrawCalcColorAnmFrameNormalFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__30JPADrawCalcColorAnmFrameNormalFv
-_4___dt__30JPADrawCalcColorAnmFrameNormalFv: # 0x803350c8
-    subi    r3, r3, 0x4
+.globl unk_803350c8
+unk_803350c8: # 0x803350c8
+    addi    r3, r3, -0x4
     b       __dt__30JPADrawCalcColorAnmFrameNormalFv
 
 
-.globl _4_calc__30JPADrawCalcColorAnmFrameRepeatFPC14JPADrawContextP15JPABaseParticle
-_4_calc__30JPADrawCalcColorAnmFrameRepeatFPC14JPADrawContextP15JPABaseParticle: # 0x803350d0
-    subi    r3, r3, 0x4
+.globl unk_803350d0
+unk_803350d0: # 0x803350d0
+    addi    r3, r3, -0x4
     b       calc__30JPADrawCalcColorAnmFrameRepeatFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__30JPADrawCalcColorAnmFrameRepeatFv
-_4___dt__30JPADrawCalcColorAnmFrameRepeatFv: # 0x803350d8
-    subi    r3, r3, 0x4
+.globl unk_803350d8
+unk_803350d8: # 0x803350d8
+    addi    r3, r3, -0x4
     b       __dt__30JPADrawCalcColorAnmFrameRepeatFv
 
 
-.globl _4_calc__31JPADrawCalcColorAnmFrameReverseFPC14JPADrawContextP15JPABaseParticle
-_4_calc__31JPADrawCalcColorAnmFrameReverseFPC14JPADrawContextP15JPABaseParticle: # 0x803350e0
-    subi    r3, r3, 0x4
+.globl unk_803350e0
+unk_803350e0: # 0x803350e0
+    addi    r3, r3, -0x4
     b       calc__31JPADrawCalcColorAnmFrameReverseFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__31JPADrawCalcColorAnmFrameReverseFv
-_4___dt__31JPADrawCalcColorAnmFrameReverseFv: # 0x803350e8
-    subi    r3, r3, 0x4
+.globl unk_803350e8
+unk_803350e8: # 0x803350e8
+    addi    r3, r3, -0x4
     b       __dt__31JPADrawCalcColorAnmFrameReverseFv
 
 
-.globl _4_calc__29JPADrawCalcColorAnmFrameMergeFPC14JPADrawContextP15JPABaseParticle
-_4_calc__29JPADrawCalcColorAnmFrameMergeFPC14JPADrawContextP15JPABaseParticle: # 0x803350f0
-    subi    r3, r3, 0x4
+.globl unk_803350f0
+unk_803350f0: # 0x803350f0
+    addi    r3, r3, -0x4
     b       calc__29JPADrawCalcColorAnmFrameMergeFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__29JPADrawCalcColorAnmFrameMergeFv
-_4___dt__29JPADrawCalcColorAnmFrameMergeFv: # 0x803350f8
-    subi    r3, r3, 0x4
+.globl unk_803350f8
+unk_803350f8: # 0x803350f8
+    addi    r3, r3, -0x4
     b       __dt__29JPADrawCalcColorAnmFrameMergeFv
 
 
-.globl _4_calc__30JPADrawCalcColorAnmFrameRandomFPC14JPADrawContextP15JPABaseParticle
-_4_calc__30JPADrawCalcColorAnmFrameRandomFPC14JPADrawContextP15JPABaseParticle: # 0x80335100
-    subi    r3, r3, 0x4
+.globl unk_80335100
+unk_80335100: # 0x80335100
+    addi    r3, r3, -0x4
     b       calc__30JPADrawCalcColorAnmFrameRandomFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__30JPADrawCalcColorAnmFrameRandomFv
-_4___dt__30JPADrawCalcColorAnmFrameRandomFv: # 0x80335108
-    subi    r3, r3, 0x4
+.globl unk_80335108
+unk_80335108: # 0x80335108
+    addi    r3, r3, -0x4
     b       __dt__30JPADrawCalcColorAnmFrameRandomFv
 
 
-.globl _4_calc__32JPADrawCalcTextureAnmIndexNormalFPC14JPADrawContextP15JPABaseParticle
-_4_calc__32JPADrawCalcTextureAnmIndexNormalFPC14JPADrawContextP15JPABaseParticle: # 0x80335110
-    subi    r3, r3, 0x4
+.globl unk_80335110
+unk_80335110: # 0x80335110
+    addi    r3, r3, -0x4
     b       calc__32JPADrawCalcTextureAnmIndexNormalFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__32JPADrawCalcTextureAnmIndexNormalFv
-_4___dt__32JPADrawCalcTextureAnmIndexNormalFv: # 0x80335118
-    subi    r3, r3, 0x4
+.globl unk_80335118
+unk_80335118: # 0x80335118
+    addi    r3, r3, -0x4
     b       __dt__32JPADrawCalcTextureAnmIndexNormalFv
 
 
-.globl _4_calc__32JPADrawCalcTextureAnmIndexRepeatFPC14JPADrawContextP15JPABaseParticle
-_4_calc__32JPADrawCalcTextureAnmIndexRepeatFPC14JPADrawContextP15JPABaseParticle: # 0x80335120
-    subi    r3, r3, 0x4
+.globl unk_80335120
+unk_80335120: # 0x80335120
+    addi    r3, r3, -0x4
     b       calc__32JPADrawCalcTextureAnmIndexRepeatFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__32JPADrawCalcTextureAnmIndexRepeatFv
-_4___dt__32JPADrawCalcTextureAnmIndexRepeatFv: # 0x80335128
-    subi    r3, r3, 0x4
+.globl unk_80335128
+unk_80335128: # 0x80335128
+    addi    r3, r3, -0x4
     b       __dt__32JPADrawCalcTextureAnmIndexRepeatFv
 
 
-.globl _4_calc__33JPADrawCalcTextureAnmIndexReverseFPC14JPADrawContextP15JPABaseParticle
-_4_calc__33JPADrawCalcTextureAnmIndexReverseFPC14JPADrawContextP15JPABaseParticle: # 0x80335130
-    subi    r3, r3, 0x4
+.globl unk_80335130
+unk_80335130: # 0x80335130
+    addi    r3, r3, -0x4
     b       calc__33JPADrawCalcTextureAnmIndexReverseFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__33JPADrawCalcTextureAnmIndexReverseFv
-_4___dt__33JPADrawCalcTextureAnmIndexReverseFv: # 0x80335138
-    subi    r3, r3, 0x4
+.globl unk_80335138
+unk_80335138: # 0x80335138
+    addi    r3, r3, -0x4
     b       __dt__33JPADrawCalcTextureAnmIndexReverseFv
 
 
-.globl _4_calc__31JPADrawCalcTextureAnmIndexMergeFPC14JPADrawContextP15JPABaseParticle
-_4_calc__31JPADrawCalcTextureAnmIndexMergeFPC14JPADrawContextP15JPABaseParticle: # 0x80335140
-    subi    r3, r3, 0x4
+.globl unk_80335140
+unk_80335140: # 0x80335140
+    addi    r3, r3, -0x4
     b       calc__31JPADrawCalcTextureAnmIndexMergeFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__31JPADrawCalcTextureAnmIndexMergeFv
-_4___dt__31JPADrawCalcTextureAnmIndexMergeFv: # 0x80335148
-    subi    r3, r3, 0x4
+.globl unk_80335148
+unk_80335148: # 0x80335148
+    addi    r3, r3, -0x4
     b       __dt__31JPADrawCalcTextureAnmIndexMergeFv
 
 
-.globl _4_calc__32JPADrawCalcTextureAnmIndexRandomFPC14JPADrawContextP15JPABaseParticle
-_4_calc__32JPADrawCalcTextureAnmIndexRandomFPC14JPADrawContextP15JPABaseParticle: # 0x80335150
-    subi    r3, r3, 0x4
+.globl unk_80335150
+unk_80335150: # 0x80335150
+    addi    r3, r3, -0x4
     b       calc__32JPADrawCalcTextureAnmIndexRandomFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__32JPADrawCalcTextureAnmIndexRandomFv
-_4___dt__32JPADrawCalcTextureAnmIndexRandomFv: # 0x80335158
-    subi    r3, r3, 0x4
+.globl unk_80335158
+unk_80335158: # 0x80335158
+    addi    r3, r3, -0x4
     b       __dt__32JPADrawCalcTextureAnmIndexRandomFv
 
 
-.globl _4_exec__19JPADrawExecCallBackFPC14JPADrawContextP15JPABaseParticle
-_4_exec__19JPADrawExecCallBackFPC14JPADrawContextP15JPABaseParticle: # 0x80335160
-    subi    r3, r3, 0x4
+.globl unk_80335160
+unk_80335160: # 0x80335160
+    addi    r3, r3, -0x4
     b       exec__19JPADrawExecCallBackFPC14JPADrawContextP15JPABaseParticle
 
 
-.globl _4___dt__19JPADrawExecCallBackFv
-_4___dt__19JPADrawExecCallBackFv: # 0x80335168
-    subi    r3, r3, 0x4
+.globl unk_80335168
+unk_80335168: # 0x80335168
+    addi    r3, r3, -0x4
     b       __dt__19JPADrawExecCallBackFv
 

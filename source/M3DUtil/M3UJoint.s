@@ -13,8 +13,8 @@ calc__24M3UMtxCalcSIAnmBlendQuatFUs: # 0x80237054
     beq-    branch_0x80237080
     lwz     r0, 0x0(r29)
 branch_0x80237080:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     stw     r0, 0x30(r3)
     lwz     r3, 0x54(r29)
     cmplwi  r3, 0x0
@@ -25,7 +25,7 @@ branch_0x80237080:
 branch_0x802370a4:
     cmplwi  r3, 0x0
     bne-    branch_0x802370bc
-    lfs     f1, -0x1568(rtoc)
+    lfs     f1, -0x1568(r2)
     lfs     f0, 0x50(r29)
     fcmpu   cr0, f1, f0
     beq-    branch_0x802370d8
@@ -33,13 +33,13 @@ branch_0x802370bc:
     lwz     r0, 0x58(r29)
     cmplwi  r0, 0x0
     bne-    branch_0x8023715c
-    lfs     f1, -0x1564(rtoc)
+    lfs     f1, -0x1564(r2)
     lfs     f0, 0x50(r29)
     fcmpu   cr0, f1, f0
     bne-    branch_0x8023715c
 branch_0x802370d8:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x45dc
+    lis     r3, j3dSys@h
+    addi    r3, r3, j3dSys@l
     lwz     r3, 0x38(r3)
     clrlslwi  r0, r30, 16, 2
     addi    r4, r30, 0x0
@@ -73,7 +73,7 @@ branch_0x802370d8:
     b       branch_0x8023724c
 
 branch_0x8023715c:
-    lfs     f0, -0x1568(rtoc)
+    lfs     f0, -0x1568(r2)
     lfs     f1, 0x50(r29)
     fcmpu   cr0, f0, f1
     beq-    branch_0x80237174
@@ -96,7 +96,7 @@ branch_0x80237174:
     b       branch_0x8023724c
 
 branch_0x802371ac:
-    lfs     f0, -0x1564(rtoc)
+    lfs     f0, -0x1564(r2)
     fcmpu   cr0, f0, f1
     beq-    branch_0x802371c0
     cmplwi  r3, 0x0
@@ -157,16 +157,16 @@ init__24M3UMtxCalcSIAnmBlendQuatFRC3VecRA3_A4_Cf: # 0x80237268
     lbz     r0, 0x5c(r3)
     cmplwi  r0, 0x0
     beq-    branch_0x80237390
-    lis     r6, 0x8040
+    lis     r6, mCurrentS__6J3DSys@h
     lwz     r3, 0x0(r4)
-    addi    r9, r6, 0x47b8
+    addi    r9, r6, mCurrentS__6J3DSys@l
     lwz     r0, 0x4(r4)
-    lis     r7, 0x803e
+    lis     r7, unk_803dbb70@ha
     stw     r3, 0x0(r9)
-    lis     r6, 0x8040
-    subi    r8, r7, 0x4490
+    lis     r6, mParentS__6J3DSys@h
+    addi    r8, r7, unk_803dbb70@l
     stw     r0, 0x4(r9)
-    addi    r7, r6, 0x47c4
+    addi    r7, r6, mParentS__6J3DSys@l
     lis     r3, 0x8040
     lwz     r0, 0x8(r4)
     stw     r0, 0x8(r9)
@@ -227,13 +227,13 @@ init__24M3UMtxCalcSIAnmBlendQuatFRC3VecRA3_A4_Cf: # 0x80237268
     b       branch_0x802373c4
 
 branch_0x80237390:
-    lis     r3, 0x8040
+    lis     r3, mCurrentS__6J3DSys@h
     lwz     r0, 0x0(r4)
     lwz     r6, 0x4(r4)
-    addi    r7, r3, 0x47b8
-    lis     r3, 0x8040
+    addi    r7, r3, mCurrentS__6J3DSys@l
+    lis     r3, mCurrentMtx__6J3DSys@h
     stw     r0, 0x0(r7)
-    addi    r0, r3, 0x4788
+    addi    r0, r3, mCurrentMtx__6J3DSys@l
     addi    r3, r5, 0x0
     stw     r6, 0x4(r7)
     lwz     r5, 0x8(r4)
@@ -279,19 +279,19 @@ __ct__24M3UMtxCalcSIAnmBlendQuatFb: # 0x80237408
     addi    r30, r3, 0x0
     beq-    branch_0x80237440
     addi    r0, r30, 0x64
-    lis     r3, 0x803b
+    lis     r3, __vvt__10J3DMtxCalc@ha
     stw     r0, 0x0(r30)
-    subi    r0, r3, 0xf38
+    addi    r0, r3, __vvt__10J3DMtxCalc@l
     stw     r0, 0x64(r30)
 branch_0x80237440:
     addi    r3, r30, 0x0
     li      r4, 0x0
     bl      __ct__15J3DMtxCalcBasicFv
-    lis     r3, 0x803e
-    addi    r4, r3, 0x8b0
+    lis     r3, __vvt__19J3DMtxCalcSoftimage@h
+    addi    r4, r3, __vvt__19J3DMtxCalcSoftimage@l
     stw     r4, 0x4c(r30)
-    lis     r3, 0x803e
-    subi    r5, r3, 0x4484
+    lis     r3, __vvt__24M3UMtxCalcSIAnmBlendQuat@ha
+    addi    r5, r3, __vvt__24M3UMtxCalcSIAnmBlendQuat@l
     lwz     r3, 0x0(r30)
     addi    r0, r4, 0x24
     addi    r7, r30, 0x50
@@ -309,7 +309,7 @@ branch_0x80237440:
     lwz     r5, 0x0(r30)
     subf    r4, r5, r4
     stw     r4, 0x4(r5)
-    lfs     f0, -0x1568(rtoc)
+    lfs     f0, -0x1568(r2)
     stfs    f0, 0x50(r30)
     stfs    f0, 0x60(r30)
     stw     r0, 0x58(r30)
@@ -337,11 +337,11 @@ M3UMtxCalcBlendAux__FUsP16J3DTransformInfoP16J3DTransformInfofb: # 0x802374d4
     fmr     f27, f1
     stmw    r24, 0xb8(sp)
     mr      r28, r6
-    lis     r6, 0x8040
+    lis     r6, mCurrentS__6J3DSys@h
     addi    r26, r4, 0x0
     addi    r27, r5, 0x0
-    addi    r31, r6, 0x47b8
-    lfs     f0, -0x1564(rtoc)
+    addi    r31, r6, mCurrentS__6J3DSys@l
+    lfs     f0, -0x1564(r2)
     fsubs   f28, f0, f27
     beq-    branch_0x80237530
     stfs    f0, 0x7c(sp)
@@ -380,7 +380,7 @@ branch_0x80237548:
     stfs    f0, 0x8(r31)
     lwz     r4, 0x0(r31)
     lwz     r0, 0x4(r31)
-    lfs     f1, -0x1564(rtoc)
+    lfs     f1, -0x1564(r2)
     stw     r4, 0x2c(sp)
     stw     r0, 0x30(sp)
     lwz     r0, 0x8(r31)
@@ -400,8 +400,8 @@ branch_0x80237548:
 branch_0x802375e4:
     li      r25, 0x0
 branch_0x802375e8:
-    lis     r4, 0x8040
-    addi    r4, r4, 0x45dc
+    lis     r4, j3dSys@h
+    addi    r4, r4, j3dSys@l
     addi    r30, r4, 0x38
     lwz     r4, 0x38(r4)
     clrlwi  r29, r3, 16
@@ -479,8 +479,8 @@ branch_0x802375e8:
     fmuls   f0, f0, f30
     stfs    f0, 0xac(sp)
 branch_0x80237720:
-    lis     r3, 0x8040
-    addi    r26, r3, 0x4788
+    lis     r3, mCurrentMtx__6J3DSys@h
+    addi    r26, r3, mCurrentMtx__6J3DSys@l
     addi    r3, r26, 0x0
     addi    r5, r26, 0x0
     addi    r4, sp, 0x84
@@ -494,8 +494,8 @@ branch_0x80237720:
     b       branch_0x80237850
 
 branch_0x80237754:
-    lis     r3, 0x8040
-    addi    r26, r3, 0x4788
+    lis     r3, mCurrentMtx__6J3DSys@h
+    addi    r26, r3, mCurrentMtx__6J3DSys@l
     addi    r3, r26, 0x0
     addi    r5, r26, 0x0
     addi    r4, sp, 0x84
@@ -572,56 +572,56 @@ branch_0x80237850:
     blr
 
 
-.globl _100_4_calc__24M3UMtxCalcSIAnmBlendQuatFUs
-_100_4_calc__24M3UMtxCalcSIAnmBlendQuatFUs: # 0x80237878
+.globl unk_80237878
+unk_80237878: # 0x80237878
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x64
+    addi    r3, r3, -0x64
     b       calc__24M3UMtxCalcSIAnmBlendQuatFUs
 
 
-.globl _100_4_calcTransform__24M3UMtxCalcSIAnmBlendQuatFUsRC16J3DTransformInfo
-_100_4_calcTransform__24M3UMtxCalcSIAnmBlendQuatFUsRC16J3DTransformInfo: # 0x8023788c
+.globl unk_8023788c
+unk_8023788c: # 0x8023788c
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x64
+    addi    r3, r3, -0x64
     b       calcTransform__24M3UMtxCalcSIAnmBlendQuatFUsRC16J3DTransformInfo
 
 
-.globl _100_4_recursiveEntry__15J3DMtxCalcBasicFP7J3DNode
-_100_4_recursiveEntry__15J3DMtxCalcBasicFP7J3DNode: # 0x802378a0
+.globl unk_802378a0
+unk_802378a0: # 0x802378a0
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x64
+    addi    r3, r3, -0x64
     b       recursiveEntry__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _100_4_recursiveCalc__15J3DMtxCalcBasicFP7J3DNode
-_100_4_recursiveCalc__15J3DMtxCalcBasicFP7J3DNode: # 0x802378b4
+.globl unk_802378b4
+unk_802378b4: # 0x802378b4
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x64
+    addi    r3, r3, -0x64
     b       recursiveCalc__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _100_4_recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode
-_100_4_recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode: # 0x802378c8
+.globl unk_802378c8
+unk_802378c8: # 0x802378c8
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x64
+    addi    r3, r3, -0x64
     b       recursiveUpdate__15J3DMtxCalcBasicFP7J3DNode
 
 
-.globl _100_4_init__24M3UMtxCalcSIAnmBlendQuatFRC3VecRA3_A4_Cf
-_100_4_init__24M3UMtxCalcSIAnmBlendQuatFRC3VecRA3_A4_Cf: # 0x802378dc
+.globl unk_802378dc
+unk_802378dc: # 0x802378dc
     li      r11, 0x4
     lwzx    r11, r3, r11
     add     r3, r3, r11
-    subi    r3, r3, 0x64
+    addi    r3, r3, -0x64
     b       init__24M3UMtxCalcSIAnmBlendQuatFRC3VecRA3_A4_Cf
 

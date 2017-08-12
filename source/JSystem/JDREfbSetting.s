@@ -50,7 +50,7 @@ branch_0x802f8f20:
     clrlwi. r0, r28, 24
     li      r3, 0x0
     beq-    branch_0x802f8f5c
-    subi    r0, r31, 0x1
+    addi    r0, r31, -0x1
     cmplwi  r0, 0x1
     li      r0, 0x1
     ble-    branch_0x802f8f50
@@ -106,7 +106,7 @@ IssueGXPixelFormatSetting__6JDramaFRC16_GXRenderModeObjbb: # 0x802f8f8c
     clrlwi. r0, r28, 24
     li      r3, 0x0
     beq-    branch_0x802f9024
-    subi    r0, r30, 0x1
+    addi    r0, r30, -0x1
     cmplwi  r0, 0x1
     li      r0, 0x1
     ble-    branch_0x802f9018

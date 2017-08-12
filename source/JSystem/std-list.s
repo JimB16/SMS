@@ -30,7 +30,7 @@ erase__Q27JGadget36TList_Pv_Q27JGadget14TAllocator_Pv__FQ37JGadget36TList_Pv_Q27
     stw     r0, 0x4(r31)
     bl      __dl__FPv
     lwz     r3, 0x4(r30)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x4(r30)
     stw     r31, 0x0(r29)
     lwz     r0, 0x2c(sp)

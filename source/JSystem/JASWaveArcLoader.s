@@ -12,9 +12,9 @@ init__Q28JASystem13WaveArcLoaderFv: # 0x803105dc
     b       branch_0x80310618
 
 branch_0x80310600:
-    lis     r3, 0x8040
+    lis     r3, sAramHeap__Q28JASystem13WaveArcLoader@ha
     lwz     r5, 0x8(sp)
-    subi    r3, r3, 0x27d4
+    addi    r3, r3, sAramHeap__Q28JASystem13WaveArcLoader@l
     li      r6, 0x0
     bl      initMotherHeap__Q38JASystem6Kernel5THeapFUlUlUc
     li      r3, 0x1
@@ -28,11 +28,11 @@ branch_0x80310618:
 .globl setCurrentDir__Q28JASystem13WaveArcLoaderFPCc
 setCurrentDir__Q28JASystem13WaveArcLoaderFPCc: # 0x80310628
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, sCurrentDir__Q28JASystem13WaveArcLoader@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x2790
+    addi    r31, r4, sCurrentDir__Q28JASystem13WaveArcLoader@l
     addi    r4, r3, 0x0
     addi    r3, r31, 0x0
     bl      strcpy
@@ -56,8 +56,8 @@ branch_0x80310674:
 
 .globl getCurrentDir__Q28JASystem13WaveArcLoaderFv
 getCurrentDir__Q28JASystem13WaveArcLoaderFv: # 0x80310688
-    lis     r3, 0x803e
-    addi    r3, r3, 0x2790
+    lis     r3, sCurrentDir__Q28JASystem13WaveArcLoader@h
+    addi    r3, r3, sCurrentDir__Q28JASystem13WaveArcLoader@l
     blr
 
 
@@ -87,8 +87,8 @@ branch_0x803106d0:
     b       branch_0x803107a8
 
 branch_0x803106e4:
-    lis     r3, 0x803e
-    addi    r4, r3, 0x2790
+    lis     r3, sCurrentDir__Q28JASystem13WaveArcLoader@h
+    addi    r4, r3, sCurrentDir__Q28JASystem13WaveArcLoader@l
     addi    r3, sp, 0x10
     bl      strcpy
     mr      r3, r29
@@ -107,8 +107,8 @@ branch_0x803106e4:
     b       branch_0x803107a8
 
 branch_0x8031072c:
-    lis     r3, 0x8040
-    subi    r4, r3, 0x27d4
+    lis     r3, sAramHeap__Q28JASystem13WaveArcLoader@ha
+    addi    r4, r3, sAramHeap__Q28JASystem13WaveArcLoader@l
     addi    r3, r31, 0x0
     addi    r5, r30, 0x0
     bl      alloc__Q38JASystem6Kernel5THeapFPQ38JASystem6Kernel5THeapUl
@@ -198,23 +198,23 @@ branch_0x80310838:
 
 .globl getRootHeap__Q28JASystem13WaveArcLoaderFv
 getRootHeap__Q28JASystem13WaveArcLoaderFv: # 0x80310850
-    lis     r3, 0x8040
-    subi    r3, r3, 0x27d4
+    lis     r3, sAramHeap__Q28JASystem13WaveArcLoader@ha
+    addi    r3, r3, sAramHeap__Q28JASystem13WaveArcLoader@l
     blr
 
 
 .globl __sinit_JASWaveArcLoader_cpp
 __sinit_JASWaveArcLoader_cpp: # 0x8031085c
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, sAramHeap__Q28JASystem13WaveArcLoader@ha
     stw     r0, 0x4(sp)
-    subi    r3, r3, 0x27d4
+    addi    r3, r3, sAramHeap__Q28JASystem13WaveArcLoader@l
     stwu    sp, -0x8(sp)
     bl      __ct__Q38JASystem6Kernel5THeapFv
-    lis     r4, 0x8031
-    lis     r5, 0x8040
-    subi    r4, r4, 0x125c
-    subi    r5, r5, 0x27e0
+    lis     r4, __dt__Q38JASystem6Kernel5THeapFv@ha
+    lis     r5, unk_803fd820@ha
+    addi    r4, r4, __dt__Q38JASystem6Kernel5THeapFv@l
+    addi    r5, r5, unk_803fd820@l
     bl      __register_global_object
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8

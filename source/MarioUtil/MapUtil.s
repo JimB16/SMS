@@ -6,7 +6,7 @@ SMS_GetSandRiseUpRatio__FPC10TLiveActor: # 0x80236d58
     stwu    sp, -0x8(sp)
     bl      getModel__10TLiveActorCFv
     lwz     r3, 0x58(r3)
-    lfs     f0, -0x1570(rtoc)
+    lfs     f0, -0x1570(r2)
     lfs     f1, 0x14(r3)
     fcmpo   cr0, f1, f0
     ble-    branch_0x80236d84
@@ -14,7 +14,7 @@ SMS_GetSandRiseUpRatio__FPC10TLiveActor: # 0x80236d58
     b       branch_0x80236d94
 
 branch_0x80236d84:
-    lfs     f0, -0x156c(rtoc)
+    lfs     f0, -0x156c(r2)
     fcmpo   cr0, f1, f0
     bge-    branch_0x80236d94
     fmr     f1, f0
@@ -45,13 +45,13 @@ branch_0x80236dd0:
 
 .globl SMS_GetMonteVillageAreaInMario__Fv
 SMS_GetMonteVillageAreaInMario__Fv: # 0x80236dd8
-    lwz     r4, gpMarDirector(r13)
+    lwz     r4, R13Off_m0x6048(r13)
     li      r3, 0x4
     lbz     r0, 0x7c(r4)
     cmplwi  r0, 0x8
     bnelr-    
 
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lwz     r0, 0x50(r3)
     cmpwi   r0, 0x33
     bne-    branch_0x80236e04
@@ -59,7 +59,7 @@ SMS_GetMonteVillageAreaInMario__Fv: # 0x80236dd8
     blr
 
 branch_0x80236e04:
-    lwz     r3, -0x70d0(r13)
+    lwz     r3, R13Off_m0x70d0(r13)
     lwz     r0, 0x1c(r3)
     cmpwi   r0, 0x1
     beq-    branch_0x80236e2c

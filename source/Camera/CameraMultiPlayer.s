@@ -26,7 +26,7 @@ ctrlMultiPlayerCamera___15CPolarSubCameraFv: # 0x800308b4
     b       branch_0x80030c08
 
 branch_0x80030910:
-    lfs     f0, -0x75f0(rtoc)
+    lfs     f0, -0x75f0(r2)
     mr      r3, r6
     stfs    f0, 0x3c(sp)
     stfs    f0, 0x40(sp)
@@ -114,14 +114,14 @@ branch_0x80030a20:
     bdnz+      branch_0x80030a20
 branch_0x80030a5c:
     xoris   r0, r6, 0x8000
-    lfd     f1, -0x75d0(rtoc)
+    lfd     f1, -0x75d0(r2)
     stw     r0, 0x4c(sp)
-    lis     r0, 0x4330
-    lfs     f2, -0x75ec(rtoc)
-    subi    r3, r6, 0x1
+    lis     r0, unk_43300000@h
+    lfs     f2, -0x75ec(r2)
+    addi    r3, r6, -0x1
     stw     r0, 0x48(sp)
     lfs     f3, 0x3c(sp)
-    li      r7, 0x0
+    addi    r7, r0, unk_43300000@l
     lfd     f0, 0x48(sp)
     fsubs   f0, f0, f1
     fdivs   f1, f2, f0
@@ -139,7 +139,7 @@ branch_0x80030a5c:
     fadds   f0, f1, f0
     stfs    f0, 0x40(sp)
     lwz     r4, 0x2bc(r31)
-    lfs     f5, -0x75f0(rtoc)
+    lfs     f5, -0x75f0(r2)
     lwz     r8, 0x4(r4)
     b       branch_0x80030b44
 
@@ -179,12 +179,12 @@ branch_0x80030b3c:
 branch_0x80030b44:
     cmpw    r7, r3
     blt+    branch_0x80030ad0
-    lfs     f0, -0x75f0(rtoc)
+    lfs     f0, -0x75f0(r2)
     fcmpo   cr0, f5, f0
     ble-    branch_0x80030b88
     frsqrte f3, f5
-    lfd     f2, -0x75e8(rtoc)
-    lfd     f0, -0x75e0(rtoc)
+    lfd     f2, -0x75e8(r2)
+    lfd     f0, -0x75e0(r2)
     fmul    f1, f3, f3
     fmul    f2, f2, f3
     fnmsub   f0, f5, f1, f0
@@ -198,8 +198,8 @@ branch_0x80030b44:
 branch_0x80030b88:
     fmr     f3, f5
 branch_0x80030b8c:
-    lfs     f1, -0x75d4(rtoc)
-    lfs     f0, -0x75d8(rtoc)
+    lfs     f1, -0x75d4(r2)
+    lfs     f0, -0x75d8(r2)
     lwz     r3, 0x68(r31)
     fmadds  f31, f1, f3, f0
     lfs     f2, 0xc(r3)
@@ -267,7 +267,7 @@ branch_0x80030c4c:
     cmplw   r0, r4
     bne-    branch_0x80030c94
 branch_0x80030c6c:
-    subi    r0, r8, 0x1
+    addi    r0, r8, -0x1
     cmpw    r6, r0
     beq-    branch_0x80030c90
     lwz     r3, 0xc(r5)
@@ -289,7 +289,7 @@ branch_0x80030c9c:
     cmplwi  r0, 0x1
     bnelr-    
 
-    subi    r0, r8, 0x1
+    addi    r0, r8, -0x1
     stb     r0, 0x1(r7)
     blr
 
@@ -351,8 +351,8 @@ createMultiPlayer__15CPolarSubCameraFUc: # 0x80030d1c
     stw     r0, 0x4(r29)
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8003
-    addi    r4, r4, 0xdb4
+    lis     r4, __ct__16TMultiPlayerDataFv@h
+    addi    r4, r4, __ct__16TMultiPlayerDataFv@l
     addi    r7, r31, 0x0
     li      r5, 0x0
     li      r6, 0xc
@@ -374,7 +374,7 @@ branch_0x80030d98:
 __ct__16TMultiPlayerDataFv: # 0x80030db4
     li      r0, 0x0
     stw     r0, 0x0(r3)
-    lfs     f0, -0x75f0(rtoc)
+    lfs     f0, -0x75f0(r2)
     stfs    f0, 0x4(r3)
     stfs    f0, 0x8(r3)
     blr

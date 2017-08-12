@@ -180,11 +180,11 @@ rootInit__18JAISystemInterfaceFP16JAISeqUpdateData: # 0x8030d34c
     bl      handleToSeq__Q28JASystem8TrackMgrFUl
     mr      r30, r3
     bl      getParamSeqTrackMax__18JAIGlobalParameterFv
-    lis     r6, 0x1
+    lis     r6, unk_0000ffff@ha
     addi    r5, r3, 0x0
     addi    r3, r29, 0x0
     addi    r4, r30, 0x0
-    subi    r6, r6, 0x1
+    addi    r6, r6, unk_0000ffff@l
     li      r7, 0x0
     bl      outerInit__18JAISystemInterfaceFP16JAISeqUpdateDataPvUlUsUc
     mr      r3, r31
@@ -215,7 +215,7 @@ trackInit__18JAISystemInterfaceFP16JAISeqUpdateData: # 0x8030d3c4
     mr      r30, r3
 branch_0x8030d3f8:
     li      r29, 0x0
-    lis     r27, 0x1
+    lis     r27, unk_0000ffff@ha
     b       branch_0x8030d498
 
 branch_0x8030d404:
@@ -255,7 +255,7 @@ branch_0x8030d47c:
     addi    r4, r26, 0x0
     addi    r3, r28, 0x0
     addi    r5, r29, 0x0
-    subi    r6, r27, 0x1
+    addi    r6, r27, unk_0000ffff@l
     li      r7, 0x0
     bl      outerInit__18JAISystemInterfaceFP16JAISeqUpdateDataPvUlUsUc
 branch_0x8030d494:
@@ -287,9 +287,9 @@ outerInit__18JAISystemInterfaceFP16JAISeqUpdateDataPvUlUsUc: # 0x8030d4b4
     addi    r26, r4, 0x0
     addi    r27, r3, 0x4
     stw     r26, 0x0(r3)
-    lis     r3, 0x8031
+    lis     r3, setSePortParameter__18JAISystemInterfaceFPQ38JASystem6Kernel9TPortArgs@ha
     stw     r4, 0x0(r27)
-    subi    r4, r3, 0x295c
+    addi    r4, r3, setSePortParameter__18JAISystemInterfaceFPQ38JASystem6Kernel9TPortArgs@l
     addi    r3, r31, 0x2c
     lwz     r0, 0x4c(r28)
     addi    r5, r27, 0x0
@@ -362,35 +362,35 @@ branch_0x8030d5c8:
     clrlwi. r0, r29, 31
     clrlwi  r27, r29, 16
     bne-    branch_0x8030d620
-    lfs     f1, 0x600(rtoc)
+    lfs     f1, 0x600(r2)
     addi    r3, r30, 0x0
     li      r4, 0x1
     bl      setParam__Q38JASystem6TTrack11TOuterParamFUcf
 branch_0x8030d620:
     rlwinm. r0, r27, 0, 30, 30
     bne-    branch_0x8030d638
-    lfs     f1, 0x600(rtoc)
+    lfs     f1, 0x600(r2)
     addi    r3, r30, 0x0
     li      r4, 0x2
     bl      setParam__Q38JASystem6TTrack11TOuterParamFUcf
 branch_0x8030d638:
     rlwinm. r0, r27, 0, 29, 29
     bne-    branch_0x8030d650
-    lfs     f1, 0x600(rtoc)
+    lfs     f1, 0x600(r2)
     addi    r3, r30, 0x0
     li      r4, 0x4
     bl      setParam__Q38JASystem6TTrack11TOuterParamFUcf
 branch_0x8030d650:
     rlwinm. r0, r27, 0, 28, 28
     bne-    branch_0x8030d668
-    lfs     f1, 0x600(rtoc)
+    lfs     f1, 0x600(r2)
     addi    r3, r30, 0x0
     li      r4, 0x8
     bl      setParam__Q38JASystem6TTrack11TOuterParamFUcf
 branch_0x8030d668:
     rlwinm. r0, r27, 0, 27, 27
     bne-    branch_0x8030d680
-    lfs     f1, 0x600(rtoc)
+    lfs     f1, 0x600(r2)
     addi    r3, r30, 0x0
     li      r4, 0x10
     bl      setParam__Q38JASystem6TTrack11TOuterParamFUcf
@@ -662,15 +662,15 @@ branch_0x8030d9b0:
 .globl __sinit_JAISystemInterface_cpp
 __sinit_JAISystemInterface_cpp: # 0x8030d9c8
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, systemPortCmd__18JAISystemInterface@h
     stw     r0, 0x4(sp)
-    addi    r3, r3, 0x75ac
+    addi    r3, r3, systemPortCmd__18JAISystemInterface@l
     stwu    sp, -0x8(sp)
     bl      __ct__Q38JASystem6Kernel8TPortCmdFv
-    lis     r4, 0x8031
-    lis     r5, 0x8040
-    subi    r4, r4, 0x25fc
-    subi    r5, r5, 0x2808
+    lis     r4, __dt__Q38JASystem6Kernel8TPortCmdFv@ha
+    lis     r5, unk_803fd7f8@ha
+    addi    r4, r4, __dt__Q38JASystem6Kernel8TPortCmdFv@l
+    addi    r5, r5, unk_803fd7f8@l
     bl      __register_global_object
     lwz     r0, 0xc(sp)
     addi    sp, sp, 0x8

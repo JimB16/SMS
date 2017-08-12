@@ -33,7 +33,7 @@ inbetweenData__16TCameraKindParamFRC16TCameraKindParamf: # 0x80026eb4
     lfs     f1, 0x14(r31)
     addi    r3, r30, 0x14
     bl      CLBChaseConstantSpecifyFrame_f___FPfff
-    lfs     f0, -0x78c0(rtoc)
+    lfs     f0, -0x78c0(r2)
     lha     r4, 0x18(r31)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80026f4c
@@ -41,11 +41,11 @@ inbetweenData__16TCameraKindParamFRC16TCameraKindParamf: # 0x80026eb4
     b       branch_0x80026f90
 
 branch_0x80026f4c:
-    lfs     f0, -0x78bc(rtoc)
+    lfs     f0, -0x78bc(r2)
     lis     r0, 0x4330
     lha     r3, 0x18(r30)
     fdivs   f2, f0, f31
-    lfd     f1, -0x78b8(rtoc)
+    lfd     f1, -0x78b8(r2)
     subf    r3, r3, r4
     extsh   r3, r3
     xoris   r3, r3, 0x8000
@@ -59,7 +59,7 @@ branch_0x80026f4c:
     add     r0, r0, r3
     sth     r0, 0x18(r30)
 branch_0x80026f90:
-    lfs     f0, -0x78c0(rtoc)
+    lfs     f0, -0x78c0(r2)
     lha     r4, 0x1a(r31)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80026fa8
@@ -67,11 +67,11 @@ branch_0x80026f90:
     b       branch_0x80026fec
 
 branch_0x80026fa8:
-    lfs     f0, -0x78bc(rtoc)
+    lfs     f0, -0x78bc(r2)
     lis     r0, 0x4330
     lha     r3, 0x1a(r30)
     fdivs   f2, f0, f31
-    lfd     f1, -0x78b8(rtoc)
+    lfd     f1, -0x78b8(r2)
     subf    r3, r3, r4
     extsh   r3, r3
     xoris   r3, r3, 0x8000
@@ -89,7 +89,7 @@ branch_0x80026fec:
     lfs     f1, 0x1c(r31)
     addi    r3, r30, 0x1c
     bl      CLBChaseConstantSpecifyFrame_f___FPfff
-    lfs     f0, -0x78c0(rtoc)
+    lfs     f0, -0x78c0(r2)
     lha     r4, 0x20(r31)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80027014
@@ -97,11 +97,11 @@ branch_0x80026fec:
     b       branch_0x80027058
 
 branch_0x80027014:
-    lfs     f0, -0x78bc(rtoc)
+    lfs     f0, -0x78bc(r2)
     lis     r0, 0x4330
     lha     r3, 0x20(r30)
     fdivs   f2, f0, f31
-    lfd     f1, -0x78b8(rtoc)
+    lfd     f1, -0x78b8(r2)
     subf    r3, r3, r4
     extsh   r3, r3
     xoris   r3, r3, 0x8000
@@ -115,7 +115,7 @@ branch_0x80027014:
     add     r0, r0, r3
     sth     r0, 0x20(r30)
 branch_0x80027058:
-    lfs     f0, -0x78c0(rtoc)
+    lfs     f0, -0x78c0(r2)
     lha     r4, 0x22(r31)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80027070
@@ -123,11 +123,11 @@ branch_0x80027058:
     b       branch_0x800270b4
 
 branch_0x80027070:
-    lfs     f0, -0x78bc(rtoc)
+    lfs     f0, -0x78bc(r2)
     lis     r0, 0x4330
     lha     r3, 0x22(r30)
     fdivs   f2, f0, f31
-    lfd     f1, -0x78b8(rtoc)
+    lfd     f1, -0x78b8(r2)
     subf    r3, r3, r4
     extsh   r3, r3
     xoris   r3, r3, 0x8000
@@ -189,7 +189,7 @@ branch_0x800270b4:
     lfs     f1, 0x50(r31)
     addi    r3, r30, 0x50
     bl      CLBChaseConstantSpecifyFrame_f___FPfff
-    lfs     f0, -0x78c0(rtoc)
+    lfs     f0, -0x78c0(r2)
     lha     r4, 0x54(r31)
     fcmpo   cr0, f31, f0
     bge-    branch_0x8002718c
@@ -197,11 +197,11 @@ branch_0x800270b4:
     b       branch_0x800271d0
 
 branch_0x8002718c:
-    lfs     f0, -0x78bc(rtoc)
+    lfs     f0, -0x78bc(r2)
     lis     r0, 0x4330
     lha     r3, 0x54(r30)
     fdivs   f2, f0, f31
-    lfd     f1, -0x78b8(rtoc)
+    lfd     f1, -0x78b8(r2)
     subf    r3, r3, r4
     extsh   r3, r3
     xoris   r3, r3, 0x8000
@@ -215,7 +215,7 @@ branch_0x8002718c:
     add     r0, r0, r3
     sth     r0, 0x54(r30)
 branch_0x800271d0:
-    lfs     f0, -0x78c0(rtoc)
+    lfs     f0, -0x78c0(r2)
     lha     r4, 0x56(r31)
     fcmpo   cr0, f31, f0
     bge-    branch_0x800271e8
@@ -223,11 +223,11 @@ branch_0x800271d0:
     b       branch_0x8002722c
 
 branch_0x800271e8:
-    lfs     f0, -0x78bc(rtoc)
+    lfs     f0, -0x78bc(r2)
     lis     r0, 0x4330
     lha     r3, 0x56(r30)
     fdivs   f2, f0, f31
-    lfd     f1, -0x78b8(rtoc)
+    lfd     f1, -0x78b8(r2)
     subf    r3, r3, r4
     extsh   r3, r3
     xoris   r3, r3, 0x8000
@@ -249,7 +249,7 @@ branch_0x8002722c:
     sth     r0, 0x5a(r30)
     lfs     f1, 0x5c(r31)
     bl      CLBChaseConstantSpecifyFrame_f___FPfff
-    lfs     f0, -0x78c0(rtoc)
+    lfs     f0, -0x78c0(r2)
     lha     r4, 0x60(r31)
     fcmpo   cr0, f31, f0
     bge-    branch_0x80027264
@@ -257,11 +257,11 @@ branch_0x8002722c:
     b       branch_0x800272a8
 
 branch_0x80027264:
-    lfs     f0, -0x78bc(rtoc)
+    lfs     f0, -0x78bc(r2)
     lis     r0, 0x4330
     lha     r3, 0x60(r30)
     fdivs   f2, f0, f31
-    lfd     f1, -0x78b8(rtoc)
+    lfd     f1, -0x78b8(r2)
     subf    r3, r3, r4
     extsh   r3, r3
     xoris   r3, r3, 0x8000

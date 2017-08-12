@@ -1,8 +1,8 @@
 
 .globl TRK_memcpy
 TRK_memcpy: # 0x80003244
-    subi    r4, r4, 0x1
-    subi    r6, r3, 0x1
+    addi    r4, r4, -0x1
+    addi    r6, r3, -0x1
     addi    r5, r5, 0x1
     b       branch_0x8000325c
 

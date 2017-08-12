@@ -2,8 +2,8 @@
 .globl GetValue__Q24Koga8ToolDataCFiPCcRPCc
 GetValue__Q24Koga8ToolDataCFiPCcRPCc: # 0x80236e3c
     lwz     r7, 0x4(r3)
-    lis     r3, 0x200
-    subi    r3, r3, 0x27
+    lis     r3, unk_01ffffd9@ha
+    addi    r3, r3, unk_01ffffd9@l
     lwz     r11, 0x4(r7)
     li      r10, 0x0
     li      r8, 0x1381
@@ -67,8 +67,8 @@ branch_0x80236ed8:
 .globl GetValue__Q24Koga8ToolDataCFiPCcRl
 GetValue__Q24Koga8ToolDataCFiPCcRl: # 0x80236f08
     lwz     r7, 0x4(r3)
-    lis     r3, 0x200
-    subi    r3, r3, 0x27
+    lis     r3, unk_01ffffd9@ha
+    addi    r3, r3, unk_01ffffd9@l
     lwz     r11, 0x4(r7)
     li      r10, 0x0
     li      r8, 0x1381
@@ -150,8 +150,8 @@ __dt__Q24Koga8ToolDataFv: # 0x80236ff0
     stw     r31, 0x14(sp)
     mr.     r31, r3
     beq-    branch_0x80237024
-    lis     r3, 0x803e
-    subi    r3, r3, 0x44a0
+    lis     r3, __vvt__Q24Koga8ToolData@ha
+    addi    r3, r3, __vvt__Q24Koga8ToolData@l
     extsh.  r0, r4
     stw     r3, 0x0(r31)
     ble-    branch_0x80237024
@@ -168,8 +168,8 @@ branch_0x80237024:
 
 .globl __ct__Q24Koga8ToolDataFv
 __ct__Q24Koga8ToolDataFv: # 0x8023703c
-    lis     r4, 0x803e
-    subi    r0, r4, 0x44a0
+    lis     r4, __vvt__Q24Koga8ToolData@ha
+    addi    r0, r4, __vvt__Q24Koga8ToolData@l
     stw     r0, 0x0(r3)
     li      r0, 0x0
     stw     r0, 0x4(r3)

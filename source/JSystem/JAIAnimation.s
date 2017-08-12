@@ -1,8 +1,8 @@
 
 .globl __ct__13JAIAnimeSoundFv
 __ct__13JAIAnimeSoundFv: # 0x802fff9c
-    lis     r4, 0x803e
-    addi    r0, r4, 0x24b0
+    lis     r4, __vvt__13JAIAnimeSound@h
+    addi    r0, r4, __vvt__13JAIAnimeSound@l
     stw     r0, 0x94(r3)
     li      r0, 0x0
     stw     r0, 0x60(r3)
@@ -70,7 +70,7 @@ branch_0x80300084:
     li      r0, 0x0
     stw     r0, 0x80(r31)
     stw     r6, 0x7c(r31)
-    lfs     f0, 0x490(rtoc)
+    lfs     f0, 0x490(r2)
     stfs    f0, 0x88(r31)
     stw     r0, 0x84(r31)
     b       branch_0x803000c4
@@ -80,7 +80,7 @@ branch_0x803000a8:
     li      r3, 0x0
     li      r0, -0x1
     stw     r3, 0x7c(r31)
-    lfs     f0, 0x490(rtoc)
+    lfs     f0, 0x490(r2)
     stfs    f0, 0x88(r31)
     stw     r0, 0x84(r31)
 branch_0x803000c4:
@@ -207,7 +207,7 @@ branch_0x80300240:
     addi    r0, r3, 0x1
     stw     r0, 0x84(r24)
 branch_0x80300260:
-    lfs     f29, 0x490(rtoc)
+    lfs     f29, 0x490(r2)
     li      r29, 0x0
     b       branch_0x80300380
 
@@ -343,7 +343,7 @@ branch_0x80300400:
     cror    2, 1, 2
     beq+    branch_0x803003e8
 branch_0x8030042c:
-    subi    r0, r30, 0x1
+    addi    r0, r30, -0x1
     stw     r0, 0x80(r24)
     stfs    f30, 0x88(r24)
     lwz     r3, 0x84(r24)
@@ -357,7 +357,7 @@ branch_0x80300450:
     addi    r0, r3, 0x1
     stw     r0, 0x84(r24)
 branch_0x8030045c:
-    lfs     f29, 0x490(rtoc)
+    lfs     f29, 0x490(r2)
     li      r28, 0x0
     b       branch_0x80300578
 
@@ -573,9 +573,9 @@ branch_0x803006ec:
     li      r4, 0x0
     li      r5, 0x5
     lbz     r0, 0x14(r31)
-    lfd     f2, 0x4a0(rtoc)
+    lfd     f2, 0x4a0(r2)
     stw     r0, 0x34(sp)
-    lfs     f0, 0x494(rtoc)
+    lfs     f0, 0x494(r2)
     stw     r29, 0x30(sp)
     lwz     r3, 0x0(r27)
     lfd     f1, 0x30(sp)
@@ -584,15 +584,15 @@ branch_0x803006ec:
     bl      setVolume__8JAISoundFfUlUc
     lbz     r0, 0x15(r31)
     li      r4, 0x0
-    lfs     f0, 0x498(rtoc)
+    lfs     f0, 0x498(r2)
     li      r5, 0x5
     extsb   r0, r0
     xoris   r0, r0, 0x8000
     fsubs   f2, f31, f0
     stw     r0, 0x2c(sp)
-    lfd     f4, 0x4a8(rtoc)
+    lfd     f4, 0x4a8(r2)
     stw     r29, 0x28(sp)
-    lfs     f1, 0x49c(rtoc)
+    lfs     f1, 0x49c(r2)
     lfd     f3, 0x28(sp)
     lfs     f0, 0xc(r31)
     fsubs   f3, f3, f4
@@ -602,10 +602,10 @@ branch_0x803006ec:
     bl      setPitch__8JAISoundFfUlUc
     lbz     r0, 0x17(r31)
     li      r4, 0x0
-    lfd     f2, 0x4a0(rtoc)
+    lfd     f2, 0x4a0(r2)
     li      r5, 0x5
     stw     r0, 0x24(sp)
-    lfs     f0, 0x494(rtoc)
+    lfs     f0, 0x494(r2)
     stw     r29, 0x20(sp)
     lwz     r3, 0x0(r27)
     lfd     f1, 0x20(sp)
@@ -659,13 +659,13 @@ setSpeedModifySound__13JAIAnimeSoundFP8JAISoundP22JAIAnimeFrameSoundDataf: # 0x8
     extsb.  r0, r3
     beq-    branch_0x803008a0
     extsb   r0, r3
-    lfs     f0, 0x498(rtoc)
+    lfs     f0, 0x498(r2)
     xoris   r0, r0, 0x8000
-    lfd     f4, 0x4a8(rtoc)
+    lfd     f4, 0x4a8(r2)
     stw     r0, 0x24(sp)
     lis     r0, 0x4330
     fsubs   f2, f31, f0
-    lfs     f0, 0x49c(rtoc)
+    lfs     f0, 0x49c(r2)
     stw     r0, 0x20(sp)
     lfd     f3, 0x20(sp)
     fsubs   f3, f3, f4
@@ -682,11 +682,11 @@ branch_0x803008a0:
     beq-    branch_0x80300928
     lbz     r3, 0x18(r30)
     lis     r0, 0x4330
-    lfs     f0, 0x498(rtoc)
+    lfs     f0, 0x498(r2)
     extsb   r3, r3
-    lfd     f2, 0x4a8(rtoc)
+    lfd     f2, 0x4a8(r2)
     xoris   r3, r3, 0x8000
-    lfs     f3, 0x4b0(rtoc)
+    lfs     f3, 0x4b0(r2)
     stw     r3, 0x24(sp)
     fsubs   f0, f31, f0
     stw     r0, 0x20(sp)
@@ -710,10 +710,10 @@ branch_0x8030091c:
     li      r4, 0x0
 branch_0x80300928:
     clrlwi  r0, r4, 24
-    lfd     f2, 0x4a0(rtoc)
+    lfd     f2, 0x4a0(r2)
     stw     r0, 0x1c(sp)
     lis     r0, 0x4330
-    lfs     f0, 0x494(rtoc)
+    lfs     f0, 0x494(r2)
     mr      r3, r31
     stw     r0, 0x18(sp)
     li      r4, 0x0

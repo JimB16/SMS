@@ -166,15 +166,15 @@ load__Q26JDrama9TLightAryFR20JSUMemoryInputStream: # 0x802f9878
     lwz     r4, 0x1c(sp)
     mr      r3, r30
     bl      setLightNum__Q26JDrama9TLightAryFl
-    lis     r6, 0x803b
-    lis     r5, 0x803e
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r6, __vvt__10JSUIosBase@ha
+    lis     r5, __vvt__14JSUInputStream@h
+    lis     r4, __vvt__20JSURandomInputStream@h
+    lis     r3, __vvt__20JSUMemoryInputStream@h
     addi    r24, sp, 0x20
-    subi    r25, r6, 0xf0c
-    addi    r26, r5, 0x184
-    addi    r27, r4, 0x160
-    addi    r28, r3, 0x1c8
+    addi    r25, r6, __vvt__10JSUIosBase@l
+    addi    r26, r5, __vvt__14JSUInputStream@l
+    addi    r27, r4, __vvt__20JSURandomInputStream@l
+    addi    r28, r3, __vvt__20JSUMemoryInputStream@l
     li      r23, 0x0
     li      r29, 0x0
     b       branch_0x802f9950
@@ -282,10 +282,10 @@ setLightNum__Q26JDrama9TLightAryFl: # 0x802f9a00
     mulli   r3, r31, 0x6c
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8030
-    lis     r5, 0x8030
-    subi    r4, r4, 0x64b4
-    subi    r5, r5, 0x6568
+    lis     r4, __ct__Q26JDrama9TIdxLightFv@ha
+    lis     r5, __dt__Q26JDrama9TIdxLightFv@ha
+    addi    r4, r4, __ct__Q26JDrama9TIdxLightFv@l
+    addi    r5, r5, __dt__Q26JDrama9TIdxLightFv@l
     addi    r7, r31, 0x0
     li      r6, 0x6c
     bl      __construct_new_array
@@ -323,14 +323,14 @@ __dt__Q26JDrama9TIdxLightFv: # 0x802f9a98
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f9b30
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1f94
+    lis     r3, __vvt__Q26JDrama9TIdxLight@h
+    addi    r3, r3, __vvt__Q26JDrama9TIdxLight@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     stw     r0, 0x20(r30)
     beq-    branch_0x802f9b20
-    lis     r3, 0x803e
-    addi    r3, r3, 0x2054
+    lis     r3, __vvt__Q26JDrama6TLight@h
+    addi    r3, r3, __vvt__Q26JDrama6TLight@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x20
@@ -339,12 +339,12 @@ __dt__Q26JDrama9TIdxLightFv: # 0x802f9a98
     bl      __dt__Q26JStage6TLightFv
     cmplwi  r30, 0x0
     beq-    branch_0x802f9b20
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f9b20
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -371,33 +371,33 @@ __ct__Q26JDrama9TIdxLightFv: # 0x802f9b4c
     stwu    sp, -0x38(sp)
     stw     r31, 0x34(sp)
     mr      r31, r3
-    lis     r3, 0x803b
+    lis     r3, unk_803aa2a0@ha
     stw     r30, 0x30(sp)
-    subi    r4, r3, 0x5d60
+    addi    r4, r3, unk_803aa2a0@l
     stw     r29, 0x2c(sp)
     stw     r31, 0x14(sp)
     stw     r31, 0x18(sp)
     lwz     r3, 0x14(sp)
     bl      __ct__Q26JDrama8TViewObjFPCc
     lwz     r30, 0x14(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x10
-    lfs     f1, 0x408(rtoc)
+    lfs     f1, 0x408(r2)
     fmr     f2, f1
     fmr     f3, f1
     bl      set_f___Q29JGeometry8TVec3_f_Ffff_802f9d04
     li      r29, 0x0
     sth     r29, 0x1c(r30)
-    lis     r6, 0x803e
-    lis     r3, 0x803e
+    lis     r6, __vvt__Q26JStage7TObject@h
+    lis     r3, __vvt__Q26JDrama6TLight@h
     lwz     r30, 0x18(sp)
-    addi    r0, r6, 0x4718
-    addi    r5, r3, 0x2054
-    lis     r4, 0x803e
+    addi    r0, r6, __vvt__Q26JStage7TObject@l
+    addi    r5, r3, __vvt__Q26JDrama6TLight@l
+    lis     r4, __vvt__Q26JStage6TLight@h
     stw     r0, 0x20(r30)
-    addi    r0, r4, 0x46b8
+    addi    r0, r4, __vvt__Q26JStage6TLight@l
     stw     r0, 0x20(r30)
     addi    r4, r5, 0x24
     li      r0, 0x1
@@ -405,8 +405,8 @@ __ct__Q26JDrama9TIdxLightFv: # 0x802f9b4c
     addi    r3, r30, 0x24
     stw     r4, 0x20(r30)
     stw     r0, 0x64(r30)
-    lfs     f2, 0x408(rtoc)
-    lfs     f1, 0x40c(rtoc)
+    lfs     f2, 0x408(r2)
+    lfs     f1, 0x40c(r2)
     fmr     f3, f2
     fmr     f4, f1
     fmr     f5, f2
@@ -423,8 +423,8 @@ __ct__Q26JDrama9TIdxLightFv: # 0x802f9b4c
     addi    r3, r30, 0x24
     stw     r0, 0x10(sp)
     bl      GXInitLightColor
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1f94
+    lis     r3, __vvt__Q26JDrama9TIdxLight@h
+    addi    r3, r3, __vvt__Q26JDrama9TIdxLight@l
     stw     r3, 0x0(r31)
     addi    r0, r3, 0x24
     addi    r3, r31, 0x0
@@ -449,8 +449,8 @@ __dt__Q26JDrama6TLightFv: # 0x802f9c68
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802f9ce8
-    lis     r3, 0x803e
-    addi    r3, r3, 0x2054
+    lis     r3, __vvt__Q26JDrama6TLight@h
+    addi    r3, r3, __vvt__Q26JDrama6TLight@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x20
@@ -459,12 +459,12 @@ __dt__Q26JDrama6TLightFv: # 0x802f9c68
     bl      __dt__Q26JStage6TLightFv
     cmplwi  r30, 0x0
     beq-    branch_0x802f9cd8
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2140
+    lis     r3, __vvt__Q26JDrama10TPlacement@h
+    addi    r0, r3, __vvt__Q26JDrama10TPlacement@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802f9cd8
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -616,15 +616,15 @@ load__Q26JDrama7TAmbAryFR20JSUMemoryInputStream: # 0x802f9e60
     lwz     r4, 0x1c(sp)
     mr      r3, r30
     bl      setAmbNum__Q26JDrama7TAmbAryFl
-    lis     r6, 0x803b
-    lis     r5, 0x803e
-    lis     r4, 0x803e
-    lis     r3, 0x803e
+    lis     r6, __vvt__10JSUIosBase@ha
+    lis     r5, __vvt__14JSUInputStream@h
+    lis     r4, __vvt__20JSURandomInputStream@h
+    lis     r3, __vvt__20JSUMemoryInputStream@h
     addi    r24, sp, 0x20
-    subi    r25, r6, 0xf0c
-    addi    r26, r5, 0x184
-    addi    r27, r4, 0x160
-    addi    r28, r3, 0x1c8
+    addi    r25, r6, __vvt__10JSUIosBase@l
+    addi    r26, r5, __vvt__14JSUInputStream@l
+    addi    r27, r4, __vvt__20JSURandomInputStream@l
+    addi    r28, r3, __vvt__20JSUMemoryInputStream@l
     li      r23, 0x0
     li      r29, 0x0
     b       branch_0x802f9f38
@@ -732,10 +732,10 @@ setAmbNum__Q26JDrama7TAmbAryFl: # 0x802f9fe8
     mulli   r3, r31, 0x18
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8030
-    lis     r5, 0x8030
-    subi    r4, r4, 0x5f20
-    subi    r5, r5, 0x5fac
+    lis     r4, __ct__Q26JDrama9TAmbColorFv@ha
+    lis     r5, __dt__Q26JDrama9TAmbColorFv@ha
+    addi    r4, r4, __ct__Q26JDrama9TAmbColorFv@l
+    addi    r5, r5, __dt__Q26JDrama9TAmbColorFv@l
     addi    r7, r31, 0x0
     li      r6, 0x18
     bl      __construct_new_array
@@ -759,8 +759,8 @@ __dt__Q26JDrama9TAmbColorFv: # 0x802fa054
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fa0c4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x1f30
+    lis     r3, __vvt__Q26JDrama9TAmbColor@h
+    addi    r3, r3, __vvt__Q26JDrama9TAmbColor@l
     stw     r3, 0x0(r30)
     addi    r0, r3, 0x24
     addi    r3, r30, 0x10
@@ -769,8 +769,8 @@ __dt__Q26JDrama9TAmbColorFv: # 0x802fa054
     bl      __dt__Q26JStage13TAmbientLightFv
     cmplwi  r30, 0x0
     beq-    branch_0x802fa0b4
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -793,31 +793,31 @@ branch_0x802fa0c4:
 .globl __ct__Q26JDrama9TAmbColorFv
 __ct__Q26JDrama9TAmbColorFv: # 0x802fa0e0
     mflr    r0
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JDrama8TNameRef@h
     stw     r0, 0x4(sp)
-    addi    r0, r4, 0x20f0
+    addi    r0, r4, __vvt__Q26JDrama8TNameRef@l
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
     addi    r31, r3, 0x0
-    lis     r3, 0x803b
+    lis     r3, unk_803aa2ac@ha
     stw     r0, 0x0(r31)
-    subi    r3, r3, 0x5d54
+    addi    r3, r3, unk_803aa2ac@l
     stw     r3, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
     sth     r3, 0x8(r31)
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r0, 0x0
-    lis     r4, 0x803e
+    lis     r4, __vvt__Q26JStage7TObject@h
     sth     r0, 0xc(r31)
-    addi    r0, r4, 0x4718
-    lis     r3, 0x803e
+    addi    r0, r4, __vvt__Q26JStage7TObject@l
+    lis     r3, __vvt__Q26JStage13TAmbientLight@h
     stw     r0, 0x10(r31)
-    addi    r0, r3, 0x4590
-    lis     r3, 0x803e
+    addi    r0, r3, __vvt__Q26JStage13TAmbientLight@l
+    lis     r3, __vvt__Q26JDrama9TAmbColor@h
     stw     r0, 0x10(r31)
-    addi    r4, r3, 0x1f30
+    addi    r4, r3, __vvt__Q26JDrama9TAmbColor@l
     addi    r3, r4, 0x24
     stw     r4, 0x0(r31)
     li      r4, 0x4c
@@ -853,8 +853,8 @@ load__Q26JDrama9TLightMapFR20JSUMemoryInputStream: # 0x802fa184
     slwi    r3, r29, 3
     addi    r3, r3, 0x8
     bl      __nwa__FUl
-    lis     r4, 0x8030
-    subi    r4, r4, 0x5d88
+    lis     r4, __ct__Q36JDrama9TLightMap10TLightInfoFv@ha
+    addi    r4, r4, __ct__Q36JDrama9TLightMap10TLightInfoFv@l
     addi    r7, r29, 0x0
     li      r5, 0x0
     li      r6, 0x8
@@ -876,7 +876,7 @@ branch_0x802fa1ec:
     li      r5, 0x50
     stwx    r0, r6, r29
     bl      readString__14JSUInputStreamFPcUs
-    lwz     r4, -0x5db8(r13)
+    lwz     r4, R13Off_m0x5db8(r13)
     addi    r3, sp, 0x44
     lwz     r28, 0x4(r4)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
@@ -968,12 +968,12 @@ __dt__Q26JDrama9TLightMapFv: # 0x802fa320
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fa378
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1ee8
+    lis     r3, __vvt__Q26JDrama9TLightMap@h
+    addi    r0, r3, __vvt__Q26JDrama9TLightMap@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fa368
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1003,12 +1003,12 @@ __dt__Q26JDrama7TAmbAryFv: # 0x802fa394
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fa3ec
-    lis     r3, 0x803e
-    addi    r0, r3, 0x1f0c
+    lis     r3, __vvt__Q26JDrama7TAmbAry@h
+    addi    r0, r3, __vvt__Q26JDrama7TAmbAry@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fa3dc
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1043,12 +1043,12 @@ __dt__Q26JDrama9TLightAryFv: # 0x802fa40c
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x802fa464
-    lis     r3, 0x803e
-    addi    r0, r3, 0x2030
+    lis     r3, __vvt__Q26JDrama9TLightAry@h
+    addi    r0, r3, __vvt__Q26JDrama9TLightAry@l
     stw     r0, 0x0(r30)
     beq-    branch_0x802fa454
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -1068,68 +1068,68 @@ branch_0x802fa464:
     blr
 
 
-.globl _32___dt__Q26JDrama6TLightFv
-_32___dt__Q26JDrama6TLightFv: # 0x802fa480
-    subi    r3, r3, 0x20
+.globl unk_802fa480
+unk_802fa480: # 0x802fa480
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama6TLightFv
 
 
-.globl _32_JSGSetColor__Q26JDrama6TLightF8_GXColor
-_32_JSGSetColor__Q26JDrama6TLightF8_GXColor: # 0x802fa488
-    subi    r3, r3, 0x20
+.globl unk_802fa488
+unk_802fa488: # 0x802fa488
+    addi    r3, r3, -0x20
     b       JSGSetColor__Q26JDrama6TLightF8_GXColor
 
 
-.globl _32_JSGGetColor__Q26JDrama6TLightCFv
-_32_JSGGetColor__Q26JDrama6TLightCFv: # 0x802fa490
-    subi    r3, r3, 0x20
+.globl unk_802fa490
+unk_802fa490: # 0x802fa490
+    addi    r3, r3, -0x20
     b       JSGGetColor__Q26JDrama6TLightCFv
 
 
-.globl _32_JSGSetPosition__Q26JDrama6TLightFRC3Vec
-_32_JSGSetPosition__Q26JDrama6TLightFRC3Vec: # 0x802fa498
-    subi    r3, r3, 0x20
+.globl unk_802fa498
+unk_802fa498: # 0x802fa498
+    addi    r3, r3, -0x20
     b       JSGSetPosition__Q26JDrama6TLightFRC3Vec
 
 
-.globl _32_JSGGetPosition__Q26JDrama6TLightCFP3Vec
-_32_JSGGetPosition__Q26JDrama6TLightCFP3Vec: # 0x802fa4a0
-    subi    r3, r3, 0x20
+.globl unk_802fa4a0
+unk_802fa4a0: # 0x802fa4a0
+    addi    r3, r3, -0x20
     b       JSGGetPosition__Q26JDrama6TLightCFP3Vec
 
 
-.globl _32_JSGSetLightType__Q26JDrama6TLightFQ26JStage7TELight
-_32_JSGSetLightType__Q26JDrama6TLightFQ26JStage7TELight: # 0x802fa4a8
-    subi    r3, r3, 0x20
+.globl unk_802fa4a8
+unk_802fa4a8: # 0x802fa4a8
+    addi    r3, r3, -0x20
     b       JSGSetLightType__Q26JDrama6TLightFQ26JStage7TELight
 
 
-.globl _32_JSGGetLightType__Q26JDrama6TLightCFv
-_32_JSGGetLightType__Q26JDrama6TLightCFv: # 0x802fa4b0
-    subi    r3, r3, 0x20
+.globl unk_802fa4b0
+unk_802fa4b0: # 0x802fa4b0
+    addi    r3, r3, -0x20
     b       JSGGetLightType__Q26JDrama6TLightCFv
 
 
-.globl _32___dt__Q26JDrama9TIdxLightFv
-_32___dt__Q26JDrama9TIdxLightFv: # 0x802fa4b8
-    subi    r3, r3, 0x20
+.globl unk_802fa4b8
+unk_802fa4b8: # 0x802fa4b8
+    addi    r3, r3, -0x20
     b       __dt__Q26JDrama9TIdxLightFv
 
 
-.globl _16_JSGSetColor__Q26JDrama9TAmbColorF8_GXColor
-_16_JSGSetColor__Q26JDrama9TAmbColorF8_GXColor: # 0x802fa4c0
-    subi    r3, r3, 0x10
+.globl unk_802fa4c0
+unk_802fa4c0: # 0x802fa4c0
+    addi    r3, r3, -0x10
     b       JSGSetColor__Q26JDrama9TAmbColorF8_GXColor
 
 
-.globl _16_JSGGetColor__Q26JDrama9TAmbColorCFv
-_16_JSGGetColor__Q26JDrama9TAmbColorCFv: # 0x802fa4c8
-    subi    r3, r3, 0x10
+.globl unk_802fa4c8
+unk_802fa4c8: # 0x802fa4c8
+    addi    r3, r3, -0x10
     b       JSGGetColor__Q26JDrama9TAmbColorCFv
 
 
-.globl _16___dt__Q26JDrama9TAmbColorFv
-_16___dt__Q26JDrama9TAmbColorFv: # 0x802fa4d0
-    subi    r3, r3, 0x10
+.globl unk_802fa4d0
+unk_802fa4d0: # 0x802fa4d0
+    addi    r3, r3, -0x10
     b       __dt__Q26JDrama9TAmbColorFv
 

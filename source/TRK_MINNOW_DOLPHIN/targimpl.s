@@ -21,7 +21,7 @@ TRKValidMemory32: # 0x8033fb28
     stw     r29, 0xc(sp)
     mr      r30, r5
     add     r31, r4, r3
-    subi    r31, r31, 0x1
+    addi    r31, r31, -0x1
     cmplw   r31, r3
     li      r5, 0x700
     bge-    branch_0x8033fb60
@@ -29,8 +29,8 @@ TRKValidMemory32: # 0x8033fb28
     b       branch_0x8033fc44
 
 branch_0x8033fb60:
-    lis     r4, 0x803b
-    subi    r4, r4, 0x4a88
+    lis     r4, unk_803ab578@ha
+    addi    r4, r4, unk_803ab578@l
     li      r6, 0x0
     b       branch_0x8033fb70
 
@@ -56,8 +56,8 @@ branch_0x8033fbac:
     clrlwi  r0, r30, 24
     cmplwi  r0, 0x1
     bne-    branch_0x8033fbdc
-    lis     r4, 0x803b
-    subi    r4, r4, 0x4a88
+    lis     r4, unk_803ab578@ha
+    addi    r4, r4, unk_803ab578@l
     slwi    r0, r6, 4
     add     r4, r4, r0
     lwz     r0, 0xc(r4)
@@ -68,9 +68,9 @@ branch_0x8033fbd4:
     b       branch_0x8033fc40
 
 branch_0x8033fbdc:
-    lis     r4, 0x803b
+    lis     r4, unk_803ab578@ha
     slwi    r29, r6, 4
-    subi    r0, r4, 0x4a88
+    addi    r0, r4, unk_803ab578@l
     add     r4, r0, r29
     lwz     r0, 0x0(r4)
     li      r5, 0x0
@@ -83,8 +83,8 @@ branch_0x8033fbdc:
 branch_0x8033fc0c:
     cmpwi   r5, 0x0
     bne-    branch_0x8033fc40
-    lis     r3, 0x803b
-    subi    r0, r3, 0x4a88
+    lis     r3, unk_803ab578@ha
+    addi    r0, r3, unk_803ab578@l
     add     r3, r0, r29
     lwz     r3, 0x4(r3)
     cmplw   r31, r3
@@ -139,8 +139,8 @@ TRKTargetAccessMemory: # 0x8033fc9c
     mr      r27, r4
     mr      r28, r5
     mr      r29, r7
-    lis     r3, 0x803e
-    addi    r5, r3, 0x68a4
+    lis     r3, gTRKExceptionStatus@h
+    addi    r5, r3, gTRKExceptionStatus@l
     lwz     r4, 0x0(r5)
     addi    r31, r5, 0xd
     lwz     r0, 0x4(r5)
@@ -175,9 +175,9 @@ branch_0x8033fd0c:
 
 branch_0x8033fd34:
     bl      __TRK_get_MSR
-    lis     r4, 0x8040
+    lis     r4, gTRKCPUState@h
     cmpwi   r29, 0x0
-    addi    r4, r4, 0x2130
+    addi    r4, r4, gTRKCPUState@l
     lwz     r0, 0x1f8(r4)
     mr      r8, r3
     rlwinm  r0, r0, 0, 27, 27
@@ -213,10 +213,10 @@ branch_0x8033fda8:
     stw     r0, 0x0(r28)
     li      r30, 0x702
 branch_0x8033fdc0:
-    lis     r3, 0x803e
+    lis     r3, gTRKExceptionStatus@h
     lwz     r4, 0x8(sp)
     lwz     r0, 0xc(sp)
-    addi    r5, r3, 0x68a4
+    addi    r5, r3, gTRKExceptionStatus@l
     mr      r3, r30
     stw     r4, 0x0(r5)
     stw     r0, 0x4(r5)
@@ -269,16 +269,16 @@ TRKTargetAccessDefault: # 0x8033fe4c
     b       branch_0x8033ff30
 
 branch_0x8033fe74:
-    lis     r6, 0x803e
+    lis     r6, gTRKExceptionStatus@h
     cmpwi   r7, 0x0
-    addi    r8, r6, 0x68a4
+    addi    r8, r6, gTRKExceptionStatus@l
     lwz     r0, 0x0(r8)
     subf    r4, r3, r4
     lwz     r7, 0x4(r8)
     addi    r9, r4, 0x1
-    lis     r4, 0x8040
+    lis     r4, gTRKCPUState@h
     stw     r0, 0x8(sp)
-    addi    r0, r4, 0x2130
+    addi    r0, r4, gTRKCPUState@l
     slwi    r3, r3, 2
     addi    r30, r8, 0xd
     stw     r7, 0xc(sp)
@@ -310,10 +310,10 @@ branch_0x8033fef0:
     stw     r0, 0x0(r31)
     li      r3, 0x702
 branch_0x8033ff08:
-    lis     r5, 0x803e
+    lis     r5, gTRKExceptionStatus@h
     lwz     r4, 0x8(sp)
     lwz     r0, 0xc(sp)
-    addi    r5, r5, 0x68a4
+    addi    r5, r5, gTRKExceptionStatus@l
     stw     r4, 0x0(r5)
     stw     r0, 0x4(r5)
     lwz     r4, 0x10(sp)
@@ -346,8 +346,8 @@ TRKTargetAccessFP: # 0x8033ff48
     b       branch_0x8034007c
 
 branch_0x8033ff7c:
-    lis     r3, 0x803e
-    addi    r4, r3, 0x68a4
+    lis     r3, gTRKExceptionStatus@h
+    addi    r4, r3, gTRKExceptionStatus@l
     lwz     r3, 0x0(r4)
     addi    r26, r4, 0xd
     lwz     r0, 0x4(r4)
@@ -412,10 +412,10 @@ branch_0x8034003c:
     stw     r0, 0x0(r30)
     li      r3, 0x702
 branch_0x80340054:
-    lis     r5, 0x803e
+    lis     r5, gTRKExceptionStatus@h
     lwz     r4, 0x8(sp)
     lwz     r0, 0xc(sp)
-    addi    r5, r5, 0x68a4
+    addi    r5, r5, gTRKExceptionStatus@l
     stw     r4, 0x0(r5)
     stw     r0, 0x4(r5)
     lwz     r4, 0x10(sp)
@@ -444,9 +444,9 @@ TRKTargetAccessExtended1: # 0x80340090
     b       branch_0x803401f0
 
 branch_0x803400b8:
-    lis     r6, 0x803e
+    lis     r6, gTRKExceptionStatus@h
     cmplw   r3, r4
-    addi    r9, r6, 0x68a4
+    addi    r9, r6, gTRKExceptionStatus@l
     lwz     r8, 0x0(r9)
     addi    r31, r9, 0xd
     lwz     r6, 0x4(r9)
@@ -465,10 +465,10 @@ branch_0x803400b8:
     addi    r8, r4, 0x1
     cmpwi   r7, 0x0
     slwi    r6, r8, 2
-    lis     r4, 0x8040
+    lis     r4, gTRKCPUState@h
     add     r0, r0, r6
     stw     r0, 0x0(r30)
-    addi    r7, r4, 0x2130
+    addi    r7, r4, gTRKCPUState@l
     slwi    r0, r3, 2
     add     r4, r7, r0
     addi    r4, r4, 0x1a8
@@ -482,28 +482,28 @@ branch_0x8034013c:
     addi    r0, r7, 0x1ec
     cmplw   r4, r0
     bgt-    branch_0x8034016c
-    subi    r3, r6, 0x4
+    addi    r3, r6, -0x4
     addi    r0, r7, 0x1e8
     add     r3, r4, r3
     cmplw   r3, r0
     blt-    branch_0x8034016c
-    lis     r3, 0x803e
-    addi    r3, r3, 0x6898
+    lis     r3, gTRKRestoreFlags@h
+    addi    r3, r3, gTRKRestoreFlags@l
     li      r0, 0x1
     stb     r0, 0x0(r3)
 branch_0x8034016c:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     addi    r6, r3, 0x278
     cmplw   r4, r6
     bgt-    branch_0x803401a4
     slwi    r3, r8, 2
-    subi    r0, r3, 0x4
+    addi    r0, r3, -0x4
     add     r0, r4, r0
     cmplw   r0, r6
     blt-    branch_0x803401a4
-    lis     r3, 0x803e
-    addi    r3, r3, 0x6898
+    lis     r3, gTRKRestoreFlags@h
+    addi    r3, r3, gTRKRestoreFlags@l
     li      r0, 0x1
     stb     r0, 0x1(r3)
 branch_0x803401a4:
@@ -518,10 +518,10 @@ branch_0x803401b0:
     stw     r0, 0x0(r30)
     li      r3, 0x702
 branch_0x803401c8:
-    lis     r5, 0x803e
+    lis     r5, gTRKExceptionStatus@h
     lwz     r4, 0x8(sp)
     lwz     r0, 0xc(sp)
-    addi    r5, r5, 0x68a4
+    addi    r5, r5, gTRKExceptionStatus@l
     stw     r4, 0x0(r5)
     stw     r0, 0x4(r5)
     lwz     r4, 0x10(sp)
@@ -554,9 +554,9 @@ TRKTargetAccessExtended2: # 0x80340208
     b       branch_0x80340370
 
 branch_0x8034023c:
-    lis     r4, 0x803e
+    lis     r4, gTRKExceptionStatus@h
     addi    r3, sp, 0x8
-    addi    r7, r4, 0x68a4
+    addi    r7, r4, gTRKExceptionStatus@l
     lwz     r5, 0x0(r7)
     addi    r31, r7, 0xd
     lwz     r0, 0x4(r7)
@@ -633,10 +633,10 @@ branch_0x80340330:
     stw     r0, 0x0(r29)
     li      r3, 0x702
 branch_0x80340348:
-    lis     r5, 0x803e
+    lis     r5, gTRKExceptionStatus@h
     lwz     r4, 0xc(sp)
     lwz     r0, 0x10(sp)
-    addi    r5, r5, 0x68a4
+    addi    r5, r5, gTRKExceptionStatus@l
     stw     r4, 0x0(r5)
     stw     r0, 0x4(r5)
     lwz     r4, 0x14(sp)
@@ -721,8 +721,8 @@ TRKTargetCPUType: # 0x80340450
     stb     r0, 0x0(r31)
     bl      TRKTargetCPUMinorType
     stb     r3, 0x1(r31)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x608
+    lis     r3, gTRKBigEndian@h
+    addi    r3, r3, gTRKBigEndian@l
     lwz     r3, 0x0(r3)
     li      r4, 0x4
     li      r0, 0x8
@@ -742,121 +742,121 @@ TRKTargetCPUType: # 0x80340450
 
 .globl TRKInterruptHandler
 TRKInterruptHandler: # 0x803404b8
-    mtspr   26, rtoc
+    mtspr   26, r2
     mtspr   27, r4
     mfspr   r4, 275
     mfcr    r2
-    mtspr   275, rtoc
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2088
-    lwz     rtoc, 0x8c(rtoc)
-    ori     rtoc, rtoc, 0x8002
-    xori     rtoc, rtoc, 0x8002
+    mtspr   275, r2
+    lis     r2, gTRKState@h
+    ori     r2, r2, gTRKState@l
+    lwz     r2, R2Off_0x8c(r2)
+    ori     r2, r2, 0x8002
+    xori     r2, r2, 0x8002
     sync
     mtmsr   r2
     sync
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x1fe0
-    sth     r3, 0x0(rtoc)
+    lis     r2, TRK_saved_exceptionID@h
+    ori     r2, r2, TRK_saved_exceptionID@l
+    sth     r3, 0x0(r2)
     cmpwi   r3, 0x500
     bne-    branch_0x80340580
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2130
+    lis     r2, gTRKCPUState@h
+    ori     r2, r2, gTRKCPUState@l
     mflr    r3
-    stw     r3, 0x42c(rtoc)
+    stw     r3, R2Off_0x42c(r2)
     bl      TRKUARTInterruptHandler
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2130
-    lwz     r3, 0x42c(rtoc)
+    lis     r2, gTRKCPUState@h
+    ori     r2, r2, gTRKCPUState@l
+    lwz     r3, R2Off_0x42c(r2)
     mtlr    r3
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2088
-    lwz     rtoc, 0xa0(rtoc)
-    lbz     rtoc, 0x0(rtoc)
-    cmpwi   rtoc, 0x0
+    lis     r2, gTRKState@h
+    ori     r2, r2, gTRKState@l
+    lwz     r2, R2Off_0xa0(r2)
+    lbz     r2, R2Off_0x0(r2)
+    cmpwi   r2, 0x0
     beq-    branch_0x80340564
-    lis     rtoc, 0x803e
-    ori     rtoc, rtoc, 0x68a4
-    lbz     rtoc, 0xc(rtoc)
-    cmpwi   rtoc, 0x1
+    lis     r2, gTRKExceptionStatus@h
+    ori     r2, r2, gTRKExceptionStatus@l
+    lbz     r2, R2Off_0xc(r2)
+    cmpwi   r2, 0x1
     beq-    branch_0x80340564
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2088
+    lis     r2, gTRKState@h
+    ori     r2, r2, gTRKState@l
     li      r3, 0x1
-    stb     r3, 0x9c(rtoc)
+    stb     r3, R2Off_0x9c(r2)
     b       branch_0x80340580
 
 branch_0x80340564:
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x1fe4
-    lwz     r3, 0x88(rtoc)
+    lis     r2, gTRKSaveState@h
+    ori     r2, r2, gTRKSaveState@l
+    lwz     r3, R2Off_0x88(r2)
     mtcrf   255, r3
-    lwz     r3, 0xc(rtoc)
-    lwz     rtoc, 0x8(rtoc)
+    lwz     r3, R2Off_0xc(r2)
+    lwz     r2, R2Off_0x8(r2)
     rfi
 
 branch_0x80340580:
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x1fe0
-    lhz     r3, 0x0(rtoc)
-    lis     rtoc, 0x803e
-    ori     rtoc, rtoc, 0x68a4
-    lbz     rtoc, 0xc(rtoc)
-    cmpwi   rtoc, 0x0
+    lis     r2, TRK_saved_exceptionID@h
+    ori     r2, r2, TRK_saved_exceptionID@l
+    lhz     r3, 0x0(r2)
+    lis     r2, gTRKExceptionStatus@h
+    ori     r2, r2, gTRKExceptionStatus@l
+    lbz     r2, R2Off_0xc(r2)
+    cmpwi   r2, 0x0
     bne-    TRKExceptionHandler
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2130
-    stw     r0, 0x0(rtoc)
-    stw     sp, 0x4(rtoc)
+    lis     r2, gTRKCPUState@h
+    ori     r2, r2, gTRKCPUState@l
+    stw     r0, R2Off_0x0(r2)
+    stw     sp, R2Off_0x4(r2)
     mfspr   r0, 273
-    stw     r0, 0x8(rtoc)
-    sth     r3, 0x2f8(rtoc)
-    sth     r3, 0x2fa(rtoc)
+    stw     r0, R2Off_0x8(r2)
+    sth     r3, 0x2f8(r2)
+    sth     r3, 0x2fa(r2)
     mfspr   r0, 274
-    stw     r0, 0xc(rtoc)
-    stmw    r4, 0x10(rtoc)
+    stw     r0, R2Off_0xc(r2)
+    stmw    r4, 0x10(r2)
     mfspr   r27, 26
     mflr    r28
     mfspr   r29, 275
     mfctr   r30
     mfxer   r31
-    stmw    r27, 0x80(rtoc)
+    stmw    r27, 0x80(r2)
     bl      TRKSaveExtended1Block
-    lis     rtoc, 0x803e
-    ori     rtoc, rtoc, 0x68a4
+    lis     r2, gTRKExceptionStatus@h
+    ori     r2, r2, gTRKExceptionStatus@l
     li      r3, 0x1
-    stb     r3, 0xc(rtoc)
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2088
-    lwz     r0, 0x8c(rtoc)
+    stb     r3, R2Off_0xc(r2)
+    lis     r2, gTRKState@h
+    ori     r2, r2, gTRKState@l
+    lwz     r0, R2Off_0x8c(r2)
     sync
     mtmsr   r0
     sync
-    lwz     r0, 0x80(rtoc)
+    lwz     r0, R2Off_0x80(r2)
     mtlr    r0
-    lwz     r0, 0x84(rtoc)
+    lwz     r0, R2Off_0x84(r2)
     mtctr   r0
-    lwz     r0, 0x88(rtoc)
+    lwz     r0, R2Off_0x88(r2)
     mtxer   r0
-    lwz     r0, 0x94(rtoc)
+    lwz     r0, R2Off_0x94(r2)
     mtspr   18, r0
-    lwz     r0, 0x90(rtoc)
+    lwz     r0, R2Off_0x90(r2)
     mtspr   19, r0
-    lmw     r3, 0xc(rtoc)
-    lwz     r0, 0x0(rtoc)
-    lwz     sp, 0x4(rtoc)
-    lwz     rtoc, 0x8(rtoc)
+    lmw     r3, 0xc(r2)
+    lwz     r0, R2Off_0x0(r2)
+    lwz     sp, R2Off_0x4(r2)
+    lwz     r2, R2Off_0x8(r2)
     b       TRKPostInterruptEvent
 
 
 .globl TRKExceptionHandler
 TRKExceptionHandler: # 0x8034064c
-    lis     rtoc, 0x803e
-    ori     rtoc, rtoc, 0x68a4
-    sth     r3, 0x8(rtoc)
+    lis     r2, gTRKExceptionStatus@h
+    ori     r2, r2, gTRKExceptionStatus@l
+    sth     r3, 0x8(r2)
     mfspr   r3, 26
-    stw     r3, 0x0(rtoc)
-    lhz     r3, 0x8(rtoc)
+    stw     r3, R2Off_0x0(r2)
+    lhz     r3, 0x8(r2)
     cmpwi   r3, 0x200
     beq-    branch_0x803406b8
     cmpwi   r3, 0x300
@@ -884,13 +884,13 @@ branch_0x803406b8:
     addi    r3, r3, 0x4
     mtspr   26, r3
 branch_0x803406c4:
-    lis     rtoc, 0x803e
-    ori     rtoc, rtoc, 0x68a4
+    lis     r2, gTRKExceptionStatus@h
+    ori     r2, r2, gTRKExceptionStatus@l
     li      r3, 0x1
-    stb     r3, 0xd(rtoc)
+    stb     r3, R2Off_0xd(r2)
     mfspr   r3, 275
     mtcrf   255, r3
-    mfspr   rtoc, 273
+    mfspr   r2, 273
     mfspr   r3, 274
     rfi
 
@@ -900,8 +900,8 @@ TRKPostInterruptEvent: # 0x803406e8
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2088
+    lis     r3, gTRKState@h
+    addi    r3, r3, gTRKState@l
     addi    r3, r3, 0x9c
     lwz     r0, 0x0(r3)
     cmpwi   r0, 0x0
@@ -911,8 +911,8 @@ TRKPostInterruptEvent: # 0x803406e8
     b       branch_0x80340788
 
 branch_0x80340718:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     lwz     r0, 0x2f8(r3)
     clrlwi  r0, r0, 16
     cmpwi   r0, 0xd00
@@ -923,9 +923,9 @@ branch_0x80340718:
     b       branch_0x80340774
 
 branch_0x80340740:
-    lis     r4, 0x8040
+    lis     r4, gTRKCPUState@h
     addi    r3, sp, 0x8
-    addi    r4, r4, 0x2130
+    addi    r4, r4, gTRKCPUState@l
     lwz     r4, 0x80(r4)
     bl      TRKTargetReadInstruction
     lwz     r3, 0x8(sp)
@@ -955,8 +955,8 @@ branch_0x80340788:
 
 .globl TRKSwapAndGo
 TRKSwapAndGo: # 0x80340798
-    lis     r3, 0x8040
-    ori     r3, r3, 0x2088
+    lis     r3, gTRKState@h
+    ori     r3, r3, gTRKState@l
     stmw    r0, 0x0(r3)
     mfmsr   r0
     stw     r0, 0x8c(r3)
@@ -975,61 +975,61 @@ TRKSwapAndGo: # 0x80340798
     mfmsr   r3
     and     r3, r3, r1
     mtmsr   r3
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2088
-    lwz     rtoc, 0xa0(rtoc)
-    lbz     rtoc, 0x0(rtoc)
-    cmpwi   rtoc, 0x0
+    lis     r2, gTRKState@h
+    ori     r2, r2, gTRKState@l
+    lwz     r2, R2Off_0xa0(r2)
+    lbz     r2, R2Off_0x0(r2)
+    cmpwi   r2, 0x0
     beq-    branch_0x80340814
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2088
+    lis     r2, gTRKState@h
+    ori     r2, r2, gTRKState@l
     li      r3, 0x1
-    stb     r3, 0x9c(rtoc)
+    stb     r3, R2Off_0x9c(r2)
     b       TRKInterruptHandlerEnableInterrupts
 
 branch_0x80340814:
-    lis     rtoc, 0x803e
-    ori     rtoc, rtoc, 0x68a4
+    lis     r2, gTRKExceptionStatus@h
+    ori     r2, r2, gTRKExceptionStatus@l
     li      r3, 0x0
-    stb     r3, 0xc(rtoc)
+    stb     r3, R2Off_0xc(r2)
     bl      TRKRestoreExtended1Block
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2130
-    lmw     r27, 0x80(rtoc)
+    lis     r2, gTRKCPUState@h
+    ori     r2, r2, gTRKCPUState@l
+    lmw     r27, 0x80(r2)
     mtspr   26, r27
     mtlr    r28
     mtcrf   255, r29
     mtctr   r30
     mtxer   r31
-    lmw     r3, 0xc(rtoc)
-    lwz     r0, 0x0(rtoc)
-    lwz     sp, 0x4(rtoc)
-    lwz     rtoc, 0x8(rtoc)
+    lmw     r3, 0xc(r2)
+    lwz     r0, R2Off_0x0(r2)
+    lwz     sp, R2Off_0x4(r2)
+    lwz     r2, R2Off_0x8(r2)
     rfi
 
 
 .globl TRKInterruptHandlerEnableInterrupts
 TRKInterruptHandlerEnableInterrupts: # 0x8034085c
-    lis     rtoc, 0x8040
-    ori     rtoc, rtoc, 0x2088
-    lwz     r0, 0x8c(rtoc)
+    lis     r2, gTRKState@h
+    ori     r2, r2, gTRKState@l
+    lwz     r0, R2Off_0x8c(r2)
     sync
     mtmsr   r0
     sync
-    lwz     r0, 0x80(rtoc)
+    lwz     r0, R2Off_0x80(r2)
     mtlr    r0
-    lwz     r0, 0x84(rtoc)
+    lwz     r0, R2Off_0x84(r2)
     mtctr   r0
-    lwz     r0, 0x88(rtoc)
+    lwz     r0, R2Off_0x88(r2)
     mtxer   r0
-    lwz     r0, 0x94(rtoc)
+    lwz     r0, R2Off_0x94(r2)
     mtspr   18, r0
-    lwz     r0, 0x90(rtoc)
+    lwz     r0, R2Off_0x90(r2)
     mtspr   19, r0
-    lmw     r3, 0xc(rtoc)
-    lwz     r0, 0x0(rtoc)
-    lwz     sp, 0x4(rtoc)
-    lwz     rtoc, 0x8(rtoc)
+    lmw     r3, 0xc(r2)
+    lwz     r0, R2Off_0x0(r2)
+    lwz     sp, R2Off_0x4(r2)
+    lwz     r2, R2Off_0x8(r2)
     b       TRKPostInterruptEvent
 
 
@@ -1073,8 +1073,8 @@ TRKTargetAddStopInfo: # 0x80340914
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r3
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     addi    r31, r3, 0x80
     lwz     r4, 0x0(r31)
     mr      r3, r30
@@ -1093,8 +1093,8 @@ branch_0x80340958:
 branch_0x8034096c:
     cmpwi   r3, 0x0
     bne-    branch_0x8034098c
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     lwz     r0, 0x2f8(r3)
     mr      r3, r30
     clrlwi  r4, r0, 16
@@ -1116,8 +1116,8 @@ TRKTargetAddExceptionInfo: # 0x803409a4
     stw     r31, 0x14(sp)
     stw     r30, 0x10(sp)
     mr      r30, r3
-    lis     r3, 0x803e
-    addi    r31, r3, 0x68a4
+    lis     r3, gTRKExceptionStatus@h
+    addi    r31, r3, gTRKExceptionStatus@l
     lwz     r4, 0x0(r31)
     mr      r3, r30
     bl      TRKAppendBuffer1_ui32
@@ -1135,8 +1135,8 @@ branch_0x803409e4:
 branch_0x803409f8:
     cmpwi   r3, 0x0
     bne-    branch_0x80340a14
-    lis     r3, 0x803e
-    addi    r3, r3, 0x68a4
+    lis     r3, gTRKExceptionStatus@h
+    addi    r3, r3, gTRKExceptionStatus@l
     lhz     r4, 0x8(r3)
     mr      r3, r30
     bl      TRKAppendBuffer1_ui16
@@ -1153,16 +1153,16 @@ branch_0x80340a14:
 TRKTargetEnableTrace: # 0x80340a2c
     cmpwi   r3, 0x0
     beq-    branch_0x80340a4c
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     lwz     r0, 0x1f8(r3)
     ori     r0, r0, 0x400
     stw     r0, 0x1f8(r3)
     b       branch_0x80340a60
 
 branch_0x80340a4c:
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     lwz     r0, 0x1f8(r3)
     rlwinm  r0, r0, 0, 22, 20
     stw     r0, 0x1f8(r3)
@@ -1173,14 +1173,14 @@ branch_0x80340a60:
 
 .globl TRKTargetStepDone
 TRKTargetStepDone: # 0x80340a68
-    lis     r3, 0x803e
-    addi    r5, r3, 0x68b4
+    lis     r3, gTRKStepStatus@h
+    addi    r5, r3, gTRKStepStatus@l
     lwz     r0, 0x0(r5)
     li      r3, 0x1
     cmpwi   r0, 0x0
     beq-    branch_0x80340ae8
-    lis     r4, 0x8040
-    addi    r4, r4, 0x2130
+    lis     r4, gTRKCPUState@h
+    addi    r4, r4, gTRKCPUState@l
     lwz     r0, 0x2f8(r4)
     clrlwi  r0, r0, 16
     cmplwi  r0, 0xd00
@@ -1219,8 +1219,8 @@ TRKTargetDoStep: # 0x80340aec
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x68b4
+    lis     r3, gTRKStepStatus@h
+    addi    r31, r3, gTRKStepStatus@l
     li      r0, 0x1
     stw     r0, 0x0(r31)
     li      r3, 0x1
@@ -1231,10 +1231,10 @@ TRKTargetDoStep: # 0x80340aec
     cmplwi  r0, 0x10
     bne-    branch_0x80340b3c
 branch_0x80340b28:
-    lis     r3, 0x803e
-    addi    r4, r3, 0x68b4
+    lis     r3, gTRKStepStatus@h
+    addi    r4, r3, gTRKStepStatus@l
     lwz     r3, 0x8(r4)
-    subi    r0, r3, 0x1
+    addi    r0, r3, -0x1
     stw     r0, 0x8(r4)
 branch_0x80340b3c:
     li      r3, 0x0
@@ -1253,8 +1253,8 @@ TRKTargetCheckStep: # 0x80340b5c
     stw     r0, 0x4(sp)
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
-    lis     r3, 0x803e
-    addi    r31, r3, 0x68b4
+    lis     r3, gTRKStepStatus@h
+    addi    r31, r3, gTRKStepStatus@l
     lwz     r0, 0x0(r31)
     cmpwi   r0, 0x0
     beq-    branch_0x80340ba4
@@ -1270,8 +1270,8 @@ TRKTargetCheckStep: # 0x80340b5c
 branch_0x80340ba0:
     bl      TRKTargetDoStep
 branch_0x80340ba4:
-    lis     r3, 0x803e
-    addi    r3, r3, 0x68b4
+    lis     r3, gTRKStepStatus@h
+    addi    r3, r3, gTRKStepStatus@l
     lwz     r3, 0x0(r3)
     lwz     r31, 0xc(sp)
     addi    sp, sp, 0x10
@@ -1291,8 +1291,8 @@ TRKTargetSingleStep: # 0x80340bc4
     b       branch_0x80340bf8
 
 branch_0x80340be0:
-    lis     r4, 0x803e
-    addi    r4, r4, 0x68b4
+    lis     r4, gTRKStepStatus@h
+    addi    r4, r4, gTRKStepStatus@l
     li      r0, 0x0
     stb     r0, 0x4(r4)
     stw     r3, 0x8(r4)
@@ -1315,8 +1315,8 @@ TRKTargetStepOutOfRange: # 0x80340c08
     b       branch_0x80340c40
 
 branch_0x80340c24:
-    lis     r5, 0x803e
-    addi    r5, r5, 0x68b4
+    lis     r5, gTRKStepStatus@h
+    addi    r5, r5, gTRKStepStatus@l
     li      r0, 0x1
     stb     r0, 0x4(r5)
     stw     r3, 0xc(r5)
@@ -1331,8 +1331,8 @@ branch_0x80340c40:
 
 .globl TRKTargetGetPC
 TRKTargetGetPC: # 0x80340c50
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     lwz     r3, 0x80(r3)
     blr
 
@@ -1343,8 +1343,8 @@ TRKTargetSupportRequest: # 0x80340c60
     stw     r0, 0x4(sp)
     stwu    sp, -0x30(sp)
     stmw    r27, 0x1c(sp)
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r3, r3, gTRKCPUState@l
     addi    r31, r3, 0xc
     lwz     r0, 0x0(r31)
     clrlwi  r27, r0, 24
@@ -1361,9 +1361,9 @@ TRKTargetSupportRequest: # 0x80340c60
     b       branch_0x80340d3c
 
 branch_0x80340cb0:
-    lis     r3, 0x8040
+    lis     r3, gTRKCPUState@h
     addi    r6, sp, 0x8
-    addi    r4, r3, 0x2130
+    addi    r4, r3, gTRKCPUState@l
     lwz     r3, 0x10(r4)
     subfic  r0, r27, 0xd1
     lwz     r28, 0x14(r4)
@@ -1392,8 +1392,8 @@ branch_0x80340d08:
     lwz     r4, 0x0(r28)
     bl      TRK_flush_cache
 branch_0x80340d24:
-    lis     r3, 0x8040
-    addi    r5, r3, 0x2130
+    lis     r3, gTRKCPUState@h
+    addi    r5, r3, gTRKCPUState@l
     lwz     r4, 0x80(r5)
     mr      r3, r29
     addi    r0, r4, 0x4
@@ -1430,16 +1430,16 @@ branch_0x80340d7c:
 
 .globl TRKTargetStopped
 TRKTargetStopped: # 0x80340d8c
-    lis     r3, 0x8040
-    addi    r3, r3, 0x2088
+    lis     r3, gTRKState@h
+    addi    r3, r3, gTRKState@l
     lwz     r3, 0x98(r3)
     blr
 
 
 .globl TRKTargetSetStopped
 TRKTargetSetStopped: # 0x80340d9c
-    lis     r4, 0x8040
-    addi    r4, r4, 0x2088
+    lis     r4, gTRKState@h
+    addi    r4, r4, gTRKState@l
     stw     r3, 0x98(r4)
     blr
 
@@ -1463,9 +1463,9 @@ TRKPPCAccessSPR: # 0x80340dd4
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
-    lis     r6, 0x803b
+    lis     r6, unk_803ab588@ha
     cmpwi   r5, 0x0
-    subi    r7, r6, 0x4a78
+    addi    r7, r6, unk_803ab588@l
     lwz     r6, 0x0(r7)
     lwz     r0, 0x4(r7)
     stw     r6, 0x8(sp)
@@ -1485,7 +1485,7 @@ TRKPPCAccessSPR: # 0x80340dd4
     or      r0, r4, r0
     ori     r0, r0, 0x2a6
     stw     r0, 0x8(sp)
-    lis     r0, 0x9083
+    lis     r0, unk_908303a6@h
     stw     r0, 0xc(sp)
     b       branch_0x80340e6c
 
@@ -1498,7 +1498,7 @@ branch_0x80340e44:
     stw     r7, 0x8(sp)
     slwi    r0, r0, 16
     or      r0, r4, r0
-    ori     r0, r0, 0x3a6
+    ori     r0, r0, unk_908303a6@l
     stw     r0, 0xc(sp)
 branch_0x80340e6c:
     addi    r4, sp, 0x8
@@ -1514,9 +1514,9 @@ TRKPPCAccessPairedSingleRegister: # 0x80340e84
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
-    lis     r6, 0x803b
+    lis     r6, unk_803ab59c@ha
     cmpwi   r5, 0x0
-    subi    r7, r6, 0x4a64
+    addi    r7, r6, unk_803ab59c@l
     lwz     r6, 0x0(r7)
     lwz     r0, 0x4(r7)
     stw     r6, 0x8(sp)
@@ -1555,9 +1555,9 @@ TRKPPCAccessFPRegister: # 0x80340efc
     stw     r30, 0x20(sp)
     mr      r30, r3
     mr      r31, r5
-    lis     r3, 0x803b
+    lis     r3, unk_803ab5b0@ha
     cmplwi  r4, 0x20
-    subi    r6, r3, 0x4a50
+    addi    r6, r3, unk_803ab5b0@l
     lwz     r5, 0x0(r6)
     li      r3, 0x0
     lwz     r0, 0x4(r6)
@@ -1593,9 +1593,9 @@ branch_0x80340f8c:
     cmpwi   r31, 0x0
     beq-    branch_0x80340fc0
     lis     r0, 0xd824
-    lis     r3, 0xfc20
+    lis     r3, unk_fc20048e@h
     stw     r0, 0x8(sp)
-    addi    r0, r3, 0x48e
+    addi    r0, r3, unk_fc20048e@l
     stw     r0, 0xc(sp)
     lis     r3, 0xd823
     lis     r0, 0xc824
@@ -1607,10 +1607,10 @@ branch_0x80340fc0:
     lis     r0, 0xd824
     stw     r0, 0x8(sp)
     lis     r0, 0xc823
-    lis     r3, 0xfdfe
+    lis     r3, unk_fdfe0d8e@h
     stw     r0, 0xc(sp)
-    addi    r3, r3, 0xd8e
-    lis     r0, 0xc824
+    addi    r3, r3, unk_fdfe0d8e@l
+    lis     r0, unk_c823ffff@ha
     stw     r3, 0x10(sp)
     stw     r0, 0x14(sp)
 branch_0x80340fe4:
@@ -1619,7 +1619,7 @@ branch_0x80340fe4:
     mr      r5, r31
     bl      TRKPPCAccessSpecialReg
     lwz     r6, 0x4(r30)
-    li      r0, -0x1
+    addi    r0, r0, unk_c823ffff@l
     lwz     r5, 0x0(r30)
     li      r4, 0x0
     and     r0, r6, r0
@@ -1667,14 +1667,14 @@ TRKPPCAccessSpecialReg: # 0x8034107c
     stw     r30, 0x8(sp)
     mr      r30, r3
     mr      r31, r4
-    lis     r3, 0x4e80
-    addi    r0, r3, 0x20
+    lis     r3, unk_4e800020@h
+    addi    r0, r3, unk_4e800020@l
     stw     r0, 0x10(r31)
     mr      r3, r31
     li      r4, 0x14
     bl      TRK_flush_cache
-    lis     r3, 0x8040
-    addi    r4, r3, 0x2078
+    lis     r3, TRKvalue128_temp@h
+    addi    r4, r3, TRKvalue128_temp@l
     mr      r3, r30
     mr      r12, r31
     mtlr    r12
@@ -1690,8 +1690,8 @@ TRKPPCAccessSpecialReg: # 0x8034107c
 
 .globl TRKTargetSetInputPendingPtr
 TRKTargetSetInputPendingPtr: # 0x803410e4
-    lis     r4, 0x8040
-    addi    r4, r4, 0x2088
+    lis     r4, gTRKState@h
+    addi    r4, r4, gTRKState@l
     stw     r3, 0xa0(r4)
     blr
 

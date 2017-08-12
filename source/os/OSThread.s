@@ -2,13 +2,13 @@
 .globl __OSThreadInit
 __OSThreadInit: # 0x80348230
     mflr    r0
-    lis     r3, 0x8040
+    lis     r3, RunQueue@h
     stw     r0, 0x4(sp)
     li      r0, 0x2
     li      r4, 0x10
     stwu    sp, -0x20(sp)
     stmw    r26, 0x8(sp)
-    addi    r28, r3, 0x2698
+    addi    r28, r3, RunQueue@l
     addi    r31, r28, 0x410
     li      r29, 0x0
     addi    r3, r31, 0x2e8
@@ -30,23 +30,23 @@ __OSThreadInit: # 0x80348230
     bl      OSClearContext
     mr      r3, r31
     bl      OSSetCurrentContext
-    lis     r3, 0x8042
-    addi    r0, r3, 0x77e8
-    lis     r3, 0x8041
+    lis     r3, unk_804277e8@h
+    addi    r0, r3, unk_804277e8@l
+    lis     r3, unk_804177e4@h
     stw     r0, 0x714(r28)
-    addi    r0, r3, 0x77e4
+    addi    r0, r3, unk_804177e4@l
     addi    r3, r28, 0x718
     stw     r0, 0x718(r28)
-    lis     r4, 0xdeae
+    lis     r4, unk_deadbabe@ha
     li      r26, 0x0
     lwz     r3, 0x0(r3)
-    subi    r4, r4, 0x4542
+    addi    r4, r4, unk_deadbabe@l
     slwi    r0, r26, 3
     stw     r4, 0x0(r3)
     add     r27, r28, r0
-    stw     r29, -0x59c0(r13)
+    stw     r29, R13Off_m0x59c0(r13)
     stw     r31, 0xe4(r30)
-    stw     r29, -0x59bc(r13)
+    stw     r29, R13Off_m0x59bc(r13)
 branch_0x803482e8:
     mr      r3, r27
     bl      OSInitThreadQueue
@@ -54,8 +54,8 @@ branch_0x803482e8:
     cmpwi   r26, 0x1f
     addi    r27, r27, 0x8
     ble+    branch_0x803482e8
-    lis     r30, 0x8000
-    addi    r3, r30, 0xdc
+    lis     r30, unk_800000dc@h
+    addi    r3, r30, unk_800000dc@l
     bl      OSInitThreadQueue
     addi    r4, r30, 0xdc
     lwzu    r3, 0x4(r4)
@@ -73,7 +73,7 @@ branch_0x80348328:
     stw     r30, 0x2fc(r31)
     stw     r31, 0x0(r4)
     bl      OSClearContext
-    stw     r30, -0x59b8(r13)
+    stw     r30, R13Off_m0x59b8(r13)
     lmw     r26, 0x8(sp)
     lwz     r0, 0x24(sp)
     addi    sp, sp, 0x20
@@ -123,9 +123,9 @@ OSDisableScheduler: # 0x803483a8
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     bl      OSDisableInterrupts
-    lwz     r4, -0x59b8(r13)
+    lwz     r4, R13Off_m0x59b8(r13)
     addi    r0, r4, 0x1
-    stw     r0, -0x59b8(r13)
+    stw     r0, R13Off_m0x59b8(r13)
     mr      r31, r4
     bl      OSRestoreInterrupts
     mr      r3, r31
@@ -143,9 +143,9 @@ OSEnableScheduler: # 0x803483e8
     stwu    sp, -0x10(sp)
     stw     r31, 0xc(sp)
     bl      OSDisableInterrupts
-    lwz     r4, -0x59b8(r13)
-    subi    r0, r4, 0x1
-    stw     r0, -0x59b8(r13)
+    lwz     r4, R13Off_m0x59b8(r13)
+    addi    r0, r4, -0x1
+    stw     r0, R13Off_m0x59b8(r13)
     mr      r31, r4
     bl      OSRestoreInterrupts
     mr      r3, r31
@@ -182,11 +182,11 @@ branch_0x8034845c:
     bne-    branch_0x80348484
     lwz     r0, 0x2d0(r3)
     li      r4, 0x1
-    lwz     r5, -0x59c0(r13)
+    lwz     r5, R13Off_m0x59c0(r13)
     subfic  r0, r0, 0x1f
     slw     r0, r4, r0
     andc    r0, r5, r0
-    stw     r0, -0x59c0(r13)
+    stw     r0, R13Off_m0x59c0(r13)
 branch_0x80348484:
     li      r0, 0x0
     stw     r0, 0x2dc(r3)
@@ -243,8 +243,8 @@ branch_0x80348514:
     mr      r3, r31
     bl      UnsetRun
     stw     r30, 0x2d0(r31)
-    lis     r3, 0x8040
-    addi    r0, r3, 0x2698
+    lis     r3, RunQueue@h
+    addi    r0, r3, RunQueue@l
     lwz     r3, 0x2d0(r31)
     slwi    r3, r3, 3
     add     r0, r0, r3
@@ -266,12 +266,12 @@ branch_0x80348554:
     lwz     r4, 0x2dc(r31)
     stw     r31, 0x4(r4)
     lwz     r0, 0x2d0(r31)
-    lwz     r4, -0x59c0(r13)
+    lwz     r4, R13Off_m0x59c0(r13)
     subfic  r0, r0, 0x1f
     slw     r0, r3, r0
     or      r0, r4, r0
-    stw     r0, -0x59c0(r13)
-    stw     r3, -0x59bc(r13)
+    stw     r0, R13Off_m0x59c0(r13)
+    stw     r3, R13Off_m0x59bc(r13)
     b       branch_0x80348670
 
 branch_0x8034858c:
@@ -350,7 +350,7 @@ branch_0x80348650:
 
 branch_0x80348664:
     li      r0, 0x1
-    stw     r0, -0x59bc(r13)
+    stw     r0, R13Off_m0x59bc(r13)
     stw     r30, 0x2d0(r31)
 branch_0x80348670:
     li      r3, 0x0
@@ -392,14 +392,14 @@ branch_0x803486c8:
 .globl SelectThread
 SelectThread: # 0x803486dc
     mflr    r0
-    lis     r4, 0x8040
+    lis     r4, RunQueue@h
     stw     r0, 0x4(sp)
     stwu    sp, -0x18(sp)
     stw     r31, 0x14(sp)
-    addi    r31, r4, 0x2698
+    addi    r31, r4, RunQueue@l
     stw     r30, 0x10(sp)
     addi    r30, r3, 0x0
-    lwz     r0, -0x59b8(r13)
+    lwz     r0, R13Off_m0x59b8(r13)
     cmpwi   r0, 0x0
     ble-    branch_0x80348710
     li      r3, 0x0
@@ -423,7 +423,7 @@ branch_0x80348730:
     bne-    branch_0x803487d0
     cmpwi   r30, 0x0
     bne-    branch_0x80348768
-    lwz     r4, -0x59c0(r13)
+    lwz     r4, R13Off_m0x59c0(r13)
     lwz     r0, 0x2d0(r6)
     cntlzw  r4, r4
     cmpw    r0, r4
@@ -455,12 +455,12 @@ branch_0x8034879c:
     lwz     r5, 0x2dc(r6)
     stw     r6, 0x4(r5)
     lwz     r0, 0x2d0(r6)
-    lwz     r5, -0x59c0(r13)
+    lwz     r5, R13Off_m0x59c0(r13)
     subfic  r0, r0, 0x1f
     slw     r0, r4, r0
     or      r0, r5, r0
-    stw     r0, -0x59c0(r13)
-    stw     r4, -0x59bc(r13)
+    stw     r0, R13Off_m0x59c0(r13)
+    stw     r4, R13Off_m0x59bc(r13)
 branch_0x803487d0:
     lhz     r0, 0x1a2(r6)
     rlwinm. r0, r0, 0, 30, 30
@@ -472,7 +472,7 @@ branch_0x803487d0:
     b       branch_0x803488c4
 
 branch_0x803487f0:
-    lwz     r0, -0x59c0(r13)
+    lwz     r0, R13Off_m0x59c0(r13)
     li      r4, 0x0
     lis     r3, 0x8000
     cmplwi  r0, 0x0
@@ -483,19 +483,19 @@ branch_0x803487f0:
 branch_0x80348810:
     bl      OSEnableInterrupts
 branch_0x80348814:
-    lwz     r0, -0x59c0(r13)
+    lwz     r0, R13Off_m0x59c0(r13)
     cmplwi  r0, 0x0
     beq+    branch_0x80348814
     bl      OSDisableInterrupts
-    lwz     r0, -0x59c0(r13)
+    lwz     r0, R13Off_m0x59c0(r13)
     cmplwi  r0, 0x0
     beq+    branch_0x80348810
     addi    r3, r31, 0x720
     bl      OSClearContext
 branch_0x80348838:
     li      r3, 0x0
-    stw     r3, -0x59bc(r13)
-    lwz     r0, -0x59c0(r13)
+    stw     r3, R13Off_m0x59bc(r13)
+    lwz     r0, R13Off_m0x59c0(r13)
     cntlzw  r7, r0
     slwi    r0, r7, 3
     add     r4, r31, r0
@@ -515,11 +515,11 @@ branch_0x80348870:
     cmplwi  r0, 0x0
     bne-    branch_0x80348898
     subfic  r0, r7, 0x1f
-    lwz     r4, -0x59c0(r13)
+    lwz     r4, R13Off_m0x59c0(r13)
     li      r3, 0x1
     slw     r0, r3, r0
     andc    r0, r4, r0
-    stw     r0, -0x59c0(r13)
+    stw     r0, R13Off_m0x59c0(r13)
 branch_0x80348898:
     li      r0, 0x0
     stw     r0, 0x2dc(r31)
@@ -546,7 +546,7 @@ __OSReschedule: # 0x803488dc
     mflr    r0
     stw     r0, 0x4(sp)
     stwu    sp, -0x8(sp)
-    lwz     r0, -0x59bc(r13)
+    lwz     r0, R13Off_m0x59bc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x803488fc
     li      r3, 0x0
@@ -608,7 +608,7 @@ branch_0x8034898c:
     li      r0, 0x0
     stw     r8, 0x2d4(r31)
     addi    r3, r31, 0x0
-    subi    r5, r9, 0x8
+    addi    r5, r9, -0x8
     stw     r8, 0x2d0(r31)
     stw     r7, 0x2cc(r31)
     stw     r6, 0x2d8(r31)
@@ -620,20 +620,20 @@ branch_0x8034898c:
     stw     r0, -0x8(r9)
     stw     r0, -0x4(r9)
     bl      OSInitContext
-    lis     r3, 0x8035
-    subi    r0, r3, 0x7598
+    lis     r3, OSExitThread@ha
+    addi    r0, r3, OSExitThread@l
     stw     r0, 0x84(r31)
-    lis     r3, 0xdeae
+    lis     r3, unk_deadbabe@ha
     subf    r4, r30, r29
     stw     r28, 0xc(r31)
-    subi    r0, r3, 0x4542
+    addi    r0, r3, unk_deadbabe@l
     stw     r29, 0x304(r31)
     stw     r4, 0x308(r31)
     lwz     r3, 0x308(r31)
     stw     r0, 0x0(r3)
     bl      OSDisableInterrupts
-    lis     r4, 0x8000
-    addi    r5, r4, 0xdc
+    lis     r4, unk_800000dc@h
+    addi    r5, r4, unk_800000dc@l
     lwzu    r6, 0x4(r5)
     cmplwi  r6, 0x0
     bne-    branch_0x80348a2c
@@ -691,7 +691,7 @@ branch_0x80348ac4:
 branch_0x80348ac8:
     cmplwi  r5, 0x0
     bne-    branch_0x80348adc
-    lis     r3, 0x8000
+    lis     r3, unk_80000000@h
     stw     r4, 0xdc(r3)
     b       branch_0x80348ae0
 
@@ -712,8 +712,8 @@ branch_0x80348af8:
     addi    r3, r30, 0x2e8
     bl      OSWakeupThread
     li      r0, 0x1
-    stw     r0, -0x59bc(r13)
-    lwz     r0, -0x59bc(r13)
+    stw     r0, R13Off_m0x59bc(r13)
+    lwz     r0, R13Off_m0x59bc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x80348b24
     li      r3, 0x0
@@ -742,7 +742,7 @@ OSCancelThread: # 0x80348b4c
     stw     r29, 0x14(sp)
     bl      OSDisableInterrupts
     lhz     r0, 0x2c8(r30)
-    addi    r31, r3, 0x0
+    addi    r31, r3, unk_80000000@l
     cmpwi   r0, 0x3
     beq-    branch_0x80348c54
     bge-    branch_0x80348b90
@@ -766,7 +766,7 @@ branch_0x80348b9c:
 
 branch_0x80348bb4:
     li      r0, 0x1
-    stw     r0, -0x59bc(r13)
+    stw     r0, R13Off_m0x59bc(r13)
     b       branch_0x80348c60
 
 branch_0x80348bc0:
@@ -839,7 +839,7 @@ branch_0x80348c90:
 branch_0x80348c94:
     cmplwi  r5, 0x0
     bne-    branch_0x80348ca8
-    lis     r3, 0x8000
+    lis     r3, unk_80000000@h
     stw     r4, 0xdc(r3)
     b       branch_0x80348cac
 
@@ -858,7 +858,7 @@ branch_0x80348cc0:
     bl      __OSUnlockAllMutex
     addi    r3, r30, 0x2e8
     bl      OSWakeupThread
-    lwz     r0, -0x59bc(r13)
+    lwz     r0, R13Off_m0x59bc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x80348ce4
     li      r3, 0x0
@@ -882,7 +882,7 @@ OSJoinThread: # 0x80348d08
     stw     r0, 0x4(sp)
     stwu    sp, -0x20(sp)
     stw     r31, 0x1c(sp)
-    addi    r31, r3, 0x0
+    addi    r31, r3, unk_80000000@l
     stw     r30, 0x18(sp)
     stw     r29, 0x14(sp)
     addi    r29, r4, 0x0
@@ -952,7 +952,7 @@ branch_0x80348dec:
 branch_0x80348df0:
     cmplwi  r5, 0x0
     bne-    branch_0x80348e04
-    lis     r3, 0x8000
+    lis     r3, unk_80000000@h
     stw     r4, 0xdc(r3)
     b       branch_0x80348e08
 
@@ -990,7 +990,7 @@ OSDetachThread: # 0x80348e48
     mr      r30, r3
     bl      OSDisableInterrupts
     lhz     r0, 0x2ca(r30)
-    addi    r31, r3, 0x0
+    addi    r31, r3, unk_80000000@l
     ori     r0, r0, 0x1
     sth     r0, 0x2ca(r30)
     lhz     r0, 0x2c8(r30)
@@ -1009,7 +1009,7 @@ branch_0x80348e9c:
 branch_0x80348ea0:
     cmplwi  r5, 0x0
     bne-    branch_0x80348eb4
-    lis     r3, 0x8000
+    lis     r3, unk_80000000@h
     stw     r4, 0xdc(r3)
     b       branch_0x80348eb8
 
@@ -1042,8 +1042,8 @@ OSResumeThread: # 0x80348ee8
     mr      r29, r3
     bl      OSDisableInterrupts
     lwz     r4, 0x2cc(r29)
-    addi    r31, r3, 0x0
-    subi    r0, r4, 0x1
+    addi    r31, r3, unk_80000000@l
+    addi    r0, r4, -0x1
     stw     r0, 0x2cc(r29)
     mr      r30, r4
     lwz     r0, 0x2cc(r29)
@@ -1082,8 +1082,8 @@ branch_0x80348f80:
     cmplwi  r3, 0x0
     bne+    branch_0x80348f60
     stw     r0, 0x2d0(r29)
-    lis     r3, 0x8040
-    addi    r0, r3, 0x2698
+    lis     r3, RunQueue@h
+    addi    r0, r3, RunQueue@l
     lwz     r3, 0x2d0(r29)
     slwi    r3, r3, 3
     add     r0, r0, r3
@@ -1105,12 +1105,12 @@ branch_0x80348fc0:
     lwz     r4, 0x2dc(r29)
     stw     r29, 0x4(r4)
     lwz     r0, 0x2d0(r29)
-    lwz     r4, -0x59c0(r13)
+    lwz     r4, R13Off_m0x59c0(r13)
     subfic  r0, r0, 0x1f
     slw     r0, r3, r0
     or      r0, r4, r0
-    stw     r0, -0x59c0(r13)
-    stw     r3, -0x59bc(r13)
+    stw     r0, R13Off_m0x59c0(r13)
+    stw     r3, R13Off_m0x59bc(r13)
     b       branch_0x80349134
 
 branch_0x80348ff8:
@@ -1217,7 +1217,7 @@ branch_0x80349100:
     mr.     r29, r3
     bne+    branch_0x80349100
 branch_0x80349134:
-    lwz     r0, -0x59bc(r13)
+    lwz     r0, R13Off_m0x59bc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x80349148
     li      r3, 0x0
@@ -1267,7 +1267,7 @@ branch_0x803491c8:
 
 branch_0x803491d4:
     li      r0, 0x1
-    stw     r0, -0x59bc(r13)
+    stw     r0, R13Off_m0x59bc(r13)
     sth     r0, 0x2c8(r29)
     b       branch_0x803492a4
 
@@ -1333,7 +1333,7 @@ branch_0x80349270:
     mr.     r29, r3
     bne+    branch_0x80349270
 branch_0x803492a4:
-    lwz     r0, -0x59bc(r13)
+    lwz     r0, R13Off_m0x59bc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x803492b8
     li      r3, 0x0
@@ -1410,8 +1410,8 @@ branch_0x8034938c:
     stw     r4, 0x2e0(r3)
 branch_0x80349390:
     li      r0, 0x1
-    stw     r0, -0x59bc(r13)
-    lwz     r0, -0x59bc(r13)
+    stw     r0, R13Off_m0x59bc(r13)
+    lwz     r0, R13Off_m0x59bc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x803493ac
     li      r3, 0x0
@@ -1436,9 +1436,9 @@ OSWakeupThread: # 0x803493cc
     stw     r30, 0x10(sp)
     mr      r30, r3
     bl      OSDisableInterrupts
-    lis     r4, 0x8040
+    lis     r4, RunQueue@h
     addi    r31, r3, 0x0
-    addi    r5, r4, 0x2698
+    addi    r5, r4, RunQueue@l
     b       branch_0x80349490
 
 branch_0x803493f8:
@@ -1480,17 +1480,17 @@ branch_0x8034945c:
     lwz     r4, 0x2dc(r6)
     stw     r6, 0x4(r4)
     lwz     r0, 0x2d0(r6)
-    lwz     r4, -0x59c0(r13)
+    lwz     r4, R13Off_m0x59c0(r13)
     subfic  r0, r0, 0x1f
     slw     r0, r3, r0
     or      r0, r4, r0
-    stw     r0, -0x59c0(r13)
-    stw     r3, -0x59bc(r13)
+    stw     r0, R13Off_m0x59c0(r13)
+    stw     r3, R13Off_m0x59bc(r13)
 branch_0x80349490:
     lwz     r6, 0x0(r30)
     cmplwi  r6, 0x0
     bne+    branch_0x803493f8
-    lwz     r0, -0x59bc(r13)
+    lwz     r0, R13Off_m0x59bc(r13)
     cmpwi   r0, 0x0
     beq-    branch_0x803494b0
     li      r3, 0x0

@@ -1,9 +1,9 @@
 
 .globl SMSGetNpcInitAnmData__FUl
 SMSGetNpcInitAnmData__FUl: # 0x80216138
-    lis     r4, 0x803a
+    lis     r4, sAllNpcInitAnmData_1577@ha
     slwi    r3, r3, 3
-    subi    r0, r4, 0x3148
+    addi    r0, r4, sAllNpcInitAnmData_1577@l
     add     r3, r0, r3
     blr
 

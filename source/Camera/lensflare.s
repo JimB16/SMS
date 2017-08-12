@@ -9,12 +9,12 @@ __dt__10TLensFlareFv: # 0x8002d0e0
     stw     r30, 0x10(sp)
     mr.     r30, r3
     beq-    branch_0x8002d138
-    lis     r3, 0x803b
-    subi    r0, r3, 0x2ef8
+    lis     r3, __vvt__10TLensFlare@ha
+    addi    r0, r3, __vvt__10TLensFlare@l
     stw     r0, 0x0(r30)
     beq-    branch_0x8002d128
-    lis     r3, 0x803b
-    subi    r0, r3, 0x497c
+    lis     r3, __vvt__Q26JDrama8TViewObj@ha
+    addi    r0, r3, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r30)
     addi    r3, r30, 0x0
     li      r4, 0x0
@@ -45,11 +45,11 @@ perform__10TLensFlareFUlPQ26JDrama9TGraphics: # 0x8002d154
     stmw    r27, 0x28c(sp)
     addi    r29, r3, 0x0
     addi    r30, r4, 0x0
-    lwz     r5, gpSunManager(r13)
+    lwz     r5, R13Off_m0x7100(r13)
     lbz     r0, 0x15(r5)
     rlwinm. r0, r0, 0, 30, 30
     bne-    branch_0x8002d71c
-    lwz     r3, -0x7110(r13)
+    lwz     r3, R13Off_m0x7110(r13)
     bl      isMarioIndoor__16TCameraMarioDataCFv
     clrlwi. r0, r3, 24
     beq-    branch_0x8002d1a0
@@ -59,7 +59,7 @@ perform__10TLensFlareFUlPQ26JDrama9TGraphics: # 0x8002d154
 branch_0x8002d1a0:
     lfs     f2, 0x40(r29)
     li      r4, 0x0
-    lwz     r3, gpSunModel(r13)
+    lwz     r3, R13Off_m0x70f8(r13)
     mr      r5, r4
     fneg    f0, f2
     lfsu    f1, 0xf8(r3)
@@ -103,7 +103,7 @@ branch_0x8002d22c:
     beq-    branch_0x8002d3c0
     lfs     f2, 0x44(r29)
     li      r4, 0x0
-    lwz     r6, gpSunModel(r13)
+    lwz     r6, R13Off_m0x70f8(r13)
     mr      r5, r4
     fneg    f0, f2
     addi    r3, r6, 0xf8
@@ -144,7 +144,7 @@ branch_0x8002d2bc:
 branch_0x8002d2c0:
     clrlwi. r0, r0, 24
     bne-    branch_0x8002d2d4
-    lfs     f0, -0x7740(rtoc)
+    lfs     f0, -0x7740(r2)
     stfs    f0, 0x28(r29)
     b       branch_0x8002d360
 
@@ -170,17 +170,17 @@ branch_0x8002d310:
     addi    r3, r3, 0x1
     bdnz+      branch_0x8002d2e8
     xoris   r0, r5, 0x8000
-    lfd     f1, -0x7720(rtoc)
+    lfd     f1, -0x7720(r2)
     stw     r0, 0x284(sp)
     lis     r0, 0x4330
-    lfs     f4, -0x7738(rtoc)
+    lfs     f4, -0x7738(r2)
     stw     r0, 0x280(sp)
-    lfs     f5, -0x773c(rtoc)
+    lfs     f5, -0x773c(r2)
     lfd     f0, 0x280(sp)
     lfs     f3, 0x194(r6)
     fsubs   f0, f0, f1
     lfs     f1, 0x48(r29)
-    lfs     f2, -0x7734(rtoc)
+    lfs     f2, -0x7734(r2)
     fmuls   f0, f4, f0
     fsubs   f0, f5, f0
     fmuls   f1, f1, f0
@@ -191,8 +191,8 @@ branch_0x8002d360:
     lfs     f1, 0x28(r29)
     fcmpo   cr0, f0, f1
     bge-    branch_0x8002d394
-    lwz     r3, gpSunModel(r13)
-    lfs     f2, -0x7740(rtoc)
+    lwz     r3, R13Off_m0x70f8(r13)
+    lfs     f2, -0x7740(r2)
     lfs     f0, 0x194(r3)
     fcmpu   cr0, f2, f0
     bne-    branch_0x8002d38c
@@ -204,8 +204,8 @@ branch_0x8002d38c:
     b       branch_0x8002d3b4
 
 branch_0x8002d394:
-    lwz     r3, gpSunModel(r13)
-    lfs     f2, -0x7740(rtoc)
+    lwz     r3, R13Off_m0x70f8(r13)
+    lfs     f2, -0x7740(r2)
     lfs     f0, 0x194(r3)
     fcmpu   cr0, f2, f0
     bne-    branch_0x8002d3b0
@@ -215,7 +215,7 @@ branch_0x8002d394:
 branch_0x8002d3b0:
     lfs     f2, 0x34(r29)
 branch_0x8002d3b4:
-    lfs     f3, -0x7740(rtoc)
+    lfs     f3, -0x7740(r2)
     addi    r3, r29, 0x24
     bl      CLBChaseDecrease__FPffff
 branch_0x8002d3c0:
@@ -223,9 +223,9 @@ branch_0x8002d3c0:
     beq-    branch_0x8002d71c
     rlwinm. r0, r30, 0, 30, 30
     beq-    branch_0x8002d640
-    lwz     r8, gpSunModel(r13)
-    lis     r3, 0x8002
-    addi    r4, r3, 0x10dc
+    lwz     r8, R13Off_m0x70f8(r13)
+    lis     r3, __ct__Q29JGeometry8TVec3_f_Fv@h
+    addi    r4, r3, __ct__Q29JGeometry8TVec3_f_Fv@l
     lwz     r6, 0x198(r8)
     addi    r3, sp, 0x178
     lwz     r0, 0x19c(r8)
@@ -237,33 +237,33 @@ branch_0x8002d3c0:
     lwz     r0, 0x1a0(r8)
     stw     r0, 0x174(sp)
     bl      __construct_array
-    lwz     r3, gpCamera(r13)
+    lwz     r3, R13Off_m0x7118(r13)
     lfs     f29, 0x28(r3)
     lfs     f30, 0x4c(r3)
     lfs     f31, 0x48(r3)
     bl      getFinalAngleZ__15CPolarSubCameraCFv
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r28, r3, 0x0
     addi    r3, sp, 0x23c
     addi    r4, r4, 0x148
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
-    lwz     r4, gpCamera(r13)
+    lwz     r4, R13Off_m0x7118(r13)
     addi    r3, sp, 0x230
     addi    r4, r4, 0x124
     bl      set__Q29JGeometry8TVec3_f_FRC3Vec
-    lfs     f0, -0x772c(rtoc)
-    lfs     f1, -0x7730(rtoc)
+    lfs     f0, -0x772c(r2)
+    lfs     f1, -0x7730(r2)
     fmuls   f0, f0, f31
     fmuls   f1, f1, f0
     bl      CLBRoundf_s___Ff
     mr      r31, r3
     bl      JMASCos__Fs
-    lfs     f0, -0x773c(rtoc)
+    lfs     f0, -0x773c(r2)
     mr      r3, r31
     fdivs   f31, f0, f1
     bl      JMASSin__Fs
     fmuls   f0, f1, f31
-    lfs     f2, -0x7728(rtoc)
+    lfs     f2, -0x7728(r2)
     fmr     f1, f29
     mr      r7, r28
     addi    r3, sp, 0x178
@@ -278,7 +278,7 @@ branch_0x8002d3c0:
     fmuls   f0, f0, f30
     stfs    f0, 0x10c(sp)
     bl      CLBCalcNearNinePos__FPQ29JGeometry8TVec3_f_P6S16VecRCQ29JGeometry8TVec3_f_RCQ29JGeometry8TVec3_f_sfRCQ29JGeometry8TVec2_f_
-    lwz     r5, gpSunModel(r13)
+    lwz     r5, R13Off_m0x70f8(r13)
     addi    r3, sp, 0x248
     lfsu    f1, 0xf8(r5)
     addi    r4, sp, 0x16c
@@ -333,22 +333,22 @@ branch_0x8002d3c0:
     stw     r0, 0x21c(sp)
     lwz     r0, 0x25c(sp)
     stw     r3, 0x220(sp)
-    lfs     f0, -0x7730(rtoc)
+    lfs     f0, -0x7730(r2)
     stw     r0, 0x224(sp)
     lfs     f1, 0x21c(sp)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
     lfs     f1, 0x220(sp)
     mr      r31, r3
-    lfs     f0, -0x7730(rtoc)
+    lfs     f0, -0x7730(r2)
     fmuls   f1, f0, f1
     bl      CLBRoundf_s___Ff
     extsh   r3, r3
-    lfs     f6, -0x7740(rtoc)
+    lfs     f6, -0x7740(r2)
     extsh   r0, r31
-    lfd     f3, -0x7720(rtoc)
+    lfd     f3, -0x7720(r2)
     xoris   r3, r3, 0x8000
-    lfs     f4, -0x7724(rtoc)
+    lfs     f4, -0x7724(r2)
     xoris   r0, r0, 0x8000
     stw     r3, 0x284(sp)
     lis     r4, 0x4330
@@ -452,9 +452,9 @@ branch_0x8002d71c:
 
 .globl JMASCos__Fs
 JMASCos__Fs: # 0x8002d73c
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r3, r3, 16
-    lwz     r4, -0x5ea4(r13)
+    lwz     r4, R13Off_m0x5ea4(r13)
     sraw    r0, r3, r0
     slwi    r0, r0, 2
     lfsx    f1, r4, r0
@@ -463,9 +463,9 @@ JMASCos__Fs: # 0x8002d73c
 
 .globl JMASSin__Fs
 JMASSin__Fs: # 0x8002d758
-    lwz     r0, -0x5eac(r13)
+    lwz     r0, R13Off_m0x5eac(r13)
     clrlwi  r3, r3, 16
-    lwz     r4, -0x5ea8(r13)
+    lwz     r4, R13Off_m0x5ea8(r13)
     sraw    r0, r3, r0
     slwi    r0, r0, 2
     lfsx    f1, r4, r0
@@ -491,47 +491,47 @@ __ct__10TLensFlareFPCc: # 0x8002d790
     stw     r31, 0x11c(sp)
     stw     r30, 0x118(sp)
     stw     r3, 0x8(sp)
-    lis     r3, 0x803e
-    addi    r0, r3, 0x20f0
+    lis     r3, __vvt__Q26JDrama8TNameRef@h
+    addi    r0, r3, __vvt__Q26JDrama8TNameRef@l
     lwz     r31, 0x8(sp)
     addi    r3, r4, 0x0
     stw     r0, 0x0(r31)
     stw     r4, 0x4(r31)
     bl      calcKeyCode__Q26JDrama8TNameRefFPCc
-    lis     r4, 0x803b
+    lis     r4, __vvt__Q26JDrama8TViewObj@ha
     sth     r3, 0x8(r31)
-    subi    r0, r4, 0x497c
+    addi    r0, r4, __vvt__Q26JDrama8TViewObj@l
     stw     r0, 0x0(r31)
     li      r4, 0x0
-    lis     r3, 0x803b
+    lis     r3, __vvt__10TLensFlare@ha
     sth     r4, 0xc(r31)
-    subi    r0, r3, 0x2ef8
+    addi    r0, r3, __vvt__10TLensFlare@l
     stw     r0, 0x0(r31)
     stw     r4, 0x10(r31)
     stw     r4, 0x14(r31)
-    lfs     f0, -0x7718(rtoc)
+    lfs     f0, -0x7718(r2)
     stfs    f0, 0x18(r31)
     stfs    f0, 0x1c(r31)
-    lfs     f0, -0x7714(rtoc)
+    lfs     f0, -0x7714(r2)
     stfs    f0, 0x20(r31)
-    lfs     f0, -0x7740(rtoc)
+    lfs     f0, -0x7740(r2)
     stfs    f0, 0x24(r31)
     stfs    f0, 0x28(r31)
-    lfs     f1, -0x7710(rtoc)
+    lfs     f1, -0x7710(r2)
     stfs    f1, 0x2c(r31)
-    lfs     f0, -0x770c(rtoc)
+    lfs     f0, -0x770c(r2)
     stfs    f0, 0x30(r31)
     stfs    f1, 0x34(r31)
     stfs    f1, 0x38(r31)
-    lfs     f0, -0x7708(rtoc)
+    lfs     f0, -0x7708(r2)
     stfs    f0, 0x3c(r31)
-    lfs     f0, -0x7704(rtoc)
+    lfs     f0, -0x7704(r2)
     stfs    f0, 0x40(r31)
-    lfs     f0, -0x7700(rtoc)
+    lfs     f0, -0x7700(r2)
     stfs    f0, 0x44(r31)
-    lfs     f0, -0x76fc(rtoc)
+    lfs     f0, -0x76fc(r2)
     stfs    f0, 0x48(r31)
-    lwz     r3, gpSunManager(r13)
+    lwz     r3, R13Off_m0x7100(r13)
     lbz     r0, 0x15(r3)
     rlwinm. r0, r0, 0, 30, 30
     beq-    branch_0x8002d860
@@ -539,13 +539,13 @@ __ct__10TLensFlareFPCc: # 0x8002d790
     b       branch_0x8002d8c0
 
 branch_0x8002d860:
-    lis     r3, 0x8037
-    lwz     r6, -0x7fa8(r13)
-    addi    r7, r3, 0x56bc
+    lis     r3, unk_803756bc@h
+    lwz     r6, R13Off_m0x7fa8(r13)
+    addi    r7, r3, unk_803756bc@l
     crxor   6, 6, 6
     addi    r3, sp, 0x18
     li      r4, 0x100
-    subi    r5, rtoc, 0x76f8
+    addi    r5, r2, R2Off_m0x76f8
     bl      snprintf
     addi    r3, sp, 0x18
     bl      getGlbResource__13JKRFileLoaderFPCc
