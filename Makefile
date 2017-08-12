@@ -12,10 +12,11 @@ endif
 PYTHON := python
 MKDIR_P = mkdir -p
 
-.PHONY: asm all init
+.PHONY: asm all check init
 
-unpack_iso     := $(PYTHON) tools/unpack_iso.py
 ppcdisassem    := $(PYTHON) tools/ppcdisassem.py
+unpack_iso     := $(PYTHON) tools/unpack_iso.py
+create_rom     := $(PYTHON) tools/create_rom.py
 
 
 all:
@@ -49,3 +50,17 @@ disassem4:
 diagnose:
 	$(unpack_iso) -d "./SMS_E.iso"
 
+
+check:
+	md5sum SMS_U.iso
+	echo 0c6d2edae9fdf40dfc410ff1623e4119 *SMS_U.iso
+
+init:
+	$(unpack_iso) -d "./SMS_U.iso" -of "./newiso/" -filelist "SMS_U_FileList.txt" -export
+
+newSMS:
+	$(create_rom) -dir "./newiso" -fst "./newiso/fst.bin" -fstmap "./newiso/SMS_U_FileList.txt" -o "./game.iso"
+	md5sum ./game.iso
+	#hexdump -C baserom/fst.bin > baserom/fst.txt
+	#hexdump -C newiso/fst.bin > build/fst.txt
+	#diff -u baserom/fst.txt build/fst.txt | less > build/diff_fst.txt

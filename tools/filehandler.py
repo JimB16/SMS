@@ -12,6 +12,7 @@ class FileHandler(object):
     file = None
     base_address = 0
     filename = ""
+    filesize = 0
     
     def __init__(self):
         return
@@ -20,6 +21,7 @@ class FileHandler(object):
         self.filename = filename
         self.file = open(filename, "rb+")
         self.base_address = base_address
+        self.filesize = self.GetFileSize()
 
     def GetFileName(self):
         return self.filename
@@ -32,9 +34,9 @@ class FileHandler(object):
         return self.file.tell()
 
     def AdrInRange(self, adr, debug=False):
-        if (adr < self.base_address) | (adr >= (self.base_address+self.GetFileSize())):
+        if (adr < self.base_address) | (adr >= (self.base_address+self.filesize)):
             if debug:
-                print("AdrInRange: " + hex(self.base_address) + " - " + hex(adr) + " - " + hex((self.base_address+self.GetFileSize())))
+                print("AdrInRange: " + hex(self.base_address) + " - " + hex(adr) + " - " + hex((self.base_address+self.filesize)))
             return False
         return True
     
@@ -102,10 +104,10 @@ class FileHandler(object):
         address = (address & 0xffffffff) - self.base_address
         self.file.seek(address)
         string = ""
+        bytes = bytearray(self.file.read(size))
         for i in range(size):
-            byte = bytearray(self.file.read(1))
-            if(byte[0] != 0):
-                string += chr(byte[0])
+            if(bytes[i] != 0):
+                string += chr(bytes[i])
             else:
                 break
         return string
@@ -138,7 +140,21 @@ class FileHandler(object):
     def WriteSectionInFile(self, filename, addr, size):
         if size == 0: return None
         
+        if not os.path.exists(os.path.dirname(filename)):
+            os.makedirs(os.path.dirname(filename))
+        
         f = open(filename, 'wb')
         fByteArray = self.Read(addr, size)
         f.write(fByteArray)
+        return None
+
+    def write_array_in_file(self, array, infile):
+        #if size == 0: return None
+        if not os.path.exists(os.path.dirname(infile)):
+            os.makedirs(os.path.dirname(infile))
+        f = open(infile, 'wb')
+        
+        fByteArray = bytearray(array)
+        f.write(fByteArray)
+        f.close()
         return None
