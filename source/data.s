@@ -25395,19 +25395,7 @@ __vvt__10TSmplFader: # 0x803c111c /GC2D/ShineFader.s
 
 .globl strDispProg
 strDispProg: # 0x803c1148 /GC2D/ProgSelect.s
-.long 0x576f756c # 0x803c1148
-.long 0x6420796f # 0x803c114c
-.long 0x75206c69 # 0x803c1150
-.long 0x6b652074 # 0x803c1154
-.long 0x6f206469 # 0x803c1158
-.long 0x73706c61 # 0x803c115c
-.long 0x7920696e # 0x803c1160
-.long 0xa70726f # 0x803c1164
-.long 0x67726573 # 0x803c1168
-.long 0x73697665 # 0x803c116c
-.long 0x20736361 # 0x803c1170
-.long 0x6e206d6f # 0x803c1174
-.long 0x64653f00 # 0x803c1178
+string_align "Would you like to display in\nprogressive scan mode?" # 0x803c1148
 
 .globl strSetProg
 strSetProg: # 0x803c117c /GC2D/ProgSelect.s
@@ -25436,9 +25424,7 @@ strSetProg: # 0x803c117c /GC2D/ProgSelect.s
 .long 0x305d1b46 # 0x803c11d4
 .long 0x595b3230 # 0x803c11d8
 .long 0x5d1b4343 # 0x803c11dc
-.long 0x5b666666 # 0x803c11e0
-.long 0x6666665d # 0x803c11e4
-.long 0x2e000000 # 0x803c11e8
+string_align "[ffffff]." # 0x803c11e0
 
 .globl strSetInter
 strSetInter: # 0x803c11ec /GC2D/ProgSelect.s
@@ -25465,9 +25451,7 @@ strSetInter: # 0x803c11ec /GC2D/ProgSelect.s
 .long 0x32305d1b # 0x803c123c
 .long 0x46595b32 # 0x803c1240
 .long 0x305d1b43 # 0x803c1244
-.long 0x435b6666 # 0x803c1248
-.long 0x66666666 # 0x803c124c
-.long 0x5d2e0000 # 0x803c1250
+string_align "C[ffffff]." # 0x803c1248
 
 .globl __vvt__11TProgSelect
 __vvt__11TProgSelect: # 0x803c1254 /GC2D/ProgSelect.s
@@ -25534,10 +25518,8 @@ boundtable_262: # 0x803c12e8 /GC2D/hx_wiper.s
 .long 0x41000000 # 0x803c12fc
 .long 0x3df5c28f # 0x803c1300
 .long 0xc1000000 # 0x803c1304
-.long 0xbde147ae # 0x803c1308
-.long 0x41400000 # 0x803c130c
-.long 0x3de147ae # 0x803c1310
-.long 0x41400000 # 0x803c1314
+string_align "ޡGρ@" # 0x803c1308
+string_align "=⇮A@" # 0x803c1310
 .long 0x0 # 0x803c1318
 .long 0x0 # 0x803c131c
 
@@ -25621,8 +25603,8 @@ drawpath_table: # 0x803c1320 /GC2D/hx_wiper.s
 .long 0x435c0000 # 0x803c144c
 .long 0x428e0000 # 0x803c1450
 .long 0x4 # 0x803c1454
-.long 0xbf800000 # 0x803c1458
-.long 0xbf800000 # 0x803c145c
+.float -1.0 # 0x803c1458
+.float -1.0 # 0x803c145c
 .long 0xffffffff # 0x803c1460
 
 .globl unk_803c1464
@@ -28194,8 +28176,7 @@ watergun_item_data: # 0x803c35cc /MoveBG/MapObjInit.s
 
 .globl nozzle_normal_physical_data
 nozzle_normal_physical_data: # 0x803c3608 /MoveBG/MapObjInit.s
-.long 0x3eb33333 # 0x803c3608
-.long 0x3f000000 # 0x803c360c
+string_align ">ӳ3?" # 0x803c3608
 .long 0x0 # 0x803c3610
 .long 0x40a00000 # 0x803c3614
 .long 0x3f4ccccd # 0x803c3618
@@ -28288,14 +28269,11 @@ nozzle_back_item_data: # 0x803c36fc /MoveBG/MapObjInit.s
 
 .globl coin_physical_data
 coin_physical_data: # 0x803c3738 /MoveBG/MapObjInit.s
-.long 0x3eb33333 # 0x803c3738
-.long 0x3f000000 # 0x803c373c
+string_align ">ӳ3?" # 0x803c3738
 .long 0x3f19999a # 0x803c3740
 .float 1.0 # 0x803c3744
 .long 0x3f000000 # 0x803c3748
-.long 0x3f733333 # 0x803c374c
-.long 0x3f7d70a4 # 0x803c3750
-.long 0x0 # 0x803c3754
+string_align "?s33?}pĢ # 0x803c374c
 .long 0x0 # 0x803c3758
 .long 0x0 # 0x803c375c
 .long 0x0 # 0x803c3760
@@ -28454,9 +28432,7 @@ eggYoshi_data: # 0x803c391c /MoveBG/MapObjInit.s
 
 .globl EggYoshi_physical_data
 EggYoshi_physical_data: # 0x803c3958 /MoveBG/MapObjInit.s
-.long 0x3eb33333 # 0x803c3958
-.long 0x3dcccccd # 0x803c395c
-.long 0x0 # 0x803c3960
+string_align ">ӳ3=͌͢ # 0x803c3958
 .long 0x40a00000 # 0x803c3964
 .float 1.0 # 0x803c3968
 .long 0x3f733333 # 0x803c396c
@@ -28766,8 +28742,7 @@ banana_physical_data: # 0x803c3d2c /MoveBG/MapObjInit.s
 .long 0x3ecccccd # 0x803c3d30
 .long 0x3e4ccccd # 0x803c3d34
 .float 1.0 # 0x803c3d38
-.long 0x3ecccccd # 0x803c3d3c
-.long 0x3f000000 # 0x803c3d40
+string_align ">͌Ϳ" # 0x803c3d3c
 .float 1.0 # 0x803c3d44
 .long 0x40a00000 # 0x803c3d48
 .long 0x3f000000 # 0x803c3d4c
@@ -54867,8 +54842,7 @@ rumbleFrame_00: # 0x803db240 /MarioUtil/RumbleData.s
 .long 0x3e800000 # 0x803db254
 .long 0x3e800000 # 0x803db258
 .long 0x3ea8f5c3 # 0x803db25c
-.long 0x3ecccccd # 0x803db260
-.long 0x3f000000 # 0x803db264
+string_align ">͌Ϳ" # 0x803db260
 .long 0x3f19999a # 0x803db268
 
 .globl rumblePower_00
@@ -54918,26 +54892,17 @@ rumblePower_01: # 0x803db2f8 /MarioUtil/RumbleData.s
 .float 1.0 # 0x803db2fc
 .long 0x0 # 0x803db300
 .long 0x0 # 0x803db304
-.long 0x3f733333 # 0x803db308
-.long 0x3f59999a # 0x803db30c
-.long 0x0 # 0x803db310
+string_align "?s33?Yٚ" # 0x803db308
 .long 0x0 # 0x803db314
-.long 0x3f4ccccd # 0x803db318
-.long 0x3f3ae148 # 0x803db31c
-.long 0x0 # 0x803db320
+string_align "?L͍?:∢ # 0x803db318
 .long 0x0 # 0x803db324
 .long 0x3f23d70a # 0x803db328
 .long 0x3f07ae14 # 0x803db32c
 .long 0x0 # 0x803db330
 .long 0x0 # 0x803db334
-.long 0x3ee147ae # 0x803db338
-.long 0x3eb33333 # 0x803db33c
-.long 0x0 # 0x803db340
+string_align ">⇮>ӳ3" # 0x803db338
 .long 0x3e8a3d71 # 0x803db344
-.long 0x3ca3d70a # 0x803db348
-.long 0x3e23d70a # 0x803db34c
-.long 0x3c23d70a # 0x803db350
-.long 0x0 # 0x803db354
+string_align "<ė\n>#؜n<#؜n" # 0x803db348
 
 .globl rumbleFrame_04
 rumbleFrame_04: # 0x803db358 /MarioUtil/RumbleData.s
@@ -54954,9 +54919,7 @@ rumblePower_04: # 0x803db374 /MarioUtil/RumbleData.s
 .float 1.0 # 0x803db374
 .float 1.0 # 0x803db378
 .long 0x0 # 0x803db37c
-.long 0x3f4ccccd # 0x803db380
-.long 0x3f4ccccd # 0x803db384
-.long 0x0 # 0x803db388
+string_align "?L͍?L͍" # 0x803db380
 .long 0x0 # 0x803db38c
 
 .globl rumbleFrame_05
@@ -54970,9 +54933,7 @@ rumbleFrame_05: # 0x803db390 /MarioUtil/RumbleData.s
 .long 0x3ee66666 # 0x803db3a8
 .long 0x3f028f5c # 0x803db3ac
 .long 0x3f051eb8 # 0x803db3b0
-.long 0x3f23d70a # 0x803db3b4
-.long 0x3f30a3d7 # 0x803db3b8
-.long 0x3f400000 # 0x803db3bc
+string_align "?#؜n?0ė?@" # 0x803db3b4
 .long 0x3f547ae1 # 0x803db3c0
 .long 0x3f63d70a # 0x803db3c4
 .long 0x3f7d70a4 # 0x803db3c8
@@ -54989,9 +54950,7 @@ rumblePower_05: # 0x803db3e4 /MarioUtil/RumbleData.s
 .long 0x3f6b851f # 0x803db3e8
 .long 0x0 # 0x803db3ec
 .long 0x0 # 0x803db3f0
-.long 0x3f4a3d71 # 0x803db3f4
-.long 0x3f2147ae # 0x803db3f8
-.long 0x0 # 0x803db3fc
+string_align "?J=q?!G΢ # 0x803db3f4
 .long 0x3ca3d70a # 0x803db400
 .long 0x3ee66666 # 0x803db404
 .long 0x3e9eb852 # 0x803db408
@@ -55052,8 +55011,7 @@ rumbleFrame_07: # 0x803db488 /MarioUtil/RumbleData.s
 .long 0x3f1eb852 # 0x803db4c0
 .long 0x3f23d70a # 0x803db4c4
 .long 0x3f3851ec # 0x803db4c8
-.long 0x3f3d70a4 # 0x803db4cc
-.long 0x3f400000 # 0x803db4d0
+string_align "?=pĿ@" # 0x803db4cc
 .float 1.0 # 0x803db4d4
 
 .globl rumblePower_07
@@ -55069,15 +55027,11 @@ rumblePower_07: # 0x803db4d8 /MarioUtil/RumbleData.s
 .long 0x0 # 0x803db4f8
 .long 0x0 # 0x803db4fc
 .long 0x3f19999a # 0x803db500
-.long 0x3f2147ae # 0x803db504
-.long 0x3ea3d70a # 0x803db508
-.long 0x0 # 0x803db50c
+string_align "?!Gξė\n" # 0x803db504
 .long 0x0 # 0x803db510
 .long 0x3f028f5c # 0x803db514
 .long 0x3ef5c28f # 0x803db518
-.long 0x3e428f5c # 0x803db51c
-.long 0x3ca3d70a # 0x803db520
-.long 0x0 # 0x803db524
+string_align ">BМ\<ė\n" # 0x803db51c
 
 .globl rumbleFrame_08
 rumbleFrame_08: # 0x803db528 /MarioUtil/RumbleData.s
@@ -55091,8 +55045,7 @@ rumbleFrame_08: # 0x803db528 /MarioUtil/RumbleData.s
 rumblePower_08: # 0x803db53c /MarioUtil/RumbleData.s
 .float 1.0 # 0x803db53c
 .long 0x3f000000 # 0x803db540
-.long 0x3eb33333 # 0x803db544
-.long 0x3f000000 # 0x803db548
+string_align ">ӳ3?" # 0x803db544
 .float 1.0 # 0x803db54c
 
 .globl rumbleFrame_09
@@ -55100,11 +55053,7 @@ rumbleFrame_09: # 0x803db550 /MarioUtil/RumbleData.s
 .long 0x0 # 0x803db550
 .long 0x3e99999a # 0x803db554
 .long 0x3f000000 # 0x803db558
-.long 0x3f333333 # 0x803db55c
-
-.globl rumblePower_09
-rumblePower_09: # 0x803db560 /MarioUtil/RumbleData.s
-.long 0x3f000000 # 0x803db560
+string_align "?333?" # 0x803db55c
 .long 0x3e75c28f # 0x803db564
 .long 0x3e3851ec # 0x803db568
 .long 0x3e6b851f # 0x803db56c
@@ -55139,8 +55088,7 @@ rumbleFrame_23: # 0x803db598 /MarioUtil/RumbleData.s
 .long 0x3f99999a # 0x803db5bc
 .long 0x3f9ae148 # 0x803db5c0
 .long 0x3fa51eb8 # 0x803db5c4
-.long 0x3faa3d71 # 0x803db5c8
-.long 0x40700000 # 0x803db5cc
+string_align "?ʽq@p" # 0x803db5c8
 .long 0x4073d70a # 0x803db5d0
 .long 0x407ae148 # 0x803db5d4
 .long 0x407c28f6 # 0x803db5d8
@@ -55209,9 +55157,7 @@ rumbleFrame_23: # 0x803db598 /MarioUtil/RumbleData.s
 rumblePower_23: # 0x803db6cc /MarioUtil/RumbleData.s
 .long 0x3f4ccccd # 0x803db6cc
 .float 1.0 # 0x803db6d0
-.long 0x3f733333 # 0x803db6d4
-.long 0x3f4ccccd # 0x803db6d8
-.long 0x0 # 0x803db6dc
+string_align "?s33?L͍" # 0x803db6d4
 .long 0x0 # 0x803db6e0
 .long 0x3f733333 # 0x803db6e4
 .long 0x3f733333 # 0x803db6e8
@@ -55221,18 +55167,13 @@ rumblePower_23: # 0x803db6cc /MarioUtil/RumbleData.s
 .long 0x3f147ae1 # 0x803db6f8
 .long 0x0 # 0x803db6fc
 .long 0x0 # 0x803db700
-.long 0x3f4f5c29 # 0x803db704
-.long 0x3f666666 # 0x803db708
-.long 0x3f30a3d7 # 0x803db70c
-.long 0x0 # 0x803db710
+string_align "?O\\)?fff?0ė" # 0x803db704
 .long 0x0 # 0x803db714
 .long 0x3f7ae148 # 0x803db718
 .long 0x3f733333 # 0x803db71c
 .long 0x3f07ae14 # 0x803db720
 .long 0x3f000000 # 0x803db724
-.long 0x3f5eb852 # 0x803db728
-.long 0x3f333333 # 0x803db72c
-.long 0x0 # 0x803db730
+string_align "?^ْ?333" # 0x803db728
 .long 0x0 # 0x803db734
 .long 0x3f5eb852 # 0x803db738
 .long 0x3f570a3d # 0x803db73c
@@ -55264,26 +55205,17 @@ rumblePower_23: # 0x803db6cc /MarioUtil/RumbleData.s
 .float 1.0 # 0x803db7a4
 .long 0x0 # 0x803db7a8
 .long 0x0 # 0x803db7ac
-.long 0x3f733333 # 0x803db7b0
-.long 0x3f59999a # 0x803db7b4
-.long 0x0 # 0x803db7b8
+string_align "?s33?Yٚ" # 0x803db7b0
 .long 0x0 # 0x803db7bc
-.long 0x3f4ccccd # 0x803db7c0
-.long 0x3f3ae148 # 0x803db7c4
-.long 0x0 # 0x803db7c8
+string_align "?L͍?:∢ # 0x803db7c0
 .long 0x0 # 0x803db7cc
 .long 0x3f23d70a # 0x803db7d0
 .long 0x3f07ae14 # 0x803db7d4
 .long 0x0 # 0x803db7d8
 .long 0x0 # 0x803db7dc
-.long 0x3ee147ae # 0x803db7e0
-.long 0x3eb33333 # 0x803db7e4
-.long 0x0 # 0x803db7e8
+string_align ">⇮>ӳ3" # 0x803db7e0
 .long 0x3e8a3d71 # 0x803db7ec
-.long 0x3ca3d70a # 0x803db7f0
-.long 0x3e23d70a # 0x803db7f4
-.long 0x3c23d70a # 0x803db7f8
-.long 0x0 # 0x803db7fc
+string_align "<ė\n>#؜n<#؜n" # 0x803db7f0
 
 .globl rumbleFrame_24
 rumbleFrame_24: # 0x803db800 /MarioUtil/RumbleData.s
@@ -55299,8 +55231,7 @@ rumbleFrame_24: # 0x803db800 /MarioUtil/RumbleData.s
 .long 0x3f99999a # 0x803db824
 .long 0x3f9ae148 # 0x803db828
 .long 0x3fa51eb8 # 0x803db82c
-.long 0x3faa3d71 # 0x803db830
-.long 0x40700000 # 0x803db834
+string_align "?ʽq@p" # 0x803db830
 .long 0x4073d70a # 0x803db838
 .long 0x407ae148 # 0x803db83c
 .long 0x407c28f6 # 0x803db840
@@ -55329,9 +55260,7 @@ rumbleFrame_24: # 0x803db800 /MarioUtil/RumbleData.s
 rumblePower_24: # 0x803db894 /MarioUtil/RumbleData.s
 .long 0x3f4ccccd # 0x803db894
 .float 1.0 # 0x803db898
-.long 0x3f733333 # 0x803db89c
-.long 0x3f4ccccd # 0x803db8a0
-.long 0x0 # 0x803db8a4
+string_align "?s33?L͍" # 0x803db89c
 .long 0x0 # 0x803db8a8
 .long 0x3f733333 # 0x803db8ac
 .long 0x3f733333 # 0x803db8b0
@@ -55341,18 +55270,13 @@ rumblePower_24: # 0x803db894 /MarioUtil/RumbleData.s
 .long 0x3f147ae1 # 0x803db8c0
 .long 0x0 # 0x803db8c4
 .long 0x0 # 0x803db8c8
-.long 0x3f4f5c29 # 0x803db8cc
-.long 0x3f666666 # 0x803db8d0
-.long 0x3f30a3d7 # 0x803db8d4
-.long 0x0 # 0x803db8d8
+string_align "?O\\)?fff?0ė" # 0x803db8cc
 .long 0x0 # 0x803db8dc
 .long 0x3f7ae148 # 0x803db8e0
 .long 0x3f733333 # 0x803db8e4
 .long 0x3f07ae14 # 0x803db8e8
 .long 0x3f000000 # 0x803db8ec
-.long 0x3f5eb852 # 0x803db8f0
-.long 0x3f333333 # 0x803db8f4
-.long 0x0 # 0x803db8f8
+string_align "?^ْ?333" # 0x803db8f0
 .long 0x0 # 0x803db8fc
 .long 0x3f5eb852 # 0x803db900
 .long 0x3f570a3d # 0x803db904
@@ -57656,7 +57580,7 @@ gWaterManagerPlaneInfo: # 0x803dd8ec /Player/ModelWaterManager.s
 .long 0xc0400000 # 0x803dd8f0
 .long 0x40000000 # 0x803dd8f4
 .long 0x3f333333 # 0x803dd8f8
-.long 0xbf800000 # 0x803dd8fc
+.float -1.0 # 0x803dd8fc
 .float 1.0 # 0x803dd900
 .long 0x0 # 0x803dd904
 .long 0x0 # 0x803dd908
@@ -58254,11 +58178,7 @@ tmp_data: # 0x803dd920 /Player/ModelWaterManager.s
 .long 0xb9009580 # 0x803de23c
 .long 0xb100 # 0x803de240
 .long 0x9d40ec40 # 0x803de244
-.long 0xaaabaaab # 0x803de248
-.long 0xd556a832 # 0x803de24c
-.long 0xbe26be26 # 0x803de250
-.long 0xaaabd556 # 0x803de254
-.long 0xaaabb100 # 0x803de258
+string_align "ʫʫ֖Ȳަަʫ֖ʫѢ # 0x803de248
 .long 0xec409d40 # 0x803de25c
 .long 0xb9000000 # 0x803de260
 .long 0x9580c762 # 0x803de264
@@ -58275,11 +58195,7 @@ tmp_data: # 0x803dd920 /Player/ModelWaterManager.s
 .long 0x47000000 # 0x803de290
 .long 0x95804f00 # 0x803de294
 .long 0xec409d40 # 0x803de298
-.long 0x5555d556 # 0x803de29c
-.long 0xaaab57ce # 0x803de2a0
-.long 0xbe26be26 # 0x803de2a4
-.long 0x5555aaab # 0x803de2a8
-.long 0xd5564f00 # 0x803de2ac
+string_align "UU֖ʫWξ&ަUUʫ֖O" # 0x803de29c
 .long 0x9d40ec40 # 0x803de2b0
 .long 0x47009580 # 0x803de2b4
 .long 0xa57e # 0x803de2b8
@@ -58308,10 +58224,7 @@ tmp_data: # 0x803dd920 /Player/ModelWaterManager.s
 .long 0x5a820000 # 0x803de314
 .long 0xa57e62c0 # 0x803de318
 .long 0xec40b100 # 0x803de31c
-.long 0x67d2d679 # 0x803de320
-.long 0xc1b567d2 # 0x803de324
-.long 0xc1b5d679 # 0x803de328
-.long 0x62c0b100 # 0x803de32c
+string_align "gӖyugӁ֖yb1" # 0x803de320
 .long 0xec405a82 # 0x803de330
 .long 0xa57e0000 # 0x803de334
 .long 0x9580b900 # 0x803de338
@@ -58415,8 +58328,7 @@ tmp_data: # 0x803dd920 /Player/ModelWaterManager.s
 .long 0xfc1f03f # 0x803de4c0
 .long 0x861322d6 # 0x803de4c4
 .long 0xee958ec5 # 0x803de4c8
-.long 0x389eed21 # 0x803de4cc
-.long 0x9d404f00 # 0x803de4d0
+string_align "8߭!ހO" # 0x803de4cc
 .long 0xec40b100 # 0x803de4d4
 .long 0x62c0ec40 # 0x803de4d8
 .long 0xc762713b # 0x803de4dc
@@ -60711,10 +60623,7 @@ sAsciiTable__14JUTDirectPrint: # 0x803e0288 /JSystem/JUTDirectPrint.s
 .long 0xffffffff # 0x803e02a0
 .long 0xffffffff # 0x803e02a4
 .long 0xff296465 # 0x803e02a8
-.long 0x662b6768 # 0x803e02ac
-.long 0x2526692a # 0x803e02b0
-.long 0x6a272c6b # 0x803e02b4
-.long 0x10203 # 0x803e02b8
+string_align "f+gh%&i*j',k" # 0x803e02ac
 .long 0x4050607 # 0x803e02bc
 .long 0x809246c # 0x803e02c0
 .long 0x6d6e6f28 # 0x803e02c4
@@ -61097,7 +61006,7 @@ j3dDefaultMtx: # 0x803e07a8 /JSystem/J3DTransform.s
 .globl PSMulUnit01
 PSMulUnit01: # 0x803e07d8 /JSystem/J3DTransform.s
 .long 0x0 # 0x803e07d8
-.long 0xbf800000 # 0x803e07dc
+.float -1.0 # 0x803e07dc
 
 .globl __vvt__13J3DSkinDeform
 __vvt__13J3DSkinDeform: # 0x803e07e0 /JSystem/J3DCluster.s
@@ -62211,7 +62120,7 @@ j3dDefaultLightInfo: # 0x803e15a4 /JSystem/J3DTevs.s
 .long 0x0 # 0x803e15a8
 .long 0x0 # 0x803e15ac
 .long 0x0 # 0x803e15b0
-.long 0xbf800000 # 0x803e15b4
+.float -1.0 # 0x803e15b4
 .long 0x0 # 0x803e15b8
 .long 0xffffffff # 0x803e15bc
 .float 1.0 # 0x803e15c0
@@ -63711,8 +63620,7 @@ __vvt__Q28JASystem15TSimpleWaveBank: # 0x803e275c /JSystem/JASSimpleWaveBank.s
 
 .globl sCurrentDir__Q28JASystem13WaveArcLoader
 sCurrentDir__Q28JASystem13WaveArcLoader: # 0x803e2790 /JSystem/JASWaveArcLoader.s
-.long 0x2f42616e # 0x803e2790
-.long 0x6b732f00 # 0x803e2794
+string_align "/Banks/" # 0x803e2790
 .long 0x0 # 0x803e2798
 .long 0x0 # 0x803e279c
 .long 0x0 # 0x803e27a0
@@ -67553,9 +67461,7 @@ jdsp: # 0x803e47a0 /JSystem/dsptask.s
 .long 0x810405 # 0x803e5ac8
 .long 0x5c00b100 # 0x803e5acc
 .long 0x2751a3a # 0x803e5ad0
-.long 0x2e3a2c3b # 0x803e5ad4
-.long 0x26382439 # 0x803e5ad8
-.long 0xd80362 # 0x803e5adc
+string_align ".:,;&8$9" # 0x803e5ad4
 .long 0x70002c39 # 0x803e5ae0
 .long 0x2e380092 # 0x803e5ae4
 .long 0xff029f # 0x803e5ae8
@@ -68533,109 +68439,59 @@ gDBCommTable: # 0x803e6908 /TRK_MINNOW_DOLPHIN/dolphin_trk_glue.s
 
 .globl unk_803e6928
 unk_803e6928: # 0x803e6928 /db/db.s
-.long 0x44424578 # 0x803e6928
-.long 0x63657074 # 0x803e692c
-.long 0x696f6e44 # 0x803e6930
-.long 0x65737469 # 0x803e6934
-.long 0x6e617469 # 0x803e6938
-.long 0x6f6e0a00 # 0x803e693c
+string_align "DBExceptionDestination\n" # 0x803e6928
 
 .globl unk_803e6940
 unk_803e6940: # 0x803e6940 /os/OS.s
-.long 0xa446f6c # 0x803e6940
-.long 0x7068696e # 0x803e6944
-.long 0x204f5320 # 0x803e6948
-.long 0x24526576 # 0x803e694c
-.long 0x6973696f # 0x803e6950
-.long 0x6e3a2035 # 0x803e6954
-.long 0x3420242e # 0x803e6958
-.long 0xa000000 # 0x803e695c
+string_align "\nDolphin OS $Revision: 54 $.\n" # 0x803e6940
 
 .globl unk_803e6960
 unk_803e6960: # 0x803e6960 /os/OS.s
-.long 0x4b65726e # 0x803e6960
-.long 0x656c2062 # 0x803e6964
-.long 0x75696c74 # 0x803e6968
-.long 0x203a2025 # 0x803e696c
-.long 0x73202573 # 0x803e6970
-.long 0xa000000 # 0x803e6974
+string_align "Kernel built : %s %s\n" # 0x803e6960
 
 .globl unk_803e6978
 unk_803e6978: # 0x803e6978 /os/OS.s
-.long 0x4a756e20 # 0x803e6978
-.long 0x20352032 # 0x803e697c
-.long 0x30303200 # 0x803e6980
+string_align "Jun  5 2002" # 0x803e6978
 
 .globl unk_803e6984
 unk_803e6984: # 0x803e6984 /os/OS.s
-.long 0x30323a30 # 0x803e6984
-.long 0x393a3132 # 0x803e6988
-.long 0x0 # 0x803e698c
+string_align "02:09:12" # 0x803e6984
 
 .globl unk_803e6990
 unk_803e6990: # 0x803e6990 /os/OS.s
-.long 0x436f6e73 # 0x803e6990
-.long 0x6f6c6520 # 0x803e6994
-.long 0x54797065 # 0x803e6998
-.long 0x203a2000 # 0x803e699c
+string_align "Console Type : " # 0x803e6990
 
 .globl unk_803e69a0
 unk_803e69a0: # 0x803e69a0 /os/OS.s
-.long 0x52657461 # 0x803e69a0
-.long 0x696c2025 # 0x803e69a4
-.long 0x640a0000 # 0x803e69a8
+string_align "Retail %d\n" # 0x803e69a0
 
 .globl unk_803e69ac
 unk_803e69ac: # 0x803e69ac /os/OS.s
-.long 0x4d616320 # 0x803e69ac
-.long 0x456d756c # 0x803e69b0
-.long 0x61746f72 # 0x803e69b4
-.long 0xa000000 # 0x803e69b8
+string_align "Mac Emulator\n" # 0x803e69ac
 
 .globl unk_803e69bc
 unk_803e69bc: # 0x803e69bc /os/OS.s
-.long 0x50432045 # 0x803e69bc
-.long 0x6d756c61 # 0x803e69c0
-.long 0x746f720a # 0x803e69c4
-.long 0x0 # 0x803e69c8
+string_align "PC Emulator\n" # 0x803e69bc
 
 .globl unk_803e69cc
 unk_803e69cc: # 0x803e69cc /os/OS.s
-.long 0x45505043 # 0x803e69cc
-.long 0x20417274 # 0x803e69d0
-.long 0x6875720a # 0x803e69d4
-.long 0x0 # 0x803e69d8
+string_align "EPPC Arthur\n" # 0x803e69cc
 
 .globl unk_803e69dc
 unk_803e69dc: # 0x803e69dc /os/OS.s
-.long 0x45505043 # 0x803e69dc
-.long 0x204d696e # 0x803e69e0
-.long 0x6e6f770a # 0x803e69e4
-.long 0x0 # 0x803e69e8
+string_align "EPPC Minnow\n" # 0x803e69dc
 
 .globl unk_803e69ec
 unk_803e69ec: # 0x803e69ec /os/OS.s
-.long 0x44657665 # 0x803e69ec
-.long 0x6c6f706d # 0x803e69f0
-.long 0x656e7420 # 0x803e69f4
-.long 0x48572564 # 0x803e69f8
-.long 0xa000000 # 0x803e69fc
+string_align "Development HW%d\n" # 0x803e69ec
 
 .globl unk_803e6a00
 unk_803e6a00: # 0x803e6a00 /os/OS.s
-.long 0x4d656d6f # 0x803e6a00
-.long 0x72792025 # 0x803e6a04
-.long 0x64204d42 # 0x803e6a08
-.long 0xa000000 # 0x803e6a0c
+string_align "Memory %d MB\n" # 0x803e6a00
 
 .globl unk_803e6a10
 unk_803e6a10: # 0x803e6a10 /os/OS.s
-.long 0x4172656e # 0x803e6a10
-.long 0x61203a20 # 0x803e6a14
-.long 0x30782578 # 0x803e6a18
-.long 0x202d2030 # 0x803e6a1c
-.long 0x7825780a # 0x803e6a20
-.long 0x0 # 0x803e6a24
+string_align "Arena : 0x%x - 0x%x\n" # 0x803e6a10
 
 .globl __OSExceptionLocations
 __OSExceptionLocations: # 0x803e6a28 /os/OS.s
@@ -68657,340 +68513,96 @@ __OSExceptionLocations: # 0x803e6a28 /os/OS.s
 
 .globl unk_803e6a64
 unk_803e6a64: # 0x803e6a64 /os/OS.s
-.long 0x496e7374 # 0x803e6a64
-.long 0x616c6c69 # 0x803e6a68
-.long 0x6e67204f # 0x803e6a6c
-.long 0x53444249 # 0x803e6a70
-.long 0x6e746567 # 0x803e6a74
-.long 0x7261746f # 0x803e6a78
-.long 0x720a0000 # 0x803e6a7c
+string_align "Installing OSDBIntegrator\n" # 0x803e6a64
 
 .globl unk_803e6a80
 unk_803e6a80: # 0x803e6a80 /os/OS.s
-.long 0x3e3e3e20 # 0x803e6a80
-.long 0x4f53494e # 0x803e6a84
-.long 0x49543a20 # 0x803e6a88
-.long 0x65786365 # 0x803e6a8c
-.long 0x7074696f # 0x803e6a90
-.long 0x6e202564 # 0x803e6a94
-.long 0x20636f6d # 0x803e6a98
-.long 0x6d616e64 # 0x803e6a9c
-.long 0x65657265 # 0x803e6aa0
-.long 0x64206279 # 0x803e6aa4
-.long 0x2054524b # 0x803e6aa8
-.long 0xa000000 # 0x803e6aac
+string_align ">>> OSINIT: exception %d commandeered by TRK\n" # 0x803e6a80
 
 .globl unk_803e6ab0
 unk_803e6ab0: # 0x803e6ab0 /os/OS.s
-.long 0x3e3e3e20 # 0x803e6ab0
-.long 0x4f53494e # 0x803e6ab4
-.long 0x49543a20 # 0x803e6ab8
-.long 0x65786365 # 0x803e6abc
-.long 0x7074696f # 0x803e6ac0
-.long 0x6e202564 # 0x803e6ac4
-.long 0x20766563 # 0x803e6ac8
-.long 0x746f7265 # 0x803e6acc
-.long 0x6420746f # 0x803e6ad0
-.long 0x20646562 # 0x803e6ad4
-.long 0x75676765 # 0x803e6ad8
-.long 0x720a0000 # 0x803e6adc
+string_align ">>> OSINIT: exception %d vectored to debugger\n" # 0x803e6ab0
 
 .globl unk_803e6ae0
 unk_803e6ae0: # 0x803e6ae0 /os/OS.s
-.long 0x45786365 # 0x803e6ae0
-.long 0x7074696f # 0x803e6ae4
-.long 0x6e732069 # 0x803e6ae8
-.long 0x6e697469 # 0x803e6aec
-.long 0x616c697a # 0x803e6af0
-.long 0x65642e2e # 0x803e6af4
-.long 0x2e0a0000 # 0x803e6af8
+string_align "Exceptions initialized...\n" # 0x803e6ae0
 .long 0x0 # 0x803e6afc
 
 .globl unk_803e6b00
 unk_803e6b00: # 0x803e6b00 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6b00
-.long 0x65636b48 # 0x803e6b04
-.long 0x6561703a # 0x803e6b08
-.long 0x20466169 # 0x803e6b0c
-.long 0x6c656420 # 0x803e6b10
-.long 0x48656170 # 0x803e6b14
-.long 0x41727261 # 0x803e6b18
-.long 0x7920696e # 0x803e6b1c
-.long 0x20256400 # 0x803e6b20
+string_align "OSCheckHeap: Failed HeapArray in %d" # 0x803e6b00
 
 .globl unk_803e6b24
 unk_803e6b24: # 0x803e6b24 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6b24
-.long 0x65636b48 # 0x803e6b28
-.long 0x6561703a # 0x803e6b2c
-.long 0x20466169 # 0x803e6b30
-.long 0x6c656420 # 0x803e6b34
-.long 0x30203c3d # 0x803e6b38
-.long 0x20686561 # 0x803e6b3c
-.long 0x70202626 # 0x803e6b40
-.long 0x20686561 # 0x803e6b44
-.long 0x70203c20 # 0x803e6b48
-.long 0x4e756d48 # 0x803e6b4c
-.long 0x65617073 # 0x803e6b50
-.long 0x20696e20 # 0x803e6b54
-.long 0x25640000 # 0x803e6b58
+string_align "OSCheckHeap: Failed 0 <= heap && heap < NumHeaps in %d" # 0x803e6b24
 
 .globl unk_803e6b5c
 unk_803e6b5c: # 0x803e6b5c /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6b5c
-.long 0x65636b48 # 0x803e6b60
-.long 0x6561703a # 0x803e6b64
-.long 0x20466169 # 0x803e6b68
-.long 0x6c656420 # 0x803e6b6c
-.long 0x30203c3d # 0x803e6b70
-.long 0x2068642d # 0x803e6b74
-.long 0x3e73697a # 0x803e6b78
-.long 0x6520696e # 0x803e6b7c
-.long 0x20256400 # 0x803e6b80
+string_align "OSCheckHeap: Failed 0 <= hd->size in %d" # 0x803e6b5c
 
 .globl unk_803e6b84
 unk_803e6b84: # 0x803e6b84 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6b84
-.long 0x65636b48 # 0x803e6b88
-.long 0x6561703a # 0x803e6b8c
-.long 0x20466169 # 0x803e6b90
-.long 0x6c656420 # 0x803e6b94
-.long 0x68642d3e # 0x803e6b98
-.long 0x616c6c6f # 0x803e6b9c
-.long 0x63617465 # 0x803e6ba0
-.long 0x64203d3d # 0x803e6ba4
-.long 0x204e554c # 0x803e6ba8
-.long 0x4c207c7c # 0x803e6bac
-.long 0x2068642d # 0x803e6bb0
-.long 0x3e616c6c # 0x803e6bb4
-.long 0x6f636174 # 0x803e6bb8
-.long 0x65642d3e # 0x803e6bbc
-.long 0x70726576 # 0x803e6bc0
-.long 0x203d3d20 # 0x803e6bc4
-.long 0x4e554c4c # 0x803e6bc8
-.long 0x20696e20 # 0x803e6bcc
-.long 0x25640000 # 0x803e6bd0
+string_align "OSCheckHeap: Failed hd->allocated == NULL || hd->allocated->prev == NULL in %d" # 0x803e6b84
 
 .globl unk_803e6bd4
 unk_803e6bd4: # 0x803e6bd4 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6bd4
-.long 0x65636b48 # 0x803e6bd8
-.long 0x6561703a # 0x803e6bdc
-.long 0x20466169 # 0x803e6be0
-.long 0x6c656420 # 0x803e6be4
-.long 0x496e5261 # 0x803e6be8
-.long 0x6e676528 # 0x803e6bec
-.long 0x63656c6c # 0x803e6bf0
-.long 0x2c204172 # 0x803e6bf4
-.long 0x656e6153 # 0x803e6bf8
-.long 0x74617274 # 0x803e6bfc
-.long 0x2c204172 # 0x803e6c00
-.long 0x656e6145 # 0x803e6c04
-.long 0x6e642920 # 0x803e6c08
-.long 0x696e2025 # 0x803e6c0c
-.long 0x64000000 # 0x803e6c10
+string_align "OSCheckHeap: Failed InRange(cell, ArenaStart, ArenaEnd) in %d" # 0x803e6bd4
 
 .globl unk_803e6c14
 unk_803e6c14: # 0x803e6c14 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6c14
-.long 0x65636b48 # 0x803e6c18
-.long 0x6561703a # 0x803e6c1c
-.long 0x20466169 # 0x803e6c20
-.long 0x6c656420 # 0x803e6c24
-.long 0x4f464653 # 0x803e6c28
-.long 0x45542863 # 0x803e6c2c
-.long 0x656c6c2c # 0x803e6c30
-.long 0x20414c49 # 0x803e6c34
-.long 0x474e4d45 # 0x803e6c38
-.long 0x4e542920 # 0x803e6c3c
-.long 0x3d3d2030 # 0x803e6c40
-.long 0x20696e20 # 0x803e6c44
-.long 0x25640000 # 0x803e6c48
+string_align "OSCheckHeap: Failed OFFSET(cell, ALIGNMENT) == 0 in %d" # 0x803e6c14
 
 .globl unk_803e6c4c
 unk_803e6c4c: # 0x803e6c4c /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6c4c
-.long 0x65636b48 # 0x803e6c50
-.long 0x6561703a # 0x803e6c54
-.long 0x20466169 # 0x803e6c58
-.long 0x6c656420 # 0x803e6c5c
-.long 0x63656c6c # 0x803e6c60
-.long 0x2d3e6e65 # 0x803e6c64
-.long 0x7874203d # 0x803e6c68
-.long 0x3d204e55 # 0x803e6c6c
-.long 0x4c4c207c # 0x803e6c70
-.long 0x7c206365 # 0x803e6c74
-.long 0x6c6c2d3e # 0x803e6c78
-.long 0x6e657874 # 0x803e6c7c
-.long 0x2d3e7072 # 0x803e6c80
-.long 0x6576203d # 0x803e6c84
-.long 0x3d206365 # 0x803e6c88
-.long 0x6c6c2069 # 0x803e6c8c
-.long 0x6e202564 # 0x803e6c90
-.long 0x0 # 0x803e6c94
+string_align "OSCheckHeap: Failed cell->next == NULL || cell->next->prev == cell in %d" # 0x803e6c4c
 
 .globl unk_803e6c98
 unk_803e6c98: # 0x803e6c98 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6c98
-.long 0x65636b48 # 0x803e6c9c
-.long 0x6561703a # 0x803e6ca0
-.long 0x20466169 # 0x803e6ca4
-.long 0x6c656420 # 0x803e6ca8
-.long 0x4d494e4f # 0x803e6cac
-.long 0x424a5349 # 0x803e6cb0
-.long 0x5a45203c # 0x803e6cb4
-.long 0x3d206365 # 0x803e6cb8
-.long 0x6c6c2d3e # 0x803e6cbc
-.long 0x73697a65 # 0x803e6cc0
-.long 0x20696e20 # 0x803e6cc4
-.long 0x25640000 # 0x803e6cc8
+string_align "OSCheckHeap: Failed MINOBJSIZE <= cell->size in %d" # 0x803e6c98
 
 .globl unk_803e6ccc
 unk_803e6ccc: # 0x803e6ccc /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6ccc
-.long 0x65636b48 # 0x803e6cd0
-.long 0x6561703a # 0x803e6cd4
-.long 0x20466169 # 0x803e6cd8
-.long 0x6c656420 # 0x803e6cdc
-.long 0x4f464653 # 0x803e6ce0
-.long 0x45542863 # 0x803e6ce4
-.long 0x656c6c2d # 0x803e6ce8
-.long 0x3e73697a # 0x803e6cec
-.long 0x652c2041 # 0x803e6cf0
-.long 0x4c49474e # 0x803e6cf4
-.long 0x4d454e54 # 0x803e6cf8
-.long 0x29203d3d # 0x803e6cfc
-.long 0x20302069 # 0x803e6d00
-.long 0x6e202564 # 0x803e6d04
-.long 0x0 # 0x803e6d08
+string_align "OSCheckHeap: Failed OFFSET(cell->size, ALIGNMENT) == 0 in %d" # 0x803e6ccc
 
 .globl unk_803e6d0c
 unk_803e6d0c: # 0x803e6d0c /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6d0c
-.long 0x65636b48 # 0x803e6d10
-.long 0x6561703a # 0x803e6d14
-.long 0x20466169 # 0x803e6d18
-.long 0x6c656420 # 0x803e6d1c
-.long 0x30203c20 # 0x803e6d20
-.long 0x746f7461 # 0x803e6d24
-.long 0x6c202626 # 0x803e6d28
-.long 0x20746f74 # 0x803e6d2c
-.long 0x616c203c # 0x803e6d30
-.long 0x3d206864 # 0x803e6d34
-.long 0x2d3e7369 # 0x803e6d38
-.long 0x7a652069 # 0x803e6d3c
-.long 0x6e202564 # 0x803e6d40
-.long 0x0 # 0x803e6d44
+string_align "OSCheckHeap: Failed 0 < total && total <= hd->size in %d" # 0x803e6d0c
 
 .globl unk_803e6d48
 unk_803e6d48: # 0x803e6d48 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6d48
-.long 0x65636b48 # 0x803e6d4c
-.long 0x6561703a # 0x803e6d50
-.long 0x20466169 # 0x803e6d54
-.long 0x6c656420 # 0x803e6d58
-.long 0x68642d3e # 0x803e6d5c
-.long 0x66726565 # 0x803e6d60
-.long 0x203d3d20 # 0x803e6d64
-.long 0x4e554c4c # 0x803e6d68
-.long 0x207c7c20 # 0x803e6d6c
-.long 0x68642d3e # 0x803e6d70
-.long 0x66726565 # 0x803e6d74
-.long 0x2d3e7072 # 0x803e6d78
-.long 0x6576203d # 0x803e6d7c
-.long 0x3d204e55 # 0x803e6d80
-.long 0x4c4c2069 # 0x803e6d84
-.long 0x6e202564 # 0x803e6d88
-.long 0x0 # 0x803e6d8c
+string_align "OSCheckHeap: Failed hd->free == NULL || hd->free->prev == NULL in %d" # 0x803e6d48
 
 .globl unk_803e6d90
 unk_803e6d90: # 0x803e6d90 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6d90
-.long 0x65636b48 # 0x803e6d94
-.long 0x6561703a # 0x803e6d98
-.long 0x20466169 # 0x803e6d9c
-.long 0x6c656420 # 0x803e6da0
-.long 0x63656c6c # 0x803e6da4
-.long 0x2d3e6e65 # 0x803e6da8
-.long 0x7874203d # 0x803e6dac
-.long 0x3d204e55 # 0x803e6db0
-.long 0x4c4c207c # 0x803e6db4
-.long 0x7c202863 # 0x803e6db8
-.long 0x6861722a # 0x803e6dbc
-.long 0x29206365 # 0x803e6dc0
-.long 0x6c6c202b # 0x803e6dc4
-.long 0x2063656c # 0x803e6dc8
-.long 0x6c2d3e73 # 0x803e6dcc
-.long 0x697a6520 # 0x803e6dd0
-.long 0x3c202863 # 0x803e6dd4
-.long 0x6861722a # 0x803e6dd8
-.long 0x29206365 # 0x803e6ddc
-.long 0x6c6c2d3e # 0x803e6de0
-.long 0x6e657874 # 0x803e6de4
-.long 0x20696e20 # 0x803e6de8
-.long 0x25640000 # 0x803e6dec
+string_align "OSCheckHeap: Failed cell->next == NULL || (char*) cell + cell->size < (char*) cell->next in %d" # 0x803e6d90
 
 .globl unk_803e6df0
 unk_803e6df0: # 0x803e6df0 /os/OSAlloc.s
-.long 0x4f534368 # 0x803e6df0
-.long 0x65636b48 # 0x803e6df4
-.long 0x6561703a # 0x803e6df8
-.long 0x20466169 # 0x803e6dfc
-.long 0x6c656420 # 0x803e6e00
-.long 0x746f7461 # 0x803e6e04
-.long 0x6c203d3d # 0x803e6e08
-.long 0x2068642d # 0x803e6e0c
-.long 0x3e73697a # 0x803e6e10
-.long 0x6520696e # 0x803e6e14
-.long 0x20256400 # 0x803e6e18
+string_align "OSCheckHeap: Failed total == hd->size in %d" # 0x803e6df0
 
 .globl unk_803e6e1c
 unk_803e6e1c: # 0x803e6e1c /os/OSAlloc.s
-.long 0xa4f5344 # 0x803e6e1c
-.long 0x756d7048 # 0x803e6e20
-.long 0x65617028 # 0x803e6e24
-.long 0x2564293a # 0x803e6e28
-.long 0xa000000 # 0x803e6e2c
+string_align "\nOSDumpHeap(%d):\n" # 0x803e6e1c
 
 .globl unk_803e6e30
 unk_803e6e30: # 0x803e6e30 /os/OSAlloc.s
-.long 0x2d2d2d2d # 0x803e6e30
-.long 0x2d2d2d2d # 0x803e6e34
-.long 0x496e6163 # 0x803e6e38
-.long 0x74697665 # 0x803e6e3c
-.long 0xa000000 # 0x803e6e40
+string_align "--------Inactive\n" # 0x803e6e30
 
 .globl unk_803e6e44
 unk_803e6e44: # 0x803e6e44 /os/OSAlloc.s
-.long 0x61646472 # 0x803e6e44
-.long 0x973697a # 0x803e6e48
-.long 0x65090965 # 0x803e6e4c
-.long 0x6e640970 # 0x803e6e50
-.long 0x72657609 # 0x803e6e54
-.long 0x6e657874 # 0x803e6e58
-.long 0xa000000 # 0x803e6e5c
+string_align "addr\tsize\t\tend\tprev\tnext\n" # 0x803e6e44
 
 .globl unk_803e6e60
 unk_803e6e60: # 0x803e6e60 /os/OSAlloc.s
-.long 0x2d2d2d2d # 0x803e6e60
-.long 0x2d2d2d2d # 0x803e6e64
-.long 0x416c6c6f # 0x803e6e68
-.long 0x63617465 # 0x803e6e6c
-.long 0x640a0000 # 0x803e6e70
+string_align "--------Allocated\n" # 0x803e6e60
 
 .globl unk_803e6e74
 unk_803e6e74: # 0x803e6e74 /os/OSAlloc.s
-.long 0x25780925 # 0x803e6e74
-.long 0x64092578 # 0x803e6e78
-.long 0x9257809 # 0x803e6e7c
-.long 0x25780a00 # 0x803e6e80
+string_align "%x\t%d\t%x\t%x\t%x\n" # 0x803e6e74
 
 .globl unk_803e6e84
 unk_803e6e84: # 0x803e6e84 /os/OSAlloc.s
-.long 0x2d2d2d2d # 0x803e6e84
-.long 0x2d2d2d2d # 0x803e6e88
-.long 0x46726565 # 0x803e6e8c
-.long 0xa000000 # 0x803e6e90
+string_align "--------Free\n" # 0x803e6e84
 .long 0x0 # 0x803e6e94
 
 .globl DSPInitCode
@@ -69030,570 +68642,172 @@ DSPInitCode: # 0x803e6e98 /os/OSAudioSystem.s
 
 .globl unk_803e6f18
 unk_803e6f18: # 0x803e6f18 /os/OSCache.s
-.long 0x3e3e3e20 # 0x803e6f18
-.long 0x4c322049 # 0x803e6f1c
-.long 0x4e56414c # 0x803e6f20
-.long 0x49444154 # 0x803e6f24
-.long 0x45203a20 # 0x803e6f28
-.long 0x53484f55 # 0x803e6f2c
-.long 0x4c44204e # 0x803e6f30
-.long 0x45564552 # 0x803e6f34
-.long 0x20484150 # 0x803e6f38
-.long 0x50454e0a # 0x803e6f3c
-.long 0x0 # 0x803e6f40
+string_align ">>> L2 INVALIDATE : SHOULD NEVER HAPPEN\n" # 0x803e6f18
 
 .globl unk_803e6f44
 unk_803e6f44: # 0x803e6f44 /os/OSCache.s
-.long 0x4d616368 # 0x803e6f44
-.long 0x696e6520 # 0x803e6f48
-.long 0x63686563 # 0x803e6f4c
-.long 0x6b207265 # 0x803e6f50
-.long 0x63656976 # 0x803e6f54
-.long 0x65640a00 # 0x803e6f58
+string_align "Machine check received\n" # 0x803e6f44
 
 .globl unk_803e6f5c
 unk_803e6f5c: # 0x803e6f5c /os/OSCache.s
-.long 0x48494432 # 0x803e6f5c
-.long 0x203d2030 # 0x803e6f60
-.long 0x78257820 # 0x803e6f64
-.long 0x20205352 # 0x803e6f68
-.long 0x5231203d # 0x803e6f6c
-.long 0x20307825 # 0x803e6f70
-.long 0x780a0000 # 0x803e6f74
+string_align "HID2 = 0x%x   SRR1 = 0x%x\n" # 0x803e6f5c
 
 .globl unk_803e6f78
 unk_803e6f78: # 0x803e6f78 /os/OSCache.s
-.long 0x4d616368 # 0x803e6f78
-.long 0x696e6520 # 0x803e6f7c
-.long 0x63686563 # 0x803e6f80
-.long 0x6b207761 # 0x803e6f84
-.long 0x73206e6f # 0x803e6f88
-.long 0x7420444d # 0x803e6f8c
-.long 0x412f6c6f # 0x803e6f90
-.long 0x636b6564 # 0x803e6f94
-.long 0x20636163 # 0x803e6f98
-.long 0x68652072 # 0x803e6f9c
-.long 0x656c6174 # 0x803e6fa0
-.long 0x65640a00 # 0x803e6fa4
+string_align "Machine check was not DMA/locked cache related\n" # 0x803e6f78
 
 .globl unk_803e6fa8
 unk_803e6fa8: # 0x803e6fa8 /os/OSCache.s
-.long 0x444d4145 # 0x803e6fa8
-.long 0x72726f72 # 0x803e6fac
-.long 0x48616e64 # 0x803e6fb0
-.long 0x6c657228 # 0x803e6fb4
-.long 0x293a2041 # 0x803e6fb8
-.long 0x6e206572 # 0x803e6fbc
-.long 0x726f7220 # 0x803e6fc0
-.long 0x6f636375 # 0x803e6fc4
-.long 0x72726564 # 0x803e6fc8
-.long 0x20776869 # 0x803e6fcc
-.long 0x6c652070 # 0x803e6fd0
-.long 0x726f6365 # 0x803e6fd4
-.long 0x7373696e # 0x803e6fd8
-.long 0x6720444d # 0x803e6fdc
-.long 0x412e0a00 # 0x803e6fe0
+string_align "DMAErrorHandler(): An error occurred while processing DMA.\n" # 0x803e6fa8
 
 .globl unk_803e6fe4
 unk_803e6fe4: # 0x803e6fe4 /os/OSCache.s
-.long 0x54686520 # 0x803e6fe4
-.long 0x666f6c6c # 0x803e6fe8
-.long 0x6f77696e # 0x803e6fec
-.long 0x67206572 # 0x803e6ff0
-.long 0x726f7273 # 0x803e6ff4
-.long 0x20686176 # 0x803e6ff8
-.long 0x65206265 # 0x803e6ffc
-.long 0x656e2064 # 0x803e7000
-.long 0x65746563 # 0x803e7004
-.long 0x74656420 # 0x803e7008
-.long 0x616e6420 # 0x803e700c
-.long 0x636c6561 # 0x803e7010
-.long 0x72656420 # 0x803e7014
-.long 0x3a0a0000 # 0x803e7018
+string_align "The following errors have been detected and cleared :\n" # 0x803e6fe4
 
 .globl unk_803e701c
 unk_803e701c: # 0x803e701c /os/OSCache.s
-.long 0x92d2052 # 0x803e701c
-.long 0x65717565 # 0x803e7020
-.long 0x73746564 # 0x803e7024
-.long 0x2061206c # 0x803e7028
-.long 0x6f636b65 # 0x803e702c
-.long 0x64206361 # 0x803e7030
-.long 0x63686520 # 0x803e7034
-.long 0x74616720 # 0x803e7038
-.long 0x74686174 # 0x803e703c
-.long 0x20776173 # 0x803e7040
-.long 0x20616c72 # 0x803e7044
-.long 0x65616479 # 0x803e7048
-.long 0x20696e20 # 0x803e704c
-.long 0x74686520 # 0x803e7050
-.long 0x63616368 # 0x803e7054
-.long 0x650a0000 # 0x803e7058
+string_align "\t- Requested a locked cache tag that was already in the cache\n" # 0x803e701c
 
 .globl unk_803e705c
 unk_803e705c: # 0x803e705c /os/OSCache.s
-.long 0x92d2044 # 0x803e705c
-.long 0x4d412061 # 0x803e7060
-.long 0x7474656d # 0x803e7064
-.long 0x70746564 # 0x803e7068
-.long 0x20746f20 # 0x803e706c
-.long 0x61636365 # 0x803e7070
-.long 0x7373206e # 0x803e7074
-.long 0x6f726d61 # 0x803e7078
-.long 0x6c206361 # 0x803e707c
-.long 0x6368650a # 0x803e7080
-.long 0x0 # 0x803e7084
+string_align "\t- DMA attempted to access normal cache\n" # 0x803e705c
 
 .globl unk_803e7088
 unk_803e7088: # 0x803e7088 /os/OSCache.s
-.long 0x92d2044 # 0x803e7088
-.long 0x4d41206d # 0x803e708c
-.long 0x69737365 # 0x803e7090
-.long 0x6420696e # 0x803e7094
-.long 0x20646174 # 0x803e7098
-.long 0x61206361 # 0x803e709c
-.long 0x6368650a # 0x803e70a0
-.long 0x0 # 0x803e70a4
+string_align "\t- DMA missed in data cache\n" # 0x803e7088
 
 .globl unk_803e70a8
 unk_803e70a8: # 0x803e70a8 /os/OSCache.s
-.long 0x92d2044 # 0x803e70a8
-.long 0x4d412071 # 0x803e70ac
-.long 0x75657565 # 0x803e70b0
-.long 0x206f7665 # 0x803e70b4
-.long 0x72666c6f # 0x803e70b8
-.long 0x7765640a # 0x803e70bc
-.long 0x0 # 0x803e70c0
+string_align "\t- DMA queue overflowed\n" # 0x803e70a8
 
 .globl unk_803e70c4
 unk_803e70c4: # 0x803e70c4 /os/OSCache.s
-.long 0x4c312069 # 0x803e70c4
-.long 0x2d636163 # 0x803e70c8
-.long 0x68657320 # 0x803e70cc
-.long 0x696e6974 # 0x803e70d0
-.long 0x69616c69 # 0x803e70d4
-.long 0x7a65640a # 0x803e70d8
-.long 0x0 # 0x803e70dc
+string_align "L1 i-caches initialized\n" # 0x803e70c4
 
 .globl unk_803e70e0
 unk_803e70e0: # 0x803e70e0 /os/OSCache.s
-.long 0x4c312064 # 0x803e70e0
-.long 0x2d636163 # 0x803e70e4
-.long 0x68657320 # 0x803e70e8
-.long 0x696e6974 # 0x803e70ec
-.long 0x69616c69 # 0x803e70f0
-.long 0x7a65640a # 0x803e70f4
-.long 0x0 # 0x803e70f8
+string_align "L1 d-caches initialized\n" # 0x803e70e0
 
 .globl unk_803e70fc
 unk_803e70fc: # 0x803e70fc /os/OSCache.s
-.long 0x4c322063 # 0x803e70fc
-.long 0x61636865 # 0x803e7100
-.long 0x20696e69 # 0x803e7104
-.long 0x7469616c # 0x803e7108
-.long 0x697a6564 # 0x803e710c
-.long 0xa000000 # 0x803e7110
+string_align "L2 cache initialized\n" # 0x803e70fc
 
 .globl unk_803e7114
 unk_803e7114: # 0x803e7114 /os/OSCache.s
-.long 0x4c6f636b # 0x803e7114
-.long 0x65642063 # 0x803e7118
-.long 0x61636865 # 0x803e711c
-.long 0x206d6163 # 0x803e7120
-.long 0x68696e65 # 0x803e7124
-.long 0x20636865 # 0x803e7128
-.long 0x636b2068 # 0x803e712c
-.long 0x616e646c # 0x803e7130
-.long 0x65722069 # 0x803e7134
-.long 0x6e737461 # 0x803e7138
-.long 0x6c6c6564 # 0x803e713c
-.long 0xa000000 # 0x803e7140
+string_align "Locked cache machine check handler installed\n" # 0x803e7114
 .long 0x0 # 0x803e7144
 
 .globl unk_803e7148
 unk_803e7148: # 0x803e7148 /os/OSContext.s
-.long 0x2d2d2d2d # 0x803e7148
-.long 0x2d2d2d2d # 0x803e714c
-.long 0x2d2d2d2d # 0x803e7150
-.long 0x2d2d2d2d # 0x803e7154
-.long 0x2d2d2d2d # 0x803e7158
-.long 0x2d2d2d2d # 0x803e715c
-.long 0x2d20436f # 0x803e7160
-.long 0x6e746578 # 0x803e7164
-.long 0x74203078 # 0x803e7168
-.long 0x25303878 # 0x803e716c
-.long 0x202d2d2d # 0x803e7170
-.long 0x2d2d2d2d # 0x803e7174
-.long 0x2d2d2d2d # 0x803e7178
-.long 0x2d2d2d2d # 0x803e717c
-.long 0x2d2d2d2d # 0x803e7180
-.long 0x2d2d2d2d # 0x803e7184
-.long 0x2d2d0a00 # 0x803e7188
+string_align "------------------------- Context 0x%08x -------------------------\n" # 0x803e7148
 
 .globl unk_803e718c
 unk_803e718c: # 0x803e718c /os/OSContext.s
-.long 0x72252d32 # 0x803e718c
-.long 0x6420203d # 0x803e7190
-.long 0x20307825 # 0x803e7194
-.long 0x30387820 # 0x803e7198
-.long 0x28253134 # 0x803e719c
-.long 0x64292020 # 0x803e71a0
-.long 0x72252d32 # 0x803e71a4
-.long 0x6420203d # 0x803e71a8
-.long 0x20307825 # 0x803e71ac
-.long 0x30387820 # 0x803e71b0
-.long 0x28253134 # 0x803e71b4
-.long 0x64290a00 # 0x803e71b8
+string_align "r%-2d  = 0x%08x (%14d)  r%-2d  = 0x%08x (%14d)\n" # 0x803e718c
 
 .globl unk_803e71bc
 unk_803e71bc: # 0x803e71bc /os/OSContext.s
-.long 0x4c522020 # 0x803e71bc
-.long 0x203d2030 # 0x803e71c0
-.long 0x78253038 # 0x803e71c4
-.long 0x78202020 # 0x803e71c8
-.long 0x20202020 # 0x803e71cc
-.long 0x20202020 # 0x803e71d0
-.long 0x20202020 # 0x803e71d4
-.long 0x20202020 # 0x803e71d8
-.long 0x43522020 # 0x803e71dc
-.long 0x203d2030 # 0x803e71e0
-.long 0x78253038 # 0x803e71e4
-.long 0x780a0000 # 0x803e71e8
+string_align "LR   = 0x%08x                   CR   = 0x%08x\n" # 0x803e71bc
 
 .globl unk_803e71ec
 unk_803e71ec: # 0x803e71ec /os/OSContext.s
-.long 0x53525230 # 0x803e71ec
-.long 0x203d2030 # 0x803e71f0
-.long 0x78253038 # 0x803e71f4
-.long 0x78202020 # 0x803e71f8
-.long 0x20202020 # 0x803e71fc
-.long 0x20202020 # 0x803e7200
-.long 0x20202020 # 0x803e7204
-.long 0x20202020 # 0x803e7208
-.long 0x53525231 # 0x803e720c
-.long 0x203d2030 # 0x803e7210
-.long 0x78253038 # 0x803e7214
-.long 0x780a0000 # 0x803e7218
+string_align "SRR0 = 0x%08x                   SRR1 = 0x%08x\n" # 0x803e71ec
 
 .globl unk_803e721c
 unk_803e721c: # 0x803e721c /os/OSContext.s
-.long 0xa475152 # 0x803e721c
-.long 0x732d2d2d # 0x803e7220
-.long 0x2d2d2d2d # 0x803e7224
-.long 0x2d2d2d0a # 0x803e7228
-.long 0x0 # 0x803e722c
+string_align "\nGQRs----------\n" # 0x803e721c
 
 .globl unk_803e7230
 unk_803e7230: # 0x803e7230 /os/OSContext.s
-.long 0x67717225 # 0x803e7230
-.long 0x64203d20 # 0x803e7234
-.long 0x30782530 # 0x803e7238
-.long 0x38782009 # 0x803e723c
-.long 0x20677172 # 0x803e7240
-.long 0x2564203d # 0x803e7244
-.long 0x20307825 # 0x803e7248
-.long 0x3038780a # 0x803e724c
-.long 0x0 # 0x803e7250
+string_align "gqr%d = 0x%08x \t gqr%d = 0x%08x\n" # 0x803e7230
 
 .globl unk_803e7254
 unk_803e7254: # 0x803e7254 /os/OSContext.s
-.long 0xa0a4650 # 0x803e7254
-.long 0x52732d2d # 0x803e7258
-.long 0x2d2d2d2d # 0x803e725c
-.long 0x2d2d2d2d # 0x803e7260
-.long 0xa000000 # 0x803e7264
+string_align "\n\nFPRs----------\n" # 0x803e7254
 
 .globl unk_803e7268
 unk_803e7268: # 0x803e7268 /os/OSContext.s
-.long 0x66722564 # 0x803e7268
-.long 0x20093d20 # 0x803e726c
-.long 0x25642009 # 0x803e7270
-.long 0x20667225 # 0x803e7274
-.long 0x6420093d # 0x803e7278
-.long 0x2025640a # 0x803e727c
-.long 0x0 # 0x803e7280
+string_align "fr%d \t= %d \t fr%d \t= %d\n" # 0x803e7268
 
 .globl unk_803e7284
 unk_803e7284: # 0x803e7284 /os/OSContext.s
-.long 0xa0a5053 # 0x803e7284
-.long 0x46732d2d # 0x803e7288
-.long 0x2d2d2d2d # 0x803e728c
-.long 0x2d2d2d2d # 0x803e7290
-.long 0xa000000 # 0x803e7294
+string_align "\n\nPSFs----------\n" # 0x803e7284
 
 .globl unk_803e7298
 unk_803e7298: # 0x803e7298 /os/OSContext.s
-.long 0x70732564 # 0x803e7298
-.long 0x20093d20 # 0x803e729c
-.long 0x30782578 # 0x803e72a0
-.long 0x20092070 # 0x803e72a4
-.long 0x73256420 # 0x803e72a8
-.long 0x93d2030 # 0x803e72ac
-.long 0x7825780a # 0x803e72b0
-.long 0x0 # 0x803e72b4
+string_align "ps%d \t= 0x%x \t ps%d \t= 0x%x\n" # 0x803e7298
 
 .globl unk_803e72b8
 unk_803e72b8: # 0x803e72b8 /os/OSContext.s
-.long 0xa416464 # 0x803e72b8
-.long 0x72657373 # 0x803e72bc
-.long 0x3a202020 # 0x803e72c0
-.long 0x20202042 # 0x803e72c4
-.long 0x61636b20 # 0x803e72c8
-.long 0x43686169 # 0x803e72cc
-.long 0x6e202020 # 0x803e72d0
-.long 0x204c5220 # 0x803e72d4
-.long 0x53617665 # 0x803e72d8
-.long 0xa000000 # 0x803e72dc
+string_align "\nAddress:      Back Chain    LR Save\n" # 0x803e72b8
 
 .globl unk_803e72e0
 unk_803e72e0: # 0x803e72e0 /os/OSContext.s
-.long 0x30782530 # 0x803e72e0
-.long 0x38783a20 # 0x803e72e4
-.long 0x20203078 # 0x803e72e8
-.long 0x25303878 # 0x803e72ec
-.long 0x20202020 # 0x803e72f0
-.long 0x30782530 # 0x803e72f4
-.long 0x38780a00 # 0x803e72f8
+string_align "0x%08x:   0x%08x    0x%08x\n" # 0x803e72e0
 
 .globl unk_803e72fc
 unk_803e72fc: # 0x803e72fc /os/OSContext.s
-.long 0x4650552d # 0x803e72fc
-.long 0x756e6176 # 0x803e7300
-.long 0x61696c61 # 0x803e7304
-.long 0x626c6520 # 0x803e7308
-.long 0x68616e64 # 0x803e730c
-.long 0x6c657220 # 0x803e7310
-.long 0x696e7374 # 0x803e7314
-.long 0x616c6c65 # 0x803e7318
-.long 0x640a0000 # 0x803e731c
+string_align "FPU-unavailable handler installed\n" # 0x803e72fc
 
 .globl unk_803e7320
 unk_803e7320: # 0x803e7320 /os/OSError.s
-.long 0x20696e20 # 0x803e7320
-.long 0x22257322 # 0x803e7324
-.long 0x206f6e20 # 0x803e7328
-.long 0x6c696e65 # 0x803e732c
-.long 0x2025642e # 0x803e7330
-.long 0xa000000 # 0x803e7334
+string_align " in \"%s\" on line %d.\n" # 0x803e7320
 
 .globl unk_803e7338
 unk_803e7338: # 0x803e7338 /os/OSError.s
-.long 0xa416464 # 0x803e7338
-.long 0x72657373 # 0x803e733c
-.long 0x3a202020 # 0x803e7340
-.long 0x20202042 # 0x803e7344
-.long 0x61636b20 # 0x803e7348
-.long 0x43686169 # 0x803e734c
-.long 0x6e202020 # 0x803e7350
-.long 0x204c5220 # 0x803e7354
-.long 0x53617665 # 0x803e7358
-.long 0xa000000 # 0x803e735c
+string_align "\nAddress:      Back Chain    LR Save\n" # 0x803e7338
 
 .globl unk_803e7360
 unk_803e7360: # 0x803e7360 /os/OSError.s
-.long 0x30782530 # 0x803e7360
-.long 0x38783a20 # 0x803e7364
-.long 0x20203078 # 0x803e7368
-.long 0x25303878 # 0x803e736c
-.long 0x20202020 # 0x803e7370
-.long 0x30782530 # 0x803e7374
-.long 0x38780a00 # 0x803e7378
+string_align "0x%08x:   0x%08x    0x%08x\n" # 0x803e7360
 
 .globl unk_803e737c
 unk_803e737c: # 0x803e737c /os/OSError.s
-.long 0x4e6f6e2d # 0x803e737c
-.long 0x7265636f # 0x803e7380
-.long 0x76657261 # 0x803e7384
-.long 0x626c6520 # 0x803e7388
-.long 0x45786365 # 0x803e738c
-.long 0x7074696f # 0x803e7390
-.long 0x6e202564 # 0x803e7394
-.long 0x0 # 0x803e7398
+string_align "Non-recoverable Exception %d" # 0x803e737c
 
 .globl unk_803e739c
 unk_803e739c: # 0x803e739c /os/OSError.s
-.long 0x556e6861 # 0x803e739c
-.long 0x6e646c65 # 0x803e73a0
-.long 0x64204578 # 0x803e73a4
-.long 0x63657074 # 0x803e73a8
-.long 0x696f6e20 # 0x803e73ac
-.long 0x25640000 # 0x803e73b0
+string_align "Unhandled Exception %d" # 0x803e739c
 
 .globl unk_803e73b4
 unk_803e73b4: # 0x803e73b4 /os/OSError.s
-.long 0xa445349 # 0x803e73b4
-.long 0x5352203d # 0x803e73b8
-.long 0x20307825 # 0x803e73bc
-.long 0x30387820 # 0x803e73c0
-.long 0x20202020 # 0x803e73c4
-.long 0x20202020 # 0x803e73c8
-.long 0x20202020 # 0x803e73cc
-.long 0x20202020 # 0x803e73d0
-.long 0x20204441 # 0x803e73d4
-.long 0x5220203d # 0x803e73d8
-.long 0x20307825 # 0x803e73dc
-.long 0x3038780a # 0x803e73e0
-.long 0x0 # 0x803e73e4
+string_align "\nDSISR = 0x%08x                   DAR  = 0x%08x\n" # 0x803e73b4
 
 .globl unk_803e73e8
 unk_803e73e8: # 0x803e73e8 /os/OSError.s
-.long 0x5442203d # 0x803e73e8
-.long 0x20307825 # 0x803e73ec
-.long 0x3031366c # 0x803e73f0
-.long 0x6c780a00 # 0x803e73f4
+string_align "TB = 0x%016llx\n" # 0x803e73e8
 
 .globl unk_803e73f8
 unk_803e73f8: # 0x803e73f8 /os/OSError.s
-.long 0xa496e73 # 0x803e73f8
-.long 0x74727563 # 0x803e73fc
-.long 0x74696f6e # 0x803e7400
-.long 0x20617420 # 0x803e7404
-.long 0x30782578 # 0x803e7408
-.long 0x20287265 # 0x803e740c
-.long 0x61642066 # 0x803e7410
-.long 0x726f6d20 # 0x803e7414
-.long 0x53525230 # 0x803e7418
-.long 0x29206174 # 0x803e741c
-.long 0x74656d70 # 0x803e7420
-.long 0x74656420 # 0x803e7424
-.long 0x746f2061 # 0x803e7428
-.long 0x63636573 # 0x803e742c
-.long 0x7320696e # 0x803e7430
-.long 0x76616c69 # 0x803e7434
-.long 0x64206164 # 0x803e7438
-.long 0x64726573 # 0x803e743c
-.long 0x73203078 # 0x803e7440
-.long 0x25782028 # 0x803e7444
-.long 0x72656164 # 0x803e7448
-.long 0x2066726f # 0x803e744c
-.long 0x6d204441 # 0x803e7450
-.long 0x52290a00 # 0x803e7454
+string_align "\nInstruction at 0x%x (read from SRR0) attempted to access invalid address 0x%x (read from DAR)\n" # 0x803e73f8
 
 .globl unk_803e7458
 unk_803e7458: # 0x803e7458 /os/OSError.s
-.long 0xa417474 # 0x803e7458
-.long 0x656d7074 # 0x803e745c
-.long 0x65642074 # 0x803e7460
-.long 0x6f206665 # 0x803e7464
-.long 0x74636820 # 0x803e7468
-.long 0x696e7374 # 0x803e746c
-.long 0x72756374 # 0x803e7470
-.long 0x696f6e20 # 0x803e7474
-.long 0x66726f6d # 0x803e7478
-.long 0x20696e76 # 0x803e747c
-.long 0x616c6964 # 0x803e7480
-.long 0x20616464 # 0x803e7484
-.long 0x72657373 # 0x803e7488
-.long 0x20307825 # 0x803e748c
-.long 0x78202872 # 0x803e7490
-.long 0x65616420 # 0x803e7494
-.long 0x66726f6d # 0x803e7498
-.long 0x20535252 # 0x803e749c
-.long 0x30290a00 # 0x803e74a0
+string_align "\nAttempted to fetch instruction from invalid address 0x%x (read from SRR0)\n" # 0x803e7458
 
 .globl unk_803e74a4
 unk_803e74a4: # 0x803e74a4 /os/OSError.s
-.long 0xa496e73 # 0x803e74a4
-.long 0x74727563 # 0x803e74a8
-.long 0x74696f6e # 0x803e74ac
-.long 0x20617420 # 0x803e74b0
-.long 0x30782578 # 0x803e74b4
-.long 0x20287265 # 0x803e74b8
-.long 0x61642066 # 0x803e74bc
-.long 0x726f6d20 # 0x803e74c0
-.long 0x53525230 # 0x803e74c4
-.long 0x29206174 # 0x803e74c8
-.long 0x74656d70 # 0x803e74cc
-.long 0x74656420 # 0x803e74d0
-.long 0x746f2061 # 0x803e74d4
-.long 0x63636573 # 0x803e74d8
-.long 0x7320756e # 0x803e74dc
-.long 0x616c6967 # 0x803e74e0
-.long 0x6e656420 # 0x803e74e4
-.long 0x61646472 # 0x803e74e8
-.long 0x65737320 # 0x803e74ec
-.long 0x30782578 # 0x803e74f0
-.long 0x20287265 # 0x803e74f4
-.long 0x61642066 # 0x803e74f8
-.long 0x726f6d20 # 0x803e74fc
-.long 0x44415229 # 0x803e7500
-.long 0xa000000 # 0x803e7504
+string_align "\nInstruction at 0x%x (read from SRR0) attempted to access unaligned address 0x%x (read from DAR)\n" # 0x803e74a4
 
 .globl unk_803e7508
 unk_803e7508: # 0x803e7508 /os/OSError.s
-.long 0xa50726f # 0x803e7508
-.long 0x6772616d # 0x803e750c
-.long 0x20657863 # 0x803e7510
-.long 0x65707469 # 0x803e7514
-.long 0x6f6e203a # 0x803e7518
-.long 0x20506f73 # 0x803e751c
-.long 0x7369626c # 0x803e7520
-.long 0x6520696c # 0x803e7524
-.long 0x6c656761 # 0x803e7528
-.long 0x6c20696e # 0x803e752c
-.long 0x73747275 # 0x803e7530
-.long 0x6374696f # 0x803e7534
-.long 0x6e2f6f70 # 0x803e7538
-.long 0x65726174 # 0x803e753c
-.long 0x696f6e20 # 0x803e7540
-.long 0x6174206f # 0x803e7544
-.long 0x72206172 # 0x803e7548
-.long 0x6f756e64 # 0x803e754c
-.long 0x20307825 # 0x803e7550
-.long 0x78202872 # 0x803e7554
-.long 0x65616420 # 0x803e7558
-.long 0x66726f6d # 0x803e755c
-.long 0x20535252 # 0x803e7560
-.long 0x30290a00 # 0x803e7564
+string_align "\nProgram exception : Possible illegal instruction/operation at or around 0x%x (read from SRR0)\n" # 0x803e7508
 
 .globl unk_803e7568
 unk_803e7568: # 0x803e7568 /os/OSError.s
-.long 0x41492044 # 0x803e7568
-.long 0x4d412041 # 0x803e756c
-.long 0x64647265 # 0x803e7570
-.long 0x7373203d # 0x803e7574
-.long 0x20202030 # 0x803e7578
-.long 0x78253034 # 0x803e757c
-.long 0x78253034 # 0x803e7580
-.long 0x780a0000 # 0x803e7584
+string_align "AI DMA Address =   0x%04x%04x\n" # 0x803e7568
 
 .globl unk_803e7588
 unk_803e7588: # 0x803e7588 /os/OSError.s
-.long 0x4152414d # 0x803e7588
-.long 0x20444d41 # 0x803e758c
-.long 0x20416464 # 0x803e7590
-.long 0x72657373 # 0x803e7594
-.long 0x203d2030 # 0x803e7598
-.long 0x78253034 # 0x803e759c
-.long 0x78253034 # 0x803e75a0
-.long 0x780a0000 # 0x803e75a4
+string_align "ARAM DMA Address = 0x%04x%04x\n" # 0x803e7588
 
 .globl unk_803e75a8
 unk_803e75a8: # 0x803e75a8 /os/OSError.s
-.long 0x44492044 # 0x803e75a8
-.long 0x4d412041 # 0x803e75ac
-.long 0x64647265 # 0x803e75b0
-.long 0x7373203d # 0x803e75b4
-.long 0x20202030 # 0x803e75b8
-.long 0x78253038 # 0x803e75bc
-.long 0x780a0000 # 0x803e75c0
+string_align "DI DMA Address =   0x%08x\n" # 0x803e75a8
 
 .globl unk_803e75c4
 unk_803e75c4: # 0x803e75c4 /os/OSError.s
-.long 0xa4c6173 # 0x803e75c4
-.long 0x7420696e # 0x803e75c8
-.long 0x74657272 # 0x803e75cc
-.long 0x75707420 # 0x803e75d0
-.long 0x28256429 # 0x803e75d4
-.long 0x3a205352 # 0x803e75d8
-.long 0x5230203d # 0x803e75dc
-.long 0x20307825 # 0x803e75e0
-.long 0x30387820 # 0x803e75e4
-.long 0x20544220 # 0x803e75e8
-.long 0x3d203078 # 0x803e75ec
-.long 0x25303136 # 0x803e75f0
-.long 0x6c6c780a # 0x803e75f4
-.long 0x0 # 0x803e75f8
+string_align "\nLast interrupt (%d): SRR0 = 0x%08x  TB = 0x%016llx\n" # 0x803e75c4
 
 .globl unk_803e75fc
 unk_803e75fc: # 0x803e75fc /os/OSError.s
@@ -70383,322 +69597,67 @@ LeapYearDays: # 0x803e81c0 /os/OSTime.s
 
 .globl unk_803e81f0
 unk_803e81f0: # 0x803e81f0 /dvd/dvdfs.s
-.long 0x44564443 # 0x803e81f0
-.long 0x6f6e7665 # 0x803e81f4
-.long 0x7274456e # 0x803e81f8
-.long 0x7472796e # 0x803e81fc
-.long 0x756d546f # 0x803e8200
-.long 0x50617468 # 0x803e8204
-.long 0x28706f73 # 0x803e8208
-.long 0x7369626c # 0x803e820c
-.long 0x79204456 # 0x803e8210
-.long 0x444f7065 # 0x803e8214
-.long 0x6e206f72 # 0x803e8218
-.long 0x20445644 # 0x803e821c
-.long 0x4368616e # 0x803e8220
-.long 0x67654469 # 0x803e8224
-.long 0x72206f72 # 0x803e8228
-.long 0x20445644 # 0x803e822c
-.long 0x4f70656e # 0x803e8230
-.long 0x44697229 # 0x803e8234
-.long 0x3a207370 # 0x803e8238
-.long 0x65636966 # 0x803e823c
-.long 0x69656420 # 0x803e8240
-.long 0x64697265 # 0x803e8244
-.long 0x63746f72 # 0x803e8248
-.long 0x79206f72 # 0x803e824c
-.long 0x2066696c # 0x803e8250
-.long 0x65202825 # 0x803e8254
-.long 0x73292064 # 0x803e8258
-.long 0x6f65736e # 0x803e825c
-.long 0x2774206d # 0x803e8260
-.long 0x61746368 # 0x803e8264
-.long 0x20737461 # 0x803e8268
-.long 0x6e646172 # 0x803e826c
-.long 0x6420382e # 0x803e8270
-.long 0x3320666f # 0x803e8274
-.long 0x726d6174 # 0x803e8278
-.long 0x2e205468 # 0x803e827c
-.long 0x69732069 # 0x803e8280
-.long 0x73206120 # 0x803e8284
-.long 0x74656d70 # 0x803e8288
-.long 0x6f726172 # 0x803e828c
-.long 0x79207265 # 0x803e8290
-.long 0x73747269 # 0x803e8294
-.long 0x6374696f # 0x803e8298
-.long 0x6e20616e # 0x803e829c
-.long 0x64207769 # 0x803e82a0
-.long 0x6c6c2062 # 0x803e82a4
-.long 0x65207265 # 0x803e82a8
-.long 0x6d6f7665 # 0x803e82ac
-.long 0x6420736f # 0x803e82b0
-.long 0x6f6e0a00 # 0x803e82b4
+string_align "DVDConvertEntrynumToPath(possibly DVDOpen or DVDChangeDir or DVDOpenDir): specified directory or file (%s) doesn't match standard 8.3 format. This is a temporary restriction and will be removed soon\n" # 0x803e81f0
 
 .globl unk_803e82b8
 unk_803e82b8: # 0x803e82b8 /dvd/dvdfs.s
-.long 0x5761726e # 0x803e82b8
-.long 0x696e673a # 0x803e82bc
-.long 0x20445644 # 0x803e82c0
-.long 0x4f70656e # 0x803e82c4
-.long 0x28293a20 # 0x803e82c8
-.long 0x66696c65 # 0x803e82cc
-.long 0x20272573 # 0x803e82d0
-.long 0x27207761 # 0x803e82d4
-.long 0x73206e6f # 0x803e82d8
-.long 0x7420666f # 0x803e82dc
-.long 0x756e6420 # 0x803e82e0
-.long 0x756e6465 # 0x803e82e4
-.long 0x72202573 # 0x803e82e8
-.long 0x2e0a0000 # 0x803e82ec
+string_align "Warning: DVDOpen(): file '%s' was not found under %s.\n" # 0x803e82b8
 
 .globl unk_803e82f0
 unk_803e82f0: # 0x803e82f0 /dvd/dvdfs.s
-.long 0x44564452 # 0x803e82f0
-.long 0x65616441 # 0x803e82f4
-.long 0x73796e63 # 0x803e82f8
-.long 0x28293a20 # 0x803e82fc
-.long 0x73706563 # 0x803e8300
-.long 0x69666965 # 0x803e8304
-.long 0x64206172 # 0x803e8308
-.long 0x65612069 # 0x803e830c
-.long 0x73206f75 # 0x803e8310
-.long 0x74206f66 # 0x803e8314
-.long 0x20746865 # 0x803e8318
-.long 0x2066696c # 0x803e831c
-.long 0x65202000 # 0x803e8320
+string_align "DVDReadAsync(): specified area is out of the file  " # 0x803e82f0
 
 .globl unk_803e8324
 unk_803e8324: # 0x803e8324 /dvd/dvdfs.s
-.long 0x44564452 # 0x803e8324
-.long 0x65616428 # 0x803e8328
-.long 0x293a2073 # 0x803e832c
-.long 0x70656369 # 0x803e8330
-.long 0x66696564 # 0x803e8334
-.long 0x20617265 # 0x803e8338
-.long 0x61206973 # 0x803e833c
-.long 0x206f7574 # 0x803e8340
-.long 0x206f6620 # 0x803e8344
-.long 0x74686520 # 0x803e8348
-.long 0x66696c65 # 0x803e834c
-.long 0x20200000 # 0x803e8350
+string_align "DVDRead(): specified area is out of the file  " # 0x803e8324
 
 .globl unk_803e8354
 unk_803e8354: # 0x803e8354 /dvd/dvdfs.s
-.long 0x44564453 # 0x803e8354
-.long 0x65656b28 # 0x803e8358
-.long 0x293a206f # 0x803e835c
-.long 0x66667365 # 0x803e8360
-.long 0x74206973 # 0x803e8364
-.long 0x206f7574 # 0x803e8368
-.long 0x206f6620 # 0x803e836c
-.long 0x74686520 # 0x803e8370
-.long 0x66696c65 # 0x803e8374
-.long 0x20200000 # 0x803e8378
+string_align "DVDSeek(): offset is out of the file  " # 0x803e8354
 
 .globl unk_803e837c
 unk_803e837c: # 0x803e837c /dvd/dvdfs.s
-.long 0x5761726e # 0x803e837c
-.long 0x696e673a # 0x803e8380
-.long 0x20445644 # 0x803e8384
-.long 0x4f70656e # 0x803e8388
-.long 0x44697228 # 0x803e838c
-.long 0x293a2066 # 0x803e8390
-.long 0x696c6520 # 0x803e8394
-.long 0x27257327 # 0x803e8398
-.long 0x20776173 # 0x803e839c
-.long 0x206e6f74 # 0x803e83a0
-.long 0x20666f75 # 0x803e83a4
-.long 0x6e642075 # 0x803e83a8
-.long 0x6e646572 # 0x803e83ac
-.long 0x2025732e # 0x803e83b0
-.long 0xa000000 # 0x803e83b4
+string_align "Warning: DVDOpenDir(): file '%s' was not found under %s.\n" # 0x803e837c
 
 .globl unk_803e83b8
 unk_803e83b8: # 0x803e83b8 /dvd/dvdfs.s
-.long 0x44564450 # 0x803e83b8
-.long 0x72657061 # 0x803e83bc
-.long 0x72655374 # 0x803e83c0
-.long 0x7265616d # 0x803e83c4
-.long 0x4173796e # 0x803e83c8
-.long 0x6328293a # 0x803e83cc
-.long 0x20537065 # 0x803e83d0
-.long 0x63696669 # 0x803e83d4
-.long 0x65642073 # 0x803e83d8
-.long 0x74617274 # 0x803e83dc
-.long 0x20616464 # 0x803e83e0
-.long 0x72657373 # 0x803e83e4
-.long 0x20286669 # 0x803e83e8
-.long 0x6c657374 # 0x803e83ec
-.long 0x61727428 # 0x803e83f0
-.long 0x30782578 # 0x803e83f4
-.long 0x29202b20 # 0x803e83f8
-.long 0x6f666673 # 0x803e83fc
-.long 0x65742830 # 0x803e8400
-.long 0x78257829 # 0x803e8404
-.long 0x29206973 # 0x803e8408
-.long 0x206e6f74 # 0x803e840c
-.long 0x2033324b # 0x803e8410
-.long 0x4220616c # 0x803e8414
-.long 0x69676e65 # 0x803e8418
-.long 0x64000000 # 0x803e841c
+string_align "DVDPrepareStreamAsync(): Specified start address (filestart(0x%x) + offset(0x%x)) is not 32KB aligned" # 0x803e83b8
 
 .globl unk_803e8420
 unk_803e8420: # 0x803e8420 /dvd/dvdfs.s
-.long 0x44564450 # 0x803e8420
-.long 0x72657061 # 0x803e8424
-.long 0x72655374 # 0x803e8428
-.long 0x7265616d # 0x803e842c
-.long 0x4173796e # 0x803e8430
-.long 0x6328293a # 0x803e8434
-.long 0x20537065 # 0x803e8438
-.long 0x63696669 # 0x803e843c
-.long 0x6564206c # 0x803e8440
-.long 0x656e6774 # 0x803e8444
-.long 0x68202830 # 0x803e8448
-.long 0x78257829 # 0x803e844c
-.long 0x20697320 # 0x803e8450
-.long 0x6e6f7420 # 0x803e8454
-.long 0x61206d75 # 0x803e8458
-.long 0x6c746970 # 0x803e845c
-.long 0x6c65206f # 0x803e8460
-.long 0x66203332 # 0x803e8464
-.long 0x37363828 # 0x803e8468
-.long 0x33322a31 # 0x803e846c
-.long 0x30323429 # 0x803e8470
-.long 0x0 # 0x803e8474
+string_align "DVDPrepareStreamAsync(): Specified length (0x%x) is not a multiple of 32768(32*1024)" # 0x803e8420
 
 .globl unk_803e8478
 unk_803e8478: # 0x803e8478 /dvd/dvdfs.s
-.long 0x44564450 # 0x803e8478
-.long 0x72657061 # 0x803e847c
-.long 0x72655374 # 0x803e8480
-.long 0x7265616d # 0x803e8484
-.long 0x4173796e # 0x803e8488
-.long 0x6328293a # 0x803e848c
-.long 0x20546865 # 0x803e8490
-.long 0x20617265 # 0x803e8494
-.long 0x61207370 # 0x803e8498
-.long 0x65636966 # 0x803e849c
-.long 0x69656420 # 0x803e84a0
-.long 0x286f6666 # 0x803e84a4
-.long 0x73657428 # 0x803e84a8
-.long 0x30782578 # 0x803e84ac
-.long 0x292c206c # 0x803e84b0
-.long 0x656e6774 # 0x803e84b4
-.long 0x68283078 # 0x803e84b8
-.long 0x25782929 # 0x803e84bc
-.long 0x20697320 # 0x803e84c0
-.long 0x6f757420 # 0x803e84c4
-.long 0x6f662074 # 0x803e84c8
-.long 0x68652066 # 0x803e84cc
-.long 0x696c6500 # 0x803e84d0
+string_align "DVDPrepareStreamAsync(): The area specified (offset(0x%x), length(0x%x)) is out of the file" # 0x803e8478
 
 .globl unk_803e84d4
 unk_803e84d4: # 0x803e84d4 /dvd/dvdfs.s
-.long 0x44564450 # 0x803e84d4
-.long 0x72657061 # 0x803e84d8
-.long 0x72655374 # 0x803e84dc
-.long 0x7265616d # 0x803e84e0
-.long 0x28293a20 # 0x803e84e4
-.long 0x53706563 # 0x803e84e8
-.long 0x69666965 # 0x803e84ec
-.long 0x64207374 # 0x803e84f0
-.long 0x61727420 # 0x803e84f4
-.long 0x61646472 # 0x803e84f8
-.long 0x65737320 # 0x803e84fc
-.long 0x2866696c # 0x803e8500
-.long 0x65737461 # 0x803e8504
-.long 0x72742830 # 0x803e8508
-.long 0x78257829 # 0x803e850c
-.long 0x202b206f # 0x803e8510
-.long 0x66667365 # 0x803e8514
-.long 0x74283078 # 0x803e8518
-.long 0x25782929 # 0x803e851c
-.long 0x20697320 # 0x803e8520
-.long 0x6e6f7420 # 0x803e8524
-.long 0x33324b42 # 0x803e8528
-.long 0x20616c69 # 0x803e852c
-.long 0x676e6564 # 0x803e8530
-.long 0x0 # 0x803e8534
+string_align "DVDPrepareStream(): Specified start address (filestart(0x%x) + offset(0x%x)) is not 32KB aligned" # 0x803e84d4
 
 .globl unk_803e8538
 unk_803e8538: # 0x803e8538 /dvd/dvdfs.s
-.long 0x44564450 # 0x803e8538
-.long 0x72657061 # 0x803e853c
-.long 0x72655374 # 0x803e8540
-.long 0x7265616d # 0x803e8544
-.long 0x28293a20 # 0x803e8548
-.long 0x53706563 # 0x803e854c
-.long 0x69666965 # 0x803e8550
-.long 0x64206c65 # 0x803e8554
-.long 0x6e677468 # 0x803e8558
-.long 0x20283078 # 0x803e855c
-.long 0x25782920 # 0x803e8560
-.long 0x6973206e # 0x803e8564
-.long 0x6f742061 # 0x803e8568
-.long 0x206d756c # 0x803e856c
-.long 0x7469706c # 0x803e8570
-.long 0x65206f66 # 0x803e8574
-.long 0x20333237 # 0x803e8578
-.long 0x36382833 # 0x803e857c
-.long 0x322a3130 # 0x803e8580
-.long 0x32342900 # 0x803e8584
+string_align "DVDPrepareStream(): Specified length (0x%x) is not a multiple of 32768(32*1024)" # 0x803e8538
 
 .globl unk_803e8588
 unk_803e8588: # 0x803e8588 /dvd/dvdfs.s
-.long 0x44564450 # 0x803e8588
-.long 0x72657061 # 0x803e858c
-.long 0x72655374 # 0x803e8590
-.long 0x7265616d # 0x803e8594
-.long 0x28293a20 # 0x803e8598
-.long 0x54686520 # 0x803e859c
-.long 0x61726561 # 0x803e85a0
-.long 0x20737065 # 0x803e85a4
-.long 0x63696669 # 0x803e85a8
-.long 0x65642028 # 0x803e85ac
-.long 0x6f666673 # 0x803e85b0
-.long 0x65742830 # 0x803e85b4
-.long 0x78257829 # 0x803e85b8
-.long 0x2c206c65 # 0x803e85bc
-.long 0x6e677468 # 0x803e85c0
-.long 0x28307825 # 0x803e85c4
-.long 0x78292920 # 0x803e85c8
-.long 0x6973206f # 0x803e85cc
-.long 0x7574206f # 0x803e85d0
-.long 0x66207468 # 0x803e85d4
-.long 0x65206669 # 0x803e85d8
-.long 0x6c650000 # 0x803e85dc
+string_align "DVDPrepareStream(): The area specified (offset(0x%x), length(0x%x)) is out of the file" # 0x803e8588
 
 .globl unk_803e85e0
 unk_803e85e0: # 0x803e85e0 /dvd/dvd.s
-.long 0x61707020 # 0x803e85e0
-.long 0x626f6f74 # 0x803e85e4
-.long 0x65642076 # 0x803e85e8
-.long 0x6961204a # 0x803e85ec
-.long 0x5441470a # 0x803e85f0
-.long 0x0 # 0x803e85f4
+string_align "app booted via JTAG\n" # 0x803e85e0
 
 .globl unk_803e85f8
 unk_803e85f8: # 0x803e85f8 /dvd/dvd.s
-.long 0x6c6f6164 # 0x803e85f8
-.long 0x20667374 # 0x803e85fc
-.long 0xa000000 # 0x803e8600
+string_align "load fst\n" # 0x803e85f8
 
 .globl unk_803e8604
 unk_803e8604: # 0x803e8604 /dvd/dvd.s
-.long 0x61707020 # 0x803e8604
-.long 0x626f6f74 # 0x803e8608
-.long 0x65642066 # 0x803e860c
-.long 0x726f6d20 # 0x803e8610
-.long 0x626f6f74 # 0x803e8614
-.long 0x726f6d0a # 0x803e8618
-.long 0x0 # 0x803e861c
+string_align "app booted from bootrom\n" # 0x803e8604
 
 .globl unk_803e8620
 unk_803e8620: # 0x803e8620 /dvd/dvd.s
-.long 0x626f6f74 # 0x803e8620
-.long 0x726f6d0a # 0x803e8624
-.long 0x0 # 0x803e8628
+string_align "bootrom\n" # 0x803e8620
 
 .globl unk_803e862c
 unk_803e862c: # 0x803e862c /dvd/dvd.s
@@ -70786,46 +69745,23 @@ ErrorTable: # 0x803e86f8 /dvd/dvderror.s
 
 .globl unk_803e8740
 unk_803e8740: # 0x803e8740 /dvd/fstload.s
-.long 0x20204761 # 0x803e8740
-.long 0x6d65204e # 0x803e8744
-.long 0x616d6520 # 0x803e8748
-.long 0x2e2e2e20 # 0x803e874c
-.long 0x25632563 # 0x803e8750
-.long 0x25632563 # 0x803e8754
-.long 0xa000000 # 0x803e8758
+string_align "  Game Name ... %c%c%c%c\n" # 0x803e8740
 
 .globl unk_803e875c
 unk_803e875c: # 0x803e875c /dvd/fstload.s
-.long 0x2020436f # 0x803e875c
-.long 0x6d70616e # 0x803e8760
-.long 0x79202e2e # 0x803e8764
-.long 0x2e2e2e20 # 0x803e8768
-.long 0x25632563 # 0x803e876c
-.long 0xa000000 # 0x803e8770
+string_align "  Company ..... %c%c\n" # 0x803e875c
 
 .globl unk_803e8774
 unk_803e8774: # 0x803e8774 /dvd/fstload.s
-.long 0x20204469 # 0x803e8774
-.long 0x736b2023 # 0x803e8778
-.long 0x202e2e2e # 0x803e877c
-.long 0x2e2e2e20 # 0x803e8780
-.long 0x25640a00 # 0x803e8784
+string_align "  Disk # ...... %d\n" # 0x803e8774
 
 .globl unk_803e8788
 unk_803e8788: # 0x803e8788 /dvd/fstload.s
-.long 0x20204761 # 0x803e8788
-.long 0x6d652076 # 0x803e878c
-.long 0x6572202e # 0x803e8790
-.long 0x2e2e2e20 # 0x803e8794
-.long 0x25640a00 # 0x803e8798
+string_align "  Game ver .... %d\n" # 0x803e8788
 
 .globl unk_803e879c
 unk_803e879c: # 0x803e879c /dvd/fstload.s
-.long 0x20205374 # 0x803e879c
-.long 0x7265616d # 0x803e87a0
-.long 0x696e6720 # 0x803e87a4
-.long 0x2e2e2e20 # 0x803e87a8
-.long 0x25730a00 # 0x803e87ac
+string_align "  Streaming ... %s\n" # 0x803e879c
 
 .globl timing
 timing: # 0x803e87b0 /vi/vi.s
@@ -70949,87 +69885,27 @@ unk_803e8914: # 0x803e8914 /vi/vi.s
 
 .globl unk_803e896c
 unk_803e896c: # 0x803e896c /vi/vi.s
-.long 0x2a2a2a2a # 0x803e896c
-.long 0x2a2a2a2a # 0x803e8970
-.long 0x2a2a2a2a # 0x803e8974
-.long 0x2a2a2a2a # 0x803e8978
-.long 0x2a2a2a2a # 0x803e897c
-.long 0x2a2a2a2a # 0x803e8980
-.long 0x2a2a2a2a # 0x803e8984
-.long 0x2a2a2a2a # 0x803e8988
-.long 0x2a2a2a2a # 0x803e898c
-.long 0x2a2a2a0a # 0x803e8990
-.long 0x0 # 0x803e8994
+string_align "***************************************\n" # 0x803e896c
 
 .globl unk_803e8998
 unk_803e8998: # 0x803e8998 /vi/vi.s
-.long 0x20212021 # 0x803e8998
-.long 0x20212043 # 0x803e899c
-.long 0x20412055 # 0x803e89a0
-.long 0x20542049 # 0x803e89a4
-.long 0x204f204e # 0x803e89a8
-.long 0x20212021 # 0x803e89ac
-.long 0x20212020 # 0x803e89b0
-.long 0x20202020 # 0x803e89b4
-.long 0x20202020 # 0x803e89b8
-.long 0x2020200a # 0x803e89bc
-.long 0x0 # 0x803e89c0
+string_align " ! ! ! C A U T I O N ! ! !             \n" # 0x803e8998
 
 .globl unk_803e89c4
 unk_803e89c4: # 0x803e89c4 /vi/vi.s
-.long 0x54686973 # 0x803e89c4
-.long 0x20545620 # 0x803e89c8
-.long 0x666f726d # 0x803e89cc
-.long 0x61742022 # 0x803e89d0
-.long 0x44454255 # 0x803e89d4
-.long 0x475f5041 # 0x803e89d8
-.long 0x4c222069 # 0x803e89dc
-.long 0x73206f6e # 0x803e89e0
-.long 0x6c792066 # 0x803e89e4
-.long 0x6f72200a # 0x803e89e8
-.long 0x0 # 0x803e89ec
+string_align "This TV format \"DEBUG_PAL\" is only for \n" # 0x803e89c4
 
 .globl unk_803e89f0
 unk_803e89f0: # 0x803e89f0 /vi/vi.s
-.long 0x74656d70 # 0x803e89f0
-.long 0x6f726172 # 0x803e89f4
-.long 0x7920736f # 0x803e89f8
-.long 0x6c757469 # 0x803e89fc
-.long 0x6f6e2075 # 0x803e8a00
-.long 0x6e74696c # 0x803e8a04
-.long 0x2050414c # 0x803e8a08
-.long 0x20444143 # 0x803e8a0c
-.long 0x20626f61 # 0x803e8a10
-.long 0x7264200a # 0x803e8a14
-.long 0x0 # 0x803e8a18
+string_align "temporary solution until PAL DAC board \n" # 0x803e89f0
 
 .globl unk_803e8a1c
 unk_803e8a1c: # 0x803e8a1c /vi/vi.s
-.long 0x69732061 # 0x803e8a1c
-.long 0x7661696c # 0x803e8a20
-.long 0x61626c65 # 0x803e8a24
-.long 0x2e20506c # 0x803e8a28
-.long 0x65617365 # 0x803e8a2c
-.long 0x20646f20 # 0x803e8a30
-.long 0x4e4f5420 # 0x803e8a34
-.long 0x75736520 # 0x803e8a38
-.long 0x74686973 # 0x803e8a3c
-.long 0x2020200a # 0x803e8a40
-.long 0x0 # 0x803e8a44
+string_align "is available. Please do NOT use this   \n" # 0x803e8a1c
 
 .globl unk_803e8a48
 unk_803e8a48: # 0x803e8a48 /vi/vi.s
-.long 0x6d6f6465 # 0x803e8a48
-.long 0x20696e20 # 0x803e8a4c
-.long 0x7265616c # 0x803e8a50
-.long 0x2067616d # 0x803e8a54
-.long 0x65732121 # 0x803e8a58
-.long 0x21202020 # 0x803e8a5c
-.long 0x20202020 # 0x803e8a60
-.long 0x20202020 # 0x803e8a64
-.long 0x20202020 # 0x803e8a68
-.long 0x2020200a # 0x803e8a6c
-.long 0x0 # 0x803e8a70
+string_align "mode in real games!!!                  \n" # 0x803e8a48
 .long 0x0 # 0x803e8a74
 
 .globl ResetFunctionInfo_803e8a78
@@ -71041,126 +69917,43 @@ ResetFunctionInfo_803e8a78: # 0x803e8a78 /pad/Pad.s
 
 .globl unk_803e8a88
 unk_803e8a88: # 0x803e8a88 /dsp/dsp.s
-.long 0x44535049 # 0x803e8a88
-.long 0x6e697428 # 0x803e8a8c
-.long 0x293a2042 # 0x803e8a90
-.long 0x75696c64 # 0x803e8a94
-.long 0x20446174 # 0x803e8a98
-.long 0x653a2025 # 0x803e8a9c
-.long 0x73202573 # 0x803e8aa0
-.long 0xa000000 # 0x803e8aa4
+string_align "DSPInit(): Build Date: %s %s\n" # 0x803e8a88
 
 .globl unk_803e8aa8
 unk_803e8aa8: # 0x803e8aa8 /dsp/dsp.s
-.long 0x44656320 # 0x803e8aa8
-.long 0x31372032 # 0x803e8aac
-.long 0x30303100 # 0x803e8ab0
+string_align "Dec 17 2001" # 0x803e8aa8
 
 .globl unk_803e8ab4
 unk_803e8ab4: # 0x803e8ab4 /dsp/dsp.s
-.long 0x31383a32 # 0x803e8ab4
-.long 0x353a3030 # 0x803e8ab8
-.long 0x0 # 0x803e8abc
+string_align "18:25:00" # 0x803e8ab4
 
 .globl unk_803e8ac0
 unk_803e8ac0: # 0x803e8ac0 /dsp/dsp_task.s
-.long 0x44535020 # 0x803e8ac0
-.long 0x69732062 # 0x803e8ac4
-.long 0x6f6f7469 # 0x803e8ac8
-.long 0x6e672074 # 0x803e8acc
-.long 0x61736b3a # 0x803e8ad0
-.long 0x20307825 # 0x803e8ad4
-.long 0x3038580a # 0x803e8ad8
-.long 0x0 # 0x803e8adc
+string_align "DSP is booting task: 0x%08X\n" # 0x803e8ac0
 
 .globl unk_803e8ae0
 unk_803e8ae0: # 0x803e8ae0 /dsp/dsp_task.s
-.long 0x5f5f4453 # 0x803e8ae0
-.long 0x505f626f # 0x803e8ae4
-.long 0x6f745f74 # 0x803e8ae8
-.long 0x61736b28 # 0x803e8aec
-.long 0x2920203a # 0x803e8af0
-.long 0x20495241 # 0x803e8af4
-.long 0x4d204d4d # 0x803e8af8
-.long 0x454d2041 # 0x803e8afc
-.long 0x4444523a # 0x803e8b00
-.long 0x20307825 # 0x803e8b04
-.long 0x3038580a # 0x803e8b08
-.long 0x0 # 0x803e8b0c
+string_align "__DSP_boot_task()  : IRAM MMEM ADDR: 0x%08X\n" # 0x803e8ae0
 
 .globl unk_803e8b10
 unk_803e8b10: # 0x803e8b10 /dsp/dsp_task.s
-.long 0x5f5f4453 # 0x803e8b10
-.long 0x505f626f # 0x803e8b14
-.long 0x6f745f74 # 0x803e8b18
-.long 0x61736b28 # 0x803e8b1c
-.long 0x2920203a # 0x803e8b20
-.long 0x20495241 # 0x803e8b24
-.long 0x4d204453 # 0x803e8b28
-.long 0x50204144 # 0x803e8b2c
-.long 0x4452203a # 0x803e8b30
-.long 0x20307825 # 0x803e8b34
-.long 0x3038580a # 0x803e8b38
-.long 0x0 # 0x803e8b3c
+string_align "__DSP_boot_task()  : IRAM DSP ADDR : 0x%08X\n" # 0x803e8b10
 
 .globl unk_803e8b40
 unk_803e8b40: # 0x803e8b40 /dsp/dsp_task.s
-.long 0x5f5f4453 # 0x803e8b40
-.long 0x505f626f # 0x803e8b44
-.long 0x6f745f74 # 0x803e8b48
-.long 0x61736b28 # 0x803e8b4c
-.long 0x2920203a # 0x803e8b50
-.long 0x20495241 # 0x803e8b54
-.long 0x4d204c45 # 0x803e8b58
-.long 0x4e475448 # 0x803e8b5c
-.long 0x2020203a # 0x803e8b60
-.long 0x20307825 # 0x803e8b64
-.long 0x3038580a # 0x803e8b68
-.long 0x0 # 0x803e8b6c
+string_align "__DSP_boot_task()  : IRAM LENGTH   : 0x%08X\n" # 0x803e8b40
 
 .globl unk_803e8b70
 unk_803e8b70: # 0x803e8b70 /dsp/dsp_task.s
-.long 0x5f5f4453 # 0x803e8b70
-.long 0x505f626f # 0x803e8b74
-.long 0x6f745f74 # 0x803e8b78
-.long 0x61736b28 # 0x803e8b7c
-.long 0x2920203a # 0x803e8b80
-.long 0x20445241 # 0x803e8b84
-.long 0x4d204d4d # 0x803e8b88
-.long 0x454d2041 # 0x803e8b8c
-.long 0x4444523a # 0x803e8b90
-.long 0x20307825 # 0x803e8b94
-.long 0x3038580a # 0x803e8b98
-.long 0x0 # 0x803e8b9c
+string_align "__DSP_boot_task()  : DRAM MMEM ADDR: 0x%08X\n" # 0x803e8b70
 
 .globl unk_803e8ba0
 unk_803e8ba0: # 0x803e8ba0 /dsp/dsp_task.s
-.long 0x5f5f4453 # 0x803e8ba0
-.long 0x505f626f # 0x803e8ba4
-.long 0x6f745f74 # 0x803e8ba8
-.long 0x61736b28 # 0x803e8bac
-.long 0x2920203a # 0x803e8bb0
-.long 0x20537461 # 0x803e8bb4
-.long 0x72742056 # 0x803e8bb8
-.long 0x6563746f # 0x803e8bbc
-.long 0x7220203a # 0x803e8bc0
-.long 0x20307825 # 0x803e8bc4
-.long 0x3038580a # 0x803e8bc8
-.long 0x0 # 0x803e8bcc
+string_align "__DSP_boot_task()  : Start Vector  : 0x%08X\n" # 0x803e8ba0
 
 .globl unk_803e8bd0
 unk_803e8bd0: # 0x803e8bd0 /dsp/dsp_task.s
-.long 0x5f5f4453 # 0x803e8bd0
-.long 0x505f6164 # 0x803e8bd4
-.long 0x645f7461 # 0x803e8bd8
-.long 0x736b2829 # 0x803e8bdc
-.long 0x203a2041 # 0x803e8be0
-.long 0x64646564 # 0x803e8be4
-.long 0x20746173 # 0x803e8be8
-.long 0x6b202020 # 0x803e8bec
-.long 0x203a2030 # 0x803e8bf0
-.long 0x78253038 # 0x803e8bf4
-.long 0x580a0000 # 0x803e8bf8
+string_align "__DSP_add_task() : Added task    : 0x%08X\n" # 0x803e8bd0
 .long 0x0 # 0x803e8bfc
 
 .globl ResetFunctionInfo_803e8c00
@@ -71871,79 +70664,47 @@ Type: # 0x803e959c /si/SIBios.s
 
 .globl unk_803e95ac
 unk_803e95ac: # 0x803e95ac /si/SIBios.s
-.long 0x4e6f2072 # 0x803e95ac
-.long 0x6573706f # 0x803e95b0
-.long 0x6e736500 # 0x803e95b4
+string_align "No response" # 0x803e95ac
 
 .globl unk_803e95b8
 unk_803e95b8: # 0x803e95b8 /si/SIBios.s
-.long 0x4e363420 # 0x803e95b8
-.long 0x636f6e74 # 0x803e95bc
-.long 0x726f6c6c # 0x803e95c0
-.long 0x65720000 # 0x803e95c4
+string_align "N64 controller" # 0x803e95b8
 
 .globl unk_803e95c8
 unk_803e95c8: # 0x803e95c8 /si/SIBios.s
-.long 0x4e363420 # 0x803e95c8
-.long 0x6d696372 # 0x803e95cc
-.long 0x6f70686f # 0x803e95d0
-.long 0x6e650000 # 0x803e95d4
+string_align "N64 microphone" # 0x803e95c8
 
 .globl unk_803e95d8
 unk_803e95d8: # 0x803e95d8 /si/SIBios.s
-.long 0x4e363420 # 0x803e95d8
-.long 0x6b657962 # 0x803e95dc
-.long 0x6f617264 # 0x803e95e0
-.long 0x0 # 0x803e95e4
+string_align "N64 keyboard" # 0x803e95d8
 
 .globl unk_803e95e8
 unk_803e95e8: # 0x803e95e8 /si/SIBios.s
-.long 0x4e363420 # 0x803e95e8
-.long 0x6d6f7573 # 0x803e95ec
-.long 0x65000000 # 0x803e95f0
+string_align "N64 mouse" # 0x803e95e8
 
 .globl unk_803e95f4
 unk_803e95f4: # 0x803e95f4 /si/SIBios.s
-.long 0x47616d65 # 0x803e95f4
-.long 0x426f7920 # 0x803e95f8
-.long 0x41647661 # 0x803e95fc
-.long 0x6e636500 # 0x803e9600
+string_align "GameBoy Advance" # 0x803e95f4
 
 .globl unk_803e9604
 unk_803e9604: # 0x803e9604 /si/SIBios.s
-.long 0x5374616e # 0x803e9604
-.long 0x64617264 # 0x803e9608
-.long 0x20636f6e # 0x803e960c
-.long 0x74726f6c # 0x803e9610
-.long 0x6c657200 # 0x803e9614
+string_align "Standard controller" # 0x803e9604
 
 .globl unk_803e9618
 unk_803e9618: # 0x803e9618 /si/SIBios.s
-.long 0x57697265 # 0x803e9618
-.long 0x6c657373 # 0x803e961c
-.long 0x20726563 # 0x803e9620
-.long 0x65697665 # 0x803e9624
-.long 0x72000000 # 0x803e9628
+string_align "Wireless receiver" # 0x803e9618
 
 .globl unk_803e962c
 unk_803e962c: # 0x803e962c /si/SIBios.s
-.long 0x57617665 # 0x803e962c
-.long 0x42697264 # 0x803e9630
-.long 0x20636f6e # 0x803e9634
-.long 0x74726f6c # 0x803e9638
-.long 0x6c657200 # 0x803e963c
+string_align "WaveBird controller" # 0x803e962c
 
 .globl unk_803e9640
 unk_803e9640: # 0x803e9640 /si/SIBios.s
-.long 0x4b657962 # 0x803e9640
-.long 0x6f617264 # 0x803e9644
-.long 0x0 # 0x803e9648
+string_align "Keyboard" # 0x803e9640
 
 .globl unk_803e964c
 unk_803e964c: # 0x803e964c /si/SIBios.s
-.long 0x53746565 # 0x803e964c
-.long 0x72696e67 # 0x803e9650
-.long 0x0 # 0x803e9654
+string_align "Steering" # 0x803e964c
 
 .globl XYNTSC
 XYNTSC: # 0x803e9658 /si/SISamplingRate.s
@@ -71977,19 +70738,7 @@ XYPAL: # 0x803e9688 /si/SISamplingRate.s
 
 .globl unk_803e96b8
 unk_803e96b8: # 0x803e96b8 /si/SISamplingRate.s
-.long 0x53495365 # 0x803e96b8
-.long 0x7453616d # 0x803e96bc
-.long 0x706c696e # 0x803e96c0
-.long 0x67526174 # 0x803e96c4
-.long 0x653a2075 # 0x803e96c8
-.long 0x6e6b6e6f # 0x803e96cc
-.long 0x776e2054 # 0x803e96d0
-.long 0x5620666f # 0x803e96d4
-.long 0x726d6174 # 0x803e96d8
-.long 0x2e205573 # 0x803e96dc
-.long 0x65206465 # 0x803e96e0
-.long 0x6661756c # 0x803e96e4
-.long 0x742e0000 # 0x803e96e8
+string_align "SISetSamplingRate: unknown TV format. Use default." # 0x803e96b8
 .long 0x0 # 0x803e96ec
 .long 0x0 # 0x803e96f0
 .long 0x0 # 0x803e96f4

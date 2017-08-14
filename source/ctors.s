@@ -243,4 +243,6 @@ __init_cpp_exceptions_reference: # 0x803730c0 /Runtime_PPCEABI_H/__init_cpp_exce
 .long __sinit_JPAField_cpp # 0x80373470
 .long __sinit_JPADraw_cpp # 0x80373474
 .long __sinit_trigf_c # 0x80373478
-.long 0x0 # 0x8037347c
+
+
+.align 5, 0

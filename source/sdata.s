@@ -1,4 +1,12 @@
 
+
+.include "source/macros.s"
+.include "source/offsets.s"
+.include "source/constants.s"
+.include "source/values.s"
+
+
+
 .section .ram8040c1c0, "ax"
 
 
@@ -2841,8 +2849,7 @@ FirstRead: # 0x8040ce68 /dvd/dvdlow.s
 
 .globl unk_8040ce70
 unk_8040ce70: # 0x8040ce70 /dvd/dvdfs.s
-.long 0x64766466 # 0x8040ce70
-.long 0x732e6300 # 0x8040ce74
+string_align "dvdfs.c" # 0x8040ce70
 
 .globl autoInvalidation
 autoInvalidation: # 0x8040ce78 /dvd/dvd.s

@@ -1,4 +1,10 @@
 
+.include "source/macros.s"
+.include "source/offsets.s"
+.include "source/constants.s"
+.include "source/values.s"
+
+
 .section .ram8040eba0, "ax"
 
 
@@ -327,7 +333,7 @@ unk_8040ecf4: # 0x8040ecf4 /Animal/Bird.s
 
 .globl unk_8040ecf8
 unk_8040ecf8: # 0x8040ecf8 /Animal/Bird.s
-.long 0xbf800000 # 0x8040ecf8
+.float -1.0 # 0x8040ecf8
 .long 0x0 # 0x8040ecfc
 
 .globl unk_8040ed00
@@ -498,8 +504,7 @@ unk_8040eda8: # 0x8040eda8 /Animal/BeeHive.s
 
 .globl unk_8040edac
 unk_8040edac: # 0x8040edac /Animal/BeeHive.s
-.long 0x6d446563 # 0x8040edac
-.long 0x61790000 # 0x8040edb0
+string_align "mDecay" # 0x8040eda8
 
 .globl unk_8040edb4
 unk_8040edb4: # 0x8040edb4 /Animal/BeeHive.s
@@ -557,7 +562,7 @@ unk_8040edec: # 0x8040edec /Animal/BeeHive.s
 
 .globl unk_8040edf0
 unk_8040edf0: # 0x8040edf0 /Animal/BeeHive.s
-.long 0xbf800000 # 0x8040edf0
+.float -1.0 # 0x8040edf0
 
 .globl unk_8040edf4
 unk_8040edf4: # 0x8040edf4 /Animal/BeeHive.s
@@ -949,6 +954,7 @@ unk_8040ef9c: # 0x8040ef9c /MSound/MSoundSE.s
 unk_8040efa0: # 0x8040efa0 /MSound/MSoundSE.s
 .long 0x95fa9085 # 0x8040efa0
 .long 0x89b90000 # 0x8040efa4
+#string_align "放水音" # 0x8040efa0
 
 .globl unk_8040efa8
 unk_8040efa8: # 0x8040efa8 /MSound/MSoundSE.s
@@ -1446,7 +1452,7 @@ unk_8040f1bc: # 0x8040f1bc /THPPlayer/THPDraw.s
 
 .globl unk_8040f1c0
 unk_8040f1c0: # 0x8040f1c0 /THPPlayer/THPDraw.s
-.long 0xbf800000 # 0x8040f1c0
+.float -1.0 # 0x8040f1c0
 
 .globl unk_8040f1c4
 unk_8040f1c4: # 0x8040f1c4 /THPPlayer/THPDraw.s
@@ -1737,7 +1743,7 @@ unk_8040f324: # 0x8040f324 /Camera/cameralib.s
 
 .globl unk_8040f328
 unk_8040f328: # 0x8040f328 /Camera/cameralib.s
-.long 0xbf800000 # 0x8040f328
+.float -1.0 # 0x8040f328
 .long 0x0 # 0x8040f32c
 
 .globl unk_8040f330
@@ -1798,7 +1804,7 @@ unk_8040f370: # 0x8040f370 /Camera/CameraNotice.s
 
 .globl unk_8040f374
 unk_8040f374: # 0x8040f374 /Camera/CameraNotice.s
-.long 0xbf800000 # 0x8040f374
+.float -1.0 # 0x8040f374
 
 .globl unk_8040f378
 unk_8040f378: # 0x8040f378 /Camera/CameraNormal.s
@@ -1831,8 +1837,7 @@ unk_8040f390: # 0x8040f390 /Camera/CameraNormal.s
 
 .globl unk_8040f398
 unk_8040f398: # 0x8040f398 /Camera/camerasave.s
-.long 0x6d534c46 # 0x8040f398
-.long 0x6f767900 # 0x8040f39c
+string_align "mSLFovy" # 0x8040f398
 
 .globl unk_8040f3a0
 unk_8040f3a0: # 0x8040f3a0 /Camera/camerasave.s
@@ -1964,8 +1969,7 @@ unk_8040f41c: # 0x8040f41c /Camera/camerasave.s
 
 .globl unk_8040f420
 unk_8040f420: # 0x8040f420 /Camera/camerasave.s
-.long 0x6d4f6e44 # 0x8040f420
-.long 0x69737400 # 0x8040f424
+string_align "mOnDist" # 0x8040f420
 
 .globl unk_8040f428
 unk_8040f428: # 0x8040f428 /Camera/camerasave.s
@@ -2085,8 +2089,7 @@ unk_8040f4a4: # 0x8040f4a4 /Camera/lensflare.s
 
 .globl unk_8040f4a8
 unk_8040f4a8: # 0x8040f4a8 /Camera/lensflare.s
-.long 0x25732f25 # 0x8040f4a8
-.long 0x73000000 # 0x8040f4ac
+string_align "%s/%s" # 0x8040f4a8
 
 .globl unk_8040f4b0
 unk_8040f4b0: # 0x8040f4b0 /Camera/lensglow.s
@@ -2137,8 +2140,7 @@ unk_8040f4e4: # 0x8040f4e4 /Camera/lensglow.s
 
 .globl unk_8040f4e8
 unk_8040f4e8: # 0x8040f4e8 /Camera/lensglow.s
-.long 0x25732f25 # 0x8040f4e8
-.long 0x73000000 # 0x8040f4ec
+string_align "%s/%s" # 0x8040f4e8
 
 .globl unk_8040f4f0
 unk_8040f4f0: # 0x8040f4f0 /Camera/lensglow.s
@@ -2198,7 +2200,7 @@ unk_8040f530: # 0x8040f530 /Camera/sunmodel.s
 
 .globl unk_8040f534
 unk_8040f534: # 0x8040f534 /Camera/sunmodel.s
-.long 0xbf800000 # 0x8040f534
+.float -1.0 # 0x8040f534
 
 .globl unk_8040f538
 unk_8040f538: # 0x8040f538 /Camera/sunmodel.s
@@ -2223,8 +2225,7 @@ unk_8040f54c: # 0x8040f54c /Camera/sunmodel.s
 
 .globl unk_8040f550
 unk_8040f550: # 0x8040f550 /Camera/sunmodel.s
-.long 0x25732f25 # 0x8040f550
-.long 0x73000000 # 0x8040f554
+string_align "%s/%s" # 0x8040f550
 
 .globl unk_8040f558
 unk_8040f558: # 0x8040f558 /Camera/sunmodel.s
@@ -2537,8 +2538,7 @@ unk_8040f6c8: # 0x8040f6c8 /Enemy/effectObj.s
 
 .globl unk_8040f6cc
 unk_8040f6cc: # 0x8040f6cc /Enemy/effectObj.s
-.long 0x31305f62 # 0x8040f6cc
-.long 0x6f6d6200 # 0x8040f6d0
+string_align "10_bomb" # 0x8040f6cc
 .long 0x0 # 0x8040f6d4
 
 .globl unk_8040f6d8
@@ -2662,7 +2662,7 @@ unk_8040f750: # 0x8040f750 /Enemy/enemy.s
 
 .globl unk_8040f758
 unk_8040f758: # 0x8040f758 /Enemy/enemy.s
-.long 0xbf800000 # 0x8040f758
+.float -1.0 # 0x8040f758
 
 .globl unk_8040f75c
 unk_8040f75c: # 0x8040f75c /Enemy/enemy.s
@@ -2704,7 +2704,7 @@ unk_8040f780: # 0x8040f780 /Enemy/enemymanager.s
 
 .globl unk_8040f788
 unk_8040f788: # 0x8040f788 /Enemy/enemymanager.s
-.long 0xbf800000 # 0x8040f788
+.float -1.0 # 0x8040f788
 
 .globl unk_8040f78c
 unk_8040f78c: # 0x8040f78c /Enemy/enemymanager.s
@@ -2746,43 +2746,35 @@ unk_8040f7b0: # 0x8040f7b0 /Enemy/enemyMario.s
 
 .globl unk_8040f7b8
 unk_8040f7b8: # 0x8040f7b8 /Enemy/enemyMario.s
-.long 0x626b6477 # 0x8040f7b8
-.long 0x6e000000 # 0x8040f7bc
+string_align "bkdwn" # 0x8040f7b8
 
 .globl unk_8040f7c0
 unk_8040f7c0: # 0x8040f7c0 /Enemy/enemyMario.s
-.long 0x6272616b # 0x8040f7c0
-.long 0x65000000 # 0x8040f7c4
+string_align "brake" # 0x8040f7c0
 
 .globl unk_8040f7c8
 unk_8040f7c8: # 0x8040f7c8 /Enemy/enemyMario.s
-.long 0x6272656e # 0x8040f7c8
-.long 0x64000000 # 0x8040f7cc
+string_align "brend" # 0x8040f7c8
 
 .globl unk_8040f7d0
 unk_8040f7d0: # 0x8040f7d0 /Enemy/enemyMario.s
-.long 0x68676477 # 0x8040f7d0
-.long 0x6e000000 # 0x8040f7d4
+string_align "hgdwn" # 0x8040f7d0
 
 .globl unk_8040f7d8
 unk_8040f7d8: # 0x8040f7d8 /Enemy/enemyMario.s
-.long 0x666a7065 # 0x8040f7d8
-.long 0x6e640000 # 0x8040f7dc
+string_align "fjpend" # 0x8040f7d8
 
 .globl unk_8040f7e0
 unk_8040f7e0: # 0x8040f7e0 /Enemy/enemyMario.s
-.long 0x66697265 # 0x8040f7e0
-.long 0x6a6d7000 # 0x8040f7e4
+string_align "firejmp" # 0x8040f7e0
 
 .globl unk_8040f7e8
 unk_8040f7e8: # 0x8040f7e8 /Enemy/enemyMario.s
-.long 0x7364776e # 0x8040f7e8
-.long 0x66000000 # 0x8040f7ec
+string_align "sdwnf" # 0x8040f7e8
 
 .globl unk_8040f7f0
 unk_8040f7f0: # 0x8040f7f0 /Enemy/enemyMario.s
-.long 0x6a666477 # 0x8040f7f0
-.long 0x6e000000 # 0x8040f7f4
+string_align "jfdwn" # 0x8040f7f0
 
 .globl unk_8040f7f8
 unk_8040f7f8: # 0x8040f7f8 /Enemy/enemyMario.s
@@ -2791,23 +2783,19 @@ unk_8040f7f8: # 0x8040f7f8 /Enemy/enemyMario.s
 
 .globl unk_8040f800
 unk_8040f800: # 0x8040f800 /Enemy/enemyMario.s
-.long 0x68676a6d # 0x8040f800
-.long 0x70000000 # 0x8040f804
+string_align "hgjmp" # 0x8040f800
 
 .globl unk_8040f808
 unk_8040f808: # 0x8040f808 /Enemy/enemyMario.s
-.long 0x68697065 # 0x8040f808
-.long 0x64000000 # 0x8040f80c
+string_align "hiped" # 0x8040f808
 
 .globl unk_8040f810
 unk_8040f810: # 0x8040f810 /Enemy/enemyMario.s
-.long 0x68697073 # 0x8040f810
-.long 0x72000000 # 0x8040f814
+string_align "hipsr" # 0x8040f810
 
 .globl unk_8040f818
 unk_8040f818: # 0x8040f818 /Enemy/enemyMario.s
-.long 0x68697061 # 0x8040f818
-.long 0x74000000 # 0x8040f81c
+string_align "hipat" # 0x8040f818
 
 .globl unk_8040f820
 unk_8040f820: # 0x8040f820 /Enemy/enemyMario.s
@@ -2816,13 +2804,11 @@ unk_8040f820: # 0x8040f820 /Enemy/enemyMario.s
 
 .globl unk_8040f828
 unk_8040f828: # 0x8040f828 /Enemy/enemyMario.s
-.long 0x326a6d65 # 0x8040f828
-.long 0x64000000 # 0x8040f82c
+string_align "2jmed" # 0x8040f828
 
 .globl unk_8040f830
 unk_8040f830: # 0x8040f830 /Enemy/enemyMario.s
-.long 0x326a6d70 # 0x8040f830
-.long 0x32000000 # 0x8040f834
+string_align "2jmp2" # 0x8040f830
 
 .globl unk_8040f838
 unk_8040f838: # 0x8040f838 /Enemy/enemyMario.s
@@ -2831,13 +2817,11 @@ unk_8040f838: # 0x8040f838 /Enemy/enemyMario.s
 
 .globl unk_8040f840
 unk_8040f840: # 0x8040f840 /Enemy/enemyMario.s
-.long 0x6a6d7065 # 0x8040f840
-.long 0x64000000 # 0x8040f844
+string_align "jmped" # 0x8040f840
 
 .globl unk_8040f848
 unk_8040f848: # 0x8040f848 /Enemy/enemyMario.s
-.long 0x326a6d70 # 0x8040f848
-.long 0x31000000 # 0x8040f84c
+string_align "2jmp1" # 0x8040f848
 
 .globl unk_8040f850
 unk_8040f850: # 0x8040f850 /Enemy/enemyMario.s
@@ -2846,8 +2830,7 @@ unk_8040f850: # 0x8040f850 /Enemy/enemyMario.s
 
 .globl unk_8040f858
 unk_8040f858: # 0x8040f858 /Enemy/enemyMario.s
-.long 0x6c61656e # 0x8040f858
-.long 0x64000000 # 0x8040f85c
+string_align "laend" # 0x8040f858
 
 .globl unk_8040f860
 unk_8040f860: # 0x8040f860 /Enemy/enemyMario.s
@@ -2856,13 +2839,11 @@ unk_8040f860: # 0x8040f860 /Enemy/enemyMario.s
 
 .globl unk_8040f868
 unk_8040f868: # 0x8040f868 /Enemy/enemyMario.s
-.long 0x7468726f # 0x8040f868
-.long 0x77000000 # 0x8040f86c
+string_align "throw" # 0x8040f868
 
 .globl unk_8040f870
 unk_8040f870: # 0x8040f870 /Enemy/enemyMario.s
-.long 0x72616973 # 0x8040f870
-.long 0x65000000 # 0x8040f874
+string_align "raise" # 0x8040f870
 
 .globl unk_8040f878
 unk_8040f878: # 0x8040f878 /Enemy/enemyMario.s
@@ -2885,68 +2866,55 @@ unk_8040f88c: # 0x8040f88c /Enemy/enemyMario.s
 
 .globl unk_8040f894
 unk_8040f894: # 0x8040f894 /Enemy/enemyMario.s
-.long 0x73686f63 # 0x8040f894
-.long 0x6b000000 # 0x8040f898
+string_align "shock" # 0x8040f894
 
 .globl unk_8040f89c
 unk_8040f89c: # 0x8040f89c /Enemy/enemyMario.s
-.long 0x73666264 # 0x8040f89c
-.long 0x6e000000 # 0x8040f8a0
+string_align "sfbdn" # 0x8040f89c
 
 .globl unk_8040f8a4
 unk_8040f8a4: # 0x8040f8a4 /Enemy/enemyMario.s
-.long 0x73666664 # 0x8040f8a4
-.long 0x6e000000 # 0x8040f8a8
+string_align "sffdn" # 0x8040f8a4
 
 .globl unk_8040f8ac
 unk_8040f8ac: # 0x8040f8ac /Enemy/enemyMario.s
-.long 0x73646f77 # 0x8040f8ac
-.long 0x6e000000 # 0x8040f8b0
+string_align "sdown" # 0x8040f8ac
 
 .globl unk_8040f8b4
 unk_8040f8b4: # 0x8040f8b4 /Enemy/enemyMario.s
-.long 0x73686664 # 0x8040f8b4
-.long 0x6e000000 # 0x8040f8b8
+string_align "shfdn" # 0x8040f8b4
 
 .globl unk_8040f8bc
 unk_8040f8bc: # 0x8040f8bc /Enemy/enemyMario.s
-.long 0x73776169 # 0x8040f8bc
-.long 0x74000000 # 0x8040f8c0
+string_align "swait" # 0x8040f8bc
 
 .globl unk_8040f8c4
 unk_8040f8c4: # 0x8040f8c4 /Enemy/enemyMario.s
-.long 0x73776c6b # 0x8040f8c4
-.long 0x6c000000 # 0x8040f8c8
+string_align "swlkl" # 0x8040f8c4
 
 .globl unk_8040f8cc
 unk_8040f8cc: # 0x8040f8cc /Enemy/enemyMario.s
-.long 0x73776c6b # 0x8040f8cc
-.long 0x72000000 # 0x8040f8d0
+string_align "swlkr" # 0x8040f8cc
 
 .globl unk_8040f8d4
 unk_8040f8d4: # 0x8040f8d4 /Enemy/enemyMario.s
-.long 0x736c6463 # 0x8040f8d4
-.long 0x74000000 # 0x8040f8d8
+string_align "sldct" # 0x8040f8d4
 
 .globl unk_8040f8dc
 unk_8040f8dc: # 0x8040f8dc /Enemy/enemyMario.s
-.long 0x736c7062 # 0x8040f8dc
-.long 0x6b000000 # 0x8040f8e0
+string_align "slpbk" # 0x8040f8dc
 
 .globl unk_8040f8e4
 unk_8040f8e4: # 0x8040f8e4 /Enemy/enemyMario.s
-.long 0x736c6477 # 0x8040f8e4
-.long 0x6e000000 # 0x8040f8e8
+string_align "sldwn" # 0x8040f8e4
 
 .globl unk_8040f8ec
 unk_8040f8ec: # 0x8040f8ec /Enemy/enemyMario.s
-.long 0x736c7065 # 0x8040f8ec
-.long 0x64000000 # 0x8040f8f0
+string_align "slped" # 0x8040f8ec
 
 .globl unk_8040f8f4
 unk_8040f8f4: # 0x8040f8f4 /Enemy/enemyMario.s
-.long 0x736c706c # 0x8040f8f4
-.long 0x61000000 # 0x8040f8f8
+string_align "slpla" # 0x8040f8f4
 
 .globl unk_8040f8fc
 unk_8040f8fc: # 0x8040f8fc /Enemy/enemyMario.s
@@ -2955,23 +2923,19 @@ unk_8040f8fc: # 0x8040f8fc /Enemy/enemyMario.s
 
 .globl unk_8040f904
 unk_8040f904: # 0x8040f904 /Enemy/enemyMario.s
-.long 0x73737465 # 0x8040f904
-.long 0x70000000 # 0x8040f908
+string_align "sstep" # 0x8040f904
 
 .globl unk_8040f90c
 unk_8040f90c: # 0x8040f90c /Enemy/enemyMario.s
-.long 0x7371656e # 0x8040f90c
-.long 0x64000000 # 0x8040f910
+string_align "sqend" # 0x8040f90c
 
 .globl unk_8040f914
 unk_8040f914: # 0x8040f914 /Enemy/enemyMario.s
-.long 0x73717374 # 0x8040f914
-.long 0x61000000 # 0x8040f918
+string_align "sqsta" # 0x8040f914
 
 .globl unk_8040f91c
 unk_8040f91c: # 0x8040f91c /Enemy/enemyMario.s
-.long 0x73717761 # 0x8040f91c
-.long 0x74000000 # 0x8040f920
+string_align "sqwat" # 0x8040f91c
 
 .globl unk_8040f924
 unk_8040f924: # 0x8040f924 /Enemy/enemyMario.s
@@ -2980,18 +2944,15 @@ unk_8040f924: # 0x8040f924 /Enemy/enemyMario.s
 
 .globl unk_8040f92c
 unk_8040f92c: # 0x8040f92c /Enemy/enemyMario.s
-.long 0x74726e65 # 0x8040f92c
-.long 0x64000000 # 0x8040f930
+string_align "trned" # 0x8040f92c
 
 .globl unk_8040f934
 unk_8040f934: # 0x8040f934 /Enemy/enemyMario.s
-.long 0x746a6d70 # 0x8040f934
-.long 0x32000000 # 0x8040f938
+string_align "tjmp2" # 0x8040f934
 
 .globl unk_8040f93c
 unk_8040f93c: # 0x8040f93c /Enemy/enemyMario.s
-.long 0x746a6d70 # 0x8040f93c
-.long 0x31000000 # 0x8040f940
+string_align "tjmp1" # 0x8040f93c
 
 .globl unk_8040f944
 unk_8040f944: # 0x8040f944 /Enemy/enemyMario.s
@@ -3020,58 +2981,47 @@ unk_8040f964: # 0x8040f964 /Enemy/enemyMario.s
 
 .globl unk_8040f96c
 unk_8040f96c: # 0x8040f96c /Enemy/enemyMario.s
-.long 0x6867706d # 0x8040f96c
-.long 0x70000000 # 0x8040f970
+string_align "hgpmp" # 0x8040f96c
 
 .globl unk_8040f974
 unk_8040f974: # 0x8040f974 /Enemy/enemyMario.s
-.long 0x73746570 # 0x8040f974
-.long 0x31000000 # 0x8040f978
+string_align "step1" # 0x8040f974
 
 .globl unk_8040f97c
 unk_8040f97c: # 0x8040f97c /Enemy/enemyMario.s
-.long 0x73746570 # 0x8040f97c
-.long 0x32000000 # 0x8040f980
+string_align "step2" # 0x8040f97c
 
 .globl unk_8040f984
 unk_8040f984: # 0x8040f984 /Enemy/enemyMario.s
-.long 0x73746570 # 0x8040f984
-.long 0x33000000 # 0x8040f988
+string_align "step3" # 0x8040f984
 
 .globl unk_8040f98c
 unk_8040f98c: # 0x8040f98c /Enemy/enemyMario.s
-.long 0x6a6b6963 # 0x8040f98c
-.long 0x6b000000 # 0x8040f990
+string_align "jkick" # 0x8040f98c
 
 .globl unk_8040f994
 unk_8040f994: # 0x8040f994 /Enemy/enemyMario.s
-.long 0x64677275 # 0x8040f994
-.long 0x6e000000 # 0x8040f998
+string_align "dgrun" # 0x8040f994
 
 .globl unk_8040f99c
 unk_8040f99c: # 0x8040f99c /Enemy/enemyMario.s
-.long 0x63617272 # 0x8040f99c
-.long 0x795f7000 # 0x8040f9a0
+string_align "carry_p" # 0x8040f99c
 
 .globl unk_8040f9a4
 unk_8040f9a4: # 0x8040f9a4 /Enemy/enemyMario.s
-.long 0x686d6f76 # 0x8040f9a4
-.long 0x5f6c0000 # 0x8040f9a8
+string_align "hmov_l" # 0x8040f9a4
 
 .globl unk_8040f9ac
 unk_8040f9ac: # 0x8040f9ac /Enemy/enemyMario.s
-.long 0x686d6f76 # 0x8040f9ac
-.long 0x5f720000 # 0x8040f9b0
+string_align "hmov_r" # 0x8040f9ac
 
 .globl unk_8040f9b4
 unk_8040f9b4: # 0x8040f9b4 /Enemy/enemyMario.s
-.long 0x745f7761 # 0x8040f9b4
-.long 0x69740000 # 0x8040f9b8
+string_align "t_wait" # 0x8040f9b4
 
 .globl unk_8040f9bc
 unk_8040f9bc: # 0x8040f9bc /Enemy/enemyMario.s
-.long 0x73696e6b # 0x8040f9bc
-.long 0x696e6700 # 0x8040f9c0
+string_align "sinking" # 0x8040f9bc
 
 .globl unk_8040f9c4
 unk_8040f9c4: # 0x8040f9c4 /Enemy/enemyMario.s
@@ -3080,8 +3030,7 @@ unk_8040f9c4: # 0x8040f9c4 /Enemy/enemyMario.s
 
 .globl unk_8040f9cc
 unk_8040f9cc: # 0x8040f9cc /Enemy/enemyMario.s
-.long 0x7370696e # 0x8040f9cc
-.long 0x5f700000 # 0x8040f9d0
+string_align "spin_p" # 0x8040f9cc
 
 .globl unk_8040f9d4
 unk_8040f9d4: # 0x8040f9d4 /Enemy/enemyMario.s
@@ -3094,23 +3043,19 @@ unk_8040f9dc: # 0x8040f9dc /Enemy/enemyMario.s
 
 .globl unk_8040f9e0
 unk_8040f9e0: # 0x8040f9e0 /Enemy/enemyMario.s
-.long 0x666c6f61 # 0x8040f9e0
-.long 0x74000000 # 0x8040f9e4
+string_align "float" # 0x8040f9e0
 
 .globl unk_8040f9e8
 unk_8040f9e8: # 0x8040f9e8 /Enemy/enemyMario.s
-.long 0x6665706d # 0x8040f9e8
-.long 0x70000000 # 0x8040f9ec
+string_align "fepmp" # 0x8040f9e8
 
 .globl unk_8040f9f0
 unk_8040f9f0: # 0x8040f9f0 /Enemy/enemyMario.s
-.long 0x7377706d # 0x8040f9f0
-.long 0x70000000 # 0x8040f9f4
+string_align "swpmp" # 0x8040f9f0
 
 .globl unk_8040f9f8
 unk_8040f9f8: # 0x8040f9f8 /Enemy/enemyMario.s
-.long 0x7468726f # 0x8040f9f8
-.long 0x776e0000 # 0x8040f9fc
+string_align "thrown" # 0x8040f9f8
 
 .globl unk_8040fa00
 unk_8040fa00: # 0x8040fa00 /Enemy/enemyMario.s
@@ -3119,13 +3064,11 @@ unk_8040fa00: # 0x8040fa00 /Enemy/enemyMario.s
 
 .globl unk_8040fa08
 unk_8040fa08: # 0x8040fa08 /Enemy/enemyMario.s
-.long 0x7069766f # 0x8040fa08
-.long 0x74000000 # 0x8040fa0c
+string_align "pivot" # 0x8040fa08
 
 .globl unk_8040fa10
 unk_8040fa10: # 0x8040fa10 /Enemy/enemyMario.s
-.long 0x62656c74 # 0x8040fa10
-.long 0x5f757000 # 0x8040fa14
+string_align "belt_up" # 0x8040fa10
 
 .globl unk_8040fa18
 unk_8040fa18: # 0x8040fa18 /Enemy/enemyMario.s
@@ -3138,43 +3081,35 @@ unk_8040fa20: # 0x8040fa20 /Enemy/enemyMario.s
 
 .globl unk_8040fa24
 unk_8040fa24: # 0x8040fa24 /Enemy/enemyMario.s
-.long 0x7369745f # 0x8040fa24
-.long 0x656e6400 # 0x8040fa28
+string_align "sit_end" # 0x8040fa24
 
 .globl unk_8040fa2c
 unk_8040fa2c: # 0x8040fa2c /Enemy/enemyMario.s
-.long 0x736c6565 # 0x8040fa2c
-.long 0x70000000 # 0x8040fa30
+string_align "sleep" # 0x8040fa2c
 
 .globl unk_8040fa34
 unk_8040fa34: # 0x8040fa34 /Enemy/enemyMario.s
-.long 0x796f5f77 # 0x8040fa34
-.long 0x61697400 # 0x8040fa38
+string_align "yo_wait" # 0x8040fa34
 
 .globl unk_8040fa3c
 unk_8040fa3c: # 0x8040fa3c /Enemy/enemyMario.s
-.long 0x796f5f77 # 0x8040fa3c
-.long 0x616c6b00 # 0x8040fa40
+string_align "yo_walk" # 0x8040fa3c
 
 .globl unk_8040fa44
 unk_8040fa44: # 0x8040fa44 /Enemy/enemyMario.s
-.long 0x796f5f72 # 0x8040fa44
-.long 0x756e0000 # 0x8040fa48
+string_align "yo_run" # 0x8040fa44
 
 .globl unk_8040fa4c
 unk_8040fa4c: # 0x8040fa4c /Enemy/enemyMario.s
-.long 0x796f5f65 # 0x8040fa4c
-.long 0x61740000 # 0x8040fa50
+string_align "yo_eat" # 0x8040fa4c
 
 .globl unk_8040fa54
 unk_8040fa54: # 0x8040fa54 /Enemy/enemyMario.s
-.long 0x796f5f6a # 0x8040fa54
-.long 0x756d7000 # 0x8040fa58
+string_align "yo_jump" # 0x8040fa54
 
 .globl unk_8040fa5c
 unk_8040fa5c: # 0x8040fa5c /Enemy/enemyMario.s
-.long 0x796f5f72 # 0x8040fa5c
-.long 0x69646500 # 0x8040fa60
+string_align "yo_ride" # 0x8040fa5c
 
 .globl unk_8040fa64
 unk_8040fa64: # 0x8040fa64 /Enemy/enemyMario.s
@@ -3387,7 +3322,7 @@ unk_8040fb40: # 0x8040fb40 /Enemy/enemyMario.s
 
 .globl unk_8040fb44
 unk_8040fb44: # 0x8040fb44 /Enemy/enemyMario.s
-.long 0xbf800000 # 0x8040fb44
+.float -1.0 # 0x8040fb44
 
 .globl unk_8040fb48
 unk_8040fb48: # 0x8040fb48 /Enemy/enemyMario.s
@@ -3411,8 +3346,7 @@ unk_8040fb58: # 0x8040fb58 /Enemy/enemyMario.s
 
 .globl unk_8040fb5c
 unk_8040fb5c: # 0x8040fb5c /Enemy/enemyMario.s
-.long 0x7363656e # 0x8040fb5c
-.long 0x65000000 # 0x8040fb60
+string_align "scene" # 0x8040fb5c
 
 .globl unk_8040fb64
 unk_8040fb64: # 0x8040fb64 /Enemy/enemyMario.s
@@ -3421,18 +3355,15 @@ unk_8040fb64: # 0x8040fb64 /Enemy/enemyMario.s
 
 .globl unk_8040fb6c
 unk_8040fb6c: # 0x8040fb6c /Enemy/enemyMario.s
-.long 0x63656e74 # 0x8040fb6c
-.long 0x65720000 # 0x8040fb70
+string_align "center" # 0x8040fb6c
 
 .globl unk_8040fb74
 unk_8040fb74: # 0x8040fb74 /Enemy/enemyMario.s
-.long 0x4d5f6865 # 0x8040fb74
-.long 0x61640000 # 0x8040fb78
+string_align "M_head" # 0x8040fb74
 
 .globl unk_8040fb7c
 unk_8040fb7c: # 0x8040fb7c /Enemy/enemyMario.s
-.long 0x4d617269 # 0x8040fb7c
-.long 0x6f000000 # 0x8040fb80
+string_align "Mario" # 0x8040fb7c
 .long 0x0 # 0x8040fb84
 
 .globl unk_8040fb88
@@ -3461,7 +3392,7 @@ unk_8040fb9c: # 0x8040fb9c /Enemy/feetinv.s
 
 .globl unk_8040fba0
 unk_8040fba0: # 0x8040fba0 /Enemy/feetinv.s
-.long 0xbf800000 # 0x8040fba0
+.float -1.0 # 0x8040fba0
 
 .globl unk_8040fba4
 unk_8040fba4: # 0x8040fba4 /Enemy/feetinv.s
@@ -3600,7 +3531,7 @@ unk_8040fc30: # 0x8040fc30 /Enemy/gesso.s
 
 .globl unk_8040fc34
 unk_8040fc34: # 0x8040fc34 /Enemy/gesso.s
-.long 0xbf800000 # 0x8040fc34
+.float -1.0 # 0x8040fc34
 
 .globl unk_8040fc38
 unk_8040fc38: # 0x8040fc38 /Enemy/gesso.s
@@ -3700,7 +3631,7 @@ unk_8040fca0: # 0x8040fca0 /Enemy/graph.s
 
 .globl unk_8040fca4
 unk_8040fca4: # 0x8040fca4 /Enemy/graph.s
-.long 0xbf800000 # 0x8040fca4
+.float -1.0 # 0x8040fca4
 
 .globl unk_8040fca8
 unk_8040fca8: # 0x8040fca8 /Enemy/graph.s
@@ -4317,7 +4248,7 @@ unk_8040ff3c: # 0x8040ff3c /Enemy/pakkun.s
 
 .globl unk_8040ff40
 unk_8040ff40: # 0x8040ff40 /Enemy/pakkun.s
-.long 0xbf800000 # 0x8040ff40
+.float -1.0 # 0x8040ff40
 
 .globl unk_8040ff44
 unk_8040ff44: # 0x8040ff44 /Enemy/pakkun.s
@@ -5009,7 +4940,7 @@ unk_8041022c: # 0x8041022c /Enemy/elecNokonoko.s
 
 .globl unk_80410230
 unk_80410230: # 0x80410230 /Enemy/elecNokonoko.s
-.long 0xbf800000 # 0x80410230
+.float -1.0 # 0x80410230
 
 .globl unk_80410234
 unk_80410234: # 0x80410234 /Enemy/elecNokonoko.s
@@ -5087,8 +5018,7 @@ cTelesaColorStart: # 0x80410280 /Enemy/telesa.s
 
 .globl unk_80410284
 unk_80410284: # 0x80410284 /Enemy/telesa.s
-.long 0x6d615f77 # 0x80410284
-.long 0x61697400 # 0x80410288
+string_align "ma_wait" # 0x80410284
 
 .globl unk_8041028c
 unk_8041028c: # 0x8041028c /Enemy/telesa.s
@@ -5306,7 +5236,7 @@ unk_80410370: # 0x80410370 /Enemy/fireWanwan.s
 
 .globl unk_80410374
 unk_80410374: # 0x80410374 /Enemy/fireWanwan.s
-.long 0xbf800000 # 0x80410374
+.float -1.0 # 0x80410374
 
 .globl unk_80410378
 unk_80410378: # 0x80410378 /Enemy/fireWanwan.s
@@ -5394,8 +5324,7 @@ unk_804103c8: # 0x804103c8 /Enemy/fireWanwan.s
 
 .globl unk_804103cc
 unk_804103cc: # 0x804103cc /Enemy/fireWanwan.s
-.long 0x63656e74 # 0x804103cc
-.long 0x65720000 # 0x804103d0
+string_align "center" # 0x804103cc
 .long 0x0 # 0x804103d4
 
 .globl unk_804103d8
@@ -5622,7 +5551,7 @@ unk_804104c4: # 0x804104c4 /Enemy/bosspakkun.s
 
 .globl unk_804104c8
 unk_804104c8: # 0x804104c8 /Enemy/bosspakkun.s
-.long 0xbf800000 # 0x804104c8
+.float -1.0 # 0x804104c8
 
 .globl unk_804104cc
 unk_804104cc: # 0x804104cc /Enemy/bosspakkun.s
@@ -5662,8 +5591,7 @@ unk_804104ec: # 0x804104ec /Enemy/bosspakkun.s
 
 .globl unk_804104f0
 unk_804104f0: # 0x804104f0 /Enemy/bosspakkun.s
-.long 0x4d5f6475 # 0x804104f0
-.long 0x6d6d7900 # 0x804104f4
+string_align "M_dummy" # 0x804104f0
 
 .globl unk_804104f8
 unk_804104f8: # 0x804104f8 /Enemy/bosspakkun.s
@@ -5893,48 +5821,39 @@ unk_804105d8: # 0x804105d8 /Enemy/tobiPuku.s
 
 .globl unk_804105e0
 unk_804105e0: # 0x804105e0 /Enemy/tinkoopa.s
-.long 0x6a6e745f # 0x804105e0
-.long 0x6c656700 # 0x804105e4
+string_align "jnt_leg" # 0x804105e0
 
 .globl unk_804105e8
 unk_804105e8: # 0x804105e8 /Enemy/tinkoopa.s
-.long 0x7261726d # 0x804105e8
-.long 0x5f310000 # 0x804105ec
+string_align "rarm_1" # 0x804105e8
 
 .globl unk_804105f0
 unk_804105f0: # 0x804105f0 /Enemy/tinkoopa.s
-.long 0x7261726d # 0x804105f0
-.long 0x5f320000 # 0x804105f4
+string_align "rarm_2" # 0x804105f0
 
 .globl unk_804105f8
 unk_804105f8: # 0x804105f8 /Enemy/tinkoopa.s
-.long 0x7261726d # 0x804105f8
-.long 0x5f330000 # 0x804105fc
+string_align "rarm_3" # 0x804105f8
 
 .globl unk_80410600
 unk_80410600: # 0x80410600 /Enemy/tinkoopa.s
-.long 0x7261726d # 0x80410600
-.long 0x5f340000 # 0x80410604
+string_align "rarm_4" # 0x80410600
 
 .globl unk_80410608
 unk_80410608: # 0x80410608 /Enemy/tinkoopa.s
-.long 0x6c61726d # 0x80410608
-.long 0x5f310000 # 0x8041060c
+string_align "larm_1" # 0x80410608
 
 .globl unk_80410610
 unk_80410610: # 0x80410610 /Enemy/tinkoopa.s
-.long 0x6c61726d # 0x80410610
-.long 0x5f320000 # 0x80410614
+string_align "larm_2" # 0x80410610
 
 .globl unk_80410618
 unk_80410618: # 0x80410618 /Enemy/tinkoopa.s
-.long 0x6c61726d # 0x80410618
-.long 0x5f330000 # 0x8041061c
+string_align "larm_3" # 0x80410618
 
 .globl unk_80410620
 unk_80410620: # 0x80410620 /Enemy/tinkoopa.s
-.long 0x6c61726d # 0x80410620
-.long 0x5f340000 # 0x80410624
+string_align "larm_4" # 0x80410620
 
 .globl unk_80410628
 unk_80410628: # 0x80410628 /Enemy/tinkoopa.s
@@ -6025,11 +5944,11 @@ unk_8041067c: # 0x8041067c /Enemy/tinkoopa.s
 unk_80410680: # 0x80410680 /Enemy/tinkoopa.s
 .long 0x666c616d # 0x80410680
 .long 0x65000000 # 0x80410684
+#string_align "?ﾌﾌﾍ=Lﾌﾍ>劔喃lame" # 0x80410674
 
 .globl unk_80410688
 unk_80410688: # 0x80410688 /Enemy/tinkoopa.s
-.long 0x6b696c6c # 0x80410688
-.long 0x65720000 # 0x8041068c
+string_align "killer" # 0x80410688
 
 .globl unk_80410690
 unk_80410690: # 0x80410690 /Enemy/tinkoopa.s
@@ -6235,8 +6154,7 @@ unk_80410770: # 0x80410770 /Enemy/bosswanwan.s
 
 .globl unk_80410778
 unk_80410778: # 0x80410778 /Enemy/bosswanwan.s
-.long 0x6277616e # 0x80410778
-.long 0x77616e00 # 0x8041077c
+string_align "bwanwan" # 0x80410778
 
 .globl unk_80410780
 unk_80410780: # 0x80410780 /Enemy/bosswanwan.s
@@ -6386,18 +6304,15 @@ unk_80410810: # 0x80410810 /Enemy/bosswanwan.s
 
 .globl unk_80410818
 unk_80410818: # 0x80410818 /Enemy/chuuhana.s
-.long 0x6b6f6861 # 0x80410818
-.long 0x6e613000 # 0x8041081c
+string_align "kohana0" # 0x80410818
 
 .globl unk_80410820
 unk_80410820: # 0x80410820 /Enemy/chuuhana.s
-.long 0x6b6f6861 # 0x80410820
-.long 0x6e613100 # 0x80410824
+string_align "kohana1" # 0x80410820
 
 .globl unk_80410828
 unk_80410828: # 0x80410828 /Enemy/chuuhana.s
-.long 0x6b6f6861 # 0x80410828
-.long 0x6e613200 # 0x8041082c
+string_align "kohana2" # 0x80410828
 
 .globl unk_80410830
 unk_80410830: # 0x80410830 /Enemy/chuuhana.s
@@ -6506,7 +6421,7 @@ unk_80410898: # 0x80410898 /Enemy/chuuhana.s
 
 .globl unk_8041089c
 unk_8041089c: # 0x8041089c /Enemy/chuuhana.s
-.long 0xbf800000 # 0x8041089c
+.float -1.0 # 0x8041089c
 
 .globl unk_804108a0
 unk_804108a0: # 0x804108a0 /Enemy/chuuhana.s
@@ -6566,7 +6481,7 @@ unk_804108d4: # 0x804108d4 /Enemy/igaiga.s
 
 .globl unk_804108d8
 unk_804108d8: # 0x804108d8 /Enemy/igaiga.s
-.long 0xbf800000 # 0x804108d8
+.float -1.0 # 0x804108d8
 
 .globl unk_804108dc
 unk_804108dc: # 0x804108dc /Enemy/igaiga.s
@@ -6639,8 +6554,7 @@ unk_80410920: # 0x80410920 /Enemy/igaiga.s
 
 .globl unk_80410924
 unk_80410924: # 0x80410924 /Enemy/igaiga.s
-.long 0x4d5f6475 # 0x80410924
-.long 0x6d6d7900 # 0x80410928
+string_align "M_dummy" # 0x80410924
 
 .globl unk_8041092c
 unk_8041092c: # 0x8041092c /Enemy/igaiga.s
@@ -6696,8 +6610,7 @@ unk_8041095c: # 0x8041095c /Enemy/igaiga.s
 
 .globl unk_80410960
 unk_80410960: # 0x80410960 /Enemy/igaiga.s
-.long 0x69676169 # 0x80410960
-.long 0x67610000 # 0x80410964
+string_align "igaiga" # 0x80410960
 
 .globl unk_80410968
 unk_80410968: # 0x80410968 /Enemy/igaiga.s
@@ -6787,8 +6700,7 @@ unk_804109cc: # 0x804109cc /Enemy/poihana.s
 
 .globl unk_804109d0
 unk_804109d0: # 0x804109d0 /Enemy/poihana.s
-.long 0x5f626f64 # 0x804109d0
-.long 0x79000000 # 0x804109d4
+string_align "_body" # 0x804109d0
 
 .globl unk_804109d8
 unk_804109d8: # 0x804109d8 /Enemy/poihana.s
@@ -6830,7 +6742,7 @@ unk_80410a00: # 0x80410a00 /Enemy/tamaNoko.s
 
 .globl unk_80410a04
 unk_80410a04: # 0x80410a04 /Enemy/tamaNoko.s
-.long 0xbf800000 # 0x80410a04
+.float -1.0 # 0x80410a04
 
 .globl unk_80410a08
 unk_80410a08: # 0x80410a08 /Enemy/tamaNoko.s
@@ -7037,7 +6949,7 @@ unk_80410ad8: # 0x80410ad8 /Enemy/bosstelesa.s
 
 .globl unk_80410adc
 unk_80410adc: # 0x80410adc /Enemy/bosstelesa.s
-.long 0xbf800000 # 0x80410adc
+.float -1.0 # 0x80410adc
 
 .globl unk_80410ae0
 unk_80410ae0: # 0x80410ae0 /Enemy/bosstelesa.s
@@ -7053,8 +6965,7 @@ unk_80410ae8: # 0x80410ae8 /Enemy/bosstelesa.s
 
 .globl unk_80410aec
 unk_80410aec: # 0x80410aec /Enemy/bosstelesa.s
-.long 0x72756c65 # 0x80410aec
-.long 0x74303000 # 0x80410af0
+string_align "rulet00" # 0x80410aec
 
 .globl unk_80410af4
 unk_80410af4: # 0x80410af4 /Enemy/bosstelesa.s
@@ -7301,18 +7212,15 @@ unk_80410bec: # 0x80410bec /Enemy/bombhei.s
 
 .globl unk_80410bf0
 unk_80410bf0: # 0x80410bf0 /Enemy/cannon.s
-.long 0x6e756c6c # 0x80410bf0
-.long 0x43000000 # 0x80410bf4
+string_align "nullC" # 0x80410bf0
 
 .globl unk_80410bf8
 unk_80410bf8: # 0x80410bf8 /Enemy/cannon.s
-.long 0x6e756c6c # 0x80410bf8
-.long 0x42000000 # 0x80410bfc
+string_align "nullB" # 0x80410bf8
 
 .globl unk_80410c00
 unk_80410c00: # 0x80410c00 /Enemy/cannon.s
-.long 0x6e756c6c # 0x80410c00
-.long 0x41000000 # 0x80410c04
+string_align "nullA" # 0x80410c00
 
 .globl unk_80410c08
 unk_80410c08: # 0x80410c08 /Enemy/cannon.s
@@ -7620,8 +7528,7 @@ unk_80410d4c: # 0x80410d4c /Enemy/bosseel.s
 
 .globl unk_80410d50
 unk_80410d50: # 0x80410d50 /Enemy/bosseel.s
-.long 0x7365626f # 0x80410d50
-.long 0x6e653500 # 0x80410d54
+string_align "sebone5" # 0x80410d50
 
 .globl unk_80410d58
 unk_80410d58: # 0x80410d58 /Enemy/bosseel.s
@@ -7791,8 +7698,7 @@ unk_80410e00: # 0x80410e00 /Enemy/bosseel.s
 
 .globl unk_80410e04
 unk_80410e04: # 0x80410e04 /Enemy/bosseel.s
-.long 0x5f6d6174 # 0x80410e04
-.long 0x37000000 # 0x80410e08
+string_align "_mat7" # 0x80410e04
 
 .globl unk_80410e0c
 unk_80410e0c: # 0x80410e0c /Enemy/bosseel.s
@@ -7864,8 +7770,7 @@ unk_80410e4c: # 0x80410e4c /Enemy/bosseel.s
 
 .globl unk_80410e50
 unk_80410e50: # 0x80410e50 /Enemy/bosseel.s
-.long 0x4d5f6475 # 0x80410e50
-.long 0x6d6d7900 # 0x80410e54
+string_align "M_dummy" # 0x80410e50
 
 .globl unk_80410e58
 unk_80410e58: # 0x80410e58 /Enemy/bosseel.s
@@ -7996,8 +7901,7 @@ unk_80410edc: # 0x80410edc /Enemy/killer.s
 
 .globl unk_80410ee0
 unk_80410ee0: # 0x80410ee0 /Enemy/killer.s
-.long 0x5f626f64 # 0x80410ee0
-.long 0x79310000 # 0x80410ee4
+string_align "_body1" # 0x80410ee0
 
 .globl unk_80410ee8
 unk_80410ee8: # 0x80410ee8 /Enemy/killer.s
@@ -8308,7 +8212,7 @@ unk_8041102c: # 0x8041102c /Enemy/popo.s
 
 .globl unk_80411030
 unk_80411030: # 0x80411030 /Enemy/popo.s
-.long 0xbf800000 # 0x80411030
+.float -1.0 # 0x80411030
 
 .globl unk_80411034
 unk_80411034: # 0x80411034 /Enemy/popo.s
@@ -8630,8 +8534,7 @@ unk_80411188: # 0x80411188 /Enemy/BossHanachanMain.s
 
 .globl unk_80411190
 unk_80411190: # 0x80411190 /Enemy/BossHanachanMain.s
-.long 0x4d5f6475 # 0x80411190
-.long 0x6d6d7900 # 0x80411194
+string_align "M_dummy" # 0x80411190
 
 .globl unk_80411198
 unk_80411198: # 0x80411198 /Enemy/BossHanachanMain.s
@@ -8823,38 +8726,31 @@ unk_80411258: # 0x80411258 /Enemy/BossHanachanAnm.s
 
 .globl unk_80411260
 unk_80411260: # 0x80411260 /Enemy/BossHanachanParts.s
-.long 0x63656e74 # 0x80411260
-.long 0x65720000 # 0x80411264
+string_align "center" # 0x80411260
 
 .globl unk_80411268
 unk_80411268: # 0x80411268 /Enemy/BossHanachanParts.s
-.long 0x6c65675f # 0x80411268
-.long 0x4c330000 # 0x8041126c
+string_align "leg_L3" # 0x80411268
 
 .globl unk_80411270
 unk_80411270: # 0x80411270 /Enemy/BossHanachanParts.s
-.long 0x6c65675f # 0x80411270
-.long 0x52330000 # 0x80411274
+string_align "leg_R3" # 0x80411270
 
 .globl unk_80411278
 unk_80411278: # 0x80411278 /Enemy/BossHanachanParts.s
-.long 0x4c5f6861 # 0x80411278
-.long 0x6c6c0000 # 0x8041127c
+string_align "L_hall" # 0x80411278
 
 .globl unk_80411280
 unk_80411280: # 0x80411280 /Enemy/BossHanachanParts.s
-.long 0x525f6861 # 0x80411280
-.long 0x6c6c0000 # 0x80411284
+string_align "R_hall" # 0x80411280
 
 .globl unk_80411288
 unk_80411288: # 0x80411288 /Enemy/BossHanachanParts.s
-.long 0x666f6f74 # 0x80411288
-.long 0x5f4c0000 # 0x8041128c
+string_align "foot_L" # 0x80411288
 
 .globl unk_80411290
 unk_80411290: # 0x80411290 /Enemy/BossHanachanParts.s
-.long 0x666f6f74 # 0x80411290
-.long 0x5f520000 # 0x80411294
+string_align "foot_R" # 0x80411290
 
 .globl unk_80411298
 unk_80411298: # 0x80411298 /Enemy/BossHanachanParts.s
@@ -9100,7 +8996,7 @@ unk_8041138c: # 0x8041138c /Enemy/amiNoko.s
 
 .globl unk_80411390
 unk_80411390: # 0x80411390 /Enemy/amiNoko.s
-.long 0xbf800000 # 0x80411390
+.float -1.0 # 0x80411390
 
 .globl unk_80411394
 unk_80411394: # 0x80411394 /Enemy/amiNoko.s
@@ -9523,7 +9419,7 @@ unk_80411554: # 0x80411554 /Enemy/bgtentacle.s
 
 .globl unk_80411558
 unk_80411558: # 0x80411558 /Enemy/bgtentacle.s
-.long 0xbf800000 # 0x80411558
+.float -1.0 # 0x80411558
 
 .globl unk_8041155c
 unk_8041155c: # 0x8041155c /Enemy/bgtentacle.s
@@ -9733,8 +9629,7 @@ unk_80411640: # 0x80411640 /Enemy/areacylinder.s
 
 .globl cMatName__9_unnamed__80411648
 cMatName__9_unnamed__80411648: # 0x80411648 /Enemy/wireTrap.s
-.long 0x5f6d6174 # 0x80411648
-.long 0x5f310000 # 0x8041164c
+string_align "_mat_1" # 0x80411648
 
 .globl cRedColor__9_unnamed_
 cRedColor__9_unnamed_: # 0x80411650 /Enemy/wireTrap.s
@@ -9770,7 +9665,7 @@ unk_80411678: # 0x80411678 /Enemy/wireTrap.s
 
 .globl unk_8041167c
 unk_8041167c: # 0x8041167c /Enemy/wireTrap.s
-.long 0xbf800000 # 0x8041167c
+.float -1.0 # 0x8041167c
 
 .globl unk_80411680
 unk_80411680: # 0x80411680 /Enemy/wireTrap.s
@@ -9942,7 +9837,7 @@ unk_80411730: # 0x80411730 /Enemy/Kazekun.s
 
 .globl unk_80411734
 unk_80411734: # 0x80411734 /Enemy/Kazekun.s
-.long 0xbf800000 # 0x80411734
+.float -1.0 # 0x80411734
 
 .globl unk_80411738
 unk_80411738: # 0x80411738 /Enemy/Kazekun.s
@@ -10165,12 +10060,11 @@ unk_80411824: # 0x80411824 /Enemy/bossManta.s
 
 .globl unk_80411828
 unk_80411828: # 0x80411828 /Enemy/bossManta.s
-.long 0x63656e74 # 0x80411828
-.long 0x65720000 # 0x8041182c
+string_align "center" # 0x80411828
 
 .globl unk_80411830
 unk_80411830: # 0x80411830 /Enemy/bossManta.s
-.long 0xbf800000 # 0x80411830
+.float -1.0 # 0x80411830
 
 .globl unk_80411834
 unk_80411834: # 0x80411834 /Enemy/bossManta.s
@@ -10321,8 +10215,7 @@ unk_804118cc: # 0x804118cc /Enemy/yunbo.s
 
 .globl unk_804118d0
 unk_804118d0: # 0x804118d0 /Enemy/yunbo.s
-.long 0x63656e74 # 0x804118d0
-.long 0x65720000 # 0x804118d4
+string_align "center" # 0x804118d0
 
 .globl unk_804118d8
 unk_804118d8: # 0x804118d8 /Enemy/yunbo.s
@@ -10431,8 +10324,7 @@ unk_80411940: # 0x80411940 /Enemy/koopajr.s
 
 .globl unk_80411944
 unk_80411944: # 0x80411944 /Enemy/koopajr.s
-.long 0x63656e74 # 0x80411944
-.long 0x65725a00 # 0x80411948
+string_align "centerZ" # 0x80411944
 
 .globl unk_8041194c
 unk_8041194c: # 0x8041194c /Enemy/koopajr.s
@@ -10554,7 +10446,7 @@ unk_804119c4: # 0x804119c4 /Enemy/Kumokun.s
 
 .globl unk_804119c8
 unk_804119c8: # 0x804119c8 /Enemy/Kumokun.s
-.long 0xbf800000 # 0x804119c8
+.float -1.0 # 0x804119c8
 
 .globl unk_804119cc
 unk_804119cc: # 0x804119cc /Enemy/Kumokun.s
@@ -10945,8 +10837,7 @@ unk_80411b60: # 0x80411b60 /Enemy/Kukku.s
 
 .globl unk_80411b64
 unk_80411b64: # 0x80411b64 /Enemy/Kukku.s
-.long 0x63656e74 # 0x80411b64
-.long 0x65720000 # 0x80411b68
+string_align "center" # 0x80411b64
 
 .globl unk_80411b6c
 unk_80411b6c: # 0x80411b6c /Enemy/Kukku.s
@@ -11020,8 +10911,7 @@ unk_80411bb0: # 0x80411bb0 /Enemy/Amenbo.s
 
 .globl unk_80411bb8
 unk_80411bb8: # 0x80411bb8 /Enemy/Amenbo.s
-.long 0x6d537065 # 0x80411bb8
-.long 0x65640000 # 0x80411bbc
+string_align "mSpeed" # 0x80411bb8
 
 .globl unk_80411bc0
 unk_80411bc0: # 0x80411bc0 /Enemy/Amenbo.s
@@ -11081,8 +10971,7 @@ unk_80411bf4: # 0x80411bf4 /Enemy/BathtubPeach.s
 
 .globl unk_80411bf8
 unk_80411bf8: # 0x80411bf8 /Enemy/BathtubPeach.s
-.long 0x73706565 # 0x80411bf8
-.long 0x64000000 # 0x80411bfc
+string_align "speed" # 0x80411bf8
 
 .globl unk_80411c00
 unk_80411c00: # 0x80411c00 /Enemy/BathtubPeach.s
@@ -11090,8 +10979,7 @@ unk_80411c00: # 0x80411c00 /Enemy/BathtubPeach.s
 
 .globl unk_80411c04
 unk_80411c04: # 0x80411c04 /Enemy/BathtubPeach.s
-.long 0x616e676c # 0x80411c04
-.long 0x65000000 # 0x80411c08
+string_align "angle" # 0x80411c04
 
 .globl unk_80411c0c
 unk_80411c0c: # 0x80411c0c /Enemy/BathtubPeach.s
@@ -11099,8 +10987,7 @@ unk_80411c0c: # 0x80411c0c /Enemy/BathtubPeach.s
 
 .globl unk_80411c10
 unk_80411c10: # 0x80411c10 /Enemy/BathtubPeach.s
-.long 0x72616e67 # 0x80411c10
-.long 0x65000000 # 0x80411c14
+string_align "range" # 0x80411c10
 
 .globl unk_80411c18
 unk_80411c18: # 0x80411c18 /Enemy/BathtubPeach.s
@@ -11108,8 +10995,7 @@ unk_80411c18: # 0x80411c18 /Enemy/BathtubPeach.s
 
 .globl unk_80411c1c
 unk_80411c1c: # 0x80411c1c /Enemy/BathtubPeach.s
-.long 0x72616469 # 0x80411c1c
-.long 0x75730000 # 0x80411c20
+string_align "radius" # 0x80411c1c
 
 .globl unk_80411c24
 unk_80411c24: # 0x80411c24 /Enemy/BathtubPeach.s
@@ -11245,8 +11131,7 @@ unk_80411cb0: # 0x80411cb0 /Enemy/BathtubKiller.s
 
 .globl unk_80411cb4
 unk_80411cb4: # 0x80411cb4 /Enemy/BathtubKiller.s
-.long 0x5f626f64 # 0x80411cb4
-.long 0x79310000 # 0x80411cb8
+string_align "_body1" # 0x80411cb4
 
 .globl unk_80411cbc
 unk_80411cbc: # 0x80411cbc /Enemy/BathtubKiller.s
@@ -11310,8 +11195,7 @@ unk_80411cf4: # 0x80411cf4 /Enemy/coasterkiller.s
 
 .globl unk_80411cf8
 unk_80411cf8: # 0x80411cf8 /Enemy/coasterkiller.s
-.long 0x5f626f64 # 0x80411cf8
-.long 0x79310000 # 0x80411cfc
+string_align "_body1" # 0x80411cf8
 
 .globl unk_80411d00
 unk_80411d00: # 0x80411d00 /Enemy/coasterkiller.s
@@ -11327,8 +11211,7 @@ unk_80411d08: # 0x80411d08 /Enemy/coasterkiller.s
 
 .globl unk_80411d0c
 unk_80411d0c: # 0x80411d0c /Enemy/coasterkiller.s
-.long 0x6b696c6c # 0x80411d0c
-.long 0x65720000 # 0x80411d10
+string_align "killer" # 0x80411d0c
 
 .globl unk_80411d14
 unk_80411d14: # 0x80411d14 /Enemy/coasterkiller.s
@@ -11471,7 +11354,7 @@ unk_80411da4: # 0x80411da4 /Enemy/TabePuku.s
 
 .globl unk_80411da8
 unk_80411da8: # 0x80411da8 /Enemy/TabePuku.s
-.long 0xbf800000 # 0x80411da8
+.float -1.0 # 0x80411da8
 
 .globl unk_80411dac
 unk_80411dac: # 0x80411dac /Enemy/TabePuku.s
@@ -11924,8 +11807,7 @@ unk_80411fa8: # 0x80411fa8 /GC2D/GCConsole2.s
 
 .globl unk_80411fac
 unk_80411fac: # 0x80411fac /GC2D/GCConsole2.s
-.long 0x67616d65 # 0x80411fac
-.long 0x5f360000 # 0x80411fb0
+string_align "game_6" # 0x80411fac
 
 .globl unk_80411fb4
 unk_80411fb4: # 0x80411fb4 /GC2D/GCConsole2.s
@@ -12010,7 +11892,7 @@ unk_80412010: # 0x80412010 /GC2D/Talk2D2.s
 
 .globl unk_80412014
 unk_80412014: # 0x80412014 /GC2D/Talk2D2.s
-.long 0xbf800000 # 0x80412014
+.float -1.0 # 0x80412014
 
 .globl unk_80412018
 unk_80412018: # 0x80412018 /GC2D/Talk2D2.s
@@ -12048,8 +11930,7 @@ unk_8041203c: # 0x8041203c /GC2D/Talk2D2.s
 
 .globl unk_80412040
 unk_80412040: # 0x80412040 /GC2D/Talk2D2.s
-.long 0x67616d65 # 0x80412040
-.long 0x5f360000 # 0x80412044
+string_align "game_6" # 0x80412040
 
 .globl unk_80412048
 unk_80412048: # 0x80412048 /GC2D/Talk2D2.s
@@ -12251,8 +12132,7 @@ unk_80412134: # 0x80412134 /GC2D/PauseMenu2.s
 
 .globl unk_80412138
 unk_80412138: # 0x80412138 /GC2D/PauseMenu2.s
-.long 0x67616d65 # 0x80412138
-.long 0x5f360000 # 0x8041213c
+string_align "game_6" # 0x80412138
 
 .globl unk_80412140
 unk_80412140: # 0x80412140 /GC2D/PauseMenu2.s
@@ -12323,13 +12203,11 @@ unk_80412188: # 0x80412188 /GC2D/CardSave.s
 
 .globl unk_8041218c
 unk_8041218c: # 0x8041218c /GC2D/CardSave.s
-.long 0x656e6473 # 0x8041218c
-.long 0x61766500 # 0x80412190
+string_align "endsave" # 0x8041218c
 
 .globl unk_80412194
 unk_80412194: # 0x80412194 /GC2D/CardSave.s
-.long 0x67616d65 # 0x80412194
-.long 0x5f360000 # 0x80412198
+string_align "game_6" # 0x80412194
 .long 0x0 # 0x8041219c
 
 .globl scShineTableAirport_804121a0
@@ -12504,8 +12382,7 @@ unk_80412264: # 0x80412264 /GC2D/CardLoad.s
 
 .globl unk_80412268
 unk_80412268: # 0x80412268 /GC2D/CardLoad.s
-.long 0x6f707469 # 0x80412268
-.long 0x6f6e0000 # 0x8041226c
+string_align "option" # 0x80412268
 
 .globl unk_80412270
 unk_80412270: # 0x80412270 /GC2D/CardLoad.s
@@ -12618,8 +12495,7 @@ unk_804122f0: # 0x804122f0 /GC2D/ConsoleStr.s
 
 .globl unk_804122f8
 unk_804122f8: # 0x804122f8 /GC2D/ConsoleStr.s
-.long 0x67756964 # 0x804122f8
-.long 0x65000000 # 0x804122fc
+string_align "guide" # 0x804122f8
 
 .globl unk_80412300
 unk_80412300: # 0x80412300 /GC2D/ConsoleStr.s
@@ -12863,8 +12739,7 @@ unk_80412410: # 0x80412410 /GC2D/SelectDir.s
 
 .globl unk_80412414
 unk_80412414: # 0x80412414 /GC2D/SelectDir.s
-.long 0x73656c65 # 0x80412414
-.long 0x63740000 # 0x80412418
+string_align "select" # 0x80412414
 .long 0x0 # 0x8041241c
 
 .globl unk_80412420
@@ -13038,8 +12913,7 @@ scShineTableMonteEtc_804124e0: # 0x804124e0 /GC2D/Guide.s
 
 .globl unk_804124e4
 unk_804124e4: # 0x804124e4 /GC2D/Guide.s
-.long 0x67616d65 # 0x804124e4
-.long 0x5f360000 # 0x804124e8
+string_align "game_6" # 0x804124e4
 
 .globl unk_804124ec
 unk_804124ec: # 0x804124ec /GC2D/Guide.s
@@ -13217,7 +13091,7 @@ unk_804125a8: # 0x804125a8 /GC2D/hx_wiper.s
 
 .globl unk_804125ac
 unk_804125ac: # 0x804125ac /GC2D/hx_wiper.s
-.long 0xbf800000 # 0x804125ac
+.float -1.0 # 0x804125ac
 
 .globl unk_804125b0
 unk_804125b0: # 0x804125b0 /GC2D/hx_wiper.s
@@ -13471,17 +13345,7 @@ cStopRumbleAnm__9_unnamed_: # 0x804126c0 /GC2D/Option.s
 
 .globl cRumbleToggleItems__9_unnamed_
 cRumbleToggleItems__9_unnamed_: # 0x804126c8 /GC2D/Option.s
-.long 0x73656c31 # 0x804126c8
-.long 0x73656c30 # 0x804126cc
-
-.globl cSubtitleToggleItems__9_unnamed_
-cSubtitleToggleItems__9_unnamed_: # 0x804126d0 /GC2D/Option.s
-.long 0x73656c36 # 0x804126d0
-.long 0x73656c35 # 0x804126d4
-
-.globl unk_804126d8
-unk_804126d8: # 0x804126d8 /GC2D/Option.s
-.long 0x0 # 0x804126d8
+string_align "sel1sel0sel6sel5" # 0x804126c8
 
 .globl unk_804126dc
 unk_804126dc: # 0x804126dc /GC2D/Option.s
@@ -13527,8 +13391,7 @@ unk_80412708: # 0x80412708 /GC2D/Option.s
 
 .globl unk_8041270c
 unk_8041270c: # 0x8041270c /GC2D/Option.s
-.long 0x6f707469 # 0x8041270c
-.long 0x6f6e0000 # 0x80412710
+string_align "option" # 0x8041270c
 
 .globl unk_80412714
 unk_80412714: # 0x80412714 /GC2D/Option.s
@@ -13618,7 +13481,7 @@ unk_80412778: # 0x80412778 /Map/MapCheck.s
 
 .globl unk_8041277c
 unk_8041277c: # 0x8041277c /Map/MapCheck.s
-.long 0xbf800000 # 0x8041277c
+.float -1.0 # 0x8041277c
 
 .globl unk_80412780
 unk_80412780: # 0x80412780 /Map/MapCheck.s
@@ -13669,8 +13532,7 @@ unk_804127b4: # 0x804127b4 /Map/MapCollisionManager.s
 
 .globl unk_804127b8
 unk_804127b8: # 0x804127b8 /Map/MapCollisionManager.s
-.long 0x25732f25 # 0x804127b8
-.long 0x73000000 # 0x804127bc
+string_align "%s/%s" # 0x804127b8
 
 .globl unk_804127c0
 unk_804127c0: # 0x804127c0 /Map/MapCollisionManager.s
@@ -13803,18 +13665,15 @@ unk_80412858: # 0x80412858 /Map/MapModel.s
 
 .globl unk_8041285c
 unk_8041285c: # 0x8041285c /Map/MapModel.s
-.long 0x6d61705f # 0x8041285c
-.long 0x6f626a00 # 0x80412860
+string_align "map_obj" # 0x8041285c
 
 .globl unk_80412864
 unk_80412864: # 0x80412864 /Map/MapModel.s
-.long 0x73746174 # 0x80412864
-.long 0x696f6e00 # 0x80412868
+string_align "station" # 0x80412864
 
 .globl unk_8041286c
 unk_8041286c: # 0x8041286c /Map/MapModel.s
-.long 0x696e7369 # 0x8041286c
-.long 0x64650000 # 0x80412870
+string_align "inside" # 0x8041286c
 
 .globl unk_80412874
 unk_80412874: # 0x80412874 /Map/MapModel.s
@@ -13838,93 +13697,75 @@ unk_80412884: # 0x80412884 /Map/MapModel.s
 
 .globl unk_80412888
 unk_80412888: # 0x80412888 /Map/MapWarp.s
-.long 0x77617270 # 0x80412888
-.long 0x41310000 # 0x8041288c
+string_align "warpA1" # 0x80412888
 
 .globl unk_80412890
 unk_80412890: # 0x80412890 /Map/MapWarp.s
-.long 0x77617270 # 0x80412890
-.long 0x41300000 # 0x80412894
+string_align "warpA0" # 0x80412890
 
 .globl unk_80412898
 unk_80412898: # 0x80412898 /Map/MapWarp.s
-.long 0x77617270 # 0x80412898
-.long 0x42310000 # 0x8041289c
+string_align "warpB1" # 0x80412898
 
 .globl unk_804128a0
 unk_804128a0: # 0x804128a0 /Map/MapWarp.s
-.long 0x77617270 # 0x804128a0
-.long 0x42300000 # 0x804128a4
+string_align "warpB0" # 0x804128a0
 
 .globl unk_804128a8
 unk_804128a8: # 0x804128a8 /Map/MapWarp.s
-.long 0x77617270 # 0x804128a8
-.long 0x43310000 # 0x804128ac
+string_align "warpC1" # 0x804128a8
 
 .globl unk_804128b0
 unk_804128b0: # 0x804128b0 /Map/MapWarp.s
-.long 0x77617270 # 0x804128b0
-.long 0x43300000 # 0x804128b4
+string_align "warpC0" # 0x804128b0
 
 .globl unk_804128b8
 unk_804128b8: # 0x804128b8 /Map/MapWarp.s
-.long 0x77617270 # 0x804128b8
-.long 0x44310000 # 0x804128bc
+string_align "warpD1" # 0x804128b8
 
 .globl unk_804128c0
 unk_804128c0: # 0x804128c0 /Map/MapWarp.s
-.long 0x77617270 # 0x804128c0
-.long 0x44300000 # 0x804128c4
+string_align "warpD0" # 0x804128c0
 
 .globl unk_804128c8
 unk_804128c8: # 0x804128c8 /Map/MapWarp.s
-.long 0x77617270 # 0x804128c8
-.long 0x45310000 # 0x804128cc
+string_align "warpE1" # 0x804128c8
 
 .globl unk_804128d0
 unk_804128d0: # 0x804128d0 /Map/MapWarp.s
-.long 0x77617270 # 0x804128d0
-.long 0x45300000 # 0x804128d4
+string_align "warpE0" # 0x804128d0
 
 .globl unk_804128d8
 unk_804128d8: # 0x804128d8 /Map/MapWarp.s
-.long 0x77617270 # 0x804128d8
-.long 0x46310000 # 0x804128dc
+string_align "warpF1" # 0x804128d8
 
 .globl unk_804128e0
 unk_804128e0: # 0x804128e0 /Map/MapWarp.s
-.long 0x77617270 # 0x804128e0
-.long 0x46300000 # 0x804128e4
+string_align "warpF0" # 0x804128e0
 
 .globl unk_804128e8
 unk_804128e8: # 0x804128e8 /Map/MapWarp.s
-.long 0x77617270 # 0x804128e8
-.long 0x47310000 # 0x804128ec
+string_align "warpG1" # 0x804128e8
 
 .globl unk_804128f0
 unk_804128f0: # 0x804128f0 /Map/MapWarp.s
-.long 0x77617270 # 0x804128f0
-.long 0x47300000 # 0x804128f4
+string_align "warpG0" # 0x804128f0
 
 .globl unk_804128f8
 unk_804128f8: # 0x804128f8 /Map/MapWarp.s
-.long 0x77617270 # 0x804128f8
-.long 0x48310000 # 0x804128fc
+string_align "warpH1" # 0x804128f8
 
 .globl unk_80412900
 unk_80412900: # 0x80412900 /Map/MapWarp.s
-.long 0x77617270 # 0x80412900
-.long 0x48300000 # 0x80412904
+string_align "warpH0" # 0x80412900
 
 .globl unk_80412908
 unk_80412908: # 0x80412908 /Map/MapWarp.s
-.long 0x77617270 # 0x80412908
-.long 0x49310000 # 0x8041290c
+string_align "warpI1" # 0x80412908
 
 .globl unk_80412910
 unk_80412910: # 0x80412910 /Map/MapWarp.s
-.long 0x77617270 # 0x80412910
-.long 0x49300000 # 0x80412914
+string_align "warpI0" # 0x80412910
 
 .globl unk_80412918
 unk_80412918: # 0x80412918 /Map/MapWarp.s
@@ -13969,13 +13810,11 @@ unk_80412940: # 0x80412940 /Map/MapStaticObject.s
 
 .globl unk_80412944
 unk_80412944: # 0x80412944 /Map/MapStaticObject.s
-.long 0x66616c6c # 0x80412944
-.long 0x73000000 # 0x80412948
+string_align "falls" # 0x80412944
 
 .globl unk_8041294c
 unk_8041294c: # 0x8041294c /Map/MapStaticObject.s
-.long 0x6d735f73 # 0x8041294c
-.long 0x65610000 # 0x80412950
+string_align "ms_sea" # 0x8041294c
 
 .globl unk_80412954
 unk_80412954: # 0x80412954 /Map/MapStaticObject.s
@@ -13983,8 +13822,7 @@ unk_80412954: # 0x80412954 /Map/MapStaticObject.s
 
 .globl unk_80412958
 unk_80412958: # 0x80412958 /Map/MapStaticObject.s
-.long 0x2f6d6170 # 0x80412958
-.long 0x4f626a00 # 0x8041295c
+string_align "/mapObj" # 0x80412958
 
 .globl unk_80412960
 unk_80412960: # 0x80412960 /Map/MapStaticObject.s
@@ -14396,8 +14234,7 @@ unk_80412b30: # 0x80412b30 /Map/MapEventDolpic.s
 
 .globl unk_80412b34
 unk_80412b34: # 0x80412b34 /Map/MapEventDolpic.s
-.long 0x6470744b # 0x80412b34
-.long 0x696e6700 # 0x80412b38
+string_align "dptKing" # 0x80412b34
 
 .globl unk_80412b3c
 unk_80412b3c: # 0x80412b3c /Map/MapEventDolpic.s
@@ -14426,18 +14263,15 @@ unk_80412b54: # 0x80412b54 /Map/MapEventMare.s
 
 .globl unk_80412b58
 unk_80412b58: # 0x80412b58 /Map/MapEventMare.s
-.long 0x6d617265 # 0x80412b58
-.long 0x45503000 # 0x80412b5c
+string_align "mareEP0" # 0x80412b58
 
 .globl unk_80412b60
 unk_80412b60: # 0x80412b60 /Map/MapEventMare.s
-.long 0x6d617265 # 0x80412b60
-.long 0x45503100 # 0x80412b64
+string_align "mareEP1" # 0x80412b60
 
 .globl unk_80412b68
 unk_80412b68: # 0x80412b68 /Map/MapEventMare.s
-.long 0x6d617265 # 0x80412b68
-.long 0x45503200 # 0x80412b6c
+string_align "mareEP2" # 0x80412b68
 
 .globl unk_80412b70
 unk_80412b70: # 0x80412b70 /Map/MapEventMare.s
@@ -14665,7 +14499,7 @@ unk_80412c58: # 0x80412c58 /Map/BathWaterManager.s
 
 .globl unk_80412c5c
 unk_80412c5c: # 0x80412c5c /Map/BathWaterManager.s
-.long 0xbf800000 # 0x80412c5c
+.float -1.0 # 0x80412c5c
 
 .globl unk_80412c60
 unk_80412c60: # 0x80412c60 /Map/BathWaterManager.s
@@ -14738,8 +14572,7 @@ unk_80412cb0: # 0x80412cb0 /Map/BathWaterManager.s
 
 .globl unk_80412cb4
 unk_80412cb4: # 0x80412cb4 /Map/BathWaterManager.s
-.long 0x72656752 # 0x80412cb4
-.long 0x0 # 0x80412cb8
+string_align "regR" # 0x80412cb0
 
 .globl unk_80412cbc
 unk_80412cbc: # 0x80412cbc /Map/BathWaterManager.s
@@ -14758,33 +14591,27 @@ unk_80412ccc: # 0x80412ccc /Map/BathWaterManager.s
 
 .globl unk_80412cd4
 unk_80412cd4: # 0x80412cd4 /Map/BathWaterManager.s
-.long 0x6b526567 # 0x80412cd4
-.long 0x52000000 # 0x80412cd8
+string_align "kRegR" # 0x80412cd4
 
 .globl unk_80412cdc
 unk_80412cdc: # 0x80412cdc /Map/BathWaterManager.s
-.long 0x6b526567 # 0x80412cdc
-.long 0x47000000 # 0x80412ce0
+string_align "kRegG" # 0x80412cdc
 
 .globl unk_80412ce4
 unk_80412ce4: # 0x80412ce4 /Map/BathWaterManager.s
-.long 0x6b526567 # 0x80412ce4
-.long 0x42000000 # 0x80412ce8
+string_align "kRegB" # 0x80412ce4
 
 .globl unk_80412cec
 unk_80412cec: # 0x80412cec /Map/BathWaterManager.s
-.long 0x6b526567 # 0x80412cec
-.long 0x41000000 # 0x80412cf0
+string_align "kRegA" # 0x80412cec
 
 .globl unk_80412cf4
 unk_80412cf4: # 0x80412cf4 /Map/BathWaterManager.s
-.long 0x616c7068 # 0x80412cf4
-.long 0x61000000 # 0x80412cf8
+string_align "alpha" # 0x80412cf4
 
 .globl unk_80412cfc
 unk_80412cfc: # 0x80412cfc /Map/BathWaterManager.s
-.long 0x7363726f # 0x80412cfc
-.long 0x6c6c7300 # 0x80412d00
+string_align "scrolls" # 0x80412cfc
 
 .globl unk_80412d04
 unk_80412d04: # 0x80412d04 /Map/BathWaterManager.s
@@ -14818,8 +14645,7 @@ unk_80412d24: # 0x80412d24 /Map/BathWaterManager.s
 
 .globl unk_80412d28
 unk_80412d28: # 0x80412d28 /Map/BathWaterManager.s
-.long 0x67726176 # 0x80412d28
-.long 0x69747900 # 0x80412d2c
+string_align "gravity" # 0x80412d28
 
 .globl unk_80412d30
 unk_80412d30: # 0x80412d30 /Map/BathWaterManager.s
@@ -14827,8 +14653,7 @@ unk_80412d30: # 0x80412d30 /Map/BathWaterManager.s
 
 .globl unk_80412d34
 unk_80412d34: # 0x80412d34 /Map/BathWaterManager.s
-.long 0x626f756e # 0x80412d34
-.long 0x63655900 # 0x80412d38
+string_align "bounceY" # 0x80412d34
 
 .globl unk_80412d3c
 unk_80412d3c: # 0x80412d3c /Map/BathWaterManager.s
@@ -14836,8 +14661,7 @@ unk_80412d3c: # 0x80412d3c /Map/BathWaterManager.s
 
 .globl unk_80412d40
 unk_80412d40: # 0x80412d40 /Map/BathWaterManager.s
-.long 0x64616d70 # 0x80412d40
-.long 0x0 # 0x80412d44
+string_align "damp" # 0x80412d3c
 
 .globl unk_80412d48
 unk_80412d48: # 0x80412d48 /Map/BathWaterManager.s
@@ -14854,8 +14678,7 @@ unk_80412d54: # 0x80412d54 /Map/BathWaterManager.s
 
 .globl unk_80412d58
 unk_80412d58: # 0x80412d58 /Map/BathWaterManager.s
-.long 0x656d6974 # 0x80412d58
-.long 0x56656c00 # 0x80412d5c
+string_align "emitVel" # 0x80412d58
 
 .globl unk_80412d60
 unk_80412d60: # 0x80412d60 /Map/BathWaterManager.s
@@ -14911,8 +14734,7 @@ normal_sound_info: # 0x80412d98 /MoveBG/MapObjInit.s
 
 .globl unk_80412da0
 unk_80412da0: # 0x80412da0 /MoveBG/MapObjInit.s
-.long 0x6e6f5f64 # 0x80412da0
-.long 0x61746100 # 0x80412da4
+string_align "no_data" # 0x80412da0
 
 .globl billboard_dolphin_anim_info
 billboard_dolphin_anim_info: # 0x80412da8 /MoveBG/MapObjInit.s
@@ -14936,8 +14758,7 @@ billboard_fish_anim_info: # 0x80412dc0 /MoveBG/MapObjInit.s
 
 .globl unk_80412dc8
 unk_80412dc8: # 0x80412dc8 /MoveBG/MapObjInit.s
-.long 0x48696465 # 0x80412dc8
-.long 0x4f626a00 # 0x80412dcc
+string_align "HideObj" # 0x80412dc8
 
 .globl MonteChair_anim_info
 MonteChair_anim_info: # 0x80412dd0 /MoveBG/MapObjInit.s
@@ -14956,8 +14777,7 @@ doorHotel_anim_info: # 0x80412de0 /MoveBG/MapObjInit.s
 
 .globl unk_80412de8
 unk_80412de8: # 0x80412de8 /MoveBG/MapObjInit.s
-.long 0x6d616e68 # 0x80412de8
-.long 0x6f6c6500 # 0x80412dec
+string_align "manhole" # 0x80412de8
 
 .globl manhole_anim_info
 manhole_anim_info: # 0x80412df0 /MoveBG/MapObjInit.s
@@ -14971,8 +14791,7 @@ manhole_map_collision_info: # 0x80412df8 /MoveBG/MapObjInit.s
 
 .globl unk_80412e00
 unk_80412e00: # 0x80412e00 /MoveBG/MapObjInit.s
-.long 0x6261736b # 0x80412e00
-.long 0x65740000 # 0x80412e04
+string_align "basket" # 0x80412e00
 
 .globl FruitBasket_anim_info
 FruitBasket_anim_info: # 0x80412e08 /MoveBG/MapObjInit.s
@@ -14981,8 +14800,7 @@ FruitBasket_anim_info: # 0x80412e08 /MoveBG/MapObjInit.s
 
 .globl unk_80412e10
 unk_80412e10: # 0x80412e10 /MoveBG/MapObjInit.s
-.long 0x4261736b # 0x80412e10
-.long 0x65740000 # 0x80412e14
+string_align "Basket" # 0x80412e10
 
 .globl FruitBasket_map_collision_data
 FruitBasket_map_collision_data: # 0x80412e18 /MoveBG/MapObjInit.s
@@ -15071,8 +14889,7 @@ RedCoinSwitch_map_collision_info: # 0x80412e98 /MoveBG/MapObjInit.s
 
 .globl unk_80412ea0
 unk_80412ea0: # 0x80412ea0 /MoveBG/MapObjInit.s
-.long 0x6275636b # 0x80412ea0
-.long 0x65740000 # 0x80412ea4
+string_align "bucket" # 0x80412ea0
 
 .globl coin_sound_info
 coin_sound_info: # 0x80412ea8 /MoveBG/MapObjInit.s
@@ -15086,8 +14903,7 @@ unk_80412eb0: # 0x80412eb0 /MoveBG/MapObjInit.s
 
 .globl unk_80412eb8
 unk_80412eb8: # 0x80412eb8 /MoveBG/MapObjInit.s
-.long 0x7368696e # 0x80412eb8
-.long 0x65000000 # 0x80412ebc
+string_align "shine" # 0x80412eb8
 
 .globl mario_cap_anim_info
 mario_cap_anim_info: # 0x80412ec0 /MoveBG/MapObjInit.s
@@ -15191,8 +15007,7 @@ wood_barrel_anim_info: # 0x80412f58 /MoveBG/MapObjInit.s
 
 .globl unk_80412f60
 unk_80412f60: # 0x80412f60 /MoveBG/MapObjInit.s
-.long 0x62617272 # 0x80412f60
-.long 0x656c0000 # 0x80412f64
+string_align "barrel" # 0x80412f60
 
 .globl wood_barrel_map_collision_info
 wood_barrel_map_collision_info: # 0x80412f68 /MoveBG/MapObjInit.s
@@ -15486,8 +15301,7 @@ FruitTree_map_collision_info: # 0x80413130 /MoveBG/MapObjInit.s
 
 .globl unk_80413138
 unk_80413138: # 0x80413138 /MoveBG/MapObjInit.s
-.long 0x666c6f77 # 0x80413138
-.long 0x65720000 # 0x8041313c
+string_align "flower" # 0x80413138
 
 .globl flowerOrange_anim_info
 flowerOrange_anim_info: # 0x80413140 /MoveBG/MapObjInit.s
@@ -15576,8 +15390,7 @@ cloud_anim_info: # 0x804131c0 /MoveBG/MapObjInit.s
 
 .globl unk_804131c8
 unk_804131c8: # 0x804131c8 /MoveBG/MapObjInit.s
-.long 0x636c6f75 # 0x804131c8
-.long 0x64000000 # 0x804131cc
+string_align "cloud" # 0x804131c8
 
 .globl cloud_map_collision_data
 cloud_map_collision_data: # 0x804131d0 /MoveBG/MapObjInit.s
@@ -15666,8 +15479,7 @@ umaibou_anim_info: # 0x80413250 /MoveBG/MapObjInit.s
 
 .globl unk_80413258
 unk_80413258: # 0x80413258 /MoveBG/MapObjInit.s
-.long 0x756d6169 # 0x80413258
-.long 0x626f7500 # 0x8041325c
+string_align "umaibou" # 0x80413258
 
 .globl umaibou_map_collision_data
 umaibou_map_collision_data: # 0x80413260 /MoveBG/MapObjInit.s
@@ -15721,13 +15533,11 @@ geta_map_collision_info: # 0x804132a8 /MoveBG/MapObjInit.s
 
 .globl unk_804132b0
 unk_804132b0: # 0x804132b0 /MoveBG/MapObjInit.s
-.long 0x67657461 # 0x804132b0
-.long 0x67000000 # 0x804132b4
+string_align "getag" # 0x804132b0
 
 .globl unk_804132b8
 unk_804132b8: # 0x804132b8 /MoveBG/MapObjInit.s
-.long 0x67657461 # 0x804132b8
-.long 0x6f000000 # 0x804132bc
+string_align "getao" # 0x804132b8
 
 .globl uirou_anim_info
 uirou_anim_info: # 0x804132c0 /MoveBG/MapObjInit.s
@@ -15736,8 +15546,7 @@ uirou_anim_info: # 0x804132c0 /MoveBG/MapObjInit.s
 
 .globl unk_804132c8
 unk_804132c8: # 0x804132c8 /MoveBG/MapObjInit.s
-.long 0x7569726f # 0x804132c8
-.long 0x75000000 # 0x804132cc
+string_align "uirou" # 0x804132c8
 
 .globl uirou_map_collision_data
 uirou_map_collision_data: # 0x804132d0 /MoveBG/MapObjInit.s
@@ -16061,8 +15870,7 @@ WoodBox_anim_info: # 0x804134c8 /MoveBG/MapObjInit.s
 
 .globl unk_804134d0
 unk_804134d0: # 0x804134d0 /MoveBG/MapObjInit.s
-.long 0x6b696261 # 0x804134d0
-.long 0x6b6f0000 # 0x804134d4
+string_align "kibako" # 0x804134d0
 
 .globl WoodBoxNozzle_map_collision_data
 WoodBoxNozzle_map_collision_data: # 0x804134d8 /MoveBG/MapObjInit.s
@@ -16076,8 +15884,7 @@ WoodBoxNozzle_map_collision_info: # 0x804134e0 /MoveBG/MapObjInit.s
 
 .globl unk_804134e8
 unk_804134e8: # 0x804134e8 /MoveBG/MapObjInit.s
-.long 0x576f6f64 # 0x804134e8
-.long 0x426f7800 # 0x804134ec
+string_align "WoodBox" # 0x804134e8
 
 .globl ice_car_anim_info
 ice_car_anim_info: # 0x804134f0 /MoveBG/MapObjInit.s
@@ -16086,8 +15893,7 @@ ice_car_anim_info: # 0x804134f0 /MoveBG/MapObjInit.s
 
 .globl unk_804134f8
 unk_804134f8: # 0x804134f8 /MoveBG/MapObjInit.s
-.long 0x79617461 # 0x804134f8
-.long 0x69000000 # 0x804134fc
+string_align "yatai" # 0x804134f8
 
 .globl ice_car_map_collision_data
 ice_car_map_collision_data: # 0x80413500 /MoveBG/MapObjInit.s
@@ -16101,8 +15907,7 @@ ice_car_map_collision_info: # 0x80413508 /MoveBG/MapObjInit.s
 
 .globl unk_80413510
 unk_80413510: # 0x80413510 /MoveBG/MapObjInit.s
-.long 0x6963655f # 0x80413510
-.long 0x63617200 # 0x80413514
+string_align "ice_car" # 0x80413510
 
 .globl move_ice_car_map_collision_data
 move_ice_car_map_collision_data: # 0x80413518 /MoveBG/MapObjInit.s
@@ -16131,8 +15936,7 @@ AirportBuoy_map_collision_info: # 0x80413538 /MoveBG/MapObjInit.s
 
 .globl unk_80413540
 unk_80413540: # 0x80413540 /MoveBG/MapObjInit.s
-.long 0x6470744b # 0x80413540
-.long 0x696e6700 # 0x80413544
+string_align "dptKing" # 0x80413540
 
 .globl dptKing_map_collision_info
 dptKing_map_collision_info: # 0x80413548 /MoveBG/MapObjInit.s
@@ -16211,8 +16015,7 @@ DokanGate_anim_info: # 0x804135b8 /MoveBG/MapObjInit.s
 
 .globl unk_804135c0
 unk_804135c0: # 0x804135c0 /MoveBG/MapObjInit.s
-.long 0x6372616e # 0x804135c0
-.long 0x65000000 # 0x804135c4
+string_align "crane" # 0x804135c0
 
 .globl crane_map_collision_data
 crane_map_collision_data: # 0x804135c8 /MoveBG/MapObjInit.s
@@ -16571,8 +16374,7 @@ BiaBell_anim_info: # 0x804137f8 /MoveBG/MapObjInit.s
 
 .globl unk_80413800
 unk_80413800: # 0x80413800 /MoveBG/MapObjInit.s
-.long 0x42696142 # 0x80413800
-.long 0x656c6c00 # 0x80413804
+string_align "BiaBell" # 0x80413800
 
 .globl watermill00_anim_info
 watermill00_anim_info: # 0x80413808 /MoveBG/MapObjInit.s
@@ -16636,8 +16438,7 @@ LampSeesaw_map_collision_info: # 0x80413860 /MoveBG/MapObjInit.s
 
 .globl unk_80413868
 unk_80413868: # 0x80413868 /MoveBG/MapObjInit.s
-.long 0x42696144 # 0x80413868
-.long 0x6f6f7200 # 0x8041386c
+string_align "BiaDoor" # 0x80413868
 
 .globl BiancoDoor_map_collision_data
 BiancoDoor_map_collision_data: # 0x80413870 /MoveBG/MapObjInit.s
@@ -16736,8 +16537,7 @@ SandBomb_anim_info: # 0x80413900 /MoveBG/MapObjInit.s
 
 .globl unk_80413908
 unk_80413908: # 0x80413908 /MoveBG/MapObjInit.s
-.long 0x6d697272 # 0x80413908
-.long 0x6f724c00 # 0x8041390c
+string_align "mirrorL" # 0x80413908
 
 .globl mirror_L_map_collision_info
 mirror_L_map_collision_info: # 0x80413910 /MoveBG/MapObjInit.s
@@ -16746,8 +16546,7 @@ mirror_L_map_collision_info: # 0x80413910 /MoveBG/MapObjInit.s
 
 .globl unk_80413918
 unk_80413918: # 0x80413918 /MoveBG/MapObjInit.s
-.long 0x6d697272 # 0x80413918
-.long 0x6f724d00 # 0x8041391c
+string_align "mirrorM" # 0x80413918
 
 .globl mirror_M_map_collision_info
 mirror_M_map_collision_info: # 0x80413920 /MoveBG/MapObjInit.s
@@ -16756,8 +16555,7 @@ mirror_M_map_collision_info: # 0x80413920 /MoveBG/MapObjInit.s
 
 .globl unk_80413928
 unk_80413928: # 0x80413928 /MoveBG/MapObjInit.s
-.long 0x6d697272 # 0x80413928
-.long 0x6f725300 # 0x8041392c
+string_align "mirrorS" # 0x80413928
 
 .globl mirrorS_map_collision_info
 mirrorS_map_collision_info: # 0x80413930 /MoveBG/MapObjInit.s
@@ -16931,13 +16729,11 @@ SandBombBaseStairs_map_collision_info: # 0x80413a38 /MoveBG/MapObjInit.s
 
 .globl unk_80413a40
 unk_80413a40: # 0x80413a40 /MoveBG/MapObjInit.s
-.long 0x636f7261 # 0x80413a40
-.long 0x6c303000 # 0x80413a44
+string_align "coral00" # 0x80413a40
 
 .globl unk_80413a48
 unk_80413a48: # 0x80413a48 /MoveBG/MapObjInit.s
-.long 0x636f7261 # 0x80413a48
-.long 0x6c303100 # 0x80413a4c
+string_align "coral01" # 0x80413a48
 
 .globl TeethOfJuicer_anim_info
 TeethOfJuicer_anim_info: # 0x80413a50 /MoveBG/MapObjInit.s
@@ -16956,8 +16752,7 @@ SandEggRepair_map_collision_info: # 0x80413a60 /MoveBG/MapObjInit.s
 
 .globl unk_80413a68
 unk_80413a68: # 0x80413a68 /MoveBG/MapObjInit.s
-.long 0x6d657272 # 0x80413a68
-.long 0x79000000 # 0x80413a6c
+string_align "merry" # 0x80413a68
 
 .globl merrygoround_anim_info
 merrygoround_anim_info: # 0x80413a70 /MoveBG/MapObjInit.s
@@ -17006,8 +16801,7 @@ FerrisLOD_anim_info: # 0x80413ab0 /MoveBG/MapObjInit.s
 
 .globl unk_80413ab8
 unk_80413ab8: # 0x80413ab8 /MoveBG/MapObjInit.s
-.long 0x76696b69 # 0x80413ab8
-.long 0x6e670000 # 0x80413abc
+string_align "viking" # 0x80413ab8
 
 .globl viking_map_collision_data
 viking_map_collision_data: # 0x80413ac0 /MoveBG/MapObjInit.s
@@ -17111,13 +16905,11 @@ AmiKing_anim_info: # 0x80413b58 /MoveBG/MapObjInit.s
 
 .globl unk_80413b60
 unk_80413b60: # 0x80413b60 /MoveBG/MapObjInit.s
-.long 0x616d696b # 0x80413b60
-.long 0x696e6700 # 0x80413b64
+string_align "amiking" # 0x80413b60
 
 .globl unk_80413b68
 unk_80413b68: # 0x80413b68 /MoveBG/MapObjInit.s
-.long 0x436f6173 # 0x80413b68
-.long 0x74657200 # 0x80413b6c
+string_align "Coaster" # 0x80413b68
 
 .globl casinoroulette_map_collision_data
 casinoroulette_map_collision_data: # 0x80413b70 /MoveBG/MapObjInit.s
@@ -17131,8 +16923,7 @@ casinoroulette_map_collision_info: # 0x80413b78 /MoveBG/MapObjInit.s
 
 .globl unk_80413b80
 unk_80413b80: # 0x80413b80 /MoveBG/MapObjInit.s
-.long 0x72756c65 # 0x80413b80
-.long 0x74303000 # 0x80413b84
+string_align "rulet00" # 0x80413b80
 
 .globl roulette_anim_info
 roulette_anim_info: # 0x80413b88 /MoveBG/MapObjInit.s
@@ -17151,8 +16942,7 @@ roulette00_map_collision_info: # 0x80413b98 /MoveBG/MapObjInit.s
 
 .globl unk_80413ba0
 unk_80413ba0: # 0x80413ba0 /MoveBG/MapObjInit.s
-.long 0x72756c65 # 0x80413ba0
-.long 0x74303100 # 0x80413ba4
+string_align "rulet01" # 0x80413ba0
 
 .globl roulette01_map_collision_data
 roulette01_map_collision_data: # 0x80413ba8 /MoveBG/MapObjInit.s
@@ -17166,8 +16956,7 @@ roulette01_map_collision_info: # 0x80413bb0 /MoveBG/MapObjInit.s
 
 .globl unk_80413bb8
 unk_80413bb8: # 0x80413bb8 /MoveBG/MapObjInit.s
-.long 0x72756c65 # 0x80413bb8
-.long 0x74303200 # 0x80413bbc
+string_align "rulet02" # 0x80413bb8
 
 .globl roulette02_map_collision_data
 roulette02_map_collision_data: # 0x80413bc0 /MoveBG/MapObjInit.s
@@ -17181,18 +16970,15 @@ roulette02_map_collision_info: # 0x80413bc8 /MoveBG/MapObjInit.s
 
 .globl unk_80413bd0
 unk_80413bd0: # 0x80413bd0 /MoveBG/MapObjInit.s
-.long 0x646f6e63 # 0x80413bd0
-.long 0x686f7500 # 0x80413bd4
+string_align "donchou" # 0x80413bd0
 
 .globl unk_80413bd8
 unk_80413bd8: # 0x80413bd8 /MoveBG/MapObjInit.s
-.long 0x446f6e63 # 0x80413bd8
-.long 0x686f7500 # 0x80413bdc
+string_align "Donchou" # 0x80413bd8
 
 .globl unk_80413be0
 unk_80413be0: # 0x80413be0 /MoveBG/MapObjInit.s
-.long 0x70617a75 # 0x80413be0
-.long 0x6c000000 # 0x80413be4
+string_align "pazul" # 0x80413be0
 
 .globl pazul_map_collision_data
 pazul_map_collision_data: # 0x80413be8 /MoveBG/MapObjInit.s
@@ -17241,8 +17027,7 @@ closet_anim_info: # 0x80413c28 /MoveBG/MapObjInit.s
 
 .globl unk_80413c30
 unk_80413c30: # 0x80413c30 /MoveBG/MapObjInit.s
-.long 0x436c6f73 # 0x80413c30
-.long 0x65740000 # 0x80413c34
+string_align "Closet" # 0x80413c30
 
 .globl ChestRevolve_anim_info
 ChestRevolve_anim_info: # 0x80413c38 /MoveBG/MapObjInit.s
@@ -17356,8 +17141,7 @@ CogwheelPot_map_collision_info: # 0x80413ce0 /MoveBG/MapObjInit.s
 
 .globl unk_80413ce8
 unk_80413ce8: # 0x80413ce8 /MoveBG/MapObjInit.s
-.long 0x756b6973 # 0x80413ce8
-.long 0x696d6100 # 0x80413cec
+string_align "ukisima" # 0x80413ce8
 
 .globl mare_float_house_map_collision_data
 mare_float_house_map_collision_data: # 0x80413cf0 /MoveBG/MapObjInit.s
@@ -17386,8 +17170,7 @@ GrowthTree_anim_info: # 0x80413d10 /MoveBG/MapObjInit.s
 
 .globl unk_80413d18
 unk_80413d18: # 0x80413d18 /MoveBG/MapObjInit.s
-.long 0x4d6f7961 # 0x80413d18
-.long 0x73690000 # 0x80413d1c
+string_align "Moyasi" # 0x80413d18
 
 .globl GrowthTree_map_collision_data
 GrowthTree_map_collision_data: # 0x80413d20 /MoveBG/MapObjInit.s
@@ -17421,8 +17204,7 @@ Puncher_anim_info: # 0x80413d48 /MoveBG/MapObjInit.s
 
 .globl unk_80413d50
 unk_80413d50: # 0x80413d50 /MoveBG/MapObjInit.s
-.long 0x50756e63 # 0x80413d50
-.long 0x68657200 # 0x80413d54
+string_align "Puncher" # 0x80413d50
 
 .globl HatoPop_anim_info
 HatoPop_anim_info: # 0x80413d58 /MoveBG/MapObjInit.s
@@ -17431,8 +17213,7 @@ HatoPop_anim_info: # 0x80413d58 /MoveBG/MapObjInit.s
 
 .globl unk_80413d60
 unk_80413d60: # 0x80413d60 /MoveBG/MapObjInit.s
-.long 0x4861746f # 0x80413d60
-.long 0x506f7000 # 0x80413d64
+string_align "HatoPop" # 0x80413d60
 
 .globl MareWaterJump_map_collision_data
 MareWaterJump_map_collision_data: # 0x80413d68 /MoveBG/MapObjInit.s
@@ -17496,8 +17277,7 @@ HangingBridgeBoard_anim_info: # 0x80413dc0 /MoveBG/MapObjInit.s
 
 .globl unk_80413dc8
 unk_80413dc8: # 0x80413dc8 /MoveBG/MapObjInit.s
-.long 0x6d6f6e5f # 0x80413dc8
-.long 0x62726900 # 0x80413dcc
+string_align "mon_bri" # 0x80413dc8
 
 .globl HangingBridgeBoard_map_collision_data
 HangingBridgeBoard_map_collision_data: # 0x80413dd0 /MoveBG/MapObjInit.s
@@ -17526,8 +17306,7 @@ Fluff_anim_info: # 0x80413df0 /MoveBG/MapObjInit.s
 
 .globl unk_80413df8
 unk_80413df8: # 0x80413df8 /MoveBG/MapObjInit.s
-.long 0x466c7566 # 0x80413df8
-.long 0x66000000 # 0x80413dfc
+string_align "Fluff" # 0x80413df8
 
 .globl Bathtub_anim_info
 Bathtub_anim_info: # 0x80413e00 /MoveBG/MapObjInit.s
@@ -17541,8 +17320,7 @@ unk_80413e08: # 0x80413e08 /MoveBG/MapObjInit.s
 
 .globl unk_80413e10
 unk_80413e10: # 0x80413e10 /MoveBG/MapObjInit.s
-.long 0x7374616e # 0x80413e10
-.long 0x64000000 # 0x80413e14
+string_align "stand" # 0x80413e10
 
 .globl BathtubStandBreaking_anim_info
 BathtubStandBreaking_anim_info: # 0x80413e18 /MoveBG/MapObjInit.s
@@ -17655,8 +17433,7 @@ unk_80413ec0: # 0x80413ec0 /MoveBG/MapObjInit.s
 
 .globl unk_80413ec4
 unk_80413ec4: # 0x80413ec4 /MoveBG/MapObjInit.s
-.long 0x25732e62 # 0x80413ec4
-.long 0x6d640000 # 0x80413ec8
+string_align "%s.bmd" # 0x80413ec4
 
 .globl unk_80413ecc
 unk_80413ecc: # 0x80413ecc /MoveBG/MapObjInit.s
@@ -17664,8 +17441,7 @@ unk_80413ecc: # 0x80413ecc /MoveBG/MapObjInit.s
 
 .globl unk_80413ed0
 unk_80413ed0: # 0x80413ed0 /MoveBG/MapObjInit.s
-.long 0x6d61704f # 0x80413ed0
-.long 0x626a0000 # 0x80413ed4
+string_align "mapObj" # 0x80413ed0
 
 .globl unk_80413ed8
 unk_80413ed8: # 0x80413ed8 /MoveBG/MapObjInit.s
@@ -17741,8 +17517,7 @@ unk_80413f30: # 0x80413f30 /MoveBG/MapObjManager.s
 
 .globl unk_80413f38
 unk_80413f38: # 0x80413f38 /MoveBG/MapObjManager.s
-.long 0x6e6f5f64 # 0x80413f38
-.long 0x61746100 # 0x80413f3c
+string_align "no_data" # 0x80413f38
 
 .globl unk_80413f40
 unk_80413f40: # 0x80413f40 /MoveBG/MapObjManager.s
@@ -17853,8 +17628,7 @@ unk_80413fbc: # 0x80413fbc /MoveBG/Item.s
 
 .globl unk_80413fc0
 unk_80413fc0: # 0x80413fc0 /MoveBG/Item.s
-.long 0x76616c69 # 0x80413fc0
-.long 0x64000000 # 0x80413fc4
+string_align "valid" # 0x80413fc0
 
 .globl unk_80413fc8
 unk_80413fc8: # 0x80413fc8 /MoveBG/Item.s
@@ -17928,13 +17702,11 @@ unk_80414010: # 0x80414010 /MoveBG/Item.s
 
 .globl unk_80414014
 unk_80414014: # 0x80414014 /MoveBG/Item.s
-.long 0x6e6f726d # 0x80414014
-.long 0x616c0000 # 0x80414018
+string_align "normal" # 0x80414014
 
 .globl unk_8041401c
 unk_8041401c: # 0x8041401c /MoveBG/Item.s
-.long 0x71756963 # 0x8041401c
-.long 0x6b6c7900 # 0x80414020
+string_align "quickly" # 0x8041401c
 
 .globl unk_80414024
 unk_80414024: # 0x80414024 /MoveBG/Item.s
@@ -18041,7 +17813,7 @@ unk_80414090: # 0x80414090 /MoveBG/MapObjTown.s
 
 .globl unk_80414094
 unk_80414094: # 0x80414094 /MoveBG/MapObjTown.s
-.long 0xbf800000 # 0x80414094
+.float -1.0 # 0x80414094
 
 .globl unk_80414098
 unk_80414098: # 0x80414098 /MoveBG/MapObjTown.s
@@ -18049,13 +17821,11 @@ unk_80414098: # 0x80414098 /MoveBG/MapObjTown.s
 
 .globl unk_8041409c
 unk_8041409c: # 0x8041409c /MoveBG/MapObjTown.s
-.long 0x6e6f726d # 0x8041409c
-.long 0x616c0000 # 0x804140a0
+string_align "normal" # 0x8041409c
 
 .globl unk_804140a4
 unk_804140a4: # 0x804140a4 /MoveBG/MapObjTown.s
-.long 0x77617465 # 0x804140a4
-.long 0x72000000 # 0x804140a8
+string_align "water" # 0x804140a4
 
 .globl unk_804140ac
 unk_804140ac: # 0x804140ac /MoveBG/MapObjTown.s
@@ -18294,7 +18064,7 @@ unk_804141a8: # 0x804141a8 /MoveBG/MapObjBianco.s
 
 .globl unk_804141ac
 unk_804141ac: # 0x804141ac /MoveBG/MapObjBianco.s
-.long 0xbf800000 # 0x804141ac
+.float -1.0 # 0x804141ac
 
 .globl unk_804141b0
 unk_804141b0: # 0x804141b0 /MoveBG/MapObjBianco.s
@@ -18335,18 +18105,15 @@ unk_804141d0: # 0x804141d0 /MoveBG/MapObjBianco.s
 
 .globl unk_804141d8
 unk_804141d8: # 0x804141d8 /MoveBG/MapObjSirena.s
-.long 0x5f4e454f # 0x804141d8
-.long 0x4e5f4300 # 0x804141dc
+string_align "_NEON_C" # 0x804141d8
 
 .globl unk_804141e0
 unk_804141e0: # 0x804141e0 /MoveBG/MapObjSirena.s
-.long 0x5f4e454f # 0x804141e0
-.long 0x4e5f4200 # 0x804141e4
+string_align "_NEON_B" # 0x804141e0
 
 .globl unk_804141e8
 unk_804141e8: # 0x804141e8 /MoveBG/MapObjSirena.s
-.long 0x5f4e454f # 0x804141e8
-.long 0x4e5f4100 # 0x804141ec
+string_align "_NEON_A" # 0x804141e8
 
 .globl unk_804141f0
 unk_804141f0: # 0x804141f0 /MoveBG/MapObjSirena.s
@@ -18382,8 +18149,7 @@ unk_8041420c: # 0x8041420c /MoveBG/MapObjSirena.s
 
 .globl unk_80414210
 unk_80414210: # 0x80414210 /MoveBG/MapObjSirena.s
-.long 0x70617a75 # 0x80414210
-.long 0x6c000000 # 0x80414214
+string_align "pazul" # 0x8041420c
 
 .globl unk_80414218
 unk_80414218: # 0x80414218 /MoveBG/MapObjSirena.s
@@ -18437,8 +18203,7 @@ unk_8041424c: # 0x8041424c /MoveBG/MapObjSirena.s
 
 .globl unk_80414250
 unk_80414250: # 0x80414250 /MoveBG/MapObjSirena.s
-.long 0x646f6e63 # 0x80414250
-.long 0x686f7500 # 0x80414254
+string_align "donchou" # 0x8041424c
 
 .globl unk_80414258
 unk_80414258: # 0x80414258 /MoveBG/MapObjSirena.s
@@ -18514,8 +18279,7 @@ unk_8041429c: # 0x8041429c /MoveBG/MapObjSirena.s
 
 .globl unk_804142a0
 unk_804142a0: # 0x804142a0 /MoveBG/MapObjSirena.s
-.long 0x636f696e # 0x804142a0
-.long 0x0 # 0x804142a4
+string_align "coin" # 0x8041429c
 
 .globl unk_804142a8
 unk_804142a8: # 0x804142a8 /MoveBG/MapObjSirena.s
@@ -18539,8 +18303,7 @@ unk_804142b8: # 0x804142b8 /MoveBG/MapObjSirena.s
 
 .globl unk_804142bc
 unk_804142bc: # 0x804142bc /MoveBG/MapObjSirena.s
-.long 0x5f737769 # 0x804142bc
-.long 0x74636800 # 0x804142c0
+string_align "_switch" # 0x804142bc
 
 .globl unk_804142c4
 unk_804142c4: # 0x804142c4 /MoveBG/MapObjSirena.s
@@ -18655,18 +18418,15 @@ unk_80414338: # 0x80414338 /MoveBG/MapObjMamma.s
 
 .globl unk_8041433c
 unk_8041433c: # 0x8041433c /MoveBG/MapObjMamma.s
-.long 0x6d697272 # 0x8041433c
-.long 0x6f725300 # 0x80414340
+string_align "mirrorS" # 0x8041433c
 
 .globl unk_80414344
 unk_80414344: # 0x80414344 /MoveBG/MapObjMamma.s
-.long 0x6d697272 # 0x80414344
-.long 0x6f724d00 # 0x80414348
+string_align "mirrorM" # 0x80414344
 
 .globl unk_8041434c
 unk_8041434c: # 0x8041434c /MoveBG/MapObjMamma.s
-.long 0x6d697272 # 0x8041434c
-.long 0x6f724c00 # 0x80414350
+string_align "mirrorL" # 0x8041434c
 
 .globl unk_80414354
 unk_80414354: # 0x80414354 /MoveBG/MapObjMamma.s
@@ -18949,8 +18709,7 @@ unk_8041447c: # 0x8041447c /MoveBG/MapObjPinna.s
 
 .globl unk_80414480
 unk_80414480: # 0x80414480 /MoveBG/MapObjPinna.s
-.long 0x63656e74 # 0x80414480
-.long 0x65720000 # 0x80414484
+string_align "center" # 0x80414480
 
 .globl unk_80414488
 unk_80414488: # 0x80414488 /MoveBG/MapObjPinna.s
@@ -18967,8 +18726,7 @@ unk_80414490: # 0x80414490 /MoveBG/MapObjPinna.s
 
 .globl unk_80414498
 unk_80414498: # 0x80414498 /MoveBG/MapObjPinna.s
-.long 0x4b414745 # 0x80414498
-.long 0x5f320000 # 0x8041449c
+string_align "KAGE_2" # 0x80414498
 
 .globl unk_804144a0
 unk_804144a0: # 0x804144a0 /MoveBG/MapObjPinna.s
@@ -19267,6 +19025,7 @@ unk_804145d0: # 0x804145d0 /MoveBG/MapObjMare.s
 unk_804145d4: # 0x804145d4 /MoveBG/MapObjMare.s
 .long 0x93569489 # 0x804145d4
 .long 0x8fe30000 # 0x804145d8
+#string_align "天秤上" # 0x804145d0
 
 .globl unk_804145dc
 unk_804145dc: # 0x804145dc /MoveBG/MapObjMare.s
@@ -19346,8 +19105,7 @@ unk_80414624: # 0x80414624 /MoveBG/MapObjFlag.s
 
 .globl unk_80414628
 unk_80414628: # 0x80414628 /MoveBG/MapObjFlag.s
-.long 0x666c6167 # 0x80414628
-.long 0x53756e00 # 0x8041462c
+string_align "flagSun" # 0x80414628
 
 .globl unk_80414630
 unk_80414630: # 0x80414630 /MoveBG/MapObjFlag.s
@@ -19536,8 +19294,7 @@ unk_804146f0: # 0x804146f0 /MoveBG/MapObjWave.s
 
 .globl unk_804146f8
 unk_804146f8: # 0x804146f8 /MoveBG/MapObjFloat.s
-.long 0x756b6973 # 0x804146f8
-.long 0x696d6100 # 0x804146fc
+string_align "ukisima" # 0x804146f8
 
 .globl unk_80414700
 unk_80414700: # 0x80414700 /MoveBG/MapObjFloat.s
@@ -19865,8 +19622,7 @@ unk_80414858: # 0x80414858 /MoveBG/MapObjDolpic.s
 
 .globl unk_8041485c
 unk_8041485c: # 0x8041485c /MoveBG/MapObjDolpic.s
-.long 0x6e756c6c # 0x8041485c
-.long 0x41000000 # 0x80414860
+string_align "nullA" # 0x8041485c
 .long 0x0 # 0x80414864
 
 .globl unk_80414868
@@ -20084,8 +19840,7 @@ unk_80414954: # 0x80414954 /MoveBG/ModelGate.s
 
 .globl unk_80414958
 unk_80414958: # 0x80414958 /MoveBG/ModelGate.s
-.long 0x63656e74 # 0x80414958
-.long 0x65720000 # 0x8041495c
+string_align "center" # 0x80414958
 
 .globl unk_80414960
 unk_80414960: # 0x80414960 /MoveBG/ModelGate.s
@@ -20157,8 +19912,7 @@ unk_804149a0: # 0x804149a0 /MoveBG/MapObjFence.s
 
 .globl unk_804149a4
 unk_804149a4: # 0x804149a4 /MoveBG/MapObjFence.s
-.long 0x62616d62 # 0x804149a4
-.long 0x6f6f0000 # 0x804149a8
+string_align "bamboo" # 0x804149a4
 
 .globl unk_804149ac
 unk_804149ac: # 0x804149ac /MoveBG/MapObjFence.s
@@ -20182,8 +19936,7 @@ unk_804149bc: # 0x804149bc /MoveBG/MapObjFence.s
 
 .globl unk_804149c0
 unk_804149c0: # 0x804149c0 /MoveBG/MapObjFence.s
-.long 0x6d61704f # 0x804149c0
-.long 0x626a0000 # 0x804149c4
+string_align "mapObj" # 0x804149c0
 
 .globl unk_804149c8
 unk_804149c8: # 0x804149c8 /MoveBG/MapObjFence.s
@@ -20300,8 +20053,7 @@ unk_80414a44: # 0x80414a44 /MoveBG/MapObjMonte.s
 
 .globl unk_80414a48
 unk_80414a48: # 0x80414a48 /MoveBG/MapObjMonte.s
-.long 0x466c7566 # 0x80414a48
-.long 0x66000000 # 0x80414a4c
+string_align "Fluff" # 0x80414a48
 
 .globl unk_80414a50
 unk_80414a50: # 0x80414a50 /MoveBG/MapObjMonte.s
@@ -20403,7 +20155,7 @@ unk_80414ab4: # 0x80414ab4 /MoveBG/MapObjMonte.s
 
 .globl unk_80414ab8
 unk_80414ab8: # 0x80414ab8 /MoveBG/MapObjMonte.s
-.long 0xbf800000 # 0x80414ab8
+.float -1.0 # 0x80414ab8
 
 .globl unk_80414abc
 unk_80414abc: # 0x80414abc /MoveBG/MapObjMonte.s
@@ -20638,8 +20390,7 @@ unk_80414ba8: # 0x80414ba8 /MoveBG/MapObjEx.s
 
 .globl unk_80414bac
 unk_80414bac: # 0x80414bac /MoveBG/MapObjEx.s
-.long 0x72656463 # 0x80414bac
-.long 0x6f696e00 # 0x80414bb0
+string_align "redcoin" # 0x80414bac
 
 .globl unk_80414bb4
 unk_80414bb4: # 0x80414bb4 /MoveBG/MapObjEx.s
@@ -20648,8 +20399,7 @@ unk_80414bb4: # 0x80414bb4 /MoveBG/MapObjEx.s
 
 .globl unk_80414bbc
 unk_80414bbc: # 0x80414bbc /MoveBG/MapObjEx.s
-.long 0x6e6f5f64 # 0x80414bbc
-.long 0x61746100 # 0x80414bc0
+string_align "no_data" # 0x80414bbc
 
 .globl unk_80414bc4
 unk_80414bc4: # 0x80414bc4 /MoveBG/MapObjEx.s
@@ -20735,8 +20485,7 @@ unk_80414c18: # 0x80414c18 /MoveBG/MapObjCorona.s
 
 .globl unk_80414c1c
 unk_80414c1c: # 0x80414c1c /MoveBG/MapObjCorona.s
-.long 0x6d617269 # 0x80414c1c
-.long 0x6f000000 # 0x80414c20
+string_align "mario" # 0x80414c1c
 
 .globl unk_80414c24
 unk_80414c24: # 0x80414c24 /MoveBG/MapObjCorona.s
@@ -20745,33 +20494,27 @@ unk_80414c24: # 0x80414c24 /MoveBG/MapObjCorona.s
 
 .globl unk_80414c2c
 unk_80414c2c: # 0x80414c2c /MoveBG/MapObjCorona.s
-.long 0x77617465 # 0x80414c2c
-.long 0x72340000 # 0x80414c30
+string_align "water4" # 0x80414c2c
 
 .globl unk_80414c34
 unk_80414c34: # 0x80414c34 /MoveBG/MapObjCorona.s
-.long 0x77617465 # 0x80414c34
-.long 0x72350000 # 0x80414c38
+string_align "water5" # 0x80414c34
 
 .globl unk_80414c3c
 unk_80414c3c: # 0x80414c3c /MoveBG/MapObjCorona.s
-.long 0x77617465 # 0x80414c3c
-.long 0x72310000 # 0x80414c40
+string_align "water1" # 0x80414c3c
 
 .globl unk_80414c44
 unk_80414c44: # 0x80414c44 /MoveBG/MapObjCorona.s
-.long 0x77617465 # 0x80414c44
-.long 0x72320000 # 0x80414c48
+string_align "water2" # 0x80414c44
 
 .globl unk_80414c4c
 unk_80414c4c: # 0x80414c4c /MoveBG/MapObjCorona.s
-.long 0x77617465 # 0x80414c4c
-.long 0x72330000 # 0x80414c50
+string_align "water3" # 0x80414c4c
 
 .globl unk_80414c54
 unk_80414c54: # 0x80414c54 /MoveBG/MapObjCorona.s
-.long 0x61686972 # 0x80414c54
-.long 0x75000000 # 0x80414c58
+string_align "ahiru" # 0x80414c54
 
 .globl unk_80414c5c
 unk_80414c5c: # 0x80414c5c /MoveBG/MapObjCorona.s
@@ -20779,8 +20522,7 @@ unk_80414c5c: # 0x80414c5c /MoveBG/MapObjCorona.s
 
 .globl unk_80414c60
 unk_80414c60: # 0x80414c60 /MoveBG/MapObjCorona.s
-.long 0x6b6f6f70 # 0x80414c60
-.long 0x61000000 # 0x80414c64
+string_align "koopa" # 0x80414c60
 
 .globl unk_80414c68
 unk_80414c68: # 0x80414c68 /MoveBG/MapObjCorona.s
@@ -20862,7 +20604,7 @@ unk_80414cb8: # 0x80414cb8 /MoveBG/MapObjCorona.s
 
 .globl unk_80414cbc
 unk_80414cbc: # 0x80414cbc /MoveBG/MapObjCorona.s
-.long 0xbf800000 # 0x80414cbc
+.float -1.0 # 0x80414cbc
 
 .globl unk_80414cc0
 unk_80414cc0: # 0x80414cc0 /MoveBG/MapObjCorona.s
@@ -20902,8 +20644,7 @@ unk_80414ce0: # 0x80414ce0 /MoveBG/MapObjCorona.s
 
 .globl unk_80414ce4
 unk_80414ce4: # 0x80414ce4 /MoveBG/MapObjCorona.s
-.long 0x7368616b # 0x80414ce4
-.long 0x65000000 # 0x80414ce8
+string_align "shake" # 0x80414ce4
 
 .globl unk_80414cec
 unk_80414cec: # 0x80414cec /MoveBG/MapObjCorona.s
@@ -20919,8 +20660,7 @@ unk_80414cf4: # 0x80414cf4 /MoveBG/MapObjCorona.s
 
 .globl unk_80414cf8
 unk_80414cf8: # 0x80414cf8 /MoveBG/MapObjCorona.s
-.long 0x7265626f # 0x80414cf8
-.long 0x756e6400 # 0x80414cfc
+string_align "rebound" # 0x80414cf8
 
 .globl unk_80414d00
 unk_80414d00: # 0x80414d00 /MoveBG/MapObjCorona.s
@@ -21111,8 +20851,7 @@ unk_80414dc0: # 0x80414dc0 /MoveBG/MapObjHide.s
 
 .globl unk_80414dc4
 unk_80414dc4: # 0x80414dc4 /MoveBG/MapObjHide.s
-.long 0x6261736b # 0x80414dc4
-.long 0x65740000 # 0x80414dc8
+string_align "basket" # 0x80414dc4
 .long 0x0 # 0x80414dcc
 
 .globl unk_80414dd0
@@ -21335,8 +21074,7 @@ unk_80414ec4: # 0x80414ec4 /NPC/NpcManager.s
 
 .globl unk_80414ec8
 unk_80414ec8: # 0x80414ec8 /NPC/NpcManager.s
-.long 0x25732f25 # 0x80414ec8
-.long 0x73000000 # 0x80414ecc
+string_align "%s/%s" # 0x80414ec8
 
 .globl unk_80414ed0
 unk_80414ed0: # 0x80414ed0 /NPC/NpcManager.s
@@ -21598,13 +21336,11 @@ sMonteM_TieBColorBuf1: # 0x80414fe8 /NPC/NpcInitData.s
 
 .globl unk_80414ff0
 unk_80414ff0: # 0x80414ff0 /NPC/NpcInitData.s
-.long 0x5f6d6174 # 0x80414ff0
-.long 0x31000000 # 0x80414ff4
+string_align "_mat1" # 0x80414ff0
 
 .globl unk_80414ff8
 unk_80414ff8: # 0x80414ff8 /NPC/NpcInitData.s
-.long 0x6b6f7368 # 0x80414ff8
-.long 0x69000000 # 0x80414ffc
+string_align "koshi" # 0x80414ff8
 
 .globl sMareMB_ElderMat1ColorBuf0
 sMareMB_ElderMat1ColorBuf0: # 0x80415000 /NPC/NpcInitData.s
@@ -21628,8 +21364,7 @@ sMareMB_ElderMat2ColorBuf1: # 0x80415018 /NPC/NpcInitData.s
 
 .globl unk_80415020
 unk_80415020: # 0x80415020 /NPC/NpcInitData.s
-.long 0x5f6d6174 # 0x80415020
-.long 0x32000000 # 0x80415024
+string_align "_mat2" # 0x80415020
 
 .globl sMareMB_ElderMat3ColorBuf0
 sMareMB_ElderMat3ColorBuf0: # 0x80415028 /NPC/NpcInitData.s
@@ -21643,8 +21378,7 @@ sMareMB_ElderMat3ColorBuf1: # 0x80415030 /NPC/NpcInitData.s
 
 .globl unk_80415038
 unk_80415038: # 0x80415038 /NPC/NpcInitData.s
-.long 0x5f6d6174 # 0x80415038
-.long 0x33000000 # 0x8041503c
+string_align "_mat3" # 0x80415038
 
 .globl sMareMB_FishingRodMat1ColorBuf0
 sMareMB_FishingRodMat1ColorBuf0: # 0x80415040 /NPC/NpcInitData.s
@@ -21718,8 +21452,7 @@ sMareMD_PipeColorBuf1: # 0x804150a8 /NPC/NpcInitData.s
 
 .globl unk_804150b0
 unk_804150b0: # 0x804150b0 /NPC/NpcInitData.s
-.long 0x6d696769 # 0x804150b0
-.long 0x74650000 # 0x804150b4
+string_align "migite" # 0x804150b0
 
 .globl sMareWB_BabyBodyColorBuf0
 sMareWB_BabyBodyColorBuf0: # 0x804150b8 /NPC/NpcInitData.s
@@ -21728,8 +21461,7 @@ sMareWB_BabyBodyColorBuf0: # 0x804150b8 /NPC/NpcInitData.s
 
 .globl unk_804150c0
 unk_804150c0: # 0x804150c0 /NPC/NpcInitData.s
-.long 0x5f626f64 # 0x804150c0
-.long 0x79000000 # 0x804150c4
+string_align "_body" # 0x804150c0
 
 .globl sMareWB_BabyHatColorBuf0
 sMareWB_BabyHatColorBuf0: # 0x804150c8 /NPC/NpcInitData.s
@@ -21753,13 +21485,11 @@ sMareWB_BabyBedColorBuf1: # 0x804150e0 /NPC/NpcInitData.s
 
 .globl unk_804150e8
 unk_804150e8: # 0x804150e8 /NPC/NpcInitData.s
-.long 0x5f756b69 # 0x804150e8
-.long 0x77610000 # 0x804150ec
+string_align "_ukiwa" # 0x804150e8
 
 .globl unk_804150f0
 unk_804150f0: # 0x804150f0 /NPC/NpcInitData.s
-.long 0x5f70616e # 0x804150f0
-.long 0x74730000 # 0x804150f4
+string_align "_pants" # 0x804150f0
 
 .globl unk_804150f8
 unk_804150f8: # 0x804150f8 /NPC/NpcInitPrg.s
@@ -21851,7 +21581,7 @@ unk_80415164: # 0x80415164 /NPC/NpcChange.s
 
 .globl unk_80415168
 unk_80415168: # 0x80415168 /NPC/NpcChange.s
-.long 0xbf800000 # 0x80415168
+.float -1.0 # 0x80415168
 
 .globl unk_8041516c
 unk_8041516c: # 0x8041516c /NPC/NpcChange.s
@@ -21889,7 +21619,7 @@ unk_80415190: # 0x80415190 /NPC/NpcThrow.s
 
 .globl unk_80415194
 unk_80415194: # 0x80415194 /NPC/NpcThrow.s
-.long 0xbf800000 # 0x80415194
+.float -1.0 # 0x80415194
 
 .globl unk_80415198
 unk_80415198: # 0x80415198 /NPC/NpcThrow.s
@@ -21928,18 +21658,15 @@ unk_804151c0: # 0x804151c0 /NPC/NpcEffect.s
 
 .globl unk_804151c4
 unk_804151c4: # 0x804151c4 /NPC/NpcEffect.s
-.long 0x65665f6e # 0x804151c4
-.long 0x756c6c00 # 0x804151c8
+string_align "ef_null" # 0x804151c4
 
 .globl unk_804151cc
 unk_804151cc: # 0x804151cc /NPC/NpcEffect.s
-.long 0x6b6f7368 # 0x804151cc
-.long 0x69000000 # 0x804151d0
+string_align "koshi" # 0x804151cc
 
 .globl unk_804151d4
 unk_804151d4: # 0x804151d4 /NPC/NpcEffect.s
-.long 0x6b756368 # 0x804151d4
-.long 0x69000000 # 0x804151d8
+string_align "kuchi" # 0x804151d4
 .long 0x0 # 0x804151dc
 
 .globl unk_804151e0
@@ -22084,43 +21811,35 @@ unk_80415270: # 0x80415270 /Strategic/liveactor.s
 
 .globl unk_80415278
 unk_80415278: # 0x80415278 /Strategic/liveinterp.s
-.long 0x73657442 # 0x80415278
-.long 0x636b0000 # 0x8041527c
+string_align "setBck" # 0x80415278
 
 .globl unk_80415280
 unk_80415280: # 0x80415280 /Strategic/liveinterp.s
-.long 0x73657442 # 0x80415280
-.long 0x706b0000 # 0x80415284
+string_align "setBpk" # 0x80415280
 
 .globl unk_80415288
 unk_80415288: # 0x80415288 /Strategic/liveinterp.s
-.long 0x73657442 # 0x80415288
-.long 0x74700000 # 0x8041528c
+string_align "setBtp" # 0x80415288
 
 .globl unk_80415290
 unk_80415290: # 0x80415290 /Strategic/liveinterp.s
-.long 0x73657442 # 0x80415290
-.long 0x746b0000 # 0x80415294
+string_align "setBtk" # 0x80415290
 
 .globl unk_80415298
 unk_80415298: # 0x80415298 /Strategic/liveinterp.s
-.long 0x73657442 # 0x80415298
-.long 0x6c6b0000 # 0x8041529c
+string_align "setBlk" # 0x80415298
 
 .globl unk_804152a0
 unk_804152a0: # 0x804152a0 /Strategic/liveinterp.s
-.long 0x73657442 # 0x804152a0
-.long 0x6c730000 # 0x804152a4
+string_align "setBls" # 0x804152a0
 
 .globl unk_804152a8
 unk_804152a8: # 0x804152a8 /Strategic/liveinterp.s
-.long 0x73657453 # 0x804152a8
-.long 0x52540000 # 0x804152ac
+string_align "setSRT" # 0x804152a8
 
 .globl unk_804152b0
 unk_804152b0: # 0x804152b0 /Strategic/liveinterp.s
-.long 0x67657453 # 0x804152b0
-.long 0x52540000 # 0x804152b4
+string_align "getSRT" # 0x804152b0
 
 .globl unk_804152b8
 unk_804152b8: # 0x804152b8 /Strategic/liveinterp.s
@@ -22165,8 +21884,7 @@ unk_804152e8: # 0x804152e8 /Strategic/objmanager.s
 
 .globl unk_804152f0
 unk_804152f0: # 0x804152f0 /Strategic/ObjModel.s
-.long 0x25732f25 # 0x804152f0
-.long 0x73000000 # 0x804152f4
+string_align "%s/%s" # 0x804152f0
 
 .globl unk_804152f8
 unk_804152f8: # 0x804152f8 /Strategic/spcinterp.s
@@ -22188,8 +21906,7 @@ unk_8041530c: # 0x8041530c /Strategic/spcinterp.s
 
 .globl unk_80415310
 unk_80415310: # 0x80415310 /Strategic/spcinterp.s
-.long 0x7969656c # 0x80415310
-.long 0x64000000 # 0x80415314
+string_align "yield" # 0x80415310
 
 .globl unk_80415318
 unk_80415318: # 0x80415318 /Strategic/spcinterp.s
@@ -22203,13 +21920,11 @@ unk_80415320: # 0x80415320 /Strategic/spcinterp.s
 
 .globl unk_80415328
 unk_80415328: # 0x80415328 /Strategic/spcinterp.s
-.long 0x756e6c6f # 0x80415328
-.long 0x636b0000 # 0x8041532c
+string_align "unlock" # 0x80415328
 
 .globl unk_80415330
 unk_80415330: # 0x80415330 /Strategic/spcinterp.s
-.long 0x7072696e # 0x80415330
-.long 0x74000000 # 0x80415334
+string_align "print" # 0x80415330
 
 .globl unk_80415338
 unk_80415338: # 0x80415338 /Strategic/spcinterp.s
@@ -22222,13 +21937,11 @@ unk_80415340: # 0x80415340 /Strategic/spcinterp.s
 
 .globl unk_80415344
 unk_80415344: # 0x80415344 /Strategic/spcinterp.s
-.long 0x666c6f61 # 0x80415344
-.long 0x74000000 # 0x80415348
+string_align "float" # 0x80415344
 
 .globl unk_8041534c
 unk_8041534c: # 0x8041534c /Strategic/spcinterp.s
-.long 0x74797065 # 0x8041534c
-.long 0x6f660000 # 0x80415350
+string_align "typeof" # 0x8041534c
 
 .globl unk_80415354
 unk_80415354: # 0x80415354 /Strategic/spcinterp.s
@@ -22328,7 +22041,7 @@ unk_804153bc: # 0x804153bc /MarioUtil/DrawUtil.s
 
 .globl unk_804153c0
 unk_804153c0: # 0x804153c0 /MarioUtil/DrawUtil.s
-.long 0xbf800000 # 0x804153c0
+.float -1.0 # 0x804153c0
 
 .globl unk_804153c4
 unk_804153c4: # 0x804153c4 /MarioUtil/DrawUtil.s
@@ -22478,7 +22191,7 @@ unk_80415464: # 0x80415464 /MarioUtil/MathUtil.s
 
 .globl unk_80415468
 unk_80415468: # 0x80415468 /MarioUtil/MathUtil.s
-.long 0xbf800000 # 0x80415468
+.float -1.0 # 0x80415468
 .long 0x0 # 0x8041546c
 
 .globl unk_80415470
@@ -22522,7 +22235,7 @@ unk_8041549c: # 0x8041549c /MarioUtil/MtxUtil.s
 
 .globl unk_804154a0
 unk_804154a0: # 0x804154a0 /MarioUtil/MtxUtil.s
-.long 0xbf800000 # 0x804154a0
+.float -1.0 # 0x804154a0
 .long 0x0 # 0x804154a4
 
 .globl unk_804154a8
@@ -22554,8 +22267,7 @@ unk_804154c8: # 0x804154c8 /MarioUtil/MtxUtil.s
 
 .globl unk_804154cc
 unk_804154cc: # 0x804154cc /MarioUtil/MtxUtil.s
-.long 0x6d427261 # 0x804154cc
-.long 0x6b650000 # 0x804154d0
+string_align "mBrake" # 0x804154cc
 
 .globl unk_804154d4
 unk_804154d4: # 0x804154d4 /MarioUtil/MtxUtil.s
@@ -22680,7 +22392,7 @@ unk_80415558: # 0x80415558 /MarioUtil/ShadowUtil.s
 
 .globl unk_8041555c
 unk_8041555c: # 0x8041555c /MarioUtil/ShadowUtil.s
-.long 0xbf800000 # 0x8041555c
+.float -1.0 # 0x8041555c
 
 .globl unk_80415560
 unk_80415560: # 0x80415560 /MarioUtil/ShadowUtil.s
@@ -23128,7 +22840,7 @@ unk_80415784: # 0x80415784 /Player/MarioCap.s
 
 .globl unk_80415788
 unk_80415788: # 0x80415788 /Player/MarioCollision.s
-.long 0xbf800000 # 0x80415788
+.float -1.0 # 0x80415788
 
 .globl unk_8041578c
 unk_8041578c: # 0x8041578c /Player/MarioCollision.s
@@ -23172,43 +22884,35 @@ unk_804157b8: # 0x804157b8 /Player/MarioDraw.s
 
 .globl unk_804157c0
 unk_804157c0: # 0x804157c0 /Player/MarioDraw.s
-.long 0x626b6477 # 0x804157c0
-.long 0x6e000000 # 0x804157c4
+string_align "bkdwn" # 0x804157c0
 
 .globl unk_804157c8
 unk_804157c8: # 0x804157c8 /Player/MarioDraw.s
-.long 0x6272616b # 0x804157c8
-.long 0x65000000 # 0x804157cc
+string_align "brake" # 0x804157c8
 
 .globl unk_804157d0
 unk_804157d0: # 0x804157d0 /Player/MarioDraw.s
-.long 0x6272656e # 0x804157d0
-.long 0x64000000 # 0x804157d4
+string_align "brend" # 0x804157d0
 
 .globl unk_804157d8
 unk_804157d8: # 0x804157d8 /Player/MarioDraw.s
-.long 0x68676477 # 0x804157d8
-.long 0x6e000000 # 0x804157dc
+string_align "hgdwn" # 0x804157d8
 
 .globl unk_804157e0
 unk_804157e0: # 0x804157e0 /Player/MarioDraw.s
-.long 0x666a7065 # 0x804157e0
-.long 0x6e640000 # 0x804157e4
+string_align "fjpend" # 0x804157e0
 
 .globl unk_804157e8
 unk_804157e8: # 0x804157e8 /Player/MarioDraw.s
-.long 0x66697265 # 0x804157e8
-.long 0x6a6d7000 # 0x804157ec
+string_align "firejmp" # 0x804157e8
 
 .globl unk_804157f0
 unk_804157f0: # 0x804157f0 /Player/MarioDraw.s
-.long 0x7364776e # 0x804157f0
-.long 0x66000000 # 0x804157f4
+string_align "sdwnf" # 0x804157f0
 
 .globl unk_804157f8
 unk_804157f8: # 0x804157f8 /Player/MarioDraw.s
-.long 0x6a666477 # 0x804157f8
-.long 0x6e000000 # 0x804157fc
+string_align "jfdwn" # 0x804157f8
 
 .globl unk_80415800
 unk_80415800: # 0x80415800 /Player/MarioDraw.s
@@ -23217,23 +22921,19 @@ unk_80415800: # 0x80415800 /Player/MarioDraw.s
 
 .globl unk_80415808
 unk_80415808: # 0x80415808 /Player/MarioDraw.s
-.long 0x68676a6d # 0x80415808
-.long 0x70000000 # 0x8041580c
+string_align "hgjmp" # 0x80415808
 
 .globl unk_80415810
 unk_80415810: # 0x80415810 /Player/MarioDraw.s
-.long 0x68697065 # 0x80415810
-.long 0x64000000 # 0x80415814
+string_align "hiped" # 0x80415810
 
 .globl unk_80415818
 unk_80415818: # 0x80415818 /Player/MarioDraw.s
-.long 0x68697073 # 0x80415818
-.long 0x72000000 # 0x8041581c
+string_align "hipsr" # 0x80415818
 
 .globl unk_80415820
 unk_80415820: # 0x80415820 /Player/MarioDraw.s
-.long 0x68697061 # 0x80415820
-.long 0x74000000 # 0x80415824
+string_align "hipat" # 0x80415820
 
 .globl unk_80415828
 unk_80415828: # 0x80415828 /Player/MarioDraw.s
@@ -23242,13 +22942,11 @@ unk_80415828: # 0x80415828 /Player/MarioDraw.s
 
 .globl unk_80415830
 unk_80415830: # 0x80415830 /Player/MarioDraw.s
-.long 0x326a6d65 # 0x80415830
-.long 0x64000000 # 0x80415834
+string_align "2jmed" # 0x80415830
 
 .globl unk_80415838
 unk_80415838: # 0x80415838 /Player/MarioDraw.s
-.long 0x326a6d70 # 0x80415838
-.long 0x32000000 # 0x8041583c
+string_align "2jmp2" # 0x80415838
 
 .globl unk_80415840
 unk_80415840: # 0x80415840 /Player/MarioDraw.s
@@ -23257,13 +22955,11 @@ unk_80415840: # 0x80415840 /Player/MarioDraw.s
 
 .globl unk_80415848
 unk_80415848: # 0x80415848 /Player/MarioDraw.s
-.long 0x6a6d7065 # 0x80415848
-.long 0x64000000 # 0x8041584c
+string_align "jmped" # 0x80415848
 
 .globl unk_80415850
 unk_80415850: # 0x80415850 /Player/MarioDraw.s
-.long 0x326a6d70 # 0x80415850
-.long 0x31000000 # 0x80415854
+string_align "2jmp1" # 0x80415850
 
 .globl unk_80415858
 unk_80415858: # 0x80415858 /Player/MarioDraw.s
@@ -23272,8 +22968,7 @@ unk_80415858: # 0x80415858 /Player/MarioDraw.s
 
 .globl unk_80415860
 unk_80415860: # 0x80415860 /Player/MarioDraw.s
-.long 0x6c61656e # 0x80415860
-.long 0x64000000 # 0x80415864
+string_align "laend" # 0x80415860
 
 .globl unk_80415868
 unk_80415868: # 0x80415868 /Player/MarioDraw.s
@@ -23282,13 +22977,11 @@ unk_80415868: # 0x80415868 /Player/MarioDraw.s
 
 .globl unk_80415870
 unk_80415870: # 0x80415870 /Player/MarioDraw.s
-.long 0x7468726f # 0x80415870
-.long 0x77000000 # 0x80415874
+string_align "throw" # 0x80415870
 
 .globl unk_80415878
 unk_80415878: # 0x80415878 /Player/MarioDraw.s
-.long 0x72616973 # 0x80415878
-.long 0x65000000 # 0x8041587c
+string_align "raise" # 0x80415878
 
 .globl unk_80415880
 unk_80415880: # 0x80415880 /Player/MarioDraw.s
@@ -23311,68 +23004,55 @@ unk_80415894: # 0x80415894 /Player/MarioDraw.s
 
 .globl unk_8041589c
 unk_8041589c: # 0x8041589c /Player/MarioDraw.s
-.long 0x73686f63 # 0x8041589c
-.long 0x6b000000 # 0x804158a0
+string_align "shock" # 0x8041589c
 
 .globl unk_804158a4
 unk_804158a4: # 0x804158a4 /Player/MarioDraw.s
-.long 0x73666264 # 0x804158a4
-.long 0x6e000000 # 0x804158a8
+string_align "sfbdn" # 0x804158a4
 
 .globl unk_804158ac
 unk_804158ac: # 0x804158ac /Player/MarioDraw.s
-.long 0x73666664 # 0x804158ac
-.long 0x6e000000 # 0x804158b0
+string_align "sffdn" # 0x804158ac
 
 .globl unk_804158b4
 unk_804158b4: # 0x804158b4 /Player/MarioDraw.s
-.long 0x73646f77 # 0x804158b4
-.long 0x6e000000 # 0x804158b8
+string_align "sdown" # 0x804158b4
 
 .globl unk_804158bc
 unk_804158bc: # 0x804158bc /Player/MarioDraw.s
-.long 0x73686664 # 0x804158bc
-.long 0x6e000000 # 0x804158c0
+string_align "shfdn" # 0x804158bc
 
 .globl unk_804158c4
 unk_804158c4: # 0x804158c4 /Player/MarioDraw.s
-.long 0x73776169 # 0x804158c4
-.long 0x74000000 # 0x804158c8
+string_align "swait" # 0x804158c4
 
 .globl unk_804158cc
 unk_804158cc: # 0x804158cc /Player/MarioDraw.s
-.long 0x73776c6b # 0x804158cc
-.long 0x6c000000 # 0x804158d0
+string_align "swlkl" # 0x804158cc
 
 .globl unk_804158d4
 unk_804158d4: # 0x804158d4 /Player/MarioDraw.s
-.long 0x73776c6b # 0x804158d4
-.long 0x72000000 # 0x804158d8
+string_align "swlkr" # 0x804158d4
 
 .globl unk_804158dc
 unk_804158dc: # 0x804158dc /Player/MarioDraw.s
-.long 0x736c6463 # 0x804158dc
-.long 0x74000000 # 0x804158e0
+string_align "sldct" # 0x804158dc
 
 .globl unk_804158e4
 unk_804158e4: # 0x804158e4 /Player/MarioDraw.s
-.long 0x736c7062 # 0x804158e4
-.long 0x6b000000 # 0x804158e8
+string_align "slpbk" # 0x804158e4
 
 .globl unk_804158ec
 unk_804158ec: # 0x804158ec /Player/MarioDraw.s
-.long 0x736c6477 # 0x804158ec
-.long 0x6e000000 # 0x804158f0
+string_align "sldwn" # 0x804158ec
 
 .globl unk_804158f4
 unk_804158f4: # 0x804158f4 /Player/MarioDraw.s
-.long 0x736c7065 # 0x804158f4
-.long 0x64000000 # 0x804158f8
+string_align "slped" # 0x804158f4
 
 .globl unk_804158fc
 unk_804158fc: # 0x804158fc /Player/MarioDraw.s
-.long 0x736c706c # 0x804158fc
-.long 0x61000000 # 0x80415900
+string_align "slpla" # 0x804158fc
 
 .globl unk_80415904
 unk_80415904: # 0x80415904 /Player/MarioDraw.s
@@ -23381,23 +23061,19 @@ unk_80415904: # 0x80415904 /Player/MarioDraw.s
 
 .globl unk_8041590c
 unk_8041590c: # 0x8041590c /Player/MarioDraw.s
-.long 0x73737465 # 0x8041590c
-.long 0x70000000 # 0x80415910
+string_align "sstep" # 0x8041590c
 
 .globl unk_80415914
 unk_80415914: # 0x80415914 /Player/MarioDraw.s
-.long 0x7371656e # 0x80415914
-.long 0x64000000 # 0x80415918
+string_align "sqend" # 0x80415914
 
 .globl unk_8041591c
 unk_8041591c: # 0x8041591c /Player/MarioDraw.s
-.long 0x73717374 # 0x8041591c
-.long 0x61000000 # 0x80415920
+string_align "sqsta" # 0x8041591c
 
 .globl unk_80415924
 unk_80415924: # 0x80415924 /Player/MarioDraw.s
-.long 0x73717761 # 0x80415924
-.long 0x74000000 # 0x80415928
+string_align "sqwat" # 0x80415924
 
 .globl unk_8041592c
 unk_8041592c: # 0x8041592c /Player/MarioDraw.s
@@ -23406,18 +23082,15 @@ unk_8041592c: # 0x8041592c /Player/MarioDraw.s
 
 .globl unk_80415934
 unk_80415934: # 0x80415934 /Player/MarioDraw.s
-.long 0x74726e65 # 0x80415934
-.long 0x64000000 # 0x80415938
+string_align "trned" # 0x80415934
 
 .globl unk_8041593c
 unk_8041593c: # 0x8041593c /Player/MarioDraw.s
-.long 0x746a6d70 # 0x8041593c
-.long 0x32000000 # 0x80415940
+string_align "tjmp2" # 0x8041593c
 
 .globl unk_80415944
 unk_80415944: # 0x80415944 /Player/MarioDraw.s
-.long 0x746a6d70 # 0x80415944
-.long 0x31000000 # 0x80415948
+string_align "tjmp1" # 0x80415944
 
 .globl unk_8041594c
 unk_8041594c: # 0x8041594c /Player/MarioDraw.s
@@ -23446,58 +23119,47 @@ unk_8041596c: # 0x8041596c /Player/MarioDraw.s
 
 .globl unk_80415974
 unk_80415974: # 0x80415974 /Player/MarioDraw.s
-.long 0x6867706d # 0x80415974
-.long 0x70000000 # 0x80415978
+string_align "hgpmp" # 0x80415974
 
 .globl unk_8041597c
 unk_8041597c: # 0x8041597c /Player/MarioDraw.s
-.long 0x73746570 # 0x8041597c
-.long 0x31000000 # 0x80415980
+string_align "step1" # 0x8041597c
 
 .globl unk_80415984
 unk_80415984: # 0x80415984 /Player/MarioDraw.s
-.long 0x73746570 # 0x80415984
-.long 0x32000000 # 0x80415988
+string_align "step2" # 0x80415984
 
 .globl unk_8041598c
 unk_8041598c: # 0x8041598c /Player/MarioDraw.s
-.long 0x73746570 # 0x8041598c
-.long 0x33000000 # 0x80415990
+string_align "step3" # 0x8041598c
 
 .globl unk_80415994
 unk_80415994: # 0x80415994 /Player/MarioDraw.s
-.long 0x6a6b6963 # 0x80415994
-.long 0x6b000000 # 0x80415998
+string_align "jkick" # 0x80415994
 
 .globl unk_8041599c
 unk_8041599c: # 0x8041599c /Player/MarioDraw.s
-.long 0x64677275 # 0x8041599c
-.long 0x6e000000 # 0x804159a0
+string_align "dgrun" # 0x8041599c
 
 .globl unk_804159a4
 unk_804159a4: # 0x804159a4 /Player/MarioDraw.s
-.long 0x63617272 # 0x804159a4
-.long 0x795f7000 # 0x804159a8
+string_align "carry_p" # 0x804159a4
 
 .globl unk_804159ac
 unk_804159ac: # 0x804159ac /Player/MarioDraw.s
-.long 0x686d6f76 # 0x804159ac
-.long 0x5f6c0000 # 0x804159b0
+string_align "hmov_l" # 0x804159ac
 
 .globl unk_804159b4
 unk_804159b4: # 0x804159b4 /Player/MarioDraw.s
-.long 0x686d6f76 # 0x804159b4
-.long 0x5f720000 # 0x804159b8
+string_align "hmov_r" # 0x804159b4
 
 .globl unk_804159bc
 unk_804159bc: # 0x804159bc /Player/MarioDraw.s
-.long 0x745f7761 # 0x804159bc
-.long 0x69740000 # 0x804159c0
+string_align "t_wait" # 0x804159bc
 
 .globl unk_804159c4
 unk_804159c4: # 0x804159c4 /Player/MarioDraw.s
-.long 0x73696e6b # 0x804159c4
-.long 0x696e6700 # 0x804159c8
+string_align "sinking" # 0x804159c4
 
 .globl unk_804159cc
 unk_804159cc: # 0x804159cc /Player/MarioDraw.s
@@ -23506,8 +23168,7 @@ unk_804159cc: # 0x804159cc /Player/MarioDraw.s
 
 .globl unk_804159d4
 unk_804159d4: # 0x804159d4 /Player/MarioDraw.s
-.long 0x7370696e # 0x804159d4
-.long 0x5f700000 # 0x804159d8
+string_align "spin_p" # 0x804159d4
 
 .globl unk_804159dc
 unk_804159dc: # 0x804159dc /Player/MarioDraw.s
@@ -23520,23 +23181,19 @@ unk_804159e4: # 0x804159e4 /Player/MarioDraw.s
 
 .globl unk_804159e8
 unk_804159e8: # 0x804159e8 /Player/MarioDraw.s
-.long 0x666c6f61 # 0x804159e8
-.long 0x74000000 # 0x804159ec
+string_align "float" # 0x804159e8
 
 .globl unk_804159f0
 unk_804159f0: # 0x804159f0 /Player/MarioDraw.s
-.long 0x6665706d # 0x804159f0
-.long 0x70000000 # 0x804159f4
+string_align "fepmp" # 0x804159f0
 
 .globl unk_804159f8
 unk_804159f8: # 0x804159f8 /Player/MarioDraw.s
-.long 0x7377706d # 0x804159f8
-.long 0x70000000 # 0x804159fc
+string_align "swpmp" # 0x804159f8
 
 .globl unk_80415a00
 unk_80415a00: # 0x80415a00 /Player/MarioDraw.s
-.long 0x7468726f # 0x80415a00
-.long 0x776e0000 # 0x80415a04
+string_align "thrown" # 0x80415a00
 
 .globl unk_80415a08
 unk_80415a08: # 0x80415a08 /Player/MarioDraw.s
@@ -23545,13 +23202,11 @@ unk_80415a08: # 0x80415a08 /Player/MarioDraw.s
 
 .globl unk_80415a10
 unk_80415a10: # 0x80415a10 /Player/MarioDraw.s
-.long 0x7069766f # 0x80415a10
-.long 0x74000000 # 0x80415a14
+string_align "pivot" # 0x80415a10
 
 .globl unk_80415a18
 unk_80415a18: # 0x80415a18 /Player/MarioDraw.s
-.long 0x62656c74 # 0x80415a18
-.long 0x5f757000 # 0x80415a1c
+string_align "belt_up" # 0x80415a18
 
 .globl unk_80415a20
 unk_80415a20: # 0x80415a20 /Player/MarioDraw.s
@@ -23564,43 +23219,35 @@ unk_80415a28: # 0x80415a28 /Player/MarioDraw.s
 
 .globl unk_80415a2c
 unk_80415a2c: # 0x80415a2c /Player/MarioDraw.s
-.long 0x7369745f # 0x80415a2c
-.long 0x656e6400 # 0x80415a30
+string_align "sit_end" # 0x80415a2c
 
 .globl unk_80415a34
 unk_80415a34: # 0x80415a34 /Player/MarioDraw.s
-.long 0x736c6565 # 0x80415a34
-.long 0x70000000 # 0x80415a38
+string_align "sleep" # 0x80415a34
 
 .globl unk_80415a3c
 unk_80415a3c: # 0x80415a3c /Player/MarioDraw.s
-.long 0x796f5f77 # 0x80415a3c
-.long 0x61697400 # 0x80415a40
+string_align "yo_wait" # 0x80415a3c
 
 .globl unk_80415a44
 unk_80415a44: # 0x80415a44 /Player/MarioDraw.s
-.long 0x796f5f77 # 0x80415a44
-.long 0x616c6b00 # 0x80415a48
+string_align "yo_walk" # 0x80415a44
 
 .globl unk_80415a4c
 unk_80415a4c: # 0x80415a4c /Player/MarioDraw.s
-.long 0x796f5f72 # 0x80415a4c
-.long 0x756e0000 # 0x80415a50
+string_align "yo_run" # 0x80415a4c
 
 .globl unk_80415a54
 unk_80415a54: # 0x80415a54 /Player/MarioDraw.s
-.long 0x796f5f65 # 0x80415a54
-.long 0x61740000 # 0x80415a58
+string_align "yo_eat" # 0x80415a54
 
 .globl unk_80415a5c
 unk_80415a5c: # 0x80415a5c /Player/MarioDraw.s
-.long 0x796f5f6a # 0x80415a5c
-.long 0x756d7000 # 0x80415a60
+string_align "yo_jump" # 0x80415a5c
 
 .globl unk_80415a64
 unk_80415a64: # 0x80415a64 /Player/MarioDraw.s
-.long 0x796f5f72 # 0x80415a64
-.long 0x69646500 # 0x80415a68
+string_align "yo_ride" # 0x80415a64
 
 .globl unk_80415a6c
 unk_80415a6c: # 0x80415a6c /Player/MarioDraw.s
@@ -23694,18 +23341,15 @@ unk_80415ac8: # 0x80415ac8 /Player/MarioDraw.s
 
 .globl unk_80415acc
 unk_80415acc: # 0x80415acc /Player/MarioDraw.s
-.long 0x63656e74 # 0x80415acc
-.long 0x65720000 # 0x80415ad0
+string_align "center" # 0x80415acc
 
 .globl unk_80415ad4
 unk_80415ad4: # 0x80415ad4 /Player/MarioDraw.s
-.long 0x4d5f6865 # 0x80415ad4
-.long 0x61640000 # 0x80415ad8
+string_align "M_head" # 0x80415ad4
 
 .globl unk_80415adc
 unk_80415adc: # 0x80415adc /Player/MarioDraw.s
-.long 0x4d617269 # 0x80415adc
-.long 0x6f000000 # 0x80415ae0
+string_align "Mario" # 0x80415adc
 
 .globl unk_80415ae4
 unk_80415ae4: # 0x80415ae4 /Player/MarioDraw.s
@@ -23806,7 +23450,7 @@ unk_80415b50: # 0x80415b50 /Player/MarioJump.s
 
 .globl unk_80415b54
 unk_80415b54: # 0x80415b54 /Player/MarioJump.s
-.long 0xbf800000 # 0x80415b54
+.float -1.0 # 0x80415b54
 
 .globl unk_80415b58
 unk_80415b58: # 0x80415b58 /Player/MarioJump.s
@@ -24258,7 +23902,7 @@ unk_80415d38: # 0x80415d38 /Player/MarioRun.s
 
 .globl unk_80415d3c
 unk_80415d3c: # 0x80415d3c /Player/MarioRun.s
-.long 0xbf800000 # 0x80415d3c
+.float -1.0 # 0x80415d3c
 
 .globl unk_80415d40
 unk_80415d40: # 0x80415d40 /Player/MarioRun.s
@@ -24813,8 +24457,7 @@ unk_80415fa8: # 0x80415fa8 /Player/WaterGun.s
 
 .globl unk_80415fac
 unk_80415fac: # 0x80415fac /Player/WaterGun.s
-.long 0x77675f70 # 0x80415fac
-.long 0x756d7000 # 0x80415fb0
+string_align "wg_pump" # 0x80415fac
 
 .globl unk_80415fb4
 unk_80415fb4: # 0x80415fb4 /Player/WaterGun.s
@@ -24854,8 +24497,7 @@ unk_80415fd4: # 0x80415fd4 /Player/WaterGun.s
 
 .globl unk_80415fd8
 unk_80415fd8: # 0x80415fd8 /Player/WaterGun.s
-.long 0x6261636b # 0x80415fd8
-.long 0x5f776700 # 0x80415fdc
+string_align "back_wg" # 0x80415fd8
 
 .globl unk_80415fe0
 unk_80415fe0: # 0x80415fe0 /Player/WaterGun.s
@@ -24880,8 +24522,7 @@ unk_80415ff0: # 0x80415ff0 /Player/WaterGun.s
 
 .globl unk_80415ff8
 unk_80415ff8: # 0x80415ff8 /Player/WaterGun.s
-.long 0x6d417474 # 0x80415ff8
-.long 0x61636b00 # 0x80415ffc
+string_align "mAttack" # 0x80415ff8
 
 .globl unk_80416000
 unk_80416000: # 0x80416000 /Player/WaterGun.s
@@ -24893,8 +24534,7 @@ unk_80416004: # 0x80416004 /Player/WaterGun.s
 
 .globl unk_80416008
 unk_80416008: # 0x80416008 /Player/WaterGun.s
-.long 0x6d53697a # 0x80416008
-.long 0x65000000 # 0x8041600c
+string_align "mSize" # 0x80416008
 
 .globl unk_80416010
 unk_80416010: # 0x80416010 /Player/WaterGun.s
@@ -24910,8 +24550,7 @@ unk_80416018: # 0x80416018 /Player/WaterGun.s
 
 .globl unk_8041601c
 unk_8041601c: # 0x8041601c /Player/WaterGun.s
-.long 0x6d4e756d # 0x8041601c
-.long 0x4d696e00 # 0x80416020
+string_align "mNumMin" # 0x8041601c
 
 .globl unk_80416024
 unk_80416024: # 0x80416024 /Player/WaterGun.s
@@ -24931,8 +24570,7 @@ unk_80416030: # 0x80416030 /Player/WaterGun.s
 
 .globl unk_80416034
 unk_80416034: # 0x80416034 /Player/WaterGun.s
-.long 0x6d547970 # 0x80416034
-.long 0x65000000 # 0x80416038
+string_align "mType" # 0x80416034
 
 .globl unk_8041603c
 unk_8041603c: # 0x8041603c /Player/WaterGun.s
@@ -24987,13 +24625,11 @@ unk_80416074: # 0x80416074 /Player/Yoshi.s
 
 .globl unk_80416078
 unk_80416078: # 0x80416078 /Player/Yoshi.s
-.long 0x796f7368 # 0x80416078
-.long 0x69000000 # 0x8041607c
+string_align "yoshi" # 0x80416078
 
 .globl unk_80416080
 unk_80416080: # 0x80416080 /Player/Yoshi.s
-.long 0x63656e74 # 0x80416080
-.long 0x65720000 # 0x80416084
+string_align "center" # 0x80416080
 
 .globl unk_80416088
 unk_80416088: # 0x80416088 /Player/Yoshi.s
@@ -25121,8 +24757,7 @@ unk_8041610c: # 0x8041610c /Player/MarioInit.s
 
 .globl unk_80416110
 unk_80416110: # 0x80416110 /Player/MarioInit.s
-.long 0x6d584d69 # 0x80416110
-.long 0x6e000000 # 0x80416114
+string_align "mXMin" # 0x80416110
 
 .globl unk_80416118
 unk_80416118: # 0x80416118 /Player/MarioInit.s
@@ -25130,8 +24765,7 @@ unk_80416118: # 0x80416118 /Player/MarioInit.s
 
 .globl unk_8041611c
 unk_8041611c: # 0x8041611c /Player/MarioInit.s
-.long 0x6d584d61 # 0x8041611c
-.long 0x78000000 # 0x80416120
+string_align "mXMax" # 0x8041611c
 
 .globl unk_80416124
 unk_80416124: # 0x80416124 /Player/MarioInit.s
@@ -25155,13 +24789,11 @@ unk_80416134: # 0x80416134 /Player/MarioInit.s
 
 .globl unk_80416138
 unk_80416138: # 0x80416138 /Player/MarioInit.s
-.long 0x6d44616d # 0x80416138
-.long 0x61676500 # 0x8041613c
+string_align "mDamage" # 0x80416138
 
 .globl unk_80416140
 unk_80416140: # 0x80416140 /Player/MarioInit.s
-.long 0x6d4d6f74 # 0x80416140
-.long 0x6f720000 # 0x80416144
+string_align "mMotor" # 0x80416140
 
 .globl unk_80416148
 unk_80416148: # 0x80416148 /Player/MarioInit.s
@@ -25169,8 +24801,7 @@ unk_80416148: # 0x80416148 /Player/MarioInit.s
 
 .globl unk_8041614c
 unk_8041614c: # 0x8041614c /Player/MarioInit.s
-.long 0x6d446972 # 0x8041614c
-.long 0x74790000 # 0x80416150
+string_align "mDirty" # 0x8041614c
 
 .globl unk_80416154
 unk_80416154: # 0x80416154 /Player/MarioInit.s
@@ -25178,8 +24809,7 @@ unk_80416154: # 0x80416154 /Player/MarioInit.s
 
 .globl unk_80416158
 unk_80416158: # 0x80416158 /Player/MarioInit.s
-.long 0x6d526f74 # 0x80416158
-.long 0x53700000 # 0x8041615c
+string_align "mRotSp" # 0x80416158
 
 .globl unk_80416160
 unk_80416160: # 0x80416160 /Player/MarioInit.s
@@ -25203,8 +24833,7 @@ unk_80416170: # 0x80416170 /Player/MarioInit.s
 
 .globl unk_80416174
 unk_80416174: # 0x80416174 /Player/MarioInit.s
-.long 0x6d427261 # 0x80416174
-.long 0x6b650000 # 0x80416178
+string_align "mBrake" # 0x80416174
 
 .globl unk_8041617c
 unk_8041617c: # 0x8041617c /Player/MarioInit.s
@@ -25212,8 +24841,7 @@ unk_8041617c: # 0x8041617c /Player/MarioInit.s
 
 .globl unk_80416180
 unk_80416180: # 0x80416180 /Player/MarioInit.s
-.long 0x6d526f74 # 0x80416180
-.long 0x4d696e00 # 0x80416184
+string_align "mRotMin" # 0x80416180
 
 .globl unk_80416188
 unk_80416188: # 0x80416188 /Player/MarioInit.s
@@ -25221,8 +24849,7 @@ unk_80416188: # 0x80416188 /Player/MarioInit.s
 
 .globl unk_8041618c
 unk_8041618c: # 0x8041618c /Player/MarioInit.s
-.long 0x6d526f74 # 0x8041618c
-.long 0x4d617800 # 0x80416190
+string_align "mRotMax" # 0x8041618c
 
 .globl unk_80416194
 unk_80416194: # 0x80416194 /Player/MarioInit.s
@@ -25230,8 +24857,7 @@ unk_80416194: # 0x80416194 /Player/MarioInit.s
 
 .globl unk_80416198
 unk_80416198: # 0x80416198 /Player/MarioInit.s
-.long 0x6d506f77 # 0x80416198
-.long 0x4d696e00 # 0x8041619c
+string_align "mPowMin" # 0x80416198
 
 .globl unk_804161a0
 unk_804161a0: # 0x804161a0 /Player/MarioInit.s
@@ -25239,8 +24865,7 @@ unk_804161a0: # 0x804161a0 /Player/MarioInit.s
 
 .globl unk_804161a4
 unk_804161a4: # 0x804161a4 /Player/MarioInit.s
-.long 0x6d506f77 # 0x804161a4
-.long 0x4d617800 # 0x804161a8
+string_align "mPowMax" # 0x804161a4
 
 .globl unk_804161ac
 unk_804161ac: # 0x804161ac /Player/MarioInit.s
@@ -25248,8 +24873,7 @@ unk_804161ac: # 0x804161ac /Player/MarioInit.s
 
 .globl unk_804161b0
 unk_804161b0: # 0x804161b0 /Player/MarioInit.s
-.long 0x6d416363 # 0x804161b0
-.long 0x656c0000 # 0x804161b4
+string_align "mAccel" # 0x804161b0
 
 .globl unk_804161b8
 unk_804161b8: # 0x804161b8 /Player/MarioInit.s
@@ -25265,8 +24889,7 @@ unk_804161c0: # 0x804161c0 /Player/MarioInit.s
 
 .globl unk_804161c4
 unk_804161c4: # 0x804161c4 /Player/MarioInit.s
-.long 0x6d526f6c # 0x804161c4
-.long 0x6c000000 # 0x804161c8
+string_align "mRoll" # 0x804161c4
 
 .globl unk_804161cc
 unk_804161cc: # 0x804161cc /Player/MarioInit.s
@@ -25274,8 +24897,7 @@ unk_804161cc: # 0x804161cc /Player/MarioInit.s
 
 .globl unk_804161d0
 unk_804161d0: # 0x804161d0 /Player/MarioInit.s
-.long 0x6d506974 # 0x804161d0
-.long 0x63680000 # 0x804161d4
+string_align "mPitch" # 0x804161d0
 
 .globl unk_804161d8
 unk_804161d8: # 0x804161d8 /Player/MarioInit.s
@@ -25423,8 +25045,7 @@ unk_80416264: # 0x80416264 /Player/MarioInit.s
 
 .globl unk_80416268
 unk_80416268: # 0x80416268 /Player/MarioInit.s
-.long 0x6d4d6f76 # 0x80416268
-.long 0x65537000 # 0x8041626c
+string_align "mMoveSp" # 0x80416268
 
 .globl unk_80416270
 unk_80416270: # 0x80416270 /Player/MarioInit.s
@@ -25432,8 +25053,7 @@ unk_80416270: # 0x80416270 /Player/MarioInit.s
 
 .globl unk_80416274
 unk_80416274: # 0x80416274 /Player/MarioInit.s
-.long 0x6d527573 # 0x80416274
-.long 0x68000000 # 0x80416278
+string_align "mRush" # 0x80416274
 
 .globl unk_8041627c
 unk_8041627c: # 0x8041627c /Player/MarioInit.s
@@ -25441,13 +25061,11 @@ unk_8041627c: # 0x8041627c /Player/MarioInit.s
 
 .globl unk_80416280
 unk_80416280: # 0x80416280 /Player/MarioInit.s
-.long 0x6d416972 # 0x80416280
-.long 0x44656300 # 0x80416284
+string_align "mAirDec" # 0x80416280
 
 .globl unk_80416288
 unk_80416288: # 0x80416288 /Player/MarioInit.s
-.long 0x6d416972 # 0x80416288
-.long 0x496e6300 # 0x8041628c
+string_align "mAirInc" # 0x80416288
 
 .globl unk_80416290
 unk_80416290: # 0x80416290 /Player/MarioInit.s
@@ -25503,13 +25121,11 @@ unk_804162c0: # 0x804162c0 /Player/MarioInit.s
 
 .globl unk_804162c4
 unk_804162c4: # 0x804162c4 /Player/MarioInit.s
-.long 0x6d526164 # 0x804162c4
-.long 0x69757300 # 0x804162c8
+string_align "mRadius" # 0x804162c4
 
 .globl unk_804162cc
 unk_804162cc: # 0x804162cc /Player/MarioInit.s
-.long 0x6d486569 # 0x804162cc
-.long 0x67687400 # 0x804162d0
+string_align "mHeight" # 0x804162cc
 
 .globl unk_804162d4
 unk_804162d4: # 0x804162d4 /Player/MarioInit.s
@@ -25517,8 +25133,7 @@ unk_804162d4: # 0x804162d4 /Player/MarioInit.s
 
 .globl unk_804162d8
 unk_804162d8: # 0x804162d8 /Player/MarioInit.s
-.long 0x6d48504d # 0x804162d8
-.long 0x61780000 # 0x804162dc
+string_align "mHPMax" # 0x804162d8
 
 .globl unk_804162e0
 unk_804162e0: # 0x804162e0 /Player/MarioInit.s
@@ -25723,7 +25338,7 @@ unk_804163c0: # 0x804163c0 /Player/ModelWaterManager.s
 
 .globl unk_804163c4
 unk_804163c4: # 0x804163c4 /Player/ModelWaterManager.s
-.long 0xbf800000 # 0x804163c4
+.float -1.0 # 0x804163c4
 
 .globl unk_804163c8
 unk_804163c8: # 0x804163c8 /Player/ModelWaterManager.s
@@ -25803,8 +25418,7 @@ unk_80416410: # 0x80416410 /Player/ModelWaterManager.s
 
 .globl unk_80416414
 unk_80416414: # 0x80416414 /Player/ModelWaterManager.s
-.long 0x6d416c69 # 0x80416414
-.long 0x76650000 # 0x80416418
+string_align "mAlive" # 0x80416414
 
 .globl unk_8041641c
 unk_8041641c: # 0x8041641c /Player/ModelWaterManager.s
@@ -25825,8 +25439,7 @@ unk_80416428: # 0x80416428 /Player/ModelWaterManager.s
 
 .globl unk_80416430
 unk_80416430: # 0x80416430 /Player/ModelWaterManager.s
-.long 0x6d417474 # 0x80416430
-.long 0x61636b00 # 0x80416434
+string_align "mAttack" # 0x80416430
 
 .globl unk_80416438
 unk_80416438: # 0x80416438 /Player/ModelWaterManager.s
@@ -25849,8 +25462,7 @@ unk_8041644c: # 0x8041644c /Player/ModelWaterManager.s
 
 .globl unk_80416454
 unk_80416454: # 0x80416454 /Player/ModelWaterManager.s
-.long 0x6d53697a # 0x80416454
-.long 0x65000000 # 0x80416458
+string_align "mSize" # 0x80416454
 
 .globl unk_8041645c
 unk_8041645c: # 0x8041645c /Player/ModelWaterManager.s
@@ -25858,13 +25470,11 @@ unk_8041645c: # 0x8041645c /Player/ModelWaterManager.s
 
 .globl unk_80416460
 unk_80416460: # 0x80416460 /Player/ModelWaterManager.s
-.long 0x6d466c61 # 0x80416460
-.long 0x67000000 # 0x80416464
+string_align "mFlag" # 0x80416460
 
 .globl unk_80416468
 unk_80416468: # 0x80416468 /Player/ModelWaterManager.s
-.long 0x6d547970 # 0x80416468
-.long 0x65000000 # 0x8041646c
+string_align "mType" # 0x80416468
 
 .globl unk_80416470
 unk_80416470: # 0x80416470 /Player/MarioCheckCol.s
@@ -25996,18 +25606,15 @@ unk_80416504: # 0x80416504 /System/EmitterViewObj.s
 
 .globl unk_80416508
 unk_80416508: # 0x80416508 /System/EventWatcher.s
-.long 0x67657454 # 0x80416508
-.long 0x696d6500 # 0x8041650c
+string_align "getTime" # 0x80416508
 
 .globl unk_80416510
 unk_80416510: # 0x80416510 /System/EventWatcher.s
-.long 0x73746f70 # 0x80416510
-.long 0x42474d00 # 0x80416514
+string_align "stopBGM" # 0x80416510
 
 .globl unk_80416518
 unk_80416518: # 0x80416518 /System/EventWatcher.s
-.long 0x73746172 # 0x80416518
-.long 0x74534500 # 0x8041651c
+string_align "startSE" # 0x80416518
 
 .globl unk_80416520
 unk_80416520: # 0x80416520 /System/EventWatcher.s
@@ -26107,7 +25714,7 @@ unk_80416588: # 0x80416588 /System/GCLogoDir.s
 
 .globl unk_8041658c
 unk_8041658c: # 0x8041658c /System/GCLogoDir.s
-.long 0xbf800000 # 0x8041658c
+.float -1.0 # 0x8041658c
 
 .globl unk_80416590
 unk_80416590: # 0x80416590 /System/J3DSysFlag.s
@@ -26121,8 +25728,7 @@ unk_80416598: # 0x80416598 /System/MarDirector.s
 
 .globl unk_804165a0
 unk_804165a0: # 0x804165a0 /System/MarDirectorDirect.s
-.long 0x6d617269 # 0x804165a0
-.long 0x6f000000 # 0x804165a4
+string_align "mario" # 0x804165a0
 
 .globl unk_804165a8
 unk_804165a8: # 0x804165a8 /System/MarDirectorDirect.s
@@ -26147,8 +25753,7 @@ unk_804165bc: # 0x804165bc /System/MarDirectorDirect.s
 
 .globl unk_804165c0
 unk_804165c0: # 0x804165c0 /System/MarDirectorDirect.s
-.long 0x47756964 # 0x804165c0
-.long 0x65000000 # 0x804165c4
+string_align "Guide" # 0x804165c0
 
 .globl unk_804165c8
 unk_804165c8: # 0x804165c8 /System/MarDirectorDirect.s
@@ -26160,8 +25765,7 @@ unk_804165cc: # 0x804165cc /System/MarDirectorDirect.s
 
 .globl unk_804165d0
 unk_804165d0: # 0x804165d0 /System/MarDirectorDirect.s
-.long 0x67756964 # 0x804165d0
-.long 0x65000000 # 0x804165d4
+string_align "guide" # 0x804165d0
 
 .globl unk_804165d8
 unk_804165d8: # 0x804165d8 /System/MarDirectorDirect.s
@@ -26183,8 +25787,7 @@ unk_804165e8: # 0x804165e8 /System/MarDirectorEvent.s
 
 .globl unk_804165f0
 unk_804165f0: # 0x804165f0 /System/MarDirectorInitECT.s
-.long 0x47756964 # 0x804165f0
-.long 0x65000000 # 0x804165f4
+string_align "Guide" # 0x804165f0
 
 .globl unk_804165f8
 unk_804165f8: # 0x804165f8 /System/MarDirectorInitECT.s
@@ -26197,7 +25800,7 @@ unk_80416600: # 0x80416600 /System/MarDirectorInitECT.s
 
 .globl unk_80416604
 unk_80416604: # 0x80416604 /System/MarDirectorInitECT.s
-.long 0xbf800000 # 0x80416604
+.float -1.0 # 0x80416604
 
 .globl unk_80416608
 unk_80416608: # 0x80416608 /System/MarDirectorInitECT.s
@@ -26253,28 +25856,23 @@ unk_80416640: # 0x80416640 /System/MarDirectorPreEntry.s
 
 .globl unk_80416648
 unk_80416648: # 0x80416648 /System/MarDirectorSetup2.s
-.long 0x6f707469 # 0x80416648
-.long 0x6f6e0000 # 0x8041664c
+string_align "option" # 0x80416648
 
 .globl unk_80416650
 unk_80416650: # 0x80416650 /System/MarDirectorSetup2.s
-.long 0x67616d65 # 0x80416650
-.long 0x5f360000 # 0x80416654
+string_align "game_6" # 0x80416650
 
 .globl unk_80416658
 unk_80416658: # 0x80416658 /System/MarDirectorSetup2.s
-.long 0x67756964 # 0x80416658
-.long 0x65000000 # 0x8041665c
+string_align "guide" # 0x80416658
 
 .globl unk_80416660
 unk_80416660: # 0x80416660 /System/MarDirectorSetup2.s
-.long 0x796f7368 # 0x80416660
-.long 0x69000000 # 0x80416664
+string_align "yoshi" # 0x80416660
 
 .globl unk_80416668
 unk_80416668: # 0x80416668 /System/MarDirectorSetup2.s
-.long 0x7363656e # 0x80416668
-.long 0x65000000 # 0x8041666c
+string_align "scene" # 0x80416668
 
 .globl unk_80416670
 unk_80416670: # 0x80416670 /System/MarDirectorSetup2.s
@@ -26288,18 +25886,15 @@ unk_80416678: # 0x80416678 /System/MarDirectorSetup2.s
 
 .globl unk_80416680
 unk_80416680: # 0x80416680 /System/MarNameRefGen.s
-.long 0x54616c6b # 0x80416680
-.long 0x32440000 # 0x80416684
+string_align "Talk2D" # 0x80416680
 
 .globl unk_80416688
 unk_80416688: # 0x80416688 /System/MarNameRefGen.s
-.long 0x4d617269 # 0x80416688
-.long 0x6f000000 # 0x8041668c
+string_align "Mario" # 0x80416688
 
 .globl unk_80416690
 unk_80416690: # 0x80416690 /System/MarNameRefGen.s
-.long 0x4d4c6967 # 0x80416690
-.long 0x68740000 # 0x80416694
+string_align "MLight" # 0x80416690
 
 .globl unk_80416698
 unk_80416698: # 0x80416698 /System/MarNameRefGen.s
@@ -26307,13 +25902,11 @@ unk_80416698: # 0x80416698 /System/MarNameRefGen.s
 
 .globl unk_8041669c
 unk_8041669c: # 0x8041669c /System/MarNameRefGen.s
-.long 0x47756964 # 0x8041669c
-.long 0x65000000 # 0x804166a0
+string_align "Guide" # 0x8041669c
 
 .globl unk_804166a4
 unk_804166a4: # 0x804166a4 /System/MarNameRefGen.s
-.long 0x3c477569 # 0x804166a4
-.long 0x64653e00 # 0x804166a8
+string_align "<Guide>" # 0x804166a4
 
 .globl unk_804166ac
 unk_804166ac: # 0x804166ac /System/MarNameRefGen.s
@@ -26348,18 +25941,15 @@ unk_804166d0: # 0x804166d0 /System/MenuDir.s
 
 .globl unk_804166d4
 unk_804166d4: # 0x804166d4 /System/MenuDir.s
-.long 0x42656163 # 0x804166d4
-.long 0x68203600 # 0x804166d8
+string_align "Beach 6" # 0x804166d4
 
 .globl unk_804166dc
 unk_804166dc: # 0x804166dc /System/MenuDir.s
-.long 0x42656163 # 0x804166dc
-.long 0x68203700 # 0x804166e0
+string_align "Beach 7" # 0x804166dc
 
 .globl unk_804166e4
 unk_804166e4: # 0x804166e4 /System/MenuDir.s
-.long 0x486f7465 # 0x804166e4
-.long 0x6c203400 # 0x804166e8
+string_align "Hotel 4" # 0x804166e4
 
 .globl unk_804166ec
 unk_804166ec: # 0x804166ec /System/MenuDir.s
@@ -26368,48 +25958,39 @@ unk_804166ec: # 0x804166ec /System/MenuDir.s
 
 .globl unk_804166f4
 unk_804166f4: # 0x804166f4 /System/MenuDir.s
-.long 0x5061726b # 0x804166f4
-.long 0x20256400 # 0x804166f8
+string_align "Park %d" # 0x804166f4
 
 .globl unk_804166fc
 unk_804166fc: # 0x804166fc /System/MenuDir.s
-.long 0x5061726b # 0x804166fc
-.long 0x20360000 # 0x80416700
+string_align "Park 6" # 0x804166fc
 
 .globl unk_80416704
 unk_80416704: # 0x80416704 /System/MenuDir.s
-.long 0x5061726b # 0x80416704
-.long 0x20370000 # 0x80416708
+string_align "Park 7" # 0x80416704
 
 .globl unk_8041670c
 unk_8041670c: # 0x8041670c /System/MenuDir.s
-.long 0x42656163 # 0x8041670c
-.long 0x68203400 # 0x80416710
+string_align "Beach 4" # 0x8041670c
 
 .globl unk_80416714
 unk_80416714: # 0x80416714 /System/MenuDir.s
-.long 0x426f7373 # 0x80416714
-.long 0x20300000 # 0x80416718
+string_align "Boss 0" # 0x80416714
 
 .globl unk_8041671c
 unk_8041671c: # 0x8041671c /System/MenuDir.s
-.long 0x426f7373 # 0x8041671c
-.long 0x20310000 # 0x80416720
+string_align "Boss 1" # 0x8041671c
 
 .globl unk_80416724
 unk_80416724: # 0x80416724 /System/MenuDir.s
-.long 0x44656d6f # 0x80416724
-.long 0x20300000 # 0x80416728
+string_align "Demo 0" # 0x80416724
 
 .globl unk_8041672c
 unk_8041672c: # 0x8041672c /System/MenuDir.s
-.long 0x44656d6f # 0x8041672c
-.long 0x20310000 # 0x80416730
+string_align "Demo 1" # 0x8041672c
 
 .globl unk_80416734
 unk_80416734: # 0x80416734 /System/MenuDir.s
-.long 0x4e6f6b69 # 0x80416734
-.long 0x20256400 # 0x80416738
+string_align "Noki %d" # 0x80416734
 
 .globl unk_8041673c
 unk_8041673c: # 0x8041673c /System/MenuDir.s
@@ -26417,8 +25998,7 @@ unk_8041673c: # 0x8041673c /System/MenuDir.s
 
 .globl unk_80416740
 unk_80416740: # 0x80416740 /System/MenuDir.s
-.long 0x25303264 # 0x80416740
-.long 0x20257300 # 0x80416744
+string_align "%02d %s" # 0x80416740
 
 .globl unk_80416748
 unk_80416748: # 0x80416748 /System/MenuDir.s
@@ -26426,7 +26006,7 @@ unk_80416748: # 0x80416748 /System/MenuDir.s
 
 .globl unk_8041674c
 unk_8041674c: # 0x8041674c /System/MenuDir.s
-.long 0xbf800000 # 0x8041674c
+.float -1.0 # 0x8041674c
 
 .globl unk_80416750
 unk_80416750: # 0x80416750 /System/MenuDir.s
@@ -26446,8 +26026,7 @@ unk_8041675c: # 0x8041675c /System/MenuDir.s
 
 .globl unk_80416760
 unk_80416760: # 0x80416760 /System/MenuDir.s
-.long 0x7469746c # 0x80416760
-.long 0x65000000 # 0x80416764
+string_align "title" # 0x80416760
 
 .globl unk_80416768
 unk_80416768: # 0x80416768 /System/Params.s
@@ -26455,13 +26034,11 @@ unk_80416768: # 0x80416768 /System/Params.s
 
 .globl unk_8041676c
 unk_8041676c: # 0x8041676c /System/Params.s
-.long 0x70617261 # 0x8041676c
-.long 0x6d730000 # 0x80416770
+string_align "params" # 0x8041676c
 
 .globl unk_80416774
 unk_80416774: # 0x80416774 /System/Params.s
-.long 0x7363656e # 0x80416774
-.long 0x65000000 # 0x80416778
+string_align "scene" # 0x80416774
 .long 0x0 # 0x8041677c
 
 .globl unk_80416780
@@ -26509,7 +26086,7 @@ unk_804167b0: # 0x804167b0 /System/Application.s
 
 .globl unk_804167b4
 unk_804167b4: # 0x804167b4 /System/Application.s
-.long 0xbf800000 # 0x804167b4
+.float -1.0 # 0x804167b4
 
 .globl unk_804167b8
 unk_804167b8: # 0x804167b8 /System/Application.s
@@ -26523,13 +26100,11 @@ unk_804167c0: # 0x804167c0 /System/Application.s
 
 .globl unk_804167c8
 unk_804167c8: # 0x804167c8 /System/Application.s
-.long 0x2f666f6e # 0x804167c8
-.long 0x74000000 # 0x804167cc
+string_align "/font" # 0x804167c8
 
 .globl unk_804167d0
 unk_804167d0: # 0x804167d0 /System/Application.s
-.long 0x2f617564 # 0x804167d0
-.long 0x69000000 # 0x804167d4
+string_align "/audi" # 0x804167d0
 
 .globl unk_804167d8
 unk_804167d8: # 0x804167d8 /System/Application.s
@@ -26585,8 +26160,7 @@ unk_80416810: # 0x80416810 /System/DrawSyncManager.s
 
 .globl unk_80416818
 unk_80416818: # 0x80416818 /System/MarNameRefGen_BossEnemy.s
-.long 0x454d6172 # 0x80416818
-.long 0x696f0000 # 0x8041681c
+string_align "EMario" # 0x80416818
 
 .globl unk_80416820
 unk_80416820: # 0x80416820 /System/MarNameRefGen_BossEnemy.s
@@ -26598,13 +26172,11 @@ unk_80416824: # 0x80416824 /System/MarNameRefGen_BossEnemy.s
 
 .globl unk_80416828
 unk_80416828: # 0x80416828 /System/MarNameRefGen_BossEnemy.s
-.long 0x426f7373 # 0x80416828
-.long 0x45656c00 # 0x8041682c
+string_align "BossEel" # 0x80416828
 
 .globl unk_80416830
 unk_80416830: # 0x80416830 /System/MarNameRefGen_BossEnemy.s
-.long 0x4b6f6f70 # 0x80416830
-.long 0x61000000 # 0x80416834
+string_align "Koopa" # 0x80416830
 
 .globl unk_80416838
 unk_80416838: # 0x80416838 /System/MarNameRefGen_BossEnemy.s
@@ -26613,13 +26185,11 @@ unk_80416838: # 0x80416838 /System/MarNameRefGen_BossEnemy.s
 
 .globl unk_80416840
 unk_80416840: # 0x80416840 /System/MarNameRefGen_BossEnemy.s
-.long 0x4b6f6f70 # 0x80416840
-.long 0x614a7200 # 0x80416844
+string_align "KoopaJr" # 0x80416840
 
 .globl unk_80416848
 unk_80416848: # 0x80416848 /System/MarNameRefGen_BossEnemy.s
-.long 0x4f696c42 # 0x80416848
-.long 0x616c6c00 # 0x8041684c
+string_align "OilBall" # 0x80416848
 
 .globl unk_80416850
 unk_80416850: # 0x80416850 /System/MarNameRefGen_BossEnemy.s
@@ -26642,8 +26212,7 @@ unk_80416868: # 0x80416868 /System/MarNameRefGen_Enemy.s
 
 .globl unk_8041686c
 unk_8041686c: # 0x8041686c /System/MarNameRefGen_Enemy.s
-.long 0x42656548 # 0x8041686c
-.long 0x69766500 # 0x80416870
+string_align "BeeHive" # 0x8041686c
 
 .globl unk_80416874
 unk_80416874: # 0x80416874 /System/MarNameRefGen_Enemy.s
@@ -26666,8 +26235,7 @@ unk_8041688c: # 0x8041688c /System/MarNameRefGen_Enemy.s
 
 .globl unk_80416890
 unk_80416890: # 0x80416890 /System/MarNameRefGen_Enemy.s
-.long 0x50616b6b # 0x80416890
-.long 0x756e0000 # 0x80416894
+string_align "Pakkun" # 0x80416890
 
 .globl unk_80416898
 unk_80416898: # 0x80416898 /System/MarNameRefGen_Enemy.s
@@ -26681,13 +26249,11 @@ unk_804168a0: # 0x804168a0 /System/MarNameRefGen_Enemy.s
 
 .globl unk_804168a8
 unk_804168a8: # 0x804168a8 /System/MarNameRefGen_Enemy.s
-.long 0x47657373 # 0x804168a8
-.long 0x6f000000 # 0x804168ac
+string_align "Gesso" # 0x804168a8
 
 .globl unk_804168b0
 unk_804168b0: # 0x804168b0 /System/MarNameRefGen_Enemy.s
-.long 0x54656c65 # 0x804168b0
-.long 0x73610000 # 0x804168b4
+string_align "Telesa" # 0x804168b0
 
 .globl unk_804168b8
 unk_804168b8: # 0x804168b8 /System/MarNameRefGen_Enemy.s
@@ -26696,23 +26262,19 @@ unk_804168b8: # 0x804168b8 /System/MarNameRefGen_Enemy.s
 
 .globl unk_804168c0
 unk_804168c0: # 0x804168c0 /System/MarNameRefGen_Enemy.s
-.long 0x506f6948 # 0x804168c0
-.long 0x616e6100 # 0x804168c4
+string_align "PoiHana" # 0x804168c0
 
 .globl unk_804168c8
 unk_804168c8: # 0x804168c8 /System/MarNameRefGen_Enemy.s
-.long 0x4d6f6550 # 0x804168c8
-.long 0x756b7500 # 0x804168cc
+string_align "MoePuku" # 0x804168c8
 
 .globl unk_804168d0
 unk_804168d0: # 0x804168d0 /System/MarNameRefGen_Enemy.s
-.long 0x526f636b # 0x804168d0
-.long 0x65740000 # 0x804168d4
+string_align "Rocket" # 0x804168d0
 
 .globl unk_804168d8
 unk_804168d8: # 0x804168d8 /System/MarNameRefGen_Enemy.s
-.long 0x59756d62 # 0x804168d8
-.long 0x6f000000 # 0x804168dc
+string_align "Yumbo" # 0x804168d8
 
 .globl unk_804168e0
 unk_804168e0: # 0x804168e0 /System/MarNameRefGen_Enemy.s
@@ -26721,8 +26283,7 @@ unk_804168e0: # 0x804168e0 /System/MarNameRefGen_Enemy.s
 
 .globl unk_804168e8
 unk_804168e8: # 0x804168e8 /System/MarNameRefGen_Enemy.s
-.long 0x43616e6e # 0x804168e8
-.long 0x6f6e0000 # 0x804168ec
+string_align "Cannon" # 0x804168e8
 
 .globl unk_804168f0
 unk_804168f0: # 0x804168f0 /System/MarNameRefGen_Enemy.s
@@ -26731,8 +26292,7 @@ unk_804168f0: # 0x804168f0 /System/MarNameRefGen_Enemy.s
 
 .globl unk_804168f8
 unk_804168f8: # 0x804168f8 /System/MarNameRefGen_Enemy.s
-.long 0x426f6d62 # 0x804168f8
-.long 0x48656900 # 0x804168fc
+string_align "BombHei" # 0x804168f8
 
 .globl unk_80416900
 unk_80416900: # 0x80416900 /System/MarNameRefGen_Enemy.s
@@ -26741,8 +26301,7 @@ unk_80416900: # 0x80416900 /System/MarNameRefGen_Enemy.s
 
 .globl unk_80416908
 unk_80416908: # 0x80416908 /System/MarNameRefGen_Enemy.s
-.long 0x4b696c6c # 0x80416908
-.long 0x65720000 # 0x8041690c
+string_align "Killer" # 0x80416908
 
 .globl unk_80416910
 unk_80416910: # 0x80416910 /System/MarNameRefGen_Enemy.s
@@ -26751,8 +26310,7 @@ unk_80416910: # 0x80416910 /System/MarNameRefGen_Enemy.s
 
 .globl unk_80416918
 unk_80416918: # 0x80416918 /System/MarNameRefGen_Enemy.s
-.long 0x416d694e # 0x80416918
-.long 0x6f6b6f00 # 0x8041691c
+string_align "AmiNoko" # 0x80416918
 
 .globl unk_80416920
 unk_80416920: # 0x80416920 /System/MarNameRefGen_Enemy.s
@@ -26761,8 +26319,7 @@ unk_80416920: # 0x80416920 /System/MarNameRefGen_Enemy.s
 
 .globl unk_80416928
 unk_80416928: # 0x80416928 /System/MarNameRefGen_Enemy.s
-.long 0x4b756b6b # 0x80416928
-.long 0x75000000 # 0x8041692c
+string_align "Kukku" # 0x80416928
 
 .globl unk_80416930
 unk_80416930: # 0x80416930 /System/MarNameRefGen_Enemy.s
@@ -26771,18 +26328,15 @@ unk_80416930: # 0x80416930 /System/MarNameRefGen_Enemy.s
 
 .globl unk_80416938
 unk_80416938: # 0x80416938 /System/MarNameRefGen_Enemy.s
-.long 0x4b756d6f # 0x80416938
-.long 0x6b756e00 # 0x8041693c
+string_align "Kumokun" # 0x80416938
 
 .globl unk_80416940
 unk_80416940: # 0x80416940 /System/MarNameRefGen_Enemy.s
-.long 0x416d656e # 0x80416940
-.long 0x626f0000 # 0x80416944
+string_align "Amenbo" # 0x80416940
 
 .globl unk_80416948
 unk_80416948: # 0x80416948 /System/MarNameRefGen_Enemy.s
-.long 0x4b617a65 # 0x80416948
-.long 0x6b756e00 # 0x8041694c
+string_align "Kazekun" # 0x80416948
 
 .globl unk_80416950
 unk_80416950: # 0x80416950 /System/MarNameRefGen_Enemy.s
@@ -26811,13 +26365,11 @@ unk_80416968: # 0x80416968 /System/MarNameRefGen_Map.s
 
 .globl unk_8041696c
 unk_8041696c: # 0x8041696c /System/MarNameRefGen_Map.s
-.long 0x5368696d # 0x8041696c
-.long 0x6d657200 # 0x80416970
+string_align "Shimmer" # 0x8041696c
 
 .globl unk_80416974
 unk_80416974: # 0x80416974 /System/MarNameRefGen_Map.s
-.long 0x53756e4d # 0x80416974
-.long 0x67720000 # 0x80416978
+string_align "SunMgr" # 0x80416974
 .long 0x0 # 0x8041697c
 
 .globl unk_80416980
@@ -26827,8 +26379,7 @@ unk_80416980: # 0x80416980 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416988
 unk_80416988: # 0x80416988 /System/MarNameRefGen_MapObj.s
-.long 0x46727569 # 0x80416988
-.long 0x74000000 # 0x8041698c
+string_align "Fruit" # 0x80416988
 
 .globl unk_80416990
 unk_80416990: # 0x80416990 /System/MarNameRefGen_MapObj.s
@@ -26885,8 +26436,7 @@ unk_804169d8: # 0x804169d8 /System/MarNameRefGen_MapObj.s
 
 .globl unk_804169e0
 unk_804169e0: # 0x804169e0 /System/MarNameRefGen_MapObj.s
-.long 0x46656e63 # 0x804169e0
-.long 0x65000000 # 0x804169e4
+string_align "Fence" # 0x804169e0
 
 .globl unk_804169e8
 unk_804169e8: # 0x804169e8 /System/MarNameRefGen_MapObj.s
@@ -26899,8 +26449,7 @@ unk_804169ec: # 0x804169ec /System/MarNameRefGen_MapObj.s
 
 .globl unk_804169f4
 unk_804169f4: # 0x804169f4 /System/MarNameRefGen_MapObj.s
-.long 0x4d616e68 # 0x804169f4
-.long 0x6f6c6500 # 0x804169f8
+string_align "Manhole" # 0x804169f4
 
 .globl unk_804169fc
 unk_804169fc: # 0x804169fc /System/MarNameRefGen_MapObj.s
@@ -26928,8 +26477,7 @@ unk_80416a18: # 0x80416a18 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416a20
 unk_80416a20: # 0x80416a20 /System/MarNameRefGen_MapObj.s
-.long 0x576f6f64 # 0x80416a20
-.long 0x426f7800 # 0x80416a24
+string_align "WoodBox" # 0x80416a20
 
 .globl unk_80416a28
 unk_80416a28: # 0x80416a28 /System/MarNameRefGen_MapObj.s
@@ -26938,8 +26486,7 @@ unk_80416a28: # 0x80416a28 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416a30
 unk_80416a30: # 0x80416a30 /System/MarNameRefGen_MapObj.s
-.long 0x49636543 # 0x80416a30
-.long 0x61720000 # 0x80416a34
+string_align "IceCar" # 0x80416a30
 
 .globl unk_80416a38
 unk_80416a38: # 0x80416a38 /System/MarNameRefGen_MapObj.s
@@ -26948,8 +26495,7 @@ unk_80416a38: # 0x80416a38 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416a40
 unk_80416a40: # 0x80416a40 /System/MarNameRefGen_MapObj.s
-.long 0x42696142 # 0x80416a40
-.long 0x656c6c00 # 0x80416a44
+string_align "BiaBell" # 0x80416a40
 
 .globl unk_80416a48
 unk_80416a48: # 0x80416a48 /System/MarNameRefGen_MapObj.s
@@ -26963,8 +26509,7 @@ unk_80416a50: # 0x80416a50 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416a58
 unk_80416a58: # 0x80416a58 /System/MarNameRefGen_MapObj.s
-.long 0x53616e64 # 0x80416a58
-.long 0x45676700 # 0x80416a5c
+string_align "SandEgg" # 0x80416a58
 
 .globl unk_80416a60
 unk_80416a60: # 0x80416a60 /System/MarNameRefGen_MapObj.s
@@ -26973,13 +26518,11 @@ unk_80416a60: # 0x80416a60 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416a68
 unk_80416a68: # 0x80416a68 /System/MarNameRefGen_MapObj.s
-.long 0x56696b69 # 0x80416a68
-.long 0x6e670000 # 0x80416a6c
+string_align "Viking" # 0x80416a68
 
 .globl unk_80416a70
 unk_80416a70: # 0x80416a70 /System/MarNameRefGen_MapObj.s
-.long 0x416d694b # 0x80416a70
-.long 0x696e6700 # 0x80416a74
+string_align "AmiKing" # 0x80416a70
 
 .globl unk_80416a78
 unk_80416a78: # 0x80416a78 /System/MarNameRefGen_MapObj.s
@@ -26988,18 +26531,15 @@ unk_80416a78: # 0x80416a78 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416a80
 unk_80416a80: # 0x80416a80 /System/MarNameRefGen_MapObj.s
-.long 0x50756e63 # 0x80416a80
-.long 0x68657200 # 0x80416a84
+string_align "Puncher" # 0x80416a80
 
 .globl unk_80416a88
 unk_80416a88: # 0x80416a88 /System/MarNameRefGen_MapObj.s
-.long 0x436c6f73 # 0x80416a88
-.long 0x65740000 # 0x80416a8c
+string_align "Closet" # 0x80416a88
 
 .globl unk_80416a90
 unk_80416a90: # 0x80416a90 /System/MarNameRefGen_MapObj.s
-.long 0x446f6e63 # 0x80416a90
-.long 0x686f7500 # 0x80416a94
+string_align "Donchou" # 0x80416a90
 
 .globl unk_80416a98
 unk_80416a98: # 0x80416a98 /System/MarNameRefGen_MapObj.s
@@ -27018,8 +26558,7 @@ unk_80416aa8: # 0x80416aa8 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416ab0
 unk_80416ab0: # 0x80416ab0 /System/MarNameRefGen_MapObj.s
-.long 0x42617468 # 0x80416ab0
-.long 0x74756200 # 0x80416ab4
+string_align "Bathtub" # 0x80416ab0
 
 .globl unk_80416ab8
 unk_80416ab8: # 0x80416ab8 /System/MarNameRefGen_MapObj.s
@@ -27028,8 +26567,7 @@ unk_80416ab8: # 0x80416ab8 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416ac0
 unk_80416ac0: # 0x80416ac0 /System/MarNameRefGen_MapObj.s
-.long 0x556d6169 # 0x80416ac0
-.long 0x626f7500 # 0x80416ac4
+string_align "Umaibou" # 0x80416ac0
 
 .globl unk_80416ac8
 unk_80416ac8: # 0x80416ac8 /System/MarNameRefGen_MapObj.s
@@ -27038,8 +26576,7 @@ unk_80416ac8: # 0x80416ac8 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416ad0
 unk_80416ad0: # 0x80416ad0 /System/MarNameRefGen_MapObj.s
-.long 0x5569726f # 0x80416ad0
-.long 0x75000000 # 0x80416ad4
+string_align "Uirou" # 0x80416ad0
 
 .globl unk_80416ad8
 unk_80416ad8: # 0x80416ad8 /System/MarNameRefGen_MapObj.s
@@ -27058,18 +26595,15 @@ unk_80416ae8: # 0x80416ae8 /System/MarNameRefGen_MapObj.s
 
 .globl unk_80416af0
 unk_80416af0: # 0x80416af0 /System/MarNameRefGen_MapObj.s
-.long 0x436f696e # 0x80416af0
-.long 0x52656400 # 0x80416af4
+string_align "CoinRed" # 0x80416af0
 
 .globl unk_80416af8
 unk_80416af8: # 0x80416af8 /System/MarNameRefGen_MapObj.s
-.long 0x48696465 # 0x80416af8
-.long 0x4f626a00 # 0x80416afc
+string_align "HideObj" # 0x80416af8
 
 .globl unk_80416b00
 unk_80416b00: # 0x80416b00 /System/MarNameRefGen_MapObj.s
-.long 0x5368696e # 0x80416b00
-.long 0x65000000 # 0x80416b04
+string_align "Shine" # 0x80416b00
 
 .globl unk_80416b08
 unk_80416b08: # 0x80416b08 /System/MarNameRefGen_MapObj.s
@@ -27115,17 +26649,15 @@ unk_80416b40: # 0x80416b40 /System/MovieDirector.s
 
 .globl unk_80416b44
 unk_80416b44: # 0x80416b44 /System/MovieDirector.s
-.long 0x656e6473 # 0x80416b44
-.long 0x61766500 # 0x80416b48
+string_align "endsave" # 0x80416b44
 
 .globl unk_80416b4c
 unk_80416b4c: # 0x80416b4c /System/MovieDirector.s
-.long 0x2f646174 # 0x80416b4c
-.long 0x61000000 # 0x80416b50
+string_align "/data" # 0x80416b4c
 
 .globl unk_80416b54
 unk_80416b54: # 0x80416b54 /System/MovieDirector.s
-.long 0xbf800000 # 0x80416b54
+.float -1.0 # 0x80416b54
 
 .globl unk_80416b58
 unk_80416b58: # 0x80416b58 /System/MovieDirector.s
@@ -27143,7 +26675,7 @@ unk_80416b68: # 0x80416b68 /System/MarDirectorSetupObjects.s
 
 .globl unk_80416b6c
 unk_80416b6c: # 0x80416b6c /System/MarDirectorSetupObjects.s
-.long 0xbf800000 # 0x80416b6c
+.float -1.0 # 0x80416b6c
 
 .globl unk_80416b70
 unk_80416b70: # 0x80416b70 /System/MarDirectorSetupObjects.s
@@ -27163,8 +26695,7 @@ unk_80416b7c: # 0x80416b7c /System/MarDirectorSetupObjects.s
 
 .globl unk_80416b80
 unk_80416b80: # 0x80416b80 /System/MarDirectorSetupObjects.s
-.long 0x70617261 # 0x80416b80
-.long 0x6d730000 # 0x80416b84
+string_align "params" # 0x80416b80
 
 .globl unk_80416b88
 unk_80416b88: # 0x80416b88 /System/MarDirectorSetupObjects.s
@@ -27259,23 +26790,19 @@ unk_80416bf0: # 0x80416bf0 /System/MSoundMainSide.s
 
 .globl unk_80416bf8
 unk_80416bf8: # 0x80416bf8 /JSystem/JKRExpHeap.s
-.long 0x204e4f4e # 0x80416bf8
-.long 0x450a0000 # 0x80416bfc
+string_align " NONE\n" # 0x80416bf8
 
 .globl unk_80416c00
 unk_80416c00: # 0x80416c00 /JSystem/JKRExpHeap.s
-.long 0x2074656d # 0x80416c00
-.long 0x70000000 # 0x80416c04
+string_align " temp" # 0x80416c00
 
 .globl unk_80416c08
 unk_80416c08: # 0x80416c08 /JSystem/JKRExpHeap.s
-.long 0x616c6c6f # 0x80416c08
-.long 0x63000000 # 0x80416c0c
+string_align "alloc" # 0x80416c08
 
 .globl unk_80416c10
 unk_80416c10: # 0x80416c10 /JSystem/JKRExpHeap.s
-.long 0x20667265 # 0x80416c10
-.long 0x65000000 # 0x80416c14
+string_align " free" # 0x80416c10
 
 .globl unk_80416c18
 unk_80416c18: # 0x80416c18 /JSystem/JKRExpHeap.s
@@ -27294,8 +26821,7 @@ unk_80416c28: # 0x80416c28 /JSystem/JKRFileLoader.s
 
 .globl unk_80416c30
 unk_80416c30: # 0x80416c30 /JSystem/JKRHeap.s
-.long 0x61626f72 # 0x80416c30
-.long 0x740a0000 # 0x80416c34
+string_align "abort\n" # 0x80416c30
 
 .globl unk_80416c38
 unk_80416c38: # 0x80416c38 /JSystem/JKRSolidHeap.s
@@ -27317,13 +26843,11 @@ unk_80416c4c: # 0x80416c4c /JSystem/JUTException.s
 
 .globl unk_80416c50
 unk_80416c50: # 0x80416c50 /JSystem/JUTException.s
-.long 0x50524f47 # 0x80416c50
-.long 0x52414d00 # 0x80416c54
+string_align "PROGRAM" # 0x80416c50
 
 .globl unk_80416c58
 unk_80416c58: # 0x80416c58 /JSystem/JUTException.s
-.long 0x54524143 # 0x80416c58
-.long 0x45000000 # 0x80416c5c
+string_align "TRACE" # 0x80416c58
 
 .globl unk_80416c60
 unk_80416c60: # 0x80416c60 /JSystem/JUTException.s
@@ -27584,7 +27108,7 @@ unk_80416db0: # 0x80416db0 /JSystem/J3DCluster.s
 .globl unk_80416db4
 unk_80416db4: # 0x80416db4 /JSystem/J3DCluster.s
 .float 1.0 # 0x80416db4
-.long 0xbf800000 # 0x80416db8
+.float -1.0 # 0x80416db8
 
 .globl unk_80416dbc
 unk_80416dbc: # 0x80416dbc /JSystem/J3DCluster.s
@@ -27592,7 +27116,7 @@ unk_80416dbc: # 0x80416dbc /JSystem/J3DCluster.s
 
 .globl unk_80416dc0
 unk_80416dc0: # 0x80416dc0 /JSystem/J3DCluster.s
-.long 0xbf800000 # 0x80416dc0
+.float -1.0 # 0x80416dc0
 
 .globl unk_80416dc4
 unk_80416dc4: # 0x80416dc4 /JSystem/J3DCluster.s
@@ -27770,7 +27294,7 @@ unk_80416ea0: # 0x80416ea0 /JSystem/J2DGrafContext.s
 
 .globl unk_80416ea8
 unk_80416ea8: # 0x80416ea8 /JSystem/J2DOrthoGraph.s
-.long 0xbf800000 # 0x80416ea8
+.float -1.0 # 0x80416ea8
 
 .globl unk_80416eac
 unk_80416eac: # 0x80416eac /JSystem/J2DOrthoGraph.s
@@ -27840,13 +27364,11 @@ unk_80416ef8: # 0x80416ef8 /JSystem/std-vector.s
 
 .globl unk_80416f00
 unk_80416f00: # 0x80416f00 /JSystem/JKRAramPiece.s
-.long 0x41626f72 # 0x80416f00
-.long 0x742e0000 # 0x80416f04
+string_align "Abort." # 0x80416f00
 
 .globl unk_80416f08
 unk_80416f08: # 0x80416f08 /JSystem/JKRAramStream.s
-.long 0x61626f72 # 0x80416f08
-.long 0x740a0000 # 0x80416f0c
+string_align "abort\n" # 0x80416f08
 
 .globl unk_80416f10
 unk_80416f10: # 0x80416f10 /JSystem/JUTResFont.s
@@ -27989,13 +27511,11 @@ unk_80416fc4: # 0x80416fc4 /JSystem/JDRNameRefGen.s
 
 .globl unk_80416fc8
 unk_80416fc8: # 0x80416fc8 /JSystem/JDRNameRefGen.s
-.long 0x4c696768 # 0x80416fc8
-.long 0x74000000 # 0x80416fcc
+string_align "Light" # 0x80416fc8
 
 .globl unk_80416fd0
 unk_80416fd0: # 0x80416fd0 /JSystem/JDRNameRefGen.s
-.long 0x3c4c6967 # 0x80416fd0
-.long 0x68743e00 # 0x80416fd4
+string_align "<Light>" # 0x80416fd0
 
 .globl unk_80416fd8
 unk_80416fd8: # 0x80416fd8 /JSystem/JDRNameRefGen.s
@@ -28003,8 +27523,7 @@ unk_80416fd8: # 0x80416fd8 /JSystem/JDRNameRefGen.s
 
 .globl unk_80416fdc
 unk_80416fdc: # 0x80416fdc /JSystem/JDRNameRefGen.s
-.long 0x416d6241 # 0x80416fdc
-.long 0x72790000 # 0x80416fe0
+string_align "AmbAry" # 0x80416fdc
 .long 0x0 # 0x80416fe4
 
 .globl unk_80416fe8
@@ -28097,8 +27616,7 @@ unk_80417050: # 0x80417050 /JSystem/JAIAnimation.s
 
 .globl unk_80417058
 unk_80417058: # 0x80417058 /JSystem/JAIBasic.s
-.long 0x25732573 # 0x80417058
-.long 0x25630000 # 0x8041705c
+string_align "%s%s%c" # 0x80417058
 
 .globl unk_80417060
 unk_80417060: # 0x80417060 /JSystem/JAIBasic.s
@@ -28139,7 +27657,7 @@ unk_80417084: # 0x80417084 /JSystem/JAIData.s
 
 .globl unk_80417088
 unk_80417088: # 0x80417088 /JSystem/JAIData.s
-.long 0xbf800000 # 0x80417088
+.float -1.0 # 0x80417088
 
 .globl unk_8041708c
 unk_8041708c: # 0x8041708c /JSystem/JAIData.s
@@ -28204,7 +27722,7 @@ unk_804170d0: # 0x804170d0 /JSystem/JAIGFrameSe.s
 
 .globl unk_804170d8
 unk_804170d8: # 0x804170d8 /JSystem/JAIGFrameSe.s
-.long 0xbf800000 # 0x804170d8
+.float -1.0 # 0x804170d8
 
 .globl unk_804170dc
 unk_804170dc: # 0x804170dc /JSystem/JAIGFrameSe.s
@@ -28279,18 +27797,15 @@ unk_80417130: # 0x80417130 /JSystem/JAIGFrameStream.s
 
 .globl unk_80417138
 unk_80417138: # 0x80417138 /JSystem/JAIGlobalParameter.s
-.long 0x42616e6b # 0x80417138
-.long 0x732f0000 # 0x8041713c
+string_align "Banks/" # 0x80417138
 
 .globl unk_80417140
 unk_80417140: # 0x80417140 /JSystem/JAIGlobalParameter.s
-.long 0x53657173 # 0x80417140
-.long 0x2f000000 # 0x80417144
+string_align "Seqs/" # 0x80417140
 
 .globl unk_80417148
 unk_80417148: # 0x80417148 /JSystem/JAIGlobalParameter.s
-.long 0x53747265 # 0x80417148
-.long 0x616d2f00 # 0x8041714c
+string_align "Stream/" # 0x80417148
 
 .globl unk_80417150
 unk_80417150: # 0x80417150 /JSystem/JAISound.s
@@ -28355,7 +27870,7 @@ unk_80417198: # 0x80417198 /JSystem/JAISound.s
 
 .globl unk_8041719c
 unk_8041719c: # 0x8041719c /JSystem/JAISound.s
-.long 0xbf800000 # 0x8041719c
+.float -1.0 # 0x8041719c
 
 .globl unk_804171a0
 unk_804171a0: # 0x804171a0 /JSystem/JAISystemInterface.s
@@ -28462,8 +27977,7 @@ unk_80417220: # 0x80417220 /JSystem/JASInstSense.s
 
 .globl unk_80417228
 unk_80417228: # 0x80417228 /JSystem/JASAudioThread.s
-.long 0x5346525f # 0x80417228
-.long 0x44535000 # 0x8041722c
+string_align "SFR_DSP" # 0x80417228
 
 .globl unk_80417230
 unk_80417230: # 0x80417230 /JSystem/JASChannel.s
@@ -28560,13 +28074,11 @@ unk_804172a0: # 0x804172a0 /JSystem/JASOscillator.s
 
 .globl unk_804172a8
 unk_804172a8: # 0x804172a8 /JSystem/JASAiCtrl.s
-.long 0x4453504d # 0x804172a8
-.long 0x49580000 # 0x804172ac
+string_align "DSPMIX" # 0x804172a8
 
 .globl unk_804172b0
 unk_804172b0: # 0x804172b0 /JSystem/JASAiCtrl.s
-.long 0x4d495849 # 0x804172b0
-.long 0x4e470000 # 0x804172b4
+string_align "MIXING" # 0x804172b0
 
 .globl unk_804172b8
 unk_804172b8: # 0x804172b8 /JSystem/JASCalc.s
@@ -28778,7 +28290,7 @@ unk_804173c0: # 0x804173c0 /JSystem/JPAEmitter.s
 
 .globl unk_804173c4
 unk_804173c4: # 0x804173c4 /JSystem/JPAEmitter.s
-.long 0xbf800000 # 0x804173c4
+.float -1.0 # 0x804173c4
 
 .globl unk_804173c8
 unk_804173c8: # 0x804173c8 /JSystem/JPAEmitter.s
@@ -28822,7 +28334,7 @@ unk_804173f8: # 0x804173f8 /JSystem/JPAField.s
 
 .globl unk_804173fc
 unk_804173fc: # 0x804173fc /JSystem/JPAField.s
-.long 0xbf800000 # 0x804173fc
+.float -1.0 # 0x804173fc
 
 .globl unk_80417400
 unk_80417400: # 0x80417400 /JSystem/JPAField.s
@@ -29350,7 +28862,7 @@ unk_80417698: # 0x80417698 /mtx/mtx.s
 
 .globl unk_8041769c
 unk_8041769c: # 0x8041769c /mtx/mtx.s
-.long 0xbf800000 # 0x8041769c
+.float -1.0 # 0x8041769c
 
 .globl unk_804176a0
 unk_804176a0: # 0x804176a0 /mtx/mtx.s
@@ -29374,7 +28886,7 @@ unk_804176b0: # 0x804176b0 /mtx/mtx44.s
 
 .globl unk_804176b4
 unk_804176b4: # 0x804176b4 /mtx/mtx44.s
-.long 0xbf800000 # 0x804176b4
+.float -1.0 # 0x804176b4
 
 .globl unk_804176b8
 unk_804176b8: # 0x804176b8 /mtx/mtx44.s
@@ -29545,7 +29057,7 @@ unk_80417788: # 0x80417788 /gx/GXDraw.s
 
 .globl unk_8041778c
 unk_8041778c: # 0x8041778c /gx/GXDraw.s
-.long 0xbf800000 # 0x8041778c
+.float -1.0 # 0x8041778c
 
 .globl unk_80417790
 unk_80417790: # 0x80417790 /gx/GXDraw.s
