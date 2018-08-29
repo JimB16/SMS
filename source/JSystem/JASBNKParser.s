@@ -635,7 +635,7 @@ getOscTableEndPtr__Q28JASystem9BNKParserFPs: # 0x8030fb60
     lha     r0, 0x0(r3)
     addi    r3, r3, 0x6
     cmpwi   r0, 0xa
-    ble+    getOscTableEndPtr__Q28JASystem9BNKParserFPs
+    ble     getOscTableEndPtr__Q28JASystem9BNKParserFPs
     blr
 
 
