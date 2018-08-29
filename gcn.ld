@@ -205,7 +205,7 @@ SECTIONS
   }>ram_803E9700 = 0xff
   __bss_size = SIZEOF(.ram803e9700);
   bss_mem_start = ADDR (.ram803e9700);
-  bss_mem_size = SIZEOF (.ram803e9700);
+  bss_mem_size = SIZEOF (.ram803e9700) + (0x25498 - 0x22ac0);
 
   temp9 = temp8 + Data5_Size;
   .ram8040c1c0 __ram_8040c1c0_start : AT (temp9) { *(.ram8040c1c0) . = ALIGN(1); } > ram_8040c1c0 = 0xff

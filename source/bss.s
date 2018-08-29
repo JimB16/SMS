@@ -14923,5 +14923,6 @@ cb__7JPADraw: # 0x8040c110 /JSystem/JPADraw.s
 .space 0xb0
 
 
-.space 0x25498 - 0x22ac0
+#.space 0x8040cf00 - 0x8040c1c0
+#.space 0x25498 - 0x22ac0
 
