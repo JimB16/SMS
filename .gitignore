@@ -1,0 +1,15 @@
+# generated
+*.elf
+*.o
+*.d
+*.bin
+*.pyc
+
+# baserom
+*.dat
+*.atr
+*.naix
+*.arc
+
+/baserom/*
+/build/*
