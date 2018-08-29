@@ -25518,8 +25518,10 @@ boundtable_262: # 0x803c12e8 /GC2D/hx_wiper.s
 .long 0x41000000 # 0x803c12fc
 .long 0x3df5c28f # 0x803c1300
 .long 0xc1000000 # 0x803c1304
-string_align "ޡGρ@" # 0x803c1308
-string_align "=⇮A@" # 0x803c1310
+.long 0xbde147ae # 0x803c1308
+.long 0x41400000 # 0x803c130c
+.long 0x3de147ae # 0x803c1310
+.long 0x41400000 # 0x803c1314
 .long 0x0 # 0x803c1318
 .long 0x0 # 0x803c131c
 
@@ -28176,7 +28178,8 @@ watergun_item_data: # 0x803c35cc /MoveBG/MapObjInit.s
 
 .globl nozzle_normal_physical_data
 nozzle_normal_physical_data: # 0x803c3608 /MoveBG/MapObjInit.s
-string_align ">ӳ3?" # 0x803c3608
+.long 0x3eb33333 # 0x803c3608
+.long 0x3f000000 # 0x803c360c
 .long 0x0 # 0x803c3610
 .long 0x40a00000 # 0x803c3614
 .long 0x3f4ccccd # 0x803c3618
@@ -28269,11 +28272,14 @@ nozzle_back_item_data: # 0x803c36fc /MoveBG/MapObjInit.s
 
 .globl coin_physical_data
 coin_physical_data: # 0x803c3738 /MoveBG/MapObjInit.s
-string_align ">ӳ3?" # 0x803c3738
+.long 0x3eb33333 # 0x803c3738
+.long 0x3f000000 # 0x803c373c
 .long 0x3f19999a # 0x803c3740
 .float 1.0 # 0x803c3744
 .long 0x3f000000 # 0x803c3748
-string_align "?s33?}pĢ # 0x803c374c
+.long 0x3f733333 # 0x803c374c
+.long 0x3f7d70a4 # 0x803c3750
+.long 0x0 # 0x803c3754
 .long 0x0 # 0x803c3758
 .long 0x0 # 0x803c375c
 .long 0x0 # 0x803c3760
@@ -28432,7 +28438,9 @@ eggYoshi_data: # 0x803c391c /MoveBG/MapObjInit.s
 
 .globl EggYoshi_physical_data
 EggYoshi_physical_data: # 0x803c3958 /MoveBG/MapObjInit.s
-string_align ">ӳ3=͌͢ # 0x803c3958
+.long 0x3eb33333 # 0x803c3958
+.long 0x3dcccccd # 0x803c395c
+.long 0x0 # 0x803c3960
 .long 0x40a00000 # 0x803c3964
 .float 1.0 # 0x803c3968
 .long 0x3f733333 # 0x803c396c
@@ -28742,7 +28750,8 @@ banana_physical_data: # 0x803c3d2c /MoveBG/MapObjInit.s
 .long 0x3ecccccd # 0x803c3d30
 .long 0x3e4ccccd # 0x803c3d34
 .float 1.0 # 0x803c3d38
-string_align ">͌Ϳ" # 0x803c3d3c
+.long 0x3ecccccd # 0x803c3d3c
+.long 0x3f000000 # 0x803c3d40
 .float 1.0 # 0x803c3d44
 .long 0x40a00000 # 0x803c3d48
 .long 0x3f000000 # 0x803c3d4c
@@ -54842,7 +54851,8 @@ rumbleFrame_00: # 0x803db240 /MarioUtil/RumbleData.s
 .long 0x3e800000 # 0x803db254
 .long 0x3e800000 # 0x803db258
 .long 0x3ea8f5c3 # 0x803db25c
-string_align ">͌Ϳ" # 0x803db260
+.long 0x3ecccccd # 0x803db260
+.long 0x3f000000 # 0x803db264
 .long 0x3f19999a # 0x803db268
 
 .globl rumblePower_00
@@ -54892,17 +54902,26 @@ rumblePower_01: # 0x803db2f8 /MarioUtil/RumbleData.s
 .float 1.0 # 0x803db2fc
 .long 0x0 # 0x803db300
 .long 0x0 # 0x803db304
-string_align "?s33?Yٚ" # 0x803db308
+.long 0x3f733333 # 0x803db308
+.long 0x3f59999a # 0x803db30c
+.long 0x0 # 0x803db310
 .long 0x0 # 0x803db314
-string_align "?L͍?:∢ # 0x803db318
+.long 0x3f4ccccd # 0x803db318
+.long 0x3f3ae148 # 0x803db31c
+.long 0x0 # 0x803db320
 .long 0x0 # 0x803db324
 .long 0x3f23d70a # 0x803db328
 .long 0x3f07ae14 # 0x803db32c
 .long 0x0 # 0x803db330
 .long 0x0 # 0x803db334
-string_align ">⇮>ӳ3" # 0x803db338
+.long 0x3ee147ae # 0x803db338
+.long 0x3eb33333 # 0x803db33c
+.long 0x0 # 0x803db340
 .long 0x3e8a3d71 # 0x803db344
-string_align "<ė\n>#؜n<#؜n" # 0x803db348
+.long 0x3ca3d70a # 0x803db348
+.long 0x3e23d70a # 0x803db34c
+.long 0x3c23d70a # 0x803db350
+.long 0x0 # 0x803db354
 
 .globl rumbleFrame_04
 rumbleFrame_04: # 0x803db358 /MarioUtil/RumbleData.s
@@ -54919,7 +54938,9 @@ rumblePower_04: # 0x803db374 /MarioUtil/RumbleData.s
 .float 1.0 # 0x803db374
 .float 1.0 # 0x803db378
 .long 0x0 # 0x803db37c
-string_align "?L͍?L͍" # 0x803db380
+.long 0x3f4ccccd # 0x803db380
+.long 0x3f4ccccd # 0x803db384
+.long 0x0 # 0x803db388
 .long 0x0 # 0x803db38c
 
 .globl rumbleFrame_05
@@ -54933,7 +54954,9 @@ rumbleFrame_05: # 0x803db390 /MarioUtil/RumbleData.s
 .long 0x3ee66666 # 0x803db3a8
 .long 0x3f028f5c # 0x803db3ac
 .long 0x3f051eb8 # 0x803db3b0
-string_align "?#؜n?0ė?@" # 0x803db3b4
+.long 0x3f23d70a # 0x803db3b4
+.long 0x3f30a3d7 # 0x803db3b8
+.long 0x3f400000 # 0x803db3bc
 .long 0x3f547ae1 # 0x803db3c0
 .long 0x3f63d70a # 0x803db3c4
 .long 0x3f7d70a4 # 0x803db3c8
@@ -54950,7 +54973,9 @@ rumblePower_05: # 0x803db3e4 /MarioUtil/RumbleData.s
 .long 0x3f6b851f # 0x803db3e8
 .long 0x0 # 0x803db3ec
 .long 0x0 # 0x803db3f0
-string_align "?J=q?!G΢ # 0x803db3f4
+.long 0x3f4a3d71 # 0x803db3f4
+.long 0x3f2147ae # 0x803db3f8
+.long 0x0 # 0x803db3fc
 .long 0x3ca3d70a # 0x803db400
 .long 0x3ee66666 # 0x803db404
 .long 0x3e9eb852 # 0x803db408
@@ -55011,7 +55036,8 @@ rumbleFrame_07: # 0x803db488 /MarioUtil/RumbleData.s
 .long 0x3f1eb852 # 0x803db4c0
 .long 0x3f23d70a # 0x803db4c4
 .long 0x3f3851ec # 0x803db4c8
-string_align "?=pĿ@" # 0x803db4cc
+.long 0x3f3d70a4 # 0x803db4cc
+.long 0x3f400000 # 0x803db4d0
 .float 1.0 # 0x803db4d4
 
 .globl rumblePower_07
@@ -55027,11 +55053,15 @@ rumblePower_07: # 0x803db4d8 /MarioUtil/RumbleData.s
 .long 0x0 # 0x803db4f8
 .long 0x0 # 0x803db4fc
 .long 0x3f19999a # 0x803db500
-string_align "?!Gξė\n" # 0x803db504
+.long 0x3f2147ae # 0x803db504
+.long 0x3ea3d70a # 0x803db508
+.long 0x0 # 0x803db50c
 .long 0x0 # 0x803db510
 .long 0x3f028f5c # 0x803db514
 .long 0x3ef5c28f # 0x803db518
-string_align ">BМ\<ė\n" # 0x803db51c
+.long 0x3e428f5c # 0x803db51c
+.long 0x3ca3d70a # 0x803db520
+.long 0x0 # 0x803db524
 
 .globl rumbleFrame_08
 rumbleFrame_08: # 0x803db528 /MarioUtil/RumbleData.s
@@ -55045,7 +55075,8 @@ rumbleFrame_08: # 0x803db528 /MarioUtil/RumbleData.s
 rumblePower_08: # 0x803db53c /MarioUtil/RumbleData.s
 .float 1.0 # 0x803db53c
 .long 0x3f000000 # 0x803db540
-string_align ">ӳ3?" # 0x803db544
+.long 0x3eb33333 # 0x803db544
+.long 0x3f000000 # 0x803db548
 .float 1.0 # 0x803db54c
 
 .globl rumbleFrame_09
@@ -55053,7 +55084,11 @@ rumbleFrame_09: # 0x803db550 /MarioUtil/RumbleData.s
 .long 0x0 # 0x803db550
 .long 0x3e99999a # 0x803db554
 .long 0x3f000000 # 0x803db558
-string_align "?333?" # 0x803db55c
+.ascii "?333" # 0x803db55c
+
+.globl rumblePower_09
+rumblePower_09: # 0x803db560 /MarioUtil/RumbleData.s
+string_align "?" # 0x803db560
 .long 0x3e75c28f # 0x803db564
 .long 0x3e3851ec # 0x803db568
 .long 0x3e6b851f # 0x803db56c
@@ -55088,7 +55123,8 @@ rumbleFrame_23: # 0x803db598 /MarioUtil/RumbleData.s
 .long 0x3f99999a # 0x803db5bc
 .long 0x3f9ae148 # 0x803db5c0
 .long 0x3fa51eb8 # 0x803db5c4
-string_align "?ʽq@p" # 0x803db5c8
+.long 0x3faa3d71 # 0x803db5c8
+.long 0x40700000 # 0x803db5cc
 .long 0x4073d70a # 0x803db5d0
 .long 0x407ae148 # 0x803db5d4
 .long 0x407c28f6 # 0x803db5d8
@@ -55157,7 +55193,9 @@ string_align "?ʽq@p" # 0x803db5c8
 rumblePower_23: # 0x803db6cc /MarioUtil/RumbleData.s
 .long 0x3f4ccccd # 0x803db6cc
 .float 1.0 # 0x803db6d0
-string_align "?s33?L͍" # 0x803db6d4
+.long 0x3f733333 # 0x803db6d4
+.long 0x3f4ccccd # 0x803db6d8
+.long 0x0 # 0x803db6dc
 .long 0x0 # 0x803db6e0
 .long 0x3f733333 # 0x803db6e4
 .long 0x3f733333 # 0x803db6e8
@@ -55167,13 +55205,18 @@ string_align "?s33?L͍" # 0x803db6d4
 .long 0x3f147ae1 # 0x803db6f8
 .long 0x0 # 0x803db6fc
 .long 0x0 # 0x803db700
-string_align "?O\\)?fff?0ė" # 0x803db704
+.long 0x3f4f5c29 # 0x803db704
+.long 0x3f666666 # 0x803db708
+.long 0x3f30a3d7 # 0x803db70c
+.long 0x0 # 0x803db710
 .long 0x0 # 0x803db714
 .long 0x3f7ae148 # 0x803db718
 .long 0x3f733333 # 0x803db71c
 .long 0x3f07ae14 # 0x803db720
 .long 0x3f000000 # 0x803db724
-string_align "?^ْ?333" # 0x803db728
+.long 0x3f5eb852 # 0x803db728
+.long 0x3f333333 # 0x803db72c
+.long 0x0 # 0x803db730
 .long 0x0 # 0x803db734
 .long 0x3f5eb852 # 0x803db738
 .long 0x3f570a3d # 0x803db73c
@@ -55205,17 +55248,26 @@ string_align "?^ْ?333" # 0x803db728
 .float 1.0 # 0x803db7a4
 .long 0x0 # 0x803db7a8
 .long 0x0 # 0x803db7ac
-string_align "?s33?Yٚ" # 0x803db7b0
+.long 0x3f733333 # 0x803db7b0
+.long 0x3f59999a # 0x803db7b4
+.long 0x0 # 0x803db7b8
 .long 0x0 # 0x803db7bc
-string_align "?L͍?:∢ # 0x803db7c0
+.long 0x3f4ccccd # 0x803db7c0
+.long 0x3f3ae148 # 0x803db7c4
+.long 0x0 # 0x803db7c8
 .long 0x0 # 0x803db7cc
 .long 0x3f23d70a # 0x803db7d0
 .long 0x3f07ae14 # 0x803db7d4
 .long 0x0 # 0x803db7d8
 .long 0x0 # 0x803db7dc
-string_align ">⇮>ӳ3" # 0x803db7e0
+.long 0x3ee147ae # 0x803db7e0
+.long 0x3eb33333 # 0x803db7e4
+.long 0x0 # 0x803db7e8
 .long 0x3e8a3d71 # 0x803db7ec
-string_align "<ė\n>#؜n<#؜n" # 0x803db7f0
+.long 0x3ca3d70a # 0x803db7f0
+.long 0x3e23d70a # 0x803db7f4
+.long 0x3c23d70a # 0x803db7f8
+.long 0x0 # 0x803db7fc
 
 .globl rumbleFrame_24
 rumbleFrame_24: # 0x803db800 /MarioUtil/RumbleData.s
@@ -55231,7 +55283,8 @@ rumbleFrame_24: # 0x803db800 /MarioUtil/RumbleData.s
 .long 0x3f99999a # 0x803db824
 .long 0x3f9ae148 # 0x803db828
 .long 0x3fa51eb8 # 0x803db82c
-string_align "?ʽq@p" # 0x803db830
+.long 0x3faa3d71 # 0x803db830
+.long 0x40700000 # 0x803db834
 .long 0x4073d70a # 0x803db838
 .long 0x407ae148 # 0x803db83c
 .long 0x407c28f6 # 0x803db840
@@ -55260,7 +55313,9 @@ string_align "?ʽq@p" # 0x803db830
 rumblePower_24: # 0x803db894 /MarioUtil/RumbleData.s
 .long 0x3f4ccccd # 0x803db894
 .float 1.0 # 0x803db898
-string_align "?s33?L͍" # 0x803db89c
+.long 0x3f733333 # 0x803db89c
+.long 0x3f4ccccd # 0x803db8a0
+.long 0x0 # 0x803db8a4
 .long 0x0 # 0x803db8a8
 .long 0x3f733333 # 0x803db8ac
 .long 0x3f733333 # 0x803db8b0
@@ -55270,13 +55325,18 @@ string_align "?s33?L͍" # 0x803db89c
 .long 0x3f147ae1 # 0x803db8c0
 .long 0x0 # 0x803db8c4
 .long 0x0 # 0x803db8c8
-string_align "?O\\)?fff?0ė" # 0x803db8cc
+.long 0x3f4f5c29 # 0x803db8cc
+.long 0x3f666666 # 0x803db8d0
+.long 0x3f30a3d7 # 0x803db8d4
+.long 0x0 # 0x803db8d8
 .long 0x0 # 0x803db8dc
 .long 0x3f7ae148 # 0x803db8e0
 .long 0x3f733333 # 0x803db8e4
 .long 0x3f07ae14 # 0x803db8e8
 .long 0x3f000000 # 0x803db8ec
-string_align "?^ْ?333" # 0x803db8f0
+.long 0x3f5eb852 # 0x803db8f0
+.long 0x3f333333 # 0x803db8f4
+.long 0x0 # 0x803db8f8
 .long 0x0 # 0x803db8fc
 .long 0x3f5eb852 # 0x803db900
 .long 0x3f570a3d # 0x803db904
@@ -58178,7 +58238,11 @@ tmp_data: # 0x803dd920 /Player/ModelWaterManager.s
 .long 0xb9009580 # 0x803de23c
 .long 0xb100 # 0x803de240
 .long 0x9d40ec40 # 0x803de244
-string_align "ʫʫ֖Ȳަަʫ֖ʫѢ # 0x803de248
+.long 0xaaabaaab # 0x803de248
+.long 0xd556a832 # 0x803de24c
+.long 0xbe26be26 # 0x803de250
+.long 0xaaabd556 # 0x803de254
+.long 0xaaabb100 # 0x803de258
 .long 0xec409d40 # 0x803de25c
 .long 0xb9000000 # 0x803de260
 .long 0x9580c762 # 0x803de264
@@ -58195,7 +58259,11 @@ string_align "ʫʫ֖Ȳަަʫ֖ʫѢ # 0x803de248
 .long 0x47000000 # 0x803de290
 .long 0x95804f00 # 0x803de294
 .long 0xec409d40 # 0x803de298
-string_align "UU֖ʫWξ&ަUUʫ֖O" # 0x803de29c
+.long 0x5555d556 # 0x803de29c
+.long 0xaaab57ce # 0x803de2a0
+.long 0xbe26be26 # 0x803de2a4
+.long 0x5555aaab # 0x803de2a8
+.long 0xd5564f00 # 0x803de2ac
 .long 0x9d40ec40 # 0x803de2b0
 .long 0x47009580 # 0x803de2b4
 .long 0xa57e # 0x803de2b8
@@ -58224,7 +58292,10 @@ string_align "UU֖ʫWξ&ަUUʫ֖O" # 0x803de29c
 .long 0x5a820000 # 0x803de314
 .long 0xa57e62c0 # 0x803de318
 .long 0xec40b100 # 0x803de31c
-string_align "gӖyugӁ֖yb1" # 0x803de320
+.long 0x67d2d679 # 0x803de320
+.long 0xc1b567d2 # 0x803de324
+.long 0xc1b5d679 # 0x803de328
+.long 0x62c0b100 # 0x803de32c
 .long 0xec405a82 # 0x803de330
 .long 0xa57e0000 # 0x803de334
 .long 0x9580b900 # 0x803de338
@@ -58328,7 +58399,8 @@ string_align "gӖyugӁ֖yb1" # 0x803de320
 .long 0xfc1f03f # 0x803de4c0
 .long 0x861322d6 # 0x803de4c4
 .long 0xee958ec5 # 0x803de4c8
-string_align "8߭!ހO" # 0x803de4cc
+.long 0x389eed21 # 0x803de4cc
+.long 0x9d404f00 # 0x803de4d0
 .long 0xec40b100 # 0x803de4d4
 .long 0x62c0ec40 # 0x803de4d8
 .long 0xc762713b # 0x803de4dc
@@ -60623,7 +60695,8 @@ sAsciiTable__14JUTDirectPrint: # 0x803e0288 /JSystem/JUTDirectPrint.s
 .long 0xffffffff # 0x803e02a0
 .long 0xffffffff # 0x803e02a4
 .long 0xff296465 # 0x803e02a8
-string_align "f+gh%&i*j',k" # 0x803e02ac
+.ascii "f+gh%&i*j',k" # 0x803e02ac
+.long 0x010203 # 0x803e02b8
 .long 0x4050607 # 0x803e02bc
 .long 0x809246c # 0x803e02c0
 .long 0x6d6e6f28 # 0x803e02c4
@@ -67461,7 +67534,9 @@ jdsp: # 0x803e47a0 /JSystem/dsptask.s
 .long 0x810405 # 0x803e5ac8
 .long 0x5c00b100 # 0x803e5acc
 .long 0x2751a3a # 0x803e5ad0
-string_align ".:,;&8$9" # 0x803e5ad4
+.long 0x2e3a2c3b 
+.long 0x26382439
+.long 0xd80362
 .long 0x70002c39 # 0x803e5ae0
 .long 0x2e380092 # 0x803e5ae4
 .long 0xff029f # 0x803e5ae8
